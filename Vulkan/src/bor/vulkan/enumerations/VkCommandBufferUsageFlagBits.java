@@ -1,0 +1,21 @@
+package bor.vulkan.enumerations;
+
+import bor.enumerable.*;
+
+/**
+ * Class to wrap Vulkan enumeration VkCommandBufferUsageFlagBits
+ * @author Alessandro Borges
+
+ */
+public class VkCommandBufferUsageFlagBits extends IntEnum<VkCommandBufferUsageFlagBits> {
+	public static final VkCommandBufferUsageFlagBits VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT = new VkCommandBufferUsageFlagBits("VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT", 0, 0x00000001);
+	public static final VkCommandBufferUsageFlagBits VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT = new VkCommandBufferUsageFlagBits("VK_COMMAND_BUFFER_USAGE_RENDER_PASS_CONTINUE_BIT", 1, 0x00000002);
+	public static final VkCommandBufferUsageFlagBits VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT = new VkCommandBufferUsageFlagBits("VK_COMMAND_BUFFER_USAGE_SIMULTANEOUS_USE_BIT", 2, 0x00000004);
+
+
+	/** private ctor */
+	private VkCommandBufferUsageFlagBits(String name, int ordinal, int v) {
+		 super(name, ordinal, v);
+	}
+
+ } // end of class VkCommandBufferUsageFlagBits

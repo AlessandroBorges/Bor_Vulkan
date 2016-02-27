@@ -1,0 +1,126 @@
+// class wrapping Vulkan's VkDescriptorPoolSize struct.
+package bor.vulkan.structs;
+
+import bor.vulkan.*;
+import bor.vulkan.enumerations.*;
+import java.nio.ByteBuffer;
+
+
+/**
+ *  Class for Java-Vulkan integration 
+ *  This class is a Java front end for struct VkDescriptorPoolSize 
+ * @Author Alessandro Borges 
+ */
+public class VkDescriptorPoolSize extends VkStruct {
+	/** ID of this structure [73]  */
+	 public static final int TAG = VKDESCRIPTORPOOLSIZE_ID;
+
+	 // fields //
+	/**
+	 *  VkDescriptorType 	type 
+	 */ 
+	VkDescriptorType 	type;
+
+	/**
+	 *  uint32_t 	descriptorCount 
+	 */ 
+	int 	descriptorCount;
+
+	/**
+	 * Ctor
+	 */
+	public VkDescriptorPoolSize(){ 
+		 super(sizeOf()); 
+	 }
+
+	/** 
+	 * Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG); 
+	}
+
+
+	 // /////////////////////
+	 //  SETTERS & GETTERS //
+	 // /////////////////////
+
+	/**
+	 * Set method for field type
+	 * Prototype: VkDescriptorType  type
+	 */ 
+	 public void type(VkDescriptorType type){
+		 this.type = type;
+		type0(super.ptr, type);
+	 }
+
+	/**
+	 * get method for field type
+	 * Prototype: VkDescriptorType  type
+	 */ 
+	 public VkDescriptorType type(){
+		 // return  this.type;
+		 return type0(super.ptr);
+	 }
+
+	/**
+	 * Set method for field descriptorCount
+	 * Prototype: uint32_t  descriptorCount
+	 */ 
+	 public void descriptorCount(int descriptorCount){
+		 this.descriptorCount = descriptorCount;
+		descriptorCount0(super.ptr, descriptorCount);
+	 }
+
+	/**
+	 * get method for field descriptorCount
+	 * Prototype: uint32_t  descriptorCount
+	 */ 
+	 public int descriptorCount(){
+		 // return  this.descriptorCount;
+		 return descriptorCount0(super.ptr);
+	 }
+
+
+	 // ////////////////////////////////
+	 // native SETTERS & GETTERS //
+	 // ////////////////////////////////
+	/**
+	 * native Set method for field type
+	 * Prototype: VkDescriptorType  type
+	 */ 
+	 private static native void type0(ByteBuffer ptr, VkDescriptorType _type);/*
+		  VkDescriptorPoolSize _obj = (VkDescriptorPoolSize)(*ptr);
+		  _obj.type = (VkDescriptorType) (_type);
+	  */
+
+	/**
+	 * get method for field type
+	 * Prototype: VkDescriptorType  type
+	 */ 
+	 private static native VkDescriptorType type0(ByteBuffer ptr);/*
+		  VkDescriptorPoolSize _obj = (VkDescriptorPoolSize)(ptr);
+		  return (VkDescriptorType) (_obj.VkDescriptorType);
+	 */
+
+	/**
+	 * native Set method for field descriptorCount
+	 * Prototype: uint32_t  descriptorCount
+	 */ 
+	 private static native void descriptorCount0(ByteBuffer ptr, int _descriptorCount);/*
+		  VkDescriptorPoolSize _obj = (VkDescriptorPoolSize)(*ptr);
+		  _obj.descriptorCount = (uint32_t) (_descriptorCount);
+	  */
+
+	/**
+	 * get method for field descriptorCount
+	 * Prototype: uint32_t  descriptorCount
+	 */ 
+	 private static native int descriptorCount0(ByteBuffer ptr);/*
+		  VkDescriptorPoolSize _obj = (VkDescriptorPoolSize)(ptr);
+		  return (jint) (_obj.uint32_t);
+	 */
+
+
+
+} // end of class VkDescriptorPoolSize

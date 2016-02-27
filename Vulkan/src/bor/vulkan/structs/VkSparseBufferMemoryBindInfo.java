@@ -1,0 +1,167 @@
+// class wrapping Vulkan's VkSparseBufferMemoryBindInfo struct.
+package bor.vulkan.structs;
+
+import bor.vulkan.*;
+import bor.vulkan.enumerations.*;
+import java.nio.ByteBuffer;
+
+
+/**
+ *  Class for Java-Vulkan integration 
+ *  This class is a Java front end for struct VkSparseBufferMemoryBindInfo 
+ * @Author Alessandro Borges 
+ */
+public class VkSparseBufferMemoryBindInfo extends VkStruct {
+	/** ID of this structure [26]  */
+	 public static final int TAG = VKSPARSEBUFFERMEMORYBINDINFO_ID;
+
+	 // fields //
+	/**
+	 *  VkBuffer 	buffer 
+	 */ 
+	VkBuffer 	buffer;
+
+	/**
+	 *  uint32_t 	bindCount 
+	 */ 
+	int 	bindCount;
+
+	/**
+	 *  const VkSparseMemoryBind* 	pBinds 
+	 */ 
+	const VkSparseMemoryBind* 	pBinds;
+
+	/**
+	 * Ctor
+	 */
+	public VkSparseBufferMemoryBindInfo(){ 
+		 super(sizeOf()); 
+	 }
+
+	/** 
+	 * Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG); 
+	}
+
+
+	 // /////////////////////
+	 //  SETTERS & GETTERS //
+	 // /////////////////////
+
+	/**
+	 * Set method for field buffer
+	 * Prototype: VkBuffer  buffer
+	 */ 
+	 public void buffer(VkBuffer buffer){
+		 this.buffer = buffer;
+		buffer0(super.ptr, buffer);
+	 }
+
+	/**
+	 * get method for field buffer
+	 * Prototype: VkBuffer  buffer
+	 */ 
+	 public VkBuffer buffer(){
+		 // return  this.buffer;
+		 return buffer0(super.ptr);
+	 }
+
+	/**
+	 * Set method for field bindCount
+	 * Prototype: uint32_t  bindCount
+	 */ 
+	 public void bindCount(int bindCount){
+		 this.bindCount = bindCount;
+		bindCount0(super.ptr, bindCount);
+	 }
+
+	/**
+	 * get method for field bindCount
+	 * Prototype: uint32_t  bindCount
+	 */ 
+	 public int bindCount(){
+		 // return  this.bindCount;
+		 return bindCount0(super.ptr);
+	 }
+
+	/**
+	 * Set method for field pBinds
+	 * Prototype: const VkSparseMemoryBind*  pBinds
+	 */ 
+	 public void pBinds(const VkSparseMemoryBind* pBinds){
+		 this.pBinds = pBinds;
+		pBinds0(super.ptr, pBinds);
+	 }
+
+	/**
+	 * get method for field pBinds
+	 * Prototype: const VkSparseMemoryBind*  pBinds
+	 */ 
+	 public const VkSparseMemoryBind* pBinds(){
+		 // return  this.pBinds;
+		 return pBinds0(super.ptr);
+	 }
+
+
+	 // ////////////////////////////////
+	 // native SETTERS & GETTERS //
+	 // ////////////////////////////////
+	/**
+	 * native Set method for field buffer
+	 * Prototype: VkBuffer  buffer
+	 */ 
+	 private static native void buffer0(ByteBuffer ptr, VkBuffer _buffer);/*
+		  VkSparseBufferMemoryBindInfo _obj = (VkSparseBufferMemoryBindInfo)(*ptr);
+		  _obj.buffer = (VkBuffer) (_buffer);
+	  */
+
+	/**
+	 * get method for field buffer
+	 * Prototype: VkBuffer  buffer
+	 */ 
+	 private static native VkBuffer buffer0(ByteBuffer ptr);/*
+		  VkSparseBufferMemoryBindInfo _obj = (VkSparseBufferMemoryBindInfo)(ptr);
+		  return (VkBuffer) (_obj.VkBuffer);
+	 */
+
+	/**
+	 * native Set method for field bindCount
+	 * Prototype: uint32_t  bindCount
+	 */ 
+	 private static native void bindCount0(ByteBuffer ptr, int _bindCount);/*
+		  VkSparseBufferMemoryBindInfo _obj = (VkSparseBufferMemoryBindInfo)(*ptr);
+		  _obj.bindCount = (uint32_t) (_bindCount);
+	  */
+
+	/**
+	 * get method for field bindCount
+	 * Prototype: uint32_t  bindCount
+	 */ 
+	 private static native int bindCount0(ByteBuffer ptr);/*
+		  VkSparseBufferMemoryBindInfo _obj = (VkSparseBufferMemoryBindInfo)(ptr);
+		  return (jint) (_obj.uint32_t);
+	 */
+
+	/**
+	 * native Set method for field pBinds
+	 * Prototype: const VkSparseMemoryBind*  pBinds
+	 */ 
+	 private static native void pBinds0(ByteBuffer ptr, const VkSparseMemoryBind* _pBinds);/*
+		  VkSparseBufferMemoryBindInfo _obj = (VkSparseBufferMemoryBindInfo)(*ptr);
+		  _obj.pBinds = (const VkSparseMemoryBind*) (_pBinds);
+	  */
+
+	/**
+	 * get method for field pBinds
+	 * Prototype: const VkSparseMemoryBind*  pBinds
+	 */ 
+	 private static native const VkSparseMemoryBind* pBinds0(ByteBuffer ptr);/*
+		  VkSparseBufferMemoryBindInfo _obj = (VkSparseBufferMemoryBindInfo)(ptr);
+		  return (const VkSparseMemoryBind*) (_obj.const VkSparseMemoryBind*);
+	 */
+
+
+
+} // end of class VkSparseBufferMemoryBindInfo

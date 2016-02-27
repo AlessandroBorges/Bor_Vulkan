@@ -1,0 +1,23 @@
+<project name="my-native-lib-natives" basedir="." default="all">
+	<target name="clean">
+		<ant antfile="build-windows32.xml" target="clean"/>
+		<ant antfile="build-windows64.xml" target="clean"/>
+
+	</target>
+	
+	<target name="compile-natives">
+		<ant antfile="build-windows32.xml"/>
+		<ant antfile="build-windows64.xml"/>
+
+	</target>
+	
+	<target name="pack-natives">
+		<jar destfile="../libs/my-native-lib-natives.jar">
+			<fileset dir="../libs/windows32" includes="my-native-lib.dll"/>
+			<fileset dir="../libs/windows64" includes="my-native-lib64.dll"/>
+
+		</jar>
+	</target>
+
+	<target name="all" depends="compile-natives,pack-natives"/>
+</project>
