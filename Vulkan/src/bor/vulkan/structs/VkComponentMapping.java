@@ -1,19 +1,41 @@
-// class wrapping Vulkan's VkComponentMapping struct.
+/**
+ * Class wrapping Vulkan's VkComponentMapping struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkComponentMapping 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkComponentMapping {
+ *     VkComponentSwizzle    r;
+ *     VkComponentSwizzle    g;
+ *     VkComponentSwizzle    b;
+ *     VkComponentSwizzle    a;
+ * } VkComponentMapping;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkComponentMapping extends VkStruct {
-	/** ID of this structure [41]  */
-	 public static final int TAG = VKCOMPONENTMAPPING_ID;
+	/** TAG of this structure [165]  */
+	 private static final String TAG = "VkComponentMapping";
+
+	/** ID of this structure [165]  */
+	 public static final int TAG_ID = VKCOMPONENTMAPPING_ID;
 
 	 // fields //
 	/**
@@ -47,7 +69,7 @@ public class VkComponentMapping extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

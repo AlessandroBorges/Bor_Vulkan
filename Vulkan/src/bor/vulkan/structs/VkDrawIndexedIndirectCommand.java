@@ -1,19 +1,42 @@
-// class wrapping Vulkan's VkDrawIndexedIndirectCommand struct.
+/**
+ * Class wrapping Vulkan's VkDrawIndexedIndirectCommand struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkDrawIndexedIndirectCommand 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkDrawIndexedIndirectCommand {
+ *     uint32_t    indexCount;
+ *     uint32_t    instanceCount;
+ *     uint32_t    firstIndex;
+ *     int32_t     vertexOffset;
+ *     uint32_t    firstInstance;
+ * } VkDrawIndexedIndirectCommand;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkDrawIndexedIndirectCommand extends VkStruct {
-	/** ID of this structure [104]  */
-	 public static final int TAG = VKDRAWINDEXEDINDIRECTCOMMAND_ID;
+	/** TAG of this structure [228]  */
+	 private static final String TAG = "VkDrawIndexedIndirectCommand";
+
+	/** ID of this structure [228]  */
+	 public static final int TAG_ID = VKDRAWINDEXEDINDIRECTCOMMAND_ID;
 
 	 // fields //
 	/**
@@ -52,7 +75,7 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

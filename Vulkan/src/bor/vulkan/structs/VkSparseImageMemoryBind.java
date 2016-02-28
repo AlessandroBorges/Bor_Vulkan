@@ -1,19 +1,43 @@
-// class wrapping Vulkan's VkSparseImageMemoryBind struct.
+/**
+ * Class wrapping Vulkan's VkSparseImageMemoryBind struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkSparseImageMemoryBind 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkSparseImageMemoryBind {
+ *     VkImageSubresource         subresource;
+ *     VkOffset3D                 offset;
+ *     VkExtent3D                 extent;
+ *     VkDeviceMemory             memory;
+ *     VkDeviceSize               memoryOffset;
+ *     VkSparseMemoryBindFlags    flags;
+ * } VkSparseImageMemoryBind;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkSparseImageMemoryBind extends VkStruct {
-	/** ID of this structure [30]  */
-	 public static final int TAG = VKSPARSEIMAGEMEMORYBIND_ID;
+	/** TAG of this structure [154]  */
+	 private static final String TAG = "VkSparseImageMemoryBind";
+
+	/** ID of this structure [154]  */
+	 public static final int TAG_ID = VKSPARSEIMAGEMEMORYBIND_ID;
 
 	 // fields //
 	/**
@@ -57,7 +81,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

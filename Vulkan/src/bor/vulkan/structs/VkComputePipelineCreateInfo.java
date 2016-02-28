@@ -1,19 +1,44 @@
-// class wrapping Vulkan's VkComputePipelineCreateInfo struct.
+/**
+ * Class wrapping Vulkan's VkComputePipelineCreateInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkComputePipelineCreateInfo 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkComputePipelineCreateInfo {
+ *     VkStructureType                    sType;
+ *     const void*                        pNext;
+ *     VkPipelineCreateFlags              flags;
+ *     VkPipelineShaderStageCreateInfo    stage;
+ *     VkPipelineLayout                   layout;
+ *     VkPipeline                         basePipelineHandle;
+ *     int32_t                            basePipelineIndex;
+ * } VkComputePipelineCreateInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkComputePipelineCreateInfo extends VkStruct {
-	/** ID of this structure [67]  */
-	 public static final int TAG = VKCOMPUTEPIPELINECREATEINFO_ID;
+	/** TAG of this structure [191]  */
+	 private static final String TAG = "VkComputePipelineCreateInfo";
+
+	/** ID of this structure [191]  */
+	 public static final int TAG_ID = VKCOMPUTEPIPELINECREATEINFO_ID;
 
 	 // fields //
 	/**
@@ -24,7 +49,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineCreateFlags 	flags 
@@ -62,7 +87,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -92,7 +117,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -101,7 +126,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -222,7 +247,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkComputePipelineCreateInfo _obj = (VkComputePipelineCreateInfo)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -231,9 +256,9 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkComputePipelineCreateInfo _obj = (VkComputePipelineCreateInfo)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**

@@ -1,19 +1,46 @@
-// class wrapping Vulkan's VkAttachmentDescription struct.
+/**
+ * Class wrapping Vulkan's VkAttachmentDescription struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkAttachmentDescription 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkAttachmentDescription {
+ *     VkAttachmentDescriptionFlags    flags;
+ *     VkFormat                        format;
+ *     VkSampleCountFlagBits           samples;
+ *     VkAttachmentLoadOp              loadOp;
+ *     VkAttachmentStoreOp             storeOp;
+ *     VkAttachmentLoadOp              stencilLoadOp;
+ *     VkAttachmentStoreOp             stencilStoreOp;
+ *     VkImageLayout                   initialLayout;
+ *     VkImageLayout                   finalLayout;
+ * } VkAttachmentDescription;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkAttachmentDescription extends VkStruct {
-	/** ID of this structure [81]  */
-	 public static final int TAG = VKATTACHMENTDESCRIPTION_ID;
+	/** TAG of this structure [205]  */
+	 private static final String TAG = "VkAttachmentDescription";
+
+	/** ID of this structure [205]  */
+	 public static final int TAG_ID = VKATTACHMENTDESCRIPTION_ID;
 
 	 // fields //
 	/**
@@ -72,7 +99,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

@@ -1,30 +1,44 @@
-// class wrapping Vulkan's VkApplicationInfo struct.
+/**
+ * Class wrapping Vulkan's VkApplicationInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkApplicationInfo 
- *  <h2>ProtoType</h2>
-	* 
-	* typedef struct VkApplicationInfo {
-	*     VkStructureType    sType;
-	*     const void*        pNext;
-	*     const char*        pApplicationName;
-	*     uint32_t           applicationVersion;
-	*     const char*        pEngineName;
-	*     uint32_t           engineVersion;
-	*     uint32_t           apiVersion;
-	* } VkApplicationInfo;
-	*  * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkApplicationInfo {
+ *     VkStructureType    sType;
+ *     const void*        pNext;
+ *     const char*        pApplicationName;
+ *     uint32_t           applicationVersion;
+ *     const char*        pEngineName;
+ *     uint32_t           engineVersion;
+ *     uint32_t           apiVersion;
+ * } VkApplicationInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkApplicationInfo extends VkStruct {
-	/** ID of this structure [1]  */
-	 public static final int TAG = VKAPPLICATIONINFO_ID;
+	/** TAG of this structure [125]  */
+	 private static final String TAG = "VkApplicationInfo";
+
+	/** ID of this structure [125]  */
+	 public static final int TAG_ID = VKAPPLICATIONINFO_ID;
 
 	 // fields //
 	/**
@@ -73,7 +87,7 @@ public class VkApplicationInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

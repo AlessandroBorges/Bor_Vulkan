@@ -1,19 +1,43 @@
-// class wrapping Vulkan's VkQueryPoolCreateInfo struct.
+/**
+ * Class wrapping Vulkan's VkQueryPoolCreateInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkQueryPoolCreateInfo 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkQueryPoolCreateInfo {
+ *     VkStructureType                  sType;
+ *     const void*                      pNext;
+ *     VkQueryPoolCreateFlags           flags;
+ *     VkQueryType                      queryType;
+ *     uint32_t                         queryCount;
+ *     VkQueryPipelineStatisticFlags    pipelineStatistics;
+ * } VkQueryPoolCreateInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkQueryPoolCreateInfo extends VkStruct {
-	/** ID of this structure [36]  */
-	 public static final int TAG = VKQUERYPOOLCREATEINFO_ID;
+	/** TAG of this structure [160]  */
+	 private static final String TAG = "VkQueryPoolCreateInfo";
+
+	/** ID of this structure [160]  */
+	 public static final int TAG_ID = VKQUERYPOOLCREATEINFO_ID;
 
 	 // fields //
 	/**
@@ -24,7 +48,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkQueryPoolCreateFlags 	flags 
@@ -57,7 +81,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -87,7 +111,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -96,7 +120,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -199,7 +223,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkQueryPoolCreateInfo _obj = (VkQueryPoolCreateInfo)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -208,9 +232,9 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkQueryPoolCreateInfo _obj = (VkQueryPoolCreateInfo)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**

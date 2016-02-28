@@ -1,19 +1,40 @@
-// class wrapping Vulkan's VkDescriptorImageInfo struct.
+/**
+ * Class wrapping Vulkan's VkDescriptorImageInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkDescriptorImageInfo 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkDescriptorImageInfo {
+ *     VkSampler        sampler;
+ *     VkImageView      imageView;
+ *     VkImageLayout    imageLayout;
+ * } VkDescriptorImageInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkDescriptorImageInfo extends VkStruct {
-	/** ID of this structure [76]  */
-	 public static final int TAG = VKDESCRIPTORIMAGEINFO_ID;
+	/** TAG of this structure [200]  */
+	 private static final String TAG = "VkDescriptorImageInfo";
+
+	/** ID of this structure [200]  */
+	 public static final int TAG_ID = VKDESCRIPTORIMAGEINFO_ID;
 
 	 // fields //
 	/**
@@ -42,7 +63,7 @@ public class VkDescriptorImageInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

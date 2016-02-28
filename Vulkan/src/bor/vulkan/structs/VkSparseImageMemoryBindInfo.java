@@ -1,19 +1,40 @@
-// class wrapping Vulkan's VkSparseImageMemoryBindInfo struct.
+/**
+ * Class wrapping Vulkan's VkSparseImageMemoryBindInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkSparseImageMemoryBindInfo 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkSparseImageMemoryBindInfo {
+ *     VkImage                           image;
+ *     uint32_t                          bindCount;
+ *     const VkSparseImageMemoryBind*    pBinds;
+ * } VkSparseImageMemoryBindInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkSparseImageMemoryBindInfo extends VkStruct {
-	/** ID of this structure [31]  */
-	 public static final int TAG = VKSPARSEIMAGEMEMORYBINDINFO_ID;
+	/** TAG of this structure [155]  */
+	 private static final String TAG = "VkSparseImageMemoryBindInfo";
+
+	/** ID of this structure [155]  */
+	 public static final int TAG_ID = VKSPARSEIMAGEMEMORYBINDINFO_ID;
 
 	 // fields //
 	/**
@@ -29,7 +50,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	/**
 	 *  const VkSparseImageMemoryBind* 	pBinds 
 	 */ 
-	const VkSparseImageMemoryBind* 	pBinds;
+	P<VkSparseImageMemoryBind>  	pBinds;
 
 	/**
 	 * Ctor
@@ -42,7 +63,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -90,7 +111,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 * Set method for field pBinds
 	 * Prototype: const VkSparseImageMemoryBind*  pBinds
 	 */ 
-	 public void pBinds(const VkSparseImageMemoryBind* pBinds){
+	 public void pBinds(P<VkSparseImageMemoryBind>  pBinds){
 		 this.pBinds = pBinds;
 		pBinds0(super.ptr, pBinds);
 	 }
@@ -99,7 +120,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 * get method for field pBinds
 	 * Prototype: const VkSparseImageMemoryBind*  pBinds
 	 */ 
-	 public const VkSparseImageMemoryBind* pBinds(){
+	 public P<VkSparseImageMemoryBind>  pBinds(){
 		 // return  this.pBinds;
 		 return pBinds0(super.ptr);
 	 }
@@ -148,7 +169,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 * native Set method for field pBinds
 	 * Prototype: const VkSparseImageMemoryBind*  pBinds
 	 */ 
-	 private static native void pBinds0(ByteBuffer ptr, const VkSparseImageMemoryBind* _pBinds);/*
+	 private static native void pBinds0(ByteBuffer ptr, P<VkSparseImageMemoryBind>  _pBinds);/*
 		  VkSparseImageMemoryBindInfo _obj = (VkSparseImageMemoryBindInfo)(*ptr);
 		  _obj.pBinds = (const VkSparseImageMemoryBind*) (_pBinds);
 	  */
@@ -157,9 +178,9 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 * get method for field pBinds
 	 * Prototype: const VkSparseImageMemoryBind*  pBinds
 	 */ 
-	 private static native const VkSparseImageMemoryBind* pBinds0(ByteBuffer ptr);/*
+	 private static native P<VkSparseImageMemoryBind>  pBinds0(ByteBuffer ptr);/*
 		  VkSparseImageMemoryBindInfo _obj = (VkSparseImageMemoryBindInfo)(ptr);
-		  return (const VkSparseImageMemoryBind*) (_obj.const VkSparseImageMemoryBind*);
+		  return (P<VkSparseImageMemoryBind> ) (_obj.const VkSparseImageMemoryBind*);
 	 */
 
 

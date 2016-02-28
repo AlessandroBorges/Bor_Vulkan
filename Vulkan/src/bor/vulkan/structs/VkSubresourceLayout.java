@@ -1,19 +1,42 @@
-// class wrapping Vulkan's VkSubresourceLayout struct.
+/**
+ * Class wrapping Vulkan's VkSubresourceLayout struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkSubresourceLayout 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkSubresourceLayout {
+ *     VkDeviceSize    offset;
+ *     VkDeviceSize    size;
+ *     VkDeviceSize    rowPitch;
+ *     VkDeviceSize    arrayPitch;
+ *     VkDeviceSize    depthPitch;
+ * } VkSubresourceLayout;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkSubresourceLayout extends VkStruct {
-	/** ID of this structure [40]  */
-	 public static final int TAG = VKSUBRESOURCELAYOUT_ID;
+	/** TAG of this structure [164]  */
+	 private static final String TAG = "VkSubresourceLayout";
+
+	/** ID of this structure [164]  */
+	 public static final int TAG_ID = VKSUBRESOURCELAYOUT_ID;
 
 	 // fields //
 	/**
@@ -52,7 +75,7 @@ public class VkSubresourceLayout extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

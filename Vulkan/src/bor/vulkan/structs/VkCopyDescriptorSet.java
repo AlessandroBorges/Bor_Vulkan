@@ -1,19 +1,46 @@
-// class wrapping Vulkan's VkCopyDescriptorSet struct.
+/**
+ * Class wrapping Vulkan's VkCopyDescriptorSet struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkCopyDescriptorSet 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkCopyDescriptorSet {
+ *     VkStructureType    sType;
+ *     const void*        pNext;
+ *     VkDescriptorSet    srcSet;
+ *     uint32_t           srcBinding;
+ *     uint32_t           srcArrayElement;
+ *     VkDescriptorSet    dstSet;
+ *     uint32_t           dstBinding;
+ *     uint32_t           dstArrayElement;
+ *     uint32_t           descriptorCount;
+ * } VkCopyDescriptorSet;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkCopyDescriptorSet extends VkStruct {
-	/** ID of this structure [79]  */
-	 public static final int TAG = VKCOPYDESCRIPTORSET_ID;
+	/** TAG of this structure [203]  */
+	 private static final String TAG = "VkCopyDescriptorSet";
+
+	/** ID of this structure [203]  */
+	 public static final int TAG_ID = VKCOPYDESCRIPTORSET_ID;
 
 	 // fields //
 	/**
@@ -24,7 +51,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkDescriptorSet 	srcSet 
@@ -72,7 +99,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -102,7 +129,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -111,7 +138,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -268,7 +295,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -277,9 +304,9 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**

@@ -1,11 +1,31 @@
+/**
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.enumerations;
 
 import bor.enumerable.*;
 
 /**
  * Class to wrap Vulkan enumeration VkBorderColor
+ *
+ * <h3>Prototype</h3> <pre>
+ * typedef enum VkBorderColor {
+ *     VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK = 0,
+ *     VK_BORDER_COLOR_INT_TRANSPARENT_BLACK = 1,
+ *     VK_BORDER_COLOR_FLOAT_OPAQUE_BLACK = 2,
+ *     VK_BORDER_COLOR_INT_OPAQUE_BLACK = 3,
+ *     VK_BORDER_COLOR_FLOAT_OPAQUE_WHITE = 4,
+ *     VK_BORDER_COLOR_INT_OPAQUE_WHITE = 5,
+ *     VK_BORDER_COLOR_BEGIN_RANGE = VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK,
+ *     VK_BORDER_COLOR_END_RANGE = VK_BORDER_COLOR_INT_OPAQUE_WHITE,
+ *     VK_BORDER_COLOR_RANGE_SIZE = (VK_BORDER_COLOR_INT_OPAQUE_WHITE - VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK + 1),
+ *     VK_BORDER_COLOR_MAX_ENUM = 0x7FFFFFFF
+ * } VkBorderColor;
+ * </pre>
  * @author Alessandro Borges
-
  */
 public class VkBorderColor extends IntEnum<VkBorderColor> {
 	public static final VkBorderColor VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK = new VkBorderColor("VK_BORDER_COLOR_FLOAT_TRANSPARENT_BLACK", 0, 0);

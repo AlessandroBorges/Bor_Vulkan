@@ -27,18 +27,16 @@ public class ANativeWindow extends VkHandlerConcrete implements VkHandle {
      * @see bor.vulkan.VkHandle#getHandle()
      */
     @Override
-    public ByteBuffer getPointerHandle() {
-        // TODO Auto-generated method stub
-        return null;
+    public ByteBuffer getPointerHandle() {        
+        return this.getPointer();
     }
 
     /* (non-Javadoc)
      * @see bor.vulkan.VkHandle#free()
      */
     @Override
-    public void free() {
-        // TODO Auto-generated method stub
-
+    public boolean free() {
+        return super.free();
     }
 
 }

@@ -1,19 +1,46 @@
-// class wrapping Vulkan's VkPhysicalDeviceProperties struct.
+/**
+ * Class wrapping Vulkan's VkPhysicalDeviceProperties struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPhysicalDeviceProperties 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkPhysicalDeviceProperties {
+ *     uint32_t                            apiVersion;
+ *     uint32_t                            driverVersion;
+ *     uint32_t                            vendorID;
+ *     uint32_t                            deviceID;
+ *     VkPhysicalDeviceType                deviceType;
+ *     char                                deviceName[VK_MAX_PHYSICAL_DEVICE_NAME_SIZE];
+ *     uint8_t                             pipelineCacheUUID[VK_UUID_SIZE];
+ *     VkPhysicalDeviceLimits              limits;
+ *     VkPhysicalDeviceSparseProperties    sparseProperties;
+ * } VkPhysicalDeviceProperties;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkPhysicalDeviceProperties extends VkStruct {
-	/** ID of this structure [10]  */
-	 public static final int TAG = VKPHYSICALDEVICEPROPERTIES_ID;
+	/** TAG of this structure [134]  */
+	 private static final String TAG = "VkPhysicalDeviceProperties";
+
+	/** ID of this structure [134]  */
+	 public static final int TAG_ID = VKPHYSICALDEVICEPROPERTIES_ID;
 
 	 // fields //
 	/**
@@ -42,14 +69,14 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	VkPhysicalDeviceType 	deviceType;
 
 	/**
-	 *  char[] 	deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */ 
+	 *  char[] 	deviceName 
 	 */ 
-	char[] 	deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */;
+	String 	deviceName;
 
 	/**
-	 *  uint8_t[] 	pipelineCacheUUID /* length=VK_UUID_SIZE */ 
+	 *  uint8_t[] 	pipelineCacheUUID 
 	 */ 
-	uint8_t[] 	pipelineCacheUUID /* length=VK_UUID_SIZE */;
+	byte[] 	pipelineCacheUUID;
 
 	/**
 	 *  VkPhysicalDeviceLimits 	limits 
@@ -72,7 +99,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -171,39 +198,39 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */
-	 * Prototype: char[]  deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */
+	 * Set method for field deviceName
+	 * Prototype: char[]  deviceName
 	 */ 
-	 public void deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */(char[] deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */){
-		 this.deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */ = deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */;
-		deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */0(super.ptr, deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */);
+	 public void deviceName(String deviceName){
+		 this.deviceName = deviceName;
+		deviceName0(super.ptr, deviceName);
 	 }
 
 	/**
-	 * get method for field deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */
-	 * Prototype: char[]  deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */
+	 * get method for field deviceName
+	 * Prototype: char[]  deviceName
 	 */ 
-	 public char[] deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */(){
-		 // return  this.deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */;
-		 return deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */0(super.ptr);
+	 public String deviceName(){
+		 // return  this.deviceName;
+		 return deviceName0(super.ptr);
 	 }
 
 	/**
-	 * Set method for field pipelineCacheUUID /* length=VK_UUID_SIZE */
-	 * Prototype: uint8_t[]  pipelineCacheUUID /* length=VK_UUID_SIZE */
+	 * Set method for field pipelineCacheUUID
+	 * Prototype: uint8_t[]  pipelineCacheUUID
 	 */ 
-	 public void pipelineCacheUUID /* length=VK_UUID_SIZE */(uint8_t[] pipelineCacheUUID /* length=VK_UUID_SIZE */){
-		 this.pipelineCacheUUID /* length=VK_UUID_SIZE */ = pipelineCacheUUID /* length=VK_UUID_SIZE */;
-		pipelineCacheUUID /* length=VK_UUID_SIZE */0(super.ptr, pipelineCacheUUID /* length=VK_UUID_SIZE */);
+	 public void pipelineCacheUUID(byte[] pipelineCacheUUID){
+		 this.pipelineCacheUUID = pipelineCacheUUID;
+		pipelineCacheUUID0(super.ptr, pipelineCacheUUID);
 	 }
 
 	/**
-	 * get method for field pipelineCacheUUID /* length=VK_UUID_SIZE */
-	 * Prototype: uint8_t[]  pipelineCacheUUID /* length=VK_UUID_SIZE */
+	 * get method for field pipelineCacheUUID
+	 * Prototype: uint8_t[]  pipelineCacheUUID
 	 */ 
-	 public uint8_t[] pipelineCacheUUID /* length=VK_UUID_SIZE */(){
-		 // return  this.pipelineCacheUUID /* length=VK_UUID_SIZE */;
-		 return pipelineCacheUUID /* length=VK_UUID_SIZE */0(super.ptr);
+	 public byte[] pipelineCacheUUID(){
+		 // return  this.pipelineCacheUUID;
+		 return pipelineCacheUUID0(super.ptr);
 	 }
 
 	/**
@@ -337,39 +364,38 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */
-	 * Prototype: char[]  deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */
+	 * native Set method for field deviceName
+	 * Prototype: char[]  deviceName
 	 */ 
-	 private static native void deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */0(ByteBuffer ptr, char[] _deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */);/*
+	 private static native void deviceName0(ByteBuffer ptr, String _deviceName);/*
 		  VkPhysicalDeviceProperties _obj = (VkPhysicalDeviceProperties)(*ptr);
-		  _obj.deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */ = (char[]) (_deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */);
+		  _obj.deviceName = (char[]) (_deviceName);
 	  */
 
 	/**
-	 * get method for field deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */
-	 * Prototype: char[]  deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */
+	 * get method for field deviceName
+	 * Prototype: char[]  deviceName
 	 */ 
-	 private static native char[] deviceName /* length=VK_MAX_PHYSICAL_DEVICE_NAME_SIZE */0(ByteBuffer ptr);/*
+	 private static native String deviceName0(ByteBuffer ptr);/*
 		  VkPhysicalDeviceProperties _obj = (VkPhysicalDeviceProperties)(ptr);
-		  return (char[]) (_obj.char[]);
-	 */
+		  return (jstring)(env->NewStringUTF(_obj.char[]);	 */
 
 	/**
-	 * native Set method for field pipelineCacheUUID /* length=VK_UUID_SIZE */
-	 * Prototype: uint8_t[]  pipelineCacheUUID /* length=VK_UUID_SIZE */
+	 * native Set method for field pipelineCacheUUID
+	 * Prototype: uint8_t[]  pipelineCacheUUID
 	 */ 
-	 private static native void pipelineCacheUUID /* length=VK_UUID_SIZE */0(ByteBuffer ptr, uint8_t[] _pipelineCacheUUID /* length=VK_UUID_SIZE */);/*
+	 private static native void pipelineCacheUUID0(ByteBuffer ptr, byte[] _pipelineCacheUUID);/*
 		  VkPhysicalDeviceProperties _obj = (VkPhysicalDeviceProperties)(*ptr);
-		  _obj.pipelineCacheUUID /* length=VK_UUID_SIZE */ = (uint8_t[]) (_pipelineCacheUUID /* length=VK_UUID_SIZE */);
+		  _obj.pipelineCacheUUID = (uint8_t[]) (_pipelineCacheUUID);
 	  */
 
 	/**
-	 * get method for field pipelineCacheUUID /* length=VK_UUID_SIZE */
-	 * Prototype: uint8_t[]  pipelineCacheUUID /* length=VK_UUID_SIZE */
+	 * get method for field pipelineCacheUUID
+	 * Prototype: uint8_t[]  pipelineCacheUUID
 	 */ 
-	 private static native uint8_t[] pipelineCacheUUID /* length=VK_UUID_SIZE */0(ByteBuffer ptr);/*
+	 private static native byte[] pipelineCacheUUID0(ByteBuffer ptr);/*
 		  VkPhysicalDeviceProperties _obj = (VkPhysicalDeviceProperties)(ptr);
-		  return (uint8_t[]) (_obj.uint8_t[]);
+		  return (byte[]) (_obj.uint8_t[]);
 	 */
 
 	/**

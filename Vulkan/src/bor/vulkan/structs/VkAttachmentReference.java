@@ -1,19 +1,39 @@
-// class wrapping Vulkan's VkAttachmentReference struct.
+/**
+ * Class wrapping Vulkan's VkAttachmentReference struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkAttachmentReference 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkAttachmentReference {
+ *     uint32_t         attachment;
+ *     VkImageLayout    layout;
+ * } VkAttachmentReference;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkAttachmentReference extends VkStruct {
-	/** ID of this structure [82]  */
-	 public static final int TAG = VKATTACHMENTREFERENCE_ID;
+	/** TAG of this structure [206]  */
+	 private static final String TAG = "VkAttachmentReference";
+
+	/** ID of this structure [206]  */
+	 public static final int TAG_ID = VKATTACHMENTREFERENCE_ID;
 
 	 // fields //
 	/**
@@ -37,7 +57,7 @@ public class VkAttachmentReference extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

@@ -1,19 +1,42 @@
-// class wrapping Vulkan's VkDescriptorSetLayoutCreateInfo struct.
+/**
+ * Class wrapping Vulkan's VkDescriptorSetLayoutCreateInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkDescriptorSetLayoutCreateInfo 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkDescriptorSetLayoutCreateInfo {
+ *     VkStructureType                        sType;
+ *     const void*                            pNext;
+ *     VkDescriptorSetLayoutCreateFlags       flags;
+ *     uint32_t                               bindingCount;
+ *     const VkDescriptorSetLayoutBinding*    pBindings;
+ * } VkDescriptorSetLayoutCreateInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
-	/** ID of this structure [72]  */
-	 public static final int TAG = VKDESCRIPTORSETLAYOUTCREATEINFO_ID;
+	/** TAG of this structure [196]  */
+	 private static final String TAG = "VkDescriptorSetLayoutCreateInfo";
+
+	/** ID of this structure [196]  */
+	 public static final int TAG_ID = VKDESCRIPTORSETLAYOUTCREATEINFO_ID;
 
 	 // fields //
 	/**
@@ -24,7 +47,7 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkDescriptorSetLayoutCreateFlags 	flags 
@@ -39,7 +62,7 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	/**
 	 *  const VkDescriptorSetLayoutBinding* 	pBindings 
 	 */ 
-	const VkDescriptorSetLayoutBinding* 	pBindings;
+	P<VkDescriptorSetLayoutBinding>  	pBindings;
 
 	/**
 	 * Ctor
@@ -52,7 +75,7 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -82,7 +105,7 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -91,7 +114,7 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -136,7 +159,7 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 * Set method for field pBindings
 	 * Prototype: const VkDescriptorSetLayoutBinding*  pBindings
 	 */ 
-	 public void pBindings(const VkDescriptorSetLayoutBinding* pBindings){
+	 public void pBindings(P<VkDescriptorSetLayoutBinding>  pBindings){
 		 this.pBindings = pBindings;
 		pBindings0(super.ptr, pBindings);
 	 }
@@ -145,7 +168,7 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 * get method for field pBindings
 	 * Prototype: const VkDescriptorSetLayoutBinding*  pBindings
 	 */ 
-	 public const VkDescriptorSetLayoutBinding* pBindings(){
+	 public P<VkDescriptorSetLayoutBinding>  pBindings(){
 		 // return  this.pBindings;
 		 return pBindings0(super.ptr);
 	 }
@@ -176,7 +199,7 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkDescriptorSetLayoutCreateInfo _obj = (VkDescriptorSetLayoutCreateInfo)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -185,9 +208,9 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkDescriptorSetLayoutCreateInfo _obj = (VkDescriptorSetLayoutCreateInfo)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**
@@ -230,7 +253,7 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 * native Set method for field pBindings
 	 * Prototype: const VkDescriptorSetLayoutBinding*  pBindings
 	 */ 
-	 private static native void pBindings0(ByteBuffer ptr, const VkDescriptorSetLayoutBinding* _pBindings);/*
+	 private static native void pBindings0(ByteBuffer ptr, P<VkDescriptorSetLayoutBinding>  _pBindings);/*
 		  VkDescriptorSetLayoutCreateInfo _obj = (VkDescriptorSetLayoutCreateInfo)(*ptr);
 		  _obj.pBindings = (const VkDescriptorSetLayoutBinding*) (_pBindings);
 	  */
@@ -239,9 +262,9 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 * get method for field pBindings
 	 * Prototype: const VkDescriptorSetLayoutBinding*  pBindings
 	 */ 
-	 private static native const VkDescriptorSetLayoutBinding* pBindings0(ByteBuffer ptr);/*
+	 private static native P<VkDescriptorSetLayoutBinding>  pBindings0(ByteBuffer ptr);/*
 		  VkDescriptorSetLayoutCreateInfo _obj = (VkDescriptorSetLayoutCreateInfo)(ptr);
-		  return (const VkDescriptorSetLayoutBinding*) (_obj.const VkDescriptorSetLayoutBinding*);
+		  return (P<VkDescriptorSetLayoutBinding> ) (_obj.const VkDescriptorSetLayoutBinding*);
 	 */
 
 

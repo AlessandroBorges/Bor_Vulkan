@@ -1,11 +1,41 @@
+/**
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.enumerations;
 
 import bor.enumerable.*;
 
 /**
  * Class to wrap Vulkan enumeration VkLogicOp
+ *
+ * <h3>Prototype</h3> <pre>
+ * typedef enum VkLogicOp {
+ *     VK_LOGIC_OP_CLEAR = 0,
+ *     VK_LOGIC_OP_AND = 1,
+ *     VK_LOGIC_OP_AND_REVERSE = 2,
+ *     VK_LOGIC_OP_COPY = 3,
+ *     VK_LOGIC_OP_AND_INVERTED = 4,
+ *     VK_LOGIC_OP_NO_OP = 5,
+ *     VK_LOGIC_OP_XOR = 6,
+ *     VK_LOGIC_OP_OR = 7,
+ *     VK_LOGIC_OP_NOR = 8,
+ *     VK_LOGIC_OP_EQUIVALENT = 9,
+ *     VK_LOGIC_OP_INVERT = 10,
+ *     VK_LOGIC_OP_OR_REVERSE = 11,
+ *     VK_LOGIC_OP_COPY_INVERTED = 12,
+ *     VK_LOGIC_OP_OR_INVERTED = 13,
+ *     VK_LOGIC_OP_NAND = 14,
+ *     VK_LOGIC_OP_SET = 15,
+ *     VK_LOGIC_OP_BEGIN_RANGE = VK_LOGIC_OP_CLEAR,
+ *     VK_LOGIC_OP_END_RANGE = VK_LOGIC_OP_SET,
+ *     VK_LOGIC_OP_RANGE_SIZE = (VK_LOGIC_OP_SET - VK_LOGIC_OP_CLEAR + 1),
+ *     VK_LOGIC_OP_MAX_ENUM = 0x7FFFFFFF
+ * } VkLogicOp;
+ * </pre>
  * @author Alessandro Borges
-
  */
 public class VkLogicOp extends IntEnum<VkLogicOp> {
 	public static final VkLogicOp VK_LOGIC_OP_CLEAR = new VkLogicOp("VK_LOGIC_OP_CLEAR", 0, 0);

@@ -1,19 +1,44 @@
-// class wrapping Vulkan's VkStencilOpState struct.
+/**
+ * Class wrapping Vulkan's VkStencilOpState struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkStencilOpState 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkStencilOpState {
+ *     VkStencilOp    failOp;
+ *     VkStencilOp    passOp;
+ *     VkStencilOp    depthFailOp;
+ *     VkCompareOp    compareOp;
+ *     uint32_t       compareMask;
+ *     uint32_t       writeMask;
+ *     uint32_t       reference;
+ * } VkStencilOpState;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkStencilOpState extends VkStruct {
-	/** ID of this structure [61]  */
-	 public static final int TAG = VKSTENCILOPSTATE_ID;
+	/** TAG of this structure [185]  */
+	 private static final String TAG = "VkStencilOpState";
+
+	/** ID of this structure [185]  */
+	 public static final int TAG_ID = VKSTENCILOPSTATE_ID;
 
 	 // fields //
 	/**
@@ -62,7 +87,7 @@ public class VkStencilOpState extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

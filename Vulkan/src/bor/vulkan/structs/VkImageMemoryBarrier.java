@@ -1,19 +1,47 @@
-// class wrapping Vulkan's VkImageMemoryBarrier struct.
+/**
+ * Class wrapping Vulkan's VkImageMemoryBarrier struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkImageMemoryBarrier 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkImageMemoryBarrier {
+ *     VkStructureType            sType;
+ *     const void*                pNext;
+ *     VkAccessFlags              srcAccessMask;
+ *     VkAccessFlags              dstAccessMask;
+ *     VkImageLayout              oldLayout;
+ *     VkImageLayout              newLayout;
+ *     uint32_t                   srcQueueFamilyIndex;
+ *     uint32_t                   dstQueueFamilyIndex;
+ *     VkImage                    image;
+ *     VkImageSubresourceRange    subresourceRange;
+ * } VkImageMemoryBarrier;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkImageMemoryBarrier extends VkStruct {
-	/** ID of this structure [101]  */
-	 public static final int TAG = VKIMAGEMEMORYBARRIER_ID;
+	/** TAG of this structure [225]  */
+	 private static final String TAG = "VkImageMemoryBarrier";
+
+	/** ID of this structure [225]  */
+	 public static final int TAG_ID = VKIMAGEMEMORYBARRIER_ID;
 
 	 // fields //
 	/**
@@ -24,7 +52,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkAccessFlags 	srcAccessMask 
@@ -77,7 +105,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -107,7 +135,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -116,7 +144,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -291,7 +319,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkImageMemoryBarrier _obj = (VkImageMemoryBarrier)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -300,9 +328,9 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkImageMemoryBarrier _obj = (VkImageMemoryBarrier)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**

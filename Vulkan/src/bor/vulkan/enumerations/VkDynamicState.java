@@ -1,11 +1,34 @@
+/**
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.enumerations;
 
 import bor.enumerable.*;
 
 /**
  * Class to wrap Vulkan enumeration VkDynamicState
+ *
+ * <h3>Prototype</h3> <pre>
+ * typedef enum VkDynamicState {
+ *     VK_DYNAMIC_STATE_VIEWPORT = 0,
+ *     VK_DYNAMIC_STATE_SCISSOR = 1,
+ *     VK_DYNAMIC_STATE_LINE_WIDTH = 2,
+ *     VK_DYNAMIC_STATE_DEPTH_BIAS = 3,
+ *     VK_DYNAMIC_STATE_BLEND_CONSTANTS = 4,
+ *     VK_DYNAMIC_STATE_DEPTH_BOUNDS = 5,
+ *     VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK = 6,
+ *     VK_DYNAMIC_STATE_STENCIL_WRITE_MASK = 7,
+ *     VK_DYNAMIC_STATE_STENCIL_REFERENCE = 8,
+ *     VK_DYNAMIC_STATE_BEGIN_RANGE = VK_DYNAMIC_STATE_VIEWPORT,
+ *     VK_DYNAMIC_STATE_END_RANGE = VK_DYNAMIC_STATE_STENCIL_REFERENCE,
+ *     VK_DYNAMIC_STATE_RANGE_SIZE = (VK_DYNAMIC_STATE_STENCIL_REFERENCE - VK_DYNAMIC_STATE_VIEWPORT + 1),
+ *     VK_DYNAMIC_STATE_MAX_ENUM = 0x7FFFFFFF
+ * } VkDynamicState;
+ * </pre>
  * @author Alessandro Borges
-
  */
 public class VkDynamicState extends IntEnum<VkDynamicState> {
 	public static final VkDynamicState VK_DYNAMIC_STATE_VIEWPORT = new VkDynamicState("VK_DYNAMIC_STATE_VIEWPORT", 0, 0);

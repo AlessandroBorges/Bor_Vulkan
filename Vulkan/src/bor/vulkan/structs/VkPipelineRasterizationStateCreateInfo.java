@@ -1,19 +1,50 @@
-// class wrapping Vulkan's VkPipelineRasterizationStateCreateInfo struct.
+/**
+ * Class wrapping Vulkan's VkPipelineRasterizationStateCreateInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPipelineRasterizationStateCreateInfo 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkPipelineRasterizationStateCreateInfo {
+ *     VkStructureType                            sType;
+ *     const void*                                pNext;
+ *     VkPipelineRasterizationStateCreateFlags    flags;
+ *     VkBool32                                   depthClampEnable;
+ *     VkBool32                                   rasterizerDiscardEnable;
+ *     VkPolygonMode                              polygonMode;
+ *     VkCullModeFlags                            cullMode;
+ *     VkFrontFace                                frontFace;
+ *     VkBool32                                   depthBiasEnable;
+ *     float                                      depthBiasConstantFactor;
+ *     float                                      depthBiasClamp;
+ *     float                                      depthBiasSlopeFactor;
+ *     float                                      lineWidth;
+ * } VkPipelineRasterizationStateCreateInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
-	/** ID of this structure [59]  */
-	 public static final int TAG = VKPIPELINERASTERIZATIONSTATECREATEINFO_ID;
+	/** TAG of this structure [183]  */
+	 private static final String TAG = "VkPipelineRasterizationStateCreateInfo";
+
+	/** ID of this structure [183]  */
+	 public static final int TAG_ID = VKPIPELINERASTERIZATIONSTATECREATEINFO_ID;
 
 	 // fields //
 	/**
@@ -24,7 +55,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineRasterizationStateCreateFlags 	flags 
@@ -92,7 +123,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -122,7 +153,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -131,7 +162,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -360,7 +391,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -369,9 +400,9 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**

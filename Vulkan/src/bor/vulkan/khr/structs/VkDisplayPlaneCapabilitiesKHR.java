@@ -1,23 +1,47 @@
-// class wrapping Vulkan's VkDisplayPlaneCapabilitiesKHR struct.
+/**
+ * Class wrapping Vulkan's VkDisplayPlaneCapabilitiesKHR struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.khr.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.VkExtent2D;
-import bor.vulkan.structs.VkOffset2D;
-import bor.vulkan.structs.VkStruct;
-
+import bor.vulkan.structs.*;
+import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkDisplayPlaneCapabilitiesKHR 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkDisplayPlaneCapabilitiesKHR {
+ *     VkDisplayPlaneAlphaFlagsKHR    supportedAlpha;
+ *     VkOffset2D                     minSrcPosition;
+ *     VkOffset2D                     maxSrcPosition;
+ *     VkExtent2D                     minSrcExtent;
+ *     VkExtent2D                     maxSrcExtent;
+ *     VkOffset2D                     minDstPosition;
+ *     VkOffset2D                     maxDstPosition;
+ *     VkExtent2D                     minDstExtent;
+ *     VkExtent2D                     maxDstExtent;
+ * } VkDisplayPlaneCapabilitiesKHR;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
-	/** ID of this structure [114]  */
-	 public static final int TAG = VKDISPLAYPLANECAPABILITIESKHR_ID;
+	/** TAG of this structure [238]  */
+	 private static final String TAG = "VkDisplayPlaneCapabilitiesKHR";
+
+	/** ID of this structure [238]  */
+	 public static final int TAG_ID = VKDISPLAYPLANECAPABILITIESKHR_ID;
 
 	 // fields //
 	/**
@@ -76,7 +100,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

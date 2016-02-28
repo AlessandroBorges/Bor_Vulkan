@@ -1,19 +1,42 @@
-// class wrapping Vulkan's VkImageFormatProperties struct.
+/**
+ * Class wrapping Vulkan's VkImageFormatProperties struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkImageFormatProperties 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkImageFormatProperties {
+ *     VkExtent3D            maxExtent;
+ *     uint32_t              maxMipLevels;
+ *     uint32_t              maxArrayLayers;
+ *     VkSampleCountFlags    sampleCounts;
+ *     VkDeviceSize          maxResourceSize;
+ * } VkImageFormatProperties;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkImageFormatProperties extends VkStruct {
-	/** ID of this structure [7]  */
-	 public static final int TAG = VKIMAGEFORMATPROPERTIES_ID;
+	/** TAG of this structure [131]  */
+	 private static final String TAG = "VkImageFormatProperties";
+
+	/** ID of this structure [131]  */
+	 public static final int TAG_ID = VKIMAGEFORMATPROPERTIES_ID;
 
 	 // fields //
 	/**
@@ -52,7 +75,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

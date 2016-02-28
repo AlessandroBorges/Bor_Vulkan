@@ -1,19 +1,43 @@
-// class wrapping Vulkan's VkDeviceQueueCreateInfo struct.
+/**
+ * Class wrapping Vulkan's VkDeviceQueueCreateInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkDeviceQueueCreateInfo 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkDeviceQueueCreateInfo {
+ *     VkStructureType             sType;
+ *     const void*                 pNext;
+ *     VkDeviceQueueCreateFlags    flags;
+ *     uint32_t                    queueFamilyIndex;
+ *     uint32_t                    queueCount;
+ *     const float*                pQueuePriorities;
+ * } VkDeviceQueueCreateInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkDeviceQueueCreateInfo extends VkStruct {
-	/** ID of this structure [15]  */
-	 public static final int TAG = VKDEVICEQUEUECREATEINFO_ID;
+	/** TAG of this structure [139]  */
+	 private static final String TAG = "VkDeviceQueueCreateInfo";
+
+	/** ID of this structure [139]  */
+	 public static final int TAG_ID = VKDEVICEQUEUECREATEINFO_ID;
 
 	 // fields //
 	/**
@@ -24,7 +48,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkDeviceQueueCreateFlags 	flags 
@@ -44,7 +68,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	/**
 	 *  const float* 	pQueuePriorities 
 	 */ 
-	const float* 	pQueuePriorities;
+	float[] 	pQueuePriorities;
 
 	/**
 	 * Ctor
@@ -57,7 +81,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -87,7 +111,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -96,7 +120,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -159,7 +183,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 * Set method for field pQueuePriorities
 	 * Prototype: const float*  pQueuePriorities
 	 */ 
-	 public void pQueuePriorities(const float* pQueuePriorities){
+	 public void pQueuePriorities(float[] pQueuePriorities){
 		 this.pQueuePriorities = pQueuePriorities;
 		pQueuePriorities0(super.ptr, pQueuePriorities);
 	 }
@@ -168,7 +192,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 * get method for field pQueuePriorities
 	 * Prototype: const float*  pQueuePriorities
 	 */ 
-	 public const float* pQueuePriorities(){
+	 public float[] pQueuePriorities(){
 		 // return  this.pQueuePriorities;
 		 return pQueuePriorities0(super.ptr);
 	 }
@@ -199,7 +223,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkDeviceQueueCreateInfo _obj = (VkDeviceQueueCreateInfo)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -208,9 +232,9 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkDeviceQueueCreateInfo _obj = (VkDeviceQueueCreateInfo)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**
@@ -271,7 +295,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 * native Set method for field pQueuePriorities
 	 * Prototype: const float*  pQueuePriorities
 	 */ 
-	 private static native void pQueuePriorities0(ByteBuffer ptr, const float* _pQueuePriorities);/*
+	 private static native void pQueuePriorities0(ByteBuffer ptr, float[] _pQueuePriorities);/*
 		  VkDeviceQueueCreateInfo _obj = (VkDeviceQueueCreateInfo)(*ptr);
 		  _obj.pQueuePriorities = (const float*) (_pQueuePriorities);
 	  */
@@ -280,9 +304,9 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 * get method for field pQueuePriorities
 	 * Prototype: const float*  pQueuePriorities
 	 */ 
-	 private static native const float* pQueuePriorities0(ByteBuffer ptr);/*
+	 private static native float[] pQueuePriorities0(ByteBuffer ptr);/*
 		  VkDeviceQueueCreateInfo _obj = (VkDeviceQueueCreateInfo)(ptr);
-		  return (const float*) (_obj.const float*);
+		  return (float[]) (_obj.const float*);
 	 */
 
 

@@ -7,6 +7,11 @@ import java.nio.ByteBuffer;
 import java.util.Hashtable;
 import java.util.Map;
 
+import bor.vulkan.khr.VkDisplayKHR;
+import bor.vulkan.khr.VkDisplayModeKHR;
+import bor.vulkan.khr.VkSurfaceKHR;
+import bor.vulkan.khr.VkSwapchainKHR;
+
 /**
  * Non public class implementing Vulkan handlers.<br>
  * It implements VkHandler super interface and all sub interfaces listed below.<br>

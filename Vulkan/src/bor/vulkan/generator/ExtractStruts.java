@@ -1,20 +1,24 @@
+/**
+ * 
+ */
 package bor.vulkan.generator;
 
 import java.util.*;
+import static bor.vulkan.generator.Util.*;
 
 /**
  * Import some methods of Extract Enum
  */
-import static bor.vulkan.generator.ExtractEnums.contains;
-import static bor.vulkan.generator.ExtractEnums.findNextLine;
-import static bor.vulkan.generator.ExtractEnums.findNextLineStartingWith;
-import static bor.vulkan.generator.ExtractEnums.save;
-import static bor.vulkan.generator.ExtractEnums.readVKH;;
+
+import static bor.vulkan.generator.Util.*;
 
 public class ExtractStruts {
     
-    private static final boolean saveFile = false;
-
+    private static final boolean saveFile = true;
+    private static final boolean printID = false;
+    private static final boolean printStruct = false;
+    
+   
     /**
      * Process Vulkan Structs
      * 
@@ -24,7 +28,7 @@ public class ExtractStruts {
      */
     public static int processStructs(List<String> vkh) {
         System.out.println("Processing Structs.");
-        boolean printStructs = true;
+        //boolean printStructs = true;
         boolean exportStructs = true;
         boolean showAtConsole = false;
 
@@ -49,11 +53,14 @@ public class ExtractStruts {
             System.out.println("####################");
             // System.out.println("public static final int " + info.getID_NAME()+";");
         }
-
-        System.out.println("All Struct ID:");
-        for (StructInfo info : allStructs) {
-            System.out.println(info.name + "\t" + info.id);
-            // System.out.println("public static final int " + info.getID_NAME()+";");
+        
+        if (printID) {
+            System.out.println("All Struct ID:");
+            for (StructInfo info : allStructs) {
+                System.out.println(info.name + "\t" + info.id);
+                // System.out.println("public static final int " +
+                // info.getID_NAME()+";");
+            }
         }
 
         // export
@@ -72,13 +79,16 @@ public class ExtractStruts {
                 String txt = info.toJavaSrc(pkg);
                 if(saveFile){
                     save(basePath, nameFile, txt);
-                }else{
+                }
+                if(printStruct){
                     System.out.println(txt);
                     System.out.println("#########################################");
                 }
-                
             }
         }
+        
+       
+       
         return ID;
     }// process struct
     
@@ -92,7 +102,7 @@ public class ExtractStruts {
      */
     public static int processUnions(List<String> vkh, int ID) {
         System.out.println("Processing Structs.");
-        boolean printStructs = true;
+        //boolean printStructs = true;
         boolean exportStructs = true;
         boolean showAtConsole = false;
 
@@ -113,11 +123,13 @@ public class ExtractStruts {
             System.out.println(info.toJavaSrc("bor.vulkan.structs"));
             System.out.println("####################");           
         }
-
-        System.out.println("All Struct ID:");
-        for (StructInfo info : allStructs) {
-            System.out.println(info.name + "\t" + info.id);
-            // System.out.println("public static final int " + info.getID_NAME()+";");
+        if (printID) {
+            System.out.println("All Struct ID:");
+            for (StructInfo info : allStructs) {
+                System.out.println(info.name + "\t" + info.id);
+                // System.out.println("public static final int " +
+                // info.getID_NAME()+";");
+            }
         }
 
         // export
@@ -133,7 +145,8 @@ public class ExtractStruts {
                 String txt = info.toJavaSrc(pkg);
                 if(saveFile){
                     save(basePath, nameFile, txt);
-                }else{
+                }
+                if(printStruct){
                     System.out.println(txt);
                     System.out.println("#########################################");
                 }

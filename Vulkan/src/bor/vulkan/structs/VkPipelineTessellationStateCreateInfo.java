@@ -1,19 +1,41 @@
-// class wrapping Vulkan's VkPipelineTessellationStateCreateInfo struct.
+/**
+ * Class wrapping Vulkan's VkPipelineTessellationStateCreateInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPipelineTessellationStateCreateInfo 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkPipelineTessellationStateCreateInfo {
+ *     VkStructureType                           sType;
+ *     const void*                               pNext;
+ *     VkPipelineTessellationStateCreateFlags    flags;
+ *     uint32_t                                  patchControlPoints;
+ * } VkPipelineTessellationStateCreateInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkPipelineTessellationStateCreateInfo extends VkStruct {
-	/** ID of this structure [53]  */
-	 public static final int TAG = VKPIPELINETESSELLATIONSTATECREATEINFO_ID;
+	/** TAG of this structure [177]  */
+	 private static final String TAG = "VkPipelineTessellationStateCreateInfo";
+
+	/** ID of this structure [177]  */
+	 public static final int TAG_ID = VKPIPELINETESSELLATIONSTATECREATEINFO_ID;
 
 	 // fields //
 	/**
@@ -24,7 +46,7 @@ public class VkPipelineTessellationStateCreateInfo extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineTessellationStateCreateFlags 	flags 
@@ -47,7 +69,7 @@ public class VkPipelineTessellationStateCreateInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -77,7 +99,7 @@ public class VkPipelineTessellationStateCreateInfo extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -86,7 +108,7 @@ public class VkPipelineTessellationStateCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -153,7 +175,7 @@ public class VkPipelineTessellationStateCreateInfo extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkPipelineTessellationStateCreateInfo _obj = (VkPipelineTessellationStateCreateInfo)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -162,9 +184,9 @@ public class VkPipelineTessellationStateCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkPipelineTessellationStateCreateInfo _obj = (VkPipelineTessellationStateCreateInfo)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**

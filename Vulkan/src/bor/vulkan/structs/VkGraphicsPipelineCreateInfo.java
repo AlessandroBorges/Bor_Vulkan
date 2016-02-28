@@ -1,19 +1,56 @@
-// class wrapping Vulkan's VkGraphicsPipelineCreateInfo struct.
+/**
+ * Class wrapping Vulkan's VkGraphicsPipelineCreateInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkGraphicsPipelineCreateInfo 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkGraphicsPipelineCreateInfo {
+ *     VkStructureType                                  sType;
+ *     const void*                                      pNext;
+ *     VkPipelineCreateFlags                            flags;
+ *     uint32_t                                         stageCount;
+ *     const VkPipelineShaderStageCreateInfo*           pStages;
+ *     const VkPipelineVertexInputStateCreateInfo*      pVertexInputState;
+ *     const VkPipelineInputAssemblyStateCreateInfo*    pInputAssemblyState;
+ *     const VkPipelineTessellationStateCreateInfo*     pTessellationState;
+ *     const VkPipelineViewportStateCreateInfo*         pViewportState;
+ *     const VkPipelineRasterizationStateCreateInfo*    pRasterizationState;
+ *     const VkPipelineMultisampleStateCreateInfo*      pMultisampleState;
+ *     const VkPipelineDepthStencilStateCreateInfo*     pDepthStencilState;
+ *     const VkPipelineColorBlendStateCreateInfo*       pColorBlendState;
+ *     const VkPipelineDynamicStateCreateInfo*          pDynamicState;
+ *     VkPipelineLayout                                 layout;
+ *     VkRenderPass                                     renderPass;
+ *     uint32_t                                         subpass;
+ *     VkPipeline                                       basePipelineHandle;
+ *     int32_t                                          basePipelineIndex;
+ * } VkGraphicsPipelineCreateInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkGraphicsPipelineCreateInfo extends VkStruct {
-	/** ID of this structure [66]  */
-	 public static final int TAG = VKGRAPHICSPIPELINECREATEINFO_ID;
+	/** TAG of this structure [190]  */
+	 private static final String TAG = "VkGraphicsPipelineCreateInfo";
+
+	/** ID of this structure [190]  */
+	 public static final int TAG_ID = VKGRAPHICSPIPELINECREATEINFO_ID;
 
 	 // fields //
 	/**
@@ -24,7 +61,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineCreateFlags 	flags 
@@ -39,52 +76,52 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	/**
 	 *  const VkPipelineShaderStageCreateInfo* 	pStages 
 	 */ 
-	const VkPipelineShaderStageCreateInfo* 	pStages;
+	P<VkPipelineShaderStageCreateInfo>  	pStages;
 
 	/**
 	 *  const VkPipelineVertexInputStateCreateInfo* 	pVertexInputState 
 	 */ 
-	const VkPipelineVertexInputStateCreateInfo* 	pVertexInputState;
+	P<VkPipelineVertexInputStateCreateInfo>  	pVertexInputState;
 
 	/**
 	 *  const VkPipelineInputAssemblyStateCreateInfo* 	pInputAssemblyState 
 	 */ 
-	const VkPipelineInputAssemblyStateCreateInfo* 	pInputAssemblyState;
+	P<VkPipelineInputAssemblyStateCreateInfo>  	pInputAssemblyState;
 
 	/**
 	 *  const VkPipelineTessellationStateCreateInfo* 	pTessellationState 
 	 */ 
-	const VkPipelineTessellationStateCreateInfo* 	pTessellationState;
+	P<VkPipelineTessellationStateCreateInfo>  	pTessellationState;
 
 	/**
 	 *  const VkPipelineViewportStateCreateInfo* 	pViewportState 
 	 */ 
-	const VkPipelineViewportStateCreateInfo* 	pViewportState;
+	P<VkPipelineViewportStateCreateInfo>  	pViewportState;
 
 	/**
 	 *  const VkPipelineRasterizationStateCreateInfo* 	pRasterizationState 
 	 */ 
-	const VkPipelineRasterizationStateCreateInfo* 	pRasterizationState;
+	P<VkPipelineRasterizationStateCreateInfo>  	pRasterizationState;
 
 	/**
 	 *  const VkPipelineMultisampleStateCreateInfo* 	pMultisampleState 
 	 */ 
-	const VkPipelineMultisampleStateCreateInfo* 	pMultisampleState;
+	P<VkPipelineMultisampleStateCreateInfo>  	pMultisampleState;
 
 	/**
 	 *  const VkPipelineDepthStencilStateCreateInfo* 	pDepthStencilState 
 	 */ 
-	const VkPipelineDepthStencilStateCreateInfo* 	pDepthStencilState;
+	P<VkPipelineDepthStencilStateCreateInfo>  	pDepthStencilState;
 
 	/**
 	 *  const VkPipelineColorBlendStateCreateInfo* 	pColorBlendState 
 	 */ 
-	const VkPipelineColorBlendStateCreateInfo* 	pColorBlendState;
+	P<VkPipelineColorBlendStateCreateInfo>  	pColorBlendState;
 
 	/**
 	 *  const VkPipelineDynamicStateCreateInfo* 	pDynamicState 
 	 */ 
-	const VkPipelineDynamicStateCreateInfo* 	pDynamicState;
+	P<VkPipelineDynamicStateCreateInfo>  	pDynamicState;
 
 	/**
 	 *  VkPipelineLayout 	layout 
@@ -122,7 +159,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -152,7 +189,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -161,7 +198,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -206,7 +243,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Set method for field pStages
 	 * Prototype: const VkPipelineShaderStageCreateInfo*  pStages
 	 */ 
-	 public void pStages(const VkPipelineShaderStageCreateInfo* pStages){
+	 public void pStages(P<VkPipelineShaderStageCreateInfo>  pStages){
 		 this.pStages = pStages;
 		pStages0(super.ptr, pStages);
 	 }
@@ -215,7 +252,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pStages
 	 * Prototype: const VkPipelineShaderStageCreateInfo*  pStages
 	 */ 
-	 public const VkPipelineShaderStageCreateInfo* pStages(){
+	 public P<VkPipelineShaderStageCreateInfo>  pStages(){
 		 // return  this.pStages;
 		 return pStages0(super.ptr);
 	 }
@@ -224,7 +261,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Set method for field pVertexInputState
 	 * Prototype: const VkPipelineVertexInputStateCreateInfo*  pVertexInputState
 	 */ 
-	 public void pVertexInputState(const VkPipelineVertexInputStateCreateInfo* pVertexInputState){
+	 public void pVertexInputState(P<VkPipelineVertexInputStateCreateInfo>  pVertexInputState){
 		 this.pVertexInputState = pVertexInputState;
 		pVertexInputState0(super.ptr, pVertexInputState);
 	 }
@@ -233,7 +270,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pVertexInputState
 	 * Prototype: const VkPipelineVertexInputStateCreateInfo*  pVertexInputState
 	 */ 
-	 public const VkPipelineVertexInputStateCreateInfo* pVertexInputState(){
+	 public P<VkPipelineVertexInputStateCreateInfo>  pVertexInputState(){
 		 // return  this.pVertexInputState;
 		 return pVertexInputState0(super.ptr);
 	 }
@@ -242,7 +279,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Set method for field pInputAssemblyState
 	 * Prototype: const VkPipelineInputAssemblyStateCreateInfo*  pInputAssemblyState
 	 */ 
-	 public void pInputAssemblyState(const VkPipelineInputAssemblyStateCreateInfo* pInputAssemblyState){
+	 public void pInputAssemblyState(P<VkPipelineInputAssemblyStateCreateInfo>  pInputAssemblyState){
 		 this.pInputAssemblyState = pInputAssemblyState;
 		pInputAssemblyState0(super.ptr, pInputAssemblyState);
 	 }
@@ -251,7 +288,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pInputAssemblyState
 	 * Prototype: const VkPipelineInputAssemblyStateCreateInfo*  pInputAssemblyState
 	 */ 
-	 public const VkPipelineInputAssemblyStateCreateInfo* pInputAssemblyState(){
+	 public P<VkPipelineInputAssemblyStateCreateInfo>  pInputAssemblyState(){
 		 // return  this.pInputAssemblyState;
 		 return pInputAssemblyState0(super.ptr);
 	 }
@@ -260,7 +297,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Set method for field pTessellationState
 	 * Prototype: const VkPipelineTessellationStateCreateInfo*  pTessellationState
 	 */ 
-	 public void pTessellationState(const VkPipelineTessellationStateCreateInfo* pTessellationState){
+	 public void pTessellationState(P<VkPipelineTessellationStateCreateInfo>  pTessellationState){
 		 this.pTessellationState = pTessellationState;
 		pTessellationState0(super.ptr, pTessellationState);
 	 }
@@ -269,7 +306,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pTessellationState
 	 * Prototype: const VkPipelineTessellationStateCreateInfo*  pTessellationState
 	 */ 
-	 public const VkPipelineTessellationStateCreateInfo* pTessellationState(){
+	 public P<VkPipelineTessellationStateCreateInfo>  pTessellationState(){
 		 // return  this.pTessellationState;
 		 return pTessellationState0(super.ptr);
 	 }
@@ -278,7 +315,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Set method for field pViewportState
 	 * Prototype: const VkPipelineViewportStateCreateInfo*  pViewportState
 	 */ 
-	 public void pViewportState(const VkPipelineViewportStateCreateInfo* pViewportState){
+	 public void pViewportState(P<VkPipelineViewportStateCreateInfo>  pViewportState){
 		 this.pViewportState = pViewportState;
 		pViewportState0(super.ptr, pViewportState);
 	 }
@@ -287,7 +324,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pViewportState
 	 * Prototype: const VkPipelineViewportStateCreateInfo*  pViewportState
 	 */ 
-	 public const VkPipelineViewportStateCreateInfo* pViewportState(){
+	 public P<VkPipelineViewportStateCreateInfo>  pViewportState(){
 		 // return  this.pViewportState;
 		 return pViewportState0(super.ptr);
 	 }
@@ -296,7 +333,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Set method for field pRasterizationState
 	 * Prototype: const VkPipelineRasterizationStateCreateInfo*  pRasterizationState
 	 */ 
-	 public void pRasterizationState(const VkPipelineRasterizationStateCreateInfo* pRasterizationState){
+	 public void pRasterizationState(P<VkPipelineRasterizationStateCreateInfo>  pRasterizationState){
 		 this.pRasterizationState = pRasterizationState;
 		pRasterizationState0(super.ptr, pRasterizationState);
 	 }
@@ -305,7 +342,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pRasterizationState
 	 * Prototype: const VkPipelineRasterizationStateCreateInfo*  pRasterizationState
 	 */ 
-	 public const VkPipelineRasterizationStateCreateInfo* pRasterizationState(){
+	 public P<VkPipelineRasterizationStateCreateInfo>  pRasterizationState(){
 		 // return  this.pRasterizationState;
 		 return pRasterizationState0(super.ptr);
 	 }
@@ -314,7 +351,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Set method for field pMultisampleState
 	 * Prototype: const VkPipelineMultisampleStateCreateInfo*  pMultisampleState
 	 */ 
-	 public void pMultisampleState(const VkPipelineMultisampleStateCreateInfo* pMultisampleState){
+	 public void pMultisampleState(P<VkPipelineMultisampleStateCreateInfo>  pMultisampleState){
 		 this.pMultisampleState = pMultisampleState;
 		pMultisampleState0(super.ptr, pMultisampleState);
 	 }
@@ -323,7 +360,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pMultisampleState
 	 * Prototype: const VkPipelineMultisampleStateCreateInfo*  pMultisampleState
 	 */ 
-	 public const VkPipelineMultisampleStateCreateInfo* pMultisampleState(){
+	 public P<VkPipelineMultisampleStateCreateInfo>  pMultisampleState(){
 		 // return  this.pMultisampleState;
 		 return pMultisampleState0(super.ptr);
 	 }
@@ -332,7 +369,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Set method for field pDepthStencilState
 	 * Prototype: const VkPipelineDepthStencilStateCreateInfo*  pDepthStencilState
 	 */ 
-	 public void pDepthStencilState(const VkPipelineDepthStencilStateCreateInfo* pDepthStencilState){
+	 public void pDepthStencilState(P<VkPipelineDepthStencilStateCreateInfo>  pDepthStencilState){
 		 this.pDepthStencilState = pDepthStencilState;
 		pDepthStencilState0(super.ptr, pDepthStencilState);
 	 }
@@ -341,7 +378,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pDepthStencilState
 	 * Prototype: const VkPipelineDepthStencilStateCreateInfo*  pDepthStencilState
 	 */ 
-	 public const VkPipelineDepthStencilStateCreateInfo* pDepthStencilState(){
+	 public P<VkPipelineDepthStencilStateCreateInfo>  pDepthStencilState(){
 		 // return  this.pDepthStencilState;
 		 return pDepthStencilState0(super.ptr);
 	 }
@@ -350,7 +387,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Set method for field pColorBlendState
 	 * Prototype: const VkPipelineColorBlendStateCreateInfo*  pColorBlendState
 	 */ 
-	 public void pColorBlendState(const VkPipelineColorBlendStateCreateInfo* pColorBlendState){
+	 public void pColorBlendState(P<VkPipelineColorBlendStateCreateInfo>  pColorBlendState){
 		 this.pColorBlendState = pColorBlendState;
 		pColorBlendState0(super.ptr, pColorBlendState);
 	 }
@@ -359,7 +396,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pColorBlendState
 	 * Prototype: const VkPipelineColorBlendStateCreateInfo*  pColorBlendState
 	 */ 
-	 public const VkPipelineColorBlendStateCreateInfo* pColorBlendState(){
+	 public P<VkPipelineColorBlendStateCreateInfo>  pColorBlendState(){
 		 // return  this.pColorBlendState;
 		 return pColorBlendState0(super.ptr);
 	 }
@@ -368,7 +405,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Set method for field pDynamicState
 	 * Prototype: const VkPipelineDynamicStateCreateInfo*  pDynamicState
 	 */ 
-	 public void pDynamicState(const VkPipelineDynamicStateCreateInfo* pDynamicState){
+	 public void pDynamicState(P<VkPipelineDynamicStateCreateInfo>  pDynamicState){
 		 this.pDynamicState = pDynamicState;
 		pDynamicState0(super.ptr, pDynamicState);
 	 }
@@ -377,7 +414,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pDynamicState
 	 * Prototype: const VkPipelineDynamicStateCreateInfo*  pDynamicState
 	 */ 
-	 public const VkPipelineDynamicStateCreateInfo* pDynamicState(){
+	 public P<VkPipelineDynamicStateCreateInfo>  pDynamicState(){
 		 // return  this.pDynamicState;
 		 return pDynamicState0(super.ptr);
 	 }
@@ -498,7 +535,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -507,9 +544,9 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**
@@ -552,7 +589,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native Set method for field pStages
 	 * Prototype: const VkPipelineShaderStageCreateInfo*  pStages
 	 */ 
-	 private static native void pStages0(ByteBuffer ptr, const VkPipelineShaderStageCreateInfo* _pStages);/*
+	 private static native void pStages0(ByteBuffer ptr, P<VkPipelineShaderStageCreateInfo>  _pStages);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(*ptr);
 		  _obj.pStages = (const VkPipelineShaderStageCreateInfo*) (_pStages);
 	  */
@@ -561,16 +598,16 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pStages
 	 * Prototype: const VkPipelineShaderStageCreateInfo*  pStages
 	 */ 
-	 private static native const VkPipelineShaderStageCreateInfo* pStages0(ByteBuffer ptr);/*
+	 private static native P<VkPipelineShaderStageCreateInfo>  pStages0(ByteBuffer ptr);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(ptr);
-		  return (const VkPipelineShaderStageCreateInfo*) (_obj.const VkPipelineShaderStageCreateInfo*);
+		  return (P<VkPipelineShaderStageCreateInfo> ) (_obj.const VkPipelineShaderStageCreateInfo*);
 	 */
 
 	/**
 	 * native Set method for field pVertexInputState
 	 * Prototype: const VkPipelineVertexInputStateCreateInfo*  pVertexInputState
 	 */ 
-	 private static native void pVertexInputState0(ByteBuffer ptr, const VkPipelineVertexInputStateCreateInfo* _pVertexInputState);/*
+	 private static native void pVertexInputState0(ByteBuffer ptr, P<VkPipelineVertexInputStateCreateInfo>  _pVertexInputState);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(*ptr);
 		  _obj.pVertexInputState = (const VkPipelineVertexInputStateCreateInfo*) (_pVertexInputState);
 	  */
@@ -579,16 +616,16 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pVertexInputState
 	 * Prototype: const VkPipelineVertexInputStateCreateInfo*  pVertexInputState
 	 */ 
-	 private static native const VkPipelineVertexInputStateCreateInfo* pVertexInputState0(ByteBuffer ptr);/*
+	 private static native P<VkPipelineVertexInputStateCreateInfo>  pVertexInputState0(ByteBuffer ptr);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(ptr);
-		  return (const VkPipelineVertexInputStateCreateInfo*) (_obj.const VkPipelineVertexInputStateCreateInfo*);
+		  return (P<VkPipelineVertexInputStateCreateInfo> ) (_obj.const VkPipelineVertexInputStateCreateInfo*);
 	 */
 
 	/**
 	 * native Set method for field pInputAssemblyState
 	 * Prototype: const VkPipelineInputAssemblyStateCreateInfo*  pInputAssemblyState
 	 */ 
-	 private static native void pInputAssemblyState0(ByteBuffer ptr, const VkPipelineInputAssemblyStateCreateInfo* _pInputAssemblyState);/*
+	 private static native void pInputAssemblyState0(ByteBuffer ptr, P<VkPipelineInputAssemblyStateCreateInfo>  _pInputAssemblyState);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(*ptr);
 		  _obj.pInputAssemblyState = (const VkPipelineInputAssemblyStateCreateInfo*) (_pInputAssemblyState);
 	  */
@@ -597,16 +634,16 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pInputAssemblyState
 	 * Prototype: const VkPipelineInputAssemblyStateCreateInfo*  pInputAssemblyState
 	 */ 
-	 private static native const VkPipelineInputAssemblyStateCreateInfo* pInputAssemblyState0(ByteBuffer ptr);/*
+	 private static native P<VkPipelineInputAssemblyStateCreateInfo>  pInputAssemblyState0(ByteBuffer ptr);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(ptr);
-		  return (const VkPipelineInputAssemblyStateCreateInfo*) (_obj.const VkPipelineInputAssemblyStateCreateInfo*);
+		  return (P<VkPipelineInputAssemblyStateCreateInfo> ) (_obj.const VkPipelineInputAssemblyStateCreateInfo*);
 	 */
 
 	/**
 	 * native Set method for field pTessellationState
 	 * Prototype: const VkPipelineTessellationStateCreateInfo*  pTessellationState
 	 */ 
-	 private static native void pTessellationState0(ByteBuffer ptr, const VkPipelineTessellationStateCreateInfo* _pTessellationState);/*
+	 private static native void pTessellationState0(ByteBuffer ptr, P<VkPipelineTessellationStateCreateInfo>  _pTessellationState);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(*ptr);
 		  _obj.pTessellationState = (const VkPipelineTessellationStateCreateInfo*) (_pTessellationState);
 	  */
@@ -615,16 +652,16 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pTessellationState
 	 * Prototype: const VkPipelineTessellationStateCreateInfo*  pTessellationState
 	 */ 
-	 private static native const VkPipelineTessellationStateCreateInfo* pTessellationState0(ByteBuffer ptr);/*
+	 private static native P<VkPipelineTessellationStateCreateInfo>  pTessellationState0(ByteBuffer ptr);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(ptr);
-		  return (const VkPipelineTessellationStateCreateInfo*) (_obj.const VkPipelineTessellationStateCreateInfo*);
+		  return (P<VkPipelineTessellationStateCreateInfo> ) (_obj.const VkPipelineTessellationStateCreateInfo*);
 	 */
 
 	/**
 	 * native Set method for field pViewportState
 	 * Prototype: const VkPipelineViewportStateCreateInfo*  pViewportState
 	 */ 
-	 private static native void pViewportState0(ByteBuffer ptr, const VkPipelineViewportStateCreateInfo* _pViewportState);/*
+	 private static native void pViewportState0(ByteBuffer ptr, P<VkPipelineViewportStateCreateInfo>  _pViewportState);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(*ptr);
 		  _obj.pViewportState = (const VkPipelineViewportStateCreateInfo*) (_pViewportState);
 	  */
@@ -633,16 +670,16 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pViewportState
 	 * Prototype: const VkPipelineViewportStateCreateInfo*  pViewportState
 	 */ 
-	 private static native const VkPipelineViewportStateCreateInfo* pViewportState0(ByteBuffer ptr);/*
+	 private static native P<VkPipelineViewportStateCreateInfo>  pViewportState0(ByteBuffer ptr);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(ptr);
-		  return (const VkPipelineViewportStateCreateInfo*) (_obj.const VkPipelineViewportStateCreateInfo*);
+		  return (P<VkPipelineViewportStateCreateInfo> ) (_obj.const VkPipelineViewportStateCreateInfo*);
 	 */
 
 	/**
 	 * native Set method for field pRasterizationState
 	 * Prototype: const VkPipelineRasterizationStateCreateInfo*  pRasterizationState
 	 */ 
-	 private static native void pRasterizationState0(ByteBuffer ptr, const VkPipelineRasterizationStateCreateInfo* _pRasterizationState);/*
+	 private static native void pRasterizationState0(ByteBuffer ptr, P<VkPipelineRasterizationStateCreateInfo>  _pRasterizationState);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(*ptr);
 		  _obj.pRasterizationState = (const VkPipelineRasterizationStateCreateInfo*) (_pRasterizationState);
 	  */
@@ -651,16 +688,16 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pRasterizationState
 	 * Prototype: const VkPipelineRasterizationStateCreateInfo*  pRasterizationState
 	 */ 
-	 private static native const VkPipelineRasterizationStateCreateInfo* pRasterizationState0(ByteBuffer ptr);/*
+	 private static native P<VkPipelineRasterizationStateCreateInfo>  pRasterizationState0(ByteBuffer ptr);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(ptr);
-		  return (const VkPipelineRasterizationStateCreateInfo*) (_obj.const VkPipelineRasterizationStateCreateInfo*);
+		  return (P<VkPipelineRasterizationStateCreateInfo> ) (_obj.const VkPipelineRasterizationStateCreateInfo*);
 	 */
 
 	/**
 	 * native Set method for field pMultisampleState
 	 * Prototype: const VkPipelineMultisampleStateCreateInfo*  pMultisampleState
 	 */ 
-	 private static native void pMultisampleState0(ByteBuffer ptr, const VkPipelineMultisampleStateCreateInfo* _pMultisampleState);/*
+	 private static native void pMultisampleState0(ByteBuffer ptr, P<VkPipelineMultisampleStateCreateInfo>  _pMultisampleState);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(*ptr);
 		  _obj.pMultisampleState = (const VkPipelineMultisampleStateCreateInfo*) (_pMultisampleState);
 	  */
@@ -669,16 +706,16 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pMultisampleState
 	 * Prototype: const VkPipelineMultisampleStateCreateInfo*  pMultisampleState
 	 */ 
-	 private static native const VkPipelineMultisampleStateCreateInfo* pMultisampleState0(ByteBuffer ptr);/*
+	 private static native P<VkPipelineMultisampleStateCreateInfo>  pMultisampleState0(ByteBuffer ptr);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(ptr);
-		  return (const VkPipelineMultisampleStateCreateInfo*) (_obj.const VkPipelineMultisampleStateCreateInfo*);
+		  return (P<VkPipelineMultisampleStateCreateInfo> ) (_obj.const VkPipelineMultisampleStateCreateInfo*);
 	 */
 
 	/**
 	 * native Set method for field pDepthStencilState
 	 * Prototype: const VkPipelineDepthStencilStateCreateInfo*  pDepthStencilState
 	 */ 
-	 private static native void pDepthStencilState0(ByteBuffer ptr, const VkPipelineDepthStencilStateCreateInfo* _pDepthStencilState);/*
+	 private static native void pDepthStencilState0(ByteBuffer ptr, P<VkPipelineDepthStencilStateCreateInfo>  _pDepthStencilState);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(*ptr);
 		  _obj.pDepthStencilState = (const VkPipelineDepthStencilStateCreateInfo*) (_pDepthStencilState);
 	  */
@@ -687,16 +724,16 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pDepthStencilState
 	 * Prototype: const VkPipelineDepthStencilStateCreateInfo*  pDepthStencilState
 	 */ 
-	 private static native const VkPipelineDepthStencilStateCreateInfo* pDepthStencilState0(ByteBuffer ptr);/*
+	 private static native P<VkPipelineDepthStencilStateCreateInfo>  pDepthStencilState0(ByteBuffer ptr);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(ptr);
-		  return (const VkPipelineDepthStencilStateCreateInfo*) (_obj.const VkPipelineDepthStencilStateCreateInfo*);
+		  return (P<VkPipelineDepthStencilStateCreateInfo> ) (_obj.const VkPipelineDepthStencilStateCreateInfo*);
 	 */
 
 	/**
 	 * native Set method for field pColorBlendState
 	 * Prototype: const VkPipelineColorBlendStateCreateInfo*  pColorBlendState
 	 */ 
-	 private static native void pColorBlendState0(ByteBuffer ptr, const VkPipelineColorBlendStateCreateInfo* _pColorBlendState);/*
+	 private static native void pColorBlendState0(ByteBuffer ptr, P<VkPipelineColorBlendStateCreateInfo>  _pColorBlendState);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(*ptr);
 		  _obj.pColorBlendState = (const VkPipelineColorBlendStateCreateInfo*) (_pColorBlendState);
 	  */
@@ -705,16 +742,16 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pColorBlendState
 	 * Prototype: const VkPipelineColorBlendStateCreateInfo*  pColorBlendState
 	 */ 
-	 private static native const VkPipelineColorBlendStateCreateInfo* pColorBlendState0(ByteBuffer ptr);/*
+	 private static native P<VkPipelineColorBlendStateCreateInfo>  pColorBlendState0(ByteBuffer ptr);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(ptr);
-		  return (const VkPipelineColorBlendStateCreateInfo*) (_obj.const VkPipelineColorBlendStateCreateInfo*);
+		  return (P<VkPipelineColorBlendStateCreateInfo> ) (_obj.const VkPipelineColorBlendStateCreateInfo*);
 	 */
 
 	/**
 	 * native Set method for field pDynamicState
 	 * Prototype: const VkPipelineDynamicStateCreateInfo*  pDynamicState
 	 */ 
-	 private static native void pDynamicState0(ByteBuffer ptr, const VkPipelineDynamicStateCreateInfo* _pDynamicState);/*
+	 private static native void pDynamicState0(ByteBuffer ptr, P<VkPipelineDynamicStateCreateInfo>  _pDynamicState);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(*ptr);
 		  _obj.pDynamicState = (const VkPipelineDynamicStateCreateInfo*) (_pDynamicState);
 	  */
@@ -723,9 +760,9 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * get method for field pDynamicState
 	 * Prototype: const VkPipelineDynamicStateCreateInfo*  pDynamicState
 	 */ 
-	 private static native const VkPipelineDynamicStateCreateInfo* pDynamicState0(ByteBuffer ptr);/*
+	 private static native P<VkPipelineDynamicStateCreateInfo>  pDynamicState0(ByteBuffer ptr);/*
 		  VkGraphicsPipelineCreateInfo _obj = (VkGraphicsPipelineCreateInfo)(ptr);
-		  return (const VkPipelineDynamicStateCreateInfo*) (_obj.const VkPipelineDynamicStateCreateInfo*);
+		  return (P<VkPipelineDynamicStateCreateInfo> ) (_obj.const VkPipelineDynamicStateCreateInfo*);
 	 */
 
 	/**

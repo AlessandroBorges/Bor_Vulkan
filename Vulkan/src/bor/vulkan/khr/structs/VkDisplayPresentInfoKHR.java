@@ -1,22 +1,43 @@
-// class wrapping Vulkan's VkDisplayPresentInfoKHR struct.
+/**
+ * Class wrapping Vulkan's VkDisplayPresentInfoKHR struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.khr.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.VkRect2D;
-import bor.vulkan.structs.VkStruct;
-
+import bor.vulkan.structs.*;
+import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkDisplayPresentInfoKHR 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkDisplayPresentInfoKHR {
+ *     VkStructureType    sType;
+ *     const void*        pNext;
+ *     VkRect2D           srcRect;
+ *     VkRect2D           dstRect;
+ *     VkBool32           persistent;
+ * } VkDisplayPresentInfoKHR;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkDisplayPresentInfoKHR extends VkStruct {
-	/** ID of this structure [117]  */
-	 public static final int TAG = VKDISPLAYPRESENTINFOKHR_ID;
+	/** TAG of this structure [241]  */
+	 private static final String TAG = "VkDisplayPresentInfoKHR";
+
+	/** ID of this structure [241]  */
+	 public static final int TAG_ID = VKDISPLAYPRESENTINFOKHR_ID;
 
 	 // fields //
 	/**
@@ -27,7 +48,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkRect2D 	srcRect 
@@ -55,7 +76,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -85,7 +106,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -94,7 +115,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -179,7 +200,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkDisplayPresentInfoKHR _obj = (VkDisplayPresentInfoKHR)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -188,9 +209,9 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkDisplayPresentInfoKHR _obj = (VkDisplayPresentInfoKHR)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**

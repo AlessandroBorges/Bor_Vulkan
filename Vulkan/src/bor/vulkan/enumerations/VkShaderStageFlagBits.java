@@ -1,11 +1,29 @@
+/**
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.enumerations;
 
 import bor.enumerable.*;
 
 /**
  * Class to wrap Vulkan enumeration VkShaderStageFlagBits
+ *
+ * <h3>Prototype</h3> <pre>
+ * typedef enum VkShaderStageFlagBits {
+ *     VK_SHADER_STAGE_VERTEX_BIT = 0x00000001,
+ *     VK_SHADER_STAGE_TESSELLATION_CONTROL_BIT = 0x00000002,
+ *     VK_SHADER_STAGE_TESSELLATION_EVALUATION_BIT = 0x00000004,
+ *     VK_SHADER_STAGE_GEOMETRY_BIT = 0x00000008,
+ *     VK_SHADER_STAGE_FRAGMENT_BIT = 0x00000010,
+ *     VK_SHADER_STAGE_COMPUTE_BIT = 0x00000020,
+ *     VK_SHADER_STAGE_ALL_GRAPHICS = 0x1F,
+ *     VK_SHADER_STAGE_ALL = 0x7FFFFFFF,
+ * } VkShaderStageFlagBits;
+ * </pre>
  * @author Alessandro Borges
-
  */
 public class VkShaderStageFlagBits extends IntEnum<VkShaderStageFlagBits> {
 	public static final VkShaderStageFlagBits VK_SHADER_STAGE_VERTEX_BIT = new VkShaderStageFlagBits("VK_SHADER_STAGE_VERTEX_BIT", 0, 0x00000001);

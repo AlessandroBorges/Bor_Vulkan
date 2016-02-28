@@ -1,22 +1,48 @@
-// class wrapping Vulkan's VkSurfaceCapabilitiesKHR struct.
+/**
+ * Class wrapping Vulkan's VkSurfaceCapabilitiesKHR struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.khr.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.VkExtent2D;
-import bor.vulkan.structs.VkStruct;
-
+import bor.vulkan.structs.*;
+import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkSurfaceCapabilitiesKHR 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkSurfaceCapabilitiesKHR {
+ *     uint32_t                         minImageCount;
+ *     uint32_t                         maxImageCount;
+ *     VkExtent2D                       currentExtent;
+ *     VkExtent2D                       minImageExtent;
+ *     VkExtent2D                       maxImageExtent;
+ *     uint32_t                         maxImageArrayLayers;
+ *     VkSurfaceTransformFlagsKHR       supportedTransforms;
+ *     VkSurfaceTransformFlagBitsKHR    currentTransform;
+ *     VkCompositeAlphaFlagsKHR         supportedCompositeAlpha;
+ *     VkImageUsageFlags                supportedUsageFlags;
+ * } VkSurfaceCapabilitiesKHR;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkSurfaceCapabilitiesKHR extends VkStruct {
-	/** ID of this structure [106]  */
-	 public static final int TAG = VKSURFACECAPABILITIESKHR_ID;
+	/** TAG of this structure [230]  */
+	 private static final String TAG = "VkSurfaceCapabilitiesKHR";
+
+	/** ID of this structure [230]  */
+	 public static final int TAG_ID = VKSURFACECAPABILITIESKHR_ID;
 
 	 // fields //
 	/**
@@ -80,7 +106,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

@@ -1,19 +1,39 @@
-// class wrapping Vulkan's VkRect2D struct.
+/**
+ * Class wrapping Vulkan's VkRect2D struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkRect2D 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkRect2D {
+ *     VkOffset2D    offset;
+ *     VkExtent2D    extent;
+ * } VkRect2D;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkRect2D extends VkStruct {
-	/** ID of this structure [57]  */
-	 public static final int TAG = VKRECT2D_ID;
+	/** TAG of this structure [181]  */
+	 private static final String TAG = "VkRect2D";
+
+	/** ID of this structure [181]  */
+	 public static final int TAG_ID = VKRECT2D_ID;
 
 	 // fields //
 	/**
@@ -37,7 +57,7 @@ public class VkRect2D extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

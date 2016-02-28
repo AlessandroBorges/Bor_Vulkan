@@ -1,19 +1,44 @@
-// class wrapping Vulkan's VkSubpassDependency struct.
+/**
+ * Class wrapping Vulkan's VkSubpassDependency struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkSubpassDependency 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkSubpassDependency {
+ *     uint32_t                srcSubpass;
+ *     uint32_t                dstSubpass;
+ *     VkPipelineStageFlags    srcStageMask;
+ *     VkPipelineStageFlags    dstStageMask;
+ *     VkAccessFlags           srcAccessMask;
+ *     VkAccessFlags           dstAccessMask;
+ *     VkDependencyFlags       dependencyFlags;
+ * } VkSubpassDependency;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkSubpassDependency extends VkStruct {
-	/** ID of this structure [84]  */
-	 public static final int TAG = VKSUBPASSDEPENDENCY_ID;
+	/** TAG of this structure [208]  */
+	 private static final String TAG = "VkSubpassDependency";
+
+	/** ID of this structure [208]  */
+	 public static final int TAG_ID = VKSUBPASSDEPENDENCY_ID;
 
 	 // fields //
 	/**
@@ -62,7 +87,7 @@ public class VkSubpassDependency extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

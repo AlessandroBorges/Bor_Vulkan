@@ -1,19 +1,44 @@
-// class wrapping Vulkan's VkPipelineLayoutCreateInfo struct.
+/**
+ * Class wrapping Vulkan's VkPipelineLayoutCreateInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPipelineLayoutCreateInfo 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkPipelineLayoutCreateInfo {
+ *     VkStructureType                 sType;
+ *     const void*                     pNext;
+ *     VkPipelineLayoutCreateFlags     flags;
+ *     uint32_t                        setLayoutCount;
+ *     const VkDescriptorSetLayout*    pSetLayouts;
+ *     uint32_t                        pushConstantRangeCount;
+ *     const VkPushConstantRange*      pPushConstantRanges;
+ * } VkPipelineLayoutCreateInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkPipelineLayoutCreateInfo extends VkStruct {
-	/** ID of this structure [69]  */
-	 public static final int TAG = VKPIPELINELAYOUTCREATEINFO_ID;
+	/** TAG of this structure [193]  */
+	 private static final String TAG = "VkPipelineLayoutCreateInfo";
+
+	/** ID of this structure [193]  */
+	 public static final int TAG_ID = VKPIPELINELAYOUTCREATEINFO_ID;
 
 	 // fields //
 	/**
@@ -24,7 +49,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineLayoutCreateFlags 	flags 
@@ -39,7 +64,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	/**
 	 *  const VkDescriptorSetLayout* 	pSetLayouts 
 	 */ 
-	const VkDescriptorSetLayout* 	pSetLayouts;
+	P<VkDescriptorSetLayout>  	pSetLayouts;
 
 	/**
 	 *  uint32_t 	pushConstantRangeCount 
@@ -49,7 +74,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	/**
 	 *  const VkPushConstantRange* 	pPushConstantRanges 
 	 */ 
-	const VkPushConstantRange* 	pPushConstantRanges;
+	P<VkPushConstantRange>  	pPushConstantRanges;
 
 	/**
 	 * Ctor
@@ -62,7 +87,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -92,7 +117,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -101,7 +126,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -146,7 +171,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * Set method for field pSetLayouts
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
-	 public void pSetLayouts(const VkDescriptorSetLayout* pSetLayouts){
+	 public void pSetLayouts(P<VkDescriptorSetLayout>  pSetLayouts){
 		 this.pSetLayouts = pSetLayouts;
 		pSetLayouts0(super.ptr, pSetLayouts);
 	 }
@@ -155,7 +180,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * get method for field pSetLayouts
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
-	 public const VkDescriptorSetLayout* pSetLayouts(){
+	 public P<VkDescriptorSetLayout>  pSetLayouts(){
 		 // return  this.pSetLayouts;
 		 return pSetLayouts0(super.ptr);
 	 }
@@ -182,7 +207,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * Set method for field pPushConstantRanges
 	 * Prototype: const VkPushConstantRange*  pPushConstantRanges
 	 */ 
-	 public void pPushConstantRanges(const VkPushConstantRange* pPushConstantRanges){
+	 public void pPushConstantRanges(P<VkPushConstantRange>  pPushConstantRanges){
 		 this.pPushConstantRanges = pPushConstantRanges;
 		pPushConstantRanges0(super.ptr, pPushConstantRanges);
 	 }
@@ -191,7 +216,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * get method for field pPushConstantRanges
 	 * Prototype: const VkPushConstantRange*  pPushConstantRanges
 	 */ 
-	 public const VkPushConstantRange* pPushConstantRanges(){
+	 public P<VkPushConstantRange>  pPushConstantRanges(){
 		 // return  this.pPushConstantRanges;
 		 return pPushConstantRanges0(super.ptr);
 	 }
@@ -222,7 +247,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkPipelineLayoutCreateInfo _obj = (VkPipelineLayoutCreateInfo)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -231,9 +256,9 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkPipelineLayoutCreateInfo _obj = (VkPipelineLayoutCreateInfo)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**
@@ -276,7 +301,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * native Set method for field pSetLayouts
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
-	 private static native void pSetLayouts0(ByteBuffer ptr, const VkDescriptorSetLayout* _pSetLayouts);/*
+	 private static native void pSetLayouts0(ByteBuffer ptr, P<VkDescriptorSetLayout>  _pSetLayouts);/*
 		  VkPipelineLayoutCreateInfo _obj = (VkPipelineLayoutCreateInfo)(*ptr);
 		  _obj.pSetLayouts = (const VkDescriptorSetLayout*) (_pSetLayouts);
 	  */
@@ -285,9 +310,9 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * get method for field pSetLayouts
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
-	 private static native const VkDescriptorSetLayout* pSetLayouts0(ByteBuffer ptr);/*
+	 private static native P<VkDescriptorSetLayout>  pSetLayouts0(ByteBuffer ptr);/*
 		  VkPipelineLayoutCreateInfo _obj = (VkPipelineLayoutCreateInfo)(ptr);
-		  return (const VkDescriptorSetLayout*) (_obj.const VkDescriptorSetLayout*);
+		  return (P<VkDescriptorSetLayout> ) (_obj.const VkDescriptorSetLayout*);
 	 */
 
 	/**
@@ -312,7 +337,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * native Set method for field pPushConstantRanges
 	 * Prototype: const VkPushConstantRange*  pPushConstantRanges
 	 */ 
-	 private static native void pPushConstantRanges0(ByteBuffer ptr, const VkPushConstantRange* _pPushConstantRanges);/*
+	 private static native void pPushConstantRanges0(ByteBuffer ptr, P<VkPushConstantRange>  _pPushConstantRanges);/*
 		  VkPipelineLayoutCreateInfo _obj = (VkPipelineLayoutCreateInfo)(*ptr);
 		  _obj.pPushConstantRanges = (const VkPushConstantRange*) (_pPushConstantRanges);
 	  */
@@ -321,9 +346,9 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * get method for field pPushConstantRanges
 	 * Prototype: const VkPushConstantRange*  pPushConstantRanges
 	 */ 
-	 private static native const VkPushConstantRange* pPushConstantRanges0(ByteBuffer ptr);/*
+	 private static native P<VkPushConstantRange>  pPushConstantRanges0(ByteBuffer ptr);/*
 		  VkPipelineLayoutCreateInfo _obj = (VkPipelineLayoutCreateInfo)(ptr);
-		  return (const VkPushConstantRange*) (_obj.const VkPushConstantRange*);
+		  return (P<VkPushConstantRange> ) (_obj.const VkPushConstantRange*);
 	 */
 
 

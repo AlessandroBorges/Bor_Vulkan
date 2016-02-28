@@ -1,19 +1,44 @@
-// class wrapping Vulkan's VkPipelineViewportStateCreateInfo struct.
+/**
+ * Class wrapping Vulkan's VkPipelineViewportStateCreateInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPipelineViewportStateCreateInfo 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkPipelineViewportStateCreateInfo {
+ *     VkStructureType                       sType;
+ *     const void*                           pNext;
+ *     VkPipelineViewportStateCreateFlags    flags;
+ *     uint32_t                              viewportCount;
+ *     const VkViewport*                     pViewports;
+ *     uint32_t                              scissorCount;
+ *     const VkRect2D*                       pScissors;
+ * } VkPipelineViewportStateCreateInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkPipelineViewportStateCreateInfo extends VkStruct {
-	/** ID of this structure [58]  */
-	 public static final int TAG = VKPIPELINEVIEWPORTSTATECREATEINFO_ID;
+	/** TAG of this structure [182]  */
+	 private static final String TAG = "VkPipelineViewportStateCreateInfo";
+
+	/** ID of this structure [182]  */
+	 public static final int TAG_ID = VKPIPELINEVIEWPORTSTATECREATEINFO_ID;
 
 	 // fields //
 	/**
@@ -24,7 +49,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineViewportStateCreateFlags 	flags 
@@ -39,7 +64,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	/**
 	 *  const VkViewport* 	pViewports 
 	 */ 
-	const VkViewport* 	pViewports;
+	P<VkViewport>  	pViewports;
 
 	/**
 	 *  uint32_t 	scissorCount 
@@ -49,7 +74,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	/**
 	 *  const VkRect2D* 	pScissors 
 	 */ 
-	const VkRect2D* 	pScissors;
+	P<VkRect2D>  	pScissors;
 
 	/**
 	 * Ctor
@@ -62,7 +87,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -92,7 +117,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -101,7 +126,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -146,7 +171,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * Set method for field pViewports
 	 * Prototype: const VkViewport*  pViewports
 	 */ 
-	 public void pViewports(const VkViewport* pViewports){
+	 public void pViewports(P<VkViewport>  pViewports){
 		 this.pViewports = pViewports;
 		pViewports0(super.ptr, pViewports);
 	 }
@@ -155,7 +180,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * get method for field pViewports
 	 * Prototype: const VkViewport*  pViewports
 	 */ 
-	 public const VkViewport* pViewports(){
+	 public P<VkViewport>  pViewports(){
 		 // return  this.pViewports;
 		 return pViewports0(super.ptr);
 	 }
@@ -182,7 +207,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * Set method for field pScissors
 	 * Prototype: const VkRect2D*  pScissors
 	 */ 
-	 public void pScissors(const VkRect2D* pScissors){
+	 public void pScissors(P<VkRect2D>  pScissors){
 		 this.pScissors = pScissors;
 		pScissors0(super.ptr, pScissors);
 	 }
@@ -191,7 +216,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * get method for field pScissors
 	 * Prototype: const VkRect2D*  pScissors
 	 */ 
-	 public const VkRect2D* pScissors(){
+	 public P<VkRect2D>  pScissors(){
 		 // return  this.pScissors;
 		 return pScissors0(super.ptr);
 	 }
@@ -222,7 +247,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkPipelineViewportStateCreateInfo _obj = (VkPipelineViewportStateCreateInfo)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -231,9 +256,9 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkPipelineViewportStateCreateInfo _obj = (VkPipelineViewportStateCreateInfo)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**
@@ -276,7 +301,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * native Set method for field pViewports
 	 * Prototype: const VkViewport*  pViewports
 	 */ 
-	 private static native void pViewports0(ByteBuffer ptr, const VkViewport* _pViewports);/*
+	 private static native void pViewports0(ByteBuffer ptr, P<VkViewport>  _pViewports);/*
 		  VkPipelineViewportStateCreateInfo _obj = (VkPipelineViewportStateCreateInfo)(*ptr);
 		  _obj.pViewports = (const VkViewport*) (_pViewports);
 	  */
@@ -285,9 +310,9 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * get method for field pViewports
 	 * Prototype: const VkViewport*  pViewports
 	 */ 
-	 private static native const VkViewport* pViewports0(ByteBuffer ptr);/*
+	 private static native P<VkViewport>  pViewports0(ByteBuffer ptr);/*
 		  VkPipelineViewportStateCreateInfo _obj = (VkPipelineViewportStateCreateInfo)(ptr);
-		  return (const VkViewport*) (_obj.const VkViewport*);
+		  return (P<VkViewport> ) (_obj.const VkViewport*);
 	 */
 
 	/**
@@ -312,7 +337,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * native Set method for field pScissors
 	 * Prototype: const VkRect2D*  pScissors
 	 */ 
-	 private static native void pScissors0(ByteBuffer ptr, const VkRect2D* _pScissors);/*
+	 private static native void pScissors0(ByteBuffer ptr, P<VkRect2D>  _pScissors);/*
 		  VkPipelineViewportStateCreateInfo _obj = (VkPipelineViewportStateCreateInfo)(*ptr);
 		  _obj.pScissors = (const VkRect2D*) (_pScissors);
 	  */
@@ -321,9 +346,9 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * get method for field pScissors
 	 * Prototype: const VkRect2D*  pScissors
 	 */ 
-	 private static native const VkRect2D* pScissors0(ByteBuffer ptr);/*
+	 private static native P<VkRect2D>  pScissors0(ByteBuffer ptr);/*
 		  VkPipelineViewportStateCreateInfo _obj = (VkPipelineViewportStateCreateInfo)(ptr);
-		  return (const VkRect2D*) (_obj.const VkRect2D*);
+		  return (P<VkRect2D> ) (_obj.const VkRect2D*);
 	 */
 
 

@@ -1,19 +1,41 @@
-// class wrapping Vulkan's VkImageBlit struct.
+/**
+ * Class wrapping Vulkan's VkImageBlit struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkImageBlit 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkImageBlit {
+ *     VkImageSubresourceLayers    srcSubresource;
+ *     VkOffset3D                  srcOffsets[2];
+ *     VkImageSubresourceLayers    dstSubresource;
+ *     VkOffset3D                  dstOffsets[2];
+ * } VkImageBlit;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkImageBlit extends VkStruct {
-	/** ID of this structure [93]  */
-	 public static final int TAG = VKIMAGEBLIT_ID;
+	/** TAG of this structure [217]  */
+	 private static final String TAG = "VkImageBlit";
+
+	/** ID of this structure [217]  */
+	 public static final int TAG_ID = VKIMAGEBLIT_ID;
 
 	 // fields //
 	/**
@@ -22,9 +44,9 @@ public class VkImageBlit extends VkStruct {
 	VkImageSubresourceLayers 	srcSubresource;
 
 	/**
-	 *  VkOffset3D[] 	srcOffsets /* length=2 */ 
+	 *  VkOffset3D[] 	srcOffsets 
 	 */ 
-	VkOffset3D[] 	srcOffsets /* length=2 */;
+	VkOffset3D[] 	srcOffsets;
 
 	/**
 	 *  VkImageSubresourceLayers 	dstSubresource 
@@ -32,9 +54,9 @@ public class VkImageBlit extends VkStruct {
 	VkImageSubresourceLayers 	dstSubresource;
 
 	/**
-	 *  VkOffset3D[] 	dstOffsets /* length=2 */ 
+	 *  VkOffset3D[] 	dstOffsets 
 	 */ 
-	VkOffset3D[] 	dstOffsets /* length=2 */;
+	VkOffset3D[] 	dstOffsets;
 
 	/**
 	 * Ctor
@@ -47,7 +69,7 @@ public class VkImageBlit extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -74,21 +96,21 @@ public class VkImageBlit extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field srcOffsets /* length=2 */
-	 * Prototype: VkOffset3D[]  srcOffsets /* length=2 */
+	 * Set method for field srcOffsets
+	 * Prototype: VkOffset3D[]  srcOffsets
 	 */ 
-	 public void srcOffsets /* length=2 */(VkOffset3D[] srcOffsets /* length=2 */){
-		 this.srcOffsets /* length=2 */ = srcOffsets /* length=2 */;
-		srcOffsets /* length=2 */0(super.ptr, srcOffsets /* length=2 */);
+	 public void srcOffsets(VkOffset3D[] srcOffsets){
+		 this.srcOffsets = srcOffsets;
+		srcOffsets0(super.ptr, srcOffsets);
 	 }
 
 	/**
-	 * get method for field srcOffsets /* length=2 */
-	 * Prototype: VkOffset3D[]  srcOffsets /* length=2 */
+	 * get method for field srcOffsets
+	 * Prototype: VkOffset3D[]  srcOffsets
 	 */ 
-	 public VkOffset3D[] srcOffsets /* length=2 */(){
-		 // return  this.srcOffsets /* length=2 */;
-		 return srcOffsets /* length=2 */0(super.ptr);
+	 public VkOffset3D[] srcOffsets(){
+		 // return  this.srcOffsets;
+		 return srcOffsets0(super.ptr);
 	 }
 
 	/**
@@ -110,21 +132,21 @@ public class VkImageBlit extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstOffsets /* length=2 */
-	 * Prototype: VkOffset3D[]  dstOffsets /* length=2 */
+	 * Set method for field dstOffsets
+	 * Prototype: VkOffset3D[]  dstOffsets
 	 */ 
-	 public void dstOffsets /* length=2 */(VkOffset3D[] dstOffsets /* length=2 */){
-		 this.dstOffsets /* length=2 */ = dstOffsets /* length=2 */;
-		dstOffsets /* length=2 */0(super.ptr, dstOffsets /* length=2 */);
+	 public void dstOffsets(VkOffset3D[] dstOffsets){
+		 this.dstOffsets = dstOffsets;
+		dstOffsets0(super.ptr, dstOffsets);
 	 }
 
 	/**
-	 * get method for field dstOffsets /* length=2 */
-	 * Prototype: VkOffset3D[]  dstOffsets /* length=2 */
+	 * get method for field dstOffsets
+	 * Prototype: VkOffset3D[]  dstOffsets
 	 */ 
-	 public VkOffset3D[] dstOffsets /* length=2 */(){
-		 // return  this.dstOffsets /* length=2 */;
-		 return dstOffsets /* length=2 */0(super.ptr);
+	 public VkOffset3D[] dstOffsets(){
+		 // return  this.dstOffsets;
+		 return dstOffsets0(super.ptr);
 	 }
 
 
@@ -150,19 +172,19 @@ public class VkImageBlit extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field srcOffsets /* length=2 */
-	 * Prototype: VkOffset3D[]  srcOffsets /* length=2 */
+	 * native Set method for field srcOffsets
+	 * Prototype: VkOffset3D[]  srcOffsets
 	 */ 
-	 private static native void srcOffsets /* length=2 */0(ByteBuffer ptr, VkOffset3D[] _srcOffsets /* length=2 */);/*
+	 private static native void srcOffsets0(ByteBuffer ptr, VkOffset3D[] _srcOffsets);/*
 		  VkImageBlit _obj = (VkImageBlit)(*ptr);
-		  _obj.srcOffsets /* length=2 */ = (VkOffset3D[]) (_srcOffsets /* length=2 */);
+		  _obj.srcOffsets = (VkOffset3D[]) (_srcOffsets);
 	  */
 
 	/**
-	 * get method for field srcOffsets /* length=2 */
-	 * Prototype: VkOffset3D[]  srcOffsets /* length=2 */
+	 * get method for field srcOffsets
+	 * Prototype: VkOffset3D[]  srcOffsets
 	 */ 
-	 private static native VkOffset3D[] srcOffsets /* length=2 */0(ByteBuffer ptr);/*
+	 private static native VkOffset3D[] srcOffsets0(ByteBuffer ptr);/*
 		  VkImageBlit _obj = (VkImageBlit)(ptr);
 		  return (VkOffset3D[]) (_obj.VkOffset3D[]);
 	 */
@@ -186,19 +208,19 @@ public class VkImageBlit extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstOffsets /* length=2 */
-	 * Prototype: VkOffset3D[]  dstOffsets /* length=2 */
+	 * native Set method for field dstOffsets
+	 * Prototype: VkOffset3D[]  dstOffsets
 	 */ 
-	 private static native void dstOffsets /* length=2 */0(ByteBuffer ptr, VkOffset3D[] _dstOffsets /* length=2 */);/*
+	 private static native void dstOffsets0(ByteBuffer ptr, VkOffset3D[] _dstOffsets);/*
 		  VkImageBlit _obj = (VkImageBlit)(*ptr);
-		  _obj.dstOffsets /* length=2 */ = (VkOffset3D[]) (_dstOffsets /* length=2 */);
+		  _obj.dstOffsets = (VkOffset3D[]) (_dstOffsets);
 	  */
 
 	/**
-	 * get method for field dstOffsets /* length=2 */
-	 * Prototype: VkOffset3D[]  dstOffsets /* length=2 */
+	 * get method for field dstOffsets
+	 * Prototype: VkOffset3D[]  dstOffsets
 	 */ 
-	 private static native VkOffset3D[] dstOffsets /* length=2 */0(ByteBuffer ptr);/*
+	 private static native VkOffset3D[] dstOffsets0(ByteBuffer ptr);/*
 		  VkImageBlit _obj = (VkImageBlit)(ptr);
 		  return (VkOffset3D[]) (_obj.VkOffset3D[]);
 	 */

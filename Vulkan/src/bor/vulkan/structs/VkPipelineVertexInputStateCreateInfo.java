@@ -1,19 +1,44 @@
-// class wrapping Vulkan's VkPipelineVertexInputStateCreateInfo struct.
+/**
+ * Class wrapping Vulkan's VkPipelineVertexInputStateCreateInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPipelineVertexInputStateCreateInfo 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkPipelineVertexInputStateCreateInfo {
+ *     VkStructureType                             sType;
+ *     const void*                                 pNext;
+ *     VkPipelineVertexInputStateCreateFlags       flags;
+ *     uint32_t                                    vertexBindingDescriptionCount;
+ *     const VkVertexInputBindingDescription*      pVertexBindingDescriptions;
+ *     uint32_t                                    vertexAttributeDescriptionCount;
+ *     const VkVertexInputAttributeDescription*    pVertexAttributeDescriptions;
+ * } VkPipelineVertexInputStateCreateInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
-	/** ID of this structure [51]  */
-	 public static final int TAG = VKPIPELINEVERTEXINPUTSTATECREATEINFO_ID;
+	/** TAG of this structure [175]  */
+	 private static final String TAG = "VkPipelineVertexInputStateCreateInfo";
+
+	/** ID of this structure [175]  */
+	 public static final int TAG_ID = VKPIPELINEVERTEXINPUTSTATECREATEINFO_ID;
 
 	 // fields //
 	/**
@@ -24,7 +49,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineVertexInputStateCreateFlags 	flags 
@@ -39,7 +64,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	/**
 	 *  const VkVertexInputBindingDescription* 	pVertexBindingDescriptions 
 	 */ 
-	const VkVertexInputBindingDescription* 	pVertexBindingDescriptions;
+	P<VkVertexInputBindingDescription>  	pVertexBindingDescriptions;
 
 	/**
 	 *  uint32_t 	vertexAttributeDescriptionCount 
@@ -49,7 +74,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	/**
 	 *  const VkVertexInputAttributeDescription* 	pVertexAttributeDescriptions 
 	 */ 
-	const VkVertexInputAttributeDescription* 	pVertexAttributeDescriptions;
+	P<VkVertexInputAttributeDescription>  	pVertexAttributeDescriptions;
 
 	/**
 	 * Ctor
@@ -62,7 +87,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -92,7 +117,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -101,7 +126,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -146,7 +171,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * Set method for field pVertexBindingDescriptions
 	 * Prototype: const VkVertexInputBindingDescription*  pVertexBindingDescriptions
 	 */ 
-	 public void pVertexBindingDescriptions(const VkVertexInputBindingDescription* pVertexBindingDescriptions){
+	 public void pVertexBindingDescriptions(P<VkVertexInputBindingDescription>  pVertexBindingDescriptions){
 		 this.pVertexBindingDescriptions = pVertexBindingDescriptions;
 		pVertexBindingDescriptions0(super.ptr, pVertexBindingDescriptions);
 	 }
@@ -155,7 +180,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * get method for field pVertexBindingDescriptions
 	 * Prototype: const VkVertexInputBindingDescription*  pVertexBindingDescriptions
 	 */ 
-	 public const VkVertexInputBindingDescription* pVertexBindingDescriptions(){
+	 public P<VkVertexInputBindingDescription>  pVertexBindingDescriptions(){
 		 // return  this.pVertexBindingDescriptions;
 		 return pVertexBindingDescriptions0(super.ptr);
 	 }
@@ -182,7 +207,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * Set method for field pVertexAttributeDescriptions
 	 * Prototype: const VkVertexInputAttributeDescription*  pVertexAttributeDescriptions
 	 */ 
-	 public void pVertexAttributeDescriptions(const VkVertexInputAttributeDescription* pVertexAttributeDescriptions){
+	 public void pVertexAttributeDescriptions(P<VkVertexInputAttributeDescription>  pVertexAttributeDescriptions){
 		 this.pVertexAttributeDescriptions = pVertexAttributeDescriptions;
 		pVertexAttributeDescriptions0(super.ptr, pVertexAttributeDescriptions);
 	 }
@@ -191,7 +216,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * get method for field pVertexAttributeDescriptions
 	 * Prototype: const VkVertexInputAttributeDescription*  pVertexAttributeDescriptions
 	 */ 
-	 public const VkVertexInputAttributeDescription* pVertexAttributeDescriptions(){
+	 public P<VkVertexInputAttributeDescription>  pVertexAttributeDescriptions(){
 		 // return  this.pVertexAttributeDescriptions;
 		 return pVertexAttributeDescriptions0(super.ptr);
 	 }
@@ -222,7 +247,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkPipelineVertexInputStateCreateInfo _obj = (VkPipelineVertexInputStateCreateInfo)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -231,9 +256,9 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkPipelineVertexInputStateCreateInfo _obj = (VkPipelineVertexInputStateCreateInfo)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**
@@ -276,7 +301,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * native Set method for field pVertexBindingDescriptions
 	 * Prototype: const VkVertexInputBindingDescription*  pVertexBindingDescriptions
 	 */ 
-	 private static native void pVertexBindingDescriptions0(ByteBuffer ptr, const VkVertexInputBindingDescription* _pVertexBindingDescriptions);/*
+	 private static native void pVertexBindingDescriptions0(ByteBuffer ptr, P<VkVertexInputBindingDescription>  _pVertexBindingDescriptions);/*
 		  VkPipelineVertexInputStateCreateInfo _obj = (VkPipelineVertexInputStateCreateInfo)(*ptr);
 		  _obj.pVertexBindingDescriptions = (const VkVertexInputBindingDescription*) (_pVertexBindingDescriptions);
 	  */
@@ -285,9 +310,9 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * get method for field pVertexBindingDescriptions
 	 * Prototype: const VkVertexInputBindingDescription*  pVertexBindingDescriptions
 	 */ 
-	 private static native const VkVertexInputBindingDescription* pVertexBindingDescriptions0(ByteBuffer ptr);/*
+	 private static native P<VkVertexInputBindingDescription>  pVertexBindingDescriptions0(ByteBuffer ptr);/*
 		  VkPipelineVertexInputStateCreateInfo _obj = (VkPipelineVertexInputStateCreateInfo)(ptr);
-		  return (const VkVertexInputBindingDescription*) (_obj.const VkVertexInputBindingDescription*);
+		  return (P<VkVertexInputBindingDescription> ) (_obj.const VkVertexInputBindingDescription*);
 	 */
 
 	/**
@@ -312,7 +337,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * native Set method for field pVertexAttributeDescriptions
 	 * Prototype: const VkVertexInputAttributeDescription*  pVertexAttributeDescriptions
 	 */ 
-	 private static native void pVertexAttributeDescriptions0(ByteBuffer ptr, const VkVertexInputAttributeDescription* _pVertexAttributeDescriptions);/*
+	 private static native void pVertexAttributeDescriptions0(ByteBuffer ptr, P<VkVertexInputAttributeDescription>  _pVertexAttributeDescriptions);/*
 		  VkPipelineVertexInputStateCreateInfo _obj = (VkPipelineVertexInputStateCreateInfo)(*ptr);
 		  _obj.pVertexAttributeDescriptions = (const VkVertexInputAttributeDescription*) (_pVertexAttributeDescriptions);
 	  */
@@ -321,9 +346,9 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * get method for field pVertexAttributeDescriptions
 	 * Prototype: const VkVertexInputAttributeDescription*  pVertexAttributeDescriptions
 	 */ 
-	 private static native const VkVertexInputAttributeDescription* pVertexAttributeDescriptions0(ByteBuffer ptr);/*
+	 private static native P<VkVertexInputAttributeDescription>  pVertexAttributeDescriptions0(ByteBuffer ptr);/*
 		  VkPipelineVertexInputStateCreateInfo _obj = (VkPipelineVertexInputStateCreateInfo)(ptr);
-		  return (const VkVertexInputAttributeDescription*) (_obj.const VkVertexInputAttributeDescription*);
+		  return (P<VkVertexInputAttributeDescription> ) (_obj.const VkVertexInputAttributeDescription*);
 	 */
 
 

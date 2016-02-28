@@ -1,11 +1,30 @@
+/**
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.enumerations;
 
 import bor.enumerable.*;
 
 /**
  * Class to wrap Vulkan enumeration VkBlendOp
+ *
+ * <h3>Prototype</h3> <pre>
+ * typedef enum VkBlendOp {
+ *     VK_BLEND_OP_ADD = 0,
+ *     VK_BLEND_OP_SUBTRACT = 1,
+ *     VK_BLEND_OP_REVERSE_SUBTRACT = 2,
+ *     VK_BLEND_OP_MIN = 3,
+ *     VK_BLEND_OP_MAX = 4,
+ *     VK_BLEND_OP_BEGIN_RANGE = VK_BLEND_OP_ADD,
+ *     VK_BLEND_OP_END_RANGE = VK_BLEND_OP_MAX,
+ *     VK_BLEND_OP_RANGE_SIZE = (VK_BLEND_OP_MAX - VK_BLEND_OP_ADD + 1),
+ *     VK_BLEND_OP_MAX_ENUM = 0x7FFFFFFF
+ * } VkBlendOp;
+ * </pre>
  * @author Alessandro Borges
-
  */
 public class VkBlendOp extends IntEnum<VkBlendOp> {
 	public static final VkBlendOp VK_BLEND_OP_ADD = new VkBlendOp("VK_BLEND_OP_ADD", 0, 0);

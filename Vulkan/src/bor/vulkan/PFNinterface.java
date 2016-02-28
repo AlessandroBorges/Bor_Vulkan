@@ -8,6 +8,7 @@ package bor.vulkan;
  * @author Alessandro Borges
  *
  */
+@Deprecated
 public interface PFNinterface extends VkHandle {
 
 }

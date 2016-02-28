@@ -1,19 +1,42 @@
-// class wrapping Vulkan's VkSparseImageMemoryRequirements struct.
+/**
+ * Class wrapping Vulkan's VkSparseImageMemoryRequirements struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkSparseImageMemoryRequirements 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkSparseImageMemoryRequirements {
+ *     VkSparseImageFormatProperties    formatProperties;
+ *     uint32_t                         imageMipTailFirstLod;
+ *     VkDeviceSize                     imageMipTailSize;
+ *     VkDeviceSize                     imageMipTailOffset;
+ *     VkDeviceSize                     imageMipTailStride;
+ * } VkSparseImageMemoryRequirements;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkSparseImageMemoryRequirements extends VkStruct {
-	/** ID of this structure [24]  */
-	 public static final int TAG = VKSPARSEIMAGEMEMORYREQUIREMENTS_ID;
+	/** TAG of this structure [148]  */
+	 private static final String TAG = "VkSparseImageMemoryRequirements";
+
+	/** ID of this structure [148]  */
+	 public static final int TAG_ID = VKSPARSEIMAGEMEMORYREQUIREMENTS_ID;
 
 	 // fields //
 	/**
@@ -52,7 +75,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

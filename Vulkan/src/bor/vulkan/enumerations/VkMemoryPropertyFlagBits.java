@@ -1,11 +1,26 @@
+/**
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.enumerations;
 
 import bor.enumerable.*;
 
 /**
  * Class to wrap Vulkan enumeration VkMemoryPropertyFlagBits
+ *
+ * <h3>Prototype</h3> <pre>
+ * typedef enum VkMemoryPropertyFlagBits {
+ *     VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT = 0x00000001,
+ *     VK_MEMORY_PROPERTY_HOST_VISIBLE_BIT = 0x00000002,
+ *     VK_MEMORY_PROPERTY_HOST_COHERENT_BIT = 0x00000004,
+ *     VK_MEMORY_PROPERTY_HOST_CACHED_BIT = 0x00000008,
+ *     VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT = 0x00000010,
+ * } VkMemoryPropertyFlagBits;
+ * </pre>
  * @author Alessandro Borges
-
  */
 public class VkMemoryPropertyFlagBits extends IntEnum<VkMemoryPropertyFlagBits> {
 	public static final VkMemoryPropertyFlagBits VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT = new VkMemoryPropertyFlagBits("VK_MEMORY_PROPERTY_DEVICE_LOCAL_BIT", 0, 0x00000001);

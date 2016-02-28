@@ -1,19 +1,39 @@
-// class wrapping Vulkan's VkOffset2D struct.
+/**
+ * Class wrapping Vulkan's VkOffset2D struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkOffset2D 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkOffset2D {
+ *     int32_t    x;
+ *     int32_t    y;
+ * } VkOffset2D;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkOffset2D extends VkStruct {
-	/** ID of this structure [55]  */
-	 public static final int TAG = VKOFFSET2D_ID;
+	/** TAG of this structure [179]  */
+	 private static final String TAG = "VkOffset2D";
+
+	/** ID of this structure [179]  */
+	 public static final int TAG_ID = VKOFFSET2D_ID;
 
 	 // fields //
 	/**
@@ -37,7 +57,7 @@ public class VkOffset2D extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

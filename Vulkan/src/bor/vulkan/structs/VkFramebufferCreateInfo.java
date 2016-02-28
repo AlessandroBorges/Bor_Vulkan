@@ -1,19 +1,46 @@
-// class wrapping Vulkan's VkFramebufferCreateInfo struct.
+/**
+ * Class wrapping Vulkan's VkFramebufferCreateInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkFramebufferCreateInfo 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkFramebufferCreateInfo {
+ *     VkStructureType             sType;
+ *     const void*                 pNext;
+ *     VkFramebufferCreateFlags    flags;
+ *     VkRenderPass                renderPass;
+ *     uint32_t                    attachmentCount;
+ *     const VkImageView*          pAttachments;
+ *     uint32_t                    width;
+ *     uint32_t                    height;
+ *     uint32_t                    layers;
+ * } VkFramebufferCreateInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkFramebufferCreateInfo extends VkStruct {
-	/** ID of this structure [80]  */
-	 public static final int TAG = VKFRAMEBUFFERCREATEINFO_ID;
+	/** TAG of this structure [204]  */
+	 private static final String TAG = "VkFramebufferCreateInfo";
+
+	/** ID of this structure [204]  */
+	 public static final int TAG_ID = VKFRAMEBUFFERCREATEINFO_ID;
 
 	 // fields //
 	/**
@@ -24,7 +51,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkFramebufferCreateFlags 	flags 
@@ -44,7 +71,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	/**
 	 *  const VkImageView* 	pAttachments 
 	 */ 
-	const VkImageView* 	pAttachments;
+	P<VkImageView>  	pAttachments;
 
 	/**
 	 *  uint32_t 	width 
@@ -72,7 +99,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -102,7 +129,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -111,7 +138,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -174,7 +201,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 * Set method for field pAttachments
 	 * Prototype: const VkImageView*  pAttachments
 	 */ 
-	 public void pAttachments(const VkImageView* pAttachments){
+	 public void pAttachments(P<VkImageView>  pAttachments){
 		 this.pAttachments = pAttachments;
 		pAttachments0(super.ptr, pAttachments);
 	 }
@@ -183,7 +210,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 * get method for field pAttachments
 	 * Prototype: const VkImageView*  pAttachments
 	 */ 
-	 public const VkImageView* pAttachments(){
+	 public P<VkImageView>  pAttachments(){
 		 // return  this.pAttachments;
 		 return pAttachments0(super.ptr);
 	 }
@@ -268,7 +295,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkFramebufferCreateInfo _obj = (VkFramebufferCreateInfo)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -277,9 +304,9 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkFramebufferCreateInfo _obj = (VkFramebufferCreateInfo)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**
@@ -340,7 +367,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 * native Set method for field pAttachments
 	 * Prototype: const VkImageView*  pAttachments
 	 */ 
-	 private static native void pAttachments0(ByteBuffer ptr, const VkImageView* _pAttachments);/*
+	 private static native void pAttachments0(ByteBuffer ptr, P<VkImageView>  _pAttachments);/*
 		  VkFramebufferCreateInfo _obj = (VkFramebufferCreateInfo)(*ptr);
 		  _obj.pAttachments = (const VkImageView*) (_pAttachments);
 	  */
@@ -349,9 +376,9 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 * get method for field pAttachments
 	 * Prototype: const VkImageView*  pAttachments
 	 */ 
-	 private static native const VkImageView* pAttachments0(ByteBuffer ptr);/*
+	 private static native P<VkImageView>  pAttachments0(ByteBuffer ptr);/*
 		  VkFramebufferCreateInfo _obj = (VkFramebufferCreateInfo)(ptr);
-		  return (const VkImageView*) (_obj.const VkImageView*);
+		  return (P<VkImageView> ) (_obj.const VkImageView*);
 	 */
 
 	/**

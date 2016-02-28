@@ -1,19 +1,42 @@
-// class wrapping Vulkan's VkPhysicalDeviceSparseProperties struct.
+/**
+ * Class wrapping Vulkan's VkPhysicalDeviceSparseProperties struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPhysicalDeviceSparseProperties 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkPhysicalDeviceSparseProperties {
+ *     VkBool32    residencyStandard2DBlockShape;
+ *     VkBool32    residencyStandard2DMultisampleBlockShape;
+ *     VkBool32    residencyStandard3DBlockShape;
+ *     VkBool32    residencyAlignedMipSize;
+ *     VkBool32    residencyNonResidentStrict;
+ * } VkPhysicalDeviceSparseProperties;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkPhysicalDeviceSparseProperties extends VkStruct {
-	/** ID of this structure [9]  */
-	 public static final int TAG = VKPHYSICALDEVICESPARSEPROPERTIES_ID;
+	/** TAG of this structure [133]  */
+	 private static final String TAG = "VkPhysicalDeviceSparseProperties";
+
+	/** ID of this structure [133]  */
+	 public static final int TAG_ID = VKPHYSICALDEVICESPARSEPROPERTIES_ID;
 
 	 // fields //
 	/**
@@ -52,7 +75,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

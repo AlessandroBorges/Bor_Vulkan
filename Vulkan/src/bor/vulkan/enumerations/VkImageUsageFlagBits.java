@@ -1,11 +1,29 @@
+/**
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.enumerations;
 
 import bor.enumerable.*;
 
 /**
  * Class to wrap Vulkan enumeration VkImageUsageFlagBits
+ *
+ * <h3>Prototype</h3> <pre>
+ * typedef enum VkImageUsageFlagBits {
+ *     VK_IMAGE_USAGE_TRANSFER_SRC_BIT = 0x00000001,
+ *     VK_IMAGE_USAGE_TRANSFER_DST_BIT = 0x00000002,
+ *     VK_IMAGE_USAGE_SAMPLED_BIT = 0x00000004,
+ *     VK_IMAGE_USAGE_STORAGE_BIT = 0x00000008,
+ *     VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT = 0x00000010,
+ *     VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT = 0x00000020,
+ *     VK_IMAGE_USAGE_TRANSIENT_ATTACHMENT_BIT = 0x00000040,
+ *     VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT = 0x00000080,
+ * } VkImageUsageFlagBits;
+ * </pre>
  * @author Alessandro Borges
-
  */
 public class VkImageUsageFlagBits extends IntEnum<VkImageUsageFlagBits> {
 	public static final VkImageUsageFlagBits VK_IMAGE_USAGE_TRANSFER_SRC_BIT = new VkImageUsageFlagBits("VK_IMAGE_USAGE_TRANSFER_SRC_BIT", 0, 0x00000001);

@@ -1,25 +1,49 @@
-// class wrapping Vulkan's VkAllocationCallbacks struct.
+/**
+ * Class wrapping Vulkan's VkAllocationCallbacks struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkAllocationCallbacks 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkAllocationCallbacks {
+ *     void*                                   pUserData;
+ *     PFN_vkAllocationFunction                pfnAllocation;
+ *     PFN_vkReallocationFunction              pfnReallocation;
+ *     PFN_vkFreeFunction                      pfnFree;
+ *     PFN_vkInternalAllocationNotification    pfnInternalAllocation;
+ *     PFN_vkInternalFreeNotification          pfnInternalFree;
+ * } VkAllocationCallbacks;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkAllocationCallbacks extends VkStruct {
-	/** ID of this structure [3]  */
-	 public static final int TAG = VKALLOCATIONCALLBACKS_ID;
+	/** TAG of this structure [127]  */
+	 private static final String TAG = "VkAllocationCallbacks";
+
+	/** ID of this structure [127]  */
+	 public static final int TAG_ID = VKALLOCATIONCALLBACKS_ID;
 
 	 // fields //
 	/**
 	 *  void* 	pUserData 
 	 */ 
-	ByteBuffer 	pUserData;
+	java.nio.Buffer 	pUserData;
 
 	/**
 	 *  PFN_vkAllocationFunction 	pfnAllocation 
@@ -57,7 +81,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -69,7 +93,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * Set method for field pUserData
 	 * Prototype: void*  pUserData
 	 */ 
-	 public void pUserData(ByteBuffer pUserData){
+	 public void pUserData(java.nio.Buffer pUserData){
 		 this.pUserData = pUserData;
 		pUserData0(super.ptr, pUserData);
 	 }
@@ -78,7 +102,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * get method for field pUserData
 	 * Prototype: void*  pUserData
 	 */ 
-	 public ByteBuffer pUserData(){
+	 public java.nio.Buffer pUserData(){
 		 // return  this.pUserData;
 		 return pUserData0(super.ptr);
 	 }
@@ -181,7 +205,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * native Set method for field pUserData
 	 * Prototype: void*  pUserData
 	 */ 
-	 private static native void pUserData0(ByteBuffer ptr, ByteBuffer _pUserData);/*
+	 private static native void pUserData0(ByteBuffer ptr, java.nio.Buffer _pUserData);/*
 		  VkAllocationCallbacks _obj = (VkAllocationCallbacks)(*ptr);
 		  _obj.pUserData = (void*) (_pUserData);
 	  */
@@ -190,9 +214,9 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * get method for field pUserData
 	 * Prototype: void*  pUserData
 	 */ 
-	 private static native ByteBuffer pUserData0(ByteBuffer ptr);/*
+	 private static native java.nio.Buffer pUserData0(ByteBuffer ptr);/*
 		  VkAllocationCallbacks _obj = (VkAllocationCallbacks)(ptr);
-		  return (ByteBuffer) (_obj.void*);
+		  return (java.nio.Buffer) (_obj.void*);
 	 */
 
 	/**

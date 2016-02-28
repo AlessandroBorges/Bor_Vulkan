@@ -1,11 +1,28 @@
+/**
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.enumerations;
 
 import bor.enumerable.*;
 
 /**
  * Class to wrap Vulkan enumeration VkImageType
+ *
+ * <h3>Prototype</h3> <pre>
+ * typedef enum VkImageType {
+ *     VK_IMAGE_TYPE_1D = 0,
+ *     VK_IMAGE_TYPE_2D = 1,
+ *     VK_IMAGE_TYPE_3D = 2,
+ *     VK_IMAGE_TYPE_BEGIN_RANGE = VK_IMAGE_TYPE_1D,
+ *     VK_IMAGE_TYPE_END_RANGE = VK_IMAGE_TYPE_3D,
+ *     VK_IMAGE_TYPE_RANGE_SIZE = (VK_IMAGE_TYPE_3D - VK_IMAGE_TYPE_1D + 1),
+ *     VK_IMAGE_TYPE_MAX_ENUM = 0x7FFFFFFF
+ * } VkImageType;
+ * </pre>
  * @author Alessandro Borges
-
  */
 public class VkImageType extends IntEnum<VkImageType> {
 	public static final VkImageType VK_IMAGE_TYPE_1D = new VkImageType("VK_IMAGE_TYPE_1D", 0, 0);

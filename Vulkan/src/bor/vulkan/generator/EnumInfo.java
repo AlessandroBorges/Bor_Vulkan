@@ -7,6 +7,7 @@ public class EnumInfo {
     public String[] names;
     public String[] values;
     
+    java.util.List<String> source;
     
 
     public EnumInfo() {

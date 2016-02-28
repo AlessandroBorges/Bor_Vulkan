@@ -1,19 +1,42 @@
-// class wrapping Vulkan's VkShaderModuleCreateInfo struct.
+/**
+ * Class wrapping Vulkan's VkShaderModuleCreateInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkShaderModuleCreateInfo 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkShaderModuleCreateInfo {
+ *     VkStructureType              sType;
+ *     const void*                  pNext;
+ *     VkShaderModuleCreateFlags    flags;
+ *     size_t                       codeSize;
+ *     const uint32_t*              pCode;
+ * } VkShaderModuleCreateInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkShaderModuleCreateInfo extends VkStruct {
-	/** ID of this structure [44]  */
-	 public static final int TAG = VKSHADERMODULECREATEINFO_ID;
+	/** TAG of this structure [168]  */
+	 private static final String TAG = "VkShaderModuleCreateInfo";
+
+	/** ID of this structure [168]  */
+	 public static final int TAG_ID = VKSHADERMODULECREATEINFO_ID;
 
 	 // fields //
 	/**
@@ -24,7 +47,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkShaderModuleCreateFlags 	flags 
@@ -39,7 +62,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	/**
 	 *  const uint32_t* 	pCode 
 	 */ 
-	const uint32_t* 	pCode;
+	int[] 	pCode;
 
 	/**
 	 * Ctor
@@ -52,7 +75,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -82,7 +105,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -91,7 +114,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -136,7 +159,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 * Set method for field pCode
 	 * Prototype: const uint32_t*  pCode
 	 */ 
-	 public void pCode(const uint32_t* pCode){
+	 public void pCode(int[] pCode){
 		 this.pCode = pCode;
 		pCode0(super.ptr, pCode);
 	 }
@@ -145,7 +168,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 * get method for field pCode
 	 * Prototype: const uint32_t*  pCode
 	 */ 
-	 public const uint32_t* pCode(){
+	 public int[] pCode(){
 		 // return  this.pCode;
 		 return pCode0(super.ptr);
 	 }
@@ -176,7 +199,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkShaderModuleCreateInfo _obj = (VkShaderModuleCreateInfo)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -185,9 +208,9 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkShaderModuleCreateInfo _obj = (VkShaderModuleCreateInfo)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**
@@ -230,7 +253,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 * native Set method for field pCode
 	 * Prototype: const uint32_t*  pCode
 	 */ 
-	 private static native void pCode0(ByteBuffer ptr, const uint32_t* _pCode);/*
+	 private static native void pCode0(ByteBuffer ptr, int[] _pCode);/*
 		  VkShaderModuleCreateInfo _obj = (VkShaderModuleCreateInfo)(*ptr);
 		  _obj.pCode = (const uint32_t*) (_pCode);
 	  */
@@ -239,9 +262,9 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 * get method for field pCode
 	 * Prototype: const uint32_t*  pCode
 	 */ 
-	 private static native const uint32_t* pCode0(ByteBuffer ptr);/*
+	 private static native int[] pCode0(ByteBuffer ptr);/*
 		  VkShaderModuleCreateInfo _obj = (VkShaderModuleCreateInfo)(ptr);
-		  return (const uint32_t*) (_obj.const uint32_t*);
+		  return (int[]) (_obj.const uint32_t*);
 	 */
 
 

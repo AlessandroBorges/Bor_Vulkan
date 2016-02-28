@@ -1,19 +1,42 @@
-// class wrapping Vulkan's VkDescriptorSetAllocateInfo struct.
+/**
+ * Class wrapping Vulkan's VkDescriptorSetAllocateInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkDescriptorSetAllocateInfo 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkDescriptorSetAllocateInfo {
+ *     VkStructureType                 sType;
+ *     const void*                     pNext;
+ *     VkDescriptorPool                descriptorPool;
+ *     uint32_t                        descriptorSetCount;
+ *     const VkDescriptorSetLayout*    pSetLayouts;
+ * } VkDescriptorSetAllocateInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkDescriptorSetAllocateInfo extends VkStruct {
-	/** ID of this structure [75]  */
-	 public static final int TAG = VKDESCRIPTORSETALLOCATEINFO_ID;
+	/** TAG of this structure [199]  */
+	 private static final String TAG = "VkDescriptorSetAllocateInfo";
+
+	/** ID of this structure [199]  */
+	 public static final int TAG_ID = VKDESCRIPTORSETALLOCATEINFO_ID;
 
 	 // fields //
 	/**
@@ -24,7 +47,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkDescriptorPool 	descriptorPool 
@@ -39,7 +62,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	/**
 	 *  const VkDescriptorSetLayout* 	pSetLayouts 
 	 */ 
-	const VkDescriptorSetLayout* 	pSetLayouts;
+	P<VkDescriptorSetLayout>  	pSetLayouts;
 
 	/**
 	 * Ctor
@@ -52,7 +75,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -82,7 +105,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -91,7 +114,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -136,7 +159,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 * Set method for field pSetLayouts
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
-	 public void pSetLayouts(const VkDescriptorSetLayout* pSetLayouts){
+	 public void pSetLayouts(P<VkDescriptorSetLayout>  pSetLayouts){
 		 this.pSetLayouts = pSetLayouts;
 		pSetLayouts0(super.ptr, pSetLayouts);
 	 }
@@ -145,7 +168,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 * get method for field pSetLayouts
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
-	 public const VkDescriptorSetLayout* pSetLayouts(){
+	 public P<VkDescriptorSetLayout>  pSetLayouts(){
 		 // return  this.pSetLayouts;
 		 return pSetLayouts0(super.ptr);
 	 }
@@ -176,7 +199,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkDescriptorSetAllocateInfo _obj = (VkDescriptorSetAllocateInfo)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -185,9 +208,9 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkDescriptorSetAllocateInfo _obj = (VkDescriptorSetAllocateInfo)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**
@@ -230,7 +253,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 * native Set method for field pSetLayouts
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
-	 private static native void pSetLayouts0(ByteBuffer ptr, const VkDescriptorSetLayout* _pSetLayouts);/*
+	 private static native void pSetLayouts0(ByteBuffer ptr, P<VkDescriptorSetLayout>  _pSetLayouts);/*
 		  VkDescriptorSetAllocateInfo _obj = (VkDescriptorSetAllocateInfo)(*ptr);
 		  _obj.pSetLayouts = (const VkDescriptorSetLayout*) (_pSetLayouts);
 	  */
@@ -239,9 +262,9 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 * get method for field pSetLayouts
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
-	 private static native const VkDescriptorSetLayout* pSetLayouts0(ByteBuffer ptr);/*
+	 private static native P<VkDescriptorSetLayout>  pSetLayouts0(ByteBuffer ptr);/*
 		  VkDescriptorSetAllocateInfo _obj = (VkDescriptorSetAllocateInfo)(ptr);
-		  return (const VkDescriptorSetLayout*) (_obj.const VkDescriptorSetLayout*);
+		  return (P<VkDescriptorSetLayout> ) (_obj.const VkDescriptorSetLayout*);
 	 */
 
 

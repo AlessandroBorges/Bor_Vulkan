@@ -1,19 +1,39 @@
-// class wrapping Vulkan's VkClearDepthStencilValue struct.
+/**
+ * Class wrapping Vulkan's VkClearDepthStencilValue struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkClearDepthStencilValue 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkClearDepthStencilValue {
+ *     float       depth;
+ *     uint32_t    stencil;
+ * } VkClearDepthStencilValue;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkClearDepthStencilValue extends VkStruct {
-	/** ID of this structure [95]  */
-	 public static final int TAG = VKCLEARDEPTHSTENCILVALUE_ID;
+	/** TAG of this structure [219]  */
+	 private static final String TAG = "VkClearDepthStencilValue";
+
+	/** ID of this structure [219]  */
+	 public static final int TAG_ID = VKCLEARDEPTHSTENCILVALUE_ID;
 
 	 // fields //
 	/**
@@ -37,7 +57,7 @@ public class VkClearDepthStencilValue extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

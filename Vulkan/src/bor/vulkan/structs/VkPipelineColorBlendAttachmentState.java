@@ -1,19 +1,45 @@
-// class wrapping Vulkan's VkPipelineColorBlendAttachmentState struct.
+/**
+ * Class wrapping Vulkan's VkPipelineColorBlendAttachmentState struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPipelineColorBlendAttachmentState 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkPipelineColorBlendAttachmentState {
+ *     VkBool32                 blendEnable;
+ *     VkBlendFactor            srcColorBlendFactor;
+ *     VkBlendFactor            dstColorBlendFactor;
+ *     VkBlendOp                colorBlendOp;
+ *     VkBlendFactor            srcAlphaBlendFactor;
+ *     VkBlendFactor            dstAlphaBlendFactor;
+ *     VkBlendOp                alphaBlendOp;
+ *     VkColorComponentFlags    colorWriteMask;
+ * } VkPipelineColorBlendAttachmentState;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkPipelineColorBlendAttachmentState extends VkStruct {
-	/** ID of this structure [63]  */
-	 public static final int TAG = VKPIPELINECOLORBLENDATTACHMENTSTATE_ID;
+	/** TAG of this structure [187]  */
+	 private static final String TAG = "VkPipelineColorBlendAttachmentState";
+
+	/** ID of this structure [187]  */
+	 public static final int TAG_ID = VKPIPELINECOLORBLENDATTACHMENTSTATE_ID;
 
 	 // fields //
 	/**
@@ -67,7 +93,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

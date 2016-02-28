@@ -1,19 +1,143 @@
-// class wrapping Vulkan's VkPhysicalDeviceLimits struct.
+/**
+ * Class wrapping Vulkan's VkPhysicalDeviceLimits struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPhysicalDeviceLimits 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkPhysicalDeviceLimits {
+ *     uint32_t              maxImageDimension1D;
+ *     uint32_t              maxImageDimension2D;
+ *     uint32_t              maxImageDimension3D;
+ *     uint32_t              maxImageDimensionCube;
+ *     uint32_t              maxImageArrayLayers;
+ *     uint32_t              maxTexelBufferElements;
+ *     uint32_t              maxUniformBufferRange;
+ *     uint32_t              maxStorageBufferRange;
+ *     uint32_t              maxPushConstantsSize;
+ *     uint32_t              maxMemoryAllocationCount;
+ *     uint32_t              maxSamplerAllocationCount;
+ *     VkDeviceSize          bufferImageGranularity;
+ *     VkDeviceSize          sparseAddressSpaceSize;
+ *     uint32_t              maxBoundDescriptorSets;
+ *     uint32_t              maxPerStageDescriptorSamplers;
+ *     uint32_t              maxPerStageDescriptorUniformBuffers;
+ *     uint32_t              maxPerStageDescriptorStorageBuffers;
+ *     uint32_t              maxPerStageDescriptorSampledImages;
+ *     uint32_t              maxPerStageDescriptorStorageImages;
+ *     uint32_t              maxPerStageDescriptorInputAttachments;
+ *     uint32_t              maxPerStageResources;
+ *     uint32_t              maxDescriptorSetSamplers;
+ *     uint32_t              maxDescriptorSetUniformBuffers;
+ *     uint32_t              maxDescriptorSetUniformBuffersDynamic;
+ *     uint32_t              maxDescriptorSetStorageBuffers;
+ *     uint32_t              maxDescriptorSetStorageBuffersDynamic;
+ *     uint32_t              maxDescriptorSetSampledImages;
+ *     uint32_t              maxDescriptorSetStorageImages;
+ *     uint32_t              maxDescriptorSetInputAttachments;
+ *     uint32_t              maxVertexInputAttributes;
+ *     uint32_t              maxVertexInputBindings;
+ *     uint32_t              maxVertexInputAttributeOffset;
+ *     uint32_t              maxVertexInputBindingStride;
+ *     uint32_t              maxVertexOutputComponents;
+ *     uint32_t              maxTessellationGenerationLevel;
+ *     uint32_t              maxTessellationPatchSize;
+ *     uint32_t              maxTessellationControlPerVertexInputComponents;
+ *     uint32_t              maxTessellationControlPerVertexOutputComponents;
+ *     uint32_t              maxTessellationControlPerPatchOutputComponents;
+ *     uint32_t              maxTessellationControlTotalOutputComponents;
+ *     uint32_t              maxTessellationEvaluationInputComponents;
+ *     uint32_t              maxTessellationEvaluationOutputComponents;
+ *     uint32_t              maxGeometryShaderInvocations;
+ *     uint32_t              maxGeometryInputComponents;
+ *     uint32_t              maxGeometryOutputComponents;
+ *     uint32_t              maxGeometryOutputVertices;
+ *     uint32_t              maxGeometryTotalOutputComponents;
+ *     uint32_t              maxFragmentInputComponents;
+ *     uint32_t              maxFragmentOutputAttachments;
+ *     uint32_t              maxFragmentDualSrcAttachments;
+ *     uint32_t              maxFragmentCombinedOutputResources;
+ *     uint32_t              maxComputeSharedMemorySize;
+ *     uint32_t              maxComputeWorkGroupCount[3];
+ *     uint32_t              maxComputeWorkGroupInvocations;
+ *     uint32_t              maxComputeWorkGroupSize[3];
+ *     uint32_t              subPixelPrecisionBits;
+ *     uint32_t              subTexelPrecisionBits;
+ *     uint32_t              mipmapPrecisionBits;
+ *     uint32_t              maxDrawIndexedIndexValue;
+ *     uint32_t              maxDrawIndirectCount;
+ *     float                 maxSamplerLodBias;
+ *     float                 maxSamplerAnisotropy;
+ *     uint32_t              maxViewports;
+ *     uint32_t              maxViewportDimensions[2];
+ *     float                 viewportBoundsRange[2];
+ *     uint32_t              viewportSubPixelBits;
+ *     size_t                minMemoryMapAlignment;
+ *     VkDeviceSize          minTexelBufferOffsetAlignment;
+ *     VkDeviceSize          minUniformBufferOffsetAlignment;
+ *     VkDeviceSize          minStorageBufferOffsetAlignment;
+ *     int32_t               minTexelOffset;
+ *     uint32_t              maxTexelOffset;
+ *     int32_t               minTexelGatherOffset;
+ *     uint32_t              maxTexelGatherOffset;
+ *     float                 minInterpolationOffset;
+ *     float                 maxInterpolationOffset;
+ *     uint32_t              subPixelInterpolationOffsetBits;
+ *     uint32_t              maxFramebufferWidth;
+ *     uint32_t              maxFramebufferHeight;
+ *     uint32_t              maxFramebufferLayers;
+ *     VkSampleCountFlags    framebufferColorSampleCounts;
+ *     VkSampleCountFlags    framebufferDepthSampleCounts;
+ *     VkSampleCountFlags    framebufferStencilSampleCounts;
+ *     VkSampleCountFlags    framebufferNoAttachmentsSampleCounts;
+ *     uint32_t              maxColorAttachments;
+ *     VkSampleCountFlags    sampledImageColorSampleCounts;
+ *     VkSampleCountFlags    sampledImageIntegerSampleCounts;
+ *     VkSampleCountFlags    sampledImageDepthSampleCounts;
+ *     VkSampleCountFlags    sampledImageStencilSampleCounts;
+ *     VkSampleCountFlags    storageImageSampleCounts;
+ *     uint32_t              maxSampleMaskWords;
+ *     VkBool32              timestampComputeAndGraphics;
+ *     float                 timestampPeriod;
+ *     uint32_t              maxClipDistances;
+ *     uint32_t              maxCullDistances;
+ *     uint32_t              maxCombinedClipAndCullDistances;
+ *     uint32_t              discreteQueuePriorities;
+ *     float                 pointSizeRange[2];
+ *     float                 lineWidthRange[2];
+ *     float                 pointSizeGranularity;
+ *     float                 lineWidthGranularity;
+ *     VkBool32              strictLines;
+ *     VkBool32              standardSampleLocations;
+ *     VkDeviceSize          optimalBufferCopyOffsetAlignment;
+ *     VkDeviceSize          optimalBufferCopyRowPitchAlignment;
+ *     VkDeviceSize          nonCoherentAtomSize;
+ * } VkPhysicalDeviceLimits;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkPhysicalDeviceLimits extends VkStruct {
-	/** ID of this structure [8]  */
-	 public static final int TAG = VKPHYSICALDEVICELIMITS_ID;
+	/** TAG of this structure [132]  */
+	 private static final String TAG = "VkPhysicalDeviceLimits";
+
+	/** ID of this structure [132]  */
+	 public static final int TAG_ID = VKPHYSICALDEVICELIMITS_ID;
 
 	 // fields //
 	/**
@@ -277,9 +401,9 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	int 	maxComputeSharedMemorySize;
 
 	/**
-	 *  uint32_t[] 	maxComputeWorkGroupCount /* length=3 */ 
+	 *  uint32_t[] 	maxComputeWorkGroupCount 
 	 */ 
-	uint32_t[] 	maxComputeWorkGroupCount /* length=3 */;
+	int[] 	maxComputeWorkGroupCount;
 
 	/**
 	 *  uint32_t 	maxComputeWorkGroupInvocations 
@@ -287,9 +411,9 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	int 	maxComputeWorkGroupInvocations;
 
 	/**
-	 *  uint32_t[] 	maxComputeWorkGroupSize /* length=3 */ 
+	 *  uint32_t[] 	maxComputeWorkGroupSize 
 	 */ 
-	uint32_t[] 	maxComputeWorkGroupSize /* length=3 */;
+	int[] 	maxComputeWorkGroupSize;
 
 	/**
 	 *  uint32_t 	subPixelPrecisionBits 
@@ -332,14 +456,14 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	int 	maxViewports;
 
 	/**
-	 *  uint32_t[] 	maxViewportDimensions /* length=2 */ 
+	 *  uint32_t[] 	maxViewportDimensions 
 	 */ 
-	uint32_t[] 	maxViewportDimensions /* length=2 */;
+	int[] 	maxViewportDimensions;
 
 	/**
-	 *  float[] 	viewportBoundsRange /* length=2 */ 
+	 *  float[] 	viewportBoundsRange 
 	 */ 
-	float[] 	viewportBoundsRange /* length=2 */;
+	float[] 	viewportBoundsRange;
 
 	/**
 	 *  uint32_t 	viewportSubPixelBits 
@@ -502,14 +626,14 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	int 	discreteQueuePriorities;
 
 	/**
-	 *  float[] 	pointSizeRange /* length=2 */ 
+	 *  float[] 	pointSizeRange 
 	 */ 
-	float[] 	pointSizeRange /* length=2 */;
+	float[] 	pointSizeRange;
 
 	/**
-	 *  float[] 	lineWidthRange /* length=2 */ 
+	 *  float[] 	lineWidthRange 
 	 */ 
-	float[] 	lineWidthRange /* length=2 */;
+	float[] 	lineWidthRange;
 
 	/**
 	 *  float 	pointSizeGranularity 
@@ -557,7 +681,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -1502,21 +1626,21 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxComputeWorkGroupCount /* length=3 */
-	 * Prototype: uint32_t[]  maxComputeWorkGroupCount /* length=3 */
+	 * Set method for field maxComputeWorkGroupCount
+	 * Prototype: uint32_t[]  maxComputeWorkGroupCount
 	 */ 
-	 public void maxComputeWorkGroupCount /* length=3 */(uint32_t[] maxComputeWorkGroupCount /* length=3 */){
-		 this.maxComputeWorkGroupCount /* length=3 */ = maxComputeWorkGroupCount /* length=3 */;
-		maxComputeWorkGroupCount /* length=3 */0(super.ptr, maxComputeWorkGroupCount /* length=3 */);
+	 public void maxComputeWorkGroupCount(int[] maxComputeWorkGroupCount){
+		 this.maxComputeWorkGroupCount = maxComputeWorkGroupCount;
+		maxComputeWorkGroupCount0(super.ptr, maxComputeWorkGroupCount);
 	 }
 
 	/**
-	 * get method for field maxComputeWorkGroupCount /* length=3 */
-	 * Prototype: uint32_t[]  maxComputeWorkGroupCount /* length=3 */
+	 * get method for field maxComputeWorkGroupCount
+	 * Prototype: uint32_t[]  maxComputeWorkGroupCount
 	 */ 
-	 public uint32_t[] maxComputeWorkGroupCount /* length=3 */(){
-		 // return  this.maxComputeWorkGroupCount /* length=3 */;
-		 return maxComputeWorkGroupCount /* length=3 */0(super.ptr);
+	 public int[] maxComputeWorkGroupCount(){
+		 // return  this.maxComputeWorkGroupCount;
+		 return maxComputeWorkGroupCount0(super.ptr);
 	 }
 
 	/**
@@ -1538,21 +1662,21 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxComputeWorkGroupSize /* length=3 */
-	 * Prototype: uint32_t[]  maxComputeWorkGroupSize /* length=3 */
+	 * Set method for field maxComputeWorkGroupSize
+	 * Prototype: uint32_t[]  maxComputeWorkGroupSize
 	 */ 
-	 public void maxComputeWorkGroupSize /* length=3 */(uint32_t[] maxComputeWorkGroupSize /* length=3 */){
-		 this.maxComputeWorkGroupSize /* length=3 */ = maxComputeWorkGroupSize /* length=3 */;
-		maxComputeWorkGroupSize /* length=3 */0(super.ptr, maxComputeWorkGroupSize /* length=3 */);
+	 public void maxComputeWorkGroupSize(int[] maxComputeWorkGroupSize){
+		 this.maxComputeWorkGroupSize = maxComputeWorkGroupSize;
+		maxComputeWorkGroupSize0(super.ptr, maxComputeWorkGroupSize);
 	 }
 
 	/**
-	 * get method for field maxComputeWorkGroupSize /* length=3 */
-	 * Prototype: uint32_t[]  maxComputeWorkGroupSize /* length=3 */
+	 * get method for field maxComputeWorkGroupSize
+	 * Prototype: uint32_t[]  maxComputeWorkGroupSize
 	 */ 
-	 public uint32_t[] maxComputeWorkGroupSize /* length=3 */(){
-		 // return  this.maxComputeWorkGroupSize /* length=3 */;
-		 return maxComputeWorkGroupSize /* length=3 */0(super.ptr);
+	 public int[] maxComputeWorkGroupSize(){
+		 // return  this.maxComputeWorkGroupSize;
+		 return maxComputeWorkGroupSize0(super.ptr);
 	 }
 
 	/**
@@ -1700,39 +1824,39 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxViewportDimensions /* length=2 */
-	 * Prototype: uint32_t[]  maxViewportDimensions /* length=2 */
+	 * Set method for field maxViewportDimensions
+	 * Prototype: uint32_t[]  maxViewportDimensions
 	 */ 
-	 public void maxViewportDimensions /* length=2 */(uint32_t[] maxViewportDimensions /* length=2 */){
-		 this.maxViewportDimensions /* length=2 */ = maxViewportDimensions /* length=2 */;
-		maxViewportDimensions /* length=2 */0(super.ptr, maxViewportDimensions /* length=2 */);
+	 public void maxViewportDimensions(int[] maxViewportDimensions){
+		 this.maxViewportDimensions = maxViewportDimensions;
+		maxViewportDimensions0(super.ptr, maxViewportDimensions);
 	 }
 
 	/**
-	 * get method for field maxViewportDimensions /* length=2 */
-	 * Prototype: uint32_t[]  maxViewportDimensions /* length=2 */
+	 * get method for field maxViewportDimensions
+	 * Prototype: uint32_t[]  maxViewportDimensions
 	 */ 
-	 public uint32_t[] maxViewportDimensions /* length=2 */(){
-		 // return  this.maxViewportDimensions /* length=2 */;
-		 return maxViewportDimensions /* length=2 */0(super.ptr);
+	 public int[] maxViewportDimensions(){
+		 // return  this.maxViewportDimensions;
+		 return maxViewportDimensions0(super.ptr);
 	 }
 
 	/**
-	 * Set method for field viewportBoundsRange /* length=2 */
-	 * Prototype: float[]  viewportBoundsRange /* length=2 */
+	 * Set method for field viewportBoundsRange
+	 * Prototype: float[]  viewportBoundsRange
 	 */ 
-	 public void viewportBoundsRange /* length=2 */(float[] viewportBoundsRange /* length=2 */){
-		 this.viewportBoundsRange /* length=2 */ = viewportBoundsRange /* length=2 */;
-		viewportBoundsRange /* length=2 */0(super.ptr, viewportBoundsRange /* length=2 */);
+	 public void viewportBoundsRange(float[] viewportBoundsRange){
+		 this.viewportBoundsRange = viewportBoundsRange;
+		viewportBoundsRange0(super.ptr, viewportBoundsRange);
 	 }
 
 	/**
-	 * get method for field viewportBoundsRange /* length=2 */
-	 * Prototype: float[]  viewportBoundsRange /* length=2 */
+	 * get method for field viewportBoundsRange
+	 * Prototype: float[]  viewportBoundsRange
 	 */ 
-	 public float[] viewportBoundsRange /* length=2 */(){
-		 // return  this.viewportBoundsRange /* length=2 */;
-		 return viewportBoundsRange /* length=2 */0(super.ptr);
+	 public float[] viewportBoundsRange(){
+		 // return  this.viewportBoundsRange;
+		 return viewportBoundsRange0(super.ptr);
 	 }
 
 	/**
@@ -2312,39 +2436,39 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pointSizeRange /* length=2 */
-	 * Prototype: float[]  pointSizeRange /* length=2 */
+	 * Set method for field pointSizeRange
+	 * Prototype: float[]  pointSizeRange
 	 */ 
-	 public void pointSizeRange /* length=2 */(float[] pointSizeRange /* length=2 */){
-		 this.pointSizeRange /* length=2 */ = pointSizeRange /* length=2 */;
-		pointSizeRange /* length=2 */0(super.ptr, pointSizeRange /* length=2 */);
+	 public void pointSizeRange(float[] pointSizeRange){
+		 this.pointSizeRange = pointSizeRange;
+		pointSizeRange0(super.ptr, pointSizeRange);
 	 }
 
 	/**
-	 * get method for field pointSizeRange /* length=2 */
-	 * Prototype: float[]  pointSizeRange /* length=2 */
+	 * get method for field pointSizeRange
+	 * Prototype: float[]  pointSizeRange
 	 */ 
-	 public float[] pointSizeRange /* length=2 */(){
-		 // return  this.pointSizeRange /* length=2 */;
-		 return pointSizeRange /* length=2 */0(super.ptr);
+	 public float[] pointSizeRange(){
+		 // return  this.pointSizeRange;
+		 return pointSizeRange0(super.ptr);
 	 }
 
 	/**
-	 * Set method for field lineWidthRange /* length=2 */
-	 * Prototype: float[]  lineWidthRange /* length=2 */
+	 * Set method for field lineWidthRange
+	 * Prototype: float[]  lineWidthRange
 	 */ 
-	 public void lineWidthRange /* length=2 */(float[] lineWidthRange /* length=2 */){
-		 this.lineWidthRange /* length=2 */ = lineWidthRange /* length=2 */;
-		lineWidthRange /* length=2 */0(super.ptr, lineWidthRange /* length=2 */);
+	 public void lineWidthRange(float[] lineWidthRange){
+		 this.lineWidthRange = lineWidthRange;
+		lineWidthRange0(super.ptr, lineWidthRange);
 	 }
 
 	/**
-	 * get method for field lineWidthRange /* length=2 */
-	 * Prototype: float[]  lineWidthRange /* length=2 */
+	 * get method for field lineWidthRange
+	 * Prototype: float[]  lineWidthRange
 	 */ 
-	 public float[] lineWidthRange /* length=2 */(){
-		 // return  this.lineWidthRange /* length=2 */;
-		 return lineWidthRange /* length=2 */0(super.ptr);
+	 public float[] lineWidthRange(){
+		 // return  this.lineWidthRange;
+		 return lineWidthRange0(super.ptr);
 	 }
 
 	/**
@@ -3414,21 +3538,21 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxComputeWorkGroupCount /* length=3 */
-	 * Prototype: uint32_t[]  maxComputeWorkGroupCount /* length=3 */
+	 * native Set method for field maxComputeWorkGroupCount
+	 * Prototype: uint32_t[]  maxComputeWorkGroupCount
 	 */ 
-	 private static native void maxComputeWorkGroupCount /* length=3 */0(ByteBuffer ptr, uint32_t[] _maxComputeWorkGroupCount /* length=3 */);/*
+	 private static native void maxComputeWorkGroupCount0(ByteBuffer ptr, int[] _maxComputeWorkGroupCount);/*
 		  VkPhysicalDeviceLimits _obj = (VkPhysicalDeviceLimits)(*ptr);
-		  _obj.maxComputeWorkGroupCount /* length=3 */ = (uint32_t[]) (_maxComputeWorkGroupCount /* length=3 */);
+		  _obj.maxComputeWorkGroupCount = (uint32_t[]) (_maxComputeWorkGroupCount);
 	  */
 
 	/**
-	 * get method for field maxComputeWorkGroupCount /* length=3 */
-	 * Prototype: uint32_t[]  maxComputeWorkGroupCount /* length=3 */
+	 * get method for field maxComputeWorkGroupCount
+	 * Prototype: uint32_t[]  maxComputeWorkGroupCount
 	 */ 
-	 private static native uint32_t[] maxComputeWorkGroupCount /* length=3 */0(ByteBuffer ptr);/*
+	 private static native int[] maxComputeWorkGroupCount0(ByteBuffer ptr);/*
 		  VkPhysicalDeviceLimits _obj = (VkPhysicalDeviceLimits)(ptr);
-		  return (uint32_t[]) (_obj.uint32_t[]);
+		  return (int[]) (_obj.uint32_t[]);
 	 */
 
 	/**
@@ -3450,21 +3574,21 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxComputeWorkGroupSize /* length=3 */
-	 * Prototype: uint32_t[]  maxComputeWorkGroupSize /* length=3 */
+	 * native Set method for field maxComputeWorkGroupSize
+	 * Prototype: uint32_t[]  maxComputeWorkGroupSize
 	 */ 
-	 private static native void maxComputeWorkGroupSize /* length=3 */0(ByteBuffer ptr, uint32_t[] _maxComputeWorkGroupSize /* length=3 */);/*
+	 private static native void maxComputeWorkGroupSize0(ByteBuffer ptr, int[] _maxComputeWorkGroupSize);/*
 		  VkPhysicalDeviceLimits _obj = (VkPhysicalDeviceLimits)(*ptr);
-		  _obj.maxComputeWorkGroupSize /* length=3 */ = (uint32_t[]) (_maxComputeWorkGroupSize /* length=3 */);
+		  _obj.maxComputeWorkGroupSize = (uint32_t[]) (_maxComputeWorkGroupSize);
 	  */
 
 	/**
-	 * get method for field maxComputeWorkGroupSize /* length=3 */
-	 * Prototype: uint32_t[]  maxComputeWorkGroupSize /* length=3 */
+	 * get method for field maxComputeWorkGroupSize
+	 * Prototype: uint32_t[]  maxComputeWorkGroupSize
 	 */ 
-	 private static native uint32_t[] maxComputeWorkGroupSize /* length=3 */0(ByteBuffer ptr);/*
+	 private static native int[] maxComputeWorkGroupSize0(ByteBuffer ptr);/*
 		  VkPhysicalDeviceLimits _obj = (VkPhysicalDeviceLimits)(ptr);
-		  return (uint32_t[]) (_obj.uint32_t[]);
+		  return (int[]) (_obj.uint32_t[]);
 	 */
 
 	/**
@@ -3612,37 +3736,37 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxViewportDimensions /* length=2 */
-	 * Prototype: uint32_t[]  maxViewportDimensions /* length=2 */
+	 * native Set method for field maxViewportDimensions
+	 * Prototype: uint32_t[]  maxViewportDimensions
 	 */ 
-	 private static native void maxViewportDimensions /* length=2 */0(ByteBuffer ptr, uint32_t[] _maxViewportDimensions /* length=2 */);/*
+	 private static native void maxViewportDimensions0(ByteBuffer ptr, int[] _maxViewportDimensions);/*
 		  VkPhysicalDeviceLimits _obj = (VkPhysicalDeviceLimits)(*ptr);
-		  _obj.maxViewportDimensions /* length=2 */ = (uint32_t[]) (_maxViewportDimensions /* length=2 */);
+		  _obj.maxViewportDimensions = (uint32_t[]) (_maxViewportDimensions);
 	  */
 
 	/**
-	 * get method for field maxViewportDimensions /* length=2 */
-	 * Prototype: uint32_t[]  maxViewportDimensions /* length=2 */
+	 * get method for field maxViewportDimensions
+	 * Prototype: uint32_t[]  maxViewportDimensions
 	 */ 
-	 private static native uint32_t[] maxViewportDimensions /* length=2 */0(ByteBuffer ptr);/*
+	 private static native int[] maxViewportDimensions0(ByteBuffer ptr);/*
 		  VkPhysicalDeviceLimits _obj = (VkPhysicalDeviceLimits)(ptr);
-		  return (uint32_t[]) (_obj.uint32_t[]);
+		  return (int[]) (_obj.uint32_t[]);
 	 */
 
 	/**
-	 * native Set method for field viewportBoundsRange /* length=2 */
-	 * Prototype: float[]  viewportBoundsRange /* length=2 */
+	 * native Set method for field viewportBoundsRange
+	 * Prototype: float[]  viewportBoundsRange
 	 */ 
-	 private static native void viewportBoundsRange /* length=2 */0(ByteBuffer ptr, float[] _viewportBoundsRange /* length=2 */);/*
+	 private static native void viewportBoundsRange0(ByteBuffer ptr, float[] _viewportBoundsRange);/*
 		  VkPhysicalDeviceLimits _obj = (VkPhysicalDeviceLimits)(*ptr);
-		  _obj.viewportBoundsRange /* length=2 */ = (float[]) (_viewportBoundsRange /* length=2 */);
+		  _obj.viewportBoundsRange = (float[]) (_viewportBoundsRange);
 	  */
 
 	/**
-	 * get method for field viewportBoundsRange /* length=2 */
-	 * Prototype: float[]  viewportBoundsRange /* length=2 */
+	 * get method for field viewportBoundsRange
+	 * Prototype: float[]  viewportBoundsRange
 	 */ 
-	 private static native float[] viewportBoundsRange /* length=2 */0(ByteBuffer ptr);/*
+	 private static native float[] viewportBoundsRange0(ByteBuffer ptr);/*
 		  VkPhysicalDeviceLimits _obj = (VkPhysicalDeviceLimits)(ptr);
 		  return (float[]) (_obj.float[]);
 	 */
@@ -4224,37 +4348,37 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pointSizeRange /* length=2 */
-	 * Prototype: float[]  pointSizeRange /* length=2 */
+	 * native Set method for field pointSizeRange
+	 * Prototype: float[]  pointSizeRange
 	 */ 
-	 private static native void pointSizeRange /* length=2 */0(ByteBuffer ptr, float[] _pointSizeRange /* length=2 */);/*
+	 private static native void pointSizeRange0(ByteBuffer ptr, float[] _pointSizeRange);/*
 		  VkPhysicalDeviceLimits _obj = (VkPhysicalDeviceLimits)(*ptr);
-		  _obj.pointSizeRange /* length=2 */ = (float[]) (_pointSizeRange /* length=2 */);
+		  _obj.pointSizeRange = (float[]) (_pointSizeRange);
 	  */
 
 	/**
-	 * get method for field pointSizeRange /* length=2 */
-	 * Prototype: float[]  pointSizeRange /* length=2 */
+	 * get method for field pointSizeRange
+	 * Prototype: float[]  pointSizeRange
 	 */ 
-	 private static native float[] pointSizeRange /* length=2 */0(ByteBuffer ptr);/*
+	 private static native float[] pointSizeRange0(ByteBuffer ptr);/*
 		  VkPhysicalDeviceLimits _obj = (VkPhysicalDeviceLimits)(ptr);
 		  return (float[]) (_obj.float[]);
 	 */
 
 	/**
-	 * native Set method for field lineWidthRange /* length=2 */
-	 * Prototype: float[]  lineWidthRange /* length=2 */
+	 * native Set method for field lineWidthRange
+	 * Prototype: float[]  lineWidthRange
 	 */ 
-	 private static native void lineWidthRange /* length=2 */0(ByteBuffer ptr, float[] _lineWidthRange /* length=2 */);/*
+	 private static native void lineWidthRange0(ByteBuffer ptr, float[] _lineWidthRange);/*
 		  VkPhysicalDeviceLimits _obj = (VkPhysicalDeviceLimits)(*ptr);
-		  _obj.lineWidthRange /* length=2 */ = (float[]) (_lineWidthRange /* length=2 */);
+		  _obj.lineWidthRange = (float[]) (_lineWidthRange);
 	  */
 
 	/**
-	 * get method for field lineWidthRange /* length=2 */
-	 * Prototype: float[]  lineWidthRange /* length=2 */
+	 * get method for field lineWidthRange
+	 * Prototype: float[]  lineWidthRange
 	 */ 
-	 private static native float[] lineWidthRange /* length=2 */0(ByteBuffer ptr);/*
+	 private static native float[] lineWidthRange0(ByteBuffer ptr);/*
 		  VkPhysicalDeviceLimits _obj = (VkPhysicalDeviceLimits)(ptr);
 		  return (float[]) (_obj.float[]);
 	 */

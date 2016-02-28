@@ -1,25 +1,47 @@
-// class wrapping Vulkan's VkLayerProperties struct.
+/**
+ * Class wrapping Vulkan's VkLayerProperties struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkLayerProperties 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkLayerProperties {
+ *     char        layerName[VK_MAX_EXTENSION_NAME_SIZE];
+ *     uint32_t    specVersion;
+ *     uint32_t    implementationVersion;
+ *     char        description[VK_MAX_DESCRIPTION_SIZE];
+ * } VkLayerProperties;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkLayerProperties extends VkStruct {
-	/** ID of this structure [18]  */
-	 public static final int TAG = VKLAYERPROPERTIES_ID;
+	/** TAG of this structure [142]  */
+	 private static final String TAG = "VkLayerProperties";
+
+	/** ID of this structure [142]  */
+	 public static final int TAG_ID = VKLAYERPROPERTIES_ID;
 
 	 // fields //
 	/**
-	 *  char[] 	layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */ 
+	 *  char[] 	layerName 
 	 */ 
-	char[] 	layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */;
+	String 	layerName;
 
 	/**
 	 *  uint32_t 	specVersion 
@@ -32,9 +54,9 @@ public class VkLayerProperties extends VkStruct {
 	int 	implementationVersion;
 
 	/**
-	 *  char[] 	description /* length=VK_MAX_DESCRIPTION_SIZE */ 
+	 *  char[] 	description 
 	 */ 
-	char[] 	description /* length=VK_MAX_DESCRIPTION_SIZE */;
+	String 	description;
 
 	/**
 	 * Ctor
@@ -47,7 +69,7 @@ public class VkLayerProperties extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -56,21 +78,21 @@ public class VkLayerProperties extends VkStruct {
 	 // /////////////////////
 
 	/**
-	 * Set method for field layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */
-	 * Prototype: char[]  layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */
+	 * Set method for field layerName
+	 * Prototype: char[]  layerName
 	 */ 
-	 public void layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */(char[] layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */){
-		 this.layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */ = layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */;
-		layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */0(super.ptr, layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */);
+	 public void layerName(String layerName){
+		 this.layerName = layerName;
+		layerName0(super.ptr, layerName);
 	 }
 
 	/**
-	 * get method for field layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */
-	 * Prototype: char[]  layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */
+	 * get method for field layerName
+	 * Prototype: char[]  layerName
 	 */ 
-	 public char[] layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */(){
-		 // return  this.layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */;
-		 return layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */0(super.ptr);
+	 public String layerName(){
+		 // return  this.layerName;
+		 return layerName0(super.ptr);
 	 }
 
 	/**
@@ -110,21 +132,21 @@ public class VkLayerProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field description /* length=VK_MAX_DESCRIPTION_SIZE */
-	 * Prototype: char[]  description /* length=VK_MAX_DESCRIPTION_SIZE */
+	 * Set method for field description
+	 * Prototype: char[]  description
 	 */ 
-	 public void description /* length=VK_MAX_DESCRIPTION_SIZE */(char[] description /* length=VK_MAX_DESCRIPTION_SIZE */){
-		 this.description /* length=VK_MAX_DESCRIPTION_SIZE */ = description /* length=VK_MAX_DESCRIPTION_SIZE */;
-		description /* length=VK_MAX_DESCRIPTION_SIZE */0(super.ptr, description /* length=VK_MAX_DESCRIPTION_SIZE */);
+	 public void description(String description){
+		 this.description = description;
+		description0(super.ptr, description);
 	 }
 
 	/**
-	 * get method for field description /* length=VK_MAX_DESCRIPTION_SIZE */
-	 * Prototype: char[]  description /* length=VK_MAX_DESCRIPTION_SIZE */
+	 * get method for field description
+	 * Prototype: char[]  description
 	 */ 
-	 public char[] description /* length=VK_MAX_DESCRIPTION_SIZE */(){
-		 // return  this.description /* length=VK_MAX_DESCRIPTION_SIZE */;
-		 return description /* length=VK_MAX_DESCRIPTION_SIZE */0(super.ptr);
+	 public String description(){
+		 // return  this.description;
+		 return description0(super.ptr);
 	 }
 
 
@@ -132,22 +154,21 @@ public class VkLayerProperties extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */
-	 * Prototype: char[]  layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */
+	 * native Set method for field layerName
+	 * Prototype: char[]  layerName
 	 */ 
-	 private static native void layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */0(ByteBuffer ptr, char[] _layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */);/*
+	 private static native void layerName0(ByteBuffer ptr, String _layerName);/*
 		  VkLayerProperties _obj = (VkLayerProperties)(*ptr);
-		  _obj.layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */ = (char[]) (_layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */);
+		  _obj.layerName = (char[]) (_layerName);
 	  */
 
 	/**
-	 * get method for field layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */
-	 * Prototype: char[]  layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */
+	 * get method for field layerName
+	 * Prototype: char[]  layerName
 	 */ 
-	 private static native char[] layerName /* length=VK_MAX_EXTENSION_NAME_SIZE */0(ByteBuffer ptr);/*
+	 private static native String layerName0(ByteBuffer ptr);/*
 		  VkLayerProperties _obj = (VkLayerProperties)(ptr);
-		  return (char[]) (_obj.char[]);
-	 */
+		  return (jstring)(env->NewStringUTF(_obj.char[]);	 */
 
 	/**
 	 * native Set method for field specVersion
@@ -186,22 +207,21 @@ public class VkLayerProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field description /* length=VK_MAX_DESCRIPTION_SIZE */
-	 * Prototype: char[]  description /* length=VK_MAX_DESCRIPTION_SIZE */
+	 * native Set method for field description
+	 * Prototype: char[]  description
 	 */ 
-	 private static native void description /* length=VK_MAX_DESCRIPTION_SIZE */0(ByteBuffer ptr, char[] _description /* length=VK_MAX_DESCRIPTION_SIZE */);/*
+	 private static native void description0(ByteBuffer ptr, String _description);/*
 		  VkLayerProperties _obj = (VkLayerProperties)(*ptr);
-		  _obj.description /* length=VK_MAX_DESCRIPTION_SIZE */ = (char[]) (_description /* length=VK_MAX_DESCRIPTION_SIZE */);
+		  _obj.description = (char[]) (_description);
 	  */
 
 	/**
-	 * get method for field description /* length=VK_MAX_DESCRIPTION_SIZE */
-	 * Prototype: char[]  description /* length=VK_MAX_DESCRIPTION_SIZE */
+	 * get method for field description
+	 * Prototype: char[]  description
 	 */ 
-	 private static native char[] description /* length=VK_MAX_DESCRIPTION_SIZE */0(ByteBuffer ptr);/*
+	 private static native String description0(ByteBuffer ptr);/*
 		  VkLayerProperties _obj = (VkLayerProperties)(ptr);
-		  return (char[]) (_obj.char[]);
-	 */
+		  return (jstring)(env->NewStringUTF(_obj.char[]);	 */
 
 
 

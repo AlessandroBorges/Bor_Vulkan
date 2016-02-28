@@ -1,19 +1,42 @@
-// class wrapping Vulkan's VkDescriptorSetLayoutBinding struct.
+/**
+ * Class wrapping Vulkan's VkDescriptorSetLayoutBinding struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkDescriptorSetLayoutBinding 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkDescriptorSetLayoutBinding {
+ *     uint32_t              binding;
+ *     VkDescriptorType      descriptorType;
+ *     uint32_t              descriptorCount;
+ *     VkShaderStageFlags    stageFlags;
+ *     const VkSampler*      pImmutableSamplers;
+ * } VkDescriptorSetLayoutBinding;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkDescriptorSetLayoutBinding extends VkStruct {
-	/** ID of this structure [71]  */
-	 public static final int TAG = VKDESCRIPTORSETLAYOUTBINDING_ID;
+	/** TAG of this structure [195]  */
+	 private static final String TAG = "VkDescriptorSetLayoutBinding";
+
+	/** ID of this structure [195]  */
+	 public static final int TAG_ID = VKDESCRIPTORSETLAYOUTBINDING_ID;
 
 	 // fields //
 	/**
@@ -39,7 +62,7 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	/**
 	 *  const VkSampler* 	pImmutableSamplers 
 	 */ 
-	const VkSampler* 	pImmutableSamplers;
+	P<VkSampler>  	pImmutableSamplers;
 
 	/**
 	 * Ctor
@@ -52,7 +75,7 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -136,7 +159,7 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	 * Set method for field pImmutableSamplers
 	 * Prototype: const VkSampler*  pImmutableSamplers
 	 */ 
-	 public void pImmutableSamplers(const VkSampler* pImmutableSamplers){
+	 public void pImmutableSamplers(P<VkSampler>  pImmutableSamplers){
 		 this.pImmutableSamplers = pImmutableSamplers;
 		pImmutableSamplers0(super.ptr, pImmutableSamplers);
 	 }
@@ -145,7 +168,7 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	 * get method for field pImmutableSamplers
 	 * Prototype: const VkSampler*  pImmutableSamplers
 	 */ 
-	 public const VkSampler* pImmutableSamplers(){
+	 public P<VkSampler>  pImmutableSamplers(){
 		 // return  this.pImmutableSamplers;
 		 return pImmutableSamplers0(super.ptr);
 	 }
@@ -230,7 +253,7 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	 * native Set method for field pImmutableSamplers
 	 * Prototype: const VkSampler*  pImmutableSamplers
 	 */ 
-	 private static native void pImmutableSamplers0(ByteBuffer ptr, const VkSampler* _pImmutableSamplers);/*
+	 private static native void pImmutableSamplers0(ByteBuffer ptr, P<VkSampler>  _pImmutableSamplers);/*
 		  VkDescriptorSetLayoutBinding _obj = (VkDescriptorSetLayoutBinding)(*ptr);
 		  _obj.pImmutableSamplers = (const VkSampler*) (_pImmutableSamplers);
 	  */
@@ -239,9 +262,9 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	 * get method for field pImmutableSamplers
 	 * Prototype: const VkSampler*  pImmutableSamplers
 	 */ 
-	 private static native const VkSampler* pImmutableSamplers0(ByteBuffer ptr);/*
+	 private static native P<VkSampler>  pImmutableSamplers0(ByteBuffer ptr);/*
 		  VkDescriptorSetLayoutBinding _obj = (VkDescriptorSetLayoutBinding)(ptr);
-		  return (const VkSampler*) (_obj.const VkSampler*);
+		  return (P<VkSampler> ) (_obj.const VkSampler*);
 	 */
 
 

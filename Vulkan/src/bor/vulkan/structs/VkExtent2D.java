@@ -1,19 +1,39 @@
-// class wrapping Vulkan's VkExtent2D struct.
+/**
+ * Class wrapping Vulkan's VkExtent2D struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkExtent2D 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkExtent2D {
+ *     uint32_t    width;
+ *     uint32_t    height;
+ * } VkExtent2D;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkExtent2D extends VkStruct {
-	/** ID of this structure [56]  */
-	 public static final int TAG = VKEXTENT2D_ID;
+	/** TAG of this structure [180]  */
+	 private static final String TAG = "VkExtent2D";
+
+	/** ID of this structure [180]  */
+	 public static final int TAG_ID = VKEXTENT2D_ID;
 
 	 // fields //
 	/**
@@ -37,7 +57,7 @@ public class VkExtent2D extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

@@ -1,19 +1,45 @@
-// class wrapping Vulkan's VkInstanceCreateInfo struct.
+/**
+ * Class wrapping Vulkan's VkInstanceCreateInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkInstanceCreateInfo 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkInstanceCreateInfo {
+ *     VkStructureType             sType;
+ *     const void*                 pNext;
+ *     VkInstanceCreateFlags       flags;
+ *     const VkApplicationInfo*    pApplicationInfo;
+ *     uint32_t                    enabledLayerCount;
+ *     const char* const*          ppEnabledLayerNames;
+ *     uint32_t                    enabledExtensionCount;
+ *     const char* const*          ppEnabledExtensionNames;
+ * } VkInstanceCreateInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkInstanceCreateInfo extends VkStruct {
-	/** ID of this structure [2]  */
-	 public static final int TAG = VKINSTANCECREATEINFO_ID;
+	/** TAG of this structure [126]  */
+	 private static final String TAG = "VkInstanceCreateInfo";
+
+	/** ID of this structure [126]  */
+	 public static final int TAG_ID = VKINSTANCECREATEINFO_ID;
 
 	 // fields //
 	/**
@@ -24,7 +50,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkInstanceCreateFlags 	flags 
@@ -34,7 +60,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	/**
 	 *  const VkApplicationInfo* 	pApplicationInfo 
 	 */ 
-	const VkApplicationInfo* 	pApplicationInfo;
+	P<VkApplicationInfo>  	pApplicationInfo;
 
 	/**
 	 *  uint32_t 	enabledLayerCount 
@@ -67,7 +93,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -97,7 +123,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -106,7 +132,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -133,7 +159,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * Set method for field pApplicationInfo
 	 * Prototype: const VkApplicationInfo*  pApplicationInfo
 	 */ 
-	 public void pApplicationInfo(const VkApplicationInfo* pApplicationInfo){
+	 public void pApplicationInfo(P<VkApplicationInfo>  pApplicationInfo){
 		 this.pApplicationInfo = pApplicationInfo;
 		pApplicationInfo0(super.ptr, pApplicationInfo);
 	 }
@@ -142,7 +168,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * get method for field pApplicationInfo
 	 * Prototype: const VkApplicationInfo*  pApplicationInfo
 	 */ 
-	 public const VkApplicationInfo* pApplicationInfo(){
+	 public P<VkApplicationInfo>  pApplicationInfo(){
 		 // return  this.pApplicationInfo;
 		 return pApplicationInfo0(super.ptr);
 	 }
@@ -245,7 +271,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkInstanceCreateInfo _obj = (VkInstanceCreateInfo)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -254,9 +280,9 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkInstanceCreateInfo _obj = (VkInstanceCreateInfo)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**
@@ -281,7 +307,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * native Set method for field pApplicationInfo
 	 * Prototype: const VkApplicationInfo*  pApplicationInfo
 	 */ 
-	 private static native void pApplicationInfo0(ByteBuffer ptr, const VkApplicationInfo* _pApplicationInfo);/*
+	 private static native void pApplicationInfo0(ByteBuffer ptr, P<VkApplicationInfo>  _pApplicationInfo);/*
 		  VkInstanceCreateInfo _obj = (VkInstanceCreateInfo)(*ptr);
 		  _obj.pApplicationInfo = (const VkApplicationInfo*) (_pApplicationInfo);
 	  */
@@ -290,9 +316,9 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * get method for field pApplicationInfo
 	 * Prototype: const VkApplicationInfo*  pApplicationInfo
 	 */ 
-	 private static native const VkApplicationInfo* pApplicationInfo0(ByteBuffer ptr);/*
+	 private static native P<VkApplicationInfo>  pApplicationInfo0(ByteBuffer ptr);/*
 		  VkInstanceCreateInfo _obj = (VkInstanceCreateInfo)(ptr);
-		  return (const VkApplicationInfo*) (_obj.const VkApplicationInfo*);
+		  return (P<VkApplicationInfo> ) (_obj.const VkApplicationInfo*);
 	 */
 
 	/**

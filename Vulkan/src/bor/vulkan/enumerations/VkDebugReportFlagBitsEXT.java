@@ -1,11 +1,26 @@
+/**
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.enumerations;
 
 import bor.enumerable.*;
 
 /**
  * Class to wrap Vulkan enumeration VkDebugReportFlagBitsEXT
+ *
+ * <h3>Prototype</h3> <pre>
+ * typedef enum VkDebugReportFlagBitsEXT {
+ *     VK_DEBUG_REPORT_INFORMATION_BIT_EXT = 0x00000001,
+ *     VK_DEBUG_REPORT_WARNING_BIT_EXT = 0x00000002,
+ *     VK_DEBUG_REPORT_PERFORMANCE_WARNING_BIT_EXT = 0x00000004,
+ *     VK_DEBUG_REPORT_ERROR_BIT_EXT = 0x00000008,
+ *     VK_DEBUG_REPORT_DEBUG_BIT_EXT = 0x00000010,
+ * } VkDebugReportFlagBitsEXT;
+ * </pre>
  * @author Alessandro Borges
-
  */
 public class VkDebugReportFlagBitsEXT extends IntEnum<VkDebugReportFlagBitsEXT> {
 	public static final VkDebugReportFlagBitsEXT VK_DEBUG_REPORT_INFORMATION_BIT_EXT = new VkDebugReportFlagBitsEXT("VK_DEBUG_REPORT_INFORMATION_BIT_EXT", 0, 0x00000001);

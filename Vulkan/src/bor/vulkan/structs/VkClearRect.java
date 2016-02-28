@@ -1,19 +1,40 @@
-// class wrapping Vulkan's VkClearRect struct.
+/**
+ * Class wrapping Vulkan's VkClearRect struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkClearRect 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkClearRect {
+ *     VkRect2D    rect;
+ *     uint32_t    baseArrayLayer;
+ *     uint32_t    layerCount;
+ * } VkClearRect;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkClearRect extends VkStruct {
-	/** ID of this structure [97]  */
-	 public static final int TAG = VKCLEARRECT_ID;
+	/** TAG of this structure [221]  */
+	 private static final String TAG = "VkClearRect";
+
+	/** ID of this structure [221]  */
+	 public static final int TAG_ID = VKCLEARRECT_ID;
 
 	 // fields //
 	/**
@@ -42,7 +63,7 @@ public class VkClearRect extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

@@ -1,19 +1,44 @@
-// class wrapping Vulkan's VkRenderPassBeginInfo struct.
+/**
+ * Class wrapping Vulkan's VkRenderPassBeginInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkRenderPassBeginInfo 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkRenderPassBeginInfo {
+ *     VkStructureType        sType;
+ *     const void*            pNext;
+ *     VkRenderPass           renderPass;
+ *     VkFramebuffer          framebuffer;
+ *     VkRect2D               renderArea;
+ *     uint32_t               clearValueCount;
+ *     const VkClearValue*    pClearValues;
+ * } VkRenderPassBeginInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkRenderPassBeginInfo extends VkStruct {
-	/** ID of this structure [102]  */
-	 public static final int TAG = VKRENDERPASSBEGININFO_ID;
+	/** TAG of this structure [226]  */
+	 private static final String TAG = "VkRenderPassBeginInfo";
+
+	/** ID of this structure [226]  */
+	 public static final int TAG_ID = VKRENDERPASSBEGININFO_ID;
 
 	 // fields //
 	/**
@@ -24,7 +49,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkRenderPass 	renderPass 
@@ -49,7 +74,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	/**
 	 *  const VkClearValue* 	pClearValues 
 	 */ 
-	const VkClearValue* 	pClearValues;
+	P<VkClearValue>  	pClearValues;
 
 	/**
 	 * Ctor
@@ -62,7 +87,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -92,7 +117,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -101,7 +126,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -182,7 +207,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 * Set method for field pClearValues
 	 * Prototype: const VkClearValue*  pClearValues
 	 */ 
-	 public void pClearValues(const VkClearValue* pClearValues){
+	 public void pClearValues(P<VkClearValue>  pClearValues){
 		 this.pClearValues = pClearValues;
 		pClearValues0(super.ptr, pClearValues);
 	 }
@@ -191,7 +216,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 * get method for field pClearValues
 	 * Prototype: const VkClearValue*  pClearValues
 	 */ 
-	 public const VkClearValue* pClearValues(){
+	 public P<VkClearValue>  pClearValues(){
 		 // return  this.pClearValues;
 		 return pClearValues0(super.ptr);
 	 }
@@ -222,7 +247,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkRenderPassBeginInfo _obj = (VkRenderPassBeginInfo)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -231,9 +256,9 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkRenderPassBeginInfo _obj = (VkRenderPassBeginInfo)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**
@@ -312,7 +337,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 * native Set method for field pClearValues
 	 * Prototype: const VkClearValue*  pClearValues
 	 */ 
-	 private static native void pClearValues0(ByteBuffer ptr, const VkClearValue* _pClearValues);/*
+	 private static native void pClearValues0(ByteBuffer ptr, P<VkClearValue>  _pClearValues);/*
 		  VkRenderPassBeginInfo _obj = (VkRenderPassBeginInfo)(*ptr);
 		  _obj.pClearValues = (const VkClearValue*) (_pClearValues);
 	  */
@@ -321,9 +346,9 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 * get method for field pClearValues
 	 * Prototype: const VkClearValue*  pClearValues
 	 */ 
-	 private static native const VkClearValue* pClearValues0(ByteBuffer ptr);/*
+	 private static native P<VkClearValue>  pClearValues0(ByteBuffer ptr);/*
 		  VkRenderPassBeginInfo _obj = (VkRenderPassBeginInfo)(ptr);
-		  return (const VkClearValue*) (_obj.const VkClearValue*);
+		  return (P<VkClearValue> ) (_obj.const VkClearValue*);
 	 */
 
 

@@ -1,22 +1,40 @@
-// class wrapping Vulkan's VkDisplayModeParametersKHR struct.
+/**
+ * Class wrapping Vulkan's VkDisplayModeParametersKHR struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.khr.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.VkExtent2D;
-import bor.vulkan.structs.VkStruct;
-
+import bor.vulkan.structs.*;
+import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkDisplayModeParametersKHR 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkDisplayModeParametersKHR {
+ *     VkExtent2D    visibleRegion;
+ *     uint32_t      refreshRate;
+ * } VkDisplayModeParametersKHR;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkDisplayModeParametersKHR extends VkStruct {
-	/** ID of this structure [111]  */
-	 public static final int TAG = VKDISPLAYMODEPARAMETERSKHR_ID;
+	/** TAG of this structure [235]  */
+	 private static final String TAG = "VkDisplayModeParametersKHR";
+
+	/** ID of this structure [235]  */
+	 public static final int TAG_ID = VKDISPLAYMODEPARAMETERSKHR_ID;
 
 	 // fields //
 	/**
@@ -40,7 +58,7 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

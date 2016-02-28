@@ -1,19 +1,42 @@
-// class wrapping Vulkan's VkImageCopy struct.
+/**
+ * Class wrapping Vulkan's VkImageCopy struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkImageCopy 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkImageCopy {
+ *     VkImageSubresourceLayers    srcSubresource;
+ *     VkOffset3D                  srcOffset;
+ *     VkImageSubresourceLayers    dstSubresource;
+ *     VkOffset3D                  dstOffset;
+ *     VkExtent3D                  extent;
+ * } VkImageCopy;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkImageCopy extends VkStruct {
-	/** ID of this structure [92]  */
-	 public static final int TAG = VKIMAGECOPY_ID;
+	/** TAG of this structure [216]  */
+	 private static final String TAG = "VkImageCopy";
+
+	/** ID of this structure [216]  */
+	 public static final int TAG_ID = VKIMAGECOPY_ID;
 
 	 // fields //
 	/**
@@ -52,7 +75,7 @@ public class VkImageCopy extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

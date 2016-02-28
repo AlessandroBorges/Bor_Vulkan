@@ -1,19 +1,40 @@
-// class wrapping Vulkan's VkSparseImageFormatProperties struct.
+/**
+ * Class wrapping Vulkan's VkSparseImageFormatProperties struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkSparseImageFormatProperties 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkSparseImageFormatProperties {
+ *     VkImageAspectFlags          aspectMask;
+ *     VkExtent3D                  imageGranularity;
+ *     VkSparseImageFormatFlags    flags;
+ * } VkSparseImageFormatProperties;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkSparseImageFormatProperties extends VkStruct {
-	/** ID of this structure [23]  */
-	 public static final int TAG = VKSPARSEIMAGEFORMATPROPERTIES_ID;
+	/** TAG of this structure [147]  */
+	 private static final String TAG = "VkSparseImageFormatProperties";
+
+	/** ID of this structure [147]  */
+	 public static final int TAG_ID = VKSPARSEIMAGEFORMATPROPERTIES_ID;
 
 	 // fields //
 	/**
@@ -42,7 +63,7 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

@@ -7,13 +7,27 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import com.sun.org.apache.bcel.internal.generic.ReturnaddressType;
 
-public class StructInfo {     
+
+/**
+ * Class to generate source codes for structs, 
+ * including native binding in C/C++.
+ * <h2>Note h2</h2>
+ * Notes
+ * <h3>Note h3</h3>
+ * Notes
+ * @author Alessandro Borges
+ * @version 0.8.01
+ */
+public class StructInfo {  
+   
+    
     public int id;
     public String name;
     public String[] fields;
     public String[] types;
+    
+    public static String LICENSE = Util.LICENSE;
     
     /**
      * cpp Source code
@@ -26,9 +40,11 @@ public class StructInfo {
                                           + "/**\n"
                                            + " *  Class for Java-Vulkan integration \n"
                                            + " *  " + MARK +" \n" 
-                                           + " *  <h2>ProtoType</h2>"
+                                           + " *  <h3>ProtoType:</h3>"
                                            + "#PROTO#"
-                                           + " * @Author Alessandro Borges \n"
+                                           + " * \n"
+                                           + " * @author Alessandro Borges \n"
+                                           + " * @version 0.8.01\n"
                                            + " */\n";
 
     public StructInfo() {        
@@ -45,22 +61,22 @@ public class StructInfo {
      */
     public String prototype(boolean asComments){
         if(cppSource == null || cppSource.length==0) return "";
-        String cmt = asComments ? "\n\t* " : "\n\t";
+        String cmt = asComments ? "\n * " : "\n\t";
         
-        String prototype = asComments ? cmt  : cmt + "<pre>";
+        String prototype = asComments ?  cmt + "<pre>" : cmt;
         for (int i = 0; i < cppSource.length; i++) {
             prototype += cmt + cppSource[i];
         }
-        prototype += asComments ? cmt  : cmt + "</pre>\n";
+        prototype += asComments ? cmt + "</pre>\n" : cmt;
          return prototype;
     }
     
     /**
      * Generate Java Source code
-     * @param packge
+     * @param pkg
      * @return
      */
-    public String toJavaSrc(String packge){
+    public String toJavaSrc(String pkg){
  
         
         String proto = prototype(true);
@@ -69,22 +85,37 @@ public class StructInfo {
         disclaimer = disclaimer.replace(PROTO, proto);
         String output = new String();
        
+        boolean isKHR = name.contains("KHR");
         
-        if(packge==null)
-            packge="bor.vulkan.structs";
-        output += "// class wrapping Vulkan's " + this.name + " struct.\n";
-        output += "package " + packge + ";\n\n";
+        if(pkg==null)
+            pkg="bor.vulkan.structs";
+        
+        output +="/**\n";
+        output += " * Class wrapping Vulkan's " + this.name + " struct.\n";
+        output += " * \n";
+        output += LICENSE;
+        output += " */\n"; 
+        output += "package " + pkg + ";\n\n";
         
         output += "import bor.vulkan.*;\n";
         output += "import bor.vulkan.enumerations.*;\n";
+        output += "import bor.vulkan.structs.*;\n";
+        
+        if(isKHR){
+            output += "import bor.vulkan.khr.*;\n";
+        }
+            
+        
         output += "import java.nio.ByteBuffer;\n\n";
         
         output += disclaimer;
         output += "public class " + this.name + " extends VkStruct {\n";
         
+        output += "\t/** TAG of this structure [" + this.id + "]  */\n";
+        output += "\t private static final String TAG = \"" + name + "\";\n\n";
         
         output += "\t/** ID of this structure [" + this.id + "]  */\n";
-        output += "\t public static final int TAG = " + name.toUpperCase() + "_ID;\n\n";
+        output += "\t public static final int TAG_ID = " + name.toUpperCase() + "_ID;\n\n";
         //output += "\t public static final int " + name.toUpperCase() + "_ID = " + this.id + ";\n\n";        
         
         //////////////////////////////////////////////
@@ -96,7 +127,7 @@ public class StructInfo {
         for(int i=0; i<this.fields.length; i++){
             String field = fields[i];
             String cType = types[i];
-            String jType = getJavaType(cType, field);
+            String jType = getJavaType(cType, field, name);
             // Comment 
            output += tab + "/**\n\t *  " + cType + " \t" + field + " \n\t */ \n";
            if(commentOut)
@@ -116,7 +147,7 @@ public class StructInfo {
         //// SizeOf
         /////////////////////////////////////////////
         output += "\t/** \n\t * Method to get native size of this structure \n\t */\n";
-        output += "\t public static int sizeOf(){ \n\t\t return sizeOf(TAG); \n\t}\n\n"; 
+        output += "\t public static int sizeOf(){ \n\t\t return sizeOf(TAG_ID); \n\t}\n\n"; 
 
         
         
@@ -130,7 +161,7 @@ public class StructInfo {
         for(int i=0; i<this.fields.length; i++){
             String field = fields[i];
             String cType = types[i];
-            String jType = getJavaType(cType, field);
+            String jType = getJavaType(cType, field, name);
             // Comment 
            output += "\t/**\n\t * Set method for field " + field +
                           "\n\t * Prototype: " + cType + "  " + field + 
@@ -173,7 +204,7 @@ public class StructInfo {
         for(int i=0; i<this.fields.length; i++){
             String field = fields[i];
             String cType = types[i];
-            String jType = getJavaType(cType, field);
+            String jType = getJavaType(cType, field, name);
             String jniType = toJNItype(jType, field);
             // Comment 
            output += "\t/**\n\t * native Set method for field " + field +
@@ -221,10 +252,8 @@ public class StructInfo {
      */
     public static String upperCaseField(String field){
         field = field.trim();
-        String firstChar = field.substring(0, 1);
-        
+        String firstChar = field.substring(0, 1);        
         return field.replaceFirst(firstChar, firstChar.toUpperCase());
-        
     }
     
     /* (non-Javadoc)
@@ -309,7 +338,7 @@ public class StructInfo {
                    String len = getArrayLength(fieldName);
                    int pos = fieldName.indexOf('[');                   
                    fieldName = fieldName.substring(0, pos);
-                   fieldName += " /* length="+len + " */"; 
+                   //fieldName += " /* length="+len + " */"; 
                    type =type.trim() +"[]";
                }
                fieldNames.add(fieldName.trim());
@@ -341,6 +370,11 @@ public class StructInfo {
         return field.contains("]");         
     }
     
+    /**
+     * 
+     * @param field
+     * @return
+     */
     public static String getArrayLength(String field){
         int pos = field.indexOf('[');
         int end = field.indexOf(']');
@@ -351,20 +385,25 @@ public class StructInfo {
     }
     
     /**
-     * Get 
-     * @param jType
-     * @return
+     * Get JNI type from a java Type.
+     * All 8 primitives plus String
+     * 
+     * @param jType - java type as key
+     * @param fieldName - name of the field, to help debug
+     * 
+     * @return JNI type compatible with Java Type
      */
     public static String toJNItype(String jType, String fieldName){        
         switch (jType) {
-            case "int": return "jint";
-            case "long": return "jlong";
             case "boolean": return "jboolean";
-            case "float": return "jfloat";
-            case "double": return "jdouble";
             case "byte" : return "jbyte";
-            case "char" : return "jchar";  
-            case "String" : return "jstring"; 
+            case "char" : return "jchar";
+            case "short": return "jshort";
+            case "int": return "jint";
+            case "long": return "jlong";           
+            case "float": return "jfloat";
+            case "double": return "jdouble";  
+            case "String" : return "jstring";            
          }
         if(!jType.contains("Vk")){
             System.out.println("# Failed to get JNI type for : " + jType + " , field:" + fieldName);
@@ -372,15 +411,104 @@ public class StructInfo {
         return jType;
     }
     
-    public static String getJavaType(String cType, String field){
+    
+    /**
+     * How to deal with void type
+     * @param cVoidType
+     * @param fieldName
+     * @return
+     */
+    public static String getJavaType2Void(String cVoidType, String fieldName){
+        if(null==cVoidType || !cVoidType.contains("void") || null==fieldName)
+            return null;
+        
+         boolean isConst = cVoidType.contains("const");
+         boolean isPP = cVoidType.contains("**");
+         boolean isP = cVoidType.contains("*");
+         
+         cVoidType = cVoidType.replace("const", "").trim();
+         
+         
+         // simple case pNext
+         if(isConst && !isPP && isP && fieldName.contains("pNext")){
+             return "P<VkObject>";
+         }         
+                  
+         // pUserData -> User data must be a buffer to support Int/Float/Double etc
+         if(isConst && isP && !isPP && fieldName.contains("pUserData")){
+             return "java.nio.Buffer";
+         }
+         
+         // pValues -> User data must be a buffer to support Int/Float/Double etc
+         if(isConst && isP && !isPP && fieldName.contains("pValues")){
+             return "java.nio.Buffer";
+         }
+         
+         // ppData -> Maps memory address to other memory Address
+         // that could be a read only Buffer, a ByteBuffer, or even a VkObject
+         if(isPP){
+             return "ByteBuffer";
+         }
+         
+         // void* is a Buffer
+         if(isP){
+             return "java.nio.Buffer";
+         }
+         
+         // plain void
+         if(!isP) return "void";
+         
+        
+        return  null;
+    }
+    
+    /**
+     * <pre>
+     * get a matching type for a Vulkan cType.<br>
+     * Note:
+     *  It converts all VkFlags sub types into Java's int
+     * </pre> 
+     * @param cType
+     * @param field
+     * @return
+     */
+    public static String getJavaType(String cType, String field, String source){
         cType = cType.trim();                
         field = field.trim();
         
+        
+        boolean isVoid = cType.contains("void");
+        
+        // short circuit evaluation of void types
+        if(isVoid){
+            String value = getJavaType2Void(cType, field);
+            if(value!=null){
+                return value;
+            }
+        }
+        
+        boolean isFlag = cType.endsWith("Flags") || cType.endsWith("FlagsEXT") || cType.endsWith("FlagsKHR");
         boolean isPointer = cType.contains("*") ;
-        boolean isConst = cType.contains("const");
+        
+        boolean isConst = cType.startsWith("const");
         boolean isArray = cType.contains("[") || field.contains("[");
         boolean isVk = cType.contains("Vk");
-        
+       
+       
+        /*
+        if(isFlag){
+            if(isPointer || isConst || isArray){
+                throw new IllegalArgumentException("Weird FLAG! Check it out !");
+            }
+            if(!isVk){
+                throw new IllegalArgumentException("Weird FLAG! Not a Vk type !!");
+            }
+            // ok
+            
+            System.err.println("getJavaType: " + cType + " -> int");
+            return "int";
+        }
+        */
         String base = cType.trim()
                 .replace("*","")
                 .replace("const","")               
@@ -389,15 +517,30 @@ public class StructInfo {
         
         Map<String, String> map = getC2JavaTypes();
         String value = map.get(cType);
+      
         if(value != null){
             if(isConst){
                 value = value.replace("const", "final");
             }
             if(isPointer && isVk){
-                String ptr = "P<"+base+">";
-                value =value.replace(base, ptr).trim(); 
+                boolean isSpecialEnum = Util.contains(Util.SPECIAL_ENUMS, base);
+                if(isSpecialEnum){
+                    // fix
+//                    if(!value.contains("Penum")){
+//                        String ptr = "Penum<"+base+">";
+//                        value =value.replace(base, ptr).trim();
+//                    }
+                    
+                }else{
+                    String ptr = "P<"+base+">";
+                    value =value.replace(base, ptr).trim();
+                }
             }
             return value;
+        }else{
+            System.err.println("Failed to get JavaType for \t\""+ cType+ 
+                    "\"\t in field:\t\"" + field +
+                    "\"\t at class:\""+ source+"\"");
         }
         
         // complex types
@@ -413,7 +556,7 @@ public class StructInfo {
         if(cType.equals("const void*") && field.equals("pNext")){
             value = "P<VkObject>";
         }else if(isVk && isPointer && isConst){
-            value = "final P<"+base+"> ";
+            value = "P<"+base+"> ";
             }else if(isVk && isPointer){
                 value = "P<"+base+">";
                 }else{
@@ -423,12 +566,13 @@ public class StructInfo {
         
         
         if(value==null){
-          //  System.out.println("JTtype not found for cType : " + cType);
+           System.err.println("JTtype not found for cType : " + cType + ", field: " + field);
         }
         return value==null? cType : value;
     }
     
     /**
+     * @TODO move to 
      * Maps CType to Java types
      * @return
      */
@@ -439,17 +583,41 @@ public class StructInfo {
             c2JavaTypes.put("uint32_t", "int");
             c2JavaTypes.put("int64_t", "long");
             c2JavaTypes.put("uint64_t", "long");
+            c2JavaTypes.put("uint32_t*", "int[]");// uint32_t*
+            c2JavaTypes.put("uint32_t[]", "int[]");//uint32_t[]
+            c2JavaTypes.put("uint8_t[]","byte[]");//uint8_t[]
+            c2JavaTypes.put("const uint32_t*", "int[]");//const uint32_t*
+            c2JavaTypes.put("const float*", "float[]");//const float*
+            c2JavaTypes.put("char[]", "String");
             c2JavaTypes.put("const char*", "String");
-            c2JavaTypes.put("void*", "ByteBuffer");
-            c2JavaTypes.put("const void* ", "");
+            
+            /*
+            special cases - must be done at higher level 
+            c2JavaTypes.put("const void*",  "ByteBuffer");
+            c2JavaTypes.put("void*",  "ByteBuffer");
+            c2JavaTypes.put("void *", "ByteBuffer");            
+            c2JavaTypes.put("const void* ", "ByteBuffer");
+            */
             c2JavaTypes.put("size_t", "long");
-            c2JavaTypes.put("VkBool32", "boolean");
-            c2JavaTypes.put("VkFlags", "int");
-            c2JavaTypes.put("VkSampleMask", "int");
-            c2JavaTypes.put("VkDeviceSize", "long");
+            c2JavaTypes.put("const char* const*", "String[]");
+            
             c2JavaTypes.put("float", "float");
             c2JavaTypes.put("double", "double");
+            
+            
+            c2JavaTypes.put("VkBool32", "boolean");
+            
+            c2JavaTypes.put("VkFlags", "int");            
+            c2JavaTypes.put("VkSampleMask", "int");
+            c2JavaTypes.put("VkDeviceSize", "long");
+            
+            c2JavaTypes.put("const VkDynamicState*", "Penum<VkDynamicState>");
+            c2JavaTypes.put("const VkSampleMask*",    "PInteger");
+            c2JavaTypes.put("const VkPipelineStageFlags*", "PInteger");
+            
+           
             // VkFlags
+            
             c2JavaTypes.put("VkInstanceCreateFlags","int"); 
             c2JavaTypes.put("VkFormatFeatureFlags","int"); 
             c2JavaTypes.put("VkImageUsageFlags","int"); 
@@ -521,6 +689,7 @@ public class StructInfo {
             c2JavaTypes.put("VkAndroidSurfaceCreateFlagsKHR","int"); 
             c2JavaTypes.put("VkWin32SurfaceCreateFlagsKHR","int"); 
             c2JavaTypes.put("VkDebugReportFlagsEXT","int");
+            
             ////////////////////////
             
             //c2JavaTypes.put("const VkSampleMask*", "long[]");

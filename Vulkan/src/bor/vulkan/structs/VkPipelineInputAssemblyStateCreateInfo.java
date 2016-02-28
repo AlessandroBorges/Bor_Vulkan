@@ -1,19 +1,42 @@
-// class wrapping Vulkan's VkPipelineInputAssemblyStateCreateInfo struct.
+/**
+ * Class wrapping Vulkan's VkPipelineInputAssemblyStateCreateInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPipelineInputAssemblyStateCreateInfo 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkPipelineInputAssemblyStateCreateInfo {
+ *     VkStructureType                            sType;
+ *     const void*                                pNext;
+ *     VkPipelineInputAssemblyStateCreateFlags    flags;
+ *     VkPrimitiveTopology                        topology;
+ *     VkBool32                                   primitiveRestartEnable;
+ * } VkPipelineInputAssemblyStateCreateInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
-	/** ID of this structure [52]  */
-	 public static final int TAG = VKPIPELINEINPUTASSEMBLYSTATECREATEINFO_ID;
+	/** TAG of this structure [176]  */
+	 private static final String TAG = "VkPipelineInputAssemblyStateCreateInfo";
+
+	/** ID of this structure [176]  */
+	 public static final int TAG_ID = VKPIPELINEINPUTASSEMBLYSTATECREATEINFO_ID;
 
 	 // fields //
 	/**
@@ -24,7 +47,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineInputAssemblyStateCreateFlags 	flags 
@@ -52,7 +75,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -82,7 +105,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -91,7 +114,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -176,7 +199,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkPipelineInputAssemblyStateCreateInfo _obj = (VkPipelineInputAssemblyStateCreateInfo)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -185,9 +208,9 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkPipelineInputAssemblyStateCreateInfo _obj = (VkPipelineInputAssemblyStateCreateInfo)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**

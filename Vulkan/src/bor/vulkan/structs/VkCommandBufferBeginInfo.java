@@ -1,19 +1,41 @@
-// class wrapping Vulkan's VkCommandBufferBeginInfo struct.
+/**
+ * Class wrapping Vulkan's VkCommandBufferBeginInfo struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkCommandBufferBeginInfo 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkCommandBufferBeginInfo {
+ *     VkStructureType                          sType;
+ *     const void*                              pNext;
+ *     VkCommandBufferUsageFlags                flags;
+ *     const VkCommandBufferInheritanceInfo*    pInheritanceInfo;
+ * } VkCommandBufferBeginInfo;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkCommandBufferBeginInfo extends VkStruct {
-	/** ID of this structure [89]  */
-	 public static final int TAG = VKCOMMANDBUFFERBEGININFO_ID;
+	/** TAG of this structure [213]  */
+	 private static final String TAG = "VkCommandBufferBeginInfo";
+
+	/** ID of this structure [213]  */
+	 public static final int TAG_ID = VKCOMMANDBUFFERBEGININFO_ID;
 
 	 // fields //
 	/**
@@ -24,7 +46,7 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkCommandBufferUsageFlags 	flags 
@@ -34,7 +56,7 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	/**
 	 *  const VkCommandBufferInheritanceInfo* 	pInheritanceInfo 
 	 */ 
-	const VkCommandBufferInheritanceInfo* 	pInheritanceInfo;
+	P<VkCommandBufferInheritanceInfo>  	pInheritanceInfo;
 
 	/**
 	 * Ctor
@@ -47,7 +69,7 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -77,7 +99,7 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -86,7 +108,7 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -113,7 +135,7 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	 * Set method for field pInheritanceInfo
 	 * Prototype: const VkCommandBufferInheritanceInfo*  pInheritanceInfo
 	 */ 
-	 public void pInheritanceInfo(const VkCommandBufferInheritanceInfo* pInheritanceInfo){
+	 public void pInheritanceInfo(P<VkCommandBufferInheritanceInfo>  pInheritanceInfo){
 		 this.pInheritanceInfo = pInheritanceInfo;
 		pInheritanceInfo0(super.ptr, pInheritanceInfo);
 	 }
@@ -122,7 +144,7 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	 * get method for field pInheritanceInfo
 	 * Prototype: const VkCommandBufferInheritanceInfo*  pInheritanceInfo
 	 */ 
-	 public const VkCommandBufferInheritanceInfo* pInheritanceInfo(){
+	 public P<VkCommandBufferInheritanceInfo>  pInheritanceInfo(){
 		 // return  this.pInheritanceInfo;
 		 return pInheritanceInfo0(super.ptr);
 	 }
@@ -153,7 +175,7 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkCommandBufferBeginInfo _obj = (VkCommandBufferBeginInfo)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -162,9 +184,9 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkCommandBufferBeginInfo _obj = (VkCommandBufferBeginInfo)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**
@@ -189,7 +211,7 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	 * native Set method for field pInheritanceInfo
 	 * Prototype: const VkCommandBufferInheritanceInfo*  pInheritanceInfo
 	 */ 
-	 private static native void pInheritanceInfo0(ByteBuffer ptr, const VkCommandBufferInheritanceInfo* _pInheritanceInfo);/*
+	 private static native void pInheritanceInfo0(ByteBuffer ptr, P<VkCommandBufferInheritanceInfo>  _pInheritanceInfo);/*
 		  VkCommandBufferBeginInfo _obj = (VkCommandBufferBeginInfo)(*ptr);
 		  _obj.pInheritanceInfo = (const VkCommandBufferInheritanceInfo*) (_pInheritanceInfo);
 	  */
@@ -198,9 +220,9 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	 * get method for field pInheritanceInfo
 	 * Prototype: const VkCommandBufferInheritanceInfo*  pInheritanceInfo
 	 */ 
-	 private static native const VkCommandBufferInheritanceInfo* pInheritanceInfo0(ByteBuffer ptr);/*
+	 private static native P<VkCommandBufferInheritanceInfo>  pInheritanceInfo0(ByteBuffer ptr);/*
 		  VkCommandBufferBeginInfo _obj = (VkCommandBufferBeginInfo)(ptr);
-		  return (const VkCommandBufferInheritanceInfo*) (_obj.const VkCommandBufferInheritanceInfo*);
+		  return (P<VkCommandBufferInheritanceInfo> ) (_obj.const VkCommandBufferInheritanceInfo*);
 	 */
 
 

@@ -1,18 +1,18 @@
 /**
- * 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges.
+ * @see https://opensource.org/licenses/MIT
  */
 package bor.vulkan.generator;
+
+import static bor.vulkan.generator.Util.*;
 
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
-import java.nio.charset.Charset;
-import java.nio.file.*;
-import java.util.*;
-
-import com.sun.xml.internal.bind.v2.runtime.RuntimeUtil.ToStringAdapter;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Load vk.h and extract all enumerations
@@ -21,17 +21,8 @@ import com.sun.xml.internal.bind.v2.runtime.RuntimeUtil.ToStringAdapter;
  */
 public class ExtractEnums {
    static String vkh;
-   
-   /**
-    * Read vulkan header as a List of string lines.
-    * @return 
-    * @throws IOException
-    */
-   public static List<String> readVKH() throws IOException{
-       Path path = FileSystems.getDefault().getPath("vk.h", "");
-       List<String> lines = Files.readAllLines(path, Charset.defaultCharset());
-       return lines;
-   }
+   public static String[] VKObject_ENUMS = {"VkDynamicState", "VkSampleMask","VkPipelineStageFlags"};
+   public static String DISCLAIMER = " * ";
    
    /**
     * 
@@ -41,7 +32,7 @@ public class ExtractEnums {
    public static String toString(List<String> allLines){      
        int size = 0;
        for(String s : allLines){
-           size += s.length() + 1; // extra room for /n
+           size += s.length() + 2; // extra room for /n
        }
         size += 64; // just in case
        
@@ -80,45 +71,6 @@ public class ExtractEnums {
    }
    
    
-  
-   
-   /**
-    * Finds next line with a give expressions
-    * @param lines - lines to query
-    * @param exp - expression to search
-    * @param curLine - current line
-    * @return line number where exp was found
-    * 
-    */
-   public static int findNextLine(List<String> lines, String exp, int curLine){
-       int pos = curLine;
-       String line = lines.get(pos);
-       while(pos < lines.size() && !line.contains(exp)) {           
-           line = lines.get(pos);
-           if(line.contains(exp))
-               return pos;
-           pos++;
-       }
-       //EOF or maybe last line with exp
-       if(line.contains(exp))
-           return pos;
-       else
-           return -1;
-   }
-   
-   public static int findNextLineStartingWith(List<String> lines, String exp, int curLine){
-       int pos = curLine;
-       String line= null;
-       while(pos < lines.size()) {           
-           line = lines.get(pos);
-           if(line.startsWith(exp)){
-               return pos;
-           }
-           pos++;
-       }
-       //EOF
-       return -1;
-   }
    
     /**
      * @param args
@@ -128,16 +80,11 @@ public class ExtractEnums {
         List<String> vkh = readVKH();
         // String vk = toString(vkh);
         boolean printEnum = true;
-        boolean processStructs = false;
-       
+             
         if(printEnum){
             processEnumerations(vkh);
-        }
-      
-        if(processStructs){
-         //   processStructs(vkh);
-        }
-
+        }     
+       
     }
     
     public static void processEnumerations(List<String> vkh){        
@@ -148,6 +95,7 @@ public class ExtractEnums {
             while ((nextEnum = extractNextEnum(vkh, positions[1], positions)) != null) {
                 System.out.println("// Enumeration #" + (++count));
                 EnumInfo info =  parseToEnumInfo(nextEnum, count);
+                info.source = nextEnum;
                 info.pkg = pkg;
                 String enumSource = generateEnumSource(info);
                // String foundEnum = toString(nextEnum);
@@ -200,7 +148,21 @@ public class ExtractEnums {
      * @return java source code.
      */
     public static String generateEnumSource(EnumInfo info){
-        return generateEnumSource(info.pkg, info.name, info.names, info.values);
+        return toJavaSource(info.pkg, info.name, info.names, info.values, info.source);
+    }
+    
+    /**
+     * 
+     * @param src
+     * @return
+     */
+    public static String genDocLines(List<String> src){        
+        String prefix = "\n * ";
+        String out = "";
+        for (String line : src) {
+            out += prefix + line;
+        }
+        return out;
     }
     
     /**
@@ -210,10 +172,11 @@ public class ExtractEnums {
      * @param enumName - name of class
      * @param names - array of item names
      * @param values - array of item values. It can be numbers or other item values
+     * @param src - c/c++ source code
      *  
      * @return source code for enumerations class
      */
-    public static String generateEnumSource(String pkg, String enumName, String[] names, String[] values){
+    public static String toJavaSource(String pkg, String enumName, String[] names, String[] values, List<String> src){
         // basic
         if(names==null || values==null || names.length != values.length){
             throw new IllegalArgumentException("names or values are null or with wrong size");
@@ -238,15 +201,23 @@ public class ExtractEnums {
         
         String superclassName = isLong ? "LongEnum" : "IntEnum";
         String type = isLong ? "long" : "int";
+        String prototype = src ==null? " * no prototype" : genDocLines(src);
         StringBuffer sb = new StringBuffer(1024*3);
         // header
+        // The License
+        sb.append("/**\n").append(LICENSE).append(" */\n");
+        // the class header
         sb.append("package ").append(pkg).append(";\n\n");
         sb.append("import bor.enumerable.*;\n\n")
          .append("/**\n * Class to wrap Vulkan enumeration ").append(enumName)
-         .append("\n * @author Alessandro Borges\n")
+         .append("\n *")
+         .append("\n * <h3>Prototype</h3> <pre>")
+         .append(prototype) // ends with \n
+         .append("\n * </pre>") 
+         .append("\n * @author Alessandro Borges")
          .append("\n */\n")        
          .append("public class ").append(enumName)
-          .append(" extends ").append(superclassName).append('<').append(enumName).append("> {\n");
+         .append(" extends ").append(superclassName).append('<').append(enumName).append("> {\n");
         
         // enumTypes
         String itemPre = "\tpublic static final " + enumName + " ";        
@@ -262,14 +233,15 @@ public class ExtractEnums {
             // value
             sb.append(fixExpressions(names[i], values[i], names)).append(");\n");            
         }
-        
+        // The constructor
         sb.append("\n\n");
         sb.append("\t/** private ctor */\n");
         sb.append("\tprivate ").append(enumName).append("(String name, int ordinal, ")
           .append(type).append(" v) {\n")
           .append("\t\t super(name, ordinal, v);\n")
           .append("\t}\n\n")
-          .append(" } // end of class ").append(enumName);
+          .append(" } // end of class ").append(enumName)
+          .append("\n");
        return sb.toString();
     }
     
@@ -302,74 +274,6 @@ public class ExtractEnums {
         return exp;
     }
     
-    /**
-     * Check is a value is parseable as int
-     * @param value
-     * @return
-     */
-    public static boolean parseAsInt(String value){
-        try {        
-            value = value.trim().replace(";", "").replace(",","");
-            Integer v = Integer.decode(value);
-            return true;
-        } catch (Exception e) {
-           return false;
-        }       
-    }
-    
-    /**
-     * Check is a value is parseable as long
-     * @param value string to test;
-     * @return
-     */
-    public static boolean parseAsLong(String value){
-        try {        
-            value = value.trim().replace(";", "").replace(",","");
-            Long v = Long.decode(value);
-            return true;
-        } catch (Exception e) {
-           return false;
-        }       
-    }
-    
-    /**
-     * Check if a given string base contains at least a substring from valuesToTest
-     * 
-     * @param base string which may or may not contain a substring
-     * @param valuesToTest array of substrings to test
-     * 
-     * @return true if at least one valuesToTest is substring of base
-     */
-    public static boolean contains(String base, String[] valuesToTest){
-        for (int i = 0; i < valuesToTest.length; i++) {
-            String test = valuesToTest[i].trim();
-            if(base.contains(test))
-                return true;
-        }
-        
-        return false;
-    }
-
-    
-    
-    public static void save(String folder, String name, String text){
-        BufferedWriter output = null;
-        try {
-            File file = new File(folder + "//" +name);
-            output = new BufferedWriter(new FileWriter(file));
-            output.write(text);
-        } catch ( IOException e ) {
-            e.printStackTrace();
-        } finally {
-            if ( output != null ) {
-                try {            
-                output.close();
-            } catch (IOException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
-            }
-        }
-    }
+   
 }
 

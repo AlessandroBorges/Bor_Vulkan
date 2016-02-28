@@ -1,19 +1,40 @@
-// class wrapping Vulkan's VkMemoryRequirements struct.
+/**
+ * Class wrapping Vulkan's VkMemoryRequirements struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkMemoryRequirements 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkMemoryRequirements {
+ *     VkDeviceSize    size;
+ *     VkDeviceSize    alignment;
+ *     uint32_t        memoryTypeBits;
+ * } VkMemoryRequirements;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkMemoryRequirements extends VkStruct {
-	/** ID of this structure [22]  */
-	 public static final int TAG = VKMEMORYREQUIREMENTS_ID;
+	/** TAG of this structure [146]  */
+	 private static final String TAG = "VkMemoryRequirements";
+
+	/** ID of this structure [146]  */
+	 public static final int TAG_ID = VKMEMORYREQUIREMENTS_ID;
 
 	 // fields //
 	/**
@@ -42,7 +63,7 @@ public class VkMemoryRequirements extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

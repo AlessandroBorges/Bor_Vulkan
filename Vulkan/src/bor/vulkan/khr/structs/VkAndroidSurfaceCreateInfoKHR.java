@@ -1,22 +1,42 @@
-// class wrapping Vulkan's VkAndroidSurfaceCreateInfoKHR struct.
+/**
+ * Class wrapping Vulkan's VkAndroidSurfaceCreateInfoKHR struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.khr.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
-import bor.vulkan.khr.ANativeWindow;
-import bor.vulkan.structs.VkStruct;
-
+import bor.vulkan.structs.*;
+import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkAndroidSurfaceCreateInfoKHR 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkAndroidSurfaceCreateInfoKHR {
+ *     VkStructureType                   sType;
+ *     const void*                       pNext;
+ *     VkAndroidSurfaceCreateFlagsKHR    flags;
+ *     ANativeWindow*                    window;
+ * } VkAndroidSurfaceCreateInfoKHR;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
-	/** ID of this structure [122]  */
-	 public static final int TAG = VKANDROIDSURFACECREATEINFOKHR_ID;
+	/** TAG of this structure [246]  */
+	 private static final String TAG = "VkAndroidSurfaceCreateInfoKHR";
+
+	/** ID of this structure [246]  */
+	 public static final int TAG_ID = VKANDROIDSURFACECREATEINFOKHR_ID;
 
 	 // fields //
 	/**
@@ -27,7 +47,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkAndroidSurfaceCreateFlagsKHR 	flags 
@@ -37,7 +57,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	/**
 	 *  ANativeWindow* 	window 
 	 */ 
-	ANativeWindow 	window;
+	ANativeWindow* 	window;
 
 	/**
 	 * Ctor
@@ -50,7 +70,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -80,7 +100,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -89,7 +109,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -116,7 +136,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 * Set method for field window
 	 * Prototype: ANativeWindow*  window
 	 */ 
-	 public void window(ANativeWindow window){
+	 public void window(ANativeWindow* window){
 		 this.window = window;
 		window0(super.ptr, window);
 	 }
@@ -125,7 +145,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field window
 	 * Prototype: ANativeWindow*  window
 	 */ 
-	 public ANativeWindow window(){
+	 public ANativeWindow* window(){
 		 // return  this.window;
 		 return window0(super.ptr);
 	 }
@@ -156,7 +176,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkAndroidSurfaceCreateInfoKHR _obj = (VkAndroidSurfaceCreateInfoKHR)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -165,9 +185,9 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkAndroidSurfaceCreateInfoKHR _obj = (VkAndroidSurfaceCreateInfoKHR)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**
@@ -192,7 +212,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 * native Set method for field window
 	 * Prototype: ANativeWindow*  window
 	 */ 
-	 private static native void window0(ByteBuffer ptr, ANativeWindow _window);/*
+	 private static native void window0(ByteBuffer ptr, ANativeWindow* _window);/*
 		  VkAndroidSurfaceCreateInfoKHR _obj = (VkAndroidSurfaceCreateInfoKHR)(*ptr);
 		  _obj.window = (ANativeWindow*) (_window);
 	  */
@@ -201,7 +221,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field window
 	 * Prototype: ANativeWindow*  window
 	 */ 
-	 private static native ANativeWindow window0(ByteBuffer ptr);/*
+	 private static native ANativeWindow* window0(ByteBuffer ptr);/*
 		  VkAndroidSurfaceCreateInfoKHR _obj = (VkAndroidSurfaceCreateInfoKHR)(ptr);
 		  return (ANativeWindow*) (_obj.ANativeWindow*);
 	 */

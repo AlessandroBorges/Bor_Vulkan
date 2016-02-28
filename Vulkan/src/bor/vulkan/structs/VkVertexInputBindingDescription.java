@@ -1,19 +1,40 @@
-// class wrapping Vulkan's VkVertexInputBindingDescription struct.
+/**
+ * Class wrapping Vulkan's VkVertexInputBindingDescription struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkVertexInputBindingDescription 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkVertexInputBindingDescription {
+ *     uint32_t             binding;
+ *     uint32_t             stride;
+ *     VkVertexInputRate    inputRate;
+ * } VkVertexInputBindingDescription;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkVertexInputBindingDescription extends VkStruct {
-	/** ID of this structure [49]  */
-	 public static final int TAG = VKVERTEXINPUTBINDINGDESCRIPTION_ID;
+	/** TAG of this structure [173]  */
+	 private static final String TAG = "VkVertexInputBindingDescription";
+
+	/** ID of this structure [173]  */
+	 public static final int TAG_ID = VKVERTEXINPUTBINDINGDESCRIPTION_ID;
 
 	 // fields //
 	/**
@@ -42,7 +63,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

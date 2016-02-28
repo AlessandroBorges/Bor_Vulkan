@@ -5,6 +5,8 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
+import bor.util.Pinterface;
+
 /**
  * Container to a pass Vulkan objects by reference to methods. <br>
  * It intends to work like a C/C++ pointer to something, with ability to pass .<br>
@@ -33,7 +35,7 @@ import java.util.List;
  * @author Alessandro Borges
  *
  */
-public class P<E extends VkObject> implements Iterable<E>{
+public class P<E extends VkObject> implements Iterable<E>, Pinterface<E>{
 
     /**
      * Contained Object place holder
@@ -54,17 +56,10 @@ public class P<E extends VkObject> implements Iterable<E>{
        arr[0] = vkObj;
     }
       
-    /**
-     * Set the unique or first VkObject instance to be contained.<br>
-     * To retrieve this object use {@link #get()}.
-     * If this container has multiple object, use {@link #append(VkObject)} 
-     * and {@link #get(int)} to add and recover stored objects.  
-     * 
-     * @see #get()
-     * @see #append(VkObject)
-     * 
-     * @param vkObj - unique/first object to set.
+    /* (non-Javadoc)
+     * @see bor.vulkan.Pinterface#set(E)
      */
+    @Override
     public void set(E vkObj){
         check();
         synchronized (arr) {
@@ -73,12 +68,30 @@ public class P<E extends VkObject> implements Iterable<E>{
     }
     
     /**
-     * Appends another object of same type in this container.
+     * Used for native Input/Output .<br>
      * 
-     * @param vkObj - object to add in the end of this.
-     * 
-     * @return this object.
+     * <pre>
+     *  // by using P<>, vkCommand is a [in][out] parameter 
+     *  public void invoke(P<VkStruct> vkCommand, ...){
+     *      //get content
+     *      VkObject[] vk = vkCommand.getContent();
+     *   
+     *      // do the native call
+     *      nativeInvoke(vk,...);
+     *      
+     *      // at return, vk[] is updated, so P<VkStruct> vkCommand.  
+     *  }     
+     * @return the contained values.
      */
+    @Override
+    public VkObject[] getContent(){
+      return this.arr;    
+    }
+    
+    /* (non-Javadoc)
+     * @see bor.vulkan.Pinterface#append(E)
+     */
+    @Override
     public P<E> append(E vkObj){
        check();
        // do not allow simultaneous change in arr
@@ -99,15 +112,10 @@ public class P<E extends VkObject> implements Iterable<E>{
        return this;
     }
    
-    /**
-     * Get the unique/first element contained in this pointer.<br>
-     * If it has more than a single object contained, use {@link #get(int)}
-     * 
-     * @see #get(int)
-     * @see #length()
-     * @see #append()
-     * @return first/unique object contained in this.
+    /* (non-Javadoc)
+     * @see bor.vulkan.Pinterface#get()
      */
+    @Override
     @SuppressWarnings("unchecked")
     public E get(){
         check();
@@ -116,15 +124,10 @@ public class P<E extends VkObject> implements Iterable<E>{
         }
     }
     
-    /**
-     * get the n-th element contained in this pointer.
-     * 
-     * @see #length()
-     * 
-     * @param index - zero based index
-     * 
-     * @return n-th contained elementelement 
+    /* (non-Javadoc)
+     * @see bor.vulkan.Pinterface#get(int)
      */
+    @Override
     @SuppressWarnings("unchecked")
     public E get(int index){
         check();
@@ -144,11 +147,10 @@ public class P<E extends VkObject> implements Iterable<E>{
         }
     }
     
-    /**
-     * Number of elements contained in this pointer.
-     * 
-     * @return number counting of VkObjects contained in this pointer.
+    /* (non-Javadoc)
+     * @see bor.vulkan.Pinterface#length()
      */
+    @Override
     public int length(){
         return arr==null ? 0 : arr.length;
     }
@@ -167,15 +169,14 @@ public class P<E extends VkObject> implements Iterable<E>{
     * @return
     */
     @SuppressWarnings("unchecked")
-    protected <E> E[] asArray(){   // packahe private      
+    protected <E> E[] asArray(){   // package private      
         return (E[])this.arr;
     }
     
-    /**
-     * Copy contained elements to array dst.
-     * @param dst - array to copy to.
-     * @return shallow copy of contained objects
+    /* (non-Javadoc)
+     * @see bor.vulkan.Pinterface#toArray(T[])
      */
+    @Override
     @SuppressWarnings("unchecked")
     public <T> T[] toArray(T[] dst) {
         check();
@@ -191,11 +192,10 @@ public class P<E extends VkObject> implements Iterable<E>{
         return dst;
     }
     
-    /**
-     * Iterator.
-     * This iterator is synchronized.
-     * @return Iterator for contained objects
+    /* (non-Javadoc)
+     * @see bor.vulkan.Pinterface#iterator()
      */
+    @Override
     @SuppressWarnings("unchecked")
     public Iterator<E> iterator(){
         check();
@@ -208,11 +208,11 @@ public class P<E extends VkObject> implements Iterable<E>{
         return list.iterator();
     }
    
-    /**
-     * Free this pointer, and make it ready to GC.
-     * You plan to reuse it, please call {@link #recycle()}
+    /* (non-Javadoc)
+     * @see bor.vulkan.Pinterface#release()
      */
-    public final void free(){
+    @Override
+    public final void release(){
         synchronized (arr) {
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = null;
@@ -221,14 +221,12 @@ public class P<E extends VkObject> implements Iterable<E>{
         }        
     }
     
-    /**
-     * Recycle this pointer for reuse. 
-     * Currently object(s) pointed by this container will be freed for GC. 
-     * 
-     * @see #free()
+    /* (non-Javadoc)
+     * @see bor.vulkan.Pinterface#recycle()
      */
+    @Override
     public final void recycle(){
-        free();
+        release();
         this.arr = new VkObject[1];
     }
     

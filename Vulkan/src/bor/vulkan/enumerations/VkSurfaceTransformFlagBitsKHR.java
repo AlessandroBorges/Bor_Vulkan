@@ -1,11 +1,30 @@
+/**
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.enumerations;
 
 import bor.enumerable.*;
 
 /**
  * Class to wrap Vulkan enumeration VkSurfaceTransformFlagBitsKHR
+ *
+ * <h3>Prototype</h3> <pre>
+ * typedef enum VkSurfaceTransformFlagBitsKHR {
+ *     VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR = 0x00000001,
+ *     VK_SURFACE_TRANSFORM_ROTATE_90_BIT_KHR = 0x00000002,
+ *     VK_SURFACE_TRANSFORM_ROTATE_180_BIT_KHR = 0x00000004,
+ *     VK_SURFACE_TRANSFORM_ROTATE_270_BIT_KHR = 0x00000008,
+ *     VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_BIT_KHR = 0x00000010,
+ *     VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_90_BIT_KHR = 0x00000020,
+ *     VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_180_BIT_KHR = 0x00000040,
+ *     VK_SURFACE_TRANSFORM_HORIZONTAL_MIRROR_ROTATE_270_BIT_KHR = 0x00000080,
+ *     VK_SURFACE_TRANSFORM_INHERIT_BIT_KHR = 0x00000100,
+ * } VkSurfaceTransformFlagBitsKHR;
+ * </pre>
  * @author Alessandro Borges
-
  */
 public class VkSurfaceTransformFlagBitsKHR extends IntEnum<VkSurfaceTransformFlagBitsKHR> {
 	public static final VkSurfaceTransformFlagBitsKHR VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR = new VkSurfaceTransformFlagBitsKHR("VK_SURFACE_TRANSFORM_IDENTITY_BIT_KHR", 0, 0x00000001);

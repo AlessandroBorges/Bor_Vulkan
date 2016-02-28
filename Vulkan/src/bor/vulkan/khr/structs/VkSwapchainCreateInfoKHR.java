@@ -1,22 +1,56 @@
-// class wrapping Vulkan's VkSwapchainCreateInfoKHR struct.
+/**
+ * Class wrapping Vulkan's VkSwapchainCreateInfoKHR struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.khr.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.VkExtent2D;
-import bor.vulkan.structs.VkStruct;
-
+import bor.vulkan.structs.*;
+import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkSwapchainCreateInfoKHR 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkSwapchainCreateInfoKHR {
+ *     VkStructureType                  sType;
+ *     const void*                      pNext;
+ *     VkSwapchainCreateFlagsKHR        flags;
+ *     VkSurfaceKHR                     surface;
+ *     uint32_t                         minImageCount;
+ *     VkFormat                         imageFormat;
+ *     VkColorSpaceKHR                  imageColorSpace;
+ *     VkExtent2D                       imageExtent;
+ *     uint32_t                         imageArrayLayers;
+ *     VkImageUsageFlags                imageUsage;
+ *     VkSharingMode                    imageSharingMode;
+ *     uint32_t                         queueFamilyIndexCount;
+ *     const uint32_t*                  pQueueFamilyIndices;
+ *     VkSurfaceTransformFlagBitsKHR    preTransform;
+ *     VkCompositeAlphaFlagBitsKHR      compositeAlpha;
+ *     VkPresentModeKHR                 presentMode;
+ *     VkBool32                         clipped;
+ *     VkSwapchainKHR                   oldSwapchain;
+ * } VkSwapchainCreateInfoKHR;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkSwapchainCreateInfoKHR extends VkStruct {
-	/** ID of this structure [108]  */
-	 public static final int TAG = VKSWAPCHAINCREATEINFOKHR_ID;
+	/** TAG of this structure [232]  */
+	 private static final String TAG = "VkSwapchainCreateInfoKHR";
+
+	/** ID of this structure [232]  */
+	 public static final int TAG_ID = VKSWAPCHAINCREATEINFOKHR_ID;
 
 	 // fields //
 	/**
@@ -27,7 +61,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkSwapchainCreateFlagsKHR 	flags 
@@ -82,7 +116,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	/**
 	 *  const uint32_t* 	pQueueFamilyIndices 
 	 */ 
-	const uint32_t* 	pQueueFamilyIndices;
+	int[] 	pQueueFamilyIndices;
 
 	/**
 	 *  VkSurfaceTransformFlagBitsKHR 	preTransform 
@@ -120,7 +154,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -150,7 +184,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -159,7 +193,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -348,7 +382,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Set method for field pQueueFamilyIndices
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
-	 public void pQueueFamilyIndices(const uint32_t* pQueueFamilyIndices){
+	 public void pQueueFamilyIndices(int[] pQueueFamilyIndices){
 		 this.pQueueFamilyIndices = pQueueFamilyIndices;
 		pQueueFamilyIndices0(super.ptr, pQueueFamilyIndices);
 	 }
@@ -357,7 +391,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * get method for field pQueueFamilyIndices
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
-	 public const uint32_t* pQueueFamilyIndices(){
+	 public int[] pQueueFamilyIndices(){
 		 // return  this.pQueueFamilyIndices;
 		 return pQueueFamilyIndices0(super.ptr);
 	 }
@@ -478,7 +512,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkSwapchainCreateInfoKHR _obj = (VkSwapchainCreateInfoKHR)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -487,9 +521,9 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkSwapchainCreateInfoKHR _obj = (VkSwapchainCreateInfoKHR)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**
@@ -676,7 +710,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * native Set method for field pQueueFamilyIndices
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
-	 private static native void pQueueFamilyIndices0(ByteBuffer ptr, const uint32_t* _pQueueFamilyIndices);/*
+	 private static native void pQueueFamilyIndices0(ByteBuffer ptr, int[] _pQueueFamilyIndices);/*
 		  VkSwapchainCreateInfoKHR _obj = (VkSwapchainCreateInfoKHR)(*ptr);
 		  _obj.pQueueFamilyIndices = (const uint32_t*) (_pQueueFamilyIndices);
 	  */
@@ -685,9 +719,9 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * get method for field pQueueFamilyIndices
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
-	 private static native const uint32_t* pQueueFamilyIndices0(ByteBuffer ptr);/*
+	 private static native int[] pQueueFamilyIndices0(ByteBuffer ptr);/*
 		  VkSwapchainCreateInfoKHR _obj = (VkSwapchainCreateInfoKHR)(ptr);
-		  return (const uint32_t*) (_obj.const uint32_t*);
+		  return (int[]) (_obj.const uint32_t*);
 	 */
 
 	/**

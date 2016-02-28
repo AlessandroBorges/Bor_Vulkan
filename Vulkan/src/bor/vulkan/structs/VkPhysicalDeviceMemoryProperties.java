@@ -1,19 +1,41 @@
-// class wrapping Vulkan's VkPhysicalDeviceMemoryProperties struct.
+/**
+ * Class wrapping Vulkan's VkPhysicalDeviceMemoryProperties struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPhysicalDeviceMemoryProperties 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkPhysicalDeviceMemoryProperties {
+ *     uint32_t        memoryTypeCount;
+ *     VkMemoryType    memoryTypes[VK_MAX_MEMORY_TYPES];
+ *     uint32_t        memoryHeapCount;
+ *     VkMemoryHeap    memoryHeaps[VK_MAX_MEMORY_HEAPS];
+ * } VkPhysicalDeviceMemoryProperties;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkPhysicalDeviceMemoryProperties extends VkStruct {
-	/** ID of this structure [14]  */
-	 public static final int TAG = VKPHYSICALDEVICEMEMORYPROPERTIES_ID;
+	/** TAG of this structure [138]  */
+	 private static final String TAG = "VkPhysicalDeviceMemoryProperties";
+
+	/** ID of this structure [138]  */
+	 public static final int TAG_ID = VKPHYSICALDEVICEMEMORYPROPERTIES_ID;
 
 	 // fields //
 	/**
@@ -22,9 +44,9 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	int 	memoryTypeCount;
 
 	/**
-	 *  VkMemoryType[] 	memoryTypes /* length=VK_MAX_MEMORY_TYPES */ 
+	 *  VkMemoryType[] 	memoryTypes 
 	 */ 
-	VkMemoryType[] 	memoryTypes /* length=VK_MAX_MEMORY_TYPES */;
+	VkMemoryType[] 	memoryTypes;
 
 	/**
 	 *  uint32_t 	memoryHeapCount 
@@ -32,9 +54,9 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	int 	memoryHeapCount;
 
 	/**
-	 *  VkMemoryHeap[] 	memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */ 
+	 *  VkMemoryHeap[] 	memoryHeaps 
 	 */ 
-	VkMemoryHeap[] 	memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */;
+	VkMemoryHeap[] 	memoryHeaps;
 
 	/**
 	 * Ctor
@@ -47,7 +69,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -74,21 +96,21 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field memoryTypes /* length=VK_MAX_MEMORY_TYPES */
-	 * Prototype: VkMemoryType[]  memoryTypes /* length=VK_MAX_MEMORY_TYPES */
+	 * Set method for field memoryTypes
+	 * Prototype: VkMemoryType[]  memoryTypes
 	 */ 
-	 public void memoryTypes /* length=VK_MAX_MEMORY_TYPES */(VkMemoryType[] memoryTypes /* length=VK_MAX_MEMORY_TYPES */){
-		 this.memoryTypes /* length=VK_MAX_MEMORY_TYPES */ = memoryTypes /* length=VK_MAX_MEMORY_TYPES */;
-		memoryTypes /* length=VK_MAX_MEMORY_TYPES */0(super.ptr, memoryTypes /* length=VK_MAX_MEMORY_TYPES */);
+	 public void memoryTypes(VkMemoryType[] memoryTypes){
+		 this.memoryTypes = memoryTypes;
+		memoryTypes0(super.ptr, memoryTypes);
 	 }
 
 	/**
-	 * get method for field memoryTypes /* length=VK_MAX_MEMORY_TYPES */
-	 * Prototype: VkMemoryType[]  memoryTypes /* length=VK_MAX_MEMORY_TYPES */
+	 * get method for field memoryTypes
+	 * Prototype: VkMemoryType[]  memoryTypes
 	 */ 
-	 public VkMemoryType[] memoryTypes /* length=VK_MAX_MEMORY_TYPES */(){
-		 // return  this.memoryTypes /* length=VK_MAX_MEMORY_TYPES */;
-		 return memoryTypes /* length=VK_MAX_MEMORY_TYPES */0(super.ptr);
+	 public VkMemoryType[] memoryTypes(){
+		 // return  this.memoryTypes;
+		 return memoryTypes0(super.ptr);
 	 }
 
 	/**
@@ -110,21 +132,21 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */
-	 * Prototype: VkMemoryHeap[]  memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */
+	 * Set method for field memoryHeaps
+	 * Prototype: VkMemoryHeap[]  memoryHeaps
 	 */ 
-	 public void memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */(VkMemoryHeap[] memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */){
-		 this.memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */ = memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */;
-		memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */0(super.ptr, memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */);
+	 public void memoryHeaps(VkMemoryHeap[] memoryHeaps){
+		 this.memoryHeaps = memoryHeaps;
+		memoryHeaps0(super.ptr, memoryHeaps);
 	 }
 
 	/**
-	 * get method for field memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */
-	 * Prototype: VkMemoryHeap[]  memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */
+	 * get method for field memoryHeaps
+	 * Prototype: VkMemoryHeap[]  memoryHeaps
 	 */ 
-	 public VkMemoryHeap[] memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */(){
-		 // return  this.memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */;
-		 return memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */0(super.ptr);
+	 public VkMemoryHeap[] memoryHeaps(){
+		 // return  this.memoryHeaps;
+		 return memoryHeaps0(super.ptr);
 	 }
 
 
@@ -150,19 +172,19 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field memoryTypes /* length=VK_MAX_MEMORY_TYPES */
-	 * Prototype: VkMemoryType[]  memoryTypes /* length=VK_MAX_MEMORY_TYPES */
+	 * native Set method for field memoryTypes
+	 * Prototype: VkMemoryType[]  memoryTypes
 	 */ 
-	 private static native void memoryTypes /* length=VK_MAX_MEMORY_TYPES */0(ByteBuffer ptr, VkMemoryType[] _memoryTypes /* length=VK_MAX_MEMORY_TYPES */);/*
+	 private static native void memoryTypes0(ByteBuffer ptr, VkMemoryType[] _memoryTypes);/*
 		  VkPhysicalDeviceMemoryProperties _obj = (VkPhysicalDeviceMemoryProperties)(*ptr);
-		  _obj.memoryTypes /* length=VK_MAX_MEMORY_TYPES */ = (VkMemoryType[]) (_memoryTypes /* length=VK_MAX_MEMORY_TYPES */);
+		  _obj.memoryTypes = (VkMemoryType[]) (_memoryTypes);
 	  */
 
 	/**
-	 * get method for field memoryTypes /* length=VK_MAX_MEMORY_TYPES */
-	 * Prototype: VkMemoryType[]  memoryTypes /* length=VK_MAX_MEMORY_TYPES */
+	 * get method for field memoryTypes
+	 * Prototype: VkMemoryType[]  memoryTypes
 	 */ 
-	 private static native VkMemoryType[] memoryTypes /* length=VK_MAX_MEMORY_TYPES */0(ByteBuffer ptr);/*
+	 private static native VkMemoryType[] memoryTypes0(ByteBuffer ptr);/*
 		  VkPhysicalDeviceMemoryProperties _obj = (VkPhysicalDeviceMemoryProperties)(ptr);
 		  return (VkMemoryType[]) (_obj.VkMemoryType[]);
 	 */
@@ -186,19 +208,19 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */
-	 * Prototype: VkMemoryHeap[]  memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */
+	 * native Set method for field memoryHeaps
+	 * Prototype: VkMemoryHeap[]  memoryHeaps
 	 */ 
-	 private static native void memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */0(ByteBuffer ptr, VkMemoryHeap[] _memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */);/*
+	 private static native void memoryHeaps0(ByteBuffer ptr, VkMemoryHeap[] _memoryHeaps);/*
 		  VkPhysicalDeviceMemoryProperties _obj = (VkPhysicalDeviceMemoryProperties)(*ptr);
-		  _obj.memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */ = (VkMemoryHeap[]) (_memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */);
+		  _obj.memoryHeaps = (VkMemoryHeap[]) (_memoryHeaps);
 	  */
 
 	/**
-	 * get method for field memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */
-	 * Prototype: VkMemoryHeap[]  memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */
+	 * get method for field memoryHeaps
+	 * Prototype: VkMemoryHeap[]  memoryHeaps
 	 */ 
-	 private static native VkMemoryHeap[] memoryHeaps /* length=VK_MAX_MEMORY_HEAPS */0(ByteBuffer ptr);/*
+	 private static native VkMemoryHeap[] memoryHeaps0(ByteBuffer ptr);/*
 		  VkPhysicalDeviceMemoryProperties _obj = (VkPhysicalDeviceMemoryProperties)(ptr);
 		  return (VkMemoryHeap[]) (_obj.VkMemoryHeap[]);
 	 */

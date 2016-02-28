@@ -1,19 +1,41 @@
-// class wrapping Vulkan's VkImageSubresourceLayers struct.
+/**
+ * Class wrapping Vulkan's VkImageSubresourceLayers struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkImageSubresourceLayers 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkImageSubresourceLayers {
+ *     VkImageAspectFlags    aspectMask;
+ *     uint32_t              mipLevel;
+ *     uint32_t              baseArrayLayer;
+ *     uint32_t              layerCount;
+ * } VkImageSubresourceLayers;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkImageSubresourceLayers extends VkStruct {
-	/** ID of this structure [91]  */
-	 public static final int TAG = VKIMAGESUBRESOURCELAYERS_ID;
+	/** TAG of this structure [215]  */
+	 private static final String TAG = "VkImageSubresourceLayers";
+
+	/** ID of this structure [215]  */
+	 public static final int TAG_ID = VKIMAGESUBRESOURCELAYERS_ID;
 
 	 // fields //
 	/**
@@ -47,7 +69,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

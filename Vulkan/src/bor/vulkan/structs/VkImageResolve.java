@@ -1,19 +1,42 @@
-// class wrapping Vulkan's VkImageResolve struct.
+/**
+ * Class wrapping Vulkan's VkImageResolve struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkImageResolve 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkImageResolve {
+ *     VkImageSubresourceLayers    srcSubresource;
+ *     VkOffset3D                  srcOffset;
+ *     VkImageSubresourceLayers    dstSubresource;
+ *     VkOffset3D                  dstOffset;
+ *     VkExtent3D                  extent;
+ * } VkImageResolve;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkImageResolve extends VkStruct {
-	/** ID of this structure [98]  */
-	 public static final int TAG = VKIMAGERESOLVE_ID;
+	/** TAG of this structure [222]  */
+	 private static final String TAG = "VkImageResolve";
+
+	/** ID of this structure [222]  */
+	 public static final int TAG_ID = VKIMAGERESOLVE_ID;
 
 	 // fields //
 	/**
@@ -52,7 +75,7 @@ public class VkImageResolve extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

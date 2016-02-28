@@ -1,21 +1,43 @@
-// class wrapping Vulkan's VkXlibSurfaceCreateInfoKHR struct.
+/**
+ * Class wrapping Vulkan's VkXlibSurfaceCreateInfoKHR struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.khr.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.VkStruct;
-
+import bor.vulkan.structs.*;
+import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkXlibSurfaceCreateInfoKHR 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkXlibSurfaceCreateInfoKHR {
+ *     VkStructureType                sType;
+ *     const void*                    pNext;
+ *     VkXlibSurfaceCreateFlagsKHR    flags;
+ *     Display*                       dpy;
+ *     Window                         window;
+ * } VkXlibSurfaceCreateInfoKHR;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
-	/** ID of this structure [118]  */
-	 public static final int TAG = VKXLIBSURFACECREATEINFOKHR_ID;
+	/** TAG of this structure [242]  */
+	 private static final String TAG = "VkXlibSurfaceCreateInfoKHR";
+
+	/** ID of this structure [242]  */
+	 public static final int TAG_ID = VKXLIBSURFACECREATEINFOKHR_ID;
 
 	 // fields //
 	/**
@@ -26,7 +48,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkXlibSurfaceCreateFlagsKHR 	flags 
@@ -54,7 +76,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -84,7 +106,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -93,7 +115,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -178,7 +200,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkXlibSurfaceCreateInfoKHR _obj = (VkXlibSurfaceCreateInfoKHR)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -187,9 +209,9 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkXlibSurfaceCreateInfoKHR _obj = (VkXlibSurfaceCreateInfoKHR)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**

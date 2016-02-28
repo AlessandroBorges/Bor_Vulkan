@@ -1,11 +1,34 @@
+/**
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.enumerations;
 
 import bor.enumerable.*;
 
 /**
  * Class to wrap Vulkan enumeration VkFormatFeatureFlagBits
+ *
+ * <h3>Prototype</h3> <pre>
+ * typedef enum VkFormatFeatureFlagBits {
+ *     VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT = 0x00000001,
+ *     VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT = 0x00000002,
+ *     VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT = 0x00000004,
+ *     VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT = 0x00000008,
+ *     VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT = 0x00000010,
+ *     VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT = 0x00000020,
+ *     VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT = 0x00000040,
+ *     VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT = 0x00000080,
+ *     VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT = 0x00000100,
+ *     VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT = 0x00000200,
+ *     VK_FORMAT_FEATURE_BLIT_SRC_BIT = 0x00000400,
+ *     VK_FORMAT_FEATURE_BLIT_DST_BIT = 0x00000800,
+ *     VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT = 0x00001000,
+ * } VkFormatFeatureFlagBits;
+ * </pre>
  * @author Alessandro Borges
-
  */
 public class VkFormatFeatureFlagBits extends IntEnum<VkFormatFeatureFlagBits> {
 	public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT", 0, 0x00000001);

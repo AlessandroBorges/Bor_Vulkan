@@ -1,11 +1,25 @@
+/**
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.enumerations;
 
 import bor.enumerable.*;
 
 /**
  * Class to wrap Vulkan enumeration VkCullModeFlagBits
+ *
+ * <h3>Prototype</h3> <pre>
+ * typedef enum VkCullModeFlagBits {
+ *     VK_CULL_MODE_NONE = 0,
+ *     VK_CULL_MODE_FRONT_BIT = 0x00000001,
+ *     VK_CULL_MODE_BACK_BIT = 0x00000002,
+ *     VK_CULL_MODE_FRONT_AND_BACK = 0x3,
+ * } VkCullModeFlagBits;
+ * </pre>
  * @author Alessandro Borges
-
  */
 public class VkCullModeFlagBits extends IntEnum<VkCullModeFlagBits> {
 	public static final VkCullModeFlagBits VK_CULL_MODE_NONE = new VkCullModeFlagBits("VK_CULL_MODE_NONE", 0, 0);

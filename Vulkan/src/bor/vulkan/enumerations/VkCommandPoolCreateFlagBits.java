@@ -1,11 +1,23 @@
+/**
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.enumerations;
 
 import bor.enumerable.*;
 
 /**
  * Class to wrap Vulkan enumeration VkCommandPoolCreateFlagBits
+ *
+ * <h3>Prototype</h3> <pre>
+ * typedef enum VkCommandPoolCreateFlagBits {
+ *     VK_COMMAND_POOL_CREATE_TRANSIENT_BIT = 0x00000001,
+ *     VK_COMMAND_POOL_CREATE_RESET_COMMAND_BUFFER_BIT = 0x00000002,
+ * } VkCommandPoolCreateFlagBits;
+ * </pre>
  * @author Alessandro Borges
-
  */
 public class VkCommandPoolCreateFlagBits extends IntEnum<VkCommandPoolCreateFlagBits> {
 	public static final VkCommandPoolCreateFlagBits VK_COMMAND_POOL_CREATE_TRANSIENT_BIT = new VkCommandPoolCreateFlagBits("VK_COMMAND_POOL_CREATE_TRANSIENT_BIT", 0, 0x00000001);

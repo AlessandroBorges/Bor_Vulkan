@@ -1,19 +1,40 @@
-// class wrapping Vulkan's VkExtent3D struct.
+/**
+ * Class wrapping Vulkan's VkExtent3D struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkExtent3D 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkExtent3D {
+ *     uint32_t    width;
+ *     uint32_t    height;
+ *     uint32_t    depth;
+ * } VkExtent3D;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkExtent3D extends VkStruct {
-	/** ID of this structure [6]  */
-	 public static final int TAG = VKEXTENT3D_ID;
+	/** TAG of this structure [130]  */
+	 private static final String TAG = "VkExtent3D";
+
+	/** ID of this structure [130]  */
+	 public static final int TAG_ID = VKEXTENT3D_ID;
 
 	 // fields //
 	/**
@@ -42,7 +63,7 @@ public class VkExtent3D extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 

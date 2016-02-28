@@ -1,22 +1,48 @@
-// class wrapping Vulkan's VkDisplaySurfaceCreateInfoKHR struct.
+/**
+ * Class wrapping Vulkan's VkDisplaySurfaceCreateInfoKHR struct.
+ * 
+ * Licence terms: 
+ * The MIT License (MIT)
+ * Copyright (c) 2016 Alessandro Borges
+ * See https://opensource.org/licenses/MIT 
+ */
 package bor.vulkan.khr.structs;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.VkExtent2D;
-import bor.vulkan.structs.VkStruct;
-
+import bor.vulkan.structs.*;
+import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
 
 
 /**
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkDisplaySurfaceCreateInfoKHR 
- * @Author Alessandro Borges 
+ *  <h3>ProtoType:</h3>
+ * <pre>
+ * typedef struct VkDisplaySurfaceCreateInfoKHR {
+ *     VkStructureType                   sType;
+ *     const void*                       pNext;
+ *     VkDisplaySurfaceCreateFlagsKHR    flags;
+ *     VkDisplayModeKHR                  displayMode;
+ *     uint32_t                          planeIndex;
+ *     uint32_t                          planeStackIndex;
+ *     VkSurfaceTransformFlagBitsKHR     transform;
+ *     float                             globalAlpha;
+ *     VkDisplayPlaneAlphaFlagBitsKHR    alphaMode;
+ *     VkExtent2D                        imageExtent;
+ * } VkDisplaySurfaceCreateInfoKHR;
+ * </pre>
+ * 
+ * @author Alessandro Borges 
+ * @version 0.8.01
  */
 public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
-	/** ID of this structure [116]  */
-	 public static final int TAG = VKDISPLAYSURFACECREATEINFOKHR_ID;
+	/** TAG of this structure [240]  */
+	 private static final String TAG = "VkDisplaySurfaceCreateInfoKHR";
+
+	/** ID of this structure [240]  */
+	 public static final int TAG_ID = VKDISPLAYSURFACECREATEINFOKHR_ID;
 
 	 // fields //
 	/**
@@ -27,7 +53,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	/**
 	 *  const void* 	pNext 
 	 */ 
-	VkObject 	pNext;
+	P<VkObject> 	pNext;
 
 	/**
 	 *  VkDisplaySurfaceCreateFlagsKHR 	flags 
@@ -80,7 +106,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG); 
+		 return sizeOf(TAG_ID); 
 	}
 
 
@@ -110,7 +136,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public void pNext(P<VkObject> pNext){
 		 this.pNext = pNext;
 		pNext0(super.ptr, pNext);
 	 }
@@ -119,7 +145,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 public VkObject pNext(){
+	 public P<VkObject> pNext(){
 		 // return  this.pNext;
 		 return pNext0(super.ptr);
 	 }
@@ -294,7 +320,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * native Set method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, VkObject _pNext);/*
+	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
 		  VkDisplaySurfaceCreateInfoKHR _obj = (VkDisplaySurfaceCreateInfoKHR)(*ptr);
 		  _obj.pNext = (const void*) (_pNext);
 	  */
@@ -303,9 +329,9 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field pNext
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native VkObject pNext0(ByteBuffer ptr);/*
+	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
 		  VkDisplaySurfaceCreateInfoKHR _obj = (VkDisplaySurfaceCreateInfoKHR)(ptr);
-		  return (VkObject) (_obj.const void*);
+		  return (P<VkObject>) (_obj.const void*);
 	 */
 
 	/**
