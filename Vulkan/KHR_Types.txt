@@ -1,0 +1,19 @@
+VkDynamicState
+VkSampleMask
+VkPipelineStageFlags
+
+
+ANativeWindow*
+MirConnection*
+MirSurface* 
+
+P<VkResult> -> Pinteger
+
+struct wl_display* -> WlDisplay
+struct wl_surface* -> WlSurface
+
+HINSTANCE
+HWND
+
+xcb_connection_t* -> XCBconnection
+xcb_window_t -> XCBwindow

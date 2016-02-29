@@ -591,6 +591,25 @@ public class StructInfo {
             c2JavaTypes.put("char[]", "String");
             c2JavaTypes.put("const char*", "String");
             
+            
+            // some KHR Handlers & results
+            c2JavaTypes.put("VkResult*", "PInteger");
+            
+            c2JavaTypes.put("MirConnection*", "MirConnection");
+            c2JavaTypes.put("MirSurface*", "MirSurface");
+            
+            c2JavaTypes.put("struct wl_display*", "WlDisplay");
+            c2JavaTypes.put("struct wl_surface*", "WlSurface");
+            c2JavaTypes.put("HINSTANCE", "HINSTANCE");
+            c2JavaTypes.put("HWND", "HWND");
+            c2JavaTypes.put("xcb_connection_t*", "XCBconnection");
+            c2JavaTypes.put("xcb_window_t", "XCBwindow");
+            
+            
+            c2JavaTypes.put("", "");
+            
+            
+            
             /*
             special cases - must be done at higher level 
             c2JavaTypes.put("const void*",  "ByteBuffer");
@@ -614,6 +633,8 @@ public class StructInfo {
             c2JavaTypes.put("const VkDynamicState*", "Penum<VkDynamicState>");
             c2JavaTypes.put("const VkSampleMask*",    "PInteger");
             c2JavaTypes.put("const VkPipelineStageFlags*", "PInteger");
+            
+           
             
            
             // VkFlags
