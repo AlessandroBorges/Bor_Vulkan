@@ -48,63 +48,51 @@ public class VkBindSparseInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  uint32_t 	waitSemaphoreCount 
-	 */ 
+	 *  uint32_t 	waitSemaphoreCount		 */ 
 	int 	waitSemaphoreCount;
 
 	/**
-	 *  const VkSemaphore* 	pWaitSemaphores 
-	 */ 
+	 *  const VkSemaphore* 	pWaitSemaphores		 */ 
 	P<VkSemaphore>  	pWaitSemaphores;
 
 	/**
-	 *  uint32_t 	bufferBindCount 
-	 */ 
+	 *  uint32_t 	bufferBindCount		 */ 
 	int 	bufferBindCount;
 
 	/**
-	 *  const VkSparseBufferMemoryBindInfo* 	pBufferBinds 
-	 */ 
+	 *  const VkSparseBufferMemoryBindInfo* 	pBufferBinds		 */ 
 	P<VkSparseBufferMemoryBindInfo>  	pBufferBinds;
 
 	/**
-	 *  uint32_t 	imageOpaqueBindCount 
-	 */ 
+	 *  uint32_t 	imageOpaqueBindCount		 */ 
 	int 	imageOpaqueBindCount;
 
 	/**
-	 *  const VkSparseImageOpaqueMemoryBindInfo* 	pImageOpaqueBinds 
-	 */ 
+	 *  const VkSparseImageOpaqueMemoryBindInfo* 	pImageOpaqueBinds		 */ 
 	P<VkSparseImageOpaqueMemoryBindInfo>  	pImageOpaqueBinds;
 
 	/**
-	 *  uint32_t 	imageBindCount 
-	 */ 
+	 *  uint32_t 	imageBindCount		 */ 
 	int 	imageBindCount;
 
 	/**
-	 *  const VkSparseImageMemoryBindInfo* 	pImageBinds 
-	 */ 
+	 *  const VkSparseImageMemoryBindInfo* 	pImageBinds		 */ 
 	P<VkSparseImageMemoryBindInfo>  	pImageBinds;
 
 	/**
-	 *  uint32_t 	signalSemaphoreCount 
-	 */ 
+	 *  uint32_t 	signalSemaphoreCount		 */ 
 	int 	signalSemaphoreCount;
 
 	/**
-	 *  const VkSemaphore* 	pSignalSemaphores 
-	 */ 
+	 *  const VkSemaphore* 	pSignalSemaphores		 */ 
 	P<VkSemaphore>  	pSignalSemaphores;
 
 	/**
@@ -122,12 +110,12 @@ public class VkBindSparseInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -136,7 +124,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -145,7 +133,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -154,7 +142,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -163,7 +151,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field waitSemaphoreCount
+	 * Set method for field waitSemaphoreCount	
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
 	 public void waitSemaphoreCount(int waitSemaphoreCount){
@@ -172,7 +160,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field waitSemaphoreCount
+	 * get method for field waitSemaphoreCount	
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
 	 public int waitSemaphoreCount(){
@@ -181,7 +169,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pWaitSemaphores
+	 * Set method for field pWaitSemaphores	
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
 	 public void pWaitSemaphores(P<VkSemaphore>  pWaitSemaphores){
@@ -190,7 +178,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pWaitSemaphores
+	 * get method for field pWaitSemaphores	
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
 	 public P<VkSemaphore>  pWaitSemaphores(){
@@ -199,7 +187,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field bufferBindCount
+	 * Set method for field bufferBindCount	
 	 * Prototype: uint32_t  bufferBindCount
 	 */ 
 	 public void bufferBindCount(int bufferBindCount){
@@ -208,7 +196,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field bufferBindCount
+	 * get method for field bufferBindCount	
 	 * Prototype: uint32_t  bufferBindCount
 	 */ 
 	 public int bufferBindCount(){
@@ -217,7 +205,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pBufferBinds
+	 * Set method for field pBufferBinds	
 	 * Prototype: const VkSparseBufferMemoryBindInfo*  pBufferBinds
 	 */ 
 	 public void pBufferBinds(P<VkSparseBufferMemoryBindInfo>  pBufferBinds){
@@ -226,7 +214,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pBufferBinds
+	 * get method for field pBufferBinds	
 	 * Prototype: const VkSparseBufferMemoryBindInfo*  pBufferBinds
 	 */ 
 	 public P<VkSparseBufferMemoryBindInfo>  pBufferBinds(){
@@ -235,7 +223,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field imageOpaqueBindCount
+	 * Set method for field imageOpaqueBindCount	
 	 * Prototype: uint32_t  imageOpaqueBindCount
 	 */ 
 	 public void imageOpaqueBindCount(int imageOpaqueBindCount){
@@ -244,7 +232,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field imageOpaqueBindCount
+	 * get method for field imageOpaqueBindCount	
 	 * Prototype: uint32_t  imageOpaqueBindCount
 	 */ 
 	 public int imageOpaqueBindCount(){
@@ -253,7 +241,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pImageOpaqueBinds
+	 * Set method for field pImageOpaqueBinds	
 	 * Prototype: const VkSparseImageOpaqueMemoryBindInfo*  pImageOpaqueBinds
 	 */ 
 	 public void pImageOpaqueBinds(P<VkSparseImageOpaqueMemoryBindInfo>  pImageOpaqueBinds){
@@ -262,7 +250,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pImageOpaqueBinds
+	 * get method for field pImageOpaqueBinds	
 	 * Prototype: const VkSparseImageOpaqueMemoryBindInfo*  pImageOpaqueBinds
 	 */ 
 	 public P<VkSparseImageOpaqueMemoryBindInfo>  pImageOpaqueBinds(){
@@ -271,7 +259,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field imageBindCount
+	 * Set method for field imageBindCount	
 	 * Prototype: uint32_t  imageBindCount
 	 */ 
 	 public void imageBindCount(int imageBindCount){
@@ -280,7 +268,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field imageBindCount
+	 * get method for field imageBindCount	
 	 * Prototype: uint32_t  imageBindCount
 	 */ 
 	 public int imageBindCount(){
@@ -289,7 +277,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pImageBinds
+	 * Set method for field pImageBinds	
 	 * Prototype: const VkSparseImageMemoryBindInfo*  pImageBinds
 	 */ 
 	 public void pImageBinds(P<VkSparseImageMemoryBindInfo>  pImageBinds){
@@ -298,7 +286,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pImageBinds
+	 * get method for field pImageBinds	
 	 * Prototype: const VkSparseImageMemoryBindInfo*  pImageBinds
 	 */ 
 	 public P<VkSparseImageMemoryBindInfo>  pImageBinds(){
@@ -307,7 +295,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field signalSemaphoreCount
+	 * Set method for field signalSemaphoreCount	
 	 * Prototype: uint32_t  signalSemaphoreCount
 	 */ 
 	 public void signalSemaphoreCount(int signalSemaphoreCount){
@@ -316,7 +304,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field signalSemaphoreCount
+	 * get method for field signalSemaphoreCount	
 	 * Prototype: uint32_t  signalSemaphoreCount
 	 */ 
 	 public int signalSemaphoreCount(){
@@ -325,7 +313,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pSignalSemaphores
+	 * Set method for field pSignalSemaphores	
 	 * Prototype: const VkSemaphore*  pSignalSemaphores
 	 */ 
 	 public void pSignalSemaphores(P<VkSemaphore>  pSignalSemaphores){
@@ -334,7 +322,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pSignalSemaphores
+	 * get method for field pSignalSemaphores	
 	 * Prototype: const VkSemaphore*  pSignalSemaphores
 	 */ 
 	 public P<VkSemaphore>  pSignalSemaphores(){
@@ -347,7 +335,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -356,7 +344,7 @@ public class VkBindSparseInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -365,7 +353,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -374,7 +362,7 @@ public class VkBindSparseInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -383,7 +371,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field waitSemaphoreCount
+	 * native Set method for field waitSemaphoreCount	
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
 	 private static native void waitSemaphoreCount0(ByteBuffer ptr, int _waitSemaphoreCount);/*
@@ -392,7 +380,7 @@ public class VkBindSparseInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field waitSemaphoreCount
+	 * get method for field waitSemaphoreCount	
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
 	 private static native int waitSemaphoreCount0(ByteBuffer ptr);/*
@@ -401,7 +389,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pWaitSemaphores
+	 * native Set method for field pWaitSemaphores	
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
 	 private static native void pWaitSemaphores0(ByteBuffer ptr, P<VkSemaphore>  _pWaitSemaphores);/*
@@ -410,7 +398,7 @@ public class VkBindSparseInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pWaitSemaphores
+	 * get method for field pWaitSemaphores	
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
 	 private static native P<VkSemaphore>  pWaitSemaphores0(ByteBuffer ptr);/*
@@ -419,7 +407,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field bufferBindCount
+	 * native Set method for field bufferBindCount	
 	 * Prototype: uint32_t  bufferBindCount
 	 */ 
 	 private static native void bufferBindCount0(ByteBuffer ptr, int _bufferBindCount);/*
@@ -428,7 +416,7 @@ public class VkBindSparseInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field bufferBindCount
+	 * get method for field bufferBindCount	
 	 * Prototype: uint32_t  bufferBindCount
 	 */ 
 	 private static native int bufferBindCount0(ByteBuffer ptr);/*
@@ -437,7 +425,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pBufferBinds
+	 * native Set method for field pBufferBinds	
 	 * Prototype: const VkSparseBufferMemoryBindInfo*  pBufferBinds
 	 */ 
 	 private static native void pBufferBinds0(ByteBuffer ptr, P<VkSparseBufferMemoryBindInfo>  _pBufferBinds);/*
@@ -446,7 +434,7 @@ public class VkBindSparseInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pBufferBinds
+	 * get method for field pBufferBinds	
 	 * Prototype: const VkSparseBufferMemoryBindInfo*  pBufferBinds
 	 */ 
 	 private static native P<VkSparseBufferMemoryBindInfo>  pBufferBinds0(ByteBuffer ptr);/*
@@ -455,7 +443,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field imageOpaqueBindCount
+	 * native Set method for field imageOpaqueBindCount	
 	 * Prototype: uint32_t  imageOpaqueBindCount
 	 */ 
 	 private static native void imageOpaqueBindCount0(ByteBuffer ptr, int _imageOpaqueBindCount);/*
@@ -464,7 +452,7 @@ public class VkBindSparseInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field imageOpaqueBindCount
+	 * get method for field imageOpaqueBindCount	
 	 * Prototype: uint32_t  imageOpaqueBindCount
 	 */ 
 	 private static native int imageOpaqueBindCount0(ByteBuffer ptr);/*
@@ -473,7 +461,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pImageOpaqueBinds
+	 * native Set method for field pImageOpaqueBinds	
 	 * Prototype: const VkSparseImageOpaqueMemoryBindInfo*  pImageOpaqueBinds
 	 */ 
 	 private static native void pImageOpaqueBinds0(ByteBuffer ptr, P<VkSparseImageOpaqueMemoryBindInfo>  _pImageOpaqueBinds);/*
@@ -482,7 +470,7 @@ public class VkBindSparseInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pImageOpaqueBinds
+	 * get method for field pImageOpaqueBinds	
 	 * Prototype: const VkSparseImageOpaqueMemoryBindInfo*  pImageOpaqueBinds
 	 */ 
 	 private static native P<VkSparseImageOpaqueMemoryBindInfo>  pImageOpaqueBinds0(ByteBuffer ptr);/*
@@ -491,7 +479,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field imageBindCount
+	 * native Set method for field imageBindCount	
 	 * Prototype: uint32_t  imageBindCount
 	 */ 
 	 private static native void imageBindCount0(ByteBuffer ptr, int _imageBindCount);/*
@@ -500,7 +488,7 @@ public class VkBindSparseInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field imageBindCount
+	 * get method for field imageBindCount	
 	 * Prototype: uint32_t  imageBindCount
 	 */ 
 	 private static native int imageBindCount0(ByteBuffer ptr);/*
@@ -509,7 +497,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pImageBinds
+	 * native Set method for field pImageBinds	
 	 * Prototype: const VkSparseImageMemoryBindInfo*  pImageBinds
 	 */ 
 	 private static native void pImageBinds0(ByteBuffer ptr, P<VkSparseImageMemoryBindInfo>  _pImageBinds);/*
@@ -518,7 +506,7 @@ public class VkBindSparseInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pImageBinds
+	 * get method for field pImageBinds	
 	 * Prototype: const VkSparseImageMemoryBindInfo*  pImageBinds
 	 */ 
 	 private static native P<VkSparseImageMemoryBindInfo>  pImageBinds0(ByteBuffer ptr);/*
@@ -527,7 +515,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field signalSemaphoreCount
+	 * native Set method for field signalSemaphoreCount	
 	 * Prototype: uint32_t  signalSemaphoreCount
 	 */ 
 	 private static native void signalSemaphoreCount0(ByteBuffer ptr, int _signalSemaphoreCount);/*
@@ -536,7 +524,7 @@ public class VkBindSparseInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field signalSemaphoreCount
+	 * get method for field signalSemaphoreCount	
 	 * Prototype: uint32_t  signalSemaphoreCount
 	 */ 
 	 private static native int signalSemaphoreCount0(ByteBuffer ptr);/*
@@ -545,7 +533,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pSignalSemaphores
+	 * native Set method for field pSignalSemaphores	
 	 * Prototype: const VkSemaphore*  pSignalSemaphores
 	 */ 
 	 private static native void pSignalSemaphores0(ByteBuffer ptr, P<VkSemaphore>  _pSignalSemaphores);/*
@@ -554,7 +542,7 @@ public class VkBindSparseInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pSignalSemaphores
+	 * get method for field pSignalSemaphores	
 	 * Prototype: const VkSemaphore*  pSignalSemaphores
 	 */ 
 	 private static native P<VkSemaphore>  pSignalSemaphores0(ByteBuffer ptr);/*

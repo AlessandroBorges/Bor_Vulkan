@@ -40,23 +40,19 @@ public class VkImageBlit extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkImageSubresourceLayers 	srcSubresource 
-	 */ 
+	 *  VkImageSubresourceLayers 	srcSubresource	[vkstruct]	 */ 
 	VkImageSubresourceLayers 	srcSubresource;
 
 	/**
-	 *  VkOffset3D[] 	srcOffsets 
-	 */ 
+	 *  VkOffset3D[] 	srcOffsets		 */ 
 	VkOffset3D[] 	srcOffsets;
 
 	/**
-	 *  VkImageSubresourceLayers 	dstSubresource 
-	 */ 
+	 *  VkImageSubresourceLayers 	dstSubresource	[vkstruct]	 */ 
 	VkImageSubresourceLayers 	dstSubresource;
 
 	/**
-	 *  VkOffset3D[] 	dstOffsets 
-	 */ 
+	 *  VkOffset3D[] 	dstOffsets		 */ 
 	VkOffset3D[] 	dstOffsets;
 
 	/**
@@ -74,12 +70,12 @@ public class VkImageBlit extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field srcSubresource
+	 * Set method for field srcSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
 	 */ 
 	 public void srcSubresource(VkImageSubresourceLayers srcSubresource){
@@ -88,7 +84,7 @@ public class VkImageBlit extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcSubresource
+	 * get method for field srcSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
 	 */ 
 	 public VkImageSubresourceLayers srcSubresource(){
@@ -97,7 +93,7 @@ public class VkImageBlit extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field srcOffsets
+	 * Set method for field srcOffsets	
 	 * Prototype: VkOffset3D[]  srcOffsets
 	 */ 
 	 public void srcOffsets(VkOffset3D[] srcOffsets){
@@ -106,7 +102,7 @@ public class VkImageBlit extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcOffsets
+	 * get method for field srcOffsets	
 	 * Prototype: VkOffset3D[]  srcOffsets
 	 */ 
 	 public VkOffset3D[] srcOffsets(){
@@ -115,7 +111,7 @@ public class VkImageBlit extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstSubresource
+	 * Set method for field dstSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
 	 */ 
 	 public void dstSubresource(VkImageSubresourceLayers dstSubresource){
@@ -124,7 +120,7 @@ public class VkImageBlit extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstSubresource
+	 * get method for field dstSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
 	 */ 
 	 public VkImageSubresourceLayers dstSubresource(){
@@ -133,7 +129,7 @@ public class VkImageBlit extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstOffsets
+	 * Set method for field dstOffsets	
 	 * Prototype: VkOffset3D[]  dstOffsets
 	 */ 
 	 public void dstOffsets(VkOffset3D[] dstOffsets){
@@ -142,7 +138,7 @@ public class VkImageBlit extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstOffsets
+	 * get method for field dstOffsets	
 	 * Prototype: VkOffset3D[]  dstOffsets
 	 */ 
 	 public VkOffset3D[] dstOffsets(){
@@ -155,7 +151,7 @@ public class VkImageBlit extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field srcSubresource
+	 * native Set method for field srcSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
 	 */ 
 	 private static native void srcSubresource0(ByteBuffer ptr, VkImageSubresourceLayers _srcSubresource);/*
@@ -164,7 +160,7 @@ public class VkImageBlit extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcSubresource
+	 * get method for field srcSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
 	 */ 
 	 private static native VkImageSubresourceLayers srcSubresource0(ByteBuffer ptr);/*
@@ -173,7 +169,7 @@ public class VkImageBlit extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field srcOffsets
+	 * native Set method for field srcOffsets	
 	 * Prototype: VkOffset3D[]  srcOffsets
 	 */ 
 	 private static native void srcOffsets0(ByteBuffer ptr, VkOffset3D[] _srcOffsets);/*
@@ -182,7 +178,7 @@ public class VkImageBlit extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcOffsets
+	 * get method for field srcOffsets	
 	 * Prototype: VkOffset3D[]  srcOffsets
 	 */ 
 	 private static native VkOffset3D[] srcOffsets0(ByteBuffer ptr);/*
@@ -191,7 +187,7 @@ public class VkImageBlit extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstSubresource
+	 * native Set method for field dstSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
 	 */ 
 	 private static native void dstSubresource0(ByteBuffer ptr, VkImageSubresourceLayers _dstSubresource);/*
@@ -200,7 +196,7 @@ public class VkImageBlit extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstSubresource
+	 * get method for field dstSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
 	 */ 
 	 private static native VkImageSubresourceLayers dstSubresource0(ByteBuffer ptr);/*
@@ -209,7 +205,7 @@ public class VkImageBlit extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstOffsets
+	 * native Set method for field dstOffsets	
 	 * Prototype: VkOffset3D[]  dstOffsets
 	 */ 
 	 private static native void dstOffsets0(ByteBuffer ptr, VkOffset3D[] _dstOffsets);/*
@@ -218,7 +214,7 @@ public class VkImageBlit extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstOffsets
+	 * get method for field dstOffsets	
 	 * Prototype: VkOffset3D[]  dstOffsets
 	 */ 
 	 private static native VkOffset3D[] dstOffsets0(ByteBuffer ptr);/*

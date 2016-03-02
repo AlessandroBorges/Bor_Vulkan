@@ -38,13 +38,11 @@ public class VkMemoryHeap extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkDeviceSize 	size 
-	 */ 
+	 *  VkDeviceSize 	size		 */ 
 	long 	size;
 
 	/**
-	 *  VkMemoryHeapFlags 	flags 
-	 */ 
+	 *  VkMemoryHeapFlags 	flags		 */ 
 	int 	flags;
 
 	/**
@@ -62,12 +60,12 @@ public class VkMemoryHeap extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field size
+	 * Set method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public void size(long size){
@@ -76,7 +74,7 @@ public class VkMemoryHeap extends VkStruct {
 	 }
 
 	/**
-	 * get method for field size
+	 * get method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public long size(){
@@ -85,7 +83,7 @@ public class VkMemoryHeap extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkMemoryHeapFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -94,7 +92,7 @@ public class VkMemoryHeap extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkMemoryHeapFlags  flags
 	 */ 
 	 public int flags(){
@@ -107,7 +105,7 @@ public class VkMemoryHeap extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field size
+	 * native Set method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native void size0(ByteBuffer ptr, long _size);/*
@@ -116,7 +114,7 @@ public class VkMemoryHeap extends VkStruct {
 	  */
 
 	/**
-	 * get method for field size
+	 * get method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long size0(ByteBuffer ptr);/*
@@ -125,7 +123,7 @@ public class VkMemoryHeap extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkMemoryHeapFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -134,7 +132,7 @@ public class VkMemoryHeap extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkMemoryHeapFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*

@@ -39,18 +39,15 @@ public class VkPushConstantRange extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkShaderStageFlags 	stageFlags 
-	 */ 
+	 *  VkShaderStageFlags 	stageFlags		 */ 
 	int 	stageFlags;
 
 	/**
-	 *  uint32_t 	offset 
-	 */ 
+	 *  uint32_t 	offset		 */ 
 	int 	offset;
 
 	/**
-	 *  uint32_t 	size 
-	 */ 
+	 *  uint32_t 	size		 */ 
 	int 	size;
 
 	/**
@@ -68,12 +65,12 @@ public class VkPushConstantRange extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field stageFlags
+	 * Set method for field stageFlags	
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
 	 public void stageFlags(int stageFlags){
@@ -82,7 +79,7 @@ public class VkPushConstantRange extends VkStruct {
 	 }
 
 	/**
-	 * get method for field stageFlags
+	 * get method for field stageFlags	
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
 	 public int stageFlags(){
@@ -91,7 +88,7 @@ public class VkPushConstantRange extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field offset
+	 * Set method for field offset	
 	 * Prototype: uint32_t  offset
 	 */ 
 	 public void offset(int offset){
@@ -100,7 +97,7 @@ public class VkPushConstantRange extends VkStruct {
 	 }
 
 	/**
-	 * get method for field offset
+	 * get method for field offset	
 	 * Prototype: uint32_t  offset
 	 */ 
 	 public int offset(){
@@ -109,7 +106,7 @@ public class VkPushConstantRange extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field size
+	 * Set method for field size	
 	 * Prototype: uint32_t  size
 	 */ 
 	 public void size(int size){
@@ -118,7 +115,7 @@ public class VkPushConstantRange extends VkStruct {
 	 }
 
 	/**
-	 * get method for field size
+	 * get method for field size	
 	 * Prototype: uint32_t  size
 	 */ 
 	 public int size(){
@@ -131,7 +128,7 @@ public class VkPushConstantRange extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field stageFlags
+	 * native Set method for field stageFlags	
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
 	 private static native void stageFlags0(ByteBuffer ptr, int _stageFlags);/*
@@ -140,7 +137,7 @@ public class VkPushConstantRange extends VkStruct {
 	  */
 
 	/**
-	 * get method for field stageFlags
+	 * get method for field stageFlags	
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
 	 private static native int stageFlags0(ByteBuffer ptr);/*
@@ -149,7 +146,7 @@ public class VkPushConstantRange extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field offset
+	 * native Set method for field offset	
 	 * Prototype: uint32_t  offset
 	 */ 
 	 private static native void offset0(ByteBuffer ptr, int _offset);/*
@@ -158,7 +155,7 @@ public class VkPushConstantRange extends VkStruct {
 	  */
 
 	/**
-	 * get method for field offset
+	 * get method for field offset	
 	 * Prototype: uint32_t  offset
 	 */ 
 	 private static native int offset0(ByteBuffer ptr);/*
@@ -167,7 +164,7 @@ public class VkPushConstantRange extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field size
+	 * native Set method for field size	
 	 * Prototype: uint32_t  size
 	 */ 
 	 private static native void size0(ByteBuffer ptr, int _size);/*
@@ -176,7 +173,7 @@ public class VkPushConstantRange extends VkStruct {
 	  */
 
 	/**
-	 * get method for field size
+	 * get method for field size	
 	 * Prototype: uint32_t  size
 	 */ 
 	 private static native int size0(ByteBuffer ptr);/*

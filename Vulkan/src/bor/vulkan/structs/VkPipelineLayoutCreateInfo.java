@@ -43,38 +43,31 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkPipelineLayoutCreateFlags 	flags 
-	 */ 
+	 *  VkPipelineLayoutCreateFlags 	flags		 */ 
 	int 	flags;
 
 	/**
-	 *  uint32_t 	setLayoutCount 
-	 */ 
+	 *  uint32_t 	setLayoutCount		 */ 
 	int 	setLayoutCount;
 
 	/**
-	 *  const VkDescriptorSetLayout* 	pSetLayouts 
-	 */ 
+	 *  const VkDescriptorSetLayout* 	pSetLayouts		 */ 
 	P<VkDescriptorSetLayout>  	pSetLayouts;
 
 	/**
-	 *  uint32_t 	pushConstantRangeCount 
-	 */ 
+	 *  uint32_t 	pushConstantRangeCount		 */ 
 	int 	pushConstantRangeCount;
 
 	/**
-	 *  const VkPushConstantRange* 	pPushConstantRanges 
-	 */ 
+	 *  const VkPushConstantRange* 	pPushConstantRanges		 */ 
 	P<VkPushConstantRange>  	pPushConstantRanges;
 
 	/**
@@ -92,12 +85,12 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -106,7 +99,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -115,7 +108,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -124,7 +117,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -133,7 +126,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkPipelineLayoutCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -142,7 +135,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkPipelineLayoutCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -151,7 +144,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field setLayoutCount
+	 * Set method for field setLayoutCount	
 	 * Prototype: uint32_t  setLayoutCount
 	 */ 
 	 public void setLayoutCount(int setLayoutCount){
@@ -160,7 +153,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field setLayoutCount
+	 * get method for field setLayoutCount	
 	 * Prototype: uint32_t  setLayoutCount
 	 */ 
 	 public int setLayoutCount(){
@@ -169,7 +162,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pSetLayouts
+	 * Set method for field pSetLayouts	
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
 	 public void pSetLayouts(P<VkDescriptorSetLayout>  pSetLayouts){
@@ -178,7 +171,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pSetLayouts
+	 * get method for field pSetLayouts	
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
 	 public P<VkDescriptorSetLayout>  pSetLayouts(){
@@ -187,7 +180,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pushConstantRangeCount
+	 * Set method for field pushConstantRangeCount	
 	 * Prototype: uint32_t  pushConstantRangeCount
 	 */ 
 	 public void pushConstantRangeCount(int pushConstantRangeCount){
@@ -196,7 +189,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pushConstantRangeCount
+	 * get method for field pushConstantRangeCount	
 	 * Prototype: uint32_t  pushConstantRangeCount
 	 */ 
 	 public int pushConstantRangeCount(){
@@ -205,7 +198,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pPushConstantRanges
+	 * Set method for field pPushConstantRanges	
 	 * Prototype: const VkPushConstantRange*  pPushConstantRanges
 	 */ 
 	 public void pPushConstantRanges(P<VkPushConstantRange>  pPushConstantRanges){
@@ -214,7 +207,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pPushConstantRanges
+	 * get method for field pPushConstantRanges	
 	 * Prototype: const VkPushConstantRange*  pPushConstantRanges
 	 */ 
 	 public P<VkPushConstantRange>  pPushConstantRanges(){
@@ -227,7 +220,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -236,7 +229,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -245,7 +238,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -254,7 +247,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -263,7 +256,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkPipelineLayoutCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -272,7 +265,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkPipelineLayoutCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -281,7 +274,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field setLayoutCount
+	 * native Set method for field setLayoutCount	
 	 * Prototype: uint32_t  setLayoutCount
 	 */ 
 	 private static native void setLayoutCount0(ByteBuffer ptr, int _setLayoutCount);/*
@@ -290,7 +283,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field setLayoutCount
+	 * get method for field setLayoutCount	
 	 * Prototype: uint32_t  setLayoutCount
 	 */ 
 	 private static native int setLayoutCount0(ByteBuffer ptr);/*
@@ -299,7 +292,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pSetLayouts
+	 * native Set method for field pSetLayouts	
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
 	 private static native void pSetLayouts0(ByteBuffer ptr, P<VkDescriptorSetLayout>  _pSetLayouts);/*
@@ -308,7 +301,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pSetLayouts
+	 * get method for field pSetLayouts	
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
 	 private static native P<VkDescriptorSetLayout>  pSetLayouts0(ByteBuffer ptr);/*
@@ -317,7 +310,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pushConstantRangeCount
+	 * native Set method for field pushConstantRangeCount	
 	 * Prototype: uint32_t  pushConstantRangeCount
 	 */ 
 	 private static native void pushConstantRangeCount0(ByteBuffer ptr, int _pushConstantRangeCount);/*
@@ -326,7 +319,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pushConstantRangeCount
+	 * get method for field pushConstantRangeCount	
 	 * Prototype: uint32_t  pushConstantRangeCount
 	 */ 
 	 private static native int pushConstantRangeCount0(ByteBuffer ptr);/*
@@ -335,7 +328,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pPushConstantRanges
+	 * native Set method for field pPushConstantRanges	
 	 * Prototype: const VkPushConstantRange*  pPushConstantRanges
 	 */ 
 	 private static native void pPushConstantRanges0(ByteBuffer ptr, P<VkPushConstantRange>  _pPushConstantRanges);/*
@@ -344,7 +337,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pPushConstantRanges
+	 * get method for field pPushConstantRanges	
 	 * Prototype: const VkPushConstantRange*  pPushConstantRanges
 	 */ 
 	 private static native P<VkPushConstantRange>  pPushConstantRanges0(ByteBuffer ptr);/*

@@ -38,13 +38,11 @@ public class VkExtent2D extends VkStruct {
 
 	 // fields //
 	/**
-	 *  uint32_t 	width 
-	 */ 
+	 *  uint32_t 	width		 */ 
 	int 	width;
 
 	/**
-	 *  uint32_t 	height 
-	 */ 
+	 *  uint32_t 	height		 */ 
 	int 	height;
 
 	/**
@@ -62,12 +60,12 @@ public class VkExtent2D extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field width
+	 * Set method for field width	
 	 * Prototype: uint32_t  width
 	 */ 
 	 public void width(int width){
@@ -76,7 +74,7 @@ public class VkExtent2D extends VkStruct {
 	 }
 
 	/**
-	 * get method for field width
+	 * get method for field width	
 	 * Prototype: uint32_t  width
 	 */ 
 	 public int width(){
@@ -85,7 +83,7 @@ public class VkExtent2D extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field height
+	 * Set method for field height	
 	 * Prototype: uint32_t  height
 	 */ 
 	 public void height(int height){
@@ -94,7 +92,7 @@ public class VkExtent2D extends VkStruct {
 	 }
 
 	/**
-	 * get method for field height
+	 * get method for field height	
 	 * Prototype: uint32_t  height
 	 */ 
 	 public int height(){
@@ -107,7 +105,7 @@ public class VkExtent2D extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field width
+	 * native Set method for field width	
 	 * Prototype: uint32_t  width
 	 */ 
 	 private static native void width0(ByteBuffer ptr, int _width);/*
@@ -116,7 +114,7 @@ public class VkExtent2D extends VkStruct {
 	  */
 
 	/**
-	 * get method for field width
+	 * get method for field width	
 	 * Prototype: uint32_t  width
 	 */ 
 	 private static native int width0(ByteBuffer ptr);/*
@@ -125,7 +123,7 @@ public class VkExtent2D extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field height
+	 * native Set method for field height	
 	 * Prototype: uint32_t  height
 	 */ 
 	 private static native void height0(ByteBuffer ptr, int _height);/*
@@ -134,7 +132,7 @@ public class VkExtent2D extends VkStruct {
 	  */
 
 	/**
-	 * get method for field height
+	 * get method for field height	
 	 * Prototype: uint32_t  height
 	 */ 
 	 private static native int height0(ByteBuffer ptr);/*

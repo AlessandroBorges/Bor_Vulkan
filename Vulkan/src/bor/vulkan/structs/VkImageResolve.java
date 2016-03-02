@@ -41,28 +41,23 @@ public class VkImageResolve extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkImageSubresourceLayers 	srcSubresource 
-	 */ 
+	 *  VkImageSubresourceLayers 	srcSubresource	[vkstruct]	 */ 
 	VkImageSubresourceLayers 	srcSubresource;
 
 	/**
-	 *  VkOffset3D 	srcOffset 
-	 */ 
+	 *  VkOffset3D 	srcOffset	[vkstruct]	 */ 
 	VkOffset3D 	srcOffset;
 
 	/**
-	 *  VkImageSubresourceLayers 	dstSubresource 
-	 */ 
+	 *  VkImageSubresourceLayers 	dstSubresource	[vkstruct]	 */ 
 	VkImageSubresourceLayers 	dstSubresource;
 
 	/**
-	 *  VkOffset3D 	dstOffset 
-	 */ 
+	 *  VkOffset3D 	dstOffset	[vkstruct]	 */ 
 	VkOffset3D 	dstOffset;
 
 	/**
-	 *  VkExtent3D 	extent 
-	 */ 
+	 *  VkExtent3D 	extent	[vkstruct]	 */ 
 	VkExtent3D 	extent;
 
 	/**
@@ -80,12 +75,12 @@ public class VkImageResolve extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field srcSubresource
+	 * Set method for field srcSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
 	 */ 
 	 public void srcSubresource(VkImageSubresourceLayers srcSubresource){
@@ -94,7 +89,7 @@ public class VkImageResolve extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcSubresource
+	 * get method for field srcSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
 	 */ 
 	 public VkImageSubresourceLayers srcSubresource(){
@@ -103,7 +98,7 @@ public class VkImageResolve extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field srcOffset
+	 * Set method for field srcOffset	[vkstruct]
 	 * Prototype: VkOffset3D  srcOffset
 	 */ 
 	 public void srcOffset(VkOffset3D srcOffset){
@@ -112,7 +107,7 @@ public class VkImageResolve extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcOffset
+	 * get method for field srcOffset	[vkstruct]
 	 * Prototype: VkOffset3D  srcOffset
 	 */ 
 	 public VkOffset3D srcOffset(){
@@ -121,7 +116,7 @@ public class VkImageResolve extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstSubresource
+	 * Set method for field dstSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
 	 */ 
 	 public void dstSubresource(VkImageSubresourceLayers dstSubresource){
@@ -130,7 +125,7 @@ public class VkImageResolve extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstSubresource
+	 * get method for field dstSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
 	 */ 
 	 public VkImageSubresourceLayers dstSubresource(){
@@ -139,7 +134,7 @@ public class VkImageResolve extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstOffset
+	 * Set method for field dstOffset	[vkstruct]
 	 * Prototype: VkOffset3D  dstOffset
 	 */ 
 	 public void dstOffset(VkOffset3D dstOffset){
@@ -148,7 +143,7 @@ public class VkImageResolve extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstOffset
+	 * get method for field dstOffset	[vkstruct]
 	 * Prototype: VkOffset3D  dstOffset
 	 */ 
 	 public VkOffset3D dstOffset(){
@@ -157,7 +152,7 @@ public class VkImageResolve extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field extent
+	 * Set method for field extent	[vkstruct]
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 public void extent(VkExtent3D extent){
@@ -166,7 +161,7 @@ public class VkImageResolve extends VkStruct {
 	 }
 
 	/**
-	 * get method for field extent
+	 * get method for field extent	[vkstruct]
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 public VkExtent3D extent(){
@@ -179,7 +174,7 @@ public class VkImageResolve extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field srcSubresource
+	 * native Set method for field srcSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
 	 */ 
 	 private static native void srcSubresource0(ByteBuffer ptr, VkImageSubresourceLayers _srcSubresource);/*
@@ -188,7 +183,7 @@ public class VkImageResolve extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcSubresource
+	 * get method for field srcSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
 	 */ 
 	 private static native VkImageSubresourceLayers srcSubresource0(ByteBuffer ptr);/*
@@ -197,7 +192,7 @@ public class VkImageResolve extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field srcOffset
+	 * native Set method for field srcOffset	[vkstruct]
 	 * Prototype: VkOffset3D  srcOffset
 	 */ 
 	 private static native void srcOffset0(ByteBuffer ptr, VkOffset3D _srcOffset);/*
@@ -206,7 +201,7 @@ public class VkImageResolve extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcOffset
+	 * get method for field srcOffset	[vkstruct]
 	 * Prototype: VkOffset3D  srcOffset
 	 */ 
 	 private static native VkOffset3D srcOffset0(ByteBuffer ptr);/*
@@ -215,7 +210,7 @@ public class VkImageResolve extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstSubresource
+	 * native Set method for field dstSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
 	 */ 
 	 private static native void dstSubresource0(ByteBuffer ptr, VkImageSubresourceLayers _dstSubresource);/*
@@ -224,7 +219,7 @@ public class VkImageResolve extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstSubresource
+	 * get method for field dstSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
 	 */ 
 	 private static native VkImageSubresourceLayers dstSubresource0(ByteBuffer ptr);/*
@@ -233,7 +228,7 @@ public class VkImageResolve extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstOffset
+	 * native Set method for field dstOffset	[vkstruct]
 	 * Prototype: VkOffset3D  dstOffset
 	 */ 
 	 private static native void dstOffset0(ByteBuffer ptr, VkOffset3D _dstOffset);/*
@@ -242,7 +237,7 @@ public class VkImageResolve extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstOffset
+	 * get method for field dstOffset	[vkstruct]
 	 * Prototype: VkOffset3D  dstOffset
 	 */ 
 	 private static native VkOffset3D dstOffset0(ByteBuffer ptr);/*
@@ -251,7 +246,7 @@ public class VkImageResolve extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field extent
+	 * native Set method for field extent	[vkstruct]
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 private static native void extent0(ByteBuffer ptr, VkExtent3D _extent);/*
@@ -260,7 +255,7 @@ public class VkImageResolve extends VkStruct {
 	  */
 
 	/**
-	 * get method for field extent
+	 * get method for field extent	[vkstruct]
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 private static native VkExtent3D extent0(ByteBuffer ptr);/*

@@ -43,38 +43,31 @@ public class VkApplicationInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  const char* 	pApplicationName 
-	 */ 
+	 *  const char* 	pApplicationName		 */ 
 	String 	pApplicationName;
 
 	/**
-	 *  uint32_t 	applicationVersion 
-	 */ 
+	 *  uint32_t 	applicationVersion		 */ 
 	int 	applicationVersion;
 
 	/**
-	 *  const char* 	pEngineName 
-	 */ 
+	 *  const char* 	pEngineName		 */ 
 	String 	pEngineName;
 
 	/**
-	 *  uint32_t 	engineVersion 
-	 */ 
+	 *  uint32_t 	engineVersion		 */ 
 	int 	engineVersion;
 
 	/**
-	 *  uint32_t 	apiVersion 
-	 */ 
+	 *  uint32_t 	apiVersion		 */ 
 	int 	apiVersion;
 
 	/**
@@ -92,12 +85,12 @@ public class VkApplicationInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -106,7 +99,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -115,7 +108,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -124,7 +117,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -133,7 +126,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pApplicationName
+	 * Set method for field pApplicationName	
 	 * Prototype: const char*  pApplicationName
 	 */ 
 	 public void pApplicationName(String pApplicationName){
@@ -142,7 +135,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pApplicationName
+	 * get method for field pApplicationName	
 	 * Prototype: const char*  pApplicationName
 	 */ 
 	 public String pApplicationName(){
@@ -151,7 +144,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field applicationVersion
+	 * Set method for field applicationVersion	
 	 * Prototype: uint32_t  applicationVersion
 	 */ 
 	 public void applicationVersion(int applicationVersion){
@@ -160,7 +153,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field applicationVersion
+	 * get method for field applicationVersion	
 	 * Prototype: uint32_t  applicationVersion
 	 */ 
 	 public int applicationVersion(){
@@ -169,7 +162,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pEngineName
+	 * Set method for field pEngineName	
 	 * Prototype: const char*  pEngineName
 	 */ 
 	 public void pEngineName(String pEngineName){
@@ -178,7 +171,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pEngineName
+	 * get method for field pEngineName	
 	 * Prototype: const char*  pEngineName
 	 */ 
 	 public String pEngineName(){
@@ -187,7 +180,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field engineVersion
+	 * Set method for field engineVersion	
 	 * Prototype: uint32_t  engineVersion
 	 */ 
 	 public void engineVersion(int engineVersion){
@@ -196,7 +189,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field engineVersion
+	 * get method for field engineVersion	
 	 * Prototype: uint32_t  engineVersion
 	 */ 
 	 public int engineVersion(){
@@ -205,7 +198,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field apiVersion
+	 * Set method for field apiVersion	
 	 * Prototype: uint32_t  apiVersion
 	 */ 
 	 public void apiVersion(int apiVersion){
@@ -214,7 +207,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field apiVersion
+	 * get method for field apiVersion	
 	 * Prototype: uint32_t  apiVersion
 	 */ 
 	 public int apiVersion(){
@@ -227,7 +220,7 @@ public class VkApplicationInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -236,7 +229,7 @@ public class VkApplicationInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -245,7 +238,7 @@ public class VkApplicationInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -254,7 +247,7 @@ public class VkApplicationInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -263,7 +256,7 @@ public class VkApplicationInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pApplicationName
+	 * native Set method for field pApplicationName	
 	 * Prototype: const char*  pApplicationName
 	 */ 
 	 private static native void pApplicationName0(ByteBuffer ptr, String _pApplicationName);/*
@@ -272,7 +265,7 @@ public class VkApplicationInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pApplicationName
+	 * get method for field pApplicationName	
 	 * Prototype: const char*  pApplicationName
 	 */ 
 	 private static native String pApplicationName0(ByteBuffer ptr);/*
@@ -280,7 +273,7 @@ public class VkApplicationInfo extends VkStruct {
 		  return (jstring)(env->NewStringUTF(_obj.const char*);	 */
 
 	/**
-	 * native Set method for field applicationVersion
+	 * native Set method for field applicationVersion	
 	 * Prototype: uint32_t  applicationVersion
 	 */ 
 	 private static native void applicationVersion0(ByteBuffer ptr, int _applicationVersion);/*
@@ -289,7 +282,7 @@ public class VkApplicationInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field applicationVersion
+	 * get method for field applicationVersion	
 	 * Prototype: uint32_t  applicationVersion
 	 */ 
 	 private static native int applicationVersion0(ByteBuffer ptr);/*
@@ -298,7 +291,7 @@ public class VkApplicationInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pEngineName
+	 * native Set method for field pEngineName	
 	 * Prototype: const char*  pEngineName
 	 */ 
 	 private static native void pEngineName0(ByteBuffer ptr, String _pEngineName);/*
@@ -307,7 +300,7 @@ public class VkApplicationInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pEngineName
+	 * get method for field pEngineName	
 	 * Prototype: const char*  pEngineName
 	 */ 
 	 private static native String pEngineName0(ByteBuffer ptr);/*
@@ -315,7 +308,7 @@ public class VkApplicationInfo extends VkStruct {
 		  return (jstring)(env->NewStringUTF(_obj.const char*);	 */
 
 	/**
-	 * native Set method for field engineVersion
+	 * native Set method for field engineVersion	
 	 * Prototype: uint32_t  engineVersion
 	 */ 
 	 private static native void engineVersion0(ByteBuffer ptr, int _engineVersion);/*
@@ -324,7 +317,7 @@ public class VkApplicationInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field engineVersion
+	 * get method for field engineVersion	
 	 * Prototype: uint32_t  engineVersion
 	 */ 
 	 private static native int engineVersion0(ByteBuffer ptr);/*
@@ -333,7 +326,7 @@ public class VkApplicationInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field apiVersion
+	 * native Set method for field apiVersion	
 	 * Prototype: uint32_t  apiVersion
 	 */ 
 	 private static native void apiVersion0(ByteBuffer ptr, int _apiVersion);/*
@@ -342,7 +335,7 @@ public class VkApplicationInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field apiVersion
+	 * get method for field apiVersion	
 	 * Prototype: uint32_t  apiVersion
 	 */ 
 	 private static native int apiVersion0(ByteBuffer ptr);/*

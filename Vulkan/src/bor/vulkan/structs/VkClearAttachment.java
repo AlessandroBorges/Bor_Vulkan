@@ -39,18 +39,15 @@ public class VkClearAttachment extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkImageAspectFlags 	aspectMask 
-	 */ 
+	 *  VkImageAspectFlags 	aspectMask		 */ 
 	int 	aspectMask;
 
 	/**
-	 *  uint32_t 	colorAttachment 
-	 */ 
+	 *  uint32_t 	colorAttachment		 */ 
 	int 	colorAttachment;
 
 	/**
-	 *  VkClearValue 	clearValue 
-	 */ 
+	 *  VkClearValue 	clearValue	[vkstruct]	 */ 
 	VkClearValue 	clearValue;
 
 	/**
@@ -68,12 +65,12 @@ public class VkClearAttachment extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field aspectMask
+	 * Set method for field aspectMask	
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 public void aspectMask(int aspectMask){
@@ -82,7 +79,7 @@ public class VkClearAttachment extends VkStruct {
 	 }
 
 	/**
-	 * get method for field aspectMask
+	 * get method for field aspectMask	
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 public int aspectMask(){
@@ -91,7 +88,7 @@ public class VkClearAttachment extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field colorAttachment
+	 * Set method for field colorAttachment	
 	 * Prototype: uint32_t  colorAttachment
 	 */ 
 	 public void colorAttachment(int colorAttachment){
@@ -100,7 +97,7 @@ public class VkClearAttachment extends VkStruct {
 	 }
 
 	/**
-	 * get method for field colorAttachment
+	 * get method for field colorAttachment	
 	 * Prototype: uint32_t  colorAttachment
 	 */ 
 	 public int colorAttachment(){
@@ -109,7 +106,7 @@ public class VkClearAttachment extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field clearValue
+	 * Set method for field clearValue	[vkstruct]
 	 * Prototype: VkClearValue  clearValue
 	 */ 
 	 public void clearValue(VkClearValue clearValue){
@@ -118,7 +115,7 @@ public class VkClearAttachment extends VkStruct {
 	 }
 
 	/**
-	 * get method for field clearValue
+	 * get method for field clearValue	[vkstruct]
 	 * Prototype: VkClearValue  clearValue
 	 */ 
 	 public VkClearValue clearValue(){
@@ -131,7 +128,7 @@ public class VkClearAttachment extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field aspectMask
+	 * native Set method for field aspectMask	
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 private static native void aspectMask0(ByteBuffer ptr, int _aspectMask);/*
@@ -140,7 +137,7 @@ public class VkClearAttachment extends VkStruct {
 	  */
 
 	/**
-	 * get method for field aspectMask
+	 * get method for field aspectMask	
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 private static native int aspectMask0(ByteBuffer ptr);/*
@@ -149,7 +146,7 @@ public class VkClearAttachment extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field colorAttachment
+	 * native Set method for field colorAttachment	
 	 * Prototype: uint32_t  colorAttachment
 	 */ 
 	 private static native void colorAttachment0(ByteBuffer ptr, int _colorAttachment);/*
@@ -158,7 +155,7 @@ public class VkClearAttachment extends VkStruct {
 	  */
 
 	/**
-	 * get method for field colorAttachment
+	 * get method for field colorAttachment	
 	 * Prototype: uint32_t  colorAttachment
 	 */ 
 	 private static native int colorAttachment0(ByteBuffer ptr);/*
@@ -167,7 +164,7 @@ public class VkClearAttachment extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field clearValue
+	 * native Set method for field clearValue	[vkstruct]
 	 * Prototype: VkClearValue  clearValue
 	 */ 
 	 private static native void clearValue0(ByteBuffer ptr, VkClearValue _clearValue);/*
@@ -176,7 +173,7 @@ public class VkClearAttachment extends VkStruct {
 	  */
 
 	/**
-	 * get method for field clearValue
+	 * get method for field clearValue	[vkstruct]
 	 * Prototype: VkClearValue  clearValue
 	 */ 
 	 private static native VkClearValue clearValue0(ByteBuffer ptr);/*

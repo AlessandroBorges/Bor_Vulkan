@@ -46,53 +46,43 @@ public class VkWriteDescriptorSet extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkDescriptorSet 	dstSet 
-	 */ 
+	 *  VkDescriptorSet 	dstSet	[vkhandle]	 */ 
 	VkDescriptorSet 	dstSet;
 
 	/**
-	 *  uint32_t 	dstBinding 
-	 */ 
+	 *  uint32_t 	dstBinding		 */ 
 	int 	dstBinding;
 
 	/**
-	 *  uint32_t 	dstArrayElement 
-	 */ 
+	 *  uint32_t 	dstArrayElement		 */ 
 	int 	dstArrayElement;
 
 	/**
-	 *  uint32_t 	descriptorCount 
-	 */ 
+	 *  uint32_t 	descriptorCount		 */ 
 	int 	descriptorCount;
 
 	/**
-	 *  VkDescriptorType 	descriptorType 
-	 */ 
+	 *  VkDescriptorType 	descriptorType	[vkenum]	 */ 
 	VkDescriptorType 	descriptorType;
 
 	/**
-	 *  const VkDescriptorImageInfo* 	pImageInfo 
-	 */ 
+	 *  const VkDescriptorImageInfo* 	pImageInfo		 */ 
 	P<VkDescriptorImageInfo>  	pImageInfo;
 
 	/**
-	 *  const VkDescriptorBufferInfo* 	pBufferInfo 
-	 */ 
+	 *  const VkDescriptorBufferInfo* 	pBufferInfo		 */ 
 	P<VkDescriptorBufferInfo>  	pBufferInfo;
 
 	/**
-	 *  const VkBufferView* 	pTexelBufferView 
-	 */ 
+	 *  const VkBufferView* 	pTexelBufferView		 */ 
 	P<VkBufferView>  	pTexelBufferView;
 
 	/**
@@ -110,12 +100,12 @@ public class VkWriteDescriptorSet extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -124,7 +114,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -133,7 +123,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -142,7 +132,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -151,7 +141,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstSet
+	 * Set method for field dstSet	[vkhandle]
 	 * Prototype: VkDescriptorSet  dstSet
 	 */ 
 	 public void dstSet(VkDescriptorSet dstSet){
@@ -160,7 +150,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstSet
+	 * get method for field dstSet	[vkhandle]
 	 * Prototype: VkDescriptorSet  dstSet
 	 */ 
 	 public VkDescriptorSet dstSet(){
@@ -169,7 +159,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstBinding
+	 * Set method for field dstBinding	
 	 * Prototype: uint32_t  dstBinding
 	 */ 
 	 public void dstBinding(int dstBinding){
@@ -178,7 +168,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstBinding
+	 * get method for field dstBinding	
 	 * Prototype: uint32_t  dstBinding
 	 */ 
 	 public int dstBinding(){
@@ -187,7 +177,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstArrayElement
+	 * Set method for field dstArrayElement	
 	 * Prototype: uint32_t  dstArrayElement
 	 */ 
 	 public void dstArrayElement(int dstArrayElement){
@@ -196,7 +186,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstArrayElement
+	 * get method for field dstArrayElement	
 	 * Prototype: uint32_t  dstArrayElement
 	 */ 
 	 public int dstArrayElement(){
@@ -205,7 +195,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field descriptorCount
+	 * Set method for field descriptorCount	
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 public void descriptorCount(int descriptorCount){
@@ -214,7 +204,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * get method for field descriptorCount
+	 * get method for field descriptorCount	
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 public int descriptorCount(){
@@ -223,7 +213,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field descriptorType
+	 * Set method for field descriptorType	[vkenum]
 	 * Prototype: VkDescriptorType  descriptorType
 	 */ 
 	 public void descriptorType(VkDescriptorType descriptorType){
@@ -232,7 +222,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * get method for field descriptorType
+	 * get method for field descriptorType	[vkenum]
 	 * Prototype: VkDescriptorType  descriptorType
 	 */ 
 	 public VkDescriptorType descriptorType(){
@@ -241,7 +231,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pImageInfo
+	 * Set method for field pImageInfo	
 	 * Prototype: const VkDescriptorImageInfo*  pImageInfo
 	 */ 
 	 public void pImageInfo(P<VkDescriptorImageInfo>  pImageInfo){
@@ -250,7 +240,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pImageInfo
+	 * get method for field pImageInfo	
 	 * Prototype: const VkDescriptorImageInfo*  pImageInfo
 	 */ 
 	 public P<VkDescriptorImageInfo>  pImageInfo(){
@@ -259,7 +249,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pBufferInfo
+	 * Set method for field pBufferInfo	
 	 * Prototype: const VkDescriptorBufferInfo*  pBufferInfo
 	 */ 
 	 public void pBufferInfo(P<VkDescriptorBufferInfo>  pBufferInfo){
@@ -268,7 +258,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pBufferInfo
+	 * get method for field pBufferInfo	
 	 * Prototype: const VkDescriptorBufferInfo*  pBufferInfo
 	 */ 
 	 public P<VkDescriptorBufferInfo>  pBufferInfo(){
@@ -277,7 +267,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pTexelBufferView
+	 * Set method for field pTexelBufferView	
 	 * Prototype: const VkBufferView*  pTexelBufferView
 	 */ 
 	 public void pTexelBufferView(P<VkBufferView>  pTexelBufferView){
@@ -286,7 +276,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pTexelBufferView
+	 * get method for field pTexelBufferView	
 	 * Prototype: const VkBufferView*  pTexelBufferView
 	 */ 
 	 public P<VkBufferView>  pTexelBufferView(){
@@ -299,7 +289,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -308,7 +298,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -317,7 +307,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -326,7 +316,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -335,7 +325,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstSet
+	 * native Set method for field dstSet	[vkhandle]
 	 * Prototype: VkDescriptorSet  dstSet
 	 */ 
 	 private static native void dstSet0(ByteBuffer ptr, VkDescriptorSet _dstSet);/*
@@ -344,7 +334,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstSet
+	 * get method for field dstSet	[vkhandle]
 	 * Prototype: VkDescriptorSet  dstSet
 	 */ 
 	 private static native VkDescriptorSet dstSet0(ByteBuffer ptr);/*
@@ -353,7 +343,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstBinding
+	 * native Set method for field dstBinding	
 	 * Prototype: uint32_t  dstBinding
 	 */ 
 	 private static native void dstBinding0(ByteBuffer ptr, int _dstBinding);/*
@@ -362,7 +352,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstBinding
+	 * get method for field dstBinding	
 	 * Prototype: uint32_t  dstBinding
 	 */ 
 	 private static native int dstBinding0(ByteBuffer ptr);/*
@@ -371,7 +361,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstArrayElement
+	 * native Set method for field dstArrayElement	
 	 * Prototype: uint32_t  dstArrayElement
 	 */ 
 	 private static native void dstArrayElement0(ByteBuffer ptr, int _dstArrayElement);/*
@@ -380,7 +370,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstArrayElement
+	 * get method for field dstArrayElement	
 	 * Prototype: uint32_t  dstArrayElement
 	 */ 
 	 private static native int dstArrayElement0(ByteBuffer ptr);/*
@@ -389,7 +379,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field descriptorCount
+	 * native Set method for field descriptorCount	
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 private static native void descriptorCount0(ByteBuffer ptr, int _descriptorCount);/*
@@ -398,7 +388,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	  */
 
 	/**
-	 * get method for field descriptorCount
+	 * get method for field descriptorCount	
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 private static native int descriptorCount0(ByteBuffer ptr);/*
@@ -407,7 +397,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field descriptorType
+	 * native Set method for field descriptorType	[vkenum]
 	 * Prototype: VkDescriptorType  descriptorType
 	 */ 
 	 private static native void descriptorType0(ByteBuffer ptr, VkDescriptorType _descriptorType);/*
@@ -416,7 +406,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	  */
 
 	/**
-	 * get method for field descriptorType
+	 * get method for field descriptorType	[vkenum]
 	 * Prototype: VkDescriptorType  descriptorType
 	 */ 
 	 private static native VkDescriptorType descriptorType0(ByteBuffer ptr);/*
@@ -425,7 +415,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pImageInfo
+	 * native Set method for field pImageInfo	
 	 * Prototype: const VkDescriptorImageInfo*  pImageInfo
 	 */ 
 	 private static native void pImageInfo0(ByteBuffer ptr, P<VkDescriptorImageInfo>  _pImageInfo);/*
@@ -434,7 +424,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pImageInfo
+	 * get method for field pImageInfo	
 	 * Prototype: const VkDescriptorImageInfo*  pImageInfo
 	 */ 
 	 private static native P<VkDescriptorImageInfo>  pImageInfo0(ByteBuffer ptr);/*
@@ -443,7 +433,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pBufferInfo
+	 * native Set method for field pBufferInfo	
 	 * Prototype: const VkDescriptorBufferInfo*  pBufferInfo
 	 */ 
 	 private static native void pBufferInfo0(ByteBuffer ptr, P<VkDescriptorBufferInfo>  _pBufferInfo);/*
@@ -452,7 +442,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pBufferInfo
+	 * get method for field pBufferInfo	
 	 * Prototype: const VkDescriptorBufferInfo*  pBufferInfo
 	 */ 
 	 private static native P<VkDescriptorBufferInfo>  pBufferInfo0(ByteBuffer ptr);/*
@@ -461,7 +451,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pTexelBufferView
+	 * native Set method for field pTexelBufferView	
 	 * Prototype: const VkBufferView*  pTexelBufferView
 	 */ 
 	 private static native void pTexelBufferView0(ByteBuffer ptr, P<VkBufferView>  _pTexelBufferView);/*
@@ -470,7 +460,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pTexelBufferView
+	 * get method for field pTexelBufferView	
 	 * Prototype: const VkBufferView*  pTexelBufferView
 	 */ 
 	 private static native P<VkBufferView>  pTexelBufferView0(ByteBuffer ptr);/*

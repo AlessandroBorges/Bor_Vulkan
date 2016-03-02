@@ -39,18 +39,15 @@ public class VkBufferCopy extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkDeviceSize 	srcOffset 
-	 */ 
+	 *  VkDeviceSize 	srcOffset		 */ 
 	long 	srcOffset;
 
 	/**
-	 *  VkDeviceSize 	dstOffset 
-	 */ 
+	 *  VkDeviceSize 	dstOffset		 */ 
 	long 	dstOffset;
 
 	/**
-	 *  VkDeviceSize 	size 
-	 */ 
+	 *  VkDeviceSize 	size		 */ 
 	long 	size;
 
 	/**
@@ -68,12 +65,12 @@ public class VkBufferCopy extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field srcOffset
+	 * Set method for field srcOffset	
 	 * Prototype: VkDeviceSize  srcOffset
 	 */ 
 	 public void srcOffset(long srcOffset){
@@ -82,7 +79,7 @@ public class VkBufferCopy extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcOffset
+	 * get method for field srcOffset	
 	 * Prototype: VkDeviceSize  srcOffset
 	 */ 
 	 public long srcOffset(){
@@ -91,7 +88,7 @@ public class VkBufferCopy extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstOffset
+	 * Set method for field dstOffset	
 	 * Prototype: VkDeviceSize  dstOffset
 	 */ 
 	 public void dstOffset(long dstOffset){
@@ -100,7 +97,7 @@ public class VkBufferCopy extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstOffset
+	 * get method for field dstOffset	
 	 * Prototype: VkDeviceSize  dstOffset
 	 */ 
 	 public long dstOffset(){
@@ -109,7 +106,7 @@ public class VkBufferCopy extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field size
+	 * Set method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public void size(long size){
@@ -118,7 +115,7 @@ public class VkBufferCopy extends VkStruct {
 	 }
 
 	/**
-	 * get method for field size
+	 * get method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public long size(){
@@ -131,7 +128,7 @@ public class VkBufferCopy extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field srcOffset
+	 * native Set method for field srcOffset	
 	 * Prototype: VkDeviceSize  srcOffset
 	 */ 
 	 private static native void srcOffset0(ByteBuffer ptr, long _srcOffset);/*
@@ -140,7 +137,7 @@ public class VkBufferCopy extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcOffset
+	 * get method for field srcOffset	
 	 * Prototype: VkDeviceSize  srcOffset
 	 */ 
 	 private static native long srcOffset0(ByteBuffer ptr);/*
@@ -149,7 +146,7 @@ public class VkBufferCopy extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstOffset
+	 * native Set method for field dstOffset	
 	 * Prototype: VkDeviceSize  dstOffset
 	 */ 
 	 private static native void dstOffset0(ByteBuffer ptr, long _dstOffset);/*
@@ -158,7 +155,7 @@ public class VkBufferCopy extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstOffset
+	 * get method for field dstOffset	
 	 * Prototype: VkDeviceSize  dstOffset
 	 */ 
 	 private static native long dstOffset0(ByteBuffer ptr);/*
@@ -167,7 +164,7 @@ public class VkBufferCopy extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field size
+	 * native Set method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native void size0(ByteBuffer ptr, long _size);/*
@@ -176,7 +173,7 @@ public class VkBufferCopy extends VkStruct {
 	  */
 
 	/**
-	 * get method for field size
+	 * get method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long size0(ByteBuffer ptr);/*

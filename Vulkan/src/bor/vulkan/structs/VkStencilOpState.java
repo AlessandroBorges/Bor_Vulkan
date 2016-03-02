@@ -43,38 +43,31 @@ public class VkStencilOpState extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStencilOp 	failOp 
-	 */ 
+	 *  VkStencilOp 	failOp	[vkenum]	 */ 
 	VkStencilOp 	failOp;
 
 	/**
-	 *  VkStencilOp 	passOp 
-	 */ 
+	 *  VkStencilOp 	passOp	[vkenum]	 */ 
 	VkStencilOp 	passOp;
 
 	/**
-	 *  VkStencilOp 	depthFailOp 
-	 */ 
+	 *  VkStencilOp 	depthFailOp	[vkenum]	 */ 
 	VkStencilOp 	depthFailOp;
 
 	/**
-	 *  VkCompareOp 	compareOp 
-	 */ 
+	 *  VkCompareOp 	compareOp	[vkenum]	 */ 
 	VkCompareOp 	compareOp;
 
 	/**
-	 *  uint32_t 	compareMask 
-	 */ 
+	 *  uint32_t 	compareMask		 */ 
 	int 	compareMask;
 
 	/**
-	 *  uint32_t 	writeMask 
-	 */ 
+	 *  uint32_t 	writeMask		 */ 
 	int 	writeMask;
 
 	/**
-	 *  uint32_t 	reference 
-	 */ 
+	 *  uint32_t 	reference		 */ 
 	int 	reference;
 
 	/**
@@ -92,12 +85,12 @@ public class VkStencilOpState extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field failOp
+	 * Set method for field failOp	[vkenum]
 	 * Prototype: VkStencilOp  failOp
 	 */ 
 	 public void failOp(VkStencilOp failOp){
@@ -106,7 +99,7 @@ public class VkStencilOpState extends VkStruct {
 	 }
 
 	/**
-	 * get method for field failOp
+	 * get method for field failOp	[vkenum]
 	 * Prototype: VkStencilOp  failOp
 	 */ 
 	 public VkStencilOp failOp(){
@@ -115,7 +108,7 @@ public class VkStencilOpState extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field passOp
+	 * Set method for field passOp	[vkenum]
 	 * Prototype: VkStencilOp  passOp
 	 */ 
 	 public void passOp(VkStencilOp passOp){
@@ -124,7 +117,7 @@ public class VkStencilOpState extends VkStruct {
 	 }
 
 	/**
-	 * get method for field passOp
+	 * get method for field passOp	[vkenum]
 	 * Prototype: VkStencilOp  passOp
 	 */ 
 	 public VkStencilOp passOp(){
@@ -133,7 +126,7 @@ public class VkStencilOpState extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field depthFailOp
+	 * Set method for field depthFailOp	[vkenum]
 	 * Prototype: VkStencilOp  depthFailOp
 	 */ 
 	 public void depthFailOp(VkStencilOp depthFailOp){
@@ -142,7 +135,7 @@ public class VkStencilOpState extends VkStruct {
 	 }
 
 	/**
-	 * get method for field depthFailOp
+	 * get method for field depthFailOp	[vkenum]
 	 * Prototype: VkStencilOp  depthFailOp
 	 */ 
 	 public VkStencilOp depthFailOp(){
@@ -151,7 +144,7 @@ public class VkStencilOpState extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field compareOp
+	 * Set method for field compareOp	[vkenum]
 	 * Prototype: VkCompareOp  compareOp
 	 */ 
 	 public void compareOp(VkCompareOp compareOp){
@@ -160,7 +153,7 @@ public class VkStencilOpState extends VkStruct {
 	 }
 
 	/**
-	 * get method for field compareOp
+	 * get method for field compareOp	[vkenum]
 	 * Prototype: VkCompareOp  compareOp
 	 */ 
 	 public VkCompareOp compareOp(){
@@ -169,7 +162,7 @@ public class VkStencilOpState extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field compareMask
+	 * Set method for field compareMask	
 	 * Prototype: uint32_t  compareMask
 	 */ 
 	 public void compareMask(int compareMask){
@@ -178,7 +171,7 @@ public class VkStencilOpState extends VkStruct {
 	 }
 
 	/**
-	 * get method for field compareMask
+	 * get method for field compareMask	
 	 * Prototype: uint32_t  compareMask
 	 */ 
 	 public int compareMask(){
@@ -187,7 +180,7 @@ public class VkStencilOpState extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field writeMask
+	 * Set method for field writeMask	
 	 * Prototype: uint32_t  writeMask
 	 */ 
 	 public void writeMask(int writeMask){
@@ -196,7 +189,7 @@ public class VkStencilOpState extends VkStruct {
 	 }
 
 	/**
-	 * get method for field writeMask
+	 * get method for field writeMask	
 	 * Prototype: uint32_t  writeMask
 	 */ 
 	 public int writeMask(){
@@ -205,7 +198,7 @@ public class VkStencilOpState extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field reference
+	 * Set method for field reference	
 	 * Prototype: uint32_t  reference
 	 */ 
 	 public void reference(int reference){
@@ -214,7 +207,7 @@ public class VkStencilOpState extends VkStruct {
 	 }
 
 	/**
-	 * get method for field reference
+	 * get method for field reference	
 	 * Prototype: uint32_t  reference
 	 */ 
 	 public int reference(){
@@ -227,7 +220,7 @@ public class VkStencilOpState extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field failOp
+	 * native Set method for field failOp	[vkenum]
 	 * Prototype: VkStencilOp  failOp
 	 */ 
 	 private static native void failOp0(ByteBuffer ptr, VkStencilOp _failOp);/*
@@ -236,7 +229,7 @@ public class VkStencilOpState extends VkStruct {
 	  */
 
 	/**
-	 * get method for field failOp
+	 * get method for field failOp	[vkenum]
 	 * Prototype: VkStencilOp  failOp
 	 */ 
 	 private static native VkStencilOp failOp0(ByteBuffer ptr);/*
@@ -245,7 +238,7 @@ public class VkStencilOpState extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field passOp
+	 * native Set method for field passOp	[vkenum]
 	 * Prototype: VkStencilOp  passOp
 	 */ 
 	 private static native void passOp0(ByteBuffer ptr, VkStencilOp _passOp);/*
@@ -254,7 +247,7 @@ public class VkStencilOpState extends VkStruct {
 	  */
 
 	/**
-	 * get method for field passOp
+	 * get method for field passOp	[vkenum]
 	 * Prototype: VkStencilOp  passOp
 	 */ 
 	 private static native VkStencilOp passOp0(ByteBuffer ptr);/*
@@ -263,7 +256,7 @@ public class VkStencilOpState extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field depthFailOp
+	 * native Set method for field depthFailOp	[vkenum]
 	 * Prototype: VkStencilOp  depthFailOp
 	 */ 
 	 private static native void depthFailOp0(ByteBuffer ptr, VkStencilOp _depthFailOp);/*
@@ -272,7 +265,7 @@ public class VkStencilOpState extends VkStruct {
 	  */
 
 	/**
-	 * get method for field depthFailOp
+	 * get method for field depthFailOp	[vkenum]
 	 * Prototype: VkStencilOp  depthFailOp
 	 */ 
 	 private static native VkStencilOp depthFailOp0(ByteBuffer ptr);/*
@@ -281,7 +274,7 @@ public class VkStencilOpState extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field compareOp
+	 * native Set method for field compareOp	[vkenum]
 	 * Prototype: VkCompareOp  compareOp
 	 */ 
 	 private static native void compareOp0(ByteBuffer ptr, VkCompareOp _compareOp);/*
@@ -290,7 +283,7 @@ public class VkStencilOpState extends VkStruct {
 	  */
 
 	/**
-	 * get method for field compareOp
+	 * get method for field compareOp	[vkenum]
 	 * Prototype: VkCompareOp  compareOp
 	 */ 
 	 private static native VkCompareOp compareOp0(ByteBuffer ptr);/*
@@ -299,7 +292,7 @@ public class VkStencilOpState extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field compareMask
+	 * native Set method for field compareMask	
 	 * Prototype: uint32_t  compareMask
 	 */ 
 	 private static native void compareMask0(ByteBuffer ptr, int _compareMask);/*
@@ -308,7 +301,7 @@ public class VkStencilOpState extends VkStruct {
 	  */
 
 	/**
-	 * get method for field compareMask
+	 * get method for field compareMask	
 	 * Prototype: uint32_t  compareMask
 	 */ 
 	 private static native int compareMask0(ByteBuffer ptr);/*
@@ -317,7 +310,7 @@ public class VkStencilOpState extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field writeMask
+	 * native Set method for field writeMask	
 	 * Prototype: uint32_t  writeMask
 	 */ 
 	 private static native void writeMask0(ByteBuffer ptr, int _writeMask);/*
@@ -326,7 +319,7 @@ public class VkStencilOpState extends VkStruct {
 	  */
 
 	/**
-	 * get method for field writeMask
+	 * get method for field writeMask	
 	 * Prototype: uint32_t  writeMask
 	 */ 
 	 private static native int writeMask0(ByteBuffer ptr);/*
@@ -335,7 +328,7 @@ public class VkStencilOpState extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field reference
+	 * native Set method for field reference	
 	 * Prototype: uint32_t  reference
 	 */ 
 	 private static native void reference0(ByteBuffer ptr, int _reference);/*
@@ -344,7 +337,7 @@ public class VkStencilOpState extends VkStruct {
 	  */
 
 	/**
-	 * get method for field reference
+	 * get method for field reference	
 	 * Prototype: uint32_t  reference
 	 */ 
 	 private static native int reference0(ByteBuffer ptr);/*

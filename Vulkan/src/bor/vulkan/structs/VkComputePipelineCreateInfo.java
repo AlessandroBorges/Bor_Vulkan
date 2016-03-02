@@ -43,38 +43,31 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkPipelineCreateFlags 	flags 
-	 */ 
+	 *  VkPipelineCreateFlags 	flags		 */ 
 	int 	flags;
 
 	/**
-	 *  VkPipelineShaderStageCreateInfo 	stage 
-	 */ 
+	 *  VkPipelineShaderStageCreateInfo 	stage	[vkstruct]	 */ 
 	VkPipelineShaderStageCreateInfo 	stage;
 
 	/**
-	 *  VkPipelineLayout 	layout 
-	 */ 
+	 *  VkPipelineLayout 	layout	[vkhandle]	 */ 
 	VkPipelineLayout 	layout;
 
 	/**
-	 *  VkPipeline 	basePipelineHandle 
-	 */ 
+	 *  VkPipeline 	basePipelineHandle	[vkhandle]	 */ 
 	VkPipeline 	basePipelineHandle;
 
 	/**
-	 *  int32_t 	basePipelineIndex 
-	 */ 
+	 *  int32_t 	basePipelineIndex		 */ 
 	int 	basePipelineIndex;
 
 	/**
@@ -92,12 +85,12 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -106,7 +99,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -115,7 +108,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -124,7 +117,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -133,7 +126,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkPipelineCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -142,7 +135,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkPipelineCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -151,7 +144,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field stage
+	 * Set method for field stage	[vkstruct]
 	 * Prototype: VkPipelineShaderStageCreateInfo  stage
 	 */ 
 	 public void stage(VkPipelineShaderStageCreateInfo stage){
@@ -160,7 +153,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field stage
+	 * get method for field stage	[vkstruct]
 	 * Prototype: VkPipelineShaderStageCreateInfo  stage
 	 */ 
 	 public VkPipelineShaderStageCreateInfo stage(){
@@ -169,7 +162,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field layout
+	 * Set method for field layout	[vkhandle]
 	 * Prototype: VkPipelineLayout  layout
 	 */ 
 	 public void layout(VkPipelineLayout layout){
@@ -178,7 +171,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field layout
+	 * get method for field layout	[vkhandle]
 	 * Prototype: VkPipelineLayout  layout
 	 */ 
 	 public VkPipelineLayout layout(){
@@ -187,7 +180,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field basePipelineHandle
+	 * Set method for field basePipelineHandle	[vkhandle]
 	 * Prototype: VkPipeline  basePipelineHandle
 	 */ 
 	 public void basePipelineHandle(VkPipeline basePipelineHandle){
@@ -196,7 +189,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field basePipelineHandle
+	 * get method for field basePipelineHandle	[vkhandle]
 	 * Prototype: VkPipeline  basePipelineHandle
 	 */ 
 	 public VkPipeline basePipelineHandle(){
@@ -205,7 +198,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field basePipelineIndex
+	 * Set method for field basePipelineIndex	
 	 * Prototype: int32_t  basePipelineIndex
 	 */ 
 	 public void basePipelineIndex(int basePipelineIndex){
@@ -214,7 +207,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field basePipelineIndex
+	 * get method for field basePipelineIndex	
 	 * Prototype: int32_t  basePipelineIndex
 	 */ 
 	 public int basePipelineIndex(){
@@ -227,7 +220,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -236,7 +229,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -245,7 +238,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -254,7 +247,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -263,7 +256,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkPipelineCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -272,7 +265,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkPipelineCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -281,7 +274,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field stage
+	 * native Set method for field stage	[vkstruct]
 	 * Prototype: VkPipelineShaderStageCreateInfo  stage
 	 */ 
 	 private static native void stage0(ByteBuffer ptr, VkPipelineShaderStageCreateInfo _stage);/*
@@ -290,7 +283,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field stage
+	 * get method for field stage	[vkstruct]
 	 * Prototype: VkPipelineShaderStageCreateInfo  stage
 	 */ 
 	 private static native VkPipelineShaderStageCreateInfo stage0(ByteBuffer ptr);/*
@@ -299,7 +292,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field layout
+	 * native Set method for field layout	[vkhandle]
 	 * Prototype: VkPipelineLayout  layout
 	 */ 
 	 private static native void layout0(ByteBuffer ptr, VkPipelineLayout _layout);/*
@@ -308,7 +301,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field layout
+	 * get method for field layout	[vkhandle]
 	 * Prototype: VkPipelineLayout  layout
 	 */ 
 	 private static native VkPipelineLayout layout0(ByteBuffer ptr);/*
@@ -317,7 +310,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field basePipelineHandle
+	 * native Set method for field basePipelineHandle	[vkhandle]
 	 * Prototype: VkPipeline  basePipelineHandle
 	 */ 
 	 private static native void basePipelineHandle0(ByteBuffer ptr, VkPipeline _basePipelineHandle);/*
@@ -326,7 +319,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field basePipelineHandle
+	 * get method for field basePipelineHandle	[vkhandle]
 	 * Prototype: VkPipeline  basePipelineHandle
 	 */ 
 	 private static native VkPipeline basePipelineHandle0(ByteBuffer ptr);/*
@@ -335,7 +328,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field basePipelineIndex
+	 * native Set method for field basePipelineIndex	
 	 * Prototype: int32_t  basePipelineIndex
 	 */ 
 	 private static native void basePipelineIndex0(ByteBuffer ptr, int _basePipelineIndex);/*
@@ -344,7 +337,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field basePipelineIndex
+	 * get method for field basePipelineIndex	
 	 * Prototype: int32_t  basePipelineIndex
 	 */ 
 	 private static native int basePipelineIndex0(ByteBuffer ptr);/*

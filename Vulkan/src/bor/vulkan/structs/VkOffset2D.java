@@ -38,13 +38,11 @@ public class VkOffset2D extends VkStruct {
 
 	 // fields //
 	/**
-	 *  int32_t 	x 
-	 */ 
+	 *  int32_t 	x		 */ 
 	int 	x;
 
 	/**
-	 *  int32_t 	y 
-	 */ 
+	 *  int32_t 	y		 */ 
 	int 	y;
 
 	/**
@@ -62,12 +60,12 @@ public class VkOffset2D extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field x
+	 * Set method for field x	
 	 * Prototype: int32_t  x
 	 */ 
 	 public void x(int x){
@@ -76,7 +74,7 @@ public class VkOffset2D extends VkStruct {
 	 }
 
 	/**
-	 * get method for field x
+	 * get method for field x	
 	 * Prototype: int32_t  x
 	 */ 
 	 public int x(){
@@ -85,7 +83,7 @@ public class VkOffset2D extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field y
+	 * Set method for field y	
 	 * Prototype: int32_t  y
 	 */ 
 	 public void y(int y){
@@ -94,7 +92,7 @@ public class VkOffset2D extends VkStruct {
 	 }
 
 	/**
-	 * get method for field y
+	 * get method for field y	
 	 * Prototype: int32_t  y
 	 */ 
 	 public int y(){
@@ -107,7 +105,7 @@ public class VkOffset2D extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field x
+	 * native Set method for field x	
 	 * Prototype: int32_t  x
 	 */ 
 	 private static native void x0(ByteBuffer ptr, int _x);/*
@@ -116,7 +114,7 @@ public class VkOffset2D extends VkStruct {
 	  */
 
 	/**
-	 * get method for field x
+	 * get method for field x	
 	 * Prototype: int32_t  x
 	 */ 
 	 private static native int x0(ByteBuffer ptr);/*
@@ -125,7 +123,7 @@ public class VkOffset2D extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field y
+	 * native Set method for field y	
 	 * Prototype: int32_t  y
 	 */ 
 	 private static native void y0(ByteBuffer ptr, int _y);/*
@@ -134,7 +132,7 @@ public class VkOffset2D extends VkStruct {
 	  */
 
 	/**
-	 * get method for field y
+	 * get method for field y	
 	 * Prototype: int32_t  y
 	 */ 
 	 private static native int y0(ByteBuffer ptr);/*

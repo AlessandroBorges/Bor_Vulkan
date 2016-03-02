@@ -39,18 +39,15 @@ public class VkDispatchIndirectCommand extends VkStruct {
 
 	 // fields //
 	/**
-	 *  uint32_t 	x 
-	 */ 
+	 *  uint32_t 	x		 */ 
 	int 	x;
 
 	/**
-	 *  uint32_t 	y 
-	 */ 
+	 *  uint32_t 	y		 */ 
 	int 	y;
 
 	/**
-	 *  uint32_t 	z 
-	 */ 
+	 *  uint32_t 	z		 */ 
 	int 	z;
 
 	/**
@@ -68,12 +65,12 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field x
+	 * Set method for field x	
 	 * Prototype: uint32_t  x
 	 */ 
 	 public void x(int x){
@@ -82,7 +79,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 }
 
 	/**
-	 * get method for field x
+	 * get method for field x	
 	 * Prototype: uint32_t  x
 	 */ 
 	 public int x(){
@@ -91,7 +88,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field y
+	 * Set method for field y	
 	 * Prototype: uint32_t  y
 	 */ 
 	 public void y(int y){
@@ -100,7 +97,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 }
 
 	/**
-	 * get method for field y
+	 * get method for field y	
 	 * Prototype: uint32_t  y
 	 */ 
 	 public int y(){
@@ -109,7 +106,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field z
+	 * Set method for field z	
 	 * Prototype: uint32_t  z
 	 */ 
 	 public void z(int z){
@@ -118,7 +115,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 }
 
 	/**
-	 * get method for field z
+	 * get method for field z	
 	 * Prototype: uint32_t  z
 	 */ 
 	 public int z(){
@@ -131,7 +128,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field x
+	 * native Set method for field x	
 	 * Prototype: uint32_t  x
 	 */ 
 	 private static native void x0(ByteBuffer ptr, int _x);/*
@@ -140,7 +137,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	  */
 
 	/**
-	 * get method for field x
+	 * get method for field x	
 	 * Prototype: uint32_t  x
 	 */ 
 	 private static native int x0(ByteBuffer ptr);/*
@@ -149,7 +146,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field y
+	 * native Set method for field y	
 	 * Prototype: uint32_t  y
 	 */ 
 	 private static native void y0(ByteBuffer ptr, int _y);/*
@@ -158,7 +155,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	  */
 
 	/**
-	 * get method for field y
+	 * get method for field y	
 	 * Prototype: uint32_t  y
 	 */ 
 	 private static native int y0(ByteBuffer ptr);/*
@@ -167,7 +164,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field z
+	 * native Set method for field z	
 	 * Prototype: uint32_t  z
 	 */ 
 	 private static native void z0(ByteBuffer ptr, int _z);/*
@@ -176,7 +173,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	  */
 
 	/**
-	 * get method for field z
+	 * get method for field z	
 	 * Prototype: uint32_t  z
 	 */ 
 	 private static native int z0(ByteBuffer ptr);/*

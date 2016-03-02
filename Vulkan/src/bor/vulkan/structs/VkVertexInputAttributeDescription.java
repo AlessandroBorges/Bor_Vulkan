@@ -40,23 +40,19 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 
 	 // fields //
 	/**
-	 *  uint32_t 	location 
-	 */ 
+	 *  uint32_t 	location		 */ 
 	int 	location;
 
 	/**
-	 *  uint32_t 	binding 
-	 */ 
+	 *  uint32_t 	binding		 */ 
 	int 	binding;
 
 	/**
-	 *  VkFormat 	format 
-	 */ 
+	 *  VkFormat 	format	[vkenum]	 */ 
 	VkFormat 	format;
 
 	/**
-	 *  uint32_t 	offset 
-	 */ 
+	 *  uint32_t 	offset		 */ 
 	int 	offset;
 
 	/**
@@ -74,12 +70,12 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field location
+	 * Set method for field location	
 	 * Prototype: uint32_t  location
 	 */ 
 	 public void location(int location){
@@ -88,7 +84,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 }
 
 	/**
-	 * get method for field location
+	 * get method for field location	
 	 * Prototype: uint32_t  location
 	 */ 
 	 public int location(){
@@ -97,7 +93,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field binding
+	 * Set method for field binding	
 	 * Prototype: uint32_t  binding
 	 */ 
 	 public void binding(int binding){
@@ -106,7 +102,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 }
 
 	/**
-	 * get method for field binding
+	 * get method for field binding	
 	 * Prototype: uint32_t  binding
 	 */ 
 	 public int binding(){
@@ -115,7 +111,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field format
+	 * Set method for field format	[vkenum]
 	 * Prototype: VkFormat  format
 	 */ 
 	 public void format(VkFormat format){
@@ -124,7 +120,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 }
 
 	/**
-	 * get method for field format
+	 * get method for field format	[vkenum]
 	 * Prototype: VkFormat  format
 	 */ 
 	 public VkFormat format(){
@@ -133,7 +129,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field offset
+	 * Set method for field offset	
 	 * Prototype: uint32_t  offset
 	 */ 
 	 public void offset(int offset){
@@ -142,7 +138,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 }
 
 	/**
-	 * get method for field offset
+	 * get method for field offset	
 	 * Prototype: uint32_t  offset
 	 */ 
 	 public int offset(){
@@ -155,7 +151,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field location
+	 * native Set method for field location	
 	 * Prototype: uint32_t  location
 	 */ 
 	 private static native void location0(ByteBuffer ptr, int _location);/*
@@ -164,7 +160,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	  */
 
 	/**
-	 * get method for field location
+	 * get method for field location	
 	 * Prototype: uint32_t  location
 	 */ 
 	 private static native int location0(ByteBuffer ptr);/*
@@ -173,7 +169,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field binding
+	 * native Set method for field binding	
 	 * Prototype: uint32_t  binding
 	 */ 
 	 private static native void binding0(ByteBuffer ptr, int _binding);/*
@@ -182,7 +178,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	  */
 
 	/**
-	 * get method for field binding
+	 * get method for field binding	
 	 * Prototype: uint32_t  binding
 	 */ 
 	 private static native int binding0(ByteBuffer ptr);/*
@@ -191,7 +187,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field format
+	 * native Set method for field format	[vkenum]
 	 * Prototype: VkFormat  format
 	 */ 
 	 private static native void format0(ByteBuffer ptr, VkFormat _format);/*
@@ -200,7 +196,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	  */
 
 	/**
-	 * get method for field format
+	 * get method for field format	[vkenum]
 	 * Prototype: VkFormat  format
 	 */ 
 	 private static native VkFormat format0(ByteBuffer ptr);/*
@@ -209,7 +205,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field offset
+	 * native Set method for field offset	
 	 * Prototype: uint32_t  offset
 	 */ 
 	 private static native void offset0(ByteBuffer ptr, int _offset);/*
@@ -218,7 +214,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	  */
 
 	/**
-	 * get method for field offset
+	 * get method for field offset	
 	 * Prototype: uint32_t  offset
 	 */ 
 	 private static native int offset0(ByteBuffer ptr);/*

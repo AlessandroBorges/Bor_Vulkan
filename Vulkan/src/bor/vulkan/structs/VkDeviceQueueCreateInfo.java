@@ -42,33 +42,27 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkDeviceQueueCreateFlags 	flags 
-	 */ 
+	 *  VkDeviceQueueCreateFlags 	flags		 */ 
 	int 	flags;
 
 	/**
-	 *  uint32_t 	queueFamilyIndex 
-	 */ 
+	 *  uint32_t 	queueFamilyIndex		 */ 
 	int 	queueFamilyIndex;
 
 	/**
-	 *  uint32_t 	queueCount 
-	 */ 
+	 *  uint32_t 	queueCount		 */ 
 	int 	queueCount;
 
 	/**
-	 *  const float* 	pQueuePriorities 
-	 */ 
+	 *  const float* 	pQueuePriorities		 */ 
 	float[] 	pQueuePriorities;
 
 	/**
@@ -86,12 +80,12 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -100,7 +94,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -109,7 +103,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -118,7 +112,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -127,7 +121,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkDeviceQueueCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -136,7 +130,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkDeviceQueueCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -145,7 +139,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field queueFamilyIndex
+	 * Set method for field queueFamilyIndex	
 	 * Prototype: uint32_t  queueFamilyIndex
 	 */ 
 	 public void queueFamilyIndex(int queueFamilyIndex){
@@ -154,7 +148,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field queueFamilyIndex
+	 * get method for field queueFamilyIndex	
 	 * Prototype: uint32_t  queueFamilyIndex
 	 */ 
 	 public int queueFamilyIndex(){
@@ -163,7 +157,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field queueCount
+	 * Set method for field queueCount	
 	 * Prototype: uint32_t  queueCount
 	 */ 
 	 public void queueCount(int queueCount){
@@ -172,7 +166,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field queueCount
+	 * get method for field queueCount	
 	 * Prototype: uint32_t  queueCount
 	 */ 
 	 public int queueCount(){
@@ -181,7 +175,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pQueuePriorities
+	 * Set method for field pQueuePriorities	
 	 * Prototype: const float*  pQueuePriorities
 	 */ 
 	 public void pQueuePriorities(float[] pQueuePriorities){
@@ -190,7 +184,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pQueuePriorities
+	 * get method for field pQueuePriorities	
 	 * Prototype: const float*  pQueuePriorities
 	 */ 
 	 public float[] pQueuePriorities(){
@@ -203,7 +197,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -212,7 +206,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -221,7 +215,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -230,7 +224,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -239,7 +233,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkDeviceQueueCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -248,7 +242,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkDeviceQueueCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -257,7 +251,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field queueFamilyIndex
+	 * native Set method for field queueFamilyIndex	
 	 * Prototype: uint32_t  queueFamilyIndex
 	 */ 
 	 private static native void queueFamilyIndex0(ByteBuffer ptr, int _queueFamilyIndex);/*
@@ -266,7 +260,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field queueFamilyIndex
+	 * get method for field queueFamilyIndex	
 	 * Prototype: uint32_t  queueFamilyIndex
 	 */ 
 	 private static native int queueFamilyIndex0(ByteBuffer ptr);/*
@@ -275,7 +269,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field queueCount
+	 * native Set method for field queueCount	
 	 * Prototype: uint32_t  queueCount
 	 */ 
 	 private static native void queueCount0(ByteBuffer ptr, int _queueCount);/*
@@ -284,7 +278,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field queueCount
+	 * get method for field queueCount	
 	 * Prototype: uint32_t  queueCount
 	 */ 
 	 private static native int queueCount0(ByteBuffer ptr);/*
@@ -293,7 +287,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pQueuePriorities
+	 * native Set method for field pQueuePriorities	
 	 * Prototype: const float*  pQueuePriorities
 	 */ 
 	 private static native void pQueuePriorities0(ByteBuffer ptr, float[] _pQueuePriorities);/*
@@ -302,7 +296,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pQueuePriorities
+	 * get method for field pQueuePriorities	
 	 * Prototype: const float*  pQueuePriorities
 	 */ 
 	 private static native float[] pQueuePriorities0(ByteBuffer ptr);/*

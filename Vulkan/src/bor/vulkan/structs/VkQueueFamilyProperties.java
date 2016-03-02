@@ -40,23 +40,19 @@ public class VkQueueFamilyProperties extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkQueueFlags 	queueFlags 
-	 */ 
+	 *  VkQueueFlags 	queueFlags		 */ 
 	int 	queueFlags;
 
 	/**
-	 *  uint32_t 	queueCount 
-	 */ 
+	 *  uint32_t 	queueCount		 */ 
 	int 	queueCount;
 
 	/**
-	 *  uint32_t 	timestampValidBits 
-	 */ 
+	 *  uint32_t 	timestampValidBits		 */ 
 	int 	timestampValidBits;
 
 	/**
-	 *  VkExtent3D 	minImageTransferGranularity 
-	 */ 
+	 *  VkExtent3D 	minImageTransferGranularity	[vkstruct]	 */ 
 	VkExtent3D 	minImageTransferGranularity;
 
 	/**
@@ -74,12 +70,12 @@ public class VkQueueFamilyProperties extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field queueFlags
+	 * Set method for field queueFlags	
 	 * Prototype: VkQueueFlags  queueFlags
 	 */ 
 	 public void queueFlags(int queueFlags){
@@ -88,7 +84,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field queueFlags
+	 * get method for field queueFlags	
 	 * Prototype: VkQueueFlags  queueFlags
 	 */ 
 	 public int queueFlags(){
@@ -97,7 +93,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field queueCount
+	 * Set method for field queueCount	
 	 * Prototype: uint32_t  queueCount
 	 */ 
 	 public void queueCount(int queueCount){
@@ -106,7 +102,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field queueCount
+	 * get method for field queueCount	
 	 * Prototype: uint32_t  queueCount
 	 */ 
 	 public int queueCount(){
@@ -115,7 +111,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field timestampValidBits
+	 * Set method for field timestampValidBits	
 	 * Prototype: uint32_t  timestampValidBits
 	 */ 
 	 public void timestampValidBits(int timestampValidBits){
@@ -124,7 +120,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field timestampValidBits
+	 * get method for field timestampValidBits	
 	 * Prototype: uint32_t  timestampValidBits
 	 */ 
 	 public int timestampValidBits(){
@@ -133,7 +129,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field minImageTransferGranularity
+	 * Set method for field minImageTransferGranularity	[vkstruct]
 	 * Prototype: VkExtent3D  minImageTransferGranularity
 	 */ 
 	 public void minImageTransferGranularity(VkExtent3D minImageTransferGranularity){
@@ -142,7 +138,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field minImageTransferGranularity
+	 * get method for field minImageTransferGranularity	[vkstruct]
 	 * Prototype: VkExtent3D  minImageTransferGranularity
 	 */ 
 	 public VkExtent3D minImageTransferGranularity(){
@@ -155,7 +151,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field queueFlags
+	 * native Set method for field queueFlags	
 	 * Prototype: VkQueueFlags  queueFlags
 	 */ 
 	 private static native void queueFlags0(ByteBuffer ptr, int _queueFlags);/*
@@ -164,7 +160,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field queueFlags
+	 * get method for field queueFlags	
 	 * Prototype: VkQueueFlags  queueFlags
 	 */ 
 	 private static native int queueFlags0(ByteBuffer ptr);/*
@@ -173,7 +169,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field queueCount
+	 * native Set method for field queueCount	
 	 * Prototype: uint32_t  queueCount
 	 */ 
 	 private static native void queueCount0(ByteBuffer ptr, int _queueCount);/*
@@ -182,7 +178,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field queueCount
+	 * get method for field queueCount	
 	 * Prototype: uint32_t  queueCount
 	 */ 
 	 private static native int queueCount0(ByteBuffer ptr);/*
@@ -191,7 +187,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field timestampValidBits
+	 * native Set method for field timestampValidBits	
 	 * Prototype: uint32_t  timestampValidBits
 	 */ 
 	 private static native void timestampValidBits0(ByteBuffer ptr, int _timestampValidBits);/*
@@ -200,7 +196,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field timestampValidBits
+	 * get method for field timestampValidBits	
 	 * Prototype: uint32_t  timestampValidBits
 	 */ 
 	 private static native int timestampValidBits0(ByteBuffer ptr);/*
@@ -209,7 +205,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field minImageTransferGranularity
+	 * native Set method for field minImageTransferGranularity	[vkstruct]
 	 * Prototype: VkExtent3D  minImageTransferGranularity
 	 */ 
 	 private static native void minImageTransferGranularity0(ByteBuffer ptr, VkExtent3D _minImageTransferGranularity);/*
@@ -218,7 +214,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field minImageTransferGranularity
+	 * get method for field minImageTransferGranularity	[vkstruct]
 	 * Prototype: VkExtent3D  minImageTransferGranularity
 	 */ 
 	 private static native VkExtent3D minImageTransferGranularity0(ByteBuffer ptr);/*

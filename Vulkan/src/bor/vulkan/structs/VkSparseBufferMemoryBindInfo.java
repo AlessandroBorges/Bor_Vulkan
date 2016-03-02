@@ -39,18 +39,15 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkBuffer 	buffer 
-	 */ 
+	 *  VkBuffer 	buffer	[vkhandle]	 */ 
 	VkBuffer 	buffer;
 
 	/**
-	 *  uint32_t 	bindCount 
-	 */ 
+	 *  uint32_t 	bindCount		 */ 
 	int 	bindCount;
 
 	/**
-	 *  const VkSparseMemoryBind* 	pBinds 
-	 */ 
+	 *  const VkSparseMemoryBind* 	pBinds		 */ 
 	P<VkSparseMemoryBind>  	pBinds;
 
 	/**
@@ -68,12 +65,12 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field buffer
+	 * Set method for field buffer	[vkhandle]
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 public void buffer(VkBuffer buffer){
@@ -82,7 +79,7 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field buffer
+	 * get method for field buffer	[vkhandle]
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 public VkBuffer buffer(){
@@ -91,7 +88,7 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field bindCount
+	 * Set method for field bindCount	
 	 * Prototype: uint32_t  bindCount
 	 */ 
 	 public void bindCount(int bindCount){
@@ -100,7 +97,7 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field bindCount
+	 * get method for field bindCount	
 	 * Prototype: uint32_t  bindCount
 	 */ 
 	 public int bindCount(){
@@ -109,7 +106,7 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pBinds
+	 * Set method for field pBinds	
 	 * Prototype: const VkSparseMemoryBind*  pBinds
 	 */ 
 	 public void pBinds(P<VkSparseMemoryBind>  pBinds){
@@ -118,7 +115,7 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pBinds
+	 * get method for field pBinds	
 	 * Prototype: const VkSparseMemoryBind*  pBinds
 	 */ 
 	 public P<VkSparseMemoryBind>  pBinds(){
@@ -131,7 +128,7 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field buffer
+	 * native Set method for field buffer	[vkhandle]
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 private static native void buffer0(ByteBuffer ptr, VkBuffer _buffer);/*
@@ -140,7 +137,7 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field buffer
+	 * get method for field buffer	[vkhandle]
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 private static native VkBuffer buffer0(ByteBuffer ptr);/*
@@ -149,7 +146,7 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field bindCount
+	 * native Set method for field bindCount	
 	 * Prototype: uint32_t  bindCount
 	 */ 
 	 private static native void bindCount0(ByteBuffer ptr, int _bindCount);/*
@@ -158,7 +155,7 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field bindCount
+	 * get method for field bindCount	
 	 * Prototype: uint32_t  bindCount
 	 */ 
 	 private static native int bindCount0(ByteBuffer ptr);/*
@@ -167,7 +164,7 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pBinds
+	 * native Set method for field pBinds	
 	 * Prototype: const VkSparseMemoryBind*  pBinds
 	 */ 
 	 private static native void pBinds0(ByteBuffer ptr, P<VkSparseMemoryBind>  _pBinds);/*
@@ -176,7 +173,7 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pBinds
+	 * get method for field pBinds	
 	 * Prototype: const VkSparseMemoryBind*  pBinds
 	 */ 
 	 private static native P<VkSparseMemoryBind>  pBinds0(ByteBuffer ptr);/*

@@ -42,33 +42,27 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkDescriptorPoolCreateFlags 	flags 
-	 */ 
+	 *  VkDescriptorPoolCreateFlags 	flags		 */ 
 	int 	flags;
 
 	/**
-	 *  uint32_t 	maxSets 
-	 */ 
+	 *  uint32_t 	maxSets		 */ 
 	int 	maxSets;
 
 	/**
-	 *  uint32_t 	poolSizeCount 
-	 */ 
+	 *  uint32_t 	poolSizeCount		 */ 
 	int 	poolSizeCount;
 
 	/**
-	 *  const VkDescriptorPoolSize* 	pPoolSizes 
-	 */ 
+	 *  const VkDescriptorPoolSize* 	pPoolSizes		 */ 
 	P<VkDescriptorPoolSize>  	pPoolSizes;
 
 	/**
@@ -86,12 +80,12 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -100,7 +94,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -109,7 +103,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -118,7 +112,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -127,7 +121,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkDescriptorPoolCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -136,7 +130,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkDescriptorPoolCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -145,7 +139,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxSets
+	 * Set method for field maxSets	
 	 * Prototype: uint32_t  maxSets
 	 */ 
 	 public void maxSets(int maxSets){
@@ -154,7 +148,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxSets
+	 * get method for field maxSets	
 	 * Prototype: uint32_t  maxSets
 	 */ 
 	 public int maxSets(){
@@ -163,7 +157,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field poolSizeCount
+	 * Set method for field poolSizeCount	
 	 * Prototype: uint32_t  poolSizeCount
 	 */ 
 	 public void poolSizeCount(int poolSizeCount){
@@ -172,7 +166,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field poolSizeCount
+	 * get method for field poolSizeCount	
 	 * Prototype: uint32_t  poolSizeCount
 	 */ 
 	 public int poolSizeCount(){
@@ -181,7 +175,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pPoolSizes
+	 * Set method for field pPoolSizes	
 	 * Prototype: const VkDescriptorPoolSize*  pPoolSizes
 	 */ 
 	 public void pPoolSizes(P<VkDescriptorPoolSize>  pPoolSizes){
@@ -190,7 +184,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pPoolSizes
+	 * get method for field pPoolSizes	
 	 * Prototype: const VkDescriptorPoolSize*  pPoolSizes
 	 */ 
 	 public P<VkDescriptorPoolSize>  pPoolSizes(){
@@ -203,7 +197,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -212,7 +206,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -221,7 +215,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -230,7 +224,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -239,7 +233,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkDescriptorPoolCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -248,7 +242,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkDescriptorPoolCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -257,7 +251,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxSets
+	 * native Set method for field maxSets	
 	 * Prototype: uint32_t  maxSets
 	 */ 
 	 private static native void maxSets0(ByteBuffer ptr, int _maxSets);/*
@@ -266,7 +260,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxSets
+	 * get method for field maxSets	
 	 * Prototype: uint32_t  maxSets
 	 */ 
 	 private static native int maxSets0(ByteBuffer ptr);/*
@@ -275,7 +269,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field poolSizeCount
+	 * native Set method for field poolSizeCount	
 	 * Prototype: uint32_t  poolSizeCount
 	 */ 
 	 private static native void poolSizeCount0(ByteBuffer ptr, int _poolSizeCount);/*
@@ -284,7 +278,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field poolSizeCount
+	 * get method for field poolSizeCount	
 	 * Prototype: uint32_t  poolSizeCount
 	 */ 
 	 private static native int poolSizeCount0(ByteBuffer ptr);/*
@@ -293,7 +287,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pPoolSizes
+	 * native Set method for field pPoolSizes	
 	 * Prototype: const VkDescriptorPoolSize*  pPoolSizes
 	 */ 
 	 private static native void pPoolSizes0(ByteBuffer ptr, P<VkDescriptorPoolSize>  _pPoolSizes);/*
@@ -302,7 +296,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pPoolSizes
+	 * get method for field pPoolSizes	
 	 * Prototype: const VkDescriptorPoolSize*  pPoolSizes
 	 */ 
 	 private static native P<VkDescriptorPoolSize>  pPoolSizes0(ByteBuffer ptr);/*

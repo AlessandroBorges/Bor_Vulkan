@@ -40,23 +40,19 @@ public class VkDrawIndirectCommand extends VkStruct {
 
 	 // fields //
 	/**
-	 *  uint32_t 	vertexCount 
-	 */ 
+	 *  uint32_t 	vertexCount		 */ 
 	int 	vertexCount;
 
 	/**
-	 *  uint32_t 	instanceCount 
-	 */ 
+	 *  uint32_t 	instanceCount		 */ 
 	int 	instanceCount;
 
 	/**
-	 *  uint32_t 	firstVertex 
-	 */ 
+	 *  uint32_t 	firstVertex		 */ 
 	int 	firstVertex;
 
 	/**
-	 *  uint32_t 	firstInstance 
-	 */ 
+	 *  uint32_t 	firstInstance		 */ 
 	int 	firstInstance;
 
 	/**
@@ -74,12 +70,12 @@ public class VkDrawIndirectCommand extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field vertexCount
+	 * Set method for field vertexCount	
 	 * Prototype: uint32_t  vertexCount
 	 */ 
 	 public void vertexCount(int vertexCount){
@@ -88,7 +84,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	 }
 
 	/**
-	 * get method for field vertexCount
+	 * get method for field vertexCount	
 	 * Prototype: uint32_t  vertexCount
 	 */ 
 	 public int vertexCount(){
@@ -97,7 +93,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field instanceCount
+	 * Set method for field instanceCount	
 	 * Prototype: uint32_t  instanceCount
 	 */ 
 	 public void instanceCount(int instanceCount){
@@ -106,7 +102,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	 }
 
 	/**
-	 * get method for field instanceCount
+	 * get method for field instanceCount	
 	 * Prototype: uint32_t  instanceCount
 	 */ 
 	 public int instanceCount(){
@@ -115,7 +111,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field firstVertex
+	 * Set method for field firstVertex	
 	 * Prototype: uint32_t  firstVertex
 	 */ 
 	 public void firstVertex(int firstVertex){
@@ -124,7 +120,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	 }
 
 	/**
-	 * get method for field firstVertex
+	 * get method for field firstVertex	
 	 * Prototype: uint32_t  firstVertex
 	 */ 
 	 public int firstVertex(){
@@ -133,7 +129,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field firstInstance
+	 * Set method for field firstInstance	
 	 * Prototype: uint32_t  firstInstance
 	 */ 
 	 public void firstInstance(int firstInstance){
@@ -142,7 +138,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	 }
 
 	/**
-	 * get method for field firstInstance
+	 * get method for field firstInstance	
 	 * Prototype: uint32_t  firstInstance
 	 */ 
 	 public int firstInstance(){
@@ -155,7 +151,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field vertexCount
+	 * native Set method for field vertexCount	
 	 * Prototype: uint32_t  vertexCount
 	 */ 
 	 private static native void vertexCount0(ByteBuffer ptr, int _vertexCount);/*
@@ -164,7 +160,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	  */
 
 	/**
-	 * get method for field vertexCount
+	 * get method for field vertexCount	
 	 * Prototype: uint32_t  vertexCount
 	 */ 
 	 private static native int vertexCount0(ByteBuffer ptr);/*
@@ -173,7 +169,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field instanceCount
+	 * native Set method for field instanceCount	
 	 * Prototype: uint32_t  instanceCount
 	 */ 
 	 private static native void instanceCount0(ByteBuffer ptr, int _instanceCount);/*
@@ -182,7 +178,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	  */
 
 	/**
-	 * get method for field instanceCount
+	 * get method for field instanceCount	
 	 * Prototype: uint32_t  instanceCount
 	 */ 
 	 private static native int instanceCount0(ByteBuffer ptr);/*
@@ -191,7 +187,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field firstVertex
+	 * native Set method for field firstVertex	
 	 * Prototype: uint32_t  firstVertex
 	 */ 
 	 private static native void firstVertex0(ByteBuffer ptr, int _firstVertex);/*
@@ -200,7 +196,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	  */
 
 	/**
-	 * get method for field firstVertex
+	 * get method for field firstVertex	
 	 * Prototype: uint32_t  firstVertex
 	 */ 
 	 private static native int firstVertex0(ByteBuffer ptr);/*
@@ -209,7 +205,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field firstInstance
+	 * native Set method for field firstInstance	
 	 * Prototype: uint32_t  firstInstance
 	 */ 
 	 private static native void firstInstance0(ByteBuffer ptr, int _firstInstance);/*
@@ -218,7 +214,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	  */
 
 	/**
-	 * get method for field firstInstance
+	 * get method for field firstInstance	
 	 * Prototype: uint32_t  firstInstance
 	 */ 
 	 private static native int firstInstance0(ByteBuffer ptr);/*

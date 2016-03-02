@@ -46,53 +46,43 @@ public class VkDeviceCreateInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkDeviceCreateFlags 	flags 
-	 */ 
+	 *  VkDeviceCreateFlags 	flags		 */ 
 	int 	flags;
 
 	/**
-	 *  uint32_t 	queueCreateInfoCount 
-	 */ 
+	 *  uint32_t 	queueCreateInfoCount		 */ 
 	int 	queueCreateInfoCount;
 
 	/**
-	 *  const VkDeviceQueueCreateInfo* 	pQueueCreateInfos 
-	 */ 
+	 *  const VkDeviceQueueCreateInfo* 	pQueueCreateInfos		 */ 
 	P<VkDeviceQueueCreateInfo>  	pQueueCreateInfos;
 
 	/**
-	 *  uint32_t 	enabledLayerCount 
-	 */ 
+	 *  uint32_t 	enabledLayerCount		 */ 
 	int 	enabledLayerCount;
 
 	/**
-	 *  const char* const* 	ppEnabledLayerNames 
-	 */ 
+	 *  const char* const* 	ppEnabledLayerNames		 */ 
 	String[] 	ppEnabledLayerNames;
 
 	/**
-	 *  uint32_t 	enabledExtensionCount 
-	 */ 
+	 *  uint32_t 	enabledExtensionCount		 */ 
 	int 	enabledExtensionCount;
 
 	/**
-	 *  const char* const* 	ppEnabledExtensionNames 
-	 */ 
+	 *  const char* const* 	ppEnabledExtensionNames		 */ 
 	String[] 	ppEnabledExtensionNames;
 
 	/**
-	 *  const VkPhysicalDeviceFeatures* 	pEnabledFeatures 
-	 */ 
+	 *  const VkPhysicalDeviceFeatures* 	pEnabledFeatures		 */ 
 	P<VkPhysicalDeviceFeatures>  	pEnabledFeatures;
 
 	/**
@@ -110,12 +100,12 @@ public class VkDeviceCreateInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -124,7 +114,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -133,7 +123,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -142,7 +132,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -151,7 +141,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkDeviceCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -160,7 +150,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkDeviceCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -169,7 +159,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field queueCreateInfoCount
+	 * Set method for field queueCreateInfoCount	
 	 * Prototype: uint32_t  queueCreateInfoCount
 	 */ 
 	 public void queueCreateInfoCount(int queueCreateInfoCount){
@@ -178,7 +168,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field queueCreateInfoCount
+	 * get method for field queueCreateInfoCount	
 	 * Prototype: uint32_t  queueCreateInfoCount
 	 */ 
 	 public int queueCreateInfoCount(){
@@ -187,7 +177,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pQueueCreateInfos
+	 * Set method for field pQueueCreateInfos	
 	 * Prototype: const VkDeviceQueueCreateInfo*  pQueueCreateInfos
 	 */ 
 	 public void pQueueCreateInfos(P<VkDeviceQueueCreateInfo>  pQueueCreateInfos){
@@ -196,7 +186,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pQueueCreateInfos
+	 * get method for field pQueueCreateInfos	
 	 * Prototype: const VkDeviceQueueCreateInfo*  pQueueCreateInfos
 	 */ 
 	 public P<VkDeviceQueueCreateInfo>  pQueueCreateInfos(){
@@ -205,7 +195,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field enabledLayerCount
+	 * Set method for field enabledLayerCount	
 	 * Prototype: uint32_t  enabledLayerCount
 	 */ 
 	 public void enabledLayerCount(int enabledLayerCount){
@@ -214,7 +204,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field enabledLayerCount
+	 * get method for field enabledLayerCount	
 	 * Prototype: uint32_t  enabledLayerCount
 	 */ 
 	 public int enabledLayerCount(){
@@ -223,7 +213,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field ppEnabledLayerNames
+	 * Set method for field ppEnabledLayerNames	
 	 * Prototype: const char* const*  ppEnabledLayerNames
 	 */ 
 	 public void ppEnabledLayerNames(String[] ppEnabledLayerNames){
@@ -232,7 +222,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field ppEnabledLayerNames
+	 * get method for field ppEnabledLayerNames	
 	 * Prototype: const char* const*  ppEnabledLayerNames
 	 */ 
 	 public String[] ppEnabledLayerNames(){
@@ -241,7 +231,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field enabledExtensionCount
+	 * Set method for field enabledExtensionCount	
 	 * Prototype: uint32_t  enabledExtensionCount
 	 */ 
 	 public void enabledExtensionCount(int enabledExtensionCount){
@@ -250,7 +240,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field enabledExtensionCount
+	 * get method for field enabledExtensionCount	
 	 * Prototype: uint32_t  enabledExtensionCount
 	 */ 
 	 public int enabledExtensionCount(){
@@ -259,7 +249,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field ppEnabledExtensionNames
+	 * Set method for field ppEnabledExtensionNames	
 	 * Prototype: const char* const*  ppEnabledExtensionNames
 	 */ 
 	 public void ppEnabledExtensionNames(String[] ppEnabledExtensionNames){
@@ -268,7 +258,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field ppEnabledExtensionNames
+	 * get method for field ppEnabledExtensionNames	
 	 * Prototype: const char* const*  ppEnabledExtensionNames
 	 */ 
 	 public String[] ppEnabledExtensionNames(){
@@ -277,7 +267,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pEnabledFeatures
+	 * Set method for field pEnabledFeatures	
 	 * Prototype: const VkPhysicalDeviceFeatures*  pEnabledFeatures
 	 */ 
 	 public void pEnabledFeatures(P<VkPhysicalDeviceFeatures>  pEnabledFeatures){
@@ -286,7 +276,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pEnabledFeatures
+	 * get method for field pEnabledFeatures	
 	 * Prototype: const VkPhysicalDeviceFeatures*  pEnabledFeatures
 	 */ 
 	 public P<VkPhysicalDeviceFeatures>  pEnabledFeatures(){
@@ -299,7 +289,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -308,7 +298,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -317,7 +307,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -326,7 +316,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -335,7 +325,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkDeviceCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -344,7 +334,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkDeviceCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -353,7 +343,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field queueCreateInfoCount
+	 * native Set method for field queueCreateInfoCount	
 	 * Prototype: uint32_t  queueCreateInfoCount
 	 */ 
 	 private static native void queueCreateInfoCount0(ByteBuffer ptr, int _queueCreateInfoCount);/*
@@ -362,7 +352,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field queueCreateInfoCount
+	 * get method for field queueCreateInfoCount	
 	 * Prototype: uint32_t  queueCreateInfoCount
 	 */ 
 	 private static native int queueCreateInfoCount0(ByteBuffer ptr);/*
@@ -371,7 +361,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pQueueCreateInfos
+	 * native Set method for field pQueueCreateInfos	
 	 * Prototype: const VkDeviceQueueCreateInfo*  pQueueCreateInfos
 	 */ 
 	 private static native void pQueueCreateInfos0(ByteBuffer ptr, P<VkDeviceQueueCreateInfo>  _pQueueCreateInfos);/*
@@ -380,7 +370,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pQueueCreateInfos
+	 * get method for field pQueueCreateInfos	
 	 * Prototype: const VkDeviceQueueCreateInfo*  pQueueCreateInfos
 	 */ 
 	 private static native P<VkDeviceQueueCreateInfo>  pQueueCreateInfos0(ByteBuffer ptr);/*
@@ -389,7 +379,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field enabledLayerCount
+	 * native Set method for field enabledLayerCount	
 	 * Prototype: uint32_t  enabledLayerCount
 	 */ 
 	 private static native void enabledLayerCount0(ByteBuffer ptr, int _enabledLayerCount);/*
@@ -398,7 +388,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field enabledLayerCount
+	 * get method for field enabledLayerCount	
 	 * Prototype: uint32_t  enabledLayerCount
 	 */ 
 	 private static native int enabledLayerCount0(ByteBuffer ptr);/*
@@ -407,7 +397,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field ppEnabledLayerNames
+	 * native Set method for field ppEnabledLayerNames	
 	 * Prototype: const char* const*  ppEnabledLayerNames
 	 */ 
 	 private static native void ppEnabledLayerNames0(ByteBuffer ptr, String[] _ppEnabledLayerNames);/*
@@ -416,7 +406,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field ppEnabledLayerNames
+	 * get method for field ppEnabledLayerNames	
 	 * Prototype: const char* const*  ppEnabledLayerNames
 	 */ 
 	 private static native String[] ppEnabledLayerNames0(ByteBuffer ptr);/*
@@ -425,7 +415,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field enabledExtensionCount
+	 * native Set method for field enabledExtensionCount	
 	 * Prototype: uint32_t  enabledExtensionCount
 	 */ 
 	 private static native void enabledExtensionCount0(ByteBuffer ptr, int _enabledExtensionCount);/*
@@ -434,7 +424,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field enabledExtensionCount
+	 * get method for field enabledExtensionCount	
 	 * Prototype: uint32_t  enabledExtensionCount
 	 */ 
 	 private static native int enabledExtensionCount0(ByteBuffer ptr);/*
@@ -443,7 +433,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field ppEnabledExtensionNames
+	 * native Set method for field ppEnabledExtensionNames	
 	 * Prototype: const char* const*  ppEnabledExtensionNames
 	 */ 
 	 private static native void ppEnabledExtensionNames0(ByteBuffer ptr, String[] _ppEnabledExtensionNames);/*
@@ -452,7 +442,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field ppEnabledExtensionNames
+	 * get method for field ppEnabledExtensionNames	
 	 * Prototype: const char* const*  ppEnabledExtensionNames
 	 */ 
 	 private static native String[] ppEnabledExtensionNames0(ByteBuffer ptr);/*
@@ -461,7 +451,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pEnabledFeatures
+	 * native Set method for field pEnabledFeatures	
 	 * Prototype: const VkPhysicalDeviceFeatures*  pEnabledFeatures
 	 */ 
 	 private static native void pEnabledFeatures0(ByteBuffer ptr, P<VkPhysicalDeviceFeatures>  _pEnabledFeatures);/*
@@ -470,7 +460,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pEnabledFeatures
+	 * get method for field pEnabledFeatures	
 	 * Prototype: const VkPhysicalDeviceFeatures*  pEnabledFeatures
 	 */ 
 	 private static native P<VkPhysicalDeviceFeatures>  pEnabledFeatures0(ByteBuffer ptr);/*

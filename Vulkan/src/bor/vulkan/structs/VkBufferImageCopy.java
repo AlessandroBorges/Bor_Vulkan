@@ -42,33 +42,27 @@ public class VkBufferImageCopy extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkDeviceSize 	bufferOffset 
-	 */ 
+	 *  VkDeviceSize 	bufferOffset		 */ 
 	long 	bufferOffset;
 
 	/**
-	 *  uint32_t 	bufferRowLength 
-	 */ 
+	 *  uint32_t 	bufferRowLength		 */ 
 	int 	bufferRowLength;
 
 	/**
-	 *  uint32_t 	bufferImageHeight 
-	 */ 
+	 *  uint32_t 	bufferImageHeight		 */ 
 	int 	bufferImageHeight;
 
 	/**
-	 *  VkImageSubresourceLayers 	imageSubresource 
-	 */ 
+	 *  VkImageSubresourceLayers 	imageSubresource	[vkstruct]	 */ 
 	VkImageSubresourceLayers 	imageSubresource;
 
 	/**
-	 *  VkOffset3D 	imageOffset 
-	 */ 
+	 *  VkOffset3D 	imageOffset	[vkstruct]	 */ 
 	VkOffset3D 	imageOffset;
 
 	/**
-	 *  VkExtent3D 	imageExtent 
-	 */ 
+	 *  VkExtent3D 	imageExtent	[vkstruct]	 */ 
 	VkExtent3D 	imageExtent;
 
 	/**
@@ -86,12 +80,12 @@ public class VkBufferImageCopy extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field bufferOffset
+	 * Set method for field bufferOffset	
 	 * Prototype: VkDeviceSize  bufferOffset
 	 */ 
 	 public void bufferOffset(long bufferOffset){
@@ -100,7 +94,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * get method for field bufferOffset
+	 * get method for field bufferOffset	
 	 * Prototype: VkDeviceSize  bufferOffset
 	 */ 
 	 public long bufferOffset(){
@@ -109,7 +103,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field bufferRowLength
+	 * Set method for field bufferRowLength	
 	 * Prototype: uint32_t  bufferRowLength
 	 */ 
 	 public void bufferRowLength(int bufferRowLength){
@@ -118,7 +112,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * get method for field bufferRowLength
+	 * get method for field bufferRowLength	
 	 * Prototype: uint32_t  bufferRowLength
 	 */ 
 	 public int bufferRowLength(){
@@ -127,7 +121,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field bufferImageHeight
+	 * Set method for field bufferImageHeight	
 	 * Prototype: uint32_t  bufferImageHeight
 	 */ 
 	 public void bufferImageHeight(int bufferImageHeight){
@@ -136,7 +130,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * get method for field bufferImageHeight
+	 * get method for field bufferImageHeight	
 	 * Prototype: uint32_t  bufferImageHeight
 	 */ 
 	 public int bufferImageHeight(){
@@ -145,7 +139,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field imageSubresource
+	 * Set method for field imageSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  imageSubresource
 	 */ 
 	 public void imageSubresource(VkImageSubresourceLayers imageSubresource){
@@ -154,7 +148,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * get method for field imageSubresource
+	 * get method for field imageSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  imageSubresource
 	 */ 
 	 public VkImageSubresourceLayers imageSubresource(){
@@ -163,7 +157,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field imageOffset
+	 * Set method for field imageOffset	[vkstruct]
 	 * Prototype: VkOffset3D  imageOffset
 	 */ 
 	 public void imageOffset(VkOffset3D imageOffset){
@@ -172,7 +166,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * get method for field imageOffset
+	 * get method for field imageOffset	[vkstruct]
 	 * Prototype: VkOffset3D  imageOffset
 	 */ 
 	 public VkOffset3D imageOffset(){
@@ -181,7 +175,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field imageExtent
+	 * Set method for field imageExtent	[vkstruct]
 	 * Prototype: VkExtent3D  imageExtent
 	 */ 
 	 public void imageExtent(VkExtent3D imageExtent){
@@ -190,7 +184,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * get method for field imageExtent
+	 * get method for field imageExtent	[vkstruct]
 	 * Prototype: VkExtent3D  imageExtent
 	 */ 
 	 public VkExtent3D imageExtent(){
@@ -203,7 +197,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field bufferOffset
+	 * native Set method for field bufferOffset	
 	 * Prototype: VkDeviceSize  bufferOffset
 	 */ 
 	 private static native void bufferOffset0(ByteBuffer ptr, long _bufferOffset);/*
@@ -212,7 +206,7 @@ public class VkBufferImageCopy extends VkStruct {
 	  */
 
 	/**
-	 * get method for field bufferOffset
+	 * get method for field bufferOffset	
 	 * Prototype: VkDeviceSize  bufferOffset
 	 */ 
 	 private static native long bufferOffset0(ByteBuffer ptr);/*
@@ -221,7 +215,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field bufferRowLength
+	 * native Set method for field bufferRowLength	
 	 * Prototype: uint32_t  bufferRowLength
 	 */ 
 	 private static native void bufferRowLength0(ByteBuffer ptr, int _bufferRowLength);/*
@@ -230,7 +224,7 @@ public class VkBufferImageCopy extends VkStruct {
 	  */
 
 	/**
-	 * get method for field bufferRowLength
+	 * get method for field bufferRowLength	
 	 * Prototype: uint32_t  bufferRowLength
 	 */ 
 	 private static native int bufferRowLength0(ByteBuffer ptr);/*
@@ -239,7 +233,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field bufferImageHeight
+	 * native Set method for field bufferImageHeight	
 	 * Prototype: uint32_t  bufferImageHeight
 	 */ 
 	 private static native void bufferImageHeight0(ByteBuffer ptr, int _bufferImageHeight);/*
@@ -248,7 +242,7 @@ public class VkBufferImageCopy extends VkStruct {
 	  */
 
 	/**
-	 * get method for field bufferImageHeight
+	 * get method for field bufferImageHeight	
 	 * Prototype: uint32_t  bufferImageHeight
 	 */ 
 	 private static native int bufferImageHeight0(ByteBuffer ptr);/*
@@ -257,7 +251,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field imageSubresource
+	 * native Set method for field imageSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  imageSubresource
 	 */ 
 	 private static native void imageSubresource0(ByteBuffer ptr, VkImageSubresourceLayers _imageSubresource);/*
@@ -266,7 +260,7 @@ public class VkBufferImageCopy extends VkStruct {
 	  */
 
 	/**
-	 * get method for field imageSubresource
+	 * get method for field imageSubresource	[vkstruct]
 	 * Prototype: VkImageSubresourceLayers  imageSubresource
 	 */ 
 	 private static native VkImageSubresourceLayers imageSubresource0(ByteBuffer ptr);/*
@@ -275,7 +269,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field imageOffset
+	 * native Set method for field imageOffset	[vkstruct]
 	 * Prototype: VkOffset3D  imageOffset
 	 */ 
 	 private static native void imageOffset0(ByteBuffer ptr, VkOffset3D _imageOffset);/*
@@ -284,7 +278,7 @@ public class VkBufferImageCopy extends VkStruct {
 	  */
 
 	/**
-	 * get method for field imageOffset
+	 * get method for field imageOffset	[vkstruct]
 	 * Prototype: VkOffset3D  imageOffset
 	 */ 
 	 private static native VkOffset3D imageOffset0(ByteBuffer ptr);/*
@@ -293,7 +287,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field imageExtent
+	 * native Set method for field imageExtent	[vkstruct]
 	 * Prototype: VkExtent3D  imageExtent
 	 */ 
 	 private static native void imageExtent0(ByteBuffer ptr, VkExtent3D _imageExtent);/*
@@ -302,7 +296,7 @@ public class VkBufferImageCopy extends VkStruct {
 	  */
 
 	/**
-	 * get method for field imageExtent
+	 * get method for field imageExtent	[vkstruct]
 	 * Prototype: VkExtent3D  imageExtent
 	 */ 
 	 private static native VkExtent3D imageExtent0(ByteBuffer ptr);/*

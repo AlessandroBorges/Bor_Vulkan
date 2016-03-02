@@ -39,18 +39,15 @@ public class VkDescriptorBufferInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkBuffer 	buffer 
-	 */ 
+	 *  VkBuffer 	buffer	[vkhandle]	 */ 
 	VkBuffer 	buffer;
 
 	/**
-	 *  VkDeviceSize 	offset 
-	 */ 
+	 *  VkDeviceSize 	offset		 */ 
 	long 	offset;
 
 	/**
-	 *  VkDeviceSize 	range 
-	 */ 
+	 *  VkDeviceSize 	range		 */ 
 	long 	range;
 
 	/**
@@ -68,12 +65,12 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field buffer
+	 * Set method for field buffer	[vkhandle]
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 public void buffer(VkBuffer buffer){
@@ -82,7 +79,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field buffer
+	 * get method for field buffer	[vkhandle]
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 public VkBuffer buffer(){
@@ -91,7 +88,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field offset
+	 * Set method for field offset	
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 public void offset(long offset){
@@ -100,7 +97,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field offset
+	 * get method for field offset	
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 public long offset(){
@@ -109,7 +106,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field range
+	 * Set method for field range	
 	 * Prototype: VkDeviceSize  range
 	 */ 
 	 public void range(long range){
@@ -118,7 +115,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field range
+	 * get method for field range	
 	 * Prototype: VkDeviceSize  range
 	 */ 
 	 public long range(){
@@ -131,7 +128,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field buffer
+	 * native Set method for field buffer	[vkhandle]
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 private static native void buffer0(ByteBuffer ptr, VkBuffer _buffer);/*
@@ -140,7 +137,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field buffer
+	 * get method for field buffer	[vkhandle]
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 private static native VkBuffer buffer0(ByteBuffer ptr);/*
@@ -149,7 +146,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field offset
+	 * native Set method for field offset	
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 private static native void offset0(ByteBuffer ptr, long _offset);/*
@@ -158,7 +155,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field offset
+	 * get method for field offset	
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 private static native long offset0(ByteBuffer ptr);/*
@@ -167,7 +164,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field range
+	 * native Set method for field range	
 	 * Prototype: VkDeviceSize  range
 	 */ 
 	 private static native void range0(ByteBuffer ptr, long _range);/*
@@ -176,7 +173,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field range
+	 * get method for field range	
 	 * Prototype: VkDeviceSize  range
 	 */ 
 	 private static native long range0(ByteBuffer ptr);/*

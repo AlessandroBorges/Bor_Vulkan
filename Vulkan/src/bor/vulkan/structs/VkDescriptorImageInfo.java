@@ -39,18 +39,15 @@ public class VkDescriptorImageInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkSampler 	sampler 
-	 */ 
+	 *  VkSampler 	sampler	[vkhandle]	 */ 
 	VkSampler 	sampler;
 
 	/**
-	 *  VkImageView 	imageView 
-	 */ 
+	 *  VkImageView 	imageView	[vkhandle]	 */ 
 	VkImageView 	imageView;
 
 	/**
-	 *  VkImageLayout 	imageLayout 
-	 */ 
+	 *  VkImageLayout 	imageLayout	[vkenum]	 */ 
 	VkImageLayout 	imageLayout;
 
 	/**
@@ -68,12 +65,12 @@ public class VkDescriptorImageInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sampler
+	 * Set method for field sampler	[vkhandle]
 	 * Prototype: VkSampler  sampler
 	 */ 
 	 public void sampler(VkSampler sampler){
@@ -82,7 +79,7 @@ public class VkDescriptorImageInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sampler
+	 * get method for field sampler	[vkhandle]
 	 * Prototype: VkSampler  sampler
 	 */ 
 	 public VkSampler sampler(){
@@ -91,7 +88,7 @@ public class VkDescriptorImageInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field imageView
+	 * Set method for field imageView	[vkhandle]
 	 * Prototype: VkImageView  imageView
 	 */ 
 	 public void imageView(VkImageView imageView){
@@ -100,7 +97,7 @@ public class VkDescriptorImageInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field imageView
+	 * get method for field imageView	[vkhandle]
 	 * Prototype: VkImageView  imageView
 	 */ 
 	 public VkImageView imageView(){
@@ -109,7 +106,7 @@ public class VkDescriptorImageInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field imageLayout
+	 * Set method for field imageLayout	[vkenum]
 	 * Prototype: VkImageLayout  imageLayout
 	 */ 
 	 public void imageLayout(VkImageLayout imageLayout){
@@ -118,7 +115,7 @@ public class VkDescriptorImageInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field imageLayout
+	 * get method for field imageLayout	[vkenum]
 	 * Prototype: VkImageLayout  imageLayout
 	 */ 
 	 public VkImageLayout imageLayout(){
@@ -131,7 +128,7 @@ public class VkDescriptorImageInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sampler
+	 * native Set method for field sampler	[vkhandle]
 	 * Prototype: VkSampler  sampler
 	 */ 
 	 private static native void sampler0(ByteBuffer ptr, VkSampler _sampler);/*
@@ -140,7 +137,7 @@ public class VkDescriptorImageInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sampler
+	 * get method for field sampler	[vkhandle]
 	 * Prototype: VkSampler  sampler
 	 */ 
 	 private static native VkSampler sampler0(ByteBuffer ptr);/*
@@ -149,7 +146,7 @@ public class VkDescriptorImageInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field imageView
+	 * native Set method for field imageView	[vkhandle]
 	 * Prototype: VkImageView  imageView
 	 */ 
 	 private static native void imageView0(ByteBuffer ptr, VkImageView _imageView);/*
@@ -158,7 +155,7 @@ public class VkDescriptorImageInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field imageView
+	 * get method for field imageView	[vkhandle]
 	 * Prototype: VkImageView  imageView
 	 */ 
 	 private static native VkImageView imageView0(ByteBuffer ptr);/*
@@ -167,7 +164,7 @@ public class VkDescriptorImageInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field imageLayout
+	 * native Set method for field imageLayout	[vkenum]
 	 * Prototype: VkImageLayout  imageLayout
 	 */ 
 	 private static native void imageLayout0(ByteBuffer ptr, VkImageLayout _imageLayout);/*
@@ -176,7 +173,7 @@ public class VkDescriptorImageInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field imageLayout
+	 * get method for field imageLayout	[vkenum]
 	 * Prototype: VkImageLayout  imageLayout
 	 */ 
 	 private static native VkImageLayout imageLayout0(ByteBuffer ptr);/*

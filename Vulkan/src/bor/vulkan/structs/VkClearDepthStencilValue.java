@@ -38,13 +38,11 @@ public class VkClearDepthStencilValue extends VkStruct {
 
 	 // fields //
 	/**
-	 *  float 	depth 
-	 */ 
+	 *  float 	depth		 */ 
 	float 	depth;
 
 	/**
-	 *  uint32_t 	stencil 
-	 */ 
+	 *  uint32_t 	stencil		 */ 
 	int 	stencil;
 
 	/**
@@ -62,12 +60,12 @@ public class VkClearDepthStencilValue extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field depth
+	 * Set method for field depth	
 	 * Prototype: float  depth
 	 */ 
 	 public void depth(float depth){
@@ -76,7 +74,7 @@ public class VkClearDepthStencilValue extends VkStruct {
 	 }
 
 	/**
-	 * get method for field depth
+	 * get method for field depth	
 	 * Prototype: float  depth
 	 */ 
 	 public float depth(){
@@ -85,7 +83,7 @@ public class VkClearDepthStencilValue extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field stencil
+	 * Set method for field stencil	
 	 * Prototype: uint32_t  stencil
 	 */ 
 	 public void stencil(int stencil){
@@ -94,7 +92,7 @@ public class VkClearDepthStencilValue extends VkStruct {
 	 }
 
 	/**
-	 * get method for field stencil
+	 * get method for field stencil	
 	 * Prototype: uint32_t  stencil
 	 */ 
 	 public int stencil(){
@@ -107,7 +105,7 @@ public class VkClearDepthStencilValue extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field depth
+	 * native Set method for field depth	
 	 * Prototype: float  depth
 	 */ 
 	 private static native void depth0(ByteBuffer ptr, float _depth);/*
@@ -116,7 +114,7 @@ public class VkClearDepthStencilValue extends VkStruct {
 	  */
 
 	/**
-	 * get method for field depth
+	 * get method for field depth	
 	 * Prototype: float  depth
 	 */ 
 	 private static native float depth0(ByteBuffer ptr);/*
@@ -125,7 +123,7 @@ public class VkClearDepthStencilValue extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field stencil
+	 * native Set method for field stencil	
 	 * Prototype: uint32_t  stencil
 	 */ 
 	 private static native void stencil0(ByteBuffer ptr, int _stencil);/*
@@ -134,7 +132,7 @@ public class VkClearDepthStencilValue extends VkStruct {
 	  */
 
 	/**
-	 * get method for field stencil
+	 * get method for field stencil	
 	 * Prototype: uint32_t  stencil
 	 */ 
 	 private static native int stencil0(ByteBuffer ptr);/*

@@ -41,28 +41,23 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkBool32 	residencyStandard2DBlockShape 
-	 */ 
+	 *  VkBool32 	residencyStandard2DBlockShape		 */ 
 	boolean 	residencyStandard2DBlockShape;
 
 	/**
-	 *  VkBool32 	residencyStandard2DMultisampleBlockShape 
-	 */ 
+	 *  VkBool32 	residencyStandard2DMultisampleBlockShape		 */ 
 	boolean 	residencyStandard2DMultisampleBlockShape;
 
 	/**
-	 *  VkBool32 	residencyStandard3DBlockShape 
-	 */ 
+	 *  VkBool32 	residencyStandard3DBlockShape		 */ 
 	boolean 	residencyStandard3DBlockShape;
 
 	/**
-	 *  VkBool32 	residencyAlignedMipSize 
-	 */ 
+	 *  VkBool32 	residencyAlignedMipSize		 */ 
 	boolean 	residencyAlignedMipSize;
 
 	/**
-	 *  VkBool32 	residencyNonResidentStrict 
-	 */ 
+	 *  VkBool32 	residencyNonResidentStrict		 */ 
 	boolean 	residencyNonResidentStrict;
 
 	/**
@@ -80,12 +75,12 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field residencyStandard2DBlockShape
+	 * Set method for field residencyStandard2DBlockShape	
 	 * Prototype: VkBool32  residencyStandard2DBlockShape
 	 */ 
 	 public void residencyStandard2DBlockShape(boolean residencyStandard2DBlockShape){
@@ -94,7 +89,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field residencyStandard2DBlockShape
+	 * get method for field residencyStandard2DBlockShape	
 	 * Prototype: VkBool32  residencyStandard2DBlockShape
 	 */ 
 	 public boolean residencyStandard2DBlockShape(){
@@ -103,7 +98,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field residencyStandard2DMultisampleBlockShape
+	 * Set method for field residencyStandard2DMultisampleBlockShape	
 	 * Prototype: VkBool32  residencyStandard2DMultisampleBlockShape
 	 */ 
 	 public void residencyStandard2DMultisampleBlockShape(boolean residencyStandard2DMultisampleBlockShape){
@@ -112,7 +107,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field residencyStandard2DMultisampleBlockShape
+	 * get method for field residencyStandard2DMultisampleBlockShape	
 	 * Prototype: VkBool32  residencyStandard2DMultisampleBlockShape
 	 */ 
 	 public boolean residencyStandard2DMultisampleBlockShape(){
@@ -121,7 +116,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field residencyStandard3DBlockShape
+	 * Set method for field residencyStandard3DBlockShape	
 	 * Prototype: VkBool32  residencyStandard3DBlockShape
 	 */ 
 	 public void residencyStandard3DBlockShape(boolean residencyStandard3DBlockShape){
@@ -130,7 +125,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field residencyStandard3DBlockShape
+	 * get method for field residencyStandard3DBlockShape	
 	 * Prototype: VkBool32  residencyStandard3DBlockShape
 	 */ 
 	 public boolean residencyStandard3DBlockShape(){
@@ -139,7 +134,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field residencyAlignedMipSize
+	 * Set method for field residencyAlignedMipSize	
 	 * Prototype: VkBool32  residencyAlignedMipSize
 	 */ 
 	 public void residencyAlignedMipSize(boolean residencyAlignedMipSize){
@@ -148,7 +143,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field residencyAlignedMipSize
+	 * get method for field residencyAlignedMipSize	
 	 * Prototype: VkBool32  residencyAlignedMipSize
 	 */ 
 	 public boolean residencyAlignedMipSize(){
@@ -157,7 +152,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field residencyNonResidentStrict
+	 * Set method for field residencyNonResidentStrict	
 	 * Prototype: VkBool32  residencyNonResidentStrict
 	 */ 
 	 public void residencyNonResidentStrict(boolean residencyNonResidentStrict){
@@ -166,7 +161,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field residencyNonResidentStrict
+	 * get method for field residencyNonResidentStrict	
 	 * Prototype: VkBool32  residencyNonResidentStrict
 	 */ 
 	 public boolean residencyNonResidentStrict(){
@@ -179,7 +174,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field residencyStandard2DBlockShape
+	 * native Set method for field residencyStandard2DBlockShape	
 	 * Prototype: VkBool32  residencyStandard2DBlockShape
 	 */ 
 	 private static native void residencyStandard2DBlockShape0(ByteBuffer ptr, boolean _residencyStandard2DBlockShape);/*
@@ -188,7 +183,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field residencyStandard2DBlockShape
+	 * get method for field residencyStandard2DBlockShape	
 	 * Prototype: VkBool32  residencyStandard2DBlockShape
 	 */ 
 	 private static native boolean residencyStandard2DBlockShape0(ByteBuffer ptr);/*
@@ -197,7 +192,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field residencyStandard2DMultisampleBlockShape
+	 * native Set method for field residencyStandard2DMultisampleBlockShape	
 	 * Prototype: VkBool32  residencyStandard2DMultisampleBlockShape
 	 */ 
 	 private static native void residencyStandard2DMultisampleBlockShape0(ByteBuffer ptr, boolean _residencyStandard2DMultisampleBlockShape);/*
@@ -206,7 +201,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field residencyStandard2DMultisampleBlockShape
+	 * get method for field residencyStandard2DMultisampleBlockShape	
 	 * Prototype: VkBool32  residencyStandard2DMultisampleBlockShape
 	 */ 
 	 private static native boolean residencyStandard2DMultisampleBlockShape0(ByteBuffer ptr);/*
@@ -215,7 +210,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field residencyStandard3DBlockShape
+	 * native Set method for field residencyStandard3DBlockShape	
 	 * Prototype: VkBool32  residencyStandard3DBlockShape
 	 */ 
 	 private static native void residencyStandard3DBlockShape0(ByteBuffer ptr, boolean _residencyStandard3DBlockShape);/*
@@ -224,7 +219,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field residencyStandard3DBlockShape
+	 * get method for field residencyStandard3DBlockShape	
 	 * Prototype: VkBool32  residencyStandard3DBlockShape
 	 */ 
 	 private static native boolean residencyStandard3DBlockShape0(ByteBuffer ptr);/*
@@ -233,7 +228,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field residencyAlignedMipSize
+	 * native Set method for field residencyAlignedMipSize	
 	 * Prototype: VkBool32  residencyAlignedMipSize
 	 */ 
 	 private static native void residencyAlignedMipSize0(ByteBuffer ptr, boolean _residencyAlignedMipSize);/*
@@ -242,7 +237,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field residencyAlignedMipSize
+	 * get method for field residencyAlignedMipSize	
 	 * Prototype: VkBool32  residencyAlignedMipSize
 	 */ 
 	 private static native boolean residencyAlignedMipSize0(ByteBuffer ptr);/*
@@ -251,7 +246,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field residencyNonResidentStrict
+	 * native Set method for field residencyNonResidentStrict	
 	 * Prototype: VkBool32  residencyNonResidentStrict
 	 */ 
 	 private static native void residencyNonResidentStrict0(ByteBuffer ptr, boolean _residencyNonResidentStrict);/*
@@ -260,7 +255,7 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field residencyNonResidentStrict
+	 * get method for field residencyNonResidentStrict	
 	 * Prototype: VkBool32  residencyNonResidentStrict
 	 */ 
 	 private static native boolean residencyNonResidentStrict0(ByteBuffer ptr);/*

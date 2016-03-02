@@ -41,28 +41,23 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkCommandPool 	commandPool 
-	 */ 
+	 *  VkCommandPool 	commandPool	[vkhandle]	 */ 
 	VkCommandPool 	commandPool;
 
 	/**
-	 *  VkCommandBufferLevel 	level 
-	 */ 
+	 *  VkCommandBufferLevel 	level	[vkenum]	 */ 
 	VkCommandBufferLevel 	level;
 
 	/**
-	 *  uint32_t 	commandBufferCount 
-	 */ 
+	 *  uint32_t 	commandBufferCount		 */ 
 	int 	commandBufferCount;
 
 	/**
@@ -80,12 +75,12 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -94,7 +89,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -103,7 +98,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -112,7 +107,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -121,7 +116,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field commandPool
+	 * Set method for field commandPool	[vkhandle]
 	 * Prototype: VkCommandPool  commandPool
 	 */ 
 	 public void commandPool(VkCommandPool commandPool){
@@ -130,7 +125,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field commandPool
+	 * get method for field commandPool	[vkhandle]
 	 * Prototype: VkCommandPool  commandPool
 	 */ 
 	 public VkCommandPool commandPool(){
@@ -139,7 +134,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field level
+	 * Set method for field level	[vkenum]
 	 * Prototype: VkCommandBufferLevel  level
 	 */ 
 	 public void level(VkCommandBufferLevel level){
@@ -148,7 +143,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field level
+	 * get method for field level	[vkenum]
 	 * Prototype: VkCommandBufferLevel  level
 	 */ 
 	 public VkCommandBufferLevel level(){
@@ -157,7 +152,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field commandBufferCount
+	 * Set method for field commandBufferCount	
 	 * Prototype: uint32_t  commandBufferCount
 	 */ 
 	 public void commandBufferCount(int commandBufferCount){
@@ -166,7 +161,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field commandBufferCount
+	 * get method for field commandBufferCount	
 	 * Prototype: uint32_t  commandBufferCount
 	 */ 
 	 public int commandBufferCount(){
@@ -179,7 +174,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -188,7 +183,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -197,7 +192,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -206,7 +201,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -215,7 +210,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field commandPool
+	 * native Set method for field commandPool	[vkhandle]
 	 * Prototype: VkCommandPool  commandPool
 	 */ 
 	 private static native void commandPool0(ByteBuffer ptr, VkCommandPool _commandPool);/*
@@ -224,7 +219,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field commandPool
+	 * get method for field commandPool	[vkhandle]
 	 * Prototype: VkCommandPool  commandPool
 	 */ 
 	 private static native VkCommandPool commandPool0(ByteBuffer ptr);/*
@@ -233,7 +228,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field level
+	 * native Set method for field level	[vkenum]
 	 * Prototype: VkCommandBufferLevel  level
 	 */ 
 	 private static native void level0(ByteBuffer ptr, VkCommandBufferLevel _level);/*
@@ -242,7 +237,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field level
+	 * get method for field level	[vkenum]
 	 * Prototype: VkCommandBufferLevel  level
 	 */ 
 	 private static native VkCommandBufferLevel level0(ByteBuffer ptr);/*
@@ -251,7 +246,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field commandBufferCount
+	 * native Set method for field commandBufferCount	
 	 * Prototype: uint32_t  commandBufferCount
 	 */ 
 	 private static native void commandBufferCount0(ByteBuffer ptr, int _commandBufferCount);/*
@@ -260,7 +255,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field commandBufferCount
+	 * get method for field commandBufferCount	
 	 * Prototype: uint32_t  commandBufferCount
 	 */ 
 	 private static native int commandBufferCount0(ByteBuffer ptr);/*

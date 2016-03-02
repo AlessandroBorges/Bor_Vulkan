@@ -41,28 +41,23 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkSparseImageFormatProperties 	formatProperties 
-	 */ 
+	 *  VkSparseImageFormatProperties 	formatProperties	[vkstruct]	 */ 
 	VkSparseImageFormatProperties 	formatProperties;
 
 	/**
-	 *  uint32_t 	imageMipTailFirstLod 
-	 */ 
+	 *  uint32_t 	imageMipTailFirstLod		 */ 
 	int 	imageMipTailFirstLod;
 
 	/**
-	 *  VkDeviceSize 	imageMipTailSize 
-	 */ 
+	 *  VkDeviceSize 	imageMipTailSize		 */ 
 	long 	imageMipTailSize;
 
 	/**
-	 *  VkDeviceSize 	imageMipTailOffset 
-	 */ 
+	 *  VkDeviceSize 	imageMipTailOffset		 */ 
 	long 	imageMipTailOffset;
 
 	/**
-	 *  VkDeviceSize 	imageMipTailStride 
-	 */ 
+	 *  VkDeviceSize 	imageMipTailStride		 */ 
 	long 	imageMipTailStride;
 
 	/**
@@ -80,12 +75,12 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field formatProperties
+	 * Set method for field formatProperties	[vkstruct]
 	 * Prototype: VkSparseImageFormatProperties  formatProperties
 	 */ 
 	 public void formatProperties(VkSparseImageFormatProperties formatProperties){
@@ -94,7 +89,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 }
 
 	/**
-	 * get method for field formatProperties
+	 * get method for field formatProperties	[vkstruct]
 	 * Prototype: VkSparseImageFormatProperties  formatProperties
 	 */ 
 	 public VkSparseImageFormatProperties formatProperties(){
@@ -103,7 +98,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field imageMipTailFirstLod
+	 * Set method for field imageMipTailFirstLod	
 	 * Prototype: uint32_t  imageMipTailFirstLod
 	 */ 
 	 public void imageMipTailFirstLod(int imageMipTailFirstLod){
@@ -112,7 +107,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 }
 
 	/**
-	 * get method for field imageMipTailFirstLod
+	 * get method for field imageMipTailFirstLod	
 	 * Prototype: uint32_t  imageMipTailFirstLod
 	 */ 
 	 public int imageMipTailFirstLod(){
@@ -121,7 +116,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field imageMipTailSize
+	 * Set method for field imageMipTailSize	
 	 * Prototype: VkDeviceSize  imageMipTailSize
 	 */ 
 	 public void imageMipTailSize(long imageMipTailSize){
@@ -130,7 +125,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 }
 
 	/**
-	 * get method for field imageMipTailSize
+	 * get method for field imageMipTailSize	
 	 * Prototype: VkDeviceSize  imageMipTailSize
 	 */ 
 	 public long imageMipTailSize(){
@@ -139,7 +134,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field imageMipTailOffset
+	 * Set method for field imageMipTailOffset	
 	 * Prototype: VkDeviceSize  imageMipTailOffset
 	 */ 
 	 public void imageMipTailOffset(long imageMipTailOffset){
@@ -148,7 +143,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 }
 
 	/**
-	 * get method for field imageMipTailOffset
+	 * get method for field imageMipTailOffset	
 	 * Prototype: VkDeviceSize  imageMipTailOffset
 	 */ 
 	 public long imageMipTailOffset(){
@@ -157,7 +152,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field imageMipTailStride
+	 * Set method for field imageMipTailStride	
 	 * Prototype: VkDeviceSize  imageMipTailStride
 	 */ 
 	 public void imageMipTailStride(long imageMipTailStride){
@@ -166,7 +161,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 }
 
 	/**
-	 * get method for field imageMipTailStride
+	 * get method for field imageMipTailStride	
 	 * Prototype: VkDeviceSize  imageMipTailStride
 	 */ 
 	 public long imageMipTailStride(){
@@ -179,7 +174,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field formatProperties
+	 * native Set method for field formatProperties	[vkstruct]
 	 * Prototype: VkSparseImageFormatProperties  formatProperties
 	 */ 
 	 private static native void formatProperties0(ByteBuffer ptr, VkSparseImageFormatProperties _formatProperties);/*
@@ -188,7 +183,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	  */
 
 	/**
-	 * get method for field formatProperties
+	 * get method for field formatProperties	[vkstruct]
 	 * Prototype: VkSparseImageFormatProperties  formatProperties
 	 */ 
 	 private static native VkSparseImageFormatProperties formatProperties0(ByteBuffer ptr);/*
@@ -197,7 +192,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field imageMipTailFirstLod
+	 * native Set method for field imageMipTailFirstLod	
 	 * Prototype: uint32_t  imageMipTailFirstLod
 	 */ 
 	 private static native void imageMipTailFirstLod0(ByteBuffer ptr, int _imageMipTailFirstLod);/*
@@ -206,7 +201,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	  */
 
 	/**
-	 * get method for field imageMipTailFirstLod
+	 * get method for field imageMipTailFirstLod	
 	 * Prototype: uint32_t  imageMipTailFirstLod
 	 */ 
 	 private static native int imageMipTailFirstLod0(ByteBuffer ptr);/*
@@ -215,7 +210,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field imageMipTailSize
+	 * native Set method for field imageMipTailSize	
 	 * Prototype: VkDeviceSize  imageMipTailSize
 	 */ 
 	 private static native void imageMipTailSize0(ByteBuffer ptr, long _imageMipTailSize);/*
@@ -224,7 +219,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	  */
 
 	/**
-	 * get method for field imageMipTailSize
+	 * get method for field imageMipTailSize	
 	 * Prototype: VkDeviceSize  imageMipTailSize
 	 */ 
 	 private static native long imageMipTailSize0(ByteBuffer ptr);/*
@@ -233,7 +228,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field imageMipTailOffset
+	 * native Set method for field imageMipTailOffset	
 	 * Prototype: VkDeviceSize  imageMipTailOffset
 	 */ 
 	 private static native void imageMipTailOffset0(ByteBuffer ptr, long _imageMipTailOffset);/*
@@ -242,7 +237,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	  */
 
 	/**
-	 * get method for field imageMipTailOffset
+	 * get method for field imageMipTailOffset	
 	 * Prototype: VkDeviceSize  imageMipTailOffset
 	 */ 
 	 private static native long imageMipTailOffset0(ByteBuffer ptr);/*
@@ -251,7 +246,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field imageMipTailStride
+	 * native Set method for field imageMipTailStride	
 	 * Prototype: VkDeviceSize  imageMipTailStride
 	 */ 
 	 private static native void imageMipTailStride0(ByteBuffer ptr, long _imageMipTailStride);/*
@@ -260,7 +255,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	  */
 
 	/**
-	 * get method for field imageMipTailStride
+	 * get method for field imageMipTailStride	
 	 * Prototype: VkDeviceSize  imageMipTailStride
 	 */ 
 	 private static native long imageMipTailStride0(ByteBuffer ptr);/*

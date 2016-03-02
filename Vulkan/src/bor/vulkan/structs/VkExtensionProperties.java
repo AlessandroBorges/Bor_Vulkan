@@ -38,13 +38,11 @@ public class VkExtensionProperties extends VkStruct {
 
 	 // fields //
 	/**
-	 *  char[] 	extensionName 
-	 */ 
+	 *  char[] 	extensionName		 */ 
 	String 	extensionName;
 
 	/**
-	 *  uint32_t 	specVersion 
-	 */ 
+	 *  uint32_t 	specVersion		 */ 
 	int 	specVersion;
 
 	/**
@@ -62,12 +60,12 @@ public class VkExtensionProperties extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field extensionName
+	 * Set method for field extensionName	
 	 * Prototype: char[]  extensionName
 	 */ 
 	 public void extensionName(String extensionName){
@@ -76,7 +74,7 @@ public class VkExtensionProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field extensionName
+	 * get method for field extensionName	
 	 * Prototype: char[]  extensionName
 	 */ 
 	 public String extensionName(){
@@ -85,7 +83,7 @@ public class VkExtensionProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field specVersion
+	 * Set method for field specVersion	
 	 * Prototype: uint32_t  specVersion
 	 */ 
 	 public void specVersion(int specVersion){
@@ -94,7 +92,7 @@ public class VkExtensionProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field specVersion
+	 * get method for field specVersion	
 	 * Prototype: uint32_t  specVersion
 	 */ 
 	 public int specVersion(){
@@ -107,7 +105,7 @@ public class VkExtensionProperties extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field extensionName
+	 * native Set method for field extensionName	
 	 * Prototype: char[]  extensionName
 	 */ 
 	 private static native void extensionName0(ByteBuffer ptr, String _extensionName);/*
@@ -116,7 +114,7 @@ public class VkExtensionProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field extensionName
+	 * get method for field extensionName	
 	 * Prototype: char[]  extensionName
 	 */ 
 	 private static native String extensionName0(ByteBuffer ptr);/*
@@ -124,7 +122,7 @@ public class VkExtensionProperties extends VkStruct {
 		  return (jstring)(env->NewStringUTF(_obj.char[]);	 */
 
 	/**
-	 * native Set method for field specVersion
+	 * native Set method for field specVersion	
 	 * Prototype: uint32_t  specVersion
 	 */ 
 	 private static native void specVersion0(ByteBuffer ptr, int _specVersion);/*
@@ -133,7 +131,7 @@ public class VkExtensionProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field specVersion
+	 * get method for field specVersion	
 	 * Prototype: uint32_t  specVersion
 	 */ 
 	 private static native int specVersion0(ByteBuffer ptr);/*

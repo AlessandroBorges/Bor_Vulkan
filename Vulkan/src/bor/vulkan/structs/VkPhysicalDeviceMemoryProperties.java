@@ -40,23 +40,19 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 
 	 // fields //
 	/**
-	 *  uint32_t 	memoryTypeCount 
-	 */ 
+	 *  uint32_t 	memoryTypeCount		 */ 
 	int 	memoryTypeCount;
 
 	/**
-	 *  VkMemoryType[] 	memoryTypes 
-	 */ 
+	 *  VkMemoryType[] 	memoryTypes		 */ 
 	VkMemoryType[] 	memoryTypes;
 
 	/**
-	 *  uint32_t 	memoryHeapCount 
-	 */ 
+	 *  uint32_t 	memoryHeapCount		 */ 
 	int 	memoryHeapCount;
 
 	/**
-	 *  VkMemoryHeap[] 	memoryHeaps 
-	 */ 
+	 *  VkMemoryHeap[] 	memoryHeaps		 */ 
 	VkMemoryHeap[] 	memoryHeaps;
 
 	/**
@@ -74,12 +70,12 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field memoryTypeCount
+	 * Set method for field memoryTypeCount	
 	 * Prototype: uint32_t  memoryTypeCount
 	 */ 
 	 public void memoryTypeCount(int memoryTypeCount){
@@ -88,7 +84,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field memoryTypeCount
+	 * get method for field memoryTypeCount	
 	 * Prototype: uint32_t  memoryTypeCount
 	 */ 
 	 public int memoryTypeCount(){
@@ -97,7 +93,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field memoryTypes
+	 * Set method for field memoryTypes	
 	 * Prototype: VkMemoryType[]  memoryTypes
 	 */ 
 	 public void memoryTypes(VkMemoryType[] memoryTypes){
@@ -106,7 +102,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field memoryTypes
+	 * get method for field memoryTypes	
 	 * Prototype: VkMemoryType[]  memoryTypes
 	 */ 
 	 public VkMemoryType[] memoryTypes(){
@@ -115,7 +111,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field memoryHeapCount
+	 * Set method for field memoryHeapCount	
 	 * Prototype: uint32_t  memoryHeapCount
 	 */ 
 	 public void memoryHeapCount(int memoryHeapCount){
@@ -124,7 +120,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field memoryHeapCount
+	 * get method for field memoryHeapCount	
 	 * Prototype: uint32_t  memoryHeapCount
 	 */ 
 	 public int memoryHeapCount(){
@@ -133,7 +129,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field memoryHeaps
+	 * Set method for field memoryHeaps	
 	 * Prototype: VkMemoryHeap[]  memoryHeaps
 	 */ 
 	 public void memoryHeaps(VkMemoryHeap[] memoryHeaps){
@@ -142,7 +138,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field memoryHeaps
+	 * get method for field memoryHeaps	
 	 * Prototype: VkMemoryHeap[]  memoryHeaps
 	 */ 
 	 public VkMemoryHeap[] memoryHeaps(){
@@ -155,7 +151,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field memoryTypeCount
+	 * native Set method for field memoryTypeCount	
 	 * Prototype: uint32_t  memoryTypeCount
 	 */ 
 	 private static native void memoryTypeCount0(ByteBuffer ptr, int _memoryTypeCount);/*
@@ -164,7 +160,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field memoryTypeCount
+	 * get method for field memoryTypeCount	
 	 * Prototype: uint32_t  memoryTypeCount
 	 */ 
 	 private static native int memoryTypeCount0(ByteBuffer ptr);/*
@@ -173,7 +169,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field memoryTypes
+	 * native Set method for field memoryTypes	
 	 * Prototype: VkMemoryType[]  memoryTypes
 	 */ 
 	 private static native void memoryTypes0(ByteBuffer ptr, VkMemoryType[] _memoryTypes);/*
@@ -182,7 +178,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field memoryTypes
+	 * get method for field memoryTypes	
 	 * Prototype: VkMemoryType[]  memoryTypes
 	 */ 
 	 private static native VkMemoryType[] memoryTypes0(ByteBuffer ptr);/*
@@ -191,7 +187,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field memoryHeapCount
+	 * native Set method for field memoryHeapCount	
 	 * Prototype: uint32_t  memoryHeapCount
 	 */ 
 	 private static native void memoryHeapCount0(ByteBuffer ptr, int _memoryHeapCount);/*
@@ -200,7 +196,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field memoryHeapCount
+	 * get method for field memoryHeapCount	
 	 * Prototype: uint32_t  memoryHeapCount
 	 */ 
 	 private static native int memoryHeapCount0(ByteBuffer ptr);/*
@@ -209,7 +205,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field memoryHeaps
+	 * native Set method for field memoryHeaps	
 	 * Prototype: VkMemoryHeap[]  memoryHeaps
 	 */ 
 	 private static native void memoryHeaps0(ByteBuffer ptr, VkMemoryHeap[] _memoryHeaps);/*
@@ -218,7 +214,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field memoryHeaps
+	 * get method for field memoryHeaps	
 	 * Prototype: VkMemoryHeap[]  memoryHeaps
 	 */ 
 	 private static native VkMemoryHeap[] memoryHeaps0(ByteBuffer ptr);/*

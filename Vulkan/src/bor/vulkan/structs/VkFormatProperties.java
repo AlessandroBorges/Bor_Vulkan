@@ -39,18 +39,15 @@ public class VkFormatProperties extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkFormatFeatureFlags 	linearTilingFeatures 
-	 */ 
+	 *  VkFormatFeatureFlags 	linearTilingFeatures		 */ 
 	int 	linearTilingFeatures;
 
 	/**
-	 *  VkFormatFeatureFlags 	optimalTilingFeatures 
-	 */ 
+	 *  VkFormatFeatureFlags 	optimalTilingFeatures		 */ 
 	int 	optimalTilingFeatures;
 
 	/**
-	 *  VkFormatFeatureFlags 	bufferFeatures 
-	 */ 
+	 *  VkFormatFeatureFlags 	bufferFeatures		 */ 
 	int 	bufferFeatures;
 
 	/**
@@ -68,12 +65,12 @@ public class VkFormatProperties extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field linearTilingFeatures
+	 * Set method for field linearTilingFeatures	
 	 * Prototype: VkFormatFeatureFlags  linearTilingFeatures
 	 */ 
 	 public void linearTilingFeatures(int linearTilingFeatures){
@@ -82,7 +79,7 @@ public class VkFormatProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field linearTilingFeatures
+	 * get method for field linearTilingFeatures	
 	 * Prototype: VkFormatFeatureFlags  linearTilingFeatures
 	 */ 
 	 public int linearTilingFeatures(){
@@ -91,7 +88,7 @@ public class VkFormatProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field optimalTilingFeatures
+	 * Set method for field optimalTilingFeatures	
 	 * Prototype: VkFormatFeatureFlags  optimalTilingFeatures
 	 */ 
 	 public void optimalTilingFeatures(int optimalTilingFeatures){
@@ -100,7 +97,7 @@ public class VkFormatProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field optimalTilingFeatures
+	 * get method for field optimalTilingFeatures	
 	 * Prototype: VkFormatFeatureFlags  optimalTilingFeatures
 	 */ 
 	 public int optimalTilingFeatures(){
@@ -109,7 +106,7 @@ public class VkFormatProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field bufferFeatures
+	 * Set method for field bufferFeatures	
 	 * Prototype: VkFormatFeatureFlags  bufferFeatures
 	 */ 
 	 public void bufferFeatures(int bufferFeatures){
@@ -118,7 +115,7 @@ public class VkFormatProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field bufferFeatures
+	 * get method for field bufferFeatures	
 	 * Prototype: VkFormatFeatureFlags  bufferFeatures
 	 */ 
 	 public int bufferFeatures(){
@@ -131,7 +128,7 @@ public class VkFormatProperties extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field linearTilingFeatures
+	 * native Set method for field linearTilingFeatures	
 	 * Prototype: VkFormatFeatureFlags  linearTilingFeatures
 	 */ 
 	 private static native void linearTilingFeatures0(ByteBuffer ptr, int _linearTilingFeatures);/*
@@ -140,7 +137,7 @@ public class VkFormatProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field linearTilingFeatures
+	 * get method for field linearTilingFeatures	
 	 * Prototype: VkFormatFeatureFlags  linearTilingFeatures
 	 */ 
 	 private static native int linearTilingFeatures0(ByteBuffer ptr);/*
@@ -149,7 +146,7 @@ public class VkFormatProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field optimalTilingFeatures
+	 * native Set method for field optimalTilingFeatures	
 	 * Prototype: VkFormatFeatureFlags  optimalTilingFeatures
 	 */ 
 	 private static native void optimalTilingFeatures0(ByteBuffer ptr, int _optimalTilingFeatures);/*
@@ -158,7 +155,7 @@ public class VkFormatProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field optimalTilingFeatures
+	 * get method for field optimalTilingFeatures	
 	 * Prototype: VkFormatFeatureFlags  optimalTilingFeatures
 	 */ 
 	 private static native int optimalTilingFeatures0(ByteBuffer ptr);/*
@@ -167,7 +164,7 @@ public class VkFormatProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field bufferFeatures
+	 * native Set method for field bufferFeatures	
 	 * Prototype: VkFormatFeatureFlags  bufferFeatures
 	 */ 
 	 private static native void bufferFeatures0(ByteBuffer ptr, int _bufferFeatures);/*
@@ -176,7 +173,7 @@ public class VkFormatProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field bufferFeatures
+	 * get method for field bufferFeatures	
 	 * Prototype: VkFormatFeatureFlags  bufferFeatures
 	 */ 
 	 private static native int bufferFeatures0(ByteBuffer ptr);/*

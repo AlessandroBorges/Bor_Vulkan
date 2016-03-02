@@ -41,28 +41,23 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkPipelineDynamicStateCreateFlags 	flags 
-	 */ 
+	 *  VkPipelineDynamicStateCreateFlags 	flags		 */ 
 	int 	flags;
 
 	/**
-	 *  uint32_t 	dynamicStateCount 
-	 */ 
+	 *  uint32_t 	dynamicStateCount		 */ 
 	int 	dynamicStateCount;
 
 	/**
-	 *  const VkDynamicState* 	pDynamicStates 
-	 */ 
+	 *  const VkDynamicState* 	pDynamicStates		 */ 
 	Penum<VkDynamicState> 	pDynamicStates;
 
 	/**
@@ -80,12 +75,12 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -94,7 +89,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -103,7 +98,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -112,7 +107,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -121,7 +116,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkPipelineDynamicStateCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -130,7 +125,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkPipelineDynamicStateCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -139,7 +134,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dynamicStateCount
+	 * Set method for field dynamicStateCount	
 	 * Prototype: uint32_t  dynamicStateCount
 	 */ 
 	 public void dynamicStateCount(int dynamicStateCount){
@@ -148,7 +143,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dynamicStateCount
+	 * get method for field dynamicStateCount	
 	 * Prototype: uint32_t  dynamicStateCount
 	 */ 
 	 public int dynamicStateCount(){
@@ -157,7 +152,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pDynamicStates
+	 * Set method for field pDynamicStates	
 	 * Prototype: const VkDynamicState*  pDynamicStates
 	 */ 
 	 public void pDynamicStates(Penum<VkDynamicState> pDynamicStates){
@@ -166,7 +161,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pDynamicStates
+	 * get method for field pDynamicStates	
 	 * Prototype: const VkDynamicState*  pDynamicStates
 	 */ 
 	 public Penum<VkDynamicState> pDynamicStates(){
@@ -179,7 +174,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -188,7 +183,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -197,7 +192,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -206,7 +201,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -215,7 +210,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkPipelineDynamicStateCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -224,7 +219,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkPipelineDynamicStateCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -233,7 +228,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dynamicStateCount
+	 * native Set method for field dynamicStateCount	
 	 * Prototype: uint32_t  dynamicStateCount
 	 */ 
 	 private static native void dynamicStateCount0(ByteBuffer ptr, int _dynamicStateCount);/*
@@ -242,7 +237,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dynamicStateCount
+	 * get method for field dynamicStateCount	
 	 * Prototype: uint32_t  dynamicStateCount
 	 */ 
 	 private static native int dynamicStateCount0(ByteBuffer ptr);/*
@@ -251,7 +246,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pDynamicStates
+	 * native Set method for field pDynamicStates	
 	 * Prototype: const VkDynamicState*  pDynamicStates
 	 */ 
 	 private static native void pDynamicStates0(ByteBuffer ptr, Penum<VkDynamicState> _pDynamicStates);/*
@@ -260,7 +255,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pDynamicStates
+	 * get method for field pDynamicStates	
 	 * Prototype: const VkDynamicState*  pDynamicStates
 	 */ 
 	 private static native Penum<VkDynamicState> pDynamicStates0(ByteBuffer ptr);/*

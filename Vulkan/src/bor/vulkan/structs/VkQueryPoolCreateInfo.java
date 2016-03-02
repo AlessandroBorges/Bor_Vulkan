@@ -42,33 +42,27 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkQueryPoolCreateFlags 	flags 
-	 */ 
+	 *  VkQueryPoolCreateFlags 	flags		 */ 
 	int 	flags;
 
 	/**
-	 *  VkQueryType 	queryType 
-	 */ 
+	 *  VkQueryType 	queryType	[vkenum]	 */ 
 	VkQueryType 	queryType;
 
 	/**
-	 *  uint32_t 	queryCount 
-	 */ 
+	 *  uint32_t 	queryCount		 */ 
 	int 	queryCount;
 
 	/**
-	 *  VkQueryPipelineStatisticFlags 	pipelineStatistics 
-	 */ 
+	 *  VkQueryPipelineStatisticFlags 	pipelineStatistics		 */ 
 	int 	pipelineStatistics;
 
 	/**
@@ -86,12 +80,12 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -100,7 +94,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -109,7 +103,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -118,7 +112,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -127,7 +121,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkQueryPoolCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -136,7 +130,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkQueryPoolCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -145,7 +139,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field queryType
+	 * Set method for field queryType	[vkenum]
 	 * Prototype: VkQueryType  queryType
 	 */ 
 	 public void queryType(VkQueryType queryType){
@@ -154,7 +148,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field queryType
+	 * get method for field queryType	[vkenum]
 	 * Prototype: VkQueryType  queryType
 	 */ 
 	 public VkQueryType queryType(){
@@ -163,7 +157,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field queryCount
+	 * Set method for field queryCount	
 	 * Prototype: uint32_t  queryCount
 	 */ 
 	 public void queryCount(int queryCount){
@@ -172,7 +166,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field queryCount
+	 * get method for field queryCount	
 	 * Prototype: uint32_t  queryCount
 	 */ 
 	 public int queryCount(){
@@ -181,7 +175,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pipelineStatistics
+	 * Set method for field pipelineStatistics	
 	 * Prototype: VkQueryPipelineStatisticFlags  pipelineStatistics
 	 */ 
 	 public void pipelineStatistics(int pipelineStatistics){
@@ -190,7 +184,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pipelineStatistics
+	 * get method for field pipelineStatistics	
 	 * Prototype: VkQueryPipelineStatisticFlags  pipelineStatistics
 	 */ 
 	 public int pipelineStatistics(){
@@ -203,7 +197,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -212,7 +206,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -221,7 +215,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -230,7 +224,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -239,7 +233,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkQueryPoolCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -248,7 +242,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkQueryPoolCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -257,7 +251,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field queryType
+	 * native Set method for field queryType	[vkenum]
 	 * Prototype: VkQueryType  queryType
 	 */ 
 	 private static native void queryType0(ByteBuffer ptr, VkQueryType _queryType);/*
@@ -266,7 +260,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field queryType
+	 * get method for field queryType	[vkenum]
 	 * Prototype: VkQueryType  queryType
 	 */ 
 	 private static native VkQueryType queryType0(ByteBuffer ptr);/*
@@ -275,7 +269,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field queryCount
+	 * native Set method for field queryCount	
 	 * Prototype: uint32_t  queryCount
 	 */ 
 	 private static native void queryCount0(ByteBuffer ptr, int _queryCount);/*
@@ -284,7 +278,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field queryCount
+	 * get method for field queryCount	
 	 * Prototype: uint32_t  queryCount
 	 */ 
 	 private static native int queryCount0(ByteBuffer ptr);/*
@@ -293,7 +287,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pipelineStatistics
+	 * native Set method for field pipelineStatistics	
 	 * Prototype: VkQueryPipelineStatisticFlags  pipelineStatistics
 	 */ 
 	 private static native void pipelineStatistics0(ByteBuffer ptr, int _pipelineStatistics);/*
@@ -302,7 +296,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pipelineStatistics
+	 * get method for field pipelineStatistics	
 	 * Prototype: VkQueryPipelineStatisticFlags  pipelineStatistics
 	 */ 
 	 private static native int pipelineStatistics0(ByteBuffer ptr);/*

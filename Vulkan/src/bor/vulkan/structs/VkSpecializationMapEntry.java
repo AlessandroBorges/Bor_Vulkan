@@ -39,18 +39,15 @@ public class VkSpecializationMapEntry extends VkStruct {
 
 	 // fields //
 	/**
-	 *  uint32_t 	constantID 
-	 */ 
+	 *  uint32_t 	constantID		 */ 
 	int 	constantID;
 
 	/**
-	 *  uint32_t 	offset 
-	 */ 
+	 *  uint32_t 	offset		 */ 
 	int 	offset;
 
 	/**
-	 *  size_t 	size 
-	 */ 
+	 *  size_t 	size		 */ 
 	long 	size;
 
 	/**
@@ -68,12 +65,12 @@ public class VkSpecializationMapEntry extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field constantID
+	 * Set method for field constantID	
 	 * Prototype: uint32_t  constantID
 	 */ 
 	 public void constantID(int constantID){
@@ -82,7 +79,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 }
 
 	/**
-	 * get method for field constantID
+	 * get method for field constantID	
 	 * Prototype: uint32_t  constantID
 	 */ 
 	 public int constantID(){
@@ -91,7 +88,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field offset
+	 * Set method for field offset	
 	 * Prototype: uint32_t  offset
 	 */ 
 	 public void offset(int offset){
@@ -100,7 +97,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 }
 
 	/**
-	 * get method for field offset
+	 * get method for field offset	
 	 * Prototype: uint32_t  offset
 	 */ 
 	 public int offset(){
@@ -109,7 +106,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field size
+	 * Set method for field size	
 	 * Prototype: size_t  size
 	 */ 
 	 public void size(long size){
@@ -118,7 +115,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 }
 
 	/**
-	 * get method for field size
+	 * get method for field size	
 	 * Prototype: size_t  size
 	 */ 
 	 public long size(){
@@ -131,7 +128,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field constantID
+	 * native Set method for field constantID	
 	 * Prototype: uint32_t  constantID
 	 */ 
 	 private static native void constantID0(ByteBuffer ptr, int _constantID);/*
@@ -140,7 +137,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	  */
 
 	/**
-	 * get method for field constantID
+	 * get method for field constantID	
 	 * Prototype: uint32_t  constantID
 	 */ 
 	 private static native int constantID0(ByteBuffer ptr);/*
@@ -149,7 +146,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field offset
+	 * native Set method for field offset	
 	 * Prototype: uint32_t  offset
 	 */ 
 	 private static native void offset0(ByteBuffer ptr, int _offset);/*
@@ -158,7 +155,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	  */
 
 	/**
-	 * get method for field offset
+	 * get method for field offset	
 	 * Prototype: uint32_t  offset
 	 */ 
 	 private static native int offset0(ByteBuffer ptr);/*
@@ -167,7 +164,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field size
+	 * native Set method for field size	
 	 * Prototype: size_t  size
 	 */ 
 	 private static native void size0(ByteBuffer ptr, long _size);/*
@@ -176,7 +173,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	  */
 
 	/**
-	 * get method for field size
+	 * get method for field size	
 	 * Prototype: size_t  size
 	 */ 
 	 private static native long size0(ByteBuffer ptr);/*

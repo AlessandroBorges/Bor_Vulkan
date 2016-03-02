@@ -39,18 +39,15 @@ public class VkImageSubresource extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkImageAspectFlags 	aspectMask 
-	 */ 
+	 *  VkImageAspectFlags 	aspectMask		 */ 
 	int 	aspectMask;
 
 	/**
-	 *  uint32_t 	mipLevel 
-	 */ 
+	 *  uint32_t 	mipLevel		 */ 
 	int 	mipLevel;
 
 	/**
-	 *  uint32_t 	arrayLayer 
-	 */ 
+	 *  uint32_t 	arrayLayer		 */ 
 	int 	arrayLayer;
 
 	/**
@@ -68,12 +65,12 @@ public class VkImageSubresource extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field aspectMask
+	 * Set method for field aspectMask	
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 public void aspectMask(int aspectMask){
@@ -82,7 +79,7 @@ public class VkImageSubresource extends VkStruct {
 	 }
 
 	/**
-	 * get method for field aspectMask
+	 * get method for field aspectMask	
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 public int aspectMask(){
@@ -91,7 +88,7 @@ public class VkImageSubresource extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field mipLevel
+	 * Set method for field mipLevel	
 	 * Prototype: uint32_t  mipLevel
 	 */ 
 	 public void mipLevel(int mipLevel){
@@ -100,7 +97,7 @@ public class VkImageSubresource extends VkStruct {
 	 }
 
 	/**
-	 * get method for field mipLevel
+	 * get method for field mipLevel	
 	 * Prototype: uint32_t  mipLevel
 	 */ 
 	 public int mipLevel(){
@@ -109,7 +106,7 @@ public class VkImageSubresource extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field arrayLayer
+	 * Set method for field arrayLayer	
 	 * Prototype: uint32_t  arrayLayer
 	 */ 
 	 public void arrayLayer(int arrayLayer){
@@ -118,7 +115,7 @@ public class VkImageSubresource extends VkStruct {
 	 }
 
 	/**
-	 * get method for field arrayLayer
+	 * get method for field arrayLayer	
 	 * Prototype: uint32_t  arrayLayer
 	 */ 
 	 public int arrayLayer(){
@@ -131,7 +128,7 @@ public class VkImageSubresource extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field aspectMask
+	 * native Set method for field aspectMask	
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 private static native void aspectMask0(ByteBuffer ptr, int _aspectMask);/*
@@ -140,7 +137,7 @@ public class VkImageSubresource extends VkStruct {
 	  */
 
 	/**
-	 * get method for field aspectMask
+	 * get method for field aspectMask	
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 private static native int aspectMask0(ByteBuffer ptr);/*
@@ -149,7 +146,7 @@ public class VkImageSubresource extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field mipLevel
+	 * native Set method for field mipLevel	
 	 * Prototype: uint32_t  mipLevel
 	 */ 
 	 private static native void mipLevel0(ByteBuffer ptr, int _mipLevel);/*
@@ -158,7 +155,7 @@ public class VkImageSubresource extends VkStruct {
 	  */
 
 	/**
-	 * get method for field mipLevel
+	 * get method for field mipLevel	
 	 * Prototype: uint32_t  mipLevel
 	 */ 
 	 private static native int mipLevel0(ByteBuffer ptr);/*
@@ -167,7 +164,7 @@ public class VkImageSubresource extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field arrayLayer
+	 * native Set method for field arrayLayer	
 	 * Prototype: uint32_t  arrayLayer
 	 */ 
 	 private static native void arrayLayer0(ByteBuffer ptr, int _arrayLayer);/*
@@ -176,7 +173,7 @@ public class VkImageSubresource extends VkStruct {
 	  */
 
 	/**
-	 * get method for field arrayLayer
+	 * get method for field arrayLayer	
 	 * Prototype: uint32_t  arrayLayer
 	 */ 
 	 private static native int arrayLayer0(ByteBuffer ptr);/*

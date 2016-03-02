@@ -44,43 +44,35 @@ public class VkBufferCreateInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkBufferCreateFlags 	flags 
-	 */ 
+	 *  VkBufferCreateFlags 	flags		 */ 
 	int 	flags;
 
 	/**
-	 *  VkDeviceSize 	size 
-	 */ 
+	 *  VkDeviceSize 	size		 */ 
 	long 	size;
 
 	/**
-	 *  VkBufferUsageFlags 	usage 
-	 */ 
+	 *  VkBufferUsageFlags 	usage		 */ 
 	int 	usage;
 
 	/**
-	 *  VkSharingMode 	sharingMode 
-	 */ 
+	 *  VkSharingMode 	sharingMode	[vkenum]	 */ 
 	VkSharingMode 	sharingMode;
 
 	/**
-	 *  uint32_t 	queueFamilyIndexCount 
-	 */ 
+	 *  uint32_t 	queueFamilyIndexCount		 */ 
 	int 	queueFamilyIndexCount;
 
 	/**
-	 *  const uint32_t* 	pQueueFamilyIndices 
-	 */ 
+	 *  const uint32_t* 	pQueueFamilyIndices		 */ 
 	int[] 	pQueueFamilyIndices;
 
 	/**
@@ -98,12 +90,12 @@ public class VkBufferCreateInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -112,7 +104,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -121,7 +113,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -130,7 +122,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -139,7 +131,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkBufferCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -148,7 +140,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkBufferCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -157,7 +149,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field size
+	 * Set method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public void size(long size){
@@ -166,7 +158,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field size
+	 * get method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public long size(){
@@ -175,7 +167,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field usage
+	 * Set method for field usage	
 	 * Prototype: VkBufferUsageFlags  usage
 	 */ 
 	 public void usage(int usage){
@@ -184,7 +176,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field usage
+	 * get method for field usage	
 	 * Prototype: VkBufferUsageFlags  usage
 	 */ 
 	 public int usage(){
@@ -193,7 +185,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field sharingMode
+	 * Set method for field sharingMode	[vkenum]
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
 	 public void sharingMode(VkSharingMode sharingMode){
@@ -202,7 +194,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sharingMode
+	 * get method for field sharingMode	[vkenum]
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
 	 public VkSharingMode sharingMode(){
@@ -211,7 +203,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field queueFamilyIndexCount
+	 * Set method for field queueFamilyIndexCount	
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
 	 public void queueFamilyIndexCount(int queueFamilyIndexCount){
@@ -220,7 +212,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field queueFamilyIndexCount
+	 * get method for field queueFamilyIndexCount	
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
 	 public int queueFamilyIndexCount(){
@@ -229,7 +221,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pQueueFamilyIndices
+	 * Set method for field pQueueFamilyIndices	
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 public void pQueueFamilyIndices(int[] pQueueFamilyIndices){
@@ -238,7 +230,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pQueueFamilyIndices
+	 * get method for field pQueueFamilyIndices	
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 public int[] pQueueFamilyIndices(){
@@ -251,7 +243,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -260,7 +252,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -269,7 +261,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -278,7 +270,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -287,7 +279,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkBufferCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -296,7 +288,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkBufferCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -305,7 +297,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field size
+	 * native Set method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native void size0(ByteBuffer ptr, long _size);/*
@@ -314,7 +306,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field size
+	 * get method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long size0(ByteBuffer ptr);/*
@@ -323,7 +315,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field usage
+	 * native Set method for field usage	
 	 * Prototype: VkBufferUsageFlags  usage
 	 */ 
 	 private static native void usage0(ByteBuffer ptr, int _usage);/*
@@ -332,7 +324,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field usage
+	 * get method for field usage	
 	 * Prototype: VkBufferUsageFlags  usage
 	 */ 
 	 private static native int usage0(ByteBuffer ptr);/*
@@ -341,7 +333,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field sharingMode
+	 * native Set method for field sharingMode	[vkenum]
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
 	 private static native void sharingMode0(ByteBuffer ptr, VkSharingMode _sharingMode);/*
@@ -350,7 +342,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sharingMode
+	 * get method for field sharingMode	[vkenum]
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
 	 private static native VkSharingMode sharingMode0(ByteBuffer ptr);/*
@@ -359,7 +351,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field queueFamilyIndexCount
+	 * native Set method for field queueFamilyIndexCount	
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
 	 private static native void queueFamilyIndexCount0(ByteBuffer ptr, int _queueFamilyIndexCount);/*
@@ -368,7 +360,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field queueFamilyIndexCount
+	 * get method for field queueFamilyIndexCount	
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
 	 private static native int queueFamilyIndexCount0(ByteBuffer ptr);/*
@@ -377,7 +369,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pQueueFamilyIndices
+	 * native Set method for field pQueueFamilyIndices	
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 private static native void pQueueFamilyIndices0(ByteBuffer ptr, int[] _pQueueFamilyIndices);/*
@@ -386,7 +378,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pQueueFamilyIndices
+	 * get method for field pQueueFamilyIndices	
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 private static native int[] pQueueFamilyIndices0(ByteBuffer ptr);/*

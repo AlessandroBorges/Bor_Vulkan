@@ -40,23 +40,19 @@ public class VkSpecializationInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  uint32_t 	mapEntryCount 
-	 */ 
+	 *  uint32_t 	mapEntryCount		 */ 
 	int 	mapEntryCount;
 
 	/**
-	 *  const VkSpecializationMapEntry* 	pMapEntries 
-	 */ 
+	 *  const VkSpecializationMapEntry* 	pMapEntries		 */ 
 	P<VkSpecializationMapEntry>  	pMapEntries;
 
 	/**
-	 *  size_t 	dataSize 
-	 */ 
+	 *  size_t 	dataSize		 */ 
 	long 	dataSize;
 
 	/**
-	 *  const void* 	pData 
-	 */ 
+	 *  const void* 	pData		 */ 
 	java.nio.Buffer 	pData;
 
 	/**
@@ -74,12 +70,12 @@ public class VkSpecializationInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field mapEntryCount
+	 * Set method for field mapEntryCount	
 	 * Prototype: uint32_t  mapEntryCount
 	 */ 
 	 public void mapEntryCount(int mapEntryCount){
@@ -88,7 +84,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field mapEntryCount
+	 * get method for field mapEntryCount	
 	 * Prototype: uint32_t  mapEntryCount
 	 */ 
 	 public int mapEntryCount(){
@@ -97,7 +93,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pMapEntries
+	 * Set method for field pMapEntries	
 	 * Prototype: const VkSpecializationMapEntry*  pMapEntries
 	 */ 
 	 public void pMapEntries(P<VkSpecializationMapEntry>  pMapEntries){
@@ -106,7 +102,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pMapEntries
+	 * get method for field pMapEntries	
 	 * Prototype: const VkSpecializationMapEntry*  pMapEntries
 	 */ 
 	 public P<VkSpecializationMapEntry>  pMapEntries(){
@@ -115,7 +111,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dataSize
+	 * Set method for field dataSize	
 	 * Prototype: size_t  dataSize
 	 */ 
 	 public void dataSize(long dataSize){
@@ -124,7 +120,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dataSize
+	 * get method for field dataSize	
 	 * Prototype: size_t  dataSize
 	 */ 
 	 public long dataSize(){
@@ -133,7 +129,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pData
+	 * Set method for field pData	
 	 * Prototype: const void*  pData
 	 */ 
 	 public void pData(java.nio.Buffer pData){
@@ -142,7 +138,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pData
+	 * get method for field pData	
 	 * Prototype: const void*  pData
 	 */ 
 	 public java.nio.Buffer pData(){
@@ -155,7 +151,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field mapEntryCount
+	 * native Set method for field mapEntryCount	
 	 * Prototype: uint32_t  mapEntryCount
 	 */ 
 	 private static native void mapEntryCount0(ByteBuffer ptr, int _mapEntryCount);/*
@@ -164,7 +160,7 @@ public class VkSpecializationInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field mapEntryCount
+	 * get method for field mapEntryCount	
 	 * Prototype: uint32_t  mapEntryCount
 	 */ 
 	 private static native int mapEntryCount0(ByteBuffer ptr);/*
@@ -173,7 +169,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pMapEntries
+	 * native Set method for field pMapEntries	
 	 * Prototype: const VkSpecializationMapEntry*  pMapEntries
 	 */ 
 	 private static native void pMapEntries0(ByteBuffer ptr, P<VkSpecializationMapEntry>  _pMapEntries);/*
@@ -182,7 +178,7 @@ public class VkSpecializationInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pMapEntries
+	 * get method for field pMapEntries	
 	 * Prototype: const VkSpecializationMapEntry*  pMapEntries
 	 */ 
 	 private static native P<VkSpecializationMapEntry>  pMapEntries0(ByteBuffer ptr);/*
@@ -191,7 +187,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dataSize
+	 * native Set method for field dataSize	
 	 * Prototype: size_t  dataSize
 	 */ 
 	 private static native void dataSize0(ByteBuffer ptr, long _dataSize);/*
@@ -200,7 +196,7 @@ public class VkSpecializationInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dataSize
+	 * get method for field dataSize	
 	 * Prototype: size_t  dataSize
 	 */ 
 	 private static native long dataSize0(ByteBuffer ptr);/*
@@ -209,7 +205,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pData
+	 * native Set method for field pData	
 	 * Prototype: const void*  pData
 	 */ 
 	 private static native void pData0(ByteBuffer ptr, java.nio.Buffer _pData);/*
@@ -218,7 +214,7 @@ public class VkSpecializationInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pData
+	 * get method for field pData	
 	 * Prototype: const void*  pData
 	 */ 
 	 private static native java.nio.Buffer pData0(ByteBuffer ptr);/*

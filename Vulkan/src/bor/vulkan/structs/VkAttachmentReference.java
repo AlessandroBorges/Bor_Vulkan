@@ -38,13 +38,11 @@ public class VkAttachmentReference extends VkStruct {
 
 	 // fields //
 	/**
-	 *  uint32_t 	attachment 
-	 */ 
+	 *  uint32_t 	attachment		 */ 
 	int 	attachment;
 
 	/**
-	 *  VkImageLayout 	layout 
-	 */ 
+	 *  VkImageLayout 	layout	[vkenum]	 */ 
 	VkImageLayout 	layout;
 
 	/**
@@ -62,12 +60,12 @@ public class VkAttachmentReference extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field attachment
+	 * Set method for field attachment	
 	 * Prototype: uint32_t  attachment
 	 */ 
 	 public void attachment(int attachment){
@@ -76,7 +74,7 @@ public class VkAttachmentReference extends VkStruct {
 	 }
 
 	/**
-	 * get method for field attachment
+	 * get method for field attachment	
 	 * Prototype: uint32_t  attachment
 	 */ 
 	 public int attachment(){
@@ -85,7 +83,7 @@ public class VkAttachmentReference extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field layout
+	 * Set method for field layout	[vkenum]
 	 * Prototype: VkImageLayout  layout
 	 */ 
 	 public void layout(VkImageLayout layout){
@@ -94,7 +92,7 @@ public class VkAttachmentReference extends VkStruct {
 	 }
 
 	/**
-	 * get method for field layout
+	 * get method for field layout	[vkenum]
 	 * Prototype: VkImageLayout  layout
 	 */ 
 	 public VkImageLayout layout(){
@@ -107,7 +105,7 @@ public class VkAttachmentReference extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field attachment
+	 * native Set method for field attachment	
 	 * Prototype: uint32_t  attachment
 	 */ 
 	 private static native void attachment0(ByteBuffer ptr, int _attachment);/*
@@ -116,7 +114,7 @@ public class VkAttachmentReference extends VkStruct {
 	  */
 
 	/**
-	 * get method for field attachment
+	 * get method for field attachment	
 	 * Prototype: uint32_t  attachment
 	 */ 
 	 private static native int attachment0(ByteBuffer ptr);/*
@@ -125,7 +123,7 @@ public class VkAttachmentReference extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field layout
+	 * native Set method for field layout	[vkenum]
 	 * Prototype: VkImageLayout  layout
 	 */ 
 	 private static native void layout0(ByteBuffer ptr, VkImageLayout _layout);/*
@@ -134,7 +132,7 @@ public class VkAttachmentReference extends VkStruct {
 	  */
 
 	/**
-	 * get method for field layout
+	 * get method for field layout	[vkenum]
 	 * Prototype: VkImageLayout  layout
 	 */ 
 	 private static native VkImageLayout layout0(ByteBuffer ptr);/*

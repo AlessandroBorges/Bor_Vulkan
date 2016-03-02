@@ -41,28 +41,23 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkDescriptorPool 	descriptorPool 
-	 */ 
+	 *  VkDescriptorPool 	descriptorPool	[vkhandle]	 */ 
 	VkDescriptorPool 	descriptorPool;
 
 	/**
-	 *  uint32_t 	descriptorSetCount 
-	 */ 
+	 *  uint32_t 	descriptorSetCount		 */ 
 	int 	descriptorSetCount;
 
 	/**
-	 *  const VkDescriptorSetLayout* 	pSetLayouts 
-	 */ 
+	 *  const VkDescriptorSetLayout* 	pSetLayouts		 */ 
 	P<VkDescriptorSetLayout>  	pSetLayouts;
 
 	/**
@@ -80,12 +75,12 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -94,7 +89,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -103,7 +98,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -112,7 +107,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -121,7 +116,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field descriptorPool
+	 * Set method for field descriptorPool	[vkhandle]
 	 * Prototype: VkDescriptorPool  descriptorPool
 	 */ 
 	 public void descriptorPool(VkDescriptorPool descriptorPool){
@@ -130,7 +125,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field descriptorPool
+	 * get method for field descriptorPool	[vkhandle]
 	 * Prototype: VkDescriptorPool  descriptorPool
 	 */ 
 	 public VkDescriptorPool descriptorPool(){
@@ -139,7 +134,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field descriptorSetCount
+	 * Set method for field descriptorSetCount	
 	 * Prototype: uint32_t  descriptorSetCount
 	 */ 
 	 public void descriptorSetCount(int descriptorSetCount){
@@ -148,7 +143,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field descriptorSetCount
+	 * get method for field descriptorSetCount	
 	 * Prototype: uint32_t  descriptorSetCount
 	 */ 
 	 public int descriptorSetCount(){
@@ -157,7 +152,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pSetLayouts
+	 * Set method for field pSetLayouts	
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
 	 public void pSetLayouts(P<VkDescriptorSetLayout>  pSetLayouts){
@@ -166,7 +161,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pSetLayouts
+	 * get method for field pSetLayouts	
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
 	 public P<VkDescriptorSetLayout>  pSetLayouts(){
@@ -179,7 +174,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -188,7 +183,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -197,7 +192,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -206,7 +201,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -215,7 +210,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field descriptorPool
+	 * native Set method for field descriptorPool	[vkhandle]
 	 * Prototype: VkDescriptorPool  descriptorPool
 	 */ 
 	 private static native void descriptorPool0(ByteBuffer ptr, VkDescriptorPool _descriptorPool);/*
@@ -224,7 +219,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field descriptorPool
+	 * get method for field descriptorPool	[vkhandle]
 	 * Prototype: VkDescriptorPool  descriptorPool
 	 */ 
 	 private static native VkDescriptorPool descriptorPool0(ByteBuffer ptr);/*
@@ -233,7 +228,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field descriptorSetCount
+	 * native Set method for field descriptorSetCount	
 	 * Prototype: uint32_t  descriptorSetCount
 	 */ 
 	 private static native void descriptorSetCount0(ByteBuffer ptr, int _descriptorSetCount);/*
@@ -242,7 +237,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field descriptorSetCount
+	 * get method for field descriptorSetCount	
 	 * Prototype: uint32_t  descriptorSetCount
 	 */ 
 	 private static native int descriptorSetCount0(ByteBuffer ptr);/*
@@ -251,7 +246,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pSetLayouts
+	 * native Set method for field pSetLayouts	
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
 	 private static native void pSetLayouts0(ByteBuffer ptr, P<VkDescriptorSetLayout>  _pSetLayouts);/*
@@ -260,7 +255,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pSetLayouts
+	 * get method for field pSetLayouts	
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
 	 private static native P<VkDescriptorSetLayout>  pSetLayouts0(ByteBuffer ptr);/*

@@ -39,18 +39,15 @@ public class VkMemoryRequirements extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkDeviceSize 	size 
-	 */ 
+	 *  VkDeviceSize 	size		 */ 
 	long 	size;
 
 	/**
-	 *  VkDeviceSize 	alignment 
-	 */ 
+	 *  VkDeviceSize 	alignment		 */ 
 	long 	alignment;
 
 	/**
-	 *  uint32_t 	memoryTypeBits 
-	 */ 
+	 *  uint32_t 	memoryTypeBits		 */ 
 	int 	memoryTypeBits;
 
 	/**
@@ -68,12 +65,12 @@ public class VkMemoryRequirements extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field size
+	 * Set method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public void size(long size){
@@ -82,7 +79,7 @@ public class VkMemoryRequirements extends VkStruct {
 	 }
 
 	/**
-	 * get method for field size
+	 * get method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public long size(){
@@ -91,7 +88,7 @@ public class VkMemoryRequirements extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field alignment
+	 * Set method for field alignment	
 	 * Prototype: VkDeviceSize  alignment
 	 */ 
 	 public void alignment(long alignment){
@@ -100,7 +97,7 @@ public class VkMemoryRequirements extends VkStruct {
 	 }
 
 	/**
-	 * get method for field alignment
+	 * get method for field alignment	
 	 * Prototype: VkDeviceSize  alignment
 	 */ 
 	 public long alignment(){
@@ -109,7 +106,7 @@ public class VkMemoryRequirements extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field memoryTypeBits
+	 * Set method for field memoryTypeBits	
 	 * Prototype: uint32_t  memoryTypeBits
 	 */ 
 	 public void memoryTypeBits(int memoryTypeBits){
@@ -118,7 +115,7 @@ public class VkMemoryRequirements extends VkStruct {
 	 }
 
 	/**
-	 * get method for field memoryTypeBits
+	 * get method for field memoryTypeBits	
 	 * Prototype: uint32_t  memoryTypeBits
 	 */ 
 	 public int memoryTypeBits(){
@@ -131,7 +128,7 @@ public class VkMemoryRequirements extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field size
+	 * native Set method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native void size0(ByteBuffer ptr, long _size);/*
@@ -140,7 +137,7 @@ public class VkMemoryRequirements extends VkStruct {
 	  */
 
 	/**
-	 * get method for field size
+	 * get method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long size0(ByteBuffer ptr);/*
@@ -149,7 +146,7 @@ public class VkMemoryRequirements extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field alignment
+	 * native Set method for field alignment	
 	 * Prototype: VkDeviceSize  alignment
 	 */ 
 	 private static native void alignment0(ByteBuffer ptr, long _alignment);/*
@@ -158,7 +155,7 @@ public class VkMemoryRequirements extends VkStruct {
 	  */
 
 	/**
-	 * get method for field alignment
+	 * get method for field alignment	
 	 * Prototype: VkDeviceSize  alignment
 	 */ 
 	 private static native long alignment0(ByteBuffer ptr);/*
@@ -167,7 +164,7 @@ public class VkMemoryRequirements extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field memoryTypeBits
+	 * native Set method for field memoryTypeBits	
 	 * Prototype: uint32_t  memoryTypeBits
 	 */ 
 	 private static native void memoryTypeBits0(ByteBuffer ptr, int _memoryTypeBits);/*
@@ -176,7 +173,7 @@ public class VkMemoryRequirements extends VkStruct {
 	  */
 
 	/**
-	 * get method for field memoryTypeBits
+	 * get method for field memoryTypeBits	
 	 * Prototype: uint32_t  memoryTypeBits
 	 */ 
 	 private static native int memoryTypeBits0(ByteBuffer ptr);/*

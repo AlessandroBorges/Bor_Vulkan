@@ -38,13 +38,11 @@ public class VkRect2D extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkOffset2D 	offset 
-	 */ 
+	 *  VkOffset2D 	offset	[vkstruct]	 */ 
 	VkOffset2D 	offset;
 
 	/**
-	 *  VkExtent2D 	extent 
-	 */ 
+	 *  VkExtent2D 	extent	[vkstruct]	 */ 
 	VkExtent2D 	extent;
 
 	/**
@@ -62,12 +60,12 @@ public class VkRect2D extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field offset
+	 * Set method for field offset	[vkstruct]
 	 * Prototype: VkOffset2D  offset
 	 */ 
 	 public void offset(VkOffset2D offset){
@@ -76,7 +74,7 @@ public class VkRect2D extends VkStruct {
 	 }
 
 	/**
-	 * get method for field offset
+	 * get method for field offset	[vkstruct]
 	 * Prototype: VkOffset2D  offset
 	 */ 
 	 public VkOffset2D offset(){
@@ -85,7 +83,7 @@ public class VkRect2D extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field extent
+	 * Set method for field extent	[vkstruct]
 	 * Prototype: VkExtent2D  extent
 	 */ 
 	 public void extent(VkExtent2D extent){
@@ -94,7 +92,7 @@ public class VkRect2D extends VkStruct {
 	 }
 
 	/**
-	 * get method for field extent
+	 * get method for field extent	[vkstruct]
 	 * Prototype: VkExtent2D  extent
 	 */ 
 	 public VkExtent2D extent(){
@@ -107,7 +105,7 @@ public class VkRect2D extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field offset
+	 * native Set method for field offset	[vkstruct]
 	 * Prototype: VkOffset2D  offset
 	 */ 
 	 private static native void offset0(ByteBuffer ptr, VkOffset2D _offset);/*
@@ -116,7 +114,7 @@ public class VkRect2D extends VkStruct {
 	  */
 
 	/**
-	 * get method for field offset
+	 * get method for field offset	[vkstruct]
 	 * Prototype: VkOffset2D  offset
 	 */ 
 	 private static native VkOffset2D offset0(ByteBuffer ptr);/*
@@ -125,7 +123,7 @@ public class VkRect2D extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field extent
+	 * native Set method for field extent	[vkstruct]
 	 * Prototype: VkExtent2D  extent
 	 */ 
 	 private static native void extent0(ByteBuffer ptr, VkExtent2D _extent);/*
@@ -134,7 +132,7 @@ public class VkRect2D extends VkStruct {
 	  */
 
 	/**
-	 * get method for field extent
+	 * get method for field extent	[vkstruct]
 	 * Prototype: VkExtent2D  extent
 	 */ 
 	 private static native VkExtent2D extent0(ByteBuffer ptr);/*

@@ -42,33 +42,27 @@ public class VkSparseImageMemoryBind extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkImageSubresource 	subresource 
-	 */ 
+	 *  VkImageSubresource 	subresource	[vkstruct]	 */ 
 	VkImageSubresource 	subresource;
 
 	/**
-	 *  VkOffset3D 	offset 
-	 */ 
+	 *  VkOffset3D 	offset	[vkstruct]	 */ 
 	VkOffset3D 	offset;
 
 	/**
-	 *  VkExtent3D 	extent 
-	 */ 
+	 *  VkExtent3D 	extent	[vkstruct]	 */ 
 	VkExtent3D 	extent;
 
 	/**
-	 *  VkDeviceMemory 	memory 
-	 */ 
+	 *  VkDeviceMemory 	memory	[vkhandle]	 */ 
 	VkDeviceMemory 	memory;
 
 	/**
-	 *  VkDeviceSize 	memoryOffset 
-	 */ 
+	 *  VkDeviceSize 	memoryOffset		 */ 
 	long 	memoryOffset;
 
 	/**
-	 *  VkSparseMemoryBindFlags 	flags 
-	 */ 
+	 *  VkSparseMemoryBindFlags 	flags		 */ 
 	int 	flags;
 
 	/**
@@ -86,12 +80,12 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field subresource
+	 * Set method for field subresource	[vkstruct]
 	 * Prototype: VkImageSubresource  subresource
 	 */ 
 	 public void subresource(VkImageSubresource subresource){
@@ -100,7 +94,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * get method for field subresource
+	 * get method for field subresource	[vkstruct]
 	 * Prototype: VkImageSubresource  subresource
 	 */ 
 	 public VkImageSubresource subresource(){
@@ -109,7 +103,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field offset
+	 * Set method for field offset	[vkstruct]
 	 * Prototype: VkOffset3D  offset
 	 */ 
 	 public void offset(VkOffset3D offset){
@@ -118,7 +112,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * get method for field offset
+	 * get method for field offset	[vkstruct]
 	 * Prototype: VkOffset3D  offset
 	 */ 
 	 public VkOffset3D offset(){
@@ -127,7 +121,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field extent
+	 * Set method for field extent	[vkstruct]
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 public void extent(VkExtent3D extent){
@@ -136,7 +130,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * get method for field extent
+	 * get method for field extent	[vkstruct]
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 public VkExtent3D extent(){
@@ -145,7 +139,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field memory
+	 * Set method for field memory	[vkhandle]
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
 	 public void memory(VkDeviceMemory memory){
@@ -154,7 +148,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * get method for field memory
+	 * get method for field memory	[vkhandle]
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
 	 public VkDeviceMemory memory(){
@@ -163,7 +157,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field memoryOffset
+	 * Set method for field memoryOffset	
 	 * Prototype: VkDeviceSize  memoryOffset
 	 */ 
 	 public void memoryOffset(long memoryOffset){
@@ -172,7 +166,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * get method for field memoryOffset
+	 * get method for field memoryOffset	
 	 * Prototype: VkDeviceSize  memoryOffset
 	 */ 
 	 public long memoryOffset(){
@@ -181,7 +175,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkSparseMemoryBindFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -190,7 +184,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkSparseMemoryBindFlags  flags
 	 */ 
 	 public int flags(){
@@ -203,7 +197,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field subresource
+	 * native Set method for field subresource	[vkstruct]
 	 * Prototype: VkImageSubresource  subresource
 	 */ 
 	 private static native void subresource0(ByteBuffer ptr, VkImageSubresource _subresource);/*
@@ -212,7 +206,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	  */
 
 	/**
-	 * get method for field subresource
+	 * get method for field subresource	[vkstruct]
 	 * Prototype: VkImageSubresource  subresource
 	 */ 
 	 private static native VkImageSubresource subresource0(ByteBuffer ptr);/*
@@ -221,7 +215,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field offset
+	 * native Set method for field offset	[vkstruct]
 	 * Prototype: VkOffset3D  offset
 	 */ 
 	 private static native void offset0(ByteBuffer ptr, VkOffset3D _offset);/*
@@ -230,7 +224,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	  */
 
 	/**
-	 * get method for field offset
+	 * get method for field offset	[vkstruct]
 	 * Prototype: VkOffset3D  offset
 	 */ 
 	 private static native VkOffset3D offset0(ByteBuffer ptr);/*
@@ -239,7 +233,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field extent
+	 * native Set method for field extent	[vkstruct]
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 private static native void extent0(ByteBuffer ptr, VkExtent3D _extent);/*
@@ -248,7 +242,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	  */
 
 	/**
-	 * get method for field extent
+	 * get method for field extent	[vkstruct]
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 private static native VkExtent3D extent0(ByteBuffer ptr);/*
@@ -257,7 +251,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field memory
+	 * native Set method for field memory	[vkhandle]
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
 	 private static native void memory0(ByteBuffer ptr, VkDeviceMemory _memory);/*
@@ -266,7 +260,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	  */
 
 	/**
-	 * get method for field memory
+	 * get method for field memory	[vkhandle]
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
 	 private static native VkDeviceMemory memory0(ByteBuffer ptr);/*
@@ -275,7 +269,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field memoryOffset
+	 * native Set method for field memoryOffset	
 	 * Prototype: VkDeviceSize  memoryOffset
 	 */ 
 	 private static native void memoryOffset0(ByteBuffer ptr, long _memoryOffset);/*
@@ -284,7 +278,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	  */
 
 	/**
-	 * get method for field memoryOffset
+	 * get method for field memoryOffset	
 	 * Prototype: VkDeviceSize  memoryOffset
 	 */ 
 	 private static native long memoryOffset0(ByteBuffer ptr);/*
@@ -293,7 +287,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkSparseMemoryBindFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -302,7 +296,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkSparseMemoryBindFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*

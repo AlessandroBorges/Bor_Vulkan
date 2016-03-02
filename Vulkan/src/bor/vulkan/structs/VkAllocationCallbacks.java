@@ -42,33 +42,27 @@ public class VkAllocationCallbacks extends VkStruct {
 
 	 // fields //
 	/**
-	 *  void* 	pUserData 
-	 */ 
+	 *  void* 	pUserData		 */ 
 	java.nio.Buffer 	pUserData;
 
 	/**
-	 *  PFN_vkAllocationFunction 	pfnAllocation 
-	 */ 
+	 *  PFN_vkAllocationFunction 	pfnAllocation	[vkhandle]	 */ 
 	PFN_vkAllocationFunction 	pfnAllocation;
 
 	/**
-	 *  PFN_vkReallocationFunction 	pfnReallocation 
-	 */ 
+	 *  PFN_vkReallocationFunction 	pfnReallocation	[vkhandle]	 */ 
 	PFN_vkReallocationFunction 	pfnReallocation;
 
 	/**
-	 *  PFN_vkFreeFunction 	pfnFree 
-	 */ 
+	 *  PFN_vkFreeFunction 	pfnFree	[vkhandle]	 */ 
 	PFN_vkFreeFunction 	pfnFree;
 
 	/**
-	 *  PFN_vkInternalAllocationNotification 	pfnInternalAllocation 
-	 */ 
+	 *  PFN_vkInternalAllocationNotification 	pfnInternalAllocation	[vkhandle]	 */ 
 	PFN_vkInternalAllocationNotification 	pfnInternalAllocation;
 
 	/**
-	 *  PFN_vkInternalFreeNotification 	pfnInternalFree 
-	 */ 
+	 *  PFN_vkInternalFreeNotification 	pfnInternalFree	[vkhandle]	 */ 
 	PFN_vkInternalFreeNotification 	pfnInternalFree;
 
 	/**
@@ -86,12 +80,12 @@ public class VkAllocationCallbacks extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field pUserData
+	 * Set method for field pUserData	
 	 * Prototype: void*  pUserData
 	 */ 
 	 public void pUserData(java.nio.Buffer pUserData){
@@ -100,7 +94,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pUserData
+	 * get method for field pUserData	
 	 * Prototype: void*  pUserData
 	 */ 
 	 public java.nio.Buffer pUserData(){
@@ -109,7 +103,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pfnAllocation
+	 * Set method for field pfnAllocation	[vkhandle]
 	 * Prototype: PFN_vkAllocationFunction  pfnAllocation
 	 */ 
 	 public void pfnAllocation(PFN_vkAllocationFunction pfnAllocation){
@@ -118,7 +112,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pfnAllocation
+	 * get method for field pfnAllocation	[vkhandle]
 	 * Prototype: PFN_vkAllocationFunction  pfnAllocation
 	 */ 
 	 public PFN_vkAllocationFunction pfnAllocation(){
@@ -127,7 +121,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pfnReallocation
+	 * Set method for field pfnReallocation	[vkhandle]
 	 * Prototype: PFN_vkReallocationFunction  pfnReallocation
 	 */ 
 	 public void pfnReallocation(PFN_vkReallocationFunction pfnReallocation){
@@ -136,7 +130,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pfnReallocation
+	 * get method for field pfnReallocation	[vkhandle]
 	 * Prototype: PFN_vkReallocationFunction  pfnReallocation
 	 */ 
 	 public PFN_vkReallocationFunction pfnReallocation(){
@@ -145,7 +139,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pfnFree
+	 * Set method for field pfnFree	[vkhandle]
 	 * Prototype: PFN_vkFreeFunction  pfnFree
 	 */ 
 	 public void pfnFree(PFN_vkFreeFunction pfnFree){
@@ -154,7 +148,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pfnFree
+	 * get method for field pfnFree	[vkhandle]
 	 * Prototype: PFN_vkFreeFunction  pfnFree
 	 */ 
 	 public PFN_vkFreeFunction pfnFree(){
@@ -163,7 +157,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pfnInternalAllocation
+	 * Set method for field pfnInternalAllocation	[vkhandle]
 	 * Prototype: PFN_vkInternalAllocationNotification  pfnInternalAllocation
 	 */ 
 	 public void pfnInternalAllocation(PFN_vkInternalAllocationNotification pfnInternalAllocation){
@@ -172,7 +166,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pfnInternalAllocation
+	 * get method for field pfnInternalAllocation	[vkhandle]
 	 * Prototype: PFN_vkInternalAllocationNotification  pfnInternalAllocation
 	 */ 
 	 public PFN_vkInternalAllocationNotification pfnInternalAllocation(){
@@ -181,7 +175,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pfnInternalFree
+	 * Set method for field pfnInternalFree	[vkhandle]
 	 * Prototype: PFN_vkInternalFreeNotification  pfnInternalFree
 	 */ 
 	 public void pfnInternalFree(PFN_vkInternalFreeNotification pfnInternalFree){
@@ -190,7 +184,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pfnInternalFree
+	 * get method for field pfnInternalFree	[vkhandle]
 	 * Prototype: PFN_vkInternalFreeNotification  pfnInternalFree
 	 */ 
 	 public PFN_vkInternalFreeNotification pfnInternalFree(){
@@ -203,7 +197,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field pUserData
+	 * native Set method for field pUserData	
 	 * Prototype: void*  pUserData
 	 */ 
 	 private static native void pUserData0(ByteBuffer ptr, java.nio.Buffer _pUserData);/*
@@ -212,7 +206,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pUserData
+	 * get method for field pUserData	
 	 * Prototype: void*  pUserData
 	 */ 
 	 private static native java.nio.Buffer pUserData0(ByteBuffer ptr);/*
@@ -221,7 +215,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pfnAllocation
+	 * native Set method for field pfnAllocation	[vkhandle]
 	 * Prototype: PFN_vkAllocationFunction  pfnAllocation
 	 */ 
 	 private static native void pfnAllocation0(ByteBuffer ptr, PFN_vkAllocationFunction _pfnAllocation);/*
@@ -230,7 +224,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pfnAllocation
+	 * get method for field pfnAllocation	[vkhandle]
 	 * Prototype: PFN_vkAllocationFunction  pfnAllocation
 	 */ 
 	 private static native PFN_vkAllocationFunction pfnAllocation0(ByteBuffer ptr);/*
@@ -239,7 +233,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pfnReallocation
+	 * native Set method for field pfnReallocation	[vkhandle]
 	 * Prototype: PFN_vkReallocationFunction  pfnReallocation
 	 */ 
 	 private static native void pfnReallocation0(ByteBuffer ptr, PFN_vkReallocationFunction _pfnReallocation);/*
@@ -248,7 +242,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pfnReallocation
+	 * get method for field pfnReallocation	[vkhandle]
 	 * Prototype: PFN_vkReallocationFunction  pfnReallocation
 	 */ 
 	 private static native PFN_vkReallocationFunction pfnReallocation0(ByteBuffer ptr);/*
@@ -257,7 +251,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pfnFree
+	 * native Set method for field pfnFree	[vkhandle]
 	 * Prototype: PFN_vkFreeFunction  pfnFree
 	 */ 
 	 private static native void pfnFree0(ByteBuffer ptr, PFN_vkFreeFunction _pfnFree);/*
@@ -266,7 +260,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pfnFree
+	 * get method for field pfnFree	[vkhandle]
 	 * Prototype: PFN_vkFreeFunction  pfnFree
 	 */ 
 	 private static native PFN_vkFreeFunction pfnFree0(ByteBuffer ptr);/*
@@ -275,7 +269,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pfnInternalAllocation
+	 * native Set method for field pfnInternalAllocation	[vkhandle]
 	 * Prototype: PFN_vkInternalAllocationNotification  pfnInternalAllocation
 	 */ 
 	 private static native void pfnInternalAllocation0(ByteBuffer ptr, PFN_vkInternalAllocationNotification _pfnInternalAllocation);/*
@@ -284,7 +278,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pfnInternalAllocation
+	 * get method for field pfnInternalAllocation	[vkhandle]
 	 * Prototype: PFN_vkInternalAllocationNotification  pfnInternalAllocation
 	 */ 
 	 private static native PFN_vkInternalAllocationNotification pfnInternalAllocation0(ByteBuffer ptr);/*
@@ -293,7 +287,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pfnInternalFree
+	 * native Set method for field pfnInternalFree	[vkhandle]
 	 * Prototype: PFN_vkInternalFreeNotification  pfnInternalFree
 	 */ 
 	 private static native void pfnInternalFree0(ByteBuffer ptr, PFN_vkInternalFreeNotification _pfnInternalFree);/*
@@ -302,7 +296,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pfnInternalFree
+	 * get method for field pfnInternalFree	[vkhandle]
 	 * Prototype: PFN_vkInternalFreeNotification  pfnInternalFree
 	 */ 
 	 private static native PFN_vkInternalFreeNotification pfnInternalFree0(ByteBuffer ptr);/*

@@ -45,48 +45,39 @@ public class VkRenderPassCreateInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkRenderPassCreateFlags 	flags 
-	 */ 
+	 *  VkRenderPassCreateFlags 	flags		 */ 
 	int 	flags;
 
 	/**
-	 *  uint32_t 	attachmentCount 
-	 */ 
+	 *  uint32_t 	attachmentCount		 */ 
 	int 	attachmentCount;
 
 	/**
-	 *  const VkAttachmentDescription* 	pAttachments 
-	 */ 
+	 *  const VkAttachmentDescription* 	pAttachments		 */ 
 	P<VkAttachmentDescription>  	pAttachments;
 
 	/**
-	 *  uint32_t 	subpassCount 
-	 */ 
+	 *  uint32_t 	subpassCount		 */ 
 	int 	subpassCount;
 
 	/**
-	 *  const VkSubpassDescription* 	pSubpasses 
-	 */ 
+	 *  const VkSubpassDescription* 	pSubpasses		 */ 
 	P<VkSubpassDescription>  	pSubpasses;
 
 	/**
-	 *  uint32_t 	dependencyCount 
-	 */ 
+	 *  uint32_t 	dependencyCount		 */ 
 	int 	dependencyCount;
 
 	/**
-	 *  const VkSubpassDependency* 	pDependencies 
-	 */ 
+	 *  const VkSubpassDependency* 	pDependencies		 */ 
 	P<VkSubpassDependency>  	pDependencies;
 
 	/**
@@ -104,12 +95,12 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -118,7 +109,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -127,7 +118,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -136,7 +127,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -145,7 +136,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkRenderPassCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -154,7 +145,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkRenderPassCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -163,7 +154,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field attachmentCount
+	 * Set method for field attachmentCount	
 	 * Prototype: uint32_t  attachmentCount
 	 */ 
 	 public void attachmentCount(int attachmentCount){
@@ -172,7 +163,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field attachmentCount
+	 * get method for field attachmentCount	
 	 * Prototype: uint32_t  attachmentCount
 	 */ 
 	 public int attachmentCount(){
@@ -181,7 +172,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pAttachments
+	 * Set method for field pAttachments	
 	 * Prototype: const VkAttachmentDescription*  pAttachments
 	 */ 
 	 public void pAttachments(P<VkAttachmentDescription>  pAttachments){
@@ -190,7 +181,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pAttachments
+	 * get method for field pAttachments	
 	 * Prototype: const VkAttachmentDescription*  pAttachments
 	 */ 
 	 public P<VkAttachmentDescription>  pAttachments(){
@@ -199,7 +190,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field subpassCount
+	 * Set method for field subpassCount	
 	 * Prototype: uint32_t  subpassCount
 	 */ 
 	 public void subpassCount(int subpassCount){
@@ -208,7 +199,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field subpassCount
+	 * get method for field subpassCount	
 	 * Prototype: uint32_t  subpassCount
 	 */ 
 	 public int subpassCount(){
@@ -217,7 +208,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pSubpasses
+	 * Set method for field pSubpasses	
 	 * Prototype: const VkSubpassDescription*  pSubpasses
 	 */ 
 	 public void pSubpasses(P<VkSubpassDescription>  pSubpasses){
@@ -226,7 +217,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pSubpasses
+	 * get method for field pSubpasses	
 	 * Prototype: const VkSubpassDescription*  pSubpasses
 	 */ 
 	 public P<VkSubpassDescription>  pSubpasses(){
@@ -235,7 +226,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dependencyCount
+	 * Set method for field dependencyCount	
 	 * Prototype: uint32_t  dependencyCount
 	 */ 
 	 public void dependencyCount(int dependencyCount){
@@ -244,7 +235,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dependencyCount
+	 * get method for field dependencyCount	
 	 * Prototype: uint32_t  dependencyCount
 	 */ 
 	 public int dependencyCount(){
@@ -253,7 +244,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pDependencies
+	 * Set method for field pDependencies	
 	 * Prototype: const VkSubpassDependency*  pDependencies
 	 */ 
 	 public void pDependencies(P<VkSubpassDependency>  pDependencies){
@@ -262,7 +253,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pDependencies
+	 * get method for field pDependencies	
 	 * Prototype: const VkSubpassDependency*  pDependencies
 	 */ 
 	 public P<VkSubpassDependency>  pDependencies(){
@@ -275,7 +266,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -284,7 +275,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -293,7 +284,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -302,7 +293,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -311,7 +302,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkRenderPassCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -320,7 +311,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkRenderPassCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -329,7 +320,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field attachmentCount
+	 * native Set method for field attachmentCount	
 	 * Prototype: uint32_t  attachmentCount
 	 */ 
 	 private static native void attachmentCount0(ByteBuffer ptr, int _attachmentCount);/*
@@ -338,7 +329,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field attachmentCount
+	 * get method for field attachmentCount	
 	 * Prototype: uint32_t  attachmentCount
 	 */ 
 	 private static native int attachmentCount0(ByteBuffer ptr);/*
@@ -347,7 +338,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pAttachments
+	 * native Set method for field pAttachments	
 	 * Prototype: const VkAttachmentDescription*  pAttachments
 	 */ 
 	 private static native void pAttachments0(ByteBuffer ptr, P<VkAttachmentDescription>  _pAttachments);/*
@@ -356,7 +347,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pAttachments
+	 * get method for field pAttachments	
 	 * Prototype: const VkAttachmentDescription*  pAttachments
 	 */ 
 	 private static native P<VkAttachmentDescription>  pAttachments0(ByteBuffer ptr);/*
@@ -365,7 +356,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field subpassCount
+	 * native Set method for field subpassCount	
 	 * Prototype: uint32_t  subpassCount
 	 */ 
 	 private static native void subpassCount0(ByteBuffer ptr, int _subpassCount);/*
@@ -374,7 +365,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field subpassCount
+	 * get method for field subpassCount	
 	 * Prototype: uint32_t  subpassCount
 	 */ 
 	 private static native int subpassCount0(ByteBuffer ptr);/*
@@ -383,7 +374,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pSubpasses
+	 * native Set method for field pSubpasses	
 	 * Prototype: const VkSubpassDescription*  pSubpasses
 	 */ 
 	 private static native void pSubpasses0(ByteBuffer ptr, P<VkSubpassDescription>  _pSubpasses);/*
@@ -392,7 +383,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pSubpasses
+	 * get method for field pSubpasses	
 	 * Prototype: const VkSubpassDescription*  pSubpasses
 	 */ 
 	 private static native P<VkSubpassDescription>  pSubpasses0(ByteBuffer ptr);/*
@@ -401,7 +392,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dependencyCount
+	 * native Set method for field dependencyCount	
 	 * Prototype: uint32_t  dependencyCount
 	 */ 
 	 private static native void dependencyCount0(ByteBuffer ptr, int _dependencyCount);/*
@@ -410,7 +401,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dependencyCount
+	 * get method for field dependencyCount	
 	 * Prototype: uint32_t  dependencyCount
 	 */ 
 	 private static native int dependencyCount0(ByteBuffer ptr);/*
@@ -419,7 +410,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pDependencies
+	 * native Set method for field pDependencies	
 	 * Prototype: const VkSubpassDependency*  pDependencies
 	 */ 
 	 private static native void pDependencies0(ByteBuffer ptr, P<VkSubpassDependency>  _pDependencies);/*
@@ -428,7 +419,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pDependencies
+	 * get method for field pDependencies	
 	 * Prototype: const VkSubpassDependency*  pDependencies
 	 */ 
 	 private static native P<VkSubpassDependency>  pDependencies0(ByteBuffer ptr);/*

@@ -40,23 +40,19 @@ public class VkLayerProperties extends VkStruct {
 
 	 // fields //
 	/**
-	 *  char[] 	layerName 
-	 */ 
+	 *  char[] 	layerName		 */ 
 	String 	layerName;
 
 	/**
-	 *  uint32_t 	specVersion 
-	 */ 
+	 *  uint32_t 	specVersion		 */ 
 	int 	specVersion;
 
 	/**
-	 *  uint32_t 	implementationVersion 
-	 */ 
+	 *  uint32_t 	implementationVersion		 */ 
 	int 	implementationVersion;
 
 	/**
-	 *  char[] 	description 
-	 */ 
+	 *  char[] 	description		 */ 
 	String 	description;
 
 	/**
@@ -74,12 +70,12 @@ public class VkLayerProperties extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field layerName
+	 * Set method for field layerName	
 	 * Prototype: char[]  layerName
 	 */ 
 	 public void layerName(String layerName){
@@ -88,7 +84,7 @@ public class VkLayerProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field layerName
+	 * get method for field layerName	
 	 * Prototype: char[]  layerName
 	 */ 
 	 public String layerName(){
@@ -97,7 +93,7 @@ public class VkLayerProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field specVersion
+	 * Set method for field specVersion	
 	 * Prototype: uint32_t  specVersion
 	 */ 
 	 public void specVersion(int specVersion){
@@ -106,7 +102,7 @@ public class VkLayerProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field specVersion
+	 * get method for field specVersion	
 	 * Prototype: uint32_t  specVersion
 	 */ 
 	 public int specVersion(){
@@ -115,7 +111,7 @@ public class VkLayerProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field implementationVersion
+	 * Set method for field implementationVersion	
 	 * Prototype: uint32_t  implementationVersion
 	 */ 
 	 public void implementationVersion(int implementationVersion){
@@ -124,7 +120,7 @@ public class VkLayerProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field implementationVersion
+	 * get method for field implementationVersion	
 	 * Prototype: uint32_t  implementationVersion
 	 */ 
 	 public int implementationVersion(){
@@ -133,7 +129,7 @@ public class VkLayerProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field description
+	 * Set method for field description	
 	 * Prototype: char[]  description
 	 */ 
 	 public void description(String description){
@@ -142,7 +138,7 @@ public class VkLayerProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field description
+	 * get method for field description	
 	 * Prototype: char[]  description
 	 */ 
 	 public String description(){
@@ -155,7 +151,7 @@ public class VkLayerProperties extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field layerName
+	 * native Set method for field layerName	
 	 * Prototype: char[]  layerName
 	 */ 
 	 private static native void layerName0(ByteBuffer ptr, String _layerName);/*
@@ -164,7 +160,7 @@ public class VkLayerProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field layerName
+	 * get method for field layerName	
 	 * Prototype: char[]  layerName
 	 */ 
 	 private static native String layerName0(ByteBuffer ptr);/*
@@ -172,7 +168,7 @@ public class VkLayerProperties extends VkStruct {
 		  return (jstring)(env->NewStringUTF(_obj.char[]);	 */
 
 	/**
-	 * native Set method for field specVersion
+	 * native Set method for field specVersion	
 	 * Prototype: uint32_t  specVersion
 	 */ 
 	 private static native void specVersion0(ByteBuffer ptr, int _specVersion);/*
@@ -181,7 +177,7 @@ public class VkLayerProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field specVersion
+	 * get method for field specVersion	
 	 * Prototype: uint32_t  specVersion
 	 */ 
 	 private static native int specVersion0(ByteBuffer ptr);/*
@@ -190,7 +186,7 @@ public class VkLayerProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field implementationVersion
+	 * native Set method for field implementationVersion	
 	 * Prototype: uint32_t  implementationVersion
 	 */ 
 	 private static native void implementationVersion0(ByteBuffer ptr, int _implementationVersion);/*
@@ -199,7 +195,7 @@ public class VkLayerProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field implementationVersion
+	 * get method for field implementationVersion	
 	 * Prototype: uint32_t  implementationVersion
 	 */ 
 	 private static native int implementationVersion0(ByteBuffer ptr);/*
@@ -208,7 +204,7 @@ public class VkLayerProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field description
+	 * native Set method for field description	
 	 * Prototype: char[]  description
 	 */ 
 	 private static native void description0(ByteBuffer ptr, String _description);/*
@@ -217,7 +213,7 @@ public class VkLayerProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field description
+	 * get method for field description	
 	 * Prototype: char[]  description
 	 */ 
 	 private static native String description0(ByteBuffer ptr);/*

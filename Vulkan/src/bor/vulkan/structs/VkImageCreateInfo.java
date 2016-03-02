@@ -51,78 +51,63 @@ public class VkImageCreateInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkImageCreateFlags 	flags 
-	 */ 
+	 *  VkImageCreateFlags 	flags		 */ 
 	int 	flags;
 
 	/**
-	 *  VkImageType 	imageType 
-	 */ 
+	 *  VkImageType 	imageType	[vkenum]	 */ 
 	VkImageType 	imageType;
 
 	/**
-	 *  VkFormat 	format 
-	 */ 
+	 *  VkFormat 	format	[vkenum]	 */ 
 	VkFormat 	format;
 
 	/**
-	 *  VkExtent3D 	extent 
-	 */ 
+	 *  VkExtent3D 	extent	[vkstruct]	 */ 
 	VkExtent3D 	extent;
 
 	/**
-	 *  uint32_t 	mipLevels 
-	 */ 
+	 *  uint32_t 	mipLevels		 */ 
 	int 	mipLevels;
 
 	/**
-	 *  uint32_t 	arrayLayers 
-	 */ 
+	 *  uint32_t 	arrayLayers		 */ 
 	int 	arrayLayers;
 
 	/**
-	 *  VkSampleCountFlagBits 	samples 
-	 */ 
+	 *  VkSampleCountFlagBits 	samples	[vkenum]	 */ 
 	VkSampleCountFlagBits 	samples;
 
 	/**
-	 *  VkImageTiling 	tiling 
-	 */ 
+	 *  VkImageTiling 	tiling	[vkenum]	 */ 
 	VkImageTiling 	tiling;
 
 	/**
-	 *  VkImageUsageFlags 	usage 
-	 */ 
+	 *  VkImageUsageFlags 	usage		 */ 
 	int 	usage;
 
 	/**
-	 *  VkSharingMode 	sharingMode 
-	 */ 
+	 *  VkSharingMode 	sharingMode	[vkenum]	 */ 
 	VkSharingMode 	sharingMode;
 
 	/**
-	 *  uint32_t 	queueFamilyIndexCount 
-	 */ 
+	 *  uint32_t 	queueFamilyIndexCount		 */ 
 	int 	queueFamilyIndexCount;
 
 	/**
-	 *  const uint32_t* 	pQueueFamilyIndices 
-	 */ 
+	 *  const uint32_t* 	pQueueFamilyIndices		 */ 
 	int[] 	pQueueFamilyIndices;
 
 	/**
-	 *  VkImageLayout 	initialLayout 
-	 */ 
+	 *  VkImageLayout 	initialLayout	[vkenum]	 */ 
 	VkImageLayout 	initialLayout;
 
 	/**
@@ -140,12 +125,12 @@ public class VkImageCreateInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -154,7 +139,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -163,7 +148,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -172,7 +157,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -181,7 +166,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkImageCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -190,7 +175,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkImageCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -199,7 +184,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field imageType
+	 * Set method for field imageType	[vkenum]
 	 * Prototype: VkImageType  imageType
 	 */ 
 	 public void imageType(VkImageType imageType){
@@ -208,7 +193,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field imageType
+	 * get method for field imageType	[vkenum]
 	 * Prototype: VkImageType  imageType
 	 */ 
 	 public VkImageType imageType(){
@@ -217,7 +202,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field format
+	 * Set method for field format	[vkenum]
 	 * Prototype: VkFormat  format
 	 */ 
 	 public void format(VkFormat format){
@@ -226,7 +211,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field format
+	 * get method for field format	[vkenum]
 	 * Prototype: VkFormat  format
 	 */ 
 	 public VkFormat format(){
@@ -235,7 +220,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field extent
+	 * Set method for field extent	[vkstruct]
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 public void extent(VkExtent3D extent){
@@ -244,7 +229,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field extent
+	 * get method for field extent	[vkstruct]
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 public VkExtent3D extent(){
@@ -253,7 +238,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field mipLevels
+	 * Set method for field mipLevels	
 	 * Prototype: uint32_t  mipLevels
 	 */ 
 	 public void mipLevels(int mipLevels){
@@ -262,7 +247,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field mipLevels
+	 * get method for field mipLevels	
 	 * Prototype: uint32_t  mipLevels
 	 */ 
 	 public int mipLevels(){
@@ -271,7 +256,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field arrayLayers
+	 * Set method for field arrayLayers	
 	 * Prototype: uint32_t  arrayLayers
 	 */ 
 	 public void arrayLayers(int arrayLayers){
@@ -280,7 +265,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field arrayLayers
+	 * get method for field arrayLayers	
 	 * Prototype: uint32_t  arrayLayers
 	 */ 
 	 public int arrayLayers(){
@@ -289,7 +274,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field samples
+	 * Set method for field samples	[vkenum]
 	 * Prototype: VkSampleCountFlagBits  samples
 	 */ 
 	 public void samples(VkSampleCountFlagBits samples){
@@ -298,7 +283,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field samples
+	 * get method for field samples	[vkenum]
 	 * Prototype: VkSampleCountFlagBits  samples
 	 */ 
 	 public VkSampleCountFlagBits samples(){
@@ -307,7 +292,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field tiling
+	 * Set method for field tiling	[vkenum]
 	 * Prototype: VkImageTiling  tiling
 	 */ 
 	 public void tiling(VkImageTiling tiling){
@@ -316,7 +301,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field tiling
+	 * get method for field tiling	[vkenum]
 	 * Prototype: VkImageTiling  tiling
 	 */ 
 	 public VkImageTiling tiling(){
@@ -325,7 +310,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field usage
+	 * Set method for field usage	
 	 * Prototype: VkImageUsageFlags  usage
 	 */ 
 	 public void usage(int usage){
@@ -334,7 +319,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field usage
+	 * get method for field usage	
 	 * Prototype: VkImageUsageFlags  usage
 	 */ 
 	 public int usage(){
@@ -343,7 +328,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field sharingMode
+	 * Set method for field sharingMode	[vkenum]
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
 	 public void sharingMode(VkSharingMode sharingMode){
@@ -352,7 +337,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sharingMode
+	 * get method for field sharingMode	[vkenum]
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
 	 public VkSharingMode sharingMode(){
@@ -361,7 +346,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field queueFamilyIndexCount
+	 * Set method for field queueFamilyIndexCount	
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
 	 public void queueFamilyIndexCount(int queueFamilyIndexCount){
@@ -370,7 +355,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field queueFamilyIndexCount
+	 * get method for field queueFamilyIndexCount	
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
 	 public int queueFamilyIndexCount(){
@@ -379,7 +364,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pQueueFamilyIndices
+	 * Set method for field pQueueFamilyIndices	
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 public void pQueueFamilyIndices(int[] pQueueFamilyIndices){
@@ -388,7 +373,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pQueueFamilyIndices
+	 * get method for field pQueueFamilyIndices	
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 public int[] pQueueFamilyIndices(){
@@ -397,7 +382,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field initialLayout
+	 * Set method for field initialLayout	[vkenum]
 	 * Prototype: VkImageLayout  initialLayout
 	 */ 
 	 public void initialLayout(VkImageLayout initialLayout){
@@ -406,7 +391,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field initialLayout
+	 * get method for field initialLayout	[vkenum]
 	 * Prototype: VkImageLayout  initialLayout
 	 */ 
 	 public VkImageLayout initialLayout(){
@@ -419,7 +404,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -428,7 +413,7 @@ public class VkImageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -437,7 +422,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -446,7 +431,7 @@ public class VkImageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -455,7 +440,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkImageCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -464,7 +449,7 @@ public class VkImageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkImageCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -473,7 +458,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field imageType
+	 * native Set method for field imageType	[vkenum]
 	 * Prototype: VkImageType  imageType
 	 */ 
 	 private static native void imageType0(ByteBuffer ptr, VkImageType _imageType);/*
@@ -482,7 +467,7 @@ public class VkImageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field imageType
+	 * get method for field imageType	[vkenum]
 	 * Prototype: VkImageType  imageType
 	 */ 
 	 private static native VkImageType imageType0(ByteBuffer ptr);/*
@@ -491,7 +476,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field format
+	 * native Set method for field format	[vkenum]
 	 * Prototype: VkFormat  format
 	 */ 
 	 private static native void format0(ByteBuffer ptr, VkFormat _format);/*
@@ -500,7 +485,7 @@ public class VkImageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field format
+	 * get method for field format	[vkenum]
 	 * Prototype: VkFormat  format
 	 */ 
 	 private static native VkFormat format0(ByteBuffer ptr);/*
@@ -509,7 +494,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field extent
+	 * native Set method for field extent	[vkstruct]
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 private static native void extent0(ByteBuffer ptr, VkExtent3D _extent);/*
@@ -518,7 +503,7 @@ public class VkImageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field extent
+	 * get method for field extent	[vkstruct]
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 private static native VkExtent3D extent0(ByteBuffer ptr);/*
@@ -527,7 +512,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field mipLevels
+	 * native Set method for field mipLevels	
 	 * Prototype: uint32_t  mipLevels
 	 */ 
 	 private static native void mipLevels0(ByteBuffer ptr, int _mipLevels);/*
@@ -536,7 +521,7 @@ public class VkImageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field mipLevels
+	 * get method for field mipLevels	
 	 * Prototype: uint32_t  mipLevels
 	 */ 
 	 private static native int mipLevels0(ByteBuffer ptr);/*
@@ -545,7 +530,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field arrayLayers
+	 * native Set method for field arrayLayers	
 	 * Prototype: uint32_t  arrayLayers
 	 */ 
 	 private static native void arrayLayers0(ByteBuffer ptr, int _arrayLayers);/*
@@ -554,7 +539,7 @@ public class VkImageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field arrayLayers
+	 * get method for field arrayLayers	
 	 * Prototype: uint32_t  arrayLayers
 	 */ 
 	 private static native int arrayLayers0(ByteBuffer ptr);/*
@@ -563,7 +548,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field samples
+	 * native Set method for field samples	[vkenum]
 	 * Prototype: VkSampleCountFlagBits  samples
 	 */ 
 	 private static native void samples0(ByteBuffer ptr, VkSampleCountFlagBits _samples);/*
@@ -572,7 +557,7 @@ public class VkImageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field samples
+	 * get method for field samples	[vkenum]
 	 * Prototype: VkSampleCountFlagBits  samples
 	 */ 
 	 private static native VkSampleCountFlagBits samples0(ByteBuffer ptr);/*
@@ -581,7 +566,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field tiling
+	 * native Set method for field tiling	[vkenum]
 	 * Prototype: VkImageTiling  tiling
 	 */ 
 	 private static native void tiling0(ByteBuffer ptr, VkImageTiling _tiling);/*
@@ -590,7 +575,7 @@ public class VkImageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field tiling
+	 * get method for field tiling	[vkenum]
 	 * Prototype: VkImageTiling  tiling
 	 */ 
 	 private static native VkImageTiling tiling0(ByteBuffer ptr);/*
@@ -599,7 +584,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field usage
+	 * native Set method for field usage	
 	 * Prototype: VkImageUsageFlags  usage
 	 */ 
 	 private static native void usage0(ByteBuffer ptr, int _usage);/*
@@ -608,7 +593,7 @@ public class VkImageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field usage
+	 * get method for field usage	
 	 * Prototype: VkImageUsageFlags  usage
 	 */ 
 	 private static native int usage0(ByteBuffer ptr);/*
@@ -617,7 +602,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field sharingMode
+	 * native Set method for field sharingMode	[vkenum]
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
 	 private static native void sharingMode0(ByteBuffer ptr, VkSharingMode _sharingMode);/*
@@ -626,7 +611,7 @@ public class VkImageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sharingMode
+	 * get method for field sharingMode	[vkenum]
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
 	 private static native VkSharingMode sharingMode0(ByteBuffer ptr);/*
@@ -635,7 +620,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field queueFamilyIndexCount
+	 * native Set method for field queueFamilyIndexCount	
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
 	 private static native void queueFamilyIndexCount0(ByteBuffer ptr, int _queueFamilyIndexCount);/*
@@ -644,7 +629,7 @@ public class VkImageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field queueFamilyIndexCount
+	 * get method for field queueFamilyIndexCount	
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
 	 private static native int queueFamilyIndexCount0(ByteBuffer ptr);/*
@@ -653,7 +638,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pQueueFamilyIndices
+	 * native Set method for field pQueueFamilyIndices	
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 private static native void pQueueFamilyIndices0(ByteBuffer ptr, int[] _pQueueFamilyIndices);/*
@@ -662,7 +647,7 @@ public class VkImageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pQueueFamilyIndices
+	 * get method for field pQueueFamilyIndices	
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 private static native int[] pQueueFamilyIndices0(ByteBuffer ptr);/*
@@ -671,7 +656,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field initialLayout
+	 * native Set method for field initialLayout	[vkenum]
 	 * Prototype: VkImageLayout  initialLayout
 	 */ 
 	 private static native void initialLayout0(ByteBuffer ptr, VkImageLayout _initialLayout);/*
@@ -680,7 +665,7 @@ public class VkImageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field initialLayout
+	 * get method for field initialLayout	[vkenum]
 	 * Prototype: VkImageLayout  initialLayout
 	 */ 
 	 private static native VkImageLayout initialLayout0(ByteBuffer ptr);/*

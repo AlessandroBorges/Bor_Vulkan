@@ -40,23 +40,19 @@ public class VkComponentMapping extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkComponentSwizzle 	r 
-	 */ 
+	 *  VkComponentSwizzle 	r	[vkenum]	 */ 
 	VkComponentSwizzle 	r;
 
 	/**
-	 *  VkComponentSwizzle 	g 
-	 */ 
+	 *  VkComponentSwizzle 	g	[vkenum]	 */ 
 	VkComponentSwizzle 	g;
 
 	/**
-	 *  VkComponentSwizzle 	b 
-	 */ 
+	 *  VkComponentSwizzle 	b	[vkenum]	 */ 
 	VkComponentSwizzle 	b;
 
 	/**
-	 *  VkComponentSwizzle 	a 
-	 */ 
+	 *  VkComponentSwizzle 	a	[vkenum]	 */ 
 	VkComponentSwizzle 	a;
 
 	/**
@@ -74,12 +70,12 @@ public class VkComponentMapping extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field r
+	 * Set method for field r	[vkenum]
 	 * Prototype: VkComponentSwizzle  r
 	 */ 
 	 public void r(VkComponentSwizzle r){
@@ -88,7 +84,7 @@ public class VkComponentMapping extends VkStruct {
 	 }
 
 	/**
-	 * get method for field r
+	 * get method for field r	[vkenum]
 	 * Prototype: VkComponentSwizzle  r
 	 */ 
 	 public VkComponentSwizzle r(){
@@ -97,7 +93,7 @@ public class VkComponentMapping extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field g
+	 * Set method for field g	[vkenum]
 	 * Prototype: VkComponentSwizzle  g
 	 */ 
 	 public void g(VkComponentSwizzle g){
@@ -106,7 +102,7 @@ public class VkComponentMapping extends VkStruct {
 	 }
 
 	/**
-	 * get method for field g
+	 * get method for field g	[vkenum]
 	 * Prototype: VkComponentSwizzle  g
 	 */ 
 	 public VkComponentSwizzle g(){
@@ -115,7 +111,7 @@ public class VkComponentMapping extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field b
+	 * Set method for field b	[vkenum]
 	 * Prototype: VkComponentSwizzle  b
 	 */ 
 	 public void b(VkComponentSwizzle b){
@@ -124,7 +120,7 @@ public class VkComponentMapping extends VkStruct {
 	 }
 
 	/**
-	 * get method for field b
+	 * get method for field b	[vkenum]
 	 * Prototype: VkComponentSwizzle  b
 	 */ 
 	 public VkComponentSwizzle b(){
@@ -133,7 +129,7 @@ public class VkComponentMapping extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field a
+	 * Set method for field a	[vkenum]
 	 * Prototype: VkComponentSwizzle  a
 	 */ 
 	 public void a(VkComponentSwizzle a){
@@ -142,7 +138,7 @@ public class VkComponentMapping extends VkStruct {
 	 }
 
 	/**
-	 * get method for field a
+	 * get method for field a	[vkenum]
 	 * Prototype: VkComponentSwizzle  a
 	 */ 
 	 public VkComponentSwizzle a(){
@@ -155,7 +151,7 @@ public class VkComponentMapping extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field r
+	 * native Set method for field r	[vkenum]
 	 * Prototype: VkComponentSwizzle  r
 	 */ 
 	 private static native void r0(ByteBuffer ptr, VkComponentSwizzle _r);/*
@@ -164,7 +160,7 @@ public class VkComponentMapping extends VkStruct {
 	  */
 
 	/**
-	 * get method for field r
+	 * get method for field r	[vkenum]
 	 * Prototype: VkComponentSwizzle  r
 	 */ 
 	 private static native VkComponentSwizzle r0(ByteBuffer ptr);/*
@@ -173,7 +169,7 @@ public class VkComponentMapping extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field g
+	 * native Set method for field g	[vkenum]
 	 * Prototype: VkComponentSwizzle  g
 	 */ 
 	 private static native void g0(ByteBuffer ptr, VkComponentSwizzle _g);/*
@@ -182,7 +178,7 @@ public class VkComponentMapping extends VkStruct {
 	  */
 
 	/**
-	 * get method for field g
+	 * get method for field g	[vkenum]
 	 * Prototype: VkComponentSwizzle  g
 	 */ 
 	 private static native VkComponentSwizzle g0(ByteBuffer ptr);/*
@@ -191,7 +187,7 @@ public class VkComponentMapping extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field b
+	 * native Set method for field b	[vkenum]
 	 * Prototype: VkComponentSwizzle  b
 	 */ 
 	 private static native void b0(ByteBuffer ptr, VkComponentSwizzle _b);/*
@@ -200,7 +196,7 @@ public class VkComponentMapping extends VkStruct {
 	  */
 
 	/**
-	 * get method for field b
+	 * get method for field b	[vkenum]
 	 * Prototype: VkComponentSwizzle  b
 	 */ 
 	 private static native VkComponentSwizzle b0(ByteBuffer ptr);/*
@@ -209,7 +205,7 @@ public class VkComponentMapping extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field a
+	 * native Set method for field a	[vkenum]
 	 * Prototype: VkComponentSwizzle  a
 	 */ 
 	 private static native void a0(ByteBuffer ptr, VkComponentSwizzle _a);/*
@@ -218,7 +214,7 @@ public class VkComponentMapping extends VkStruct {
 	  */
 
 	/**
-	 * get method for field a
+	 * get method for field a	[vkenum]
 	 * Prototype: VkComponentSwizzle  a
 	 */ 
 	 private static native VkComponentSwizzle a0(ByteBuffer ptr);/*

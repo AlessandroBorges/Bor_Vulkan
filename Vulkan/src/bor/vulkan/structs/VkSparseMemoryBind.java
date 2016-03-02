@@ -41,28 +41,23 @@ public class VkSparseMemoryBind extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkDeviceSize 	resourceOffset 
-	 */ 
+	 *  VkDeviceSize 	resourceOffset		 */ 
 	long 	resourceOffset;
 
 	/**
-	 *  VkDeviceSize 	size 
-	 */ 
+	 *  VkDeviceSize 	size		 */ 
 	long 	size;
 
 	/**
-	 *  VkDeviceMemory 	memory 
-	 */ 
+	 *  VkDeviceMemory 	memory	[vkhandle]	 */ 
 	VkDeviceMemory 	memory;
 
 	/**
-	 *  VkDeviceSize 	memoryOffset 
-	 */ 
+	 *  VkDeviceSize 	memoryOffset		 */ 
 	long 	memoryOffset;
 
 	/**
-	 *  VkSparseMemoryBindFlags 	flags 
-	 */ 
+	 *  VkSparseMemoryBindFlags 	flags		 */ 
 	int 	flags;
 
 	/**
@@ -80,12 +75,12 @@ public class VkSparseMemoryBind extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field resourceOffset
+	 * Set method for field resourceOffset	
 	 * Prototype: VkDeviceSize  resourceOffset
 	 */ 
 	 public void resourceOffset(long resourceOffset){
@@ -94,7 +89,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * get method for field resourceOffset
+	 * get method for field resourceOffset	
 	 * Prototype: VkDeviceSize  resourceOffset
 	 */ 
 	 public long resourceOffset(){
@@ -103,7 +98,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field size
+	 * Set method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public void size(long size){
@@ -112,7 +107,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * get method for field size
+	 * get method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public long size(){
@@ -121,7 +116,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field memory
+	 * Set method for field memory	[vkhandle]
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
 	 public void memory(VkDeviceMemory memory){
@@ -130,7 +125,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * get method for field memory
+	 * get method for field memory	[vkhandle]
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
 	 public VkDeviceMemory memory(){
@@ -139,7 +134,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field memoryOffset
+	 * Set method for field memoryOffset	
 	 * Prototype: VkDeviceSize  memoryOffset
 	 */ 
 	 public void memoryOffset(long memoryOffset){
@@ -148,7 +143,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * get method for field memoryOffset
+	 * get method for field memoryOffset	
 	 * Prototype: VkDeviceSize  memoryOffset
 	 */ 
 	 public long memoryOffset(){
@@ -157,7 +152,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkSparseMemoryBindFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -166,7 +161,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkSparseMemoryBindFlags  flags
 	 */ 
 	 public int flags(){
@@ -179,7 +174,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field resourceOffset
+	 * native Set method for field resourceOffset	
 	 * Prototype: VkDeviceSize  resourceOffset
 	 */ 
 	 private static native void resourceOffset0(ByteBuffer ptr, long _resourceOffset);/*
@@ -188,7 +183,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	  */
 
 	/**
-	 * get method for field resourceOffset
+	 * get method for field resourceOffset	
 	 * Prototype: VkDeviceSize  resourceOffset
 	 */ 
 	 private static native long resourceOffset0(ByteBuffer ptr);/*
@@ -197,7 +192,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field size
+	 * native Set method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native void size0(ByteBuffer ptr, long _size);/*
@@ -206,7 +201,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	  */
 
 	/**
-	 * get method for field size
+	 * get method for field size	
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long size0(ByteBuffer ptr);/*
@@ -215,7 +210,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field memory
+	 * native Set method for field memory	[vkhandle]
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
 	 private static native void memory0(ByteBuffer ptr, VkDeviceMemory _memory);/*
@@ -224,7 +219,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	  */
 
 	/**
-	 * get method for field memory
+	 * get method for field memory	[vkhandle]
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
 	 private static native VkDeviceMemory memory0(ByteBuffer ptr);/*
@@ -233,7 +228,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field memoryOffset
+	 * native Set method for field memoryOffset	
 	 * Prototype: VkDeviceSize  memoryOffset
 	 */ 
 	 private static native void memoryOffset0(ByteBuffer ptr, long _memoryOffset);/*
@@ -242,7 +237,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	  */
 
 	/**
-	 * get method for field memoryOffset
+	 * get method for field memoryOffset	
 	 * Prototype: VkDeviceSize  memoryOffset
 	 */ 
 	 private static native long memoryOffset0(ByteBuffer ptr);/*
@@ -251,7 +246,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkSparseMemoryBindFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -260,7 +255,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkSparseMemoryBindFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*

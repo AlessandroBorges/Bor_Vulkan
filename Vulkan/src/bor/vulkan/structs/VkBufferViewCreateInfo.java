@@ -43,38 +43,31 @@ public class VkBufferViewCreateInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkBufferViewCreateFlags 	flags 
-	 */ 
+	 *  VkBufferViewCreateFlags 	flags		 */ 
 	int 	flags;
 
 	/**
-	 *  VkBuffer 	buffer 
-	 */ 
+	 *  VkBuffer 	buffer	[vkhandle]	 */ 
 	VkBuffer 	buffer;
 
 	/**
-	 *  VkFormat 	format 
-	 */ 
+	 *  VkFormat 	format	[vkenum]	 */ 
 	VkFormat 	format;
 
 	/**
-	 *  VkDeviceSize 	offset 
-	 */ 
+	 *  VkDeviceSize 	offset		 */ 
 	long 	offset;
 
 	/**
-	 *  VkDeviceSize 	range 
-	 */ 
+	 *  VkDeviceSize 	range		 */ 
 	long 	range;
 
 	/**
@@ -92,12 +85,12 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -106,7 +99,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -115,7 +108,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -124,7 +117,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -133,7 +126,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkBufferViewCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -142,7 +135,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkBufferViewCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -151,7 +144,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field buffer
+	 * Set method for field buffer	[vkhandle]
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 public void buffer(VkBuffer buffer){
@@ -160,7 +153,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field buffer
+	 * get method for field buffer	[vkhandle]
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 public VkBuffer buffer(){
@@ -169,7 +162,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field format
+	 * Set method for field format	[vkenum]
 	 * Prototype: VkFormat  format
 	 */ 
 	 public void format(VkFormat format){
@@ -178,7 +171,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field format
+	 * get method for field format	[vkenum]
 	 * Prototype: VkFormat  format
 	 */ 
 	 public VkFormat format(){
@@ -187,7 +180,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field offset
+	 * Set method for field offset	
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 public void offset(long offset){
@@ -196,7 +189,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field offset
+	 * get method for field offset	
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 public long offset(){
@@ -205,7 +198,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field range
+	 * Set method for field range	
 	 * Prototype: VkDeviceSize  range
 	 */ 
 	 public void range(long range){
@@ -214,7 +207,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field range
+	 * get method for field range	
 	 * Prototype: VkDeviceSize  range
 	 */ 
 	 public long range(){
@@ -227,7 +220,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -236,7 +229,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -245,7 +238,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -254,7 +247,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -263,7 +256,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkBufferViewCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -272,7 +265,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkBufferViewCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -281,7 +274,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field buffer
+	 * native Set method for field buffer	[vkhandle]
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 private static native void buffer0(ByteBuffer ptr, VkBuffer _buffer);/*
@@ -290,7 +283,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field buffer
+	 * get method for field buffer	[vkhandle]
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 private static native VkBuffer buffer0(ByteBuffer ptr);/*
@@ -299,7 +292,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field format
+	 * native Set method for field format	[vkenum]
 	 * Prototype: VkFormat  format
 	 */ 
 	 private static native void format0(ByteBuffer ptr, VkFormat _format);/*
@@ -308,7 +301,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field format
+	 * get method for field format	[vkenum]
 	 * Prototype: VkFormat  format
 	 */ 
 	 private static native VkFormat format0(ByteBuffer ptr);/*
@@ -317,7 +310,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field offset
+	 * native Set method for field offset	
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 private static native void offset0(ByteBuffer ptr, long _offset);/*
@@ -326,7 +319,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field offset
+	 * get method for field offset	
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 private static native long offset0(ByteBuffer ptr);/*
@@ -335,7 +328,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field range
+	 * native Set method for field range	
 	 * Prototype: VkDeviceSize  range
 	 */ 
 	 private static native void range0(ByteBuffer ptr, long _range);/*
@@ -344,7 +337,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field range
+	 * get method for field range	
 	 * Prototype: VkDeviceSize  range
 	 */ 
 	 private static native long range0(ByteBuffer ptr);/*

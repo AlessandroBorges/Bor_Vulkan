@@ -45,48 +45,39 @@ public class VkFramebufferCreateInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkFramebufferCreateFlags 	flags 
-	 */ 
+	 *  VkFramebufferCreateFlags 	flags		 */ 
 	int 	flags;
 
 	/**
-	 *  VkRenderPass 	renderPass 
-	 */ 
+	 *  VkRenderPass 	renderPass	[vkhandle]	 */ 
 	VkRenderPass 	renderPass;
 
 	/**
-	 *  uint32_t 	attachmentCount 
-	 */ 
+	 *  uint32_t 	attachmentCount		 */ 
 	int 	attachmentCount;
 
 	/**
-	 *  const VkImageView* 	pAttachments 
-	 */ 
+	 *  const VkImageView* 	pAttachments		 */ 
 	P<VkImageView>  	pAttachments;
 
 	/**
-	 *  uint32_t 	width 
-	 */ 
+	 *  uint32_t 	width		 */ 
 	int 	width;
 
 	/**
-	 *  uint32_t 	height 
-	 */ 
+	 *  uint32_t 	height		 */ 
 	int 	height;
 
 	/**
-	 *  uint32_t 	layers 
-	 */ 
+	 *  uint32_t 	layers		 */ 
 	int 	layers;
 
 	/**
@@ -104,12 +95,12 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -118,7 +109,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -127,7 +118,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -136,7 +127,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -145,7 +136,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkFramebufferCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -154,7 +145,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkFramebufferCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -163,7 +154,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field renderPass
+	 * Set method for field renderPass	[vkhandle]
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
 	 public void renderPass(VkRenderPass renderPass){
@@ -172,7 +163,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field renderPass
+	 * get method for field renderPass	[vkhandle]
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
 	 public VkRenderPass renderPass(){
@@ -181,7 +172,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field attachmentCount
+	 * Set method for field attachmentCount	
 	 * Prototype: uint32_t  attachmentCount
 	 */ 
 	 public void attachmentCount(int attachmentCount){
@@ -190,7 +181,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field attachmentCount
+	 * get method for field attachmentCount	
 	 * Prototype: uint32_t  attachmentCount
 	 */ 
 	 public int attachmentCount(){
@@ -199,7 +190,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pAttachments
+	 * Set method for field pAttachments	
 	 * Prototype: const VkImageView*  pAttachments
 	 */ 
 	 public void pAttachments(P<VkImageView>  pAttachments){
@@ -208,7 +199,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pAttachments
+	 * get method for field pAttachments	
 	 * Prototype: const VkImageView*  pAttachments
 	 */ 
 	 public P<VkImageView>  pAttachments(){
@@ -217,7 +208,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field width
+	 * Set method for field width	
 	 * Prototype: uint32_t  width
 	 */ 
 	 public void width(int width){
@@ -226,7 +217,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field width
+	 * get method for field width	
 	 * Prototype: uint32_t  width
 	 */ 
 	 public int width(){
@@ -235,7 +226,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field height
+	 * Set method for field height	
 	 * Prototype: uint32_t  height
 	 */ 
 	 public void height(int height){
@@ -244,7 +235,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field height
+	 * get method for field height	
 	 * Prototype: uint32_t  height
 	 */ 
 	 public int height(){
@@ -253,7 +244,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field layers
+	 * Set method for field layers	
 	 * Prototype: uint32_t  layers
 	 */ 
 	 public void layers(int layers){
@@ -262,7 +253,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field layers
+	 * get method for field layers	
 	 * Prototype: uint32_t  layers
 	 */ 
 	 public int layers(){
@@ -275,7 +266,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -284,7 +275,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -293,7 +284,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -302,7 +293,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -311,7 +302,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkFramebufferCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -320,7 +311,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkFramebufferCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -329,7 +320,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field renderPass
+	 * native Set method for field renderPass	[vkhandle]
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
 	 private static native void renderPass0(ByteBuffer ptr, VkRenderPass _renderPass);/*
@@ -338,7 +329,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field renderPass
+	 * get method for field renderPass	[vkhandle]
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
 	 private static native VkRenderPass renderPass0(ByteBuffer ptr);/*
@@ -347,7 +338,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field attachmentCount
+	 * native Set method for field attachmentCount	
 	 * Prototype: uint32_t  attachmentCount
 	 */ 
 	 private static native void attachmentCount0(ByteBuffer ptr, int _attachmentCount);/*
@@ -356,7 +347,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field attachmentCount
+	 * get method for field attachmentCount	
 	 * Prototype: uint32_t  attachmentCount
 	 */ 
 	 private static native int attachmentCount0(ByteBuffer ptr);/*
@@ -365,7 +356,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pAttachments
+	 * native Set method for field pAttachments	
 	 * Prototype: const VkImageView*  pAttachments
 	 */ 
 	 private static native void pAttachments0(ByteBuffer ptr, P<VkImageView>  _pAttachments);/*
@@ -374,7 +365,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pAttachments
+	 * get method for field pAttachments	
 	 * Prototype: const VkImageView*  pAttachments
 	 */ 
 	 private static native P<VkImageView>  pAttachments0(ByteBuffer ptr);/*
@@ -383,7 +374,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field width
+	 * native Set method for field width	
 	 * Prototype: uint32_t  width
 	 */ 
 	 private static native void width0(ByteBuffer ptr, int _width);/*
@@ -392,7 +383,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field width
+	 * get method for field width	
 	 * Prototype: uint32_t  width
 	 */ 
 	 private static native int width0(ByteBuffer ptr);/*
@@ -401,7 +392,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field height
+	 * native Set method for field height	
 	 * Prototype: uint32_t  height
 	 */ 
 	 private static native void height0(ByteBuffer ptr, int _height);/*
@@ -410,7 +401,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field height
+	 * get method for field height	
 	 * Prototype: uint32_t  height
 	 */ 
 	 private static native int height0(ByteBuffer ptr);/*
@@ -419,7 +410,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field layers
+	 * native Set method for field layers	
 	 * Prototype: uint32_t  layers
 	 */ 
 	 private static native void layers0(ByteBuffer ptr, int _layers);/*
@@ -428,7 +419,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field layers
+	 * get method for field layers	
 	 * Prototype: uint32_t  layers
 	 */ 
 	 private static native int layers0(ByteBuffer ptr);/*

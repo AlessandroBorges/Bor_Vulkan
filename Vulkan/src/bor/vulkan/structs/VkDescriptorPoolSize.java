@@ -38,13 +38,11 @@ public class VkDescriptorPoolSize extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkDescriptorType 	type 
-	 */ 
+	 *  VkDescriptorType 	type	[vkenum]	 */ 
 	VkDescriptorType 	type;
 
 	/**
-	 *  uint32_t 	descriptorCount 
-	 */ 
+	 *  uint32_t 	descriptorCount		 */ 
 	int 	descriptorCount;
 
 	/**
@@ -62,12 +60,12 @@ public class VkDescriptorPoolSize extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field type
+	 * Set method for field type	[vkenum]
 	 * Prototype: VkDescriptorType  type
 	 */ 
 	 public void type(VkDescriptorType type){
@@ -76,7 +74,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 }
 
 	/**
-	 * get method for field type
+	 * get method for field type	[vkenum]
 	 * Prototype: VkDescriptorType  type
 	 */ 
 	 public VkDescriptorType type(){
@@ -85,7 +83,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field descriptorCount
+	 * Set method for field descriptorCount	
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 public void descriptorCount(int descriptorCount){
@@ -94,7 +92,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 }
 
 	/**
-	 * get method for field descriptorCount
+	 * get method for field descriptorCount	
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 public int descriptorCount(){
@@ -107,7 +105,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field type
+	 * native Set method for field type	[vkenum]
 	 * Prototype: VkDescriptorType  type
 	 */ 
 	 private static native void type0(ByteBuffer ptr, VkDescriptorType _type);/*
@@ -116,7 +114,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	  */
 
 	/**
-	 * get method for field type
+	 * get method for field type	[vkenum]
 	 * Prototype: VkDescriptorType  type
 	 */ 
 	 private static native VkDescriptorType type0(ByteBuffer ptr);/*
@@ -125,7 +123,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field descriptorCount
+	 * native Set method for field descriptorCount	
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 private static native void descriptorCount0(ByteBuffer ptr, int _descriptorCount);/*
@@ -134,7 +132,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	  */
 
 	/**
-	 * get method for field descriptorCount
+	 * get method for field descriptorCount	
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 private static native int descriptorCount0(ByteBuffer ptr);/*

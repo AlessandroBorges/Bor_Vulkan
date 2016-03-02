@@ -41,28 +41,23 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkShaderModuleCreateFlags 	flags 
-	 */ 
+	 *  VkShaderModuleCreateFlags 	flags		 */ 
 	int 	flags;
 
 	/**
-	 *  size_t 	codeSize 
-	 */ 
+	 *  size_t 	codeSize		 */ 
 	long 	codeSize;
 
 	/**
-	 *  const uint32_t* 	pCode 
-	 */ 
+	 *  const uint32_t* 	pCode		 */ 
 	int[] 	pCode;
 
 	/**
@@ -80,12 +75,12 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -94,7 +89,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -103,7 +98,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -112,7 +107,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -121,7 +116,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkShaderModuleCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -130,7 +125,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkShaderModuleCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -139,7 +134,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field codeSize
+	 * Set method for field codeSize	
 	 * Prototype: size_t  codeSize
 	 */ 
 	 public void codeSize(long codeSize){
@@ -148,7 +143,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field codeSize
+	 * get method for field codeSize	
 	 * Prototype: size_t  codeSize
 	 */ 
 	 public long codeSize(){
@@ -157,7 +152,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pCode
+	 * Set method for field pCode	
 	 * Prototype: const uint32_t*  pCode
 	 */ 
 	 public void pCode(int[] pCode){
@@ -166,7 +161,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pCode
+	 * get method for field pCode	
 	 * Prototype: const uint32_t*  pCode
 	 */ 
 	 public int[] pCode(){
@@ -179,7 +174,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -188,7 +183,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -197,7 +192,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -206,7 +201,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -215,7 +210,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkShaderModuleCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -224,7 +219,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkShaderModuleCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -233,7 +228,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field codeSize
+	 * native Set method for field codeSize	
 	 * Prototype: size_t  codeSize
 	 */ 
 	 private static native void codeSize0(ByteBuffer ptr, long _codeSize);/*
@@ -242,7 +237,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field codeSize
+	 * get method for field codeSize	
 	 * Prototype: size_t  codeSize
 	 */ 
 	 private static native long codeSize0(ByteBuffer ptr);/*
@@ -251,7 +246,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pCode
+	 * native Set method for field pCode	
 	 * Prototype: const uint32_t*  pCode
 	 */ 
 	 private static native void pCode0(ByteBuffer ptr, int[] _pCode);/*
@@ -260,7 +255,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pCode
+	 * get method for field pCode	
 	 * Prototype: const uint32_t*  pCode
 	 */ 
 	 private static native int[] pCode0(ByteBuffer ptr);/*

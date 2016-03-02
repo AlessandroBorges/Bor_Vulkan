@@ -43,38 +43,31 @@ public class VkSubpassDependency extends VkStruct {
 
 	 // fields //
 	/**
-	 *  uint32_t 	srcSubpass 
-	 */ 
+	 *  uint32_t 	srcSubpass		 */ 
 	int 	srcSubpass;
 
 	/**
-	 *  uint32_t 	dstSubpass 
-	 */ 
+	 *  uint32_t 	dstSubpass		 */ 
 	int 	dstSubpass;
 
 	/**
-	 *  VkPipelineStageFlags 	srcStageMask 
-	 */ 
+	 *  VkPipelineStageFlags 	srcStageMask		 */ 
 	int 	srcStageMask;
 
 	/**
-	 *  VkPipelineStageFlags 	dstStageMask 
-	 */ 
+	 *  VkPipelineStageFlags 	dstStageMask		 */ 
 	int 	dstStageMask;
 
 	/**
-	 *  VkAccessFlags 	srcAccessMask 
-	 */ 
+	 *  VkAccessFlags 	srcAccessMask		 */ 
 	int 	srcAccessMask;
 
 	/**
-	 *  VkAccessFlags 	dstAccessMask 
-	 */ 
+	 *  VkAccessFlags 	dstAccessMask		 */ 
 	int 	dstAccessMask;
 
 	/**
-	 *  VkDependencyFlags 	dependencyFlags 
-	 */ 
+	 *  VkDependencyFlags 	dependencyFlags		 */ 
 	int 	dependencyFlags;
 
 	/**
@@ -92,12 +85,12 @@ public class VkSubpassDependency extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field srcSubpass
+	 * Set method for field srcSubpass	
 	 * Prototype: uint32_t  srcSubpass
 	 */ 
 	 public void srcSubpass(int srcSubpass){
@@ -106,7 +99,7 @@ public class VkSubpassDependency extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcSubpass
+	 * get method for field srcSubpass	
 	 * Prototype: uint32_t  srcSubpass
 	 */ 
 	 public int srcSubpass(){
@@ -115,7 +108,7 @@ public class VkSubpassDependency extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstSubpass
+	 * Set method for field dstSubpass	
 	 * Prototype: uint32_t  dstSubpass
 	 */ 
 	 public void dstSubpass(int dstSubpass){
@@ -124,7 +117,7 @@ public class VkSubpassDependency extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstSubpass
+	 * get method for field dstSubpass	
 	 * Prototype: uint32_t  dstSubpass
 	 */ 
 	 public int dstSubpass(){
@@ -133,7 +126,7 @@ public class VkSubpassDependency extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field srcStageMask
+	 * Set method for field srcStageMask	
 	 * Prototype: VkPipelineStageFlags  srcStageMask
 	 */ 
 	 public void srcStageMask(int srcStageMask){
@@ -142,7 +135,7 @@ public class VkSubpassDependency extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcStageMask
+	 * get method for field srcStageMask	
 	 * Prototype: VkPipelineStageFlags  srcStageMask
 	 */ 
 	 public int srcStageMask(){
@@ -151,7 +144,7 @@ public class VkSubpassDependency extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstStageMask
+	 * Set method for field dstStageMask	
 	 * Prototype: VkPipelineStageFlags  dstStageMask
 	 */ 
 	 public void dstStageMask(int dstStageMask){
@@ -160,7 +153,7 @@ public class VkSubpassDependency extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstStageMask
+	 * get method for field dstStageMask	
 	 * Prototype: VkPipelineStageFlags  dstStageMask
 	 */ 
 	 public int dstStageMask(){
@@ -169,7 +162,7 @@ public class VkSubpassDependency extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field srcAccessMask
+	 * Set method for field srcAccessMask	
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 public void srcAccessMask(int srcAccessMask){
@@ -178,7 +171,7 @@ public class VkSubpassDependency extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcAccessMask
+	 * get method for field srcAccessMask	
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 public int srcAccessMask(){
@@ -187,7 +180,7 @@ public class VkSubpassDependency extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstAccessMask
+	 * Set method for field dstAccessMask	
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 public void dstAccessMask(int dstAccessMask){
@@ -196,7 +189,7 @@ public class VkSubpassDependency extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstAccessMask
+	 * get method for field dstAccessMask	
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 public int dstAccessMask(){
@@ -205,7 +198,7 @@ public class VkSubpassDependency extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dependencyFlags
+	 * Set method for field dependencyFlags	
 	 * Prototype: VkDependencyFlags  dependencyFlags
 	 */ 
 	 public void dependencyFlags(int dependencyFlags){
@@ -214,7 +207,7 @@ public class VkSubpassDependency extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dependencyFlags
+	 * get method for field dependencyFlags	
 	 * Prototype: VkDependencyFlags  dependencyFlags
 	 */ 
 	 public int dependencyFlags(){
@@ -227,7 +220,7 @@ public class VkSubpassDependency extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field srcSubpass
+	 * native Set method for field srcSubpass	
 	 * Prototype: uint32_t  srcSubpass
 	 */ 
 	 private static native void srcSubpass0(ByteBuffer ptr, int _srcSubpass);/*
@@ -236,7 +229,7 @@ public class VkSubpassDependency extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcSubpass
+	 * get method for field srcSubpass	
 	 * Prototype: uint32_t  srcSubpass
 	 */ 
 	 private static native int srcSubpass0(ByteBuffer ptr);/*
@@ -245,7 +238,7 @@ public class VkSubpassDependency extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstSubpass
+	 * native Set method for field dstSubpass	
 	 * Prototype: uint32_t  dstSubpass
 	 */ 
 	 private static native void dstSubpass0(ByteBuffer ptr, int _dstSubpass);/*
@@ -254,7 +247,7 @@ public class VkSubpassDependency extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstSubpass
+	 * get method for field dstSubpass	
 	 * Prototype: uint32_t  dstSubpass
 	 */ 
 	 private static native int dstSubpass0(ByteBuffer ptr);/*
@@ -263,7 +256,7 @@ public class VkSubpassDependency extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field srcStageMask
+	 * native Set method for field srcStageMask	
 	 * Prototype: VkPipelineStageFlags  srcStageMask
 	 */ 
 	 private static native void srcStageMask0(ByteBuffer ptr, int _srcStageMask);/*
@@ -272,7 +265,7 @@ public class VkSubpassDependency extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcStageMask
+	 * get method for field srcStageMask	
 	 * Prototype: VkPipelineStageFlags  srcStageMask
 	 */ 
 	 private static native int srcStageMask0(ByteBuffer ptr);/*
@@ -281,7 +274,7 @@ public class VkSubpassDependency extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstStageMask
+	 * native Set method for field dstStageMask	
 	 * Prototype: VkPipelineStageFlags  dstStageMask
 	 */ 
 	 private static native void dstStageMask0(ByteBuffer ptr, int _dstStageMask);/*
@@ -290,7 +283,7 @@ public class VkSubpassDependency extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstStageMask
+	 * get method for field dstStageMask	
 	 * Prototype: VkPipelineStageFlags  dstStageMask
 	 */ 
 	 private static native int dstStageMask0(ByteBuffer ptr);/*
@@ -299,7 +292,7 @@ public class VkSubpassDependency extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field srcAccessMask
+	 * native Set method for field srcAccessMask	
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 private static native void srcAccessMask0(ByteBuffer ptr, int _srcAccessMask);/*
@@ -308,7 +301,7 @@ public class VkSubpassDependency extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcAccessMask
+	 * get method for field srcAccessMask	
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 private static native int srcAccessMask0(ByteBuffer ptr);/*
@@ -317,7 +310,7 @@ public class VkSubpassDependency extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstAccessMask
+	 * native Set method for field dstAccessMask	
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 private static native void dstAccessMask0(ByteBuffer ptr, int _dstAccessMask);/*
@@ -326,7 +319,7 @@ public class VkSubpassDependency extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstAccessMask
+	 * get method for field dstAccessMask	
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 private static native int dstAccessMask0(ByteBuffer ptr);/*
@@ -335,7 +328,7 @@ public class VkSubpassDependency extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dependencyFlags
+	 * native Set method for field dependencyFlags	
 	 * Prototype: VkDependencyFlags  dependencyFlags
 	 */ 
 	 private static native void dependencyFlags0(ByteBuffer ptr, int _dependencyFlags);/*
@@ -344,7 +337,7 @@ public class VkSubpassDependency extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dependencyFlags
+	 * get method for field dependencyFlags	
 	 * Prototype: VkDependencyFlags  dependencyFlags
 	 */ 
 	 private static native int dependencyFlags0(ByteBuffer ptr);/*

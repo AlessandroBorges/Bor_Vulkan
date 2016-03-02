@@ -39,18 +39,15 @@ public class VkClearRect extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkRect2D 	rect 
-	 */ 
+	 *  VkRect2D 	rect	[vkstruct]	 */ 
 	VkRect2D 	rect;
 
 	/**
-	 *  uint32_t 	baseArrayLayer 
-	 */ 
+	 *  uint32_t 	baseArrayLayer		 */ 
 	int 	baseArrayLayer;
 
 	/**
-	 *  uint32_t 	layerCount 
-	 */ 
+	 *  uint32_t 	layerCount		 */ 
 	int 	layerCount;
 
 	/**
@@ -68,12 +65,12 @@ public class VkClearRect extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field rect
+	 * Set method for field rect	[vkstruct]
 	 * Prototype: VkRect2D  rect
 	 */ 
 	 public void rect(VkRect2D rect){
@@ -82,7 +79,7 @@ public class VkClearRect extends VkStruct {
 	 }
 
 	/**
-	 * get method for field rect
+	 * get method for field rect	[vkstruct]
 	 * Prototype: VkRect2D  rect
 	 */ 
 	 public VkRect2D rect(){
@@ -91,7 +88,7 @@ public class VkClearRect extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field baseArrayLayer
+	 * Set method for field baseArrayLayer	
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
 	 public void baseArrayLayer(int baseArrayLayer){
@@ -100,7 +97,7 @@ public class VkClearRect extends VkStruct {
 	 }
 
 	/**
-	 * get method for field baseArrayLayer
+	 * get method for field baseArrayLayer	
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
 	 public int baseArrayLayer(){
@@ -109,7 +106,7 @@ public class VkClearRect extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field layerCount
+	 * Set method for field layerCount	
 	 * Prototype: uint32_t  layerCount
 	 */ 
 	 public void layerCount(int layerCount){
@@ -118,7 +115,7 @@ public class VkClearRect extends VkStruct {
 	 }
 
 	/**
-	 * get method for field layerCount
+	 * get method for field layerCount	
 	 * Prototype: uint32_t  layerCount
 	 */ 
 	 public int layerCount(){
@@ -131,7 +128,7 @@ public class VkClearRect extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field rect
+	 * native Set method for field rect	[vkstruct]
 	 * Prototype: VkRect2D  rect
 	 */ 
 	 private static native void rect0(ByteBuffer ptr, VkRect2D _rect);/*
@@ -140,7 +137,7 @@ public class VkClearRect extends VkStruct {
 	  */
 
 	/**
-	 * get method for field rect
+	 * get method for field rect	[vkstruct]
 	 * Prototype: VkRect2D  rect
 	 */ 
 	 private static native VkRect2D rect0(ByteBuffer ptr);/*
@@ -149,7 +146,7 @@ public class VkClearRect extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field baseArrayLayer
+	 * native Set method for field baseArrayLayer	
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
 	 private static native void baseArrayLayer0(ByteBuffer ptr, int _baseArrayLayer);/*
@@ -158,7 +155,7 @@ public class VkClearRect extends VkStruct {
 	  */
 
 	/**
-	 * get method for field baseArrayLayer
+	 * get method for field baseArrayLayer	
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
 	 private static native int baseArrayLayer0(ByteBuffer ptr);/*
@@ -167,7 +164,7 @@ public class VkClearRect extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field layerCount
+	 * native Set method for field layerCount	
 	 * Prototype: uint32_t  layerCount
 	 */ 
 	 private static native void layerCount0(ByteBuffer ptr, int _layerCount);/*
@@ -176,7 +173,7 @@ public class VkClearRect extends VkStruct {
 	  */
 
 	/**
-	 * get method for field layerCount
+	 * get method for field layerCount	
 	 * Prototype: uint32_t  layerCount
 	 */ 
 	 private static native int layerCount0(ByteBuffer ptr);/*

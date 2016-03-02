@@ -42,33 +42,27 @@ public class VkViewport extends VkStruct {
 
 	 // fields //
 	/**
-	 *  float 	x 
-	 */ 
+	 *  float 	x		 */ 
 	float 	x;
 
 	/**
-	 *  float 	y 
-	 */ 
+	 *  float 	y		 */ 
 	float 	y;
 
 	/**
-	 *  float 	width 
-	 */ 
+	 *  float 	width		 */ 
 	float 	width;
 
 	/**
-	 *  float 	height 
-	 */ 
+	 *  float 	height		 */ 
 	float 	height;
 
 	/**
-	 *  float 	minDepth 
-	 */ 
+	 *  float 	minDepth		 */ 
 	float 	minDepth;
 
 	/**
-	 *  float 	maxDepth 
-	 */ 
+	 *  float 	maxDepth		 */ 
 	float 	maxDepth;
 
 	/**
@@ -86,12 +80,12 @@ public class VkViewport extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field x
+	 * Set method for field x	
 	 * Prototype: float  x
 	 */ 
 	 public void x(float x){
@@ -100,7 +94,7 @@ public class VkViewport extends VkStruct {
 	 }
 
 	/**
-	 * get method for field x
+	 * get method for field x	
 	 * Prototype: float  x
 	 */ 
 	 public float x(){
@@ -109,7 +103,7 @@ public class VkViewport extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field y
+	 * Set method for field y	
 	 * Prototype: float  y
 	 */ 
 	 public void y(float y){
@@ -118,7 +112,7 @@ public class VkViewport extends VkStruct {
 	 }
 
 	/**
-	 * get method for field y
+	 * get method for field y	
 	 * Prototype: float  y
 	 */ 
 	 public float y(){
@@ -127,7 +121,7 @@ public class VkViewport extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field width
+	 * Set method for field width	
 	 * Prototype: float  width
 	 */ 
 	 public void width(float width){
@@ -136,7 +130,7 @@ public class VkViewport extends VkStruct {
 	 }
 
 	/**
-	 * get method for field width
+	 * get method for field width	
 	 * Prototype: float  width
 	 */ 
 	 public float width(){
@@ -145,7 +139,7 @@ public class VkViewport extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field height
+	 * Set method for field height	
 	 * Prototype: float  height
 	 */ 
 	 public void height(float height){
@@ -154,7 +148,7 @@ public class VkViewport extends VkStruct {
 	 }
 
 	/**
-	 * get method for field height
+	 * get method for field height	
 	 * Prototype: float  height
 	 */ 
 	 public float height(){
@@ -163,7 +157,7 @@ public class VkViewport extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field minDepth
+	 * Set method for field minDepth	
 	 * Prototype: float  minDepth
 	 */ 
 	 public void minDepth(float minDepth){
@@ -172,7 +166,7 @@ public class VkViewport extends VkStruct {
 	 }
 
 	/**
-	 * get method for field minDepth
+	 * get method for field minDepth	
 	 * Prototype: float  minDepth
 	 */ 
 	 public float minDepth(){
@@ -181,7 +175,7 @@ public class VkViewport extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxDepth
+	 * Set method for field maxDepth	
 	 * Prototype: float  maxDepth
 	 */ 
 	 public void maxDepth(float maxDepth){
@@ -190,7 +184,7 @@ public class VkViewport extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxDepth
+	 * get method for field maxDepth	
 	 * Prototype: float  maxDepth
 	 */ 
 	 public float maxDepth(){
@@ -203,7 +197,7 @@ public class VkViewport extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field x
+	 * native Set method for field x	
 	 * Prototype: float  x
 	 */ 
 	 private static native void x0(ByteBuffer ptr, float _x);/*
@@ -212,7 +206,7 @@ public class VkViewport extends VkStruct {
 	  */
 
 	/**
-	 * get method for field x
+	 * get method for field x	
 	 * Prototype: float  x
 	 */ 
 	 private static native float x0(ByteBuffer ptr);/*
@@ -221,7 +215,7 @@ public class VkViewport extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field y
+	 * native Set method for field y	
 	 * Prototype: float  y
 	 */ 
 	 private static native void y0(ByteBuffer ptr, float _y);/*
@@ -230,7 +224,7 @@ public class VkViewport extends VkStruct {
 	  */
 
 	/**
-	 * get method for field y
+	 * get method for field y	
 	 * Prototype: float  y
 	 */ 
 	 private static native float y0(ByteBuffer ptr);/*
@@ -239,7 +233,7 @@ public class VkViewport extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field width
+	 * native Set method for field width	
 	 * Prototype: float  width
 	 */ 
 	 private static native void width0(ByteBuffer ptr, float _width);/*
@@ -248,7 +242,7 @@ public class VkViewport extends VkStruct {
 	  */
 
 	/**
-	 * get method for field width
+	 * get method for field width	
 	 * Prototype: float  width
 	 */ 
 	 private static native float width0(ByteBuffer ptr);/*
@@ -257,7 +251,7 @@ public class VkViewport extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field height
+	 * native Set method for field height	
 	 * Prototype: float  height
 	 */ 
 	 private static native void height0(ByteBuffer ptr, float _height);/*
@@ -266,7 +260,7 @@ public class VkViewport extends VkStruct {
 	  */
 
 	/**
-	 * get method for field height
+	 * get method for field height	
 	 * Prototype: float  height
 	 */ 
 	 private static native float height0(ByteBuffer ptr);/*
@@ -275,7 +269,7 @@ public class VkViewport extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field minDepth
+	 * native Set method for field minDepth	
 	 * Prototype: float  minDepth
 	 */ 
 	 private static native void minDepth0(ByteBuffer ptr, float _minDepth);/*
@@ -284,7 +278,7 @@ public class VkViewport extends VkStruct {
 	  */
 
 	/**
-	 * get method for field minDepth
+	 * get method for field minDepth	
 	 * Prototype: float  minDepth
 	 */ 
 	 private static native float minDepth0(ByteBuffer ptr);/*
@@ -293,7 +287,7 @@ public class VkViewport extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxDepth
+	 * native Set method for field maxDepth	
 	 * Prototype: float  maxDepth
 	 */ 
 	 private static native void maxDepth0(ByteBuffer ptr, float _maxDepth);/*
@@ -302,7 +296,7 @@ public class VkViewport extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxDepth
+	 * get method for field maxDepth	
 	 * Prototype: float  maxDepth
 	 */ 
 	 private static native float maxDepth0(ByteBuffer ptr);/*

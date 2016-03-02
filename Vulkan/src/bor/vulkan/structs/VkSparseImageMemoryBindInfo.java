@@ -39,18 +39,15 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkImage 	image 
-	 */ 
+	 *  VkImage 	image	[vkhandle]	 */ 
 	VkImage 	image;
 
 	/**
-	 *  uint32_t 	bindCount 
-	 */ 
+	 *  uint32_t 	bindCount		 */ 
 	int 	bindCount;
 
 	/**
-	 *  const VkSparseImageMemoryBind* 	pBinds 
-	 */ 
+	 *  const VkSparseImageMemoryBind* 	pBinds		 */ 
 	P<VkSparseImageMemoryBind>  	pBinds;
 
 	/**
@@ -68,12 +65,12 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field image
+	 * Set method for field image	[vkhandle]
 	 * Prototype: VkImage  image
 	 */ 
 	 public void image(VkImage image){
@@ -82,7 +79,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field image
+	 * get method for field image	[vkhandle]
 	 * Prototype: VkImage  image
 	 */ 
 	 public VkImage image(){
@@ -91,7 +88,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field bindCount
+	 * Set method for field bindCount	
 	 * Prototype: uint32_t  bindCount
 	 */ 
 	 public void bindCount(int bindCount){
@@ -100,7 +97,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field bindCount
+	 * get method for field bindCount	
 	 * Prototype: uint32_t  bindCount
 	 */ 
 	 public int bindCount(){
@@ -109,7 +106,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pBinds
+	 * Set method for field pBinds	
 	 * Prototype: const VkSparseImageMemoryBind*  pBinds
 	 */ 
 	 public void pBinds(P<VkSparseImageMemoryBind>  pBinds){
@@ -118,7 +115,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pBinds
+	 * get method for field pBinds	
 	 * Prototype: const VkSparseImageMemoryBind*  pBinds
 	 */ 
 	 public P<VkSparseImageMemoryBind>  pBinds(){
@@ -131,7 +128,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field image
+	 * native Set method for field image	[vkhandle]
 	 * Prototype: VkImage  image
 	 */ 
 	 private static native void image0(ByteBuffer ptr, VkImage _image);/*
@@ -140,7 +137,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field image
+	 * get method for field image	[vkhandle]
 	 * Prototype: VkImage  image
 	 */ 
 	 private static native VkImage image0(ByteBuffer ptr);/*
@@ -149,7 +146,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field bindCount
+	 * native Set method for field bindCount	
 	 * Prototype: uint32_t  bindCount
 	 */ 
 	 private static native void bindCount0(ByteBuffer ptr, int _bindCount);/*
@@ -158,7 +155,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field bindCount
+	 * get method for field bindCount	
 	 * Prototype: uint32_t  bindCount
 	 */ 
 	 private static native int bindCount0(ByteBuffer ptr);/*
@@ -167,7 +164,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pBinds
+	 * native Set method for field pBinds	
 	 * Prototype: const VkSparseImageMemoryBind*  pBinds
 	 */ 
 	 private static native void pBinds0(ByteBuffer ptr, P<VkSparseImageMemoryBind>  _pBinds);/*
@@ -176,7 +173,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pBinds
+	 * get method for field pBinds	
 	 * Prototype: const VkSparseImageMemoryBind*  pBinds
 	 */ 
 	 private static native P<VkSparseImageMemoryBind>  pBinds0(ByteBuffer ptr);/*

@@ -38,13 +38,11 @@ public class VkMemoryType extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkMemoryPropertyFlags 	propertyFlags 
-	 */ 
+	 *  VkMemoryPropertyFlags 	propertyFlags		 */ 
 	int 	propertyFlags;
 
 	/**
-	 *  uint32_t 	heapIndex 
-	 */ 
+	 *  uint32_t 	heapIndex		 */ 
 	int 	heapIndex;
 
 	/**
@@ -62,12 +60,12 @@ public class VkMemoryType extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field propertyFlags
+	 * Set method for field propertyFlags	
 	 * Prototype: VkMemoryPropertyFlags  propertyFlags
 	 */ 
 	 public void propertyFlags(int propertyFlags){
@@ -76,7 +74,7 @@ public class VkMemoryType extends VkStruct {
 	 }
 
 	/**
-	 * get method for field propertyFlags
+	 * get method for field propertyFlags	
 	 * Prototype: VkMemoryPropertyFlags  propertyFlags
 	 */ 
 	 public int propertyFlags(){
@@ -85,7 +83,7 @@ public class VkMemoryType extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field heapIndex
+	 * Set method for field heapIndex	
 	 * Prototype: uint32_t  heapIndex
 	 */ 
 	 public void heapIndex(int heapIndex){
@@ -94,7 +92,7 @@ public class VkMemoryType extends VkStruct {
 	 }
 
 	/**
-	 * get method for field heapIndex
+	 * get method for field heapIndex	
 	 * Prototype: uint32_t  heapIndex
 	 */ 
 	 public int heapIndex(){
@@ -107,7 +105,7 @@ public class VkMemoryType extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field propertyFlags
+	 * native Set method for field propertyFlags	
 	 * Prototype: VkMemoryPropertyFlags  propertyFlags
 	 */ 
 	 private static native void propertyFlags0(ByteBuffer ptr, int _propertyFlags);/*
@@ -116,7 +114,7 @@ public class VkMemoryType extends VkStruct {
 	  */
 
 	/**
-	 * get method for field propertyFlags
+	 * get method for field propertyFlags	
 	 * Prototype: VkMemoryPropertyFlags  propertyFlags
 	 */ 
 	 private static native int propertyFlags0(ByteBuffer ptr);/*
@@ -125,7 +123,7 @@ public class VkMemoryType extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field heapIndex
+	 * native Set method for field heapIndex	
 	 * Prototype: uint32_t  heapIndex
 	 */ 
 	 private static native void heapIndex0(ByteBuffer ptr, int _heapIndex);/*
@@ -134,7 +132,7 @@ public class VkMemoryType extends VkStruct {
 	  */
 
 	/**
-	 * get method for field heapIndex
+	 * get method for field heapIndex	
 	 * Prototype: uint32_t  heapIndex
 	 */ 
 	 private static native int heapIndex0(ByteBuffer ptr);/*

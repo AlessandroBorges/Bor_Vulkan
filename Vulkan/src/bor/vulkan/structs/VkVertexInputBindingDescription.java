@@ -39,18 +39,15 @@ public class VkVertexInputBindingDescription extends VkStruct {
 
 	 // fields //
 	/**
-	 *  uint32_t 	binding 
-	 */ 
+	 *  uint32_t 	binding		 */ 
 	int 	binding;
 
 	/**
-	 *  uint32_t 	stride 
-	 */ 
+	 *  uint32_t 	stride		 */ 
 	int 	stride;
 
 	/**
-	 *  VkVertexInputRate 	inputRate 
-	 */ 
+	 *  VkVertexInputRate 	inputRate	[vkenum]	 */ 
 	VkVertexInputRate 	inputRate;
 
 	/**
@@ -68,12 +65,12 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field binding
+	 * Set method for field binding	
 	 * Prototype: uint32_t  binding
 	 */ 
 	 public void binding(int binding){
@@ -82,7 +79,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	 }
 
 	/**
-	 * get method for field binding
+	 * get method for field binding	
 	 * Prototype: uint32_t  binding
 	 */ 
 	 public int binding(){
@@ -91,7 +88,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field stride
+	 * Set method for field stride	
 	 * Prototype: uint32_t  stride
 	 */ 
 	 public void stride(int stride){
@@ -100,7 +97,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	 }
 
 	/**
-	 * get method for field stride
+	 * get method for field stride	
 	 * Prototype: uint32_t  stride
 	 */ 
 	 public int stride(){
@@ -109,7 +106,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field inputRate
+	 * Set method for field inputRate	[vkenum]
 	 * Prototype: VkVertexInputRate  inputRate
 	 */ 
 	 public void inputRate(VkVertexInputRate inputRate){
@@ -118,7 +115,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	 }
 
 	/**
-	 * get method for field inputRate
+	 * get method for field inputRate	[vkenum]
 	 * Prototype: VkVertexInputRate  inputRate
 	 */ 
 	 public VkVertexInputRate inputRate(){
@@ -131,7 +128,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field binding
+	 * native Set method for field binding	
 	 * Prototype: uint32_t  binding
 	 */ 
 	 private static native void binding0(ByteBuffer ptr, int _binding);/*
@@ -140,7 +137,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	  */
 
 	/**
-	 * get method for field binding
+	 * get method for field binding	
 	 * Prototype: uint32_t  binding
 	 */ 
 	 private static native int binding0(ByteBuffer ptr);/*
@@ -149,7 +146,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field stride
+	 * native Set method for field stride	
 	 * Prototype: uint32_t  stride
 	 */ 
 	 private static native void stride0(ByteBuffer ptr, int _stride);/*
@@ -158,7 +155,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	  */
 
 	/**
-	 * get method for field stride
+	 * get method for field stride	
 	 * Prototype: uint32_t  stride
 	 */ 
 	 private static native int stride0(ByteBuffer ptr);/*
@@ -167,7 +164,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field inputRate
+	 * native Set method for field inputRate	[vkenum]
 	 * Prototype: VkVertexInputRate  inputRate
 	 */ 
 	 private static native void inputRate0(ByteBuffer ptr, VkVertexInputRate _inputRate);/*
@@ -176,7 +173,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	  */
 
 	/**
-	 * get method for field inputRate
+	 * get method for field inputRate	[vkenum]
 	 * Prototype: VkVertexInputRate  inputRate
 	 */ 
 	 private static native VkVertexInputRate inputRate0(ByteBuffer ptr);/*

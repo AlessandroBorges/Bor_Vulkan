@@ -41,28 +41,23 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkPipelineInputAssemblyStateCreateFlags 	flags 
-	 */ 
+	 *  VkPipelineInputAssemblyStateCreateFlags 	flags		 */ 
 	int 	flags;
 
 	/**
-	 *  VkPrimitiveTopology 	topology 
-	 */ 
+	 *  VkPrimitiveTopology 	topology	[vkenum]	 */ 
 	VkPrimitiveTopology 	topology;
 
 	/**
-	 *  VkBool32 	primitiveRestartEnable 
-	 */ 
+	 *  VkBool32 	primitiveRestartEnable		 */ 
 	boolean 	primitiveRestartEnable;
 
 	/**
@@ -80,12 +75,12 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -94,7 +89,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -103,7 +98,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -112,7 +107,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -121,7 +116,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkPipelineInputAssemblyStateCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -130,7 +125,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkPipelineInputAssemblyStateCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -139,7 +134,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field topology
+	 * Set method for field topology	[vkenum]
 	 * Prototype: VkPrimitiveTopology  topology
 	 */ 
 	 public void topology(VkPrimitiveTopology topology){
@@ -148,7 +143,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field topology
+	 * get method for field topology	[vkenum]
 	 * Prototype: VkPrimitiveTopology  topology
 	 */ 
 	 public VkPrimitiveTopology topology(){
@@ -157,7 +152,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field primitiveRestartEnable
+	 * Set method for field primitiveRestartEnable	
 	 * Prototype: VkBool32  primitiveRestartEnable
 	 */ 
 	 public void primitiveRestartEnable(boolean primitiveRestartEnable){
@@ -166,7 +161,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field primitiveRestartEnable
+	 * get method for field primitiveRestartEnable	
 	 * Prototype: VkBool32  primitiveRestartEnable
 	 */ 
 	 public boolean primitiveRestartEnable(){
@@ -179,7 +174,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -188,7 +183,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -197,7 +192,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -206,7 +201,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -215,7 +210,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkPipelineInputAssemblyStateCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -224,7 +219,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkPipelineInputAssemblyStateCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -233,7 +228,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field topology
+	 * native Set method for field topology	[vkenum]
 	 * Prototype: VkPrimitiveTopology  topology
 	 */ 
 	 private static native void topology0(ByteBuffer ptr, VkPrimitiveTopology _topology);/*
@@ -242,7 +237,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field topology
+	 * get method for field topology	[vkenum]
 	 * Prototype: VkPrimitiveTopology  topology
 	 */ 
 	 private static native VkPrimitiveTopology topology0(ByteBuffer ptr);/*
@@ -251,7 +246,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field primitiveRestartEnable
+	 * native Set method for field primitiveRestartEnable	
 	 * Prototype: VkBool32  primitiveRestartEnable
 	 */ 
 	 private static native void primitiveRestartEnable0(ByteBuffer ptr, boolean _primitiveRestartEnable);/*
@@ -260,7 +255,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field primitiveRestartEnable
+	 * get method for field primitiveRestartEnable	
 	 * Prototype: VkBool32  primitiveRestartEnable
 	 */ 
 	 private static native boolean primitiveRestartEnable0(ByteBuffer ptr);/*
