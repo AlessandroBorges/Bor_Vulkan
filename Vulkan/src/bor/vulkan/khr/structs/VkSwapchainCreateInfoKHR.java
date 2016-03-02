@@ -55,93 +55,75 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkSwapchainCreateFlagsKHR 	flags 
-	 */ 
+	 *  VkSwapchainCreateFlagsKHR 	flags		 */ 
 	int 	flags;
 
 	/**
-	 *  VkSurfaceKHR 	surface 
-	 */ 
+	 *  VkSurfaceKHR 	surface	[vkhandle]	 */ 
 	VkSurfaceKHR 	surface;
 
 	/**
-	 *  uint32_t 	minImageCount 
-	 */ 
+	 *  uint32_t 	minImageCount		 */ 
 	int 	minImageCount;
 
 	/**
-	 *  VkFormat 	imageFormat 
-	 */ 
+	 *  VkFormat 	imageFormat	[vkenum]	 */ 
 	VkFormat 	imageFormat;
 
 	/**
-	 *  VkColorSpaceKHR 	imageColorSpace 
-	 */ 
+	 *  VkColorSpaceKHR 	imageColorSpace	[vkenum]	 */ 
 	VkColorSpaceKHR 	imageColorSpace;
 
 	/**
-	 *  VkExtent2D 	imageExtent 
-	 */ 
+	 *  VkExtent2D 	imageExtent	[vkstruct]	 */ 
 	VkExtent2D 	imageExtent;
 
 	/**
-	 *  uint32_t 	imageArrayLayers 
-	 */ 
+	 *  uint32_t 	imageArrayLayers		 */ 
 	int 	imageArrayLayers;
 
 	/**
-	 *  VkImageUsageFlags 	imageUsage 
-	 */ 
+	 *  VkImageUsageFlags 	imageUsage		 */ 
 	int 	imageUsage;
 
 	/**
-	 *  VkSharingMode 	imageSharingMode 
-	 */ 
+	 *  VkSharingMode 	imageSharingMode	[vkenum]	 */ 
 	VkSharingMode 	imageSharingMode;
 
 	/**
-	 *  uint32_t 	queueFamilyIndexCount 
-	 */ 
+	 *  uint32_t 	queueFamilyIndexCount		 */ 
 	int 	queueFamilyIndexCount;
 
 	/**
-	 *  const uint32_t* 	pQueueFamilyIndices 
-	 */ 
+	 *  const uint32_t* 	pQueueFamilyIndices		 */ 
 	int[] 	pQueueFamilyIndices;
 
 	/**
-	 *  VkSurfaceTransformFlagBitsKHR 	preTransform 
-	 */ 
+	 *  VkSurfaceTransformFlagBitsKHR 	preTransform	[vkenum]	 */ 
 	VkSurfaceTransformFlagBitsKHR 	preTransform;
 
 	/**
-	 *  VkCompositeAlphaFlagBitsKHR 	compositeAlpha 
-	 */ 
+	 *  VkCompositeAlphaFlagBitsKHR 	compositeAlpha	[vkenum]	 */ 
 	VkCompositeAlphaFlagBitsKHR 	compositeAlpha;
 
 	/**
-	 *  VkPresentModeKHR 	presentMode 
-	 */ 
+	 *  VkPresentModeKHR 	presentMode	[vkenum]	 */ 
 	VkPresentModeKHR 	presentMode;
 
 	/**
-	 *  VkBool32 	clipped 
-	 */ 
+	 *  VkBool32 	clipped		 */ 
 	boolean 	clipped;
 
 	/**
-	 *  VkSwapchainKHR 	oldSwapchain 
-	 */ 
+	 *  VkSwapchainKHR 	oldSwapchain	[vkhandle]	 */ 
 	VkSwapchainKHR 	oldSwapchain;
 
 	/**
@@ -159,12 +141,12 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -173,7 +155,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -182,7 +164,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -191,7 +173,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -200,7 +182,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkSwapchainCreateFlagsKHR  flags
 	 */ 
 	 public void flags(int flags){
@@ -209,7 +191,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkSwapchainCreateFlagsKHR  flags
 	 */ 
 	 public int flags(){
@@ -218,7 +200,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field surface
+	 * Set method for field surface	[vkhandle]
 	 * Prototype: VkSurfaceKHR  surface
 	 */ 
 	 public void surface(VkSurfaceKHR surface){
@@ -227,7 +209,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field surface
+	 * get method for field surface	[vkhandle]
 	 * Prototype: VkSurfaceKHR  surface
 	 */ 
 	 public VkSurfaceKHR surface(){
@@ -236,7 +218,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field minImageCount
+	 * Set method for field minImageCount	
 	 * Prototype: uint32_t  minImageCount
 	 */ 
 	 public void minImageCount(int minImageCount){
@@ -245,7 +227,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field minImageCount
+	 * get method for field minImageCount	
 	 * Prototype: uint32_t  minImageCount
 	 */ 
 	 public int minImageCount(){
@@ -254,7 +236,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field imageFormat
+	 * Set method for field imageFormat	[vkenum]
 	 * Prototype: VkFormat  imageFormat
 	 */ 
 	 public void imageFormat(VkFormat imageFormat){
@@ -263,7 +245,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field imageFormat
+	 * get method for field imageFormat	[vkenum]
 	 * Prototype: VkFormat  imageFormat
 	 */ 
 	 public VkFormat imageFormat(){
@@ -272,7 +254,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field imageColorSpace
+	 * Set method for field imageColorSpace	[vkenum]
 	 * Prototype: VkColorSpaceKHR  imageColorSpace
 	 */ 
 	 public void imageColorSpace(VkColorSpaceKHR imageColorSpace){
@@ -281,7 +263,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field imageColorSpace
+	 * get method for field imageColorSpace	[vkenum]
 	 * Prototype: VkColorSpaceKHR  imageColorSpace
 	 */ 
 	 public VkColorSpaceKHR imageColorSpace(){
@@ -290,7 +272,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field imageExtent
+	 * Set method for field imageExtent	[vkstruct]
 	 * Prototype: VkExtent2D  imageExtent
 	 */ 
 	 public void imageExtent(VkExtent2D imageExtent){
@@ -299,7 +281,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field imageExtent
+	 * get method for field imageExtent	[vkstruct]
 	 * Prototype: VkExtent2D  imageExtent
 	 */ 
 	 public VkExtent2D imageExtent(){
@@ -308,7 +290,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field imageArrayLayers
+	 * Set method for field imageArrayLayers	
 	 * Prototype: uint32_t  imageArrayLayers
 	 */ 
 	 public void imageArrayLayers(int imageArrayLayers){
@@ -317,7 +299,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field imageArrayLayers
+	 * get method for field imageArrayLayers	
 	 * Prototype: uint32_t  imageArrayLayers
 	 */ 
 	 public int imageArrayLayers(){
@@ -326,7 +308,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field imageUsage
+	 * Set method for field imageUsage	
 	 * Prototype: VkImageUsageFlags  imageUsage
 	 */ 
 	 public void imageUsage(int imageUsage){
@@ -335,7 +317,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field imageUsage
+	 * get method for field imageUsage	
 	 * Prototype: VkImageUsageFlags  imageUsage
 	 */ 
 	 public int imageUsage(){
@@ -344,7 +326,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field imageSharingMode
+	 * Set method for field imageSharingMode	[vkenum]
 	 * Prototype: VkSharingMode  imageSharingMode
 	 */ 
 	 public void imageSharingMode(VkSharingMode imageSharingMode){
@@ -353,7 +335,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field imageSharingMode
+	 * get method for field imageSharingMode	[vkenum]
 	 * Prototype: VkSharingMode  imageSharingMode
 	 */ 
 	 public VkSharingMode imageSharingMode(){
@@ -362,7 +344,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field queueFamilyIndexCount
+	 * Set method for field queueFamilyIndexCount	
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
 	 public void queueFamilyIndexCount(int queueFamilyIndexCount){
@@ -371,7 +353,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field queueFamilyIndexCount
+	 * get method for field queueFamilyIndexCount	
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
 	 public int queueFamilyIndexCount(){
@@ -380,7 +362,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pQueueFamilyIndices
+	 * Set method for field pQueueFamilyIndices	
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 public void pQueueFamilyIndices(int[] pQueueFamilyIndices){
@@ -389,7 +371,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pQueueFamilyIndices
+	 * get method for field pQueueFamilyIndices	
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 public int[] pQueueFamilyIndices(){
@@ -398,7 +380,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field preTransform
+	 * Set method for field preTransform	[vkenum]
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  preTransform
 	 */ 
 	 public void preTransform(VkSurfaceTransformFlagBitsKHR preTransform){
@@ -407,7 +389,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field preTransform
+	 * get method for field preTransform	[vkenum]
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  preTransform
 	 */ 
 	 public VkSurfaceTransformFlagBitsKHR preTransform(){
@@ -416,7 +398,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field compositeAlpha
+	 * Set method for field compositeAlpha	[vkenum]
 	 * Prototype: VkCompositeAlphaFlagBitsKHR  compositeAlpha
 	 */ 
 	 public void compositeAlpha(VkCompositeAlphaFlagBitsKHR compositeAlpha){
@@ -425,7 +407,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field compositeAlpha
+	 * get method for field compositeAlpha	[vkenum]
 	 * Prototype: VkCompositeAlphaFlagBitsKHR  compositeAlpha
 	 */ 
 	 public VkCompositeAlphaFlagBitsKHR compositeAlpha(){
@@ -434,7 +416,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field presentMode
+	 * Set method for field presentMode	[vkenum]
 	 * Prototype: VkPresentModeKHR  presentMode
 	 */ 
 	 public void presentMode(VkPresentModeKHR presentMode){
@@ -443,7 +425,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field presentMode
+	 * get method for field presentMode	[vkenum]
 	 * Prototype: VkPresentModeKHR  presentMode
 	 */ 
 	 public VkPresentModeKHR presentMode(){
@@ -452,7 +434,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field clipped
+	 * Set method for field clipped	
 	 * Prototype: VkBool32  clipped
 	 */ 
 	 public void clipped(boolean clipped){
@@ -461,7 +443,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field clipped
+	 * get method for field clipped	
 	 * Prototype: VkBool32  clipped
 	 */ 
 	 public boolean clipped(){
@@ -470,7 +452,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field oldSwapchain
+	 * Set method for field oldSwapchain	[vkhandle]
 	 * Prototype: VkSwapchainKHR  oldSwapchain
 	 */ 
 	 public void oldSwapchain(VkSwapchainKHR oldSwapchain){
@@ -479,7 +461,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field oldSwapchain
+	 * get method for field oldSwapchain	[vkhandle]
 	 * Prototype: VkSwapchainKHR  oldSwapchain
 	 */ 
 	 public VkSwapchainKHR oldSwapchain(){
@@ -492,7 +474,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -501,7 +483,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -510,7 +492,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -519,7 +501,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -528,7 +510,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkSwapchainCreateFlagsKHR  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -537,7 +519,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkSwapchainCreateFlagsKHR  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -546,7 +528,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field surface
+	 * native Set method for field surface	[vkhandle]
 	 * Prototype: VkSurfaceKHR  surface
 	 */ 
 	 private static native void surface0(ByteBuffer ptr, VkSurfaceKHR _surface);/*
@@ -555,7 +537,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field surface
+	 * get method for field surface	[vkhandle]
 	 * Prototype: VkSurfaceKHR  surface
 	 */ 
 	 private static native VkSurfaceKHR surface0(ByteBuffer ptr);/*
@@ -564,7 +546,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field minImageCount
+	 * native Set method for field minImageCount	
 	 * Prototype: uint32_t  minImageCount
 	 */ 
 	 private static native void minImageCount0(ByteBuffer ptr, int _minImageCount);/*
@@ -573,7 +555,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field minImageCount
+	 * get method for field minImageCount	
 	 * Prototype: uint32_t  minImageCount
 	 */ 
 	 private static native int minImageCount0(ByteBuffer ptr);/*
@@ -582,7 +564,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field imageFormat
+	 * native Set method for field imageFormat	[vkenum]
 	 * Prototype: VkFormat  imageFormat
 	 */ 
 	 private static native void imageFormat0(ByteBuffer ptr, VkFormat _imageFormat);/*
@@ -591,7 +573,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field imageFormat
+	 * get method for field imageFormat	[vkenum]
 	 * Prototype: VkFormat  imageFormat
 	 */ 
 	 private static native VkFormat imageFormat0(ByteBuffer ptr);/*
@@ -600,7 +582,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field imageColorSpace
+	 * native Set method for field imageColorSpace	[vkenum]
 	 * Prototype: VkColorSpaceKHR  imageColorSpace
 	 */ 
 	 private static native void imageColorSpace0(ByteBuffer ptr, VkColorSpaceKHR _imageColorSpace);/*
@@ -609,7 +591,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field imageColorSpace
+	 * get method for field imageColorSpace	[vkenum]
 	 * Prototype: VkColorSpaceKHR  imageColorSpace
 	 */ 
 	 private static native VkColorSpaceKHR imageColorSpace0(ByteBuffer ptr);/*
@@ -618,7 +600,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field imageExtent
+	 * native Set method for field imageExtent	[vkstruct]
 	 * Prototype: VkExtent2D  imageExtent
 	 */ 
 	 private static native void imageExtent0(ByteBuffer ptr, VkExtent2D _imageExtent);/*
@@ -627,7 +609,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field imageExtent
+	 * get method for field imageExtent	[vkstruct]
 	 * Prototype: VkExtent2D  imageExtent
 	 */ 
 	 private static native VkExtent2D imageExtent0(ByteBuffer ptr);/*
@@ -636,7 +618,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field imageArrayLayers
+	 * native Set method for field imageArrayLayers	
 	 * Prototype: uint32_t  imageArrayLayers
 	 */ 
 	 private static native void imageArrayLayers0(ByteBuffer ptr, int _imageArrayLayers);/*
@@ -645,7 +627,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field imageArrayLayers
+	 * get method for field imageArrayLayers	
 	 * Prototype: uint32_t  imageArrayLayers
 	 */ 
 	 private static native int imageArrayLayers0(ByteBuffer ptr);/*
@@ -654,7 +636,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field imageUsage
+	 * native Set method for field imageUsage	
 	 * Prototype: VkImageUsageFlags  imageUsage
 	 */ 
 	 private static native void imageUsage0(ByteBuffer ptr, int _imageUsage);/*
@@ -663,7 +645,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field imageUsage
+	 * get method for field imageUsage	
 	 * Prototype: VkImageUsageFlags  imageUsage
 	 */ 
 	 private static native int imageUsage0(ByteBuffer ptr);/*
@@ -672,7 +654,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field imageSharingMode
+	 * native Set method for field imageSharingMode	[vkenum]
 	 * Prototype: VkSharingMode  imageSharingMode
 	 */ 
 	 private static native void imageSharingMode0(ByteBuffer ptr, VkSharingMode _imageSharingMode);/*
@@ -681,7 +663,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field imageSharingMode
+	 * get method for field imageSharingMode	[vkenum]
 	 * Prototype: VkSharingMode  imageSharingMode
 	 */ 
 	 private static native VkSharingMode imageSharingMode0(ByteBuffer ptr);/*
@@ -690,7 +672,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field queueFamilyIndexCount
+	 * native Set method for field queueFamilyIndexCount	
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
 	 private static native void queueFamilyIndexCount0(ByteBuffer ptr, int _queueFamilyIndexCount);/*
@@ -699,7 +681,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field queueFamilyIndexCount
+	 * get method for field queueFamilyIndexCount	
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
 	 private static native int queueFamilyIndexCount0(ByteBuffer ptr);/*
@@ -708,7 +690,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pQueueFamilyIndices
+	 * native Set method for field pQueueFamilyIndices	
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 private static native void pQueueFamilyIndices0(ByteBuffer ptr, int[] _pQueueFamilyIndices);/*
@@ -717,7 +699,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pQueueFamilyIndices
+	 * get method for field pQueueFamilyIndices	
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 private static native int[] pQueueFamilyIndices0(ByteBuffer ptr);/*
@@ -726,7 +708,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field preTransform
+	 * native Set method for field preTransform	[vkenum]
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  preTransform
 	 */ 
 	 private static native void preTransform0(ByteBuffer ptr, VkSurfaceTransformFlagBitsKHR _preTransform);/*
@@ -735,7 +717,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field preTransform
+	 * get method for field preTransform	[vkenum]
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  preTransform
 	 */ 
 	 private static native VkSurfaceTransformFlagBitsKHR preTransform0(ByteBuffer ptr);/*
@@ -744,7 +726,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field compositeAlpha
+	 * native Set method for field compositeAlpha	[vkenum]
 	 * Prototype: VkCompositeAlphaFlagBitsKHR  compositeAlpha
 	 */ 
 	 private static native void compositeAlpha0(ByteBuffer ptr, VkCompositeAlphaFlagBitsKHR _compositeAlpha);/*
@@ -753,7 +735,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field compositeAlpha
+	 * get method for field compositeAlpha	[vkenum]
 	 * Prototype: VkCompositeAlphaFlagBitsKHR  compositeAlpha
 	 */ 
 	 private static native VkCompositeAlphaFlagBitsKHR compositeAlpha0(ByteBuffer ptr);/*
@@ -762,7 +744,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field presentMode
+	 * native Set method for field presentMode	[vkenum]
 	 * Prototype: VkPresentModeKHR  presentMode
 	 */ 
 	 private static native void presentMode0(ByteBuffer ptr, VkPresentModeKHR _presentMode);/*
@@ -771,7 +753,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field presentMode
+	 * get method for field presentMode	[vkenum]
 	 * Prototype: VkPresentModeKHR  presentMode
 	 */ 
 	 private static native VkPresentModeKHR presentMode0(ByteBuffer ptr);/*
@@ -780,7 +762,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field clipped
+	 * native Set method for field clipped	
 	 * Prototype: VkBool32  clipped
 	 */ 
 	 private static native void clipped0(ByteBuffer ptr, boolean _clipped);/*
@@ -789,7 +771,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field clipped
+	 * get method for field clipped	
 	 * Prototype: VkBool32  clipped
 	 */ 
 	 private static native boolean clipped0(ByteBuffer ptr);/*
@@ -798,7 +780,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field oldSwapchain
+	 * native Set method for field oldSwapchain	[vkhandle]
 	 * Prototype: VkSwapchainKHR  oldSwapchain
 	 */ 
 	 private static native void oldSwapchain0(ByteBuffer ptr, VkSwapchainKHR _oldSwapchain);/*
@@ -807,7 +789,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field oldSwapchain
+	 * get method for field oldSwapchain	[vkhandle]
 	 * Prototype: VkSwapchainKHR  oldSwapchain
 	 */ 
 	 private static native VkSwapchainKHR oldSwapchain0(ByteBuffer ptr);/*

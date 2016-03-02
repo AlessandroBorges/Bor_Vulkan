@@ -39,13 +39,11 @@ public class VkSurfaceFormatKHR extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkFormat 	format 
-	 */ 
+	 *  VkFormat 	format	[vkenum]	 */ 
 	VkFormat 	format;
 
 	/**
-	 *  VkColorSpaceKHR 	colorSpace 
-	 */ 
+	 *  VkColorSpaceKHR 	colorSpace	[vkenum]	 */ 
 	VkColorSpaceKHR 	colorSpace;
 
 	/**
@@ -63,12 +61,12 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field format
+	 * Set method for field format	[vkenum]
 	 * Prototype: VkFormat  format
 	 */ 
 	 public void format(VkFormat format){
@@ -77,7 +75,7 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field format
+	 * get method for field format	[vkenum]
 	 * Prototype: VkFormat  format
 	 */ 
 	 public VkFormat format(){
@@ -86,7 +84,7 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field colorSpace
+	 * Set method for field colorSpace	[vkenum]
 	 * Prototype: VkColorSpaceKHR  colorSpace
 	 */ 
 	 public void colorSpace(VkColorSpaceKHR colorSpace){
@@ -95,7 +93,7 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field colorSpace
+	 * get method for field colorSpace	[vkenum]
 	 * Prototype: VkColorSpaceKHR  colorSpace
 	 */ 
 	 public VkColorSpaceKHR colorSpace(){
@@ -108,7 +106,7 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field format
+	 * native Set method for field format	[vkenum]
 	 * Prototype: VkFormat  format
 	 */ 
 	 private static native void format0(ByteBuffer ptr, VkFormat _format);/*
@@ -117,7 +115,7 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field format
+	 * get method for field format	[vkenum]
 	 * Prototype: VkFormat  format
 	 */ 
 	 private static native VkFormat format0(ByteBuffer ptr);/*
@@ -126,7 +124,7 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field colorSpace
+	 * native Set method for field colorSpace	[vkenum]
 	 * Prototype: VkColorSpaceKHR  colorSpace
 	 */ 
 	 private static native void colorSpace0(ByteBuffer ptr, VkColorSpaceKHR _colorSpace);/*
@@ -135,7 +133,7 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field colorSpace
+	 * get method for field colorSpace	[vkenum]
 	 * Prototype: VkColorSpaceKHR  colorSpace
 	 */ 
 	 private static native VkColorSpaceKHR colorSpace0(ByteBuffer ptr);/*

@@ -47,53 +47,43 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 
 	 // fields //
 	/**
-	 *  uint32_t 	minImageCount 
-	 */ 
+	 *  uint32_t 	minImageCount		 */ 
 	int 	minImageCount;
 
 	/**
-	 *  uint32_t 	maxImageCount 
-	 */ 
+	 *  uint32_t 	maxImageCount		 */ 
 	int 	maxImageCount;
 
 	/**
-	 *  VkExtent2D 	currentExtent 
-	 */ 
+	 *  VkExtent2D 	currentExtent	[vkstruct]	 */ 
 	VkExtent2D 	currentExtent;
 
 	/**
-	 *  VkExtent2D 	minImageExtent 
-	 */ 
+	 *  VkExtent2D 	minImageExtent	[vkstruct]	 */ 
 	VkExtent2D 	minImageExtent;
 
 	/**
-	 *  VkExtent2D 	maxImageExtent 
-	 */ 
+	 *  VkExtent2D 	maxImageExtent	[vkstruct]	 */ 
 	VkExtent2D 	maxImageExtent;
 
 	/**
-	 *  uint32_t 	maxImageArrayLayers 
-	 */ 
+	 *  uint32_t 	maxImageArrayLayers		 */ 
 	int 	maxImageArrayLayers;
 
 	/**
-	 *  VkSurfaceTransformFlagsKHR 	supportedTransforms 
-	 */ 
+	 *  VkSurfaceTransformFlagsKHR 	supportedTransforms		 */ 
 	int 	supportedTransforms;
 
 	/**
-	 *  VkSurfaceTransformFlagBitsKHR 	currentTransform 
-	 */ 
+	 *  VkSurfaceTransformFlagBitsKHR 	currentTransform	[vkenum]	 */ 
 	VkSurfaceTransformFlagBitsKHR 	currentTransform;
 
 	/**
-	 *  VkCompositeAlphaFlagsKHR 	supportedCompositeAlpha 
-	 */ 
+	 *  VkCompositeAlphaFlagsKHR 	supportedCompositeAlpha		 */ 
 	int 	supportedCompositeAlpha;
 
 	/**
-	 *  VkImageUsageFlags 	supportedUsageFlags 
-	 */ 
+	 *  VkImageUsageFlags 	supportedUsageFlags		 */ 
 	int 	supportedUsageFlags;
 
 	/**
@@ -111,12 +101,12 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field minImageCount
+	 * Set method for field minImageCount	
 	 * Prototype: uint32_t  minImageCount
 	 */ 
 	 public void minImageCount(int minImageCount){
@@ -125,7 +115,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field minImageCount
+	 * get method for field minImageCount	
 	 * Prototype: uint32_t  minImageCount
 	 */ 
 	 public int minImageCount(){
@@ -134,7 +124,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxImageCount
+	 * Set method for field maxImageCount	
 	 * Prototype: uint32_t  maxImageCount
 	 */ 
 	 public void maxImageCount(int maxImageCount){
@@ -143,7 +133,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxImageCount
+	 * get method for field maxImageCount	
 	 * Prototype: uint32_t  maxImageCount
 	 */ 
 	 public int maxImageCount(){
@@ -152,7 +142,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field currentExtent
+	 * Set method for field currentExtent	[vkstruct]
 	 * Prototype: VkExtent2D  currentExtent
 	 */ 
 	 public void currentExtent(VkExtent2D currentExtent){
@@ -161,7 +151,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field currentExtent
+	 * get method for field currentExtent	[vkstruct]
 	 * Prototype: VkExtent2D  currentExtent
 	 */ 
 	 public VkExtent2D currentExtent(){
@@ -170,7 +160,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field minImageExtent
+	 * Set method for field minImageExtent	[vkstruct]
 	 * Prototype: VkExtent2D  minImageExtent
 	 */ 
 	 public void minImageExtent(VkExtent2D minImageExtent){
@@ -179,7 +169,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field minImageExtent
+	 * get method for field minImageExtent	[vkstruct]
 	 * Prototype: VkExtent2D  minImageExtent
 	 */ 
 	 public VkExtent2D minImageExtent(){
@@ -188,7 +178,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxImageExtent
+	 * Set method for field maxImageExtent	[vkstruct]
 	 * Prototype: VkExtent2D  maxImageExtent
 	 */ 
 	 public void maxImageExtent(VkExtent2D maxImageExtent){
@@ -197,7 +187,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxImageExtent
+	 * get method for field maxImageExtent	[vkstruct]
 	 * Prototype: VkExtent2D  maxImageExtent
 	 */ 
 	 public VkExtent2D maxImageExtent(){
@@ -206,7 +196,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxImageArrayLayers
+	 * Set method for field maxImageArrayLayers	
 	 * Prototype: uint32_t  maxImageArrayLayers
 	 */ 
 	 public void maxImageArrayLayers(int maxImageArrayLayers){
@@ -215,7 +205,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxImageArrayLayers
+	 * get method for field maxImageArrayLayers	
 	 * Prototype: uint32_t  maxImageArrayLayers
 	 */ 
 	 public int maxImageArrayLayers(){
@@ -224,7 +214,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field supportedTransforms
+	 * Set method for field supportedTransforms	
 	 * Prototype: VkSurfaceTransformFlagsKHR  supportedTransforms
 	 */ 
 	 public void supportedTransforms(int supportedTransforms){
@@ -233,7 +223,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field supportedTransforms
+	 * get method for field supportedTransforms	
 	 * Prototype: VkSurfaceTransformFlagsKHR  supportedTransforms
 	 */ 
 	 public int supportedTransforms(){
@@ -242,7 +232,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field currentTransform
+	 * Set method for field currentTransform	[vkenum]
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  currentTransform
 	 */ 
 	 public void currentTransform(VkSurfaceTransformFlagBitsKHR currentTransform){
@@ -251,7 +241,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field currentTransform
+	 * get method for field currentTransform	[vkenum]
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  currentTransform
 	 */ 
 	 public VkSurfaceTransformFlagBitsKHR currentTransform(){
@@ -260,7 +250,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field supportedCompositeAlpha
+	 * Set method for field supportedCompositeAlpha	
 	 * Prototype: VkCompositeAlphaFlagsKHR  supportedCompositeAlpha
 	 */ 
 	 public void supportedCompositeAlpha(int supportedCompositeAlpha){
@@ -269,7 +259,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field supportedCompositeAlpha
+	 * get method for field supportedCompositeAlpha	
 	 * Prototype: VkCompositeAlphaFlagsKHR  supportedCompositeAlpha
 	 */ 
 	 public int supportedCompositeAlpha(){
@@ -278,7 +268,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field supportedUsageFlags
+	 * Set method for field supportedUsageFlags	
 	 * Prototype: VkImageUsageFlags  supportedUsageFlags
 	 */ 
 	 public void supportedUsageFlags(int supportedUsageFlags){
@@ -287,7 +277,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field supportedUsageFlags
+	 * get method for field supportedUsageFlags	
 	 * Prototype: VkImageUsageFlags  supportedUsageFlags
 	 */ 
 	 public int supportedUsageFlags(){
@@ -300,7 +290,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field minImageCount
+	 * native Set method for field minImageCount	
 	 * Prototype: uint32_t  minImageCount
 	 */ 
 	 private static native void minImageCount0(ByteBuffer ptr, int _minImageCount);/*
@@ -309,7 +299,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field minImageCount
+	 * get method for field minImageCount	
 	 * Prototype: uint32_t  minImageCount
 	 */ 
 	 private static native int minImageCount0(ByteBuffer ptr);/*
@@ -318,7 +308,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxImageCount
+	 * native Set method for field maxImageCount	
 	 * Prototype: uint32_t  maxImageCount
 	 */ 
 	 private static native void maxImageCount0(ByteBuffer ptr, int _maxImageCount);/*
@@ -327,7 +317,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxImageCount
+	 * get method for field maxImageCount	
 	 * Prototype: uint32_t  maxImageCount
 	 */ 
 	 private static native int maxImageCount0(ByteBuffer ptr);/*
@@ -336,7 +326,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field currentExtent
+	 * native Set method for field currentExtent	[vkstruct]
 	 * Prototype: VkExtent2D  currentExtent
 	 */ 
 	 private static native void currentExtent0(ByteBuffer ptr, VkExtent2D _currentExtent);/*
@@ -345,7 +335,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field currentExtent
+	 * get method for field currentExtent	[vkstruct]
 	 * Prototype: VkExtent2D  currentExtent
 	 */ 
 	 private static native VkExtent2D currentExtent0(ByteBuffer ptr);/*
@@ -354,7 +344,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field minImageExtent
+	 * native Set method for field minImageExtent	[vkstruct]
 	 * Prototype: VkExtent2D  minImageExtent
 	 */ 
 	 private static native void minImageExtent0(ByteBuffer ptr, VkExtent2D _minImageExtent);/*
@@ -363,7 +353,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field minImageExtent
+	 * get method for field minImageExtent	[vkstruct]
 	 * Prototype: VkExtent2D  minImageExtent
 	 */ 
 	 private static native VkExtent2D minImageExtent0(ByteBuffer ptr);/*
@@ -372,7 +362,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxImageExtent
+	 * native Set method for field maxImageExtent	[vkstruct]
 	 * Prototype: VkExtent2D  maxImageExtent
 	 */ 
 	 private static native void maxImageExtent0(ByteBuffer ptr, VkExtent2D _maxImageExtent);/*
@@ -381,7 +371,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxImageExtent
+	 * get method for field maxImageExtent	[vkstruct]
 	 * Prototype: VkExtent2D  maxImageExtent
 	 */ 
 	 private static native VkExtent2D maxImageExtent0(ByteBuffer ptr);/*
@@ -390,7 +380,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxImageArrayLayers
+	 * native Set method for field maxImageArrayLayers	
 	 * Prototype: uint32_t  maxImageArrayLayers
 	 */ 
 	 private static native void maxImageArrayLayers0(ByteBuffer ptr, int _maxImageArrayLayers);/*
@@ -399,7 +389,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxImageArrayLayers
+	 * get method for field maxImageArrayLayers	
 	 * Prototype: uint32_t  maxImageArrayLayers
 	 */ 
 	 private static native int maxImageArrayLayers0(ByteBuffer ptr);/*
@@ -408,7 +398,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field supportedTransforms
+	 * native Set method for field supportedTransforms	
 	 * Prototype: VkSurfaceTransformFlagsKHR  supportedTransforms
 	 */ 
 	 private static native void supportedTransforms0(ByteBuffer ptr, int _supportedTransforms);/*
@@ -417,7 +407,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field supportedTransforms
+	 * get method for field supportedTransforms	
 	 * Prototype: VkSurfaceTransformFlagsKHR  supportedTransforms
 	 */ 
 	 private static native int supportedTransforms0(ByteBuffer ptr);/*
@@ -426,7 +416,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field currentTransform
+	 * native Set method for field currentTransform	[vkenum]
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  currentTransform
 	 */ 
 	 private static native void currentTransform0(ByteBuffer ptr, VkSurfaceTransformFlagBitsKHR _currentTransform);/*
@@ -435,7 +425,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field currentTransform
+	 * get method for field currentTransform	[vkenum]
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  currentTransform
 	 */ 
 	 private static native VkSurfaceTransformFlagBitsKHR currentTransform0(ByteBuffer ptr);/*
@@ -444,7 +434,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field supportedCompositeAlpha
+	 * native Set method for field supportedCompositeAlpha	
 	 * Prototype: VkCompositeAlphaFlagsKHR  supportedCompositeAlpha
 	 */ 
 	 private static native void supportedCompositeAlpha0(ByteBuffer ptr, int _supportedCompositeAlpha);/*
@@ -453,7 +443,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field supportedCompositeAlpha
+	 * get method for field supportedCompositeAlpha	
 	 * Prototype: VkCompositeAlphaFlagsKHR  supportedCompositeAlpha
 	 */ 
 	 private static native int supportedCompositeAlpha0(ByteBuffer ptr);/*
@@ -462,7 +452,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field supportedUsageFlags
+	 * native Set method for field supportedUsageFlags	
 	 * Prototype: VkImageUsageFlags  supportedUsageFlags
 	 */ 
 	 private static native void supportedUsageFlags0(ByteBuffer ptr, int _supportedUsageFlags);/*
@@ -471,7 +461,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field supportedUsageFlags
+	 * get method for field supportedUsageFlags	
 	 * Prototype: VkImageUsageFlags  supportedUsageFlags
 	 */ 
 	 private static native int supportedUsageFlags0(ByteBuffer ptr);/*

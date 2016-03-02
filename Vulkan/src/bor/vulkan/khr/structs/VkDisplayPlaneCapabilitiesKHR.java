@@ -46,48 +46,39 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkDisplayPlaneAlphaFlagsKHR 	supportedAlpha 
-	 */ 
+	 *  VkDisplayPlaneAlphaFlagsKHR 	supportedAlpha		 */ 
 	int 	supportedAlpha;
 
 	/**
-	 *  VkOffset2D 	minSrcPosition 
-	 */ 
+	 *  VkOffset2D 	minSrcPosition	[vkstruct]	 */ 
 	VkOffset2D 	minSrcPosition;
 
 	/**
-	 *  VkOffset2D 	maxSrcPosition 
-	 */ 
+	 *  VkOffset2D 	maxSrcPosition	[vkstruct]	 */ 
 	VkOffset2D 	maxSrcPosition;
 
 	/**
-	 *  VkExtent2D 	minSrcExtent 
-	 */ 
+	 *  VkExtent2D 	minSrcExtent	[vkstruct]	 */ 
 	VkExtent2D 	minSrcExtent;
 
 	/**
-	 *  VkExtent2D 	maxSrcExtent 
-	 */ 
+	 *  VkExtent2D 	maxSrcExtent	[vkstruct]	 */ 
 	VkExtent2D 	maxSrcExtent;
 
 	/**
-	 *  VkOffset2D 	minDstPosition 
-	 */ 
+	 *  VkOffset2D 	minDstPosition	[vkstruct]	 */ 
 	VkOffset2D 	minDstPosition;
 
 	/**
-	 *  VkOffset2D 	maxDstPosition 
-	 */ 
+	 *  VkOffset2D 	maxDstPosition	[vkstruct]	 */ 
 	VkOffset2D 	maxDstPosition;
 
 	/**
-	 *  VkExtent2D 	minDstExtent 
-	 */ 
+	 *  VkExtent2D 	minDstExtent	[vkstruct]	 */ 
 	VkExtent2D 	minDstExtent;
 
 	/**
-	 *  VkExtent2D 	maxDstExtent 
-	 */ 
+	 *  VkExtent2D 	maxDstExtent	[vkstruct]	 */ 
 	VkExtent2D 	maxDstExtent;
 
 	/**
@@ -105,12 +96,12 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field supportedAlpha
+	 * Set method for field supportedAlpha	
 	 * Prototype: VkDisplayPlaneAlphaFlagsKHR  supportedAlpha
 	 */ 
 	 public void supportedAlpha(int supportedAlpha){
@@ -119,7 +110,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field supportedAlpha
+	 * get method for field supportedAlpha	
 	 * Prototype: VkDisplayPlaneAlphaFlagsKHR  supportedAlpha
 	 */ 
 	 public int supportedAlpha(){
@@ -128,7 +119,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field minSrcPosition
+	 * Set method for field minSrcPosition	[vkstruct]
 	 * Prototype: VkOffset2D  minSrcPosition
 	 */ 
 	 public void minSrcPosition(VkOffset2D minSrcPosition){
@@ -137,7 +128,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field minSrcPosition
+	 * get method for field minSrcPosition	[vkstruct]
 	 * Prototype: VkOffset2D  minSrcPosition
 	 */ 
 	 public VkOffset2D minSrcPosition(){
@@ -146,7 +137,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxSrcPosition
+	 * Set method for field maxSrcPosition	[vkstruct]
 	 * Prototype: VkOffset2D  maxSrcPosition
 	 */ 
 	 public void maxSrcPosition(VkOffset2D maxSrcPosition){
@@ -155,7 +146,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxSrcPosition
+	 * get method for field maxSrcPosition	[vkstruct]
 	 * Prototype: VkOffset2D  maxSrcPosition
 	 */ 
 	 public VkOffset2D maxSrcPosition(){
@@ -164,7 +155,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field minSrcExtent
+	 * Set method for field minSrcExtent	[vkstruct]
 	 * Prototype: VkExtent2D  minSrcExtent
 	 */ 
 	 public void minSrcExtent(VkExtent2D minSrcExtent){
@@ -173,7 +164,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field minSrcExtent
+	 * get method for field minSrcExtent	[vkstruct]
 	 * Prototype: VkExtent2D  minSrcExtent
 	 */ 
 	 public VkExtent2D minSrcExtent(){
@@ -182,7 +173,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxSrcExtent
+	 * Set method for field maxSrcExtent	[vkstruct]
 	 * Prototype: VkExtent2D  maxSrcExtent
 	 */ 
 	 public void maxSrcExtent(VkExtent2D maxSrcExtent){
@@ -191,7 +182,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxSrcExtent
+	 * get method for field maxSrcExtent	[vkstruct]
 	 * Prototype: VkExtent2D  maxSrcExtent
 	 */ 
 	 public VkExtent2D maxSrcExtent(){
@@ -200,7 +191,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field minDstPosition
+	 * Set method for field minDstPosition	[vkstruct]
 	 * Prototype: VkOffset2D  minDstPosition
 	 */ 
 	 public void minDstPosition(VkOffset2D minDstPosition){
@@ -209,7 +200,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field minDstPosition
+	 * get method for field minDstPosition	[vkstruct]
 	 * Prototype: VkOffset2D  minDstPosition
 	 */ 
 	 public VkOffset2D minDstPosition(){
@@ -218,7 +209,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxDstPosition
+	 * Set method for field maxDstPosition	[vkstruct]
 	 * Prototype: VkOffset2D  maxDstPosition
 	 */ 
 	 public void maxDstPosition(VkOffset2D maxDstPosition){
@@ -227,7 +218,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxDstPosition
+	 * get method for field maxDstPosition	[vkstruct]
 	 * Prototype: VkOffset2D  maxDstPosition
 	 */ 
 	 public VkOffset2D maxDstPosition(){
@@ -236,7 +227,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field minDstExtent
+	 * Set method for field minDstExtent	[vkstruct]
 	 * Prototype: VkExtent2D  minDstExtent
 	 */ 
 	 public void minDstExtent(VkExtent2D minDstExtent){
@@ -245,7 +236,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field minDstExtent
+	 * get method for field minDstExtent	[vkstruct]
 	 * Prototype: VkExtent2D  minDstExtent
 	 */ 
 	 public VkExtent2D minDstExtent(){
@@ -254,7 +245,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxDstExtent
+	 * Set method for field maxDstExtent	[vkstruct]
 	 * Prototype: VkExtent2D  maxDstExtent
 	 */ 
 	 public void maxDstExtent(VkExtent2D maxDstExtent){
@@ -263,7 +254,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxDstExtent
+	 * get method for field maxDstExtent	[vkstruct]
 	 * Prototype: VkExtent2D  maxDstExtent
 	 */ 
 	 public VkExtent2D maxDstExtent(){
@@ -276,7 +267,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field supportedAlpha
+	 * native Set method for field supportedAlpha	
 	 * Prototype: VkDisplayPlaneAlphaFlagsKHR  supportedAlpha
 	 */ 
 	 private static native void supportedAlpha0(ByteBuffer ptr, int _supportedAlpha);/*
@@ -285,7 +276,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field supportedAlpha
+	 * get method for field supportedAlpha	
 	 * Prototype: VkDisplayPlaneAlphaFlagsKHR  supportedAlpha
 	 */ 
 	 private static native int supportedAlpha0(ByteBuffer ptr);/*
@@ -294,7 +285,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field minSrcPosition
+	 * native Set method for field minSrcPosition	[vkstruct]
 	 * Prototype: VkOffset2D  minSrcPosition
 	 */ 
 	 private static native void minSrcPosition0(ByteBuffer ptr, VkOffset2D _minSrcPosition);/*
@@ -303,7 +294,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field minSrcPosition
+	 * get method for field minSrcPosition	[vkstruct]
 	 * Prototype: VkOffset2D  minSrcPosition
 	 */ 
 	 private static native VkOffset2D minSrcPosition0(ByteBuffer ptr);/*
@@ -312,7 +303,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxSrcPosition
+	 * native Set method for field maxSrcPosition	[vkstruct]
 	 * Prototype: VkOffset2D  maxSrcPosition
 	 */ 
 	 private static native void maxSrcPosition0(ByteBuffer ptr, VkOffset2D _maxSrcPosition);/*
@@ -321,7 +312,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxSrcPosition
+	 * get method for field maxSrcPosition	[vkstruct]
 	 * Prototype: VkOffset2D  maxSrcPosition
 	 */ 
 	 private static native VkOffset2D maxSrcPosition0(ByteBuffer ptr);/*
@@ -330,7 +321,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field minSrcExtent
+	 * native Set method for field minSrcExtent	[vkstruct]
 	 * Prototype: VkExtent2D  minSrcExtent
 	 */ 
 	 private static native void minSrcExtent0(ByteBuffer ptr, VkExtent2D _minSrcExtent);/*
@@ -339,7 +330,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field minSrcExtent
+	 * get method for field minSrcExtent	[vkstruct]
 	 * Prototype: VkExtent2D  minSrcExtent
 	 */ 
 	 private static native VkExtent2D minSrcExtent0(ByteBuffer ptr);/*
@@ -348,7 +339,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxSrcExtent
+	 * native Set method for field maxSrcExtent	[vkstruct]
 	 * Prototype: VkExtent2D  maxSrcExtent
 	 */ 
 	 private static native void maxSrcExtent0(ByteBuffer ptr, VkExtent2D _maxSrcExtent);/*
@@ -357,7 +348,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxSrcExtent
+	 * get method for field maxSrcExtent	[vkstruct]
 	 * Prototype: VkExtent2D  maxSrcExtent
 	 */ 
 	 private static native VkExtent2D maxSrcExtent0(ByteBuffer ptr);/*
@@ -366,7 +357,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field minDstPosition
+	 * native Set method for field minDstPosition	[vkstruct]
 	 * Prototype: VkOffset2D  minDstPosition
 	 */ 
 	 private static native void minDstPosition0(ByteBuffer ptr, VkOffset2D _minDstPosition);/*
@@ -375,7 +366,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field minDstPosition
+	 * get method for field minDstPosition	[vkstruct]
 	 * Prototype: VkOffset2D  minDstPosition
 	 */ 
 	 private static native VkOffset2D minDstPosition0(ByteBuffer ptr);/*
@@ -384,7 +375,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxDstPosition
+	 * native Set method for field maxDstPosition	[vkstruct]
 	 * Prototype: VkOffset2D  maxDstPosition
 	 */ 
 	 private static native void maxDstPosition0(ByteBuffer ptr, VkOffset2D _maxDstPosition);/*
@@ -393,7 +384,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxDstPosition
+	 * get method for field maxDstPosition	[vkstruct]
 	 * Prototype: VkOffset2D  maxDstPosition
 	 */ 
 	 private static native VkOffset2D maxDstPosition0(ByteBuffer ptr);/*
@@ -402,7 +393,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field minDstExtent
+	 * native Set method for field minDstExtent	[vkstruct]
 	 * Prototype: VkExtent2D  minDstExtent
 	 */ 
 	 private static native void minDstExtent0(ByteBuffer ptr, VkExtent2D _minDstExtent);/*
@@ -411,7 +402,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field minDstExtent
+	 * get method for field minDstExtent	[vkstruct]
 	 * Prototype: VkExtent2D  minDstExtent
 	 */ 
 	 private static native VkExtent2D minDstExtent0(ByteBuffer ptr);/*
@@ -420,7 +411,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxDstExtent
+	 * native Set method for field maxDstExtent	[vkstruct]
 	 * Prototype: VkExtent2D  maxDstExtent
 	 */ 
 	 private static native void maxDstExtent0(ByteBuffer ptr, VkExtent2D _maxDstExtent);/*
@@ -429,7 +420,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxDstExtent
+	 * get method for field maxDstExtent	[vkstruct]
 	 * Prototype: VkExtent2D  maxDstExtent
 	 */ 
 	 private static native VkExtent2D maxDstExtent0(ByteBuffer ptr);/*

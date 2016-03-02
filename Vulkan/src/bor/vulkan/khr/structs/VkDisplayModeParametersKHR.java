@@ -39,13 +39,11 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkExtent2D 	visibleRegion 
-	 */ 
+	 *  VkExtent2D 	visibleRegion	[vkstruct]	 */ 
 	VkExtent2D 	visibleRegion;
 
 	/**
-	 *  uint32_t 	refreshRate 
-	 */ 
+	 *  uint32_t 	refreshRate		 */ 
 	int 	refreshRate;
 
 	/**
@@ -63,12 +61,12 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field visibleRegion
+	 * Set method for field visibleRegion	[vkstruct]
 	 * Prototype: VkExtent2D  visibleRegion
 	 */ 
 	 public void visibleRegion(VkExtent2D visibleRegion){
@@ -77,7 +75,7 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field visibleRegion
+	 * get method for field visibleRegion	[vkstruct]
 	 * Prototype: VkExtent2D  visibleRegion
 	 */ 
 	 public VkExtent2D visibleRegion(){
@@ -86,7 +84,7 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field refreshRate
+	 * Set method for field refreshRate	
 	 * Prototype: uint32_t  refreshRate
 	 */ 
 	 public void refreshRate(int refreshRate){
@@ -95,7 +93,7 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field refreshRate
+	 * get method for field refreshRate	
 	 * Prototype: uint32_t  refreshRate
 	 */ 
 	 public int refreshRate(){
@@ -108,7 +106,7 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field visibleRegion
+	 * native Set method for field visibleRegion	[vkstruct]
 	 * Prototype: VkExtent2D  visibleRegion
 	 */ 
 	 private static native void visibleRegion0(ByteBuffer ptr, VkExtent2D _visibleRegion);/*
@@ -117,7 +115,7 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field visibleRegion
+	 * get method for field visibleRegion	[vkstruct]
 	 * Prototype: VkExtent2D  visibleRegion
 	 */ 
 	 private static native VkExtent2D visibleRegion0(ByteBuffer ptr);/*
@@ -126,7 +124,7 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field refreshRate
+	 * native Set method for field refreshRate	
 	 * Prototype: uint32_t  refreshRate
 	 */ 
 	 private static native void refreshRate0(ByteBuffer ptr, int _refreshRate);/*
@@ -135,7 +133,7 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field refreshRate
+	 * get method for field refreshRate	
 	 * Prototype: uint32_t  refreshRate
 	 */ 
 	 private static native int refreshRate0(ByteBuffer ptr);/*

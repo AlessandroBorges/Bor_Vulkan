@@ -42,28 +42,23 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkRect2D 	srcRect 
-	 */ 
+	 *  VkRect2D 	srcRect	[vkstruct]	 */ 
 	VkRect2D 	srcRect;
 
 	/**
-	 *  VkRect2D 	dstRect 
-	 */ 
+	 *  VkRect2D 	dstRect	[vkstruct]	 */ 
 	VkRect2D 	dstRect;
 
 	/**
-	 *  VkBool32 	persistent 
-	 */ 
+	 *  VkBool32 	persistent		 */ 
 	boolean 	persistent;
 
 	/**
@@ -81,12 +76,12 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -95,7 +90,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -104,7 +99,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -113,7 +108,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -122,7 +117,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field srcRect
+	 * Set method for field srcRect	[vkstruct]
 	 * Prototype: VkRect2D  srcRect
 	 */ 
 	 public void srcRect(VkRect2D srcRect){
@@ -131,7 +126,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcRect
+	 * get method for field srcRect	[vkstruct]
 	 * Prototype: VkRect2D  srcRect
 	 */ 
 	 public VkRect2D srcRect(){
@@ -140,7 +135,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstRect
+	 * Set method for field dstRect	[vkstruct]
 	 * Prototype: VkRect2D  dstRect
 	 */ 
 	 public void dstRect(VkRect2D dstRect){
@@ -149,7 +144,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstRect
+	 * get method for field dstRect	[vkstruct]
 	 * Prototype: VkRect2D  dstRect
 	 */ 
 	 public VkRect2D dstRect(){
@@ -158,7 +153,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field persistent
+	 * Set method for field persistent	
 	 * Prototype: VkBool32  persistent
 	 */ 
 	 public void persistent(boolean persistent){
@@ -167,7 +162,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field persistent
+	 * get method for field persistent	
 	 * Prototype: VkBool32  persistent
 	 */ 
 	 public boolean persistent(){
@@ -180,7 +175,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -189,7 +184,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -198,7 +193,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -207,7 +202,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -216,7 +211,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field srcRect
+	 * native Set method for field srcRect	[vkstruct]
 	 * Prototype: VkRect2D  srcRect
 	 */ 
 	 private static native void srcRect0(ByteBuffer ptr, VkRect2D _srcRect);/*
@@ -225,7 +220,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcRect
+	 * get method for field srcRect	[vkstruct]
 	 * Prototype: VkRect2D  srcRect
 	 */ 
 	 private static native VkRect2D srcRect0(ByteBuffer ptr);/*
@@ -234,7 +229,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstRect
+	 * native Set method for field dstRect	[vkstruct]
 	 * Prototype: VkRect2D  dstRect
 	 */ 
 	 private static native void dstRect0(ByteBuffer ptr, VkRect2D _dstRect);/*
@@ -243,7 +238,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstRect
+	 * get method for field dstRect	[vkstruct]
 	 * Prototype: VkRect2D  dstRect
 	 */ 
 	 private static native VkRect2D dstRect0(ByteBuffer ptr);/*
@@ -252,7 +247,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field persistent
+	 * native Set method for field persistent	
 	 * Prototype: VkBool32  persistent
 	 */ 
 	 private static native void persistent0(ByteBuffer ptr, boolean _persistent);/*
@@ -261,7 +256,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field persistent
+	 * get method for field persistent	
 	 * Prototype: VkBool32  persistent
 	 */ 
 	 private static native boolean persistent0(ByteBuffer ptr);/*

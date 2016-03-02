@@ -47,53 +47,43 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkDisplaySurfaceCreateFlagsKHR 	flags 
-	 */ 
+	 *  VkDisplaySurfaceCreateFlagsKHR 	flags		 */ 
 	int 	flags;
 
 	/**
-	 *  VkDisplayModeKHR 	displayMode 
-	 */ 
+	 *  VkDisplayModeKHR 	displayMode	[vkhandle]	 */ 
 	VkDisplayModeKHR 	displayMode;
 
 	/**
-	 *  uint32_t 	planeIndex 
-	 */ 
+	 *  uint32_t 	planeIndex		 */ 
 	int 	planeIndex;
 
 	/**
-	 *  uint32_t 	planeStackIndex 
-	 */ 
+	 *  uint32_t 	planeStackIndex		 */ 
 	int 	planeStackIndex;
 
 	/**
-	 *  VkSurfaceTransformFlagBitsKHR 	transform 
-	 */ 
+	 *  VkSurfaceTransformFlagBitsKHR 	transform	[vkenum]	 */ 
 	VkSurfaceTransformFlagBitsKHR 	transform;
 
 	/**
-	 *  float 	globalAlpha 
-	 */ 
+	 *  float 	globalAlpha		 */ 
 	float 	globalAlpha;
 
 	/**
-	 *  VkDisplayPlaneAlphaFlagBitsKHR 	alphaMode 
-	 */ 
+	 *  VkDisplayPlaneAlphaFlagBitsKHR 	alphaMode	[vkenum]	 */ 
 	VkDisplayPlaneAlphaFlagBitsKHR 	alphaMode;
 
 	/**
-	 *  VkExtent2D 	imageExtent 
-	 */ 
+	 *  VkExtent2D 	imageExtent	[vkstruct]	 */ 
 	VkExtent2D 	imageExtent;
 
 	/**
@@ -111,12 +101,12 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -125,7 +115,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -134,7 +124,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -143,7 +133,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -152,7 +142,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkDisplaySurfaceCreateFlagsKHR  flags
 	 */ 
 	 public void flags(int flags){
@@ -161,7 +151,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkDisplaySurfaceCreateFlagsKHR  flags
 	 */ 
 	 public int flags(){
@@ -170,7 +160,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field displayMode
+	 * Set method for field displayMode	[vkhandle]
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
 	 public void displayMode(VkDisplayModeKHR displayMode){
@@ -179,7 +169,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field displayMode
+	 * get method for field displayMode	[vkhandle]
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
 	 public VkDisplayModeKHR displayMode(){
@@ -188,7 +178,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field planeIndex
+	 * Set method for field planeIndex	
 	 * Prototype: uint32_t  planeIndex
 	 */ 
 	 public void planeIndex(int planeIndex){
@@ -197,7 +187,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field planeIndex
+	 * get method for field planeIndex	
 	 * Prototype: uint32_t  planeIndex
 	 */ 
 	 public int planeIndex(){
@@ -206,7 +196,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field planeStackIndex
+	 * Set method for field planeStackIndex	
 	 * Prototype: uint32_t  planeStackIndex
 	 */ 
 	 public void planeStackIndex(int planeStackIndex){
@@ -215,7 +205,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field planeStackIndex
+	 * get method for field planeStackIndex	
 	 * Prototype: uint32_t  planeStackIndex
 	 */ 
 	 public int planeStackIndex(){
@@ -224,7 +214,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field transform
+	 * Set method for field transform	[vkenum]
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  transform
 	 */ 
 	 public void transform(VkSurfaceTransformFlagBitsKHR transform){
@@ -233,7 +223,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field transform
+	 * get method for field transform	[vkenum]
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  transform
 	 */ 
 	 public VkSurfaceTransformFlagBitsKHR transform(){
@@ -242,7 +232,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field globalAlpha
+	 * Set method for field globalAlpha	
 	 * Prototype: float  globalAlpha
 	 */ 
 	 public void globalAlpha(float globalAlpha){
@@ -251,7 +241,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field globalAlpha
+	 * get method for field globalAlpha	
 	 * Prototype: float  globalAlpha
 	 */ 
 	 public float globalAlpha(){
@@ -260,7 +250,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field alphaMode
+	 * Set method for field alphaMode	[vkenum]
 	 * Prototype: VkDisplayPlaneAlphaFlagBitsKHR  alphaMode
 	 */ 
 	 public void alphaMode(VkDisplayPlaneAlphaFlagBitsKHR alphaMode){
@@ -269,7 +259,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field alphaMode
+	 * get method for field alphaMode	[vkenum]
 	 * Prototype: VkDisplayPlaneAlphaFlagBitsKHR  alphaMode
 	 */ 
 	 public VkDisplayPlaneAlphaFlagBitsKHR alphaMode(){
@@ -278,7 +268,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field imageExtent
+	 * Set method for field imageExtent	[vkstruct]
 	 * Prototype: VkExtent2D  imageExtent
 	 */ 
 	 public void imageExtent(VkExtent2D imageExtent){
@@ -287,7 +277,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field imageExtent
+	 * get method for field imageExtent	[vkstruct]
 	 * Prototype: VkExtent2D  imageExtent
 	 */ 
 	 public VkExtent2D imageExtent(){
@@ -300,7 +290,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -309,7 +299,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -318,7 +308,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -327,7 +317,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -336,7 +326,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkDisplaySurfaceCreateFlagsKHR  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -345,7 +335,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkDisplaySurfaceCreateFlagsKHR  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -354,7 +344,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field displayMode
+	 * native Set method for field displayMode	[vkhandle]
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
 	 private static native void displayMode0(ByteBuffer ptr, VkDisplayModeKHR _displayMode);/*
@@ -363,7 +353,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field displayMode
+	 * get method for field displayMode	[vkhandle]
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
 	 private static native VkDisplayModeKHR displayMode0(ByteBuffer ptr);/*
@@ -372,7 +362,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field planeIndex
+	 * native Set method for field planeIndex	
 	 * Prototype: uint32_t  planeIndex
 	 */ 
 	 private static native void planeIndex0(ByteBuffer ptr, int _planeIndex);/*
@@ -381,7 +371,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field planeIndex
+	 * get method for field planeIndex	
 	 * Prototype: uint32_t  planeIndex
 	 */ 
 	 private static native int planeIndex0(ByteBuffer ptr);/*
@@ -390,7 +380,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field planeStackIndex
+	 * native Set method for field planeStackIndex	
 	 * Prototype: uint32_t  planeStackIndex
 	 */ 
 	 private static native void planeStackIndex0(ByteBuffer ptr, int _planeStackIndex);/*
@@ -399,7 +389,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field planeStackIndex
+	 * get method for field planeStackIndex	
 	 * Prototype: uint32_t  planeStackIndex
 	 */ 
 	 private static native int planeStackIndex0(ByteBuffer ptr);/*
@@ -408,7 +398,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field transform
+	 * native Set method for field transform	[vkenum]
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  transform
 	 */ 
 	 private static native void transform0(ByteBuffer ptr, VkSurfaceTransformFlagBitsKHR _transform);/*
@@ -417,7 +407,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field transform
+	 * get method for field transform	[vkenum]
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  transform
 	 */ 
 	 private static native VkSurfaceTransformFlagBitsKHR transform0(ByteBuffer ptr);/*
@@ -426,7 +416,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field globalAlpha
+	 * native Set method for field globalAlpha	
 	 * Prototype: float  globalAlpha
 	 */ 
 	 private static native void globalAlpha0(ByteBuffer ptr, float _globalAlpha);/*
@@ -435,7 +425,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field globalAlpha
+	 * get method for field globalAlpha	
 	 * Prototype: float  globalAlpha
 	 */ 
 	 private static native float globalAlpha0(ByteBuffer ptr);/*
@@ -444,7 +434,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field alphaMode
+	 * native Set method for field alphaMode	[vkenum]
 	 * Prototype: VkDisplayPlaneAlphaFlagBitsKHR  alphaMode
 	 */ 
 	 private static native void alphaMode0(ByteBuffer ptr, VkDisplayPlaneAlphaFlagBitsKHR _alphaMode);/*
@@ -453,7 +443,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field alphaMode
+	 * get method for field alphaMode	[vkenum]
 	 * Prototype: VkDisplayPlaneAlphaFlagBitsKHR  alphaMode
 	 */ 
 	 private static native VkDisplayPlaneAlphaFlagBitsKHR alphaMode0(ByteBuffer ptr);/*
@@ -462,7 +452,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field imageExtent
+	 * native Set method for field imageExtent	[vkstruct]
 	 * Prototype: VkExtent2D  imageExtent
 	 */ 
 	 private static native void imageExtent0(ByteBuffer ptr, VkExtent2D _imageExtent);/*
@@ -471,7 +461,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field imageExtent
+	 * get method for field imageExtent	[vkstruct]
 	 * Prototype: VkExtent2D  imageExtent
 	 */ 
 	 private static native VkExtent2D imageExtent0(ByteBuffer ptr);/*

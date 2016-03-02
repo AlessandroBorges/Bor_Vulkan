@@ -42,28 +42,23 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkMirSurfaceCreateFlagsKHR 	flags 
-	 */ 
+	 *  VkMirSurfaceCreateFlagsKHR 	flags		 */ 
 	int 	flags;
 
 	/**
-	 *  MirConnection* 	connection 
-	 */ 
+	 *  MirConnection* 	connection	[vkhandle]	 */ 
 	MirConnection 	connection;
 
 	/**
-	 *  MirSurface* 	mirSurface 
-	 */ 
+	 *  MirSurface* 	mirSurface	[vkhandle]	 */ 
 	MirSurface 	mirSurface;
 
 	/**
@@ -81,12 +76,12 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -95,7 +90,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -104,7 +99,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -113,7 +108,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -122,7 +117,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkMirSurfaceCreateFlagsKHR  flags
 	 */ 
 	 public void flags(int flags){
@@ -131,7 +126,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkMirSurfaceCreateFlagsKHR  flags
 	 */ 
 	 public int flags(){
@@ -140,7 +135,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field connection
+	 * Set method for field connection	[vkhandle]
 	 * Prototype: MirConnection*  connection
 	 */ 
 	 public void connection(MirConnection connection){
@@ -149,7 +144,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field connection
+	 * get method for field connection	[vkhandle]
 	 * Prototype: MirConnection*  connection
 	 */ 
 	 public MirConnection connection(){
@@ -158,7 +153,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field mirSurface
+	 * Set method for field mirSurface	[vkhandle]
 	 * Prototype: MirSurface*  mirSurface
 	 */ 
 	 public void mirSurface(MirSurface mirSurface){
@@ -167,7 +162,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field mirSurface
+	 * get method for field mirSurface	[vkhandle]
 	 * Prototype: MirSurface*  mirSurface
 	 */ 
 	 public MirSurface mirSurface(){
@@ -180,7 +175,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -189,7 +184,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -198,7 +193,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -207,7 +202,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -216,7 +211,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkMirSurfaceCreateFlagsKHR  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -225,7 +220,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkMirSurfaceCreateFlagsKHR  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -234,7 +229,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field connection
+	 * native Set method for field connection	[vkhandle]
 	 * Prototype: MirConnection*  connection
 	 */ 
 	 private static native void connection0(ByteBuffer ptr, MirConnection _connection);/*
@@ -243,7 +238,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field connection
+	 * get method for field connection	[vkhandle]
 	 * Prototype: MirConnection*  connection
 	 */ 
 	 private static native MirConnection connection0(ByteBuffer ptr);/*
@@ -252,7 +247,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field mirSurface
+	 * native Set method for field mirSurface	[vkhandle]
 	 * Prototype: MirSurface*  mirSurface
 	 */ 
 	 private static native void mirSurface0(ByteBuffer ptr, MirSurface _mirSurface);/*
@@ -261,7 +256,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field mirSurface
+	 * get method for field mirSurface	[vkhandle]
 	 * Prototype: MirSurface*  mirSurface
 	 */ 
 	 private static native MirSurface mirSurface0(ByteBuffer ptr);/*

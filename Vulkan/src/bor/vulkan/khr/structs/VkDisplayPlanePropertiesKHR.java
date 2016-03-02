@@ -39,13 +39,11 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkDisplayKHR 	currentDisplay 
-	 */ 
+	 *  VkDisplayKHR 	currentDisplay	[vkhandle]	 */ 
 	VkDisplayKHR 	currentDisplay;
 
 	/**
-	 *  uint32_t 	currentStackIndex 
-	 */ 
+	 *  uint32_t 	currentStackIndex		 */ 
 	int 	currentStackIndex;
 
 	/**
@@ -63,12 +61,12 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field currentDisplay
+	 * Set method for field currentDisplay	[vkhandle]
 	 * Prototype: VkDisplayKHR  currentDisplay
 	 */ 
 	 public void currentDisplay(VkDisplayKHR currentDisplay){
@@ -77,7 +75,7 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field currentDisplay
+	 * get method for field currentDisplay	[vkhandle]
 	 * Prototype: VkDisplayKHR  currentDisplay
 	 */ 
 	 public VkDisplayKHR currentDisplay(){
@@ -86,7 +84,7 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field currentStackIndex
+	 * Set method for field currentStackIndex	
 	 * Prototype: uint32_t  currentStackIndex
 	 */ 
 	 public void currentStackIndex(int currentStackIndex){
@@ -95,7 +93,7 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field currentStackIndex
+	 * get method for field currentStackIndex	
 	 * Prototype: uint32_t  currentStackIndex
 	 */ 
 	 public int currentStackIndex(){
@@ -108,7 +106,7 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field currentDisplay
+	 * native Set method for field currentDisplay	[vkhandle]
 	 * Prototype: VkDisplayKHR  currentDisplay
 	 */ 
 	 private static native void currentDisplay0(ByteBuffer ptr, VkDisplayKHR _currentDisplay);/*
@@ -117,7 +115,7 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field currentDisplay
+	 * get method for field currentDisplay	[vkhandle]
 	 * Prototype: VkDisplayKHR  currentDisplay
 	 */ 
 	 private static native VkDisplayKHR currentDisplay0(ByteBuffer ptr);/*
@@ -126,7 +124,7 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field currentStackIndex
+	 * native Set method for field currentStackIndex	
 	 * Prototype: uint32_t  currentStackIndex
 	 */ 
 	 private static native void currentStackIndex0(ByteBuffer ptr, int _currentStackIndex);/*
@@ -135,7 +133,7 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field currentStackIndex
+	 * get method for field currentStackIndex	
 	 * Prototype: uint32_t  currentStackIndex
 	 */ 
 	 private static native int currentStackIndex0(ByteBuffer ptr);/*

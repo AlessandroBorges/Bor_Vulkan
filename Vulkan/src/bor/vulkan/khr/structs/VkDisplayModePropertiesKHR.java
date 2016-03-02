@@ -39,13 +39,11 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkDisplayModeKHR 	displayMode 
-	 */ 
+	 *  VkDisplayModeKHR 	displayMode	[vkhandle]	 */ 
 	VkDisplayModeKHR 	displayMode;
 
 	/**
-	 *  VkDisplayModeParametersKHR 	parameters 
-	 */ 
+	 *  VkDisplayModeParametersKHR 	parameters	[vkstruct]	 */ 
 	VkDisplayModeParametersKHR 	parameters;
 
 	/**
@@ -63,12 +61,12 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field displayMode
+	 * Set method for field displayMode	[vkhandle]
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
 	 public void displayMode(VkDisplayModeKHR displayMode){
@@ -77,7 +75,7 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field displayMode
+	 * get method for field displayMode	[vkhandle]
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
 	 public VkDisplayModeKHR displayMode(){
@@ -86,7 +84,7 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field parameters
+	 * Set method for field parameters	[vkstruct]
 	 * Prototype: VkDisplayModeParametersKHR  parameters
 	 */ 
 	 public void parameters(VkDisplayModeParametersKHR parameters){
@@ -95,7 +93,7 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field parameters
+	 * get method for field parameters	[vkstruct]
 	 * Prototype: VkDisplayModeParametersKHR  parameters
 	 */ 
 	 public VkDisplayModeParametersKHR parameters(){
@@ -108,7 +106,7 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field displayMode
+	 * native Set method for field displayMode	[vkhandle]
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
 	 private static native void displayMode0(ByteBuffer ptr, VkDisplayModeKHR _displayMode);/*
@@ -117,7 +115,7 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field displayMode
+	 * get method for field displayMode	[vkhandle]
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
 	 private static native VkDisplayModeKHR displayMode0(ByteBuffer ptr);/*
@@ -126,7 +124,7 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field parameters
+	 * native Set method for field parameters	[vkstruct]
 	 * Prototype: VkDisplayModeParametersKHR  parameters
 	 */ 
 	 private static native void parameters0(ByteBuffer ptr, VkDisplayModeParametersKHR _parameters);/*
@@ -135,7 +133,7 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field parameters
+	 * get method for field parameters	[vkstruct]
 	 * Prototype: VkDisplayModeParametersKHR  parameters
 	 */ 
 	 private static native VkDisplayModeParametersKHR parameters0(ByteBuffer ptr);/*

@@ -44,38 +44,31 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkDisplayKHR 	display 
-	 */ 
+	 *  VkDisplayKHR 	display	[vkhandle]	 */ 
 	VkDisplayKHR 	display;
 
 	/**
-	 *  const char* 	displayName 
-	 */ 
+	 *  const char* 	displayName		 */ 
 	String 	displayName;
 
 	/**
-	 *  VkExtent2D 	physicalDimensions 
-	 */ 
+	 *  VkExtent2D 	physicalDimensions	[vkstruct]	 */ 
 	VkExtent2D 	physicalDimensions;
 
 	/**
-	 *  VkExtent2D 	physicalResolution 
-	 */ 
+	 *  VkExtent2D 	physicalResolution	[vkstruct]	 */ 
 	VkExtent2D 	physicalResolution;
 
 	/**
-	 *  VkSurfaceTransformFlagsKHR 	supportedTransforms 
-	 */ 
+	 *  VkSurfaceTransformFlagsKHR 	supportedTransforms		 */ 
 	int 	supportedTransforms;
 
 	/**
-	 *  VkBool32 	planeReorderPossible 
-	 */ 
+	 *  VkBool32 	planeReorderPossible		 */ 
 	boolean 	planeReorderPossible;
 
 	/**
-	 *  VkBool32 	persistentContent 
-	 */ 
+	 *  VkBool32 	persistentContent		 */ 
 	boolean 	persistentContent;
 
 	/**
@@ -93,12 +86,12 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field display
+	 * Set method for field display	[vkhandle]
 	 * Prototype: VkDisplayKHR  display
 	 */ 
 	 public void display(VkDisplayKHR display){
@@ -107,7 +100,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field display
+	 * get method for field display	[vkhandle]
 	 * Prototype: VkDisplayKHR  display
 	 */ 
 	 public VkDisplayKHR display(){
@@ -116,7 +109,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field displayName
+	 * Set method for field displayName	
 	 * Prototype: const char*  displayName
 	 */ 
 	 public void displayName(String displayName){
@@ -125,7 +118,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field displayName
+	 * get method for field displayName	
 	 * Prototype: const char*  displayName
 	 */ 
 	 public String displayName(){
@@ -134,7 +127,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field physicalDimensions
+	 * Set method for field physicalDimensions	[vkstruct]
 	 * Prototype: VkExtent2D  physicalDimensions
 	 */ 
 	 public void physicalDimensions(VkExtent2D physicalDimensions){
@@ -143,7 +136,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field physicalDimensions
+	 * get method for field physicalDimensions	[vkstruct]
 	 * Prototype: VkExtent2D  physicalDimensions
 	 */ 
 	 public VkExtent2D physicalDimensions(){
@@ -152,7 +145,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field physicalResolution
+	 * Set method for field physicalResolution	[vkstruct]
 	 * Prototype: VkExtent2D  physicalResolution
 	 */ 
 	 public void physicalResolution(VkExtent2D physicalResolution){
@@ -161,7 +154,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field physicalResolution
+	 * get method for field physicalResolution	[vkstruct]
 	 * Prototype: VkExtent2D  physicalResolution
 	 */ 
 	 public VkExtent2D physicalResolution(){
@@ -170,7 +163,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field supportedTransforms
+	 * Set method for field supportedTransforms	
 	 * Prototype: VkSurfaceTransformFlagsKHR  supportedTransforms
 	 */ 
 	 public void supportedTransforms(int supportedTransforms){
@@ -179,7 +172,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field supportedTransforms
+	 * get method for field supportedTransforms	
 	 * Prototype: VkSurfaceTransformFlagsKHR  supportedTransforms
 	 */ 
 	 public int supportedTransforms(){
@@ -188,7 +181,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field planeReorderPossible
+	 * Set method for field planeReorderPossible	
 	 * Prototype: VkBool32  planeReorderPossible
 	 */ 
 	 public void planeReorderPossible(boolean planeReorderPossible){
@@ -197,7 +190,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field planeReorderPossible
+	 * get method for field planeReorderPossible	
 	 * Prototype: VkBool32  planeReorderPossible
 	 */ 
 	 public boolean planeReorderPossible(){
@@ -206,7 +199,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field persistentContent
+	 * Set method for field persistentContent	
 	 * Prototype: VkBool32  persistentContent
 	 */ 
 	 public void persistentContent(boolean persistentContent){
@@ -215,7 +208,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field persistentContent
+	 * get method for field persistentContent	
 	 * Prototype: VkBool32  persistentContent
 	 */ 
 	 public boolean persistentContent(){
@@ -228,7 +221,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field display
+	 * native Set method for field display	[vkhandle]
 	 * Prototype: VkDisplayKHR  display
 	 */ 
 	 private static native void display0(ByteBuffer ptr, VkDisplayKHR _display);/*
@@ -237,7 +230,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field display
+	 * get method for field display	[vkhandle]
 	 * Prototype: VkDisplayKHR  display
 	 */ 
 	 private static native VkDisplayKHR display0(ByteBuffer ptr);/*
@@ -246,7 +239,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field displayName
+	 * native Set method for field displayName	
 	 * Prototype: const char*  displayName
 	 */ 
 	 private static native void displayName0(ByteBuffer ptr, String _displayName);/*
@@ -255,7 +248,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field displayName
+	 * get method for field displayName	
 	 * Prototype: const char*  displayName
 	 */ 
 	 private static native String displayName0(ByteBuffer ptr);/*
@@ -263,7 +256,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 		  return (jstring)(env->NewStringUTF(_obj.const char*);	 */
 
 	/**
-	 * native Set method for field physicalDimensions
+	 * native Set method for field physicalDimensions	[vkstruct]
 	 * Prototype: VkExtent2D  physicalDimensions
 	 */ 
 	 private static native void physicalDimensions0(ByteBuffer ptr, VkExtent2D _physicalDimensions);/*
@@ -272,7 +265,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field physicalDimensions
+	 * get method for field physicalDimensions	[vkstruct]
 	 * Prototype: VkExtent2D  physicalDimensions
 	 */ 
 	 private static native VkExtent2D physicalDimensions0(ByteBuffer ptr);/*
@@ -281,7 +274,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field physicalResolution
+	 * native Set method for field physicalResolution	[vkstruct]
 	 * Prototype: VkExtent2D  physicalResolution
 	 */ 
 	 private static native void physicalResolution0(ByteBuffer ptr, VkExtent2D _physicalResolution);/*
@@ -290,7 +283,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field physicalResolution
+	 * get method for field physicalResolution	[vkstruct]
 	 * Prototype: VkExtent2D  physicalResolution
 	 */ 
 	 private static native VkExtent2D physicalResolution0(ByteBuffer ptr);/*
@@ -299,7 +292,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field supportedTransforms
+	 * native Set method for field supportedTransforms	
 	 * Prototype: VkSurfaceTransformFlagsKHR  supportedTransforms
 	 */ 
 	 private static native void supportedTransforms0(ByteBuffer ptr, int _supportedTransforms);/*
@@ -308,7 +301,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field supportedTransforms
+	 * get method for field supportedTransforms	
 	 * Prototype: VkSurfaceTransformFlagsKHR  supportedTransforms
 	 */ 
 	 private static native int supportedTransforms0(ByteBuffer ptr);/*
@@ -317,7 +310,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field planeReorderPossible
+	 * native Set method for field planeReorderPossible	
 	 * Prototype: VkBool32  planeReorderPossible
 	 */ 
 	 private static native void planeReorderPossible0(ByteBuffer ptr, boolean _planeReorderPossible);/*
@@ -326,7 +319,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field planeReorderPossible
+	 * get method for field planeReorderPossible	
 	 * Prototype: VkBool32  planeReorderPossible
 	 */ 
 	 private static native boolean planeReorderPossible0(ByteBuffer ptr);/*
@@ -335,7 +328,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field persistentContent
+	 * native Set method for field persistentContent	
 	 * Prototype: VkBool32  persistentContent
 	 */ 
 	 private static native void persistentContent0(ByteBuffer ptr, boolean _persistentContent);/*
@@ -344,7 +337,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field persistentContent
+	 * get method for field persistentContent	
 	 * Prototype: VkBool32  persistentContent
 	 */ 
 	 private static native boolean persistentContent0(ByteBuffer ptr);/*

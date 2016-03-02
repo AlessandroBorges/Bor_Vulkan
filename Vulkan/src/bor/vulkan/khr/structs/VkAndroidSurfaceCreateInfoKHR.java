@@ -41,23 +41,19 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType 
-	 */ 
+	 *  VkStructureType 	sType	[vkenum]	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext 
-	 */ 
+	 *  const void* 	pNext		 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkAndroidSurfaceCreateFlagsKHR 	flags 
-	 */ 
+	 *  VkAndroidSurfaceCreateFlagsKHR 	flags		 */ 
 	int 	flags;
 
 	/**
-	 *  ANativeWindow* 	window 
-	 */ 
+	 *  ANativeWindow* 	window	[vkhandle]	 */ 
 	ANativeWindow 	window;
 
 	/**
@@ -75,12 +71,12 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	}
 
 
-	 // /////////////////////
+	 ////////////////////////
 	 //  SETTERS & GETTERS //
-	 // /////////////////////
+	 ////////////////////////
 
 	/**
-	 * Set method for field sType
+	 * Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -89,7 +85,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -98,7 +94,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext
+	 * Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -107,7 +103,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -116,7 +112,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags
+	 * Set method for field flags	
 	 * Prototype: VkAndroidSurfaceCreateFlagsKHR  flags
 	 */ 
 	 public void flags(int flags){
@@ -125,7 +121,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkAndroidSurfaceCreateFlagsKHR  flags
 	 */ 
 	 public int flags(){
@@ -134,7 +130,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field window
+	 * Set method for field window	[vkhandle]
 	 * Prototype: ANativeWindow*  window
 	 */ 
 	 public void window(ANativeWindow window){
@@ -143,7 +139,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field window
+	 * get method for field window	[vkhandle]
 	 * Prototype: ANativeWindow*  window
 	 */ 
 	 public ANativeWindow window(){
@@ -156,7 +152,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 // native SETTERS & GETTERS //
 	 // ////////////////////////////////
 	/**
-	 * native Set method for field sType
+	 * native Set method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -165,7 +161,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType
+	 * get method for field sType	[vkenum]
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -174,7 +170,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext
+	 * native Set method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -183,7 +179,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext
+	 * get method for field pNext	
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -192,7 +188,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags
+	 * native Set method for field flags	
 	 * Prototype: VkAndroidSurfaceCreateFlagsKHR  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -201,7 +197,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags
+	 * get method for field flags	
 	 * Prototype: VkAndroidSurfaceCreateFlagsKHR  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -210,7 +206,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field window
+	 * native Set method for field window	[vkhandle]
 	 * Prototype: ANativeWindow*  window
 	 */ 
 	 private static native void window0(ByteBuffer ptr, ANativeWindow _window);/*
@@ -219,7 +215,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field window
+	 * get method for field window	[vkhandle]
 	 * Prototype: ANativeWindow*  window
 	 */ 
 	 private static native ANativeWindow window0(ByteBuffer ptr);/*
