@@ -1,4 +1,5 @@
 /**
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -68,10 +69,6 @@ public class VkResult extends IntEnum<VkResult> {
 	public static final VkResult VK_ERROR_OUT_OF_DATE_KHR = new VkResult("VK_ERROR_OUT_OF_DATE_KHR", 20, -1000001004);
 	public static final VkResult VK_ERROR_INCOMPATIBLE_DISPLAY_KHR = new VkResult("VK_ERROR_INCOMPATIBLE_DISPLAY_KHR", 21, -1000003001);
 	public static final VkResult VK_ERROR_VALIDATION_FAILED_EXT = new VkResult("VK_ERROR_VALIDATION_FAILED_EXT", 22, -1000011001);
-	public static final VkResult VK_RESULT_BEGIN_RANGE = new VkResult("VK_RESULT_BEGIN_RANGE", 23, VK_ERROR_FORMAT_NOT_SUPPORTED.getValue() );
-	public static final VkResult VK_RESULT_END_RANGE = new VkResult("VK_RESULT_END_RANGE", 24, VK_INCOMPLETE.getValue() );
-	public static final VkResult VK_RESULT_RANGE_SIZE = new VkResult("VK_RESULT_RANGE_SIZE", 25, (VK_RESULT_END_RANGE.getValue() - VK_RESULT_BEGIN_RANGE.getValue() + 1));
-	public static final VkResult VK_RESULT_MAX_ENUM = new VkResult("VK_RESULT_MAX_ENUM", 26,  0x7FFFFFFF);
 
 
 	/** private ctor */

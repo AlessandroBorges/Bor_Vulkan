@@ -1,4 +1,5 @@
 /**
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -36,10 +37,6 @@ public class VkComponentSwizzle extends IntEnum<VkComponentSwizzle> {
 	public static final VkComponentSwizzle VK_COMPONENT_SWIZZLE_G = new VkComponentSwizzle("VK_COMPONENT_SWIZZLE_G", 4, 4);
 	public static final VkComponentSwizzle VK_COMPONENT_SWIZZLE_B = new VkComponentSwizzle("VK_COMPONENT_SWIZZLE_B", 5, 5);
 	public static final VkComponentSwizzle VK_COMPONENT_SWIZZLE_A = new VkComponentSwizzle("VK_COMPONENT_SWIZZLE_A", 6, 6);
-	public static final VkComponentSwizzle VK_COMPONENT_SWIZZLE_BEGIN_RANGE = new VkComponentSwizzle("VK_COMPONENT_SWIZZLE_BEGIN_RANGE", 7, VK_COMPONENT_SWIZZLE_IDENTITY.getValue() );
-	public static final VkComponentSwizzle VK_COMPONENT_SWIZZLE_END_RANGE = new VkComponentSwizzle("VK_COMPONENT_SWIZZLE_END_RANGE", 8, VK_COMPONENT_SWIZZLE_A.getValue() );
-	public static final VkComponentSwizzle VK_COMPONENT_SWIZZLE_RANGE_SIZE = new VkComponentSwizzle("VK_COMPONENT_SWIZZLE_RANGE_SIZE", 9, (VK_COMPONENT_SWIZZLE_END_RANGE.getValue() - VK_COMPONENT_SWIZZLE_BEGIN_RANGE.getValue() + 1));
-	public static final VkComponentSwizzle VK_COMPONENT_SWIZZLE_MAX_ENUM = new VkComponentSwizzle("VK_COMPONENT_SWIZZLE_MAX_ENUM", 10,  0x7FFFFFFF);
 
 
 	/** private ctor */

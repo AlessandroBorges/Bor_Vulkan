@@ -1,4 +1,5 @@
 /**
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -26,10 +27,6 @@ import bor.enumerable.*;
 public class VkIndexType extends IntEnum<VkIndexType> {
 	public static final VkIndexType VK_INDEX_TYPE_UINT16 = new VkIndexType("VK_INDEX_TYPE_UINT16", 0, 0);
 	public static final VkIndexType VK_INDEX_TYPE_UINT32 = new VkIndexType("VK_INDEX_TYPE_UINT32", 1, 1);
-	public static final VkIndexType VK_INDEX_TYPE_BEGIN_RANGE = new VkIndexType("VK_INDEX_TYPE_BEGIN_RANGE", 2, VK_INDEX_TYPE_UINT16.getValue() );
-	public static final VkIndexType VK_INDEX_TYPE_END_RANGE = new VkIndexType("VK_INDEX_TYPE_END_RANGE", 3, VK_INDEX_TYPE_UINT32.getValue() );
-	public static final VkIndexType VK_INDEX_TYPE_RANGE_SIZE = new VkIndexType("VK_INDEX_TYPE_RANGE_SIZE", 4, (VK_INDEX_TYPE_END_RANGE.getValue() - VK_INDEX_TYPE_BEGIN_RANGE.getValue() + 1));
-	public static final VkIndexType VK_INDEX_TYPE_MAX_ENUM = new VkIndexType("VK_INDEX_TYPE_MAX_ENUM", 5,  0x7FFFFFFF);
 
 
 	/** private ctor */

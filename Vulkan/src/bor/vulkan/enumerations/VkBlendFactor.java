@@ -1,4 +1,5 @@
 /**
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -60,10 +61,6 @@ public class VkBlendFactor extends IntEnum<VkBlendFactor> {
 	public static final VkBlendFactor VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR = new VkBlendFactor("VK_BLEND_FACTOR_ONE_MINUS_SRC1_COLOR", 16, 16);
 	public static final VkBlendFactor VK_BLEND_FACTOR_SRC1_ALPHA = new VkBlendFactor("VK_BLEND_FACTOR_SRC1_ALPHA", 17, 17);
 	public static final VkBlendFactor VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA = new VkBlendFactor("VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA", 18, 18);
-	public static final VkBlendFactor VK_BLEND_FACTOR_BEGIN_RANGE = new VkBlendFactor("VK_BLEND_FACTOR_BEGIN_RANGE", 19, VK_BLEND_FACTOR_ZERO.getValue() );
-	public static final VkBlendFactor VK_BLEND_FACTOR_END_RANGE = new VkBlendFactor("VK_BLEND_FACTOR_END_RANGE", 20, VK_BLEND_FACTOR_ONE_MINUS_SRC1_ALPHA.getValue() );
-	public static final VkBlendFactor VK_BLEND_FACTOR_RANGE_SIZE = new VkBlendFactor("VK_BLEND_FACTOR_RANGE_SIZE", 21, (VK_BLEND_FACTOR_END_RANGE.getValue() - VK_BLEND_FACTOR_BEGIN_RANGE.getValue() + 1));
-	public static final VkBlendFactor VK_BLEND_FACTOR_MAX_ENUM = new VkBlendFactor("VK_BLEND_FACTOR_MAX_ENUM", 22,  0x7FFFFFFF);
 
 
 	/** private ctor */

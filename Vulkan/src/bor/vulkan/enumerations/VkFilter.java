@@ -1,4 +1,5 @@
 /**
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -26,10 +27,6 @@ import bor.enumerable.*;
 public class VkFilter extends IntEnum<VkFilter> {
 	public static final VkFilter VK_FILTER_NEAREST = new VkFilter("VK_FILTER_NEAREST", 0, 0);
 	public static final VkFilter VK_FILTER_LINEAR = new VkFilter("VK_FILTER_LINEAR", 1, 1);
-	public static final VkFilter VK_FILTER_BEGIN_RANGE = new VkFilter("VK_FILTER_BEGIN_RANGE", 2, VK_FILTER_NEAREST.getValue() );
-	public static final VkFilter VK_FILTER_END_RANGE = new VkFilter("VK_FILTER_END_RANGE", 3, VK_FILTER_LINEAR.getValue() );
-	public static final VkFilter VK_FILTER_RANGE_SIZE = new VkFilter("VK_FILTER_RANGE_SIZE", 4, (VK_FILTER_END_RANGE.getValue() - VK_FILTER_BEGIN_RANGE.getValue() + 1));
-	public static final VkFilter VK_FILTER_MAX_ENUM = new VkFilter("VK_FILTER_MAX_ENUM", 5,  0x7FFFFFFF);
 
 
 	/** private ctor */

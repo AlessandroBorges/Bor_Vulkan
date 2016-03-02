@@ -1,4 +1,5 @@
 /**
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -44,10 +45,6 @@ public class VkDescriptorType extends IntEnum<VkDescriptorType> {
 	public static final VkDescriptorType VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC = new VkDescriptorType("VK_DESCRIPTOR_TYPE_UNIFORM_BUFFER_DYNAMIC", 8, 8);
 	public static final VkDescriptorType VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC = new VkDescriptorType("VK_DESCRIPTOR_TYPE_STORAGE_BUFFER_DYNAMIC", 9, 9);
 	public static final VkDescriptorType VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT = new VkDescriptorType("VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT", 10, 10);
-	public static final VkDescriptorType VK_DESCRIPTOR_TYPE_BEGIN_RANGE = new VkDescriptorType("VK_DESCRIPTOR_TYPE_BEGIN_RANGE", 11, VK_DESCRIPTOR_TYPE_SAMPLER.getValue() );
-	public static final VkDescriptorType VK_DESCRIPTOR_TYPE_END_RANGE = new VkDescriptorType("VK_DESCRIPTOR_TYPE_END_RANGE", 12, VK_DESCRIPTOR_TYPE_INPUT_ATTACHMENT.getValue() );
-	public static final VkDescriptorType VK_DESCRIPTOR_TYPE_RANGE_SIZE = new VkDescriptorType("VK_DESCRIPTOR_TYPE_RANGE_SIZE", 13, (VK_DESCRIPTOR_TYPE_END_RANGE.getValue() - VK_DESCRIPTOR_TYPE_BEGIN_RANGE.getValue() + 1));
-	public static final VkDescriptorType VK_DESCRIPTOR_TYPE_MAX_ENUM = new VkDescriptorType("VK_DESCRIPTOR_TYPE_MAX_ENUM", 14,  0x7FFFFFFF);
 
 
 	/** private ctor */

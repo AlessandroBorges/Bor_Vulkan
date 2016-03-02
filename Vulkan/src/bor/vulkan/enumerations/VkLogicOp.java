@@ -1,4 +1,5 @@
 /**
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -54,10 +55,6 @@ public class VkLogicOp extends IntEnum<VkLogicOp> {
 	public static final VkLogicOp VK_LOGIC_OP_OR_INVERTED = new VkLogicOp("VK_LOGIC_OP_OR_INVERTED", 13, 13);
 	public static final VkLogicOp VK_LOGIC_OP_NAND = new VkLogicOp("VK_LOGIC_OP_NAND", 14, 14);
 	public static final VkLogicOp VK_LOGIC_OP_SET = new VkLogicOp("VK_LOGIC_OP_SET", 15, 15);
-	public static final VkLogicOp VK_LOGIC_OP_BEGIN_RANGE = new VkLogicOp("VK_LOGIC_OP_BEGIN_RANGE", 16, VK_LOGIC_OP_CLEAR.getValue() );
-	public static final VkLogicOp VK_LOGIC_OP_END_RANGE = new VkLogicOp("VK_LOGIC_OP_END_RANGE", 17, VK_LOGIC_OP_SET.getValue() );
-	public static final VkLogicOp VK_LOGIC_OP_RANGE_SIZE = new VkLogicOp("VK_LOGIC_OP_RANGE_SIZE", 18, (VK_LOGIC_OP_END_RANGE.getValue() - VK_LOGIC_OP_BEGIN_RANGE.getValue() + 1));
-	public static final VkLogicOp VK_LOGIC_OP_MAX_ENUM = new VkLogicOp("VK_LOGIC_OP_MAX_ENUM", 19,  0x7FFFFFFF);
 
 
 	/** private ctor */

@@ -1,4 +1,5 @@
 /**
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -144,10 +145,6 @@ public class VkStructureType extends IntEnum<VkStructureType> {
 	public static final VkStructureType VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR", 58, 1000008000);
 	public static final VkStructureType VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR", 59, 1000009000);
 	public static final VkStructureType VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT = new VkStructureType("VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT", 60, 1000011000);
-	public static final VkStructureType VK_STRUCTURE_TYPE_BEGIN_RANGE = new VkStructureType("VK_STRUCTURE_TYPE_BEGIN_RANGE", 61, VK_STRUCTURE_TYPE_APPLICATION_INFO.getValue() );
-	public static final VkStructureType VK_STRUCTURE_TYPE_END_RANGE = new VkStructureType("VK_STRUCTURE_TYPE_END_RANGE", 62, VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO.getValue() );
-	public static final VkStructureType VK_STRUCTURE_TYPE_RANGE_SIZE = new VkStructureType("VK_STRUCTURE_TYPE_RANGE_SIZE", 63, (VK_STRUCTURE_TYPE_END_RANGE.getValue() - VK_STRUCTURE_TYPE_BEGIN_RANGE.getValue() + 1));
-	public static final VkStructureType VK_STRUCTURE_TYPE_MAX_ENUM = new VkStructureType("VK_STRUCTURE_TYPE_MAX_ENUM", 64,  0x7FFFFFFF);
 
 
 	/** private ctor */

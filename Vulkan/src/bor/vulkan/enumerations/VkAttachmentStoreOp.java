@@ -1,4 +1,5 @@
 /**
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -26,10 +27,6 @@ import bor.enumerable.*;
 public class VkAttachmentStoreOp extends IntEnum<VkAttachmentStoreOp> {
 	public static final VkAttachmentStoreOp VK_ATTACHMENT_STORE_OP_STORE = new VkAttachmentStoreOp("VK_ATTACHMENT_STORE_OP_STORE", 0, 0);
 	public static final VkAttachmentStoreOp VK_ATTACHMENT_STORE_OP_DONT_CARE = new VkAttachmentStoreOp("VK_ATTACHMENT_STORE_OP_DONT_CARE", 1, 1);
-	public static final VkAttachmentStoreOp VK_ATTACHMENT_STORE_OP_BEGIN_RANGE = new VkAttachmentStoreOp("VK_ATTACHMENT_STORE_OP_BEGIN_RANGE", 2, VK_ATTACHMENT_STORE_OP_STORE.getValue() );
-	public static final VkAttachmentStoreOp VK_ATTACHMENT_STORE_OP_END_RANGE = new VkAttachmentStoreOp("VK_ATTACHMENT_STORE_OP_END_RANGE", 3, VK_ATTACHMENT_STORE_OP_DONT_CARE.getValue() );
-	public static final VkAttachmentStoreOp VK_ATTACHMENT_STORE_OP_RANGE_SIZE = new VkAttachmentStoreOp("VK_ATTACHMENT_STORE_OP_RANGE_SIZE", 4, (VK_ATTACHMENT_STORE_OP_END_RANGE.getValue() - VK_ATTACHMENT_STORE_OP_BEGIN_RANGE.getValue() + 1));
-	public static final VkAttachmentStoreOp VK_ATTACHMENT_STORE_OP_MAX_ENUM = new VkAttachmentStoreOp("VK_ATTACHMENT_STORE_OP_MAX_ENUM", 5,  0x7FFFFFFF);
 
 
 	/** private ctor */

@@ -1,4 +1,5 @@
 /**
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -38,10 +39,6 @@ public class VkCompareOp extends IntEnum<VkCompareOp> {
 	public static final VkCompareOp VK_COMPARE_OP_NOT_EQUAL = new VkCompareOp("VK_COMPARE_OP_NOT_EQUAL", 5, 5);
 	public static final VkCompareOp VK_COMPARE_OP_GREATER_OR_EQUAL = new VkCompareOp("VK_COMPARE_OP_GREATER_OR_EQUAL", 6, 6);
 	public static final VkCompareOp VK_COMPARE_OP_ALWAYS = new VkCompareOp("VK_COMPARE_OP_ALWAYS", 7, 7);
-	public static final VkCompareOp VK_COMPARE_OP_BEGIN_RANGE = new VkCompareOp("VK_COMPARE_OP_BEGIN_RANGE", 8, VK_COMPARE_OP_NEVER.getValue() );
-	public static final VkCompareOp VK_COMPARE_OP_END_RANGE = new VkCompareOp("VK_COMPARE_OP_END_RANGE", 9, VK_COMPARE_OP_ALWAYS.getValue() );
-	public static final VkCompareOp VK_COMPARE_OP_RANGE_SIZE = new VkCompareOp("VK_COMPARE_OP_RANGE_SIZE", 10, (VK_COMPARE_OP_END_RANGE.getValue() - VK_COMPARE_OP_BEGIN_RANGE.getValue() + 1));
-	public static final VkCompareOp VK_COMPARE_OP_MAX_ENUM = new VkCompareOp("VK_COMPARE_OP_MAX_ENUM", 11,  0x7FFFFFFF);
 
 
 	/** private ctor */

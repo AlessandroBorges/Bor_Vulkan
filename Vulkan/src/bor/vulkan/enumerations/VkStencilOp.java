@@ -1,4 +1,5 @@
 /**
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -38,10 +39,6 @@ public class VkStencilOp extends IntEnum<VkStencilOp> {
 	public static final VkStencilOp VK_STENCIL_OP_INVERT = new VkStencilOp("VK_STENCIL_OP_INVERT", 5, 5);
 	public static final VkStencilOp VK_STENCIL_OP_INCREMENT_AND_WRAP = new VkStencilOp("VK_STENCIL_OP_INCREMENT_AND_WRAP", 6, 6);
 	public static final VkStencilOp VK_STENCIL_OP_DECREMENT_AND_WRAP = new VkStencilOp("VK_STENCIL_OP_DECREMENT_AND_WRAP", 7, 7);
-	public static final VkStencilOp VK_STENCIL_OP_BEGIN_RANGE = new VkStencilOp("VK_STENCIL_OP_BEGIN_RANGE", 8, VK_STENCIL_OP_KEEP.getValue() );
-	public static final VkStencilOp VK_STENCIL_OP_END_RANGE = new VkStencilOp("VK_STENCIL_OP_END_RANGE", 9, VK_STENCIL_OP_DECREMENT_AND_WRAP.getValue() );
-	public static final VkStencilOp VK_STENCIL_OP_RANGE_SIZE = new VkStencilOp("VK_STENCIL_OP_RANGE_SIZE", 10, (VK_STENCIL_OP_END_RANGE.getValue() - VK_STENCIL_OP_BEGIN_RANGE.getValue() + 1));
-	public static final VkStencilOp VK_STENCIL_OP_MAX_ENUM = new VkStencilOp("VK_STENCIL_OP_MAX_ENUM", 11,  0x7FFFFFFF);
 
 
 	/** private ctor */

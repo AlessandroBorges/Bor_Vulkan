@@ -1,4 +1,5 @@
 /**
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -42,10 +43,6 @@ public class VkImageLayout extends IntEnum<VkImageLayout> {
 	public static final VkImageLayout VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL = new VkImageLayout("VK_IMAGE_LAYOUT_TRANSFER_DST_OPTIMAL", 7, 7);
 	public static final VkImageLayout VK_IMAGE_LAYOUT_PREINITIALIZED = new VkImageLayout("VK_IMAGE_LAYOUT_PREINITIALIZED", 8, 8);
 	public static final VkImageLayout VK_IMAGE_LAYOUT_PRESENT_SRC_KHR = new VkImageLayout("VK_IMAGE_LAYOUT_PRESENT_SRC_KHR", 9, 1000001002);
-	public static final VkImageLayout VK_IMAGE_LAYOUT_BEGIN_RANGE = new VkImageLayout("VK_IMAGE_LAYOUT_BEGIN_RANGE", 10, VK_IMAGE_LAYOUT_UNDEFINED.getValue() );
-	public static final VkImageLayout VK_IMAGE_LAYOUT_END_RANGE = new VkImageLayout("VK_IMAGE_LAYOUT_END_RANGE", 11, VK_IMAGE_LAYOUT_PREINITIALIZED.getValue() );
-	public static final VkImageLayout VK_IMAGE_LAYOUT_RANGE_SIZE = new VkImageLayout("VK_IMAGE_LAYOUT_RANGE_SIZE", 12, (VK_IMAGE_LAYOUT_END_RANGE.getValue() - VK_IMAGE_LAYOUT_BEGIN_RANGE.getValue() + 1));
-	public static final VkImageLayout VK_IMAGE_LAYOUT_MAX_ENUM = new VkImageLayout("VK_IMAGE_LAYOUT_MAX_ENUM", 13,  0x7FFFFFFF);
 
 
 	/** private ctor */

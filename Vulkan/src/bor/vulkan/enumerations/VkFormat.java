@@ -1,4 +1,5 @@
 /**
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -392,10 +393,6 @@ public class VkFormat extends IntEnum<VkFormat> {
 	public static final VkFormat VK_FORMAT_ASTC_12x10_SRGB_BLOCK = new VkFormat("VK_FORMAT_ASTC_12x10_SRGB_BLOCK", 182, 182);
 	public static final VkFormat VK_FORMAT_ASTC_12x12_UNORM_BLOCK = new VkFormat("VK_FORMAT_ASTC_12x12_UNORM_BLOCK", 183, 183);
 	public static final VkFormat VK_FORMAT_ASTC_12x12_SRGB_BLOCK = new VkFormat("VK_FORMAT_ASTC_12x12_SRGB_BLOCK", 184, 184);
-	public static final VkFormat VK_FORMAT_BEGIN_RANGE = new VkFormat("VK_FORMAT_BEGIN_RANGE", 185, VK_FORMAT_UNDEFINED.getValue() );
-	public static final VkFormat VK_FORMAT_END_RANGE = new VkFormat("VK_FORMAT_END_RANGE", 186, VK_FORMAT_ASTC_12x12_SRGB_BLOCK.getValue() );
-	public static final VkFormat VK_FORMAT_RANGE_SIZE = new VkFormat("VK_FORMAT_RANGE_SIZE", 187, (VK_FORMAT_END_RANGE.getValue() - VK_FORMAT_BEGIN_RANGE.getValue() + 1));
-	public static final VkFormat VK_FORMAT_MAX_ENUM = new VkFormat("VK_FORMAT_MAX_ENUM", 188,  0x7FFFFFFF);
 
 
 	/** private ctor */

@@ -1,4 +1,5 @@
 /**
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -32,10 +33,6 @@ public class VkBlendOp extends IntEnum<VkBlendOp> {
 	public static final VkBlendOp VK_BLEND_OP_REVERSE_SUBTRACT = new VkBlendOp("VK_BLEND_OP_REVERSE_SUBTRACT", 2, 2);
 	public static final VkBlendOp VK_BLEND_OP_MIN = new VkBlendOp("VK_BLEND_OP_MIN", 3, 3);
 	public static final VkBlendOp VK_BLEND_OP_MAX = new VkBlendOp("VK_BLEND_OP_MAX", 4, 4);
-	public static final VkBlendOp VK_BLEND_OP_BEGIN_RANGE = new VkBlendOp("VK_BLEND_OP_BEGIN_RANGE", 5, VK_BLEND_OP_ADD.getValue() );
-	public static final VkBlendOp VK_BLEND_OP_END_RANGE = new VkBlendOp("VK_BLEND_OP_END_RANGE", 6, VK_BLEND_OP_MAX.getValue() );
-	public static final VkBlendOp VK_BLEND_OP_RANGE_SIZE = new VkBlendOp("VK_BLEND_OP_RANGE_SIZE", 7, (VK_BLEND_OP_END_RANGE.getValue() - VK_BLEND_OP_BEGIN_RANGE.getValue() + 1));
-	public static final VkBlendOp VK_BLEND_OP_MAX_ENUM = new VkBlendOp("VK_BLEND_OP_MAX_ENUM", 8,  0x7FFFFFFF);
 
 
 	/** private ctor */

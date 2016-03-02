@@ -1,4 +1,5 @@
 /**
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -40,10 +41,6 @@ public class VkDynamicState extends IntEnum<VkDynamicState> {
 	public static final VkDynamicState VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK = new VkDynamicState("VK_DYNAMIC_STATE_STENCIL_COMPARE_MASK", 6, 6);
 	public static final VkDynamicState VK_DYNAMIC_STATE_STENCIL_WRITE_MASK = new VkDynamicState("VK_DYNAMIC_STATE_STENCIL_WRITE_MASK", 7, 7);
 	public static final VkDynamicState VK_DYNAMIC_STATE_STENCIL_REFERENCE = new VkDynamicState("VK_DYNAMIC_STATE_STENCIL_REFERENCE", 8, 8);
-	public static final VkDynamicState VK_DYNAMIC_STATE_BEGIN_RANGE = new VkDynamicState("VK_DYNAMIC_STATE_BEGIN_RANGE", 9, VK_DYNAMIC_STATE_VIEWPORT.getValue() );
-	public static final VkDynamicState VK_DYNAMIC_STATE_END_RANGE = new VkDynamicState("VK_DYNAMIC_STATE_END_RANGE", 10, VK_DYNAMIC_STATE_STENCIL_REFERENCE.getValue() );
-	public static final VkDynamicState VK_DYNAMIC_STATE_RANGE_SIZE = new VkDynamicState("VK_DYNAMIC_STATE_RANGE_SIZE", 11, (VK_DYNAMIC_STATE_END_RANGE.getValue() - VK_DYNAMIC_STATE_BEGIN_RANGE.getValue() + 1));
-	public static final VkDynamicState VK_DYNAMIC_STATE_MAX_ENUM = new VkDynamicState("VK_DYNAMIC_STATE_MAX_ENUM", 12,  0x7FFFFFFF);
 
 
 	/** private ctor */
