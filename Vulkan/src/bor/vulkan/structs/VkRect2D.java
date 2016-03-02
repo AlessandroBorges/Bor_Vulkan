@@ -1,6 +1,7 @@
 /**
  * Class wrapping Vulkan's VkRect2D struct.
  * 
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -16,8 +17,8 @@ import java.nio.ByteBuffer;
 
 /**
  *  Class for Java-Vulkan integration 
- *  This class is a Java front end for struct VkRect2D 
- *  <h3>ProtoType:</h3>
+ *  This class is a Java front end for struct VkRect2D. 
+ *  <h3>Prototype:</h3>
  * <pre>
  * typedef struct VkRect2D {
  *     VkOffset2D    offset;
@@ -26,7 +27,7 @@ import java.nio.ByteBuffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version 0.8.01
+ * @version Ver. 0.8.01 (beta) 
  */
 public class VkRect2D extends VkStruct {
 	/** TAG of this structure [181]  */
