@@ -30,7 +30,11 @@ public class Util {
      */
     public static final String[] SPECIAL_ENUMS  = {"VkDynamicState","VkSampleMask","VkPipelineStageFlags"};
     
-    public static String LICENSE = " * Licence terms: \n"+
+    public static final String VERSION = "Ver. 0.8.01 (beta)";
+    
+    public static String LICENSE = 
+            " * Bor_Vulkan Project "+ VERSION + "\n" + 
+            " * Licence terms: \n"+
             " * The MIT License (MIT)\n" +
             " * Copyright (c) 2016 Alessandro Borges\n"+
             " * See https://opensource.org/licenses/MIT \n";
@@ -69,22 +73,7 @@ public class Util {
     }
     
     
-    /**
-     * Check is a certain string look is contained in a array of strings.
-     * @param array - array os strings
-     * @param look - the searched string
-     * 
-     * @return true if searched string look is contained in array
-     */
-    public static boolean contains(String[] array, String look){ 
-        look = look.trim();
-        for (String s : array) {
-            if(look.equalsIgnoreCase(s.trim())){
-                return true;
-            }
-        }
-        return false;
-    }
+   
     
     /**
      * 
@@ -280,17 +269,33 @@ public class Util {
      * Check if a given string base contains at least a substring from valuesToTest
      * 
      * @param base string which may or may not contain a substring
-     * @param valuesToTest array of substrings to test
+     * @param subStrings array of substrings to test
      * 
      * @return true if at least one valuesToTest is substring of base
      */
-    public static boolean contains(String base, String[] valuesToTest){
-        for (int i = 0; i < valuesToTest.length; i++) {
-            String test = valuesToTest[i].trim();
-            if(base.contains(test))
+    public static boolean contains(String base, String[] subStrings){
+        for (int i = 0; i < subStrings.length; i++) {
+            String sub = subStrings[i].trim();
+            if(base.contains(sub))
                 return true;
+        }        
+        return false;
+    }
+    
+    /**
+     * Check is a certain string look is contained in a array of strings.
+     * @param array - array os strings
+     * @param exactString - the searched string
+     * 
+     * @return true if searched exactString is contained in array
+     */
+    public static boolean containsString(String[] array, String exactString){ 
+        exactString = exactString.trim();
+        for (String s : array) {
+            if(exactString.equalsIgnoreCase(s.trim())){
+                return true;
+            }
         }
-        
         return false;
     }
     

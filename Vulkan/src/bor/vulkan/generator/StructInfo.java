@@ -36,15 +36,15 @@ public class StructInfo {
     
     private static String MARK = "#MARK#";
     private static String PROTO = "#PROTO#";
-    private static final String DISCLAIMER = "\n"
+    private static String DISCLAIMER = "\n"
                                           + "/**\n"
                                            + " *  Class for Java-Vulkan integration \n"
                                            + " *  " + MARK +" \n" 
-                                           + " *  <h3>ProtoType:</h3>"
+                                           + " *  <h3>Prototype:</h3>"
                                            + "#PROTO#"
                                            + " * \n"
                                            + " * @author Alessandro Borges \n"
-                                           + " * @version 0.8.01\n"
+                                           + " * @version " + Util.VERSION+ " \n"
                                            + " */\n";
 
     public StructInfo() {        
@@ -80,7 +80,7 @@ public class StructInfo {
  
         
         String proto = prototype(true);
-        String extra = "This class is a Java front end for struct " + name;
+        String extra = "This class is a Java front end for struct " + name +".";
         String disclaimer = DISCLAIMER.replace(MARK, extra);
         disclaimer = disclaimer.replace(PROTO, proto);
         String output = new String();
@@ -523,7 +523,7 @@ public class StructInfo {
                 value = value.replace("const", "final");
             }
             if(isPointer && isVk){
-                boolean isSpecialEnum = Util.contains(Util.SPECIAL_ENUMS, base);
+                boolean isSpecialEnum = Util.containsString(Util.SPECIAL_ENUMS, base);
                 if(isSpecialEnum){
                     // fix
 //                    if(!value.contains("Penum")){
@@ -594,20 +594,29 @@ public class StructInfo {
             
             // some KHR Handlers & results
             c2JavaTypes.put("VkResult*", "PInteger");
+          //KHR Android stuff
+            c2JavaTypes.put("ANativeWindow*", "ANativeWindow");
             
+            //KHR MIR stuff
             c2JavaTypes.put("MirConnection*", "MirConnection");
             c2JavaTypes.put("MirSurface*", "MirSurface");
             
+            //KHR Wayland Stuff
             c2JavaTypes.put("struct wl_display*", "WlDisplay");
             c2JavaTypes.put("struct wl_surface*", "WlSurface");
-            c2JavaTypes.put("HINSTANCE", "HINSTANCE");
-            c2JavaTypes.put("HWND", "HWND");
+            
+            //KHR Win32 stuff
+            c2JavaTypes.put("HINSTANCE", "Win32HINSTANCE");
+            c2JavaTypes.put("HWND", "Win32HWND");
+            
+            //KHR XCB stuff
             c2JavaTypes.put("xcb_connection_t*", "XCBconnection");
             c2JavaTypes.put("xcb_window_t", "XCBwindow");
             
-            
-            c2JavaTypes.put("", "");
-            
+            // KHR Xlib stuf
+            c2JavaTypes.put("Display*", "XlibDisplay");
+            c2JavaTypes.put("VisualID", "XlibVisualID");
+            c2JavaTypes.put("Window", "XlibWindow");
             
             
             /*

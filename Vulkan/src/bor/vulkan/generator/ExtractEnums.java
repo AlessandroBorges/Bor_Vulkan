@@ -21,6 +21,14 @@ import java.util.List;
  */
 public class ExtractEnums {
    static String vkh;
+   
+   /**
+    * NON VALID ENUMERATIONS 
+    * @see  item 2.5.1 https://www.khronos.org/registry/vulkan/specs/1.0/xhtml/vkspec.html 
+    */
+   static final String[] REMOVE_ENUM_WITH_SUFIX = {"_BEGIN_RANGE", "_END_RANGE", 
+                                                    "_RANGE_SIZE", "_MAX_ENUM" };
+   
    public static String[] VKObject_ENUMS = {"VkDynamicState", "VkSampleMask","VkPipelineStageFlags"};
    public static String DISCLAIMER = " * ";
    
@@ -128,8 +136,12 @@ public class ExtractEnums {
                 String value = line.substring(pos+1);
                 if(value.endsWith(",")) value = value.replace(",","").trim();
                 if(value.endsWith(";")) value = value.replace(";","").trim();
-                enumNames.add(name);
-                enumValues.add(value);
+                
+                // remove that item names with forbiden prefix
+                if(isValidEnum(name)){
+                    enumNames.add(name);
+                    enumValues.add(value);
+                }
             }
             
         }
@@ -139,6 +151,24 @@ public class ExtractEnums {
         ei.values = enumValues.toArray(new String[size]);
         
         return ei;
+    }
+    
+    
+    /**
+     * 
+     * @param name - enumeration item name
+     * @return false if item name is prefixed with REMOVE_ENUM_WITH_SUFIX
+     * 
+     * @see #REMOVE_ENUM_WITH_SUFIX
+     */
+    private static boolean isValidEnum(String name){       
+        for (String sufix : REMOVE_ENUM_WITH_SUFIX) {
+            if(name.contains(sufix)){
+                return false;
+            }
+        }        
+        return true;
+       
     }
     
     /**
