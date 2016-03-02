@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import bor.vulkan.generator.Util.CLASS_TYPE;
+import static bor.vulkan.generator.JNITypeMap.*;
+
 
 
 /**
@@ -128,8 +131,14 @@ public class StructInfo {
             String field = fields[i];
             String cType = types[i];
             String jType = getJavaType(cType, field, name);
+            
+            CLASS_TYPE type = getType(jType);
+            String typeOut = type==CLASS_TYPE.OTHER ? "" : "[" + type.name().toLowerCase() + "]";
             // Comment 
-           output += tab + "/**\n\t *  " + cType + " \t" + field + " \n\t */ \n";
+           output += tab + "/**\n"
+                         + "\t *  " + cType + " \t" + field + "\t"+ typeOut
+                         + "\t */ \n";
+           
            if(commentOut)
                output += "   // ";
            else
@@ -154,16 +163,20 @@ public class StructInfo {
         ////////////////////////////////////////////////
         /// SET/GET java side
         ////////////////////////////////////////////////
-        output += "\n\t // /////////////////////\n";
-        output += "\t //  SETTERS & GETTERS //\n";
-        output += "\t // /////////////////////\n\n";
+        output += "\n\t ////////////////////////\n";
+        output +=   "\t //  SETTERS & GETTERS //\n";
+        output +=   "\t ////////////////////////\n\n";
         
         for(int i=0; i<this.fields.length; i++){
             String field = fields[i];
             String cType = types[i];
-            String jType = getJavaType(cType, field, name);
+            String jType = getJavaType(cType, field, name);            
+            CLASS_TYPE type = getType(jType);
+            String typeOut = type==CLASS_TYPE.OTHER ? "" : "[" + type.name().toLowerCase() + "]";
+            
+            
             // Comment 
-           output += "\t/**\n\t * Set method for field " + field +
+           output += "\t/**\n\t * Set method for field " + field + "\t" + typeOut +
                           "\n\t * Prototype: " + cType + "  " + field + 
                           "\n\t */ \n";
            
@@ -179,7 +192,7 @@ public class StructInfo {
            // GET
            String getName = field;//"get" + upperCaseField(field);
            //comment
-           output += "\t/**\n\t * get method for field " + field +
+           output += "\t/**\n\t * get method for field " + field + "\t" + typeOut +
                       "\n\t * Prototype: " + cType + "  " + field + 
                       "\n\t */ \n";
            
@@ -206,8 +219,11 @@ public class StructInfo {
             String cType = types[i];
             String jType = getJavaType(cType, field, name);
             String jniType = toJNItype(jType, field);
+            CLASS_TYPE type = getType(jType);
+            String typeOut = type==CLASS_TYPE.OTHER ? "" : "[" + type.name().toLowerCase() + "]";
+            
             // Comment 
-           output += "\t/**\n\t * native Set method for field " + field +
+           output += "\t/**\n\t * native Set method for field " + field +  "\t" + typeOut +
                           "\n\t * Prototype: " + cType + "  " + field + 
                           "\n\t */ \n";
            
@@ -222,7 +238,7 @@ public class StructInfo {
            // GET
            String getName = field;//"get" + upperCaseField(field);
            //comment
-           output += "\t/**\n\t * get method for field " + field +
+           output += "\t/**\n\t * get method for field " + field +  "\t" + typeOut +
                       "\n\t * Prototype: " + cType + "  " + field + 
                       "\n\t */ \n";
            

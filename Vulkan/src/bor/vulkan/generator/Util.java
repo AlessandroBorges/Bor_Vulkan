@@ -39,11 +39,17 @@ public class Util {
             " * Copyright (c) 2016 Alessandro Borges\n"+
             " * See https://opensource.org/licenses/MIT \n";
     
+    /**
+     * To be used to classifie variables
+     * @author Alessandro Borges
+     *
+     */
     public enum CLASS_TYPE{
         VKOBJECT,
         VKHANDLE,
         VKSTRUCT,
-        VKENUM
+        VKENUM, 
+        OTHER
     }
     
     /**
@@ -145,6 +151,27 @@ public class Util {
         classes.addAll(filter(resultSet, clazz));
         
         return classes;        
+    }
+    
+    /**
+     * Get a collection of lines and convert into string
+     * @param lines - collection of lines
+     * @return a single string with all lines in lines.
+     */
+    public static String toText(Collection<String> lines){
+        int len = 0;
+        
+        for (String string2 : lines) {
+            len += string2.length() + 2;
+        }
+        
+        StringBuffer sb = new StringBuffer(len + 64);
+        for (String string2 : lines) {
+            sb.append(string2).append('\n');
+        }
+        sb.append('\n');
+        
+        return sb.toString();
     }
     
     /**
@@ -402,6 +429,24 @@ public class Util {
                 }
             }
         }
+    }//save
+    
+    /**
+     * Read a file
+     * @param basePath
+     * @param fileName
+     * @return
+     */
+    public static List<String> readFile(String basePath, String fileName){
+        Path path = FileSystems.getDefault().getPath(basePath, fileName);
+        List<String> lines = null;
+        try {
+            lines = Files.readAllLines(path, Charset.defaultCharset());
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return lines;
     }
 
 }
