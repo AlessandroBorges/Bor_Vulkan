@@ -29,7 +29,7 @@ import bor.vulkan.khr.VkSwapchainKHR;
  * 
  * After proper usage, you can dispose this handler 
  * by calling {@link #free()} method.<br>
- * Keep in mind that, after calling free(), 
+ * Keep in mind that after calling free() 
  * it will release native pointer and be ready to be garbage collected any time. 
  * 
  *
@@ -98,11 +98,11 @@ public class VkHandlerConcrete implements VkHandle, VkBuffer, VkBufferView, VkCo
         if(null==nativePtr || !nativePtr.isDirect()){
             throw 
             new IllegalArgumentException("ByteBuffer nativePtr must "
-                    + "be not null and direct.");
+                    + "be Direct and not null.");
         }
         this.handle = nativePtr.isReadOnly() ? 
                          nativePtr : 
-                         nativePtr.asReadOnlyBuffer();        
+                         nativePtr.asReadOnlyBuffer();
         this.handle.rewind();
         mapHandlers.put(this, handle);
     }
