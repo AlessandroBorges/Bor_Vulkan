@@ -1,6 +1,7 @@
 /**
  * Class wrapping Vulkan's VkWin32SurfaceCreateInfoKHR struct.
  * 
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -17,8 +18,8 @@ import java.nio.ByteBuffer;
 
 /**
  *  Class for Java-Vulkan integration 
- *  This class is a Java front end for struct VkWin32SurfaceCreateInfoKHR 
- *  <h3>ProtoType:</h3>
+ *  This class is a Java front end for struct VkWin32SurfaceCreateInfoKHR. 
+ *  <h3>Prototype:</h3>
  * <pre>
  * typedef struct VkWin32SurfaceCreateInfoKHR {
  *     VkStructureType                 sType;
@@ -30,7 +31,7 @@ import java.nio.ByteBuffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version 0.8.01
+ * @version Ver. 0.8.01 (beta) 
  */
 public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	/** TAG of this structure [247]  */
@@ -58,12 +59,12 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	/**
 	 *  HINSTANCE 	hinstance 
 	 */ 
-	HINSTANCE 	hinstance;
+	Win32HINSTANCE 	hinstance;
 
 	/**
 	 *  HWND 	hwnd 
 	 */ 
-	HWND 	hwnd;
+	Win32HWND 	hwnd;
 
 	/**
 	 * Ctor
@@ -142,7 +143,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 * Set method for field hinstance
 	 * Prototype: HINSTANCE  hinstance
 	 */ 
-	 public void hinstance(HINSTANCE hinstance){
+	 public void hinstance(Win32HINSTANCE hinstance){
 		 this.hinstance = hinstance;
 		hinstance0(super.ptr, hinstance);
 	 }
@@ -151,7 +152,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field hinstance
 	 * Prototype: HINSTANCE  hinstance
 	 */ 
-	 public HINSTANCE hinstance(){
+	 public Win32HINSTANCE hinstance(){
 		 // return  this.hinstance;
 		 return hinstance0(super.ptr);
 	 }
@@ -160,7 +161,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 * Set method for field hwnd
 	 * Prototype: HWND  hwnd
 	 */ 
-	 public void hwnd(HWND hwnd){
+	 public void hwnd(Win32HWND hwnd){
 		 this.hwnd = hwnd;
 		hwnd0(super.ptr, hwnd);
 	 }
@@ -169,7 +170,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field hwnd
 	 * Prototype: HWND  hwnd
 	 */ 
-	 public HWND hwnd(){
+	 public Win32HWND hwnd(){
 		 // return  this.hwnd;
 		 return hwnd0(super.ptr);
 	 }
@@ -236,7 +237,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 * native Set method for field hinstance
 	 * Prototype: HINSTANCE  hinstance
 	 */ 
-	 private static native void hinstance0(ByteBuffer ptr, HINSTANCE _hinstance);/*
+	 private static native void hinstance0(ByteBuffer ptr, Win32HINSTANCE _hinstance);/*
 		  VkWin32SurfaceCreateInfoKHR _obj = (VkWin32SurfaceCreateInfoKHR)(*ptr);
 		  _obj.hinstance = (HINSTANCE) (_hinstance);
 	  */
@@ -245,16 +246,16 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field hinstance
 	 * Prototype: HINSTANCE  hinstance
 	 */ 
-	 private static native HINSTANCE hinstance0(ByteBuffer ptr);/*
+	 private static native Win32HINSTANCE hinstance0(ByteBuffer ptr);/*
 		  VkWin32SurfaceCreateInfoKHR _obj = (VkWin32SurfaceCreateInfoKHR)(ptr);
-		  return (HINSTANCE) (_obj.HINSTANCE);
+		  return (Win32HINSTANCE) (_obj.HINSTANCE);
 	 */
 
 	/**
 	 * native Set method for field hwnd
 	 * Prototype: HWND  hwnd
 	 */ 
-	 private static native void hwnd0(ByteBuffer ptr, HWND _hwnd);/*
+	 private static native void hwnd0(ByteBuffer ptr, Win32HWND _hwnd);/*
 		  VkWin32SurfaceCreateInfoKHR _obj = (VkWin32SurfaceCreateInfoKHR)(*ptr);
 		  _obj.hwnd = (HWND) (_hwnd);
 	  */
@@ -263,9 +264,9 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field hwnd
 	 * Prototype: HWND  hwnd
 	 */ 
-	 private static native HWND hwnd0(ByteBuffer ptr);/*
+	 private static native Win32HWND hwnd0(ByteBuffer ptr);/*
 		  VkWin32SurfaceCreateInfoKHR _obj = (VkWin32SurfaceCreateInfoKHR)(ptr);
-		  return (HWND) (_obj.HWND);
+		  return (Win32HWND) (_obj.HWND);
 	 */
 
 

@@ -1,6 +1,7 @@
 /**
  * Class wrapping Vulkan's VkDisplaySurfaceCreateInfoKHR struct.
  * 
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -17,8 +18,8 @@ import java.nio.ByteBuffer;
 
 /**
  *  Class for Java-Vulkan integration 
- *  This class is a Java front end for struct VkDisplaySurfaceCreateInfoKHR 
- *  <h3>ProtoType:</h3>
+ *  This class is a Java front end for struct VkDisplaySurfaceCreateInfoKHR. 
+ *  <h3>Prototype:</h3>
  * <pre>
  * typedef struct VkDisplaySurfaceCreateInfoKHR {
  *     VkStructureType                   sType;
@@ -35,7 +36,7 @@ import java.nio.ByteBuffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version 0.8.01
+ * @version Ver. 0.8.01 (beta) 
  */
 public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	/** TAG of this structure [240]  */

@@ -1,6 +1,7 @@
 /**
  * Class wrapping Vulkan's VkPresentInfoKHR struct.
  * 
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -17,8 +18,8 @@ import java.nio.ByteBuffer;
 
 /**
  *  Class for Java-Vulkan integration 
- *  This class is a Java front end for struct VkPresentInfoKHR 
- *  <h3>ProtoType:</h3>
+ *  This class is a Java front end for struct VkPresentInfoKHR. 
+ *  <h3>Prototype:</h3>
  * <pre>
  * typedef struct VkPresentInfoKHR {
  *     VkStructureType          sType;
@@ -33,7 +34,7 @@ import java.nio.ByteBuffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version 0.8.01
+ * @version Ver. 0.8.01 (beta) 
  */
 public class VkPresentInfoKHR extends VkStruct {
 	/** TAG of this structure [233]  */
@@ -81,7 +82,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	/**
 	 *  VkResult* 	pResults 
 	 */ 
-	P<VkResult> 	pResults;
+	PInteger 	pResults;
 
 	/**
 	 * Ctor
@@ -232,7 +233,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 * Set method for field pResults
 	 * Prototype: VkResult*  pResults
 	 */ 
-	 public void pResults(P<VkResult> pResults){
+	 public void pResults(PInteger pResults){
 		 this.pResults = pResults;
 		pResults0(super.ptr, pResults);
 	 }
@@ -241,7 +242,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 * get method for field pResults
 	 * Prototype: VkResult*  pResults
 	 */ 
-	 public P<VkResult> pResults(){
+	 public PInteger pResults(){
 		 // return  this.pResults;
 		 return pResults0(super.ptr);
 	 }
@@ -380,7 +381,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 * native Set method for field pResults
 	 * Prototype: VkResult*  pResults
 	 */ 
-	 private static native void pResults0(ByteBuffer ptr, P<VkResult> _pResults);/*
+	 private static native void pResults0(ByteBuffer ptr, PInteger _pResults);/*
 		  VkPresentInfoKHR _obj = (VkPresentInfoKHR)(*ptr);
 		  _obj.pResults = (VkResult*) (_pResults);
 	  */
@@ -389,9 +390,9 @@ public class VkPresentInfoKHR extends VkStruct {
 	 * get method for field pResults
 	 * Prototype: VkResult*  pResults
 	 */ 
-	 private static native P<VkResult> pResults0(ByteBuffer ptr);/*
+	 private static native PInteger pResults0(ByteBuffer ptr);/*
 		  VkPresentInfoKHR _obj = (VkPresentInfoKHR)(ptr);
-		  return (P<VkResult>) (_obj.VkResult*);
+		  return (PInteger) (_obj.VkResult*);
 	 */
 
 

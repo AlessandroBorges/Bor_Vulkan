@@ -1,6 +1,7 @@
 /**
  * Class wrapping Vulkan's VkXlibSurfaceCreateInfoKHR struct.
  * 
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -17,8 +18,8 @@ import java.nio.ByteBuffer;
 
 /**
  *  Class for Java-Vulkan integration 
- *  This class is a Java front end for struct VkXlibSurfaceCreateInfoKHR 
- *  <h3>ProtoType:</h3>
+ *  This class is a Java front end for struct VkXlibSurfaceCreateInfoKHR. 
+ *  <h3>Prototype:</h3>
  * <pre>
  * typedef struct VkXlibSurfaceCreateInfoKHR {
  *     VkStructureType                sType;
@@ -30,7 +31,7 @@ import java.nio.ByteBuffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version 0.8.01
+ * @version Ver. 0.8.01 (beta) 
  */
 public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	/** TAG of this structure [242]  */
@@ -58,12 +59,12 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	/**
 	 *  Display* 	dpy 
 	 */ 
-	Display* 	dpy;
+	XlibDisplay 	dpy;
 
 	/**
 	 *  Window 	window 
 	 */ 
-	Window 	window;
+	XlibWindow 	window;
 
 	/**
 	 * Ctor
@@ -142,7 +143,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 * Set method for field dpy
 	 * Prototype: Display*  dpy
 	 */ 
-	 public void dpy(Display* dpy){
+	 public void dpy(XlibDisplay dpy){
 		 this.dpy = dpy;
 		dpy0(super.ptr, dpy);
 	 }
@@ -151,7 +152,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field dpy
 	 * Prototype: Display*  dpy
 	 */ 
-	 public Display* dpy(){
+	 public XlibDisplay dpy(){
 		 // return  this.dpy;
 		 return dpy0(super.ptr);
 	 }
@@ -160,7 +161,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 * Set method for field window
 	 * Prototype: Window  window
 	 */ 
-	 public void window(Window window){
+	 public void window(XlibWindow window){
 		 this.window = window;
 		window0(super.ptr, window);
 	 }
@@ -169,7 +170,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field window
 	 * Prototype: Window  window
 	 */ 
-	 public Window window(){
+	 public XlibWindow window(){
 		 // return  this.window;
 		 return window0(super.ptr);
 	 }
@@ -236,7 +237,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 * native Set method for field dpy
 	 * Prototype: Display*  dpy
 	 */ 
-	 private static native void dpy0(ByteBuffer ptr, Display* _dpy);/*
+	 private static native void dpy0(ByteBuffer ptr, XlibDisplay _dpy);/*
 		  VkXlibSurfaceCreateInfoKHR _obj = (VkXlibSurfaceCreateInfoKHR)(*ptr);
 		  _obj.dpy = (Display*) (_dpy);
 	  */
@@ -245,16 +246,16 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field dpy
 	 * Prototype: Display*  dpy
 	 */ 
-	 private static native Display* dpy0(ByteBuffer ptr);/*
+	 private static native XlibDisplay dpy0(ByteBuffer ptr);/*
 		  VkXlibSurfaceCreateInfoKHR _obj = (VkXlibSurfaceCreateInfoKHR)(ptr);
-		  return (Display*) (_obj.Display*);
+		  return (XlibDisplay) (_obj.Display*);
 	 */
 
 	/**
 	 * native Set method for field window
 	 * Prototype: Window  window
 	 */ 
-	 private static native void window0(ByteBuffer ptr, Window _window);/*
+	 private static native void window0(ByteBuffer ptr, XlibWindow _window);/*
 		  VkXlibSurfaceCreateInfoKHR _obj = (VkXlibSurfaceCreateInfoKHR)(*ptr);
 		  _obj.window = (Window) (_window);
 	  */
@@ -263,9 +264,9 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field window
 	 * Prototype: Window  window
 	 */ 
-	 private static native Window window0(ByteBuffer ptr);/*
+	 private static native XlibWindow window0(ByteBuffer ptr);/*
 		  VkXlibSurfaceCreateInfoKHR _obj = (VkXlibSurfaceCreateInfoKHR)(ptr);
-		  return (Window) (_obj.Window);
+		  return (XlibWindow) (_obj.Window);
 	 */
 
 

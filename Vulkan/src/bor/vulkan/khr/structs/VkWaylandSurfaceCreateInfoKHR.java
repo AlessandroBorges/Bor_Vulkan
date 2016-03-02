@@ -1,6 +1,7 @@
 /**
  * Class wrapping Vulkan's VkWaylandSurfaceCreateInfoKHR struct.
  * 
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -17,8 +18,8 @@ import java.nio.ByteBuffer;
 
 /**
  *  Class for Java-Vulkan integration 
- *  This class is a Java front end for struct VkWaylandSurfaceCreateInfoKHR 
- *  <h3>ProtoType:</h3>
+ *  This class is a Java front end for struct VkWaylandSurfaceCreateInfoKHR. 
+ *  <h3>Prototype:</h3>
  * <pre>
  * typedef struct VkWaylandSurfaceCreateInfoKHR {
  *     VkStructureType                   sType;
@@ -30,7 +31,7 @@ import java.nio.ByteBuffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version 0.8.01
+ * @version Ver. 0.8.01 (beta) 
  */
 public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	/** TAG of this structure [244]  */
@@ -58,12 +59,12 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	/**
 	 *  struct wl_display* 	display 
 	 */ 
-	struct wl_display* 	display;
+	WlDisplay 	display;
 
 	/**
 	 *  struct wl_surface* 	surface 
 	 */ 
-	struct wl_surface* 	surface;
+	WlSurface 	surface;
 
 	/**
 	 * Ctor
@@ -142,7 +143,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * Set method for field display
 	 * Prototype: struct wl_display*  display
 	 */ 
-	 public void display(struct wl_display* display){
+	 public void display(WlDisplay display){
 		 this.display = display;
 		display0(super.ptr, display);
 	 }
@@ -151,7 +152,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field display
 	 * Prototype: struct wl_display*  display
 	 */ 
-	 public struct wl_display* display(){
+	 public WlDisplay display(){
 		 // return  this.display;
 		 return display0(super.ptr);
 	 }
@@ -160,7 +161,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * Set method for field surface
 	 * Prototype: struct wl_surface*  surface
 	 */ 
-	 public void surface(struct wl_surface* surface){
+	 public void surface(WlSurface surface){
 		 this.surface = surface;
 		surface0(super.ptr, surface);
 	 }
@@ -169,7 +170,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field surface
 	 * Prototype: struct wl_surface*  surface
 	 */ 
-	 public struct wl_surface* surface(){
+	 public WlSurface surface(){
 		 // return  this.surface;
 		 return surface0(super.ptr);
 	 }
@@ -236,7 +237,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * native Set method for field display
 	 * Prototype: struct wl_display*  display
 	 */ 
-	 private static native void display0(ByteBuffer ptr, struct wl_display* _display);/*
+	 private static native void display0(ByteBuffer ptr, WlDisplay _display);/*
 		  VkWaylandSurfaceCreateInfoKHR _obj = (VkWaylandSurfaceCreateInfoKHR)(*ptr);
 		  _obj.display = (struct wl_display*) (_display);
 	  */
@@ -245,16 +246,16 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field display
 	 * Prototype: struct wl_display*  display
 	 */ 
-	 private static native struct wl_display* display0(ByteBuffer ptr);/*
+	 private static native WlDisplay display0(ByteBuffer ptr);/*
 		  VkWaylandSurfaceCreateInfoKHR _obj = (VkWaylandSurfaceCreateInfoKHR)(ptr);
-		  return (struct wl_display*) (_obj.struct wl_display*);
+		  return (WlDisplay) (_obj.struct wl_display*);
 	 */
 
 	/**
 	 * native Set method for field surface
 	 * Prototype: struct wl_surface*  surface
 	 */ 
-	 private static native void surface0(ByteBuffer ptr, struct wl_surface* _surface);/*
+	 private static native void surface0(ByteBuffer ptr, WlSurface _surface);/*
 		  VkWaylandSurfaceCreateInfoKHR _obj = (VkWaylandSurfaceCreateInfoKHR)(*ptr);
 		  _obj.surface = (struct wl_surface*) (_surface);
 	  */
@@ -263,9 +264,9 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field surface
 	 * Prototype: struct wl_surface*  surface
 	 */ 
-	 private static native struct wl_surface* surface0(ByteBuffer ptr);/*
+	 private static native WlSurface surface0(ByteBuffer ptr);/*
 		  VkWaylandSurfaceCreateInfoKHR _obj = (VkWaylandSurfaceCreateInfoKHR)(ptr);
-		  return (struct wl_surface*) (_obj.struct wl_surface*);
+		  return (WlSurface) (_obj.struct wl_surface*);
 	 */
 
 

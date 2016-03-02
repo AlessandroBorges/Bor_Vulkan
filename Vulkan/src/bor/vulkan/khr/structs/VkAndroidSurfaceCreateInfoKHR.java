@@ -1,6 +1,7 @@
 /**
  * Class wrapping Vulkan's VkAndroidSurfaceCreateInfoKHR struct.
  * 
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -17,8 +18,8 @@ import java.nio.ByteBuffer;
 
 /**
  *  Class for Java-Vulkan integration 
- *  This class is a Java front end for struct VkAndroidSurfaceCreateInfoKHR 
- *  <h3>ProtoType:</h3>
+ *  This class is a Java front end for struct VkAndroidSurfaceCreateInfoKHR. 
+ *  <h3>Prototype:</h3>
  * <pre>
  * typedef struct VkAndroidSurfaceCreateInfoKHR {
  *     VkStructureType                   sType;
@@ -29,7 +30,7 @@ import java.nio.ByteBuffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version 0.8.01
+ * @version Ver. 0.8.01 (beta) 
  */
 public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	/** TAG of this structure [246]  */
@@ -57,7 +58,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	/**
 	 *  ANativeWindow* 	window 
 	 */ 
-	ANativeWindow* 	window;
+	ANativeWindow 	window;
 
 	/**
 	 * Ctor
@@ -136,7 +137,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 * Set method for field window
 	 * Prototype: ANativeWindow*  window
 	 */ 
-	 public void window(ANativeWindow* window){
+	 public void window(ANativeWindow window){
 		 this.window = window;
 		window0(super.ptr, window);
 	 }
@@ -145,7 +146,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field window
 	 * Prototype: ANativeWindow*  window
 	 */ 
-	 public ANativeWindow* window(){
+	 public ANativeWindow window(){
 		 // return  this.window;
 		 return window0(super.ptr);
 	 }
@@ -212,7 +213,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 * native Set method for field window
 	 * Prototype: ANativeWindow*  window
 	 */ 
-	 private static native void window0(ByteBuffer ptr, ANativeWindow* _window);/*
+	 private static native void window0(ByteBuffer ptr, ANativeWindow _window);/*
 		  VkAndroidSurfaceCreateInfoKHR _obj = (VkAndroidSurfaceCreateInfoKHR)(*ptr);
 		  _obj.window = (ANativeWindow*) (_window);
 	  */
@@ -221,9 +222,9 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field window
 	 * Prototype: ANativeWindow*  window
 	 */ 
-	 private static native ANativeWindow* window0(ByteBuffer ptr);/*
+	 private static native ANativeWindow window0(ByteBuffer ptr);/*
 		  VkAndroidSurfaceCreateInfoKHR _obj = (VkAndroidSurfaceCreateInfoKHR)(ptr);
-		  return (ANativeWindow*) (_obj.ANativeWindow*);
+		  return (ANativeWindow) (_obj.ANativeWindow*);
 	 */
 
 

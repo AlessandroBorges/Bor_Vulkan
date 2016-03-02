@@ -1,6 +1,7 @@
 /**
  * Class wrapping Vulkan's VkXcbSurfaceCreateInfoKHR struct.
  * 
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -17,8 +18,8 @@ import java.nio.ByteBuffer;
 
 /**
  *  Class for Java-Vulkan integration 
- *  This class is a Java front end for struct VkXcbSurfaceCreateInfoKHR 
- *  <h3>ProtoType:</h3>
+ *  This class is a Java front end for struct VkXcbSurfaceCreateInfoKHR. 
+ *  <h3>Prototype:</h3>
  * <pre>
  * typedef struct VkXcbSurfaceCreateInfoKHR {
  *     VkStructureType               sType;
@@ -30,7 +31,7 @@ import java.nio.ByteBuffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version 0.8.01
+ * @version Ver. 0.8.01 (beta) 
  */
 public class VkXcbSurfaceCreateInfoKHR extends VkStruct {
 	/** TAG of this structure [243]  */
@@ -58,12 +59,12 @@ public class VkXcbSurfaceCreateInfoKHR extends VkStruct {
 	/**
 	 *  xcb_connection_t* 	connection 
 	 */ 
-	xcb_connection_t* 	connection;
+	XCBconnection 	connection;
 
 	/**
 	 *  xcb_window_t 	window 
 	 */ 
-	xcb_window_t 	window;
+	XCBwindow 	window;
 
 	/**
 	 * Ctor
@@ -142,7 +143,7 @@ public class VkXcbSurfaceCreateInfoKHR extends VkStruct {
 	 * Set method for field connection
 	 * Prototype: xcb_connection_t*  connection
 	 */ 
-	 public void connection(xcb_connection_t* connection){
+	 public void connection(XCBconnection connection){
 		 this.connection = connection;
 		connection0(super.ptr, connection);
 	 }
@@ -151,7 +152,7 @@ public class VkXcbSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field connection
 	 * Prototype: xcb_connection_t*  connection
 	 */ 
-	 public xcb_connection_t* connection(){
+	 public XCBconnection connection(){
 		 // return  this.connection;
 		 return connection0(super.ptr);
 	 }
@@ -160,7 +161,7 @@ public class VkXcbSurfaceCreateInfoKHR extends VkStruct {
 	 * Set method for field window
 	 * Prototype: xcb_window_t  window
 	 */ 
-	 public void window(xcb_window_t window){
+	 public void window(XCBwindow window){
 		 this.window = window;
 		window0(super.ptr, window);
 	 }
@@ -169,7 +170,7 @@ public class VkXcbSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field window
 	 * Prototype: xcb_window_t  window
 	 */ 
-	 public xcb_window_t window(){
+	 public XCBwindow window(){
 		 // return  this.window;
 		 return window0(super.ptr);
 	 }
@@ -236,7 +237,7 @@ public class VkXcbSurfaceCreateInfoKHR extends VkStruct {
 	 * native Set method for field connection
 	 * Prototype: xcb_connection_t*  connection
 	 */ 
-	 private static native void connection0(ByteBuffer ptr, xcb_connection_t* _connection);/*
+	 private static native void connection0(ByteBuffer ptr, XCBconnection _connection);/*
 		  VkXcbSurfaceCreateInfoKHR _obj = (VkXcbSurfaceCreateInfoKHR)(*ptr);
 		  _obj.connection = (xcb_connection_t*) (_connection);
 	  */
@@ -245,16 +246,16 @@ public class VkXcbSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field connection
 	 * Prototype: xcb_connection_t*  connection
 	 */ 
-	 private static native xcb_connection_t* connection0(ByteBuffer ptr);/*
+	 private static native XCBconnection connection0(ByteBuffer ptr);/*
 		  VkXcbSurfaceCreateInfoKHR _obj = (VkXcbSurfaceCreateInfoKHR)(ptr);
-		  return (xcb_connection_t*) (_obj.xcb_connection_t*);
+		  return (XCBconnection) (_obj.xcb_connection_t*);
 	 */
 
 	/**
 	 * native Set method for field window
 	 * Prototype: xcb_window_t  window
 	 */ 
-	 private static native void window0(ByteBuffer ptr, xcb_window_t _window);/*
+	 private static native void window0(ByteBuffer ptr, XCBwindow _window);/*
 		  VkXcbSurfaceCreateInfoKHR _obj = (VkXcbSurfaceCreateInfoKHR)(*ptr);
 		  _obj.window = (xcb_window_t) (_window);
 	  */
@@ -263,9 +264,9 @@ public class VkXcbSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field window
 	 * Prototype: xcb_window_t  window
 	 */ 
-	 private static native xcb_window_t window0(ByteBuffer ptr);/*
+	 private static native XCBwindow window0(ByteBuffer ptr);/*
 		  VkXcbSurfaceCreateInfoKHR _obj = (VkXcbSurfaceCreateInfoKHR)(ptr);
-		  return (xcb_window_t) (_obj.xcb_window_t);
+		  return (XCBwindow) (_obj.xcb_window_t);
 	 */
 
 

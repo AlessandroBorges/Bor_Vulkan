@@ -1,6 +1,7 @@
 /**
  * Class wrapping Vulkan's VkMirSurfaceCreateInfoKHR struct.
  * 
+ * Bor_Vulkan Project Ver. 0.8.01 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -17,8 +18,8 @@ import java.nio.ByteBuffer;
 
 /**
  *  Class for Java-Vulkan integration 
- *  This class is a Java front end for struct VkMirSurfaceCreateInfoKHR 
- *  <h3>ProtoType:</h3>
+ *  This class is a Java front end for struct VkMirSurfaceCreateInfoKHR. 
+ *  <h3>Prototype:</h3>
  * <pre>
  * typedef struct VkMirSurfaceCreateInfoKHR {
  *     VkStructureType               sType;
@@ -30,7 +31,7 @@ import java.nio.ByteBuffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version 0.8.01
+ * @version Ver. 0.8.01 (beta) 
  */
 public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	/** TAG of this structure [245]  */
@@ -58,12 +59,12 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	/**
 	 *  MirConnection* 	connection 
 	 */ 
-	MirConnection* 	connection;
+	MirConnection 	connection;
 
 	/**
 	 *  MirSurface* 	mirSurface 
 	 */ 
-	MirSurface* 	mirSurface;
+	MirSurface 	mirSurface;
 
 	/**
 	 * Ctor
@@ -142,7 +143,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 * Set method for field connection
 	 * Prototype: MirConnection*  connection
 	 */ 
-	 public void connection(MirConnection* connection){
+	 public void connection(MirConnection connection){
 		 this.connection = connection;
 		connection0(super.ptr, connection);
 	 }
@@ -151,7 +152,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field connection
 	 * Prototype: MirConnection*  connection
 	 */ 
-	 public MirConnection* connection(){
+	 public MirConnection connection(){
 		 // return  this.connection;
 		 return connection0(super.ptr);
 	 }
@@ -160,7 +161,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 * Set method for field mirSurface
 	 * Prototype: MirSurface*  mirSurface
 	 */ 
-	 public void mirSurface(MirSurface* mirSurface){
+	 public void mirSurface(MirSurface mirSurface){
 		 this.mirSurface = mirSurface;
 		mirSurface0(super.ptr, mirSurface);
 	 }
@@ -169,7 +170,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field mirSurface
 	 * Prototype: MirSurface*  mirSurface
 	 */ 
-	 public MirSurface* mirSurface(){
+	 public MirSurface mirSurface(){
 		 // return  this.mirSurface;
 		 return mirSurface0(super.ptr);
 	 }
@@ -236,7 +237,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 * native Set method for field connection
 	 * Prototype: MirConnection*  connection
 	 */ 
-	 private static native void connection0(ByteBuffer ptr, MirConnection* _connection);/*
+	 private static native void connection0(ByteBuffer ptr, MirConnection _connection);/*
 		  VkMirSurfaceCreateInfoKHR _obj = (VkMirSurfaceCreateInfoKHR)(*ptr);
 		  _obj.connection = (MirConnection*) (_connection);
 	  */
@@ -245,16 +246,16 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field connection
 	 * Prototype: MirConnection*  connection
 	 */ 
-	 private static native MirConnection* connection0(ByteBuffer ptr);/*
+	 private static native MirConnection connection0(ByteBuffer ptr);/*
 		  VkMirSurfaceCreateInfoKHR _obj = (VkMirSurfaceCreateInfoKHR)(ptr);
-		  return (MirConnection*) (_obj.MirConnection*);
+		  return (MirConnection) (_obj.MirConnection*);
 	 */
 
 	/**
 	 * native Set method for field mirSurface
 	 * Prototype: MirSurface*  mirSurface
 	 */ 
-	 private static native void mirSurface0(ByteBuffer ptr, MirSurface* _mirSurface);/*
+	 private static native void mirSurface0(ByteBuffer ptr, MirSurface _mirSurface);/*
 		  VkMirSurfaceCreateInfoKHR _obj = (VkMirSurfaceCreateInfoKHR)(*ptr);
 		  _obj.mirSurface = (MirSurface*) (_mirSurface);
 	  */
@@ -263,9 +264,9 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 * get method for field mirSurface
 	 * Prototype: MirSurface*  mirSurface
 	 */ 
-	 private static native MirSurface* mirSurface0(ByteBuffer ptr);/*
+	 private static native MirSurface mirSurface0(ByteBuffer ptr);/*
 		  VkMirSurfaceCreateInfoKHR _obj = (VkMirSurfaceCreateInfoKHR)(ptr);
-		  return (MirSurface*) (_obj.MirSurface*);
+		  return (MirSurface) (_obj.MirSurface*);
 	 */
 
 
