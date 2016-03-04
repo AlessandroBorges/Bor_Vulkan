@@ -210,9 +210,9 @@ public class StructInfo {
         ////////////////////////////////////////////////
         /// SET/GET native side
         ////////////////////////////////////////////////
-        output += "\n\t // ////////////////////////////////\n";
-        output += "\t // native SETTERS & GETTERS //\n";
-        output += "\t // ////////////////////////////////\n";
+        output += "\n\t //////////////////////////////////\n";
+        output +=   "\t // native SETTERS & GETTERS    //\n";
+        output +=   "\t /////////////////////////////////\n";
         
         for(int i=0; i<this.fields.length; i++){
             String field = fields[i];
@@ -223,7 +223,7 @@ public class StructInfo {
             String typeOut = type==CLASS_TYPE.OTHER ? "" : "[" + type.name().toLowerCase() + "]";
             
             // Comment 
-           output += "\t/**\n\t * native Set method for field " + field +  "\t" + typeOut +
+           output += "\t/**\n\t * native SET method for field " + field +  "\t" + typeOut +
                           "\n\t * Prototype: " + cType + "  " + field + 
                           "\n\t */ \n";
            
@@ -238,7 +238,7 @@ public class StructInfo {
            // GET
            String getName = field;//"get" + upperCaseField(field);
            //comment
-           output += "\t/**\n\t * get method for field " + field +  "\t" + typeOut +
+           output += "\t/**\n\t * native GET method for field " + field +  "\t" + typeOut +
                       "\n\t * Prototype: " + cType + "  " + field + 
                       "\n\t */ \n";
            
@@ -554,9 +554,11 @@ public class StructInfo {
             }
             return value;
         }else{
+            /*
             System.err.println("Failed to get JavaType for \t\""+ cType+ 
                     "\"\t in field:\t\"" + field +
                     "\"\t at class:\""+ source+"\"");
+                    */
         }
         
         // complex types

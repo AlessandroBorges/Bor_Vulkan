@@ -48,8 +48,17 @@ public class Util {
         VKOBJECT,
         VKHANDLE,
         VKSTRUCT,
-        VKENUM, 
-        OTHER
+        VKENUM,
+        BYTE, BYTE_ARRAY,
+        INT, INT_ARRAY,
+        LONG, LONG_ARRAY,
+        FLOAT, FLOAT_ARRAY,
+        
+        BOOLEAN,
+        STRING, STRING_ARR,
+        BUFFER, BYTEBUFFER,
+        P,
+        OTHER, PINTEGER, PENUM  
     }
     
     /**

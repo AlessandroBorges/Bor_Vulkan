@@ -9,6 +9,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 import bor.vulkan.generator.Util.CLASS_TYPE;
+import sun.security.x509.IssuingDistributionPointExtension;
 /**
  * <pre>
  * Class to help mapping JNI Types.
@@ -159,6 +160,78 @@ public class JNITypeMap {
         return vkObjectNames.contains(name);
     }
     
+    public static boolean isString(String name){
+        name = check(name);
+        return name.equals("String");
+    }
+    
+    public static boolean isStringArray(String name){
+        name = check(name);
+        return name.equals("String[]");
+    }
+    
+    public static boolean isInt(String name){
+        name = check(name);
+        return name.equals("int");
+    }
+    
+    public static boolean isFloat(String name){
+        name = check(name);
+        return name.equals("float");
+    }
+    
+    public static boolean isFloatArray(String name){
+        name = check(name);
+        return name.equals("float[]");
+    }
+    
+    public static boolean isIntArray(String name){
+        name = check(name);
+        return name.equals("int[]");
+    }
+    
+    public static boolean isLong(String name){
+        name = check(name);
+        return name.equals("long");
+    }
+    
+    public static boolean isBuffer(String name){
+        name = check(name);
+        return name.equals("java.nio.Buffer");
+    }
+    
+    public static boolean isByteBuffer(String name){
+        name = check(name);
+        return name.equals("java.nio.ByteBuffer") || name.equals("ByteBuffer") ;
+    }
+    
+    public static boolean isBoolean(String name){
+        name = check(name);
+        return name.equals("boolean");
+    }
+    
+    public static boolean isByteArray(String name){
+        name = check(name);
+        return name.equals("byte[]");
+    }
+    
+    public static boolean isByte(String name){
+        name = check(name);
+        return name.equals("byte");
+    }
+    
+    public static boolean isPointer(String name){
+        name = check(name);
+        return name.startsWith("P<");
+    }
+    
+    public static boolean isPInteger(String name){
+        name = check(name);
+        return name.startsWith("PInteger");
+    }
+    
+    
+    
     /**
      * Check if name is an VkObject
      * @param name - object name
@@ -187,6 +260,64 @@ public class JNITypeMap {
             return CLASS_TYPE.VKOBJECT;
         }
         
+        if(isBoolean(name)){
+            return CLASS_TYPE.BOOLEAN;
+        }
+        
+        if(isByte(name)){
+            return CLASS_TYPE.BYTE;
+        }
+        
+        if(isByteArray(name)){
+            return CLASS_TYPE.BYTE_ARRAY;
+        }
+        
+        if(isInt(name)){
+            return CLASS_TYPE.INT;
+        }
+        
+        if(isIntArray(name)){
+            return CLASS_TYPE.INT_ARRAY;
+        }
+        
+        if(isLong(name)){
+            return CLASS_TYPE.LONG;
+        }
+        if(isFloat(name)){
+            return CLASS_TYPE.FLOAT;
+        }     
+        
+        
+        if(isFloatArray(name)){
+            return CLASS_TYPE.FLOAT_ARRAY;
+        }
+        
+        if(isBuffer(name)){
+            return CLASS_TYPE.BUFFER;
+        }
+        
+        if(isByteBuffer(name)){
+            return CLASS_TYPE.BYTEBUFFER;
+        }
+        
+        
+        if(isString(name)){
+            return CLASS_TYPE.STRING;
+        }
+        
+        if(isStringArray(name)){
+            return CLASS_TYPE.STRING_ARR;
+        }
+        
+        if(isPointer(name)){
+            return CLASS_TYPE.P;
+        }
+        
+        if(isPInteger(name)){
+            return CLASS_TYPE.PINTEGER;
+        }
+        
+        System.err.println("\t\t GetType OTHER " + name);
         return CLASS_TYPE.OTHER;
         
     }

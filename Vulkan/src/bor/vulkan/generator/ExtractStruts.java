@@ -14,7 +14,7 @@ import static bor.vulkan.generator.Util.*;
 
 public class ExtractStruts {
     
-    private static final boolean saveFile = true;
+    private static final boolean saveFile = false;
     private static final boolean printID = false;
     private static final boolean printStruct = false;
     
