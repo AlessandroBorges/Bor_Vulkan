@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkImageFormatProperties. 
  *  <h3>Prototype:</h3>
@@ -33,31 +34,36 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkImageFormatProperties extends VkStruct {
-	/** TAG of this structure [131]  */
+	/** TAG of this structure [7]  */
 	 private static final String TAG = "VkImageFormatProperties";
 
-	/** ID of this structure [131]  */
+	/** ID of this structure [7]  */
 	 public static final int TAG_ID = VKIMAGEFORMATPROPERTIES_ID;
 
 	 // fields //
 	/**
-	 *  VkExtent3D 	maxExtent	[vkstruct]	 */ 
+	 *  VkExtent3D 	maxExtent	[vkstruct]
+	 */ 
 	VkExtent3D 	maxExtent;
 
 	/**
-	 *  uint32_t 	maxMipLevels		 */ 
+	 *  uint32_t 	maxMipLevels	[int]
+	 */ 
 	int 	maxMipLevels;
 
 	/**
-	 *  uint32_t 	maxArrayLayers		 */ 
+	 *  uint32_t 	maxArrayLayers	[int]
+	 */ 
 	int 	maxArrayLayers;
 
 	/**
-	 *  VkSampleCountFlags 	sampleCounts		 */ 
+	 *  VkSampleCountFlags 	sampleCounts	[int]
+	 */ 
 	int 	sampleCounts;
 
 	/**
-	 *  VkDeviceSize 	maxResourceSize		 */ 
+	 *  VkDeviceSize 	maxResourceSize	[long]
+	 */ 
 	long 	maxResourceSize;
 
 	/**
@@ -65,6 +71,23 @@ public class VkImageFormatProperties extends VkStruct {
 	 */
 	public VkImageFormatProperties(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkImageFormatProperties(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkImageFormatProperties(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -75,12 +98,24 @@ public class VkImageFormatProperties extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkImageFormatProperties> createNullPointer(){
+	        P<VkImageFormatProperties> p = new  P<VkImageFormatProperties>(new VkImageFormatProperties());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field maxExtent	[vkstruct]
+	 * Set method for field maxExtent	[vkstruct]<br>
 	 * Prototype: VkExtent3D  maxExtent
 	 */ 
 	 public void maxExtent(VkExtent3D maxExtent){
@@ -89,7 +124,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxExtent	[vkstruct]
+	 * get method for field maxExtent	[vkstruct]<br>
 	 * Prototype: VkExtent3D  maxExtent
 	 */ 
 	 public VkExtent3D maxExtent(){
@@ -98,7 +133,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxMipLevels	
+	 * Set method for field maxMipLevels	[int]<br>
 	 * Prototype: uint32_t  maxMipLevels
 	 */ 
 	 public void maxMipLevels(int maxMipLevels){
@@ -107,7 +142,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxMipLevels	
+	 * get method for field maxMipLevels	[int]<br>
 	 * Prototype: uint32_t  maxMipLevels
 	 */ 
 	 public int maxMipLevels(){
@@ -116,7 +151,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxArrayLayers	
+	 * Set method for field maxArrayLayers	[int]<br>
 	 * Prototype: uint32_t  maxArrayLayers
 	 */ 
 	 public void maxArrayLayers(int maxArrayLayers){
@@ -125,7 +160,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxArrayLayers	
+	 * get method for field maxArrayLayers	[int]<br>
 	 * Prototype: uint32_t  maxArrayLayers
 	 */ 
 	 public int maxArrayLayers(){
@@ -134,7 +169,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field sampleCounts	
+	 * Set method for field sampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampleCounts
 	 */ 
 	 public void sampleCounts(int sampleCounts){
@@ -143,7 +178,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sampleCounts	
+	 * get method for field sampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampleCounts
 	 */ 
 	 public int sampleCounts(){
@@ -152,7 +187,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxResourceSize	
+	 * Set method for field maxResourceSize	[long]<br>
 	 * Prototype: VkDeviceSize  maxResourceSize
 	 */ 
 	 public void maxResourceSize(long maxResourceSize){
@@ -161,7 +196,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxResourceSize	
+	 * get method for field maxResourceSize	[long]<br>
 	 * Prototype: VkDeviceSize  maxResourceSize
 	 */ 
 	 public long maxResourceSize(){
@@ -170,11 +205,11 @@ public class VkImageFormatProperties extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field maxExtent	[vkstruct]
+	 * native SET method for field maxExtent	[vkstruct]<br>
 	 * Prototype: VkExtent3D  maxExtent
 	 */ 
 	 private static native void maxExtent0(ByteBuffer ptr, VkExtent3D _maxExtent);/*
@@ -183,7 +218,7 @@ public class VkImageFormatProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxExtent	[vkstruct]
+	 * native GET method for field maxExtent	[vkstruct]<br>
 	 * Prototype: VkExtent3D  maxExtent
 	 */ 
 	 private static native VkExtent3D maxExtent0(ByteBuffer ptr);/*
@@ -192,7 +227,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxMipLevels	
+	 * native SET method for field maxMipLevels	[int]<br>
 	 * Prototype: uint32_t  maxMipLevels
 	 */ 
 	 private static native void maxMipLevels0(ByteBuffer ptr, int _maxMipLevels);/*
@@ -201,7 +236,7 @@ public class VkImageFormatProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxMipLevels	
+	 * native GET method for field maxMipLevels	[int]<br>
 	 * Prototype: uint32_t  maxMipLevels
 	 */ 
 	 private static native int maxMipLevels0(ByteBuffer ptr);/*
@@ -210,7 +245,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxArrayLayers	
+	 * native SET method for field maxArrayLayers	[int]<br>
 	 * Prototype: uint32_t  maxArrayLayers
 	 */ 
 	 private static native void maxArrayLayers0(ByteBuffer ptr, int _maxArrayLayers);/*
@@ -219,7 +254,7 @@ public class VkImageFormatProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxArrayLayers	
+	 * native GET method for field maxArrayLayers	[int]<br>
 	 * Prototype: uint32_t  maxArrayLayers
 	 */ 
 	 private static native int maxArrayLayers0(ByteBuffer ptr);/*
@@ -228,7 +263,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field sampleCounts	
+	 * native SET method for field sampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampleCounts
 	 */ 
 	 private static native void sampleCounts0(ByteBuffer ptr, int _sampleCounts);/*
@@ -237,7 +272,7 @@ public class VkImageFormatProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sampleCounts	
+	 * native GET method for field sampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampleCounts
 	 */ 
 	 private static native int sampleCounts0(ByteBuffer ptr);/*
@@ -246,7 +281,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxResourceSize	
+	 * native SET method for field maxResourceSize	[long]<br>
 	 * Prototype: VkDeviceSize  maxResourceSize
 	 */ 
 	 private static native void maxResourceSize0(ByteBuffer ptr, long _maxResourceSize);/*
@@ -255,7 +290,7 @@ public class VkImageFormatProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxResourceSize	
+	 * native GET method for field maxResourceSize	[long]<br>
 	 * Prototype: VkDeviceSize  maxResourceSize
 	 */ 
 	 private static native long maxResourceSize0(ByteBuffer ptr);/*

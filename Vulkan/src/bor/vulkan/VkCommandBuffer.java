@@ -1,5 +1,5 @@
 package bor.vulkan;
 
-public interface VkCommandBuffer extends VkHandle {
+public interface VkCommandBuffer extends VkHandleInterface {
 
 }

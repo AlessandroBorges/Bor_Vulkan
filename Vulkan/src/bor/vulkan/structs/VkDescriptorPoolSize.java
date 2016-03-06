@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkDescriptorPoolSize. 
  *  <h3>Prototype:</h3>
@@ -30,19 +31,21 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDescriptorPoolSize extends VkStruct {
-	/** TAG of this structure [197]  */
+	/** TAG of this structure [73]  */
 	 private static final String TAG = "VkDescriptorPoolSize";
 
-	/** ID of this structure [197]  */
+	/** ID of this structure [73]  */
 	 public static final int TAG_ID = VKDESCRIPTORPOOLSIZE_ID;
 
 	 // fields //
 	/**
-	 *  VkDescriptorType 	type	[vkenum]	 */ 
+	 *  VkDescriptorType 	type	[vkenum]
+	 */ 
 	VkDescriptorType 	type;
 
 	/**
-	 *  uint32_t 	descriptorCount		 */ 
+	 *  uint32_t 	descriptorCount	[int]
+	 */ 
 	int 	descriptorCount;
 
 	/**
@@ -50,6 +53,23 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 */
 	public VkDescriptorPoolSize(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkDescriptorPoolSize(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkDescriptorPoolSize(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -60,12 +80,24 @@ public class VkDescriptorPoolSize extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkDescriptorPoolSize> createNullPointer(){
+	        P<VkDescriptorPoolSize> p = new  P<VkDescriptorPoolSize>(new VkDescriptorPoolSize());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field type	[vkenum]
+	 * Set method for field type	[vkenum]<br>
 	 * Prototype: VkDescriptorType  type
 	 */ 
 	 public void type(VkDescriptorType type){
@@ -74,7 +106,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 }
 
 	/**
-	 * get method for field type	[vkenum]
+	 * get method for field type	[vkenum]<br>
 	 * Prototype: VkDescriptorType  type
 	 */ 
 	 public VkDescriptorType type(){
@@ -83,7 +115,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field descriptorCount	
+	 * Set method for field descriptorCount	[int]<br>
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 public void descriptorCount(int descriptorCount){
@@ -92,7 +124,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 }
 
 	/**
-	 * get method for field descriptorCount	
+	 * get method for field descriptorCount	[int]<br>
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 public int descriptorCount(){
@@ -101,11 +133,11 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field type	[vkenum]
+	 * native SET method for field type	[vkenum]<br>
 	 * Prototype: VkDescriptorType  type
 	 */ 
 	 private static native void type0(ByteBuffer ptr, VkDescriptorType _type);/*
@@ -114,7 +146,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	  */
 
 	/**
-	 * get method for field type	[vkenum]
+	 * native GET method for field type	[vkenum]<br>
 	 * Prototype: VkDescriptorType  type
 	 */ 
 	 private static native VkDescriptorType type0(ByteBuffer ptr);/*
@@ -123,7 +155,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field descriptorCount	
+	 * native SET method for field descriptorCount	[int]<br>
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 private static native void descriptorCount0(ByteBuffer ptr, int _descriptorCount);/*
@@ -132,7 +164,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	  */
 
 	/**
-	 * get method for field descriptorCount	
+	 * native GET method for field descriptorCount	[int]<br>
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 private static native int descriptorCount0(ByteBuffer ptr);/*

@@ -7,6 +7,6 @@ package bor.vulkan;
  * @author Alessandro Borges
  *
  */
-public interface VkSampler extends VkHandle {
+public interface VkSampler extends VkHandleInterface {
 
 }

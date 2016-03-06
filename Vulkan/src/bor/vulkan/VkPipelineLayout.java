@@ -7,6 +7,6 @@ package bor.vulkan;
  * @author Alessandro Borges
  *
  */
-public interface VkPipelineLayout extends VkHandle {
+public interface VkPipelineLayout extends VkHandleInterface {
 
 }

@@ -17,6 +17,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkDisplayModePropertiesKHR. 
  *  <h3>Prototype:</h3>
@@ -31,19 +32,21 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDisplayModePropertiesKHR extends VkStruct {
-	/** TAG of this structure [236]  */
+	/** TAG of this structure [112]  */
 	 private static final String TAG = "VkDisplayModePropertiesKHR";
 
-	/** ID of this structure [236]  */
+	/** ID of this structure [112]  */
 	 public static final int TAG_ID = VKDISPLAYMODEPROPERTIESKHR_ID;
 
 	 // fields //
 	/**
-	 *  VkDisplayModeKHR 	displayMode	[vkhandle]	 */ 
+	 *  VkDisplayModeKHR 	displayMode	[vkhandle]
+	 */ 
 	VkDisplayModeKHR 	displayMode;
 
 	/**
-	 *  VkDisplayModeParametersKHR 	parameters	[vkstruct]	 */ 
+	 *  VkDisplayModeParametersKHR 	parameters	[vkstruct]
+	 */ 
 	VkDisplayModeParametersKHR 	parameters;
 
 	/**
@@ -51,6 +54,23 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 */
 	public VkDisplayModePropertiesKHR(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkDisplayModePropertiesKHR(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkDisplayModePropertiesKHR(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -61,12 +81,24 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkDisplayModePropertiesKHR> createNullPointer(){
+	        P<VkDisplayModePropertiesKHR> p = new  P<VkDisplayModePropertiesKHR>(new VkDisplayModePropertiesKHR());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field displayMode	[vkhandle]
+	 * Set method for field displayMode	[vkhandle]<br>
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
 	 public void displayMode(VkDisplayModeKHR displayMode){
@@ -75,7 +107,7 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field displayMode	[vkhandle]
+	 * get method for field displayMode	[vkhandle]<br>
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
 	 public VkDisplayModeKHR displayMode(){
@@ -84,7 +116,7 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field parameters	[vkstruct]
+	 * Set method for field parameters	[vkstruct]<br>
 	 * Prototype: VkDisplayModeParametersKHR  parameters
 	 */ 
 	 public void parameters(VkDisplayModeParametersKHR parameters){
@@ -93,7 +125,7 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field parameters	[vkstruct]
+	 * get method for field parameters	[vkstruct]<br>
 	 * Prototype: VkDisplayModeParametersKHR  parameters
 	 */ 
 	 public VkDisplayModeParametersKHR parameters(){
@@ -102,11 +134,11 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field displayMode	[vkhandle]
+	 * native SET method for field displayMode	[vkhandle]<br>
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
 	 private static native void displayMode0(ByteBuffer ptr, VkDisplayModeKHR _displayMode);/*
@@ -115,7 +147,7 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field displayMode	[vkhandle]
+	 * native GET method for field displayMode	[vkhandle]<br>
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
 	 private static native VkDisplayModeKHR displayMode0(ByteBuffer ptr);/*
@@ -124,7 +156,7 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field parameters	[vkstruct]
+	 * native SET method for field parameters	[vkstruct]<br>
 	 * Prototype: VkDisplayModeParametersKHR  parameters
 	 */ 
 	 private static native void parameters0(ByteBuffer ptr, VkDisplayModeParametersKHR _parameters);/*
@@ -133,7 +165,7 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field parameters	[vkstruct]
+	 * native GET method for field parameters	[vkstruct]<br>
 	 * Prototype: VkDisplayModeParametersKHR  parameters
 	 */ 
 	 private static native VkDisplayModeParametersKHR parameters0(ByteBuffer ptr);/*

@@ -1,5 +1,5 @@
 package bor.vulkan;
 
-public interface VkDevice extends VkHandle {
+public interface VkDevice extends VkHandleInterface {
 
 }

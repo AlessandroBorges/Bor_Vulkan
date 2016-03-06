@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPhysicalDeviceLimits. 
  *  <h3>Prototype:</h3>
@@ -134,435 +135,541 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPhysicalDeviceLimits extends VkStruct {
-	/** TAG of this structure [132]  */
+	/** TAG of this structure [8]  */
 	 private static final String TAG = "VkPhysicalDeviceLimits";
 
-	/** ID of this structure [132]  */
+	/** ID of this structure [8]  */
 	 public static final int TAG_ID = VKPHYSICALDEVICELIMITS_ID;
 
 	 // fields //
 	/**
-	 *  uint32_t 	maxImageDimension1D		 */ 
+	 *  uint32_t 	maxImageDimension1D	[int]
+	 */ 
 	int 	maxImageDimension1D;
 
 	/**
-	 *  uint32_t 	maxImageDimension2D		 */ 
+	 *  uint32_t 	maxImageDimension2D	[int]
+	 */ 
 	int 	maxImageDimension2D;
 
 	/**
-	 *  uint32_t 	maxImageDimension3D		 */ 
+	 *  uint32_t 	maxImageDimension3D	[int]
+	 */ 
 	int 	maxImageDimension3D;
 
 	/**
-	 *  uint32_t 	maxImageDimensionCube		 */ 
+	 *  uint32_t 	maxImageDimensionCube	[int]
+	 */ 
 	int 	maxImageDimensionCube;
 
 	/**
-	 *  uint32_t 	maxImageArrayLayers		 */ 
+	 *  uint32_t 	maxImageArrayLayers	[int]
+	 */ 
 	int 	maxImageArrayLayers;
 
 	/**
-	 *  uint32_t 	maxTexelBufferElements		 */ 
+	 *  uint32_t 	maxTexelBufferElements	[int]
+	 */ 
 	int 	maxTexelBufferElements;
 
 	/**
-	 *  uint32_t 	maxUniformBufferRange		 */ 
+	 *  uint32_t 	maxUniformBufferRange	[int]
+	 */ 
 	int 	maxUniformBufferRange;
 
 	/**
-	 *  uint32_t 	maxStorageBufferRange		 */ 
+	 *  uint32_t 	maxStorageBufferRange	[int]
+	 */ 
 	int 	maxStorageBufferRange;
 
 	/**
-	 *  uint32_t 	maxPushConstantsSize		 */ 
+	 *  uint32_t 	maxPushConstantsSize	[int]
+	 */ 
 	int 	maxPushConstantsSize;
 
 	/**
-	 *  uint32_t 	maxMemoryAllocationCount		 */ 
+	 *  uint32_t 	maxMemoryAllocationCount	[int]
+	 */ 
 	int 	maxMemoryAllocationCount;
 
 	/**
-	 *  uint32_t 	maxSamplerAllocationCount		 */ 
+	 *  uint32_t 	maxSamplerAllocationCount	[int]
+	 */ 
 	int 	maxSamplerAllocationCount;
 
 	/**
-	 *  VkDeviceSize 	bufferImageGranularity		 */ 
+	 *  VkDeviceSize 	bufferImageGranularity	[long]
+	 */ 
 	long 	bufferImageGranularity;
 
 	/**
-	 *  VkDeviceSize 	sparseAddressSpaceSize		 */ 
+	 *  VkDeviceSize 	sparseAddressSpaceSize	[long]
+	 */ 
 	long 	sparseAddressSpaceSize;
 
 	/**
-	 *  uint32_t 	maxBoundDescriptorSets		 */ 
+	 *  uint32_t 	maxBoundDescriptorSets	[int]
+	 */ 
 	int 	maxBoundDescriptorSets;
 
 	/**
-	 *  uint32_t 	maxPerStageDescriptorSamplers		 */ 
+	 *  uint32_t 	maxPerStageDescriptorSamplers	[int]
+	 */ 
 	int 	maxPerStageDescriptorSamplers;
 
 	/**
-	 *  uint32_t 	maxPerStageDescriptorUniformBuffers		 */ 
+	 *  uint32_t 	maxPerStageDescriptorUniformBuffers	[int]
+	 */ 
 	int 	maxPerStageDescriptorUniformBuffers;
 
 	/**
-	 *  uint32_t 	maxPerStageDescriptorStorageBuffers		 */ 
+	 *  uint32_t 	maxPerStageDescriptorStorageBuffers	[int]
+	 */ 
 	int 	maxPerStageDescriptorStorageBuffers;
 
 	/**
-	 *  uint32_t 	maxPerStageDescriptorSampledImages		 */ 
+	 *  uint32_t 	maxPerStageDescriptorSampledImages	[int]
+	 */ 
 	int 	maxPerStageDescriptorSampledImages;
 
 	/**
-	 *  uint32_t 	maxPerStageDescriptorStorageImages		 */ 
+	 *  uint32_t 	maxPerStageDescriptorStorageImages	[int]
+	 */ 
 	int 	maxPerStageDescriptorStorageImages;
 
 	/**
-	 *  uint32_t 	maxPerStageDescriptorInputAttachments		 */ 
+	 *  uint32_t 	maxPerStageDescriptorInputAttachments	[int]
+	 */ 
 	int 	maxPerStageDescriptorInputAttachments;
 
 	/**
-	 *  uint32_t 	maxPerStageResources		 */ 
+	 *  uint32_t 	maxPerStageResources	[int]
+	 */ 
 	int 	maxPerStageResources;
 
 	/**
-	 *  uint32_t 	maxDescriptorSetSamplers		 */ 
+	 *  uint32_t 	maxDescriptorSetSamplers	[int]
+	 */ 
 	int 	maxDescriptorSetSamplers;
 
 	/**
-	 *  uint32_t 	maxDescriptorSetUniformBuffers		 */ 
+	 *  uint32_t 	maxDescriptorSetUniformBuffers	[int]
+	 */ 
 	int 	maxDescriptorSetUniformBuffers;
 
 	/**
-	 *  uint32_t 	maxDescriptorSetUniformBuffersDynamic		 */ 
+	 *  uint32_t 	maxDescriptorSetUniformBuffersDynamic	[int]
+	 */ 
 	int 	maxDescriptorSetUniformBuffersDynamic;
 
 	/**
-	 *  uint32_t 	maxDescriptorSetStorageBuffers		 */ 
+	 *  uint32_t 	maxDescriptorSetStorageBuffers	[int]
+	 */ 
 	int 	maxDescriptorSetStorageBuffers;
 
 	/**
-	 *  uint32_t 	maxDescriptorSetStorageBuffersDynamic		 */ 
+	 *  uint32_t 	maxDescriptorSetStorageBuffersDynamic	[int]
+	 */ 
 	int 	maxDescriptorSetStorageBuffersDynamic;
 
 	/**
-	 *  uint32_t 	maxDescriptorSetSampledImages		 */ 
+	 *  uint32_t 	maxDescriptorSetSampledImages	[int]
+	 */ 
 	int 	maxDescriptorSetSampledImages;
 
 	/**
-	 *  uint32_t 	maxDescriptorSetStorageImages		 */ 
+	 *  uint32_t 	maxDescriptorSetStorageImages	[int]
+	 */ 
 	int 	maxDescriptorSetStorageImages;
 
 	/**
-	 *  uint32_t 	maxDescriptorSetInputAttachments		 */ 
+	 *  uint32_t 	maxDescriptorSetInputAttachments	[int]
+	 */ 
 	int 	maxDescriptorSetInputAttachments;
 
 	/**
-	 *  uint32_t 	maxVertexInputAttributes		 */ 
+	 *  uint32_t 	maxVertexInputAttributes	[int]
+	 */ 
 	int 	maxVertexInputAttributes;
 
 	/**
-	 *  uint32_t 	maxVertexInputBindings		 */ 
+	 *  uint32_t 	maxVertexInputBindings	[int]
+	 */ 
 	int 	maxVertexInputBindings;
 
 	/**
-	 *  uint32_t 	maxVertexInputAttributeOffset		 */ 
+	 *  uint32_t 	maxVertexInputAttributeOffset	[int]
+	 */ 
 	int 	maxVertexInputAttributeOffset;
 
 	/**
-	 *  uint32_t 	maxVertexInputBindingStride		 */ 
+	 *  uint32_t 	maxVertexInputBindingStride	[int]
+	 */ 
 	int 	maxVertexInputBindingStride;
 
 	/**
-	 *  uint32_t 	maxVertexOutputComponents		 */ 
+	 *  uint32_t 	maxVertexOutputComponents	[int]
+	 */ 
 	int 	maxVertexOutputComponents;
 
 	/**
-	 *  uint32_t 	maxTessellationGenerationLevel		 */ 
+	 *  uint32_t 	maxTessellationGenerationLevel	[int]
+	 */ 
 	int 	maxTessellationGenerationLevel;
 
 	/**
-	 *  uint32_t 	maxTessellationPatchSize		 */ 
+	 *  uint32_t 	maxTessellationPatchSize	[int]
+	 */ 
 	int 	maxTessellationPatchSize;
 
 	/**
-	 *  uint32_t 	maxTessellationControlPerVertexInputComponents		 */ 
+	 *  uint32_t 	maxTessellationControlPerVertexInputComponents	[int]
+	 */ 
 	int 	maxTessellationControlPerVertexInputComponents;
 
 	/**
-	 *  uint32_t 	maxTessellationControlPerVertexOutputComponents		 */ 
+	 *  uint32_t 	maxTessellationControlPerVertexOutputComponents	[int]
+	 */ 
 	int 	maxTessellationControlPerVertexOutputComponents;
 
 	/**
-	 *  uint32_t 	maxTessellationControlPerPatchOutputComponents		 */ 
+	 *  uint32_t 	maxTessellationControlPerPatchOutputComponents	[int]
+	 */ 
 	int 	maxTessellationControlPerPatchOutputComponents;
 
 	/**
-	 *  uint32_t 	maxTessellationControlTotalOutputComponents		 */ 
+	 *  uint32_t 	maxTessellationControlTotalOutputComponents	[int]
+	 */ 
 	int 	maxTessellationControlTotalOutputComponents;
 
 	/**
-	 *  uint32_t 	maxTessellationEvaluationInputComponents		 */ 
+	 *  uint32_t 	maxTessellationEvaluationInputComponents	[int]
+	 */ 
 	int 	maxTessellationEvaluationInputComponents;
 
 	/**
-	 *  uint32_t 	maxTessellationEvaluationOutputComponents		 */ 
+	 *  uint32_t 	maxTessellationEvaluationOutputComponents	[int]
+	 */ 
 	int 	maxTessellationEvaluationOutputComponents;
 
 	/**
-	 *  uint32_t 	maxGeometryShaderInvocations		 */ 
+	 *  uint32_t 	maxGeometryShaderInvocations	[int]
+	 */ 
 	int 	maxGeometryShaderInvocations;
 
 	/**
-	 *  uint32_t 	maxGeometryInputComponents		 */ 
+	 *  uint32_t 	maxGeometryInputComponents	[int]
+	 */ 
 	int 	maxGeometryInputComponents;
 
 	/**
-	 *  uint32_t 	maxGeometryOutputComponents		 */ 
+	 *  uint32_t 	maxGeometryOutputComponents	[int]
+	 */ 
 	int 	maxGeometryOutputComponents;
 
 	/**
-	 *  uint32_t 	maxGeometryOutputVertices		 */ 
+	 *  uint32_t 	maxGeometryOutputVertices	[int]
+	 */ 
 	int 	maxGeometryOutputVertices;
 
 	/**
-	 *  uint32_t 	maxGeometryTotalOutputComponents		 */ 
+	 *  uint32_t 	maxGeometryTotalOutputComponents	[int]
+	 */ 
 	int 	maxGeometryTotalOutputComponents;
 
 	/**
-	 *  uint32_t 	maxFragmentInputComponents		 */ 
+	 *  uint32_t 	maxFragmentInputComponents	[int]
+	 */ 
 	int 	maxFragmentInputComponents;
 
 	/**
-	 *  uint32_t 	maxFragmentOutputAttachments		 */ 
+	 *  uint32_t 	maxFragmentOutputAttachments	[int]
+	 */ 
 	int 	maxFragmentOutputAttachments;
 
 	/**
-	 *  uint32_t 	maxFragmentDualSrcAttachments		 */ 
+	 *  uint32_t 	maxFragmentDualSrcAttachments	[int]
+	 */ 
 	int 	maxFragmentDualSrcAttachments;
 
 	/**
-	 *  uint32_t 	maxFragmentCombinedOutputResources		 */ 
+	 *  uint32_t 	maxFragmentCombinedOutputResources	[int]
+	 */ 
 	int 	maxFragmentCombinedOutputResources;
 
 	/**
-	 *  uint32_t 	maxComputeSharedMemorySize		 */ 
+	 *  uint32_t 	maxComputeSharedMemorySize	[int]
+	 */ 
 	int 	maxComputeSharedMemorySize;
 
 	/**
-	 *  uint32_t[] 	maxComputeWorkGroupCount		 */ 
+	 *  uint32_t[] 	maxComputeWorkGroupCount	[int_array]
+	 */ 
 	int[] 	maxComputeWorkGroupCount;
 
 	/**
-	 *  uint32_t 	maxComputeWorkGroupInvocations		 */ 
+	 *  uint32_t 	maxComputeWorkGroupInvocations	[int]
+	 */ 
 	int 	maxComputeWorkGroupInvocations;
 
 	/**
-	 *  uint32_t[] 	maxComputeWorkGroupSize		 */ 
+	 *  uint32_t[] 	maxComputeWorkGroupSize	[int_array]
+	 */ 
 	int[] 	maxComputeWorkGroupSize;
 
 	/**
-	 *  uint32_t 	subPixelPrecisionBits		 */ 
+	 *  uint32_t 	subPixelPrecisionBits	[int]
+	 */ 
 	int 	subPixelPrecisionBits;
 
 	/**
-	 *  uint32_t 	subTexelPrecisionBits		 */ 
+	 *  uint32_t 	subTexelPrecisionBits	[int]
+	 */ 
 	int 	subTexelPrecisionBits;
 
 	/**
-	 *  uint32_t 	mipmapPrecisionBits		 */ 
+	 *  uint32_t 	mipmapPrecisionBits	[int]
+	 */ 
 	int 	mipmapPrecisionBits;
 
 	/**
-	 *  uint32_t 	maxDrawIndexedIndexValue		 */ 
+	 *  uint32_t 	maxDrawIndexedIndexValue	[int]
+	 */ 
 	int 	maxDrawIndexedIndexValue;
 
 	/**
-	 *  uint32_t 	maxDrawIndirectCount		 */ 
+	 *  uint32_t 	maxDrawIndirectCount	[int]
+	 */ 
 	int 	maxDrawIndirectCount;
 
 	/**
-	 *  float 	maxSamplerLodBias		 */ 
+	 *  float 	maxSamplerLodBias	[float]
+	 */ 
 	float 	maxSamplerLodBias;
 
 	/**
-	 *  float 	maxSamplerAnisotropy		 */ 
+	 *  float 	maxSamplerAnisotropy	[float]
+	 */ 
 	float 	maxSamplerAnisotropy;
 
 	/**
-	 *  uint32_t 	maxViewports		 */ 
+	 *  uint32_t 	maxViewports	[int]
+	 */ 
 	int 	maxViewports;
 
 	/**
-	 *  uint32_t[] 	maxViewportDimensions		 */ 
+	 *  uint32_t[] 	maxViewportDimensions	[int_array]
+	 */ 
 	int[] 	maxViewportDimensions;
 
 	/**
-	 *  float[] 	viewportBoundsRange		 */ 
+	 *  float[] 	viewportBoundsRange	[float_array]
+	 */ 
 	float[] 	viewportBoundsRange;
 
 	/**
-	 *  uint32_t 	viewportSubPixelBits		 */ 
+	 *  uint32_t 	viewportSubPixelBits	[int]
+	 */ 
 	int 	viewportSubPixelBits;
 
 	/**
-	 *  size_t 	minMemoryMapAlignment		 */ 
+	 *  size_t 	minMemoryMapAlignment	[long]
+	 */ 
 	long 	minMemoryMapAlignment;
 
 	/**
-	 *  VkDeviceSize 	minTexelBufferOffsetAlignment		 */ 
+	 *  VkDeviceSize 	minTexelBufferOffsetAlignment	[long]
+	 */ 
 	long 	minTexelBufferOffsetAlignment;
 
 	/**
-	 *  VkDeviceSize 	minUniformBufferOffsetAlignment		 */ 
+	 *  VkDeviceSize 	minUniformBufferOffsetAlignment	[long]
+	 */ 
 	long 	minUniformBufferOffsetAlignment;
 
 	/**
-	 *  VkDeviceSize 	minStorageBufferOffsetAlignment		 */ 
+	 *  VkDeviceSize 	minStorageBufferOffsetAlignment	[long]
+	 */ 
 	long 	minStorageBufferOffsetAlignment;
 
 	/**
-	 *  int32_t 	minTexelOffset		 */ 
+	 *  int32_t 	minTexelOffset	[int]
+	 */ 
 	int 	minTexelOffset;
 
 	/**
-	 *  uint32_t 	maxTexelOffset		 */ 
+	 *  uint32_t 	maxTexelOffset	[int]
+	 */ 
 	int 	maxTexelOffset;
 
 	/**
-	 *  int32_t 	minTexelGatherOffset		 */ 
+	 *  int32_t 	minTexelGatherOffset	[int]
+	 */ 
 	int 	minTexelGatherOffset;
 
 	/**
-	 *  uint32_t 	maxTexelGatherOffset		 */ 
+	 *  uint32_t 	maxTexelGatherOffset	[int]
+	 */ 
 	int 	maxTexelGatherOffset;
 
 	/**
-	 *  float 	minInterpolationOffset		 */ 
+	 *  float 	minInterpolationOffset	[float]
+	 */ 
 	float 	minInterpolationOffset;
 
 	/**
-	 *  float 	maxInterpolationOffset		 */ 
+	 *  float 	maxInterpolationOffset	[float]
+	 */ 
 	float 	maxInterpolationOffset;
 
 	/**
-	 *  uint32_t 	subPixelInterpolationOffsetBits		 */ 
+	 *  uint32_t 	subPixelInterpolationOffsetBits	[int]
+	 */ 
 	int 	subPixelInterpolationOffsetBits;
 
 	/**
-	 *  uint32_t 	maxFramebufferWidth		 */ 
+	 *  uint32_t 	maxFramebufferWidth	[int]
+	 */ 
 	int 	maxFramebufferWidth;
 
 	/**
-	 *  uint32_t 	maxFramebufferHeight		 */ 
+	 *  uint32_t 	maxFramebufferHeight	[int]
+	 */ 
 	int 	maxFramebufferHeight;
 
 	/**
-	 *  uint32_t 	maxFramebufferLayers		 */ 
+	 *  uint32_t 	maxFramebufferLayers	[int]
+	 */ 
 	int 	maxFramebufferLayers;
 
 	/**
-	 *  VkSampleCountFlags 	framebufferColorSampleCounts		 */ 
+	 *  VkSampleCountFlags 	framebufferColorSampleCounts	[int]
+	 */ 
 	int 	framebufferColorSampleCounts;
 
 	/**
-	 *  VkSampleCountFlags 	framebufferDepthSampleCounts		 */ 
+	 *  VkSampleCountFlags 	framebufferDepthSampleCounts	[int]
+	 */ 
 	int 	framebufferDepthSampleCounts;
 
 	/**
-	 *  VkSampleCountFlags 	framebufferStencilSampleCounts		 */ 
+	 *  VkSampleCountFlags 	framebufferStencilSampleCounts	[int]
+	 */ 
 	int 	framebufferStencilSampleCounts;
 
 	/**
-	 *  VkSampleCountFlags 	framebufferNoAttachmentsSampleCounts		 */ 
+	 *  VkSampleCountFlags 	framebufferNoAttachmentsSampleCounts	[int]
+	 */ 
 	int 	framebufferNoAttachmentsSampleCounts;
 
 	/**
-	 *  uint32_t 	maxColorAttachments		 */ 
+	 *  uint32_t 	maxColorAttachments	[int]
+	 */ 
 	int 	maxColorAttachments;
 
 	/**
-	 *  VkSampleCountFlags 	sampledImageColorSampleCounts		 */ 
+	 *  VkSampleCountFlags 	sampledImageColorSampleCounts	[int]
+	 */ 
 	int 	sampledImageColorSampleCounts;
 
 	/**
-	 *  VkSampleCountFlags 	sampledImageIntegerSampleCounts		 */ 
+	 *  VkSampleCountFlags 	sampledImageIntegerSampleCounts	[int]
+	 */ 
 	int 	sampledImageIntegerSampleCounts;
 
 	/**
-	 *  VkSampleCountFlags 	sampledImageDepthSampleCounts		 */ 
+	 *  VkSampleCountFlags 	sampledImageDepthSampleCounts	[int]
+	 */ 
 	int 	sampledImageDepthSampleCounts;
 
 	/**
-	 *  VkSampleCountFlags 	sampledImageStencilSampleCounts		 */ 
+	 *  VkSampleCountFlags 	sampledImageStencilSampleCounts	[int]
+	 */ 
 	int 	sampledImageStencilSampleCounts;
 
 	/**
-	 *  VkSampleCountFlags 	storageImageSampleCounts		 */ 
+	 *  VkSampleCountFlags 	storageImageSampleCounts	[int]
+	 */ 
 	int 	storageImageSampleCounts;
 
 	/**
-	 *  uint32_t 	maxSampleMaskWords		 */ 
+	 *  uint32_t 	maxSampleMaskWords	[int]
+	 */ 
 	int 	maxSampleMaskWords;
 
 	/**
-	 *  VkBool32 	timestampComputeAndGraphics		 */ 
+	 *  VkBool32 	timestampComputeAndGraphics	[boolean]
+	 */ 
 	boolean 	timestampComputeAndGraphics;
 
 	/**
-	 *  float 	timestampPeriod		 */ 
+	 *  float 	timestampPeriod	[float]
+	 */ 
 	float 	timestampPeriod;
 
 	/**
-	 *  uint32_t 	maxClipDistances		 */ 
+	 *  uint32_t 	maxClipDistances	[int]
+	 */ 
 	int 	maxClipDistances;
 
 	/**
-	 *  uint32_t 	maxCullDistances		 */ 
+	 *  uint32_t 	maxCullDistances	[int]
+	 */ 
 	int 	maxCullDistances;
 
 	/**
-	 *  uint32_t 	maxCombinedClipAndCullDistances		 */ 
+	 *  uint32_t 	maxCombinedClipAndCullDistances	[int]
+	 */ 
 	int 	maxCombinedClipAndCullDistances;
 
 	/**
-	 *  uint32_t 	discreteQueuePriorities		 */ 
+	 *  uint32_t 	discreteQueuePriorities	[int]
+	 */ 
 	int 	discreteQueuePriorities;
 
 	/**
-	 *  float[] 	pointSizeRange		 */ 
+	 *  float[] 	pointSizeRange	[float_array]
+	 */ 
 	float[] 	pointSizeRange;
 
 	/**
-	 *  float[] 	lineWidthRange		 */ 
+	 *  float[] 	lineWidthRange	[float_array]
+	 */ 
 	float[] 	lineWidthRange;
 
 	/**
-	 *  float 	pointSizeGranularity		 */ 
+	 *  float 	pointSizeGranularity	[float]
+	 */ 
 	float 	pointSizeGranularity;
 
 	/**
-	 *  float 	lineWidthGranularity		 */ 
+	 *  float 	lineWidthGranularity	[float]
+	 */ 
 	float 	lineWidthGranularity;
 
 	/**
-	 *  VkBool32 	strictLines		 */ 
+	 *  VkBool32 	strictLines	[boolean]
+	 */ 
 	boolean 	strictLines;
 
 	/**
-	 *  VkBool32 	standardSampleLocations		 */ 
+	 *  VkBool32 	standardSampleLocations	[boolean]
+	 */ 
 	boolean 	standardSampleLocations;
 
 	/**
-	 *  VkDeviceSize 	optimalBufferCopyOffsetAlignment		 */ 
+	 *  VkDeviceSize 	optimalBufferCopyOffsetAlignment	[long]
+	 */ 
 	long 	optimalBufferCopyOffsetAlignment;
 
 	/**
-	 *  VkDeviceSize 	optimalBufferCopyRowPitchAlignment		 */ 
+	 *  VkDeviceSize 	optimalBufferCopyRowPitchAlignment	[long]
+	 */ 
 	long 	optimalBufferCopyRowPitchAlignment;
 
 	/**
-	 *  VkDeviceSize 	nonCoherentAtomSize		 */ 
+	 *  VkDeviceSize 	nonCoherentAtomSize	[long]
+	 */ 
 	long 	nonCoherentAtomSize;
 
 	/**
@@ -570,6 +677,23 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 	public VkPhysicalDeviceLimits(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkPhysicalDeviceLimits(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkPhysicalDeviceLimits(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -580,12 +704,24 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkPhysicalDeviceLimits> createNullPointer(){
+	        P<VkPhysicalDeviceLimits> p = new  P<VkPhysicalDeviceLimits>(new VkPhysicalDeviceLimits());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field maxImageDimension1D	
+	 * Set method for field maxImageDimension1D	[int]<br>
 	 * Prototype: uint32_t  maxImageDimension1D
 	 */ 
 	 public void maxImageDimension1D(int maxImageDimension1D){
@@ -594,7 +730,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxImageDimension1D	
+	 * get method for field maxImageDimension1D	[int]<br>
 	 * Prototype: uint32_t  maxImageDimension1D
 	 */ 
 	 public int maxImageDimension1D(){
@@ -603,7 +739,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxImageDimension2D	
+	 * Set method for field maxImageDimension2D	[int]<br>
 	 * Prototype: uint32_t  maxImageDimension2D
 	 */ 
 	 public void maxImageDimension2D(int maxImageDimension2D){
@@ -612,7 +748,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxImageDimension2D	
+	 * get method for field maxImageDimension2D	[int]<br>
 	 * Prototype: uint32_t  maxImageDimension2D
 	 */ 
 	 public int maxImageDimension2D(){
@@ -621,7 +757,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxImageDimension3D	
+	 * Set method for field maxImageDimension3D	[int]<br>
 	 * Prototype: uint32_t  maxImageDimension3D
 	 */ 
 	 public void maxImageDimension3D(int maxImageDimension3D){
@@ -630,7 +766,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxImageDimension3D	
+	 * get method for field maxImageDimension3D	[int]<br>
 	 * Prototype: uint32_t  maxImageDimension3D
 	 */ 
 	 public int maxImageDimension3D(){
@@ -639,7 +775,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxImageDimensionCube	
+	 * Set method for field maxImageDimensionCube	[int]<br>
 	 * Prototype: uint32_t  maxImageDimensionCube
 	 */ 
 	 public void maxImageDimensionCube(int maxImageDimensionCube){
@@ -648,7 +784,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxImageDimensionCube	
+	 * get method for field maxImageDimensionCube	[int]<br>
 	 * Prototype: uint32_t  maxImageDimensionCube
 	 */ 
 	 public int maxImageDimensionCube(){
@@ -657,7 +793,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxImageArrayLayers	
+	 * Set method for field maxImageArrayLayers	[int]<br>
 	 * Prototype: uint32_t  maxImageArrayLayers
 	 */ 
 	 public void maxImageArrayLayers(int maxImageArrayLayers){
@@ -666,7 +802,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxImageArrayLayers	
+	 * get method for field maxImageArrayLayers	[int]<br>
 	 * Prototype: uint32_t  maxImageArrayLayers
 	 */ 
 	 public int maxImageArrayLayers(){
@@ -675,7 +811,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxTexelBufferElements	
+	 * Set method for field maxTexelBufferElements	[int]<br>
 	 * Prototype: uint32_t  maxTexelBufferElements
 	 */ 
 	 public void maxTexelBufferElements(int maxTexelBufferElements){
@@ -684,7 +820,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxTexelBufferElements	
+	 * get method for field maxTexelBufferElements	[int]<br>
 	 * Prototype: uint32_t  maxTexelBufferElements
 	 */ 
 	 public int maxTexelBufferElements(){
@@ -693,7 +829,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxUniformBufferRange	
+	 * Set method for field maxUniformBufferRange	[int]<br>
 	 * Prototype: uint32_t  maxUniformBufferRange
 	 */ 
 	 public void maxUniformBufferRange(int maxUniformBufferRange){
@@ -702,7 +838,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxUniformBufferRange	
+	 * get method for field maxUniformBufferRange	[int]<br>
 	 * Prototype: uint32_t  maxUniformBufferRange
 	 */ 
 	 public int maxUniformBufferRange(){
@@ -711,7 +847,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxStorageBufferRange	
+	 * Set method for field maxStorageBufferRange	[int]<br>
 	 * Prototype: uint32_t  maxStorageBufferRange
 	 */ 
 	 public void maxStorageBufferRange(int maxStorageBufferRange){
@@ -720,7 +856,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxStorageBufferRange	
+	 * get method for field maxStorageBufferRange	[int]<br>
 	 * Prototype: uint32_t  maxStorageBufferRange
 	 */ 
 	 public int maxStorageBufferRange(){
@@ -729,7 +865,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxPushConstantsSize	
+	 * Set method for field maxPushConstantsSize	[int]<br>
 	 * Prototype: uint32_t  maxPushConstantsSize
 	 */ 
 	 public void maxPushConstantsSize(int maxPushConstantsSize){
@@ -738,7 +874,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxPushConstantsSize	
+	 * get method for field maxPushConstantsSize	[int]<br>
 	 * Prototype: uint32_t  maxPushConstantsSize
 	 */ 
 	 public int maxPushConstantsSize(){
@@ -747,7 +883,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxMemoryAllocationCount	
+	 * Set method for field maxMemoryAllocationCount	[int]<br>
 	 * Prototype: uint32_t  maxMemoryAllocationCount
 	 */ 
 	 public void maxMemoryAllocationCount(int maxMemoryAllocationCount){
@@ -756,7 +892,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxMemoryAllocationCount	
+	 * get method for field maxMemoryAllocationCount	[int]<br>
 	 * Prototype: uint32_t  maxMemoryAllocationCount
 	 */ 
 	 public int maxMemoryAllocationCount(){
@@ -765,7 +901,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxSamplerAllocationCount	
+	 * Set method for field maxSamplerAllocationCount	[int]<br>
 	 * Prototype: uint32_t  maxSamplerAllocationCount
 	 */ 
 	 public void maxSamplerAllocationCount(int maxSamplerAllocationCount){
@@ -774,7 +910,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxSamplerAllocationCount	
+	 * get method for field maxSamplerAllocationCount	[int]<br>
 	 * Prototype: uint32_t  maxSamplerAllocationCount
 	 */ 
 	 public int maxSamplerAllocationCount(){
@@ -783,7 +919,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field bufferImageGranularity	
+	 * Set method for field bufferImageGranularity	[long]<br>
 	 * Prototype: VkDeviceSize  bufferImageGranularity
 	 */ 
 	 public void bufferImageGranularity(long bufferImageGranularity){
@@ -792,7 +928,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field bufferImageGranularity	
+	 * get method for field bufferImageGranularity	[long]<br>
 	 * Prototype: VkDeviceSize  bufferImageGranularity
 	 */ 
 	 public long bufferImageGranularity(){
@@ -801,7 +937,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field sparseAddressSpaceSize	
+	 * Set method for field sparseAddressSpaceSize	[long]<br>
 	 * Prototype: VkDeviceSize  sparseAddressSpaceSize
 	 */ 
 	 public void sparseAddressSpaceSize(long sparseAddressSpaceSize){
@@ -810,7 +946,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sparseAddressSpaceSize	
+	 * get method for field sparseAddressSpaceSize	[long]<br>
 	 * Prototype: VkDeviceSize  sparseAddressSpaceSize
 	 */ 
 	 public long sparseAddressSpaceSize(){
@@ -819,7 +955,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxBoundDescriptorSets	
+	 * Set method for field maxBoundDescriptorSets	[int]<br>
 	 * Prototype: uint32_t  maxBoundDescriptorSets
 	 */ 
 	 public void maxBoundDescriptorSets(int maxBoundDescriptorSets){
@@ -828,7 +964,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxBoundDescriptorSets	
+	 * get method for field maxBoundDescriptorSets	[int]<br>
 	 * Prototype: uint32_t  maxBoundDescriptorSets
 	 */ 
 	 public int maxBoundDescriptorSets(){
@@ -837,7 +973,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxPerStageDescriptorSamplers	
+	 * Set method for field maxPerStageDescriptorSamplers	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorSamplers
 	 */ 
 	 public void maxPerStageDescriptorSamplers(int maxPerStageDescriptorSamplers){
@@ -846,7 +982,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxPerStageDescriptorSamplers	
+	 * get method for field maxPerStageDescriptorSamplers	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorSamplers
 	 */ 
 	 public int maxPerStageDescriptorSamplers(){
@@ -855,7 +991,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxPerStageDescriptorUniformBuffers	
+	 * Set method for field maxPerStageDescriptorUniformBuffers	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorUniformBuffers
 	 */ 
 	 public void maxPerStageDescriptorUniformBuffers(int maxPerStageDescriptorUniformBuffers){
@@ -864,7 +1000,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxPerStageDescriptorUniformBuffers	
+	 * get method for field maxPerStageDescriptorUniformBuffers	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorUniformBuffers
 	 */ 
 	 public int maxPerStageDescriptorUniformBuffers(){
@@ -873,7 +1009,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxPerStageDescriptorStorageBuffers	
+	 * Set method for field maxPerStageDescriptorStorageBuffers	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorStorageBuffers
 	 */ 
 	 public void maxPerStageDescriptorStorageBuffers(int maxPerStageDescriptorStorageBuffers){
@@ -882,7 +1018,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxPerStageDescriptorStorageBuffers	
+	 * get method for field maxPerStageDescriptorStorageBuffers	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorStorageBuffers
 	 */ 
 	 public int maxPerStageDescriptorStorageBuffers(){
@@ -891,7 +1027,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxPerStageDescriptorSampledImages	
+	 * Set method for field maxPerStageDescriptorSampledImages	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorSampledImages
 	 */ 
 	 public void maxPerStageDescriptorSampledImages(int maxPerStageDescriptorSampledImages){
@@ -900,7 +1036,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxPerStageDescriptorSampledImages	
+	 * get method for field maxPerStageDescriptorSampledImages	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorSampledImages
 	 */ 
 	 public int maxPerStageDescriptorSampledImages(){
@@ -909,7 +1045,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxPerStageDescriptorStorageImages	
+	 * Set method for field maxPerStageDescriptorStorageImages	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorStorageImages
 	 */ 
 	 public void maxPerStageDescriptorStorageImages(int maxPerStageDescriptorStorageImages){
@@ -918,7 +1054,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxPerStageDescriptorStorageImages	
+	 * get method for field maxPerStageDescriptorStorageImages	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorStorageImages
 	 */ 
 	 public int maxPerStageDescriptorStorageImages(){
@@ -927,7 +1063,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxPerStageDescriptorInputAttachments	
+	 * Set method for field maxPerStageDescriptorInputAttachments	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorInputAttachments
 	 */ 
 	 public void maxPerStageDescriptorInputAttachments(int maxPerStageDescriptorInputAttachments){
@@ -936,7 +1072,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxPerStageDescriptorInputAttachments	
+	 * get method for field maxPerStageDescriptorInputAttachments	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorInputAttachments
 	 */ 
 	 public int maxPerStageDescriptorInputAttachments(){
@@ -945,7 +1081,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxPerStageResources	
+	 * Set method for field maxPerStageResources	[int]<br>
 	 * Prototype: uint32_t  maxPerStageResources
 	 */ 
 	 public void maxPerStageResources(int maxPerStageResources){
@@ -954,7 +1090,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxPerStageResources	
+	 * get method for field maxPerStageResources	[int]<br>
 	 * Prototype: uint32_t  maxPerStageResources
 	 */ 
 	 public int maxPerStageResources(){
@@ -963,7 +1099,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxDescriptorSetSamplers	
+	 * Set method for field maxDescriptorSetSamplers	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetSamplers
 	 */ 
 	 public void maxDescriptorSetSamplers(int maxDescriptorSetSamplers){
@@ -972,7 +1108,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxDescriptorSetSamplers	
+	 * get method for field maxDescriptorSetSamplers	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetSamplers
 	 */ 
 	 public int maxDescriptorSetSamplers(){
@@ -981,7 +1117,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxDescriptorSetUniformBuffers	
+	 * Set method for field maxDescriptorSetUniformBuffers	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetUniformBuffers
 	 */ 
 	 public void maxDescriptorSetUniformBuffers(int maxDescriptorSetUniformBuffers){
@@ -990,7 +1126,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxDescriptorSetUniformBuffers	
+	 * get method for field maxDescriptorSetUniformBuffers	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetUniformBuffers
 	 */ 
 	 public int maxDescriptorSetUniformBuffers(){
@@ -999,7 +1135,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxDescriptorSetUniformBuffersDynamic	
+	 * Set method for field maxDescriptorSetUniformBuffersDynamic	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetUniformBuffersDynamic
 	 */ 
 	 public void maxDescriptorSetUniformBuffersDynamic(int maxDescriptorSetUniformBuffersDynamic){
@@ -1008,7 +1144,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxDescriptorSetUniformBuffersDynamic	
+	 * get method for field maxDescriptorSetUniformBuffersDynamic	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetUniformBuffersDynamic
 	 */ 
 	 public int maxDescriptorSetUniformBuffersDynamic(){
@@ -1017,7 +1153,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxDescriptorSetStorageBuffers	
+	 * Set method for field maxDescriptorSetStorageBuffers	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetStorageBuffers
 	 */ 
 	 public void maxDescriptorSetStorageBuffers(int maxDescriptorSetStorageBuffers){
@@ -1026,7 +1162,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxDescriptorSetStorageBuffers	
+	 * get method for field maxDescriptorSetStorageBuffers	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetStorageBuffers
 	 */ 
 	 public int maxDescriptorSetStorageBuffers(){
@@ -1035,7 +1171,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxDescriptorSetStorageBuffersDynamic	
+	 * Set method for field maxDescriptorSetStorageBuffersDynamic	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetStorageBuffersDynamic
 	 */ 
 	 public void maxDescriptorSetStorageBuffersDynamic(int maxDescriptorSetStorageBuffersDynamic){
@@ -1044,7 +1180,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxDescriptorSetStorageBuffersDynamic	
+	 * get method for field maxDescriptorSetStorageBuffersDynamic	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetStorageBuffersDynamic
 	 */ 
 	 public int maxDescriptorSetStorageBuffersDynamic(){
@@ -1053,7 +1189,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxDescriptorSetSampledImages	
+	 * Set method for field maxDescriptorSetSampledImages	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetSampledImages
 	 */ 
 	 public void maxDescriptorSetSampledImages(int maxDescriptorSetSampledImages){
@@ -1062,7 +1198,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxDescriptorSetSampledImages	
+	 * get method for field maxDescriptorSetSampledImages	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetSampledImages
 	 */ 
 	 public int maxDescriptorSetSampledImages(){
@@ -1071,7 +1207,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxDescriptorSetStorageImages	
+	 * Set method for field maxDescriptorSetStorageImages	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetStorageImages
 	 */ 
 	 public void maxDescriptorSetStorageImages(int maxDescriptorSetStorageImages){
@@ -1080,7 +1216,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxDescriptorSetStorageImages	
+	 * get method for field maxDescriptorSetStorageImages	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetStorageImages
 	 */ 
 	 public int maxDescriptorSetStorageImages(){
@@ -1089,7 +1225,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxDescriptorSetInputAttachments	
+	 * Set method for field maxDescriptorSetInputAttachments	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetInputAttachments
 	 */ 
 	 public void maxDescriptorSetInputAttachments(int maxDescriptorSetInputAttachments){
@@ -1098,7 +1234,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxDescriptorSetInputAttachments	
+	 * get method for field maxDescriptorSetInputAttachments	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetInputAttachments
 	 */ 
 	 public int maxDescriptorSetInputAttachments(){
@@ -1107,7 +1243,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxVertexInputAttributes	
+	 * Set method for field maxVertexInputAttributes	[int]<br>
 	 * Prototype: uint32_t  maxVertexInputAttributes
 	 */ 
 	 public void maxVertexInputAttributes(int maxVertexInputAttributes){
@@ -1116,7 +1252,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxVertexInputAttributes	
+	 * get method for field maxVertexInputAttributes	[int]<br>
 	 * Prototype: uint32_t  maxVertexInputAttributes
 	 */ 
 	 public int maxVertexInputAttributes(){
@@ -1125,7 +1261,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxVertexInputBindings	
+	 * Set method for field maxVertexInputBindings	[int]<br>
 	 * Prototype: uint32_t  maxVertexInputBindings
 	 */ 
 	 public void maxVertexInputBindings(int maxVertexInputBindings){
@@ -1134,7 +1270,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxVertexInputBindings	
+	 * get method for field maxVertexInputBindings	[int]<br>
 	 * Prototype: uint32_t  maxVertexInputBindings
 	 */ 
 	 public int maxVertexInputBindings(){
@@ -1143,7 +1279,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxVertexInputAttributeOffset	
+	 * Set method for field maxVertexInputAttributeOffset	[int]<br>
 	 * Prototype: uint32_t  maxVertexInputAttributeOffset
 	 */ 
 	 public void maxVertexInputAttributeOffset(int maxVertexInputAttributeOffset){
@@ -1152,7 +1288,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxVertexInputAttributeOffset	
+	 * get method for field maxVertexInputAttributeOffset	[int]<br>
 	 * Prototype: uint32_t  maxVertexInputAttributeOffset
 	 */ 
 	 public int maxVertexInputAttributeOffset(){
@@ -1161,7 +1297,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxVertexInputBindingStride	
+	 * Set method for field maxVertexInputBindingStride	[int]<br>
 	 * Prototype: uint32_t  maxVertexInputBindingStride
 	 */ 
 	 public void maxVertexInputBindingStride(int maxVertexInputBindingStride){
@@ -1170,7 +1306,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxVertexInputBindingStride	
+	 * get method for field maxVertexInputBindingStride	[int]<br>
 	 * Prototype: uint32_t  maxVertexInputBindingStride
 	 */ 
 	 public int maxVertexInputBindingStride(){
@@ -1179,7 +1315,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxVertexOutputComponents	
+	 * Set method for field maxVertexOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxVertexOutputComponents
 	 */ 
 	 public void maxVertexOutputComponents(int maxVertexOutputComponents){
@@ -1188,7 +1324,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxVertexOutputComponents	
+	 * get method for field maxVertexOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxVertexOutputComponents
 	 */ 
 	 public int maxVertexOutputComponents(){
@@ -1197,7 +1333,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxTessellationGenerationLevel	
+	 * Set method for field maxTessellationGenerationLevel	[int]<br>
 	 * Prototype: uint32_t  maxTessellationGenerationLevel
 	 */ 
 	 public void maxTessellationGenerationLevel(int maxTessellationGenerationLevel){
@@ -1206,7 +1342,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxTessellationGenerationLevel	
+	 * get method for field maxTessellationGenerationLevel	[int]<br>
 	 * Prototype: uint32_t  maxTessellationGenerationLevel
 	 */ 
 	 public int maxTessellationGenerationLevel(){
@@ -1215,7 +1351,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxTessellationPatchSize	
+	 * Set method for field maxTessellationPatchSize	[int]<br>
 	 * Prototype: uint32_t  maxTessellationPatchSize
 	 */ 
 	 public void maxTessellationPatchSize(int maxTessellationPatchSize){
@@ -1224,7 +1360,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxTessellationPatchSize	
+	 * get method for field maxTessellationPatchSize	[int]<br>
 	 * Prototype: uint32_t  maxTessellationPatchSize
 	 */ 
 	 public int maxTessellationPatchSize(){
@@ -1233,7 +1369,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxTessellationControlPerVertexInputComponents	
+	 * Set method for field maxTessellationControlPerVertexInputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationControlPerVertexInputComponents
 	 */ 
 	 public void maxTessellationControlPerVertexInputComponents(int maxTessellationControlPerVertexInputComponents){
@@ -1242,7 +1378,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxTessellationControlPerVertexInputComponents	
+	 * get method for field maxTessellationControlPerVertexInputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationControlPerVertexInputComponents
 	 */ 
 	 public int maxTessellationControlPerVertexInputComponents(){
@@ -1251,7 +1387,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxTessellationControlPerVertexOutputComponents	
+	 * Set method for field maxTessellationControlPerVertexOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationControlPerVertexOutputComponents
 	 */ 
 	 public void maxTessellationControlPerVertexOutputComponents(int maxTessellationControlPerVertexOutputComponents){
@@ -1260,7 +1396,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxTessellationControlPerVertexOutputComponents	
+	 * get method for field maxTessellationControlPerVertexOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationControlPerVertexOutputComponents
 	 */ 
 	 public int maxTessellationControlPerVertexOutputComponents(){
@@ -1269,7 +1405,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxTessellationControlPerPatchOutputComponents	
+	 * Set method for field maxTessellationControlPerPatchOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationControlPerPatchOutputComponents
 	 */ 
 	 public void maxTessellationControlPerPatchOutputComponents(int maxTessellationControlPerPatchOutputComponents){
@@ -1278,7 +1414,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxTessellationControlPerPatchOutputComponents	
+	 * get method for field maxTessellationControlPerPatchOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationControlPerPatchOutputComponents
 	 */ 
 	 public int maxTessellationControlPerPatchOutputComponents(){
@@ -1287,7 +1423,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxTessellationControlTotalOutputComponents	
+	 * Set method for field maxTessellationControlTotalOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationControlTotalOutputComponents
 	 */ 
 	 public void maxTessellationControlTotalOutputComponents(int maxTessellationControlTotalOutputComponents){
@@ -1296,7 +1432,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxTessellationControlTotalOutputComponents	
+	 * get method for field maxTessellationControlTotalOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationControlTotalOutputComponents
 	 */ 
 	 public int maxTessellationControlTotalOutputComponents(){
@@ -1305,7 +1441,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxTessellationEvaluationInputComponents	
+	 * Set method for field maxTessellationEvaluationInputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationEvaluationInputComponents
 	 */ 
 	 public void maxTessellationEvaluationInputComponents(int maxTessellationEvaluationInputComponents){
@@ -1314,7 +1450,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxTessellationEvaluationInputComponents	
+	 * get method for field maxTessellationEvaluationInputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationEvaluationInputComponents
 	 */ 
 	 public int maxTessellationEvaluationInputComponents(){
@@ -1323,7 +1459,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxTessellationEvaluationOutputComponents	
+	 * Set method for field maxTessellationEvaluationOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationEvaluationOutputComponents
 	 */ 
 	 public void maxTessellationEvaluationOutputComponents(int maxTessellationEvaluationOutputComponents){
@@ -1332,7 +1468,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxTessellationEvaluationOutputComponents	
+	 * get method for field maxTessellationEvaluationOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationEvaluationOutputComponents
 	 */ 
 	 public int maxTessellationEvaluationOutputComponents(){
@@ -1341,7 +1477,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxGeometryShaderInvocations	
+	 * Set method for field maxGeometryShaderInvocations	[int]<br>
 	 * Prototype: uint32_t  maxGeometryShaderInvocations
 	 */ 
 	 public void maxGeometryShaderInvocations(int maxGeometryShaderInvocations){
@@ -1350,7 +1486,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxGeometryShaderInvocations	
+	 * get method for field maxGeometryShaderInvocations	[int]<br>
 	 * Prototype: uint32_t  maxGeometryShaderInvocations
 	 */ 
 	 public int maxGeometryShaderInvocations(){
@@ -1359,7 +1495,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxGeometryInputComponents	
+	 * Set method for field maxGeometryInputComponents	[int]<br>
 	 * Prototype: uint32_t  maxGeometryInputComponents
 	 */ 
 	 public void maxGeometryInputComponents(int maxGeometryInputComponents){
@@ -1368,7 +1504,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxGeometryInputComponents	
+	 * get method for field maxGeometryInputComponents	[int]<br>
 	 * Prototype: uint32_t  maxGeometryInputComponents
 	 */ 
 	 public int maxGeometryInputComponents(){
@@ -1377,7 +1513,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxGeometryOutputComponents	
+	 * Set method for field maxGeometryOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxGeometryOutputComponents
 	 */ 
 	 public void maxGeometryOutputComponents(int maxGeometryOutputComponents){
@@ -1386,7 +1522,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxGeometryOutputComponents	
+	 * get method for field maxGeometryOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxGeometryOutputComponents
 	 */ 
 	 public int maxGeometryOutputComponents(){
@@ -1395,7 +1531,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxGeometryOutputVertices	
+	 * Set method for field maxGeometryOutputVertices	[int]<br>
 	 * Prototype: uint32_t  maxGeometryOutputVertices
 	 */ 
 	 public void maxGeometryOutputVertices(int maxGeometryOutputVertices){
@@ -1404,7 +1540,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxGeometryOutputVertices	
+	 * get method for field maxGeometryOutputVertices	[int]<br>
 	 * Prototype: uint32_t  maxGeometryOutputVertices
 	 */ 
 	 public int maxGeometryOutputVertices(){
@@ -1413,7 +1549,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxGeometryTotalOutputComponents	
+	 * Set method for field maxGeometryTotalOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxGeometryTotalOutputComponents
 	 */ 
 	 public void maxGeometryTotalOutputComponents(int maxGeometryTotalOutputComponents){
@@ -1422,7 +1558,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxGeometryTotalOutputComponents	
+	 * get method for field maxGeometryTotalOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxGeometryTotalOutputComponents
 	 */ 
 	 public int maxGeometryTotalOutputComponents(){
@@ -1431,7 +1567,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxFragmentInputComponents	
+	 * Set method for field maxFragmentInputComponents	[int]<br>
 	 * Prototype: uint32_t  maxFragmentInputComponents
 	 */ 
 	 public void maxFragmentInputComponents(int maxFragmentInputComponents){
@@ -1440,7 +1576,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxFragmentInputComponents	
+	 * get method for field maxFragmentInputComponents	[int]<br>
 	 * Prototype: uint32_t  maxFragmentInputComponents
 	 */ 
 	 public int maxFragmentInputComponents(){
@@ -1449,7 +1585,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxFragmentOutputAttachments	
+	 * Set method for field maxFragmentOutputAttachments	[int]<br>
 	 * Prototype: uint32_t  maxFragmentOutputAttachments
 	 */ 
 	 public void maxFragmentOutputAttachments(int maxFragmentOutputAttachments){
@@ -1458,7 +1594,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxFragmentOutputAttachments	
+	 * get method for field maxFragmentOutputAttachments	[int]<br>
 	 * Prototype: uint32_t  maxFragmentOutputAttachments
 	 */ 
 	 public int maxFragmentOutputAttachments(){
@@ -1467,7 +1603,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxFragmentDualSrcAttachments	
+	 * Set method for field maxFragmentDualSrcAttachments	[int]<br>
 	 * Prototype: uint32_t  maxFragmentDualSrcAttachments
 	 */ 
 	 public void maxFragmentDualSrcAttachments(int maxFragmentDualSrcAttachments){
@@ -1476,7 +1612,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxFragmentDualSrcAttachments	
+	 * get method for field maxFragmentDualSrcAttachments	[int]<br>
 	 * Prototype: uint32_t  maxFragmentDualSrcAttachments
 	 */ 
 	 public int maxFragmentDualSrcAttachments(){
@@ -1485,7 +1621,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxFragmentCombinedOutputResources	
+	 * Set method for field maxFragmentCombinedOutputResources	[int]<br>
 	 * Prototype: uint32_t  maxFragmentCombinedOutputResources
 	 */ 
 	 public void maxFragmentCombinedOutputResources(int maxFragmentCombinedOutputResources){
@@ -1494,7 +1630,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxFragmentCombinedOutputResources	
+	 * get method for field maxFragmentCombinedOutputResources	[int]<br>
 	 * Prototype: uint32_t  maxFragmentCombinedOutputResources
 	 */ 
 	 public int maxFragmentCombinedOutputResources(){
@@ -1503,7 +1639,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxComputeSharedMemorySize	
+	 * Set method for field maxComputeSharedMemorySize	[int]<br>
 	 * Prototype: uint32_t  maxComputeSharedMemorySize
 	 */ 
 	 public void maxComputeSharedMemorySize(int maxComputeSharedMemorySize){
@@ -1512,7 +1648,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxComputeSharedMemorySize	
+	 * get method for field maxComputeSharedMemorySize	[int]<br>
 	 * Prototype: uint32_t  maxComputeSharedMemorySize
 	 */ 
 	 public int maxComputeSharedMemorySize(){
@@ -1521,7 +1657,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxComputeWorkGroupCount	
+	 * Set method for field maxComputeWorkGroupCount	[int_array]<br>
 	 * Prototype: uint32_t[]  maxComputeWorkGroupCount
 	 */ 
 	 public void maxComputeWorkGroupCount(int[] maxComputeWorkGroupCount){
@@ -1530,7 +1666,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxComputeWorkGroupCount	
+	 * get method for field maxComputeWorkGroupCount	[int_array]<br>
 	 * Prototype: uint32_t[]  maxComputeWorkGroupCount
 	 */ 
 	 public int[] maxComputeWorkGroupCount(){
@@ -1539,7 +1675,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxComputeWorkGroupInvocations	
+	 * Set method for field maxComputeWorkGroupInvocations	[int]<br>
 	 * Prototype: uint32_t  maxComputeWorkGroupInvocations
 	 */ 
 	 public void maxComputeWorkGroupInvocations(int maxComputeWorkGroupInvocations){
@@ -1548,7 +1684,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxComputeWorkGroupInvocations	
+	 * get method for field maxComputeWorkGroupInvocations	[int]<br>
 	 * Prototype: uint32_t  maxComputeWorkGroupInvocations
 	 */ 
 	 public int maxComputeWorkGroupInvocations(){
@@ -1557,7 +1693,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxComputeWorkGroupSize	
+	 * Set method for field maxComputeWorkGroupSize	[int_array]<br>
 	 * Prototype: uint32_t[]  maxComputeWorkGroupSize
 	 */ 
 	 public void maxComputeWorkGroupSize(int[] maxComputeWorkGroupSize){
@@ -1566,7 +1702,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxComputeWorkGroupSize	
+	 * get method for field maxComputeWorkGroupSize	[int_array]<br>
 	 * Prototype: uint32_t[]  maxComputeWorkGroupSize
 	 */ 
 	 public int[] maxComputeWorkGroupSize(){
@@ -1575,7 +1711,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field subPixelPrecisionBits	
+	 * Set method for field subPixelPrecisionBits	[int]<br>
 	 * Prototype: uint32_t  subPixelPrecisionBits
 	 */ 
 	 public void subPixelPrecisionBits(int subPixelPrecisionBits){
@@ -1584,7 +1720,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field subPixelPrecisionBits	
+	 * get method for field subPixelPrecisionBits	[int]<br>
 	 * Prototype: uint32_t  subPixelPrecisionBits
 	 */ 
 	 public int subPixelPrecisionBits(){
@@ -1593,7 +1729,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field subTexelPrecisionBits	
+	 * Set method for field subTexelPrecisionBits	[int]<br>
 	 * Prototype: uint32_t  subTexelPrecisionBits
 	 */ 
 	 public void subTexelPrecisionBits(int subTexelPrecisionBits){
@@ -1602,7 +1738,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field subTexelPrecisionBits	
+	 * get method for field subTexelPrecisionBits	[int]<br>
 	 * Prototype: uint32_t  subTexelPrecisionBits
 	 */ 
 	 public int subTexelPrecisionBits(){
@@ -1611,7 +1747,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field mipmapPrecisionBits	
+	 * Set method for field mipmapPrecisionBits	[int]<br>
 	 * Prototype: uint32_t  mipmapPrecisionBits
 	 */ 
 	 public void mipmapPrecisionBits(int mipmapPrecisionBits){
@@ -1620,7 +1756,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field mipmapPrecisionBits	
+	 * get method for field mipmapPrecisionBits	[int]<br>
 	 * Prototype: uint32_t  mipmapPrecisionBits
 	 */ 
 	 public int mipmapPrecisionBits(){
@@ -1629,7 +1765,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxDrawIndexedIndexValue	
+	 * Set method for field maxDrawIndexedIndexValue	[int]<br>
 	 * Prototype: uint32_t  maxDrawIndexedIndexValue
 	 */ 
 	 public void maxDrawIndexedIndexValue(int maxDrawIndexedIndexValue){
@@ -1638,7 +1774,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxDrawIndexedIndexValue	
+	 * get method for field maxDrawIndexedIndexValue	[int]<br>
 	 * Prototype: uint32_t  maxDrawIndexedIndexValue
 	 */ 
 	 public int maxDrawIndexedIndexValue(){
@@ -1647,7 +1783,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxDrawIndirectCount	
+	 * Set method for field maxDrawIndirectCount	[int]<br>
 	 * Prototype: uint32_t  maxDrawIndirectCount
 	 */ 
 	 public void maxDrawIndirectCount(int maxDrawIndirectCount){
@@ -1656,7 +1792,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxDrawIndirectCount	
+	 * get method for field maxDrawIndirectCount	[int]<br>
 	 * Prototype: uint32_t  maxDrawIndirectCount
 	 */ 
 	 public int maxDrawIndirectCount(){
@@ -1665,7 +1801,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxSamplerLodBias	
+	 * Set method for field maxSamplerLodBias	[float]<br>
 	 * Prototype: float  maxSamplerLodBias
 	 */ 
 	 public void maxSamplerLodBias(float maxSamplerLodBias){
@@ -1674,7 +1810,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxSamplerLodBias	
+	 * get method for field maxSamplerLodBias	[float]<br>
 	 * Prototype: float  maxSamplerLodBias
 	 */ 
 	 public float maxSamplerLodBias(){
@@ -1683,7 +1819,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxSamplerAnisotropy	
+	 * Set method for field maxSamplerAnisotropy	[float]<br>
 	 * Prototype: float  maxSamplerAnisotropy
 	 */ 
 	 public void maxSamplerAnisotropy(float maxSamplerAnisotropy){
@@ -1692,7 +1828,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxSamplerAnisotropy	
+	 * get method for field maxSamplerAnisotropy	[float]<br>
 	 * Prototype: float  maxSamplerAnisotropy
 	 */ 
 	 public float maxSamplerAnisotropy(){
@@ -1701,7 +1837,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxViewports	
+	 * Set method for field maxViewports	[int]<br>
 	 * Prototype: uint32_t  maxViewports
 	 */ 
 	 public void maxViewports(int maxViewports){
@@ -1710,7 +1846,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxViewports	
+	 * get method for field maxViewports	[int]<br>
 	 * Prototype: uint32_t  maxViewports
 	 */ 
 	 public int maxViewports(){
@@ -1719,7 +1855,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxViewportDimensions	
+	 * Set method for field maxViewportDimensions	[int_array]<br>
 	 * Prototype: uint32_t[]  maxViewportDimensions
 	 */ 
 	 public void maxViewportDimensions(int[] maxViewportDimensions){
@@ -1728,7 +1864,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxViewportDimensions	
+	 * get method for field maxViewportDimensions	[int_array]<br>
 	 * Prototype: uint32_t[]  maxViewportDimensions
 	 */ 
 	 public int[] maxViewportDimensions(){
@@ -1737,7 +1873,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field viewportBoundsRange	
+	 * Set method for field viewportBoundsRange	[float_array]<br>
 	 * Prototype: float[]  viewportBoundsRange
 	 */ 
 	 public void viewportBoundsRange(float[] viewportBoundsRange){
@@ -1746,7 +1882,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field viewportBoundsRange	
+	 * get method for field viewportBoundsRange	[float_array]<br>
 	 * Prototype: float[]  viewportBoundsRange
 	 */ 
 	 public float[] viewportBoundsRange(){
@@ -1755,7 +1891,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field viewportSubPixelBits	
+	 * Set method for field viewportSubPixelBits	[int]<br>
 	 * Prototype: uint32_t  viewportSubPixelBits
 	 */ 
 	 public void viewportSubPixelBits(int viewportSubPixelBits){
@@ -1764,7 +1900,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field viewportSubPixelBits	
+	 * get method for field viewportSubPixelBits	[int]<br>
 	 * Prototype: uint32_t  viewportSubPixelBits
 	 */ 
 	 public int viewportSubPixelBits(){
@@ -1773,7 +1909,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field minMemoryMapAlignment	
+	 * Set method for field minMemoryMapAlignment	[long]<br>
 	 * Prototype: size_t  minMemoryMapAlignment
 	 */ 
 	 public void minMemoryMapAlignment(long minMemoryMapAlignment){
@@ -1782,7 +1918,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field minMemoryMapAlignment	
+	 * get method for field minMemoryMapAlignment	[long]<br>
 	 * Prototype: size_t  minMemoryMapAlignment
 	 */ 
 	 public long minMemoryMapAlignment(){
@@ -1791,7 +1927,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field minTexelBufferOffsetAlignment	
+	 * Set method for field minTexelBufferOffsetAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  minTexelBufferOffsetAlignment
 	 */ 
 	 public void minTexelBufferOffsetAlignment(long minTexelBufferOffsetAlignment){
@@ -1800,7 +1936,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field minTexelBufferOffsetAlignment	
+	 * get method for field minTexelBufferOffsetAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  minTexelBufferOffsetAlignment
 	 */ 
 	 public long minTexelBufferOffsetAlignment(){
@@ -1809,7 +1945,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field minUniformBufferOffsetAlignment	
+	 * Set method for field minUniformBufferOffsetAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  minUniformBufferOffsetAlignment
 	 */ 
 	 public void minUniformBufferOffsetAlignment(long minUniformBufferOffsetAlignment){
@@ -1818,7 +1954,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field minUniformBufferOffsetAlignment	
+	 * get method for field minUniformBufferOffsetAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  minUniformBufferOffsetAlignment
 	 */ 
 	 public long minUniformBufferOffsetAlignment(){
@@ -1827,7 +1963,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field minStorageBufferOffsetAlignment	
+	 * Set method for field minStorageBufferOffsetAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  minStorageBufferOffsetAlignment
 	 */ 
 	 public void minStorageBufferOffsetAlignment(long minStorageBufferOffsetAlignment){
@@ -1836,7 +1972,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field minStorageBufferOffsetAlignment	
+	 * get method for field minStorageBufferOffsetAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  minStorageBufferOffsetAlignment
 	 */ 
 	 public long minStorageBufferOffsetAlignment(){
@@ -1845,7 +1981,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field minTexelOffset	
+	 * Set method for field minTexelOffset	[int]<br>
 	 * Prototype: int32_t  minTexelOffset
 	 */ 
 	 public void minTexelOffset(int minTexelOffset){
@@ -1854,7 +1990,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field minTexelOffset	
+	 * get method for field minTexelOffset	[int]<br>
 	 * Prototype: int32_t  minTexelOffset
 	 */ 
 	 public int minTexelOffset(){
@@ -1863,7 +1999,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxTexelOffset	
+	 * Set method for field maxTexelOffset	[int]<br>
 	 * Prototype: uint32_t  maxTexelOffset
 	 */ 
 	 public void maxTexelOffset(int maxTexelOffset){
@@ -1872,7 +2008,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxTexelOffset	
+	 * get method for field maxTexelOffset	[int]<br>
 	 * Prototype: uint32_t  maxTexelOffset
 	 */ 
 	 public int maxTexelOffset(){
@@ -1881,7 +2017,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field minTexelGatherOffset	
+	 * Set method for field minTexelGatherOffset	[int]<br>
 	 * Prototype: int32_t  minTexelGatherOffset
 	 */ 
 	 public void minTexelGatherOffset(int minTexelGatherOffset){
@@ -1890,7 +2026,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field minTexelGatherOffset	
+	 * get method for field minTexelGatherOffset	[int]<br>
 	 * Prototype: int32_t  minTexelGatherOffset
 	 */ 
 	 public int minTexelGatherOffset(){
@@ -1899,7 +2035,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxTexelGatherOffset	
+	 * Set method for field maxTexelGatherOffset	[int]<br>
 	 * Prototype: uint32_t  maxTexelGatherOffset
 	 */ 
 	 public void maxTexelGatherOffset(int maxTexelGatherOffset){
@@ -1908,7 +2044,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxTexelGatherOffset	
+	 * get method for field maxTexelGatherOffset	[int]<br>
 	 * Prototype: uint32_t  maxTexelGatherOffset
 	 */ 
 	 public int maxTexelGatherOffset(){
@@ -1917,7 +2053,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field minInterpolationOffset	
+	 * Set method for field minInterpolationOffset	[float]<br>
 	 * Prototype: float  minInterpolationOffset
 	 */ 
 	 public void minInterpolationOffset(float minInterpolationOffset){
@@ -1926,7 +2062,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field minInterpolationOffset	
+	 * get method for field minInterpolationOffset	[float]<br>
 	 * Prototype: float  minInterpolationOffset
 	 */ 
 	 public float minInterpolationOffset(){
@@ -1935,7 +2071,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxInterpolationOffset	
+	 * Set method for field maxInterpolationOffset	[float]<br>
 	 * Prototype: float  maxInterpolationOffset
 	 */ 
 	 public void maxInterpolationOffset(float maxInterpolationOffset){
@@ -1944,7 +2080,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxInterpolationOffset	
+	 * get method for field maxInterpolationOffset	[float]<br>
 	 * Prototype: float  maxInterpolationOffset
 	 */ 
 	 public float maxInterpolationOffset(){
@@ -1953,7 +2089,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field subPixelInterpolationOffsetBits	
+	 * Set method for field subPixelInterpolationOffsetBits	[int]<br>
 	 * Prototype: uint32_t  subPixelInterpolationOffsetBits
 	 */ 
 	 public void subPixelInterpolationOffsetBits(int subPixelInterpolationOffsetBits){
@@ -1962,7 +2098,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field subPixelInterpolationOffsetBits	
+	 * get method for field subPixelInterpolationOffsetBits	[int]<br>
 	 * Prototype: uint32_t  subPixelInterpolationOffsetBits
 	 */ 
 	 public int subPixelInterpolationOffsetBits(){
@@ -1971,7 +2107,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxFramebufferWidth	
+	 * Set method for field maxFramebufferWidth	[int]<br>
 	 * Prototype: uint32_t  maxFramebufferWidth
 	 */ 
 	 public void maxFramebufferWidth(int maxFramebufferWidth){
@@ -1980,7 +2116,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxFramebufferWidth	
+	 * get method for field maxFramebufferWidth	[int]<br>
 	 * Prototype: uint32_t  maxFramebufferWidth
 	 */ 
 	 public int maxFramebufferWidth(){
@@ -1989,7 +2125,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxFramebufferHeight	
+	 * Set method for field maxFramebufferHeight	[int]<br>
 	 * Prototype: uint32_t  maxFramebufferHeight
 	 */ 
 	 public void maxFramebufferHeight(int maxFramebufferHeight){
@@ -1998,7 +2134,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxFramebufferHeight	
+	 * get method for field maxFramebufferHeight	[int]<br>
 	 * Prototype: uint32_t  maxFramebufferHeight
 	 */ 
 	 public int maxFramebufferHeight(){
@@ -2007,7 +2143,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxFramebufferLayers	
+	 * Set method for field maxFramebufferLayers	[int]<br>
 	 * Prototype: uint32_t  maxFramebufferLayers
 	 */ 
 	 public void maxFramebufferLayers(int maxFramebufferLayers){
@@ -2016,7 +2152,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxFramebufferLayers	
+	 * get method for field maxFramebufferLayers	[int]<br>
 	 * Prototype: uint32_t  maxFramebufferLayers
 	 */ 
 	 public int maxFramebufferLayers(){
@@ -2025,7 +2161,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field framebufferColorSampleCounts	
+	 * Set method for field framebufferColorSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  framebufferColorSampleCounts
 	 */ 
 	 public void framebufferColorSampleCounts(int framebufferColorSampleCounts){
@@ -2034,7 +2170,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field framebufferColorSampleCounts	
+	 * get method for field framebufferColorSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  framebufferColorSampleCounts
 	 */ 
 	 public int framebufferColorSampleCounts(){
@@ -2043,7 +2179,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field framebufferDepthSampleCounts	
+	 * Set method for field framebufferDepthSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  framebufferDepthSampleCounts
 	 */ 
 	 public void framebufferDepthSampleCounts(int framebufferDepthSampleCounts){
@@ -2052,7 +2188,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field framebufferDepthSampleCounts	
+	 * get method for field framebufferDepthSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  framebufferDepthSampleCounts
 	 */ 
 	 public int framebufferDepthSampleCounts(){
@@ -2061,7 +2197,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field framebufferStencilSampleCounts	
+	 * Set method for field framebufferStencilSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  framebufferStencilSampleCounts
 	 */ 
 	 public void framebufferStencilSampleCounts(int framebufferStencilSampleCounts){
@@ -2070,7 +2206,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field framebufferStencilSampleCounts	
+	 * get method for field framebufferStencilSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  framebufferStencilSampleCounts
 	 */ 
 	 public int framebufferStencilSampleCounts(){
@@ -2079,7 +2215,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field framebufferNoAttachmentsSampleCounts	
+	 * Set method for field framebufferNoAttachmentsSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  framebufferNoAttachmentsSampleCounts
 	 */ 
 	 public void framebufferNoAttachmentsSampleCounts(int framebufferNoAttachmentsSampleCounts){
@@ -2088,7 +2224,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field framebufferNoAttachmentsSampleCounts	
+	 * get method for field framebufferNoAttachmentsSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  framebufferNoAttachmentsSampleCounts
 	 */ 
 	 public int framebufferNoAttachmentsSampleCounts(){
@@ -2097,7 +2233,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxColorAttachments	
+	 * Set method for field maxColorAttachments	[int]<br>
 	 * Prototype: uint32_t  maxColorAttachments
 	 */ 
 	 public void maxColorAttachments(int maxColorAttachments){
@@ -2106,7 +2242,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxColorAttachments	
+	 * get method for field maxColorAttachments	[int]<br>
 	 * Prototype: uint32_t  maxColorAttachments
 	 */ 
 	 public int maxColorAttachments(){
@@ -2115,7 +2251,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field sampledImageColorSampleCounts	
+	 * Set method for field sampledImageColorSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampledImageColorSampleCounts
 	 */ 
 	 public void sampledImageColorSampleCounts(int sampledImageColorSampleCounts){
@@ -2124,7 +2260,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sampledImageColorSampleCounts	
+	 * get method for field sampledImageColorSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampledImageColorSampleCounts
 	 */ 
 	 public int sampledImageColorSampleCounts(){
@@ -2133,7 +2269,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field sampledImageIntegerSampleCounts	
+	 * Set method for field sampledImageIntegerSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampledImageIntegerSampleCounts
 	 */ 
 	 public void sampledImageIntegerSampleCounts(int sampledImageIntegerSampleCounts){
@@ -2142,7 +2278,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sampledImageIntegerSampleCounts	
+	 * get method for field sampledImageIntegerSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampledImageIntegerSampleCounts
 	 */ 
 	 public int sampledImageIntegerSampleCounts(){
@@ -2151,7 +2287,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field sampledImageDepthSampleCounts	
+	 * Set method for field sampledImageDepthSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampledImageDepthSampleCounts
 	 */ 
 	 public void sampledImageDepthSampleCounts(int sampledImageDepthSampleCounts){
@@ -2160,7 +2296,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sampledImageDepthSampleCounts	
+	 * get method for field sampledImageDepthSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampledImageDepthSampleCounts
 	 */ 
 	 public int sampledImageDepthSampleCounts(){
@@ -2169,7 +2305,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field sampledImageStencilSampleCounts	
+	 * Set method for field sampledImageStencilSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampledImageStencilSampleCounts
 	 */ 
 	 public void sampledImageStencilSampleCounts(int sampledImageStencilSampleCounts){
@@ -2178,7 +2314,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sampledImageStencilSampleCounts	
+	 * get method for field sampledImageStencilSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampledImageStencilSampleCounts
 	 */ 
 	 public int sampledImageStencilSampleCounts(){
@@ -2187,7 +2323,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field storageImageSampleCounts	
+	 * Set method for field storageImageSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  storageImageSampleCounts
 	 */ 
 	 public void storageImageSampleCounts(int storageImageSampleCounts){
@@ -2196,7 +2332,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field storageImageSampleCounts	
+	 * get method for field storageImageSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  storageImageSampleCounts
 	 */ 
 	 public int storageImageSampleCounts(){
@@ -2205,7 +2341,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxSampleMaskWords	
+	 * Set method for field maxSampleMaskWords	[int]<br>
 	 * Prototype: uint32_t  maxSampleMaskWords
 	 */ 
 	 public void maxSampleMaskWords(int maxSampleMaskWords){
@@ -2214,7 +2350,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxSampleMaskWords	
+	 * get method for field maxSampleMaskWords	[int]<br>
 	 * Prototype: uint32_t  maxSampleMaskWords
 	 */ 
 	 public int maxSampleMaskWords(){
@@ -2223,7 +2359,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field timestampComputeAndGraphics	
+	 * Set method for field timestampComputeAndGraphics	[boolean]<br>
 	 * Prototype: VkBool32  timestampComputeAndGraphics
 	 */ 
 	 public void timestampComputeAndGraphics(boolean timestampComputeAndGraphics){
@@ -2232,7 +2368,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field timestampComputeAndGraphics	
+	 * get method for field timestampComputeAndGraphics	[boolean]<br>
 	 * Prototype: VkBool32  timestampComputeAndGraphics
 	 */ 
 	 public boolean timestampComputeAndGraphics(){
@@ -2241,7 +2377,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field timestampPeriod	
+	 * Set method for field timestampPeriod	[float]<br>
 	 * Prototype: float  timestampPeriod
 	 */ 
 	 public void timestampPeriod(float timestampPeriod){
@@ -2250,7 +2386,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field timestampPeriod	
+	 * get method for field timestampPeriod	[float]<br>
 	 * Prototype: float  timestampPeriod
 	 */ 
 	 public float timestampPeriod(){
@@ -2259,7 +2395,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxClipDistances	
+	 * Set method for field maxClipDistances	[int]<br>
 	 * Prototype: uint32_t  maxClipDistances
 	 */ 
 	 public void maxClipDistances(int maxClipDistances){
@@ -2268,7 +2404,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxClipDistances	
+	 * get method for field maxClipDistances	[int]<br>
 	 * Prototype: uint32_t  maxClipDistances
 	 */ 
 	 public int maxClipDistances(){
@@ -2277,7 +2413,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxCullDistances	
+	 * Set method for field maxCullDistances	[int]<br>
 	 * Prototype: uint32_t  maxCullDistances
 	 */ 
 	 public void maxCullDistances(int maxCullDistances){
@@ -2286,7 +2422,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxCullDistances	
+	 * get method for field maxCullDistances	[int]<br>
 	 * Prototype: uint32_t  maxCullDistances
 	 */ 
 	 public int maxCullDistances(){
@@ -2295,7 +2431,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxCombinedClipAndCullDistances	
+	 * Set method for field maxCombinedClipAndCullDistances	[int]<br>
 	 * Prototype: uint32_t  maxCombinedClipAndCullDistances
 	 */ 
 	 public void maxCombinedClipAndCullDistances(int maxCombinedClipAndCullDistances){
@@ -2304,7 +2440,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxCombinedClipAndCullDistances	
+	 * get method for field maxCombinedClipAndCullDistances	[int]<br>
 	 * Prototype: uint32_t  maxCombinedClipAndCullDistances
 	 */ 
 	 public int maxCombinedClipAndCullDistances(){
@@ -2313,7 +2449,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field discreteQueuePriorities	
+	 * Set method for field discreteQueuePriorities	[int]<br>
 	 * Prototype: uint32_t  discreteQueuePriorities
 	 */ 
 	 public void discreteQueuePriorities(int discreteQueuePriorities){
@@ -2322,7 +2458,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field discreteQueuePriorities	
+	 * get method for field discreteQueuePriorities	[int]<br>
 	 * Prototype: uint32_t  discreteQueuePriorities
 	 */ 
 	 public int discreteQueuePriorities(){
@@ -2331,7 +2467,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pointSizeRange	
+	 * Set method for field pointSizeRange	[float_array]<br>
 	 * Prototype: float[]  pointSizeRange
 	 */ 
 	 public void pointSizeRange(float[] pointSizeRange){
@@ -2340,7 +2476,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pointSizeRange	
+	 * get method for field pointSizeRange	[float_array]<br>
 	 * Prototype: float[]  pointSizeRange
 	 */ 
 	 public float[] pointSizeRange(){
@@ -2349,7 +2485,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field lineWidthRange	
+	 * Set method for field lineWidthRange	[float_array]<br>
 	 * Prototype: float[]  lineWidthRange
 	 */ 
 	 public void lineWidthRange(float[] lineWidthRange){
@@ -2358,7 +2494,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field lineWidthRange	
+	 * get method for field lineWidthRange	[float_array]<br>
 	 * Prototype: float[]  lineWidthRange
 	 */ 
 	 public float[] lineWidthRange(){
@@ -2367,7 +2503,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pointSizeGranularity	
+	 * Set method for field pointSizeGranularity	[float]<br>
 	 * Prototype: float  pointSizeGranularity
 	 */ 
 	 public void pointSizeGranularity(float pointSizeGranularity){
@@ -2376,7 +2512,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pointSizeGranularity	
+	 * get method for field pointSizeGranularity	[float]<br>
 	 * Prototype: float  pointSizeGranularity
 	 */ 
 	 public float pointSizeGranularity(){
@@ -2385,7 +2521,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field lineWidthGranularity	
+	 * Set method for field lineWidthGranularity	[float]<br>
 	 * Prototype: float  lineWidthGranularity
 	 */ 
 	 public void lineWidthGranularity(float lineWidthGranularity){
@@ -2394,7 +2530,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field lineWidthGranularity	
+	 * get method for field lineWidthGranularity	[float]<br>
 	 * Prototype: float  lineWidthGranularity
 	 */ 
 	 public float lineWidthGranularity(){
@@ -2403,7 +2539,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field strictLines	
+	 * Set method for field strictLines	[boolean]<br>
 	 * Prototype: VkBool32  strictLines
 	 */ 
 	 public void strictLines(boolean strictLines){
@@ -2412,7 +2548,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field strictLines	
+	 * get method for field strictLines	[boolean]<br>
 	 * Prototype: VkBool32  strictLines
 	 */ 
 	 public boolean strictLines(){
@@ -2421,7 +2557,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field standardSampleLocations	
+	 * Set method for field standardSampleLocations	[boolean]<br>
 	 * Prototype: VkBool32  standardSampleLocations
 	 */ 
 	 public void standardSampleLocations(boolean standardSampleLocations){
@@ -2430,7 +2566,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field standardSampleLocations	
+	 * get method for field standardSampleLocations	[boolean]<br>
 	 * Prototype: VkBool32  standardSampleLocations
 	 */ 
 	 public boolean standardSampleLocations(){
@@ -2439,7 +2575,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field optimalBufferCopyOffsetAlignment	
+	 * Set method for field optimalBufferCopyOffsetAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  optimalBufferCopyOffsetAlignment
 	 */ 
 	 public void optimalBufferCopyOffsetAlignment(long optimalBufferCopyOffsetAlignment){
@@ -2448,7 +2584,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field optimalBufferCopyOffsetAlignment	
+	 * get method for field optimalBufferCopyOffsetAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  optimalBufferCopyOffsetAlignment
 	 */ 
 	 public long optimalBufferCopyOffsetAlignment(){
@@ -2457,7 +2593,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field optimalBufferCopyRowPitchAlignment	
+	 * Set method for field optimalBufferCopyRowPitchAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  optimalBufferCopyRowPitchAlignment
 	 */ 
 	 public void optimalBufferCopyRowPitchAlignment(long optimalBufferCopyRowPitchAlignment){
@@ -2466,7 +2602,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field optimalBufferCopyRowPitchAlignment	
+	 * get method for field optimalBufferCopyRowPitchAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  optimalBufferCopyRowPitchAlignment
 	 */ 
 	 public long optimalBufferCopyRowPitchAlignment(){
@@ -2475,7 +2611,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field nonCoherentAtomSize	
+	 * Set method for field nonCoherentAtomSize	[long]<br>
 	 * Prototype: VkDeviceSize  nonCoherentAtomSize
 	 */ 
 	 public void nonCoherentAtomSize(long nonCoherentAtomSize){
@@ -2484,7 +2620,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 	/**
-	 * get method for field nonCoherentAtomSize	
+	 * get method for field nonCoherentAtomSize	[long]<br>
 	 * Prototype: VkDeviceSize  nonCoherentAtomSize
 	 */ 
 	 public long nonCoherentAtomSize(){
@@ -2493,11 +2629,11 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field maxImageDimension1D	
+	 * native SET method for field maxImageDimension1D	[int]<br>
 	 * Prototype: uint32_t  maxImageDimension1D
 	 */ 
 	 private static native void maxImageDimension1D0(ByteBuffer ptr, int _maxImageDimension1D);/*
@@ -2506,7 +2642,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxImageDimension1D	
+	 * native GET method for field maxImageDimension1D	[int]<br>
 	 * Prototype: uint32_t  maxImageDimension1D
 	 */ 
 	 private static native int maxImageDimension1D0(ByteBuffer ptr);/*
@@ -2515,7 +2651,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxImageDimension2D	
+	 * native SET method for field maxImageDimension2D	[int]<br>
 	 * Prototype: uint32_t  maxImageDimension2D
 	 */ 
 	 private static native void maxImageDimension2D0(ByteBuffer ptr, int _maxImageDimension2D);/*
@@ -2524,7 +2660,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxImageDimension2D	
+	 * native GET method for field maxImageDimension2D	[int]<br>
 	 * Prototype: uint32_t  maxImageDimension2D
 	 */ 
 	 private static native int maxImageDimension2D0(ByteBuffer ptr);/*
@@ -2533,7 +2669,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxImageDimension3D	
+	 * native SET method for field maxImageDimension3D	[int]<br>
 	 * Prototype: uint32_t  maxImageDimension3D
 	 */ 
 	 private static native void maxImageDimension3D0(ByteBuffer ptr, int _maxImageDimension3D);/*
@@ -2542,7 +2678,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxImageDimension3D	
+	 * native GET method for field maxImageDimension3D	[int]<br>
 	 * Prototype: uint32_t  maxImageDimension3D
 	 */ 
 	 private static native int maxImageDimension3D0(ByteBuffer ptr);/*
@@ -2551,7 +2687,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxImageDimensionCube	
+	 * native SET method for field maxImageDimensionCube	[int]<br>
 	 * Prototype: uint32_t  maxImageDimensionCube
 	 */ 
 	 private static native void maxImageDimensionCube0(ByteBuffer ptr, int _maxImageDimensionCube);/*
@@ -2560,7 +2696,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxImageDimensionCube	
+	 * native GET method for field maxImageDimensionCube	[int]<br>
 	 * Prototype: uint32_t  maxImageDimensionCube
 	 */ 
 	 private static native int maxImageDimensionCube0(ByteBuffer ptr);/*
@@ -2569,7 +2705,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxImageArrayLayers	
+	 * native SET method for field maxImageArrayLayers	[int]<br>
 	 * Prototype: uint32_t  maxImageArrayLayers
 	 */ 
 	 private static native void maxImageArrayLayers0(ByteBuffer ptr, int _maxImageArrayLayers);/*
@@ -2578,7 +2714,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxImageArrayLayers	
+	 * native GET method for field maxImageArrayLayers	[int]<br>
 	 * Prototype: uint32_t  maxImageArrayLayers
 	 */ 
 	 private static native int maxImageArrayLayers0(ByteBuffer ptr);/*
@@ -2587,7 +2723,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxTexelBufferElements	
+	 * native SET method for field maxTexelBufferElements	[int]<br>
 	 * Prototype: uint32_t  maxTexelBufferElements
 	 */ 
 	 private static native void maxTexelBufferElements0(ByteBuffer ptr, int _maxTexelBufferElements);/*
@@ -2596,7 +2732,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxTexelBufferElements	
+	 * native GET method for field maxTexelBufferElements	[int]<br>
 	 * Prototype: uint32_t  maxTexelBufferElements
 	 */ 
 	 private static native int maxTexelBufferElements0(ByteBuffer ptr);/*
@@ -2605,7 +2741,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxUniformBufferRange	
+	 * native SET method for field maxUniformBufferRange	[int]<br>
 	 * Prototype: uint32_t  maxUniformBufferRange
 	 */ 
 	 private static native void maxUniformBufferRange0(ByteBuffer ptr, int _maxUniformBufferRange);/*
@@ -2614,7 +2750,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxUniformBufferRange	
+	 * native GET method for field maxUniformBufferRange	[int]<br>
 	 * Prototype: uint32_t  maxUniformBufferRange
 	 */ 
 	 private static native int maxUniformBufferRange0(ByteBuffer ptr);/*
@@ -2623,7 +2759,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxStorageBufferRange	
+	 * native SET method for field maxStorageBufferRange	[int]<br>
 	 * Prototype: uint32_t  maxStorageBufferRange
 	 */ 
 	 private static native void maxStorageBufferRange0(ByteBuffer ptr, int _maxStorageBufferRange);/*
@@ -2632,7 +2768,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxStorageBufferRange	
+	 * native GET method for field maxStorageBufferRange	[int]<br>
 	 * Prototype: uint32_t  maxStorageBufferRange
 	 */ 
 	 private static native int maxStorageBufferRange0(ByteBuffer ptr);/*
@@ -2641,7 +2777,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxPushConstantsSize	
+	 * native SET method for field maxPushConstantsSize	[int]<br>
 	 * Prototype: uint32_t  maxPushConstantsSize
 	 */ 
 	 private static native void maxPushConstantsSize0(ByteBuffer ptr, int _maxPushConstantsSize);/*
@@ -2650,7 +2786,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxPushConstantsSize	
+	 * native GET method for field maxPushConstantsSize	[int]<br>
 	 * Prototype: uint32_t  maxPushConstantsSize
 	 */ 
 	 private static native int maxPushConstantsSize0(ByteBuffer ptr);/*
@@ -2659,7 +2795,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxMemoryAllocationCount	
+	 * native SET method for field maxMemoryAllocationCount	[int]<br>
 	 * Prototype: uint32_t  maxMemoryAllocationCount
 	 */ 
 	 private static native void maxMemoryAllocationCount0(ByteBuffer ptr, int _maxMemoryAllocationCount);/*
@@ -2668,7 +2804,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxMemoryAllocationCount	
+	 * native GET method for field maxMemoryAllocationCount	[int]<br>
 	 * Prototype: uint32_t  maxMemoryAllocationCount
 	 */ 
 	 private static native int maxMemoryAllocationCount0(ByteBuffer ptr);/*
@@ -2677,7 +2813,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxSamplerAllocationCount	
+	 * native SET method for field maxSamplerAllocationCount	[int]<br>
 	 * Prototype: uint32_t  maxSamplerAllocationCount
 	 */ 
 	 private static native void maxSamplerAllocationCount0(ByteBuffer ptr, int _maxSamplerAllocationCount);/*
@@ -2686,7 +2822,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxSamplerAllocationCount	
+	 * native GET method for field maxSamplerAllocationCount	[int]<br>
 	 * Prototype: uint32_t  maxSamplerAllocationCount
 	 */ 
 	 private static native int maxSamplerAllocationCount0(ByteBuffer ptr);/*
@@ -2695,7 +2831,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field bufferImageGranularity	
+	 * native SET method for field bufferImageGranularity	[long]<br>
 	 * Prototype: VkDeviceSize  bufferImageGranularity
 	 */ 
 	 private static native void bufferImageGranularity0(ByteBuffer ptr, long _bufferImageGranularity);/*
@@ -2704,7 +2840,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field bufferImageGranularity	
+	 * native GET method for field bufferImageGranularity	[long]<br>
 	 * Prototype: VkDeviceSize  bufferImageGranularity
 	 */ 
 	 private static native long bufferImageGranularity0(ByteBuffer ptr);/*
@@ -2713,7 +2849,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field sparseAddressSpaceSize	
+	 * native SET method for field sparseAddressSpaceSize	[long]<br>
 	 * Prototype: VkDeviceSize  sparseAddressSpaceSize
 	 */ 
 	 private static native void sparseAddressSpaceSize0(ByteBuffer ptr, long _sparseAddressSpaceSize);/*
@@ -2722,7 +2858,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sparseAddressSpaceSize	
+	 * native GET method for field sparseAddressSpaceSize	[long]<br>
 	 * Prototype: VkDeviceSize  sparseAddressSpaceSize
 	 */ 
 	 private static native long sparseAddressSpaceSize0(ByteBuffer ptr);/*
@@ -2731,7 +2867,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxBoundDescriptorSets	
+	 * native SET method for field maxBoundDescriptorSets	[int]<br>
 	 * Prototype: uint32_t  maxBoundDescriptorSets
 	 */ 
 	 private static native void maxBoundDescriptorSets0(ByteBuffer ptr, int _maxBoundDescriptorSets);/*
@@ -2740,7 +2876,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxBoundDescriptorSets	
+	 * native GET method for field maxBoundDescriptorSets	[int]<br>
 	 * Prototype: uint32_t  maxBoundDescriptorSets
 	 */ 
 	 private static native int maxBoundDescriptorSets0(ByteBuffer ptr);/*
@@ -2749,7 +2885,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxPerStageDescriptorSamplers	
+	 * native SET method for field maxPerStageDescriptorSamplers	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorSamplers
 	 */ 
 	 private static native void maxPerStageDescriptorSamplers0(ByteBuffer ptr, int _maxPerStageDescriptorSamplers);/*
@@ -2758,7 +2894,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxPerStageDescriptorSamplers	
+	 * native GET method for field maxPerStageDescriptorSamplers	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorSamplers
 	 */ 
 	 private static native int maxPerStageDescriptorSamplers0(ByteBuffer ptr);/*
@@ -2767,7 +2903,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxPerStageDescriptorUniformBuffers	
+	 * native SET method for field maxPerStageDescriptorUniformBuffers	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorUniformBuffers
 	 */ 
 	 private static native void maxPerStageDescriptorUniformBuffers0(ByteBuffer ptr, int _maxPerStageDescriptorUniformBuffers);/*
@@ -2776,7 +2912,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxPerStageDescriptorUniformBuffers	
+	 * native GET method for field maxPerStageDescriptorUniformBuffers	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorUniformBuffers
 	 */ 
 	 private static native int maxPerStageDescriptorUniformBuffers0(ByteBuffer ptr);/*
@@ -2785,7 +2921,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxPerStageDescriptorStorageBuffers	
+	 * native SET method for field maxPerStageDescriptorStorageBuffers	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorStorageBuffers
 	 */ 
 	 private static native void maxPerStageDescriptorStorageBuffers0(ByteBuffer ptr, int _maxPerStageDescriptorStorageBuffers);/*
@@ -2794,7 +2930,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxPerStageDescriptorStorageBuffers	
+	 * native GET method for field maxPerStageDescriptorStorageBuffers	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorStorageBuffers
 	 */ 
 	 private static native int maxPerStageDescriptorStorageBuffers0(ByteBuffer ptr);/*
@@ -2803,7 +2939,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxPerStageDescriptorSampledImages	
+	 * native SET method for field maxPerStageDescriptorSampledImages	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorSampledImages
 	 */ 
 	 private static native void maxPerStageDescriptorSampledImages0(ByteBuffer ptr, int _maxPerStageDescriptorSampledImages);/*
@@ -2812,7 +2948,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxPerStageDescriptorSampledImages	
+	 * native GET method for field maxPerStageDescriptorSampledImages	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorSampledImages
 	 */ 
 	 private static native int maxPerStageDescriptorSampledImages0(ByteBuffer ptr);/*
@@ -2821,7 +2957,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxPerStageDescriptorStorageImages	
+	 * native SET method for field maxPerStageDescriptorStorageImages	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorStorageImages
 	 */ 
 	 private static native void maxPerStageDescriptorStorageImages0(ByteBuffer ptr, int _maxPerStageDescriptorStorageImages);/*
@@ -2830,7 +2966,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxPerStageDescriptorStorageImages	
+	 * native GET method for field maxPerStageDescriptorStorageImages	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorStorageImages
 	 */ 
 	 private static native int maxPerStageDescriptorStorageImages0(ByteBuffer ptr);/*
@@ -2839,7 +2975,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxPerStageDescriptorInputAttachments	
+	 * native SET method for field maxPerStageDescriptorInputAttachments	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorInputAttachments
 	 */ 
 	 private static native void maxPerStageDescriptorInputAttachments0(ByteBuffer ptr, int _maxPerStageDescriptorInputAttachments);/*
@@ -2848,7 +2984,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxPerStageDescriptorInputAttachments	
+	 * native GET method for field maxPerStageDescriptorInputAttachments	[int]<br>
 	 * Prototype: uint32_t  maxPerStageDescriptorInputAttachments
 	 */ 
 	 private static native int maxPerStageDescriptorInputAttachments0(ByteBuffer ptr);/*
@@ -2857,7 +2993,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxPerStageResources	
+	 * native SET method for field maxPerStageResources	[int]<br>
 	 * Prototype: uint32_t  maxPerStageResources
 	 */ 
 	 private static native void maxPerStageResources0(ByteBuffer ptr, int _maxPerStageResources);/*
@@ -2866,7 +3002,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxPerStageResources	
+	 * native GET method for field maxPerStageResources	[int]<br>
 	 * Prototype: uint32_t  maxPerStageResources
 	 */ 
 	 private static native int maxPerStageResources0(ByteBuffer ptr);/*
@@ -2875,7 +3011,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxDescriptorSetSamplers	
+	 * native SET method for field maxDescriptorSetSamplers	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetSamplers
 	 */ 
 	 private static native void maxDescriptorSetSamplers0(ByteBuffer ptr, int _maxDescriptorSetSamplers);/*
@@ -2884,7 +3020,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxDescriptorSetSamplers	
+	 * native GET method for field maxDescriptorSetSamplers	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetSamplers
 	 */ 
 	 private static native int maxDescriptorSetSamplers0(ByteBuffer ptr);/*
@@ -2893,7 +3029,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxDescriptorSetUniformBuffers	
+	 * native SET method for field maxDescriptorSetUniformBuffers	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetUniformBuffers
 	 */ 
 	 private static native void maxDescriptorSetUniformBuffers0(ByteBuffer ptr, int _maxDescriptorSetUniformBuffers);/*
@@ -2902,7 +3038,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxDescriptorSetUniformBuffers	
+	 * native GET method for field maxDescriptorSetUniformBuffers	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetUniformBuffers
 	 */ 
 	 private static native int maxDescriptorSetUniformBuffers0(ByteBuffer ptr);/*
@@ -2911,7 +3047,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxDescriptorSetUniformBuffersDynamic	
+	 * native SET method for field maxDescriptorSetUniformBuffersDynamic	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetUniformBuffersDynamic
 	 */ 
 	 private static native void maxDescriptorSetUniformBuffersDynamic0(ByteBuffer ptr, int _maxDescriptorSetUniformBuffersDynamic);/*
@@ -2920,7 +3056,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxDescriptorSetUniformBuffersDynamic	
+	 * native GET method for field maxDescriptorSetUniformBuffersDynamic	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetUniformBuffersDynamic
 	 */ 
 	 private static native int maxDescriptorSetUniformBuffersDynamic0(ByteBuffer ptr);/*
@@ -2929,7 +3065,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxDescriptorSetStorageBuffers	
+	 * native SET method for field maxDescriptorSetStorageBuffers	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetStorageBuffers
 	 */ 
 	 private static native void maxDescriptorSetStorageBuffers0(ByteBuffer ptr, int _maxDescriptorSetStorageBuffers);/*
@@ -2938,7 +3074,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxDescriptorSetStorageBuffers	
+	 * native GET method for field maxDescriptorSetStorageBuffers	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetStorageBuffers
 	 */ 
 	 private static native int maxDescriptorSetStorageBuffers0(ByteBuffer ptr);/*
@@ -2947,7 +3083,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxDescriptorSetStorageBuffersDynamic	
+	 * native SET method for field maxDescriptorSetStorageBuffersDynamic	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetStorageBuffersDynamic
 	 */ 
 	 private static native void maxDescriptorSetStorageBuffersDynamic0(ByteBuffer ptr, int _maxDescriptorSetStorageBuffersDynamic);/*
@@ -2956,7 +3092,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxDescriptorSetStorageBuffersDynamic	
+	 * native GET method for field maxDescriptorSetStorageBuffersDynamic	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetStorageBuffersDynamic
 	 */ 
 	 private static native int maxDescriptorSetStorageBuffersDynamic0(ByteBuffer ptr);/*
@@ -2965,7 +3101,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxDescriptorSetSampledImages	
+	 * native SET method for field maxDescriptorSetSampledImages	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetSampledImages
 	 */ 
 	 private static native void maxDescriptorSetSampledImages0(ByteBuffer ptr, int _maxDescriptorSetSampledImages);/*
@@ -2974,7 +3110,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxDescriptorSetSampledImages	
+	 * native GET method for field maxDescriptorSetSampledImages	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetSampledImages
 	 */ 
 	 private static native int maxDescriptorSetSampledImages0(ByteBuffer ptr);/*
@@ -2983,7 +3119,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxDescriptorSetStorageImages	
+	 * native SET method for field maxDescriptorSetStorageImages	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetStorageImages
 	 */ 
 	 private static native void maxDescriptorSetStorageImages0(ByteBuffer ptr, int _maxDescriptorSetStorageImages);/*
@@ -2992,7 +3128,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxDescriptorSetStorageImages	
+	 * native GET method for field maxDescriptorSetStorageImages	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetStorageImages
 	 */ 
 	 private static native int maxDescriptorSetStorageImages0(ByteBuffer ptr);/*
@@ -3001,7 +3137,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxDescriptorSetInputAttachments	
+	 * native SET method for field maxDescriptorSetInputAttachments	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetInputAttachments
 	 */ 
 	 private static native void maxDescriptorSetInputAttachments0(ByteBuffer ptr, int _maxDescriptorSetInputAttachments);/*
@@ -3010,7 +3146,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxDescriptorSetInputAttachments	
+	 * native GET method for field maxDescriptorSetInputAttachments	[int]<br>
 	 * Prototype: uint32_t  maxDescriptorSetInputAttachments
 	 */ 
 	 private static native int maxDescriptorSetInputAttachments0(ByteBuffer ptr);/*
@@ -3019,7 +3155,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxVertexInputAttributes	
+	 * native SET method for field maxVertexInputAttributes	[int]<br>
 	 * Prototype: uint32_t  maxVertexInputAttributes
 	 */ 
 	 private static native void maxVertexInputAttributes0(ByteBuffer ptr, int _maxVertexInputAttributes);/*
@@ -3028,7 +3164,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxVertexInputAttributes	
+	 * native GET method for field maxVertexInputAttributes	[int]<br>
 	 * Prototype: uint32_t  maxVertexInputAttributes
 	 */ 
 	 private static native int maxVertexInputAttributes0(ByteBuffer ptr);/*
@@ -3037,7 +3173,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxVertexInputBindings	
+	 * native SET method for field maxVertexInputBindings	[int]<br>
 	 * Prototype: uint32_t  maxVertexInputBindings
 	 */ 
 	 private static native void maxVertexInputBindings0(ByteBuffer ptr, int _maxVertexInputBindings);/*
@@ -3046,7 +3182,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxVertexInputBindings	
+	 * native GET method for field maxVertexInputBindings	[int]<br>
 	 * Prototype: uint32_t  maxVertexInputBindings
 	 */ 
 	 private static native int maxVertexInputBindings0(ByteBuffer ptr);/*
@@ -3055,7 +3191,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxVertexInputAttributeOffset	
+	 * native SET method for field maxVertexInputAttributeOffset	[int]<br>
 	 * Prototype: uint32_t  maxVertexInputAttributeOffset
 	 */ 
 	 private static native void maxVertexInputAttributeOffset0(ByteBuffer ptr, int _maxVertexInputAttributeOffset);/*
@@ -3064,7 +3200,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxVertexInputAttributeOffset	
+	 * native GET method for field maxVertexInputAttributeOffset	[int]<br>
 	 * Prototype: uint32_t  maxVertexInputAttributeOffset
 	 */ 
 	 private static native int maxVertexInputAttributeOffset0(ByteBuffer ptr);/*
@@ -3073,7 +3209,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxVertexInputBindingStride	
+	 * native SET method for field maxVertexInputBindingStride	[int]<br>
 	 * Prototype: uint32_t  maxVertexInputBindingStride
 	 */ 
 	 private static native void maxVertexInputBindingStride0(ByteBuffer ptr, int _maxVertexInputBindingStride);/*
@@ -3082,7 +3218,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxVertexInputBindingStride	
+	 * native GET method for field maxVertexInputBindingStride	[int]<br>
 	 * Prototype: uint32_t  maxVertexInputBindingStride
 	 */ 
 	 private static native int maxVertexInputBindingStride0(ByteBuffer ptr);/*
@@ -3091,7 +3227,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxVertexOutputComponents	
+	 * native SET method for field maxVertexOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxVertexOutputComponents
 	 */ 
 	 private static native void maxVertexOutputComponents0(ByteBuffer ptr, int _maxVertexOutputComponents);/*
@@ -3100,7 +3236,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxVertexOutputComponents	
+	 * native GET method for field maxVertexOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxVertexOutputComponents
 	 */ 
 	 private static native int maxVertexOutputComponents0(ByteBuffer ptr);/*
@@ -3109,7 +3245,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxTessellationGenerationLevel	
+	 * native SET method for field maxTessellationGenerationLevel	[int]<br>
 	 * Prototype: uint32_t  maxTessellationGenerationLevel
 	 */ 
 	 private static native void maxTessellationGenerationLevel0(ByteBuffer ptr, int _maxTessellationGenerationLevel);/*
@@ -3118,7 +3254,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxTessellationGenerationLevel	
+	 * native GET method for field maxTessellationGenerationLevel	[int]<br>
 	 * Prototype: uint32_t  maxTessellationGenerationLevel
 	 */ 
 	 private static native int maxTessellationGenerationLevel0(ByteBuffer ptr);/*
@@ -3127,7 +3263,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxTessellationPatchSize	
+	 * native SET method for field maxTessellationPatchSize	[int]<br>
 	 * Prototype: uint32_t  maxTessellationPatchSize
 	 */ 
 	 private static native void maxTessellationPatchSize0(ByteBuffer ptr, int _maxTessellationPatchSize);/*
@@ -3136,7 +3272,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxTessellationPatchSize	
+	 * native GET method for field maxTessellationPatchSize	[int]<br>
 	 * Prototype: uint32_t  maxTessellationPatchSize
 	 */ 
 	 private static native int maxTessellationPatchSize0(ByteBuffer ptr);/*
@@ -3145,7 +3281,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxTessellationControlPerVertexInputComponents	
+	 * native SET method for field maxTessellationControlPerVertexInputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationControlPerVertexInputComponents
 	 */ 
 	 private static native void maxTessellationControlPerVertexInputComponents0(ByteBuffer ptr, int _maxTessellationControlPerVertexInputComponents);/*
@@ -3154,7 +3290,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxTessellationControlPerVertexInputComponents	
+	 * native GET method for field maxTessellationControlPerVertexInputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationControlPerVertexInputComponents
 	 */ 
 	 private static native int maxTessellationControlPerVertexInputComponents0(ByteBuffer ptr);/*
@@ -3163,7 +3299,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxTessellationControlPerVertexOutputComponents	
+	 * native SET method for field maxTessellationControlPerVertexOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationControlPerVertexOutputComponents
 	 */ 
 	 private static native void maxTessellationControlPerVertexOutputComponents0(ByteBuffer ptr, int _maxTessellationControlPerVertexOutputComponents);/*
@@ -3172,7 +3308,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxTessellationControlPerVertexOutputComponents	
+	 * native GET method for field maxTessellationControlPerVertexOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationControlPerVertexOutputComponents
 	 */ 
 	 private static native int maxTessellationControlPerVertexOutputComponents0(ByteBuffer ptr);/*
@@ -3181,7 +3317,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxTessellationControlPerPatchOutputComponents	
+	 * native SET method for field maxTessellationControlPerPatchOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationControlPerPatchOutputComponents
 	 */ 
 	 private static native void maxTessellationControlPerPatchOutputComponents0(ByteBuffer ptr, int _maxTessellationControlPerPatchOutputComponents);/*
@@ -3190,7 +3326,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxTessellationControlPerPatchOutputComponents	
+	 * native GET method for field maxTessellationControlPerPatchOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationControlPerPatchOutputComponents
 	 */ 
 	 private static native int maxTessellationControlPerPatchOutputComponents0(ByteBuffer ptr);/*
@@ -3199,7 +3335,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxTessellationControlTotalOutputComponents	
+	 * native SET method for field maxTessellationControlTotalOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationControlTotalOutputComponents
 	 */ 
 	 private static native void maxTessellationControlTotalOutputComponents0(ByteBuffer ptr, int _maxTessellationControlTotalOutputComponents);/*
@@ -3208,7 +3344,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxTessellationControlTotalOutputComponents	
+	 * native GET method for field maxTessellationControlTotalOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationControlTotalOutputComponents
 	 */ 
 	 private static native int maxTessellationControlTotalOutputComponents0(ByteBuffer ptr);/*
@@ -3217,7 +3353,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxTessellationEvaluationInputComponents	
+	 * native SET method for field maxTessellationEvaluationInputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationEvaluationInputComponents
 	 */ 
 	 private static native void maxTessellationEvaluationInputComponents0(ByteBuffer ptr, int _maxTessellationEvaluationInputComponents);/*
@@ -3226,7 +3362,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxTessellationEvaluationInputComponents	
+	 * native GET method for field maxTessellationEvaluationInputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationEvaluationInputComponents
 	 */ 
 	 private static native int maxTessellationEvaluationInputComponents0(ByteBuffer ptr);/*
@@ -3235,7 +3371,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxTessellationEvaluationOutputComponents	
+	 * native SET method for field maxTessellationEvaluationOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationEvaluationOutputComponents
 	 */ 
 	 private static native void maxTessellationEvaluationOutputComponents0(ByteBuffer ptr, int _maxTessellationEvaluationOutputComponents);/*
@@ -3244,7 +3380,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxTessellationEvaluationOutputComponents	
+	 * native GET method for field maxTessellationEvaluationOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxTessellationEvaluationOutputComponents
 	 */ 
 	 private static native int maxTessellationEvaluationOutputComponents0(ByteBuffer ptr);/*
@@ -3253,7 +3389,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxGeometryShaderInvocations	
+	 * native SET method for field maxGeometryShaderInvocations	[int]<br>
 	 * Prototype: uint32_t  maxGeometryShaderInvocations
 	 */ 
 	 private static native void maxGeometryShaderInvocations0(ByteBuffer ptr, int _maxGeometryShaderInvocations);/*
@@ -3262,7 +3398,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxGeometryShaderInvocations	
+	 * native GET method for field maxGeometryShaderInvocations	[int]<br>
 	 * Prototype: uint32_t  maxGeometryShaderInvocations
 	 */ 
 	 private static native int maxGeometryShaderInvocations0(ByteBuffer ptr);/*
@@ -3271,7 +3407,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxGeometryInputComponents	
+	 * native SET method for field maxGeometryInputComponents	[int]<br>
 	 * Prototype: uint32_t  maxGeometryInputComponents
 	 */ 
 	 private static native void maxGeometryInputComponents0(ByteBuffer ptr, int _maxGeometryInputComponents);/*
@@ -3280,7 +3416,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxGeometryInputComponents	
+	 * native GET method for field maxGeometryInputComponents	[int]<br>
 	 * Prototype: uint32_t  maxGeometryInputComponents
 	 */ 
 	 private static native int maxGeometryInputComponents0(ByteBuffer ptr);/*
@@ -3289,7 +3425,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxGeometryOutputComponents	
+	 * native SET method for field maxGeometryOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxGeometryOutputComponents
 	 */ 
 	 private static native void maxGeometryOutputComponents0(ByteBuffer ptr, int _maxGeometryOutputComponents);/*
@@ -3298,7 +3434,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxGeometryOutputComponents	
+	 * native GET method for field maxGeometryOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxGeometryOutputComponents
 	 */ 
 	 private static native int maxGeometryOutputComponents0(ByteBuffer ptr);/*
@@ -3307,7 +3443,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxGeometryOutputVertices	
+	 * native SET method for field maxGeometryOutputVertices	[int]<br>
 	 * Prototype: uint32_t  maxGeometryOutputVertices
 	 */ 
 	 private static native void maxGeometryOutputVertices0(ByteBuffer ptr, int _maxGeometryOutputVertices);/*
@@ -3316,7 +3452,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxGeometryOutputVertices	
+	 * native GET method for field maxGeometryOutputVertices	[int]<br>
 	 * Prototype: uint32_t  maxGeometryOutputVertices
 	 */ 
 	 private static native int maxGeometryOutputVertices0(ByteBuffer ptr);/*
@@ -3325,7 +3461,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxGeometryTotalOutputComponents	
+	 * native SET method for field maxGeometryTotalOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxGeometryTotalOutputComponents
 	 */ 
 	 private static native void maxGeometryTotalOutputComponents0(ByteBuffer ptr, int _maxGeometryTotalOutputComponents);/*
@@ -3334,7 +3470,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxGeometryTotalOutputComponents	
+	 * native GET method for field maxGeometryTotalOutputComponents	[int]<br>
 	 * Prototype: uint32_t  maxGeometryTotalOutputComponents
 	 */ 
 	 private static native int maxGeometryTotalOutputComponents0(ByteBuffer ptr);/*
@@ -3343,7 +3479,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxFragmentInputComponents	
+	 * native SET method for field maxFragmentInputComponents	[int]<br>
 	 * Prototype: uint32_t  maxFragmentInputComponents
 	 */ 
 	 private static native void maxFragmentInputComponents0(ByteBuffer ptr, int _maxFragmentInputComponents);/*
@@ -3352,7 +3488,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxFragmentInputComponents	
+	 * native GET method for field maxFragmentInputComponents	[int]<br>
 	 * Prototype: uint32_t  maxFragmentInputComponents
 	 */ 
 	 private static native int maxFragmentInputComponents0(ByteBuffer ptr);/*
@@ -3361,7 +3497,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxFragmentOutputAttachments	
+	 * native SET method for field maxFragmentOutputAttachments	[int]<br>
 	 * Prototype: uint32_t  maxFragmentOutputAttachments
 	 */ 
 	 private static native void maxFragmentOutputAttachments0(ByteBuffer ptr, int _maxFragmentOutputAttachments);/*
@@ -3370,7 +3506,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxFragmentOutputAttachments	
+	 * native GET method for field maxFragmentOutputAttachments	[int]<br>
 	 * Prototype: uint32_t  maxFragmentOutputAttachments
 	 */ 
 	 private static native int maxFragmentOutputAttachments0(ByteBuffer ptr);/*
@@ -3379,7 +3515,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxFragmentDualSrcAttachments	
+	 * native SET method for field maxFragmentDualSrcAttachments	[int]<br>
 	 * Prototype: uint32_t  maxFragmentDualSrcAttachments
 	 */ 
 	 private static native void maxFragmentDualSrcAttachments0(ByteBuffer ptr, int _maxFragmentDualSrcAttachments);/*
@@ -3388,7 +3524,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxFragmentDualSrcAttachments	
+	 * native GET method for field maxFragmentDualSrcAttachments	[int]<br>
 	 * Prototype: uint32_t  maxFragmentDualSrcAttachments
 	 */ 
 	 private static native int maxFragmentDualSrcAttachments0(ByteBuffer ptr);/*
@@ -3397,7 +3533,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxFragmentCombinedOutputResources	
+	 * native SET method for field maxFragmentCombinedOutputResources	[int]<br>
 	 * Prototype: uint32_t  maxFragmentCombinedOutputResources
 	 */ 
 	 private static native void maxFragmentCombinedOutputResources0(ByteBuffer ptr, int _maxFragmentCombinedOutputResources);/*
@@ -3406,7 +3542,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxFragmentCombinedOutputResources	
+	 * native GET method for field maxFragmentCombinedOutputResources	[int]<br>
 	 * Prototype: uint32_t  maxFragmentCombinedOutputResources
 	 */ 
 	 private static native int maxFragmentCombinedOutputResources0(ByteBuffer ptr);/*
@@ -3415,7 +3551,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxComputeSharedMemorySize	
+	 * native SET method for field maxComputeSharedMemorySize	[int]<br>
 	 * Prototype: uint32_t  maxComputeSharedMemorySize
 	 */ 
 	 private static native void maxComputeSharedMemorySize0(ByteBuffer ptr, int _maxComputeSharedMemorySize);/*
@@ -3424,7 +3560,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxComputeSharedMemorySize	
+	 * native GET method for field maxComputeSharedMemorySize	[int]<br>
 	 * Prototype: uint32_t  maxComputeSharedMemorySize
 	 */ 
 	 private static native int maxComputeSharedMemorySize0(ByteBuffer ptr);/*
@@ -3433,7 +3569,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxComputeWorkGroupCount	
+	 * native SET method for field maxComputeWorkGroupCount	[int_array]<br>
 	 * Prototype: uint32_t[]  maxComputeWorkGroupCount
 	 */ 
 	 private static native void maxComputeWorkGroupCount0(ByteBuffer ptr, int[] _maxComputeWorkGroupCount);/*
@@ -3442,7 +3578,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxComputeWorkGroupCount	
+	 * native GET method for field maxComputeWorkGroupCount	[int_array]<br>
 	 * Prototype: uint32_t[]  maxComputeWorkGroupCount
 	 */ 
 	 private static native int[] maxComputeWorkGroupCount0(ByteBuffer ptr);/*
@@ -3451,7 +3587,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxComputeWorkGroupInvocations	
+	 * native SET method for field maxComputeWorkGroupInvocations	[int]<br>
 	 * Prototype: uint32_t  maxComputeWorkGroupInvocations
 	 */ 
 	 private static native void maxComputeWorkGroupInvocations0(ByteBuffer ptr, int _maxComputeWorkGroupInvocations);/*
@@ -3460,7 +3596,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxComputeWorkGroupInvocations	
+	 * native GET method for field maxComputeWorkGroupInvocations	[int]<br>
 	 * Prototype: uint32_t  maxComputeWorkGroupInvocations
 	 */ 
 	 private static native int maxComputeWorkGroupInvocations0(ByteBuffer ptr);/*
@@ -3469,7 +3605,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxComputeWorkGroupSize	
+	 * native SET method for field maxComputeWorkGroupSize	[int_array]<br>
 	 * Prototype: uint32_t[]  maxComputeWorkGroupSize
 	 */ 
 	 private static native void maxComputeWorkGroupSize0(ByteBuffer ptr, int[] _maxComputeWorkGroupSize);/*
@@ -3478,7 +3614,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxComputeWorkGroupSize	
+	 * native GET method for field maxComputeWorkGroupSize	[int_array]<br>
 	 * Prototype: uint32_t[]  maxComputeWorkGroupSize
 	 */ 
 	 private static native int[] maxComputeWorkGroupSize0(ByteBuffer ptr);/*
@@ -3487,7 +3623,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field subPixelPrecisionBits	
+	 * native SET method for field subPixelPrecisionBits	[int]<br>
 	 * Prototype: uint32_t  subPixelPrecisionBits
 	 */ 
 	 private static native void subPixelPrecisionBits0(ByteBuffer ptr, int _subPixelPrecisionBits);/*
@@ -3496,7 +3632,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field subPixelPrecisionBits	
+	 * native GET method for field subPixelPrecisionBits	[int]<br>
 	 * Prototype: uint32_t  subPixelPrecisionBits
 	 */ 
 	 private static native int subPixelPrecisionBits0(ByteBuffer ptr);/*
@@ -3505,7 +3641,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field subTexelPrecisionBits	
+	 * native SET method for field subTexelPrecisionBits	[int]<br>
 	 * Prototype: uint32_t  subTexelPrecisionBits
 	 */ 
 	 private static native void subTexelPrecisionBits0(ByteBuffer ptr, int _subTexelPrecisionBits);/*
@@ -3514,7 +3650,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field subTexelPrecisionBits	
+	 * native GET method for field subTexelPrecisionBits	[int]<br>
 	 * Prototype: uint32_t  subTexelPrecisionBits
 	 */ 
 	 private static native int subTexelPrecisionBits0(ByteBuffer ptr);/*
@@ -3523,7 +3659,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field mipmapPrecisionBits	
+	 * native SET method for field mipmapPrecisionBits	[int]<br>
 	 * Prototype: uint32_t  mipmapPrecisionBits
 	 */ 
 	 private static native void mipmapPrecisionBits0(ByteBuffer ptr, int _mipmapPrecisionBits);/*
@@ -3532,7 +3668,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field mipmapPrecisionBits	
+	 * native GET method for field mipmapPrecisionBits	[int]<br>
 	 * Prototype: uint32_t  mipmapPrecisionBits
 	 */ 
 	 private static native int mipmapPrecisionBits0(ByteBuffer ptr);/*
@@ -3541,7 +3677,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxDrawIndexedIndexValue	
+	 * native SET method for field maxDrawIndexedIndexValue	[int]<br>
 	 * Prototype: uint32_t  maxDrawIndexedIndexValue
 	 */ 
 	 private static native void maxDrawIndexedIndexValue0(ByteBuffer ptr, int _maxDrawIndexedIndexValue);/*
@@ -3550,7 +3686,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxDrawIndexedIndexValue	
+	 * native GET method for field maxDrawIndexedIndexValue	[int]<br>
 	 * Prototype: uint32_t  maxDrawIndexedIndexValue
 	 */ 
 	 private static native int maxDrawIndexedIndexValue0(ByteBuffer ptr);/*
@@ -3559,7 +3695,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxDrawIndirectCount	
+	 * native SET method for field maxDrawIndirectCount	[int]<br>
 	 * Prototype: uint32_t  maxDrawIndirectCount
 	 */ 
 	 private static native void maxDrawIndirectCount0(ByteBuffer ptr, int _maxDrawIndirectCount);/*
@@ -3568,7 +3704,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxDrawIndirectCount	
+	 * native GET method for field maxDrawIndirectCount	[int]<br>
 	 * Prototype: uint32_t  maxDrawIndirectCount
 	 */ 
 	 private static native int maxDrawIndirectCount0(ByteBuffer ptr);/*
@@ -3577,7 +3713,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxSamplerLodBias	
+	 * native SET method for field maxSamplerLodBias	[float]<br>
 	 * Prototype: float  maxSamplerLodBias
 	 */ 
 	 private static native void maxSamplerLodBias0(ByteBuffer ptr, float _maxSamplerLodBias);/*
@@ -3586,7 +3722,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxSamplerLodBias	
+	 * native GET method for field maxSamplerLodBias	[float]<br>
 	 * Prototype: float  maxSamplerLodBias
 	 */ 
 	 private static native float maxSamplerLodBias0(ByteBuffer ptr);/*
@@ -3595,7 +3731,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxSamplerAnisotropy	
+	 * native SET method for field maxSamplerAnisotropy	[float]<br>
 	 * Prototype: float  maxSamplerAnisotropy
 	 */ 
 	 private static native void maxSamplerAnisotropy0(ByteBuffer ptr, float _maxSamplerAnisotropy);/*
@@ -3604,7 +3740,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxSamplerAnisotropy	
+	 * native GET method for field maxSamplerAnisotropy	[float]<br>
 	 * Prototype: float  maxSamplerAnisotropy
 	 */ 
 	 private static native float maxSamplerAnisotropy0(ByteBuffer ptr);/*
@@ -3613,7 +3749,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxViewports	
+	 * native SET method for field maxViewports	[int]<br>
 	 * Prototype: uint32_t  maxViewports
 	 */ 
 	 private static native void maxViewports0(ByteBuffer ptr, int _maxViewports);/*
@@ -3622,7 +3758,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxViewports	
+	 * native GET method for field maxViewports	[int]<br>
 	 * Prototype: uint32_t  maxViewports
 	 */ 
 	 private static native int maxViewports0(ByteBuffer ptr);/*
@@ -3631,7 +3767,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxViewportDimensions	
+	 * native SET method for field maxViewportDimensions	[int_array]<br>
 	 * Prototype: uint32_t[]  maxViewportDimensions
 	 */ 
 	 private static native void maxViewportDimensions0(ByteBuffer ptr, int[] _maxViewportDimensions);/*
@@ -3640,7 +3776,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxViewportDimensions	
+	 * native GET method for field maxViewportDimensions	[int_array]<br>
 	 * Prototype: uint32_t[]  maxViewportDimensions
 	 */ 
 	 private static native int[] maxViewportDimensions0(ByteBuffer ptr);/*
@@ -3649,7 +3785,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field viewportBoundsRange	
+	 * native SET method for field viewportBoundsRange	[float_array]<br>
 	 * Prototype: float[]  viewportBoundsRange
 	 */ 
 	 private static native void viewportBoundsRange0(ByteBuffer ptr, float[] _viewportBoundsRange);/*
@@ -3658,7 +3794,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field viewportBoundsRange	
+	 * native GET method for field viewportBoundsRange	[float_array]<br>
 	 * Prototype: float[]  viewportBoundsRange
 	 */ 
 	 private static native float[] viewportBoundsRange0(ByteBuffer ptr);/*
@@ -3667,7 +3803,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field viewportSubPixelBits	
+	 * native SET method for field viewportSubPixelBits	[int]<br>
 	 * Prototype: uint32_t  viewportSubPixelBits
 	 */ 
 	 private static native void viewportSubPixelBits0(ByteBuffer ptr, int _viewportSubPixelBits);/*
@@ -3676,7 +3812,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field viewportSubPixelBits	
+	 * native GET method for field viewportSubPixelBits	[int]<br>
 	 * Prototype: uint32_t  viewportSubPixelBits
 	 */ 
 	 private static native int viewportSubPixelBits0(ByteBuffer ptr);/*
@@ -3685,7 +3821,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field minMemoryMapAlignment	
+	 * native SET method for field minMemoryMapAlignment	[long]<br>
 	 * Prototype: size_t  minMemoryMapAlignment
 	 */ 
 	 private static native void minMemoryMapAlignment0(ByteBuffer ptr, long _minMemoryMapAlignment);/*
@@ -3694,7 +3830,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field minMemoryMapAlignment	
+	 * native GET method for field minMemoryMapAlignment	[long]<br>
 	 * Prototype: size_t  minMemoryMapAlignment
 	 */ 
 	 private static native long minMemoryMapAlignment0(ByteBuffer ptr);/*
@@ -3703,7 +3839,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field minTexelBufferOffsetAlignment	
+	 * native SET method for field minTexelBufferOffsetAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  minTexelBufferOffsetAlignment
 	 */ 
 	 private static native void minTexelBufferOffsetAlignment0(ByteBuffer ptr, long _minTexelBufferOffsetAlignment);/*
@@ -3712,7 +3848,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field minTexelBufferOffsetAlignment	
+	 * native GET method for field minTexelBufferOffsetAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  minTexelBufferOffsetAlignment
 	 */ 
 	 private static native long minTexelBufferOffsetAlignment0(ByteBuffer ptr);/*
@@ -3721,7 +3857,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field minUniformBufferOffsetAlignment	
+	 * native SET method for field minUniformBufferOffsetAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  minUniformBufferOffsetAlignment
 	 */ 
 	 private static native void minUniformBufferOffsetAlignment0(ByteBuffer ptr, long _minUniformBufferOffsetAlignment);/*
@@ -3730,7 +3866,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field minUniformBufferOffsetAlignment	
+	 * native GET method for field minUniformBufferOffsetAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  minUniformBufferOffsetAlignment
 	 */ 
 	 private static native long minUniformBufferOffsetAlignment0(ByteBuffer ptr);/*
@@ -3739,7 +3875,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field minStorageBufferOffsetAlignment	
+	 * native SET method for field minStorageBufferOffsetAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  minStorageBufferOffsetAlignment
 	 */ 
 	 private static native void minStorageBufferOffsetAlignment0(ByteBuffer ptr, long _minStorageBufferOffsetAlignment);/*
@@ -3748,7 +3884,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field minStorageBufferOffsetAlignment	
+	 * native GET method for field minStorageBufferOffsetAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  minStorageBufferOffsetAlignment
 	 */ 
 	 private static native long minStorageBufferOffsetAlignment0(ByteBuffer ptr);/*
@@ -3757,7 +3893,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field minTexelOffset	
+	 * native SET method for field minTexelOffset	[int]<br>
 	 * Prototype: int32_t  minTexelOffset
 	 */ 
 	 private static native void minTexelOffset0(ByteBuffer ptr, int _minTexelOffset);/*
@@ -3766,7 +3902,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field minTexelOffset	
+	 * native GET method for field minTexelOffset	[int]<br>
 	 * Prototype: int32_t  minTexelOffset
 	 */ 
 	 private static native int minTexelOffset0(ByteBuffer ptr);/*
@@ -3775,7 +3911,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxTexelOffset	
+	 * native SET method for field maxTexelOffset	[int]<br>
 	 * Prototype: uint32_t  maxTexelOffset
 	 */ 
 	 private static native void maxTexelOffset0(ByteBuffer ptr, int _maxTexelOffset);/*
@@ -3784,7 +3920,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxTexelOffset	
+	 * native GET method for field maxTexelOffset	[int]<br>
 	 * Prototype: uint32_t  maxTexelOffset
 	 */ 
 	 private static native int maxTexelOffset0(ByteBuffer ptr);/*
@@ -3793,7 +3929,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field minTexelGatherOffset	
+	 * native SET method for field minTexelGatherOffset	[int]<br>
 	 * Prototype: int32_t  minTexelGatherOffset
 	 */ 
 	 private static native void minTexelGatherOffset0(ByteBuffer ptr, int _minTexelGatherOffset);/*
@@ -3802,7 +3938,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field minTexelGatherOffset	
+	 * native GET method for field minTexelGatherOffset	[int]<br>
 	 * Prototype: int32_t  minTexelGatherOffset
 	 */ 
 	 private static native int minTexelGatherOffset0(ByteBuffer ptr);/*
@@ -3811,7 +3947,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxTexelGatherOffset	
+	 * native SET method for field maxTexelGatherOffset	[int]<br>
 	 * Prototype: uint32_t  maxTexelGatherOffset
 	 */ 
 	 private static native void maxTexelGatherOffset0(ByteBuffer ptr, int _maxTexelGatherOffset);/*
@@ -3820,7 +3956,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxTexelGatherOffset	
+	 * native GET method for field maxTexelGatherOffset	[int]<br>
 	 * Prototype: uint32_t  maxTexelGatherOffset
 	 */ 
 	 private static native int maxTexelGatherOffset0(ByteBuffer ptr);/*
@@ -3829,7 +3965,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field minInterpolationOffset	
+	 * native SET method for field minInterpolationOffset	[float]<br>
 	 * Prototype: float  minInterpolationOffset
 	 */ 
 	 private static native void minInterpolationOffset0(ByteBuffer ptr, float _minInterpolationOffset);/*
@@ -3838,7 +3974,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field minInterpolationOffset	
+	 * native GET method for field minInterpolationOffset	[float]<br>
 	 * Prototype: float  minInterpolationOffset
 	 */ 
 	 private static native float minInterpolationOffset0(ByteBuffer ptr);/*
@@ -3847,7 +3983,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxInterpolationOffset	
+	 * native SET method for field maxInterpolationOffset	[float]<br>
 	 * Prototype: float  maxInterpolationOffset
 	 */ 
 	 private static native void maxInterpolationOffset0(ByteBuffer ptr, float _maxInterpolationOffset);/*
@@ -3856,7 +3992,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxInterpolationOffset	
+	 * native GET method for field maxInterpolationOffset	[float]<br>
 	 * Prototype: float  maxInterpolationOffset
 	 */ 
 	 private static native float maxInterpolationOffset0(ByteBuffer ptr);/*
@@ -3865,7 +4001,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field subPixelInterpolationOffsetBits	
+	 * native SET method for field subPixelInterpolationOffsetBits	[int]<br>
 	 * Prototype: uint32_t  subPixelInterpolationOffsetBits
 	 */ 
 	 private static native void subPixelInterpolationOffsetBits0(ByteBuffer ptr, int _subPixelInterpolationOffsetBits);/*
@@ -3874,7 +4010,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field subPixelInterpolationOffsetBits	
+	 * native GET method for field subPixelInterpolationOffsetBits	[int]<br>
 	 * Prototype: uint32_t  subPixelInterpolationOffsetBits
 	 */ 
 	 private static native int subPixelInterpolationOffsetBits0(ByteBuffer ptr);/*
@@ -3883,7 +4019,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxFramebufferWidth	
+	 * native SET method for field maxFramebufferWidth	[int]<br>
 	 * Prototype: uint32_t  maxFramebufferWidth
 	 */ 
 	 private static native void maxFramebufferWidth0(ByteBuffer ptr, int _maxFramebufferWidth);/*
@@ -3892,7 +4028,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxFramebufferWidth	
+	 * native GET method for field maxFramebufferWidth	[int]<br>
 	 * Prototype: uint32_t  maxFramebufferWidth
 	 */ 
 	 private static native int maxFramebufferWidth0(ByteBuffer ptr);/*
@@ -3901,7 +4037,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxFramebufferHeight	
+	 * native SET method for field maxFramebufferHeight	[int]<br>
 	 * Prototype: uint32_t  maxFramebufferHeight
 	 */ 
 	 private static native void maxFramebufferHeight0(ByteBuffer ptr, int _maxFramebufferHeight);/*
@@ -3910,7 +4046,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxFramebufferHeight	
+	 * native GET method for field maxFramebufferHeight	[int]<br>
 	 * Prototype: uint32_t  maxFramebufferHeight
 	 */ 
 	 private static native int maxFramebufferHeight0(ByteBuffer ptr);/*
@@ -3919,7 +4055,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxFramebufferLayers	
+	 * native SET method for field maxFramebufferLayers	[int]<br>
 	 * Prototype: uint32_t  maxFramebufferLayers
 	 */ 
 	 private static native void maxFramebufferLayers0(ByteBuffer ptr, int _maxFramebufferLayers);/*
@@ -3928,7 +4064,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxFramebufferLayers	
+	 * native GET method for field maxFramebufferLayers	[int]<br>
 	 * Prototype: uint32_t  maxFramebufferLayers
 	 */ 
 	 private static native int maxFramebufferLayers0(ByteBuffer ptr);/*
@@ -3937,7 +4073,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field framebufferColorSampleCounts	
+	 * native SET method for field framebufferColorSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  framebufferColorSampleCounts
 	 */ 
 	 private static native void framebufferColorSampleCounts0(ByteBuffer ptr, int _framebufferColorSampleCounts);/*
@@ -3946,7 +4082,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field framebufferColorSampleCounts	
+	 * native GET method for field framebufferColorSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  framebufferColorSampleCounts
 	 */ 
 	 private static native int framebufferColorSampleCounts0(ByteBuffer ptr);/*
@@ -3955,7 +4091,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field framebufferDepthSampleCounts	
+	 * native SET method for field framebufferDepthSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  framebufferDepthSampleCounts
 	 */ 
 	 private static native void framebufferDepthSampleCounts0(ByteBuffer ptr, int _framebufferDepthSampleCounts);/*
@@ -3964,7 +4100,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field framebufferDepthSampleCounts	
+	 * native GET method for field framebufferDepthSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  framebufferDepthSampleCounts
 	 */ 
 	 private static native int framebufferDepthSampleCounts0(ByteBuffer ptr);/*
@@ -3973,7 +4109,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field framebufferStencilSampleCounts	
+	 * native SET method for field framebufferStencilSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  framebufferStencilSampleCounts
 	 */ 
 	 private static native void framebufferStencilSampleCounts0(ByteBuffer ptr, int _framebufferStencilSampleCounts);/*
@@ -3982,7 +4118,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field framebufferStencilSampleCounts	
+	 * native GET method for field framebufferStencilSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  framebufferStencilSampleCounts
 	 */ 
 	 private static native int framebufferStencilSampleCounts0(ByteBuffer ptr);/*
@@ -3991,7 +4127,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field framebufferNoAttachmentsSampleCounts	
+	 * native SET method for field framebufferNoAttachmentsSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  framebufferNoAttachmentsSampleCounts
 	 */ 
 	 private static native void framebufferNoAttachmentsSampleCounts0(ByteBuffer ptr, int _framebufferNoAttachmentsSampleCounts);/*
@@ -4000,7 +4136,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field framebufferNoAttachmentsSampleCounts	
+	 * native GET method for field framebufferNoAttachmentsSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  framebufferNoAttachmentsSampleCounts
 	 */ 
 	 private static native int framebufferNoAttachmentsSampleCounts0(ByteBuffer ptr);/*
@@ -4009,7 +4145,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxColorAttachments	
+	 * native SET method for field maxColorAttachments	[int]<br>
 	 * Prototype: uint32_t  maxColorAttachments
 	 */ 
 	 private static native void maxColorAttachments0(ByteBuffer ptr, int _maxColorAttachments);/*
@@ -4018,7 +4154,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxColorAttachments	
+	 * native GET method for field maxColorAttachments	[int]<br>
 	 * Prototype: uint32_t  maxColorAttachments
 	 */ 
 	 private static native int maxColorAttachments0(ByteBuffer ptr);/*
@@ -4027,7 +4163,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field sampledImageColorSampleCounts	
+	 * native SET method for field sampledImageColorSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampledImageColorSampleCounts
 	 */ 
 	 private static native void sampledImageColorSampleCounts0(ByteBuffer ptr, int _sampledImageColorSampleCounts);/*
@@ -4036,7 +4172,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sampledImageColorSampleCounts	
+	 * native GET method for field sampledImageColorSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampledImageColorSampleCounts
 	 */ 
 	 private static native int sampledImageColorSampleCounts0(ByteBuffer ptr);/*
@@ -4045,7 +4181,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field sampledImageIntegerSampleCounts	
+	 * native SET method for field sampledImageIntegerSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampledImageIntegerSampleCounts
 	 */ 
 	 private static native void sampledImageIntegerSampleCounts0(ByteBuffer ptr, int _sampledImageIntegerSampleCounts);/*
@@ -4054,7 +4190,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sampledImageIntegerSampleCounts	
+	 * native GET method for field sampledImageIntegerSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampledImageIntegerSampleCounts
 	 */ 
 	 private static native int sampledImageIntegerSampleCounts0(ByteBuffer ptr);/*
@@ -4063,7 +4199,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field sampledImageDepthSampleCounts	
+	 * native SET method for field sampledImageDepthSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampledImageDepthSampleCounts
 	 */ 
 	 private static native void sampledImageDepthSampleCounts0(ByteBuffer ptr, int _sampledImageDepthSampleCounts);/*
@@ -4072,7 +4208,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sampledImageDepthSampleCounts	
+	 * native GET method for field sampledImageDepthSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampledImageDepthSampleCounts
 	 */ 
 	 private static native int sampledImageDepthSampleCounts0(ByteBuffer ptr);/*
@@ -4081,7 +4217,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field sampledImageStencilSampleCounts	
+	 * native SET method for field sampledImageStencilSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampledImageStencilSampleCounts
 	 */ 
 	 private static native void sampledImageStencilSampleCounts0(ByteBuffer ptr, int _sampledImageStencilSampleCounts);/*
@@ -4090,7 +4226,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sampledImageStencilSampleCounts	
+	 * native GET method for field sampledImageStencilSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  sampledImageStencilSampleCounts
 	 */ 
 	 private static native int sampledImageStencilSampleCounts0(ByteBuffer ptr);/*
@@ -4099,7 +4235,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field storageImageSampleCounts	
+	 * native SET method for field storageImageSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  storageImageSampleCounts
 	 */ 
 	 private static native void storageImageSampleCounts0(ByteBuffer ptr, int _storageImageSampleCounts);/*
@@ -4108,7 +4244,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field storageImageSampleCounts	
+	 * native GET method for field storageImageSampleCounts	[int]<br>
 	 * Prototype: VkSampleCountFlags  storageImageSampleCounts
 	 */ 
 	 private static native int storageImageSampleCounts0(ByteBuffer ptr);/*
@@ -4117,7 +4253,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxSampleMaskWords	
+	 * native SET method for field maxSampleMaskWords	[int]<br>
 	 * Prototype: uint32_t  maxSampleMaskWords
 	 */ 
 	 private static native void maxSampleMaskWords0(ByteBuffer ptr, int _maxSampleMaskWords);/*
@@ -4126,7 +4262,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxSampleMaskWords	
+	 * native GET method for field maxSampleMaskWords	[int]<br>
 	 * Prototype: uint32_t  maxSampleMaskWords
 	 */ 
 	 private static native int maxSampleMaskWords0(ByteBuffer ptr);/*
@@ -4135,7 +4271,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field timestampComputeAndGraphics	
+	 * native SET method for field timestampComputeAndGraphics	[boolean]<br>
 	 * Prototype: VkBool32  timestampComputeAndGraphics
 	 */ 
 	 private static native void timestampComputeAndGraphics0(ByteBuffer ptr, boolean _timestampComputeAndGraphics);/*
@@ -4144,7 +4280,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field timestampComputeAndGraphics	
+	 * native GET method for field timestampComputeAndGraphics	[boolean]<br>
 	 * Prototype: VkBool32  timestampComputeAndGraphics
 	 */ 
 	 private static native boolean timestampComputeAndGraphics0(ByteBuffer ptr);/*
@@ -4153,7 +4289,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field timestampPeriod	
+	 * native SET method for field timestampPeriod	[float]<br>
 	 * Prototype: float  timestampPeriod
 	 */ 
 	 private static native void timestampPeriod0(ByteBuffer ptr, float _timestampPeriod);/*
@@ -4162,7 +4298,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field timestampPeriod	
+	 * native GET method for field timestampPeriod	[float]<br>
 	 * Prototype: float  timestampPeriod
 	 */ 
 	 private static native float timestampPeriod0(ByteBuffer ptr);/*
@@ -4171,7 +4307,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxClipDistances	
+	 * native SET method for field maxClipDistances	[int]<br>
 	 * Prototype: uint32_t  maxClipDistances
 	 */ 
 	 private static native void maxClipDistances0(ByteBuffer ptr, int _maxClipDistances);/*
@@ -4180,7 +4316,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxClipDistances	
+	 * native GET method for field maxClipDistances	[int]<br>
 	 * Prototype: uint32_t  maxClipDistances
 	 */ 
 	 private static native int maxClipDistances0(ByteBuffer ptr);/*
@@ -4189,7 +4325,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxCullDistances	
+	 * native SET method for field maxCullDistances	[int]<br>
 	 * Prototype: uint32_t  maxCullDistances
 	 */ 
 	 private static native void maxCullDistances0(ByteBuffer ptr, int _maxCullDistances);/*
@@ -4198,7 +4334,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxCullDistances	
+	 * native GET method for field maxCullDistances	[int]<br>
 	 * Prototype: uint32_t  maxCullDistances
 	 */ 
 	 private static native int maxCullDistances0(ByteBuffer ptr);/*
@@ -4207,7 +4343,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxCombinedClipAndCullDistances	
+	 * native SET method for field maxCombinedClipAndCullDistances	[int]<br>
 	 * Prototype: uint32_t  maxCombinedClipAndCullDistances
 	 */ 
 	 private static native void maxCombinedClipAndCullDistances0(ByteBuffer ptr, int _maxCombinedClipAndCullDistances);/*
@@ -4216,7 +4352,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxCombinedClipAndCullDistances	
+	 * native GET method for field maxCombinedClipAndCullDistances	[int]<br>
 	 * Prototype: uint32_t  maxCombinedClipAndCullDistances
 	 */ 
 	 private static native int maxCombinedClipAndCullDistances0(ByteBuffer ptr);/*
@@ -4225,7 +4361,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field discreteQueuePriorities	
+	 * native SET method for field discreteQueuePriorities	[int]<br>
 	 * Prototype: uint32_t  discreteQueuePriorities
 	 */ 
 	 private static native void discreteQueuePriorities0(ByteBuffer ptr, int _discreteQueuePriorities);/*
@@ -4234,7 +4370,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field discreteQueuePriorities	
+	 * native GET method for field discreteQueuePriorities	[int]<br>
 	 * Prototype: uint32_t  discreteQueuePriorities
 	 */ 
 	 private static native int discreteQueuePriorities0(ByteBuffer ptr);/*
@@ -4243,7 +4379,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pointSizeRange	
+	 * native SET method for field pointSizeRange	[float_array]<br>
 	 * Prototype: float[]  pointSizeRange
 	 */ 
 	 private static native void pointSizeRange0(ByteBuffer ptr, float[] _pointSizeRange);/*
@@ -4252,7 +4388,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pointSizeRange	
+	 * native GET method for field pointSizeRange	[float_array]<br>
 	 * Prototype: float[]  pointSizeRange
 	 */ 
 	 private static native float[] pointSizeRange0(ByteBuffer ptr);/*
@@ -4261,7 +4397,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field lineWidthRange	
+	 * native SET method for field lineWidthRange	[float_array]<br>
 	 * Prototype: float[]  lineWidthRange
 	 */ 
 	 private static native void lineWidthRange0(ByteBuffer ptr, float[] _lineWidthRange);/*
@@ -4270,7 +4406,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field lineWidthRange	
+	 * native GET method for field lineWidthRange	[float_array]<br>
 	 * Prototype: float[]  lineWidthRange
 	 */ 
 	 private static native float[] lineWidthRange0(ByteBuffer ptr);/*
@@ -4279,7 +4415,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pointSizeGranularity	
+	 * native SET method for field pointSizeGranularity	[float]<br>
 	 * Prototype: float  pointSizeGranularity
 	 */ 
 	 private static native void pointSizeGranularity0(ByteBuffer ptr, float _pointSizeGranularity);/*
@@ -4288,7 +4424,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pointSizeGranularity	
+	 * native GET method for field pointSizeGranularity	[float]<br>
 	 * Prototype: float  pointSizeGranularity
 	 */ 
 	 private static native float pointSizeGranularity0(ByteBuffer ptr);/*
@@ -4297,7 +4433,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field lineWidthGranularity	
+	 * native SET method for field lineWidthGranularity	[float]<br>
 	 * Prototype: float  lineWidthGranularity
 	 */ 
 	 private static native void lineWidthGranularity0(ByteBuffer ptr, float _lineWidthGranularity);/*
@@ -4306,7 +4442,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field lineWidthGranularity	
+	 * native GET method for field lineWidthGranularity	[float]<br>
 	 * Prototype: float  lineWidthGranularity
 	 */ 
 	 private static native float lineWidthGranularity0(ByteBuffer ptr);/*
@@ -4315,7 +4451,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field strictLines	
+	 * native SET method for field strictLines	[boolean]<br>
 	 * Prototype: VkBool32  strictLines
 	 */ 
 	 private static native void strictLines0(ByteBuffer ptr, boolean _strictLines);/*
@@ -4324,7 +4460,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field strictLines	
+	 * native GET method for field strictLines	[boolean]<br>
 	 * Prototype: VkBool32  strictLines
 	 */ 
 	 private static native boolean strictLines0(ByteBuffer ptr);/*
@@ -4333,7 +4469,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field standardSampleLocations	
+	 * native SET method for field standardSampleLocations	[boolean]<br>
 	 * Prototype: VkBool32  standardSampleLocations
 	 */ 
 	 private static native void standardSampleLocations0(ByteBuffer ptr, boolean _standardSampleLocations);/*
@@ -4342,7 +4478,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field standardSampleLocations	
+	 * native GET method for field standardSampleLocations	[boolean]<br>
 	 * Prototype: VkBool32  standardSampleLocations
 	 */ 
 	 private static native boolean standardSampleLocations0(ByteBuffer ptr);/*
@@ -4351,7 +4487,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field optimalBufferCopyOffsetAlignment	
+	 * native SET method for field optimalBufferCopyOffsetAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  optimalBufferCopyOffsetAlignment
 	 */ 
 	 private static native void optimalBufferCopyOffsetAlignment0(ByteBuffer ptr, long _optimalBufferCopyOffsetAlignment);/*
@@ -4360,7 +4496,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field optimalBufferCopyOffsetAlignment	
+	 * native GET method for field optimalBufferCopyOffsetAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  optimalBufferCopyOffsetAlignment
 	 */ 
 	 private static native long optimalBufferCopyOffsetAlignment0(ByteBuffer ptr);/*
@@ -4369,7 +4505,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field optimalBufferCopyRowPitchAlignment	
+	 * native SET method for field optimalBufferCopyRowPitchAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  optimalBufferCopyRowPitchAlignment
 	 */ 
 	 private static native void optimalBufferCopyRowPitchAlignment0(ByteBuffer ptr, long _optimalBufferCopyRowPitchAlignment);/*
@@ -4378,7 +4514,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field optimalBufferCopyRowPitchAlignment	
+	 * native GET method for field optimalBufferCopyRowPitchAlignment	[long]<br>
 	 * Prototype: VkDeviceSize  optimalBufferCopyRowPitchAlignment
 	 */ 
 	 private static native long optimalBufferCopyRowPitchAlignment0(ByteBuffer ptr);/*
@@ -4387,7 +4523,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field nonCoherentAtomSize	
+	 * native SET method for field nonCoherentAtomSize	[long]<br>
 	 * Prototype: VkDeviceSize  nonCoherentAtomSize
 	 */ 
 	 private static native void nonCoherentAtomSize0(ByteBuffer ptr, long _nonCoherentAtomSize);/*
@@ -4396,7 +4532,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	  */
 
 	/**
-	 * get method for field nonCoherentAtomSize	
+	 * native GET method for field nonCoherentAtomSize	[long]<br>
 	 * Prototype: VkDeviceSize  nonCoherentAtomSize
 	 */ 
 	 private static native long nonCoherentAtomSize0(ByteBuffer ptr);/*

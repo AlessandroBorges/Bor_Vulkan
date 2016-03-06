@@ -1,6 +1,6 @@
 package bor.vulkan;
 
-public interface VkInstance extends VkHandle {
+public interface VkInstance extends VkHandleInterface {
     
     
 }

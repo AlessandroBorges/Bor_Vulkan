@@ -22,7 +22,7 @@ import bor.vulkan.khr.VkSwapchainKHR;
  * <pre>  
  *  private VkInstance vkCreateInstance(...){
  *     ByteBuffer ptr = nativeCreateInstance(...);
- *     VkHandlerConcrete handler = new VkHandlerConcrete(ptr);
+ *     VkHandler handler = new VkHandler(ptr);
  *     return (VkInstance) handler;
  *  }  
  * </pre>
@@ -70,7 +70,7 @@ import bor.vulkan.khr.VkSwapchainKHR;
  * 
  *
  */
-public class VkHandlerConcrete implements VkHandle, VkBuffer, VkBufferView, VkCommandBuffer, VkCommandPool,
+public class VkHandler implements VkHandleInterface, VkBuffer, VkBufferView, VkCommandBuffer, VkCommandPool,
         VkDebugReportCallbackEXT, VkDescriptorPool, VkDescriptorSet, VkDescriptorSetLayout, VkDevice, VkDeviceMemory,
         VkDisplayKHR, VkDisplayModeKHR, VkEvent, VkFence, VkFramebuffer, VkImage, VkImageView, VkInstance,
         VkPhysicalDevice, VkPipeline, VkPipelineCache, VkPipelineLayout, VkQueryPool, VkQueue, VkRenderPass, VkSampler,
@@ -78,13 +78,24 @@ public class VkHandlerConcrete implements VkHandle, VkBuffer, VkBufferView, VkCo
 
     /**
      * This static map holds handlers and avoid GC on handlers and pointers.
+     * It is a synchornized Hashtable
      */
-    private static Map<VkHandle,ByteBuffer> mapHandlers = new Hashtable<VkHandle, ByteBuffer>(); 
+    private static 
+    Map<VkHandleInterface,ByteBuffer> mapHandlers =  
+                                  new Hashtable<VkHandleInterface, ByteBuffer>(); 
     
     /**
-     * The handler
+     * The handler itself
      */
     private ByteBuffer handle;
+    
+    /**
+     * Creates a empty VkHandler.
+     * The pointer to native side will be created later.
+     * @see VkHandler#createNullPointer()
+     */
+    protected VkHandler(){        
+    }
 
     /**
      * 
@@ -94,15 +105,21 @@ public class VkHandlerConcrete implements VkHandle, VkBuffer, VkBufferView, VkCo
      * 
      * @throws IllegalArgumentException if nativePtr is null or non direct.
      */
-     protected VkHandlerConcrete(ByteBuffer nativePtr) {  
+     protected VkHandler(ByteBuffer nativePtr) {  
         if(null==nativePtr || !nativePtr.isDirect()){
             throw 
             new IllegalArgumentException("ByteBuffer nativePtr must "
                     + "be Direct and not null.");
         }
-        this.handle = nativePtr.isReadOnly() ? 
-                         nativePtr : 
-                         nativePtr.asReadOnlyBuffer();
+       prepareHandler(nativePtr);
+    }
+     
+     /**
+      * Prepare handler to be used 
+      * @param nativePtr
+      */
+    private void prepareHandler(ByteBuffer nativePtr) {
+        this.handle = nativePtr.isReadOnly() ? nativePtr : nativePtr.asReadOnlyBuffer();
         this.handle.rewind();
         mapHandlers.put(this, handle);
     }
@@ -119,16 +136,16 @@ public class VkHandlerConcrete implements VkHandle, VkBuffer, VkBufferView, VkCo
     /*
      * (non-Javadoc)
      * 
-     * @see bor.vulkan.VkHandle#getHandle()
+     * @see bor.vulkan.VkHandleInterface#getHandle()
      */
     @Override
-    public ByteBuffer getPointerHandle() {
+    public ByteBuffer getHandle() {
         return this.handle;
     }
     
     /**
      * Implementation of {@link VkObject#getPointer()}
-     * Same think as {@link #getPointerHandle()}
+     * Same think as {@link #getHandle()}
      * 
      * @see VkObject#getPointer()
      * 
@@ -152,7 +169,7 @@ public class VkHandlerConcrete implements VkHandle, VkBuffer, VkBufferView, VkCo
      * 
      * @Todo - Move this method to VkObject <or it would mess with VkHandlers ?>
      * 
-     * @see bor.vulkan.VkHandle#free()
+     * @see bor.vulkan.VkHandleInterface#free()
      * 
      * @return true if handler was released, false it was already released. 
      */
@@ -191,10 +208,10 @@ public class VkHandlerConcrete implements VkHandle, VkBuffer, VkBufferView, VkCo
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof VkHandlerConcrete)) {
+        if (!(obj instanceof VkHandler)) {
             return false;
         }
-        VkHandlerConcrete other = (VkHandlerConcrete) obj;
+        VkHandler other = (VkHandler) obj;
         if (handle == null) {
             if (other.handle != null) {
                 return false;
@@ -210,14 +227,35 @@ public class VkHandlerConcrete implements VkHandle, VkBuffer, VkBufferView, VkCo
      */
     @Override
     public String toString() {        
-        return "VkHandlerConcrete [" + (handle != null ? "handle=" + handle : "") + "]";
+        return "VkHandler [" + (handle != null ? "handle=" + handle : "") + "]";
     }
     
     /**
      * Release all handlers.
      * Call it when you are about to close your application.
+     * 
      */
     public static void releaseAllHandlers(){
-        
+        throw new RuntimeException("Not implemented yet");
+    }
+
+    /**
+     * Create a pointer P to contain a instance of this,
+     * with unset native pointer.
+     * The 
+     *    
+     * @return A instance of P with null pointer 
+     */
+    public static P<? extends VkHandler> createNullPointer(){        
+        P<VkHandler> p = new P<VkHandler>(new VkHandler());        
+        return p;
+    }
+    
+    /*
+     * (non-Javadoc)
+     * @see bor.vulkan.VkObject#setPointer(java.nio.ByteBuffer)
+     */
+     public void setPointer(ByteBuffer nativePtr){       
+        prepareHandler(nativePtr);
     }
 }

@@ -17,6 +17,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkXlibSurfaceCreateInfoKHR. 
  *  <h3>Prototype:</h3>
@@ -34,31 +35,36 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
-	/** TAG of this structure [242]  */
+	/** TAG of this structure [118]  */
 	 private static final String TAG = "VkXlibSurfaceCreateInfoKHR";
 
-	/** ID of this structure [242]  */
+	/** ID of this structure [118]  */
 	 public static final int TAG_ID = VKXLIBSURFACECREATEINFOKHR_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkXlibSurfaceCreateFlagsKHR 	flags		 */ 
+	 *  VkXlibSurfaceCreateFlagsKHR 	flags	[int]
+	 */ 
 	int 	flags;
 
 	/**
-	 *  Display* 	dpy	[vkhandle]	 */ 
+	 *  Display* 	dpy	[vkhandle]
+	 */ 
 	XlibDisplay 	dpy;
 
 	/**
-	 *  Window 	window	[vkhandle]	 */ 
+	 *  Window 	window	[vkhandle]
+	 */ 
 	XlibWindow 	window;
 
 	/**
@@ -66,6 +72,23 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 */
 	public VkXlibSurfaceCreateInfoKHR(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkXlibSurfaceCreateInfoKHR(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkXlibSurfaceCreateInfoKHR(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -76,12 +99,24 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkXlibSurfaceCreateInfoKHR> createNullPointer(){
+	        P<VkXlibSurfaceCreateInfoKHR> p = new  P<VkXlibSurfaceCreateInfoKHR>(new VkXlibSurfaceCreateInfoKHR());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -90,7 +125,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -99,7 +134,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -108,7 +143,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -117,7 +152,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags	
+	 * Set method for field flags	[int]<br>
 	 * Prototype: VkXlibSurfaceCreateFlagsKHR  flags
 	 */ 
 	 public void flags(int flags){
@@ -126,7 +161,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags	
+	 * get method for field flags	[int]<br>
 	 * Prototype: VkXlibSurfaceCreateFlagsKHR  flags
 	 */ 
 	 public int flags(){
@@ -135,7 +170,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dpy	[vkhandle]
+	 * Set method for field dpy	[vkhandle]<br>
 	 * Prototype: Display*  dpy
 	 */ 
 	 public void dpy(XlibDisplay dpy){
@@ -144,7 +179,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dpy	[vkhandle]
+	 * get method for field dpy	[vkhandle]<br>
 	 * Prototype: Display*  dpy
 	 */ 
 	 public XlibDisplay dpy(){
@@ -153,7 +188,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field window	[vkhandle]
+	 * Set method for field window	[vkhandle]<br>
 	 * Prototype: Window  window
 	 */ 
 	 public void window(XlibWindow window){
@@ -162,7 +197,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field window	[vkhandle]
+	 * get method for field window	[vkhandle]<br>
 	 * Prototype: Window  window
 	 */ 
 	 public XlibWindow window(){
@@ -171,11 +206,11 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -184,7 +219,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -193,7 +228,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -202,7 +237,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -211,7 +246,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags	
+	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkXlibSurfaceCreateFlagsKHR  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -220,7 +255,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags	
+	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkXlibSurfaceCreateFlagsKHR  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -229,7 +264,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dpy	[vkhandle]
+	 * native SET method for field dpy	[vkhandle]<br>
 	 * Prototype: Display*  dpy
 	 */ 
 	 private static native void dpy0(ByteBuffer ptr, XlibDisplay _dpy);/*
@@ -238,7 +273,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dpy	[vkhandle]
+	 * native GET method for field dpy	[vkhandle]<br>
 	 * Prototype: Display*  dpy
 	 */ 
 	 private static native XlibDisplay dpy0(ByteBuffer ptr);/*
@@ -247,7 +282,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field window	[vkhandle]
+	 * native SET method for field window	[vkhandle]<br>
 	 * Prototype: Window  window
 	 */ 
 	 private static native void window0(ByteBuffer ptr, XlibWindow _window);/*
@@ -256,7 +291,7 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field window	[vkhandle]
+	 * native GET method for field window	[vkhandle]<br>
 	 * Prototype: Window  window
 	 */ 
 	 private static native XlibWindow window0(ByteBuffer ptr);/*

@@ -3,12 +3,12 @@
  */
 package bor.vulkan.khr;
 
-import bor.vulkan.VkHandle;
+import bor.vulkan.VkHandleInterface;
 
 /**
  * @author Alessandro Borges
  *
  */
-public interface VkSurfaceKHR extends VkHandle {
+public interface VkSurfaceKHR extends VkHandleInterface {
 
 }

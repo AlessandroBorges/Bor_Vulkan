@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkBufferCopy. 
  *  <h3>Prototype:</h3>
@@ -31,23 +32,26 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkBufferCopy extends VkStruct {
-	/** TAG of this structure [214]  */
+	/** TAG of this structure [90]  */
 	 private static final String TAG = "VkBufferCopy";
 
-	/** ID of this structure [214]  */
+	/** ID of this structure [90]  */
 	 public static final int TAG_ID = VKBUFFERCOPY_ID;
 
 	 // fields //
 	/**
-	 *  VkDeviceSize 	srcOffset		 */ 
+	 *  VkDeviceSize 	srcOffset	[long]
+	 */ 
 	long 	srcOffset;
 
 	/**
-	 *  VkDeviceSize 	dstOffset		 */ 
+	 *  VkDeviceSize 	dstOffset	[long]
+	 */ 
 	long 	dstOffset;
 
 	/**
-	 *  VkDeviceSize 	size		 */ 
+	 *  VkDeviceSize 	size	[long]
+	 */ 
 	long 	size;
 
 	/**
@@ -55,6 +59,23 @@ public class VkBufferCopy extends VkStruct {
 	 */
 	public VkBufferCopy(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkBufferCopy(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkBufferCopy(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -65,12 +86,24 @@ public class VkBufferCopy extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkBufferCopy> createNullPointer(){
+	        P<VkBufferCopy> p = new  P<VkBufferCopy>(new VkBufferCopy());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field srcOffset	
+	 * Set method for field srcOffset	[long]<br>
 	 * Prototype: VkDeviceSize  srcOffset
 	 */ 
 	 public void srcOffset(long srcOffset){
@@ -79,7 +112,7 @@ public class VkBufferCopy extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcOffset	
+	 * get method for field srcOffset	[long]<br>
 	 * Prototype: VkDeviceSize  srcOffset
 	 */ 
 	 public long srcOffset(){
@@ -88,7 +121,7 @@ public class VkBufferCopy extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstOffset	
+	 * Set method for field dstOffset	[long]<br>
 	 * Prototype: VkDeviceSize  dstOffset
 	 */ 
 	 public void dstOffset(long dstOffset){
@@ -97,7 +130,7 @@ public class VkBufferCopy extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstOffset	
+	 * get method for field dstOffset	[long]<br>
 	 * Prototype: VkDeviceSize  dstOffset
 	 */ 
 	 public long dstOffset(){
@@ -106,7 +139,7 @@ public class VkBufferCopy extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field size	
+	 * Set method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public void size(long size){
@@ -115,7 +148,7 @@ public class VkBufferCopy extends VkStruct {
 	 }
 
 	/**
-	 * get method for field size	
+	 * get method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public long size(){
@@ -124,11 +157,11 @@ public class VkBufferCopy extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field srcOffset	
+	 * native SET method for field srcOffset	[long]<br>
 	 * Prototype: VkDeviceSize  srcOffset
 	 */ 
 	 private static native void srcOffset0(ByteBuffer ptr, long _srcOffset);/*
@@ -137,7 +170,7 @@ public class VkBufferCopy extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcOffset	
+	 * native GET method for field srcOffset	[long]<br>
 	 * Prototype: VkDeviceSize  srcOffset
 	 */ 
 	 private static native long srcOffset0(ByteBuffer ptr);/*
@@ -146,7 +179,7 @@ public class VkBufferCopy extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstOffset	
+	 * native SET method for field dstOffset	[long]<br>
 	 * Prototype: VkDeviceSize  dstOffset
 	 */ 
 	 private static native void dstOffset0(ByteBuffer ptr, long _dstOffset);/*
@@ -155,7 +188,7 @@ public class VkBufferCopy extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstOffset	
+	 * native GET method for field dstOffset	[long]<br>
 	 * Prototype: VkDeviceSize  dstOffset
 	 */ 
 	 private static native long dstOffset0(ByteBuffer ptr);/*
@@ -164,7 +197,7 @@ public class VkBufferCopy extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field size	
+	 * native SET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native void size0(ByteBuffer ptr, long _size);/*
@@ -173,7 +206,7 @@ public class VkBufferCopy extends VkStruct {
 	  */
 
 	/**
-	 * get method for field size	
+	 * native GET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long size0(ByteBuffer ptr);/*

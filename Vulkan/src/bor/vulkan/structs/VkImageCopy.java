@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkImageCopy. 
  *  <h3>Prototype:</h3>
@@ -33,31 +34,36 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkImageCopy extends VkStruct {
-	/** TAG of this structure [216]  */
+	/** TAG of this structure [92]  */
 	 private static final String TAG = "VkImageCopy";
 
-	/** ID of this structure [216]  */
+	/** ID of this structure [92]  */
 	 public static final int TAG_ID = VKIMAGECOPY_ID;
 
 	 // fields //
 	/**
-	 *  VkImageSubresourceLayers 	srcSubresource	[vkstruct]	 */ 
+	 *  VkImageSubresourceLayers 	srcSubresource	[vkstruct]
+	 */ 
 	VkImageSubresourceLayers 	srcSubresource;
 
 	/**
-	 *  VkOffset3D 	srcOffset	[vkstruct]	 */ 
+	 *  VkOffset3D 	srcOffset	[vkstruct]
+	 */ 
 	VkOffset3D 	srcOffset;
 
 	/**
-	 *  VkImageSubresourceLayers 	dstSubresource	[vkstruct]	 */ 
+	 *  VkImageSubresourceLayers 	dstSubresource	[vkstruct]
+	 */ 
 	VkImageSubresourceLayers 	dstSubresource;
 
 	/**
-	 *  VkOffset3D 	dstOffset	[vkstruct]	 */ 
+	 *  VkOffset3D 	dstOffset	[vkstruct]
+	 */ 
 	VkOffset3D 	dstOffset;
 
 	/**
-	 *  VkExtent3D 	extent	[vkstruct]	 */ 
+	 *  VkExtent3D 	extent	[vkstruct]
+	 */ 
 	VkExtent3D 	extent;
 
 	/**
@@ -65,6 +71,23 @@ public class VkImageCopy extends VkStruct {
 	 */
 	public VkImageCopy(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkImageCopy(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkImageCopy(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -75,12 +98,24 @@ public class VkImageCopy extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkImageCopy> createNullPointer(){
+	        P<VkImageCopy> p = new  P<VkImageCopy>(new VkImageCopy());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field srcSubresource	[vkstruct]
+	 * Set method for field srcSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
 	 */ 
 	 public void srcSubresource(VkImageSubresourceLayers srcSubresource){
@@ -89,7 +124,7 @@ public class VkImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcSubresource	[vkstruct]
+	 * get method for field srcSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
 	 */ 
 	 public VkImageSubresourceLayers srcSubresource(){
@@ -98,7 +133,7 @@ public class VkImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field srcOffset	[vkstruct]
+	 * Set method for field srcOffset	[vkstruct]<br>
 	 * Prototype: VkOffset3D  srcOffset
 	 */ 
 	 public void srcOffset(VkOffset3D srcOffset){
@@ -107,7 +142,7 @@ public class VkImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcOffset	[vkstruct]
+	 * get method for field srcOffset	[vkstruct]<br>
 	 * Prototype: VkOffset3D  srcOffset
 	 */ 
 	 public VkOffset3D srcOffset(){
@@ -116,7 +151,7 @@ public class VkImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstSubresource	[vkstruct]
+	 * Set method for field dstSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
 	 */ 
 	 public void dstSubresource(VkImageSubresourceLayers dstSubresource){
@@ -125,7 +160,7 @@ public class VkImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstSubresource	[vkstruct]
+	 * get method for field dstSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
 	 */ 
 	 public VkImageSubresourceLayers dstSubresource(){
@@ -134,7 +169,7 @@ public class VkImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstOffset	[vkstruct]
+	 * Set method for field dstOffset	[vkstruct]<br>
 	 * Prototype: VkOffset3D  dstOffset
 	 */ 
 	 public void dstOffset(VkOffset3D dstOffset){
@@ -143,7 +178,7 @@ public class VkImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstOffset	[vkstruct]
+	 * get method for field dstOffset	[vkstruct]<br>
 	 * Prototype: VkOffset3D  dstOffset
 	 */ 
 	 public VkOffset3D dstOffset(){
@@ -152,7 +187,7 @@ public class VkImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field extent	[vkstruct]
+	 * Set method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 public void extent(VkExtent3D extent){
@@ -161,7 +196,7 @@ public class VkImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * get method for field extent	[vkstruct]
+	 * get method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 public VkExtent3D extent(){
@@ -170,11 +205,11 @@ public class VkImageCopy extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field srcSubresource	[vkstruct]
+	 * native SET method for field srcSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
 	 */ 
 	 private static native void srcSubresource0(ByteBuffer ptr, VkImageSubresourceLayers _srcSubresource);/*
@@ -183,7 +218,7 @@ public class VkImageCopy extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcSubresource	[vkstruct]
+	 * native GET method for field srcSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
 	 */ 
 	 private static native VkImageSubresourceLayers srcSubresource0(ByteBuffer ptr);/*
@@ -192,7 +227,7 @@ public class VkImageCopy extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field srcOffset	[vkstruct]
+	 * native SET method for field srcOffset	[vkstruct]<br>
 	 * Prototype: VkOffset3D  srcOffset
 	 */ 
 	 private static native void srcOffset0(ByteBuffer ptr, VkOffset3D _srcOffset);/*
@@ -201,7 +236,7 @@ public class VkImageCopy extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcOffset	[vkstruct]
+	 * native GET method for field srcOffset	[vkstruct]<br>
 	 * Prototype: VkOffset3D  srcOffset
 	 */ 
 	 private static native VkOffset3D srcOffset0(ByteBuffer ptr);/*
@@ -210,7 +245,7 @@ public class VkImageCopy extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstSubresource	[vkstruct]
+	 * native SET method for field dstSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
 	 */ 
 	 private static native void dstSubresource0(ByteBuffer ptr, VkImageSubresourceLayers _dstSubresource);/*
@@ -219,7 +254,7 @@ public class VkImageCopy extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstSubresource	[vkstruct]
+	 * native GET method for field dstSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
 	 */ 
 	 private static native VkImageSubresourceLayers dstSubresource0(ByteBuffer ptr);/*
@@ -228,7 +263,7 @@ public class VkImageCopy extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstOffset	[vkstruct]
+	 * native SET method for field dstOffset	[vkstruct]<br>
 	 * Prototype: VkOffset3D  dstOffset
 	 */ 
 	 private static native void dstOffset0(ByteBuffer ptr, VkOffset3D _dstOffset);/*
@@ -237,7 +272,7 @@ public class VkImageCopy extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstOffset	[vkstruct]
+	 * native GET method for field dstOffset	[vkstruct]<br>
 	 * Prototype: VkOffset3D  dstOffset
 	 */ 
 	 private static native VkOffset3D dstOffset0(ByteBuffer ptr);/*
@@ -246,7 +281,7 @@ public class VkImageCopy extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field extent	[vkstruct]
+	 * native SET method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 private static native void extent0(ByteBuffer ptr, VkExtent3D _extent);/*
@@ -255,7 +290,7 @@ public class VkImageCopy extends VkStruct {
 	  */
 
 	/**
-	 * get method for field extent	[vkstruct]
+	 * native GET method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 private static native VkExtent3D extent0(ByteBuffer ptr);/*

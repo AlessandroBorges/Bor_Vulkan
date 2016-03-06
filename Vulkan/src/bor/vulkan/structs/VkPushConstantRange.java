@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPushConstantRange. 
  *  <h3>Prototype:</h3>
@@ -31,23 +32,26 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPushConstantRange extends VkStruct {
-	/** TAG of this structure [192]  */
+	/** TAG of this structure [68]  */
 	 private static final String TAG = "VkPushConstantRange";
 
-	/** ID of this structure [192]  */
+	/** ID of this structure [68]  */
 	 public static final int TAG_ID = VKPUSHCONSTANTRANGE_ID;
 
 	 // fields //
 	/**
-	 *  VkShaderStageFlags 	stageFlags		 */ 
+	 *  VkShaderStageFlags 	stageFlags	[int]
+	 */ 
 	int 	stageFlags;
 
 	/**
-	 *  uint32_t 	offset		 */ 
+	 *  uint32_t 	offset	[int]
+	 */ 
 	int 	offset;
 
 	/**
-	 *  uint32_t 	size		 */ 
+	 *  uint32_t 	size	[int]
+	 */ 
 	int 	size;
 
 	/**
@@ -55,6 +59,23 @@ public class VkPushConstantRange extends VkStruct {
 	 */
 	public VkPushConstantRange(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkPushConstantRange(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkPushConstantRange(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -65,12 +86,24 @@ public class VkPushConstantRange extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkPushConstantRange> createNullPointer(){
+	        P<VkPushConstantRange> p = new  P<VkPushConstantRange>(new VkPushConstantRange());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field stageFlags	
+	 * Set method for field stageFlags	[int]<br>
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
 	 public void stageFlags(int stageFlags){
@@ -79,7 +112,7 @@ public class VkPushConstantRange extends VkStruct {
 	 }
 
 	/**
-	 * get method for field stageFlags	
+	 * get method for field stageFlags	[int]<br>
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
 	 public int stageFlags(){
@@ -88,7 +121,7 @@ public class VkPushConstantRange extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field offset	
+	 * Set method for field offset	[int]<br>
 	 * Prototype: uint32_t  offset
 	 */ 
 	 public void offset(int offset){
@@ -97,7 +130,7 @@ public class VkPushConstantRange extends VkStruct {
 	 }
 
 	/**
-	 * get method for field offset	
+	 * get method for field offset	[int]<br>
 	 * Prototype: uint32_t  offset
 	 */ 
 	 public int offset(){
@@ -106,7 +139,7 @@ public class VkPushConstantRange extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field size	
+	 * Set method for field size	[int]<br>
 	 * Prototype: uint32_t  size
 	 */ 
 	 public void size(int size){
@@ -115,7 +148,7 @@ public class VkPushConstantRange extends VkStruct {
 	 }
 
 	/**
-	 * get method for field size	
+	 * get method for field size	[int]<br>
 	 * Prototype: uint32_t  size
 	 */ 
 	 public int size(){
@@ -124,11 +157,11 @@ public class VkPushConstantRange extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field stageFlags	
+	 * native SET method for field stageFlags	[int]<br>
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
 	 private static native void stageFlags0(ByteBuffer ptr, int _stageFlags);/*
@@ -137,7 +170,7 @@ public class VkPushConstantRange extends VkStruct {
 	  */
 
 	/**
-	 * get method for field stageFlags	
+	 * native GET method for field stageFlags	[int]<br>
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
 	 private static native int stageFlags0(ByteBuffer ptr);/*
@@ -146,7 +179,7 @@ public class VkPushConstantRange extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field offset	
+	 * native SET method for field offset	[int]<br>
 	 * Prototype: uint32_t  offset
 	 */ 
 	 private static native void offset0(ByteBuffer ptr, int _offset);/*
@@ -155,7 +188,7 @@ public class VkPushConstantRange extends VkStruct {
 	  */
 
 	/**
-	 * get method for field offset	
+	 * native GET method for field offset	[int]<br>
 	 * Prototype: uint32_t  offset
 	 */ 
 	 private static native int offset0(ByteBuffer ptr);/*
@@ -164,7 +197,7 @@ public class VkPushConstantRange extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field size	
+	 * native SET method for field size	[int]<br>
 	 * Prototype: uint32_t  size
 	 */ 
 	 private static native void size0(ByteBuffer ptr, int _size);/*
@@ -173,7 +206,7 @@ public class VkPushConstantRange extends VkStruct {
 	  */
 
 	/**
-	 * get method for field size	
+	 * native GET method for field size	[int]<br>
 	 * Prototype: uint32_t  size
 	 */ 
 	 private static native int size0(ByteBuffer ptr);/*

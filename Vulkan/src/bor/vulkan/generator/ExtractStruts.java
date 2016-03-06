@@ -14,7 +14,7 @@ import static bor.vulkan.generator.Util.*;
 
 public class ExtractStruts {
     
-    private static final boolean saveFile = false;
+    private static final boolean saveFile = true;
     private static final boolean printID = false;
     private static final boolean printStruct = false;
     
@@ -50,7 +50,7 @@ public class ExtractStruts {
         System.out.println("All Struct :");
         if (showAtConsole) for (StructInfo info : allStructs) {
             System.out.println(info.toJavaSrc("bor.vulkan.structs"));
-            System.out.println("####################");
+            System.out.println("__________________________________");
             // System.out.println("public static final int " + info.getID_NAME()+";");
         }
         
@@ -62,8 +62,7 @@ public class ExtractStruts {
                 // info.getID_NAME()+";");
             }
         }
-
-        // export
+        
         // export
         if (exportStructs) {
             for (StructInfo info : allStructs) {
@@ -75,20 +74,18 @@ public class ExtractStruts {
                 String basePath = isKHR ? "D:/Users/Livia/workspace/Vulkan/src/bor/vulkan/khr/structs"
                                         : "D:/Users/Livia/workspace/Vulkan/src/bor/vulkan/structs";
 
-                System.out.println("Saving " + nameFile);
+                
                 String txt = info.toJavaSrc(pkg);
                 if(saveFile){
+                    System.out.println("Saving struct " + nameFile);
                     save(basePath, nameFile, txt);
                 }
                 if(printStruct){
                     System.out.println(txt);
-                    System.out.println("#########################################");
+                    System.out.println("____________________________________");
                 }
             }
         }
-        
-       
-       
         return ID;
     }// process struct
     
@@ -121,10 +118,10 @@ public class ExtractStruts {
         System.out.println("All Union :");
         if (showAtConsole) for (StructInfo info : allStructs) {
             System.out.println(info.toJavaSrc("bor.vulkan.structs"));
-            System.out.println("####################");           
+            System.out.println("______________________________________________________");           
         }
         if (printID) {
-            System.out.println("All Struct ID:");
+            System.out.println("All Union ID:");
             for (StructInfo info : allStructs) {
                 System.out.println(info.name + "\t" + info.id);
                 // System.out.println("public static final int " +
@@ -141,14 +138,15 @@ public class ExtractStruts {
                 String basePath = isKHR ? "D:/Users/Livia/workspace/Vulkan/src/bor/vulkan/khr/structs"
                         : "D:/Users/Livia/workspace/Vulkan/src/bor/vulkan/structs";
 
-                System.out.println("Saving " + nameFile);
+                
                 String txt = info.toJavaSrc(pkg);
                 if(saveFile){
+                    System.out.println("Saving union " + nameFile);
                     save(basePath, nameFile, txt);
                 }
                 if(printStruct){
                     System.out.println(txt);
-                    System.out.println("#########################################");
+                    System.out.println("___________________________________________________");
                 }
             }
         }
@@ -185,7 +183,7 @@ public class ExtractStruts {
      * @return struct definition as List<String>
      */
     public static List<String> extractNextUnion(List<String> src, int pos, int[] positions) {
-        int start = findNextLineStartingWith(src, "typedef struct", pos);
+        int start = findNextLineStartingWith(src, "typedef union", pos);
         if (start < 0) return null;
 
         int end = findNextLine(src, "}", start);
@@ -213,7 +211,7 @@ public class ExtractStruts {
        
         if (processStructs) {
             int ID = processStructs(vkh);
-            processUnions(vkh, ID);
+          //  processUnions(vkh, ID);
         }
 
     }

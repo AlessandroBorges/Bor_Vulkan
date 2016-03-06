@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkSparseImageMemoryBindInfo. 
  *  <h3>Prototype:</h3>
@@ -31,23 +32,26 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkSparseImageMemoryBindInfo extends VkStruct {
-	/** TAG of this structure [155]  */
+	/** TAG of this structure [31]  */
 	 private static final String TAG = "VkSparseImageMemoryBindInfo";
 
-	/** ID of this structure [155]  */
+	/** ID of this structure [31]  */
 	 public static final int TAG_ID = VKSPARSEIMAGEMEMORYBINDINFO_ID;
 
 	 // fields //
 	/**
-	 *  VkImage 	image	[vkhandle]	 */ 
+	 *  VkImage 	image	[vkhandle]
+	 */ 
 	VkImage 	image;
 
 	/**
-	 *  uint32_t 	bindCount		 */ 
+	 *  uint32_t 	bindCount	[int]
+	 */ 
 	int 	bindCount;
 
 	/**
-	 *  const VkSparseImageMemoryBind* 	pBinds		 */ 
+	 *  const VkSparseImageMemoryBind* 	pBinds	[p]
+	 */ 
 	P<VkSparseImageMemoryBind>  	pBinds;
 
 	/**
@@ -55,6 +59,23 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 */
 	public VkSparseImageMemoryBindInfo(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkSparseImageMemoryBindInfo(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkSparseImageMemoryBindInfo(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -65,12 +86,24 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkSparseImageMemoryBindInfo> createNullPointer(){
+	        P<VkSparseImageMemoryBindInfo> p = new  P<VkSparseImageMemoryBindInfo>(new VkSparseImageMemoryBindInfo());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field image	[vkhandle]
+	 * Set method for field image	[vkhandle]<br>
 	 * Prototype: VkImage  image
 	 */ 
 	 public void image(VkImage image){
@@ -79,7 +112,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field image	[vkhandle]
+	 * get method for field image	[vkhandle]<br>
 	 * Prototype: VkImage  image
 	 */ 
 	 public VkImage image(){
@@ -88,7 +121,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field bindCount	
+	 * Set method for field bindCount	[int]<br>
 	 * Prototype: uint32_t  bindCount
 	 */ 
 	 public void bindCount(int bindCount){
@@ -97,7 +130,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field bindCount	
+	 * get method for field bindCount	[int]<br>
 	 * Prototype: uint32_t  bindCount
 	 */ 
 	 public int bindCount(){
@@ -106,7 +139,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pBinds	
+	 * Set method for field pBinds	[p]<br>
 	 * Prototype: const VkSparseImageMemoryBind*  pBinds
 	 */ 
 	 public void pBinds(P<VkSparseImageMemoryBind>  pBinds){
@@ -115,7 +148,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pBinds	
+	 * get method for field pBinds	[p]<br>
 	 * Prototype: const VkSparseImageMemoryBind*  pBinds
 	 */ 
 	 public P<VkSparseImageMemoryBind>  pBinds(){
@@ -124,11 +157,11 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field image	[vkhandle]
+	 * native SET method for field image	[vkhandle]<br>
 	 * Prototype: VkImage  image
 	 */ 
 	 private static native void image0(ByteBuffer ptr, VkImage _image);/*
@@ -137,7 +170,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field image	[vkhandle]
+	 * native GET method for field image	[vkhandle]<br>
 	 * Prototype: VkImage  image
 	 */ 
 	 private static native VkImage image0(ByteBuffer ptr);/*
@@ -146,7 +179,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field bindCount	
+	 * native SET method for field bindCount	[int]<br>
 	 * Prototype: uint32_t  bindCount
 	 */ 
 	 private static native void bindCount0(ByteBuffer ptr, int _bindCount);/*
@@ -155,7 +188,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field bindCount	
+	 * native GET method for field bindCount	[int]<br>
 	 * Prototype: uint32_t  bindCount
 	 */ 
 	 private static native int bindCount0(ByteBuffer ptr);/*
@@ -164,7 +197,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pBinds	
+	 * native SET method for field pBinds	[p]<br>
 	 * Prototype: const VkSparseImageMemoryBind*  pBinds
 	 */ 
 	 private static native void pBinds0(ByteBuffer ptr, P<VkSparseImageMemoryBind>  _pBinds);/*
@@ -173,7 +206,7 @@ public class VkSparseImageMemoryBindInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pBinds	
+	 * native GET method for field pBinds	[p]<br>
 	 * Prototype: const VkSparseImageMemoryBind*  pBinds
 	 */ 
 	 private static native P<VkSparseImageMemoryBind>  pBinds0(ByteBuffer ptr);/*

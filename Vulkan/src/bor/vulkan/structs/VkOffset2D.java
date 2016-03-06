@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkOffset2D. 
  *  <h3>Prototype:</h3>
@@ -30,19 +31,21 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkOffset2D extends VkStruct {
-	/** TAG of this structure [179]  */
+	/** TAG of this structure [55]  */
 	 private static final String TAG = "VkOffset2D";
 
-	/** ID of this structure [179]  */
+	/** ID of this structure [55]  */
 	 public static final int TAG_ID = VKOFFSET2D_ID;
 
 	 // fields //
 	/**
-	 *  int32_t 	x		 */ 
+	 *  int32_t 	x	[int]
+	 */ 
 	int 	x;
 
 	/**
-	 *  int32_t 	y		 */ 
+	 *  int32_t 	y	[int]
+	 */ 
 	int 	y;
 
 	/**
@@ -50,6 +53,23 @@ public class VkOffset2D extends VkStruct {
 	 */
 	public VkOffset2D(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkOffset2D(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkOffset2D(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -60,12 +80,24 @@ public class VkOffset2D extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkOffset2D> createNullPointer(){
+	        P<VkOffset2D> p = new  P<VkOffset2D>(new VkOffset2D());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field x	
+	 * Set method for field x	[int]<br>
 	 * Prototype: int32_t  x
 	 */ 
 	 public void x(int x){
@@ -74,7 +106,7 @@ public class VkOffset2D extends VkStruct {
 	 }
 
 	/**
-	 * get method for field x	
+	 * get method for field x	[int]<br>
 	 * Prototype: int32_t  x
 	 */ 
 	 public int x(){
@@ -83,7 +115,7 @@ public class VkOffset2D extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field y	
+	 * Set method for field y	[int]<br>
 	 * Prototype: int32_t  y
 	 */ 
 	 public void y(int y){
@@ -92,7 +124,7 @@ public class VkOffset2D extends VkStruct {
 	 }
 
 	/**
-	 * get method for field y	
+	 * get method for field y	[int]<br>
 	 * Prototype: int32_t  y
 	 */ 
 	 public int y(){
@@ -101,11 +133,11 @@ public class VkOffset2D extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field x	
+	 * native SET method for field x	[int]<br>
 	 * Prototype: int32_t  x
 	 */ 
 	 private static native void x0(ByteBuffer ptr, int _x);/*
@@ -114,7 +146,7 @@ public class VkOffset2D extends VkStruct {
 	  */
 
 	/**
-	 * get method for field x	
+	 * native GET method for field x	[int]<br>
 	 * Prototype: int32_t  x
 	 */ 
 	 private static native int x0(ByteBuffer ptr);/*
@@ -123,7 +155,7 @@ public class VkOffset2D extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field y	
+	 * native SET method for field y	[int]<br>
 	 * Prototype: int32_t  y
 	 */ 
 	 private static native void y0(ByteBuffer ptr, int _y);/*
@@ -132,7 +164,7 @@ public class VkOffset2D extends VkStruct {
 	  */
 
 	/**
-	 * get method for field y	
+	 * native GET method for field y	[int]<br>
 	 * Prototype: int32_t  y
 	 */ 
 	 private static native int y0(ByteBuffer ptr);/*

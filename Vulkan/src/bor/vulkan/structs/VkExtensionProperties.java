@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkExtensionProperties. 
  *  <h3>Prototype:</h3>
@@ -30,19 +31,21 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkExtensionProperties extends VkStruct {
-	/** TAG of this structure [141]  */
+	/** TAG of this structure [17]  */
 	 private static final String TAG = "VkExtensionProperties";
 
-	/** ID of this structure [141]  */
+	/** ID of this structure [17]  */
 	 public static final int TAG_ID = VKEXTENSIONPROPERTIES_ID;
 
 	 // fields //
 	/**
-	 *  char[] 	extensionName		 */ 
+	 *  char[] 	extensionName	[string]
+	 */ 
 	String 	extensionName;
 
 	/**
-	 *  uint32_t 	specVersion		 */ 
+	 *  uint32_t 	specVersion	[int]
+	 */ 
 	int 	specVersion;
 
 	/**
@@ -50,6 +53,23 @@ public class VkExtensionProperties extends VkStruct {
 	 */
 	public VkExtensionProperties(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkExtensionProperties(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkExtensionProperties(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -60,12 +80,24 @@ public class VkExtensionProperties extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkExtensionProperties> createNullPointer(){
+	        P<VkExtensionProperties> p = new  P<VkExtensionProperties>(new VkExtensionProperties());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field extensionName	
+	 * Set method for field extensionName	[string]<br>
 	 * Prototype: char[]  extensionName
 	 */ 
 	 public void extensionName(String extensionName){
@@ -74,7 +106,7 @@ public class VkExtensionProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field extensionName	
+	 * get method for field extensionName	[string]<br>
 	 * Prototype: char[]  extensionName
 	 */ 
 	 public String extensionName(){
@@ -83,7 +115,7 @@ public class VkExtensionProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field specVersion	
+	 * Set method for field specVersion	[int]<br>
 	 * Prototype: uint32_t  specVersion
 	 */ 
 	 public void specVersion(int specVersion){
@@ -92,7 +124,7 @@ public class VkExtensionProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field specVersion	
+	 * get method for field specVersion	[int]<br>
 	 * Prototype: uint32_t  specVersion
 	 */ 
 	 public int specVersion(){
@@ -101,11 +133,11 @@ public class VkExtensionProperties extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field extensionName	
+	 * native SET method for field extensionName	[string]<br>
 	 * Prototype: char[]  extensionName
 	 */ 
 	 private static native void extensionName0(ByteBuffer ptr, String _extensionName);/*
@@ -114,7 +146,7 @@ public class VkExtensionProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field extensionName	
+	 * native GET method for field extensionName	[string]<br>
 	 * Prototype: char[]  extensionName
 	 */ 
 	 private static native String extensionName0(ByteBuffer ptr);/*
@@ -122,7 +154,7 @@ public class VkExtensionProperties extends VkStruct {
 		  return (jstring)(env->NewStringUTF(_obj.char[]);	 */
 
 	/**
-	 * native Set method for field specVersion	
+	 * native SET method for field specVersion	[int]<br>
 	 * Prototype: uint32_t  specVersion
 	 */ 
 	 private static native void specVersion0(ByteBuffer ptr, int _specVersion);/*
@@ -131,7 +163,7 @@ public class VkExtensionProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field specVersion	
+	 * native GET method for field specVersion	[int]<br>
 	 * Prototype: uint32_t  specVersion
 	 */ 
 	 private static native int specVersion0(ByteBuffer ptr);/*

@@ -48,7 +48,7 @@ import bor.vulkan.khr.VkSwapchainKHR;
  * @see VkDebugReportCallbackEXT
  *
  */
-public interface VkHandle extends VkObject{
+public interface VkHandleInterface extends VkObject{
     
     /**
      * Internal ID of Vulkan handlers
@@ -90,12 +90,12 @@ public interface VkHandle extends VkObject{
      * This method <b>must</b> returns a read-only buffer. 
      *  
      *  @see VkObject#getPointer()
-     *  @see VkHandle#getPointerHandle()
+     * 
      *  @see VkStructs#getPointerStruct()
      *  
      * @return read-only ByteBuffer wrapping a native handler.      
      */
-    public ByteBuffer getPointerHandle();
+    public ByteBuffer getHandle();
     
     /**
      * Free this handle on native side.<br>

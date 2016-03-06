@@ -17,6 +17,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkWin32SurfaceCreateInfoKHR. 
  *  <h3>Prototype:</h3>
@@ -34,31 +35,36 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
-	/** TAG of this structure [247]  */
+	/** TAG of this structure [123]  */
 	 private static final String TAG = "VkWin32SurfaceCreateInfoKHR";
 
-	/** ID of this structure [247]  */
+	/** ID of this structure [123]  */
 	 public static final int TAG_ID = VKWIN32SURFACECREATEINFOKHR_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkWin32SurfaceCreateFlagsKHR 	flags		 */ 
+	 *  VkWin32SurfaceCreateFlagsKHR 	flags	[int]
+	 */ 
 	int 	flags;
 
 	/**
-	 *  HINSTANCE 	hinstance	[vkhandle]	 */ 
+	 *  HINSTANCE 	hinstance	[vkhandle]
+	 */ 
 	Win32HINSTANCE 	hinstance;
 
 	/**
-	 *  HWND 	hwnd	[vkhandle]	 */ 
+	 *  HWND 	hwnd	[vkhandle]
+	 */ 
 	Win32HWND 	hwnd;
 
 	/**
@@ -66,6 +72,23 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 */
 	public VkWin32SurfaceCreateInfoKHR(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkWin32SurfaceCreateInfoKHR(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkWin32SurfaceCreateInfoKHR(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -76,12 +99,24 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkWin32SurfaceCreateInfoKHR> createNullPointer(){
+	        P<VkWin32SurfaceCreateInfoKHR> p = new  P<VkWin32SurfaceCreateInfoKHR>(new VkWin32SurfaceCreateInfoKHR());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -90,7 +125,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -99,7 +134,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -108,7 +143,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -117,7 +152,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags	
+	 * Set method for field flags	[int]<br>
 	 * Prototype: VkWin32SurfaceCreateFlagsKHR  flags
 	 */ 
 	 public void flags(int flags){
@@ -126,7 +161,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags	
+	 * get method for field flags	[int]<br>
 	 * Prototype: VkWin32SurfaceCreateFlagsKHR  flags
 	 */ 
 	 public int flags(){
@@ -135,7 +170,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field hinstance	[vkhandle]
+	 * Set method for field hinstance	[vkhandle]<br>
 	 * Prototype: HINSTANCE  hinstance
 	 */ 
 	 public void hinstance(Win32HINSTANCE hinstance){
@@ -144,7 +179,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field hinstance	[vkhandle]
+	 * get method for field hinstance	[vkhandle]<br>
 	 * Prototype: HINSTANCE  hinstance
 	 */ 
 	 public Win32HINSTANCE hinstance(){
@@ -153,7 +188,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field hwnd	[vkhandle]
+	 * Set method for field hwnd	[vkhandle]<br>
 	 * Prototype: HWND  hwnd
 	 */ 
 	 public void hwnd(Win32HWND hwnd){
@@ -162,7 +197,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field hwnd	[vkhandle]
+	 * get method for field hwnd	[vkhandle]<br>
 	 * Prototype: HWND  hwnd
 	 */ 
 	 public Win32HWND hwnd(){
@@ -171,11 +206,11 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -184,7 +219,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -193,7 +228,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -202,7 +237,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -211,7 +246,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags	
+	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkWin32SurfaceCreateFlagsKHR  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -220,7 +255,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags	
+	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkWin32SurfaceCreateFlagsKHR  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -229,7 +264,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field hinstance	[vkhandle]
+	 * native SET method for field hinstance	[vkhandle]<br>
 	 * Prototype: HINSTANCE  hinstance
 	 */ 
 	 private static native void hinstance0(ByteBuffer ptr, Win32HINSTANCE _hinstance);/*
@@ -238,7 +273,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field hinstance	[vkhandle]
+	 * native GET method for field hinstance	[vkhandle]<br>
 	 * Prototype: HINSTANCE  hinstance
 	 */ 
 	 private static native Win32HINSTANCE hinstance0(ByteBuffer ptr);/*
@@ -247,7 +282,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field hwnd	[vkhandle]
+	 * native SET method for field hwnd	[vkhandle]<br>
 	 * Prototype: HWND  hwnd
 	 */ 
 	 private static native void hwnd0(ByteBuffer ptr, Win32HWND _hwnd);/*
@@ -256,7 +291,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field hwnd	[vkhandle]
+	 * native GET method for field hwnd	[vkhandle]<br>
 	 * Prototype: HWND  hwnd
 	 */ 
 	 private static native Win32HWND hwnd0(ByteBuffer ptr);/*

@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkMemoryBarrier. 
  *  <h3>Prototype:</h3>
@@ -32,27 +33,31 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkMemoryBarrier extends VkStruct {
-	/** TAG of this structure [223]  */
+	/** TAG of this structure [99]  */
 	 private static final String TAG = "VkMemoryBarrier";
 
-	/** ID of this structure [223]  */
+	/** ID of this structure [99]  */
 	 public static final int TAG_ID = VKMEMORYBARRIER_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkAccessFlags 	srcAccessMask		 */ 
+	 *  VkAccessFlags 	srcAccessMask	[int]
+	 */ 
 	int 	srcAccessMask;
 
 	/**
-	 *  VkAccessFlags 	dstAccessMask		 */ 
+	 *  VkAccessFlags 	dstAccessMask	[int]
+	 */ 
 	int 	dstAccessMask;
 
 	/**
@@ -60,6 +65,23 @@ public class VkMemoryBarrier extends VkStruct {
 	 */
 	public VkMemoryBarrier(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkMemoryBarrier(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkMemoryBarrier(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -70,12 +92,24 @@ public class VkMemoryBarrier extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkMemoryBarrier> createNullPointer(){
+	        P<VkMemoryBarrier> p = new  P<VkMemoryBarrier>(new VkMemoryBarrier());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -84,7 +118,7 @@ public class VkMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -93,7 +127,7 @@ public class VkMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -102,7 +136,7 @@ public class VkMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -111,7 +145,7 @@ public class VkMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field srcAccessMask	
+	 * Set method for field srcAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 public void srcAccessMask(int srcAccessMask){
@@ -120,7 +154,7 @@ public class VkMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcAccessMask	
+	 * get method for field srcAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 public int srcAccessMask(){
@@ -129,7 +163,7 @@ public class VkMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstAccessMask	
+	 * Set method for field dstAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 public void dstAccessMask(int dstAccessMask){
@@ -138,7 +172,7 @@ public class VkMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstAccessMask	
+	 * get method for field dstAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 public int dstAccessMask(){
@@ -147,11 +181,11 @@ public class VkMemoryBarrier extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -160,7 +194,7 @@ public class VkMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -169,7 +203,7 @@ public class VkMemoryBarrier extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -178,7 +212,7 @@ public class VkMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -187,7 +221,7 @@ public class VkMemoryBarrier extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field srcAccessMask	
+	 * native SET method for field srcAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 private static native void srcAccessMask0(ByteBuffer ptr, int _srcAccessMask);/*
@@ -196,7 +230,7 @@ public class VkMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcAccessMask	
+	 * native GET method for field srcAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 private static native int srcAccessMask0(ByteBuffer ptr);/*
@@ -205,7 +239,7 @@ public class VkMemoryBarrier extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstAccessMask	
+	 * native SET method for field dstAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 private static native void dstAccessMask0(ByteBuffer ptr, int _dstAccessMask);/*
@@ -214,7 +248,7 @@ public class VkMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstAccessMask	
+	 * native GET method for field dstAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 private static native int dstAccessMask0(ByteBuffer ptr);/*

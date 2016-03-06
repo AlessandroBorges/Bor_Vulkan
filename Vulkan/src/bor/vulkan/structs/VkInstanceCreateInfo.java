@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkInstanceCreateInfo. 
  *  <h3>Prototype:</h3>
@@ -36,43 +37,51 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkInstanceCreateInfo extends VkStruct {
-	/** TAG of this structure [126]  */
+	/** TAG of this structure [2]  */
 	 private static final String TAG = "VkInstanceCreateInfo";
 
-	/** ID of this structure [126]  */
+	/** ID of this structure [2]  */
 	 public static final int TAG_ID = VKINSTANCECREATEINFO_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkInstanceCreateFlags 	flags		 */ 
+	 *  VkInstanceCreateFlags 	flags	[int]
+	 */ 
 	int 	flags;
 
 	/**
-	 *  const VkApplicationInfo* 	pApplicationInfo		 */ 
+	 *  const VkApplicationInfo* 	pApplicationInfo	[p]
+	 */ 
 	P<VkApplicationInfo>  	pApplicationInfo;
 
 	/**
-	 *  uint32_t 	enabledLayerCount		 */ 
+	 *  uint32_t 	enabledLayerCount	[int]
+	 */ 
 	int 	enabledLayerCount;
 
 	/**
-	 *  const char* const* 	ppEnabledLayerNames		 */ 
+	 *  const char* const* 	ppEnabledLayerNames	[string_arr]
+	 */ 
 	String[] 	ppEnabledLayerNames;
 
 	/**
-	 *  uint32_t 	enabledExtensionCount		 */ 
+	 *  uint32_t 	enabledExtensionCount	[int]
+	 */ 
 	int 	enabledExtensionCount;
 
 	/**
-	 *  const char* const* 	ppEnabledExtensionNames		 */ 
+	 *  const char* const* 	ppEnabledExtensionNames	[string_arr]
+	 */ 
 	String[] 	ppEnabledExtensionNames;
 
 	/**
@@ -80,6 +89,23 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 */
 	public VkInstanceCreateInfo(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkInstanceCreateInfo(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkInstanceCreateInfo(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -90,12 +116,24 @@ public class VkInstanceCreateInfo extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkInstanceCreateInfo> createNullPointer(){
+	        P<VkInstanceCreateInfo> p = new  P<VkInstanceCreateInfo>(new VkInstanceCreateInfo());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -104,7 +142,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -113,7 +151,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -122,7 +160,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -131,7 +169,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags	
+	 * Set method for field flags	[int]<br>
 	 * Prototype: VkInstanceCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -140,7 +178,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags	
+	 * get method for field flags	[int]<br>
 	 * Prototype: VkInstanceCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -149,7 +187,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pApplicationInfo	
+	 * Set method for field pApplicationInfo	[p]<br>
 	 * Prototype: const VkApplicationInfo*  pApplicationInfo
 	 */ 
 	 public void pApplicationInfo(P<VkApplicationInfo>  pApplicationInfo){
@@ -158,7 +196,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pApplicationInfo	
+	 * get method for field pApplicationInfo	[p]<br>
 	 * Prototype: const VkApplicationInfo*  pApplicationInfo
 	 */ 
 	 public P<VkApplicationInfo>  pApplicationInfo(){
@@ -167,7 +205,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field enabledLayerCount	
+	 * Set method for field enabledLayerCount	[int]<br>
 	 * Prototype: uint32_t  enabledLayerCount
 	 */ 
 	 public void enabledLayerCount(int enabledLayerCount){
@@ -176,7 +214,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field enabledLayerCount	
+	 * get method for field enabledLayerCount	[int]<br>
 	 * Prototype: uint32_t  enabledLayerCount
 	 */ 
 	 public int enabledLayerCount(){
@@ -185,7 +223,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field ppEnabledLayerNames	
+	 * Set method for field ppEnabledLayerNames	[string_arr]<br>
 	 * Prototype: const char* const*  ppEnabledLayerNames
 	 */ 
 	 public void ppEnabledLayerNames(String[] ppEnabledLayerNames){
@@ -194,7 +232,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field ppEnabledLayerNames	
+	 * get method for field ppEnabledLayerNames	[string_arr]<br>
 	 * Prototype: const char* const*  ppEnabledLayerNames
 	 */ 
 	 public String[] ppEnabledLayerNames(){
@@ -203,7 +241,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field enabledExtensionCount	
+	 * Set method for field enabledExtensionCount	[int]<br>
 	 * Prototype: uint32_t  enabledExtensionCount
 	 */ 
 	 public void enabledExtensionCount(int enabledExtensionCount){
@@ -212,7 +250,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field enabledExtensionCount	
+	 * get method for field enabledExtensionCount	[int]<br>
 	 * Prototype: uint32_t  enabledExtensionCount
 	 */ 
 	 public int enabledExtensionCount(){
@@ -221,7 +259,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field ppEnabledExtensionNames	
+	 * Set method for field ppEnabledExtensionNames	[string_arr]<br>
 	 * Prototype: const char* const*  ppEnabledExtensionNames
 	 */ 
 	 public void ppEnabledExtensionNames(String[] ppEnabledExtensionNames){
@@ -230,7 +268,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field ppEnabledExtensionNames	
+	 * get method for field ppEnabledExtensionNames	[string_arr]<br>
 	 * Prototype: const char* const*  ppEnabledExtensionNames
 	 */ 
 	 public String[] ppEnabledExtensionNames(){
@@ -239,11 +277,11 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -252,7 +290,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -261,7 +299,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -270,7 +308,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -279,7 +317,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags	
+	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkInstanceCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -288,7 +326,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags	
+	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkInstanceCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -297,7 +335,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pApplicationInfo	
+	 * native SET method for field pApplicationInfo	[p]<br>
 	 * Prototype: const VkApplicationInfo*  pApplicationInfo
 	 */ 
 	 private static native void pApplicationInfo0(ByteBuffer ptr, P<VkApplicationInfo>  _pApplicationInfo);/*
@@ -306,7 +344,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pApplicationInfo	
+	 * native GET method for field pApplicationInfo	[p]<br>
 	 * Prototype: const VkApplicationInfo*  pApplicationInfo
 	 */ 
 	 private static native P<VkApplicationInfo>  pApplicationInfo0(ByteBuffer ptr);/*
@@ -315,7 +353,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field enabledLayerCount	
+	 * native SET method for field enabledLayerCount	[int]<br>
 	 * Prototype: uint32_t  enabledLayerCount
 	 */ 
 	 private static native void enabledLayerCount0(ByteBuffer ptr, int _enabledLayerCount);/*
@@ -324,7 +362,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field enabledLayerCount	
+	 * native GET method for field enabledLayerCount	[int]<br>
 	 * Prototype: uint32_t  enabledLayerCount
 	 */ 
 	 private static native int enabledLayerCount0(ByteBuffer ptr);/*
@@ -333,7 +371,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field ppEnabledLayerNames	
+	 * native SET method for field ppEnabledLayerNames	[string_arr]<br>
 	 * Prototype: const char* const*  ppEnabledLayerNames
 	 */ 
 	 private static native void ppEnabledLayerNames0(ByteBuffer ptr, String[] _ppEnabledLayerNames);/*
@@ -342,7 +380,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field ppEnabledLayerNames	
+	 * native GET method for field ppEnabledLayerNames	[string_arr]<br>
 	 * Prototype: const char* const*  ppEnabledLayerNames
 	 */ 
 	 private static native String[] ppEnabledLayerNames0(ByteBuffer ptr);/*
@@ -351,7 +389,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field enabledExtensionCount	
+	 * native SET method for field enabledExtensionCount	[int]<br>
 	 * Prototype: uint32_t  enabledExtensionCount
 	 */ 
 	 private static native void enabledExtensionCount0(ByteBuffer ptr, int _enabledExtensionCount);/*
@@ -360,7 +398,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field enabledExtensionCount	
+	 * native GET method for field enabledExtensionCount	[int]<br>
 	 * Prototype: uint32_t  enabledExtensionCount
 	 */ 
 	 private static native int enabledExtensionCount0(ByteBuffer ptr);/*
@@ -369,7 +407,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field ppEnabledExtensionNames	
+	 * native SET method for field ppEnabledExtensionNames	[string_arr]<br>
 	 * Prototype: const char* const*  ppEnabledExtensionNames
 	 */ 
 	 private static native void ppEnabledExtensionNames0(ByteBuffer ptr, String[] _ppEnabledExtensionNames);/*
@@ -378,7 +416,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field ppEnabledExtensionNames	
+	 * native GET method for field ppEnabledExtensionNames	[string_arr]<br>
 	 * Prototype: const char* const*  ppEnabledExtensionNames
 	 */ 
 	 private static native String[] ppEnabledExtensionNames0(ByteBuffer ptr);/*

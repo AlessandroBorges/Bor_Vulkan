@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkImageSubresourceRange. 
  *  <h3>Prototype:</h3>
@@ -33,31 +34,36 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkImageSubresourceRange extends VkStruct {
-	/** TAG of this structure [166]  */
+	/** TAG of this structure [42]  */
 	 private static final String TAG = "VkImageSubresourceRange";
 
-	/** ID of this structure [166]  */
+	/** ID of this structure [42]  */
 	 public static final int TAG_ID = VKIMAGESUBRESOURCERANGE_ID;
 
 	 // fields //
 	/**
-	 *  VkImageAspectFlags 	aspectMask		 */ 
+	 *  VkImageAspectFlags 	aspectMask	[int]
+	 */ 
 	int 	aspectMask;
 
 	/**
-	 *  uint32_t 	baseMipLevel		 */ 
+	 *  uint32_t 	baseMipLevel	[int]
+	 */ 
 	int 	baseMipLevel;
 
 	/**
-	 *  uint32_t 	levelCount		 */ 
+	 *  uint32_t 	levelCount	[int]
+	 */ 
 	int 	levelCount;
 
 	/**
-	 *  uint32_t 	baseArrayLayer		 */ 
+	 *  uint32_t 	baseArrayLayer	[int]
+	 */ 
 	int 	baseArrayLayer;
 
 	/**
-	 *  uint32_t 	layerCount		 */ 
+	 *  uint32_t 	layerCount	[int]
+	 */ 
 	int 	layerCount;
 
 	/**
@@ -65,6 +71,23 @@ public class VkImageSubresourceRange extends VkStruct {
 	 */
 	public VkImageSubresourceRange(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkImageSubresourceRange(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkImageSubresourceRange(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -75,12 +98,24 @@ public class VkImageSubresourceRange extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkImageSubresourceRange> createNullPointer(){
+	        P<VkImageSubresourceRange> p = new  P<VkImageSubresourceRange>(new VkImageSubresourceRange());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field aspectMask	
+	 * Set method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 public void aspectMask(int aspectMask){
@@ -89,7 +124,7 @@ public class VkImageSubresourceRange extends VkStruct {
 	 }
 
 	/**
-	 * get method for field aspectMask	
+	 * get method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 public int aspectMask(){
@@ -98,7 +133,7 @@ public class VkImageSubresourceRange extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field baseMipLevel	
+	 * Set method for field baseMipLevel	[int]<br>
 	 * Prototype: uint32_t  baseMipLevel
 	 */ 
 	 public void baseMipLevel(int baseMipLevel){
@@ -107,7 +142,7 @@ public class VkImageSubresourceRange extends VkStruct {
 	 }
 
 	/**
-	 * get method for field baseMipLevel	
+	 * get method for field baseMipLevel	[int]<br>
 	 * Prototype: uint32_t  baseMipLevel
 	 */ 
 	 public int baseMipLevel(){
@@ -116,7 +151,7 @@ public class VkImageSubresourceRange extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field levelCount	
+	 * Set method for field levelCount	[int]<br>
 	 * Prototype: uint32_t  levelCount
 	 */ 
 	 public void levelCount(int levelCount){
@@ -125,7 +160,7 @@ public class VkImageSubresourceRange extends VkStruct {
 	 }
 
 	/**
-	 * get method for field levelCount	
+	 * get method for field levelCount	[int]<br>
 	 * Prototype: uint32_t  levelCount
 	 */ 
 	 public int levelCount(){
@@ -134,7 +169,7 @@ public class VkImageSubresourceRange extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field baseArrayLayer	
+	 * Set method for field baseArrayLayer	[int]<br>
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
 	 public void baseArrayLayer(int baseArrayLayer){
@@ -143,7 +178,7 @@ public class VkImageSubresourceRange extends VkStruct {
 	 }
 
 	/**
-	 * get method for field baseArrayLayer	
+	 * get method for field baseArrayLayer	[int]<br>
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
 	 public int baseArrayLayer(){
@@ -152,7 +187,7 @@ public class VkImageSubresourceRange extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field layerCount	
+	 * Set method for field layerCount	[int]<br>
 	 * Prototype: uint32_t  layerCount
 	 */ 
 	 public void layerCount(int layerCount){
@@ -161,7 +196,7 @@ public class VkImageSubresourceRange extends VkStruct {
 	 }
 
 	/**
-	 * get method for field layerCount	
+	 * get method for field layerCount	[int]<br>
 	 * Prototype: uint32_t  layerCount
 	 */ 
 	 public int layerCount(){
@@ -170,11 +205,11 @@ public class VkImageSubresourceRange extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field aspectMask	
+	 * native SET method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 private static native void aspectMask0(ByteBuffer ptr, int _aspectMask);/*
@@ -183,7 +218,7 @@ public class VkImageSubresourceRange extends VkStruct {
 	  */
 
 	/**
-	 * get method for field aspectMask	
+	 * native GET method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 private static native int aspectMask0(ByteBuffer ptr);/*
@@ -192,7 +227,7 @@ public class VkImageSubresourceRange extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field baseMipLevel	
+	 * native SET method for field baseMipLevel	[int]<br>
 	 * Prototype: uint32_t  baseMipLevel
 	 */ 
 	 private static native void baseMipLevel0(ByteBuffer ptr, int _baseMipLevel);/*
@@ -201,7 +236,7 @@ public class VkImageSubresourceRange extends VkStruct {
 	  */
 
 	/**
-	 * get method for field baseMipLevel	
+	 * native GET method for field baseMipLevel	[int]<br>
 	 * Prototype: uint32_t  baseMipLevel
 	 */ 
 	 private static native int baseMipLevel0(ByteBuffer ptr);/*
@@ -210,7 +245,7 @@ public class VkImageSubresourceRange extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field levelCount	
+	 * native SET method for field levelCount	[int]<br>
 	 * Prototype: uint32_t  levelCount
 	 */ 
 	 private static native void levelCount0(ByteBuffer ptr, int _levelCount);/*
@@ -219,7 +254,7 @@ public class VkImageSubresourceRange extends VkStruct {
 	  */
 
 	/**
-	 * get method for field levelCount	
+	 * native GET method for field levelCount	[int]<br>
 	 * Prototype: uint32_t  levelCount
 	 */ 
 	 private static native int levelCount0(ByteBuffer ptr);/*
@@ -228,7 +263,7 @@ public class VkImageSubresourceRange extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field baseArrayLayer	
+	 * native SET method for field baseArrayLayer	[int]<br>
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
 	 private static native void baseArrayLayer0(ByteBuffer ptr, int _baseArrayLayer);/*
@@ -237,7 +272,7 @@ public class VkImageSubresourceRange extends VkStruct {
 	  */
 
 	/**
-	 * get method for field baseArrayLayer	
+	 * native GET method for field baseArrayLayer	[int]<br>
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
 	 private static native int baseArrayLayer0(ByteBuffer ptr);/*
@@ -246,7 +281,7 @@ public class VkImageSubresourceRange extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field layerCount	
+	 * native SET method for field layerCount	[int]<br>
 	 * Prototype: uint32_t  layerCount
 	 */ 
 	 private static native void layerCount0(ByteBuffer ptr, int _layerCount);/*
@@ -255,7 +290,7 @@ public class VkImageSubresourceRange extends VkStruct {
 	  */
 
 	/**
-	 * get method for field layerCount	
+	 * native GET method for field layerCount	[int]<br>
 	 * Prototype: uint32_t  layerCount
 	 */ 
 	 private static native int layerCount0(ByteBuffer ptr);/*

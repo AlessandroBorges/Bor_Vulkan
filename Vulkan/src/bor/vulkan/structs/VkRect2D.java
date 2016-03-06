@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkRect2D. 
  *  <h3>Prototype:</h3>
@@ -30,19 +31,21 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkRect2D extends VkStruct {
-	/** TAG of this structure [181]  */
+	/** TAG of this structure [57]  */
 	 private static final String TAG = "VkRect2D";
 
-	/** ID of this structure [181]  */
+	/** ID of this structure [57]  */
 	 public static final int TAG_ID = VKRECT2D_ID;
 
 	 // fields //
 	/**
-	 *  VkOffset2D 	offset	[vkstruct]	 */ 
+	 *  VkOffset2D 	offset	[vkstruct]
+	 */ 
 	VkOffset2D 	offset;
 
 	/**
-	 *  VkExtent2D 	extent	[vkstruct]	 */ 
+	 *  VkExtent2D 	extent	[vkstruct]
+	 */ 
 	VkExtent2D 	extent;
 
 	/**
@@ -50,6 +53,23 @@ public class VkRect2D extends VkStruct {
 	 */
 	public VkRect2D(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkRect2D(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkRect2D(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -60,12 +80,24 @@ public class VkRect2D extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkRect2D> createNullPointer(){
+	        P<VkRect2D> p = new  P<VkRect2D>(new VkRect2D());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field offset	[vkstruct]
+	 * Set method for field offset	[vkstruct]<br>
 	 * Prototype: VkOffset2D  offset
 	 */ 
 	 public void offset(VkOffset2D offset){
@@ -74,7 +106,7 @@ public class VkRect2D extends VkStruct {
 	 }
 
 	/**
-	 * get method for field offset	[vkstruct]
+	 * get method for field offset	[vkstruct]<br>
 	 * Prototype: VkOffset2D  offset
 	 */ 
 	 public VkOffset2D offset(){
@@ -83,7 +115,7 @@ public class VkRect2D extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field extent	[vkstruct]
+	 * Set method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  extent
 	 */ 
 	 public void extent(VkExtent2D extent){
@@ -92,7 +124,7 @@ public class VkRect2D extends VkStruct {
 	 }
 
 	/**
-	 * get method for field extent	[vkstruct]
+	 * get method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  extent
 	 */ 
 	 public VkExtent2D extent(){
@@ -101,11 +133,11 @@ public class VkRect2D extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field offset	[vkstruct]
+	 * native SET method for field offset	[vkstruct]<br>
 	 * Prototype: VkOffset2D  offset
 	 */ 
 	 private static native void offset0(ByteBuffer ptr, VkOffset2D _offset);/*
@@ -114,7 +146,7 @@ public class VkRect2D extends VkStruct {
 	  */
 
 	/**
-	 * get method for field offset	[vkstruct]
+	 * native GET method for field offset	[vkstruct]<br>
 	 * Prototype: VkOffset2D  offset
 	 */ 
 	 private static native VkOffset2D offset0(ByteBuffer ptr);/*
@@ -123,7 +155,7 @@ public class VkRect2D extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field extent	[vkstruct]
+	 * native SET method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  extent
 	 */ 
 	 private static native void extent0(ByteBuffer ptr, VkExtent2D _extent);/*
@@ -132,7 +164,7 @@ public class VkRect2D extends VkStruct {
 	  */
 
 	/**
-	 * get method for field extent	[vkstruct]
+	 * native GET method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  extent
 	 */ 
 	 private static native VkExtent2D extent0(ByteBuffer ptr);/*

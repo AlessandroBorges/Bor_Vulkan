@@ -32,13 +32,13 @@ public class Penum<E extends IntEnum<?>> extends PInteger {
      * 
      * @return current Enumeration stored. It may represent a single or multiple OR'ed values. 
      */
-    @SuppressWarnings("static-access")
+    @SuppressWarnings({ "static-access", "unchecked" })
     public  E getEnum(){
         int val = value[0];
         // we don't know if value[0] was changed on native ops.
         // so 1st the easy way - look for exact matches
         E[] stdValues = type.values();
-        for(int i=0; i<stdValues.length; i++){
+        for(int i=0; i<stdValues.length; i++){            
             IntEnum<E> item = (IntEnum<E>)stdValues[i];
             if(item.getValue()==val){
                 return (E) item;
@@ -53,9 +53,4 @@ public class Penum<E extends IntEnum<?>> extends PInteger {
         return (E) obj;
     }
     
-    
-    
-    
-    
-
 }

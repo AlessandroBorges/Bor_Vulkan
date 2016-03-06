@@ -17,6 +17,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkWaylandSurfaceCreateInfoKHR. 
  *  <h3>Prototype:</h3>
@@ -34,31 +35,36 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
-	/** TAG of this structure [244]  */
+	/** TAG of this structure [120]  */
 	 private static final String TAG = "VkWaylandSurfaceCreateInfoKHR";
 
-	/** ID of this structure [244]  */
+	/** ID of this structure [120]  */
 	 public static final int TAG_ID = VKWAYLANDSURFACECREATEINFOKHR_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkWaylandSurfaceCreateFlagsKHR 	flags		 */ 
+	 *  VkWaylandSurfaceCreateFlagsKHR 	flags	[int]
+	 */ 
 	int 	flags;
 
 	/**
-	 *  struct wl_display* 	display	[vkhandle]	 */ 
+	 *  struct wl_display* 	display	[vkhandle]
+	 */ 
 	WlDisplay 	display;
 
 	/**
-	 *  struct wl_surface* 	surface	[vkhandle]	 */ 
+	 *  struct wl_surface* 	surface	[vkhandle]
+	 */ 
 	WlSurface 	surface;
 
 	/**
@@ -66,6 +72,23 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 */
 	public VkWaylandSurfaceCreateInfoKHR(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkWaylandSurfaceCreateInfoKHR(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkWaylandSurfaceCreateInfoKHR(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -76,12 +99,24 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkWaylandSurfaceCreateInfoKHR> createNullPointer(){
+	        P<VkWaylandSurfaceCreateInfoKHR> p = new  P<VkWaylandSurfaceCreateInfoKHR>(new VkWaylandSurfaceCreateInfoKHR());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -90,7 +125,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -99,7 +134,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -108,7 +143,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -117,7 +152,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags	
+	 * Set method for field flags	[int]<br>
 	 * Prototype: VkWaylandSurfaceCreateFlagsKHR  flags
 	 */ 
 	 public void flags(int flags){
@@ -126,7 +161,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags	
+	 * get method for field flags	[int]<br>
 	 * Prototype: VkWaylandSurfaceCreateFlagsKHR  flags
 	 */ 
 	 public int flags(){
@@ -135,7 +170,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field display	[vkhandle]
+	 * Set method for field display	[vkhandle]<br>
 	 * Prototype: struct wl_display*  display
 	 */ 
 	 public void display(WlDisplay display){
@@ -144,7 +179,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field display	[vkhandle]
+	 * get method for field display	[vkhandle]<br>
 	 * Prototype: struct wl_display*  display
 	 */ 
 	 public WlDisplay display(){
@@ -153,7 +188,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field surface	[vkhandle]
+	 * Set method for field surface	[vkhandle]<br>
 	 * Prototype: struct wl_surface*  surface
 	 */ 
 	 public void surface(WlSurface surface){
@@ -162,7 +197,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field surface	[vkhandle]
+	 * get method for field surface	[vkhandle]<br>
 	 * Prototype: struct wl_surface*  surface
 	 */ 
 	 public WlSurface surface(){
@@ -171,11 +206,11 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -184,7 +219,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -193,7 +228,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -202,7 +237,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -211,7 +246,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags	
+	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkWaylandSurfaceCreateFlagsKHR  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -220,7 +255,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags	
+	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkWaylandSurfaceCreateFlagsKHR  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -229,7 +264,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field display	[vkhandle]
+	 * native SET method for field display	[vkhandle]<br>
 	 * Prototype: struct wl_display*  display
 	 */ 
 	 private static native void display0(ByteBuffer ptr, WlDisplay _display);/*
@@ -238,7 +273,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field display	[vkhandle]
+	 * native GET method for field display	[vkhandle]<br>
 	 * Prototype: struct wl_display*  display
 	 */ 
 	 private static native WlDisplay display0(ByteBuffer ptr);/*
@@ -247,7 +282,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field surface	[vkhandle]
+	 * native SET method for field surface	[vkhandle]<br>
 	 * Prototype: struct wl_surface*  surface
 	 */ 
 	 private static native void surface0(ByteBuffer ptr, WlSurface _surface);/*
@@ -256,7 +291,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field surface	[vkhandle]
+	 * native GET method for field surface	[vkhandle]<br>
 	 * Prototype: struct wl_surface*  surface
 	 */ 
 	 private static native WlSurface surface0(ByteBuffer ptr);/*

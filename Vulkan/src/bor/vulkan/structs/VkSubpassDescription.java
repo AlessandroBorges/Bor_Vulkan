@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkSubpassDescription. 
  *  <h3>Prototype:</h3>
@@ -38,51 +39,61 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkSubpassDescription extends VkStruct {
-	/** TAG of this structure [207]  */
+	/** TAG of this structure [83]  */
 	 private static final String TAG = "VkSubpassDescription";
 
-	/** ID of this structure [207]  */
+	/** ID of this structure [83]  */
 	 public static final int TAG_ID = VKSUBPASSDESCRIPTION_ID;
 
 	 // fields //
 	/**
-	 *  VkSubpassDescriptionFlags 	flags		 */ 
+	 *  VkSubpassDescriptionFlags 	flags	[int]
+	 */ 
 	int 	flags;
 
 	/**
-	 *  VkPipelineBindPoint 	pipelineBindPoint	[vkenum]	 */ 
+	 *  VkPipelineBindPoint 	pipelineBindPoint	[vkenum]
+	 */ 
 	VkPipelineBindPoint 	pipelineBindPoint;
 
 	/**
-	 *  uint32_t 	inputAttachmentCount		 */ 
+	 *  uint32_t 	inputAttachmentCount	[int]
+	 */ 
 	int 	inputAttachmentCount;
 
 	/**
-	 *  const VkAttachmentReference* 	pInputAttachments		 */ 
+	 *  const VkAttachmentReference* 	pInputAttachments	[p]
+	 */ 
 	P<VkAttachmentReference>  	pInputAttachments;
 
 	/**
-	 *  uint32_t 	colorAttachmentCount		 */ 
+	 *  uint32_t 	colorAttachmentCount	[int]
+	 */ 
 	int 	colorAttachmentCount;
 
 	/**
-	 *  const VkAttachmentReference* 	pColorAttachments		 */ 
+	 *  const VkAttachmentReference* 	pColorAttachments	[p]
+	 */ 
 	P<VkAttachmentReference>  	pColorAttachments;
 
 	/**
-	 *  const VkAttachmentReference* 	pResolveAttachments		 */ 
+	 *  const VkAttachmentReference* 	pResolveAttachments	[p]
+	 */ 
 	P<VkAttachmentReference>  	pResolveAttachments;
 
 	/**
-	 *  const VkAttachmentReference* 	pDepthStencilAttachment		 */ 
+	 *  const VkAttachmentReference* 	pDepthStencilAttachment	[p]
+	 */ 
 	P<VkAttachmentReference>  	pDepthStencilAttachment;
 
 	/**
-	 *  uint32_t 	preserveAttachmentCount		 */ 
+	 *  uint32_t 	preserveAttachmentCount	[int]
+	 */ 
 	int 	preserveAttachmentCount;
 
 	/**
-	 *  const uint32_t* 	pPreserveAttachments		 */ 
+	 *  const uint32_t* 	pPreserveAttachments	[int_array]
+	 */ 
 	int[] 	pPreserveAttachments;
 
 	/**
@@ -90,6 +101,23 @@ public class VkSubpassDescription extends VkStruct {
 	 */
 	public VkSubpassDescription(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkSubpassDescription(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkSubpassDescription(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -100,12 +128,24 @@ public class VkSubpassDescription extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkSubpassDescription> createNullPointer(){
+	        P<VkSubpassDescription> p = new  P<VkSubpassDescription>(new VkSubpassDescription());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field flags	
+	 * Set method for field flags	[int]<br>
 	 * Prototype: VkSubpassDescriptionFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -114,7 +154,7 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags	
+	 * get method for field flags	[int]<br>
 	 * Prototype: VkSubpassDescriptionFlags  flags
 	 */ 
 	 public int flags(){
@@ -123,7 +163,7 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pipelineBindPoint	[vkenum]
+	 * Set method for field pipelineBindPoint	[vkenum]<br>
 	 * Prototype: VkPipelineBindPoint  pipelineBindPoint
 	 */ 
 	 public void pipelineBindPoint(VkPipelineBindPoint pipelineBindPoint){
@@ -132,7 +172,7 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pipelineBindPoint	[vkenum]
+	 * get method for field pipelineBindPoint	[vkenum]<br>
 	 * Prototype: VkPipelineBindPoint  pipelineBindPoint
 	 */ 
 	 public VkPipelineBindPoint pipelineBindPoint(){
@@ -141,7 +181,7 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field inputAttachmentCount	
+	 * Set method for field inputAttachmentCount	[int]<br>
 	 * Prototype: uint32_t  inputAttachmentCount
 	 */ 
 	 public void inputAttachmentCount(int inputAttachmentCount){
@@ -150,7 +190,7 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 	/**
-	 * get method for field inputAttachmentCount	
+	 * get method for field inputAttachmentCount	[int]<br>
 	 * Prototype: uint32_t  inputAttachmentCount
 	 */ 
 	 public int inputAttachmentCount(){
@@ -159,7 +199,7 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pInputAttachments	
+	 * Set method for field pInputAttachments	[p]<br>
 	 * Prototype: const VkAttachmentReference*  pInputAttachments
 	 */ 
 	 public void pInputAttachments(P<VkAttachmentReference>  pInputAttachments){
@@ -168,7 +208,7 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pInputAttachments	
+	 * get method for field pInputAttachments	[p]<br>
 	 * Prototype: const VkAttachmentReference*  pInputAttachments
 	 */ 
 	 public P<VkAttachmentReference>  pInputAttachments(){
@@ -177,7 +217,7 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field colorAttachmentCount	
+	 * Set method for field colorAttachmentCount	[int]<br>
 	 * Prototype: uint32_t  colorAttachmentCount
 	 */ 
 	 public void colorAttachmentCount(int colorAttachmentCount){
@@ -186,7 +226,7 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 	/**
-	 * get method for field colorAttachmentCount	
+	 * get method for field colorAttachmentCount	[int]<br>
 	 * Prototype: uint32_t  colorAttachmentCount
 	 */ 
 	 public int colorAttachmentCount(){
@@ -195,7 +235,7 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pColorAttachments	
+	 * Set method for field pColorAttachments	[p]<br>
 	 * Prototype: const VkAttachmentReference*  pColorAttachments
 	 */ 
 	 public void pColorAttachments(P<VkAttachmentReference>  pColorAttachments){
@@ -204,7 +244,7 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pColorAttachments	
+	 * get method for field pColorAttachments	[p]<br>
 	 * Prototype: const VkAttachmentReference*  pColorAttachments
 	 */ 
 	 public P<VkAttachmentReference>  pColorAttachments(){
@@ -213,7 +253,7 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pResolveAttachments	
+	 * Set method for field pResolveAttachments	[p]<br>
 	 * Prototype: const VkAttachmentReference*  pResolveAttachments
 	 */ 
 	 public void pResolveAttachments(P<VkAttachmentReference>  pResolveAttachments){
@@ -222,7 +262,7 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pResolveAttachments	
+	 * get method for field pResolveAttachments	[p]<br>
 	 * Prototype: const VkAttachmentReference*  pResolveAttachments
 	 */ 
 	 public P<VkAttachmentReference>  pResolveAttachments(){
@@ -231,7 +271,7 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pDepthStencilAttachment	
+	 * Set method for field pDepthStencilAttachment	[p]<br>
 	 * Prototype: const VkAttachmentReference*  pDepthStencilAttachment
 	 */ 
 	 public void pDepthStencilAttachment(P<VkAttachmentReference>  pDepthStencilAttachment){
@@ -240,7 +280,7 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pDepthStencilAttachment	
+	 * get method for field pDepthStencilAttachment	[p]<br>
 	 * Prototype: const VkAttachmentReference*  pDepthStencilAttachment
 	 */ 
 	 public P<VkAttachmentReference>  pDepthStencilAttachment(){
@@ -249,7 +289,7 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field preserveAttachmentCount	
+	 * Set method for field preserveAttachmentCount	[int]<br>
 	 * Prototype: uint32_t  preserveAttachmentCount
 	 */ 
 	 public void preserveAttachmentCount(int preserveAttachmentCount){
@@ -258,7 +298,7 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 	/**
-	 * get method for field preserveAttachmentCount	
+	 * get method for field preserveAttachmentCount	[int]<br>
 	 * Prototype: uint32_t  preserveAttachmentCount
 	 */ 
 	 public int preserveAttachmentCount(){
@@ -267,7 +307,7 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pPreserveAttachments	
+	 * Set method for field pPreserveAttachments	[int_array]<br>
 	 * Prototype: const uint32_t*  pPreserveAttachments
 	 */ 
 	 public void pPreserveAttachments(int[] pPreserveAttachments){
@@ -276,7 +316,7 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pPreserveAttachments	
+	 * get method for field pPreserveAttachments	[int_array]<br>
 	 * Prototype: const uint32_t*  pPreserveAttachments
 	 */ 
 	 public int[] pPreserveAttachments(){
@@ -285,11 +325,11 @@ public class VkSubpassDescription extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field flags	
+	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkSubpassDescriptionFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -298,7 +338,7 @@ public class VkSubpassDescription extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags	
+	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkSubpassDescriptionFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -307,7 +347,7 @@ public class VkSubpassDescription extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pipelineBindPoint	[vkenum]
+	 * native SET method for field pipelineBindPoint	[vkenum]<br>
 	 * Prototype: VkPipelineBindPoint  pipelineBindPoint
 	 */ 
 	 private static native void pipelineBindPoint0(ByteBuffer ptr, VkPipelineBindPoint _pipelineBindPoint);/*
@@ -316,7 +356,7 @@ public class VkSubpassDescription extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pipelineBindPoint	[vkenum]
+	 * native GET method for field pipelineBindPoint	[vkenum]<br>
 	 * Prototype: VkPipelineBindPoint  pipelineBindPoint
 	 */ 
 	 private static native VkPipelineBindPoint pipelineBindPoint0(ByteBuffer ptr);/*
@@ -325,7 +365,7 @@ public class VkSubpassDescription extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field inputAttachmentCount	
+	 * native SET method for field inputAttachmentCount	[int]<br>
 	 * Prototype: uint32_t  inputAttachmentCount
 	 */ 
 	 private static native void inputAttachmentCount0(ByteBuffer ptr, int _inputAttachmentCount);/*
@@ -334,7 +374,7 @@ public class VkSubpassDescription extends VkStruct {
 	  */
 
 	/**
-	 * get method for field inputAttachmentCount	
+	 * native GET method for field inputAttachmentCount	[int]<br>
 	 * Prototype: uint32_t  inputAttachmentCount
 	 */ 
 	 private static native int inputAttachmentCount0(ByteBuffer ptr);/*
@@ -343,7 +383,7 @@ public class VkSubpassDescription extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pInputAttachments	
+	 * native SET method for field pInputAttachments	[p]<br>
 	 * Prototype: const VkAttachmentReference*  pInputAttachments
 	 */ 
 	 private static native void pInputAttachments0(ByteBuffer ptr, P<VkAttachmentReference>  _pInputAttachments);/*
@@ -352,7 +392,7 @@ public class VkSubpassDescription extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pInputAttachments	
+	 * native GET method for field pInputAttachments	[p]<br>
 	 * Prototype: const VkAttachmentReference*  pInputAttachments
 	 */ 
 	 private static native P<VkAttachmentReference>  pInputAttachments0(ByteBuffer ptr);/*
@@ -361,7 +401,7 @@ public class VkSubpassDescription extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field colorAttachmentCount	
+	 * native SET method for field colorAttachmentCount	[int]<br>
 	 * Prototype: uint32_t  colorAttachmentCount
 	 */ 
 	 private static native void colorAttachmentCount0(ByteBuffer ptr, int _colorAttachmentCount);/*
@@ -370,7 +410,7 @@ public class VkSubpassDescription extends VkStruct {
 	  */
 
 	/**
-	 * get method for field colorAttachmentCount	
+	 * native GET method for field colorAttachmentCount	[int]<br>
 	 * Prototype: uint32_t  colorAttachmentCount
 	 */ 
 	 private static native int colorAttachmentCount0(ByteBuffer ptr);/*
@@ -379,7 +419,7 @@ public class VkSubpassDescription extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pColorAttachments	
+	 * native SET method for field pColorAttachments	[p]<br>
 	 * Prototype: const VkAttachmentReference*  pColorAttachments
 	 */ 
 	 private static native void pColorAttachments0(ByteBuffer ptr, P<VkAttachmentReference>  _pColorAttachments);/*
@@ -388,7 +428,7 @@ public class VkSubpassDescription extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pColorAttachments	
+	 * native GET method for field pColorAttachments	[p]<br>
 	 * Prototype: const VkAttachmentReference*  pColorAttachments
 	 */ 
 	 private static native P<VkAttachmentReference>  pColorAttachments0(ByteBuffer ptr);/*
@@ -397,7 +437,7 @@ public class VkSubpassDescription extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pResolveAttachments	
+	 * native SET method for field pResolveAttachments	[p]<br>
 	 * Prototype: const VkAttachmentReference*  pResolveAttachments
 	 */ 
 	 private static native void pResolveAttachments0(ByteBuffer ptr, P<VkAttachmentReference>  _pResolveAttachments);/*
@@ -406,7 +446,7 @@ public class VkSubpassDescription extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pResolveAttachments	
+	 * native GET method for field pResolveAttachments	[p]<br>
 	 * Prototype: const VkAttachmentReference*  pResolveAttachments
 	 */ 
 	 private static native P<VkAttachmentReference>  pResolveAttachments0(ByteBuffer ptr);/*
@@ -415,7 +455,7 @@ public class VkSubpassDescription extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pDepthStencilAttachment	
+	 * native SET method for field pDepthStencilAttachment	[p]<br>
 	 * Prototype: const VkAttachmentReference*  pDepthStencilAttachment
 	 */ 
 	 private static native void pDepthStencilAttachment0(ByteBuffer ptr, P<VkAttachmentReference>  _pDepthStencilAttachment);/*
@@ -424,7 +464,7 @@ public class VkSubpassDescription extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pDepthStencilAttachment	
+	 * native GET method for field pDepthStencilAttachment	[p]<br>
 	 * Prototype: const VkAttachmentReference*  pDepthStencilAttachment
 	 */ 
 	 private static native P<VkAttachmentReference>  pDepthStencilAttachment0(ByteBuffer ptr);/*
@@ -433,7 +473,7 @@ public class VkSubpassDescription extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field preserveAttachmentCount	
+	 * native SET method for field preserveAttachmentCount	[int]<br>
 	 * Prototype: uint32_t  preserveAttachmentCount
 	 */ 
 	 private static native void preserveAttachmentCount0(ByteBuffer ptr, int _preserveAttachmentCount);/*
@@ -442,7 +482,7 @@ public class VkSubpassDescription extends VkStruct {
 	  */
 
 	/**
-	 * get method for field preserveAttachmentCount	
+	 * native GET method for field preserveAttachmentCount	[int]<br>
 	 * Prototype: uint32_t  preserveAttachmentCount
 	 */ 
 	 private static native int preserveAttachmentCount0(ByteBuffer ptr);/*
@@ -451,7 +491,7 @@ public class VkSubpassDescription extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pPreserveAttachments	
+	 * native SET method for field pPreserveAttachments	[int_array]<br>
 	 * Prototype: const uint32_t*  pPreserveAttachments
 	 */ 
 	 private static native void pPreserveAttachments0(ByteBuffer ptr, int[] _pPreserveAttachments);/*
@@ -460,7 +500,7 @@ public class VkSubpassDescription extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pPreserveAttachments	
+	 * native GET method for field pPreserveAttachments	[int_array]<br>
 	 * Prototype: const uint32_t*  pPreserveAttachments
 	 */ 
 	 private static native int[] pPreserveAttachments0(ByteBuffer ptr);/*

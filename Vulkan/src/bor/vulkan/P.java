@@ -4,27 +4,37 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.nio.*;
 
+import bor.util.AbstractPointer;
 import bor.util.Pinterface;
 
 /**
- * Container to a pass Vulkan objects by reference to methods. <br>
- * It intends to work like a C/C++ pointer to something, with ability to pass .<br>
+ * Container for 
+ * Used to pass a Vulkan VkObjects, as Struct or Handlers, by reference to methods. <br>
+ * It intends to work like a C/C++ pointer to something, with ability to pass 
+ *  objects capable of [in][out] operations.<br>
+ *  
  * It replaces use of arrays when you want to get back a value returning by reference.
  * Example:
  * <pre>
  *  // C/C++ typical use
  *  int result = VkCreate(VkBuffer* pBuffer);
- *  VkBuffer buffer = *pBuffer; // dereferencing
+ *  // do dereferencing
+ *  VkBuffer buffer = *pBuffer; 
  *  ...
  * 
  *  //Java
- *  // P<VkBuffer> pBuffer = new P<VkBuffer>(); // plain code syntax
- *  P &lt; VkBuffer &gt;  pBuffer = new P&lt; VkBuffer &gt;(); // html syntax
+ *  // P &lt; VkBuffer &gt;  pBuffer = new P&lt; VkBuffer &gt;(); // html syntax  
+ *  P<VkBuffer> pBuffer = new P<VkBuffer>(); // plain code syntax
  *  int result = VkCreate(pBuffer);
- *  VkBuffer buffer = pBuffer.get();
+ *  VkBuffer buffer = pBuffer.get();  
  *  // or play with direct access
- *  pBuffer.obj."member_of_vkBuffer" ;
+ *  pBuffer.objs[0]."member_of_vkBuffer" ;
  *  </code>
  * </pre>
  *
@@ -35,43 +45,96 @@ import bor.util.Pinterface;
  * @author Alessandro Borges
  *
  */
-public class P<E extends VkObject> implements Iterable<E>, Pinterface<E>{
+public class P<T extends VkObject> 
+ //extends AbstractPointer<T> 
+ implements Pinterface<T>
+
+{
 
     /**
      * Contained Object place holder
      */
-    private VkObject[] arr = new VkObject[1];
-   
+    private VkObject[] objs = new VkObject[1];
+    
     /**
-     * Creates a empty Container
+     * Holds the class of T 
      */
-    public P(){     
+     private Class<T> classofT;
+    
+    /**
+     * Creates Container with a blank instance of type T.
+     * 
+     * 
+     * 
+     * @throws RunTimeException if wasnt possible to get 
+     *  class of generic type E 
+     */
+    private P(){
+        try {
+            VkObject vkObj = getVKInstance(null);
+            objs[0] = vkObj;
+        } catch (Exception e) {            
+            e.printStackTrace();
+        }
     }
    
     /**
      * Creates a container wrapping a VkObject
-     * @param obj
+     * @param vkObject - Vulkan Struct or Handler to be wrapped 
      */
-    public P(E vkObj){
-       arr[0] = vkObj;
+    @SuppressWarnings("unchecked")
+    public P(T vkObj){ 
+       if (vkObj==null){
+          // findClassTypeOfT();
+           throw new IllegalArgumentException("vkObj must be not null.");
+       }else{
+           classofT = (Class<T>) vkObj.getClass();
+       }
+       objs[0] = vkObj;
     }
-      
+    
+    /**
+     * return the class of contained type T
+     * @return class of contained T
+     */
+    public Class getClassofT(){
+        return this.classofT;
+    }
+    
+   
+    
     /* (non-Javadoc)
      * @see bor.vulkan.Pinterface#set(E)
      */
     @Override
-    public void set(E vkObj){
+    public void set(T vkObj){
         check();
-        synchronized (arr) {
-            arr[0] = vkObj;  
+        synchronized (objs) {
+            objs[0] = vkObj;  
         }        
+    }
+    
+    /**
+     * Get Bytebuffer array of enclosed VkObjects.
+     *   
+     * @return array of pointers from internal objects 
+     */
+    protected ByteBuffer[] getPointers(){
+        if(objs==null) 
+            return null;
+        int len =  objs.length;
+        ByteBuffer[] buffers = new ByteBuffer[len];
+        for (int i = 0; i < len; i++) {
+            buffers[i] = objs[i] == null ? null : objs[i].getPointer();
+        }
+        return buffers;
     }
     
     /**
      * Used for native Input/Output .<br>
      * 
      * <pre>
-     *  // by using P<>, vkCommand is a [in][out] parameter 
+     *  // by using P<>, vkCommand becomes a [in][out] parameter 
      *  public void invoke(P<VkStruct> vkCommand, ...){
      *      //get content
      *      VkObject[] vk = vkCommand.getContent();
@@ -85,30 +148,29 @@ public class P<E extends VkObject> implements Iterable<E>, Pinterface<E>{
      */
     @Override
     public VkObject[] getContent(){
-      return this.arr;    
+      return this.objs;    
     }
     
     /* (non-Javadoc)
      * @see bor.vulkan.Pinterface#append(E)
      */
     @Override
-    public P<E> append(E vkObj){
+    public P<T> append(T vkObj){
        check();
        // do not allow simultaneous change in arr
-       synchronized (arr) {
+       synchronized (objs) {
            // special case after recycle.
-           if(arr.length==1 && null==arr[0]){
-               arr[0] = vkObj;
+           if(objs.length==1 && null==objs[0]){
+               objs[0] = vkObj;
                return this;
            }
            
-           int curLen = arr.length;
+           int curLen = objs.length;
            VkObject[] novo = new VkObject[curLen+1];       
-           System.arraycopy(arr, 0, novo, 0, curLen);
-           arr = novo;
-           arr[curLen] = vkObj;
-        }
-       
+           System.arraycopy(objs, 0, novo, 0, curLen);
+           objs = novo;
+           objs[curLen] = vkObj;
+        }       
        return this;
     }
    
@@ -117,11 +179,52 @@ public class P<E extends VkObject> implements Iterable<E>, Pinterface<E>{
      */
     @Override
     @SuppressWarnings("unchecked")
-    public E get(){
+    public T get(){
         check();
-        synchronized (arr) {
-            return (E)this.arr[0];
+        synchronized (objs) {
+            return (T)this.objs[0];
         }
+    }
+    
+    
+    /**
+     * 
+     * @param buff
+     * @param index
+     * @throws Exception 
+     */
+    public void update(ByteBuffer buff, int index) throws Exception{
+        if(0 < index || index > this.objs.length){
+            throw new IllegalArgumentException("index is out of bounds:" + index);
+        }
+        
+        if(null==objs[index]){
+            objs[index] = getVKInstance(buff);
+        } else{
+          // unnecessary, as native will not destroy
+          // pointer
+        }
+    }
+    
+    /**
+     * create a instance of enclosed E VkObject 
+     * @param buff - ByteBuffer to be wrapped  
+     * @return new instance of E VkObbject
+     * 
+     * @throws Exception - if it fails to create E object
+     */
+    @SuppressWarnings("unchecked")
+    private T getVKInstance(ByteBuffer buff) 
+            throws Exception{   
+        //easy way
+        if(buff==null){
+           VkObject obj = classofT.newInstance();
+           return (T)obj;
+        }
+        // hard way
+        Constructor<T> ctor = classofT.getDeclaredConstructor(ByteBuffer.class);
+        ctor.setAccessible(true);        
+        return  ctor.newInstance(buff);        
     }
     
     /* (non-Javadoc)
@@ -129,10 +232,10 @@ public class P<E extends VkObject> implements Iterable<E>, Pinterface<E>{
      */
     @Override
     @SuppressWarnings("unchecked")
-    public E get(int index){
+    public T get(int index){
         check();
-        synchronized (arr) {
-            return (E)this.arr[index];
+        synchronized (objs) {
+            return (T)this.objs[index];
         }        
     }
     
@@ -140,7 +243,7 @@ public class P<E extends VkObject> implements Iterable<E>, Pinterface<E>{
      * Sanity check
      */
     private final void check(){
-        if(null==arr){
+        if(null==objs){
             throw 
             new UnsupportedOperationException("This pointer is already freed. "
                          + "If you want to reuse it, please call recycle().");
@@ -152,7 +255,7 @@ public class P<E extends VkObject> implements Iterable<E>, Pinterface<E>{
      */
     @Override
     public int length(){
-        return arr==null ? 0 : arr.length;
+        return objs==null ? 0 : objs.length;
     }
     
    /**
@@ -169,8 +272,8 @@ public class P<E extends VkObject> implements Iterable<E>, Pinterface<E>{
     * @return
     */
     @SuppressWarnings("unchecked")
-    protected <E> E[] asArray(){   // package private      
-        return (E[])this.arr;
+    protected <T> T[] asArray(){   // package private      
+        return (T[])this.objs;
     }
     
     /* (non-Javadoc)
@@ -180,15 +283,15 @@ public class P<E extends VkObject> implements Iterable<E>, Pinterface<E>{
     @SuppressWarnings("unchecked")
     public <T> T[] toArray(T[] dst) {
         check();
-        int size = arr.length;
+        int size = objs.length;
         if (dst.length < size )
             // Make a new array of a's runtime type, but my contents:
-            return (T[]) Arrays.copyOf(arr, size, dst.getClass());
+            return (T[]) Arrays.copyOf(objs, size, dst.getClass());
         // clean dst
         for (int i = 0; i < dst.length; i++) {
             dst[i] = null;
         }        
-        System.arraycopy(arr, 0, dst, 0, size);        
+        System.arraycopy(objs, 0, dst, 0, size);        
         return dst;
     }
     
@@ -197,14 +300,14 @@ public class P<E extends VkObject> implements Iterable<E>, Pinterface<E>{
      */
     @Override
     @SuppressWarnings("unchecked")
-    public Iterator<E> iterator(){
+    public Iterator<T> iterator(){
         check();
         VkObject[] brr = null;
-        synchronized (arr) {
-            brr = new VkObject[arr.length];
-            System.arraycopy(arr, 0, brr, 0, arr.length);
+        synchronized (objs) {
+            brr = new VkObject[objs.length];
+            System.arraycopy(objs, 0, brr, 0, objs.length);
         }
-        List<E> list = Arrays.asList((E[])brr);
+        List<T> list = Arrays.asList((T[])brr);
         return list.iterator();
     }
    
@@ -213,11 +316,11 @@ public class P<E extends VkObject> implements Iterable<E>, Pinterface<E>{
      */
     @Override
     public final void release(){
-        synchronized (arr) {
-            for (int i = 0; i < arr.length; i++) {
-                arr[i] = null;
+        synchronized (objs) {
+            for (int i = 0; i < objs.length; i++) {
+                objs[i] = null;
             }
-            arr = null;  
+            objs = null;  
         }        
     }
     
@@ -227,8 +330,21 @@ public class P<E extends VkObject> implements Iterable<E>, Pinterface<E>{
     @Override
     public final void recycle(){
         release();
-        this.arr = new VkObject[1];
+        this.objs = new VkObject[1];
     }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        String className = classofT.getSimpleName();
+        return "P<"+className+"> [" + 
+                (objs != null ? "objs=" + Arrays.toString(objs) + ", " : "")
+                +"]";
+    }
+    
+    
     
    
 }

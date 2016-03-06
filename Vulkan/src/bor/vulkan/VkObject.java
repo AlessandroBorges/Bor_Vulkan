@@ -57,5 +57,12 @@ public interface VkObject {
      * @return
      */
     public boolean isNull();
+    
+    /**
+     * Used to set a new pointer after a native [in][out] operation.
+     * @param nativePtr - native pointer to set
+     * @
+     */
+     void setPointer(ByteBuffer nativePtr);
  
 }

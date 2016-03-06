@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPipelineRasterizationStateCreateInfo. 
  *  <h3>Prototype:</h3>
@@ -41,63 +42,76 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
-	/** TAG of this structure [183]  */
+	/** TAG of this structure [59]  */
 	 private static final String TAG = "VkPipelineRasterizationStateCreateInfo";
 
-	/** ID of this structure [183]  */
+	/** ID of this structure [59]  */
 	 public static final int TAG_ID = VKPIPELINERASTERIZATIONSTATECREATEINFO_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkPipelineRasterizationStateCreateFlags 	flags		 */ 
+	 *  VkPipelineRasterizationStateCreateFlags 	flags	[int]
+	 */ 
 	int 	flags;
 
 	/**
-	 *  VkBool32 	depthClampEnable		 */ 
+	 *  VkBool32 	depthClampEnable	[boolean]
+	 */ 
 	boolean 	depthClampEnable;
 
 	/**
-	 *  VkBool32 	rasterizerDiscardEnable		 */ 
+	 *  VkBool32 	rasterizerDiscardEnable	[boolean]
+	 */ 
 	boolean 	rasterizerDiscardEnable;
 
 	/**
-	 *  VkPolygonMode 	polygonMode	[vkenum]	 */ 
+	 *  VkPolygonMode 	polygonMode	[vkenum]
+	 */ 
 	VkPolygonMode 	polygonMode;
 
 	/**
-	 *  VkCullModeFlags 	cullMode		 */ 
+	 *  VkCullModeFlags 	cullMode	[int]
+	 */ 
 	int 	cullMode;
 
 	/**
-	 *  VkFrontFace 	frontFace	[vkenum]	 */ 
+	 *  VkFrontFace 	frontFace	[vkenum]
+	 */ 
 	VkFrontFace 	frontFace;
 
 	/**
-	 *  VkBool32 	depthBiasEnable		 */ 
+	 *  VkBool32 	depthBiasEnable	[boolean]
+	 */ 
 	boolean 	depthBiasEnable;
 
 	/**
-	 *  float 	depthBiasConstantFactor		 */ 
+	 *  float 	depthBiasConstantFactor	[float]
+	 */ 
 	float 	depthBiasConstantFactor;
 
 	/**
-	 *  float 	depthBiasClamp		 */ 
+	 *  float 	depthBiasClamp	[float]
+	 */ 
 	float 	depthBiasClamp;
 
 	/**
-	 *  float 	depthBiasSlopeFactor		 */ 
+	 *  float 	depthBiasSlopeFactor	[float]
+	 */ 
 	float 	depthBiasSlopeFactor;
 
 	/**
-	 *  float 	lineWidth		 */ 
+	 *  float 	lineWidth	[float]
+	 */ 
 	float 	lineWidth;
 
 	/**
@@ -105,6 +119,23 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */
 	public VkPipelineRasterizationStateCreateInfo(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkPipelineRasterizationStateCreateInfo(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkPipelineRasterizationStateCreateInfo(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -115,12 +146,24 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkPipelineRasterizationStateCreateInfo> createNullPointer(){
+	        P<VkPipelineRasterizationStateCreateInfo> p = new  P<VkPipelineRasterizationStateCreateInfo>(new VkPipelineRasterizationStateCreateInfo());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -129,7 +172,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -138,7 +181,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -147,7 +190,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -156,7 +199,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags	
+	 * Set method for field flags	[int]<br>
 	 * Prototype: VkPipelineRasterizationStateCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -165,7 +208,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags	
+	 * get method for field flags	[int]<br>
 	 * Prototype: VkPipelineRasterizationStateCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -174,7 +217,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field depthClampEnable	
+	 * Set method for field depthClampEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthClampEnable
 	 */ 
 	 public void depthClampEnable(boolean depthClampEnable){
@@ -183,7 +226,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field depthClampEnable	
+	 * get method for field depthClampEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthClampEnable
 	 */ 
 	 public boolean depthClampEnable(){
@@ -192,7 +235,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field rasterizerDiscardEnable	
+	 * Set method for field rasterizerDiscardEnable	[boolean]<br>
 	 * Prototype: VkBool32  rasterizerDiscardEnable
 	 */ 
 	 public void rasterizerDiscardEnable(boolean rasterizerDiscardEnable){
@@ -201,7 +244,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field rasterizerDiscardEnable	
+	 * get method for field rasterizerDiscardEnable	[boolean]<br>
 	 * Prototype: VkBool32  rasterizerDiscardEnable
 	 */ 
 	 public boolean rasterizerDiscardEnable(){
@@ -210,7 +253,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field polygonMode	[vkenum]
+	 * Set method for field polygonMode	[vkenum]<br>
 	 * Prototype: VkPolygonMode  polygonMode
 	 */ 
 	 public void polygonMode(VkPolygonMode polygonMode){
@@ -219,7 +262,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field polygonMode	[vkenum]
+	 * get method for field polygonMode	[vkenum]<br>
 	 * Prototype: VkPolygonMode  polygonMode
 	 */ 
 	 public VkPolygonMode polygonMode(){
@@ -228,7 +271,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field cullMode	
+	 * Set method for field cullMode	[int]<br>
 	 * Prototype: VkCullModeFlags  cullMode
 	 */ 
 	 public void cullMode(int cullMode){
@@ -237,7 +280,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field cullMode	
+	 * get method for field cullMode	[int]<br>
 	 * Prototype: VkCullModeFlags  cullMode
 	 */ 
 	 public int cullMode(){
@@ -246,7 +289,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field frontFace	[vkenum]
+	 * Set method for field frontFace	[vkenum]<br>
 	 * Prototype: VkFrontFace  frontFace
 	 */ 
 	 public void frontFace(VkFrontFace frontFace){
@@ -255,7 +298,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field frontFace	[vkenum]
+	 * get method for field frontFace	[vkenum]<br>
 	 * Prototype: VkFrontFace  frontFace
 	 */ 
 	 public VkFrontFace frontFace(){
@@ -264,7 +307,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field depthBiasEnable	
+	 * Set method for field depthBiasEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthBiasEnable
 	 */ 
 	 public void depthBiasEnable(boolean depthBiasEnable){
@@ -273,7 +316,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field depthBiasEnable	
+	 * get method for field depthBiasEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthBiasEnable
 	 */ 
 	 public boolean depthBiasEnable(){
@@ -282,7 +325,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field depthBiasConstantFactor	
+	 * Set method for field depthBiasConstantFactor	[float]<br>
 	 * Prototype: float  depthBiasConstantFactor
 	 */ 
 	 public void depthBiasConstantFactor(float depthBiasConstantFactor){
@@ -291,7 +334,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field depthBiasConstantFactor	
+	 * get method for field depthBiasConstantFactor	[float]<br>
 	 * Prototype: float  depthBiasConstantFactor
 	 */ 
 	 public float depthBiasConstantFactor(){
@@ -300,7 +343,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field depthBiasClamp	
+	 * Set method for field depthBiasClamp	[float]<br>
 	 * Prototype: float  depthBiasClamp
 	 */ 
 	 public void depthBiasClamp(float depthBiasClamp){
@@ -309,7 +352,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field depthBiasClamp	
+	 * get method for field depthBiasClamp	[float]<br>
 	 * Prototype: float  depthBiasClamp
 	 */ 
 	 public float depthBiasClamp(){
@@ -318,7 +361,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field depthBiasSlopeFactor	
+	 * Set method for field depthBiasSlopeFactor	[float]<br>
 	 * Prototype: float  depthBiasSlopeFactor
 	 */ 
 	 public void depthBiasSlopeFactor(float depthBiasSlopeFactor){
@@ -327,7 +370,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field depthBiasSlopeFactor	
+	 * get method for field depthBiasSlopeFactor	[float]<br>
 	 * Prototype: float  depthBiasSlopeFactor
 	 */ 
 	 public float depthBiasSlopeFactor(){
@@ -336,7 +379,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field lineWidth	
+	 * Set method for field lineWidth	[float]<br>
 	 * Prototype: float  lineWidth
 	 */ 
 	 public void lineWidth(float lineWidth){
@@ -345,7 +388,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field lineWidth	
+	 * get method for field lineWidth	[float]<br>
 	 * Prototype: float  lineWidth
 	 */ 
 	 public float lineWidth(){
@@ -354,11 +397,11 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -367,7 +410,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -376,7 +419,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -385,7 +428,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -394,7 +437,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags	
+	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkPipelineRasterizationStateCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -403,7 +446,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags	
+	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkPipelineRasterizationStateCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -412,7 +455,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field depthClampEnable	
+	 * native SET method for field depthClampEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthClampEnable
 	 */ 
 	 private static native void depthClampEnable0(ByteBuffer ptr, boolean _depthClampEnable);/*
@@ -421,7 +464,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field depthClampEnable	
+	 * native GET method for field depthClampEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthClampEnable
 	 */ 
 	 private static native boolean depthClampEnable0(ByteBuffer ptr);/*
@@ -430,7 +473,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field rasterizerDiscardEnable	
+	 * native SET method for field rasterizerDiscardEnable	[boolean]<br>
 	 * Prototype: VkBool32  rasterizerDiscardEnable
 	 */ 
 	 private static native void rasterizerDiscardEnable0(ByteBuffer ptr, boolean _rasterizerDiscardEnable);/*
@@ -439,7 +482,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field rasterizerDiscardEnable	
+	 * native GET method for field rasterizerDiscardEnable	[boolean]<br>
 	 * Prototype: VkBool32  rasterizerDiscardEnable
 	 */ 
 	 private static native boolean rasterizerDiscardEnable0(ByteBuffer ptr);/*
@@ -448,7 +491,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field polygonMode	[vkenum]
+	 * native SET method for field polygonMode	[vkenum]<br>
 	 * Prototype: VkPolygonMode  polygonMode
 	 */ 
 	 private static native void polygonMode0(ByteBuffer ptr, VkPolygonMode _polygonMode);/*
@@ -457,7 +500,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field polygonMode	[vkenum]
+	 * native GET method for field polygonMode	[vkenum]<br>
 	 * Prototype: VkPolygonMode  polygonMode
 	 */ 
 	 private static native VkPolygonMode polygonMode0(ByteBuffer ptr);/*
@@ -466,7 +509,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field cullMode	
+	 * native SET method for field cullMode	[int]<br>
 	 * Prototype: VkCullModeFlags  cullMode
 	 */ 
 	 private static native void cullMode0(ByteBuffer ptr, int _cullMode);/*
@@ -475,7 +518,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field cullMode	
+	 * native GET method for field cullMode	[int]<br>
 	 * Prototype: VkCullModeFlags  cullMode
 	 */ 
 	 private static native int cullMode0(ByteBuffer ptr);/*
@@ -484,7 +527,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field frontFace	[vkenum]
+	 * native SET method for field frontFace	[vkenum]<br>
 	 * Prototype: VkFrontFace  frontFace
 	 */ 
 	 private static native void frontFace0(ByteBuffer ptr, VkFrontFace _frontFace);/*
@@ -493,7 +536,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field frontFace	[vkenum]
+	 * native GET method for field frontFace	[vkenum]<br>
 	 * Prototype: VkFrontFace  frontFace
 	 */ 
 	 private static native VkFrontFace frontFace0(ByteBuffer ptr);/*
@@ -502,7 +545,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field depthBiasEnable	
+	 * native SET method for field depthBiasEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthBiasEnable
 	 */ 
 	 private static native void depthBiasEnable0(ByteBuffer ptr, boolean _depthBiasEnable);/*
@@ -511,7 +554,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field depthBiasEnable	
+	 * native GET method for field depthBiasEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthBiasEnable
 	 */ 
 	 private static native boolean depthBiasEnable0(ByteBuffer ptr);/*
@@ -520,7 +563,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field depthBiasConstantFactor	
+	 * native SET method for field depthBiasConstantFactor	[float]<br>
 	 * Prototype: float  depthBiasConstantFactor
 	 */ 
 	 private static native void depthBiasConstantFactor0(ByteBuffer ptr, float _depthBiasConstantFactor);/*
@@ -529,7 +572,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field depthBiasConstantFactor	
+	 * native GET method for field depthBiasConstantFactor	[float]<br>
 	 * Prototype: float  depthBiasConstantFactor
 	 */ 
 	 private static native float depthBiasConstantFactor0(ByteBuffer ptr);/*
@@ -538,7 +581,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field depthBiasClamp	
+	 * native SET method for field depthBiasClamp	[float]<br>
 	 * Prototype: float  depthBiasClamp
 	 */ 
 	 private static native void depthBiasClamp0(ByteBuffer ptr, float _depthBiasClamp);/*
@@ -547,7 +590,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field depthBiasClamp	
+	 * native GET method for field depthBiasClamp	[float]<br>
 	 * Prototype: float  depthBiasClamp
 	 */ 
 	 private static native float depthBiasClamp0(ByteBuffer ptr);/*
@@ -556,7 +599,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field depthBiasSlopeFactor	
+	 * native SET method for field depthBiasSlopeFactor	[float]<br>
 	 * Prototype: float  depthBiasSlopeFactor
 	 */ 
 	 private static native void depthBiasSlopeFactor0(ByteBuffer ptr, float _depthBiasSlopeFactor);/*
@@ -565,7 +608,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field depthBiasSlopeFactor	
+	 * native GET method for field depthBiasSlopeFactor	[float]<br>
 	 * Prototype: float  depthBiasSlopeFactor
 	 */ 
 	 private static native float depthBiasSlopeFactor0(ByteBuffer ptr);/*
@@ -574,7 +617,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field lineWidth	
+	 * native SET method for field lineWidth	[float]<br>
 	 * Prototype: float  lineWidth
 	 */ 
 	 private static native void lineWidth0(ByteBuffer ptr, float _lineWidth);/*
@@ -583,7 +626,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field lineWidth	
+	 * native GET method for field lineWidth	[float]<br>
 	 * Prototype: float  lineWidth
 	 */ 
 	 private static native float lineWidth0(ByteBuffer ptr);/*

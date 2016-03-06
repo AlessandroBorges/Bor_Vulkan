@@ -4,7 +4,7 @@ import java.util.Iterator;
 
 import bor.vulkan.VkObject;
 
-public interface Pinterface<E> {
+public interface Pinterface<T> extends Iterable<T> {
 
     /**
      * Set the unique or first VkObject instance to be contained.<br>
@@ -17,7 +17,7 @@ public interface Pinterface<E> {
      * 
      * @param vkObj - unique/first object to set.
      */
-    void set(E vkObj);
+    void set(T vkObj);
 
     /**
      * Appends another object of same type in this container.
@@ -27,7 +27,7 @@ public interface Pinterface<E> {
      * @return this object.
      */
    // P<E> append(E vkObj);
-      Pinterface<E> append(E vkObj);
+      Pinterface<T> append(T vkObj);
     
     /**
      * Get the unique/first element contained in this pointer.<br>
@@ -38,7 +38,7 @@ public interface Pinterface<E> {
      * @see #append()
      * @return first/unique object contained in this.
      */
-    E get();
+    public T get();
 
     /**
      * get the n-th element contained in this pointer.
@@ -49,14 +49,14 @@ public interface Pinterface<E> {
      * 
      * @return n-th contained elementelement 
      */
-    E get(int index);
+    public T get(int index);
 
     /**
      * Number of elements contained in this pointer.
      * 
      * @return number counting of VkObjects contained in this pointer.
      */
-    int length();
+    public int length();
 
     /**
      * Copy contained elements to array dst.
@@ -70,7 +70,7 @@ public interface Pinterface<E> {
      * This iterator is synchronized.
      * @return Iterator for contained objects
      */
-    Iterator<E> iterator();
+    public Iterator<T> iterator();
 
     /**
      * Free this pointer, and make it ready to GC.

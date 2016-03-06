@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkExtent2D. 
  *  <h3>Prototype:</h3>
@@ -30,19 +31,21 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkExtent2D extends VkStruct {
-	/** TAG of this structure [180]  */
+	/** TAG of this structure [56]  */
 	 private static final String TAG = "VkExtent2D";
 
-	/** ID of this structure [180]  */
+	/** ID of this structure [56]  */
 	 public static final int TAG_ID = VKEXTENT2D_ID;
 
 	 // fields //
 	/**
-	 *  uint32_t 	width		 */ 
+	 *  uint32_t 	width	[int]
+	 */ 
 	int 	width;
 
 	/**
-	 *  uint32_t 	height		 */ 
+	 *  uint32_t 	height	[int]
+	 */ 
 	int 	height;
 
 	/**
@@ -50,6 +53,23 @@ public class VkExtent2D extends VkStruct {
 	 */
 	public VkExtent2D(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkExtent2D(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkExtent2D(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -60,12 +80,24 @@ public class VkExtent2D extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkExtent2D> createNullPointer(){
+	        P<VkExtent2D> p = new  P<VkExtent2D>(new VkExtent2D());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field width	
+	 * Set method for field width	[int]<br>
 	 * Prototype: uint32_t  width
 	 */ 
 	 public void width(int width){
@@ -74,7 +106,7 @@ public class VkExtent2D extends VkStruct {
 	 }
 
 	/**
-	 * get method for field width	
+	 * get method for field width	[int]<br>
 	 * Prototype: uint32_t  width
 	 */ 
 	 public int width(){
@@ -83,7 +115,7 @@ public class VkExtent2D extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field height	
+	 * Set method for field height	[int]<br>
 	 * Prototype: uint32_t  height
 	 */ 
 	 public void height(int height){
@@ -92,7 +124,7 @@ public class VkExtent2D extends VkStruct {
 	 }
 
 	/**
-	 * get method for field height	
+	 * get method for field height	[int]<br>
 	 * Prototype: uint32_t  height
 	 */ 
 	 public int height(){
@@ -101,11 +133,11 @@ public class VkExtent2D extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field width	
+	 * native SET method for field width	[int]<br>
 	 * Prototype: uint32_t  width
 	 */ 
 	 private static native void width0(ByteBuffer ptr, int _width);/*
@@ -114,7 +146,7 @@ public class VkExtent2D extends VkStruct {
 	  */
 
 	/**
-	 * get method for field width	
+	 * native GET method for field width	[int]<br>
 	 * Prototype: uint32_t  width
 	 */ 
 	 private static native int width0(ByteBuffer ptr);/*
@@ -123,7 +155,7 @@ public class VkExtent2D extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field height	
+	 * native SET method for field height	[int]<br>
 	 * Prototype: uint32_t  height
 	 */ 
 	 private static native void height0(ByteBuffer ptr, int _height);/*
@@ -132,7 +164,7 @@ public class VkExtent2D extends VkStruct {
 	  */
 
 	/**
-	 * get method for field height	
+	 * native GET method for field height	[int]<br>
 	 * Prototype: uint32_t  height
 	 */ 
 	 private static native int height0(ByteBuffer ptr);/*

@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkAttachmentReference. 
  *  <h3>Prototype:</h3>
@@ -30,19 +31,21 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkAttachmentReference extends VkStruct {
-	/** TAG of this structure [206]  */
+	/** TAG of this structure [82]  */
 	 private static final String TAG = "VkAttachmentReference";
 
-	/** ID of this structure [206]  */
+	/** ID of this structure [82]  */
 	 public static final int TAG_ID = VKATTACHMENTREFERENCE_ID;
 
 	 // fields //
 	/**
-	 *  uint32_t 	attachment		 */ 
+	 *  uint32_t 	attachment	[int]
+	 */ 
 	int 	attachment;
 
 	/**
-	 *  VkImageLayout 	layout	[vkenum]	 */ 
+	 *  VkImageLayout 	layout	[vkenum]
+	 */ 
 	VkImageLayout 	layout;
 
 	/**
@@ -50,6 +53,23 @@ public class VkAttachmentReference extends VkStruct {
 	 */
 	public VkAttachmentReference(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkAttachmentReference(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkAttachmentReference(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -60,12 +80,24 @@ public class VkAttachmentReference extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkAttachmentReference> createNullPointer(){
+	        P<VkAttachmentReference> p = new  P<VkAttachmentReference>(new VkAttachmentReference());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field attachment	
+	 * Set method for field attachment	[int]<br>
 	 * Prototype: uint32_t  attachment
 	 */ 
 	 public void attachment(int attachment){
@@ -74,7 +106,7 @@ public class VkAttachmentReference extends VkStruct {
 	 }
 
 	/**
-	 * get method for field attachment	
+	 * get method for field attachment	[int]<br>
 	 * Prototype: uint32_t  attachment
 	 */ 
 	 public int attachment(){
@@ -83,7 +115,7 @@ public class VkAttachmentReference extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field layout	[vkenum]
+	 * Set method for field layout	[vkenum]<br>
 	 * Prototype: VkImageLayout  layout
 	 */ 
 	 public void layout(VkImageLayout layout){
@@ -92,7 +124,7 @@ public class VkAttachmentReference extends VkStruct {
 	 }
 
 	/**
-	 * get method for field layout	[vkenum]
+	 * get method for field layout	[vkenum]<br>
 	 * Prototype: VkImageLayout  layout
 	 */ 
 	 public VkImageLayout layout(){
@@ -101,11 +133,11 @@ public class VkAttachmentReference extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field attachment	
+	 * native SET method for field attachment	[int]<br>
 	 * Prototype: uint32_t  attachment
 	 */ 
 	 private static native void attachment0(ByteBuffer ptr, int _attachment);/*
@@ -114,7 +146,7 @@ public class VkAttachmentReference extends VkStruct {
 	  */
 
 	/**
-	 * get method for field attachment	
+	 * native GET method for field attachment	[int]<br>
 	 * Prototype: uint32_t  attachment
 	 */ 
 	 private static native int attachment0(ByteBuffer ptr);/*
@@ -123,7 +155,7 @@ public class VkAttachmentReference extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field layout	[vkenum]
+	 * native SET method for field layout	[vkenum]<br>
 	 * Prototype: VkImageLayout  layout
 	 */ 
 	 private static native void layout0(ByteBuffer ptr, VkImageLayout _layout);/*
@@ -132,7 +164,7 @@ public class VkAttachmentReference extends VkStruct {
 	  */
 
 	/**
-	 * get method for field layout	[vkenum]
+	 * native GET method for field layout	[vkenum]<br>
 	 * Prototype: VkImageLayout  layout
 	 */ 
 	 private static native VkImageLayout layout0(ByteBuffer ptr);/*

@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkFormatProperties. 
  *  <h3>Prototype:</h3>
@@ -31,23 +32,26 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkFormatProperties extends VkStruct {
-	/** TAG of this structure [129]  */
+	/** TAG of this structure [5]  */
 	 private static final String TAG = "VkFormatProperties";
 
-	/** ID of this structure [129]  */
+	/** ID of this structure [5]  */
 	 public static final int TAG_ID = VKFORMATPROPERTIES_ID;
 
 	 // fields //
 	/**
-	 *  VkFormatFeatureFlags 	linearTilingFeatures		 */ 
+	 *  VkFormatFeatureFlags 	linearTilingFeatures	[int]
+	 */ 
 	int 	linearTilingFeatures;
 
 	/**
-	 *  VkFormatFeatureFlags 	optimalTilingFeatures		 */ 
+	 *  VkFormatFeatureFlags 	optimalTilingFeatures	[int]
+	 */ 
 	int 	optimalTilingFeatures;
 
 	/**
-	 *  VkFormatFeatureFlags 	bufferFeatures		 */ 
+	 *  VkFormatFeatureFlags 	bufferFeatures	[int]
+	 */ 
 	int 	bufferFeatures;
 
 	/**
@@ -55,6 +59,23 @@ public class VkFormatProperties extends VkStruct {
 	 */
 	public VkFormatProperties(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkFormatProperties(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkFormatProperties(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -65,12 +86,24 @@ public class VkFormatProperties extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkFormatProperties> createNullPointer(){
+	        P<VkFormatProperties> p = new  P<VkFormatProperties>(new VkFormatProperties());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field linearTilingFeatures	
+	 * Set method for field linearTilingFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  linearTilingFeatures
 	 */ 
 	 public void linearTilingFeatures(int linearTilingFeatures){
@@ -79,7 +112,7 @@ public class VkFormatProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field linearTilingFeatures	
+	 * get method for field linearTilingFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  linearTilingFeatures
 	 */ 
 	 public int linearTilingFeatures(){
@@ -88,7 +121,7 @@ public class VkFormatProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field optimalTilingFeatures	
+	 * Set method for field optimalTilingFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  optimalTilingFeatures
 	 */ 
 	 public void optimalTilingFeatures(int optimalTilingFeatures){
@@ -97,7 +130,7 @@ public class VkFormatProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field optimalTilingFeatures	
+	 * get method for field optimalTilingFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  optimalTilingFeatures
 	 */ 
 	 public int optimalTilingFeatures(){
@@ -106,7 +139,7 @@ public class VkFormatProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field bufferFeatures	
+	 * Set method for field bufferFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  bufferFeatures
 	 */ 
 	 public void bufferFeatures(int bufferFeatures){
@@ -115,7 +148,7 @@ public class VkFormatProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field bufferFeatures	
+	 * get method for field bufferFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  bufferFeatures
 	 */ 
 	 public int bufferFeatures(){
@@ -124,11 +157,11 @@ public class VkFormatProperties extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field linearTilingFeatures	
+	 * native SET method for field linearTilingFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  linearTilingFeatures
 	 */ 
 	 private static native void linearTilingFeatures0(ByteBuffer ptr, int _linearTilingFeatures);/*
@@ -137,7 +170,7 @@ public class VkFormatProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field linearTilingFeatures	
+	 * native GET method for field linearTilingFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  linearTilingFeatures
 	 */ 
 	 private static native int linearTilingFeatures0(ByteBuffer ptr);/*
@@ -146,7 +179,7 @@ public class VkFormatProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field optimalTilingFeatures	
+	 * native SET method for field optimalTilingFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  optimalTilingFeatures
 	 */ 
 	 private static native void optimalTilingFeatures0(ByteBuffer ptr, int _optimalTilingFeatures);/*
@@ -155,7 +188,7 @@ public class VkFormatProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field optimalTilingFeatures	
+	 * native GET method for field optimalTilingFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  optimalTilingFeatures
 	 */ 
 	 private static native int optimalTilingFeatures0(ByteBuffer ptr);/*
@@ -164,7 +197,7 @@ public class VkFormatProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field bufferFeatures	
+	 * native SET method for field bufferFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  bufferFeatures
 	 */ 
 	 private static native void bufferFeatures0(ByteBuffer ptr, int _bufferFeatures);/*
@@ -173,7 +206,7 @@ public class VkFormatProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field bufferFeatures	
+	 * native GET method for field bufferFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  bufferFeatures
 	 */ 
 	 private static native int bufferFeatures0(ByteBuffer ptr);/*

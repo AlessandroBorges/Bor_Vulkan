@@ -9,6 +9,6 @@ package bor.vulkan;
  *
  */
 @Deprecated
-public interface PFNinterface extends VkHandle {
+public interface PFNinterface extends VkHandleInterface {
 
 }

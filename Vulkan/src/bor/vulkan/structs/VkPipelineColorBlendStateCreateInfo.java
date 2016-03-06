@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPipelineColorBlendStateCreateInfo. 
  *  <h3>Prototype:</h3>
@@ -36,43 +37,51 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
-	/** TAG of this structure [188]  */
+	/** TAG of this structure [64]  */
 	 private static final String TAG = "VkPipelineColorBlendStateCreateInfo";
 
-	/** ID of this structure [188]  */
+	/** ID of this structure [64]  */
 	 public static final int TAG_ID = VKPIPELINECOLORBLENDSTATECREATEINFO_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkPipelineColorBlendStateCreateFlags 	flags		 */ 
+	 *  VkPipelineColorBlendStateCreateFlags 	flags	[int]
+	 */ 
 	int 	flags;
 
 	/**
-	 *  VkBool32 	logicOpEnable		 */ 
+	 *  VkBool32 	logicOpEnable	[boolean]
+	 */ 
 	boolean 	logicOpEnable;
 
 	/**
-	 *  VkLogicOp 	logicOp	[vkenum]	 */ 
+	 *  VkLogicOp 	logicOp	[vkenum]
+	 */ 
 	VkLogicOp 	logicOp;
 
 	/**
-	 *  uint32_t 	attachmentCount		 */ 
+	 *  uint32_t 	attachmentCount	[int]
+	 */ 
 	int 	attachmentCount;
 
 	/**
-	 *  const VkPipelineColorBlendAttachmentState* 	pAttachments		 */ 
+	 *  const VkPipelineColorBlendAttachmentState* 	pAttachments	[p]
+	 */ 
 	P<VkPipelineColorBlendAttachmentState>  	pAttachments;
 
 	/**
-	 *  float[] 	blendConstants		 */ 
+	 *  float[] 	blendConstants	[float_array]
+	 */ 
 	float[] 	blendConstants;
 
 	/**
@@ -80,6 +89,23 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 */
 	public VkPipelineColorBlendStateCreateInfo(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkPipelineColorBlendStateCreateInfo(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkPipelineColorBlendStateCreateInfo(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -90,12 +116,24 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkPipelineColorBlendStateCreateInfo> createNullPointer(){
+	        P<VkPipelineColorBlendStateCreateInfo> p = new  P<VkPipelineColorBlendStateCreateInfo>(new VkPipelineColorBlendStateCreateInfo());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -104,7 +142,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -113,7 +151,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -122,7 +160,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -131,7 +169,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags	
+	 * Set method for field flags	[int]<br>
 	 * Prototype: VkPipelineColorBlendStateCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -140,7 +178,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags	
+	 * get method for field flags	[int]<br>
 	 * Prototype: VkPipelineColorBlendStateCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -149,7 +187,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field logicOpEnable	
+	 * Set method for field logicOpEnable	[boolean]<br>
 	 * Prototype: VkBool32  logicOpEnable
 	 */ 
 	 public void logicOpEnable(boolean logicOpEnable){
@@ -158,7 +196,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field logicOpEnable	
+	 * get method for field logicOpEnable	[boolean]<br>
 	 * Prototype: VkBool32  logicOpEnable
 	 */ 
 	 public boolean logicOpEnable(){
@@ -167,7 +205,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field logicOp	[vkenum]
+	 * Set method for field logicOp	[vkenum]<br>
 	 * Prototype: VkLogicOp  logicOp
 	 */ 
 	 public void logicOp(VkLogicOp logicOp){
@@ -176,7 +214,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field logicOp	[vkenum]
+	 * get method for field logicOp	[vkenum]<br>
 	 * Prototype: VkLogicOp  logicOp
 	 */ 
 	 public VkLogicOp logicOp(){
@@ -185,7 +223,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field attachmentCount	
+	 * Set method for field attachmentCount	[int]<br>
 	 * Prototype: uint32_t  attachmentCount
 	 */ 
 	 public void attachmentCount(int attachmentCount){
@@ -194,7 +232,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field attachmentCount	
+	 * get method for field attachmentCount	[int]<br>
 	 * Prototype: uint32_t  attachmentCount
 	 */ 
 	 public int attachmentCount(){
@@ -203,7 +241,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pAttachments	
+	 * Set method for field pAttachments	[p]<br>
 	 * Prototype: const VkPipelineColorBlendAttachmentState*  pAttachments
 	 */ 
 	 public void pAttachments(P<VkPipelineColorBlendAttachmentState>  pAttachments){
@@ -212,7 +250,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pAttachments	
+	 * get method for field pAttachments	[p]<br>
 	 * Prototype: const VkPipelineColorBlendAttachmentState*  pAttachments
 	 */ 
 	 public P<VkPipelineColorBlendAttachmentState>  pAttachments(){
@@ -221,7 +259,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field blendConstants	
+	 * Set method for field blendConstants	[float_array]<br>
 	 * Prototype: float[]  blendConstants
 	 */ 
 	 public void blendConstants(float[] blendConstants){
@@ -230,7 +268,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field blendConstants	
+	 * get method for field blendConstants	[float_array]<br>
 	 * Prototype: float[]  blendConstants
 	 */ 
 	 public float[] blendConstants(){
@@ -239,11 +277,11 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -252,7 +290,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -261,7 +299,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -270,7 +308,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -279,7 +317,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags	
+	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkPipelineColorBlendStateCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -288,7 +326,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags	
+	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkPipelineColorBlendStateCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -297,7 +335,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field logicOpEnable	
+	 * native SET method for field logicOpEnable	[boolean]<br>
 	 * Prototype: VkBool32  logicOpEnable
 	 */ 
 	 private static native void logicOpEnable0(ByteBuffer ptr, boolean _logicOpEnable);/*
@@ -306,7 +344,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field logicOpEnable	
+	 * native GET method for field logicOpEnable	[boolean]<br>
 	 * Prototype: VkBool32  logicOpEnable
 	 */ 
 	 private static native boolean logicOpEnable0(ByteBuffer ptr);/*
@@ -315,7 +353,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field logicOp	[vkenum]
+	 * native SET method for field logicOp	[vkenum]<br>
 	 * Prototype: VkLogicOp  logicOp
 	 */ 
 	 private static native void logicOp0(ByteBuffer ptr, VkLogicOp _logicOp);/*
@@ -324,7 +362,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field logicOp	[vkenum]
+	 * native GET method for field logicOp	[vkenum]<br>
 	 * Prototype: VkLogicOp  logicOp
 	 */ 
 	 private static native VkLogicOp logicOp0(ByteBuffer ptr);/*
@@ -333,7 +371,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field attachmentCount	
+	 * native SET method for field attachmentCount	[int]<br>
 	 * Prototype: uint32_t  attachmentCount
 	 */ 
 	 private static native void attachmentCount0(ByteBuffer ptr, int _attachmentCount);/*
@@ -342,7 +380,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field attachmentCount	
+	 * native GET method for field attachmentCount	[int]<br>
 	 * Prototype: uint32_t  attachmentCount
 	 */ 
 	 private static native int attachmentCount0(ByteBuffer ptr);/*
@@ -351,7 +389,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pAttachments	
+	 * native SET method for field pAttachments	[p]<br>
 	 * Prototype: const VkPipelineColorBlendAttachmentState*  pAttachments
 	 */ 
 	 private static native void pAttachments0(ByteBuffer ptr, P<VkPipelineColorBlendAttachmentState>  _pAttachments);/*
@@ -360,7 +398,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pAttachments	
+	 * native GET method for field pAttachments	[p]<br>
 	 * Prototype: const VkPipelineColorBlendAttachmentState*  pAttachments
 	 */ 
 	 private static native P<VkPipelineColorBlendAttachmentState>  pAttachments0(ByteBuffer ptr);/*
@@ -369,7 +407,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field blendConstants	
+	 * native SET method for field blendConstants	[float_array]<br>
 	 * Prototype: float[]  blendConstants
 	 */ 
 	 private static native void blendConstants0(ByteBuffer ptr, float[] _blendConstants);/*
@@ -378,7 +416,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field blendConstants	
+	 * native GET method for field blendConstants	[float_array]<br>
 	 * Prototype: float[]  blendConstants
 	 */ 
 	 private static native float[] blendConstants0(ByteBuffer ptr);/*

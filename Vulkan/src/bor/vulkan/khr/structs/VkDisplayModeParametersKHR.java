@@ -17,6 +17,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkDisplayModeParametersKHR. 
  *  <h3>Prototype:</h3>
@@ -31,19 +32,21 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDisplayModeParametersKHR extends VkStruct {
-	/** TAG of this structure [235]  */
+	/** TAG of this structure [111]  */
 	 private static final String TAG = "VkDisplayModeParametersKHR";
 
-	/** ID of this structure [235]  */
+	/** ID of this structure [111]  */
 	 public static final int TAG_ID = VKDISPLAYMODEPARAMETERSKHR_ID;
 
 	 // fields //
 	/**
-	 *  VkExtent2D 	visibleRegion	[vkstruct]	 */ 
+	 *  VkExtent2D 	visibleRegion	[vkstruct]
+	 */ 
 	VkExtent2D 	visibleRegion;
 
 	/**
-	 *  uint32_t 	refreshRate		 */ 
+	 *  uint32_t 	refreshRate	[int]
+	 */ 
 	int 	refreshRate;
 
 	/**
@@ -51,6 +54,23 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	 */
 	public VkDisplayModeParametersKHR(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkDisplayModeParametersKHR(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkDisplayModeParametersKHR(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -61,12 +81,24 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkDisplayModeParametersKHR> createNullPointer(){
+	        P<VkDisplayModeParametersKHR> p = new  P<VkDisplayModeParametersKHR>(new VkDisplayModeParametersKHR());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field visibleRegion	[vkstruct]
+	 * Set method for field visibleRegion	[vkstruct]<br>
 	 * Prototype: VkExtent2D  visibleRegion
 	 */ 
 	 public void visibleRegion(VkExtent2D visibleRegion){
@@ -75,7 +107,7 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field visibleRegion	[vkstruct]
+	 * get method for field visibleRegion	[vkstruct]<br>
 	 * Prototype: VkExtent2D  visibleRegion
 	 */ 
 	 public VkExtent2D visibleRegion(){
@@ -84,7 +116,7 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field refreshRate	
+	 * Set method for field refreshRate	[int]<br>
 	 * Prototype: uint32_t  refreshRate
 	 */ 
 	 public void refreshRate(int refreshRate){
@@ -93,7 +125,7 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field refreshRate	
+	 * get method for field refreshRate	[int]<br>
 	 * Prototype: uint32_t  refreshRate
 	 */ 
 	 public int refreshRate(){
@@ -102,11 +134,11 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field visibleRegion	[vkstruct]
+	 * native SET method for field visibleRegion	[vkstruct]<br>
 	 * Prototype: VkExtent2D  visibleRegion
 	 */ 
 	 private static native void visibleRegion0(ByteBuffer ptr, VkExtent2D _visibleRegion);/*
@@ -115,7 +147,7 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field visibleRegion	[vkstruct]
+	 * native GET method for field visibleRegion	[vkstruct]<br>
 	 * Prototype: VkExtent2D  visibleRegion
 	 */ 
 	 private static native VkExtent2D visibleRegion0(ByteBuffer ptr);/*
@@ -124,7 +156,7 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field refreshRate	
+	 * native SET method for field refreshRate	[int]<br>
 	 * Prototype: uint32_t  refreshRate
 	 */ 
 	 private static native void refreshRate0(ByteBuffer ptr, int _refreshRate);/*
@@ -133,7 +165,7 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field refreshRate	
+	 * native GET method for field refreshRate	[int]<br>
 	 * Prototype: uint32_t  refreshRate
 	 */ 
 	 private static native int refreshRate0(ByteBuffer ptr);/*

@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkCommandBufferInheritanceInfo. 
  *  <h3>Prototype:</h3>
@@ -36,43 +37,51 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkCommandBufferInheritanceInfo extends VkStruct {
-	/** TAG of this structure [212]  */
+	/** TAG of this structure [88]  */
 	 private static final String TAG = "VkCommandBufferInheritanceInfo";
 
-	/** ID of this structure [212]  */
+	/** ID of this structure [88]  */
 	 public static final int TAG_ID = VKCOMMANDBUFFERINHERITANCEINFO_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkRenderPass 	renderPass	[vkhandle]	 */ 
+	 *  VkRenderPass 	renderPass	[vkhandle]
+	 */ 
 	VkRenderPass 	renderPass;
 
 	/**
-	 *  uint32_t 	subpass		 */ 
+	 *  uint32_t 	subpass	[int]
+	 */ 
 	int 	subpass;
 
 	/**
-	 *  VkFramebuffer 	framebuffer	[vkhandle]	 */ 
+	 *  VkFramebuffer 	framebuffer	[vkhandle]
+	 */ 
 	VkFramebuffer 	framebuffer;
 
 	/**
-	 *  VkBool32 	occlusionQueryEnable		 */ 
+	 *  VkBool32 	occlusionQueryEnable	[boolean]
+	 */ 
 	boolean 	occlusionQueryEnable;
 
 	/**
-	 *  VkQueryControlFlags 	queryFlags		 */ 
+	 *  VkQueryControlFlags 	queryFlags	[int]
+	 */ 
 	int 	queryFlags;
 
 	/**
-	 *  VkQueryPipelineStatisticFlags 	pipelineStatistics		 */ 
+	 *  VkQueryPipelineStatisticFlags 	pipelineStatistics	[int]
+	 */ 
 	int 	pipelineStatistics;
 
 	/**
@@ -80,6 +89,23 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 */
 	public VkCommandBufferInheritanceInfo(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkCommandBufferInheritanceInfo(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkCommandBufferInheritanceInfo(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -90,12 +116,24 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkCommandBufferInheritanceInfo> createNullPointer(){
+	        P<VkCommandBufferInheritanceInfo> p = new  P<VkCommandBufferInheritanceInfo>(new VkCommandBufferInheritanceInfo());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -104,7 +142,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -113,7 +151,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -122,7 +160,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -131,7 +169,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field renderPass	[vkhandle]
+	 * Set method for field renderPass	[vkhandle]<br>
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
 	 public void renderPass(VkRenderPass renderPass){
@@ -140,7 +178,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field renderPass	[vkhandle]
+	 * get method for field renderPass	[vkhandle]<br>
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
 	 public VkRenderPass renderPass(){
@@ -149,7 +187,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field subpass	
+	 * Set method for field subpass	[int]<br>
 	 * Prototype: uint32_t  subpass
 	 */ 
 	 public void subpass(int subpass){
@@ -158,7 +196,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field subpass	
+	 * get method for field subpass	[int]<br>
 	 * Prototype: uint32_t  subpass
 	 */ 
 	 public int subpass(){
@@ -167,7 +205,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field framebuffer	[vkhandle]
+	 * Set method for field framebuffer	[vkhandle]<br>
 	 * Prototype: VkFramebuffer  framebuffer
 	 */ 
 	 public void framebuffer(VkFramebuffer framebuffer){
@@ -176,7 +214,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field framebuffer	[vkhandle]
+	 * get method for field framebuffer	[vkhandle]<br>
 	 * Prototype: VkFramebuffer  framebuffer
 	 */ 
 	 public VkFramebuffer framebuffer(){
@@ -185,7 +223,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field occlusionQueryEnable	
+	 * Set method for field occlusionQueryEnable	[boolean]<br>
 	 * Prototype: VkBool32  occlusionQueryEnable
 	 */ 
 	 public void occlusionQueryEnable(boolean occlusionQueryEnable){
@@ -194,7 +232,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field occlusionQueryEnable	
+	 * get method for field occlusionQueryEnable	[boolean]<br>
 	 * Prototype: VkBool32  occlusionQueryEnable
 	 */ 
 	 public boolean occlusionQueryEnable(){
@@ -203,7 +241,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field queryFlags	
+	 * Set method for field queryFlags	[int]<br>
 	 * Prototype: VkQueryControlFlags  queryFlags
 	 */ 
 	 public void queryFlags(int queryFlags){
@@ -212,7 +250,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field queryFlags	
+	 * get method for field queryFlags	[int]<br>
 	 * Prototype: VkQueryControlFlags  queryFlags
 	 */ 
 	 public int queryFlags(){
@@ -221,7 +259,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pipelineStatistics	
+	 * Set method for field pipelineStatistics	[int]<br>
 	 * Prototype: VkQueryPipelineStatisticFlags  pipelineStatistics
 	 */ 
 	 public void pipelineStatistics(int pipelineStatistics){
@@ -230,7 +268,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pipelineStatistics	
+	 * get method for field pipelineStatistics	[int]<br>
 	 * Prototype: VkQueryPipelineStatisticFlags  pipelineStatistics
 	 */ 
 	 public int pipelineStatistics(){
@@ -239,11 +277,11 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -252,7 +290,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -261,7 +299,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -270,7 +308,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -279,7 +317,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field renderPass	[vkhandle]
+	 * native SET method for field renderPass	[vkhandle]<br>
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
 	 private static native void renderPass0(ByteBuffer ptr, VkRenderPass _renderPass);/*
@@ -288,7 +326,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field renderPass	[vkhandle]
+	 * native GET method for field renderPass	[vkhandle]<br>
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
 	 private static native VkRenderPass renderPass0(ByteBuffer ptr);/*
@@ -297,7 +335,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field subpass	
+	 * native SET method for field subpass	[int]<br>
 	 * Prototype: uint32_t  subpass
 	 */ 
 	 private static native void subpass0(ByteBuffer ptr, int _subpass);/*
@@ -306,7 +344,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field subpass	
+	 * native GET method for field subpass	[int]<br>
 	 * Prototype: uint32_t  subpass
 	 */ 
 	 private static native int subpass0(ByteBuffer ptr);/*
@@ -315,7 +353,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field framebuffer	[vkhandle]
+	 * native SET method for field framebuffer	[vkhandle]<br>
 	 * Prototype: VkFramebuffer  framebuffer
 	 */ 
 	 private static native void framebuffer0(ByteBuffer ptr, VkFramebuffer _framebuffer);/*
@@ -324,7 +362,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field framebuffer	[vkhandle]
+	 * native GET method for field framebuffer	[vkhandle]<br>
 	 * Prototype: VkFramebuffer  framebuffer
 	 */ 
 	 private static native VkFramebuffer framebuffer0(ByteBuffer ptr);/*
@@ -333,7 +371,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field occlusionQueryEnable	
+	 * native SET method for field occlusionQueryEnable	[boolean]<br>
 	 * Prototype: VkBool32  occlusionQueryEnable
 	 */ 
 	 private static native void occlusionQueryEnable0(ByteBuffer ptr, boolean _occlusionQueryEnable);/*
@@ -342,7 +380,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field occlusionQueryEnable	
+	 * native GET method for field occlusionQueryEnable	[boolean]<br>
 	 * Prototype: VkBool32  occlusionQueryEnable
 	 */ 
 	 private static native boolean occlusionQueryEnable0(ByteBuffer ptr);/*
@@ -351,7 +389,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field queryFlags	
+	 * native SET method for field queryFlags	[int]<br>
 	 * Prototype: VkQueryControlFlags  queryFlags
 	 */ 
 	 private static native void queryFlags0(ByteBuffer ptr, int _queryFlags);/*
@@ -360,7 +398,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field queryFlags	
+	 * native GET method for field queryFlags	[int]<br>
 	 * Prototype: VkQueryControlFlags  queryFlags
 	 */ 
 	 private static native int queryFlags0(ByteBuffer ptr);/*
@@ -369,7 +407,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pipelineStatistics	
+	 * native SET method for field pipelineStatistics	[int]<br>
 	 * Prototype: VkQueryPipelineStatisticFlags  pipelineStatistics
 	 */ 
 	 private static native void pipelineStatistics0(ByteBuffer ptr, int _pipelineStatistics);/*
@@ -378,7 +416,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pipelineStatistics	
+	 * native GET method for field pipelineStatistics	[int]<br>
 	 * Prototype: VkQueryPipelineStatisticFlags  pipelineStatistics
 	 */ 
 	 private static native int pipelineStatistics0(ByteBuffer ptr);/*

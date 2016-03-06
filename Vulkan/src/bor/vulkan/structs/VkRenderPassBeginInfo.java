@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkRenderPassBeginInfo. 
  *  <h3>Prototype:</h3>
@@ -35,39 +36,46 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkRenderPassBeginInfo extends VkStruct {
-	/** TAG of this structure [226]  */
+	/** TAG of this structure [102]  */
 	 private static final String TAG = "VkRenderPassBeginInfo";
 
-	/** ID of this structure [226]  */
+	/** ID of this structure [102]  */
 	 public static final int TAG_ID = VKRENDERPASSBEGININFO_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkRenderPass 	renderPass	[vkhandle]	 */ 
+	 *  VkRenderPass 	renderPass	[vkhandle]
+	 */ 
 	VkRenderPass 	renderPass;
 
 	/**
-	 *  VkFramebuffer 	framebuffer	[vkhandle]	 */ 
+	 *  VkFramebuffer 	framebuffer	[vkhandle]
+	 */ 
 	VkFramebuffer 	framebuffer;
 
 	/**
-	 *  VkRect2D 	renderArea	[vkstruct]	 */ 
+	 *  VkRect2D 	renderArea	[vkstruct]
+	 */ 
 	VkRect2D 	renderArea;
 
 	/**
-	 *  uint32_t 	clearValueCount		 */ 
+	 *  uint32_t 	clearValueCount	[int]
+	 */ 
 	int 	clearValueCount;
 
 	/**
-	 *  const VkClearValue* 	pClearValues		 */ 
+	 *  const VkClearValue* 	pClearValues	[p]
+	 */ 
 	P<VkClearValue>  	pClearValues;
 
 	/**
@@ -75,6 +83,23 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 */
 	public VkRenderPassBeginInfo(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkRenderPassBeginInfo(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkRenderPassBeginInfo(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -85,12 +110,24 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkRenderPassBeginInfo> createNullPointer(){
+	        P<VkRenderPassBeginInfo> p = new  P<VkRenderPassBeginInfo>(new VkRenderPassBeginInfo());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -99,7 +136,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -108,7 +145,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -117,7 +154,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -126,7 +163,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field renderPass	[vkhandle]
+	 * Set method for field renderPass	[vkhandle]<br>
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
 	 public void renderPass(VkRenderPass renderPass){
@@ -135,7 +172,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field renderPass	[vkhandle]
+	 * get method for field renderPass	[vkhandle]<br>
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
 	 public VkRenderPass renderPass(){
@@ -144,7 +181,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field framebuffer	[vkhandle]
+	 * Set method for field framebuffer	[vkhandle]<br>
 	 * Prototype: VkFramebuffer  framebuffer
 	 */ 
 	 public void framebuffer(VkFramebuffer framebuffer){
@@ -153,7 +190,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field framebuffer	[vkhandle]
+	 * get method for field framebuffer	[vkhandle]<br>
 	 * Prototype: VkFramebuffer  framebuffer
 	 */ 
 	 public VkFramebuffer framebuffer(){
@@ -162,7 +199,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field renderArea	[vkstruct]
+	 * Set method for field renderArea	[vkstruct]<br>
 	 * Prototype: VkRect2D  renderArea
 	 */ 
 	 public void renderArea(VkRect2D renderArea){
@@ -171,7 +208,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field renderArea	[vkstruct]
+	 * get method for field renderArea	[vkstruct]<br>
 	 * Prototype: VkRect2D  renderArea
 	 */ 
 	 public VkRect2D renderArea(){
@@ -180,7 +217,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field clearValueCount	
+	 * Set method for field clearValueCount	[int]<br>
 	 * Prototype: uint32_t  clearValueCount
 	 */ 
 	 public void clearValueCount(int clearValueCount){
@@ -189,7 +226,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field clearValueCount	
+	 * get method for field clearValueCount	[int]<br>
 	 * Prototype: uint32_t  clearValueCount
 	 */ 
 	 public int clearValueCount(){
@@ -198,7 +235,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pClearValues	
+	 * Set method for field pClearValues	[p]<br>
 	 * Prototype: const VkClearValue*  pClearValues
 	 */ 
 	 public void pClearValues(P<VkClearValue>  pClearValues){
@@ -207,7 +244,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pClearValues	
+	 * get method for field pClearValues	[p]<br>
 	 * Prototype: const VkClearValue*  pClearValues
 	 */ 
 	 public P<VkClearValue>  pClearValues(){
@@ -216,11 +253,11 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -229,7 +266,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -238,7 +275,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -247,7 +284,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -256,7 +293,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field renderPass	[vkhandle]
+	 * native SET method for field renderPass	[vkhandle]<br>
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
 	 private static native void renderPass0(ByteBuffer ptr, VkRenderPass _renderPass);/*
@@ -265,7 +302,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field renderPass	[vkhandle]
+	 * native GET method for field renderPass	[vkhandle]<br>
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
 	 private static native VkRenderPass renderPass0(ByteBuffer ptr);/*
@@ -274,7 +311,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field framebuffer	[vkhandle]
+	 * native SET method for field framebuffer	[vkhandle]<br>
 	 * Prototype: VkFramebuffer  framebuffer
 	 */ 
 	 private static native void framebuffer0(ByteBuffer ptr, VkFramebuffer _framebuffer);/*
@@ -283,7 +320,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field framebuffer	[vkhandle]
+	 * native GET method for field framebuffer	[vkhandle]<br>
 	 * Prototype: VkFramebuffer  framebuffer
 	 */ 
 	 private static native VkFramebuffer framebuffer0(ByteBuffer ptr);/*
@@ -292,7 +329,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field renderArea	[vkstruct]
+	 * native SET method for field renderArea	[vkstruct]<br>
 	 * Prototype: VkRect2D  renderArea
 	 */ 
 	 private static native void renderArea0(ByteBuffer ptr, VkRect2D _renderArea);/*
@@ -301,7 +338,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field renderArea	[vkstruct]
+	 * native GET method for field renderArea	[vkstruct]<br>
 	 * Prototype: VkRect2D  renderArea
 	 */ 
 	 private static native VkRect2D renderArea0(ByteBuffer ptr);/*
@@ -310,7 +347,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field clearValueCount	
+	 * native SET method for field clearValueCount	[int]<br>
 	 * Prototype: uint32_t  clearValueCount
 	 */ 
 	 private static native void clearValueCount0(ByteBuffer ptr, int _clearValueCount);/*
@@ -319,7 +356,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field clearValueCount	
+	 * native GET method for field clearValueCount	[int]<br>
 	 * Prototype: uint32_t  clearValueCount
 	 */ 
 	 private static native int clearValueCount0(ByteBuffer ptr);/*
@@ -328,7 +365,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pClearValues	
+	 * native SET method for field pClearValues	[p]<br>
 	 * Prototype: const VkClearValue*  pClearValues
 	 */ 
 	 private static native void pClearValues0(ByteBuffer ptr, P<VkClearValue>  _pClearValues);/*
@@ -337,7 +374,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pClearValues	
+	 * native GET method for field pClearValues	[p]<br>
 	 * Prototype: const VkClearValue*  pClearValues
 	 */ 
 	 private static native P<VkClearValue>  pClearValues0(ByteBuffer ptr);/*

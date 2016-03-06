@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPipelineDepthStencilStateCreateInfo. 
  *  <h3>Prototype:</h3>
@@ -40,59 +41,71 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
-	/** TAG of this structure [186]  */
+	/** TAG of this structure [62]  */
 	 private static final String TAG = "VkPipelineDepthStencilStateCreateInfo";
 
-	/** ID of this structure [186]  */
+	/** ID of this structure [62]  */
 	 public static final int TAG_ID = VKPIPELINEDEPTHSTENCILSTATECREATEINFO_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkPipelineDepthStencilStateCreateFlags 	flags		 */ 
+	 *  VkPipelineDepthStencilStateCreateFlags 	flags	[int]
+	 */ 
 	int 	flags;
 
 	/**
-	 *  VkBool32 	depthTestEnable		 */ 
+	 *  VkBool32 	depthTestEnable	[boolean]
+	 */ 
 	boolean 	depthTestEnable;
 
 	/**
-	 *  VkBool32 	depthWriteEnable		 */ 
+	 *  VkBool32 	depthWriteEnable	[boolean]
+	 */ 
 	boolean 	depthWriteEnable;
 
 	/**
-	 *  VkCompareOp 	depthCompareOp	[vkenum]	 */ 
+	 *  VkCompareOp 	depthCompareOp	[vkenum]
+	 */ 
 	VkCompareOp 	depthCompareOp;
 
 	/**
-	 *  VkBool32 	depthBoundsTestEnable		 */ 
+	 *  VkBool32 	depthBoundsTestEnable	[boolean]
+	 */ 
 	boolean 	depthBoundsTestEnable;
 
 	/**
-	 *  VkBool32 	stencilTestEnable		 */ 
+	 *  VkBool32 	stencilTestEnable	[boolean]
+	 */ 
 	boolean 	stencilTestEnable;
 
 	/**
-	 *  VkStencilOpState 	front	[vkstruct]	 */ 
+	 *  VkStencilOpState 	front	[vkstruct]
+	 */ 
 	VkStencilOpState 	front;
 
 	/**
-	 *  VkStencilOpState 	back	[vkstruct]	 */ 
+	 *  VkStencilOpState 	back	[vkstruct]
+	 */ 
 	VkStencilOpState 	back;
 
 	/**
-	 *  float 	minDepthBounds		 */ 
+	 *  float 	minDepthBounds	[float]
+	 */ 
 	float 	minDepthBounds;
 
 	/**
-	 *  float 	maxDepthBounds		 */ 
+	 *  float 	maxDepthBounds	[float]
+	 */ 
 	float 	maxDepthBounds;
 
 	/**
@@ -100,6 +113,23 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */
 	public VkPipelineDepthStencilStateCreateInfo(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkPipelineDepthStencilStateCreateInfo(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkPipelineDepthStencilStateCreateInfo(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -110,12 +140,24 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkPipelineDepthStencilStateCreateInfo> createNullPointer(){
+	        P<VkPipelineDepthStencilStateCreateInfo> p = new  P<VkPipelineDepthStencilStateCreateInfo>(new VkPipelineDepthStencilStateCreateInfo());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -124,7 +166,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -133,7 +175,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -142,7 +184,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -151,7 +193,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags	
+	 * Set method for field flags	[int]<br>
 	 * Prototype: VkPipelineDepthStencilStateCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -160,7 +202,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags	
+	 * get method for field flags	[int]<br>
 	 * Prototype: VkPipelineDepthStencilStateCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -169,7 +211,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field depthTestEnable	
+	 * Set method for field depthTestEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthTestEnable
 	 */ 
 	 public void depthTestEnable(boolean depthTestEnable){
@@ -178,7 +220,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field depthTestEnable	
+	 * get method for field depthTestEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthTestEnable
 	 */ 
 	 public boolean depthTestEnable(){
@@ -187,7 +229,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field depthWriteEnable	
+	 * Set method for field depthWriteEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthWriteEnable
 	 */ 
 	 public void depthWriteEnable(boolean depthWriteEnable){
@@ -196,7 +238,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field depthWriteEnable	
+	 * get method for field depthWriteEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthWriteEnable
 	 */ 
 	 public boolean depthWriteEnable(){
@@ -205,7 +247,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field depthCompareOp	[vkenum]
+	 * Set method for field depthCompareOp	[vkenum]<br>
 	 * Prototype: VkCompareOp  depthCompareOp
 	 */ 
 	 public void depthCompareOp(VkCompareOp depthCompareOp){
@@ -214,7 +256,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field depthCompareOp	[vkenum]
+	 * get method for field depthCompareOp	[vkenum]<br>
 	 * Prototype: VkCompareOp  depthCompareOp
 	 */ 
 	 public VkCompareOp depthCompareOp(){
@@ -223,7 +265,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field depthBoundsTestEnable	
+	 * Set method for field depthBoundsTestEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthBoundsTestEnable
 	 */ 
 	 public void depthBoundsTestEnable(boolean depthBoundsTestEnable){
@@ -232,7 +274,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field depthBoundsTestEnable	
+	 * get method for field depthBoundsTestEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthBoundsTestEnable
 	 */ 
 	 public boolean depthBoundsTestEnable(){
@@ -241,7 +283,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field stencilTestEnable	
+	 * Set method for field stencilTestEnable	[boolean]<br>
 	 * Prototype: VkBool32  stencilTestEnable
 	 */ 
 	 public void stencilTestEnable(boolean stencilTestEnable){
@@ -250,7 +292,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field stencilTestEnable	
+	 * get method for field stencilTestEnable	[boolean]<br>
 	 * Prototype: VkBool32  stencilTestEnable
 	 */ 
 	 public boolean stencilTestEnable(){
@@ -259,7 +301,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field front	[vkstruct]
+	 * Set method for field front	[vkstruct]<br>
 	 * Prototype: VkStencilOpState  front
 	 */ 
 	 public void front(VkStencilOpState front){
@@ -268,7 +310,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field front	[vkstruct]
+	 * get method for field front	[vkstruct]<br>
 	 * Prototype: VkStencilOpState  front
 	 */ 
 	 public VkStencilOpState front(){
@@ -277,7 +319,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field back	[vkstruct]
+	 * Set method for field back	[vkstruct]<br>
 	 * Prototype: VkStencilOpState  back
 	 */ 
 	 public void back(VkStencilOpState back){
@@ -286,7 +328,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field back	[vkstruct]
+	 * get method for field back	[vkstruct]<br>
 	 * Prototype: VkStencilOpState  back
 	 */ 
 	 public VkStencilOpState back(){
@@ -295,7 +337,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field minDepthBounds	
+	 * Set method for field minDepthBounds	[float]<br>
 	 * Prototype: float  minDepthBounds
 	 */ 
 	 public void minDepthBounds(float minDepthBounds){
@@ -304,7 +346,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field minDepthBounds	
+	 * get method for field minDepthBounds	[float]<br>
 	 * Prototype: float  minDepthBounds
 	 */ 
 	 public float minDepthBounds(){
@@ -313,7 +355,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxDepthBounds	
+	 * Set method for field maxDepthBounds	[float]<br>
 	 * Prototype: float  maxDepthBounds
 	 */ 
 	 public void maxDepthBounds(float maxDepthBounds){
@@ -322,7 +364,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxDepthBounds	
+	 * get method for field maxDepthBounds	[float]<br>
 	 * Prototype: float  maxDepthBounds
 	 */ 
 	 public float maxDepthBounds(){
@@ -331,11 +373,11 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -344,7 +386,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -353,7 +395,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -362,7 +404,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -371,7 +413,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags	
+	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkPipelineDepthStencilStateCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -380,7 +422,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags	
+	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkPipelineDepthStencilStateCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -389,7 +431,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field depthTestEnable	
+	 * native SET method for field depthTestEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthTestEnable
 	 */ 
 	 private static native void depthTestEnable0(ByteBuffer ptr, boolean _depthTestEnable);/*
@@ -398,7 +440,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field depthTestEnable	
+	 * native GET method for field depthTestEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthTestEnable
 	 */ 
 	 private static native boolean depthTestEnable0(ByteBuffer ptr);/*
@@ -407,7 +449,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field depthWriteEnable	
+	 * native SET method for field depthWriteEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthWriteEnable
 	 */ 
 	 private static native void depthWriteEnable0(ByteBuffer ptr, boolean _depthWriteEnable);/*
@@ -416,7 +458,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field depthWriteEnable	
+	 * native GET method for field depthWriteEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthWriteEnable
 	 */ 
 	 private static native boolean depthWriteEnable0(ByteBuffer ptr);/*
@@ -425,7 +467,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field depthCompareOp	[vkenum]
+	 * native SET method for field depthCompareOp	[vkenum]<br>
 	 * Prototype: VkCompareOp  depthCompareOp
 	 */ 
 	 private static native void depthCompareOp0(ByteBuffer ptr, VkCompareOp _depthCompareOp);/*
@@ -434,7 +476,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field depthCompareOp	[vkenum]
+	 * native GET method for field depthCompareOp	[vkenum]<br>
 	 * Prototype: VkCompareOp  depthCompareOp
 	 */ 
 	 private static native VkCompareOp depthCompareOp0(ByteBuffer ptr);/*
@@ -443,7 +485,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field depthBoundsTestEnable	
+	 * native SET method for field depthBoundsTestEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthBoundsTestEnable
 	 */ 
 	 private static native void depthBoundsTestEnable0(ByteBuffer ptr, boolean _depthBoundsTestEnable);/*
@@ -452,7 +494,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field depthBoundsTestEnable	
+	 * native GET method for field depthBoundsTestEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthBoundsTestEnable
 	 */ 
 	 private static native boolean depthBoundsTestEnable0(ByteBuffer ptr);/*
@@ -461,7 +503,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field stencilTestEnable	
+	 * native SET method for field stencilTestEnable	[boolean]<br>
 	 * Prototype: VkBool32  stencilTestEnable
 	 */ 
 	 private static native void stencilTestEnable0(ByteBuffer ptr, boolean _stencilTestEnable);/*
@@ -470,7 +512,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field stencilTestEnable	
+	 * native GET method for field stencilTestEnable	[boolean]<br>
 	 * Prototype: VkBool32  stencilTestEnable
 	 */ 
 	 private static native boolean stencilTestEnable0(ByteBuffer ptr);/*
@@ -479,7 +521,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field front	[vkstruct]
+	 * native SET method for field front	[vkstruct]<br>
 	 * Prototype: VkStencilOpState  front
 	 */ 
 	 private static native void front0(ByteBuffer ptr, VkStencilOpState _front);/*
@@ -488,7 +530,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field front	[vkstruct]
+	 * native GET method for field front	[vkstruct]<br>
 	 * Prototype: VkStencilOpState  front
 	 */ 
 	 private static native VkStencilOpState front0(ByteBuffer ptr);/*
@@ -497,7 +539,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field back	[vkstruct]
+	 * native SET method for field back	[vkstruct]<br>
 	 * Prototype: VkStencilOpState  back
 	 */ 
 	 private static native void back0(ByteBuffer ptr, VkStencilOpState _back);/*
@@ -506,7 +548,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field back	[vkstruct]
+	 * native GET method for field back	[vkstruct]<br>
 	 * Prototype: VkStencilOpState  back
 	 */ 
 	 private static native VkStencilOpState back0(ByteBuffer ptr);/*
@@ -515,7 +557,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field minDepthBounds	
+	 * native SET method for field minDepthBounds	[float]<br>
 	 * Prototype: float  minDepthBounds
 	 */ 
 	 private static native void minDepthBounds0(ByteBuffer ptr, float _minDepthBounds);/*
@@ -524,7 +566,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field minDepthBounds	
+	 * native GET method for field minDepthBounds	[float]<br>
 	 * Prototype: float  minDepthBounds
 	 */ 
 	 private static native float minDepthBounds0(ByteBuffer ptr);/*
@@ -533,7 +575,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxDepthBounds	
+	 * native SET method for field maxDepthBounds	[float]<br>
 	 * Prototype: float  maxDepthBounds
 	 */ 
 	 private static native void maxDepthBounds0(ByteBuffer ptr, float _maxDepthBounds);/*
@@ -542,7 +584,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxDepthBounds	
+	 * native GET method for field maxDepthBounds	[float]<br>
 	 * Prototype: float  maxDepthBounds
 	 */ 
 	 private static native float maxDepthBounds0(ByteBuffer ptr);/*

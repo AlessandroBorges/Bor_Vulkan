@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkSamplerCreateInfo. 
  *  <h3>Prototype:</h3>
@@ -46,83 +47,101 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkSamplerCreateInfo extends VkStruct {
-	/** TAG of this structure [194]  */
+	/** TAG of this structure [70]  */
 	 private static final String TAG = "VkSamplerCreateInfo";
 
-	/** ID of this structure [194]  */
+	/** ID of this structure [70]  */
 	 public static final int TAG_ID = VKSAMPLERCREATEINFO_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkSamplerCreateFlags 	flags		 */ 
+	 *  VkSamplerCreateFlags 	flags	[int]
+	 */ 
 	int 	flags;
 
 	/**
-	 *  VkFilter 	magFilter	[vkenum]	 */ 
+	 *  VkFilter 	magFilter	[vkenum]
+	 */ 
 	VkFilter 	magFilter;
 
 	/**
-	 *  VkFilter 	minFilter	[vkenum]	 */ 
+	 *  VkFilter 	minFilter	[vkenum]
+	 */ 
 	VkFilter 	minFilter;
 
 	/**
-	 *  VkSamplerMipmapMode 	mipmapMode	[vkenum]	 */ 
+	 *  VkSamplerMipmapMode 	mipmapMode	[vkenum]
+	 */ 
 	VkSamplerMipmapMode 	mipmapMode;
 
 	/**
-	 *  VkSamplerAddressMode 	addressModeU	[vkenum]	 */ 
+	 *  VkSamplerAddressMode 	addressModeU	[vkenum]
+	 */ 
 	VkSamplerAddressMode 	addressModeU;
 
 	/**
-	 *  VkSamplerAddressMode 	addressModeV	[vkenum]	 */ 
+	 *  VkSamplerAddressMode 	addressModeV	[vkenum]
+	 */ 
 	VkSamplerAddressMode 	addressModeV;
 
 	/**
-	 *  VkSamplerAddressMode 	addressModeW	[vkenum]	 */ 
+	 *  VkSamplerAddressMode 	addressModeW	[vkenum]
+	 */ 
 	VkSamplerAddressMode 	addressModeW;
 
 	/**
-	 *  float 	mipLodBias		 */ 
+	 *  float 	mipLodBias	[float]
+	 */ 
 	float 	mipLodBias;
 
 	/**
-	 *  VkBool32 	anisotropyEnable		 */ 
+	 *  VkBool32 	anisotropyEnable	[boolean]
+	 */ 
 	boolean 	anisotropyEnable;
 
 	/**
-	 *  float 	maxAnisotropy		 */ 
+	 *  float 	maxAnisotropy	[float]
+	 */ 
 	float 	maxAnisotropy;
 
 	/**
-	 *  VkBool32 	compareEnable		 */ 
+	 *  VkBool32 	compareEnable	[boolean]
+	 */ 
 	boolean 	compareEnable;
 
 	/**
-	 *  VkCompareOp 	compareOp	[vkenum]	 */ 
+	 *  VkCompareOp 	compareOp	[vkenum]
+	 */ 
 	VkCompareOp 	compareOp;
 
 	/**
-	 *  float 	minLod		 */ 
+	 *  float 	minLod	[float]
+	 */ 
 	float 	minLod;
 
 	/**
-	 *  float 	maxLod		 */ 
+	 *  float 	maxLod	[float]
+	 */ 
 	float 	maxLod;
 
 	/**
-	 *  VkBorderColor 	borderColor	[vkenum]	 */ 
+	 *  VkBorderColor 	borderColor	[vkenum]
+	 */ 
 	VkBorderColor 	borderColor;
 
 	/**
-	 *  VkBool32 	unnormalizedCoordinates		 */ 
+	 *  VkBool32 	unnormalizedCoordinates	[boolean]
+	 */ 
 	boolean 	unnormalizedCoordinates;
 
 	/**
@@ -130,6 +149,23 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 */
 	public VkSamplerCreateInfo(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkSamplerCreateInfo(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkSamplerCreateInfo(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -140,12 +176,24 @@ public class VkSamplerCreateInfo extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkSamplerCreateInfo> createNullPointer(){
+	        P<VkSamplerCreateInfo> p = new  P<VkSamplerCreateInfo>(new VkSamplerCreateInfo());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -154,7 +202,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -163,7 +211,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -172,7 +220,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -181,7 +229,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags	
+	 * Set method for field flags	[int]<br>
 	 * Prototype: VkSamplerCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -190,7 +238,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags	
+	 * get method for field flags	[int]<br>
 	 * Prototype: VkSamplerCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -199,7 +247,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field magFilter	[vkenum]
+	 * Set method for field magFilter	[vkenum]<br>
 	 * Prototype: VkFilter  magFilter
 	 */ 
 	 public void magFilter(VkFilter magFilter){
@@ -208,7 +256,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field magFilter	[vkenum]
+	 * get method for field magFilter	[vkenum]<br>
 	 * Prototype: VkFilter  magFilter
 	 */ 
 	 public VkFilter magFilter(){
@@ -217,7 +265,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field minFilter	[vkenum]
+	 * Set method for field minFilter	[vkenum]<br>
 	 * Prototype: VkFilter  minFilter
 	 */ 
 	 public void minFilter(VkFilter minFilter){
@@ -226,7 +274,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field minFilter	[vkenum]
+	 * get method for field minFilter	[vkenum]<br>
 	 * Prototype: VkFilter  minFilter
 	 */ 
 	 public VkFilter minFilter(){
@@ -235,7 +283,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field mipmapMode	[vkenum]
+	 * Set method for field mipmapMode	[vkenum]<br>
 	 * Prototype: VkSamplerMipmapMode  mipmapMode
 	 */ 
 	 public void mipmapMode(VkSamplerMipmapMode mipmapMode){
@@ -244,7 +292,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field mipmapMode	[vkenum]
+	 * get method for field mipmapMode	[vkenum]<br>
 	 * Prototype: VkSamplerMipmapMode  mipmapMode
 	 */ 
 	 public VkSamplerMipmapMode mipmapMode(){
@@ -253,7 +301,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field addressModeU	[vkenum]
+	 * Set method for field addressModeU	[vkenum]<br>
 	 * Prototype: VkSamplerAddressMode  addressModeU
 	 */ 
 	 public void addressModeU(VkSamplerAddressMode addressModeU){
@@ -262,7 +310,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field addressModeU	[vkenum]
+	 * get method for field addressModeU	[vkenum]<br>
 	 * Prototype: VkSamplerAddressMode  addressModeU
 	 */ 
 	 public VkSamplerAddressMode addressModeU(){
@@ -271,7 +319,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field addressModeV	[vkenum]
+	 * Set method for field addressModeV	[vkenum]<br>
 	 * Prototype: VkSamplerAddressMode  addressModeV
 	 */ 
 	 public void addressModeV(VkSamplerAddressMode addressModeV){
@@ -280,7 +328,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field addressModeV	[vkenum]
+	 * get method for field addressModeV	[vkenum]<br>
 	 * Prototype: VkSamplerAddressMode  addressModeV
 	 */ 
 	 public VkSamplerAddressMode addressModeV(){
@@ -289,7 +337,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field addressModeW	[vkenum]
+	 * Set method for field addressModeW	[vkenum]<br>
 	 * Prototype: VkSamplerAddressMode  addressModeW
 	 */ 
 	 public void addressModeW(VkSamplerAddressMode addressModeW){
@@ -298,7 +346,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field addressModeW	[vkenum]
+	 * get method for field addressModeW	[vkenum]<br>
 	 * Prototype: VkSamplerAddressMode  addressModeW
 	 */ 
 	 public VkSamplerAddressMode addressModeW(){
@@ -307,7 +355,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field mipLodBias	
+	 * Set method for field mipLodBias	[float]<br>
 	 * Prototype: float  mipLodBias
 	 */ 
 	 public void mipLodBias(float mipLodBias){
@@ -316,7 +364,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field mipLodBias	
+	 * get method for field mipLodBias	[float]<br>
 	 * Prototype: float  mipLodBias
 	 */ 
 	 public float mipLodBias(){
@@ -325,7 +373,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field anisotropyEnable	
+	 * Set method for field anisotropyEnable	[boolean]<br>
 	 * Prototype: VkBool32  anisotropyEnable
 	 */ 
 	 public void anisotropyEnable(boolean anisotropyEnable){
@@ -334,7 +382,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field anisotropyEnable	
+	 * get method for field anisotropyEnable	[boolean]<br>
 	 * Prototype: VkBool32  anisotropyEnable
 	 */ 
 	 public boolean anisotropyEnable(){
@@ -343,7 +391,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxAnisotropy	
+	 * Set method for field maxAnisotropy	[float]<br>
 	 * Prototype: float  maxAnisotropy
 	 */ 
 	 public void maxAnisotropy(float maxAnisotropy){
@@ -352,7 +400,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxAnisotropy	
+	 * get method for field maxAnisotropy	[float]<br>
 	 * Prototype: float  maxAnisotropy
 	 */ 
 	 public float maxAnisotropy(){
@@ -361,7 +409,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field compareEnable	
+	 * Set method for field compareEnable	[boolean]<br>
 	 * Prototype: VkBool32  compareEnable
 	 */ 
 	 public void compareEnable(boolean compareEnable){
@@ -370,7 +418,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field compareEnable	
+	 * get method for field compareEnable	[boolean]<br>
 	 * Prototype: VkBool32  compareEnable
 	 */ 
 	 public boolean compareEnable(){
@@ -379,7 +427,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field compareOp	[vkenum]
+	 * Set method for field compareOp	[vkenum]<br>
 	 * Prototype: VkCompareOp  compareOp
 	 */ 
 	 public void compareOp(VkCompareOp compareOp){
@@ -388,7 +436,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field compareOp	[vkenum]
+	 * get method for field compareOp	[vkenum]<br>
 	 * Prototype: VkCompareOp  compareOp
 	 */ 
 	 public VkCompareOp compareOp(){
@@ -397,7 +445,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field minLod	
+	 * Set method for field minLod	[float]<br>
 	 * Prototype: float  minLod
 	 */ 
 	 public void minLod(float minLod){
@@ -406,7 +454,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field minLod	
+	 * get method for field minLod	[float]<br>
 	 * Prototype: float  minLod
 	 */ 
 	 public float minLod(){
@@ -415,7 +463,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field maxLod	
+	 * Set method for field maxLod	[float]<br>
 	 * Prototype: float  maxLod
 	 */ 
 	 public void maxLod(float maxLod){
@@ -424,7 +472,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field maxLod	
+	 * get method for field maxLod	[float]<br>
 	 * Prototype: float  maxLod
 	 */ 
 	 public float maxLod(){
@@ -433,7 +481,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field borderColor	[vkenum]
+	 * Set method for field borderColor	[vkenum]<br>
 	 * Prototype: VkBorderColor  borderColor
 	 */ 
 	 public void borderColor(VkBorderColor borderColor){
@@ -442,7 +490,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field borderColor	[vkenum]
+	 * get method for field borderColor	[vkenum]<br>
 	 * Prototype: VkBorderColor  borderColor
 	 */ 
 	 public VkBorderColor borderColor(){
@@ -451,7 +499,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field unnormalizedCoordinates	
+	 * Set method for field unnormalizedCoordinates	[boolean]<br>
 	 * Prototype: VkBool32  unnormalizedCoordinates
 	 */ 
 	 public void unnormalizedCoordinates(boolean unnormalizedCoordinates){
@@ -460,7 +508,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field unnormalizedCoordinates	
+	 * get method for field unnormalizedCoordinates	[boolean]<br>
 	 * Prototype: VkBool32  unnormalizedCoordinates
 	 */ 
 	 public boolean unnormalizedCoordinates(){
@@ -469,11 +517,11 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -482,7 +530,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -491,7 +539,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -500,7 +548,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -509,7 +557,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags	
+	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkSamplerCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -518,7 +566,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags	
+	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkSamplerCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -527,7 +575,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field magFilter	[vkenum]
+	 * native SET method for field magFilter	[vkenum]<br>
 	 * Prototype: VkFilter  magFilter
 	 */ 
 	 private static native void magFilter0(ByteBuffer ptr, VkFilter _magFilter);/*
@@ -536,7 +584,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field magFilter	[vkenum]
+	 * native GET method for field magFilter	[vkenum]<br>
 	 * Prototype: VkFilter  magFilter
 	 */ 
 	 private static native VkFilter magFilter0(ByteBuffer ptr);/*
@@ -545,7 +593,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field minFilter	[vkenum]
+	 * native SET method for field minFilter	[vkenum]<br>
 	 * Prototype: VkFilter  minFilter
 	 */ 
 	 private static native void minFilter0(ByteBuffer ptr, VkFilter _minFilter);/*
@@ -554,7 +602,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field minFilter	[vkenum]
+	 * native GET method for field minFilter	[vkenum]<br>
 	 * Prototype: VkFilter  minFilter
 	 */ 
 	 private static native VkFilter minFilter0(ByteBuffer ptr);/*
@@ -563,7 +611,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field mipmapMode	[vkenum]
+	 * native SET method for field mipmapMode	[vkenum]<br>
 	 * Prototype: VkSamplerMipmapMode  mipmapMode
 	 */ 
 	 private static native void mipmapMode0(ByteBuffer ptr, VkSamplerMipmapMode _mipmapMode);/*
@@ -572,7 +620,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field mipmapMode	[vkenum]
+	 * native GET method for field mipmapMode	[vkenum]<br>
 	 * Prototype: VkSamplerMipmapMode  mipmapMode
 	 */ 
 	 private static native VkSamplerMipmapMode mipmapMode0(ByteBuffer ptr);/*
@@ -581,7 +629,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field addressModeU	[vkenum]
+	 * native SET method for field addressModeU	[vkenum]<br>
 	 * Prototype: VkSamplerAddressMode  addressModeU
 	 */ 
 	 private static native void addressModeU0(ByteBuffer ptr, VkSamplerAddressMode _addressModeU);/*
@@ -590,7 +638,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field addressModeU	[vkenum]
+	 * native GET method for field addressModeU	[vkenum]<br>
 	 * Prototype: VkSamplerAddressMode  addressModeU
 	 */ 
 	 private static native VkSamplerAddressMode addressModeU0(ByteBuffer ptr);/*
@@ -599,7 +647,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field addressModeV	[vkenum]
+	 * native SET method for field addressModeV	[vkenum]<br>
 	 * Prototype: VkSamplerAddressMode  addressModeV
 	 */ 
 	 private static native void addressModeV0(ByteBuffer ptr, VkSamplerAddressMode _addressModeV);/*
@@ -608,7 +656,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field addressModeV	[vkenum]
+	 * native GET method for field addressModeV	[vkenum]<br>
 	 * Prototype: VkSamplerAddressMode  addressModeV
 	 */ 
 	 private static native VkSamplerAddressMode addressModeV0(ByteBuffer ptr);/*
@@ -617,7 +665,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field addressModeW	[vkenum]
+	 * native SET method for field addressModeW	[vkenum]<br>
 	 * Prototype: VkSamplerAddressMode  addressModeW
 	 */ 
 	 private static native void addressModeW0(ByteBuffer ptr, VkSamplerAddressMode _addressModeW);/*
@@ -626,7 +674,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field addressModeW	[vkenum]
+	 * native GET method for field addressModeW	[vkenum]<br>
 	 * Prototype: VkSamplerAddressMode  addressModeW
 	 */ 
 	 private static native VkSamplerAddressMode addressModeW0(ByteBuffer ptr);/*
@@ -635,7 +683,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field mipLodBias	
+	 * native SET method for field mipLodBias	[float]<br>
 	 * Prototype: float  mipLodBias
 	 */ 
 	 private static native void mipLodBias0(ByteBuffer ptr, float _mipLodBias);/*
@@ -644,7 +692,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field mipLodBias	
+	 * native GET method for field mipLodBias	[float]<br>
 	 * Prototype: float  mipLodBias
 	 */ 
 	 private static native float mipLodBias0(ByteBuffer ptr);/*
@@ -653,7 +701,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field anisotropyEnable	
+	 * native SET method for field anisotropyEnable	[boolean]<br>
 	 * Prototype: VkBool32  anisotropyEnable
 	 */ 
 	 private static native void anisotropyEnable0(ByteBuffer ptr, boolean _anisotropyEnable);/*
@@ -662,7 +710,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field anisotropyEnable	
+	 * native GET method for field anisotropyEnable	[boolean]<br>
 	 * Prototype: VkBool32  anisotropyEnable
 	 */ 
 	 private static native boolean anisotropyEnable0(ByteBuffer ptr);/*
@@ -671,7 +719,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxAnisotropy	
+	 * native SET method for field maxAnisotropy	[float]<br>
 	 * Prototype: float  maxAnisotropy
 	 */ 
 	 private static native void maxAnisotropy0(ByteBuffer ptr, float _maxAnisotropy);/*
@@ -680,7 +728,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxAnisotropy	
+	 * native GET method for field maxAnisotropy	[float]<br>
 	 * Prototype: float  maxAnisotropy
 	 */ 
 	 private static native float maxAnisotropy0(ByteBuffer ptr);/*
@@ -689,7 +737,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field compareEnable	
+	 * native SET method for field compareEnable	[boolean]<br>
 	 * Prototype: VkBool32  compareEnable
 	 */ 
 	 private static native void compareEnable0(ByteBuffer ptr, boolean _compareEnable);/*
@@ -698,7 +746,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field compareEnable	
+	 * native GET method for field compareEnable	[boolean]<br>
 	 * Prototype: VkBool32  compareEnable
 	 */ 
 	 private static native boolean compareEnable0(ByteBuffer ptr);/*
@@ -707,7 +755,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field compareOp	[vkenum]
+	 * native SET method for field compareOp	[vkenum]<br>
 	 * Prototype: VkCompareOp  compareOp
 	 */ 
 	 private static native void compareOp0(ByteBuffer ptr, VkCompareOp _compareOp);/*
@@ -716,7 +764,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field compareOp	[vkenum]
+	 * native GET method for field compareOp	[vkenum]<br>
 	 * Prototype: VkCompareOp  compareOp
 	 */ 
 	 private static native VkCompareOp compareOp0(ByteBuffer ptr);/*
@@ -725,7 +773,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field minLod	
+	 * native SET method for field minLod	[float]<br>
 	 * Prototype: float  minLod
 	 */ 
 	 private static native void minLod0(ByteBuffer ptr, float _minLod);/*
@@ -734,7 +782,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field minLod	
+	 * native GET method for field minLod	[float]<br>
 	 * Prototype: float  minLod
 	 */ 
 	 private static native float minLod0(ByteBuffer ptr);/*
@@ -743,7 +791,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field maxLod	
+	 * native SET method for field maxLod	[float]<br>
 	 * Prototype: float  maxLod
 	 */ 
 	 private static native void maxLod0(ByteBuffer ptr, float _maxLod);/*
@@ -752,7 +800,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field maxLod	
+	 * native GET method for field maxLod	[float]<br>
 	 * Prototype: float  maxLod
 	 */ 
 	 private static native float maxLod0(ByteBuffer ptr);/*
@@ -761,7 +809,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field borderColor	[vkenum]
+	 * native SET method for field borderColor	[vkenum]<br>
 	 * Prototype: VkBorderColor  borderColor
 	 */ 
 	 private static native void borderColor0(ByteBuffer ptr, VkBorderColor _borderColor);/*
@@ -770,7 +818,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field borderColor	[vkenum]
+	 * native GET method for field borderColor	[vkenum]<br>
 	 * Prototype: VkBorderColor  borderColor
 	 */ 
 	 private static native VkBorderColor borderColor0(ByteBuffer ptr);/*
@@ -779,7 +827,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field unnormalizedCoordinates	
+	 * native SET method for field unnormalizedCoordinates	[boolean]<br>
 	 * Prototype: VkBool32  unnormalizedCoordinates
 	 */ 
 	 private static native void unnormalizedCoordinates0(ByteBuffer ptr, boolean _unnormalizedCoordinates);/*
@@ -788,7 +836,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field unnormalizedCoordinates	
+	 * native GET method for field unnormalizedCoordinates	[boolean]<br>
 	 * Prototype: VkBool32  unnormalizedCoordinates
 	 */ 
 	 private static native boolean unnormalizedCoordinates0(ByteBuffer ptr);/*

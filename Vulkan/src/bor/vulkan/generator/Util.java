@@ -65,7 +65,7 @@ public class Util {
      * We have 3 different types for each VkObject: <br>
      * <li> CType - C/C++ type defined in header
      * <li> JType - Java type, as primitives, arrays, wrappers, etc   
-     * <li> Bridge Type - sweet types used on native calls, to reduce cast overhead
+     * <li> Bridge Type - sweet types used on native calls, to reduce casting overhead
      * <pre>
      * Example 1 - Enumeration: 
      *  C/C++ native type: VkBlendOp (enumeration)
@@ -194,13 +194,13 @@ public class Util {
     }
     
     /**
-     * Get all VkHandle class from this application
+     * Get all VkHandleInterface class from this application
      * @return
      * @throws ClassNotFoundException
      * @throws IOException
      */
     public static List<Class<?>> getVkHandleClasses() throws ClassNotFoundException, IOException{
-        return getFilteredClasses("bor.vulkan.VkHandle");
+        return getFilteredClasses("bor.vulkan.VkHandleInterface");
     }
     
     public static List<Class<?>> getVkObjectClasses() throws ClassNotFoundException, IOException{
@@ -378,6 +378,29 @@ public class Util {
         }
         //EOF
         return -1;
+    }
+    
+    /**
+     * Check if field is an array
+     * @param field
+     * @return
+     */
+    public static boolean isArray(String field){
+        return field.contains("]");         
+    }
+    
+    /**
+     * 
+     * @param field
+     * @return
+     */
+    public static String getArrayLength(String field){
+        int pos = field.indexOf('[');
+        int end = field.indexOf(']');
+        String len = field.substring(pos+1, end);
+        return len;
+        //int val = Integer.parseInt(len);
+        //return val;
     }
     
     

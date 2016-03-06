@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkApplicationInfo. 
  *  <h3>Prototype:</h3>
@@ -35,39 +36,46 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkApplicationInfo extends VkStruct {
-	/** TAG of this structure [125]  */
+	/** TAG of this structure [1]  */
 	 private static final String TAG = "VkApplicationInfo";
 
-	/** ID of this structure [125]  */
+	/** ID of this structure [1]  */
 	 public static final int TAG_ID = VKAPPLICATIONINFO_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  const char* 	pApplicationName		 */ 
+	 *  const char* 	pApplicationName	[string]
+	 */ 
 	String 	pApplicationName;
 
 	/**
-	 *  uint32_t 	applicationVersion		 */ 
+	 *  uint32_t 	applicationVersion	[int]
+	 */ 
 	int 	applicationVersion;
 
 	/**
-	 *  const char* 	pEngineName		 */ 
+	 *  const char* 	pEngineName	[string]
+	 */ 
 	String 	pEngineName;
 
 	/**
-	 *  uint32_t 	engineVersion		 */ 
+	 *  uint32_t 	engineVersion	[int]
+	 */ 
 	int 	engineVersion;
 
 	/**
-	 *  uint32_t 	apiVersion		 */ 
+	 *  uint32_t 	apiVersion	[int]
+	 */ 
 	int 	apiVersion;
 
 	/**
@@ -75,6 +83,23 @@ public class VkApplicationInfo extends VkStruct {
 	 */
 	public VkApplicationInfo(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkApplicationInfo(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkApplicationInfo(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -85,12 +110,24 @@ public class VkApplicationInfo extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkApplicationInfo> createNullPointer(){
+	        P<VkApplicationInfo> p = new  P<VkApplicationInfo>(new VkApplicationInfo());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -99,7 +136,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -108,7 +145,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -117,7 +154,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -126,7 +163,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pApplicationName	
+	 * Set method for field pApplicationName	[string]<br>
 	 * Prototype: const char*  pApplicationName
 	 */ 
 	 public void pApplicationName(String pApplicationName){
@@ -135,7 +172,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pApplicationName	
+	 * get method for field pApplicationName	[string]<br>
 	 * Prototype: const char*  pApplicationName
 	 */ 
 	 public String pApplicationName(){
@@ -144,7 +181,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field applicationVersion	
+	 * Set method for field applicationVersion	[int]<br>
 	 * Prototype: uint32_t  applicationVersion
 	 */ 
 	 public void applicationVersion(int applicationVersion){
@@ -153,7 +190,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field applicationVersion	
+	 * get method for field applicationVersion	[int]<br>
 	 * Prototype: uint32_t  applicationVersion
 	 */ 
 	 public int applicationVersion(){
@@ -162,7 +199,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pEngineName	
+	 * Set method for field pEngineName	[string]<br>
 	 * Prototype: const char*  pEngineName
 	 */ 
 	 public void pEngineName(String pEngineName){
@@ -171,7 +208,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pEngineName	
+	 * get method for field pEngineName	[string]<br>
 	 * Prototype: const char*  pEngineName
 	 */ 
 	 public String pEngineName(){
@@ -180,7 +217,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field engineVersion	
+	 * Set method for field engineVersion	[int]<br>
 	 * Prototype: uint32_t  engineVersion
 	 */ 
 	 public void engineVersion(int engineVersion){
@@ -189,7 +226,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field engineVersion	
+	 * get method for field engineVersion	[int]<br>
 	 * Prototype: uint32_t  engineVersion
 	 */ 
 	 public int engineVersion(){
@@ -198,7 +235,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field apiVersion	
+	 * Set method for field apiVersion	[int]<br>
 	 * Prototype: uint32_t  apiVersion
 	 */ 
 	 public void apiVersion(int apiVersion){
@@ -207,7 +244,7 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field apiVersion	
+	 * get method for field apiVersion	[int]<br>
 	 * Prototype: uint32_t  apiVersion
 	 */ 
 	 public int apiVersion(){
@@ -216,11 +253,11 @@ public class VkApplicationInfo extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -229,7 +266,7 @@ public class VkApplicationInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -238,7 +275,7 @@ public class VkApplicationInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -247,7 +284,7 @@ public class VkApplicationInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -256,7 +293,7 @@ public class VkApplicationInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pApplicationName	
+	 * native SET method for field pApplicationName	[string]<br>
 	 * Prototype: const char*  pApplicationName
 	 */ 
 	 private static native void pApplicationName0(ByteBuffer ptr, String _pApplicationName);/*
@@ -265,7 +302,7 @@ public class VkApplicationInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pApplicationName	
+	 * native GET method for field pApplicationName	[string]<br>
 	 * Prototype: const char*  pApplicationName
 	 */ 
 	 private static native String pApplicationName0(ByteBuffer ptr);/*
@@ -273,7 +310,7 @@ public class VkApplicationInfo extends VkStruct {
 		  return (jstring)(env->NewStringUTF(_obj.const char*);	 */
 
 	/**
-	 * native Set method for field applicationVersion	
+	 * native SET method for field applicationVersion	[int]<br>
 	 * Prototype: uint32_t  applicationVersion
 	 */ 
 	 private static native void applicationVersion0(ByteBuffer ptr, int _applicationVersion);/*
@@ -282,7 +319,7 @@ public class VkApplicationInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field applicationVersion	
+	 * native GET method for field applicationVersion	[int]<br>
 	 * Prototype: uint32_t  applicationVersion
 	 */ 
 	 private static native int applicationVersion0(ByteBuffer ptr);/*
@@ -291,7 +328,7 @@ public class VkApplicationInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pEngineName	
+	 * native SET method for field pEngineName	[string]<br>
 	 * Prototype: const char*  pEngineName
 	 */ 
 	 private static native void pEngineName0(ByteBuffer ptr, String _pEngineName);/*
@@ -300,7 +337,7 @@ public class VkApplicationInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pEngineName	
+	 * native GET method for field pEngineName	[string]<br>
 	 * Prototype: const char*  pEngineName
 	 */ 
 	 private static native String pEngineName0(ByteBuffer ptr);/*
@@ -308,7 +345,7 @@ public class VkApplicationInfo extends VkStruct {
 		  return (jstring)(env->NewStringUTF(_obj.const char*);	 */
 
 	/**
-	 * native Set method for field engineVersion	
+	 * native SET method for field engineVersion	[int]<br>
 	 * Prototype: uint32_t  engineVersion
 	 */ 
 	 private static native void engineVersion0(ByteBuffer ptr, int _engineVersion);/*
@@ -317,7 +354,7 @@ public class VkApplicationInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field engineVersion	
+	 * native GET method for field engineVersion	[int]<br>
 	 * Prototype: uint32_t  engineVersion
 	 */ 
 	 private static native int engineVersion0(ByteBuffer ptr);/*
@@ -326,7 +363,7 @@ public class VkApplicationInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field apiVersion	
+	 * native SET method for field apiVersion	[int]<br>
 	 * Prototype: uint32_t  apiVersion
 	 */ 
 	 private static native void apiVersion0(ByteBuffer ptr, int _apiVersion);/*
@@ -335,7 +372,7 @@ public class VkApplicationInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field apiVersion	
+	 * native GET method for field apiVersion	[int]<br>
 	 * Prototype: uint32_t  apiVersion
 	 */ 
 	 private static native int apiVersion0(ByteBuffer ptr);/*

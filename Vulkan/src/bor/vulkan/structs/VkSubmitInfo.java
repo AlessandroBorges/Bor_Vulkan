@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkSubmitInfo. 
  *  <h3>Prototype:</h3>
@@ -37,47 +38,56 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkSubmitInfo extends VkStruct {
-	/** TAG of this structure [143]  */
+	/** TAG of this structure [19]  */
 	 private static final String TAG = "VkSubmitInfo";
 
-	/** ID of this structure [143]  */
+	/** ID of this structure [19]  */
 	 public static final int TAG_ID = VKSUBMITINFO_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  uint32_t 	waitSemaphoreCount		 */ 
+	 *  uint32_t 	waitSemaphoreCount	[int]
+	 */ 
 	int 	waitSemaphoreCount;
 
 	/**
-	 *  const VkSemaphore* 	pWaitSemaphores		 */ 
+	 *  const VkSemaphore* 	pWaitSemaphores	[p]
+	 */ 
 	P<VkSemaphore>  	pWaitSemaphores;
 
 	/**
-	 *  const VkPipelineStageFlags* 	pWaitDstStageMask		 */ 
+	 *  const VkPipelineStageFlags* 	pWaitDstStageMask	[pinteger]
+	 */ 
 	PInteger 	pWaitDstStageMask;
 
 	/**
-	 *  uint32_t 	commandBufferCount		 */ 
+	 *  uint32_t 	commandBufferCount	[int]
+	 */ 
 	int 	commandBufferCount;
 
 	/**
-	 *  const VkCommandBuffer* 	pCommandBuffers		 */ 
+	 *  const VkCommandBuffer* 	pCommandBuffers	[p]
+	 */ 
 	P<VkCommandBuffer>  	pCommandBuffers;
 
 	/**
-	 *  uint32_t 	signalSemaphoreCount		 */ 
+	 *  uint32_t 	signalSemaphoreCount	[int]
+	 */ 
 	int 	signalSemaphoreCount;
 
 	/**
-	 *  const VkSemaphore* 	pSignalSemaphores		 */ 
+	 *  const VkSemaphore* 	pSignalSemaphores	[p]
+	 */ 
 	P<VkSemaphore>  	pSignalSemaphores;
 
 	/**
@@ -85,6 +95,23 @@ public class VkSubmitInfo extends VkStruct {
 	 */
 	public VkSubmitInfo(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkSubmitInfo(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkSubmitInfo(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -95,12 +122,24 @@ public class VkSubmitInfo extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkSubmitInfo> createNullPointer(){
+	        P<VkSubmitInfo> p = new  P<VkSubmitInfo>(new VkSubmitInfo());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -109,7 +148,7 @@ public class VkSubmitInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -118,7 +157,7 @@ public class VkSubmitInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -127,7 +166,7 @@ public class VkSubmitInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -136,7 +175,7 @@ public class VkSubmitInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field waitSemaphoreCount	
+	 * Set method for field waitSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
 	 public void waitSemaphoreCount(int waitSemaphoreCount){
@@ -145,7 +184,7 @@ public class VkSubmitInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field waitSemaphoreCount	
+	 * get method for field waitSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
 	 public int waitSemaphoreCount(){
@@ -154,7 +193,7 @@ public class VkSubmitInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pWaitSemaphores	
+	 * Set method for field pWaitSemaphores	[p]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
 	 public void pWaitSemaphores(P<VkSemaphore>  pWaitSemaphores){
@@ -163,7 +202,7 @@ public class VkSubmitInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pWaitSemaphores	
+	 * get method for field pWaitSemaphores	[p]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
 	 public P<VkSemaphore>  pWaitSemaphores(){
@@ -172,7 +211,7 @@ public class VkSubmitInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pWaitDstStageMask	
+	 * Set method for field pWaitDstStageMask	[pinteger]<br>
 	 * Prototype: const VkPipelineStageFlags*  pWaitDstStageMask
 	 */ 
 	 public void pWaitDstStageMask(PInteger pWaitDstStageMask){
@@ -181,7 +220,7 @@ public class VkSubmitInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pWaitDstStageMask	
+	 * get method for field pWaitDstStageMask	[pinteger]<br>
 	 * Prototype: const VkPipelineStageFlags*  pWaitDstStageMask
 	 */ 
 	 public PInteger pWaitDstStageMask(){
@@ -190,7 +229,7 @@ public class VkSubmitInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field commandBufferCount	
+	 * Set method for field commandBufferCount	[int]<br>
 	 * Prototype: uint32_t  commandBufferCount
 	 */ 
 	 public void commandBufferCount(int commandBufferCount){
@@ -199,7 +238,7 @@ public class VkSubmitInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field commandBufferCount	
+	 * get method for field commandBufferCount	[int]<br>
 	 * Prototype: uint32_t  commandBufferCount
 	 */ 
 	 public int commandBufferCount(){
@@ -208,7 +247,7 @@ public class VkSubmitInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pCommandBuffers	
+	 * Set method for field pCommandBuffers	[p]<br>
 	 * Prototype: const VkCommandBuffer*  pCommandBuffers
 	 */ 
 	 public void pCommandBuffers(P<VkCommandBuffer>  pCommandBuffers){
@@ -217,7 +256,7 @@ public class VkSubmitInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pCommandBuffers	
+	 * get method for field pCommandBuffers	[p]<br>
 	 * Prototype: const VkCommandBuffer*  pCommandBuffers
 	 */ 
 	 public P<VkCommandBuffer>  pCommandBuffers(){
@@ -226,7 +265,7 @@ public class VkSubmitInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field signalSemaphoreCount	
+	 * Set method for field signalSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  signalSemaphoreCount
 	 */ 
 	 public void signalSemaphoreCount(int signalSemaphoreCount){
@@ -235,7 +274,7 @@ public class VkSubmitInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field signalSemaphoreCount	
+	 * get method for field signalSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  signalSemaphoreCount
 	 */ 
 	 public int signalSemaphoreCount(){
@@ -244,7 +283,7 @@ public class VkSubmitInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pSignalSemaphores	
+	 * Set method for field pSignalSemaphores	[p]<br>
 	 * Prototype: const VkSemaphore*  pSignalSemaphores
 	 */ 
 	 public void pSignalSemaphores(P<VkSemaphore>  pSignalSemaphores){
@@ -253,7 +292,7 @@ public class VkSubmitInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pSignalSemaphores	
+	 * get method for field pSignalSemaphores	[p]<br>
 	 * Prototype: const VkSemaphore*  pSignalSemaphores
 	 */ 
 	 public P<VkSemaphore>  pSignalSemaphores(){
@@ -262,11 +301,11 @@ public class VkSubmitInfo extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -275,7 +314,7 @@ public class VkSubmitInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -284,7 +323,7 @@ public class VkSubmitInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -293,7 +332,7 @@ public class VkSubmitInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -302,7 +341,7 @@ public class VkSubmitInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field waitSemaphoreCount	
+	 * native SET method for field waitSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
 	 private static native void waitSemaphoreCount0(ByteBuffer ptr, int _waitSemaphoreCount);/*
@@ -311,7 +350,7 @@ public class VkSubmitInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field waitSemaphoreCount	
+	 * native GET method for field waitSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
 	 private static native int waitSemaphoreCount0(ByteBuffer ptr);/*
@@ -320,7 +359,7 @@ public class VkSubmitInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pWaitSemaphores	
+	 * native SET method for field pWaitSemaphores	[p]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
 	 private static native void pWaitSemaphores0(ByteBuffer ptr, P<VkSemaphore>  _pWaitSemaphores);/*
@@ -329,7 +368,7 @@ public class VkSubmitInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pWaitSemaphores	
+	 * native GET method for field pWaitSemaphores	[p]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
 	 private static native P<VkSemaphore>  pWaitSemaphores0(ByteBuffer ptr);/*
@@ -338,7 +377,7 @@ public class VkSubmitInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pWaitDstStageMask	
+	 * native SET method for field pWaitDstStageMask	[pinteger]<br>
 	 * Prototype: const VkPipelineStageFlags*  pWaitDstStageMask
 	 */ 
 	 private static native void pWaitDstStageMask0(ByteBuffer ptr, PInteger _pWaitDstStageMask);/*
@@ -347,7 +386,7 @@ public class VkSubmitInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pWaitDstStageMask	
+	 * native GET method for field pWaitDstStageMask	[pinteger]<br>
 	 * Prototype: const VkPipelineStageFlags*  pWaitDstStageMask
 	 */ 
 	 private static native PInteger pWaitDstStageMask0(ByteBuffer ptr);/*
@@ -356,7 +395,7 @@ public class VkSubmitInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field commandBufferCount	
+	 * native SET method for field commandBufferCount	[int]<br>
 	 * Prototype: uint32_t  commandBufferCount
 	 */ 
 	 private static native void commandBufferCount0(ByteBuffer ptr, int _commandBufferCount);/*
@@ -365,7 +404,7 @@ public class VkSubmitInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field commandBufferCount	
+	 * native GET method for field commandBufferCount	[int]<br>
 	 * Prototype: uint32_t  commandBufferCount
 	 */ 
 	 private static native int commandBufferCount0(ByteBuffer ptr);/*
@@ -374,7 +413,7 @@ public class VkSubmitInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pCommandBuffers	
+	 * native SET method for field pCommandBuffers	[p]<br>
 	 * Prototype: const VkCommandBuffer*  pCommandBuffers
 	 */ 
 	 private static native void pCommandBuffers0(ByteBuffer ptr, P<VkCommandBuffer>  _pCommandBuffers);/*
@@ -383,7 +422,7 @@ public class VkSubmitInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pCommandBuffers	
+	 * native GET method for field pCommandBuffers	[p]<br>
 	 * Prototype: const VkCommandBuffer*  pCommandBuffers
 	 */ 
 	 private static native P<VkCommandBuffer>  pCommandBuffers0(ByteBuffer ptr);/*
@@ -392,7 +431,7 @@ public class VkSubmitInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field signalSemaphoreCount	
+	 * native SET method for field signalSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  signalSemaphoreCount
 	 */ 
 	 private static native void signalSemaphoreCount0(ByteBuffer ptr, int _signalSemaphoreCount);/*
@@ -401,7 +440,7 @@ public class VkSubmitInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field signalSemaphoreCount	
+	 * native GET method for field signalSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  signalSemaphoreCount
 	 */ 
 	 private static native int signalSemaphoreCount0(ByteBuffer ptr);/*
@@ -410,7 +449,7 @@ public class VkSubmitInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pSignalSemaphores	
+	 * native SET method for field pSignalSemaphores	[p]<br>
 	 * Prototype: const VkSemaphore*  pSignalSemaphores
 	 */ 
 	 private static native void pSignalSemaphores0(ByteBuffer ptr, P<VkSemaphore>  _pSignalSemaphores);/*
@@ -419,7 +458,7 @@ public class VkSubmitInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pSignalSemaphores	
+	 * native GET method for field pSignalSemaphores	[p]<br>
 	 * Prototype: const VkSemaphore*  pSignalSemaphores
 	 */ 
 	 private static native P<VkSemaphore>  pSignalSemaphores0(ByteBuffer ptr);/*

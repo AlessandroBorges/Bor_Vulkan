@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkImageViewCreateInfo. 
  *  <h3>Prototype:</h3>
@@ -36,43 +37,51 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkImageViewCreateInfo extends VkStruct {
-	/** TAG of this structure [167]  */
+	/** TAG of this structure [43]  */
 	 private static final String TAG = "VkImageViewCreateInfo";
 
-	/** ID of this structure [167]  */
+	/** ID of this structure [43]  */
 	 public static final int TAG_ID = VKIMAGEVIEWCREATEINFO_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkImageViewCreateFlags 	flags		 */ 
+	 *  VkImageViewCreateFlags 	flags	[int]
+	 */ 
 	int 	flags;
 
 	/**
-	 *  VkImage 	image	[vkhandle]	 */ 
+	 *  VkImage 	image	[vkhandle]
+	 */ 
 	VkImage 	image;
 
 	/**
-	 *  VkImageViewType 	viewType	[vkenum]	 */ 
+	 *  VkImageViewType 	viewType	[vkenum]
+	 */ 
 	VkImageViewType 	viewType;
 
 	/**
-	 *  VkFormat 	format	[vkenum]	 */ 
+	 *  VkFormat 	format	[vkenum]
+	 */ 
 	VkFormat 	format;
 
 	/**
-	 *  VkComponentMapping 	components	[vkstruct]	 */ 
+	 *  VkComponentMapping 	components	[vkstruct]
+	 */ 
 	VkComponentMapping 	components;
 
 	/**
-	 *  VkImageSubresourceRange 	subresourceRange	[vkstruct]	 */ 
+	 *  VkImageSubresourceRange 	subresourceRange	[vkstruct]
+	 */ 
 	VkImageSubresourceRange 	subresourceRange;
 
 	/**
@@ -80,6 +89,23 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 */
 	public VkImageViewCreateInfo(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkImageViewCreateInfo(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkImageViewCreateInfo(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -90,12 +116,24 @@ public class VkImageViewCreateInfo extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkImageViewCreateInfo> createNullPointer(){
+	        P<VkImageViewCreateInfo> p = new  P<VkImageViewCreateInfo>(new VkImageViewCreateInfo());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -104,7 +142,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -113,7 +151,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -122,7 +160,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -131,7 +169,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags	
+	 * Set method for field flags	[int]<br>
 	 * Prototype: VkImageViewCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -140,7 +178,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags	
+	 * get method for field flags	[int]<br>
 	 * Prototype: VkImageViewCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -149,7 +187,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field image	[vkhandle]
+	 * Set method for field image	[vkhandle]<br>
 	 * Prototype: VkImage  image
 	 */ 
 	 public void image(VkImage image){
@@ -158,7 +196,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field image	[vkhandle]
+	 * get method for field image	[vkhandle]<br>
 	 * Prototype: VkImage  image
 	 */ 
 	 public VkImage image(){
@@ -167,7 +205,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field viewType	[vkenum]
+	 * Set method for field viewType	[vkenum]<br>
 	 * Prototype: VkImageViewType  viewType
 	 */ 
 	 public void viewType(VkImageViewType viewType){
@@ -176,7 +214,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field viewType	[vkenum]
+	 * get method for field viewType	[vkenum]<br>
 	 * Prototype: VkImageViewType  viewType
 	 */ 
 	 public VkImageViewType viewType(){
@@ -185,7 +223,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field format	[vkenum]
+	 * Set method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
 	 public void format(VkFormat format){
@@ -194,7 +232,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field format	[vkenum]
+	 * get method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
 	 public VkFormat format(){
@@ -203,7 +241,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field components	[vkstruct]
+	 * Set method for field components	[vkstruct]<br>
 	 * Prototype: VkComponentMapping  components
 	 */ 
 	 public void components(VkComponentMapping components){
@@ -212,7 +250,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field components	[vkstruct]
+	 * get method for field components	[vkstruct]<br>
 	 * Prototype: VkComponentMapping  components
 	 */ 
 	 public VkComponentMapping components(){
@@ -221,7 +259,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field subresourceRange	[vkstruct]
+	 * Set method for field subresourceRange	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceRange  subresourceRange
 	 */ 
 	 public void subresourceRange(VkImageSubresourceRange subresourceRange){
@@ -230,7 +268,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field subresourceRange	[vkstruct]
+	 * get method for field subresourceRange	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceRange  subresourceRange
 	 */ 
 	 public VkImageSubresourceRange subresourceRange(){
@@ -239,11 +277,11 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -252,7 +290,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -261,7 +299,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -270,7 +308,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -279,7 +317,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags	
+	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkImageViewCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -288,7 +326,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags	
+	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkImageViewCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -297,7 +335,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field image	[vkhandle]
+	 * native SET method for field image	[vkhandle]<br>
 	 * Prototype: VkImage  image
 	 */ 
 	 private static native void image0(ByteBuffer ptr, VkImage _image);/*
@@ -306,7 +344,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field image	[vkhandle]
+	 * native GET method for field image	[vkhandle]<br>
 	 * Prototype: VkImage  image
 	 */ 
 	 private static native VkImage image0(ByteBuffer ptr);/*
@@ -315,7 +353,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field viewType	[vkenum]
+	 * native SET method for field viewType	[vkenum]<br>
 	 * Prototype: VkImageViewType  viewType
 	 */ 
 	 private static native void viewType0(ByteBuffer ptr, VkImageViewType _viewType);/*
@@ -324,7 +362,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field viewType	[vkenum]
+	 * native GET method for field viewType	[vkenum]<br>
 	 * Prototype: VkImageViewType  viewType
 	 */ 
 	 private static native VkImageViewType viewType0(ByteBuffer ptr);/*
@@ -333,7 +371,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field format	[vkenum]
+	 * native SET method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
 	 private static native void format0(ByteBuffer ptr, VkFormat _format);/*
@@ -342,7 +380,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field format	[vkenum]
+	 * native GET method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
 	 private static native VkFormat format0(ByteBuffer ptr);/*
@@ -351,7 +389,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field components	[vkstruct]
+	 * native SET method for field components	[vkstruct]<br>
 	 * Prototype: VkComponentMapping  components
 	 */ 
 	 private static native void components0(ByteBuffer ptr, VkComponentMapping _components);/*
@@ -360,7 +398,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field components	[vkstruct]
+	 * native GET method for field components	[vkstruct]<br>
 	 * Prototype: VkComponentMapping  components
 	 */ 
 	 private static native VkComponentMapping components0(ByteBuffer ptr);/*
@@ -369,7 +407,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field subresourceRange	[vkstruct]
+	 * native SET method for field subresourceRange	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceRange  subresourceRange
 	 */ 
 	 private static native void subresourceRange0(ByteBuffer ptr, VkImageSubresourceRange _subresourceRange);/*
@@ -378,7 +416,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field subresourceRange	[vkstruct]
+	 * native GET method for field subresourceRange	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceRange  subresourceRange
 	 */ 
 	 private static native VkImageSubresourceRange subresourceRange0(ByteBuffer ptr);/*

@@ -29,7 +29,7 @@ public class VkClearColorValue extends VkStruct {
      * @param memSize
      * @param obj
      */
-    public VkClearColorValue(int memSize, Object obj) {
+    public VkClearColorValue(int memSize, int obj) {
         super(memSize, obj);        
     }
 

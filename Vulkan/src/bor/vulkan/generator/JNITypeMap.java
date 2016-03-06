@@ -31,14 +31,14 @@ public class JNITypeMap {
             saveVk = true;
     
     static{
-        loadNames();
+         loadNames();
     }
     
     public static void init(){        
         if(structNames == null){
             try {
                 updateNames();
-            } catch (ClassNotFoundException | IOException e) {                
+            } catch (Exception e) {                
                 e.printStackTrace();
             }
         }        
@@ -57,12 +57,24 @@ public class JNITypeMap {
         
         structNames = Util.readFile(path, "Structs.txt");
         enumNames = Util.readFile(path, "Enumerations.txt");
-        vkHandlerNames = Util.readFile(path, "VkHandler.txt");
+        vkHandlerNames = Util.readFile(path, "VkHandlers.txt");
         vkObjectNames = Util.readFile(path, "VkObjects.txt");        
     }
     
-    public static void updateNames() throws ClassNotFoundException, IOException{
-        
+    /**
+     * Uses reflection to query class names of Enumerations,
+     *  Structs, VkHandlers and vkobjects.<br>
+     *  All data is stored in following static String arrays: <br>
+     *   {@link #enumClasses}, {@link #enumNames}, <br>
+     *   {@link #structClasses}, {@link #strucNames}, <br>
+     *   {@link #vkHandlerClasses}, {@link #vkHandlerNames}<br>
+     *   {@link #vkObjectClasses}, {@link #vkObjectNames}<br>
+     *   
+     *   
+     * @throws ClassNotFoundException
+     * @throws IOException
+     */
+    public static void updateNames() throws ClassNotFoundException, IOException{        
         if(structNames != null){
             return;
         }
@@ -133,7 +145,7 @@ public class JNITypeMap {
      * @param name - object name
      * @return true if name is a struct type
      */
-    public static boolean isStruct(String name){
+    public static boolean isVkStruct(String name){
         name = check(name);
         return structNames.contains(name);
     }
@@ -144,7 +156,7 @@ public class JNITypeMap {
      * @param name - object name
      * @return true if name is a Enum type
      */
-    public static boolean isEnum(String name){
+    public static boolean isVkEnum(String name){
         name = check(name);
         return enumNames.contains(name);
     }
@@ -244,11 +256,11 @@ public class JNITypeMap {
     
     
     public static Util.CLASS_TYPE getType(String name){
-        if(isEnum(name)){
+        if(isVkEnum(name)){
             return CLASS_TYPE.VKENUM;
         }
         
-        if(isStruct(name)){
+        if(isVkStruct(name)){
             return CLASS_TYPE.VKSTRUCT;
         }
         
@@ -322,19 +334,16 @@ public class JNITypeMap {
         
     }
     
-    /**
-     * 
-     */
-    public JNITypeMap() {
-        // TODO Auto-generated constructor stub
-    }
-
+   
     /**
      * @param args
      */
     public static void main(String[] args) {
+        boolean doUpdate = true;
+        
         try {
-           // updateNames();
+            if(doUpdate)
+                updateNames();
             loadNames();
         } catch (Exception e) {
             // TODO Auto-generated catch block

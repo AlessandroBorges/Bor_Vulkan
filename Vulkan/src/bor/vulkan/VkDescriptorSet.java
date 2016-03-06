@@ -7,6 +7,6 @@ package bor.vulkan;
  * @author Alessandro Borges
  *
  */
-public interface VkDescriptorSet extends VkHandle {
+public interface VkDescriptorSet extends VkHandleInterface {
 
 }

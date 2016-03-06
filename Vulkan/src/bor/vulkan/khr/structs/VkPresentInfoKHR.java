@@ -17,6 +17,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPresentInfoKHR. 
  *  <h3>Prototype:</h3>
@@ -37,43 +38,51 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPresentInfoKHR extends VkStruct {
-	/** TAG of this structure [233]  */
+	/** TAG of this structure [109]  */
 	 private static final String TAG = "VkPresentInfoKHR";
 
-	/** ID of this structure [233]  */
+	/** ID of this structure [109]  */
 	 public static final int TAG_ID = VKPRESENTINFOKHR_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  uint32_t 	waitSemaphoreCount		 */ 
+	 *  uint32_t 	waitSemaphoreCount	[int]
+	 */ 
 	int 	waitSemaphoreCount;
 
 	/**
-	 *  const VkSemaphore* 	pWaitSemaphores		 */ 
+	 *  const VkSemaphore* 	pWaitSemaphores	[p]
+	 */ 
 	P<VkSemaphore>  	pWaitSemaphores;
 
 	/**
-	 *  uint32_t 	swapchainCount		 */ 
+	 *  uint32_t 	swapchainCount	[int]
+	 */ 
 	int 	swapchainCount;
 
 	/**
-	 *  const VkSwapchainKHR* 	pSwapchains		 */ 
+	 *  const VkSwapchainKHR* 	pSwapchains	[p]
+	 */ 
 	P<VkSwapchainKHR>  	pSwapchains;
 
 	/**
-	 *  const uint32_t* 	pImageIndices		 */ 
+	 *  const uint32_t* 	pImageIndices	[int_array]
+	 */ 
 	int[] 	pImageIndices;
 
 	/**
-	 *  VkResult* 	pResults		 */ 
+	 *  VkResult* 	pResults	[pinteger]
+	 */ 
 	PInteger 	pResults;
 
 	/**
@@ -81,6 +90,23 @@ public class VkPresentInfoKHR extends VkStruct {
 	 */
 	public VkPresentInfoKHR(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkPresentInfoKHR(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkPresentInfoKHR(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -91,12 +117,24 @@ public class VkPresentInfoKHR extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkPresentInfoKHR> createNullPointer(){
+	        P<VkPresentInfoKHR> p = new  P<VkPresentInfoKHR>(new VkPresentInfoKHR());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -105,7 +143,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -114,7 +152,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -123,7 +161,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -132,7 +170,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field waitSemaphoreCount	
+	 * Set method for field waitSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
 	 public void waitSemaphoreCount(int waitSemaphoreCount){
@@ -141,7 +179,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field waitSemaphoreCount	
+	 * get method for field waitSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
 	 public int waitSemaphoreCount(){
@@ -150,7 +188,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pWaitSemaphores	
+	 * Set method for field pWaitSemaphores	[p]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
 	 public void pWaitSemaphores(P<VkSemaphore>  pWaitSemaphores){
@@ -159,7 +197,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pWaitSemaphores	
+	 * get method for field pWaitSemaphores	[p]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
 	 public P<VkSemaphore>  pWaitSemaphores(){
@@ -168,7 +206,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field swapchainCount	
+	 * Set method for field swapchainCount	[int]<br>
 	 * Prototype: uint32_t  swapchainCount
 	 */ 
 	 public void swapchainCount(int swapchainCount){
@@ -177,7 +215,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field swapchainCount	
+	 * get method for field swapchainCount	[int]<br>
 	 * Prototype: uint32_t  swapchainCount
 	 */ 
 	 public int swapchainCount(){
@@ -186,7 +224,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pSwapchains	
+	 * Set method for field pSwapchains	[p]<br>
 	 * Prototype: const VkSwapchainKHR*  pSwapchains
 	 */ 
 	 public void pSwapchains(P<VkSwapchainKHR>  pSwapchains){
@@ -195,7 +233,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pSwapchains	
+	 * get method for field pSwapchains	[p]<br>
 	 * Prototype: const VkSwapchainKHR*  pSwapchains
 	 */ 
 	 public P<VkSwapchainKHR>  pSwapchains(){
@@ -204,7 +242,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pImageIndices	
+	 * Set method for field pImageIndices	[int_array]<br>
 	 * Prototype: const uint32_t*  pImageIndices
 	 */ 
 	 public void pImageIndices(int[] pImageIndices){
@@ -213,7 +251,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pImageIndices	
+	 * get method for field pImageIndices	[int_array]<br>
 	 * Prototype: const uint32_t*  pImageIndices
 	 */ 
 	 public int[] pImageIndices(){
@@ -222,7 +260,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pResults	
+	 * Set method for field pResults	[pinteger]<br>
 	 * Prototype: VkResult*  pResults
 	 */ 
 	 public void pResults(PInteger pResults){
@@ -231,7 +269,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pResults	
+	 * get method for field pResults	[pinteger]<br>
 	 * Prototype: VkResult*  pResults
 	 */ 
 	 public PInteger pResults(){
@@ -240,11 +278,11 @@ public class VkPresentInfoKHR extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -253,7 +291,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -262,7 +300,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -271,7 +309,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -280,7 +318,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field waitSemaphoreCount	
+	 * native SET method for field waitSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
 	 private static native void waitSemaphoreCount0(ByteBuffer ptr, int _waitSemaphoreCount);/*
@@ -289,7 +327,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field waitSemaphoreCount	
+	 * native GET method for field waitSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
 	 private static native int waitSemaphoreCount0(ByteBuffer ptr);/*
@@ -298,7 +336,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pWaitSemaphores	
+	 * native SET method for field pWaitSemaphores	[p]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
 	 private static native void pWaitSemaphores0(ByteBuffer ptr, P<VkSemaphore>  _pWaitSemaphores);/*
@@ -307,7 +345,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pWaitSemaphores	
+	 * native GET method for field pWaitSemaphores	[p]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
 	 private static native P<VkSemaphore>  pWaitSemaphores0(ByteBuffer ptr);/*
@@ -316,7 +354,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field swapchainCount	
+	 * native SET method for field swapchainCount	[int]<br>
 	 * Prototype: uint32_t  swapchainCount
 	 */ 
 	 private static native void swapchainCount0(ByteBuffer ptr, int _swapchainCount);/*
@@ -325,7 +363,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field swapchainCount	
+	 * native GET method for field swapchainCount	[int]<br>
 	 * Prototype: uint32_t  swapchainCount
 	 */ 
 	 private static native int swapchainCount0(ByteBuffer ptr);/*
@@ -334,7 +372,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pSwapchains	
+	 * native SET method for field pSwapchains	[p]<br>
 	 * Prototype: const VkSwapchainKHR*  pSwapchains
 	 */ 
 	 private static native void pSwapchains0(ByteBuffer ptr, P<VkSwapchainKHR>  _pSwapchains);/*
@@ -343,7 +381,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pSwapchains	
+	 * native GET method for field pSwapchains	[p]<br>
 	 * Prototype: const VkSwapchainKHR*  pSwapchains
 	 */ 
 	 private static native P<VkSwapchainKHR>  pSwapchains0(ByteBuffer ptr);/*
@@ -352,7 +390,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pImageIndices	
+	 * native SET method for field pImageIndices	[int_array]<br>
 	 * Prototype: const uint32_t*  pImageIndices
 	 */ 
 	 private static native void pImageIndices0(ByteBuffer ptr, int[] _pImageIndices);/*
@@ -361,7 +399,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pImageIndices	
+	 * native GET method for field pImageIndices	[int_array]<br>
 	 * Prototype: const uint32_t*  pImageIndices
 	 */ 
 	 private static native int[] pImageIndices0(ByteBuffer ptr);/*
@@ -370,7 +408,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pResults	
+	 * native SET method for field pResults	[pinteger]<br>
 	 * Prototype: VkResult*  pResults
 	 */ 
 	 private static native void pResults0(ByteBuffer ptr, PInteger _pResults);/*
@@ -379,7 +417,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pResults	
+	 * native GET method for field pResults	[pinteger]<br>
 	 * Prototype: VkResult*  pResults
 	 */ 
 	 private static native PInteger pResults0(ByteBuffer ptr);/*

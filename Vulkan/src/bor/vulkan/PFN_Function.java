@@ -10,6 +10,6 @@ package bor.vulkan;
  * @author Alessandro Borges
  *
  */
-public interface PFN_Function extends VkHandle {
+public interface PFN_Function extends VkHandleInterface {
 
 }

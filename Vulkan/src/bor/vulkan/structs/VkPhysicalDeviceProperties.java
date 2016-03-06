@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPhysicalDeviceProperties. 
  *  <h3>Prototype:</h3>
@@ -37,47 +38,56 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPhysicalDeviceProperties extends VkStruct {
-	/** TAG of this structure [134]  */
+	/** TAG of this structure [10]  */
 	 private static final String TAG = "VkPhysicalDeviceProperties";
 
-	/** ID of this structure [134]  */
+	/** ID of this structure [10]  */
 	 public static final int TAG_ID = VKPHYSICALDEVICEPROPERTIES_ID;
 
 	 // fields //
 	/**
-	 *  uint32_t 	apiVersion		 */ 
+	 *  uint32_t 	apiVersion	[int]
+	 */ 
 	int 	apiVersion;
 
 	/**
-	 *  uint32_t 	driverVersion		 */ 
+	 *  uint32_t 	driverVersion	[int]
+	 */ 
 	int 	driverVersion;
 
 	/**
-	 *  uint32_t 	vendorID		 */ 
+	 *  uint32_t 	vendorID	[int]
+	 */ 
 	int 	vendorID;
 
 	/**
-	 *  uint32_t 	deviceID		 */ 
+	 *  uint32_t 	deviceID	[int]
+	 */ 
 	int 	deviceID;
 
 	/**
-	 *  VkPhysicalDeviceType 	deviceType	[vkenum]	 */ 
+	 *  VkPhysicalDeviceType 	deviceType	[vkenum]
+	 */ 
 	VkPhysicalDeviceType 	deviceType;
 
 	/**
-	 *  char[] 	deviceName		 */ 
+	 *  char[] 	deviceName	[string]
+	 */ 
 	String 	deviceName;
 
 	/**
-	 *  uint8_t[] 	pipelineCacheUUID		 */ 
+	 *  uint8_t[] 	pipelineCacheUUID	[byte_array]
+	 */ 
 	byte[] 	pipelineCacheUUID;
 
 	/**
-	 *  VkPhysicalDeviceLimits 	limits	[vkstruct]	 */ 
+	 *  VkPhysicalDeviceLimits 	limits	[vkstruct]
+	 */ 
 	VkPhysicalDeviceLimits 	limits;
 
 	/**
-	 *  VkPhysicalDeviceSparseProperties 	sparseProperties	[vkstruct]	 */ 
+	 *  VkPhysicalDeviceSparseProperties 	sparseProperties	[vkstruct]
+	 */ 
 	VkPhysicalDeviceSparseProperties 	sparseProperties;
 
 	/**
@@ -85,6 +95,23 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 */
 	public VkPhysicalDeviceProperties(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkPhysicalDeviceProperties(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkPhysicalDeviceProperties(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -95,12 +122,24 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkPhysicalDeviceProperties> createNullPointer(){
+	        P<VkPhysicalDeviceProperties> p = new  P<VkPhysicalDeviceProperties>(new VkPhysicalDeviceProperties());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field apiVersion	
+	 * Set method for field apiVersion	[int]<br>
 	 * Prototype: uint32_t  apiVersion
 	 */ 
 	 public void apiVersion(int apiVersion){
@@ -109,7 +148,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field apiVersion	
+	 * get method for field apiVersion	[int]<br>
 	 * Prototype: uint32_t  apiVersion
 	 */ 
 	 public int apiVersion(){
@@ -118,7 +157,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field driverVersion	
+	 * Set method for field driverVersion	[int]<br>
 	 * Prototype: uint32_t  driverVersion
 	 */ 
 	 public void driverVersion(int driverVersion){
@@ -127,7 +166,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field driverVersion	
+	 * get method for field driverVersion	[int]<br>
 	 * Prototype: uint32_t  driverVersion
 	 */ 
 	 public int driverVersion(){
@@ -136,7 +175,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field vendorID	
+	 * Set method for field vendorID	[int]<br>
 	 * Prototype: uint32_t  vendorID
 	 */ 
 	 public void vendorID(int vendorID){
@@ -145,7 +184,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field vendorID	
+	 * get method for field vendorID	[int]<br>
 	 * Prototype: uint32_t  vendorID
 	 */ 
 	 public int vendorID(){
@@ -154,7 +193,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field deviceID	
+	 * Set method for field deviceID	[int]<br>
 	 * Prototype: uint32_t  deviceID
 	 */ 
 	 public void deviceID(int deviceID){
@@ -163,7 +202,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field deviceID	
+	 * get method for field deviceID	[int]<br>
 	 * Prototype: uint32_t  deviceID
 	 */ 
 	 public int deviceID(){
@@ -172,7 +211,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field deviceType	[vkenum]
+	 * Set method for field deviceType	[vkenum]<br>
 	 * Prototype: VkPhysicalDeviceType  deviceType
 	 */ 
 	 public void deviceType(VkPhysicalDeviceType deviceType){
@@ -181,7 +220,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field deviceType	[vkenum]
+	 * get method for field deviceType	[vkenum]<br>
 	 * Prototype: VkPhysicalDeviceType  deviceType
 	 */ 
 	 public VkPhysicalDeviceType deviceType(){
@@ -190,7 +229,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field deviceName	
+	 * Set method for field deviceName	[string]<br>
 	 * Prototype: char[]  deviceName
 	 */ 
 	 public void deviceName(String deviceName){
@@ -199,7 +238,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field deviceName	
+	 * get method for field deviceName	[string]<br>
 	 * Prototype: char[]  deviceName
 	 */ 
 	 public String deviceName(){
@@ -208,7 +247,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pipelineCacheUUID	
+	 * Set method for field pipelineCacheUUID	[byte_array]<br>
 	 * Prototype: uint8_t[]  pipelineCacheUUID
 	 */ 
 	 public void pipelineCacheUUID(byte[] pipelineCacheUUID){
@@ -217,7 +256,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pipelineCacheUUID	
+	 * get method for field pipelineCacheUUID	[byte_array]<br>
 	 * Prototype: uint8_t[]  pipelineCacheUUID
 	 */ 
 	 public byte[] pipelineCacheUUID(){
@@ -226,7 +265,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field limits	[vkstruct]
+	 * Set method for field limits	[vkstruct]<br>
 	 * Prototype: VkPhysicalDeviceLimits  limits
 	 */ 
 	 public void limits(VkPhysicalDeviceLimits limits){
@@ -235,7 +274,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field limits	[vkstruct]
+	 * get method for field limits	[vkstruct]<br>
 	 * Prototype: VkPhysicalDeviceLimits  limits
 	 */ 
 	 public VkPhysicalDeviceLimits limits(){
@@ -244,7 +283,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field sparseProperties	[vkstruct]
+	 * Set method for field sparseProperties	[vkstruct]<br>
 	 * Prototype: VkPhysicalDeviceSparseProperties  sparseProperties
 	 */ 
 	 public void sparseProperties(VkPhysicalDeviceSparseProperties sparseProperties){
@@ -253,7 +292,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sparseProperties	[vkstruct]
+	 * get method for field sparseProperties	[vkstruct]<br>
 	 * Prototype: VkPhysicalDeviceSparseProperties  sparseProperties
 	 */ 
 	 public VkPhysicalDeviceSparseProperties sparseProperties(){
@@ -262,11 +301,11 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field apiVersion	
+	 * native SET method for field apiVersion	[int]<br>
 	 * Prototype: uint32_t  apiVersion
 	 */ 
 	 private static native void apiVersion0(ByteBuffer ptr, int _apiVersion);/*
@@ -275,7 +314,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field apiVersion	
+	 * native GET method for field apiVersion	[int]<br>
 	 * Prototype: uint32_t  apiVersion
 	 */ 
 	 private static native int apiVersion0(ByteBuffer ptr);/*
@@ -284,7 +323,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field driverVersion	
+	 * native SET method for field driverVersion	[int]<br>
 	 * Prototype: uint32_t  driverVersion
 	 */ 
 	 private static native void driverVersion0(ByteBuffer ptr, int _driverVersion);/*
@@ -293,7 +332,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field driverVersion	
+	 * native GET method for field driverVersion	[int]<br>
 	 * Prototype: uint32_t  driverVersion
 	 */ 
 	 private static native int driverVersion0(ByteBuffer ptr);/*
@@ -302,7 +341,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field vendorID	
+	 * native SET method for field vendorID	[int]<br>
 	 * Prototype: uint32_t  vendorID
 	 */ 
 	 private static native void vendorID0(ByteBuffer ptr, int _vendorID);/*
@@ -311,7 +350,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field vendorID	
+	 * native GET method for field vendorID	[int]<br>
 	 * Prototype: uint32_t  vendorID
 	 */ 
 	 private static native int vendorID0(ByteBuffer ptr);/*
@@ -320,7 +359,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field deviceID	
+	 * native SET method for field deviceID	[int]<br>
 	 * Prototype: uint32_t  deviceID
 	 */ 
 	 private static native void deviceID0(ByteBuffer ptr, int _deviceID);/*
@@ -329,7 +368,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field deviceID	
+	 * native GET method for field deviceID	[int]<br>
 	 * Prototype: uint32_t  deviceID
 	 */ 
 	 private static native int deviceID0(ByteBuffer ptr);/*
@@ -338,7 +377,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field deviceType	[vkenum]
+	 * native SET method for field deviceType	[vkenum]<br>
 	 * Prototype: VkPhysicalDeviceType  deviceType
 	 */ 
 	 private static native void deviceType0(ByteBuffer ptr, VkPhysicalDeviceType _deviceType);/*
@@ -347,7 +386,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field deviceType	[vkenum]
+	 * native GET method for field deviceType	[vkenum]<br>
 	 * Prototype: VkPhysicalDeviceType  deviceType
 	 */ 
 	 private static native VkPhysicalDeviceType deviceType0(ByteBuffer ptr);/*
@@ -356,7 +395,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field deviceName	
+	 * native SET method for field deviceName	[string]<br>
 	 * Prototype: char[]  deviceName
 	 */ 
 	 private static native void deviceName0(ByteBuffer ptr, String _deviceName);/*
@@ -365,7 +404,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field deviceName	
+	 * native GET method for field deviceName	[string]<br>
 	 * Prototype: char[]  deviceName
 	 */ 
 	 private static native String deviceName0(ByteBuffer ptr);/*
@@ -373,7 +412,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 		  return (jstring)(env->NewStringUTF(_obj.char[]);	 */
 
 	/**
-	 * native Set method for field pipelineCacheUUID	
+	 * native SET method for field pipelineCacheUUID	[byte_array]<br>
 	 * Prototype: uint8_t[]  pipelineCacheUUID
 	 */ 
 	 private static native void pipelineCacheUUID0(ByteBuffer ptr, byte[] _pipelineCacheUUID);/*
@@ -382,7 +421,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pipelineCacheUUID	
+	 * native GET method for field pipelineCacheUUID	[byte_array]<br>
 	 * Prototype: uint8_t[]  pipelineCacheUUID
 	 */ 
 	 private static native byte[] pipelineCacheUUID0(ByteBuffer ptr);/*
@@ -391,7 +430,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field limits	[vkstruct]
+	 * native SET method for field limits	[vkstruct]<br>
 	 * Prototype: VkPhysicalDeviceLimits  limits
 	 */ 
 	 private static native void limits0(ByteBuffer ptr, VkPhysicalDeviceLimits _limits);/*
@@ -400,7 +439,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field limits	[vkstruct]
+	 * native GET method for field limits	[vkstruct]<br>
 	 * Prototype: VkPhysicalDeviceLimits  limits
 	 */ 
 	 private static native VkPhysicalDeviceLimits limits0(ByteBuffer ptr);/*
@@ -409,7 +448,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field sparseProperties	[vkstruct]
+	 * native SET method for field sparseProperties	[vkstruct]<br>
 	 * Prototype: VkPhysicalDeviceSparseProperties  sparseProperties
 	 */ 
 	 private static native void sparseProperties0(ByteBuffer ptr, VkPhysicalDeviceSparseProperties _sparseProperties);/*
@@ -418,7 +457,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sparseProperties	[vkstruct]
+	 * native GET method for field sparseProperties	[vkstruct]<br>
 	 * Prototype: VkPhysicalDeviceSparseProperties  sparseProperties
 	 */ 
 	 private static native VkPhysicalDeviceSparseProperties sparseProperties0(ByteBuffer ptr);/*

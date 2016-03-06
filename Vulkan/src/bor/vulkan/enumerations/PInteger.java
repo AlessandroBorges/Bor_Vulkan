@@ -94,6 +94,16 @@ public class PInteger implements Pinterface<Integer> {
         int val = value[index];
         return Integer.valueOf(val);
     }
+	
+	/**
+	 * Used to perform brigding to JNI calls.
+	 * Use with caution.
+	 * @return internal backup array with stored values
+	 * @see #length()
+	 */
+	public int[] getValues(){
+	    return value;
+	}
 
     /**
      * Length of content

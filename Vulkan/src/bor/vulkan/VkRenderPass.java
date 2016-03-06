@@ -7,6 +7,6 @@ package bor.vulkan;
  * @author Alessandro Borges
  *
  */
-public interface VkRenderPass extends VkHandle {
+public interface VkRenderPass extends VkHandleInterface {
 
 }

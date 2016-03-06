@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkCopyDescriptorSet. 
  *  <h3>Prototype:</h3>
@@ -37,47 +38,56 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkCopyDescriptorSet extends VkStruct {
-	/** TAG of this structure [203]  */
+	/** TAG of this structure [79]  */
 	 private static final String TAG = "VkCopyDescriptorSet";
 
-	/** ID of this structure [203]  */
+	/** ID of this structure [79]  */
 	 public static final int TAG_ID = VKCOPYDESCRIPTORSET_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkDescriptorSet 	srcSet	[vkhandle]	 */ 
+	 *  VkDescriptorSet 	srcSet	[vkhandle]
+	 */ 
 	VkDescriptorSet 	srcSet;
 
 	/**
-	 *  uint32_t 	srcBinding		 */ 
+	 *  uint32_t 	srcBinding	[int]
+	 */ 
 	int 	srcBinding;
 
 	/**
-	 *  uint32_t 	srcArrayElement		 */ 
+	 *  uint32_t 	srcArrayElement	[int]
+	 */ 
 	int 	srcArrayElement;
 
 	/**
-	 *  VkDescriptorSet 	dstSet	[vkhandle]	 */ 
+	 *  VkDescriptorSet 	dstSet	[vkhandle]
+	 */ 
 	VkDescriptorSet 	dstSet;
 
 	/**
-	 *  uint32_t 	dstBinding		 */ 
+	 *  uint32_t 	dstBinding	[int]
+	 */ 
 	int 	dstBinding;
 
 	/**
-	 *  uint32_t 	dstArrayElement		 */ 
+	 *  uint32_t 	dstArrayElement	[int]
+	 */ 
 	int 	dstArrayElement;
 
 	/**
-	 *  uint32_t 	descriptorCount		 */ 
+	 *  uint32_t 	descriptorCount	[int]
+	 */ 
 	int 	descriptorCount;
 
 	/**
@@ -85,6 +95,23 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 */
 	public VkCopyDescriptorSet(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkCopyDescriptorSet(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkCopyDescriptorSet(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -95,12 +122,24 @@ public class VkCopyDescriptorSet extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkCopyDescriptorSet> createNullPointer(){
+	        P<VkCopyDescriptorSet> p = new  P<VkCopyDescriptorSet>(new VkCopyDescriptorSet());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -109,7 +148,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -118,7 +157,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -127,7 +166,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -136,7 +175,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field srcSet	[vkhandle]
+	 * Set method for field srcSet	[vkhandle]<br>
 	 * Prototype: VkDescriptorSet  srcSet
 	 */ 
 	 public void srcSet(VkDescriptorSet srcSet){
@@ -145,7 +184,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcSet	[vkhandle]
+	 * get method for field srcSet	[vkhandle]<br>
 	 * Prototype: VkDescriptorSet  srcSet
 	 */ 
 	 public VkDescriptorSet srcSet(){
@@ -154,7 +193,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field srcBinding	
+	 * Set method for field srcBinding	[int]<br>
 	 * Prototype: uint32_t  srcBinding
 	 */ 
 	 public void srcBinding(int srcBinding){
@@ -163,7 +202,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcBinding	
+	 * get method for field srcBinding	[int]<br>
 	 * Prototype: uint32_t  srcBinding
 	 */ 
 	 public int srcBinding(){
@@ -172,7 +211,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field srcArrayElement	
+	 * Set method for field srcArrayElement	[int]<br>
 	 * Prototype: uint32_t  srcArrayElement
 	 */ 
 	 public void srcArrayElement(int srcArrayElement){
@@ -181,7 +220,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcArrayElement	
+	 * get method for field srcArrayElement	[int]<br>
 	 * Prototype: uint32_t  srcArrayElement
 	 */ 
 	 public int srcArrayElement(){
@@ -190,7 +229,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstSet	[vkhandle]
+	 * Set method for field dstSet	[vkhandle]<br>
 	 * Prototype: VkDescriptorSet  dstSet
 	 */ 
 	 public void dstSet(VkDescriptorSet dstSet){
@@ -199,7 +238,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstSet	[vkhandle]
+	 * get method for field dstSet	[vkhandle]<br>
 	 * Prototype: VkDescriptorSet  dstSet
 	 */ 
 	 public VkDescriptorSet dstSet(){
@@ -208,7 +247,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstBinding	
+	 * Set method for field dstBinding	[int]<br>
 	 * Prototype: uint32_t  dstBinding
 	 */ 
 	 public void dstBinding(int dstBinding){
@@ -217,7 +256,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstBinding	
+	 * get method for field dstBinding	[int]<br>
 	 * Prototype: uint32_t  dstBinding
 	 */ 
 	 public int dstBinding(){
@@ -226,7 +265,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstArrayElement	
+	 * Set method for field dstArrayElement	[int]<br>
 	 * Prototype: uint32_t  dstArrayElement
 	 */ 
 	 public void dstArrayElement(int dstArrayElement){
@@ -235,7 +274,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstArrayElement	
+	 * get method for field dstArrayElement	[int]<br>
 	 * Prototype: uint32_t  dstArrayElement
 	 */ 
 	 public int dstArrayElement(){
@@ -244,7 +283,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field descriptorCount	
+	 * Set method for field descriptorCount	[int]<br>
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 public void descriptorCount(int descriptorCount){
@@ -253,7 +292,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 }
 
 	/**
-	 * get method for field descriptorCount	
+	 * get method for field descriptorCount	[int]<br>
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 public int descriptorCount(){
@@ -262,11 +301,11 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -275,7 +314,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -284,7 +323,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -293,7 +332,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -302,7 +341,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field srcSet	[vkhandle]
+	 * native SET method for field srcSet	[vkhandle]<br>
 	 * Prototype: VkDescriptorSet  srcSet
 	 */ 
 	 private static native void srcSet0(ByteBuffer ptr, VkDescriptorSet _srcSet);/*
@@ -311,7 +350,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcSet	[vkhandle]
+	 * native GET method for field srcSet	[vkhandle]<br>
 	 * Prototype: VkDescriptorSet  srcSet
 	 */ 
 	 private static native VkDescriptorSet srcSet0(ByteBuffer ptr);/*
@@ -320,7 +359,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field srcBinding	
+	 * native SET method for field srcBinding	[int]<br>
 	 * Prototype: uint32_t  srcBinding
 	 */ 
 	 private static native void srcBinding0(ByteBuffer ptr, int _srcBinding);/*
@@ -329,7 +368,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcBinding	
+	 * native GET method for field srcBinding	[int]<br>
 	 * Prototype: uint32_t  srcBinding
 	 */ 
 	 private static native int srcBinding0(ByteBuffer ptr);/*
@@ -338,7 +377,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field srcArrayElement	
+	 * native SET method for field srcArrayElement	[int]<br>
 	 * Prototype: uint32_t  srcArrayElement
 	 */ 
 	 private static native void srcArrayElement0(ByteBuffer ptr, int _srcArrayElement);/*
@@ -347,7 +386,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcArrayElement	
+	 * native GET method for field srcArrayElement	[int]<br>
 	 * Prototype: uint32_t  srcArrayElement
 	 */ 
 	 private static native int srcArrayElement0(ByteBuffer ptr);/*
@@ -356,7 +395,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstSet	[vkhandle]
+	 * native SET method for field dstSet	[vkhandle]<br>
 	 * Prototype: VkDescriptorSet  dstSet
 	 */ 
 	 private static native void dstSet0(ByteBuffer ptr, VkDescriptorSet _dstSet);/*
@@ -365,7 +404,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstSet	[vkhandle]
+	 * native GET method for field dstSet	[vkhandle]<br>
 	 * Prototype: VkDescriptorSet  dstSet
 	 */ 
 	 private static native VkDescriptorSet dstSet0(ByteBuffer ptr);/*
@@ -374,7 +413,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstBinding	
+	 * native SET method for field dstBinding	[int]<br>
 	 * Prototype: uint32_t  dstBinding
 	 */ 
 	 private static native void dstBinding0(ByteBuffer ptr, int _dstBinding);/*
@@ -383,7 +422,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstBinding	
+	 * native GET method for field dstBinding	[int]<br>
 	 * Prototype: uint32_t  dstBinding
 	 */ 
 	 private static native int dstBinding0(ByteBuffer ptr);/*
@@ -392,7 +431,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstArrayElement	
+	 * native SET method for field dstArrayElement	[int]<br>
 	 * Prototype: uint32_t  dstArrayElement
 	 */ 
 	 private static native void dstArrayElement0(ByteBuffer ptr, int _dstArrayElement);/*
@@ -401,7 +440,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstArrayElement	
+	 * native GET method for field dstArrayElement	[int]<br>
 	 * Prototype: uint32_t  dstArrayElement
 	 */ 
 	 private static native int dstArrayElement0(ByteBuffer ptr);/*
@@ -410,7 +449,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field descriptorCount	
+	 * native SET method for field descriptorCount	[int]<br>
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 private static native void descriptorCount0(ByteBuffer ptr, int _descriptorCount);/*
@@ -419,7 +458,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	  */
 
 	/**
-	 * get method for field descriptorCount	
+	 * native GET method for field descriptorCount	[int]<br>
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 private static native int descriptorCount0(ByteBuffer ptr);/*

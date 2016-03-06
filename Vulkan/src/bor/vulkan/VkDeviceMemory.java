@@ -7,6 +7,6 @@ package bor.vulkan;
  * @author Alessandro Borges
  *
  */
-public interface VkDeviceMemory extends VkHandle {
+public interface VkDeviceMemory extends VkHandleInterface {
 
 }

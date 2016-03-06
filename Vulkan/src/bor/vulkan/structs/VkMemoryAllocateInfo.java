@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkMemoryAllocateInfo. 
  *  <h3>Prototype:</h3>
@@ -32,27 +33,31 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkMemoryAllocateInfo extends VkStruct {
-	/** TAG of this structure [144]  */
+	/** TAG of this structure [20]  */
 	 private static final String TAG = "VkMemoryAllocateInfo";
 
-	/** ID of this structure [144]  */
+	/** ID of this structure [20]  */
 	 public static final int TAG_ID = VKMEMORYALLOCATEINFO_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkDeviceSize 	allocationSize		 */ 
+	 *  VkDeviceSize 	allocationSize	[long]
+	 */ 
 	long 	allocationSize;
 
 	/**
-	 *  uint32_t 	memoryTypeIndex		 */ 
+	 *  uint32_t 	memoryTypeIndex	[int]
+	 */ 
 	int 	memoryTypeIndex;
 
 	/**
@@ -60,6 +65,23 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 */
 	public VkMemoryAllocateInfo(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkMemoryAllocateInfo(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkMemoryAllocateInfo(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -70,12 +92,24 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkMemoryAllocateInfo> createNullPointer(){
+	        P<VkMemoryAllocateInfo> p = new  P<VkMemoryAllocateInfo>(new VkMemoryAllocateInfo());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -84,7 +118,7 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -93,7 +127,7 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -102,7 +136,7 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -111,7 +145,7 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field allocationSize	
+	 * Set method for field allocationSize	[long]<br>
 	 * Prototype: VkDeviceSize  allocationSize
 	 */ 
 	 public void allocationSize(long allocationSize){
@@ -120,7 +154,7 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field allocationSize	
+	 * get method for field allocationSize	[long]<br>
 	 * Prototype: VkDeviceSize  allocationSize
 	 */ 
 	 public long allocationSize(){
@@ -129,7 +163,7 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field memoryTypeIndex	
+	 * Set method for field memoryTypeIndex	[int]<br>
 	 * Prototype: uint32_t  memoryTypeIndex
 	 */ 
 	 public void memoryTypeIndex(int memoryTypeIndex){
@@ -138,7 +172,7 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field memoryTypeIndex	
+	 * get method for field memoryTypeIndex	[int]<br>
 	 * Prototype: uint32_t  memoryTypeIndex
 	 */ 
 	 public int memoryTypeIndex(){
@@ -147,11 +181,11 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -160,7 +194,7 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -169,7 +203,7 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -178,7 +212,7 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -187,7 +221,7 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field allocationSize	
+	 * native SET method for field allocationSize	[long]<br>
 	 * Prototype: VkDeviceSize  allocationSize
 	 */ 
 	 private static native void allocationSize0(ByteBuffer ptr, long _allocationSize);/*
@@ -196,7 +230,7 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field allocationSize	
+	 * native GET method for field allocationSize	[long]<br>
 	 * Prototype: VkDeviceSize  allocationSize
 	 */ 
 	 private static native long allocationSize0(ByteBuffer ptr);/*
@@ -205,7 +239,7 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field memoryTypeIndex	
+	 * native SET method for field memoryTypeIndex	[int]<br>
 	 * Prototype: uint32_t  memoryTypeIndex
 	 */ 
 	 private static native void memoryTypeIndex0(ByteBuffer ptr, int _memoryTypeIndex);/*
@@ -214,7 +248,7 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field memoryTypeIndex	
+	 * native GET method for field memoryTypeIndex	[int]<br>
 	 * Prototype: uint32_t  memoryTypeIndex
 	 */ 
 	 private static native int memoryTypeIndex0(ByteBuffer ptr);/*

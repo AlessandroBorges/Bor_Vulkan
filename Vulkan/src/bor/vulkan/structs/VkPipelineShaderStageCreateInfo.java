@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPipelineShaderStageCreateInfo. 
  *  <h3>Prototype:</h3>
@@ -35,39 +36,46 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPipelineShaderStageCreateInfo extends VkStruct {
-	/** TAG of this structure [172]  */
+	/** TAG of this structure [48]  */
 	 private static final String TAG = "VkPipelineShaderStageCreateInfo";
 
-	/** ID of this structure [172]  */
+	/** ID of this structure [48]  */
 	 public static final int TAG_ID = VKPIPELINESHADERSTAGECREATEINFO_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkPipelineShaderStageCreateFlags 	flags		 */ 
+	 *  VkPipelineShaderStageCreateFlags 	flags	[int]
+	 */ 
 	int 	flags;
 
 	/**
-	 *  VkShaderStageFlagBits 	stage	[vkenum]	 */ 
+	 *  VkShaderStageFlagBits 	stage	[vkenum]
+	 */ 
 	VkShaderStageFlagBits 	stage;
 
 	/**
-	 *  VkShaderModule 	module	[vkhandle]	 */ 
+	 *  VkShaderModule 	module	[vkhandle]
+	 */ 
 	VkShaderModule 	module;
 
 	/**
-	 *  const char* 	pName		 */ 
+	 *  const char* 	pName	[string]
+	 */ 
 	String 	pName;
 
 	/**
-	 *  const VkSpecializationInfo* 	pSpecializationInfo		 */ 
+	 *  const VkSpecializationInfo* 	pSpecializationInfo	[p]
+	 */ 
 	P<VkSpecializationInfo>  	pSpecializationInfo;
 
 	/**
@@ -75,6 +83,23 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 */
 	public VkPipelineShaderStageCreateInfo(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkPipelineShaderStageCreateInfo(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkPipelineShaderStageCreateInfo(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -85,12 +110,24 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkPipelineShaderStageCreateInfo> createNullPointer(){
+	        P<VkPipelineShaderStageCreateInfo> p = new  P<VkPipelineShaderStageCreateInfo>(new VkPipelineShaderStageCreateInfo());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -99,7 +136,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -108,7 +145,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -117,7 +154,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -126,7 +163,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field flags	
+	 * Set method for field flags	[int]<br>
 	 * Prototype: VkPipelineShaderStageCreateFlags  flags
 	 */ 
 	 public void flags(int flags){
@@ -135,7 +172,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field flags	
+	 * get method for field flags	[int]<br>
 	 * Prototype: VkPipelineShaderStageCreateFlags  flags
 	 */ 
 	 public int flags(){
@@ -144,7 +181,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field stage	[vkenum]
+	 * Set method for field stage	[vkenum]<br>
 	 * Prototype: VkShaderStageFlagBits  stage
 	 */ 
 	 public void stage(VkShaderStageFlagBits stage){
@@ -153,7 +190,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field stage	[vkenum]
+	 * get method for field stage	[vkenum]<br>
 	 * Prototype: VkShaderStageFlagBits  stage
 	 */ 
 	 public VkShaderStageFlagBits stage(){
@@ -162,7 +199,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field module	[vkhandle]
+	 * Set method for field module	[vkhandle]<br>
 	 * Prototype: VkShaderModule  module
 	 */ 
 	 public void module(VkShaderModule module){
@@ -171,7 +208,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field module	[vkhandle]
+	 * get method for field module	[vkhandle]<br>
 	 * Prototype: VkShaderModule  module
 	 */ 
 	 public VkShaderModule module(){
@@ -180,7 +217,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pName	
+	 * Set method for field pName	[string]<br>
 	 * Prototype: const char*  pName
 	 */ 
 	 public void pName(String pName){
@@ -189,7 +226,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pName	
+	 * get method for field pName	[string]<br>
 	 * Prototype: const char*  pName
 	 */ 
 	 public String pName(){
@@ -198,7 +235,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pSpecializationInfo	
+	 * Set method for field pSpecializationInfo	[p]<br>
 	 * Prototype: const VkSpecializationInfo*  pSpecializationInfo
 	 */ 
 	 public void pSpecializationInfo(P<VkSpecializationInfo>  pSpecializationInfo){
@@ -207,7 +244,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pSpecializationInfo	
+	 * get method for field pSpecializationInfo	[p]<br>
 	 * Prototype: const VkSpecializationInfo*  pSpecializationInfo
 	 */ 
 	 public P<VkSpecializationInfo>  pSpecializationInfo(){
@@ -216,11 +253,11 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -229,7 +266,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -238,7 +275,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -247,7 +284,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -256,7 +293,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field flags	
+	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkPipelineShaderStageCreateFlags  flags
 	 */ 
 	 private static native void flags0(ByteBuffer ptr, int _flags);/*
@@ -265,7 +302,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field flags	
+	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkPipelineShaderStageCreateFlags  flags
 	 */ 
 	 private static native int flags0(ByteBuffer ptr);/*
@@ -274,7 +311,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field stage	[vkenum]
+	 * native SET method for field stage	[vkenum]<br>
 	 * Prototype: VkShaderStageFlagBits  stage
 	 */ 
 	 private static native void stage0(ByteBuffer ptr, VkShaderStageFlagBits _stage);/*
@@ -283,7 +320,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field stage	[vkenum]
+	 * native GET method for field stage	[vkenum]<br>
 	 * Prototype: VkShaderStageFlagBits  stage
 	 */ 
 	 private static native VkShaderStageFlagBits stage0(ByteBuffer ptr);/*
@@ -292,7 +329,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field module	[vkhandle]
+	 * native SET method for field module	[vkhandle]<br>
 	 * Prototype: VkShaderModule  module
 	 */ 
 	 private static native void module0(ByteBuffer ptr, VkShaderModule _module);/*
@@ -301,7 +338,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field module	[vkhandle]
+	 * native GET method for field module	[vkhandle]<br>
 	 * Prototype: VkShaderModule  module
 	 */ 
 	 private static native VkShaderModule module0(ByteBuffer ptr);/*
@@ -310,7 +347,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pName	
+	 * native SET method for field pName	[string]<br>
 	 * Prototype: const char*  pName
 	 */ 
 	 private static native void pName0(ByteBuffer ptr, String _pName);/*
@@ -319,7 +356,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pName	
+	 * native GET method for field pName	[string]<br>
 	 * Prototype: const char*  pName
 	 */ 
 	 private static native String pName0(ByteBuffer ptr);/*
@@ -327,7 +364,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 		  return (jstring)(env->NewStringUTF(_obj.const char*);	 */
 
 	/**
-	 * native Set method for field pSpecializationInfo	
+	 * native SET method for field pSpecializationInfo	[p]<br>
 	 * Prototype: const VkSpecializationInfo*  pSpecializationInfo
 	 */ 
 	 private static native void pSpecializationInfo0(ByteBuffer ptr, P<VkSpecializationInfo>  _pSpecializationInfo);/*
@@ -336,7 +373,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pSpecializationInfo	
+	 * native GET method for field pSpecializationInfo	[p]<br>
 	 * Prototype: const VkSpecializationInfo*  pSpecializationInfo
 	 */ 
 	 private static native P<VkSpecializationInfo>  pSpecializationInfo0(ByteBuffer ptr);/*

@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkBufferMemoryBarrier. 
  *  <h3>Prototype:</h3>
@@ -37,47 +38,56 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkBufferMemoryBarrier extends VkStruct {
-	/** TAG of this structure [224]  */
+	/** TAG of this structure [100]  */
 	 private static final String TAG = "VkBufferMemoryBarrier";
 
-	/** ID of this structure [224]  */
+	/** ID of this structure [100]  */
 	 public static final int TAG_ID = VKBUFFERMEMORYBARRIER_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkAccessFlags 	srcAccessMask		 */ 
+	 *  VkAccessFlags 	srcAccessMask	[int]
+	 */ 
 	int 	srcAccessMask;
 
 	/**
-	 *  VkAccessFlags 	dstAccessMask		 */ 
+	 *  VkAccessFlags 	dstAccessMask	[int]
+	 */ 
 	int 	dstAccessMask;
 
 	/**
-	 *  uint32_t 	srcQueueFamilyIndex		 */ 
+	 *  uint32_t 	srcQueueFamilyIndex	[int]
+	 */ 
 	int 	srcQueueFamilyIndex;
 
 	/**
-	 *  uint32_t 	dstQueueFamilyIndex		 */ 
+	 *  uint32_t 	dstQueueFamilyIndex	[int]
+	 */ 
 	int 	dstQueueFamilyIndex;
 
 	/**
-	 *  VkBuffer 	buffer	[vkhandle]	 */ 
+	 *  VkBuffer 	buffer	[vkhandle]
+	 */ 
 	VkBuffer 	buffer;
 
 	/**
-	 *  VkDeviceSize 	offset		 */ 
+	 *  VkDeviceSize 	offset	[long]
+	 */ 
 	long 	offset;
 
 	/**
-	 *  VkDeviceSize 	size		 */ 
+	 *  VkDeviceSize 	size	[long]
+	 */ 
 	long 	size;
 
 	/**
@@ -85,6 +95,23 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 */
 	public VkBufferMemoryBarrier(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkBufferMemoryBarrier(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkBufferMemoryBarrier(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -95,12 +122,24 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkBufferMemoryBarrier> createNullPointer(){
+	        P<VkBufferMemoryBarrier> p = new  P<VkBufferMemoryBarrier>(new VkBufferMemoryBarrier());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -109,7 +148,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -118,7 +157,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -127,7 +166,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -136,7 +175,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field srcAccessMask	
+	 * Set method for field srcAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 public void srcAccessMask(int srcAccessMask){
@@ -145,7 +184,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcAccessMask	
+	 * get method for field srcAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 public int srcAccessMask(){
@@ -154,7 +193,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstAccessMask	
+	 * Set method for field dstAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 public void dstAccessMask(int dstAccessMask){
@@ -163,7 +202,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstAccessMask	
+	 * get method for field dstAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 public int dstAccessMask(){
@@ -172,7 +211,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field srcQueueFamilyIndex	
+	 * Set method for field srcQueueFamilyIndex	[int]<br>
 	 * Prototype: uint32_t  srcQueueFamilyIndex
 	 */ 
 	 public void srcQueueFamilyIndex(int srcQueueFamilyIndex){
@@ -181,7 +220,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcQueueFamilyIndex	
+	 * get method for field srcQueueFamilyIndex	[int]<br>
 	 * Prototype: uint32_t  srcQueueFamilyIndex
 	 */ 
 	 public int srcQueueFamilyIndex(){
@@ -190,7 +229,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstQueueFamilyIndex	
+	 * Set method for field dstQueueFamilyIndex	[int]<br>
 	 * Prototype: uint32_t  dstQueueFamilyIndex
 	 */ 
 	 public void dstQueueFamilyIndex(int dstQueueFamilyIndex){
@@ -199,7 +238,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstQueueFamilyIndex	
+	 * get method for field dstQueueFamilyIndex	[int]<br>
 	 * Prototype: uint32_t  dstQueueFamilyIndex
 	 */ 
 	 public int dstQueueFamilyIndex(){
@@ -208,7 +247,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field buffer	[vkhandle]
+	 * Set method for field buffer	[vkhandle]<br>
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 public void buffer(VkBuffer buffer){
@@ -217,7 +256,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * get method for field buffer	[vkhandle]
+	 * get method for field buffer	[vkhandle]<br>
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 public VkBuffer buffer(){
@@ -226,7 +265,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field offset	
+	 * Set method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 public void offset(long offset){
@@ -235,7 +274,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * get method for field offset	
+	 * get method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 public long offset(){
@@ -244,7 +283,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field size	
+	 * Set method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public void size(long size){
@@ -253,7 +292,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * get method for field size	
+	 * get method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public long size(){
@@ -262,11 +301,11 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -275,7 +314,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -284,7 +323,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -293,7 +332,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -302,7 +341,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field srcAccessMask	
+	 * native SET method for field srcAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 private static native void srcAccessMask0(ByteBuffer ptr, int _srcAccessMask);/*
@@ -311,7 +350,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcAccessMask	
+	 * native GET method for field srcAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 private static native int srcAccessMask0(ByteBuffer ptr);/*
@@ -320,7 +359,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstAccessMask	
+	 * native SET method for field dstAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 private static native void dstAccessMask0(ByteBuffer ptr, int _dstAccessMask);/*
@@ -329,7 +368,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstAccessMask	
+	 * native GET method for field dstAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 private static native int dstAccessMask0(ByteBuffer ptr);/*
@@ -338,7 +377,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field srcQueueFamilyIndex	
+	 * native SET method for field srcQueueFamilyIndex	[int]<br>
 	 * Prototype: uint32_t  srcQueueFamilyIndex
 	 */ 
 	 private static native void srcQueueFamilyIndex0(ByteBuffer ptr, int _srcQueueFamilyIndex);/*
@@ -347,7 +386,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcQueueFamilyIndex	
+	 * native GET method for field srcQueueFamilyIndex	[int]<br>
 	 * Prototype: uint32_t  srcQueueFamilyIndex
 	 */ 
 	 private static native int srcQueueFamilyIndex0(ByteBuffer ptr);/*
@@ -356,7 +395,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstQueueFamilyIndex	
+	 * native SET method for field dstQueueFamilyIndex	[int]<br>
 	 * Prototype: uint32_t  dstQueueFamilyIndex
 	 */ 
 	 private static native void dstQueueFamilyIndex0(ByteBuffer ptr, int _dstQueueFamilyIndex);/*
@@ -365,7 +404,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstQueueFamilyIndex	
+	 * native GET method for field dstQueueFamilyIndex	[int]<br>
 	 * Prototype: uint32_t  dstQueueFamilyIndex
 	 */ 
 	 private static native int dstQueueFamilyIndex0(ByteBuffer ptr);/*
@@ -374,7 +413,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field buffer	[vkhandle]
+	 * native SET method for field buffer	[vkhandle]<br>
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 private static native void buffer0(ByteBuffer ptr, VkBuffer _buffer);/*
@@ -383,7 +422,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * get method for field buffer	[vkhandle]
+	 * native GET method for field buffer	[vkhandle]<br>
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 private static native VkBuffer buffer0(ByteBuffer ptr);/*
@@ -392,7 +431,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field offset	
+	 * native SET method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 private static native void offset0(ByteBuffer ptr, long _offset);/*
@@ -401,7 +440,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * get method for field offset	
+	 * native GET method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 private static native long offset0(ByteBuffer ptr);/*
@@ -410,7 +449,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field size	
+	 * native SET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native void size0(ByteBuffer ptr, long _size);/*
@@ -419,7 +458,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * get method for field size	
+	 * native GET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long size0(ByteBuffer ptr);/*

@@ -1,3 +1,5 @@
+VkClearColorValue
+VkClearValue
 VkAllocationCallbacks
 VkAndroidSurfaceCreateInfoKHR
 VkApplicationInfo

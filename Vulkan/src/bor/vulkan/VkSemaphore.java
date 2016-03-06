@@ -7,6 +7,6 @@ package bor.vulkan;
  * @author Alessandro Borges
  *
  */
-public interface VkSemaphore extends VkHandle {
+public interface VkSemaphore extends VkHandleInterface {
 
 }

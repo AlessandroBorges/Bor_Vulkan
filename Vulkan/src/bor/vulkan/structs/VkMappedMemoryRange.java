@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkMappedMemoryRange. 
  *  <h3>Prototype:</h3>
@@ -33,31 +34,36 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkMappedMemoryRange extends VkStruct {
-	/** TAG of this structure [145]  */
+	/** TAG of this structure [21]  */
 	 private static final String TAG = "VkMappedMemoryRange";
 
-	/** ID of this structure [145]  */
+	/** ID of this structure [21]  */
 	 public static final int TAG_ID = VKMAPPEDMEMORYRANGE_ID;
 
 	 // fields //
 	/**
-	 *  VkStructureType 	sType	[vkenum]	 */ 
+	 *  VkStructureType 	sType	[vkenum]
+	 */ 
 	VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext		 */ 
+	 *  const void* 	pNext	[p]
+	 */ 
 	P<VkObject> 	pNext;
 
 	/**
-	 *  VkDeviceMemory 	memory	[vkhandle]	 */ 
+	 *  VkDeviceMemory 	memory	[vkhandle]
+	 */ 
 	VkDeviceMemory 	memory;
 
 	/**
-	 *  VkDeviceSize 	offset		 */ 
+	 *  VkDeviceSize 	offset	[long]
+	 */ 
 	long 	offset;
 
 	/**
-	 *  VkDeviceSize 	size		 */ 
+	 *  VkDeviceSize 	size	[long]
+	 */ 
 	long 	size;
 
 	/**
@@ -65,6 +71,23 @@ public class VkMappedMemoryRange extends VkStruct {
 	 */
 	public VkMappedMemoryRange(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkMappedMemoryRange(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkMappedMemoryRange(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -75,12 +98,24 @@ public class VkMappedMemoryRange extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkMappedMemoryRange> createNullPointer(){
+	        P<VkMappedMemoryRange> p = new  P<VkMappedMemoryRange>(new VkMappedMemoryRange());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field sType	[vkenum]
+	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public void sType(VkStructureType sType){
@@ -89,7 +124,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
@@ -98,7 +133,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pNext	
+	 * Set method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public void pNext(P<VkObject> pNext){
@@ -107,7 +142,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pNext	
+	 * get method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 public P<VkObject> pNext(){
@@ -116,7 +151,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field memory	[vkhandle]
+	 * Set method for field memory	[vkhandle]<br>
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
 	 public void memory(VkDeviceMemory memory){
@@ -125,7 +160,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	 }
 
 	/**
-	 * get method for field memory	[vkhandle]
+	 * get method for field memory	[vkhandle]<br>
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
 	 public VkDeviceMemory memory(){
@@ -134,7 +169,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field offset	
+	 * Set method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 public void offset(long offset){
@@ -143,7 +178,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	 }
 
 	/**
-	 * get method for field offset	
+	 * get method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 public long offset(){
@@ -152,7 +187,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field size	
+	 * Set method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public void size(long size){
@@ -161,7 +196,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	 }
 
 	/**
-	 * get method for field size	
+	 * get method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public long size(){
@@ -170,11 +205,11 @@ public class VkMappedMemoryRange extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field sType	[vkenum]
+	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
@@ -183,7 +218,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	  */
 
 	/**
-	 * get method for field sType	[vkenum]
+	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native VkStructureType sType0(ByteBuffer ptr);/*
@@ -192,7 +227,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field pNext	
+	 * native SET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
@@ -201,7 +236,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	  */
 
 	/**
-	 * get method for field pNext	
+	 * native GET method for field pNext	[p]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
@@ -210,7 +245,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field memory	[vkhandle]
+	 * native SET method for field memory	[vkhandle]<br>
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
 	 private static native void memory0(ByteBuffer ptr, VkDeviceMemory _memory);/*
@@ -219,7 +254,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	  */
 
 	/**
-	 * get method for field memory	[vkhandle]
+	 * native GET method for field memory	[vkhandle]<br>
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
 	 private static native VkDeviceMemory memory0(ByteBuffer ptr);/*
@@ -228,7 +263,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field offset	
+	 * native SET method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 private static native void offset0(ByteBuffer ptr, long _offset);/*
@@ -237,7 +272,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	  */
 
 	/**
-	 * get method for field offset	
+	 * native GET method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 private static native long offset0(ByteBuffer ptr);/*
@@ -246,7 +281,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field size	
+	 * native SET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native void size0(ByteBuffer ptr, long _size);/*
@@ -255,7 +290,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	  */
 
 	/**
-	 * get method for field size	
+	 * native GET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long size0(ByteBuffer ptr);/*

@@ -16,6 +16,7 @@ import java.nio.ByteBuffer;
 
 
 /**
+ *  Project Bor-Vulkan 
  *  Class for Java-Vulkan integration 
  *  This class is a Java front end for struct VkPipelineColorBlendAttachmentState. 
  *  <h3>Prototype:</h3>
@@ -36,43 +37,51 @@ import java.nio.ByteBuffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPipelineColorBlendAttachmentState extends VkStruct {
-	/** TAG of this structure [187]  */
+	/** TAG of this structure [63]  */
 	 private static final String TAG = "VkPipelineColorBlendAttachmentState";
 
-	/** ID of this structure [187]  */
+	/** ID of this structure [63]  */
 	 public static final int TAG_ID = VKPIPELINECOLORBLENDATTACHMENTSTATE_ID;
 
 	 // fields //
 	/**
-	 *  VkBool32 	blendEnable		 */ 
+	 *  VkBool32 	blendEnable	[boolean]
+	 */ 
 	boolean 	blendEnable;
 
 	/**
-	 *  VkBlendFactor 	srcColorBlendFactor	[vkenum]	 */ 
+	 *  VkBlendFactor 	srcColorBlendFactor	[vkenum]
+	 */ 
 	VkBlendFactor 	srcColorBlendFactor;
 
 	/**
-	 *  VkBlendFactor 	dstColorBlendFactor	[vkenum]	 */ 
+	 *  VkBlendFactor 	dstColorBlendFactor	[vkenum]
+	 */ 
 	VkBlendFactor 	dstColorBlendFactor;
 
 	/**
-	 *  VkBlendOp 	colorBlendOp	[vkenum]	 */ 
+	 *  VkBlendOp 	colorBlendOp	[vkenum]
+	 */ 
 	VkBlendOp 	colorBlendOp;
 
 	/**
-	 *  VkBlendFactor 	srcAlphaBlendFactor	[vkenum]	 */ 
+	 *  VkBlendFactor 	srcAlphaBlendFactor	[vkenum]
+	 */ 
 	VkBlendFactor 	srcAlphaBlendFactor;
 
 	/**
-	 *  VkBlendFactor 	dstAlphaBlendFactor	[vkenum]	 */ 
+	 *  VkBlendFactor 	dstAlphaBlendFactor	[vkenum]
+	 */ 
 	VkBlendFactor 	dstAlphaBlendFactor;
 
 	/**
-	 *  VkBlendOp 	alphaBlendOp	[vkenum]	 */ 
+	 *  VkBlendOp 	alphaBlendOp	[vkenum]
+	 */ 
 	VkBlendOp 	alphaBlendOp;
 
 	/**
-	 *  VkColorComponentFlags 	colorWriteMask		 */ 
+	 *  VkColorComponentFlags 	colorWriteMask	[int]
+	 */ 
 	int 	colorWriteMask;
 
 	/**
@@ -80,6 +89,23 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 */
 	public VkPipelineColorBlendAttachmentState(){ 
 		 super(sizeOf()); 
+	 }
+
+	/**
+	 * Ctor with ByteBuffer
+	 * @param nativeBuffer - Direct bytebuffer for this struct 
+	 */
+	public VkPipelineColorBlendAttachmentState(ByteBuffer nativeBuffer){ 
+		 super(nativeBuffer); 
+	 }
+
+	/**
+	 * Ctor with Address and memSize
+	 * @param address - native address 
+	 * @param memSize - buffer size 
+	 */
+	 public VkPipelineColorBlendAttachmentState(long address, int memSize){ 
+		 super(address, memSize); 
 	 }
 
 	/** 
@@ -90,12 +116,24 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	}
 
 
+	/**
+	 * Create a pointer P to contain a instance of this,
+	 * with clean native pointer.<br>
+	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
+	 * native pointer.
+	 * @return An instance of P for this VkStruct with null pointer
+	 */
+	 public static P<VkPipelineColorBlendAttachmentState> createNullPointer(){
+	        P<VkPipelineColorBlendAttachmentState> p = new  P<VkPipelineColorBlendAttachmentState>(new VkPipelineColorBlendAttachmentState());
+	        return p;
+	    }
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
 	/**
-	 * Set method for field blendEnable	
+	 * Set method for field blendEnable	[boolean]<br>
 	 * Prototype: VkBool32  blendEnable
 	 */ 
 	 public void blendEnable(boolean blendEnable){
@@ -104,7 +142,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 }
 
 	/**
-	 * get method for field blendEnable	
+	 * get method for field blendEnable	[boolean]<br>
 	 * Prototype: VkBool32  blendEnable
 	 */ 
 	 public boolean blendEnable(){
@@ -113,7 +151,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field srcColorBlendFactor	[vkenum]
+	 * Set method for field srcColorBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  srcColorBlendFactor
 	 */ 
 	 public void srcColorBlendFactor(VkBlendFactor srcColorBlendFactor){
@@ -122,7 +160,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcColorBlendFactor	[vkenum]
+	 * get method for field srcColorBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  srcColorBlendFactor
 	 */ 
 	 public VkBlendFactor srcColorBlendFactor(){
@@ -131,7 +169,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstColorBlendFactor	[vkenum]
+	 * Set method for field dstColorBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  dstColorBlendFactor
 	 */ 
 	 public void dstColorBlendFactor(VkBlendFactor dstColorBlendFactor){
@@ -140,7 +178,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstColorBlendFactor	[vkenum]
+	 * get method for field dstColorBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  dstColorBlendFactor
 	 */ 
 	 public VkBlendFactor dstColorBlendFactor(){
@@ -149,7 +187,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field colorBlendOp	[vkenum]
+	 * Set method for field colorBlendOp	[vkenum]<br>
 	 * Prototype: VkBlendOp  colorBlendOp
 	 */ 
 	 public void colorBlendOp(VkBlendOp colorBlendOp){
@@ -158,7 +196,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 }
 
 	/**
-	 * get method for field colorBlendOp	[vkenum]
+	 * get method for field colorBlendOp	[vkenum]<br>
 	 * Prototype: VkBlendOp  colorBlendOp
 	 */ 
 	 public VkBlendOp colorBlendOp(){
@@ -167,7 +205,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field srcAlphaBlendFactor	[vkenum]
+	 * Set method for field srcAlphaBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  srcAlphaBlendFactor
 	 */ 
 	 public void srcAlphaBlendFactor(VkBlendFactor srcAlphaBlendFactor){
@@ -176,7 +214,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 }
 
 	/**
-	 * get method for field srcAlphaBlendFactor	[vkenum]
+	 * get method for field srcAlphaBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  srcAlphaBlendFactor
 	 */ 
 	 public VkBlendFactor srcAlphaBlendFactor(){
@@ -185,7 +223,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstAlphaBlendFactor	[vkenum]
+	 * Set method for field dstAlphaBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  dstAlphaBlendFactor
 	 */ 
 	 public void dstAlphaBlendFactor(VkBlendFactor dstAlphaBlendFactor){
@@ -194,7 +232,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 }
 
 	/**
-	 * get method for field dstAlphaBlendFactor	[vkenum]
+	 * get method for field dstAlphaBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  dstAlphaBlendFactor
 	 */ 
 	 public VkBlendFactor dstAlphaBlendFactor(){
@@ -203,7 +241,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field alphaBlendOp	[vkenum]
+	 * Set method for field alphaBlendOp	[vkenum]<br>
 	 * Prototype: VkBlendOp  alphaBlendOp
 	 */ 
 	 public void alphaBlendOp(VkBlendOp alphaBlendOp){
@@ -212,7 +250,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 }
 
 	/**
-	 * get method for field alphaBlendOp	[vkenum]
+	 * get method for field alphaBlendOp	[vkenum]<br>
 	 * Prototype: VkBlendOp  alphaBlendOp
 	 */ 
 	 public VkBlendOp alphaBlendOp(){
@@ -221,7 +259,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field colorWriteMask	
+	 * Set method for field colorWriteMask	[int]<br>
 	 * Prototype: VkColorComponentFlags  colorWriteMask
 	 */ 
 	 public void colorWriteMask(int colorWriteMask){
@@ -230,7 +268,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 }
 
 	/**
-	 * get method for field colorWriteMask	
+	 * get method for field colorWriteMask	[int]<br>
 	 * Prototype: VkColorComponentFlags  colorWriteMask
 	 */ 
 	 public int colorWriteMask(){
@@ -239,11 +277,11 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 }
 
 
-	 // ////////////////////////////////
-	 // native SETTERS & GETTERS //
-	 // ////////////////////////////////
+	 //////////////////////////////////
+	 // native SETTERS & GETTERS    //
+	 /////////////////////////////////
 	/**
-	 * native Set method for field blendEnable	
+	 * native SET method for field blendEnable	[boolean]<br>
 	 * Prototype: VkBool32  blendEnable
 	 */ 
 	 private static native void blendEnable0(ByteBuffer ptr, boolean _blendEnable);/*
@@ -252,7 +290,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	  */
 
 	/**
-	 * get method for field blendEnable	
+	 * native GET method for field blendEnable	[boolean]<br>
 	 * Prototype: VkBool32  blendEnable
 	 */ 
 	 private static native boolean blendEnable0(ByteBuffer ptr);/*
@@ -261,7 +299,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field srcColorBlendFactor	[vkenum]
+	 * native SET method for field srcColorBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  srcColorBlendFactor
 	 */ 
 	 private static native void srcColorBlendFactor0(ByteBuffer ptr, VkBlendFactor _srcColorBlendFactor);/*
@@ -270,7 +308,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcColorBlendFactor	[vkenum]
+	 * native GET method for field srcColorBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  srcColorBlendFactor
 	 */ 
 	 private static native VkBlendFactor srcColorBlendFactor0(ByteBuffer ptr);/*
@@ -279,7 +317,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstColorBlendFactor	[vkenum]
+	 * native SET method for field dstColorBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  dstColorBlendFactor
 	 */ 
 	 private static native void dstColorBlendFactor0(ByteBuffer ptr, VkBlendFactor _dstColorBlendFactor);/*
@@ -288,7 +326,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstColorBlendFactor	[vkenum]
+	 * native GET method for field dstColorBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  dstColorBlendFactor
 	 */ 
 	 private static native VkBlendFactor dstColorBlendFactor0(ByteBuffer ptr);/*
@@ -297,7 +335,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field colorBlendOp	[vkenum]
+	 * native SET method for field colorBlendOp	[vkenum]<br>
 	 * Prototype: VkBlendOp  colorBlendOp
 	 */ 
 	 private static native void colorBlendOp0(ByteBuffer ptr, VkBlendOp _colorBlendOp);/*
@@ -306,7 +344,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	  */
 
 	/**
-	 * get method for field colorBlendOp	[vkenum]
+	 * native GET method for field colorBlendOp	[vkenum]<br>
 	 * Prototype: VkBlendOp  colorBlendOp
 	 */ 
 	 private static native VkBlendOp colorBlendOp0(ByteBuffer ptr);/*
@@ -315,7 +353,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field srcAlphaBlendFactor	[vkenum]
+	 * native SET method for field srcAlphaBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  srcAlphaBlendFactor
 	 */ 
 	 private static native void srcAlphaBlendFactor0(ByteBuffer ptr, VkBlendFactor _srcAlphaBlendFactor);/*
@@ -324,7 +362,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	  */
 
 	/**
-	 * get method for field srcAlphaBlendFactor	[vkenum]
+	 * native GET method for field srcAlphaBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  srcAlphaBlendFactor
 	 */ 
 	 private static native VkBlendFactor srcAlphaBlendFactor0(ByteBuffer ptr);/*
@@ -333,7 +371,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field dstAlphaBlendFactor	[vkenum]
+	 * native SET method for field dstAlphaBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  dstAlphaBlendFactor
 	 */ 
 	 private static native void dstAlphaBlendFactor0(ByteBuffer ptr, VkBlendFactor _dstAlphaBlendFactor);/*
@@ -342,7 +380,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	  */
 
 	/**
-	 * get method for field dstAlphaBlendFactor	[vkenum]
+	 * native GET method for field dstAlphaBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  dstAlphaBlendFactor
 	 */ 
 	 private static native VkBlendFactor dstAlphaBlendFactor0(ByteBuffer ptr);/*
@@ -351,7 +389,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field alphaBlendOp	[vkenum]
+	 * native SET method for field alphaBlendOp	[vkenum]<br>
 	 * Prototype: VkBlendOp  alphaBlendOp
 	 */ 
 	 private static native void alphaBlendOp0(ByteBuffer ptr, VkBlendOp _alphaBlendOp);/*
@@ -360,7 +398,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	  */
 
 	/**
-	 * get method for field alphaBlendOp	[vkenum]
+	 * native GET method for field alphaBlendOp	[vkenum]<br>
 	 * Prototype: VkBlendOp  alphaBlendOp
 	 */ 
 	 private static native VkBlendOp alphaBlendOp0(ByteBuffer ptr);/*
@@ -369,7 +407,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 */
 
 	/**
-	 * native Set method for field colorWriteMask	
+	 * native SET method for field colorWriteMask	[int]<br>
 	 * Prototype: VkColorComponentFlags  colorWriteMask
 	 */ 
 	 private static native void colorWriteMask0(ByteBuffer ptr, int _colorWriteMask);/*
@@ -378,7 +416,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	  */
 
 	/**
-	 * get method for field colorWriteMask	
+	 * native GET method for field colorWriteMask	[int]<br>
 	 * Prototype: VkColorComponentFlags  colorWriteMask
 	 */ 
 	 private static native int colorWriteMask0(ByteBuffer ptr);/*

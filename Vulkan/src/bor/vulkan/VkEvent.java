@@ -7,6 +7,6 @@ package bor.vulkan;
  * @author Alessandro Borges
  *
  */
-public interface VkEvent extends VkHandle {
+public interface VkEvent extends VkHandleInterface {
 
 }

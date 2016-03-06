@@ -40,7 +40,8 @@ public class StructInfo {
     private static String MARK = "#MARK#";
     private static String PROTO = "#PROTO#";
     private static String DISCLAIMER = "\n"
-                                          + "/**\n"
+                                           + "/**\n"
+                                           + " *  Project Bor-Vulkan \n"
                                            + " *  Class for Java-Vulkan integration \n"
                                            + " *  " + MARK +" \n" 
                                            + " *  <h3>Prototype:</h3>"
@@ -76,6 +77,7 @@ public class StructInfo {
     
     /**
      * Generate Java Source code
+     *   
      * @param pkg
      * @return
      */
@@ -137,7 +139,7 @@ public class StructInfo {
             // Comment 
            output += tab + "/**\n"
                          + "\t *  " + cType + " \t" + field + "\t"+ typeOut
-                         + "\t */ \n";
+                         + "\n\t */ \n";
            
            if(commentOut)
                output += "   // ";
@@ -151,6 +153,20 @@ public class StructInfo {
         /////////////////////////////////////////////
         output += "\t/**\n\t * Ctor\n\t */\n";
         output += "\tpublic " + name + "(){ \n\t\t super(sizeOf()); \n\t }\n\n";
+        
+        output += "\t/**\n\t * Ctor with ByteBuffer\n"
+                + "\t * @param nativeBuffer - Direct bytebuffer for this struct \n"
+                + "\t */\n";
+        output += "\tpublic " + name + "(ByteBuffer nativeBuffer){ \n"
+                + "\t\t super(nativeBuffer); \n\t }\n\n";
+        
+        output += "\t/**\n\t * Ctor with Address and memSize\n"
+                + "\t * @param address - native address \n"
+                + "\t * @param memSize - buffer size \n"
+                + "\t */\n";
+        output += "\t public " + name + "(long address, int memSize){ \n"
+                + "\t\t super(address, memSize); \n"
+                + "\t }\n\n";
 
         //////////////////////////////////////////////
         //// SizeOf
@@ -158,6 +174,21 @@ public class StructInfo {
         output += "\t/** \n\t * Method to get native size of this structure \n\t */\n";
         output += "\t public static int sizeOf(){ \n\t\t return sizeOf(TAG_ID); \n\t}\n\n"; 
 
+        //////////////////////////////////////////////
+        //// static create createNullPointer 
+        /////////////////////////////////////////////
+      
+        output += "\n\t/**"
+                + "\n\t * Create a pointer P to contain a instance of this,"
+                + "\n\t * with clean native pointer.<br>"
+                + "\n\t * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new "
+                + "\n\t * native pointer."                
+                + "\n\t * @return An instance of P for this VkStruct with null pointer"
+                + "\n\t */"
+                + "\n\t public static P<"+name+"> createNullPointer(){"                
+                + "\n\t        P<"+name+"> p = new  P<"+name+">(new "+name+"());"
+                + "\n\t        return p;"
+                + "\n\t    }\n";
         
         
         ////////////////////////////////////////////////
@@ -176,7 +207,7 @@ public class StructInfo {
             
             
             // Comment 
-           output += "\t/**\n\t * Set method for field " + field + "\t" + typeOut +
+           output += "\t/**\n\t * Set method for field " + field + "\t" + typeOut + "<br>" +
                           "\n\t * Prototype: " + cType + "  " + field + 
                           "\n\t */ \n";
            
@@ -192,7 +223,7 @@ public class StructInfo {
            // GET
            String getName = field;//"get" + upperCaseField(field);
            //comment
-           output += "\t/**\n\t * get method for field " + field + "\t" + typeOut +
+           output += "\t/**\n\t * get method for field " + field + "\t" + typeOut +  "<br>" +
                       "\n\t * Prototype: " + cType + "  " + field + 
                       "\n\t */ \n";
            
@@ -223,7 +254,7 @@ public class StructInfo {
             String typeOut = type==CLASS_TYPE.OTHER ? "" : "[" + type.name().toLowerCase() + "]";
             
             // Comment 
-           output += "\t/**\n\t * native SET method for field " + field +  "\t" + typeOut +
+           output += "\t/**\n\t * native SET method for field " + field +  "\t" + typeOut +  "<br>" +
                           "\n\t * Prototype: " + cType + "  " + field + 
                           "\n\t */ \n";
            
@@ -238,7 +269,7 @@ public class StructInfo {
            // GET
            String getName = field;//"get" + upperCaseField(field);
            //comment
-           output += "\t/**\n\t * native GET method for field " + field +  "\t" + typeOut +
+           output += "\t/**\n\t * native GET method for field " + field +  "\t" + typeOut +  "<br>" +
                       "\n\t * Prototype: " + cType + "  " + field + 
                       "\n\t */ \n";
            
@@ -321,8 +352,12 @@ public class StructInfo {
         
         
         for (String line : source) {
-            if(line.contains(" struct ")){
-                name = line.replace("struct","").replace("typedef", "").replace("{", "").trim();
+            if(line.contains(" struct ") || line.contains(" union ")){
+                name = line.replace("struct","")
+                       .replace("union", "")
+                       .replace("typedef", "")
+                       .replace("{", "")
+                       .trim();
                 break;
             }
         }
