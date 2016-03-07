@@ -43,46 +43,51 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	/** ID of this structure [64]  */
 	 public static final int TAG_ID = VKPIPELINECOLORBLENDSTATECREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkPipelineColorBlendStateCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineColorBlendStateCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  VkBool32 	logicOpEnable	[boolean]
 	 */ 
-	boolean 	logicOpEnable;
+	 boolean 	logicOpEnable;
 
 	/**
 	 *  VkLogicOp 	logicOp	[vkenum]
 	 */ 
-	VkLogicOp 	logicOp;
+	 VkLogicOp 	logicOp;
 
 	/**
 	 *  uint32_t 	attachmentCount	[int]
 	 */ 
-	int 	attachmentCount;
+	 int 	attachmentCount;
 
 	/**
 	 *  const VkPipelineColorBlendAttachmentState* 	pAttachments	[p]
 	 */ 
-	P<VkPipelineColorBlendAttachmentState>  	pAttachments;
+	 P<VkPipelineColorBlendAttachmentState>  	pAttachments;
 
 	/**
 	 *  float[] 	blendConstants	[float_array]
 	 */ 
-	float[] 	blendConstants;
+	 float[] 	blendConstants;
 
 	/**
 	 * Ctor
@@ -127,6 +132,22 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	        P<VkPipelineColorBlendStateCreateInfo> p = new  P<VkPipelineColorBlendStateCreateInfo>(new VkPipelineColorBlendStateCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkPipelineColorBlendStateCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkPipelineColorBlendStateCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

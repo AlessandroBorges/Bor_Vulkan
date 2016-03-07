@@ -43,46 +43,51 @@ public class VkBufferCreateInfo extends VkStruct {
 	/** ID of this structure [37]  */
 	 public static final int TAG_ID = VKBUFFERCREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkBufferCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkBufferCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  VkDeviceSize 	size	[long]
 	 */ 
-	long 	size;
+	 long 	size;
 
 	/**
 	 *  VkBufferUsageFlags 	usage	[int]
 	 */ 
-	int 	usage;
+	 int 	usage;
 
 	/**
 	 *  VkSharingMode 	sharingMode	[vkenum]
 	 */ 
-	VkSharingMode 	sharingMode;
+	 VkSharingMode 	sharingMode;
 
 	/**
 	 *  uint32_t 	queueFamilyIndexCount	[int]
 	 */ 
-	int 	queueFamilyIndexCount;
+	 int 	queueFamilyIndexCount;
 
 	/**
 	 *  const uint32_t* 	pQueueFamilyIndices	[int_array]
 	 */ 
-	int[] 	pQueueFamilyIndices;
+	 int[] 	pQueueFamilyIndices;
 
 	/**
 	 * Ctor
@@ -127,6 +132,22 @@ public class VkBufferCreateInfo extends VkStruct {
 	        P<VkBufferCreateInfo> p = new  P<VkBufferCreateInfo>(new VkBufferCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkBufferCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkBufferCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

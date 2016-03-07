@@ -53,96 +53,101 @@ public class VkSamplerCreateInfo extends VkStruct {
 	/** ID of this structure [70]  */
 	 public static final int TAG_ID = VKSAMPLERCREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkSamplerCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkSamplerCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  VkFilter 	magFilter	[vkenum]
 	 */ 
-	VkFilter 	magFilter;
+	 VkFilter 	magFilter;
 
 	/**
 	 *  VkFilter 	minFilter	[vkenum]
 	 */ 
-	VkFilter 	minFilter;
+	 VkFilter 	minFilter;
 
 	/**
 	 *  VkSamplerMipmapMode 	mipmapMode	[vkenum]
 	 */ 
-	VkSamplerMipmapMode 	mipmapMode;
+	 VkSamplerMipmapMode 	mipmapMode;
 
 	/**
 	 *  VkSamplerAddressMode 	addressModeU	[vkenum]
 	 */ 
-	VkSamplerAddressMode 	addressModeU;
+	 VkSamplerAddressMode 	addressModeU;
 
 	/**
 	 *  VkSamplerAddressMode 	addressModeV	[vkenum]
 	 */ 
-	VkSamplerAddressMode 	addressModeV;
+	 VkSamplerAddressMode 	addressModeV;
 
 	/**
 	 *  VkSamplerAddressMode 	addressModeW	[vkenum]
 	 */ 
-	VkSamplerAddressMode 	addressModeW;
+	 VkSamplerAddressMode 	addressModeW;
 
 	/**
 	 *  float 	mipLodBias	[float]
 	 */ 
-	float 	mipLodBias;
+	 float 	mipLodBias;
 
 	/**
 	 *  VkBool32 	anisotropyEnable	[boolean]
 	 */ 
-	boolean 	anisotropyEnable;
+	 boolean 	anisotropyEnable;
 
 	/**
 	 *  float 	maxAnisotropy	[float]
 	 */ 
-	float 	maxAnisotropy;
+	 float 	maxAnisotropy;
 
 	/**
 	 *  VkBool32 	compareEnable	[boolean]
 	 */ 
-	boolean 	compareEnable;
+	 boolean 	compareEnable;
 
 	/**
 	 *  VkCompareOp 	compareOp	[vkenum]
 	 */ 
-	VkCompareOp 	compareOp;
+	 VkCompareOp 	compareOp;
 
 	/**
 	 *  float 	minLod	[float]
 	 */ 
-	float 	minLod;
+	 float 	minLod;
 
 	/**
 	 *  float 	maxLod	[float]
 	 */ 
-	float 	maxLod;
+	 float 	maxLod;
 
 	/**
 	 *  VkBorderColor 	borderColor	[vkenum]
 	 */ 
-	VkBorderColor 	borderColor;
+	 VkBorderColor 	borderColor;
 
 	/**
 	 *  VkBool32 	unnormalizedCoordinates	[boolean]
 	 */ 
-	boolean 	unnormalizedCoordinates;
+	 boolean 	unnormalizedCoordinates;
 
 	/**
 	 * Ctor
@@ -187,6 +192,22 @@ public class VkSamplerCreateInfo extends VkStruct {
 	        P<VkSamplerCreateInfo> p = new  P<VkSamplerCreateInfo>(new VkSamplerCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkSamplerCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkSamplerCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

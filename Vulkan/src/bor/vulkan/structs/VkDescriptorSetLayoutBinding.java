@@ -40,31 +40,36 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	/** ID of this structure [71]  */
 	 public static final int TAG_ID = VKDESCRIPTORSETLAYOUTBINDING_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkDescriptorSetLayoutBinding> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  uint32_t 	binding	[int]
 	 */ 
-	int 	binding;
+	 int 	binding;
 
 	/**
 	 *  VkDescriptorType 	descriptorType	[vkenum]
 	 */ 
-	VkDescriptorType 	descriptorType;
+	 VkDescriptorType 	descriptorType;
 
 	/**
 	 *  uint32_t 	descriptorCount	[int]
 	 */ 
-	int 	descriptorCount;
+	 int 	descriptorCount;
 
 	/**
 	 *  VkShaderStageFlags 	stageFlags	[int]
 	 */ 
-	int 	stageFlags;
+	 int 	stageFlags;
 
 	/**
 	 *  const VkSampler* 	pImmutableSamplers	[p]
 	 */ 
-	P<VkSampler>  	pImmutableSamplers;
+	 P<VkSampler>  	pImmutableSamplers;
 
 	/**
 	 * Ctor
@@ -109,6 +114,22 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	        P<VkDescriptorSetLayoutBinding> p = new  P<VkDescriptorSetLayoutBinding>(new VkDescriptorSetLayoutBinding());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkDescriptorSetLayoutBinding> getP() {
+	       if(p == null ){
+	           p = new P<VkDescriptorSetLayoutBinding> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

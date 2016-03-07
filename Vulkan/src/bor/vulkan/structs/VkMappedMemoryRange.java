@@ -40,31 +40,36 @@ public class VkMappedMemoryRange extends VkStruct {
 	/** ID of this structure [21]  */
 	 public static final int TAG_ID = VKMAPPEDMEMORYRANGE_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkMappedMemoryRange> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkDeviceMemory 	memory	[vkhandle]
 	 */ 
-	VkDeviceMemory 	memory;
+	 VkDeviceMemory 	memory;
 
 	/**
 	 *  VkDeviceSize 	offset	[long]
 	 */ 
-	long 	offset;
+	 long 	offset;
 
 	/**
 	 *  VkDeviceSize 	size	[long]
 	 */ 
-	long 	size;
+	 long 	size;
 
 	/**
 	 * Ctor
@@ -109,6 +114,22 @@ public class VkMappedMemoryRange extends VkStruct {
 	        P<VkMappedMemoryRange> p = new  P<VkMappedMemoryRange>(new VkMappedMemoryRange());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkMappedMemoryRange> getP() {
+	       if(p == null ){
+	           p = new P<VkMappedMemoryRange> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

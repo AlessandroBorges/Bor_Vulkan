@@ -41,31 +41,36 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	/** ID of this structure [118]  */
 	 public static final int TAG_ID = VKXLIBSURFACECREATEINFOKHR_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkXlibSurfaceCreateInfoKHR> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkXlibSurfaceCreateFlagsKHR 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  Display* 	dpy	[vkhandle]
 	 */ 
-	XlibDisplay 	dpy;
+	 XlibDisplay 	dpy;
 
 	/**
 	 *  Window 	window	[vkhandle]
 	 */ 
-	XlibWindow 	window;
+	 XlibWindow 	window;
 
 	/**
 	 * Ctor
@@ -110,6 +115,22 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 	        P<VkXlibSurfaceCreateInfoKHR> p = new  P<VkXlibSurfaceCreateInfoKHR>(new VkXlibSurfaceCreateInfoKHR());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkXlibSurfaceCreateInfoKHR> getP() {
+	       if(p == null ){
+	           p = new P<VkXlibSurfaceCreateInfoKHR> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

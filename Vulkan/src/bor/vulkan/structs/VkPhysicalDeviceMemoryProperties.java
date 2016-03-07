@@ -39,26 +39,31 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	/** ID of this structure [14]  */
 	 public static final int TAG_ID = VKPHYSICALDEVICEMEMORYPROPERTIES_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkPhysicalDeviceMemoryProperties> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  uint32_t 	memoryTypeCount	[int]
 	 */ 
-	int 	memoryTypeCount;
+	 int 	memoryTypeCount;
 
 	/**
 	 *  VkMemoryType[] 	memoryTypes	
 	 */ 
-	VkMemoryType[] 	memoryTypes;
+	 VkMemoryType[] 	memoryTypes;
 
 	/**
 	 *  uint32_t 	memoryHeapCount	[int]
 	 */ 
-	int 	memoryHeapCount;
+	 int 	memoryHeapCount;
 
 	/**
 	 *  VkMemoryHeap[] 	memoryHeaps	
 	 */ 
-	VkMemoryHeap[] 	memoryHeaps;
+	 VkMemoryHeap[] 	memoryHeaps;
 
 	/**
 	 * Ctor
@@ -103,6 +108,22 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	        P<VkPhysicalDeviceMemoryProperties> p = new  P<VkPhysicalDeviceMemoryProperties>(new VkPhysicalDeviceMemoryProperties());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkPhysicalDeviceMemoryProperties> getP() {
+	       if(p == null ){
+	           p = new P<VkPhysicalDeviceMemoryProperties> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

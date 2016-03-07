@@ -50,81 +50,86 @@ public class VkImageCreateInfo extends VkStruct {
 	/** ID of this structure [39]  */
 	 public static final int TAG_ID = VKIMAGECREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkImageCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkImageCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  VkImageType 	imageType	[vkenum]
 	 */ 
-	VkImageType 	imageType;
+	 VkImageType 	imageType;
 
 	/**
 	 *  VkFormat 	format	[vkenum]
 	 */ 
-	VkFormat 	format;
+	 VkFormat 	format;
 
 	/**
 	 *  VkExtent3D 	extent	[vkstruct]
 	 */ 
-	VkExtent3D 	extent;
+	 VkExtent3D 	extent;
 
 	/**
 	 *  uint32_t 	mipLevels	[int]
 	 */ 
-	int 	mipLevels;
+	 int 	mipLevels;
 
 	/**
 	 *  uint32_t 	arrayLayers	[int]
 	 */ 
-	int 	arrayLayers;
+	 int 	arrayLayers;
 
 	/**
 	 *  VkSampleCountFlagBits 	samples	[vkenum]
 	 */ 
-	VkSampleCountFlagBits 	samples;
+	 VkSampleCountFlagBits 	samples;
 
 	/**
 	 *  VkImageTiling 	tiling	[vkenum]
 	 */ 
-	VkImageTiling 	tiling;
+	 VkImageTiling 	tiling;
 
 	/**
 	 *  VkImageUsageFlags 	usage	[int]
 	 */ 
-	int 	usage;
+	 int 	usage;
 
 	/**
 	 *  VkSharingMode 	sharingMode	[vkenum]
 	 */ 
-	VkSharingMode 	sharingMode;
+	 VkSharingMode 	sharingMode;
 
 	/**
 	 *  uint32_t 	queueFamilyIndexCount	[int]
 	 */ 
-	int 	queueFamilyIndexCount;
+	 int 	queueFamilyIndexCount;
 
 	/**
 	 *  const uint32_t* 	pQueueFamilyIndices	[int_array]
 	 */ 
-	int[] 	pQueueFamilyIndices;
+	 int[] 	pQueueFamilyIndices;
 
 	/**
 	 *  VkImageLayout 	initialLayout	[vkenum]
 	 */ 
-	VkImageLayout 	initialLayout;
+	 VkImageLayout 	initialLayout;
 
 	/**
 	 * Ctor
@@ -169,6 +174,22 @@ public class VkImageCreateInfo extends VkStruct {
 	        P<VkImageCreateInfo> p = new  P<VkImageCreateInfo>(new VkImageCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkImageCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkImageCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

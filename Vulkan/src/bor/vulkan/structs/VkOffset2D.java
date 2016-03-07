@@ -37,16 +37,21 @@ public class VkOffset2D extends VkStruct {
 	/** ID of this structure [55]  */
 	 public static final int TAG_ID = VKOFFSET2D_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkOffset2D> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  int32_t 	x	[int]
 	 */ 
-	int 	x;
+	 int 	x;
 
 	/**
 	 *  int32_t 	y	[int]
 	 */ 
-	int 	y;
+	 int 	y;
 
 	/**
 	 * Ctor
@@ -91,6 +96,22 @@ public class VkOffset2D extends VkStruct {
 	        P<VkOffset2D> p = new  P<VkOffset2D>(new VkOffset2D());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkOffset2D> getP() {
+	       if(p == null ){
+	           p = new P<VkOffset2D> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

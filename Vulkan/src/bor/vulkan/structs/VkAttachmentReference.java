@@ -37,16 +37,21 @@ public class VkAttachmentReference extends VkStruct {
 	/** ID of this structure [82]  */
 	 public static final int TAG_ID = VKATTACHMENTREFERENCE_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkAttachmentReference> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  uint32_t 	attachment	[int]
 	 */ 
-	int 	attachment;
+	 int 	attachment;
 
 	/**
 	 *  VkImageLayout 	layout	[vkenum]
 	 */ 
-	VkImageLayout 	layout;
+	 VkImageLayout 	layout;
 
 	/**
 	 * Ctor
@@ -91,6 +96,22 @@ public class VkAttachmentReference extends VkStruct {
 	        P<VkAttachmentReference> p = new  P<VkAttachmentReference>(new VkAttachmentReference());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkAttachmentReference> getP() {
+	       if(p == null ){
+	           p = new P<VkAttachmentReference> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

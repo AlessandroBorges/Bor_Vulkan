@@ -48,71 +48,76 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	/** ID of this structure [59]  */
 	 public static final int TAG_ID = VKPIPELINERASTERIZATIONSTATECREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkPipelineRasterizationStateCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineRasterizationStateCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  VkBool32 	depthClampEnable	[boolean]
 	 */ 
-	boolean 	depthClampEnable;
+	 boolean 	depthClampEnable;
 
 	/**
 	 *  VkBool32 	rasterizerDiscardEnable	[boolean]
 	 */ 
-	boolean 	rasterizerDiscardEnable;
+	 boolean 	rasterizerDiscardEnable;
 
 	/**
 	 *  VkPolygonMode 	polygonMode	[vkenum]
 	 */ 
-	VkPolygonMode 	polygonMode;
+	 VkPolygonMode 	polygonMode;
 
 	/**
 	 *  VkCullModeFlags 	cullMode	[int]
 	 */ 
-	int 	cullMode;
+	 int 	cullMode;
 
 	/**
 	 *  VkFrontFace 	frontFace	[vkenum]
 	 */ 
-	VkFrontFace 	frontFace;
+	 VkFrontFace 	frontFace;
 
 	/**
 	 *  VkBool32 	depthBiasEnable	[boolean]
 	 */ 
-	boolean 	depthBiasEnable;
+	 boolean 	depthBiasEnable;
 
 	/**
 	 *  float 	depthBiasConstantFactor	[float]
 	 */ 
-	float 	depthBiasConstantFactor;
+	 float 	depthBiasConstantFactor;
 
 	/**
 	 *  float 	depthBiasClamp	[float]
 	 */ 
-	float 	depthBiasClamp;
+	 float 	depthBiasClamp;
 
 	/**
 	 *  float 	depthBiasSlopeFactor	[float]
 	 */ 
-	float 	depthBiasSlopeFactor;
+	 float 	depthBiasSlopeFactor;
 
 	/**
 	 *  float 	lineWidth	[float]
 	 */ 
-	float 	lineWidth;
+	 float 	lineWidth;
 
 	/**
 	 * Ctor
@@ -157,6 +162,22 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	        P<VkPipelineRasterizationStateCreateInfo> p = new  P<VkPipelineRasterizationStateCreateInfo>(new VkPipelineRasterizationStateCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkPipelineRasterizationStateCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkPipelineRasterizationStateCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

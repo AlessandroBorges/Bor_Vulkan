@@ -38,21 +38,26 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	/** ID of this structure [77]  */
 	 public static final int TAG_ID = VKDESCRIPTORBUFFERINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkDescriptorBufferInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkBuffer 	buffer	[vkhandle]
 	 */ 
-	VkBuffer 	buffer;
+	 VkBuffer 	buffer;
 
 	/**
 	 *  VkDeviceSize 	offset	[long]
 	 */ 
-	long 	offset;
+	 long 	offset;
 
 	/**
 	 *  VkDeviceSize 	range	[long]
 	 */ 
-	long 	range;
+	 long 	range;
 
 	/**
 	 * Ctor
@@ -97,6 +102,22 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	        P<VkDescriptorBufferInfo> p = new  P<VkDescriptorBufferInfo>(new VkDescriptorBufferInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkDescriptorBufferInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkDescriptorBufferInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

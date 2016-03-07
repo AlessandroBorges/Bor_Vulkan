@@ -5,6 +5,9 @@ package bor.vulkan.structs;
 
 import java.nio.ByteBuffer;
 
+import bor.vulkan.P;
+import bor.vulkan.VkObject;
+
 /**
  * Hand version of union  VkClearColorValue
  * 
@@ -13,6 +16,8 @@ import java.nio.ByteBuffer;
  */
 public class VkClearColorValue extends VkStruct {
 
+    
+    private P<VkClearColorValue> p;
     
     float[] float32 = new float[4];
     int[]   int32 = new int [4];
@@ -47,6 +52,14 @@ public class VkClearColorValue extends VkStruct {
      */
     public VkClearColorValue(ByteBuffer buff, int size) {
         super(buff, size);     
+    }
+
+    @Override
+    public P<VkClearColorValue> getP() {
+       if(p==null){
+           p = new P<VkClearColorValue>(this);
+       }
+        return p;
     }
 
 }

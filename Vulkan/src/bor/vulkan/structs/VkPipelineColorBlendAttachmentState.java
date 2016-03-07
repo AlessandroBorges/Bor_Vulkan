@@ -43,46 +43,51 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	/** ID of this structure [63]  */
 	 public static final int TAG_ID = VKPIPELINECOLORBLENDATTACHMENTSTATE_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkPipelineColorBlendAttachmentState> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkBool32 	blendEnable	[boolean]
 	 */ 
-	boolean 	blendEnable;
+	 boolean 	blendEnable;
 
 	/**
 	 *  VkBlendFactor 	srcColorBlendFactor	[vkenum]
 	 */ 
-	VkBlendFactor 	srcColorBlendFactor;
+	 VkBlendFactor 	srcColorBlendFactor;
 
 	/**
 	 *  VkBlendFactor 	dstColorBlendFactor	[vkenum]
 	 */ 
-	VkBlendFactor 	dstColorBlendFactor;
+	 VkBlendFactor 	dstColorBlendFactor;
 
 	/**
 	 *  VkBlendOp 	colorBlendOp	[vkenum]
 	 */ 
-	VkBlendOp 	colorBlendOp;
+	 VkBlendOp 	colorBlendOp;
 
 	/**
 	 *  VkBlendFactor 	srcAlphaBlendFactor	[vkenum]
 	 */ 
-	VkBlendFactor 	srcAlphaBlendFactor;
+	 VkBlendFactor 	srcAlphaBlendFactor;
 
 	/**
 	 *  VkBlendFactor 	dstAlphaBlendFactor	[vkenum]
 	 */ 
-	VkBlendFactor 	dstAlphaBlendFactor;
+	 VkBlendFactor 	dstAlphaBlendFactor;
 
 	/**
 	 *  VkBlendOp 	alphaBlendOp	[vkenum]
 	 */ 
-	VkBlendOp 	alphaBlendOp;
+	 VkBlendOp 	alphaBlendOp;
 
 	/**
 	 *  VkColorComponentFlags 	colorWriteMask	[int]
 	 */ 
-	int 	colorWriteMask;
+	 int 	colorWriteMask;
 
 	/**
 	 * Ctor
@@ -127,6 +132,22 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	        P<VkPipelineColorBlendAttachmentState> p = new  P<VkPipelineColorBlendAttachmentState>(new VkPipelineColorBlendAttachmentState());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkPipelineColorBlendAttachmentState> getP() {
+	       if(p == null ){
+	           p = new P<VkPipelineColorBlendAttachmentState> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

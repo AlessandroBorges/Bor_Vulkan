@@ -38,21 +38,26 @@ public class VkExtent3D extends VkStruct {
 	/** ID of this structure [6]  */
 	 public static final int TAG_ID = VKEXTENT3D_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkExtent3D> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  uint32_t 	width	[int]
 	 */ 
-	int 	width;
+	 int 	width;
 
 	/**
 	 *  uint32_t 	height	[int]
 	 */ 
-	int 	height;
+	 int 	height;
 
 	/**
 	 *  uint32_t 	depth	[int]
 	 */ 
-	int 	depth;
+	 int 	depth;
 
 	/**
 	 * Ctor
@@ -97,6 +102,22 @@ public class VkExtent3D extends VkStruct {
 	        P<VkExtent3D> p = new  P<VkExtent3D>(new VkExtent3D());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkExtent3D> getP() {
+	       if(p == null ){
+	           p = new P<VkExtent3D> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

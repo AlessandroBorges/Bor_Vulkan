@@ -54,101 +54,106 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	/** ID of this structure [66]  */
 	 public static final int TAG_ID = VKGRAPHICSPIPELINECREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkGraphicsPipelineCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  uint32_t 	stageCount	[int]
 	 */ 
-	int 	stageCount;
+	 int 	stageCount;
 
 	/**
 	 *  const VkPipelineShaderStageCreateInfo* 	pStages	[p]
 	 */ 
-	P<VkPipelineShaderStageCreateInfo>  	pStages;
+	 P<VkPipelineShaderStageCreateInfo>  	pStages;
 
 	/**
 	 *  const VkPipelineVertexInputStateCreateInfo* 	pVertexInputState	[p]
 	 */ 
-	P<VkPipelineVertexInputStateCreateInfo>  	pVertexInputState;
+	 P<VkPipelineVertexInputStateCreateInfo>  	pVertexInputState;
 
 	/**
 	 *  const VkPipelineInputAssemblyStateCreateInfo* 	pInputAssemblyState	[p]
 	 */ 
-	P<VkPipelineInputAssemblyStateCreateInfo>  	pInputAssemblyState;
+	 P<VkPipelineInputAssemblyStateCreateInfo>  	pInputAssemblyState;
 
 	/**
 	 *  const VkPipelineTessellationStateCreateInfo* 	pTessellationState	[p]
 	 */ 
-	P<VkPipelineTessellationStateCreateInfo>  	pTessellationState;
+	 P<VkPipelineTessellationStateCreateInfo>  	pTessellationState;
 
 	/**
 	 *  const VkPipelineViewportStateCreateInfo* 	pViewportState	[p]
 	 */ 
-	P<VkPipelineViewportStateCreateInfo>  	pViewportState;
+	 P<VkPipelineViewportStateCreateInfo>  	pViewportState;
 
 	/**
 	 *  const VkPipelineRasterizationStateCreateInfo* 	pRasterizationState	[p]
 	 */ 
-	P<VkPipelineRasterizationStateCreateInfo>  	pRasterizationState;
+	 P<VkPipelineRasterizationStateCreateInfo>  	pRasterizationState;
 
 	/**
 	 *  const VkPipelineMultisampleStateCreateInfo* 	pMultisampleState	[p]
 	 */ 
-	P<VkPipelineMultisampleStateCreateInfo>  	pMultisampleState;
+	 P<VkPipelineMultisampleStateCreateInfo>  	pMultisampleState;
 
 	/**
 	 *  const VkPipelineDepthStencilStateCreateInfo* 	pDepthStencilState	[p]
 	 */ 
-	P<VkPipelineDepthStencilStateCreateInfo>  	pDepthStencilState;
+	 P<VkPipelineDepthStencilStateCreateInfo>  	pDepthStencilState;
 
 	/**
 	 *  const VkPipelineColorBlendStateCreateInfo* 	pColorBlendState	[p]
 	 */ 
-	P<VkPipelineColorBlendStateCreateInfo>  	pColorBlendState;
+	 P<VkPipelineColorBlendStateCreateInfo>  	pColorBlendState;
 
 	/**
 	 *  const VkPipelineDynamicStateCreateInfo* 	pDynamicState	[p]
 	 */ 
-	P<VkPipelineDynamicStateCreateInfo>  	pDynamicState;
+	 P<VkPipelineDynamicStateCreateInfo>  	pDynamicState;
 
 	/**
 	 *  VkPipelineLayout 	layout	[vkhandle]
 	 */ 
-	VkPipelineLayout 	layout;
+	 VkPipelineLayout 	layout;
 
 	/**
 	 *  VkRenderPass 	renderPass	[vkhandle]
 	 */ 
-	VkRenderPass 	renderPass;
+	 VkRenderPass 	renderPass;
 
 	/**
 	 *  uint32_t 	subpass	[int]
 	 */ 
-	int 	subpass;
+	 int 	subpass;
 
 	/**
 	 *  VkPipeline 	basePipelineHandle	[vkhandle]
 	 */ 
-	VkPipeline 	basePipelineHandle;
+	 VkPipeline 	basePipelineHandle;
 
 	/**
 	 *  int32_t 	basePipelineIndex	[int]
 	 */ 
-	int 	basePipelineIndex;
+	 int 	basePipelineIndex;
 
 	/**
 	 * Ctor
@@ -193,6 +198,22 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	        P<VkGraphicsPipelineCreateInfo> p = new  P<VkGraphicsPipelineCreateInfo>(new VkGraphicsPipelineCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkGraphicsPipelineCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkGraphicsPipelineCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

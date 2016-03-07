@@ -41,31 +41,36 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	/** ID of this structure [117]  */
 	 public static final int TAG_ID = VKDISPLAYPRESENTINFOKHR_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkDisplayPresentInfoKHR> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkRect2D 	srcRect	[vkstruct]
 	 */ 
-	VkRect2D 	srcRect;
+	 VkRect2D 	srcRect;
 
 	/**
 	 *  VkRect2D 	dstRect	[vkstruct]
 	 */ 
-	VkRect2D 	dstRect;
+	 VkRect2D 	dstRect;
 
 	/**
 	 *  VkBool32 	persistent	[boolean]
 	 */ 
-	boolean 	persistent;
+	 boolean 	persistent;
 
 	/**
 	 * Ctor
@@ -110,6 +115,22 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	        P<VkDisplayPresentInfoKHR> p = new  P<VkDisplayPresentInfoKHR>(new VkDisplayPresentInfoKHR());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkDisplayPresentInfoKHR> getP() {
+	       if(p == null ){
+	           p = new P<VkDisplayPresentInfoKHR> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

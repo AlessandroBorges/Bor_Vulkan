@@ -38,21 +38,26 @@ public class VkFormatProperties extends VkStruct {
 	/** ID of this structure [5]  */
 	 public static final int TAG_ID = VKFORMATPROPERTIES_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkFormatProperties> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkFormatFeatureFlags 	linearTilingFeatures	[int]
 	 */ 
-	int 	linearTilingFeatures;
+	 int 	linearTilingFeatures;
 
 	/**
 	 *  VkFormatFeatureFlags 	optimalTilingFeatures	[int]
 	 */ 
-	int 	optimalTilingFeatures;
+	 int 	optimalTilingFeatures;
 
 	/**
 	 *  VkFormatFeatureFlags 	bufferFeatures	[int]
 	 */ 
-	int 	bufferFeatures;
+	 int 	bufferFeatures;
 
 	/**
 	 * Ctor
@@ -97,6 +102,22 @@ public class VkFormatProperties extends VkStruct {
 	        P<VkFormatProperties> p = new  P<VkFormatProperties>(new VkFormatProperties());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkFormatProperties> getP() {
+	       if(p == null ){
+	           p = new P<VkFormatProperties> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

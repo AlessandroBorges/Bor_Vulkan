@@ -40,31 +40,36 @@ public class VkSubresourceLayout extends VkStruct {
 	/** ID of this structure [40]  */
 	 public static final int TAG_ID = VKSUBRESOURCELAYOUT_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkSubresourceLayout> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkDeviceSize 	offset	[long]
 	 */ 
-	long 	offset;
+	 long 	offset;
 
 	/**
 	 *  VkDeviceSize 	size	[long]
 	 */ 
-	long 	size;
+	 long 	size;
 
 	/**
 	 *  VkDeviceSize 	rowPitch	[long]
 	 */ 
-	long 	rowPitch;
+	 long 	rowPitch;
 
 	/**
 	 *  VkDeviceSize 	arrayPitch	[long]
 	 */ 
-	long 	arrayPitch;
+	 long 	arrayPitch;
 
 	/**
 	 *  VkDeviceSize 	depthPitch	[long]
 	 */ 
-	long 	depthPitch;
+	 long 	depthPitch;
 
 	/**
 	 * Ctor
@@ -109,6 +114,22 @@ public class VkSubresourceLayout extends VkStruct {
 	        P<VkSubresourceLayout> p = new  P<VkSubresourceLayout>(new VkSubresourceLayout());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkSubresourceLayout> getP() {
+	       if(p == null ){
+	           p = new P<VkSubresourceLayout> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

@@ -42,41 +42,46 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	/** ID of this structure [51]  */
 	 public static final int TAG_ID = VKPIPELINEVERTEXINPUTSTATECREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkPipelineVertexInputStateCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineVertexInputStateCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  uint32_t 	vertexBindingDescriptionCount	[int]
 	 */ 
-	int 	vertexBindingDescriptionCount;
+	 int 	vertexBindingDescriptionCount;
 
 	/**
 	 *  const VkVertexInputBindingDescription* 	pVertexBindingDescriptions	[p]
 	 */ 
-	P<VkVertexInputBindingDescription>  	pVertexBindingDescriptions;
+	 P<VkVertexInputBindingDescription>  	pVertexBindingDescriptions;
 
 	/**
 	 *  uint32_t 	vertexAttributeDescriptionCount	[int]
 	 */ 
-	int 	vertexAttributeDescriptionCount;
+	 int 	vertexAttributeDescriptionCount;
 
 	/**
 	 *  const VkVertexInputAttributeDescription* 	pVertexAttributeDescriptions	[p]
 	 */ 
-	P<VkVertexInputAttributeDescription>  	pVertexAttributeDescriptions;
+	 P<VkVertexInputAttributeDescription>  	pVertexAttributeDescriptions;
 
 	/**
 	 * Ctor
@@ -121,6 +126,22 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	        P<VkPipelineVertexInputStateCreateInfo> p = new  P<VkPipelineVertexInputStateCreateInfo>(new VkPipelineVertexInputStateCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkPipelineVertexInputStateCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkPipelineVertexInputStateCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

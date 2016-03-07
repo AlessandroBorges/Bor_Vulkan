@@ -5,12 +5,19 @@ package bor.vulkan.structs;
 
 import java.nio.ByteBuffer;
 
+import bor.vulkan.P;
+import bor.vulkan.VkObject;
+
 /**
  * @author Alessandro Borges
  *
  */
 public class VkClearValue extends VkStruct {
     
+    private P<VkClearValue> p;
+    
+    
+    // Fields
     VkClearColorValue           color;
     VkClearDepthStencilValue    depthStencil;
 
@@ -43,6 +50,15 @@ public class VkClearValue extends VkStruct {
      */
     public VkClearValue(ByteBuffer buff, int size) {
         super(buff, size);       
+    }
+    
+    
+    @Override
+    public P<VkClearValue> getP() {
+       if(p==null){
+           p = new P<VkClearValue>(this);
+       }
+        return p;
     }
 
 }

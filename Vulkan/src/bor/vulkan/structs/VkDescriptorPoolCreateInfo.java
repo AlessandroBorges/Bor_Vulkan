@@ -41,36 +41,41 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	/** ID of this structure [74]  */
 	 public static final int TAG_ID = VKDESCRIPTORPOOLCREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkDescriptorPoolCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkDescriptorPoolCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  uint32_t 	maxSets	[int]
 	 */ 
-	int 	maxSets;
+	 int 	maxSets;
 
 	/**
 	 *  uint32_t 	poolSizeCount	[int]
 	 */ 
-	int 	poolSizeCount;
+	 int 	poolSizeCount;
 
 	/**
 	 *  const VkDescriptorPoolSize* 	pPoolSizes	[p]
 	 */ 
-	P<VkDescriptorPoolSize>  	pPoolSizes;
+	 P<VkDescriptorPoolSize>  	pPoolSizes;
 
 	/**
 	 * Ctor
@@ -115,6 +120,22 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	        P<VkDescriptorPoolCreateInfo> p = new  P<VkDescriptorPoolCreateInfo>(new VkDescriptorPoolCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkDescriptorPoolCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkDescriptorPoolCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

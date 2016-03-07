@@ -40,31 +40,36 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	/** ID of this structure [44]  */
 	 public static final int TAG_ID = VKSHADERMODULECREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkShaderModuleCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkShaderModuleCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  size_t 	codeSize	[long]
 	 */ 
-	long 	codeSize;
+	 long 	codeSize;
 
 	/**
 	 *  const uint32_t* 	pCode	[int_array]
 	 */ 
-	int[] 	pCode;
+	 int[] 	pCode;
 
 	/**
 	 * Ctor
@@ -109,6 +114,22 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	        P<VkShaderModuleCreateInfo> p = new  P<VkShaderModuleCreateInfo>(new VkShaderModuleCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkShaderModuleCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkShaderModuleCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

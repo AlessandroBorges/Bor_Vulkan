@@ -38,16 +38,21 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	/** ID of this structure [107]  */
 	 public static final int TAG_ID = VKSURFACEFORMATKHR_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkSurfaceFormatKHR> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkFormat 	format	[vkenum]
 	 */ 
-	VkFormat 	format;
+	 VkFormat 	format;
 
 	/**
 	 *  VkColorSpaceKHR 	colorSpace	[vkenum]
 	 */ 
-	VkColorSpaceKHR 	colorSpace;
+	 VkColorSpaceKHR 	colorSpace;
 
 	/**
 	 * Ctor
@@ -92,6 +97,22 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	        P<VkSurfaceFormatKHR> p = new  P<VkSurfaceFormatKHR>(new VkSurfaceFormatKHR());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkSurfaceFormatKHR> getP() {
+	       if(p == null ){
+	           p = new P<VkSurfaceFormatKHR> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

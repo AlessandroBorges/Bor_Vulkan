@@ -38,21 +38,26 @@ public class VkMemoryRequirements extends VkStruct {
 	/** ID of this structure [22]  */
 	 public static final int TAG_ID = VKMEMORYREQUIREMENTS_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkMemoryRequirements> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkDeviceSize 	size	[long]
 	 */ 
-	long 	size;
+	 long 	size;
 
 	/**
 	 *  VkDeviceSize 	alignment	[long]
 	 */ 
-	long 	alignment;
+	 long 	alignment;
 
 	/**
 	 *  uint32_t 	memoryTypeBits	[int]
 	 */ 
-	int 	memoryTypeBits;
+	 int 	memoryTypeBits;
 
 	/**
 	 * Ctor
@@ -97,6 +102,22 @@ public class VkMemoryRequirements extends VkStruct {
 	        P<VkMemoryRequirements> p = new  P<VkMemoryRequirements>(new VkMemoryRequirements());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkMemoryRequirements> getP() {
+	       if(p == null ){
+	           p = new P<VkMemoryRequirements> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

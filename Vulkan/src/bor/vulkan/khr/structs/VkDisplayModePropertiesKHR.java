@@ -38,16 +38,21 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	/** ID of this structure [112]  */
 	 public static final int TAG_ID = VKDISPLAYMODEPROPERTIESKHR_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkDisplayModePropertiesKHR> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkDisplayModeKHR 	displayMode	[vkhandle]
 	 */ 
-	VkDisplayModeKHR 	displayMode;
+	 VkDisplayModeKHR 	displayMode;
 
 	/**
 	 *  VkDisplayModeParametersKHR 	parameters	[vkstruct]
 	 */ 
-	VkDisplayModeParametersKHR 	parameters;
+	 VkDisplayModeParametersKHR 	parameters;
 
 	/**
 	 * Ctor
@@ -92,6 +97,22 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	        P<VkDisplayModePropertiesKHR> p = new  P<VkDisplayModePropertiesKHR>(new VkDisplayModePropertiesKHR());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkDisplayModePropertiesKHR> getP() {
+	       if(p == null ){
+	           p = new P<VkDisplayModePropertiesKHR> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

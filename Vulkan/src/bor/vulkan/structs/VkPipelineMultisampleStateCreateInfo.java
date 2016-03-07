@@ -44,51 +44,56 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	/** ID of this structure [60]  */
 	 public static final int TAG_ID = VKPIPELINEMULTISAMPLESTATECREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkPipelineMultisampleStateCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineMultisampleStateCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  VkSampleCountFlagBits 	rasterizationSamples	[vkenum]
 	 */ 
-	VkSampleCountFlagBits 	rasterizationSamples;
+	 VkSampleCountFlagBits 	rasterizationSamples;
 
 	/**
 	 *  VkBool32 	sampleShadingEnable	[boolean]
 	 */ 
-	boolean 	sampleShadingEnable;
+	 boolean 	sampleShadingEnable;
 
 	/**
 	 *  float 	minSampleShading	[float]
 	 */ 
-	float 	minSampleShading;
+	 float 	minSampleShading;
 
 	/**
 	 *  const VkSampleMask* 	pSampleMask	[pinteger]
 	 */ 
-	PInteger 	pSampleMask;
+	 PInteger 	pSampleMask;
 
 	/**
 	 *  VkBool32 	alphaToCoverageEnable	[boolean]
 	 */ 
-	boolean 	alphaToCoverageEnable;
+	 boolean 	alphaToCoverageEnable;
 
 	/**
 	 *  VkBool32 	alphaToOneEnable	[boolean]
 	 */ 
-	boolean 	alphaToOneEnable;
+	 boolean 	alphaToOneEnable;
 
 	/**
 	 * Ctor
@@ -133,6 +138,22 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	        P<VkPipelineMultisampleStateCreateInfo> p = new  P<VkPipelineMultisampleStateCreateInfo>(new VkPipelineMultisampleStateCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkPipelineMultisampleStateCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkPipelineMultisampleStateCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

@@ -41,36 +41,41 @@ public class VkViewport extends VkStruct {
 	/** ID of this structure [54]  */
 	 public static final int TAG_ID = VKVIEWPORT_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkViewport> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  float 	x	[float]
 	 */ 
-	float 	x;
+	 float 	x;
 
 	/**
 	 *  float 	y	[float]
 	 */ 
-	float 	y;
+	 float 	y;
 
 	/**
 	 *  float 	width	[float]
 	 */ 
-	float 	width;
+	 float 	width;
 
 	/**
 	 *  float 	height	[float]
 	 */ 
-	float 	height;
+	 float 	height;
 
 	/**
 	 *  float 	minDepth	[float]
 	 */ 
-	float 	minDepth;
+	 float 	minDepth;
 
 	/**
 	 *  float 	maxDepth	[float]
 	 */ 
-	float 	maxDepth;
+	 float 	maxDepth;
 
 	/**
 	 * Ctor
@@ -115,6 +120,22 @@ public class VkViewport extends VkStruct {
 	        P<VkViewport> p = new  P<VkViewport>(new VkViewport());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkViewport> getP() {
+	       if(p == null ){
+	           p = new P<VkViewport> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

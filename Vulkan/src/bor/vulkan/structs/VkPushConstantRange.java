@@ -38,21 +38,26 @@ public class VkPushConstantRange extends VkStruct {
 	/** ID of this structure [68]  */
 	 public static final int TAG_ID = VKPUSHCONSTANTRANGE_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkPushConstantRange> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkShaderStageFlags 	stageFlags	[int]
 	 */ 
-	int 	stageFlags;
+	 int 	stageFlags;
 
 	/**
 	 *  uint32_t 	offset	[int]
 	 */ 
-	int 	offset;
+	 int 	offset;
 
 	/**
 	 *  uint32_t 	size	[int]
 	 */ 
-	int 	size;
+	 int 	size;
 
 	/**
 	 * Ctor
@@ -97,6 +102,22 @@ public class VkPushConstantRange extends VkStruct {
 	        P<VkPushConstantRange> p = new  P<VkPushConstantRange>(new VkPushConstantRange());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkPushConstantRange> getP() {
+	       if(p == null ){
+	           p = new P<VkPushConstantRange> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

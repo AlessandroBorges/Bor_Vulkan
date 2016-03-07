@@ -38,21 +38,26 @@ public class VkImageSubresource extends VkStruct {
 	/** ID of this structure [28]  */
 	 public static final int TAG_ID = VKIMAGESUBRESOURCE_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkImageSubresource> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkImageAspectFlags 	aspectMask	[int]
 	 */ 
-	int 	aspectMask;
+	 int 	aspectMask;
 
 	/**
 	 *  uint32_t 	mipLevel	[int]
 	 */ 
-	int 	mipLevel;
+	 int 	mipLevel;
 
 	/**
 	 *  uint32_t 	arrayLayer	[int]
 	 */ 
-	int 	arrayLayer;
+	 int 	arrayLayer;
 
 	/**
 	 * Ctor
@@ -97,6 +102,22 @@ public class VkImageSubresource extends VkStruct {
 	        P<VkImageSubresource> p = new  P<VkImageSubresource>(new VkImageSubresource());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkImageSubresource> getP() {
+	       if(p == null ){
+	           p = new P<VkImageSubresource> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

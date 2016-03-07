@@ -40,31 +40,36 @@ public class VkImageSubresourceRange extends VkStruct {
 	/** ID of this structure [42]  */
 	 public static final int TAG_ID = VKIMAGESUBRESOURCERANGE_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkImageSubresourceRange> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkImageAspectFlags 	aspectMask	[int]
 	 */ 
-	int 	aspectMask;
+	 int 	aspectMask;
 
 	/**
 	 *  uint32_t 	baseMipLevel	[int]
 	 */ 
-	int 	baseMipLevel;
+	 int 	baseMipLevel;
 
 	/**
 	 *  uint32_t 	levelCount	[int]
 	 */ 
-	int 	levelCount;
+	 int 	levelCount;
 
 	/**
 	 *  uint32_t 	baseArrayLayer	[int]
 	 */ 
-	int 	baseArrayLayer;
+	 int 	baseArrayLayer;
 
 	/**
 	 *  uint32_t 	layerCount	[int]
 	 */ 
-	int 	layerCount;
+	 int 	layerCount;
 
 	/**
 	 * Ctor
@@ -109,6 +114,22 @@ public class VkImageSubresourceRange extends VkStruct {
 	        P<VkImageSubresourceRange> p = new  P<VkImageSubresourceRange>(new VkImageSubresourceRange());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkImageSubresourceRange> getP() {
+	       if(p == null ){
+	           p = new P<VkImageSubresourceRange> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

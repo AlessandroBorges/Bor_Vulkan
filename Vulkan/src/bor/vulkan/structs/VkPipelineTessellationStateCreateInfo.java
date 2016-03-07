@@ -39,26 +39,31 @@ public class VkPipelineTessellationStateCreateInfo extends VkStruct {
 	/** ID of this structure [53]  */
 	 public static final int TAG_ID = VKPIPELINETESSELLATIONSTATECREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkPipelineTessellationStateCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineTessellationStateCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  uint32_t 	patchControlPoints	[int]
 	 */ 
-	int 	patchControlPoints;
+	 int 	patchControlPoints;
 
 	/**
 	 * Ctor
@@ -103,6 +108,22 @@ public class VkPipelineTessellationStateCreateInfo extends VkStruct {
 	        P<VkPipelineTessellationStateCreateInfo> p = new  P<VkPipelineTessellationStateCreateInfo>(new VkPipelineTessellationStateCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkPipelineTessellationStateCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkPipelineTessellationStateCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

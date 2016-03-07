@@ -90,6 +90,11 @@ public class VkHandler implements VkHandleInterface, VkBuffer, VkBufferView, VkC
     private ByteBuffer handle;
     
     /**
+     * Wrapping P instance, for this object
+     */
+    private P<VkHandler> p;
+    
+    /**
      * Creates a empty VkHandler.
      * The pointer to native side will be created later.
      * @see VkHandler#createNullPointer()
@@ -257,5 +262,17 @@ public class VkHandler implements VkHandleInterface, VkBuffer, VkBufferView, VkC
      */
      public void setPointer(ByteBuffer nativePtr){       
         prepareHandler(nativePtr);
+    }
+
+     /*
+      * (non-Javadoc)
+      * @see bor.vulkan.VkObject#getP()
+      */
+    @Override
+    public P<VkHandler> getP() {
+       if(p == null ){
+           p = new P<VkHandler>(this);
+       }
+        return p;
     }
 }

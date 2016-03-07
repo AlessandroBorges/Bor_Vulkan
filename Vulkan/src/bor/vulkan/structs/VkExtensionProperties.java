@@ -37,16 +37,21 @@ public class VkExtensionProperties extends VkStruct {
 	/** ID of this structure [17]  */
 	 public static final int TAG_ID = VKEXTENSIONPROPERTIES_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkExtensionProperties> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  char[] 	extensionName	[string]
 	 */ 
-	String 	extensionName;
+	 String 	extensionName;
 
 	/**
 	 *  uint32_t 	specVersion	[int]
 	 */ 
-	int 	specVersion;
+	 int 	specVersion;
 
 	/**
 	 * Ctor
@@ -91,6 +96,22 @@ public class VkExtensionProperties extends VkStruct {
 	        P<VkExtensionProperties> p = new  P<VkExtensionProperties>(new VkExtensionProperties());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkExtensionProperties> getP() {
+	       if(p == null ){
+	           p = new P<VkExtensionProperties> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

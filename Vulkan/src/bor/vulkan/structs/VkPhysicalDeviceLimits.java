@@ -141,536 +141,541 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	/** ID of this structure [8]  */
 	 public static final int TAG_ID = VKPHYSICALDEVICELIMITS_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkPhysicalDeviceLimits> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  uint32_t 	maxImageDimension1D	[int]
 	 */ 
-	int 	maxImageDimension1D;
+	 int 	maxImageDimension1D;
 
 	/**
 	 *  uint32_t 	maxImageDimension2D	[int]
 	 */ 
-	int 	maxImageDimension2D;
+	 int 	maxImageDimension2D;
 
 	/**
 	 *  uint32_t 	maxImageDimension3D	[int]
 	 */ 
-	int 	maxImageDimension3D;
+	 int 	maxImageDimension3D;
 
 	/**
 	 *  uint32_t 	maxImageDimensionCube	[int]
 	 */ 
-	int 	maxImageDimensionCube;
+	 int 	maxImageDimensionCube;
 
 	/**
 	 *  uint32_t 	maxImageArrayLayers	[int]
 	 */ 
-	int 	maxImageArrayLayers;
+	 int 	maxImageArrayLayers;
 
 	/**
 	 *  uint32_t 	maxTexelBufferElements	[int]
 	 */ 
-	int 	maxTexelBufferElements;
+	 int 	maxTexelBufferElements;
 
 	/**
 	 *  uint32_t 	maxUniformBufferRange	[int]
 	 */ 
-	int 	maxUniformBufferRange;
+	 int 	maxUniformBufferRange;
 
 	/**
 	 *  uint32_t 	maxStorageBufferRange	[int]
 	 */ 
-	int 	maxStorageBufferRange;
+	 int 	maxStorageBufferRange;
 
 	/**
 	 *  uint32_t 	maxPushConstantsSize	[int]
 	 */ 
-	int 	maxPushConstantsSize;
+	 int 	maxPushConstantsSize;
 
 	/**
 	 *  uint32_t 	maxMemoryAllocationCount	[int]
 	 */ 
-	int 	maxMemoryAllocationCount;
+	 int 	maxMemoryAllocationCount;
 
 	/**
 	 *  uint32_t 	maxSamplerAllocationCount	[int]
 	 */ 
-	int 	maxSamplerAllocationCount;
+	 int 	maxSamplerAllocationCount;
 
 	/**
 	 *  VkDeviceSize 	bufferImageGranularity	[long]
 	 */ 
-	long 	bufferImageGranularity;
+	 long 	bufferImageGranularity;
 
 	/**
 	 *  VkDeviceSize 	sparseAddressSpaceSize	[long]
 	 */ 
-	long 	sparseAddressSpaceSize;
+	 long 	sparseAddressSpaceSize;
 
 	/**
 	 *  uint32_t 	maxBoundDescriptorSets	[int]
 	 */ 
-	int 	maxBoundDescriptorSets;
+	 int 	maxBoundDescriptorSets;
 
 	/**
 	 *  uint32_t 	maxPerStageDescriptorSamplers	[int]
 	 */ 
-	int 	maxPerStageDescriptorSamplers;
+	 int 	maxPerStageDescriptorSamplers;
 
 	/**
 	 *  uint32_t 	maxPerStageDescriptorUniformBuffers	[int]
 	 */ 
-	int 	maxPerStageDescriptorUniformBuffers;
+	 int 	maxPerStageDescriptorUniformBuffers;
 
 	/**
 	 *  uint32_t 	maxPerStageDescriptorStorageBuffers	[int]
 	 */ 
-	int 	maxPerStageDescriptorStorageBuffers;
+	 int 	maxPerStageDescriptorStorageBuffers;
 
 	/**
 	 *  uint32_t 	maxPerStageDescriptorSampledImages	[int]
 	 */ 
-	int 	maxPerStageDescriptorSampledImages;
+	 int 	maxPerStageDescriptorSampledImages;
 
 	/**
 	 *  uint32_t 	maxPerStageDescriptorStorageImages	[int]
 	 */ 
-	int 	maxPerStageDescriptorStorageImages;
+	 int 	maxPerStageDescriptorStorageImages;
 
 	/**
 	 *  uint32_t 	maxPerStageDescriptorInputAttachments	[int]
 	 */ 
-	int 	maxPerStageDescriptorInputAttachments;
+	 int 	maxPerStageDescriptorInputAttachments;
 
 	/**
 	 *  uint32_t 	maxPerStageResources	[int]
 	 */ 
-	int 	maxPerStageResources;
+	 int 	maxPerStageResources;
 
 	/**
 	 *  uint32_t 	maxDescriptorSetSamplers	[int]
 	 */ 
-	int 	maxDescriptorSetSamplers;
+	 int 	maxDescriptorSetSamplers;
 
 	/**
 	 *  uint32_t 	maxDescriptorSetUniformBuffers	[int]
 	 */ 
-	int 	maxDescriptorSetUniformBuffers;
+	 int 	maxDescriptorSetUniformBuffers;
 
 	/**
 	 *  uint32_t 	maxDescriptorSetUniformBuffersDynamic	[int]
 	 */ 
-	int 	maxDescriptorSetUniformBuffersDynamic;
+	 int 	maxDescriptorSetUniformBuffersDynamic;
 
 	/**
 	 *  uint32_t 	maxDescriptorSetStorageBuffers	[int]
 	 */ 
-	int 	maxDescriptorSetStorageBuffers;
+	 int 	maxDescriptorSetStorageBuffers;
 
 	/**
 	 *  uint32_t 	maxDescriptorSetStorageBuffersDynamic	[int]
 	 */ 
-	int 	maxDescriptorSetStorageBuffersDynamic;
+	 int 	maxDescriptorSetStorageBuffersDynamic;
 
 	/**
 	 *  uint32_t 	maxDescriptorSetSampledImages	[int]
 	 */ 
-	int 	maxDescriptorSetSampledImages;
+	 int 	maxDescriptorSetSampledImages;
 
 	/**
 	 *  uint32_t 	maxDescriptorSetStorageImages	[int]
 	 */ 
-	int 	maxDescriptorSetStorageImages;
+	 int 	maxDescriptorSetStorageImages;
 
 	/**
 	 *  uint32_t 	maxDescriptorSetInputAttachments	[int]
 	 */ 
-	int 	maxDescriptorSetInputAttachments;
+	 int 	maxDescriptorSetInputAttachments;
 
 	/**
 	 *  uint32_t 	maxVertexInputAttributes	[int]
 	 */ 
-	int 	maxVertexInputAttributes;
+	 int 	maxVertexInputAttributes;
 
 	/**
 	 *  uint32_t 	maxVertexInputBindings	[int]
 	 */ 
-	int 	maxVertexInputBindings;
+	 int 	maxVertexInputBindings;
 
 	/**
 	 *  uint32_t 	maxVertexInputAttributeOffset	[int]
 	 */ 
-	int 	maxVertexInputAttributeOffset;
+	 int 	maxVertexInputAttributeOffset;
 
 	/**
 	 *  uint32_t 	maxVertexInputBindingStride	[int]
 	 */ 
-	int 	maxVertexInputBindingStride;
+	 int 	maxVertexInputBindingStride;
 
 	/**
 	 *  uint32_t 	maxVertexOutputComponents	[int]
 	 */ 
-	int 	maxVertexOutputComponents;
+	 int 	maxVertexOutputComponents;
 
 	/**
 	 *  uint32_t 	maxTessellationGenerationLevel	[int]
 	 */ 
-	int 	maxTessellationGenerationLevel;
+	 int 	maxTessellationGenerationLevel;
 
 	/**
 	 *  uint32_t 	maxTessellationPatchSize	[int]
 	 */ 
-	int 	maxTessellationPatchSize;
+	 int 	maxTessellationPatchSize;
 
 	/**
 	 *  uint32_t 	maxTessellationControlPerVertexInputComponents	[int]
 	 */ 
-	int 	maxTessellationControlPerVertexInputComponents;
+	 int 	maxTessellationControlPerVertexInputComponents;
 
 	/**
 	 *  uint32_t 	maxTessellationControlPerVertexOutputComponents	[int]
 	 */ 
-	int 	maxTessellationControlPerVertexOutputComponents;
+	 int 	maxTessellationControlPerVertexOutputComponents;
 
 	/**
 	 *  uint32_t 	maxTessellationControlPerPatchOutputComponents	[int]
 	 */ 
-	int 	maxTessellationControlPerPatchOutputComponents;
+	 int 	maxTessellationControlPerPatchOutputComponents;
 
 	/**
 	 *  uint32_t 	maxTessellationControlTotalOutputComponents	[int]
 	 */ 
-	int 	maxTessellationControlTotalOutputComponents;
+	 int 	maxTessellationControlTotalOutputComponents;
 
 	/**
 	 *  uint32_t 	maxTessellationEvaluationInputComponents	[int]
 	 */ 
-	int 	maxTessellationEvaluationInputComponents;
+	 int 	maxTessellationEvaluationInputComponents;
 
 	/**
 	 *  uint32_t 	maxTessellationEvaluationOutputComponents	[int]
 	 */ 
-	int 	maxTessellationEvaluationOutputComponents;
+	 int 	maxTessellationEvaluationOutputComponents;
 
 	/**
 	 *  uint32_t 	maxGeometryShaderInvocations	[int]
 	 */ 
-	int 	maxGeometryShaderInvocations;
+	 int 	maxGeometryShaderInvocations;
 
 	/**
 	 *  uint32_t 	maxGeometryInputComponents	[int]
 	 */ 
-	int 	maxGeometryInputComponents;
+	 int 	maxGeometryInputComponents;
 
 	/**
 	 *  uint32_t 	maxGeometryOutputComponents	[int]
 	 */ 
-	int 	maxGeometryOutputComponents;
+	 int 	maxGeometryOutputComponents;
 
 	/**
 	 *  uint32_t 	maxGeometryOutputVertices	[int]
 	 */ 
-	int 	maxGeometryOutputVertices;
+	 int 	maxGeometryOutputVertices;
 
 	/**
 	 *  uint32_t 	maxGeometryTotalOutputComponents	[int]
 	 */ 
-	int 	maxGeometryTotalOutputComponents;
+	 int 	maxGeometryTotalOutputComponents;
 
 	/**
 	 *  uint32_t 	maxFragmentInputComponents	[int]
 	 */ 
-	int 	maxFragmentInputComponents;
+	 int 	maxFragmentInputComponents;
 
 	/**
 	 *  uint32_t 	maxFragmentOutputAttachments	[int]
 	 */ 
-	int 	maxFragmentOutputAttachments;
+	 int 	maxFragmentOutputAttachments;
 
 	/**
 	 *  uint32_t 	maxFragmentDualSrcAttachments	[int]
 	 */ 
-	int 	maxFragmentDualSrcAttachments;
+	 int 	maxFragmentDualSrcAttachments;
 
 	/**
 	 *  uint32_t 	maxFragmentCombinedOutputResources	[int]
 	 */ 
-	int 	maxFragmentCombinedOutputResources;
+	 int 	maxFragmentCombinedOutputResources;
 
 	/**
 	 *  uint32_t 	maxComputeSharedMemorySize	[int]
 	 */ 
-	int 	maxComputeSharedMemorySize;
+	 int 	maxComputeSharedMemorySize;
 
 	/**
 	 *  uint32_t[] 	maxComputeWorkGroupCount	[int_array]
 	 */ 
-	int[] 	maxComputeWorkGroupCount;
+	 int[] 	maxComputeWorkGroupCount;
 
 	/**
 	 *  uint32_t 	maxComputeWorkGroupInvocations	[int]
 	 */ 
-	int 	maxComputeWorkGroupInvocations;
+	 int 	maxComputeWorkGroupInvocations;
 
 	/**
 	 *  uint32_t[] 	maxComputeWorkGroupSize	[int_array]
 	 */ 
-	int[] 	maxComputeWorkGroupSize;
+	 int[] 	maxComputeWorkGroupSize;
 
 	/**
 	 *  uint32_t 	subPixelPrecisionBits	[int]
 	 */ 
-	int 	subPixelPrecisionBits;
+	 int 	subPixelPrecisionBits;
 
 	/**
 	 *  uint32_t 	subTexelPrecisionBits	[int]
 	 */ 
-	int 	subTexelPrecisionBits;
+	 int 	subTexelPrecisionBits;
 
 	/**
 	 *  uint32_t 	mipmapPrecisionBits	[int]
 	 */ 
-	int 	mipmapPrecisionBits;
+	 int 	mipmapPrecisionBits;
 
 	/**
 	 *  uint32_t 	maxDrawIndexedIndexValue	[int]
 	 */ 
-	int 	maxDrawIndexedIndexValue;
+	 int 	maxDrawIndexedIndexValue;
 
 	/**
 	 *  uint32_t 	maxDrawIndirectCount	[int]
 	 */ 
-	int 	maxDrawIndirectCount;
+	 int 	maxDrawIndirectCount;
 
 	/**
 	 *  float 	maxSamplerLodBias	[float]
 	 */ 
-	float 	maxSamplerLodBias;
+	 float 	maxSamplerLodBias;
 
 	/**
 	 *  float 	maxSamplerAnisotropy	[float]
 	 */ 
-	float 	maxSamplerAnisotropy;
+	 float 	maxSamplerAnisotropy;
 
 	/**
 	 *  uint32_t 	maxViewports	[int]
 	 */ 
-	int 	maxViewports;
+	 int 	maxViewports;
 
 	/**
 	 *  uint32_t[] 	maxViewportDimensions	[int_array]
 	 */ 
-	int[] 	maxViewportDimensions;
+	 int[] 	maxViewportDimensions;
 
 	/**
 	 *  float[] 	viewportBoundsRange	[float_array]
 	 */ 
-	float[] 	viewportBoundsRange;
+	 float[] 	viewportBoundsRange;
 
 	/**
 	 *  uint32_t 	viewportSubPixelBits	[int]
 	 */ 
-	int 	viewportSubPixelBits;
+	 int 	viewportSubPixelBits;
 
 	/**
 	 *  size_t 	minMemoryMapAlignment	[long]
 	 */ 
-	long 	minMemoryMapAlignment;
+	 long 	minMemoryMapAlignment;
 
 	/**
 	 *  VkDeviceSize 	minTexelBufferOffsetAlignment	[long]
 	 */ 
-	long 	minTexelBufferOffsetAlignment;
+	 long 	minTexelBufferOffsetAlignment;
 
 	/**
 	 *  VkDeviceSize 	minUniformBufferOffsetAlignment	[long]
 	 */ 
-	long 	minUniformBufferOffsetAlignment;
+	 long 	minUniformBufferOffsetAlignment;
 
 	/**
 	 *  VkDeviceSize 	minStorageBufferOffsetAlignment	[long]
 	 */ 
-	long 	minStorageBufferOffsetAlignment;
+	 long 	minStorageBufferOffsetAlignment;
 
 	/**
 	 *  int32_t 	minTexelOffset	[int]
 	 */ 
-	int 	minTexelOffset;
+	 int 	minTexelOffset;
 
 	/**
 	 *  uint32_t 	maxTexelOffset	[int]
 	 */ 
-	int 	maxTexelOffset;
+	 int 	maxTexelOffset;
 
 	/**
 	 *  int32_t 	minTexelGatherOffset	[int]
 	 */ 
-	int 	minTexelGatherOffset;
+	 int 	minTexelGatherOffset;
 
 	/**
 	 *  uint32_t 	maxTexelGatherOffset	[int]
 	 */ 
-	int 	maxTexelGatherOffset;
+	 int 	maxTexelGatherOffset;
 
 	/**
 	 *  float 	minInterpolationOffset	[float]
 	 */ 
-	float 	minInterpolationOffset;
+	 float 	minInterpolationOffset;
 
 	/**
 	 *  float 	maxInterpolationOffset	[float]
 	 */ 
-	float 	maxInterpolationOffset;
+	 float 	maxInterpolationOffset;
 
 	/**
 	 *  uint32_t 	subPixelInterpolationOffsetBits	[int]
 	 */ 
-	int 	subPixelInterpolationOffsetBits;
+	 int 	subPixelInterpolationOffsetBits;
 
 	/**
 	 *  uint32_t 	maxFramebufferWidth	[int]
 	 */ 
-	int 	maxFramebufferWidth;
+	 int 	maxFramebufferWidth;
 
 	/**
 	 *  uint32_t 	maxFramebufferHeight	[int]
 	 */ 
-	int 	maxFramebufferHeight;
+	 int 	maxFramebufferHeight;
 
 	/**
 	 *  uint32_t 	maxFramebufferLayers	[int]
 	 */ 
-	int 	maxFramebufferLayers;
+	 int 	maxFramebufferLayers;
 
 	/**
 	 *  VkSampleCountFlags 	framebufferColorSampleCounts	[int]
 	 */ 
-	int 	framebufferColorSampleCounts;
+	 int 	framebufferColorSampleCounts;
 
 	/**
 	 *  VkSampleCountFlags 	framebufferDepthSampleCounts	[int]
 	 */ 
-	int 	framebufferDepthSampleCounts;
+	 int 	framebufferDepthSampleCounts;
 
 	/**
 	 *  VkSampleCountFlags 	framebufferStencilSampleCounts	[int]
 	 */ 
-	int 	framebufferStencilSampleCounts;
+	 int 	framebufferStencilSampleCounts;
 
 	/**
 	 *  VkSampleCountFlags 	framebufferNoAttachmentsSampleCounts	[int]
 	 */ 
-	int 	framebufferNoAttachmentsSampleCounts;
+	 int 	framebufferNoAttachmentsSampleCounts;
 
 	/**
 	 *  uint32_t 	maxColorAttachments	[int]
 	 */ 
-	int 	maxColorAttachments;
+	 int 	maxColorAttachments;
 
 	/**
 	 *  VkSampleCountFlags 	sampledImageColorSampleCounts	[int]
 	 */ 
-	int 	sampledImageColorSampleCounts;
+	 int 	sampledImageColorSampleCounts;
 
 	/**
 	 *  VkSampleCountFlags 	sampledImageIntegerSampleCounts	[int]
 	 */ 
-	int 	sampledImageIntegerSampleCounts;
+	 int 	sampledImageIntegerSampleCounts;
 
 	/**
 	 *  VkSampleCountFlags 	sampledImageDepthSampleCounts	[int]
 	 */ 
-	int 	sampledImageDepthSampleCounts;
+	 int 	sampledImageDepthSampleCounts;
 
 	/**
 	 *  VkSampleCountFlags 	sampledImageStencilSampleCounts	[int]
 	 */ 
-	int 	sampledImageStencilSampleCounts;
+	 int 	sampledImageStencilSampleCounts;
 
 	/**
 	 *  VkSampleCountFlags 	storageImageSampleCounts	[int]
 	 */ 
-	int 	storageImageSampleCounts;
+	 int 	storageImageSampleCounts;
 
 	/**
 	 *  uint32_t 	maxSampleMaskWords	[int]
 	 */ 
-	int 	maxSampleMaskWords;
+	 int 	maxSampleMaskWords;
 
 	/**
 	 *  VkBool32 	timestampComputeAndGraphics	[boolean]
 	 */ 
-	boolean 	timestampComputeAndGraphics;
+	 boolean 	timestampComputeAndGraphics;
 
 	/**
 	 *  float 	timestampPeriod	[float]
 	 */ 
-	float 	timestampPeriod;
+	 float 	timestampPeriod;
 
 	/**
 	 *  uint32_t 	maxClipDistances	[int]
 	 */ 
-	int 	maxClipDistances;
+	 int 	maxClipDistances;
 
 	/**
 	 *  uint32_t 	maxCullDistances	[int]
 	 */ 
-	int 	maxCullDistances;
+	 int 	maxCullDistances;
 
 	/**
 	 *  uint32_t 	maxCombinedClipAndCullDistances	[int]
 	 */ 
-	int 	maxCombinedClipAndCullDistances;
+	 int 	maxCombinedClipAndCullDistances;
 
 	/**
 	 *  uint32_t 	discreteQueuePriorities	[int]
 	 */ 
-	int 	discreteQueuePriorities;
+	 int 	discreteQueuePriorities;
 
 	/**
 	 *  float[] 	pointSizeRange	[float_array]
 	 */ 
-	float[] 	pointSizeRange;
+	 float[] 	pointSizeRange;
 
 	/**
 	 *  float[] 	lineWidthRange	[float_array]
 	 */ 
-	float[] 	lineWidthRange;
+	 float[] 	lineWidthRange;
 
 	/**
 	 *  float 	pointSizeGranularity	[float]
 	 */ 
-	float 	pointSizeGranularity;
+	 float 	pointSizeGranularity;
 
 	/**
 	 *  float 	lineWidthGranularity	[float]
 	 */ 
-	float 	lineWidthGranularity;
+	 float 	lineWidthGranularity;
 
 	/**
 	 *  VkBool32 	strictLines	[boolean]
 	 */ 
-	boolean 	strictLines;
+	 boolean 	strictLines;
 
 	/**
 	 *  VkBool32 	standardSampleLocations	[boolean]
 	 */ 
-	boolean 	standardSampleLocations;
+	 boolean 	standardSampleLocations;
 
 	/**
 	 *  VkDeviceSize 	optimalBufferCopyOffsetAlignment	[long]
 	 */ 
-	long 	optimalBufferCopyOffsetAlignment;
+	 long 	optimalBufferCopyOffsetAlignment;
 
 	/**
 	 *  VkDeviceSize 	optimalBufferCopyRowPitchAlignment	[long]
 	 */ 
-	long 	optimalBufferCopyRowPitchAlignment;
+	 long 	optimalBufferCopyRowPitchAlignment;
 
 	/**
 	 *  VkDeviceSize 	nonCoherentAtomSize	[long]
 	 */ 
-	long 	nonCoherentAtomSize;
+	 long 	nonCoherentAtomSize;
 
 	/**
 	 * Ctor
@@ -715,6 +720,22 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	        P<VkPhysicalDeviceLimits> p = new  P<VkPhysicalDeviceLimits>(new VkPhysicalDeviceLimits());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkPhysicalDeviceLimits> getP() {
+	       if(p == null ){
+	           p = new P<VkPhysicalDeviceLimits> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

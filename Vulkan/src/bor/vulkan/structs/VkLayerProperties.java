@@ -39,26 +39,31 @@ public class VkLayerProperties extends VkStruct {
 	/** ID of this structure [18]  */
 	 public static final int TAG_ID = VKLAYERPROPERTIES_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkLayerProperties> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  char[] 	layerName	[string]
 	 */ 
-	String 	layerName;
+	 String 	layerName;
 
 	/**
 	 *  uint32_t 	specVersion	[int]
 	 */ 
-	int 	specVersion;
+	 int 	specVersion;
 
 	/**
 	 *  uint32_t 	implementationVersion	[int]
 	 */ 
-	int 	implementationVersion;
+	 int 	implementationVersion;
 
 	/**
 	 *  char[] 	description	[string]
 	 */ 
-	String 	description;
+	 String 	description;
 
 	/**
 	 * Ctor
@@ -103,6 +108,22 @@ public class VkLayerProperties extends VkStruct {
 	        P<VkLayerProperties> p = new  P<VkLayerProperties>(new VkLayerProperties());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkLayerProperties> getP() {
+	       if(p == null ){
+	           p = new P<VkLayerProperties> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

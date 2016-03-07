@@ -43,46 +43,51 @@ public class VkImageViewCreateInfo extends VkStruct {
 	/** ID of this structure [43]  */
 	 public static final int TAG_ID = VKIMAGEVIEWCREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkImageViewCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkImageViewCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  VkImage 	image	[vkhandle]
 	 */ 
-	VkImage 	image;
+	 VkImage 	image;
 
 	/**
 	 *  VkImageViewType 	viewType	[vkenum]
 	 */ 
-	VkImageViewType 	viewType;
+	 VkImageViewType 	viewType;
 
 	/**
 	 *  VkFormat 	format	[vkenum]
 	 */ 
-	VkFormat 	format;
+	 VkFormat 	format;
 
 	/**
 	 *  VkComponentMapping 	components	[vkstruct]
 	 */ 
-	VkComponentMapping 	components;
+	 VkComponentMapping 	components;
 
 	/**
 	 *  VkImageSubresourceRange 	subresourceRange	[vkstruct]
 	 */ 
-	VkImageSubresourceRange 	subresourceRange;
+	 VkImageSubresourceRange 	subresourceRange;
 
 	/**
 	 * Ctor
@@ -127,6 +132,22 @@ public class VkImageViewCreateInfo extends VkStruct {
 	        P<VkImageViewCreateInfo> p = new  P<VkImageViewCreateInfo>(new VkImageViewCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkImageViewCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkImageViewCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

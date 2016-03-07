@@ -39,26 +39,31 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	/** ID of this structure [20]  */
 	 public static final int TAG_ID = VKMEMORYALLOCATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkMemoryAllocateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkDeviceSize 	allocationSize	[long]
 	 */ 
-	long 	allocationSize;
+	 long 	allocationSize;
 
 	/**
 	 *  uint32_t 	memoryTypeIndex	[int]
 	 */ 
-	int 	memoryTypeIndex;
+	 int 	memoryTypeIndex;
 
 	/**
 	 * Ctor
@@ -103,6 +108,22 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	        P<VkMemoryAllocateInfo> p = new  P<VkMemoryAllocateInfo>(new VkMemoryAllocateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkMemoryAllocateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkMemoryAllocateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

@@ -38,21 +38,26 @@ public class VkDescriptorImageInfo extends VkStruct {
 	/** ID of this structure [76]  */
 	 public static final int TAG_ID = VKDESCRIPTORIMAGEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkDescriptorImageInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkSampler 	sampler	[vkhandle]
 	 */ 
-	VkSampler 	sampler;
+	 VkSampler 	sampler;
 
 	/**
 	 *  VkImageView 	imageView	[vkhandle]
 	 */ 
-	VkImageView 	imageView;
+	 VkImageView 	imageView;
 
 	/**
 	 *  VkImageLayout 	imageLayout	[vkenum]
 	 */ 
-	VkImageLayout 	imageLayout;
+	 VkImageLayout 	imageLayout;
 
 	/**
 	 * Ctor
@@ -97,6 +102,22 @@ public class VkDescriptorImageInfo extends VkStruct {
 	        P<VkDescriptorImageInfo> p = new  P<VkDescriptorImageInfo>(new VkDescriptorImageInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkDescriptorImageInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkDescriptorImageInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

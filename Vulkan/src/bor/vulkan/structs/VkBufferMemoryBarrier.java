@@ -44,51 +44,56 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	/** ID of this structure [100]  */
 	 public static final int TAG_ID = VKBUFFERMEMORYBARRIER_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkBufferMemoryBarrier> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkAccessFlags 	srcAccessMask	[int]
 	 */ 
-	int 	srcAccessMask;
+	 int 	srcAccessMask;
 
 	/**
 	 *  VkAccessFlags 	dstAccessMask	[int]
 	 */ 
-	int 	dstAccessMask;
+	 int 	dstAccessMask;
 
 	/**
 	 *  uint32_t 	srcQueueFamilyIndex	[int]
 	 */ 
-	int 	srcQueueFamilyIndex;
+	 int 	srcQueueFamilyIndex;
 
 	/**
 	 *  uint32_t 	dstQueueFamilyIndex	[int]
 	 */ 
-	int 	dstQueueFamilyIndex;
+	 int 	dstQueueFamilyIndex;
 
 	/**
 	 *  VkBuffer 	buffer	[vkhandle]
 	 */ 
-	VkBuffer 	buffer;
+	 VkBuffer 	buffer;
 
 	/**
 	 *  VkDeviceSize 	offset	[long]
 	 */ 
-	long 	offset;
+	 long 	offset;
 
 	/**
 	 *  VkDeviceSize 	size	[long]
 	 */ 
-	long 	size;
+	 long 	size;
 
 	/**
 	 * Ctor
@@ -133,6 +138,22 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	        P<VkBufferMemoryBarrier> p = new  P<VkBufferMemoryBarrier>(new VkBufferMemoryBarrier());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkBufferMemoryBarrier> getP() {
+	       if(p == null ){
+	           p = new P<VkBufferMemoryBarrier> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

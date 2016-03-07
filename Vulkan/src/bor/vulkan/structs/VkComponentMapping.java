@@ -39,26 +39,31 @@ public class VkComponentMapping extends VkStruct {
 	/** ID of this structure [41]  */
 	 public static final int TAG_ID = VKCOMPONENTMAPPING_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkComponentMapping> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkComponentSwizzle 	r	[vkenum]
 	 */ 
-	VkComponentSwizzle 	r;
+	 VkComponentSwizzle 	r;
 
 	/**
 	 *  VkComponentSwizzle 	g	[vkenum]
 	 */ 
-	VkComponentSwizzle 	g;
+	 VkComponentSwizzle 	g;
 
 	/**
 	 *  VkComponentSwizzle 	b	[vkenum]
 	 */ 
-	VkComponentSwizzle 	b;
+	 VkComponentSwizzle 	b;
 
 	/**
 	 *  VkComponentSwizzle 	a	[vkenum]
 	 */ 
-	VkComponentSwizzle 	a;
+	 VkComponentSwizzle 	a;
 
 	/**
 	 * Ctor
@@ -103,6 +108,22 @@ public class VkComponentMapping extends VkStruct {
 	        P<VkComponentMapping> p = new  P<VkComponentMapping>(new VkComponentMapping());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkComponentMapping> getP() {
+	       if(p == null ){
+	           p = new P<VkComponentMapping> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

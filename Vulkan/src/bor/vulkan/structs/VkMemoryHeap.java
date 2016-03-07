@@ -37,16 +37,21 @@ public class VkMemoryHeap extends VkStruct {
 	/** ID of this structure [13]  */
 	 public static final int TAG_ID = VKMEMORYHEAP_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkMemoryHeap> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkDeviceSize 	size	[long]
 	 */ 
-	long 	size;
+	 long 	size;
 
 	/**
 	 *  VkMemoryHeapFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 * Ctor
@@ -91,6 +96,22 @@ public class VkMemoryHeap extends VkStruct {
 	        P<VkMemoryHeap> p = new  P<VkMemoryHeap>(new VkMemoryHeap());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkMemoryHeap> getP() {
+	       if(p == null ){
+	           p = new P<VkMemoryHeap> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

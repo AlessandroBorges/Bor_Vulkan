@@ -39,26 +39,31 @@ public class VkImageBlit extends VkStruct {
 	/** ID of this structure [93]  */
 	 public static final int TAG_ID = VKIMAGEBLIT_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkImageBlit> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkImageSubresourceLayers 	srcSubresource	[vkstruct]
 	 */ 
-	VkImageSubresourceLayers 	srcSubresource;
+	 VkImageSubresourceLayers 	srcSubresource;
 
 	/**
 	 *  VkOffset3D[] 	srcOffsets	
 	 */ 
-	VkOffset3D[] 	srcOffsets;
+	 VkOffset3D[] 	srcOffsets;
 
 	/**
 	 *  VkImageSubresourceLayers 	dstSubresource	[vkstruct]
 	 */ 
-	VkImageSubresourceLayers 	dstSubresource;
+	 VkImageSubresourceLayers 	dstSubresource;
 
 	/**
 	 *  VkOffset3D[] 	dstOffsets	
 	 */ 
-	VkOffset3D[] 	dstOffsets;
+	 VkOffset3D[] 	dstOffsets;
 
 	/**
 	 * Ctor
@@ -103,6 +108,22 @@ public class VkImageBlit extends VkStruct {
 	        P<VkImageBlit> p = new  P<VkImageBlit>(new VkImageBlit());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkImageBlit> getP() {
+	       if(p == null ){
+	           p = new P<VkImageBlit> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

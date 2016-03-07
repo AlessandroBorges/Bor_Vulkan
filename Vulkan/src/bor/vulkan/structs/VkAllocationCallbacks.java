@@ -23,11 +23,11 @@ import java.nio.ByteBuffer;
  * <pre>
  * typedef struct VkAllocationCallbacks {
  *     void*                                   pUserData;
- *     PFNvkAllocationFunction                pfnAllocation;
- *     PFNvkReallocationFunction              pfnReallocation;
- *     PFNvkFreeFunction                      pfnFree;
- *     PFNvkInternalAllocationNotification    pfnInternalAllocation;
- *     PFNvkInternalFreeNotification          pfnInternalFree;
+ *     PFN_vkAllocationFunction                pfnAllocation;
+ *     PFN_vkReallocationFunction              pfnReallocation;
+ *     PFN_vkFreeFunction                      pfnFree;
+ *     PFN_vkInternalAllocationNotification    pfnInternalAllocation;
+ *     PFN_vkInternalFreeNotification          pfnInternalFree;
  * } VkAllocationCallbacks;
  * </pre>
  * 
@@ -41,36 +41,41 @@ public class VkAllocationCallbacks extends VkStruct {
 	/** ID of this structure [3]  */
 	 public static final int TAG_ID = VKALLOCATIONCALLBACKS_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkAllocationCallbacks> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  void* 	pUserData	[buffer]
 	 */ 
-	java.nio.Buffer 	pUserData;
+	 java.nio.Buffer 	pUserData;
 
 	/**
-	 *  PFNvkAllocationFunction 	pfnAllocation	[vkhandle]
+	 *  PFN_vkAllocationFunction 	pfnAllocation	
 	 */ 
-	PFNvkAllocationFunction 	pfnAllocation;
+	 PFNvkAllocationFunction 	pfnAllocation;
 
 	/**
-	 *  PFNvkReallocationFunction 	pfnReallocation	[vkhandle]
+	 *  PFN_vkReallocationFunction 	pfnReallocation	
 	 */ 
-	PFNvkReallocationFunction 	pfnReallocation;
+	 PFNvkReallocationFunction 	pfnReallocation;
 
 	/**
-	 *  PFNvkFreeFunction 	pfnFree	[vkhandle]
+	 *  PFN_vkFreeFunction 	pfnFree	
 	 */ 
-	PFNvkFreeFunction 	pfnFree;
+	 PFNvkFreeFunction 	pfnFree;
 
 	/**
-	 *  PFNvkInternalAllocationNotification 	pfnInternalAllocation	[vkhandle]
+	 *  PFN_vkInternalAllocationNotification 	pfnInternalAllocation	
 	 */ 
-	PFNvkInternalAllocationNotification 	pfnInternalAllocation;
+	 PFNvkInternalAllocationNotification 	pfnInternalAllocation;
 
 	/**
-	 *  PFNvkInternalFreeNotification 	pfnInternalFree	[vkhandle]
+	 *  PFN_vkInternalFreeNotification 	pfnInternalFree	
 	 */ 
-	PFNvkInternalFreeNotification 	pfnInternalFree;
+	 PFNvkInternalFreeNotification 	pfnInternalFree;
 
 	/**
 	 * Ctor
@@ -116,6 +121,22 @@ public class VkAllocationCallbacks extends VkStruct {
 	        return p;
 	    }
 
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkAllocationCallbacks> getP() {
+	       if(p == null ){
+	           p = new P<VkAllocationCallbacks> (this);
+	       }
+	        return p;
+	    }
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
@@ -139,8 +160,8 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pfnAllocation	[vkhandle]<br>
-	 * Prototype: PFNvkAllocationFunction  pfnAllocation
+	 * Set method for field pfnAllocation	<br>
+	 * Prototype: PFN_vkAllocationFunction  pfnAllocation
 	 */ 
 	 public void pfnAllocation(PFNvkAllocationFunction pfnAllocation){
 		 this.pfnAllocation = pfnAllocation;
@@ -148,8 +169,8 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pfnAllocation	[vkhandle]<br>
-	 * Prototype: PFNvkAllocationFunction  pfnAllocation
+	 * get method for field pfnAllocation	<br>
+	 * Prototype: PFN_vkAllocationFunction  pfnAllocation
 	 */ 
 	 public PFNvkAllocationFunction pfnAllocation(){
 		 // return  this.pfnAllocation;
@@ -157,8 +178,8 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pfnReallocation	[vkhandle]<br>
-	 * Prototype: PFNvkReallocationFunction  pfnReallocation
+	 * Set method for field pfnReallocation	<br>
+	 * Prototype: PFN_vkReallocationFunction  pfnReallocation
 	 */ 
 	 public void pfnReallocation(PFNvkReallocationFunction pfnReallocation){
 		 this.pfnReallocation = pfnReallocation;
@@ -166,8 +187,8 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pfnReallocation	[vkhandle]<br>
-	 * Prototype: PFNvkReallocationFunction  pfnReallocation
+	 * get method for field pfnReallocation	<br>
+	 * Prototype: PFN_vkReallocationFunction  pfnReallocation
 	 */ 
 	 public PFNvkReallocationFunction pfnReallocation(){
 		 // return  this.pfnReallocation;
@@ -175,8 +196,8 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pfnFree	[vkhandle]<br>
-	 * Prototype: PFNvkFreeFunction  pfnFree
+	 * Set method for field pfnFree	<br>
+	 * Prototype: PFN_vkFreeFunction  pfnFree
 	 */ 
 	 public void pfnFree(PFNvkFreeFunction pfnFree){
 		 this.pfnFree = pfnFree;
@@ -184,8 +205,8 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pfnFree	[vkhandle]<br>
-	 * Prototype: PFNvkFreeFunction  pfnFree
+	 * get method for field pfnFree	<br>
+	 * Prototype: PFN_vkFreeFunction  pfnFree
 	 */ 
 	 public PFNvkFreeFunction pfnFree(){
 		 // return  this.pfnFree;
@@ -193,8 +214,8 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pfnInternalAllocation	[vkhandle]<br>
-	 * Prototype: PFNvkInternalAllocationNotification  pfnInternalAllocation
+	 * Set method for field pfnInternalAllocation	<br>
+	 * Prototype: PFN_vkInternalAllocationNotification  pfnInternalAllocation
 	 */ 
 	 public void pfnInternalAllocation(PFNvkInternalAllocationNotification pfnInternalAllocation){
 		 this.pfnInternalAllocation = pfnInternalAllocation;
@@ -202,8 +223,8 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pfnInternalAllocation	[vkhandle]<br>
-	 * Prototype: PFNvkInternalAllocationNotification  pfnInternalAllocation
+	 * get method for field pfnInternalAllocation	<br>
+	 * Prototype: PFN_vkInternalAllocationNotification  pfnInternalAllocation
 	 */ 
 	 public PFNvkInternalAllocationNotification pfnInternalAllocation(){
 		 // return  this.pfnInternalAllocation;
@@ -211,8 +232,8 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pfnInternalFree	[vkhandle]<br>
-	 * Prototype: PFNvkInternalFreeNotification  pfnInternalFree
+	 * Set method for field pfnInternalFree	<br>
+	 * Prototype: PFN_vkInternalFreeNotification  pfnInternalFree
 	 */ 
 	 public void pfnInternalFree(PFNvkInternalFreeNotification pfnInternalFree){
 		 this.pfnInternalFree = pfnInternalFree;
@@ -220,8 +241,8 @@ public class VkAllocationCallbacks extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pfnInternalFree	[vkhandle]<br>
-	 * Prototype: PFNvkInternalFreeNotification  pfnInternalFree
+	 * get method for field pfnInternalFree	<br>
+	 * Prototype: PFN_vkInternalFreeNotification  pfnInternalFree
 	 */ 
 	 public PFNvkInternalFreeNotification pfnInternalFree(){
 		 // return  this.pfnInternalFree;
@@ -251,17 +272,17 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pfnAllocation	[vkhandle]<br>
-	 * Prototype: PFNvkAllocationFunction  pfnAllocation
+	 * native SET method for field pfnAllocation	<br>
+	 * Prototype: PFN_vkAllocationFunction  pfnAllocation
 	 */ 
 	 private static native void pfnAllocation0(ByteBuffer ptr, PFNvkAllocationFunction _pfnAllocation);/*
 		  VkAllocationCallbacks _obj = (VkAllocationCallbacks)(*ptr);
-		  _obj.pfnAllocation = (PFNvkAllocationFunction) (_pfnAllocation);
+		  _obj.pfnAllocation = (PFN_vkAllocationFunction) (_pfnAllocation);
 	  */
 
 	/**
-	 * native GET method for field pfnAllocation	[vkhandle]<br>
-	 * Prototype: PFNvkAllocationFunction  pfnAllocation
+	 * native GET method for field pfnAllocation	<br>
+	 * Prototype: PFN_vkAllocationFunction  pfnAllocation
 	 */ 
 	 private static native PFNvkAllocationFunction pfnAllocation0(ByteBuffer ptr);/*
 		  VkAllocationCallbacks _obj = (VkAllocationCallbacks)(ptr);
@@ -269,17 +290,17 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pfnReallocation	[vkhandle]<br>
-	 * Prototype: PFNvkReallocationFunction  pfnReallocation
+	 * native SET method for field pfnReallocation	<br>
+	 * Prototype: PFN_vkReallocationFunction  pfnReallocation
 	 */ 
 	 private static native void pfnReallocation0(ByteBuffer ptr, PFNvkReallocationFunction _pfnReallocation);/*
 		  VkAllocationCallbacks _obj = (VkAllocationCallbacks)(*ptr);
-		  _obj.pfnReallocation = (PFNvkReallocationFunction) (_pfnReallocation);
+		  _obj.pfnReallocation = (PFN_vkReallocationFunction) (_pfnReallocation);
 	  */
 
 	/**
-	 * native GET method for field pfnReallocation	[vkhandle]<br>
-	 * Prototype: PFNvkReallocationFunction  pfnReallocation
+	 * native GET method for field pfnReallocation	<br>
+	 * Prototype: PFN_vkReallocationFunction  pfnReallocation
 	 */ 
 	 private static native PFNvkReallocationFunction pfnReallocation0(ByteBuffer ptr);/*
 		  VkAllocationCallbacks _obj = (VkAllocationCallbacks)(ptr);
@@ -287,17 +308,17 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pfnFree	[vkhandle]<br>
-	 * Prototype: PFNvkFreeFunction  pfnFree
+	 * native SET method for field pfnFree	<br>
+	 * Prototype: PFN_vkFreeFunction  pfnFree
 	 */ 
 	 private static native void pfnFree0(ByteBuffer ptr, PFNvkFreeFunction _pfnFree);/*
 		  VkAllocationCallbacks _obj = (VkAllocationCallbacks)(*ptr);
-		  _obj.pfnFree = (PFNvkFreeFunction) (_pfnFree);
+		  _obj.pfnFree = (PFN_vkFreeFunction) (_pfnFree);
 	  */
 
 	/**
-	 * native GET method for field pfnFree	[vkhandle]<br>
-	 * Prototype: PFNvkFreeFunction  pfnFree
+	 * native GET method for field pfnFree	<br>
+	 * Prototype: PFN_vkFreeFunction  pfnFree
 	 */ 
 	 private static native PFNvkFreeFunction pfnFree0(ByteBuffer ptr);/*
 		  VkAllocationCallbacks _obj = (VkAllocationCallbacks)(ptr);
@@ -305,17 +326,17 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pfnInternalAllocation	[vkhandle]<br>
-	 * Prototype: PFNvkInternalAllocationNotification  pfnInternalAllocation
+	 * native SET method for field pfnInternalAllocation	<br>
+	 * Prototype: PFN_vkInternalAllocationNotification  pfnInternalAllocation
 	 */ 
 	 private static native void pfnInternalAllocation0(ByteBuffer ptr, PFNvkInternalAllocationNotification _pfnInternalAllocation);/*
 		  VkAllocationCallbacks _obj = (VkAllocationCallbacks)(*ptr);
-		  _obj.pfnInternalAllocation = (PFNvkInternalAllocationNotification) (_pfnInternalAllocation);
+		  _obj.pfnInternalAllocation = (PFN_vkInternalAllocationNotification) (_pfnInternalAllocation);
 	  */
 
 	/**
-	 * native GET method for field pfnInternalAllocation	[vkhandle]<br>
-	 * Prototype: PFNvkInternalAllocationNotification  pfnInternalAllocation
+	 * native GET method for field pfnInternalAllocation	<br>
+	 * Prototype: PFN_vkInternalAllocationNotification  pfnInternalAllocation
 	 */ 
 	 private static native PFNvkInternalAllocationNotification pfnInternalAllocation0(ByteBuffer ptr);/*
 		  VkAllocationCallbacks _obj = (VkAllocationCallbacks)(ptr);
@@ -323,17 +344,17 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pfnInternalFree	[vkhandle]<br>
-	 * Prototype: PFNvkInternalFreeNotification  pfnInternalFree
+	 * native SET method for field pfnInternalFree	<br>
+	 * Prototype: PFN_vkInternalFreeNotification  pfnInternalFree
 	 */ 
 	 private static native void pfnInternalFree0(ByteBuffer ptr, PFNvkInternalFreeNotification _pfnInternalFree);/*
 		  VkAllocationCallbacks _obj = (VkAllocationCallbacks)(*ptr);
-		  _obj.pfnInternalFree = (PFNvkInternalFreeNotification) (_pfnInternalFree);
+		  _obj.pfnInternalFree = (PFN_vkInternalFreeNotification) (_pfnInternalFree);
 	  */
 
 	/**
-	 * native GET method for field pfnInternalFree	[vkhandle]<br>
-	 * Prototype: PFNvkInternalFreeNotification  pfnInternalFree
+	 * native GET method for field pfnInternalFree	<br>
+	 * Prototype: PFN_vkInternalFreeNotification  pfnInternalFree
 	 */ 
 	 private static native PFNvkInternalFreeNotification pfnInternalFree0(ByteBuffer ptr);/*
 		  VkAllocationCallbacks _obj = (VkAllocationCallbacks)(ptr);

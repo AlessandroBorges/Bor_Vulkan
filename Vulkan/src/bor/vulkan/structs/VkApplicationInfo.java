@@ -42,41 +42,46 @@ public class VkApplicationInfo extends VkStruct {
 	/** ID of this structure [1]  */
 	 public static final int TAG_ID = VKAPPLICATIONINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkApplicationInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  const char* 	pApplicationName	[string]
 	 */ 
-	String 	pApplicationName;
+	 String 	pApplicationName;
 
 	/**
 	 *  uint32_t 	applicationVersion	[int]
 	 */ 
-	int 	applicationVersion;
+	 int 	applicationVersion;
 
 	/**
 	 *  const char* 	pEngineName	[string]
 	 */ 
-	String 	pEngineName;
+	 String 	pEngineName;
 
 	/**
 	 *  uint32_t 	engineVersion	[int]
 	 */ 
-	int 	engineVersion;
+	 int 	engineVersion;
 
 	/**
 	 *  uint32_t 	apiVersion	[int]
 	 */ 
-	int 	apiVersion;
+	 int 	apiVersion;
 
 	/**
 	 * Ctor
@@ -121,6 +126,22 @@ public class VkApplicationInfo extends VkStruct {
 	        P<VkApplicationInfo> p = new  P<VkApplicationInfo>(new VkApplicationInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkApplicationInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkApplicationInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

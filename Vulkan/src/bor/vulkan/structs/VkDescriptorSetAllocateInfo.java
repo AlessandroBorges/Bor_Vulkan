@@ -40,31 +40,36 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	/** ID of this structure [75]  */
 	 public static final int TAG_ID = VKDESCRIPTORSETALLOCATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkDescriptorSetAllocateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkDescriptorPool 	descriptorPool	[vkhandle]
 	 */ 
-	VkDescriptorPool 	descriptorPool;
+	 VkDescriptorPool 	descriptorPool;
 
 	/**
 	 *  uint32_t 	descriptorSetCount	[int]
 	 */ 
-	int 	descriptorSetCount;
+	 int 	descriptorSetCount;
 
 	/**
 	 *  const VkDescriptorSetLayout* 	pSetLayouts	[p]
 	 */ 
-	P<VkDescriptorSetLayout>  	pSetLayouts;
+	 P<VkDescriptorSetLayout>  	pSetLayouts;
 
 	/**
 	 * Ctor
@@ -109,6 +114,22 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	        P<VkDescriptorSetAllocateInfo> p = new  P<VkDescriptorSetAllocateInfo>(new VkDescriptorSetAllocateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkDescriptorSetAllocateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkDescriptorSetAllocateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

@@ -46,56 +46,61 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	/** ID of this structure [116]  */
 	 public static final int TAG_ID = VKDISPLAYSURFACECREATEINFOKHR_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkDisplaySurfaceCreateInfoKHR> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkDisplaySurfaceCreateFlagsKHR 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  VkDisplayModeKHR 	displayMode	[vkhandle]
 	 */ 
-	VkDisplayModeKHR 	displayMode;
+	 VkDisplayModeKHR 	displayMode;
 
 	/**
 	 *  uint32_t 	planeIndex	[int]
 	 */ 
-	int 	planeIndex;
+	 int 	planeIndex;
 
 	/**
 	 *  uint32_t 	planeStackIndex	[int]
 	 */ 
-	int 	planeStackIndex;
+	 int 	planeStackIndex;
 
 	/**
 	 *  VkSurfaceTransformFlagBitsKHR 	transform	[vkenum]
 	 */ 
-	VkSurfaceTransformFlagBitsKHR 	transform;
+	 VkSurfaceTransformFlagBitsKHR 	transform;
 
 	/**
 	 *  float 	globalAlpha	[float]
 	 */ 
-	float 	globalAlpha;
+	 float 	globalAlpha;
 
 	/**
 	 *  VkDisplayPlaneAlphaFlagBitsKHR 	alphaMode	[vkenum]
 	 */ 
-	VkDisplayPlaneAlphaFlagBitsKHR 	alphaMode;
+	 VkDisplayPlaneAlphaFlagBitsKHR 	alphaMode;
 
 	/**
 	 *  VkExtent2D 	imageExtent	[vkstruct]
 	 */ 
-	VkExtent2D 	imageExtent;
+	 VkExtent2D 	imageExtent;
 
 	/**
 	 * Ctor
@@ -140,6 +145,22 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	        P<VkDisplaySurfaceCreateInfoKHR> p = new  P<VkDisplaySurfaceCreateInfoKHR>(new VkDisplaySurfaceCreateInfoKHR());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkDisplaySurfaceCreateInfoKHR> getP() {
+	       if(p == null ){
+	           p = new P<VkDisplaySurfaceCreateInfoKHR> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

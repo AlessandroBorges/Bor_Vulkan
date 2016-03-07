@@ -39,26 +39,31 @@ public class VkCommandPoolCreateInfo extends VkStruct {
 	/** ID of this structure [86]  */
 	 public static final int TAG_ID = VKCOMMANDPOOLCREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkCommandPoolCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkCommandPoolCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  uint32_t 	queueFamilyIndex	[int]
 	 */ 
-	int 	queueFamilyIndex;
+	 int 	queueFamilyIndex;
 
 	/**
 	 * Ctor
@@ -103,6 +108,22 @@ public class VkCommandPoolCreateInfo extends VkStruct {
 	        P<VkCommandPoolCreateInfo> p = new  P<VkCommandPoolCreateInfo>(new VkCommandPoolCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkCommandPoolCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkCommandPoolCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

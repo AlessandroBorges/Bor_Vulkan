@@ -59,6 +59,15 @@ public interface VkObject {
     public boolean isNull();
     
     /**
+     * Return this VkObject instance wrapped in pointer P<br>
+     *  
+     *  P&lt;? extends VkObject &gt; 
+     * 
+     * @return  a P container wrapping this object.
+     */
+    public P<? extends VkObject> getP();
+    
+    /**
      * Used to set a new pointer after a native [in][out] operation.
      * @param nativePtr - native pointer to set
      * @

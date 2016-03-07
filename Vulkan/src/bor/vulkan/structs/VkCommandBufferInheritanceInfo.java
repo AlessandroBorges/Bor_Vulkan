@@ -43,46 +43,51 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	/** ID of this structure [88]  */
 	 public static final int TAG_ID = VKCOMMANDBUFFERINHERITANCEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkCommandBufferInheritanceInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkRenderPass 	renderPass	[vkhandle]
 	 */ 
-	VkRenderPass 	renderPass;
+	 VkRenderPass 	renderPass;
 
 	/**
 	 *  uint32_t 	subpass	[int]
 	 */ 
-	int 	subpass;
+	 int 	subpass;
 
 	/**
 	 *  VkFramebuffer 	framebuffer	[vkhandle]
 	 */ 
-	VkFramebuffer 	framebuffer;
+	 VkFramebuffer 	framebuffer;
 
 	/**
 	 *  VkBool32 	occlusionQueryEnable	[boolean]
 	 */ 
-	boolean 	occlusionQueryEnable;
+	 boolean 	occlusionQueryEnable;
 
 	/**
 	 *  VkQueryControlFlags 	queryFlags	[int]
 	 */ 
-	int 	queryFlags;
+	 int 	queryFlags;
 
 	/**
 	 *  VkQueryPipelineStatisticFlags 	pipelineStatistics	[int]
 	 */ 
-	int 	pipelineStatistics;
+	 int 	pipelineStatistics;
 
 	/**
 	 * Ctor
@@ -127,6 +132,22 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	        P<VkCommandBufferInheritanceInfo> p = new  P<VkCommandBufferInheritanceInfo>(new VkCommandBufferInheritanceInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkCommandBufferInheritanceInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkCommandBufferInheritanceInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

@@ -40,31 +40,36 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	/** ID of this structure [65]  */
 	 public static final int TAG_ID = VKPIPELINEDYNAMICSTATECREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkPipelineDynamicStateCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineDynamicStateCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  uint32_t 	dynamicStateCount	[int]
 	 */ 
-	int 	dynamicStateCount;
+	 int 	dynamicStateCount;
 
 	/**
 	 *  const VkDynamicState* 	pDynamicStates	
 	 */ 
-	Penum<VkDynamicState> 	pDynamicStates;
+	 Penum<VkDynamicState> 	pDynamicStates;
 
 	/**
 	 * Ctor
@@ -109,6 +114,22 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	        P<VkPipelineDynamicStateCreateInfo> p = new  P<VkPipelineDynamicStateCreateInfo>(new VkPipelineDynamicStateCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkPipelineDynamicStateCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkPipelineDynamicStateCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

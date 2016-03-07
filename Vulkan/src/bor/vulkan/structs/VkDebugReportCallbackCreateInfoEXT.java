@@ -25,7 +25,7 @@ import java.nio.ByteBuffer;
  *     VkStructureType                 sType;
  *     const void*                     pNext;
  *     VkDebugReportFlagsEXT           flags;
- *     PFNvkDebugReportCallbackEXT    pfnCallback;
+ *     PFN_vkDebugReportCallbackEXT    pfnCallback;
  *     void*                           pUserData;
  * } VkDebugReportCallbackCreateInfoEXT;
  * </pre>
@@ -40,31 +40,36 @@ public class VkDebugReportCallbackCreateInfoEXT extends VkStruct {
 	/** ID of this structure [124]  */
 	 public static final int TAG_ID = VKDEBUGREPORTCALLBACKCREATEINFOEXT_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkDebugReportCallbackCreateInfoEXT> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkDebugReportFlagsEXT 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
-	 *  PFNvkDebugReportCallbackEXT 	pfnCallback	[vkhandle]
+	 *  PFN_vkDebugReportCallbackEXT 	pfnCallback	
 	 */ 
-	PFNvkDebugReportCallbackEXT 	pfnCallback;
+	 PFNvkDebugReportCallbackEXT 	pfnCallback;
 
 	/**
 	 *  void* 	pUserData	[buffer]
 	 */ 
-	java.nio.Buffer 	pUserData;
+	 java.nio.Buffer 	pUserData;
 
 	/**
 	 * Ctor
@@ -109,6 +114,22 @@ public class VkDebugReportCallbackCreateInfoEXT extends VkStruct {
 	        P<VkDebugReportCallbackCreateInfoEXT> p = new  P<VkDebugReportCallbackCreateInfoEXT>(new VkDebugReportCallbackCreateInfoEXT());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkDebugReportCallbackCreateInfoEXT> getP() {
+	       if(p == null ){
+	           p = new P<VkDebugReportCallbackCreateInfoEXT> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -169,8 +190,8 @@ public class VkDebugReportCallbackCreateInfoEXT extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pfnCallback	[vkhandle]<br>
-	 * Prototype: PFNvkDebugReportCallbackEXT  pfnCallback
+	 * Set method for field pfnCallback	<br>
+	 * Prototype: PFN_vkDebugReportCallbackEXT  pfnCallback
 	 */ 
 	 public void pfnCallback(PFNvkDebugReportCallbackEXT pfnCallback){
 		 this.pfnCallback = pfnCallback;
@@ -178,8 +199,8 @@ public class VkDebugReportCallbackCreateInfoEXT extends VkStruct {
 	 }
 
 	/**
-	 * get method for field pfnCallback	[vkhandle]<br>
-	 * Prototype: PFNvkDebugReportCallbackEXT  pfnCallback
+	 * get method for field pfnCallback	<br>
+	 * Prototype: PFN_vkDebugReportCallbackEXT  pfnCallback
 	 */ 
 	 public PFNvkDebugReportCallbackEXT pfnCallback(){
 		 // return  this.pfnCallback;
@@ -263,17 +284,17 @@ public class VkDebugReportCallbackCreateInfoEXT extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pfnCallback	[vkhandle]<br>
-	 * Prototype: PFNvkDebugReportCallbackEXT  pfnCallback
+	 * native SET method for field pfnCallback	<br>
+	 * Prototype: PFN_vkDebugReportCallbackEXT  pfnCallback
 	 */ 
 	 private static native void pfnCallback0(ByteBuffer ptr, PFNvkDebugReportCallbackEXT _pfnCallback);/*
 		  VkDebugReportCallbackCreateInfoEXT _obj = (VkDebugReportCallbackCreateInfoEXT)(*ptr);
-		  _obj.pfnCallback = (PFNvkDebugReportCallbackEXT) (_pfnCallback);
+		  _obj.pfnCallback = (PFN_vkDebugReportCallbackEXT) (_pfnCallback);
 	  */
 
 	/**
-	 * native GET method for field pfnCallback	[vkhandle]<br>
-	 * Prototype: PFNvkDebugReportCallbackEXT  pfnCallback
+	 * native GET method for field pfnCallback	<br>
+	 * Prototype: PFN_vkDebugReportCallbackEXT  pfnCallback
 	 */ 
 	 private static native PFNvkDebugReportCallbackEXT pfnCallback0(ByteBuffer ptr);/*
 		  VkDebugReportCallbackCreateInfoEXT _obj = (VkDebugReportCallbackCreateInfoEXT)(ptr);

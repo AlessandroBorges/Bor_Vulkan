@@ -41,31 +41,36 @@ public class VkXcbSurfaceCreateInfoKHR extends VkStruct {
 	/** ID of this structure [119]  */
 	 public static final int TAG_ID = VKXCBSURFACECREATEINFOKHR_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkXcbSurfaceCreateInfoKHR> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkXcbSurfaceCreateFlagsKHR 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  xcb_connection_t* 	connection	[vkhandle]
 	 */ 
-	XCBconnection 	connection;
+	 XCBconnection 	connection;
 
 	/**
 	 *  xcb_window_t 	window	[vkhandle]
 	 */ 
-	XCBwindow 	window;
+	 XCBwindow 	window;
 
 	/**
 	 * Ctor
@@ -110,6 +115,22 @@ public class VkXcbSurfaceCreateInfoKHR extends VkStruct {
 	        P<VkXcbSurfaceCreateInfoKHR> p = new  P<VkXcbSurfaceCreateInfoKHR>(new VkXcbSurfaceCreateInfoKHR());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkXcbSurfaceCreateInfoKHR> getP() {
+	       if(p == null ){
+	           p = new P<VkXcbSurfaceCreateInfoKHR> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

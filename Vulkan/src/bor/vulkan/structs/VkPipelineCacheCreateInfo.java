@@ -40,31 +40,36 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	/** ID of this structure [45]  */
 	 public static final int TAG_ID = VKPIPELINECACHECREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkPipelineCacheCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineCacheCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  size_t 	initialDataSize	[long]
 	 */ 
-	long 	initialDataSize;
+	 long 	initialDataSize;
 
 	/**
 	 *  const void* 	pInitialData	[buffer]
 	 */ 
-	java.nio.Buffer 	pInitialData;
+	 java.nio.Buffer 	pInitialData;
 
 	/**
 	 * Ctor
@@ -109,6 +114,22 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	        P<VkPipelineCacheCreateInfo> p = new  P<VkPipelineCacheCreateInfo>(new VkPipelineCacheCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkPipelineCacheCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkPipelineCacheCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

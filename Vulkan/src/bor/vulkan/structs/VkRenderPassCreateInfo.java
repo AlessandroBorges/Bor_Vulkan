@@ -44,51 +44,56 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	/** ID of this structure [85]  */
 	 public static final int TAG_ID = VKRENDERPASSCREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkRenderPassCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkRenderPassCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  uint32_t 	attachmentCount	[int]
 	 */ 
-	int 	attachmentCount;
+	 int 	attachmentCount;
 
 	/**
 	 *  const VkAttachmentDescription* 	pAttachments	[p]
 	 */ 
-	P<VkAttachmentDescription>  	pAttachments;
+	 P<VkAttachmentDescription>  	pAttachments;
 
 	/**
 	 *  uint32_t 	subpassCount	[int]
 	 */ 
-	int 	subpassCount;
+	 int 	subpassCount;
 
 	/**
 	 *  const VkSubpassDescription* 	pSubpasses	[p]
 	 */ 
-	P<VkSubpassDescription>  	pSubpasses;
+	 P<VkSubpassDescription>  	pSubpasses;
 
 	/**
 	 *  uint32_t 	dependencyCount	[int]
 	 */ 
-	int 	dependencyCount;
+	 int 	dependencyCount;
 
 	/**
 	 *  const VkSubpassDependency* 	pDependencies	[p]
 	 */ 
-	P<VkSubpassDependency>  	pDependencies;
+	 P<VkSubpassDependency>  	pDependencies;
 
 	/**
 	 * Ctor
@@ -133,6 +138,22 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	        P<VkRenderPassCreateInfo> p = new  P<VkRenderPassCreateInfo>(new VkRenderPassCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkRenderPassCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkRenderPassCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

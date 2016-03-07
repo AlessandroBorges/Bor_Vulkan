@@ -40,31 +40,36 @@ public class VkSparseMemoryBind extends VkStruct {
 	/** ID of this structure [25]  */
 	 public static final int TAG_ID = VKSPARSEMEMORYBIND_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkSparseMemoryBind> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkDeviceSize 	resourceOffset	[long]
 	 */ 
-	long 	resourceOffset;
+	 long 	resourceOffset;
 
 	/**
 	 *  VkDeviceSize 	size	[long]
 	 */ 
-	long 	size;
+	 long 	size;
 
 	/**
 	 *  VkDeviceMemory 	memory	[vkhandle]
 	 */ 
-	VkDeviceMemory 	memory;
+	 VkDeviceMemory 	memory;
 
 	/**
 	 *  VkDeviceSize 	memoryOffset	[long]
 	 */ 
-	long 	memoryOffset;
+	 long 	memoryOffset;
 
 	/**
 	 *  VkSparseMemoryBindFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 * Ctor
@@ -109,6 +114,22 @@ public class VkSparseMemoryBind extends VkStruct {
 	        P<VkSparseMemoryBind> p = new  P<VkSparseMemoryBind>(new VkSparseMemoryBind());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkSparseMemoryBind> getP() {
+	       if(p == null ){
+	           p = new P<VkSparseMemoryBind> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

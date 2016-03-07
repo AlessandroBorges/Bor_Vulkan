@@ -37,16 +37,21 @@ public class VkDescriptorPoolSize extends VkStruct {
 	/** ID of this structure [73]  */
 	 public static final int TAG_ID = VKDESCRIPTORPOOLSIZE_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkDescriptorPoolSize> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkDescriptorType 	type	[vkenum]
 	 */ 
-	VkDescriptorType 	type;
+	 VkDescriptorType 	type;
 
 	/**
 	 *  uint32_t 	descriptorCount	[int]
 	 */ 
-	int 	descriptorCount;
+	 int 	descriptorCount;
 
 	/**
 	 * Ctor
@@ -91,6 +96,22 @@ public class VkDescriptorPoolSize extends VkStruct {
 	        P<VkDescriptorPoolSize> p = new  P<VkDescriptorPoolSize>(new VkDescriptorPoolSize());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkDescriptorPoolSize> getP() {
+	       if(p == null ){
+	           p = new P<VkDescriptorPoolSize> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

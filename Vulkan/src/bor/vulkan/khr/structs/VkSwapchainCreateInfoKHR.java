@@ -54,96 +54,101 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	/** ID of this structure [108]  */
 	 public static final int TAG_ID = VKSWAPCHAINCREATEINFOKHR_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkSwapchainCreateInfoKHR> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkSwapchainCreateFlagsKHR 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  VkSurfaceKHR 	surface	[vkhandle]
 	 */ 
-	VkSurfaceKHR 	surface;
+	 VkSurfaceKHR 	surface;
 
 	/**
 	 *  uint32_t 	minImageCount	[int]
 	 */ 
-	int 	minImageCount;
+	 int 	minImageCount;
 
 	/**
 	 *  VkFormat 	imageFormat	[vkenum]
 	 */ 
-	VkFormat 	imageFormat;
+	 VkFormat 	imageFormat;
 
 	/**
 	 *  VkColorSpaceKHR 	imageColorSpace	[vkenum]
 	 */ 
-	VkColorSpaceKHR 	imageColorSpace;
+	 VkColorSpaceKHR 	imageColorSpace;
 
 	/**
 	 *  VkExtent2D 	imageExtent	[vkstruct]
 	 */ 
-	VkExtent2D 	imageExtent;
+	 VkExtent2D 	imageExtent;
 
 	/**
 	 *  uint32_t 	imageArrayLayers	[int]
 	 */ 
-	int 	imageArrayLayers;
+	 int 	imageArrayLayers;
 
 	/**
 	 *  VkImageUsageFlags 	imageUsage	[int]
 	 */ 
-	int 	imageUsage;
+	 int 	imageUsage;
 
 	/**
 	 *  VkSharingMode 	imageSharingMode	[vkenum]
 	 */ 
-	VkSharingMode 	imageSharingMode;
+	 VkSharingMode 	imageSharingMode;
 
 	/**
 	 *  uint32_t 	queueFamilyIndexCount	[int]
 	 */ 
-	int 	queueFamilyIndexCount;
+	 int 	queueFamilyIndexCount;
 
 	/**
 	 *  const uint32_t* 	pQueueFamilyIndices	[int_array]
 	 */ 
-	int[] 	pQueueFamilyIndices;
+	 int[] 	pQueueFamilyIndices;
 
 	/**
 	 *  VkSurfaceTransformFlagBitsKHR 	preTransform	[vkenum]
 	 */ 
-	VkSurfaceTransformFlagBitsKHR 	preTransform;
+	 VkSurfaceTransformFlagBitsKHR 	preTransform;
 
 	/**
 	 *  VkCompositeAlphaFlagBitsKHR 	compositeAlpha	[vkenum]
 	 */ 
-	VkCompositeAlphaFlagBitsKHR 	compositeAlpha;
+	 VkCompositeAlphaFlagBitsKHR 	compositeAlpha;
 
 	/**
 	 *  VkPresentModeKHR 	presentMode	[vkenum]
 	 */ 
-	VkPresentModeKHR 	presentMode;
+	 VkPresentModeKHR 	presentMode;
 
 	/**
 	 *  VkBool32 	clipped	[boolean]
 	 */ 
-	boolean 	clipped;
+	 boolean 	clipped;
 
 	/**
 	 *  VkSwapchainKHR 	oldSwapchain	[vkhandle]
 	 */ 
-	VkSwapchainKHR 	oldSwapchain;
+	 VkSwapchainKHR 	oldSwapchain;
 
 	/**
 	 * Ctor
@@ -188,6 +193,22 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	        P<VkSwapchainCreateInfoKHR> p = new  P<VkSwapchainCreateInfoKHR>(new VkSwapchainCreateInfoKHR());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkSwapchainCreateInfoKHR> getP() {
+	       if(p == null ){
+	           p = new P<VkSwapchainCreateInfoKHR> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

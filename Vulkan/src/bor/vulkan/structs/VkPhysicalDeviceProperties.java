@@ -44,51 +44,56 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	/** ID of this structure [10]  */
 	 public static final int TAG_ID = VKPHYSICALDEVICEPROPERTIES_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkPhysicalDeviceProperties> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  uint32_t 	apiVersion	[int]
 	 */ 
-	int 	apiVersion;
+	 int 	apiVersion;
 
 	/**
 	 *  uint32_t 	driverVersion	[int]
 	 */ 
-	int 	driverVersion;
+	 int 	driverVersion;
 
 	/**
 	 *  uint32_t 	vendorID	[int]
 	 */ 
-	int 	vendorID;
+	 int 	vendorID;
 
 	/**
 	 *  uint32_t 	deviceID	[int]
 	 */ 
-	int 	deviceID;
+	 int 	deviceID;
 
 	/**
 	 *  VkPhysicalDeviceType 	deviceType	[vkenum]
 	 */ 
-	VkPhysicalDeviceType 	deviceType;
+	 VkPhysicalDeviceType 	deviceType;
 
 	/**
 	 *  char[] 	deviceName	[string]
 	 */ 
-	String 	deviceName;
+	 String 	deviceName;
 
 	/**
 	 *  uint8_t[] 	pipelineCacheUUID	[byte_array]
 	 */ 
-	byte[] 	pipelineCacheUUID;
+	 byte[] 	pipelineCacheUUID;
 
 	/**
 	 *  VkPhysicalDeviceLimits 	limits	[vkstruct]
 	 */ 
-	VkPhysicalDeviceLimits 	limits;
+	 VkPhysicalDeviceLimits 	limits;
 
 	/**
 	 *  VkPhysicalDeviceSparseProperties 	sparseProperties	[vkstruct]
 	 */ 
-	VkPhysicalDeviceSparseProperties 	sparseProperties;
+	 VkPhysicalDeviceSparseProperties 	sparseProperties;
 
 	/**
 	 * Ctor
@@ -133,6 +138,22 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	        P<VkPhysicalDeviceProperties> p = new  P<VkPhysicalDeviceProperties>(new VkPhysicalDeviceProperties());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkPhysicalDeviceProperties> getP() {
+	       if(p == null ){
+	           p = new P<VkPhysicalDeviceProperties> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

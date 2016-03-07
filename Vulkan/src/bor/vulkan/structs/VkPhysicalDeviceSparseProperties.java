@@ -40,31 +40,36 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	/** ID of this structure [9]  */
 	 public static final int TAG_ID = VKPHYSICALDEVICESPARSEPROPERTIES_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkPhysicalDeviceSparseProperties> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkBool32 	residencyStandard2DBlockShape	[boolean]
 	 */ 
-	boolean 	residencyStandard2DBlockShape;
+	 boolean 	residencyStandard2DBlockShape;
 
 	/**
 	 *  VkBool32 	residencyStandard2DMultisampleBlockShape	[boolean]
 	 */ 
-	boolean 	residencyStandard2DMultisampleBlockShape;
+	 boolean 	residencyStandard2DMultisampleBlockShape;
 
 	/**
 	 *  VkBool32 	residencyStandard3DBlockShape	[boolean]
 	 */ 
-	boolean 	residencyStandard3DBlockShape;
+	 boolean 	residencyStandard3DBlockShape;
 
 	/**
 	 *  VkBool32 	residencyAlignedMipSize	[boolean]
 	 */ 
-	boolean 	residencyAlignedMipSize;
+	 boolean 	residencyAlignedMipSize;
 
 	/**
 	 *  VkBool32 	residencyNonResidentStrict	[boolean]
 	 */ 
-	boolean 	residencyNonResidentStrict;
+	 boolean 	residencyNonResidentStrict;
 
 	/**
 	 * Ctor
@@ -109,6 +114,22 @@ public class VkPhysicalDeviceSparseProperties extends VkStruct {
 	        P<VkPhysicalDeviceSparseProperties> p = new  P<VkPhysicalDeviceSparseProperties>(new VkPhysicalDeviceSparseProperties());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkPhysicalDeviceSparseProperties> getP() {
+	       if(p == null ){
+	           p = new P<VkPhysicalDeviceSparseProperties> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

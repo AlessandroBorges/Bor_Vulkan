@@ -40,31 +40,36 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	/** ID of this structure [104]  */
 	 public static final int TAG_ID = VKDRAWINDEXEDINDIRECTCOMMAND_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkDrawIndexedIndirectCommand> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  uint32_t 	indexCount	[int]
 	 */ 
-	int 	indexCount;
+	 int 	indexCount;
 
 	/**
 	 *  uint32_t 	instanceCount	[int]
 	 */ 
-	int 	instanceCount;
+	 int 	instanceCount;
 
 	/**
 	 *  uint32_t 	firstIndex	[int]
 	 */ 
-	int 	firstIndex;
+	 int 	firstIndex;
 
 	/**
 	 *  int32_t 	vertexOffset	[int]
 	 */ 
-	int 	vertexOffset;
+	 int 	vertexOffset;
 
 	/**
 	 *  uint32_t 	firstInstance	[int]
 	 */ 
-	int 	firstInstance;
+	 int 	firstInstance;
 
 	/**
 	 * Ctor
@@ -109,6 +114,22 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	        P<VkDrawIndexedIndirectCommand> p = new  P<VkDrawIndexedIndirectCommand>(new VkDrawIndexedIndirectCommand());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkDrawIndexedIndirectCommand> getP() {
+	       if(p == null ){
+	           p = new P<VkDrawIndexedIndirectCommand> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

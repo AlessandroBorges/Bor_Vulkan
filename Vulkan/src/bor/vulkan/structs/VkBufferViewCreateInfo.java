@@ -42,41 +42,46 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	/** ID of this structure [38]  */
 	 public static final int TAG_ID = VKBUFFERVIEWCREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkBufferViewCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkBufferViewCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  VkBuffer 	buffer	[vkhandle]
 	 */ 
-	VkBuffer 	buffer;
+	 VkBuffer 	buffer;
 
 	/**
 	 *  VkFormat 	format	[vkenum]
 	 */ 
-	VkFormat 	format;
+	 VkFormat 	format;
 
 	/**
 	 *  VkDeviceSize 	offset	[long]
 	 */ 
-	long 	offset;
+	 long 	offset;
 
 	/**
 	 *  VkDeviceSize 	range	[long]
 	 */ 
-	long 	range;
+	 long 	range;
 
 	/**
 	 * Ctor
@@ -121,6 +126,22 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	        P<VkBufferViewCreateInfo> p = new  P<VkBufferViewCreateInfo>(new VkBufferViewCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkBufferViewCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkBufferViewCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

@@ -40,31 +40,36 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	/** ID of this structure [72]  */
 	 public static final int TAG_ID = VKDESCRIPTORSETLAYOUTCREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkDescriptorSetLayoutCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkDescriptorSetLayoutCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  uint32_t 	bindingCount	[int]
 	 */ 
-	int 	bindingCount;
+	 int 	bindingCount;
 
 	/**
 	 *  const VkDescriptorSetLayoutBinding* 	pBindings	[p]
 	 */ 
-	P<VkDescriptorSetLayoutBinding>  	pBindings;
+	 P<VkDescriptorSetLayoutBinding>  	pBindings;
 
 	/**
 	 * Ctor
@@ -109,6 +114,22 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	        P<VkDescriptorSetLayoutCreateInfo> p = new  P<VkDescriptorSetLayoutCreateInfo>(new VkDescriptorSetLayoutCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkDescriptorSetLayoutCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkDescriptorSetLayoutCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

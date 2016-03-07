@@ -46,56 +46,61 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	/** ID of this structure [106]  */
 	 public static final int TAG_ID = VKSURFACECAPABILITIESKHR_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkSurfaceCapabilitiesKHR> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  uint32_t 	minImageCount	[int]
 	 */ 
-	int 	minImageCount;
+	 int 	minImageCount;
 
 	/**
 	 *  uint32_t 	maxImageCount	[int]
 	 */ 
-	int 	maxImageCount;
+	 int 	maxImageCount;
 
 	/**
 	 *  VkExtent2D 	currentExtent	[vkstruct]
 	 */ 
-	VkExtent2D 	currentExtent;
+	 VkExtent2D 	currentExtent;
 
 	/**
 	 *  VkExtent2D 	minImageExtent	[vkstruct]
 	 */ 
-	VkExtent2D 	minImageExtent;
+	 VkExtent2D 	minImageExtent;
 
 	/**
 	 *  VkExtent2D 	maxImageExtent	[vkstruct]
 	 */ 
-	VkExtent2D 	maxImageExtent;
+	 VkExtent2D 	maxImageExtent;
 
 	/**
 	 *  uint32_t 	maxImageArrayLayers	[int]
 	 */ 
-	int 	maxImageArrayLayers;
+	 int 	maxImageArrayLayers;
 
 	/**
 	 *  VkSurfaceTransformFlagsKHR 	supportedTransforms	[int]
 	 */ 
-	int 	supportedTransforms;
+	 int 	supportedTransforms;
 
 	/**
 	 *  VkSurfaceTransformFlagBitsKHR 	currentTransform	[vkenum]
 	 */ 
-	VkSurfaceTransformFlagBitsKHR 	currentTransform;
+	 VkSurfaceTransformFlagBitsKHR 	currentTransform;
 
 	/**
 	 *  VkCompositeAlphaFlagsKHR 	supportedCompositeAlpha	[int]
 	 */ 
-	int 	supportedCompositeAlpha;
+	 int 	supportedCompositeAlpha;
 
 	/**
 	 *  VkImageUsageFlags 	supportedUsageFlags	[int]
 	 */ 
-	int 	supportedUsageFlags;
+	 int 	supportedUsageFlags;
 
 	/**
 	 * Ctor
@@ -140,6 +145,22 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	        P<VkSurfaceCapabilitiesKHR> p = new  P<VkSurfaceCapabilitiesKHR>(new VkSurfaceCapabilitiesKHR());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkSurfaceCapabilitiesKHR> getP() {
+	       if(p == null ){
+	           p = new P<VkSurfaceCapabilitiesKHR> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

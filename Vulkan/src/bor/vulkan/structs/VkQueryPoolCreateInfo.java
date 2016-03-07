@@ -41,36 +41,41 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	/** ID of this structure [36]  */
 	 public static final int TAG_ID = VKQUERYPOOLCREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkQueryPoolCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkQueryPoolCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  VkQueryType 	queryType	[vkenum]
 	 */ 
-	VkQueryType 	queryType;
+	 VkQueryType 	queryType;
 
 	/**
 	 *  uint32_t 	queryCount	[int]
 	 */ 
-	int 	queryCount;
+	 int 	queryCount;
 
 	/**
 	 *  VkQueryPipelineStatisticFlags 	pipelineStatistics	[int]
 	 */ 
-	int 	pipelineStatistics;
+	 int 	pipelineStatistics;
 
 	/**
 	 * Ctor
@@ -115,6 +120,22 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	        P<VkQueryPoolCreateInfo> p = new  P<VkQueryPoolCreateInfo>(new VkQueryPoolCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkQueryPoolCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkQueryPoolCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

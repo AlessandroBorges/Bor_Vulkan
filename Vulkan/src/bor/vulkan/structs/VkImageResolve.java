@@ -40,31 +40,36 @@ public class VkImageResolve extends VkStruct {
 	/** ID of this structure [98]  */
 	 public static final int TAG_ID = VKIMAGERESOLVE_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkImageResolve> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkImageSubresourceLayers 	srcSubresource	[vkstruct]
 	 */ 
-	VkImageSubresourceLayers 	srcSubresource;
+	 VkImageSubresourceLayers 	srcSubresource;
 
 	/**
 	 *  VkOffset3D 	srcOffset	[vkstruct]
 	 */ 
-	VkOffset3D 	srcOffset;
+	 VkOffset3D 	srcOffset;
 
 	/**
 	 *  VkImageSubresourceLayers 	dstSubresource	[vkstruct]
 	 */ 
-	VkImageSubresourceLayers 	dstSubresource;
+	 VkImageSubresourceLayers 	dstSubresource;
 
 	/**
 	 *  VkOffset3D 	dstOffset	[vkstruct]
 	 */ 
-	VkOffset3D 	dstOffset;
+	 VkOffset3D 	dstOffset;
 
 	/**
 	 *  VkExtent3D 	extent	[vkstruct]
 	 */ 
-	VkExtent3D 	extent;
+	 VkExtent3D 	extent;
 
 	/**
 	 * Ctor
@@ -109,6 +114,22 @@ public class VkImageResolve extends VkStruct {
 	        P<VkImageResolve> p = new  P<VkImageResolve>(new VkImageResolve());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkImageResolve> getP() {
+	       if(p == null ){
+	           p = new P<VkImageResolve> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

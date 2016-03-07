@@ -38,21 +38,26 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	/** ID of this structure [23]  */
 	 public static final int TAG_ID = VKSPARSEIMAGEFORMATPROPERTIES_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkSparseImageFormatProperties> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkImageAspectFlags 	aspectMask	[int]
 	 */ 
-	int 	aspectMask;
+	 int 	aspectMask;
 
 	/**
 	 *  VkExtent3D 	imageGranularity	[vkstruct]
 	 */ 
-	VkExtent3D 	imageGranularity;
+	 VkExtent3D 	imageGranularity;
 
 	/**
 	 *  VkSparseImageFormatFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 * Ctor
@@ -97,6 +102,22 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	        P<VkSparseImageFormatProperties> p = new  P<VkSparseImageFormatProperties>(new VkSparseImageFormatProperties());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkSparseImageFormatProperties> getP() {
+	       if(p == null ){
+	           p = new P<VkSparseImageFormatProperties> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

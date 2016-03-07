@@ -39,26 +39,31 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	/** ID of this structure [50]  */
 	 public static final int TAG_ID = VKVERTEXINPUTATTRIBUTEDESCRIPTION_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkVertexInputAttributeDescription> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  uint32_t 	location	[int]
 	 */ 
-	int 	location;
+	 int 	location;
 
 	/**
 	 *  uint32_t 	binding	[int]
 	 */ 
-	int 	binding;
+	 int 	binding;
 
 	/**
 	 *  VkFormat 	format	[vkenum]
 	 */ 
-	VkFormat 	format;
+	 VkFormat 	format;
 
 	/**
 	 *  uint32_t 	offset	[int]
 	 */ 
-	int 	offset;
+	 int 	offset;
 
 	/**
 	 * Ctor
@@ -103,6 +108,22 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	        P<VkVertexInputAttributeDescription> p = new  P<VkVertexInputAttributeDescription>(new VkVertexInputAttributeDescription());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkVertexInputAttributeDescription> getP() {
+	       if(p == null ){
+	           p = new P<VkVertexInputAttributeDescription> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

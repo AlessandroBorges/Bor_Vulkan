@@ -45,51 +45,56 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	/** ID of this structure [114]  */
 	 public static final int TAG_ID = VKDISPLAYPLANECAPABILITIESKHR_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkDisplayPlaneCapabilitiesKHR> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkDisplayPlaneAlphaFlagsKHR 	supportedAlpha	[int]
 	 */ 
-	int 	supportedAlpha;
+	 int 	supportedAlpha;
 
 	/**
 	 *  VkOffset2D 	minSrcPosition	[vkstruct]
 	 */ 
-	VkOffset2D 	minSrcPosition;
+	 VkOffset2D 	minSrcPosition;
 
 	/**
 	 *  VkOffset2D 	maxSrcPosition	[vkstruct]
 	 */ 
-	VkOffset2D 	maxSrcPosition;
+	 VkOffset2D 	maxSrcPosition;
 
 	/**
 	 *  VkExtent2D 	minSrcExtent	[vkstruct]
 	 */ 
-	VkExtent2D 	minSrcExtent;
+	 VkExtent2D 	minSrcExtent;
 
 	/**
 	 *  VkExtent2D 	maxSrcExtent	[vkstruct]
 	 */ 
-	VkExtent2D 	maxSrcExtent;
+	 VkExtent2D 	maxSrcExtent;
 
 	/**
 	 *  VkOffset2D 	minDstPosition	[vkstruct]
 	 */ 
-	VkOffset2D 	minDstPosition;
+	 VkOffset2D 	minDstPosition;
 
 	/**
 	 *  VkOffset2D 	maxDstPosition	[vkstruct]
 	 */ 
-	VkOffset2D 	maxDstPosition;
+	 VkOffset2D 	maxDstPosition;
 
 	/**
 	 *  VkExtent2D 	minDstExtent	[vkstruct]
 	 */ 
-	VkExtent2D 	minDstExtent;
+	 VkExtent2D 	minDstExtent;
 
 	/**
 	 *  VkExtent2D 	maxDstExtent	[vkstruct]
 	 */ 
-	VkExtent2D 	maxDstExtent;
+	 VkExtent2D 	maxDstExtent;
 
 	/**
 	 * Ctor
@@ -134,6 +139,22 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	        P<VkDisplayPlaneCapabilitiesKHR> p = new  P<VkDisplayPlaneCapabilitiesKHR>(new VkDisplayPlaneCapabilitiesKHR());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkDisplayPlaneCapabilitiesKHR> getP() {
+	       if(p == null ){
+	           p = new P<VkDisplayPlaneCapabilitiesKHR> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

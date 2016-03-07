@@ -41,31 +41,36 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	/** ID of this structure [120]  */
 	 public static final int TAG_ID = VKWAYLANDSURFACECREATEINFOKHR_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkWaylandSurfaceCreateInfoKHR> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkWaylandSurfaceCreateFlagsKHR 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  struct wl_display* 	display	[vkhandle]
 	 */ 
-	WlDisplay 	display;
+	 WlDisplay 	display;
 
 	/**
 	 *  struct wl_surface* 	surface	[vkhandle]
 	 */ 
-	WlSurface 	surface;
+	 WlSurface 	surface;
 
 	/**
 	 * Ctor
@@ -110,6 +115,22 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	        P<VkWaylandSurfaceCreateInfoKHR> p = new  P<VkWaylandSurfaceCreateInfoKHR>(new VkWaylandSurfaceCreateInfoKHR());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkWaylandSurfaceCreateInfoKHR> getP() {
+	       if(p == null ){
+	           p = new P<VkWaylandSurfaceCreateInfoKHR> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

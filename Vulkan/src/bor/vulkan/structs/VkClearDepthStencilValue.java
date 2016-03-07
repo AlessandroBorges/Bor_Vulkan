@@ -37,16 +37,21 @@ public class VkClearDepthStencilValue extends VkStruct {
 	/** ID of this structure [95]  */
 	 public static final int TAG_ID = VKCLEARDEPTHSTENCILVALUE_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkClearDepthStencilValue> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  float 	depth	[float]
 	 */ 
-	float 	depth;
+	 float 	depth;
 
 	/**
 	 *  uint32_t 	stencil	[int]
 	 */ 
-	int 	stencil;
+	 int 	stencil;
 
 	/**
 	 * Ctor
@@ -91,6 +96,22 @@ public class VkClearDepthStencilValue extends VkStruct {
 	        P<VkClearDepthStencilValue> p = new  P<VkClearDepthStencilValue>(new VkClearDepthStencilValue());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkClearDepthStencilValue> getP() {
+	       if(p == null ){
+	           p = new P<VkClearDepthStencilValue> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

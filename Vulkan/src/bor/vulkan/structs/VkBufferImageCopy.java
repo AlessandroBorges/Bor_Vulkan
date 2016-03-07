@@ -41,36 +41,41 @@ public class VkBufferImageCopy extends VkStruct {
 	/** ID of this structure [94]  */
 	 public static final int TAG_ID = VKBUFFERIMAGECOPY_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkBufferImageCopy> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkDeviceSize 	bufferOffset	[long]
 	 */ 
-	long 	bufferOffset;
+	 long 	bufferOffset;
 
 	/**
 	 *  uint32_t 	bufferRowLength	[int]
 	 */ 
-	int 	bufferRowLength;
+	 int 	bufferRowLength;
 
 	/**
 	 *  uint32_t 	bufferImageHeight	[int]
 	 */ 
-	int 	bufferImageHeight;
+	 int 	bufferImageHeight;
 
 	/**
 	 *  VkImageSubresourceLayers 	imageSubresource	[vkstruct]
 	 */ 
-	VkImageSubresourceLayers 	imageSubresource;
+	 VkImageSubresourceLayers 	imageSubresource;
 
 	/**
 	 *  VkOffset3D 	imageOffset	[vkstruct]
 	 */ 
-	VkOffset3D 	imageOffset;
+	 VkOffset3D 	imageOffset;
 
 	/**
 	 *  VkExtent3D 	imageExtent	[vkstruct]
 	 */ 
-	VkExtent3D 	imageExtent;
+	 VkExtent3D 	imageExtent;
 
 	/**
 	 * Ctor
@@ -115,6 +120,22 @@ public class VkBufferImageCopy extends VkStruct {
 	        P<VkBufferImageCopy> p = new  P<VkBufferImageCopy>(new VkBufferImageCopy());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkBufferImageCopy> getP() {
+	       if(p == null ){
+	           p = new P<VkBufferImageCopy> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

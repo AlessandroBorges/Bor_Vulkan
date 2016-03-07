@@ -38,16 +38,21 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	/** ID of this structure [115]  */
 	 public static final int TAG_ID = VKDISPLAYPLANEPROPERTIESKHR_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkDisplayPlanePropertiesKHR> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkDisplayKHR 	currentDisplay	[vkhandle]
 	 */ 
-	VkDisplayKHR 	currentDisplay;
+	 VkDisplayKHR 	currentDisplay;
 
 	/**
 	 *  uint32_t 	currentStackIndex	[int]
 	 */ 
-	int 	currentStackIndex;
+	 int 	currentStackIndex;
 
 	/**
 	 * Ctor
@@ -92,6 +97,22 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	        P<VkDisplayPlanePropertiesKHR> p = new  P<VkDisplayPlanePropertiesKHR>(new VkDisplayPlanePropertiesKHR());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkDisplayPlanePropertiesKHR> getP() {
+	       if(p == null ){
+	           p = new P<VkDisplayPlanePropertiesKHR> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

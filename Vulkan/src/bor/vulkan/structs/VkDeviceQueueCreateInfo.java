@@ -41,36 +41,41 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	/** ID of this structure [15]  */
 	 public static final int TAG_ID = VKDEVICEQUEUECREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkDeviceQueueCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkDeviceQueueCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  uint32_t 	queueFamilyIndex	[int]
 	 */ 
-	int 	queueFamilyIndex;
+	 int 	queueFamilyIndex;
 
 	/**
 	 *  uint32_t 	queueCount	[int]
 	 */ 
-	int 	queueCount;
+	 int 	queueCount;
 
 	/**
 	 *  const float* 	pQueuePriorities	[float_array]
 	 */ 
-	float[] 	pQueuePriorities;
+	 float[] 	pQueuePriorities;
 
 	/**
 	 * Ctor
@@ -115,6 +120,22 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	        P<VkDeviceQueueCreateInfo> p = new  P<VkDeviceQueueCreateInfo>(new VkDeviceQueueCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkDeviceQueueCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkDeviceQueueCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

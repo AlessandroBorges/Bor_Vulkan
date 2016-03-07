@@ -45,56 +45,61 @@ public class VkDeviceCreateInfo extends VkStruct {
 	/** ID of this structure [16]  */
 	 public static final int TAG_ID = VKDEVICECREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkDeviceCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkDeviceCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  uint32_t 	queueCreateInfoCount	[int]
 	 */ 
-	int 	queueCreateInfoCount;
+	 int 	queueCreateInfoCount;
 
 	/**
 	 *  const VkDeviceQueueCreateInfo* 	pQueueCreateInfos	[p]
 	 */ 
-	P<VkDeviceQueueCreateInfo>  	pQueueCreateInfos;
+	 P<VkDeviceQueueCreateInfo>  	pQueueCreateInfos;
 
 	/**
 	 *  uint32_t 	enabledLayerCount	[int]
 	 */ 
-	int 	enabledLayerCount;
+	 int 	enabledLayerCount;
 
 	/**
 	 *  const char* const* 	ppEnabledLayerNames	[string_arr]
 	 */ 
-	String[] 	ppEnabledLayerNames;
+	 String[] 	ppEnabledLayerNames;
 
 	/**
 	 *  uint32_t 	enabledExtensionCount	[int]
 	 */ 
-	int 	enabledExtensionCount;
+	 int 	enabledExtensionCount;
 
 	/**
 	 *  const char* const* 	ppEnabledExtensionNames	[string_arr]
 	 */ 
-	String[] 	ppEnabledExtensionNames;
+	 String[] 	ppEnabledExtensionNames;
 
 	/**
 	 *  const VkPhysicalDeviceFeatures* 	pEnabledFeatures	[p]
 	 */ 
-	P<VkPhysicalDeviceFeatures>  	pEnabledFeatures;
+	 P<VkPhysicalDeviceFeatures>  	pEnabledFeatures;
 
 	/**
 	 * Ctor
@@ -139,6 +144,22 @@ public class VkDeviceCreateInfo extends VkStruct {
 	        P<VkDeviceCreateInfo> p = new  P<VkDeviceCreateInfo>(new VkDeviceCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkDeviceCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkDeviceCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

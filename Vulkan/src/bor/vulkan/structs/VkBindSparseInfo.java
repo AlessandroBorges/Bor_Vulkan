@@ -47,66 +47,71 @@ public class VkBindSparseInfo extends VkStruct {
 	/** ID of this structure [32]  */
 	 public static final int TAG_ID = VKBINDSPARSEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkBindSparseInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  uint32_t 	waitSemaphoreCount	[int]
 	 */ 
-	int 	waitSemaphoreCount;
+	 int 	waitSemaphoreCount;
 
 	/**
 	 *  const VkSemaphore* 	pWaitSemaphores	[p]
 	 */ 
-	P<VkSemaphore>  	pWaitSemaphores;
+	 P<VkSemaphore>  	pWaitSemaphores;
 
 	/**
 	 *  uint32_t 	bufferBindCount	[int]
 	 */ 
-	int 	bufferBindCount;
+	 int 	bufferBindCount;
 
 	/**
 	 *  const VkSparseBufferMemoryBindInfo* 	pBufferBinds	[p]
 	 */ 
-	P<VkSparseBufferMemoryBindInfo>  	pBufferBinds;
+	 P<VkSparseBufferMemoryBindInfo>  	pBufferBinds;
 
 	/**
 	 *  uint32_t 	imageOpaqueBindCount	[int]
 	 */ 
-	int 	imageOpaqueBindCount;
+	 int 	imageOpaqueBindCount;
 
 	/**
 	 *  const VkSparseImageOpaqueMemoryBindInfo* 	pImageOpaqueBinds	[p]
 	 */ 
-	P<VkSparseImageOpaqueMemoryBindInfo>  	pImageOpaqueBinds;
+	 P<VkSparseImageOpaqueMemoryBindInfo>  	pImageOpaqueBinds;
 
 	/**
 	 *  uint32_t 	imageBindCount	[int]
 	 */ 
-	int 	imageBindCount;
+	 int 	imageBindCount;
 
 	/**
 	 *  const VkSparseImageMemoryBindInfo* 	pImageBinds	[p]
 	 */ 
-	P<VkSparseImageMemoryBindInfo>  	pImageBinds;
+	 P<VkSparseImageMemoryBindInfo>  	pImageBinds;
 
 	/**
 	 *  uint32_t 	signalSemaphoreCount	[int]
 	 */ 
-	int 	signalSemaphoreCount;
+	 int 	signalSemaphoreCount;
 
 	/**
 	 *  const VkSemaphore* 	pSignalSemaphores	[p]
 	 */ 
-	P<VkSemaphore>  	pSignalSemaphores;
+	 P<VkSemaphore>  	pSignalSemaphores;
 
 	/**
 	 * Ctor
@@ -151,6 +156,22 @@ public class VkBindSparseInfo extends VkStruct {
 	        P<VkBindSparseInfo> p = new  P<VkBindSparseInfo>(new VkBindSparseInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkBindSparseInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkBindSparseInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

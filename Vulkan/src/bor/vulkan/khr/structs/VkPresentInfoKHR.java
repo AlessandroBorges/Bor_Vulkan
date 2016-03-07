@@ -44,46 +44,51 @@ public class VkPresentInfoKHR extends VkStruct {
 	/** ID of this structure [109]  */
 	 public static final int TAG_ID = VKPRESENTINFOKHR_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkPresentInfoKHR> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  uint32_t 	waitSemaphoreCount	[int]
 	 */ 
-	int 	waitSemaphoreCount;
+	 int 	waitSemaphoreCount;
 
 	/**
 	 *  const VkSemaphore* 	pWaitSemaphores	[p]
 	 */ 
-	P<VkSemaphore>  	pWaitSemaphores;
+	 P<VkSemaphore>  	pWaitSemaphores;
 
 	/**
 	 *  uint32_t 	swapchainCount	[int]
 	 */ 
-	int 	swapchainCount;
+	 int 	swapchainCount;
 
 	/**
 	 *  const VkSwapchainKHR* 	pSwapchains	[p]
 	 */ 
-	P<VkSwapchainKHR>  	pSwapchains;
+	 P<VkSwapchainKHR>  	pSwapchains;
 
 	/**
 	 *  const uint32_t* 	pImageIndices	[int_array]
 	 */ 
-	int[] 	pImageIndices;
+	 int[] 	pImageIndices;
 
 	/**
 	 *  VkResult* 	pResults	[pinteger]
 	 */ 
-	PInteger 	pResults;
+	 PInteger 	pResults;
 
 	/**
 	 * Ctor
@@ -128,6 +133,22 @@ public class VkPresentInfoKHR extends VkStruct {
 	        P<VkPresentInfoKHR> p = new  P<VkPresentInfoKHR>(new VkPresentInfoKHR());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkPresentInfoKHR> getP() {
+	       if(p == null ){
+	           p = new P<VkPresentInfoKHR> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

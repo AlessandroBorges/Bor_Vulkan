@@ -44,51 +44,56 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	/** ID of this structure [80]  */
 	 public static final int TAG_ID = VKFRAMEBUFFERCREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkFramebufferCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkFramebufferCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  VkRenderPass 	renderPass	[vkhandle]
 	 */ 
-	VkRenderPass 	renderPass;
+	 VkRenderPass 	renderPass;
 
 	/**
 	 *  uint32_t 	attachmentCount	[int]
 	 */ 
-	int 	attachmentCount;
+	 int 	attachmentCount;
 
 	/**
 	 *  const VkImageView* 	pAttachments	[p]
 	 */ 
-	P<VkImageView>  	pAttachments;
+	 P<VkImageView>  	pAttachments;
 
 	/**
 	 *  uint32_t 	width	[int]
 	 */ 
-	int 	width;
+	 int 	width;
 
 	/**
 	 *  uint32_t 	height	[int]
 	 */ 
-	int 	height;
+	 int 	height;
 
 	/**
 	 *  uint32_t 	layers	[int]
 	 */ 
-	int 	layers;
+	 int 	layers;
 
 	/**
 	 * Ctor
@@ -133,6 +138,22 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	        P<VkFramebufferCreateInfo> p = new  P<VkFramebufferCreateInfo>(new VkFramebufferCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkFramebufferCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkFramebufferCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

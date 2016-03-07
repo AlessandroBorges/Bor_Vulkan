@@ -39,26 +39,31 @@ public class VkQueueFamilyProperties extends VkStruct {
 	/** ID of this structure [11]  */
 	 public static final int TAG_ID = VKQUEUEFAMILYPROPERTIES_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkQueueFamilyProperties> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkQueueFlags 	queueFlags	[int]
 	 */ 
-	int 	queueFlags;
+	 int 	queueFlags;
 
 	/**
 	 *  uint32_t 	queueCount	[int]
 	 */ 
-	int 	queueCount;
+	 int 	queueCount;
 
 	/**
 	 *  uint32_t 	timestampValidBits	[int]
 	 */ 
-	int 	timestampValidBits;
+	 int 	timestampValidBits;
 
 	/**
 	 *  VkExtent3D 	minImageTransferGranularity	[vkstruct]
 	 */ 
-	VkExtent3D 	minImageTransferGranularity;
+	 VkExtent3D 	minImageTransferGranularity;
 
 	/**
 	 * Ctor
@@ -103,6 +108,22 @@ public class VkQueueFamilyProperties extends VkStruct {
 	        P<VkQueueFamilyProperties> p = new  P<VkQueueFamilyProperties>(new VkQueueFamilyProperties());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkQueueFamilyProperties> getP() {
+	       if(p == null ){
+	           p = new P<VkQueueFamilyProperties> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

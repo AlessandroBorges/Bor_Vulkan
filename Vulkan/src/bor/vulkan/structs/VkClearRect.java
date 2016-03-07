@@ -38,21 +38,26 @@ public class VkClearRect extends VkStruct {
 	/** ID of this structure [97]  */
 	 public static final int TAG_ID = VKCLEARRECT_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkClearRect> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkRect2D 	rect	[vkstruct]
 	 */ 
-	VkRect2D 	rect;
+	 VkRect2D 	rect;
 
 	/**
 	 *  uint32_t 	baseArrayLayer	[int]
 	 */ 
-	int 	baseArrayLayer;
+	 int 	baseArrayLayer;
 
 	/**
 	 *  uint32_t 	layerCount	[int]
 	 */ 
-	int 	layerCount;
+	 int 	layerCount;
 
 	/**
 	 * Ctor
@@ -97,6 +102,22 @@ public class VkClearRect extends VkStruct {
 	        P<VkClearRect> p = new  P<VkClearRect>(new VkClearRect());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkClearRect> getP() {
+	       if(p == null ){
+	           p = new P<VkClearRect> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

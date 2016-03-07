@@ -197,6 +197,7 @@ public abstract class VkStruct implements VkObject{
      */
     protected int type;
     
+        
     /**
      * Used to recover VkStruct reference after a native call.
      * It maps the (this.ptr) -> (this), to avoid GC

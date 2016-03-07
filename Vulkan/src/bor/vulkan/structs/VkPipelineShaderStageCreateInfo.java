@@ -42,41 +42,46 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	/** ID of this structure [48]  */
 	 public static final int TAG_ID = VKPIPELINESHADERSTAGECREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkPipelineShaderStageCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineShaderStageCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  VkShaderStageFlagBits 	stage	[vkenum]
 	 */ 
-	VkShaderStageFlagBits 	stage;
+	 VkShaderStageFlagBits 	stage;
 
 	/**
 	 *  VkShaderModule 	module	[vkhandle]
 	 */ 
-	VkShaderModule 	module;
+	 VkShaderModule 	module;
 
 	/**
 	 *  const char* 	pName	[string]
 	 */ 
-	String 	pName;
+	 String 	pName;
 
 	/**
 	 *  const VkSpecializationInfo* 	pSpecializationInfo	[p]
 	 */ 
-	P<VkSpecializationInfo>  	pSpecializationInfo;
+	 P<VkSpecializationInfo>  	pSpecializationInfo;
 
 	/**
 	 * Ctor
@@ -121,6 +126,22 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	        P<VkPipelineShaderStageCreateInfo> p = new  P<VkPipelineShaderStageCreateInfo>(new VkPipelineShaderStageCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkPipelineShaderStageCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkPipelineShaderStageCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

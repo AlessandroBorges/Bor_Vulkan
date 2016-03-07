@@ -41,36 +41,41 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	/** ID of this structure [30]  */
 	 public static final int TAG_ID = VKSPARSEIMAGEMEMORYBIND_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkSparseImageMemoryBind> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkImageSubresource 	subresource	[vkstruct]
 	 */ 
-	VkImageSubresource 	subresource;
+	 VkImageSubresource 	subresource;
 
 	/**
 	 *  VkOffset3D 	offset	[vkstruct]
 	 */ 
-	VkOffset3D 	offset;
+	 VkOffset3D 	offset;
 
 	/**
 	 *  VkExtent3D 	extent	[vkstruct]
 	 */ 
-	VkExtent3D 	extent;
+	 VkExtent3D 	extent;
 
 	/**
 	 *  VkDeviceMemory 	memory	[vkhandle]
 	 */ 
-	VkDeviceMemory 	memory;
+	 VkDeviceMemory 	memory;
 
 	/**
 	 *  VkDeviceSize 	memoryOffset	[long]
 	 */ 
-	long 	memoryOffset;
+	 long 	memoryOffset;
 
 	/**
 	 *  VkSparseMemoryBindFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 * Ctor
@@ -115,6 +120,22 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	        P<VkSparseImageMemoryBind> p = new  P<VkSparseImageMemoryBind>(new VkSparseImageMemoryBind());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkSparseImageMemoryBind> getP() {
+	       if(p == null ){
+	           p = new P<VkSparseImageMemoryBind> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

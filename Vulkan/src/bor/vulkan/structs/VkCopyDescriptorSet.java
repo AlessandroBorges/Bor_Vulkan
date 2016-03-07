@@ -44,51 +44,56 @@ public class VkCopyDescriptorSet extends VkStruct {
 	/** ID of this structure [79]  */
 	 public static final int TAG_ID = VKCOPYDESCRIPTORSET_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkCopyDescriptorSet> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkDescriptorSet 	srcSet	[vkhandle]
 	 */ 
-	VkDescriptorSet 	srcSet;
+	 VkDescriptorSet 	srcSet;
 
 	/**
 	 *  uint32_t 	srcBinding	[int]
 	 */ 
-	int 	srcBinding;
+	 int 	srcBinding;
 
 	/**
 	 *  uint32_t 	srcArrayElement	[int]
 	 */ 
-	int 	srcArrayElement;
+	 int 	srcArrayElement;
 
 	/**
 	 *  VkDescriptorSet 	dstSet	[vkhandle]
 	 */ 
-	VkDescriptorSet 	dstSet;
+	 VkDescriptorSet 	dstSet;
 
 	/**
 	 *  uint32_t 	dstBinding	[int]
 	 */ 
-	int 	dstBinding;
+	 int 	dstBinding;
 
 	/**
 	 *  uint32_t 	dstArrayElement	[int]
 	 */ 
-	int 	dstArrayElement;
+	 int 	dstArrayElement;
 
 	/**
 	 *  uint32_t 	descriptorCount	[int]
 	 */ 
-	int 	descriptorCount;
+	 int 	descriptorCount;
 
 	/**
 	 * Ctor
@@ -133,6 +138,22 @@ public class VkCopyDescriptorSet extends VkStruct {
 	        P<VkCopyDescriptorSet> p = new  P<VkCopyDescriptorSet>(new VkCopyDescriptorSet());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkCopyDescriptorSet> getP() {
+	       if(p == null ){
+	           p = new P<VkCopyDescriptorSet> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

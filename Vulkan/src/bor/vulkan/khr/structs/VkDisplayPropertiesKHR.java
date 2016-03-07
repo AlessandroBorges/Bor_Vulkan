@@ -43,41 +43,46 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	/** ID of this structure [110]  */
 	 public static final int TAG_ID = VKDISPLAYPROPERTIESKHR_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkDisplayPropertiesKHR> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkDisplayKHR 	display	[vkhandle]
 	 */ 
-	VkDisplayKHR 	display;
+	 VkDisplayKHR 	display;
 
 	/**
 	 *  const char* 	displayName	[string]
 	 */ 
-	String 	displayName;
+	 String 	displayName;
 
 	/**
 	 *  VkExtent2D 	physicalDimensions	[vkstruct]
 	 */ 
-	VkExtent2D 	physicalDimensions;
+	 VkExtent2D 	physicalDimensions;
 
 	/**
 	 *  VkExtent2D 	physicalResolution	[vkstruct]
 	 */ 
-	VkExtent2D 	physicalResolution;
+	 VkExtent2D 	physicalResolution;
 
 	/**
 	 *  VkSurfaceTransformFlagsKHR 	supportedTransforms	[int]
 	 */ 
-	int 	supportedTransforms;
+	 int 	supportedTransforms;
 
 	/**
 	 *  VkBool32 	planeReorderPossible	[boolean]
 	 */ 
-	boolean 	planeReorderPossible;
+	 boolean 	planeReorderPossible;
 
 	/**
 	 *  VkBool32 	persistentContent	[boolean]
 	 */ 
-	boolean 	persistentContent;
+	 boolean 	persistentContent;
 
 	/**
 	 * Ctor
@@ -122,6 +127,22 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	        P<VkDisplayPropertiesKHR> p = new  P<VkDisplayPropertiesKHR>(new VkDisplayPropertiesKHR());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkDisplayPropertiesKHR> getP() {
+	       if(p == null ){
+	           p = new P<VkDisplayPropertiesKHR> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

@@ -45,56 +45,61 @@ public class VkImageMemoryBarrier extends VkStruct {
 	/** ID of this structure [101]  */
 	 public static final int TAG_ID = VKIMAGEMEMORYBARRIER_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkImageMemoryBarrier> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkAccessFlags 	srcAccessMask	[int]
 	 */ 
-	int 	srcAccessMask;
+	 int 	srcAccessMask;
 
 	/**
 	 *  VkAccessFlags 	dstAccessMask	[int]
 	 */ 
-	int 	dstAccessMask;
+	 int 	dstAccessMask;
 
 	/**
 	 *  VkImageLayout 	oldLayout	[vkenum]
 	 */ 
-	VkImageLayout 	oldLayout;
+	 VkImageLayout 	oldLayout;
 
 	/**
 	 *  VkImageLayout 	newLayout	[vkenum]
 	 */ 
-	VkImageLayout 	newLayout;
+	 VkImageLayout 	newLayout;
 
 	/**
 	 *  uint32_t 	srcQueueFamilyIndex	[int]
 	 */ 
-	int 	srcQueueFamilyIndex;
+	 int 	srcQueueFamilyIndex;
 
 	/**
 	 *  uint32_t 	dstQueueFamilyIndex	[int]
 	 */ 
-	int 	dstQueueFamilyIndex;
+	 int 	dstQueueFamilyIndex;
 
 	/**
 	 *  VkImage 	image	[vkhandle]
 	 */ 
-	VkImage 	image;
+	 VkImage 	image;
 
 	/**
 	 *  VkImageSubresourceRange 	subresourceRange	[vkstruct]
 	 */ 
-	VkImageSubresourceRange 	subresourceRange;
+	 VkImageSubresourceRange 	subresourceRange;
 
 	/**
 	 * Ctor
@@ -139,6 +144,22 @@ public class VkImageMemoryBarrier extends VkStruct {
 	        P<VkImageMemoryBarrier> p = new  P<VkImageMemoryBarrier>(new VkImageMemoryBarrier());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkImageMemoryBarrier> getP() {
+	       if(p == null ){
+	           p = new P<VkImageMemoryBarrier> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

@@ -44,51 +44,56 @@ public class VkAttachmentDescription extends VkStruct {
 	/** ID of this structure [81]  */
 	 public static final int TAG_ID = VKATTACHMENTDESCRIPTION_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkAttachmentDescription> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkAttachmentDescriptionFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  VkFormat 	format	[vkenum]
 	 */ 
-	VkFormat 	format;
+	 VkFormat 	format;
 
 	/**
 	 *  VkSampleCountFlagBits 	samples	[vkenum]
 	 */ 
-	VkSampleCountFlagBits 	samples;
+	 VkSampleCountFlagBits 	samples;
 
 	/**
 	 *  VkAttachmentLoadOp 	loadOp	[vkenum]
 	 */ 
-	VkAttachmentLoadOp 	loadOp;
+	 VkAttachmentLoadOp 	loadOp;
 
 	/**
 	 *  VkAttachmentStoreOp 	storeOp	[vkenum]
 	 */ 
-	VkAttachmentStoreOp 	storeOp;
+	 VkAttachmentStoreOp 	storeOp;
 
 	/**
 	 *  VkAttachmentLoadOp 	stencilLoadOp	[vkenum]
 	 */ 
-	VkAttachmentLoadOp 	stencilLoadOp;
+	 VkAttachmentLoadOp 	stencilLoadOp;
 
 	/**
 	 *  VkAttachmentStoreOp 	stencilStoreOp	[vkenum]
 	 */ 
-	VkAttachmentStoreOp 	stencilStoreOp;
+	 VkAttachmentStoreOp 	stencilStoreOp;
 
 	/**
 	 *  VkImageLayout 	initialLayout	[vkenum]
 	 */ 
-	VkImageLayout 	initialLayout;
+	 VkImageLayout 	initialLayout;
 
 	/**
 	 *  VkImageLayout 	finalLayout	[vkenum]
 	 */ 
-	VkImageLayout 	finalLayout;
+	 VkImageLayout 	finalLayout;
 
 	/**
 	 * Ctor
@@ -133,6 +138,22 @@ public class VkAttachmentDescription extends VkStruct {
 	        P<VkAttachmentDescription> p = new  P<VkAttachmentDescription>(new VkAttachmentDescription());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkAttachmentDescription> getP() {
+	       if(p == null ){
+	           p = new P<VkAttachmentDescription> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

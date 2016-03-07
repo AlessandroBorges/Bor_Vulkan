@@ -39,26 +39,31 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	/** ID of this structure [89]  */
 	 public static final int TAG_ID = VKCOMMANDBUFFERBEGININFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkCommandBufferBeginInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkCommandBufferUsageFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  const VkCommandBufferInheritanceInfo* 	pInheritanceInfo	[p]
 	 */ 
-	P<VkCommandBufferInheritanceInfo>  	pInheritanceInfo;
+	 P<VkCommandBufferInheritanceInfo>  	pInheritanceInfo;
 
 	/**
 	 * Ctor
@@ -103,6 +108,22 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	        P<VkCommandBufferBeginInfo> p = new  P<VkCommandBufferBeginInfo>(new VkCommandBufferBeginInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkCommandBufferBeginInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkCommandBufferBeginInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

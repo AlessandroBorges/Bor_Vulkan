@@ -44,51 +44,56 @@ public class VkSubmitInfo extends VkStruct {
 	/** ID of this structure [19]  */
 	 public static final int TAG_ID = VKSUBMITINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkSubmitInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  uint32_t 	waitSemaphoreCount	[int]
 	 */ 
-	int 	waitSemaphoreCount;
+	 int 	waitSemaphoreCount;
 
 	/**
 	 *  const VkSemaphore* 	pWaitSemaphores	[p]
 	 */ 
-	P<VkSemaphore>  	pWaitSemaphores;
+	 P<VkSemaphore>  	pWaitSemaphores;
 
 	/**
 	 *  const VkPipelineStageFlags* 	pWaitDstStageMask	[pinteger]
 	 */ 
-	PInteger 	pWaitDstStageMask;
+	 PInteger 	pWaitDstStageMask;
 
 	/**
 	 *  uint32_t 	commandBufferCount	[int]
 	 */ 
-	int 	commandBufferCount;
+	 int 	commandBufferCount;
 
 	/**
 	 *  const VkCommandBuffer* 	pCommandBuffers	[p]
 	 */ 
-	P<VkCommandBuffer>  	pCommandBuffers;
+	 P<VkCommandBuffer>  	pCommandBuffers;
 
 	/**
 	 *  uint32_t 	signalSemaphoreCount	[int]
 	 */ 
-	int 	signalSemaphoreCount;
+	 int 	signalSemaphoreCount;
 
 	/**
 	 *  const VkSemaphore* 	pSignalSemaphores	[p]
 	 */ 
-	P<VkSemaphore>  	pSignalSemaphores;
+	 P<VkSemaphore>  	pSignalSemaphores;
 
 	/**
 	 * Ctor
@@ -133,6 +138,22 @@ public class VkSubmitInfo extends VkStruct {
 	        P<VkSubmitInfo> p = new  P<VkSubmitInfo>(new VkSubmitInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkSubmitInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkSubmitInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

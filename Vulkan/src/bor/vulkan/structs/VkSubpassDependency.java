@@ -42,41 +42,46 @@ public class VkSubpassDependency extends VkStruct {
 	/** ID of this structure [84]  */
 	 public static final int TAG_ID = VKSUBPASSDEPENDENCY_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkSubpassDependency> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  uint32_t 	srcSubpass	[int]
 	 */ 
-	int 	srcSubpass;
+	 int 	srcSubpass;
 
 	/**
 	 *  uint32_t 	dstSubpass	[int]
 	 */ 
-	int 	dstSubpass;
+	 int 	dstSubpass;
 
 	/**
 	 *  VkPipelineStageFlags 	srcStageMask	[int]
 	 */ 
-	int 	srcStageMask;
+	 int 	srcStageMask;
 
 	/**
 	 *  VkPipelineStageFlags 	dstStageMask	[int]
 	 */ 
-	int 	dstStageMask;
+	 int 	dstStageMask;
 
 	/**
 	 *  VkAccessFlags 	srcAccessMask	[int]
 	 */ 
-	int 	srcAccessMask;
+	 int 	srcAccessMask;
 
 	/**
 	 *  VkAccessFlags 	dstAccessMask	[int]
 	 */ 
-	int 	dstAccessMask;
+	 int 	dstAccessMask;
 
 	/**
 	 *  VkDependencyFlags 	dependencyFlags	[int]
 	 */ 
-	int 	dependencyFlags;
+	 int 	dependencyFlags;
 
 	/**
 	 * Ctor
@@ -121,6 +126,22 @@ public class VkSubpassDependency extends VkStruct {
 	        P<VkSubpassDependency> p = new  P<VkSubpassDependency>(new VkSubpassDependency());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkSubpassDependency> getP() {
+	       if(p == null ){
+	           p = new P<VkSubpassDependency> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

@@ -40,31 +40,36 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	/** ID of this structure [87]  */
 	 public static final int TAG_ID = VKCOMMANDBUFFERALLOCATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkCommandBufferAllocateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkCommandPool 	commandPool	[vkhandle]
 	 */ 
-	VkCommandPool 	commandPool;
+	 VkCommandPool 	commandPool;
 
 	/**
 	 *  VkCommandBufferLevel 	level	[vkenum]
 	 */ 
-	VkCommandBufferLevel 	level;
+	 VkCommandBufferLevel 	level;
 
 	/**
 	 *  uint32_t 	commandBufferCount	[int]
 	 */ 
-	int 	commandBufferCount;
+	 int 	commandBufferCount;
 
 	/**
 	 * Ctor
@@ -109,6 +114,22 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	        P<VkCommandBufferAllocateInfo> p = new  P<VkCommandBufferAllocateInfo>(new VkCommandBufferAllocateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkCommandBufferAllocateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkCommandBufferAllocateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

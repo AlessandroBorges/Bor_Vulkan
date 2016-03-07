@@ -47,66 +47,71 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	/** ID of this structure [62]  */
 	 public static final int TAG_ID = VKPIPELINEDEPTHSTENCILSTATECREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkPipelineDepthStencilStateCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineDepthStencilStateCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  VkBool32 	depthTestEnable	[boolean]
 	 */ 
-	boolean 	depthTestEnable;
+	 boolean 	depthTestEnable;
 
 	/**
 	 *  VkBool32 	depthWriteEnable	[boolean]
 	 */ 
-	boolean 	depthWriteEnable;
+	 boolean 	depthWriteEnable;
 
 	/**
 	 *  VkCompareOp 	depthCompareOp	[vkenum]
 	 */ 
-	VkCompareOp 	depthCompareOp;
+	 VkCompareOp 	depthCompareOp;
 
 	/**
 	 *  VkBool32 	depthBoundsTestEnable	[boolean]
 	 */ 
-	boolean 	depthBoundsTestEnable;
+	 boolean 	depthBoundsTestEnable;
 
 	/**
 	 *  VkBool32 	stencilTestEnable	[boolean]
 	 */ 
-	boolean 	stencilTestEnable;
+	 boolean 	stencilTestEnable;
 
 	/**
 	 *  VkStencilOpState 	front	[vkstruct]
 	 */ 
-	VkStencilOpState 	front;
+	 VkStencilOpState 	front;
 
 	/**
 	 *  VkStencilOpState 	back	[vkstruct]
 	 */ 
-	VkStencilOpState 	back;
+	 VkStencilOpState 	back;
 
 	/**
 	 *  float 	minDepthBounds	[float]
 	 */ 
-	float 	minDepthBounds;
+	 float 	minDepthBounds;
 
 	/**
 	 *  float 	maxDepthBounds	[float]
 	 */ 
-	float 	maxDepthBounds;
+	 float 	maxDepthBounds;
 
 	/**
 	 * Ctor
@@ -151,6 +156,22 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	        P<VkPipelineDepthStencilStateCreateInfo> p = new  P<VkPipelineDepthStencilStateCreateInfo>(new VkPipelineDepthStencilStateCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkPipelineDepthStencilStateCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkPipelineDepthStencilStateCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

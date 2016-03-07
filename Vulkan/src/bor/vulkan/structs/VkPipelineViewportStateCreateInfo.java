@@ -42,41 +42,46 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	/** ID of this structure [58]  */
 	 public static final int TAG_ID = VKPIPELINEVIEWPORTSTATECREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkPipelineViewportStateCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineViewportStateCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  uint32_t 	viewportCount	[int]
 	 */ 
-	int 	viewportCount;
+	 int 	viewportCount;
 
 	/**
 	 *  const VkViewport* 	pViewports	[p]
 	 */ 
-	P<VkViewport>  	pViewports;
+	 P<VkViewport>  	pViewports;
 
 	/**
 	 *  uint32_t 	scissorCount	[int]
 	 */ 
-	int 	scissorCount;
+	 int 	scissorCount;
 
 	/**
 	 *  const VkRect2D* 	pScissors	[p]
 	 */ 
-	P<VkRect2D>  	pScissors;
+	 P<VkRect2D>  	pScissors;
 
 	/**
 	 * Ctor
@@ -121,6 +126,22 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	        P<VkPipelineViewportStateCreateInfo> p = new  P<VkPipelineViewportStateCreateInfo>(new VkPipelineViewportStateCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkPipelineViewportStateCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkPipelineViewportStateCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

@@ -38,21 +38,26 @@ public class VkSparseImageOpaqueMemoryBindInfo extends VkStruct {
 	/** ID of this structure [27]  */
 	 public static final int TAG_ID = VKSPARSEIMAGEOPAQUEMEMORYBINDINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkSparseImageOpaqueMemoryBindInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkImage 	image	[vkhandle]
 	 */ 
-	VkImage 	image;
+	 VkImage 	image;
 
 	/**
 	 *  uint32_t 	bindCount	[int]
 	 */ 
-	int 	bindCount;
+	 int 	bindCount;
 
 	/**
 	 *  const VkSparseMemoryBind* 	pBinds	[p]
 	 */ 
-	P<VkSparseMemoryBind>  	pBinds;
+	 P<VkSparseMemoryBind>  	pBinds;
 
 	/**
 	 * Ctor
@@ -97,6 +102,22 @@ public class VkSparseImageOpaqueMemoryBindInfo extends VkStruct {
 	        P<VkSparseImageOpaqueMemoryBindInfo> p = new  P<VkSparseImageOpaqueMemoryBindInfo>(new VkSparseImageOpaqueMemoryBindInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkSparseImageOpaqueMemoryBindInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkSparseImageOpaqueMemoryBindInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

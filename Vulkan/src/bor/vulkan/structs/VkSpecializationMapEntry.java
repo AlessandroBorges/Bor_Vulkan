@@ -38,21 +38,26 @@ public class VkSpecializationMapEntry extends VkStruct {
 	/** ID of this structure [46]  */
 	 public static final int TAG_ID = VKSPECIALIZATIONMAPENTRY_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkSpecializationMapEntry> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  uint32_t 	constantID	[int]
 	 */ 
-	int 	constantID;
+	 int 	constantID;
 
 	/**
 	 *  uint32_t 	offset	[int]
 	 */ 
-	int 	offset;
+	 int 	offset;
 
 	/**
 	 *  size_t 	size	[long]
 	 */ 
-	long 	size;
+	 long 	size;
 
 	/**
 	 * Ctor
@@ -97,6 +102,22 @@ public class VkSpecializationMapEntry extends VkStruct {
 	        P<VkSpecializationMapEntry> p = new  P<VkSpecializationMapEntry>(new VkSpecializationMapEntry());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkSpecializationMapEntry> getP() {
+	       if(p == null ){
+	           p = new P<VkSpecializationMapEntry> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

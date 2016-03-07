@@ -43,46 +43,51 @@ public class VkInstanceCreateInfo extends VkStruct {
 	/** ID of this structure [2]  */
 	 public static final int TAG_ID = VKINSTANCECREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkInstanceCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkInstanceCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  const VkApplicationInfo* 	pApplicationInfo	[p]
 	 */ 
-	P<VkApplicationInfo>  	pApplicationInfo;
+	 P<VkApplicationInfo>  	pApplicationInfo;
 
 	/**
 	 *  uint32_t 	enabledLayerCount	[int]
 	 */ 
-	int 	enabledLayerCount;
+	 int 	enabledLayerCount;
 
 	/**
 	 *  const char* const* 	ppEnabledLayerNames	[string_arr]
 	 */ 
-	String[] 	ppEnabledLayerNames;
+	 String[] 	ppEnabledLayerNames;
 
 	/**
 	 *  uint32_t 	enabledExtensionCount	[int]
 	 */ 
-	int 	enabledExtensionCount;
+	 int 	enabledExtensionCount;
 
 	/**
 	 *  const char* const* 	ppEnabledExtensionNames	[string_arr]
 	 */ 
-	String[] 	ppEnabledExtensionNames;
+	 String[] 	ppEnabledExtensionNames;
 
 	/**
 	 * Ctor
@@ -127,6 +132,22 @@ public class VkInstanceCreateInfo extends VkStruct {
 	        P<VkInstanceCreateInfo> p = new  P<VkInstanceCreateInfo>(new VkInstanceCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkInstanceCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkInstanceCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

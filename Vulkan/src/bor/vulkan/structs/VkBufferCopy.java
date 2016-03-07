@@ -38,21 +38,26 @@ public class VkBufferCopy extends VkStruct {
 	/** ID of this structure [90]  */
 	 public static final int TAG_ID = VKBUFFERCOPY_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkBufferCopy> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkDeviceSize 	srcOffset	[long]
 	 */ 
-	long 	srcOffset;
+	 long 	srcOffset;
 
 	/**
 	 *  VkDeviceSize 	dstOffset	[long]
 	 */ 
-	long 	dstOffset;
+	 long 	dstOffset;
 
 	/**
 	 *  VkDeviceSize 	size	[long]
 	 */ 
-	long 	size;
+	 long 	size;
 
 	/**
 	 * Ctor
@@ -97,6 +102,22 @@ public class VkBufferCopy extends VkStruct {
 	        P<VkBufferCopy> p = new  P<VkBufferCopy>(new VkBufferCopy());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkBufferCopy> getP() {
+	       if(p == null ){
+	           p = new P<VkBufferCopy> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

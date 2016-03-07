@@ -42,41 +42,46 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	/** ID of this structure [102]  */
 	 public static final int TAG_ID = VKRENDERPASSBEGININFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkRenderPassBeginInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkRenderPass 	renderPass	[vkhandle]
 	 */ 
-	VkRenderPass 	renderPass;
+	 VkRenderPass 	renderPass;
 
 	/**
 	 *  VkFramebuffer 	framebuffer	[vkhandle]
 	 */ 
-	VkFramebuffer 	framebuffer;
+	 VkFramebuffer 	framebuffer;
 
 	/**
 	 *  VkRect2D 	renderArea	[vkstruct]
 	 */ 
-	VkRect2D 	renderArea;
+	 VkRect2D 	renderArea;
 
 	/**
 	 *  uint32_t 	clearValueCount	[int]
 	 */ 
-	int 	clearValueCount;
+	 int 	clearValueCount;
 
 	/**
 	 *  const VkClearValue* 	pClearValues	[p]
 	 */ 
-	P<VkClearValue>  	pClearValues;
+	 P<VkClearValue>  	pClearValues;
 
 	/**
 	 * Ctor
@@ -121,6 +126,22 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	        P<VkRenderPassBeginInfo> p = new  P<VkRenderPassBeginInfo>(new VkRenderPassBeginInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkRenderPassBeginInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkRenderPassBeginInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

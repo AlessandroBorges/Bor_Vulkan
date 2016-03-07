@@ -38,21 +38,26 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	/** ID of this structure [103]  */
 	 public static final int TAG_ID = VKDISPATCHINDIRECTCOMMAND_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkDispatchIndirectCommand> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  uint32_t 	x	[int]
 	 */ 
-	int 	x;
+	 int 	x;
 
 	/**
 	 *  uint32_t 	y	[int]
 	 */ 
-	int 	y;
+	 int 	y;
 
 	/**
 	 *  uint32_t 	z	[int]
 	 */ 
-	int 	z;
+	 int 	z;
 
 	/**
 	 * Ctor
@@ -97,6 +102,22 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	        P<VkDispatchIndirectCommand> p = new  P<VkDispatchIndirectCommand>(new VkDispatchIndirectCommand());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkDispatchIndirectCommand> getP() {
+	       if(p == null ){
+	           p = new P<VkDispatchIndirectCommand> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import bor.vulkan.P;
+import bor.vulkan.VkHandler;
 import bor.vulkan.generator.Util.CLASS_TYPE;
 import static bor.vulkan.generator.JNITypeMap.*;
 
@@ -123,10 +125,16 @@ public class StructInfo {
         output += "\t public static final int TAG_ID = " + name.toUpperCase() + "_ID;\n\n";
         //output += "\t public static final int " + name.toUpperCase() + "_ID = " + this.id + ";\n\n";        
         
+        output += "\t/** P wrapper for THIS object */\n";
+        output += "\t private  P<"+name+"> p;\n\n";
+        
         //////////////////////////////////////////////
         ///   FIELDS
         /////////////////////////////////////////////
-        output += "\t // fields //\n";
+        output += "\t ///////////////////\n";
+        output += "\t // Struct fields //\n";
+        output += "\t ///////////////////\n";
+        
         boolean commentOut = false;
         String tab="\t";
         for(int i=0; i<this.fields.length; i++){
@@ -144,7 +152,7 @@ public class StructInfo {
            if(commentOut)
                output += "   // ";
            else
-              output += tab;
+              output += tab +" ";
            
            output += jType + " \t" + field + ";\n\n";      
            }
@@ -188,8 +196,21 @@ public class StructInfo {
                 + "\n\t public static P<"+name+"> createNullPointer(){"                
                 + "\n\t        P<"+name+"> p = new  P<"+name+">(new "+name+"());"
                 + "\n\t        return p;"
-                + "\n\t    }\n";
+                + "\n\t    }\n\n";
         
+        output += "\n\t/** "
+                + "\n\t * Return this VkObject instance wrapped in pointer P<br>"
+                + "\n\t *"
+                + "\n\t *  P&lt;? extends VkObject &gt;"
+                + "\n\t *"
+                + "\n\t * @return  a P container wrapping this object."
+                + "\n\t */"
+                + "\n\t public P<"+name+"> getP() {"
+                + "\n\t       if(p == null ){"
+                + "\n\t           p = new P<"+name+"> (this);"
+                + "\n\t       }"
+                + "\n\t        return p;"
+                + "\n\t    }\n\n";
         
         ////////////////////////////////////////////////
         /// SET/GET java side
@@ -527,6 +548,9 @@ public class StructInfo {
         cType = cType.trim();                
         field = field.trim();
         
+        if(cType.contains("PFN_")){
+            cType = cType.replace("PFN_", "PFN");
+        }
         
         boolean isVoid = cType.contains("void");
         

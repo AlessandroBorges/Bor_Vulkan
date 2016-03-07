@@ -40,31 +40,36 @@ public class VkImageFormatProperties extends VkStruct {
 	/** ID of this structure [7]  */
 	 public static final int TAG_ID = VKIMAGEFORMATPROPERTIES_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkImageFormatProperties> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkExtent3D 	maxExtent	[vkstruct]
 	 */ 
-	VkExtent3D 	maxExtent;
+	 VkExtent3D 	maxExtent;
 
 	/**
 	 *  uint32_t 	maxMipLevels	[int]
 	 */ 
-	int 	maxMipLevels;
+	 int 	maxMipLevels;
 
 	/**
 	 *  uint32_t 	maxArrayLayers	[int]
 	 */ 
-	int 	maxArrayLayers;
+	 int 	maxArrayLayers;
 
 	/**
 	 *  VkSampleCountFlags 	sampleCounts	[int]
 	 */ 
-	int 	sampleCounts;
+	 int 	sampleCounts;
 
 	/**
 	 *  VkDeviceSize 	maxResourceSize	[long]
 	 */ 
-	long 	maxResourceSize;
+	 long 	maxResourceSize;
 
 	/**
 	 * Ctor
@@ -109,6 +114,22 @@ public class VkImageFormatProperties extends VkStruct {
 	        P<VkImageFormatProperties> p = new  P<VkImageFormatProperties>(new VkImageFormatProperties());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkImageFormatProperties> getP() {
+	       if(p == null ){
+	           p = new P<VkImageFormatProperties> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

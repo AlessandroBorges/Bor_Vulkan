@@ -45,56 +45,61 @@ public class VkSubpassDescription extends VkStruct {
 	/** ID of this structure [83]  */
 	 public static final int TAG_ID = VKSUBPASSDESCRIPTION_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkSubpassDescription> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkSubpassDescriptionFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  VkPipelineBindPoint 	pipelineBindPoint	[vkenum]
 	 */ 
-	VkPipelineBindPoint 	pipelineBindPoint;
+	 VkPipelineBindPoint 	pipelineBindPoint;
 
 	/**
 	 *  uint32_t 	inputAttachmentCount	[int]
 	 */ 
-	int 	inputAttachmentCount;
+	 int 	inputAttachmentCount;
 
 	/**
 	 *  const VkAttachmentReference* 	pInputAttachments	[p]
 	 */ 
-	P<VkAttachmentReference>  	pInputAttachments;
+	 P<VkAttachmentReference>  	pInputAttachments;
 
 	/**
 	 *  uint32_t 	colorAttachmentCount	[int]
 	 */ 
-	int 	colorAttachmentCount;
+	 int 	colorAttachmentCount;
 
 	/**
 	 *  const VkAttachmentReference* 	pColorAttachments	[p]
 	 */ 
-	P<VkAttachmentReference>  	pColorAttachments;
+	 P<VkAttachmentReference>  	pColorAttachments;
 
 	/**
 	 *  const VkAttachmentReference* 	pResolveAttachments	[p]
 	 */ 
-	P<VkAttachmentReference>  	pResolveAttachments;
+	 P<VkAttachmentReference>  	pResolveAttachments;
 
 	/**
 	 *  const VkAttachmentReference* 	pDepthStencilAttachment	[p]
 	 */ 
-	P<VkAttachmentReference>  	pDepthStencilAttachment;
+	 P<VkAttachmentReference>  	pDepthStencilAttachment;
 
 	/**
 	 *  uint32_t 	preserveAttachmentCount	[int]
 	 */ 
-	int 	preserveAttachmentCount;
+	 int 	preserveAttachmentCount;
 
 	/**
 	 *  const uint32_t* 	pPreserveAttachments	[int_array]
 	 */ 
-	int[] 	pPreserveAttachments;
+	 int[] 	pPreserveAttachments;
 
 	/**
 	 * Ctor
@@ -139,6 +144,22 @@ public class VkSubpassDescription extends VkStruct {
 	        P<VkSubpassDescription> p = new  P<VkSubpassDescription>(new VkSubpassDescription());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkSubpassDescription> getP() {
+	       if(p == null ){
+	           p = new P<VkSubpassDescription> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

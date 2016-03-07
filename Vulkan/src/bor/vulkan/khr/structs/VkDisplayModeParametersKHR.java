@@ -38,16 +38,21 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	/** ID of this structure [111]  */
 	 public static final int TAG_ID = VKDISPLAYMODEPARAMETERSKHR_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkDisplayModeParametersKHR> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkExtent2D 	visibleRegion	[vkstruct]
 	 */ 
-	VkExtent2D 	visibleRegion;
+	 VkExtent2D 	visibleRegion;
 
 	/**
 	 *  uint32_t 	refreshRate	[int]
 	 */ 
-	int 	refreshRate;
+	 int 	refreshRate;
 
 	/**
 	 * Ctor
@@ -92,6 +97,22 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	        P<VkDisplayModeParametersKHR> p = new  P<VkDisplayModeParametersKHR>(new VkDisplayModeParametersKHR());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkDisplayModeParametersKHR> getP() {
+	       if(p == null ){
+	           p = new P<VkDisplayModeParametersKHR> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

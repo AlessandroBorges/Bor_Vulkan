@@ -40,31 +40,36 @@ public class VkImageCopy extends VkStruct {
 	/** ID of this structure [92]  */
 	 public static final int TAG_ID = VKIMAGECOPY_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkImageCopy> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkImageSubresourceLayers 	srcSubresource	[vkstruct]
 	 */ 
-	VkImageSubresourceLayers 	srcSubresource;
+	 VkImageSubresourceLayers 	srcSubresource;
 
 	/**
 	 *  VkOffset3D 	srcOffset	[vkstruct]
 	 */ 
-	VkOffset3D 	srcOffset;
+	 VkOffset3D 	srcOffset;
 
 	/**
 	 *  VkImageSubresourceLayers 	dstSubresource	[vkstruct]
 	 */ 
-	VkImageSubresourceLayers 	dstSubresource;
+	 VkImageSubresourceLayers 	dstSubresource;
 
 	/**
 	 *  VkOffset3D 	dstOffset	[vkstruct]
 	 */ 
-	VkOffset3D 	dstOffset;
+	 VkOffset3D 	dstOffset;
 
 	/**
 	 *  VkExtent3D 	extent	[vkstruct]
 	 */ 
-	VkExtent3D 	extent;
+	 VkExtent3D 	extent;
 
 	/**
 	 * Ctor
@@ -109,6 +114,22 @@ public class VkImageCopy extends VkStruct {
 	        P<VkImageCopy> p = new  P<VkImageCopy>(new VkImageCopy());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkImageCopy> getP() {
+	       if(p == null ){
+	           p = new P<VkImageCopy> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

@@ -45,56 +45,61 @@ public class VkWriteDescriptorSet extends VkStruct {
 	/** ID of this structure [78]  */
 	 public static final int TAG_ID = VKWRITEDESCRIPTORSET_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkWriteDescriptorSet> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkDescriptorSet 	dstSet	[vkhandle]
 	 */ 
-	VkDescriptorSet 	dstSet;
+	 VkDescriptorSet 	dstSet;
 
 	/**
 	 *  uint32_t 	dstBinding	[int]
 	 */ 
-	int 	dstBinding;
+	 int 	dstBinding;
 
 	/**
 	 *  uint32_t 	dstArrayElement	[int]
 	 */ 
-	int 	dstArrayElement;
+	 int 	dstArrayElement;
 
 	/**
 	 *  uint32_t 	descriptorCount	[int]
 	 */ 
-	int 	descriptorCount;
+	 int 	descriptorCount;
 
 	/**
 	 *  VkDescriptorType 	descriptorType	[vkenum]
 	 */ 
-	VkDescriptorType 	descriptorType;
+	 VkDescriptorType 	descriptorType;
 
 	/**
 	 *  const VkDescriptorImageInfo* 	pImageInfo	[p]
 	 */ 
-	P<VkDescriptorImageInfo>  	pImageInfo;
+	 P<VkDescriptorImageInfo>  	pImageInfo;
 
 	/**
 	 *  const VkDescriptorBufferInfo* 	pBufferInfo	[p]
 	 */ 
-	P<VkDescriptorBufferInfo>  	pBufferInfo;
+	 P<VkDescriptorBufferInfo>  	pBufferInfo;
 
 	/**
 	 *  const VkBufferView* 	pTexelBufferView	[p]
 	 */ 
-	P<VkBufferView>  	pTexelBufferView;
+	 P<VkBufferView>  	pTexelBufferView;
 
 	/**
 	 * Ctor
@@ -139,6 +144,22 @@ public class VkWriteDescriptorSet extends VkStruct {
 	        P<VkWriteDescriptorSet> p = new  P<VkWriteDescriptorSet>(new VkWriteDescriptorSet());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkWriteDescriptorSet> getP() {
+	       if(p == null ){
+	           p = new P<VkWriteDescriptorSet> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

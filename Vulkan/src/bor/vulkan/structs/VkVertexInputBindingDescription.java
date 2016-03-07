@@ -38,21 +38,26 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	/** ID of this structure [49]  */
 	 public static final int TAG_ID = VKVERTEXINPUTBINDINGDESCRIPTION_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkVertexInputBindingDescription> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  uint32_t 	binding	[int]
 	 */ 
-	int 	binding;
+	 int 	binding;
 
 	/**
 	 *  uint32_t 	stride	[int]
 	 */ 
-	int 	stride;
+	 int 	stride;
 
 	/**
 	 *  VkVertexInputRate 	inputRate	[vkenum]
 	 */ 
-	VkVertexInputRate 	inputRate;
+	 VkVertexInputRate 	inputRate;
 
 	/**
 	 * Ctor
@@ -97,6 +102,22 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	        P<VkVertexInputBindingDescription> p = new  P<VkVertexInputBindingDescription>(new VkVertexInputBindingDescription());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkVertexInputBindingDescription> getP() {
+	       if(p == null ){
+	           p = new P<VkVertexInputBindingDescription> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

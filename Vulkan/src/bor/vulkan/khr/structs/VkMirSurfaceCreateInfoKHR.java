@@ -41,31 +41,36 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	/** ID of this structure [121]  */
 	 public static final int TAG_ID = VKMIRSURFACECREATEINFOKHR_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkMirSurfaceCreateInfoKHR> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkMirSurfaceCreateFlagsKHR 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  MirConnection* 	connection	[vkhandle]
 	 */ 
-	MirConnection 	connection;
+	 MirConnection 	connection;
 
 	/**
 	 *  MirSurface* 	mirSurface	[vkhandle]
 	 */ 
-	MirSurface 	mirSurface;
+	 MirSurface 	mirSurface;
 
 	/**
 	 * Ctor
@@ -110,6 +115,22 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	        P<VkMirSurfaceCreateInfoKHR> p = new  P<VkMirSurfaceCreateInfoKHR>(new VkMirSurfaceCreateInfoKHR());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkMirSurfaceCreateInfoKHR> getP() {
+	       if(p == null ){
+	           p = new P<VkMirSurfaceCreateInfoKHR> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

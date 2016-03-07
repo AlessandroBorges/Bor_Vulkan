@@ -42,41 +42,46 @@ public class VkStencilOpState extends VkStruct {
 	/** ID of this structure [61]  */
 	 public static final int TAG_ID = VKSTENCILOPSTATE_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkStencilOpState> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStencilOp 	failOp	[vkenum]
 	 */ 
-	VkStencilOp 	failOp;
+	 VkStencilOp 	failOp;
 
 	/**
 	 *  VkStencilOp 	passOp	[vkenum]
 	 */ 
-	VkStencilOp 	passOp;
+	 VkStencilOp 	passOp;
 
 	/**
 	 *  VkStencilOp 	depthFailOp	[vkenum]
 	 */ 
-	VkStencilOp 	depthFailOp;
+	 VkStencilOp 	depthFailOp;
 
 	/**
 	 *  VkCompareOp 	compareOp	[vkenum]
 	 */ 
-	VkCompareOp 	compareOp;
+	 VkCompareOp 	compareOp;
 
 	/**
 	 *  uint32_t 	compareMask	[int]
 	 */ 
-	int 	compareMask;
+	 int 	compareMask;
 
 	/**
 	 *  uint32_t 	writeMask	[int]
 	 */ 
-	int 	writeMask;
+	 int 	writeMask;
 
 	/**
 	 *  uint32_t 	reference	[int]
 	 */ 
-	int 	reference;
+	 int 	reference;
 
 	/**
 	 * Ctor
@@ -121,6 +126,22 @@ public class VkStencilOpState extends VkStruct {
 	        P<VkStencilOpState> p = new  P<VkStencilOpState>(new VkStencilOpState());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkStencilOpState> getP() {
+	       if(p == null ){
+	           p = new P<VkStencilOpState> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

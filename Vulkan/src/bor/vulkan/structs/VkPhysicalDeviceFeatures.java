@@ -90,281 +90,286 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	/** ID of this structure [4]  */
 	 public static final int TAG_ID = VKPHYSICALDEVICEFEATURES_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkPhysicalDeviceFeatures> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkBool32 	robustBufferAccess	[boolean]
 	 */ 
-	boolean 	robustBufferAccess;
+	 boolean 	robustBufferAccess;
 
 	/**
 	 *  VkBool32 	fullDrawIndexUint32	[boolean]
 	 */ 
-	boolean 	fullDrawIndexUint32;
+	 boolean 	fullDrawIndexUint32;
 
 	/**
 	 *  VkBool32 	imageCubeArray	[boolean]
 	 */ 
-	boolean 	imageCubeArray;
+	 boolean 	imageCubeArray;
 
 	/**
 	 *  VkBool32 	independentBlend	[boolean]
 	 */ 
-	boolean 	independentBlend;
+	 boolean 	independentBlend;
 
 	/**
 	 *  VkBool32 	geometryShader	[boolean]
 	 */ 
-	boolean 	geometryShader;
+	 boolean 	geometryShader;
 
 	/**
 	 *  VkBool32 	tessellationShader	[boolean]
 	 */ 
-	boolean 	tessellationShader;
+	 boolean 	tessellationShader;
 
 	/**
 	 *  VkBool32 	sampleRateShading	[boolean]
 	 */ 
-	boolean 	sampleRateShading;
+	 boolean 	sampleRateShading;
 
 	/**
 	 *  VkBool32 	dualSrcBlend	[boolean]
 	 */ 
-	boolean 	dualSrcBlend;
+	 boolean 	dualSrcBlend;
 
 	/**
 	 *  VkBool32 	logicOp	[boolean]
 	 */ 
-	boolean 	logicOp;
+	 boolean 	logicOp;
 
 	/**
 	 *  VkBool32 	multiDrawIndirect	[boolean]
 	 */ 
-	boolean 	multiDrawIndirect;
+	 boolean 	multiDrawIndirect;
 
 	/**
 	 *  VkBool32 	drawIndirectFirstInstance	[boolean]
 	 */ 
-	boolean 	drawIndirectFirstInstance;
+	 boolean 	drawIndirectFirstInstance;
 
 	/**
 	 *  VkBool32 	depthClamp	[boolean]
 	 */ 
-	boolean 	depthClamp;
+	 boolean 	depthClamp;
 
 	/**
 	 *  VkBool32 	depthBiasClamp	[boolean]
 	 */ 
-	boolean 	depthBiasClamp;
+	 boolean 	depthBiasClamp;
 
 	/**
 	 *  VkBool32 	fillModeNonSolid	[boolean]
 	 */ 
-	boolean 	fillModeNonSolid;
+	 boolean 	fillModeNonSolid;
 
 	/**
 	 *  VkBool32 	depthBounds	[boolean]
 	 */ 
-	boolean 	depthBounds;
+	 boolean 	depthBounds;
 
 	/**
 	 *  VkBool32 	wideLines	[boolean]
 	 */ 
-	boolean 	wideLines;
+	 boolean 	wideLines;
 
 	/**
 	 *  VkBool32 	largePoints	[boolean]
 	 */ 
-	boolean 	largePoints;
+	 boolean 	largePoints;
 
 	/**
 	 *  VkBool32 	alphaToOne	[boolean]
 	 */ 
-	boolean 	alphaToOne;
+	 boolean 	alphaToOne;
 
 	/**
 	 *  VkBool32 	multiViewport	[boolean]
 	 */ 
-	boolean 	multiViewport;
+	 boolean 	multiViewport;
 
 	/**
 	 *  VkBool32 	samplerAnisotropy	[boolean]
 	 */ 
-	boolean 	samplerAnisotropy;
+	 boolean 	samplerAnisotropy;
 
 	/**
 	 *  VkBool32 	textureCompressionETC2	[boolean]
 	 */ 
-	boolean 	textureCompressionETC2;
+	 boolean 	textureCompressionETC2;
 
 	/**
 	 *  VkBool32 	textureCompressionASTC_LDR	[boolean]
 	 */ 
-	boolean 	textureCompressionASTC_LDR;
+	 boolean 	textureCompressionASTC_LDR;
 
 	/**
 	 *  VkBool32 	textureCompressionBC	[boolean]
 	 */ 
-	boolean 	textureCompressionBC;
+	 boolean 	textureCompressionBC;
 
 	/**
 	 *  VkBool32 	occlusionQueryPrecise	[boolean]
 	 */ 
-	boolean 	occlusionQueryPrecise;
+	 boolean 	occlusionQueryPrecise;
 
 	/**
 	 *  VkBool32 	pipelineStatisticsQuery	[boolean]
 	 */ 
-	boolean 	pipelineStatisticsQuery;
+	 boolean 	pipelineStatisticsQuery;
 
 	/**
 	 *  VkBool32 	vertexPipelineStoresAndAtomics	[boolean]
 	 */ 
-	boolean 	vertexPipelineStoresAndAtomics;
+	 boolean 	vertexPipelineStoresAndAtomics;
 
 	/**
 	 *  VkBool32 	fragmentStoresAndAtomics	[boolean]
 	 */ 
-	boolean 	fragmentStoresAndAtomics;
+	 boolean 	fragmentStoresAndAtomics;
 
 	/**
 	 *  VkBool32 	shaderTessellationAndGeometryPointSize	[boolean]
 	 */ 
-	boolean 	shaderTessellationAndGeometryPointSize;
+	 boolean 	shaderTessellationAndGeometryPointSize;
 
 	/**
 	 *  VkBool32 	shaderImageGatherExtended	[boolean]
 	 */ 
-	boolean 	shaderImageGatherExtended;
+	 boolean 	shaderImageGatherExtended;
 
 	/**
 	 *  VkBool32 	shaderStorageImageExtendedFormats	[boolean]
 	 */ 
-	boolean 	shaderStorageImageExtendedFormats;
+	 boolean 	shaderStorageImageExtendedFormats;
 
 	/**
 	 *  VkBool32 	shaderStorageImageMultisample	[boolean]
 	 */ 
-	boolean 	shaderStorageImageMultisample;
+	 boolean 	shaderStorageImageMultisample;
 
 	/**
 	 *  VkBool32 	shaderStorageImageReadWithoutFormat	[boolean]
 	 */ 
-	boolean 	shaderStorageImageReadWithoutFormat;
+	 boolean 	shaderStorageImageReadWithoutFormat;
 
 	/**
 	 *  VkBool32 	shaderStorageImageWriteWithoutFormat	[boolean]
 	 */ 
-	boolean 	shaderStorageImageWriteWithoutFormat;
+	 boolean 	shaderStorageImageWriteWithoutFormat;
 
 	/**
 	 *  VkBool32 	shaderUniformBufferArrayDynamicIndexing	[boolean]
 	 */ 
-	boolean 	shaderUniformBufferArrayDynamicIndexing;
+	 boolean 	shaderUniformBufferArrayDynamicIndexing;
 
 	/**
 	 *  VkBool32 	shaderSampledImageArrayDynamicIndexing	[boolean]
 	 */ 
-	boolean 	shaderSampledImageArrayDynamicIndexing;
+	 boolean 	shaderSampledImageArrayDynamicIndexing;
 
 	/**
 	 *  VkBool32 	shaderStorageBufferArrayDynamicIndexing	[boolean]
 	 */ 
-	boolean 	shaderStorageBufferArrayDynamicIndexing;
+	 boolean 	shaderStorageBufferArrayDynamicIndexing;
 
 	/**
 	 *  VkBool32 	shaderStorageImageArrayDynamicIndexing	[boolean]
 	 */ 
-	boolean 	shaderStorageImageArrayDynamicIndexing;
+	 boolean 	shaderStorageImageArrayDynamicIndexing;
 
 	/**
 	 *  VkBool32 	shaderClipDistance	[boolean]
 	 */ 
-	boolean 	shaderClipDistance;
+	 boolean 	shaderClipDistance;
 
 	/**
 	 *  VkBool32 	shaderCullDistance	[boolean]
 	 */ 
-	boolean 	shaderCullDistance;
+	 boolean 	shaderCullDistance;
 
 	/**
 	 *  VkBool32 	shaderFloat64	[boolean]
 	 */ 
-	boolean 	shaderFloat64;
+	 boolean 	shaderFloat64;
 
 	/**
 	 *  VkBool32 	shaderInt64	[boolean]
 	 */ 
-	boolean 	shaderInt64;
+	 boolean 	shaderInt64;
 
 	/**
 	 *  VkBool32 	shaderInt16	[boolean]
 	 */ 
-	boolean 	shaderInt16;
+	 boolean 	shaderInt16;
 
 	/**
 	 *  VkBool32 	shaderResourceResidency	[boolean]
 	 */ 
-	boolean 	shaderResourceResidency;
+	 boolean 	shaderResourceResidency;
 
 	/**
 	 *  VkBool32 	shaderResourceMinLod	[boolean]
 	 */ 
-	boolean 	shaderResourceMinLod;
+	 boolean 	shaderResourceMinLod;
 
 	/**
 	 *  VkBool32 	sparseBinding	[boolean]
 	 */ 
-	boolean 	sparseBinding;
+	 boolean 	sparseBinding;
 
 	/**
 	 *  VkBool32 	sparseResidencyBuffer	[boolean]
 	 */ 
-	boolean 	sparseResidencyBuffer;
+	 boolean 	sparseResidencyBuffer;
 
 	/**
 	 *  VkBool32 	sparseResidencyImage2D	[boolean]
 	 */ 
-	boolean 	sparseResidencyImage2D;
+	 boolean 	sparseResidencyImage2D;
 
 	/**
 	 *  VkBool32 	sparseResidencyImage3D	[boolean]
 	 */ 
-	boolean 	sparseResidencyImage3D;
+	 boolean 	sparseResidencyImage3D;
 
 	/**
 	 *  VkBool32 	sparseResidency2Samples	[boolean]
 	 */ 
-	boolean 	sparseResidency2Samples;
+	 boolean 	sparseResidency2Samples;
 
 	/**
 	 *  VkBool32 	sparseResidency4Samples	[boolean]
 	 */ 
-	boolean 	sparseResidency4Samples;
+	 boolean 	sparseResidency4Samples;
 
 	/**
 	 *  VkBool32 	sparseResidency8Samples	[boolean]
 	 */ 
-	boolean 	sparseResidency8Samples;
+	 boolean 	sparseResidency8Samples;
 
 	/**
 	 *  VkBool32 	sparseResidency16Samples	[boolean]
 	 */ 
-	boolean 	sparseResidency16Samples;
+	 boolean 	sparseResidency16Samples;
 
 	/**
 	 *  VkBool32 	sparseResidencyAliased	[boolean]
 	 */ 
-	boolean 	sparseResidencyAliased;
+	 boolean 	sparseResidencyAliased;
 
 	/**
 	 *  VkBool32 	variableMultisampleRate	[boolean]
 	 */ 
-	boolean 	variableMultisampleRate;
+	 boolean 	variableMultisampleRate;
 
 	/**
 	 *  VkBool32 	inheritedQueries	[boolean]
 	 */ 
-	boolean 	inheritedQueries;
+	 boolean 	inheritedQueries;
 
 	/**
 	 * Ctor
@@ -409,6 +414,22 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	        P<VkPhysicalDeviceFeatures> p = new  P<VkPhysicalDeviceFeatures>(new VkPhysicalDeviceFeatures());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkPhysicalDeviceFeatures> getP() {
+	       if(p == null ){
+	           p = new P<VkPhysicalDeviceFeatures> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //

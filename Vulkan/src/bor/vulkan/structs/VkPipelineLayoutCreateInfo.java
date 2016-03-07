@@ -42,41 +42,46 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	/** ID of this structure [69]  */
 	 public static final int TAG_ID = VKPIPELINELAYOUTCREATEINFO_ID;
 
-	 // fields //
+	/** P wrapper for THIS object */
+	 private  P<VkPipelineLayoutCreateInfo> p;
+
+	 ///////////////////
+	 // Struct fields //
+	 ///////////////////
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	VkStructureType 	sType;
+	 VkStructureType 	sType;
 
 	/**
 	 *  const void* 	pNext	[p]
 	 */ 
-	P<VkObject> 	pNext;
+	 P<VkObject> 	pNext;
 
 	/**
 	 *  VkPipelineLayoutCreateFlags 	flags	[int]
 	 */ 
-	int 	flags;
+	 int 	flags;
 
 	/**
 	 *  uint32_t 	setLayoutCount	[int]
 	 */ 
-	int 	setLayoutCount;
+	 int 	setLayoutCount;
 
 	/**
 	 *  const VkDescriptorSetLayout* 	pSetLayouts	[p]
 	 */ 
-	P<VkDescriptorSetLayout>  	pSetLayouts;
+	 P<VkDescriptorSetLayout>  	pSetLayouts;
 
 	/**
 	 *  uint32_t 	pushConstantRangeCount	[int]
 	 */ 
-	int 	pushConstantRangeCount;
+	 int 	pushConstantRangeCount;
 
 	/**
 	 *  const VkPushConstantRange* 	pPushConstantRanges	[p]
 	 */ 
-	P<VkPushConstantRange>  	pPushConstantRanges;
+	 P<VkPushConstantRange>  	pPushConstantRanges;
 
 	/**
 	 * Ctor
@@ -121,6 +126,22 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	        P<VkPipelineLayoutCreateInfo> p = new  P<VkPipelineLayoutCreateInfo>(new VkPipelineLayoutCreateInfo());
 	        return p;
 	    }
+
+
+	/** 
+	 * Return this VkObject instance wrapped in pointer P<br>
+	 *
+	 *  P&lt;? extends VkObject &gt;
+	 *
+	 * @return  a P container wrapping this object.
+	 */
+	 public P<VkPipelineLayoutCreateInfo> getP() {
+	       if(p == null ){
+	           p = new P<VkPipelineLayoutCreateInfo> (this);
+	       }
+	        return p;
+	    }
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
