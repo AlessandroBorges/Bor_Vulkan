@@ -3,10 +3,7 @@
  */
 package bor.vulkan.generator;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.StringTokenizer;
+import java.util.*;
 
 import static bor.vulkan.generator.Util.*;
 
@@ -16,6 +13,8 @@ import static bor.vulkan.generator.Util.*;
  *
  */
 public class ProcInfo {
+    
+    public static Set<String> allTypes = new TreeSet<String>();
     
     int id = 0;
     /**
@@ -40,15 +39,28 @@ public class ProcInfo {
          String src = "";
          String tab = "\n\t\t";
          // add comment
-         src += "public " + this.returnType + " " + this.procName+"(";
+         
+         src +=  "\t/**\n"
+                +"\t * <h2>Prototype</h2><pre>\n";
+                
+         if(cppSource!= null){
+             for (String line : cppSource) {
+                 src +="\t * " + line+"\n"; 
+            }             
+         }
+         src +="\t * </pre>\n\t */\n";
+         
+         
+         src += "   public abstract " + this.returnType + " " + this.procName+"(";
          int len = pnames.length;
          for (int i = 0; i < len; i++) {
             src += tab + paramTypes[i] + "  " + pnames[i] + (i+1<len?",":");") ;
+            allTypes.add(paramTypes[i]);
         }
          
          src +="\n\n";
         // native
-         src += "private static " + this.returnType + " " + this.procName+"0(";         
+         src += "    private static native " + this.returnType + " " + this.procName+"0(";         
          for (int i = 0; i < len; i++) {
             src += tab + paramTypes[i] + "  " + pnames[i] + (i+1<len?",":");") ;
         }

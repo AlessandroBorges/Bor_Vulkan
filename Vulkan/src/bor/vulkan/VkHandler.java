@@ -87,7 +87,7 @@ public class VkHandler implements VkHandleInterface, VkBuffer, VkBufferView, VkC
     /**
      * The handler itself
      */
-    private ByteBuffer handle;
+    private ByteBuffer handle=null;
     
     /**
      * Wrapping P instance, for this object

@@ -11,8 +11,8 @@ public class Vulkan {
     public static final   int  VK_REMAINING_ARRAY_LAYERS   = Integer.MAX_VALUE;//  (~0);
     public static final   long  VK_WHOLE_SIZE   =  Long.MAX_VALUE;// (~0ULL);
     public static final   int  VK_ATTACHMENT_UNUSED   = Integer.MAX_VALUE;//   (~0U);
-    public static final   int  VK_TRUE   =   1;
-    public static final   int  VK_FALSE   =   0;
+    public static final   boolean  VK_TRUE   =   true;
+    public static final   boolean  VK_FALSE   =   false;
     public static final   int  VK_QUEUE_FAMILY_IGNORED   =  Integer.MAX_VALUE;// (~0U);
     public static final   int  VK_SUBPASS_EXTERNAL   =  Integer.MAX_VALUE;// (~0U);
     public static final   int  VK_MAX_PHYSICAL_DEVICE_NAME_SIZE   =   256;
