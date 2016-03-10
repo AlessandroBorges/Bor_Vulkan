@@ -116,6 +116,26 @@ public class IntEnum<T> implements IntEnumInterface<T> {
     
     /**
      * <pre>
+     *  Get unique enumeration by value.
+     * </pre>
+     * @param val - internal value of enumeration
+     * @return return exact the enumeration with the value val, or 
+     *  null if there is no matching  enumeration. 
+     */
+    public <E> E getEnumByValue(int val){
+        int len = values.length;
+        for(int i = 0; i<len; i++){
+            IntEnum ie = values[i];
+            int ieVal = ie.value;
+            if(ieVal==val){
+                return (E) ie;
+            }
+        }
+        return null;
+    }
+    
+    /**
+     * <pre>
      * Get a valid enumeration itens flagged in flag parameter.
      * Notes:
      *  <b>return null if flag is not a valid OR'ed value of this enumeration.</b>
