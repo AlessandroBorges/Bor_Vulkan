@@ -7,13 +7,13 @@ import java.nio.ByteBuffer;
 
 import bor.vulkan.P;
 import bor.vulkan.VkHandleInterface;
-import bor.vulkan.VkHandler;
+import bor.vulkan.VkHandle;
 
 /**
  * @author Alessandro Borges
  *
  */
-public class MirConnection extends VkHandler implements VkHandleInterface {
+public class MirConnection extends VkHandle implements VkHandleInterface {
 
     /**
      * creates a empty pointer for MirConnection

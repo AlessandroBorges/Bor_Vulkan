@@ -4,7 +4,7 @@
 package bor.vulkan.khr;
 
 import java.nio.ByteBuffer;
-import bor.vulkan.VkHandler;
+import bor.vulkan.VkHandle;
 import bor.vulkan.P;
 import bor.vulkan.VkHandleInterface;
 
@@ -13,7 +13,7 @@ import bor.vulkan.VkHandleInterface;
  * @author Alessandro Borges
  * 
  */
-public class ANativeWindow extends VkHandler implements VkHandleInterface {
+public class ANativeWindow extends VkHandle implements VkHandleInterface {
 
     private ANativeWindow(){
         super();

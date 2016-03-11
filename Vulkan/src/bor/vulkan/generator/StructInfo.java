@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.StringTokenizer;
 
 import bor.vulkan.P;
-import bor.vulkan.VkHandler;
+import bor.vulkan.VkHandle;
 import bor.vulkan.generator.Util.CLASS_TYPE;
 import static bor.vulkan.generator.JNITypeMap.*;
 

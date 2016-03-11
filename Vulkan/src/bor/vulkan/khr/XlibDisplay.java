@@ -7,13 +7,13 @@ import java.nio.ByteBuffer;
 
 import bor.vulkan.P;
 import bor.vulkan.VkHandleInterface;
-import bor.vulkan.VkHandler;
+import bor.vulkan.VkHandle;
 
 /**
  * @author Alessandro Borges
  *
  */
-public class XlibDisplay extends VkHandler implements VkHandleInterface {
+public class XlibDisplay extends VkHandle implements VkHandleInterface {
 
     private XlibDisplay(){
         super();

@@ -1,26 +1,72 @@
 package bor.vulkan;
- import bor.vulkan.khr.*;
+ import bor.vulkan.enumerations.VkFormat;
+import bor.vulkan.khr.*;
+import bor.vulkan.structs.VkAllocationCallbacks;
+import bor.vulkan.structs.VkFormatProperties;
+import bor.vulkan.structs.VkInstanceCreateInfo;
+
  import java.nio.*;
 
- public class Vk extends Vulkan
+ public abstract class Vk extends Vulkan
  {
-	/**
-	 * <h2>Prototype</h2><pre>
-	 * VKAPI_ATTR VkResult VKAPI_CALL vkCreateInstance(
-	 *     const VkInstanceCreateInfo*                 pCreateInfo,
-	 *     const VkAllocationCallbacks*                pAllocator,
-	 *     VkInstance*                                 pInstance);
-	 * </pre>
-	 */
-   public abstract VkResult vkCreateInstance(
-		const VkInstanceCreateInfo*  pCreateInfo,
-		const VkAllocationCallbacks*  pAllocator,
-		VkInstance*  pInstance);
+    /**
+     * <h2>Prototype</h2>
+     * 
+     * <pre>
+     * VKAPI_ATTR VkResult VKAPI_CALL vkCreateInstance(
+     *     const VkInstanceCreateInfo*                 pCreateInfo,
+     *     const VkAllocationCallbacks*                pAllocator,
+     *     VkInstance*                                 pInstance);
+     * </pre>
+     * 
+     * @param pCreateInfo -  Pointer to instance creation structure.
+     * @param pAllocator - 
+     * @param pInstance - Pointer to variable which will receive the new instance handle.
+     * 
+     */
+    public VkResult vkCreateInstance(VkInstanceCreateInfo pCreateInfo,
+                                     VkAllocationCallbacks pAllocator,
+                                     VkInstance pInstance) {
 
-    private static native VkResult vkCreateInstance0(
-		const VkInstanceCreateInfo*  pCreateInfo,
-		const VkAllocationCallbacks*  pAllocator,
-		VkInstance*  pInstance);
+        int[] result = { 0 };
+        ByteBuffer pInstanceHandle = vkCreateInstance0(pCreateInfo.getPointerStruct(), 
+                pAllocator.getPointerStruct(),
+                result);
+
+        pInstance.setHandle(pInstanceHandle);
+        return VkResult.getEnumByValue(result[0]);
+    }
+
+   /**
+    * 
+    * @param pCreateInfo
+    * @param pAllocator
+    * @param result
+    * @return
+    */
+    private static native ByteBuffer vkCreateInstance0(
+        Buffer  pCreateInfo,
+        Buffer  pAllocator,
+        int[] result);/*
+        // isolate [in][out] parameter and cast it
+        jobject buff = null; 
+        VkInstance* pInstance;
+                
+        VkResult res =  vkCreateInstance(
+         (const VkInstanceCreateInfo*)                 pCreateInfo,
+         (const VkAllocationCallbacks*)                pAllocator,
+         (VkInstance*)                                 pInstance);
+                  
+         // restore value for [OUT]
+         result[0] = (jint) res;
+         
+          if(res==VK_SUCCESS){      
+             buff = NewDirectByteBuffer((JNIEnv*) env, 
+                                     (void*) pInstance, 
+                                     (jlong) sizeof(void*));
+          }                    
+         return buff;                  
+        */
 
 	/////////////////////////////////////
 
@@ -30,34 +76,107 @@ package bor.vulkan;
 	 *     VkInstance                                  instance,
 	 *     const VkAllocationCallbacks*                pAllocator);
 	 * </pre>
+	 *  @param instance - Vulkan instance to release. 
+	 *  @param pAllocator - callBacks
 	 */
-   public abstract void vkDestroyInstance(
-		VkInstance  instance,
-		const VkAllocationCallbacks*  pAllocator);
+   public void vkDestroyInstance( 
+                                 VkInstance  instance,
+                                 VkAllocationCallbacks  pAllocator){
+       
+       vkDestroyBuffer(instance.getNativeHandle(), 
+                       pAllocator.getPointerStruct());
+       
+   }
 
-    private static native void vkDestroyInstance0(
-		VkInstance  instance,
-		const VkAllocationCallbacks*  pAllocator);
+   /**
+    * Native method
+    * @param instance
+    * @param pAllocator
+    */
+    private static native void vkDestroyInstance0(ByteBuffer  instance,
+                                                  Buffer  pAllocator);/*         
+        vkDestroyInstance(
+         (VkInstance)                    (*instance),
+         (const VkAllocationCallbacks*)   pAllocator);        
+        */
 
 	/////////////////////////////////////
 
-	/**
-	 * <h2>Prototype</h2><pre>
-	 * VKAPI_ATTR VkResult VKAPI_CALL vkEnumeratePhysicalDevices(
-	 *     VkInstance                                  instance,
-	 *     uint32_t*                                   pPhysicalDeviceCount,
-	 *     VkPhysicalDevice*                           pPhysicalDevices);
-	 * </pre>
-	 */
-   public abstract VkResult vkEnumeratePhysicalDevices(
-		VkInstance  instance,
-		uint32_t*  pPhysicalDeviceCount,
-		VkPhysicalDevice*  pPhysicalDevices);
+    /**
+     * <h2>Prototype</h2>
+     * 
+     * <pre>
+     * VKAPI_ATTR VkResult VKAPI_CALL vkEnumeratePhysicalDevices(
+     *     VkInstance                                  instance,
+     *     uint32_t*                                   pPhysicalDeviceCount,
+     *     VkPhysicalDevice*                           pPhysicalDevices);
+     * </pre>
+     * 
+     * @param instance -  A handle to the instance to be used to enumerate devices.
+     * @param pPhysicalDeviceCount - 
+     *  A pointer to a variable containing the maximum number of devices to enumerate.
+     * @param pPhysicalDevices - 
+     * A pointer to an array that will be filled with handles to the enumerated devices.
+     * 
+     * 
+     */
+    public VkResult vkEnumeratePhysicalDevices(VkInstance instance,
+                                               int[] pPhysicalDeviceCount,
+                                               VkPhysicalDevice[] pPhysicalDevices){
+        // pick the lowest value, for consistency
+        int size = Math.min(pPhysicalDeviceCount[0], pPhysicalDevices.length);
+        // clean up pPhysicalDevices
+        for(int i=0; i<pPhysicalDevices.length; i++){
+            pPhysicalDevices[i] = null;
+        }
+        
+        ByteBuffer[]  pPhysicalDevicesArray = new ByteBuffer[size];      
+        int res = vkEnumeratePhysicalDevices0(instance.getHandle(),
+                                               pPhysicalDeviceCount,
+                                               pPhysicalDevicesArray);
+        
+        for (int i = 0; i < pPhysicalDevicesArray.length; i++) {
+            ByteBuffer handle = pPhysicalDevicesArray[i];
+            if(handle != null){
+                pPhysicalDevices[i] = new VkPhysicalDevice(handle);
+            } //if
+        }//for
+    }// method
 
+    /**
+     * 
+     * @param instance
+     * @param pPhysicalDeviceCount
+     * @param pPhysicalDevicesRet
+     * @param size
+     * @return
+     */
     private static native VkResult vkEnumeratePhysicalDevices0(
-		VkInstance  instance,
-		uint32_t*  pPhysicalDeviceCount,
-		VkPhysicalDevice*  pPhysicalDevices);
+                                        ByteBuffer instance,
+                                        int[]   pPhysicalDeviceCount,
+                                        ByteBuffer[]  pPhysicalDevicesRet,
+                                        int size);/*
+        
+        VkPhysicalDevice* pPhysicalDevices = new VkPhysicalDevice[size];     
+               
+        vkEnumeratePhysicalDevices((VkInstance) (*instance),
+                                   (uint32_t*)  pPhysicalDeviceCount,
+                                   (VkPhysicalDevice*) pPhysicalDevices);
+                                   
+          // wrap pointers to ByteBuffer[]
+          for(int i=0; i<size; i++){
+                // if not null
+               if(pPhysicalDevices+i){
+                 jobject buff =  NewDirectByteBuffer((JNIEnv*) env, 
+                                                     (void*) (pPhysicalDevices+i), 
+                                                     (jlong) sizeof(void*));               
+                 if(buff)
+                      SetObjectArrayElement(env, pPhysicalDevices, i, buff);
+               }
+          }
+          // clean up          
+          delete pPhysicalDevices;        
+        */
 
 	/////////////////////////////////////
 
@@ -68,13 +187,20 @@ package bor.vulkan;
 	 *     VkPhysicalDeviceFeatures*                   pFeatures);
 	 * </pre>
 	 */
-   public abstract void vkGetPhysicalDeviceFeatures(
-		VkPhysicalDevice  physicalDevice,
-		VkPhysicalDeviceFeatures*  pFeatures);
+   public  void vkGetPhysicalDeviceFeatures(VkPhysicalDevice  physicalDevice,
+                                            VkPhysicalDeviceFeatures  pFeatures){
+       
+   }
 
-    private static native void vkGetPhysicalDeviceFeatures0(
-		VkPhysicalDevice  physicalDevice,
-		VkPhysicalDeviceFeatures*  pFeatures);
+    private static native void vkGetPhysicalDeviceFeatures0(ByteBuffer  physicalDevice,
+                                                            ByteBuffer  pFeatures);/*
+        
+     VkPhysicalDevice* physicalDevice =  reinterpret_cast<VkPhysicalDevice*>(physicalDevice);
+              
+     vkGetPhysicalDeviceFeatures(
+		(VkPhysicalDevice)  *physicalDevice,
+		(VkPhysicalDeviceFeatures*)  pFeatures);
+        */
 
 	/////////////////////////////////////
 
@@ -85,16 +211,31 @@ package bor.vulkan;
 	 *     VkFormat                                    format,
 	 *     VkFormatProperties*                         pFormatProperties);
 	 * </pre>
+	 * @param  physicalDevice - A handle to the physical device to query. 
+	 * @param format -  The format whose properties to query. 
+	 * @param pFormatProperties- A pointer to the structure to
+	 *  receive the result of the query. . 
+	 * 
 	 */
-   public abstract void vkGetPhysicalDeviceFormatProperties(
-		VkPhysicalDevice  physicalDevice,
-		VkFormat  format,
-		VkFormatProperties*  pFormatProperties);
+    public void vkGetPhysicalDeviceFormatProperties(VkPhysicalDevice physicalDevice,
+                                                    VkFormat format,
+                                                    VkFormatProperties pFormatProperties) {
+        vkGetPhysicalDeviceFormatProperties0( physicalDevice.getHandle(),
+                                              format.getValue(),
+                                              pFormatProperties.getPointerStruct());
+       }
 
     private static native void vkGetPhysicalDeviceFormatProperties0(
-		VkPhysicalDevice  physicalDevice,
-		VkFormat  format,
-		VkFormatProperties*  pFormatProperties);
+		Buffer  physicalDevice,
+		int  format,
+		Buffer  pFormatProperties);/*
+   void vkGetPhysicalDeviceFormatProperties(
+               (VkPhysicalDevice)  (*physicalDevice),
+               (VkFormat)  format,
+               (VkFormatProperties*)   pFormatProperties);
+		
+		
+     */
 
 	/////////////////////////////////////
 

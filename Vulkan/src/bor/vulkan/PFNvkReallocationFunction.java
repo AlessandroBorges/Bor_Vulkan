@@ -14,7 +14,7 @@ import java.nio.ByteBuffer;
  * @author Alessandro Borges
  *
  */
-public class PFNvkReallocationFunction extends VkHandler implements PFN_Function, VkHandleInterface {
+public class PFNvkReallocationFunction extends VkHandle implements PFN_Function, VkHandleInterface {
 
     private PFNvkReallocationFunction() {
     }

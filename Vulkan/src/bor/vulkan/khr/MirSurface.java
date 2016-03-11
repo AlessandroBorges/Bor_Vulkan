@@ -7,13 +7,13 @@ import java.nio.ByteBuffer;
 
 import bor.vulkan.P;
 import bor.vulkan.VkHandleInterface;
-import bor.vulkan.VkHandler;
+import bor.vulkan.VkHandle;
 
 /**
  * @author Alessandro Borges
  *
  */
-public class MirSurface extends VkHandler implements VkHandleInterface {
+public class MirSurface extends VkHandle implements VkHandleInterface {
 
     /**
      * private

@@ -14,7 +14,7 @@ import bor.vulkan.khr.VkSwapchainKHR;
 
 /**
  * Non public class implementing Vulkan handlers.<br>
- * It implements VkHandler super interface and all sub interfaces listed below.<br>
+ * It implements VkHandle super interface and all sub interfaces listed below.<br>
  * In a typical use of this class, it will be created from a native pointer and then <B>(cast)</B>
  * to proper type.<br>
  * 
@@ -22,7 +22,7 @@ import bor.vulkan.khr.VkSwapchainKHR;
  * <pre>  
  *  private VkInstance vkCreateInstance(...){
  *     ByteBuffer ptr = nativeCreateInstance(...);
- *     VkHandler handler = new VkHandler(ptr);
+ *     VkHandle handler = new VkHandle(ptr);
  *     return (VkInstance) handler;
  *  }  
  * </pre>
@@ -35,7 +35,7 @@ import bor.vulkan.khr.VkSwapchainKHR;
  *
  * @author Alessandro Borges
  * 
- * @see VkHandler
+ * @see VkHandle
  * @see VkInstance
  * @see VkPhysicalDevice
  * @see VkDevice
@@ -70,7 +70,7 @@ import bor.vulkan.khr.VkSwapchainKHR;
  * 
  *
  */
-public class VkHandler implements VkHandleInterface, VkBuffer, VkBufferView, VkCommandBuffer, VkCommandPool,
+public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCommandBuffer, VkCommandPool,
         VkDebugReportCallbackEXT, VkDescriptorPool, VkDescriptorSet, VkDescriptorSetLayout, VkDevice, VkDeviceMemory,
         VkDisplayKHR, VkDisplayModeKHR, VkEvent, VkFence, VkFramebuffer, VkImage, VkImageView, VkInstance,
         VkPhysicalDevice, VkPipeline, VkPipelineCache, VkPipelineLayout, VkQueryPool, VkQueue, VkRenderPass, VkSampler,
@@ -92,14 +92,14 @@ public class VkHandler implements VkHandleInterface, VkBuffer, VkBufferView, VkC
     /**
      * Wrapping P instance, for this object
      */
-    private P<VkHandler> p;
+    private P<VkHandle> p;
     
     /**
-     * Creates a empty VkHandler.
+     * Creates a empty VkHandle.
      * The pointer to native side will be created later.
-     * @see VkHandler#createNullPointer()
+     * @see VkHandle#createNullPointer()
      */
-    protected VkHandler(){        
+    protected VkHandle(){        
     }
 
     /**
@@ -110,12 +110,7 @@ public class VkHandler implements VkHandleInterface, VkBuffer, VkBufferView, VkC
      * 
      * @throws IllegalArgumentException if nativePtr is null or non direct.
      */
-     protected VkHandler(ByteBuffer nativePtr) {  
-        if(null==nativePtr || !nativePtr.isDirect()){
-            throw 
-            new IllegalArgumentException("ByteBuffer nativePtr must "
-                    + "be Direct and not null.");
-        }
+     protected VkHandle(ByteBuffer nativePtr) {
        prepareHandler(nativePtr);
     }
      
@@ -124,6 +119,11 @@ public class VkHandler implements VkHandleInterface, VkBuffer, VkBufferView, VkC
       * @param nativePtr
       */
     private void prepareHandler(ByteBuffer nativePtr) {
+        if(null==nativePtr || !nativePtr.isDirect()){
+            throw 
+            new IllegalArgumentException("ByteBuffer nativePtr must "
+                                       + "be Direct and not null.");
+        }
         this.handle = nativePtr.isReadOnly() ? nativePtr : nativePtr.asReadOnlyBuffer();
         this.handle.rewind();
         mapHandlers.put(this, handle);
@@ -146,6 +146,14 @@ public class VkHandler implements VkHandleInterface, VkBuffer, VkBufferView, VkC
     @Override
     public ByteBuffer getHandle() {
         return this.handle;
+    }
+    
+    /**
+     * Set a native handle.
+     * @param hnd - native created handle
+     */
+    void setHandle(ByteBuffer nativeHandle){
+        prepareHandler(nativeHandle);        
     }
     
     /**
@@ -191,14 +199,11 @@ public class VkHandler implements VkHandleInterface, VkBuffer, VkBufferView, VkC
      /**
       * Check if handler is null.
       * 
-      * @return true is handler is null.
+      * @return true if wrapped handler is null.
       */
      @Override
     public boolean isNull(){
-        if(null==this.handle)
-            return false;
-        
-        return true;         
+       return (null==this.handle);       
     }
 
     
@@ -213,10 +218,10 @@ public class VkHandler implements VkHandleInterface, VkBuffer, VkBufferView, VkC
         if (obj == null) {
             return false;
         }
-        if (!(obj instanceof VkHandler)) {
+        if (!(obj instanceof VkHandle)) {
             return false;
         }
-        VkHandler other = (VkHandler) obj;
+        VkHandle other = (VkHandle) obj;
         if (handle == null) {
             if (other.handle != null) {
                 return false;
@@ -232,7 +237,7 @@ public class VkHandler implements VkHandleInterface, VkBuffer, VkBufferView, VkC
      */
     @Override
     public String toString() {        
-        return "VkHandler [" + (handle != null ? "handle=" + handle : "") + "]";
+        return "VkHandle [" + (handle != null ? "handle=" + handle : "") + "]";
     }
     
     /**
@@ -251,8 +256,8 @@ public class VkHandler implements VkHandleInterface, VkBuffer, VkBufferView, VkC
      *    
      * @return A instance of P with null pointer 
      */
-    public static P<? extends VkHandler> createNullPointer(){        
-        P<VkHandler> p = new P<VkHandler>(new VkHandler());        
+    public static P<? extends VkHandle> createNullPointer(){        
+        P<VkHandle> p = new P<VkHandle>(new VkHandle());        
         return p;
     }
     
@@ -269,9 +274,9 @@ public class VkHandler implements VkHandleInterface, VkBuffer, VkBufferView, VkC
       * @see bor.vulkan.VkObject#getP()
       */
     @Override
-    public P<VkHandler> getP() {
+    public P<VkHandle> getP() {
        if(p == null ){
-           p = new P<VkHandler>(this);
+           p = new P<VkHandle>(this);
        }
         return p;
     }

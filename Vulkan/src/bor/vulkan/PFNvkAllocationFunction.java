@@ -17,7 +17,7 @@ import bor.vulkan.khr.MirSurface;
  * @author Alessandro Borges
  *
  */
-public class PFNvkAllocationFunction extends VkHandler 
+public class PFNvkAllocationFunction extends VkHandle 
   implements PFN_Function, VkHandleInterface {
 
     /**

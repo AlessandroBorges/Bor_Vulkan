@@ -7,7 +7,7 @@ import java.nio.ByteBuffer;
 
 import bor.vulkan.P;
 import bor.vulkan.VkHandleInterface;
-import bor.vulkan.VkHandler;
+import bor.vulkan.VkHandle;
 
 /**
  * Handler for Xlib's Window
@@ -15,7 +15,7 @@ import bor.vulkan.VkHandler;
  * @author Alessandro Borges
  *
  */
-public class XlibWindow extends VkHandler implements VkHandleInterface {
+public class XlibWindow extends VkHandle implements VkHandleInterface {
 
     private XlibWindow() {
     }

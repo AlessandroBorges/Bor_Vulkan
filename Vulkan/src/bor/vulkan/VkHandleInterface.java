@@ -98,6 +98,13 @@ public interface VkHandleInterface extends VkObject{
     public ByteBuffer getHandle();
     
     /**
+     * Set native handle / pointer
+     * @param native created ByteBuffer wrapping a handle 
+     */
+ //   void setHandle(ByteBuffer handle);
+    
+    
+    /**
      * Free this handle on native side.<br>
      * After calling this, any use of this handle will throw a NullPointerException.<br>
      * 
