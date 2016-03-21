@@ -97,6 +97,8 @@ public interface VkHandleInterface extends VkObject{
      */
     public ByteBuffer getHandle();
     
+        
+    
     /**
      * Set native handle / pointer
      * @param native created ByteBuffer wrapping a handle 
