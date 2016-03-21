@@ -1,4 +1,4 @@
-<project name="my-native-lib-natives" basedir="." default="all">
+<project name="BorVulkan-natives" basedir="." default="all">
 	<target name="clean">
 		<ant antfile="build-windows32.xml" target="clean"/>
 		<ant antfile="build-windows64.xml" target="clean"/>
@@ -12,9 +12,9 @@
 	</target>
 	
 	<target name="pack-natives">
-		<jar destfile="../libs/my-native-lib-natives.jar">
-			<fileset dir="../libs/windows32" includes="my-native-lib.dll"/>
-			<fileset dir="../libs/windows64" includes="my-native-lib64.dll"/>
+		<jar destfile="../libs/BorVulkan-natives.jar">
+			<fileset dir="../libs/windows32" includes="BorVulkan.dll"/>
+			<fileset dir="../libs/windows64" includes="BorVulkan64.dll"/>
 
 		</jar>
 	</target>
