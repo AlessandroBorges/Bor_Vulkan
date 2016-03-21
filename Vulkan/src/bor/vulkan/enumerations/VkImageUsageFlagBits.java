@@ -41,5 +41,14 @@ public class VkImageUsageFlagBits extends IntEnum<VkImageUsageFlagBits> {
 	private VkImageUsageFlagBits(String name, int ordinal, int v) {
 		 super(name, ordinal, v);
 	}
+	
+	/**
+	 * Creates a instance from ORed values from VkImageUsageFlagBits
+	 * @param flags - VkImageUsageFlagBits to be Ored
+	 * @return VkImageUsageFlags instance
+	 */
+	public static VkImageUsageFlags ored(VkImageUsageFlagBits... flags){	    
+	    return new VkImageUsageFlags(flags);
+	}
 
  } // end of class VkImageUsageFlagBits

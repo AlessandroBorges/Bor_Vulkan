@@ -75,5 +75,12 @@ public class VkResult extends IntEnum<VkResult> {
 	private VkResult(String name, int ordinal, int v) {
 		 super(name, ordinal, v);
 	}
+	
+	public static VkResult getByValue(int value){
+	    return VK_SUCCESS.getEnumByValue(value);
+	}
+	
+	
+	
 
  } // end of class VkResult
