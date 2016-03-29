@@ -78,7 +78,7 @@ public class Vk10 extends Vulkan {
                result);
 
        ((VkHandle) pInstance).setHandle(pInstanceHandle);
-       return VkResult.getByValue(result[0]);
+       return VkResult.fromValue(result[0]);
    }
 
   /**
@@ -196,7 +196,7 @@ public class Vk10 extends Vulkan {
            }// for
        }// if null
        
-       VkResult ret = VkResult.getByValue(res);
+       VkResult ret = VkResult.fromValue(res);
        if(ret==null){
            throw new UnsupportedOperationException("VkResult is ored value:" + res);
        }
@@ -338,7 +338,7 @@ public class Vk10 extends Vulkan {
              /* VkImageFormatProperties*/  pImageFormatProperties.getPointerStruct()
               );
     
-    return VkResult.getByValue(res);       
+    return VkResult.fromValue(res);       
   }
   
   
@@ -612,7 +612,7 @@ public class Vk10 extends Vulkan {
                /*VkDevice*/  result);
    VkDevice device = new VkHandle(nativeHandle);
    pDevice[0] = device;
-   VkResult res = VkResult.getByValue(result[0]);   
+   VkResult res = VkResult.fromValue(result[0]);   
    return res;   
   }
 
@@ -717,7 +717,7 @@ public class Vk10 extends Vulkan {
                 }
             }
         }
-      return VkResult.getByValue(result[0]);
+      return VkResult.fromValue(result[0]);
   }
 
    private static native ByteBuffer[] vkEnumerateInstanceExtensionProperties0(
@@ -799,7 +799,7 @@ public class Vk10 extends Vulkan {
       }
       
       int res = result[0];
-      return VkResult.getByValue(res);
+      return VkResult.fromValue(res);
   }
 
    private static native ByteBuffer[] vkEnumerateDeviceExtensionProperties0(
@@ -875,7 +875,7 @@ public class Vk10 extends Vulkan {
         } 
       }// if
       
-      return VkResult.getByValue(result[0]);
+      return VkResult.fromValue(result[0]);
   }
 
    private static native ByteBuffer[] vkEnumerateInstanceLayerProperties0(
@@ -949,9 +949,7 @@ public class Vk10 extends Vulkan {
         } 
       }// if
       
-      return VkResult.getByValue(result[0]);
-      
-      
+      return VkResult.fromValue(result[0]);
   }
 
    private static native ByteBuffer[] vkEnumerateDeviceLayerProperties0(
