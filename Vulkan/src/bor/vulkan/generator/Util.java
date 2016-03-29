@@ -58,7 +58,7 @@ public class Util {
         STRING, STRING_ARR,
         BUFFER, BYTEBUFFER,
         P,
-        OTHER, PINTEGER, PENUM  
+        OTHER, PINTEGER, PENUM, VKPFN  
     }
     
     /**

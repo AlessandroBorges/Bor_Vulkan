@@ -14,6 +14,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import bor.vulkan.enumerations.VkAccessFlagBits;
+
 /**
  * Load vk.h and extract all enumerations
  * @author Alessandro Borges
@@ -31,6 +33,51 @@ public class ExtractEnums {
    
    public static String[] VKObject_ENUMS = {"VkDynamicState", "VkSampleMask","VkPipelineStageFlags"};
    public static String DISCLAIMER = " * ";
+   
+   private static String basePath = "D:\\Users\\Livia\\workspace\\Vulkan\\src\\bor\\vulkan\\generator";
+   private static String ENUMNAME_TOKEM = "#ENUMNAME#";
+   private static String templateFileName = "enum01.template";
+   private static String template;
+   
+   /**
+    * 
+    * @return
+    */
+   public static String getEnumTemplate(){
+       if(template==null){
+           List<String> lines = Util.readFile(basePath, templateFileName);
+           StringBuilder sb = new StringBuilder(2048);
+           for (String line : lines) {
+            sb.append(line).append('\n');
+        }
+           template = sb.toString();
+       }
+       return template;       
+   }
+   
+   /**
+    * Replace token in a template
+    * @param token - token to replace
+    * @param value - value to replace on tokens
+    * @param template - template to fix
+    * @return fixed text
+    */
+   public static String prepareTemplate(String token, String value, String template){
+       String result = template.replaceAll(token, value);
+       return result;
+   }
+   
+   /**
+    *  Replaces all ENUMNAME_TOKEM in template by value
+    * @param value - value to replace at token positions
+    * @return template fixed
+    */
+   public static String prepareEnumTemplate(String value){
+       String template = getEnumTemplate();
+       return prepareTemplate(ENUMNAME_TOKEM, value, template);
+       
+   }
+   
    
    /**
     * 
@@ -248,9 +295,17 @@ public class ExtractEnums {
          .append("\n */\n")        
          .append("public class ").append(enumName)
          .append(" extends ").append(superclassName).append('<').append(enumName).append("> {\n");
+         
+        String stats = "\n\n"
+                + "   /** class */\n"
+                + "   private static final Class<"+enumName+"> myClass = "+enumName+".class;\n\n"
+                + "   /** values */\n"
+                + "   private static "+enumName+"[] values = new "+enumName+"["+names.length+"];\n\n";
+               
+        sb.append(stats);
         
         // enumTypes
-        String itemPre = "\tpublic static final " + enumName + " ";        
+        String itemPre = "   public static final " + enumName + " ";        
         for(int i=0; i<names.length; i++){
             
             sb.append(itemPre);
@@ -263,13 +318,19 @@ public class ExtractEnums {
             // value
             sb.append(fixExpressions(names[i], values[i], names)).append(");\n");            
         }
+        // static values
+       
+         String template = prepareEnumTemplate(enumName);  
+        
+        sb.append(template);
         // The constructor
         sb.append("\n\n");
-        sb.append("\t/** private ctor */\n");
-        sb.append("\tprivate ").append(enumName).append("(String name, int ordinal, ")
+        sb.append("    /** private ctor */\n");
+        sb.append("    private ").append(enumName).append("(String name, int ordinal, ")
           .append(type).append(" v) {\n")
-          .append("\t\t super(name, ordinal, v);\n")
-          .append("\t}\n\n")
+          .append("       super(name, ordinal, v);\n")
+          .append("       values[ordinal] = this;\n")
+          .append("    }\n\n")
           .append(" } // end of class ").append(enumName)
           .append("\n");
        return sb.toString();

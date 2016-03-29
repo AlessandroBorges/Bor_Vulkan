@@ -265,7 +265,10 @@ public class JNITypeMap {
         }
         
         if(isVkHandler(name)){
-            return CLASS_TYPE.VKHANDLE;
+            if(name.startsWith("PFN"))
+                return CLASS_TYPE.VKPFN;
+            else
+                return CLASS_TYPE.VKHANDLE;
         }
         
         if(isVkObject(name)){

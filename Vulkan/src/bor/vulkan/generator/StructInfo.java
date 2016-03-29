@@ -78,6 +78,42 @@ public class StructInfo {
     }
     
     /**
+     * Get method for bridge
+     * @param type type of parameter
+     * @return string with method name to get bridge type
+     */
+    public String getMethodTypeBridge(CLASS_TYPE type, String defaultType){
+        switch (type) {
+            case VKHANDLE:
+            case VKPFN:    return ".getHandle()";
+            case VKSTRUCT: return ".getPointerStruct()";
+            case VKOBJECT: return ".getPointer()";
+            case VKENUM :  return ".getValue()";
+            default: return defaultType;
+        }
+    }
+    
+    /**
+     * Get parameter type for bridging VkHandle, VkStruct, VjObject, 
+     * and VkEnum
+     * 
+     * @param type
+     * @param defaultParam - default type to use
+     * @return text with paramenter type.
+     */
+    public String getParamBridge(CLASS_TYPE type, String defaultParam){
+        switch (type) {
+            case VKHANDLE:
+            case VKSTRUCT: 
+            case VKPFN:    
+            case VKOBJECT: return "java.nio.ByteBuffer ";            
+            case VKENUM : return "int ";
+            
+            default: return defaultParam;
+        }
+    }
+    
+    /**
      * Generate Java Source code
      *   
      * @param pkg
@@ -114,6 +150,7 @@ public class StructInfo {
             
         
         output += "import java.nio.ByteBuffer;\n\n";
+        output += "import java.nio.Buffer;\n\n";
         
         output += disclaimer;
         output += "public class " + this.name + " extends VkStruct {\n";
@@ -225,7 +262,7 @@ public class StructInfo {
             String jType = getJavaType(cType, field, name);            
             CLASS_TYPE type = getType(jType);
             String typeOut = type==CLASS_TYPE.OTHER ? "" : "[" + type.name().toLowerCase() + "]";
-            
+            String method = getMethodTypeBridge(type, "");
             
             // Comment 
            output += "\t/**\n\t * Set method for field " + field + "\t" + typeOut + "<br>" +
@@ -234,25 +271,99 @@ public class StructInfo {
            
            // SET
            String setName = field;//"set" + upperCaseField(field);
-           output += "\t public void " + setName + "("
-                     +jType + " " + field + "){\n"
-               + "\t\t this." + field + " = " + field + ";\n"
-            // native setting
-               + "\t\t" + setName + "0(super.ptr, " + field + ");\n"
-               + "\t }\n\n";
+           
+           // default bridge for VkStruct / VkHandle
+           String bridge = "";
+           
+           if(type == CLASS_TYPE.VKSTRUCT || type==CLASS_TYPE.VKHANDLE || type==CLASS_TYPE.VKOBJECT || type==CLASS_TYPE.VKPFN){
+               bridge =  "\t\t ByteBuffer buff = ("+field+"==null) ? null : " +field+method +";\n"
+                       + "\t\t " + setName + "0(this.ptr, buff);\n";
+           } else if(type == CLASS_TYPE.VKENUM ){
+               bridge = "\t\t int enumVal = "+field+method+";\n" 
+                      + "\t\t " + setName + "0(this.ptr, enumVal );\n";
+           }else {
+               bridge = "\t\t " + setName + "0(this.ptr,  "+ field+");\n";
+               
+           }
+           
+           
+           output += "\t public void " + setName + "(" +jType + " " + field + "){\n"
+                  +  "\t\t this." + field + " = " + field + ";\n"
+                  +  bridge              
+                 // +  "\t\t " + setName + "0(this.ptr, val );\n"
+                  +  "\t }\n\n";
            
            // GET
            String getName = field;//"get" + upperCaseField(field);
            //comment
-           output += "\t/**\n\t * get method for field " + field + "\t" + typeOut +  "<br>" +
+           output += "\t/**\n\t * Get method for field " + field + "\t" + typeOut +  "<br>" +
                       "\n\t * Prototype: " + cType + "  " + field + 
                       "\n\t */ \n";
+           // special get cases
+           String stmt = "";
+           if(type==CLASS_TYPE.VKENUM){
+               stmt += "\t\t int nativeVal = "+ getName + "0(super.ptr);\n"
+                     + "\t\t this."+field+" = " +jType+".fromValue(nativeVal); \n";       
+           }else if(type==CLASS_TYPE.VKHANDLE){
+               stmt +="\n\t\t ByteBuffer handle = "+ getName + "0(super.ptr);\n"
+                    + "\t\t if(handle == null){\n"
+                    + "\t\t    this."+field+" = null;\n"
+                    + "\t\t    return null;\n"
+                    + "\t\t  } else \n "   
+                    + "\t\t if(this."+field+" == null){\n"
+                    + "\t\t    this."+field+" = new VkHandle(handle);\n"
+                    + "\t\t }else{\n"
+                    + "\t\t    ((VkHandle)this."+field+").setHandle(handle);\n"
+                    + "\t\t  }\n"
+                   ;
+           }else if(type==CLASS_TYPE.VKPFN){
+               stmt +="\n\t\t  ByteBuffer handle = "+ getName + "0(super.ptr);\n"
+                       + "\t\t if(handle == null){\n"
+                       + "\t\t    this."+field+" = null;\n"
+                       + "\t\t    return null;\n"
+                       + "\t\t  } else \n "
+                       + "\t\t if(this."+field+" == null){\n"
+                       + "\t\t    this."+field+" = new "+jType+"(handle);\n"
+                       + "\t\t }else{\n"
+                       + "\t\t    this."+field+".setHandle(handle);\n"
+                       + "\t\t  }\n"
+                      ;
+               
+           }else  if(type==CLASS_TYPE.VKSTRUCT ){
+                   stmt +="\t\t ByteBuffer pointer = "+ getName + "0(super.ptr);\n"
+                           + "\t\t if(pointer == null){\n"
+                           + "\t\t    this."+field+" = null;\n"
+                           + "\t\t    return null;\n"
+                           + "\t\t  } else \n "
+                           + "\t\t if(this."+field+" == null){\n"
+                           + "\t\t    this."+field+" = new "+ jType+"(pointer);\n"
+                           + "\t\t }else{\n"
+                          + "\t\t    this."+field+".setPointer(pointer);\n"
+                           + "\t\t  }\n"
+                          ;
+             }else if(type == CLASS_TYPE.VKOBJECT){
+                 stmt +="\t\t ByteBuffer pointer = "+ getName + "0(super.ptr);\n"
+                         + "\t\t if(pointer == null){\n"
+                         + "\t\t    this."+field+" = null;\n"
+                         + "\t\t    return null;\n"
+                         + "\t\t  } else \n "
+                         + "\t\t if(this."+field+" == null){\n"
+                         + "\t\t    this."+field+" = (VkObject)(new VkHandle(pointer));\n"
+                         + "\t\t }else{\n"
+                        + "\t\t    this."+field+".setPointer(pointer);\n"
+                         + "\t\t  }\n"
+                        ;
+             }else{
+                   stmt +="\t\t "+ jType+" var = "+ getName + "0(super.ptr);\n"                        
+                        + "\t\t this."+field+" = var;\n"                        
+                        ;                   
+               }
            
-           output += "\t public " + jType + " " + getName + "(){\n"              
-              +"\t\t // return  this." + field + ";\n"
-            // native writing
-              +"\t\t return " + getName + "0(super.ptr);\n"
-              +"\t }\n\n";
+           output += "\t public " + jType + " " + getName + "(){\n" 
+             // + "\t\t this."+field + " = " + getName + "0(super.ptr);\n"
+                 + stmt
+                 + "\t\t return this."+ field +";\n"
+                 + "\t }\n\n";
               
            }
         
@@ -273,6 +384,7 @@ public class StructInfo {
             String jniType = toJNItype(jType, field);
             CLASS_TYPE type = getType(jType);
             String typeOut = type==CLASS_TYPE.OTHER ? "" : "[" + type.name().toLowerCase() + "]";
+            String typeMod = getParamBridge(type, jType);
             
             // Comment 
            output += "\t/**\n\t * native SET method for field " + field +  "\t" + typeOut +  "<br>" +
@@ -282,9 +394,9 @@ public class StructInfo {
            // native SET
            String setName = field;//"set" + upperCaseField(field);
            output += "\t private static native void " + setName 
-                   + "0(ByteBuffer ptr, "+jType + " _" + field + ");/*\n"
-                   + "\t\t  " + this.name + " _obj = ("+ this.name+")(*ptr);\n"
-                   + "\t\t  _obj." + field + " = ("+ cType +") (_" + field + ");\n"            
+                   + "0(Buffer ptr, "+typeMod + " _" + field + ");/*\n"
+                   + "\t\t  " + this.name + "* vkObj = ("+ this.name+"*)(ptr);\n"
+                   + "\t\t  vkObj->" + field + " = ("+ cType +") (_" + field + ");\n"            
                    + "\t  */\n\n";
            
            // GET
@@ -294,14 +406,14 @@ public class StructInfo {
                       "\n\t * Prototype: " + cType + "  " + field + 
                       "\n\t */ \n";
            
-           String nativeRes = "\t\t  return (" + jniType + ") (_obj."+ cType + ");\n";
+           String nativeRes = "\t\t  return (" + jniType + ") (vkObj->"+ field + ");\n";
            if(jType.equalsIgnoreCase("string")){
                // Strings must be converted
-               nativeRes = "\t\t  return (jstring)(env->NewStringUTF(_obj."+cType +");";
+               nativeRes = "\t\t  return (jstring)(env->NewStringUTF(vkObj->."+field +");";
            }
            
-           output += "\t private static native " + jType + " " + getName + "0(ByteBuffer ptr);/*\n" 
-                   + "\t\t  " + this.name + " _obj = ("+ this.name+")(ptr);\n"                   
+           output += "\t private static native " + typeMod + " " + getName + "0(Buffer ptr);/*\n" 
+                   + "\t\t  " + this.name + " vkObj = ("+ this.name+"*)(ptr);\n"                   
                    + nativeRes
                    +"\t */\n\n";
               
@@ -475,8 +587,13 @@ public class StructInfo {
             case "long": return "jlong";           
             case "float": return "jfloat";
             case "double": return "jdouble";  
-            case "String" : return "jstring";            
+            case "String" : return "jstring";
          }
+        if(jType.contains("Buffer")){
+            return "jobject";            
+        }
+        
+        
         if(!jType.contains("Vk")){
             System.out.println("# Failed to get JNI type for : " + jType + " , field:" + fieldName);
         }
@@ -503,10 +620,11 @@ public class StructInfo {
          
          // simple case pNext
          if(isConst && !isPP && isP && fieldName.contains("pNext")){
-             return "P<VkObject>";
+             //return "P<VkObject>";
+             return "VkObject";
          }         
                   
-         // pUserData -> User data must be a buffer to support Int/Float/Double etc
+         // pUserData -> User data must be a Buffer to support Int/Float/Double etc
          if(isConst && isP && !isPP && fieldName.contains("pUserData")){
              return "java.nio.Buffer";
          }
@@ -597,7 +715,8 @@ public class StructInfo {
             if(isConst){
                 value = value.replace("const", "final");
             }
-            if(isPointer && isVk){
+            // DISABLED P<>
+            if(false &&isPointer && isVk){
                 boolean isSpecialEnum = Util.containsString(Util.SPECIAL_ENUMS, base);
                 if(isSpecialEnum){
                     // fix
@@ -630,16 +749,25 @@ public class StructInfo {
         }
         
         // context analysis...
-        if(cType.equals("const void*") && field.equals("pNext")){
-            value = "P<VkObject>";
-        }else if(isVk && isPointer && isConst){
-            value = "P<"+base+"> ";
-            }else if(isVk && isPointer){
-                value = "P<"+base+">";
-                }else{
-                    value = cType;
-                }
+//        if (cType.equals("const void*") && field.equals("pNext")) {
+//            value = "P<VkObject>";
+//        } else if (isVk && isPointer && isConst) {
+//            value = "P<" + base + "> ";
+//        } else if (isVk && isPointer) {
+//            value = "P<" + base + ">";
+//        } else {
+//            value = cType;
+//        }
         
+        if (cType.equals("const void*") && field.equals("pNext")) {
+            value = "VkObject";
+        } else if (isVk && isPointer && isConst) {
+            value = " " + base + " ";
+        } else if (isVk && isPointer) {
+            value = " " + base + " ";
+        } else {
+            value = cType;
+        }
         
         
         if(value==null){

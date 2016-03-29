@@ -16,7 +16,7 @@ public class ExtractStruts {
     
     private static final boolean saveFile = true;
     private static final boolean printID = false;
-    private static final boolean printStruct = false;
+    private static final boolean printStruct = true;
     
    
     /**
