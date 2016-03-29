@@ -22,14 +22,93 @@ import bor.enumerable.*;
  * @author Alessandro Borges
  */
 public class VkBufferCreateFlagBits extends IntEnum<VkBufferCreateFlagBits> {
-	public static final VkBufferCreateFlagBits VK_BUFFER_CREATE_SPARSE_BINDING_BIT = new VkBufferCreateFlagBits("VK_BUFFER_CREATE_SPARSE_BINDING_BIT", 0, 0x00000001);
-	public static final VkBufferCreateFlagBits VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT = new VkBufferCreateFlagBits("VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT", 1, 0x00000002);
-	public static final VkBufferCreateFlagBits VK_BUFFER_CREATE_SPARSE_ALIASED_BIT = new VkBufferCreateFlagBits("VK_BUFFER_CREATE_SPARSE_ALIASED_BIT", 2, 0x00000004);
 
 
-	/** private ctor */
-	private VkBufferCreateFlagBits(String name, int ordinal, int v) {
-		 super(name, ordinal, v);
-	}
+   /** class */
+   private static final Class<VkBufferCreateFlagBits> myClass = VkBufferCreateFlagBits.class;
+
+   /** values */
+   private static VkBufferCreateFlagBits[] values = new VkBufferCreateFlagBits[3];
+
+   public static final VkBufferCreateFlagBits VK_BUFFER_CREATE_SPARSE_BINDING_BIT = new VkBufferCreateFlagBits("VK_BUFFER_CREATE_SPARSE_BINDING_BIT", 0, 0x00000001);
+   public static final VkBufferCreateFlagBits VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT = new VkBufferCreateFlagBits("VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT", 1, 0x00000002);
+   public static final VkBufferCreateFlagBits VK_BUFFER_CREATE_SPARSE_ALIASED_BIT = new VkBufferCreateFlagBits("VK_BUFFER_CREATE_SPARSE_ALIASED_BIT", 2, 0x00000004);
+   
+   /**
+    * Return all values available in this enumeration
+    * @return Array of avail. VkAccessFlagBits
+    */
+    @SuppressWarnings("unchecked")
+    public static VkBufferCreateFlagBits[] values(){
+            return values;
+    }
+
+	/**
+	 * Get class of this enumeration
+	 */
+    protected static Class<VkBufferCreateFlagBits> myGetClass(){
+        return myClass;
+    }
+
+    /**
+     * Creates a bitwise ORed enumeration
+     * @param bits - list of enumerations to bitwise OR 
+     * @return an enumeration of ORed bits 
+     */
+    public static VkBufferCreateFlagBits or(VkBufferCreateFlagBits...bits){
+        int value = bits[0].getValue();        
+        for (int i=1; i<bits.length; i++) {
+            VkBufferCreateFlagBits item = bits[i];
+            value |= item.getValue();
+        } 
+        String name = myGetClass().getSimpleName() + " from bitwise Operation.[" + value +"]";
+        VkBufferCreateFlagBits ored = new VkBufferCreateFlagBits(name, -1, value);        
+        return ored;
+    }
+    
+    /**
+     * Creates a enumeration of this class, if valid. 
+     * If you try to create a invalid enumeration it will raise a exception.
+     * @param value - a valid enumeration value or ar ORed value.
+     * @return a instance of VkBufferCreateFlagBits from value. NULL if it is invalid value.
+     */
+    public static VkBufferCreateFlagBits fromValue(int value){
+        //simple case
+        for (int i = 0; i < values.length; i++) {
+            if(value==values[i].getValue()){
+                return values[i];
+            }
+        }
+        //ORed values        
+        int test = value;
+        for (int i = 0; i < values.length; i++) {
+            int v = values[i].getValue();
+            if((test & v) != v){
+                return null;
+            }
+        }
+        String name = myGetClass().getSimpleName() + " from value [" + value +"]";
+        VkBufferCreateFlagBits flag = new VkBufferCreateFlagBits(name, -1, value); 
+        return flag;
+    }
+    
+    /**
+     * Check is a given flagA is bitwise ORed with flagB
+     * @param flagA - flag to test
+     * @param flagB - flag to test
+     * @return true if flagA bit
+     */
+    public static boolean isORed(VkBufferCreateFlagBits flagA, VkBufferCreateFlagBits flagB){
+        int valA = flagA.getValue();
+        int valB = flagB.getValue();
+        return (valA & valB) == valB;
+    }
+
+
+    /** private ctor */
+    private VkBufferCreateFlagBits(String name, int ordinal, int v) {
+       super(name, ordinal, v);
+       values[ordinal] = this;
+    }
 
  } // end of class VkBufferCreateFlagBits

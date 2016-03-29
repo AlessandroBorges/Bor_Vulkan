@@ -74,7 +74,7 @@ import bor.enumerable.*;
  *     VK_STRUCTURE_TYPE_MIR_SURFACE_CREATE_INFO_KHR = 1000007000,
  *     VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR = 1000008000,
  *     VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR = 1000009000,
- *     VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT = 1000011000,
+ *     VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT = 1000011000,
  *     VK_STRUCTURE_TYPE_BEGIN_RANGE = VK_STRUCTURE_TYPE_APPLICATION_INFO,
  *     VK_STRUCTURE_TYPE_END_RANGE = VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO,
  *     VK_STRUCTURE_TYPE_RANGE_SIZE = (VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO - VK_STRUCTURE_TYPE_APPLICATION_INFO + 1),
@@ -84,72 +84,151 @@ import bor.enumerable.*;
  * @author Alessandro Borges
  */
 public class VkStructureType extends IntEnum<VkStructureType> {
-	public static final VkStructureType VK_STRUCTURE_TYPE_APPLICATION_INFO = new VkStructureType("VK_STRUCTURE_TYPE_APPLICATION_INFO", 0, 0);
-	public static final VkStructureType VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO", 1, 1);
-	public static final VkStructureType VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO", 2, 2);
-	public static final VkStructureType VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO", 3, 3);
-	public static final VkStructureType VK_STRUCTURE_TYPE_SUBMIT_INFO = new VkStructureType("VK_STRUCTURE_TYPE_SUBMIT_INFO", 4, 4);
-	public static final VkStructureType VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO", 5, 5);
-	public static final VkStructureType VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE = new VkStructureType("VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE", 6, 6);
-	public static final VkStructureType VK_STRUCTURE_TYPE_BIND_SPARSE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_BIND_SPARSE_INFO", 7, 7);
-	public static final VkStructureType VK_STRUCTURE_TYPE_FENCE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_FENCE_CREATE_INFO", 8, 8);
-	public static final VkStructureType VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO", 9, 9);
-	public static final VkStructureType VK_STRUCTURE_TYPE_EVENT_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_EVENT_CREATE_INFO", 10, 10);
-	public static final VkStructureType VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO", 11, 11);
-	public static final VkStructureType VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO", 12, 12);
-	public static final VkStructureType VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO", 13, 13);
-	public static final VkStructureType VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO", 14, 14);
-	public static final VkStructureType VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO", 15, 15);
-	public static final VkStructureType VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO", 16, 16);
-	public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO", 17, 17);
-	public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO", 18, 18);
-	public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO", 19, 19);
-	public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO", 20, 20);
-	public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO", 21, 21);
-	public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO", 22, 22);
-	public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO", 23, 23);
-	public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO", 24, 24);
-	public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO", 25, 25);
-	public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO", 26, 26);
-	public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO", 27, 27);
-	public static final VkStructureType VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO", 28, 28);
-	public static final VkStructureType VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO", 29, 29);
-	public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO", 30, 30);
-	public static final VkStructureType VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO", 31, 31);
-	public static final VkStructureType VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO", 32, 32);
-	public static final VkStructureType VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO", 33, 33);
-	public static final VkStructureType VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO", 34, 34);
-	public static final VkStructureType VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET = new VkStructureType("VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET", 35, 35);
-	public static final VkStructureType VK_STRUCTURE_TYPE_COPY_DESCRIPTOR_SET = new VkStructureType("VK_STRUCTURE_TYPE_COPY_DESCRIPTOR_SET", 36, 36);
-	public static final VkStructureType VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO", 37, 37);
-	public static final VkStructureType VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO", 38, 38);
-	public static final VkStructureType VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO", 39, 39);
-	public static final VkStructureType VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO", 40, 40);
-	public static final VkStructureType VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO", 41, 41);
-	public static final VkStructureType VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO = new VkStructureType("VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO", 42, 42);
-	public static final VkStructureType VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO = new VkStructureType("VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO", 43, 43);
-	public static final VkStructureType VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER = new VkStructureType("VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER", 44, 44);
-	public static final VkStructureType VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER = new VkStructureType("VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER", 45, 45);
-	public static final VkStructureType VK_STRUCTURE_TYPE_MEMORY_BARRIER = new VkStructureType("VK_STRUCTURE_TYPE_MEMORY_BARRIER", 46, 46);
-	public static final VkStructureType VK_STRUCTURE_TYPE_LOADER_INSTANCE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_LOADER_INSTANCE_CREATE_INFO", 47, 47);
-	public static final VkStructureType VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO", 48, 48);
-	public static final VkStructureType VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR", 49, 1000001000);
-	public static final VkStructureType VK_STRUCTURE_TYPE_PRESENT_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_PRESENT_INFO_KHR", 50, 1000001001);
-	public static final VkStructureType VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR", 51, 1000002000);
-	public static final VkStructureType VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR", 52, 1000002001);
-	public static final VkStructureType VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR", 53, 1000003000);
-	public static final VkStructureType VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR", 54, 1000004000);
-	public static final VkStructureType VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR", 55, 1000005000);
-	public static final VkStructureType VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR", 56, 1000006000);
-	public static final VkStructureType VK_STRUCTURE_TYPE_MIR_SURFACE_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_MIR_SURFACE_CREATE_INFO_KHR", 57, 1000007000);
-	public static final VkStructureType VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR", 58, 1000008000);
-	public static final VkStructureType VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR", 59, 1000009000);
-	public static final VkStructureType VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT = new VkStructureType("VK_STRUCTURE_TYPE_DEBUG_REPORT_CREATE_INFO_EXT", 60, 1000011000);
 
 
-	/** private ctor */
-	private VkStructureType(String name, int ordinal, int v) {
-		 super(name, ordinal, v);
-	}
+   /** class */
+   private static final Class<VkStructureType> myClass = VkStructureType.class;
+
+   /** values */
+   private static VkStructureType[] values = new VkStructureType[61];
+
+   public static final VkStructureType VK_STRUCTURE_TYPE_APPLICATION_INFO = new VkStructureType("VK_STRUCTURE_TYPE_APPLICATION_INFO", 0, 0);
+   public static final VkStructureType VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO", 1, 1);
+   public static final VkStructureType VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO", 2, 2);
+   public static final VkStructureType VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO", 3, 3);
+   public static final VkStructureType VK_STRUCTURE_TYPE_SUBMIT_INFO = new VkStructureType("VK_STRUCTURE_TYPE_SUBMIT_INFO", 4, 4);
+   public static final VkStructureType VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_INFO", 5, 5);
+   public static final VkStructureType VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE = new VkStructureType("VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE", 6, 6);
+   public static final VkStructureType VK_STRUCTURE_TYPE_BIND_SPARSE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_BIND_SPARSE_INFO", 7, 7);
+   public static final VkStructureType VK_STRUCTURE_TYPE_FENCE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_FENCE_CREATE_INFO", 8, 8);
+   public static final VkStructureType VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_SEMAPHORE_CREATE_INFO", 9, 9);
+   public static final VkStructureType VK_STRUCTURE_TYPE_EVENT_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_EVENT_CREATE_INFO", 10, 10);
+   public static final VkStructureType VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO", 11, 11);
+   public static final VkStructureType VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_BUFFER_CREATE_INFO", 12, 12);
+   public static final VkStructureType VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_BUFFER_VIEW_CREATE_INFO", 13, 13);
+   public static final VkStructureType VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_IMAGE_CREATE_INFO", 14, 14);
+   public static final VkStructureType VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_IMAGE_VIEW_CREATE_INFO", 15, 15);
+   public static final VkStructureType VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_SHADER_MODULE_CREATE_INFO", 16, 16);
+   public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_CACHE_CREATE_INFO", 17, 17);
+   public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_SHADER_STAGE_CREATE_INFO", 18, 18);
+   public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO", 19, 19);
+   public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_INPUT_ASSEMBLY_STATE_CREATE_INFO", 20, 20);
+   public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_TESSELLATION_STATE_CREATE_INFO", 21, 21);
+   public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_VIEWPORT_STATE_CREATE_INFO", 22, 22);
+   public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_RASTERIZATION_STATE_CREATE_INFO", 23, 23);
+   public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_MULTISAMPLE_STATE_CREATE_INFO", 24, 24);
+   public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_DEPTH_STENCIL_STATE_CREATE_INFO", 25, 25);
+   public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_COLOR_BLEND_STATE_CREATE_INFO", 26, 26);
+   public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_DYNAMIC_STATE_CREATE_INFO", 27, 27);
+   public static final VkStructureType VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_GRAPHICS_PIPELINE_CREATE_INFO", 28, 28);
+   public static final VkStructureType VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_COMPUTE_PIPELINE_CREATE_INFO", 29, 29);
+   public static final VkStructureType VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_PIPELINE_LAYOUT_CREATE_INFO", 30, 30);
+   public static final VkStructureType VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_SAMPLER_CREATE_INFO", 31, 31);
+   public static final VkStructureType VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_DESCRIPTOR_SET_LAYOUT_CREATE_INFO", 32, 32);
+   public static final VkStructureType VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_DESCRIPTOR_POOL_CREATE_INFO", 33, 33);
+   public static final VkStructureType VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_DESCRIPTOR_SET_ALLOCATE_INFO", 34, 34);
+   public static final VkStructureType VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET = new VkStructureType("VK_STRUCTURE_TYPE_WRITE_DESCRIPTOR_SET", 35, 35);
+   public static final VkStructureType VK_STRUCTURE_TYPE_COPY_DESCRIPTOR_SET = new VkStructureType("VK_STRUCTURE_TYPE_COPY_DESCRIPTOR_SET", 36, 36);
+   public static final VkStructureType VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_FRAMEBUFFER_CREATE_INFO", 37, 37);
+   public static final VkStructureType VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_RENDER_PASS_CREATE_INFO", 38, 38);
+   public static final VkStructureType VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_COMMAND_POOL_CREATE_INFO", 39, 39);
+   public static final VkStructureType VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO", 40, 40);
+   public static final VkStructureType VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_COMMAND_BUFFER_INHERITANCE_INFO", 41, 41);
+   public static final VkStructureType VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO = new VkStructureType("VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO", 42, 42);
+   public static final VkStructureType VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO = new VkStructureType("VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO", 43, 43);
+   public static final VkStructureType VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER = new VkStructureType("VK_STRUCTURE_TYPE_BUFFER_MEMORY_BARRIER", 44, 44);
+   public static final VkStructureType VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER = new VkStructureType("VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER", 45, 45);
+   public static final VkStructureType VK_STRUCTURE_TYPE_MEMORY_BARRIER = new VkStructureType("VK_STRUCTURE_TYPE_MEMORY_BARRIER", 46, 46);
+   public static final VkStructureType VK_STRUCTURE_TYPE_LOADER_INSTANCE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_LOADER_INSTANCE_CREATE_INFO", 47, 47);
+   public static final VkStructureType VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO", 48, 48);
+   public static final VkStructureType VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_SWAPCHAIN_CREATE_INFO_KHR", 49, 1000001000);
+   public static final VkStructureType VK_STRUCTURE_TYPE_PRESENT_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_PRESENT_INFO_KHR", 50, 1000001001);
+   public static final VkStructureType VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_DISPLAY_MODE_CREATE_INFO_KHR", 51, 1000002000);
+   public static final VkStructureType VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_DISPLAY_SURFACE_CREATE_INFO_KHR", 52, 1000002001);
+   public static final VkStructureType VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_DISPLAY_PRESENT_INFO_KHR", 53, 1000003000);
+   public static final VkStructureType VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR", 54, 1000004000);
+   public static final VkStructureType VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_XCB_SURFACE_CREATE_INFO_KHR", 55, 1000005000);
+   public static final VkStructureType VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_WAYLAND_SURFACE_CREATE_INFO_KHR", 56, 1000006000);
+   public static final VkStructureType VK_STRUCTURE_TYPE_MIR_SURFACE_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_MIR_SURFACE_CREATE_INFO_KHR", 57, 1000007000);
+   public static final VkStructureType VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR", 58, 1000008000);
+   public static final VkStructureType VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR = new VkStructureType("VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR", 59, 1000009000);
+   public static final VkStructureType VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT = new VkStructureType("VK_STRUCTURE_TYPE_DEBUG_REPORT_CALLBACK_CREATE_INFO_EXT", 60, 1000011000);
+   
+   /**
+    * Return all values available in this enumeration
+    * @return Array of avail. VkAccessFlagBits
+    */
+    @SuppressWarnings("unchecked")
+    public static VkStructureType[] values(){
+            return values;
+    }
+
+	/**
+	 * Get class of this enumeration
+	 */
+    protected static Class<VkStructureType> myGetClass(){
+        return myClass;
+    }
+
+    /**
+     * Creates a bitwise ORed enumeration
+     * @param bits - list of enumerations to bitwise OR 
+     * @return an enumeration of ORed bits 
+     */
+    public static VkStructureType or(VkStructureType...bits){
+        int value = bits[0].getValue();        
+        for (int i=1; i<bits.length; i++) {
+            VkStructureType item = bits[i];
+            value |= item.getValue();
+        } 
+        String name = myGetClass().getSimpleName() + " from bitwise Operation.[" + value +"]";
+        VkStructureType ored = new VkStructureType(name, -1, value);        
+        return ored;
+    }
+    
+    /**
+     * Creates a enumeration of this class, if valid. 
+     * If you try to create a invalid enumeration it will raise a exception.
+     * @param value - a valid enumeration value or ar ORed value.
+     * @return a instance of VkStructureType from value. NULL if it is invalid value.
+     */
+    public static VkStructureType fromValue(int value){
+        //simple case
+        for (int i = 0; i < values.length; i++) {
+            if(value==values[i].getValue()){
+                return values[i];
+            }
+        }
+        //ORed values        
+        int test = value;
+        for (int i = 0; i < values.length; i++) {
+            int v = values[i].getValue();
+            if((test & v) != v){
+                return null;
+            }
+        }
+        String name = myGetClass().getSimpleName() + " from value [" + value +"]";
+        VkStructureType flag = new VkStructureType(name, -1, value); 
+        return flag;
+    }
+    
+    /**
+     * Check is a given flagA is bitwise ORed with flagB
+     * @param flagA - flag to test
+     * @param flagB - flag to test
+     * @return true if flagA bit
+     */
+    public static boolean isORed(VkStructureType flagA, VkStructureType flagB){
+        int valA = flagA.getValue();
+        int valB = flagB.getValue();
+        return (valA & valB) == valB;
+    }
+
+
+    /** private ctor */
+    private VkStructureType(String name, int ordinal, int v) {
+       super(name, ordinal, v);
+       values[ordinal] = this;
+    }
 
  } // end of class VkStructureType

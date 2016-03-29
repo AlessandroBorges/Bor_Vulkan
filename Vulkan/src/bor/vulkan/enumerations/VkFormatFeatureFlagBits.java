@@ -32,24 +32,103 @@ import bor.enumerable.*;
  * @author Alessandro Borges
  */
 public class VkFormatFeatureFlagBits extends IntEnum<VkFormatFeatureFlagBits> {
-	public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT", 0, 0x00000001);
-	public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT", 1, 0x00000002);
-	public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT", 2, 0x00000004);
-	public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT", 3, 0x00000008);
-	public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT", 4, 0x00000010);
-	public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT", 5, 0x00000020);
-	public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT", 6, 0x00000040);
-	public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT", 7, 0x00000080);
-	public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT", 8, 0x00000100);
-	public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT", 9, 0x00000200);
-	public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_BLIT_SRC_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_BLIT_SRC_BIT", 10, 0x00000400);
-	public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_BLIT_DST_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_BLIT_DST_BIT", 11, 0x00000800);
-	public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT", 12, 0x00001000);
 
 
-	/** private ctor */
-	private VkFormatFeatureFlagBits(String name, int ordinal, int v) {
-		 super(name, ordinal, v);
-	}
+   /** class */
+   private static final Class<VkFormatFeatureFlagBits> myClass = VkFormatFeatureFlagBits.class;
+
+   /** values */
+   private static VkFormatFeatureFlagBits[] values = new VkFormatFeatureFlagBits[13];
+
+   public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT", 0, 0x00000001);
+   public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT", 1, 0x00000002);
+   public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_STORAGE_IMAGE_ATOMIC_BIT", 2, 0x00000004);
+   public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_UNIFORM_TEXEL_BUFFER_BIT", 3, 0x00000008);
+   public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_BIT", 4, 0x00000010);
+   public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_STORAGE_TEXEL_BUFFER_ATOMIC_BIT", 5, 0x00000020);
+   public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_VERTEX_BUFFER_BIT", 6, 0x00000040);
+   public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BIT", 7, 0x00000080);
+   public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_COLOR_ATTACHMENT_BLEND_BIT", 8, 0x00000100);
+   public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT", 9, 0x00000200);
+   public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_BLIT_SRC_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_BLIT_SRC_BIT", 10, 0x00000400);
+   public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_BLIT_DST_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_BLIT_DST_BIT", 11, 0x00000800);
+   public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT", 12, 0x00001000);
+   
+   /**
+    * Return all values available in this enumeration
+    * @return Array of avail. VkAccessFlagBits
+    */
+    @SuppressWarnings("unchecked")
+    public static VkFormatFeatureFlagBits[] values(){
+            return values;
+    }
+
+	/**
+	 * Get class of this enumeration
+	 */
+    protected static Class<VkFormatFeatureFlagBits> myGetClass(){
+        return myClass;
+    }
+
+    /**
+     * Creates a bitwise ORed enumeration
+     * @param bits - list of enumerations to bitwise OR 
+     * @return an enumeration of ORed bits 
+     */
+    public static VkFormatFeatureFlagBits or(VkFormatFeatureFlagBits...bits){
+        int value = bits[0].getValue();        
+        for (int i=1; i<bits.length; i++) {
+            VkFormatFeatureFlagBits item = bits[i];
+            value |= item.getValue();
+        } 
+        String name = myGetClass().getSimpleName() + " from bitwise Operation.[" + value +"]";
+        VkFormatFeatureFlagBits ored = new VkFormatFeatureFlagBits(name, -1, value);        
+        return ored;
+    }
+    
+    /**
+     * Creates a enumeration of this class, if valid. 
+     * If you try to create a invalid enumeration it will raise a exception.
+     * @param value - a valid enumeration value or ar ORed value.
+     * @return a instance of VkFormatFeatureFlagBits from value. NULL if it is invalid value.
+     */
+    public static VkFormatFeatureFlagBits fromValue(int value){
+        //simple case
+        for (int i = 0; i < values.length; i++) {
+            if(value==values[i].getValue()){
+                return values[i];
+            }
+        }
+        //ORed values        
+        int test = value;
+        for (int i = 0; i < values.length; i++) {
+            int v = values[i].getValue();
+            if((test & v) != v){
+                return null;
+            }
+        }
+        String name = myGetClass().getSimpleName() + " from value [" + value +"]";
+        VkFormatFeatureFlagBits flag = new VkFormatFeatureFlagBits(name, -1, value); 
+        return flag;
+    }
+    
+    /**
+     * Check is a given flagA is bitwise ORed with flagB
+     * @param flagA - flag to test
+     * @param flagB - flag to test
+     * @return true if flagA bit
+     */
+    public static boolean isORed(VkFormatFeatureFlagBits flagA, VkFormatFeatureFlagBits flagB){
+        int valA = flagA.getValue();
+        int valB = flagB.getValue();
+        return (valA & valB) == valB;
+    }
+
+
+    /** private ctor */
+    private VkFormatFeatureFlagBits(String name, int ordinal, int v) {
+       super(name, ordinal, v);
+       values[ordinal] = this;
+    }
 
  } // end of class VkFormatFeatureFlagBits

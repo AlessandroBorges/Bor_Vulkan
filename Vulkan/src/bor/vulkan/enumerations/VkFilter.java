@@ -25,13 +25,92 @@ import bor.enumerable.*;
  * @author Alessandro Borges
  */
 public class VkFilter extends IntEnum<VkFilter> {
-	public static final VkFilter VK_FILTER_NEAREST = new VkFilter("VK_FILTER_NEAREST", 0, 0);
-	public static final VkFilter VK_FILTER_LINEAR = new VkFilter("VK_FILTER_LINEAR", 1, 1);
 
 
-	/** private ctor */
-	private VkFilter(String name, int ordinal, int v) {
-		 super(name, ordinal, v);
-	}
+   /** class */
+   private static final Class<VkFilter> myClass = VkFilter.class;
+
+   /** values */
+   private static VkFilter[] values = new VkFilter[2];
+
+   public static final VkFilter VK_FILTER_NEAREST = new VkFilter("VK_FILTER_NEAREST", 0, 0);
+   public static final VkFilter VK_FILTER_LINEAR = new VkFilter("VK_FILTER_LINEAR", 1, 1);
+   
+   /**
+    * Return all values available in this enumeration
+    * @return Array of avail. VkAccessFlagBits
+    */
+    @SuppressWarnings("unchecked")
+    public static VkFilter[] values(){
+            return values;
+    }
+
+	/**
+	 * Get class of this enumeration
+	 */
+    protected static Class<VkFilter> myGetClass(){
+        return myClass;
+    }
+
+    /**
+     * Creates a bitwise ORed enumeration
+     * @param bits - list of enumerations to bitwise OR 
+     * @return an enumeration of ORed bits 
+     */
+    public static VkFilter or(VkFilter...bits){
+        int value = bits[0].getValue();        
+        for (int i=1; i<bits.length; i++) {
+            VkFilter item = bits[i];
+            value |= item.getValue();
+        } 
+        String name = myGetClass().getSimpleName() + " from bitwise Operation.[" + value +"]";
+        VkFilter ored = new VkFilter(name, -1, value);        
+        return ored;
+    }
+    
+    /**
+     * Creates a enumeration of this class, if valid. 
+     * If you try to create a invalid enumeration it will raise a exception.
+     * @param value - a valid enumeration value or ar ORed value.
+     * @return a instance of VkFilter from value. NULL if it is invalid value.
+     */
+    public static VkFilter fromValue(int value){
+        //simple case
+        for (int i = 0; i < values.length; i++) {
+            if(value==values[i].getValue()){
+                return values[i];
+            }
+        }
+        //ORed values        
+        int test = value;
+        for (int i = 0; i < values.length; i++) {
+            int v = values[i].getValue();
+            if((test & v) != v){
+                return null;
+            }
+        }
+        String name = myGetClass().getSimpleName() + " from value [" + value +"]";
+        VkFilter flag = new VkFilter(name, -1, value); 
+        return flag;
+    }
+    
+    /**
+     * Check is a given flagA is bitwise ORed with flagB
+     * @param flagA - flag to test
+     * @param flagB - flag to test
+     * @return true if flagA bit
+     */
+    public static boolean isORed(VkFilter flagA, VkFilter flagB){
+        int valA = flagA.getValue();
+        int valB = flagB.getValue();
+        return (valA & valB) == valB;
+    }
+
+
+    /** private ctor */
+    private VkFilter(String name, int ordinal, int v) {
+       super(name, ordinal, v);
+       values[ordinal] = this;
+    }
 
  } // end of class VkFilter
