@@ -15,6 +15,8 @@ import bor.vulkan.structs.*;
 import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -124,16 +126,27 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 */ 
 	 public void displayMode(VkDisplayModeKHR displayMode){
 		 this.displayMode = displayMode;
-		displayMode0(super.ptr, displayMode);
+		 ByteBuffer buff = (displayMode==null) ? null : displayMode.getHandle();
+		 displayMode0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field displayMode	[vkhandle]<br>
+	 * Get method for field displayMode	[vkhandle]<br>
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
 	 public VkDisplayModeKHR displayMode(){
-		 // return  this.displayMode;
-		 return displayMode0(super.ptr);
+
+		 ByteBuffer handle = displayMode0(super.ptr);
+		 if(handle == null){
+		    this.displayMode = null;
+		    return null;
+		  } else 
+ 		 if(this.displayMode == null){
+		    this.displayMode = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.displayMode).setHandle(handle);
+		  }
+		 return this.displayMode;
 	 }
 
 	/**
@@ -142,16 +155,26 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 */ 
 	 public void parameters(VkDisplayModeParametersKHR parameters){
 		 this.parameters = parameters;
-		parameters0(super.ptr, parameters);
+		 ByteBuffer buff = (parameters==null) ? null : parameters.getPointerStruct();
+		 parameters0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field parameters	[vkstruct]<br>
+	 * Get method for field parameters	[vkstruct]<br>
 	 * Prototype: VkDisplayModeParametersKHR  parameters
 	 */ 
 	 public VkDisplayModeParametersKHR parameters(){
-		 // return  this.parameters;
-		 return parameters0(super.ptr);
+		 ByteBuffer pointer = parameters0(super.ptr);
+		 if(pointer == null){
+		    this.parameters = null;
+		    return null;
+		  } else 
+ 		 if(this.parameters == null){
+		    this.parameters = new VkDisplayModeParametersKHR(pointer);
+		 }else{
+		    this.parameters.setPointer(pointer);
+		  }
+		 return this.parameters;
 	 }
 
 
@@ -162,36 +185,36 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 * native SET method for field displayMode	[vkhandle]<br>
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
-	 private static native void displayMode0(ByteBuffer ptr, VkDisplayModeKHR _displayMode);/*
-		  VkDisplayModePropertiesKHR _obj = (VkDisplayModePropertiesKHR)(*ptr);
-		  _obj.displayMode = (VkDisplayModeKHR) (_displayMode);
+	 private static native void displayMode0(Buffer ptr, java.nio.ByteBuffer  _displayMode);/*
+		  VkDisplayModePropertiesKHR* vkObj = (VkDisplayModePropertiesKHR*)(ptr);
+		  vkObj->displayMode = (VkDisplayModeKHR) (_displayMode);
 	  */
 
 	/**
 	 * native GET method for field displayMode	[vkhandle]<br>
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
-	 private static native VkDisplayModeKHR displayMode0(ByteBuffer ptr);/*
-		  VkDisplayModePropertiesKHR _obj = (VkDisplayModePropertiesKHR)(ptr);
-		  return (VkDisplayModeKHR) (_obj.VkDisplayModeKHR);
+	 private static native java.nio.ByteBuffer  displayMode0(Buffer ptr);/*
+		  VkDisplayModePropertiesKHR vkObj = (VkDisplayModePropertiesKHR*)(ptr);
+		  return (VkDisplayModeKHR) (vkObj->displayMode);
 	 */
 
 	/**
 	 * native SET method for field parameters	[vkstruct]<br>
 	 * Prototype: VkDisplayModeParametersKHR  parameters
 	 */ 
-	 private static native void parameters0(ByteBuffer ptr, VkDisplayModeParametersKHR _parameters);/*
-		  VkDisplayModePropertiesKHR _obj = (VkDisplayModePropertiesKHR)(*ptr);
-		  _obj.parameters = (VkDisplayModeParametersKHR) (_parameters);
+	 private static native void parameters0(Buffer ptr, java.nio.ByteBuffer  _parameters);/*
+		  VkDisplayModePropertiesKHR* vkObj = (VkDisplayModePropertiesKHR*)(ptr);
+		  vkObj->parameters = (VkDisplayModeParametersKHR) (_parameters);
 	  */
 
 	/**
 	 * native GET method for field parameters	[vkstruct]<br>
 	 * Prototype: VkDisplayModeParametersKHR  parameters
 	 */ 
-	 private static native VkDisplayModeParametersKHR parameters0(ByteBuffer ptr);/*
-		  VkDisplayModePropertiesKHR _obj = (VkDisplayModePropertiesKHR)(ptr);
-		  return (VkDisplayModeParametersKHR) (_obj.VkDisplayModeParametersKHR);
+	 private static native java.nio.ByteBuffer  parameters0(Buffer ptr);/*
+		  VkDisplayModePropertiesKHR vkObj = (VkDisplayModePropertiesKHR*)(ptr);
+		  return (VkDisplayModeParametersKHR) (vkObj->parameters);
 	 */
 
 

@@ -15,6 +15,8 @@ import bor.vulkan.structs.*;
 import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -53,9 +55,9 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  VkWin32SurfaceCreateFlagsKHR 	flags	[int]
@@ -142,34 +144,46 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -178,16 +192,17 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		flags0(super.ptr, flags);
+		 flags0(this.ptr,  flags);
 	 }
 
 	/**
-	 * get method for field flags	[int]<br>
+	 * Get method for field flags	[int]<br>
 	 * Prototype: VkWin32SurfaceCreateFlagsKHR  flags
 	 */ 
 	 public int flags(){
-		 // return  this.flags;
-		 return flags0(super.ptr);
+		 int var = flags0(super.ptr);
+		 this.flags = var;
+		 return this.flags;
 	 }
 
 	/**
@@ -196,16 +211,27 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void hinstance(Win32HINSTANCE hinstance){
 		 this.hinstance = hinstance;
-		hinstance0(super.ptr, hinstance);
+		 ByteBuffer buff = (hinstance==null) ? null : hinstance.getHandle();
+		 hinstance0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field hinstance	[vkhandle]<br>
+	 * Get method for field hinstance	[vkhandle]<br>
 	 * Prototype: HINSTANCE  hinstance
 	 */ 
 	 public Win32HINSTANCE hinstance(){
-		 // return  this.hinstance;
-		 return hinstance0(super.ptr);
+
+		 ByteBuffer handle = hinstance0(super.ptr);
+		 if(handle == null){
+		    this.hinstance = null;
+		    return null;
+		  } else 
+ 		 if(this.hinstance == null){
+		    this.hinstance = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.hinstance).setHandle(handle);
+		  }
+		 return this.hinstance;
 	 }
 
 	/**
@@ -214,16 +240,27 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void hwnd(Win32HWND hwnd){
 		 this.hwnd = hwnd;
-		hwnd0(super.ptr, hwnd);
+		 ByteBuffer buff = (hwnd==null) ? null : hwnd.getHandle();
+		 hwnd0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field hwnd	[vkhandle]<br>
+	 * Get method for field hwnd	[vkhandle]<br>
 	 * Prototype: HWND  hwnd
 	 */ 
 	 public Win32HWND hwnd(){
-		 // return  this.hwnd;
-		 return hwnd0(super.ptr);
+
+		 ByteBuffer handle = hwnd0(super.ptr);
+		 if(handle == null){
+		    this.hwnd = null;
+		    return null;
+		  } else 
+ 		 if(this.hwnd == null){
+		    this.hwnd = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.hwnd).setHandle(handle);
+		  }
+		 return this.hwnd;
 	 }
 
 
@@ -234,90 +271,90 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkWin32SurfaceCreateInfoKHR _obj = (VkWin32SurfaceCreateInfoKHR)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkWin32SurfaceCreateInfoKHR* vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkWin32SurfaceCreateInfoKHR _obj = (VkWin32SurfaceCreateInfoKHR)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkWin32SurfaceCreateInfoKHR vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkWin32SurfaceCreateInfoKHR _obj = (VkWin32SurfaceCreateInfoKHR)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkWin32SurfaceCreateInfoKHR* vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkWin32SurfaceCreateInfoKHR _obj = (VkWin32SurfaceCreateInfoKHR)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkWin32SurfaceCreateInfoKHR vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkWin32SurfaceCreateFlagsKHR  flags
 	 */ 
-	 private static native void flags0(ByteBuffer ptr, int _flags);/*
-		  VkWin32SurfaceCreateInfoKHR _obj = (VkWin32SurfaceCreateInfoKHR)(*ptr);
-		  _obj.flags = (VkWin32SurfaceCreateFlagsKHR) (_flags);
+	 private static native void flags0(Buffer ptr, int _flags);/*
+		  VkWin32SurfaceCreateInfoKHR* vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
+		  vkObj->flags = (VkWin32SurfaceCreateFlagsKHR) (_flags);
 	  */
 
 	/**
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkWin32SurfaceCreateFlagsKHR  flags
 	 */ 
-	 private static native int flags0(ByteBuffer ptr);/*
-		  VkWin32SurfaceCreateInfoKHR _obj = (VkWin32SurfaceCreateInfoKHR)(ptr);
-		  return (jint) (_obj.VkWin32SurfaceCreateFlagsKHR);
+	 private static native int flags0(Buffer ptr);/*
+		  VkWin32SurfaceCreateInfoKHR vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
+		  return (jint) (vkObj->flags);
 	 */
 
 	/**
 	 * native SET method for field hinstance	[vkhandle]<br>
 	 * Prototype: HINSTANCE  hinstance
 	 */ 
-	 private static native void hinstance0(ByteBuffer ptr, Win32HINSTANCE _hinstance);/*
-		  VkWin32SurfaceCreateInfoKHR _obj = (VkWin32SurfaceCreateInfoKHR)(*ptr);
-		  _obj.hinstance = (HINSTANCE) (_hinstance);
+	 private static native void hinstance0(Buffer ptr, java.nio.ByteBuffer  _hinstance);/*
+		  VkWin32SurfaceCreateInfoKHR* vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
+		  vkObj->hinstance = (HINSTANCE) (_hinstance);
 	  */
 
 	/**
 	 * native GET method for field hinstance	[vkhandle]<br>
 	 * Prototype: HINSTANCE  hinstance
 	 */ 
-	 private static native Win32HINSTANCE hinstance0(ByteBuffer ptr);/*
-		  VkWin32SurfaceCreateInfoKHR _obj = (VkWin32SurfaceCreateInfoKHR)(ptr);
-		  return (Win32HINSTANCE) (_obj.HINSTANCE);
+	 private static native java.nio.ByteBuffer  hinstance0(Buffer ptr);/*
+		  VkWin32SurfaceCreateInfoKHR vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
+		  return (Win32HINSTANCE) (vkObj->hinstance);
 	 */
 
 	/**
 	 * native SET method for field hwnd	[vkhandle]<br>
 	 * Prototype: HWND  hwnd
 	 */ 
-	 private static native void hwnd0(ByteBuffer ptr, Win32HWND _hwnd);/*
-		  VkWin32SurfaceCreateInfoKHR _obj = (VkWin32SurfaceCreateInfoKHR)(*ptr);
-		  _obj.hwnd = (HWND) (_hwnd);
+	 private static native void hwnd0(Buffer ptr, java.nio.ByteBuffer  _hwnd);/*
+		  VkWin32SurfaceCreateInfoKHR* vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
+		  vkObj->hwnd = (HWND) (_hwnd);
 	  */
 
 	/**
 	 * native GET method for field hwnd	[vkhandle]<br>
 	 * Prototype: HWND  hwnd
 	 */ 
-	 private static native Win32HWND hwnd0(ByteBuffer ptr);/*
-		  VkWin32SurfaceCreateInfoKHR _obj = (VkWin32SurfaceCreateInfoKHR)(ptr);
-		  return (Win32HWND) (_obj.HWND);
+	 private static native java.nio.ByteBuffer  hwnd0(Buffer ptr);/*
+		  VkWin32SurfaceCreateInfoKHR vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
+		  return (Win32HWND) (vkObj->hwnd);
 	 */
 
 

@@ -15,6 +15,8 @@ import bor.vulkan.structs.*;
 import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -124,16 +126,27 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	 */ 
 	 public void currentDisplay(VkDisplayKHR currentDisplay){
 		 this.currentDisplay = currentDisplay;
-		currentDisplay0(super.ptr, currentDisplay);
+		 ByteBuffer buff = (currentDisplay==null) ? null : currentDisplay.getHandle();
+		 currentDisplay0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field currentDisplay	[vkhandle]<br>
+	 * Get method for field currentDisplay	[vkhandle]<br>
 	 * Prototype: VkDisplayKHR  currentDisplay
 	 */ 
 	 public VkDisplayKHR currentDisplay(){
-		 // return  this.currentDisplay;
-		 return currentDisplay0(super.ptr);
+
+		 ByteBuffer handle = currentDisplay0(super.ptr);
+		 if(handle == null){
+		    this.currentDisplay = null;
+		    return null;
+		  } else 
+ 		 if(this.currentDisplay == null){
+		    this.currentDisplay = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.currentDisplay).setHandle(handle);
+		  }
+		 return this.currentDisplay;
 	 }
 
 	/**
@@ -142,16 +155,17 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	 */ 
 	 public void currentStackIndex(int currentStackIndex){
 		 this.currentStackIndex = currentStackIndex;
-		currentStackIndex0(super.ptr, currentStackIndex);
+		 currentStackIndex0(this.ptr,  currentStackIndex);
 	 }
 
 	/**
-	 * get method for field currentStackIndex	[int]<br>
+	 * Get method for field currentStackIndex	[int]<br>
 	 * Prototype: uint32_t  currentStackIndex
 	 */ 
 	 public int currentStackIndex(){
-		 // return  this.currentStackIndex;
-		 return currentStackIndex0(super.ptr);
+		 int var = currentStackIndex0(super.ptr);
+		 this.currentStackIndex = var;
+		 return this.currentStackIndex;
 	 }
 
 
@@ -162,36 +176,36 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	 * native SET method for field currentDisplay	[vkhandle]<br>
 	 * Prototype: VkDisplayKHR  currentDisplay
 	 */ 
-	 private static native void currentDisplay0(ByteBuffer ptr, VkDisplayKHR _currentDisplay);/*
-		  VkDisplayPlanePropertiesKHR _obj = (VkDisplayPlanePropertiesKHR)(*ptr);
-		  _obj.currentDisplay = (VkDisplayKHR) (_currentDisplay);
+	 private static native void currentDisplay0(Buffer ptr, java.nio.ByteBuffer  _currentDisplay);/*
+		  VkDisplayPlanePropertiesKHR* vkObj = (VkDisplayPlanePropertiesKHR*)(ptr);
+		  vkObj->currentDisplay = (VkDisplayKHR) (_currentDisplay);
 	  */
 
 	/**
 	 * native GET method for field currentDisplay	[vkhandle]<br>
 	 * Prototype: VkDisplayKHR  currentDisplay
 	 */ 
-	 private static native VkDisplayKHR currentDisplay0(ByteBuffer ptr);/*
-		  VkDisplayPlanePropertiesKHR _obj = (VkDisplayPlanePropertiesKHR)(ptr);
-		  return (VkDisplayKHR) (_obj.VkDisplayKHR);
+	 private static native java.nio.ByteBuffer  currentDisplay0(Buffer ptr);/*
+		  VkDisplayPlanePropertiesKHR vkObj = (VkDisplayPlanePropertiesKHR*)(ptr);
+		  return (VkDisplayKHR) (vkObj->currentDisplay);
 	 */
 
 	/**
 	 * native SET method for field currentStackIndex	[int]<br>
 	 * Prototype: uint32_t  currentStackIndex
 	 */ 
-	 private static native void currentStackIndex0(ByteBuffer ptr, int _currentStackIndex);/*
-		  VkDisplayPlanePropertiesKHR _obj = (VkDisplayPlanePropertiesKHR)(*ptr);
-		  _obj.currentStackIndex = (uint32_t) (_currentStackIndex);
+	 private static native void currentStackIndex0(Buffer ptr, int _currentStackIndex);/*
+		  VkDisplayPlanePropertiesKHR* vkObj = (VkDisplayPlanePropertiesKHR*)(ptr);
+		  vkObj->currentStackIndex = (uint32_t) (_currentStackIndex);
 	  */
 
 	/**
 	 * native GET method for field currentStackIndex	[int]<br>
 	 * Prototype: uint32_t  currentStackIndex
 	 */ 
-	 private static native int currentStackIndex0(ByteBuffer ptr);/*
-		  VkDisplayPlanePropertiesKHR _obj = (VkDisplayPlanePropertiesKHR)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int currentStackIndex0(Buffer ptr);/*
+		  VkDisplayPlanePropertiesKHR vkObj = (VkDisplayPlanePropertiesKHR*)(ptr);
+		  return (jint) (vkObj->currentStackIndex);
 	 */
 
 

@@ -15,6 +15,8 @@ import bor.vulkan.structs.*;
 import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -172,16 +174,17 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 */ 
 	 public void minImageCount(int minImageCount){
 		 this.minImageCount = minImageCount;
-		minImageCount0(super.ptr, minImageCount);
+		 minImageCount0(this.ptr,  minImageCount);
 	 }
 
 	/**
-	 * get method for field minImageCount	[int]<br>
+	 * Get method for field minImageCount	[int]<br>
 	 * Prototype: uint32_t  minImageCount
 	 */ 
 	 public int minImageCount(){
-		 // return  this.minImageCount;
-		 return minImageCount0(super.ptr);
+		 int var = minImageCount0(super.ptr);
+		 this.minImageCount = var;
+		 return this.minImageCount;
 	 }
 
 	/**
@@ -190,16 +193,17 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 */ 
 	 public void maxImageCount(int maxImageCount){
 		 this.maxImageCount = maxImageCount;
-		maxImageCount0(super.ptr, maxImageCount);
+		 maxImageCount0(this.ptr,  maxImageCount);
 	 }
 
 	/**
-	 * get method for field maxImageCount	[int]<br>
+	 * Get method for field maxImageCount	[int]<br>
 	 * Prototype: uint32_t  maxImageCount
 	 */ 
 	 public int maxImageCount(){
-		 // return  this.maxImageCount;
-		 return maxImageCount0(super.ptr);
+		 int var = maxImageCount0(super.ptr);
+		 this.maxImageCount = var;
+		 return this.maxImageCount;
 	 }
 
 	/**
@@ -208,16 +212,26 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 */ 
 	 public void currentExtent(VkExtent2D currentExtent){
 		 this.currentExtent = currentExtent;
-		currentExtent0(super.ptr, currentExtent);
+		 ByteBuffer buff = (currentExtent==null) ? null : currentExtent.getPointerStruct();
+		 currentExtent0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field currentExtent	[vkstruct]<br>
+	 * Get method for field currentExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  currentExtent
 	 */ 
 	 public VkExtent2D currentExtent(){
-		 // return  this.currentExtent;
-		 return currentExtent0(super.ptr);
+		 ByteBuffer pointer = currentExtent0(super.ptr);
+		 if(pointer == null){
+		    this.currentExtent = null;
+		    return null;
+		  } else 
+ 		 if(this.currentExtent == null){
+		    this.currentExtent = new VkExtent2D(pointer);
+		 }else{
+		    this.currentExtent.setPointer(pointer);
+		  }
+		 return this.currentExtent;
 	 }
 
 	/**
@@ -226,16 +240,26 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 */ 
 	 public void minImageExtent(VkExtent2D minImageExtent){
 		 this.minImageExtent = minImageExtent;
-		minImageExtent0(super.ptr, minImageExtent);
+		 ByteBuffer buff = (minImageExtent==null) ? null : minImageExtent.getPointerStruct();
+		 minImageExtent0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field minImageExtent	[vkstruct]<br>
+	 * Get method for field minImageExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  minImageExtent
 	 */ 
 	 public VkExtent2D minImageExtent(){
-		 // return  this.minImageExtent;
-		 return minImageExtent0(super.ptr);
+		 ByteBuffer pointer = minImageExtent0(super.ptr);
+		 if(pointer == null){
+		    this.minImageExtent = null;
+		    return null;
+		  } else 
+ 		 if(this.minImageExtent == null){
+		    this.minImageExtent = new VkExtent2D(pointer);
+		 }else{
+		    this.minImageExtent.setPointer(pointer);
+		  }
+		 return this.minImageExtent;
 	 }
 
 	/**
@@ -244,16 +268,26 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 */ 
 	 public void maxImageExtent(VkExtent2D maxImageExtent){
 		 this.maxImageExtent = maxImageExtent;
-		maxImageExtent0(super.ptr, maxImageExtent);
+		 ByteBuffer buff = (maxImageExtent==null) ? null : maxImageExtent.getPointerStruct();
+		 maxImageExtent0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field maxImageExtent	[vkstruct]<br>
+	 * Get method for field maxImageExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  maxImageExtent
 	 */ 
 	 public VkExtent2D maxImageExtent(){
-		 // return  this.maxImageExtent;
-		 return maxImageExtent0(super.ptr);
+		 ByteBuffer pointer = maxImageExtent0(super.ptr);
+		 if(pointer == null){
+		    this.maxImageExtent = null;
+		    return null;
+		  } else 
+ 		 if(this.maxImageExtent == null){
+		    this.maxImageExtent = new VkExtent2D(pointer);
+		 }else{
+		    this.maxImageExtent.setPointer(pointer);
+		  }
+		 return this.maxImageExtent;
 	 }
 
 	/**
@@ -262,16 +296,17 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 */ 
 	 public void maxImageArrayLayers(int maxImageArrayLayers){
 		 this.maxImageArrayLayers = maxImageArrayLayers;
-		maxImageArrayLayers0(super.ptr, maxImageArrayLayers);
+		 maxImageArrayLayers0(this.ptr,  maxImageArrayLayers);
 	 }
 
 	/**
-	 * get method for field maxImageArrayLayers	[int]<br>
+	 * Get method for field maxImageArrayLayers	[int]<br>
 	 * Prototype: uint32_t  maxImageArrayLayers
 	 */ 
 	 public int maxImageArrayLayers(){
-		 // return  this.maxImageArrayLayers;
-		 return maxImageArrayLayers0(super.ptr);
+		 int var = maxImageArrayLayers0(super.ptr);
+		 this.maxImageArrayLayers = var;
+		 return this.maxImageArrayLayers;
 	 }
 
 	/**
@@ -280,16 +315,17 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 */ 
 	 public void supportedTransforms(int supportedTransforms){
 		 this.supportedTransforms = supportedTransforms;
-		supportedTransforms0(super.ptr, supportedTransforms);
+		 supportedTransforms0(this.ptr,  supportedTransforms);
 	 }
 
 	/**
-	 * get method for field supportedTransforms	[int]<br>
+	 * Get method for field supportedTransforms	[int]<br>
 	 * Prototype: VkSurfaceTransformFlagsKHR  supportedTransforms
 	 */ 
 	 public int supportedTransforms(){
-		 // return  this.supportedTransforms;
-		 return supportedTransforms0(super.ptr);
+		 int var = supportedTransforms0(super.ptr);
+		 this.supportedTransforms = var;
+		 return this.supportedTransforms;
 	 }
 
 	/**
@@ -298,16 +334,18 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 */ 
 	 public void currentTransform(VkSurfaceTransformFlagBitsKHR currentTransform){
 		 this.currentTransform = currentTransform;
-		currentTransform0(super.ptr, currentTransform);
+		 int enumVal = currentTransform.getValue();
+		 currentTransform0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field currentTransform	[vkenum]<br>
+	 * Get method for field currentTransform	[vkenum]<br>
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  currentTransform
 	 */ 
 	 public VkSurfaceTransformFlagBitsKHR currentTransform(){
-		 // return  this.currentTransform;
-		 return currentTransform0(super.ptr);
+		 int nativeVal = currentTransform0(super.ptr);
+		 this.currentTransform = VkSurfaceTransformFlagBitsKHR.fromValue(nativeVal); 
+		 return this.currentTransform;
 	 }
 
 	/**
@@ -316,16 +354,17 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 */ 
 	 public void supportedCompositeAlpha(int supportedCompositeAlpha){
 		 this.supportedCompositeAlpha = supportedCompositeAlpha;
-		supportedCompositeAlpha0(super.ptr, supportedCompositeAlpha);
+		 supportedCompositeAlpha0(this.ptr,  supportedCompositeAlpha);
 	 }
 
 	/**
-	 * get method for field supportedCompositeAlpha	[int]<br>
+	 * Get method for field supportedCompositeAlpha	[int]<br>
 	 * Prototype: VkCompositeAlphaFlagsKHR  supportedCompositeAlpha
 	 */ 
 	 public int supportedCompositeAlpha(){
-		 // return  this.supportedCompositeAlpha;
-		 return supportedCompositeAlpha0(super.ptr);
+		 int var = supportedCompositeAlpha0(super.ptr);
+		 this.supportedCompositeAlpha = var;
+		 return this.supportedCompositeAlpha;
 	 }
 
 	/**
@@ -334,16 +373,17 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 */ 
 	 public void supportedUsageFlags(int supportedUsageFlags){
 		 this.supportedUsageFlags = supportedUsageFlags;
-		supportedUsageFlags0(super.ptr, supportedUsageFlags);
+		 supportedUsageFlags0(this.ptr,  supportedUsageFlags);
 	 }
 
 	/**
-	 * get method for field supportedUsageFlags	[int]<br>
+	 * Get method for field supportedUsageFlags	[int]<br>
 	 * Prototype: VkImageUsageFlags  supportedUsageFlags
 	 */ 
 	 public int supportedUsageFlags(){
-		 // return  this.supportedUsageFlags;
-		 return supportedUsageFlags0(super.ptr);
+		 int var = supportedUsageFlags0(super.ptr);
+		 this.supportedUsageFlags = var;
+		 return this.supportedUsageFlags;
 	 }
 
 
@@ -354,180 +394,180 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 * native SET method for field minImageCount	[int]<br>
 	 * Prototype: uint32_t  minImageCount
 	 */ 
-	 private static native void minImageCount0(ByteBuffer ptr, int _minImageCount);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(*ptr);
-		  _obj.minImageCount = (uint32_t) (_minImageCount);
+	 private static native void minImageCount0(Buffer ptr, int _minImageCount);/*
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  vkObj->minImageCount = (uint32_t) (_minImageCount);
 	  */
 
 	/**
 	 * native GET method for field minImageCount	[int]<br>
 	 * Prototype: uint32_t  minImageCount
 	 */ 
-	 private static native int minImageCount0(ByteBuffer ptr);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int minImageCount0(Buffer ptr);/*
+		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  return (jint) (vkObj->minImageCount);
 	 */
 
 	/**
 	 * native SET method for field maxImageCount	[int]<br>
 	 * Prototype: uint32_t  maxImageCount
 	 */ 
-	 private static native void maxImageCount0(ByteBuffer ptr, int _maxImageCount);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(*ptr);
-		  _obj.maxImageCount = (uint32_t) (_maxImageCount);
+	 private static native void maxImageCount0(Buffer ptr, int _maxImageCount);/*
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  vkObj->maxImageCount = (uint32_t) (_maxImageCount);
 	  */
 
 	/**
 	 * native GET method for field maxImageCount	[int]<br>
 	 * Prototype: uint32_t  maxImageCount
 	 */ 
-	 private static native int maxImageCount0(ByteBuffer ptr);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int maxImageCount0(Buffer ptr);/*
+		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  return (jint) (vkObj->maxImageCount);
 	 */
 
 	/**
 	 * native SET method for field currentExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  currentExtent
 	 */ 
-	 private static native void currentExtent0(ByteBuffer ptr, VkExtent2D _currentExtent);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(*ptr);
-		  _obj.currentExtent = (VkExtent2D) (_currentExtent);
+	 private static native void currentExtent0(Buffer ptr, java.nio.ByteBuffer  _currentExtent);/*
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  vkObj->currentExtent = (VkExtent2D) (_currentExtent);
 	  */
 
 	/**
 	 * native GET method for field currentExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  currentExtent
 	 */ 
-	 private static native VkExtent2D currentExtent0(ByteBuffer ptr);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(ptr);
-		  return (VkExtent2D) (_obj.VkExtent2D);
+	 private static native java.nio.ByteBuffer  currentExtent0(Buffer ptr);/*
+		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  return (VkExtent2D) (vkObj->currentExtent);
 	 */
 
 	/**
 	 * native SET method for field minImageExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  minImageExtent
 	 */ 
-	 private static native void minImageExtent0(ByteBuffer ptr, VkExtent2D _minImageExtent);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(*ptr);
-		  _obj.minImageExtent = (VkExtent2D) (_minImageExtent);
+	 private static native void minImageExtent0(Buffer ptr, java.nio.ByteBuffer  _minImageExtent);/*
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  vkObj->minImageExtent = (VkExtent2D) (_minImageExtent);
 	  */
 
 	/**
 	 * native GET method for field minImageExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  minImageExtent
 	 */ 
-	 private static native VkExtent2D minImageExtent0(ByteBuffer ptr);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(ptr);
-		  return (VkExtent2D) (_obj.VkExtent2D);
+	 private static native java.nio.ByteBuffer  minImageExtent0(Buffer ptr);/*
+		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  return (VkExtent2D) (vkObj->minImageExtent);
 	 */
 
 	/**
 	 * native SET method for field maxImageExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  maxImageExtent
 	 */ 
-	 private static native void maxImageExtent0(ByteBuffer ptr, VkExtent2D _maxImageExtent);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(*ptr);
-		  _obj.maxImageExtent = (VkExtent2D) (_maxImageExtent);
+	 private static native void maxImageExtent0(Buffer ptr, java.nio.ByteBuffer  _maxImageExtent);/*
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  vkObj->maxImageExtent = (VkExtent2D) (_maxImageExtent);
 	  */
 
 	/**
 	 * native GET method for field maxImageExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  maxImageExtent
 	 */ 
-	 private static native VkExtent2D maxImageExtent0(ByteBuffer ptr);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(ptr);
-		  return (VkExtent2D) (_obj.VkExtent2D);
+	 private static native java.nio.ByteBuffer  maxImageExtent0(Buffer ptr);/*
+		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  return (VkExtent2D) (vkObj->maxImageExtent);
 	 */
 
 	/**
 	 * native SET method for field maxImageArrayLayers	[int]<br>
 	 * Prototype: uint32_t  maxImageArrayLayers
 	 */ 
-	 private static native void maxImageArrayLayers0(ByteBuffer ptr, int _maxImageArrayLayers);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(*ptr);
-		  _obj.maxImageArrayLayers = (uint32_t) (_maxImageArrayLayers);
+	 private static native void maxImageArrayLayers0(Buffer ptr, int _maxImageArrayLayers);/*
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  vkObj->maxImageArrayLayers = (uint32_t) (_maxImageArrayLayers);
 	  */
 
 	/**
 	 * native GET method for field maxImageArrayLayers	[int]<br>
 	 * Prototype: uint32_t  maxImageArrayLayers
 	 */ 
-	 private static native int maxImageArrayLayers0(ByteBuffer ptr);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int maxImageArrayLayers0(Buffer ptr);/*
+		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  return (jint) (vkObj->maxImageArrayLayers);
 	 */
 
 	/**
 	 * native SET method for field supportedTransforms	[int]<br>
 	 * Prototype: VkSurfaceTransformFlagsKHR  supportedTransforms
 	 */ 
-	 private static native void supportedTransforms0(ByteBuffer ptr, int _supportedTransforms);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(*ptr);
-		  _obj.supportedTransforms = (VkSurfaceTransformFlagsKHR) (_supportedTransforms);
+	 private static native void supportedTransforms0(Buffer ptr, int _supportedTransforms);/*
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  vkObj->supportedTransforms = (VkSurfaceTransformFlagsKHR) (_supportedTransforms);
 	  */
 
 	/**
 	 * native GET method for field supportedTransforms	[int]<br>
 	 * Prototype: VkSurfaceTransformFlagsKHR  supportedTransforms
 	 */ 
-	 private static native int supportedTransforms0(ByteBuffer ptr);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(ptr);
-		  return (jint) (_obj.VkSurfaceTransformFlagsKHR);
+	 private static native int supportedTransforms0(Buffer ptr);/*
+		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  return (jint) (vkObj->supportedTransforms);
 	 */
 
 	/**
 	 * native SET method for field currentTransform	[vkenum]<br>
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  currentTransform
 	 */ 
-	 private static native void currentTransform0(ByteBuffer ptr, VkSurfaceTransformFlagBitsKHR _currentTransform);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(*ptr);
-		  _obj.currentTransform = (VkSurfaceTransformFlagBitsKHR) (_currentTransform);
+	 private static native void currentTransform0(Buffer ptr, int  _currentTransform);/*
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  vkObj->currentTransform = (VkSurfaceTransformFlagBitsKHR) (_currentTransform);
 	  */
 
 	/**
 	 * native GET method for field currentTransform	[vkenum]<br>
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  currentTransform
 	 */ 
-	 private static native VkSurfaceTransformFlagBitsKHR currentTransform0(ByteBuffer ptr);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(ptr);
-		  return (VkSurfaceTransformFlagBitsKHR) (_obj.VkSurfaceTransformFlagBitsKHR);
+	 private static native int  currentTransform0(Buffer ptr);/*
+		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  return (VkSurfaceTransformFlagBitsKHR) (vkObj->currentTransform);
 	 */
 
 	/**
 	 * native SET method for field supportedCompositeAlpha	[int]<br>
 	 * Prototype: VkCompositeAlphaFlagsKHR  supportedCompositeAlpha
 	 */ 
-	 private static native void supportedCompositeAlpha0(ByteBuffer ptr, int _supportedCompositeAlpha);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(*ptr);
-		  _obj.supportedCompositeAlpha = (VkCompositeAlphaFlagsKHR) (_supportedCompositeAlpha);
+	 private static native void supportedCompositeAlpha0(Buffer ptr, int _supportedCompositeAlpha);/*
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  vkObj->supportedCompositeAlpha = (VkCompositeAlphaFlagsKHR) (_supportedCompositeAlpha);
 	  */
 
 	/**
 	 * native GET method for field supportedCompositeAlpha	[int]<br>
 	 * Prototype: VkCompositeAlphaFlagsKHR  supportedCompositeAlpha
 	 */ 
-	 private static native int supportedCompositeAlpha0(ByteBuffer ptr);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(ptr);
-		  return (jint) (_obj.VkCompositeAlphaFlagsKHR);
+	 private static native int supportedCompositeAlpha0(Buffer ptr);/*
+		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  return (jint) (vkObj->supportedCompositeAlpha);
 	 */
 
 	/**
 	 * native SET method for field supportedUsageFlags	[int]<br>
 	 * Prototype: VkImageUsageFlags  supportedUsageFlags
 	 */ 
-	 private static native void supportedUsageFlags0(ByteBuffer ptr, int _supportedUsageFlags);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(*ptr);
-		  _obj.supportedUsageFlags = (VkImageUsageFlags) (_supportedUsageFlags);
+	 private static native void supportedUsageFlags0(Buffer ptr, int _supportedUsageFlags);/*
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  vkObj->supportedUsageFlags = (VkImageUsageFlags) (_supportedUsageFlags);
 	  */
 
 	/**
 	 * native GET method for field supportedUsageFlags	[int]<br>
 	 * Prototype: VkImageUsageFlags  supportedUsageFlags
 	 */ 
-	 private static native int supportedUsageFlags0(ByteBuffer ptr);/*
-		  VkSurfaceCapabilitiesKHR _obj = (VkSurfaceCapabilitiesKHR)(ptr);
-		  return (jint) (_obj.VkImageUsageFlags);
+	 private static native int supportedUsageFlags0(Buffer ptr);/*
+		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  return (jint) (vkObj->supportedUsageFlags);
 	 */
 
 

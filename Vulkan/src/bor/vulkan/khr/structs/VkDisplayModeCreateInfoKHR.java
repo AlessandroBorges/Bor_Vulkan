@@ -15,6 +15,8 @@ import bor.vulkan.structs.*;
 import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -52,9 +54,9 @@ public class VkDisplayModeCreateInfoKHR extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  VkDisplayModeCreateFlagsKHR 	flags	[int]
@@ -136,34 +138,46 @@ public class VkDisplayModeCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -172,16 +186,17 @@ public class VkDisplayModeCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		flags0(super.ptr, flags);
+		 flags0(this.ptr,  flags);
 	 }
 
 	/**
-	 * get method for field flags	[int]<br>
+	 * Get method for field flags	[int]<br>
 	 * Prototype: VkDisplayModeCreateFlagsKHR  flags
 	 */ 
 	 public int flags(){
-		 // return  this.flags;
-		 return flags0(super.ptr);
+		 int var = flags0(super.ptr);
+		 this.flags = var;
+		 return this.flags;
 	 }
 
 	/**
@@ -190,16 +205,26 @@ public class VkDisplayModeCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void parameters(VkDisplayModeParametersKHR parameters){
 		 this.parameters = parameters;
-		parameters0(super.ptr, parameters);
+		 ByteBuffer buff = (parameters==null) ? null : parameters.getPointerStruct();
+		 parameters0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field parameters	[vkstruct]<br>
+	 * Get method for field parameters	[vkstruct]<br>
 	 * Prototype: VkDisplayModeParametersKHR  parameters
 	 */ 
 	 public VkDisplayModeParametersKHR parameters(){
-		 // return  this.parameters;
-		 return parameters0(super.ptr);
+		 ByteBuffer pointer = parameters0(super.ptr);
+		 if(pointer == null){
+		    this.parameters = null;
+		    return null;
+		  } else 
+ 		 if(this.parameters == null){
+		    this.parameters = new VkDisplayModeParametersKHR(pointer);
+		 }else{
+		    this.parameters.setPointer(pointer);
+		  }
+		 return this.parameters;
 	 }
 
 
@@ -210,72 +235,72 @@ public class VkDisplayModeCreateInfoKHR extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkDisplayModeCreateInfoKHR _obj = (VkDisplayModeCreateInfoKHR)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkDisplayModeCreateInfoKHR* vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkDisplayModeCreateInfoKHR _obj = (VkDisplayModeCreateInfoKHR)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkDisplayModeCreateInfoKHR vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkDisplayModeCreateInfoKHR _obj = (VkDisplayModeCreateInfoKHR)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkDisplayModeCreateInfoKHR* vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkDisplayModeCreateInfoKHR _obj = (VkDisplayModeCreateInfoKHR)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkDisplayModeCreateInfoKHR vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkDisplayModeCreateFlagsKHR  flags
 	 */ 
-	 private static native void flags0(ByteBuffer ptr, int _flags);/*
-		  VkDisplayModeCreateInfoKHR _obj = (VkDisplayModeCreateInfoKHR)(*ptr);
-		  _obj.flags = (VkDisplayModeCreateFlagsKHR) (_flags);
+	 private static native void flags0(Buffer ptr, int _flags);/*
+		  VkDisplayModeCreateInfoKHR* vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
+		  vkObj->flags = (VkDisplayModeCreateFlagsKHR) (_flags);
 	  */
 
 	/**
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkDisplayModeCreateFlagsKHR  flags
 	 */ 
-	 private static native int flags0(ByteBuffer ptr);/*
-		  VkDisplayModeCreateInfoKHR _obj = (VkDisplayModeCreateInfoKHR)(ptr);
-		  return (jint) (_obj.VkDisplayModeCreateFlagsKHR);
+	 private static native int flags0(Buffer ptr);/*
+		  VkDisplayModeCreateInfoKHR vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
+		  return (jint) (vkObj->flags);
 	 */
 
 	/**
 	 * native SET method for field parameters	[vkstruct]<br>
 	 * Prototype: VkDisplayModeParametersKHR  parameters
 	 */ 
-	 private static native void parameters0(ByteBuffer ptr, VkDisplayModeParametersKHR _parameters);/*
-		  VkDisplayModeCreateInfoKHR _obj = (VkDisplayModeCreateInfoKHR)(*ptr);
-		  _obj.parameters = (VkDisplayModeParametersKHR) (_parameters);
+	 private static native void parameters0(Buffer ptr, java.nio.ByteBuffer  _parameters);/*
+		  VkDisplayModeCreateInfoKHR* vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
+		  vkObj->parameters = (VkDisplayModeParametersKHR) (_parameters);
 	  */
 
 	/**
 	 * native GET method for field parameters	[vkstruct]<br>
 	 * Prototype: VkDisplayModeParametersKHR  parameters
 	 */ 
-	 private static native VkDisplayModeParametersKHR parameters0(ByteBuffer ptr);/*
-		  VkDisplayModeCreateInfoKHR _obj = (VkDisplayModeCreateInfoKHR)(ptr);
-		  return (VkDisplayModeParametersKHR) (_obj.VkDisplayModeParametersKHR);
+	 private static native java.nio.ByteBuffer  parameters0(Buffer ptr);/*
+		  VkDisplayModeCreateInfoKHR vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
+		  return (VkDisplayModeParametersKHR) (vkObj->parameters);
 	 */
 
 

@@ -15,6 +15,8 @@ import bor.vulkan.structs.*;
 import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -56,9 +58,9 @@ public class VkPresentInfoKHR extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  uint32_t 	waitSemaphoreCount	[int]
@@ -66,9 +68,9 @@ public class VkPresentInfoKHR extends VkStruct {
 	 int 	waitSemaphoreCount;
 
 	/**
-	 *  const VkSemaphore* 	pWaitSemaphores	[p]
+	 *  const VkSemaphore* 	pWaitSemaphores	[vkhandle]
 	 */ 
-	 P<VkSemaphore>  	pWaitSemaphores;
+	  VkSemaphore  	pWaitSemaphores;
 
 	/**
 	 *  uint32_t 	swapchainCount	[int]
@@ -76,9 +78,9 @@ public class VkPresentInfoKHR extends VkStruct {
 	 int 	swapchainCount;
 
 	/**
-	 *  const VkSwapchainKHR* 	pSwapchains	[p]
+	 *  const VkSwapchainKHR* 	pSwapchains	[vkhandle]
 	 */ 
-	 P<VkSwapchainKHR>  	pSwapchains;
+	  VkSwapchainKHR  	pSwapchains;
 
 	/**
 	 *  const uint32_t* 	pImageIndices	[int_array]
@@ -160,34 +162,46 @@ public class VkPresentInfoKHR extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -196,34 +210,46 @@ public class VkPresentInfoKHR extends VkStruct {
 	 */ 
 	 public void waitSemaphoreCount(int waitSemaphoreCount){
 		 this.waitSemaphoreCount = waitSemaphoreCount;
-		waitSemaphoreCount0(super.ptr, waitSemaphoreCount);
+		 waitSemaphoreCount0(this.ptr,  waitSemaphoreCount);
 	 }
 
 	/**
-	 * get method for field waitSemaphoreCount	[int]<br>
+	 * Get method for field waitSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
 	 public int waitSemaphoreCount(){
-		 // return  this.waitSemaphoreCount;
-		 return waitSemaphoreCount0(super.ptr);
+		 int var = waitSemaphoreCount0(super.ptr);
+		 this.waitSemaphoreCount = var;
+		 return this.waitSemaphoreCount;
 	 }
 
 	/**
-	 * Set method for field pWaitSemaphores	[p]<br>
+	 * Set method for field pWaitSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
-	 public void pWaitSemaphores(P<VkSemaphore>  pWaitSemaphores){
+	 public void pWaitSemaphores( VkSemaphore  pWaitSemaphores){
 		 this.pWaitSemaphores = pWaitSemaphores;
-		pWaitSemaphores0(super.ptr, pWaitSemaphores);
+		 ByteBuffer buff = (pWaitSemaphores==null) ? null : pWaitSemaphores.getHandle();
+		 pWaitSemaphores0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pWaitSemaphores	[p]<br>
+	 * Get method for field pWaitSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
-	 public P<VkSemaphore>  pWaitSemaphores(){
-		 // return  this.pWaitSemaphores;
-		 return pWaitSemaphores0(super.ptr);
+	 public  VkSemaphore  pWaitSemaphores(){
+
+		 ByteBuffer handle = pWaitSemaphores0(super.ptr);
+		 if(handle == null){
+		    this.pWaitSemaphores = null;
+		    return null;
+		  } else 
+ 		 if(this.pWaitSemaphores == null){
+		    this.pWaitSemaphores = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.pWaitSemaphores).setHandle(handle);
+		  }
+		 return this.pWaitSemaphores;
 	 }
 
 	/**
@@ -232,34 +258,46 @@ public class VkPresentInfoKHR extends VkStruct {
 	 */ 
 	 public void swapchainCount(int swapchainCount){
 		 this.swapchainCount = swapchainCount;
-		swapchainCount0(super.ptr, swapchainCount);
+		 swapchainCount0(this.ptr,  swapchainCount);
 	 }
 
 	/**
-	 * get method for field swapchainCount	[int]<br>
+	 * Get method for field swapchainCount	[int]<br>
 	 * Prototype: uint32_t  swapchainCount
 	 */ 
 	 public int swapchainCount(){
-		 // return  this.swapchainCount;
-		 return swapchainCount0(super.ptr);
+		 int var = swapchainCount0(super.ptr);
+		 this.swapchainCount = var;
+		 return this.swapchainCount;
 	 }
 
 	/**
-	 * Set method for field pSwapchains	[p]<br>
+	 * Set method for field pSwapchains	[vkhandle]<br>
 	 * Prototype: const VkSwapchainKHR*  pSwapchains
 	 */ 
-	 public void pSwapchains(P<VkSwapchainKHR>  pSwapchains){
+	 public void pSwapchains( VkSwapchainKHR  pSwapchains){
 		 this.pSwapchains = pSwapchains;
-		pSwapchains0(super.ptr, pSwapchains);
+		 ByteBuffer buff = (pSwapchains==null) ? null : pSwapchains.getHandle();
+		 pSwapchains0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pSwapchains	[p]<br>
+	 * Get method for field pSwapchains	[vkhandle]<br>
 	 * Prototype: const VkSwapchainKHR*  pSwapchains
 	 */ 
-	 public P<VkSwapchainKHR>  pSwapchains(){
-		 // return  this.pSwapchains;
-		 return pSwapchains0(super.ptr);
+	 public  VkSwapchainKHR  pSwapchains(){
+
+		 ByteBuffer handle = pSwapchains0(super.ptr);
+		 if(handle == null){
+		    this.pSwapchains = null;
+		    return null;
+		  } else 
+ 		 if(this.pSwapchains == null){
+		    this.pSwapchains = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.pSwapchains).setHandle(handle);
+		  }
+		 return this.pSwapchains;
 	 }
 
 	/**
@@ -268,16 +306,17 @@ public class VkPresentInfoKHR extends VkStruct {
 	 */ 
 	 public void pImageIndices(int[] pImageIndices){
 		 this.pImageIndices = pImageIndices;
-		pImageIndices0(super.ptr, pImageIndices);
+		 pImageIndices0(this.ptr,  pImageIndices);
 	 }
 
 	/**
-	 * get method for field pImageIndices	[int_array]<br>
+	 * Get method for field pImageIndices	[int_array]<br>
 	 * Prototype: const uint32_t*  pImageIndices
 	 */ 
 	 public int[] pImageIndices(){
-		 // return  this.pImageIndices;
-		 return pImageIndices0(super.ptr);
+		 int[] var = pImageIndices0(super.ptr);
+		 this.pImageIndices = var;
+		 return this.pImageIndices;
 	 }
 
 	/**
@@ -286,16 +325,17 @@ public class VkPresentInfoKHR extends VkStruct {
 	 */ 
 	 public void pResults(PInteger pResults){
 		 this.pResults = pResults;
-		pResults0(super.ptr, pResults);
+		 pResults0(this.ptr,  pResults);
 	 }
 
 	/**
-	 * get method for field pResults	[pinteger]<br>
+	 * Get method for field pResults	[pinteger]<br>
 	 * Prototype: VkResult*  pResults
 	 */ 
 	 public PInteger pResults(){
-		 // return  this.pResults;
-		 return pResults0(super.ptr);
+		 PInteger var = pResults0(super.ptr);
+		 this.pResults = var;
+		 return this.pResults;
 	 }
 
 
@@ -306,144 +346,144 @@ public class VkPresentInfoKHR extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkPresentInfoKHR _obj = (VkPresentInfoKHR)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkPresentInfoKHR _obj = (VkPresentInfoKHR)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkPresentInfoKHR vkObj = (VkPresentInfoKHR*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkPresentInfoKHR _obj = (VkPresentInfoKHR)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkPresentInfoKHR _obj = (VkPresentInfoKHR)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkPresentInfoKHR vkObj = (VkPresentInfoKHR*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field waitSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
-	 private static native void waitSemaphoreCount0(ByteBuffer ptr, int _waitSemaphoreCount);/*
-		  VkPresentInfoKHR _obj = (VkPresentInfoKHR)(*ptr);
-		  _obj.waitSemaphoreCount = (uint32_t) (_waitSemaphoreCount);
+	 private static native void waitSemaphoreCount0(Buffer ptr, int _waitSemaphoreCount);/*
+		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
+		  vkObj->waitSemaphoreCount = (uint32_t) (_waitSemaphoreCount);
 	  */
 
 	/**
 	 * native GET method for field waitSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
-	 private static native int waitSemaphoreCount0(ByteBuffer ptr);/*
-		  VkPresentInfoKHR _obj = (VkPresentInfoKHR)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int waitSemaphoreCount0(Buffer ptr);/*
+		  VkPresentInfoKHR vkObj = (VkPresentInfoKHR*)(ptr);
+		  return (jint) (vkObj->waitSemaphoreCount);
 	 */
 
 	/**
-	 * native SET method for field pWaitSemaphores	[p]<br>
+	 * native SET method for field pWaitSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
-	 private static native void pWaitSemaphores0(ByteBuffer ptr, P<VkSemaphore>  _pWaitSemaphores);/*
-		  VkPresentInfoKHR _obj = (VkPresentInfoKHR)(*ptr);
-		  _obj.pWaitSemaphores = (const VkSemaphore*) (_pWaitSemaphores);
+	 private static native void pWaitSemaphores0(Buffer ptr, java.nio.ByteBuffer  _pWaitSemaphores);/*
+		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
+		  vkObj->pWaitSemaphores = (const VkSemaphore*) (_pWaitSemaphores);
 	  */
 
 	/**
-	 * native GET method for field pWaitSemaphores	[p]<br>
+	 * native GET method for field pWaitSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
-	 private static native P<VkSemaphore>  pWaitSemaphores0(ByteBuffer ptr);/*
-		  VkPresentInfoKHR _obj = (VkPresentInfoKHR)(ptr);
-		  return (P<VkSemaphore> ) (_obj.const VkSemaphore*);
+	 private static native java.nio.ByteBuffer  pWaitSemaphores0(Buffer ptr);/*
+		  VkPresentInfoKHR vkObj = (VkPresentInfoKHR*)(ptr);
+		  return ( VkSemaphore ) (vkObj->pWaitSemaphores);
 	 */
 
 	/**
 	 * native SET method for field swapchainCount	[int]<br>
 	 * Prototype: uint32_t  swapchainCount
 	 */ 
-	 private static native void swapchainCount0(ByteBuffer ptr, int _swapchainCount);/*
-		  VkPresentInfoKHR _obj = (VkPresentInfoKHR)(*ptr);
-		  _obj.swapchainCount = (uint32_t) (_swapchainCount);
+	 private static native void swapchainCount0(Buffer ptr, int _swapchainCount);/*
+		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
+		  vkObj->swapchainCount = (uint32_t) (_swapchainCount);
 	  */
 
 	/**
 	 * native GET method for field swapchainCount	[int]<br>
 	 * Prototype: uint32_t  swapchainCount
 	 */ 
-	 private static native int swapchainCount0(ByteBuffer ptr);/*
-		  VkPresentInfoKHR _obj = (VkPresentInfoKHR)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int swapchainCount0(Buffer ptr);/*
+		  VkPresentInfoKHR vkObj = (VkPresentInfoKHR*)(ptr);
+		  return (jint) (vkObj->swapchainCount);
 	 */
 
 	/**
-	 * native SET method for field pSwapchains	[p]<br>
+	 * native SET method for field pSwapchains	[vkhandle]<br>
 	 * Prototype: const VkSwapchainKHR*  pSwapchains
 	 */ 
-	 private static native void pSwapchains0(ByteBuffer ptr, P<VkSwapchainKHR>  _pSwapchains);/*
-		  VkPresentInfoKHR _obj = (VkPresentInfoKHR)(*ptr);
-		  _obj.pSwapchains = (const VkSwapchainKHR*) (_pSwapchains);
+	 private static native void pSwapchains0(Buffer ptr, java.nio.ByteBuffer  _pSwapchains);/*
+		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
+		  vkObj->pSwapchains = (const VkSwapchainKHR*) (_pSwapchains);
 	  */
 
 	/**
-	 * native GET method for field pSwapchains	[p]<br>
+	 * native GET method for field pSwapchains	[vkhandle]<br>
 	 * Prototype: const VkSwapchainKHR*  pSwapchains
 	 */ 
-	 private static native P<VkSwapchainKHR>  pSwapchains0(ByteBuffer ptr);/*
-		  VkPresentInfoKHR _obj = (VkPresentInfoKHR)(ptr);
-		  return (P<VkSwapchainKHR> ) (_obj.const VkSwapchainKHR*);
+	 private static native java.nio.ByteBuffer  pSwapchains0(Buffer ptr);/*
+		  VkPresentInfoKHR vkObj = (VkPresentInfoKHR*)(ptr);
+		  return ( VkSwapchainKHR ) (vkObj->pSwapchains);
 	 */
 
 	/**
 	 * native SET method for field pImageIndices	[int_array]<br>
 	 * Prototype: const uint32_t*  pImageIndices
 	 */ 
-	 private static native void pImageIndices0(ByteBuffer ptr, int[] _pImageIndices);/*
-		  VkPresentInfoKHR _obj = (VkPresentInfoKHR)(*ptr);
-		  _obj.pImageIndices = (const uint32_t*) (_pImageIndices);
+	 private static native void pImageIndices0(Buffer ptr, int[] _pImageIndices);/*
+		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
+		  vkObj->pImageIndices = (const uint32_t*) (_pImageIndices);
 	  */
 
 	/**
 	 * native GET method for field pImageIndices	[int_array]<br>
 	 * Prototype: const uint32_t*  pImageIndices
 	 */ 
-	 private static native int[] pImageIndices0(ByteBuffer ptr);/*
-		  VkPresentInfoKHR _obj = (VkPresentInfoKHR)(ptr);
-		  return (int[]) (_obj.const uint32_t*);
+	 private static native int[] pImageIndices0(Buffer ptr);/*
+		  VkPresentInfoKHR vkObj = (VkPresentInfoKHR*)(ptr);
+		  return (int[]) (vkObj->pImageIndices);
 	 */
 
 	/**
 	 * native SET method for field pResults	[pinteger]<br>
 	 * Prototype: VkResult*  pResults
 	 */ 
-	 private static native void pResults0(ByteBuffer ptr, PInteger _pResults);/*
-		  VkPresentInfoKHR _obj = (VkPresentInfoKHR)(*ptr);
-		  _obj.pResults = (VkResult*) (_pResults);
+	 private static native void pResults0(Buffer ptr, PInteger _pResults);/*
+		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
+		  vkObj->pResults = (VkResult*) (_pResults);
 	  */
 
 	/**
 	 * native GET method for field pResults	[pinteger]<br>
 	 * Prototype: VkResult*  pResults
 	 */ 
-	 private static native PInteger pResults0(ByteBuffer ptr);/*
-		  VkPresentInfoKHR _obj = (VkPresentInfoKHR)(ptr);
-		  return (PInteger) (_obj.VkResult*);
+	 private static native PInteger pResults0(Buffer ptr);/*
+		  VkPresentInfoKHR vkObj = (VkPresentInfoKHR*)(ptr);
+		  return (PInteger) (vkObj->pResults);
 	 */
 
 

@@ -15,6 +15,8 @@ import bor.vulkan.structs.*;
 import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -124,16 +126,26 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	 */ 
 	 public void visibleRegion(VkExtent2D visibleRegion){
 		 this.visibleRegion = visibleRegion;
-		visibleRegion0(super.ptr, visibleRegion);
+		 ByteBuffer buff = (visibleRegion==null) ? null : visibleRegion.getPointerStruct();
+		 visibleRegion0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field visibleRegion	[vkstruct]<br>
+	 * Get method for field visibleRegion	[vkstruct]<br>
 	 * Prototype: VkExtent2D  visibleRegion
 	 */ 
 	 public VkExtent2D visibleRegion(){
-		 // return  this.visibleRegion;
-		 return visibleRegion0(super.ptr);
+		 ByteBuffer pointer = visibleRegion0(super.ptr);
+		 if(pointer == null){
+		    this.visibleRegion = null;
+		    return null;
+		  } else 
+ 		 if(this.visibleRegion == null){
+		    this.visibleRegion = new VkExtent2D(pointer);
+		 }else{
+		    this.visibleRegion.setPointer(pointer);
+		  }
+		 return this.visibleRegion;
 	 }
 
 	/**
@@ -142,16 +154,17 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	 */ 
 	 public void refreshRate(int refreshRate){
 		 this.refreshRate = refreshRate;
-		refreshRate0(super.ptr, refreshRate);
+		 refreshRate0(this.ptr,  refreshRate);
 	 }
 
 	/**
-	 * get method for field refreshRate	[int]<br>
+	 * Get method for field refreshRate	[int]<br>
 	 * Prototype: uint32_t  refreshRate
 	 */ 
 	 public int refreshRate(){
-		 // return  this.refreshRate;
-		 return refreshRate0(super.ptr);
+		 int var = refreshRate0(super.ptr);
+		 this.refreshRate = var;
+		 return this.refreshRate;
 	 }
 
 
@@ -162,36 +175,36 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	 * native SET method for field visibleRegion	[vkstruct]<br>
 	 * Prototype: VkExtent2D  visibleRegion
 	 */ 
-	 private static native void visibleRegion0(ByteBuffer ptr, VkExtent2D _visibleRegion);/*
-		  VkDisplayModeParametersKHR _obj = (VkDisplayModeParametersKHR)(*ptr);
-		  _obj.visibleRegion = (VkExtent2D) (_visibleRegion);
+	 private static native void visibleRegion0(Buffer ptr, java.nio.ByteBuffer  _visibleRegion);/*
+		  VkDisplayModeParametersKHR* vkObj = (VkDisplayModeParametersKHR*)(ptr);
+		  vkObj->visibleRegion = (VkExtent2D) (_visibleRegion);
 	  */
 
 	/**
 	 * native GET method for field visibleRegion	[vkstruct]<br>
 	 * Prototype: VkExtent2D  visibleRegion
 	 */ 
-	 private static native VkExtent2D visibleRegion0(ByteBuffer ptr);/*
-		  VkDisplayModeParametersKHR _obj = (VkDisplayModeParametersKHR)(ptr);
-		  return (VkExtent2D) (_obj.VkExtent2D);
+	 private static native java.nio.ByteBuffer  visibleRegion0(Buffer ptr);/*
+		  VkDisplayModeParametersKHR vkObj = (VkDisplayModeParametersKHR*)(ptr);
+		  return (VkExtent2D) (vkObj->visibleRegion);
 	 */
 
 	/**
 	 * native SET method for field refreshRate	[int]<br>
 	 * Prototype: uint32_t  refreshRate
 	 */ 
-	 private static native void refreshRate0(ByteBuffer ptr, int _refreshRate);/*
-		  VkDisplayModeParametersKHR _obj = (VkDisplayModeParametersKHR)(*ptr);
-		  _obj.refreshRate = (uint32_t) (_refreshRate);
+	 private static native void refreshRate0(Buffer ptr, int _refreshRate);/*
+		  VkDisplayModeParametersKHR* vkObj = (VkDisplayModeParametersKHR*)(ptr);
+		  vkObj->refreshRate = (uint32_t) (_refreshRate);
 	  */
 
 	/**
 	 * native GET method for field refreshRate	[int]<br>
 	 * Prototype: uint32_t  refreshRate
 	 */ 
-	 private static native int refreshRate0(ByteBuffer ptr);/*
-		  VkDisplayModeParametersKHR _obj = (VkDisplayModeParametersKHR)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int refreshRate0(Buffer ptr);/*
+		  VkDisplayModeParametersKHR vkObj = (VkDisplayModeParametersKHR*)(ptr);
+		  return (jint) (vkObj->refreshRate);
 	 */
 
 

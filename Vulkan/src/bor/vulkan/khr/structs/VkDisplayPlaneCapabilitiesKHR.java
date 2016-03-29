@@ -15,6 +15,8 @@ import bor.vulkan.structs.*;
 import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -166,16 +168,17 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 */ 
 	 public void supportedAlpha(int supportedAlpha){
 		 this.supportedAlpha = supportedAlpha;
-		supportedAlpha0(super.ptr, supportedAlpha);
+		 supportedAlpha0(this.ptr,  supportedAlpha);
 	 }
 
 	/**
-	 * get method for field supportedAlpha	[int]<br>
+	 * Get method for field supportedAlpha	[int]<br>
 	 * Prototype: VkDisplayPlaneAlphaFlagsKHR  supportedAlpha
 	 */ 
 	 public int supportedAlpha(){
-		 // return  this.supportedAlpha;
-		 return supportedAlpha0(super.ptr);
+		 int var = supportedAlpha0(super.ptr);
+		 this.supportedAlpha = var;
+		 return this.supportedAlpha;
 	 }
 
 	/**
@@ -184,16 +187,26 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 */ 
 	 public void minSrcPosition(VkOffset2D minSrcPosition){
 		 this.minSrcPosition = minSrcPosition;
-		minSrcPosition0(super.ptr, minSrcPosition);
+		 ByteBuffer buff = (minSrcPosition==null) ? null : minSrcPosition.getPointerStruct();
+		 minSrcPosition0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field minSrcPosition	[vkstruct]<br>
+	 * Get method for field minSrcPosition	[vkstruct]<br>
 	 * Prototype: VkOffset2D  minSrcPosition
 	 */ 
 	 public VkOffset2D minSrcPosition(){
-		 // return  this.minSrcPosition;
-		 return minSrcPosition0(super.ptr);
+		 ByteBuffer pointer = minSrcPosition0(super.ptr);
+		 if(pointer == null){
+		    this.minSrcPosition = null;
+		    return null;
+		  } else 
+ 		 if(this.minSrcPosition == null){
+		    this.minSrcPosition = new VkOffset2D(pointer);
+		 }else{
+		    this.minSrcPosition.setPointer(pointer);
+		  }
+		 return this.minSrcPosition;
 	 }
 
 	/**
@@ -202,16 +215,26 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 */ 
 	 public void maxSrcPosition(VkOffset2D maxSrcPosition){
 		 this.maxSrcPosition = maxSrcPosition;
-		maxSrcPosition0(super.ptr, maxSrcPosition);
+		 ByteBuffer buff = (maxSrcPosition==null) ? null : maxSrcPosition.getPointerStruct();
+		 maxSrcPosition0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field maxSrcPosition	[vkstruct]<br>
+	 * Get method for field maxSrcPosition	[vkstruct]<br>
 	 * Prototype: VkOffset2D  maxSrcPosition
 	 */ 
 	 public VkOffset2D maxSrcPosition(){
-		 // return  this.maxSrcPosition;
-		 return maxSrcPosition0(super.ptr);
+		 ByteBuffer pointer = maxSrcPosition0(super.ptr);
+		 if(pointer == null){
+		    this.maxSrcPosition = null;
+		    return null;
+		  } else 
+ 		 if(this.maxSrcPosition == null){
+		    this.maxSrcPosition = new VkOffset2D(pointer);
+		 }else{
+		    this.maxSrcPosition.setPointer(pointer);
+		  }
+		 return this.maxSrcPosition;
 	 }
 
 	/**
@@ -220,16 +243,26 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 */ 
 	 public void minSrcExtent(VkExtent2D minSrcExtent){
 		 this.minSrcExtent = minSrcExtent;
-		minSrcExtent0(super.ptr, minSrcExtent);
+		 ByteBuffer buff = (minSrcExtent==null) ? null : minSrcExtent.getPointerStruct();
+		 minSrcExtent0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field minSrcExtent	[vkstruct]<br>
+	 * Get method for field minSrcExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  minSrcExtent
 	 */ 
 	 public VkExtent2D minSrcExtent(){
-		 // return  this.minSrcExtent;
-		 return minSrcExtent0(super.ptr);
+		 ByteBuffer pointer = minSrcExtent0(super.ptr);
+		 if(pointer == null){
+		    this.minSrcExtent = null;
+		    return null;
+		  } else 
+ 		 if(this.minSrcExtent == null){
+		    this.minSrcExtent = new VkExtent2D(pointer);
+		 }else{
+		    this.minSrcExtent.setPointer(pointer);
+		  }
+		 return this.minSrcExtent;
 	 }
 
 	/**
@@ -238,16 +271,26 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 */ 
 	 public void maxSrcExtent(VkExtent2D maxSrcExtent){
 		 this.maxSrcExtent = maxSrcExtent;
-		maxSrcExtent0(super.ptr, maxSrcExtent);
+		 ByteBuffer buff = (maxSrcExtent==null) ? null : maxSrcExtent.getPointerStruct();
+		 maxSrcExtent0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field maxSrcExtent	[vkstruct]<br>
+	 * Get method for field maxSrcExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  maxSrcExtent
 	 */ 
 	 public VkExtent2D maxSrcExtent(){
-		 // return  this.maxSrcExtent;
-		 return maxSrcExtent0(super.ptr);
+		 ByteBuffer pointer = maxSrcExtent0(super.ptr);
+		 if(pointer == null){
+		    this.maxSrcExtent = null;
+		    return null;
+		  } else 
+ 		 if(this.maxSrcExtent == null){
+		    this.maxSrcExtent = new VkExtent2D(pointer);
+		 }else{
+		    this.maxSrcExtent.setPointer(pointer);
+		  }
+		 return this.maxSrcExtent;
 	 }
 
 	/**
@@ -256,16 +299,26 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 */ 
 	 public void minDstPosition(VkOffset2D minDstPosition){
 		 this.minDstPosition = minDstPosition;
-		minDstPosition0(super.ptr, minDstPosition);
+		 ByteBuffer buff = (minDstPosition==null) ? null : minDstPosition.getPointerStruct();
+		 minDstPosition0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field minDstPosition	[vkstruct]<br>
+	 * Get method for field minDstPosition	[vkstruct]<br>
 	 * Prototype: VkOffset2D  minDstPosition
 	 */ 
 	 public VkOffset2D minDstPosition(){
-		 // return  this.minDstPosition;
-		 return minDstPosition0(super.ptr);
+		 ByteBuffer pointer = minDstPosition0(super.ptr);
+		 if(pointer == null){
+		    this.minDstPosition = null;
+		    return null;
+		  } else 
+ 		 if(this.minDstPosition == null){
+		    this.minDstPosition = new VkOffset2D(pointer);
+		 }else{
+		    this.minDstPosition.setPointer(pointer);
+		  }
+		 return this.minDstPosition;
 	 }
 
 	/**
@@ -274,16 +327,26 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 */ 
 	 public void maxDstPosition(VkOffset2D maxDstPosition){
 		 this.maxDstPosition = maxDstPosition;
-		maxDstPosition0(super.ptr, maxDstPosition);
+		 ByteBuffer buff = (maxDstPosition==null) ? null : maxDstPosition.getPointerStruct();
+		 maxDstPosition0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field maxDstPosition	[vkstruct]<br>
+	 * Get method for field maxDstPosition	[vkstruct]<br>
 	 * Prototype: VkOffset2D  maxDstPosition
 	 */ 
 	 public VkOffset2D maxDstPosition(){
-		 // return  this.maxDstPosition;
-		 return maxDstPosition0(super.ptr);
+		 ByteBuffer pointer = maxDstPosition0(super.ptr);
+		 if(pointer == null){
+		    this.maxDstPosition = null;
+		    return null;
+		  } else 
+ 		 if(this.maxDstPosition == null){
+		    this.maxDstPosition = new VkOffset2D(pointer);
+		 }else{
+		    this.maxDstPosition.setPointer(pointer);
+		  }
+		 return this.maxDstPosition;
 	 }
 
 	/**
@@ -292,16 +355,26 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 */ 
 	 public void minDstExtent(VkExtent2D minDstExtent){
 		 this.minDstExtent = minDstExtent;
-		minDstExtent0(super.ptr, minDstExtent);
+		 ByteBuffer buff = (minDstExtent==null) ? null : minDstExtent.getPointerStruct();
+		 minDstExtent0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field minDstExtent	[vkstruct]<br>
+	 * Get method for field minDstExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  minDstExtent
 	 */ 
 	 public VkExtent2D minDstExtent(){
-		 // return  this.minDstExtent;
-		 return minDstExtent0(super.ptr);
+		 ByteBuffer pointer = minDstExtent0(super.ptr);
+		 if(pointer == null){
+		    this.minDstExtent = null;
+		    return null;
+		  } else 
+ 		 if(this.minDstExtent == null){
+		    this.minDstExtent = new VkExtent2D(pointer);
+		 }else{
+		    this.minDstExtent.setPointer(pointer);
+		  }
+		 return this.minDstExtent;
 	 }
 
 	/**
@@ -310,16 +383,26 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 */ 
 	 public void maxDstExtent(VkExtent2D maxDstExtent){
 		 this.maxDstExtent = maxDstExtent;
-		maxDstExtent0(super.ptr, maxDstExtent);
+		 ByteBuffer buff = (maxDstExtent==null) ? null : maxDstExtent.getPointerStruct();
+		 maxDstExtent0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field maxDstExtent	[vkstruct]<br>
+	 * Get method for field maxDstExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  maxDstExtent
 	 */ 
 	 public VkExtent2D maxDstExtent(){
-		 // return  this.maxDstExtent;
-		 return maxDstExtent0(super.ptr);
+		 ByteBuffer pointer = maxDstExtent0(super.ptr);
+		 if(pointer == null){
+		    this.maxDstExtent = null;
+		    return null;
+		  } else 
+ 		 if(this.maxDstExtent == null){
+		    this.maxDstExtent = new VkExtent2D(pointer);
+		 }else{
+		    this.maxDstExtent.setPointer(pointer);
+		  }
+		 return this.maxDstExtent;
 	 }
 
 
@@ -330,162 +413,162 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 * native SET method for field supportedAlpha	[int]<br>
 	 * Prototype: VkDisplayPlaneAlphaFlagsKHR  supportedAlpha
 	 */ 
-	 private static native void supportedAlpha0(ByteBuffer ptr, int _supportedAlpha);/*
-		  VkDisplayPlaneCapabilitiesKHR _obj = (VkDisplayPlaneCapabilitiesKHR)(*ptr);
-		  _obj.supportedAlpha = (VkDisplayPlaneAlphaFlagsKHR) (_supportedAlpha);
+	 private static native void supportedAlpha0(Buffer ptr, int _supportedAlpha);/*
+		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  vkObj->supportedAlpha = (VkDisplayPlaneAlphaFlagsKHR) (_supportedAlpha);
 	  */
 
 	/**
 	 * native GET method for field supportedAlpha	[int]<br>
 	 * Prototype: VkDisplayPlaneAlphaFlagsKHR  supportedAlpha
 	 */ 
-	 private static native int supportedAlpha0(ByteBuffer ptr);/*
-		  VkDisplayPlaneCapabilitiesKHR _obj = (VkDisplayPlaneCapabilitiesKHR)(ptr);
-		  return (jint) (_obj.VkDisplayPlaneAlphaFlagsKHR);
+	 private static native int supportedAlpha0(Buffer ptr);/*
+		  VkDisplayPlaneCapabilitiesKHR vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  return (jint) (vkObj->supportedAlpha);
 	 */
 
 	/**
 	 * native SET method for field minSrcPosition	[vkstruct]<br>
 	 * Prototype: VkOffset2D  minSrcPosition
 	 */ 
-	 private static native void minSrcPosition0(ByteBuffer ptr, VkOffset2D _minSrcPosition);/*
-		  VkDisplayPlaneCapabilitiesKHR _obj = (VkDisplayPlaneCapabilitiesKHR)(*ptr);
-		  _obj.minSrcPosition = (VkOffset2D) (_minSrcPosition);
+	 private static native void minSrcPosition0(Buffer ptr, java.nio.ByteBuffer  _minSrcPosition);/*
+		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  vkObj->minSrcPosition = (VkOffset2D) (_minSrcPosition);
 	  */
 
 	/**
 	 * native GET method for field minSrcPosition	[vkstruct]<br>
 	 * Prototype: VkOffset2D  minSrcPosition
 	 */ 
-	 private static native VkOffset2D minSrcPosition0(ByteBuffer ptr);/*
-		  VkDisplayPlaneCapabilitiesKHR _obj = (VkDisplayPlaneCapabilitiesKHR)(ptr);
-		  return (VkOffset2D) (_obj.VkOffset2D);
+	 private static native java.nio.ByteBuffer  minSrcPosition0(Buffer ptr);/*
+		  VkDisplayPlaneCapabilitiesKHR vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  return (VkOffset2D) (vkObj->minSrcPosition);
 	 */
 
 	/**
 	 * native SET method for field maxSrcPosition	[vkstruct]<br>
 	 * Prototype: VkOffset2D  maxSrcPosition
 	 */ 
-	 private static native void maxSrcPosition0(ByteBuffer ptr, VkOffset2D _maxSrcPosition);/*
-		  VkDisplayPlaneCapabilitiesKHR _obj = (VkDisplayPlaneCapabilitiesKHR)(*ptr);
-		  _obj.maxSrcPosition = (VkOffset2D) (_maxSrcPosition);
+	 private static native void maxSrcPosition0(Buffer ptr, java.nio.ByteBuffer  _maxSrcPosition);/*
+		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  vkObj->maxSrcPosition = (VkOffset2D) (_maxSrcPosition);
 	  */
 
 	/**
 	 * native GET method for field maxSrcPosition	[vkstruct]<br>
 	 * Prototype: VkOffset2D  maxSrcPosition
 	 */ 
-	 private static native VkOffset2D maxSrcPosition0(ByteBuffer ptr);/*
-		  VkDisplayPlaneCapabilitiesKHR _obj = (VkDisplayPlaneCapabilitiesKHR)(ptr);
-		  return (VkOffset2D) (_obj.VkOffset2D);
+	 private static native java.nio.ByteBuffer  maxSrcPosition0(Buffer ptr);/*
+		  VkDisplayPlaneCapabilitiesKHR vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  return (VkOffset2D) (vkObj->maxSrcPosition);
 	 */
 
 	/**
 	 * native SET method for field minSrcExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  minSrcExtent
 	 */ 
-	 private static native void minSrcExtent0(ByteBuffer ptr, VkExtent2D _minSrcExtent);/*
-		  VkDisplayPlaneCapabilitiesKHR _obj = (VkDisplayPlaneCapabilitiesKHR)(*ptr);
-		  _obj.minSrcExtent = (VkExtent2D) (_minSrcExtent);
+	 private static native void minSrcExtent0(Buffer ptr, java.nio.ByteBuffer  _minSrcExtent);/*
+		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  vkObj->minSrcExtent = (VkExtent2D) (_minSrcExtent);
 	  */
 
 	/**
 	 * native GET method for field minSrcExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  minSrcExtent
 	 */ 
-	 private static native VkExtent2D minSrcExtent0(ByteBuffer ptr);/*
-		  VkDisplayPlaneCapabilitiesKHR _obj = (VkDisplayPlaneCapabilitiesKHR)(ptr);
-		  return (VkExtent2D) (_obj.VkExtent2D);
+	 private static native java.nio.ByteBuffer  minSrcExtent0(Buffer ptr);/*
+		  VkDisplayPlaneCapabilitiesKHR vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  return (VkExtent2D) (vkObj->minSrcExtent);
 	 */
 
 	/**
 	 * native SET method for field maxSrcExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  maxSrcExtent
 	 */ 
-	 private static native void maxSrcExtent0(ByteBuffer ptr, VkExtent2D _maxSrcExtent);/*
-		  VkDisplayPlaneCapabilitiesKHR _obj = (VkDisplayPlaneCapabilitiesKHR)(*ptr);
-		  _obj.maxSrcExtent = (VkExtent2D) (_maxSrcExtent);
+	 private static native void maxSrcExtent0(Buffer ptr, java.nio.ByteBuffer  _maxSrcExtent);/*
+		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  vkObj->maxSrcExtent = (VkExtent2D) (_maxSrcExtent);
 	  */
 
 	/**
 	 * native GET method for field maxSrcExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  maxSrcExtent
 	 */ 
-	 private static native VkExtent2D maxSrcExtent0(ByteBuffer ptr);/*
-		  VkDisplayPlaneCapabilitiesKHR _obj = (VkDisplayPlaneCapabilitiesKHR)(ptr);
-		  return (VkExtent2D) (_obj.VkExtent2D);
+	 private static native java.nio.ByteBuffer  maxSrcExtent0(Buffer ptr);/*
+		  VkDisplayPlaneCapabilitiesKHR vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  return (VkExtent2D) (vkObj->maxSrcExtent);
 	 */
 
 	/**
 	 * native SET method for field minDstPosition	[vkstruct]<br>
 	 * Prototype: VkOffset2D  minDstPosition
 	 */ 
-	 private static native void minDstPosition0(ByteBuffer ptr, VkOffset2D _minDstPosition);/*
-		  VkDisplayPlaneCapabilitiesKHR _obj = (VkDisplayPlaneCapabilitiesKHR)(*ptr);
-		  _obj.minDstPosition = (VkOffset2D) (_minDstPosition);
+	 private static native void minDstPosition0(Buffer ptr, java.nio.ByteBuffer  _minDstPosition);/*
+		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  vkObj->minDstPosition = (VkOffset2D) (_minDstPosition);
 	  */
 
 	/**
 	 * native GET method for field minDstPosition	[vkstruct]<br>
 	 * Prototype: VkOffset2D  minDstPosition
 	 */ 
-	 private static native VkOffset2D minDstPosition0(ByteBuffer ptr);/*
-		  VkDisplayPlaneCapabilitiesKHR _obj = (VkDisplayPlaneCapabilitiesKHR)(ptr);
-		  return (VkOffset2D) (_obj.VkOffset2D);
+	 private static native java.nio.ByteBuffer  minDstPosition0(Buffer ptr);/*
+		  VkDisplayPlaneCapabilitiesKHR vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  return (VkOffset2D) (vkObj->minDstPosition);
 	 */
 
 	/**
 	 * native SET method for field maxDstPosition	[vkstruct]<br>
 	 * Prototype: VkOffset2D  maxDstPosition
 	 */ 
-	 private static native void maxDstPosition0(ByteBuffer ptr, VkOffset2D _maxDstPosition);/*
-		  VkDisplayPlaneCapabilitiesKHR _obj = (VkDisplayPlaneCapabilitiesKHR)(*ptr);
-		  _obj.maxDstPosition = (VkOffset2D) (_maxDstPosition);
+	 private static native void maxDstPosition0(Buffer ptr, java.nio.ByteBuffer  _maxDstPosition);/*
+		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  vkObj->maxDstPosition = (VkOffset2D) (_maxDstPosition);
 	  */
 
 	/**
 	 * native GET method for field maxDstPosition	[vkstruct]<br>
 	 * Prototype: VkOffset2D  maxDstPosition
 	 */ 
-	 private static native VkOffset2D maxDstPosition0(ByteBuffer ptr);/*
-		  VkDisplayPlaneCapabilitiesKHR _obj = (VkDisplayPlaneCapabilitiesKHR)(ptr);
-		  return (VkOffset2D) (_obj.VkOffset2D);
+	 private static native java.nio.ByteBuffer  maxDstPosition0(Buffer ptr);/*
+		  VkDisplayPlaneCapabilitiesKHR vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  return (VkOffset2D) (vkObj->maxDstPosition);
 	 */
 
 	/**
 	 * native SET method for field minDstExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  minDstExtent
 	 */ 
-	 private static native void minDstExtent0(ByteBuffer ptr, VkExtent2D _minDstExtent);/*
-		  VkDisplayPlaneCapabilitiesKHR _obj = (VkDisplayPlaneCapabilitiesKHR)(*ptr);
-		  _obj.minDstExtent = (VkExtent2D) (_minDstExtent);
+	 private static native void minDstExtent0(Buffer ptr, java.nio.ByteBuffer  _minDstExtent);/*
+		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  vkObj->minDstExtent = (VkExtent2D) (_minDstExtent);
 	  */
 
 	/**
 	 * native GET method for field minDstExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  minDstExtent
 	 */ 
-	 private static native VkExtent2D minDstExtent0(ByteBuffer ptr);/*
-		  VkDisplayPlaneCapabilitiesKHR _obj = (VkDisplayPlaneCapabilitiesKHR)(ptr);
-		  return (VkExtent2D) (_obj.VkExtent2D);
+	 private static native java.nio.ByteBuffer  minDstExtent0(Buffer ptr);/*
+		  VkDisplayPlaneCapabilitiesKHR vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  return (VkExtent2D) (vkObj->minDstExtent);
 	 */
 
 	/**
 	 * native SET method for field maxDstExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  maxDstExtent
 	 */ 
-	 private static native void maxDstExtent0(ByteBuffer ptr, VkExtent2D _maxDstExtent);/*
-		  VkDisplayPlaneCapabilitiesKHR _obj = (VkDisplayPlaneCapabilitiesKHR)(*ptr);
-		  _obj.maxDstExtent = (VkExtent2D) (_maxDstExtent);
+	 private static native void maxDstExtent0(Buffer ptr, java.nio.ByteBuffer  _maxDstExtent);/*
+		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  vkObj->maxDstExtent = (VkExtent2D) (_maxDstExtent);
 	  */
 
 	/**
 	 * native GET method for field maxDstExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  maxDstExtent
 	 */ 
-	 private static native VkExtent2D maxDstExtent0(ByteBuffer ptr);/*
-		  VkDisplayPlaneCapabilitiesKHR _obj = (VkDisplayPlaneCapabilitiesKHR)(ptr);
-		  return (VkExtent2D) (_obj.VkExtent2D);
+	 private static native java.nio.ByteBuffer  maxDstExtent0(Buffer ptr);/*
+		  VkDisplayPlaneCapabilitiesKHR vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  return (VkExtent2D) (vkObj->maxDstExtent);
 	 */
 
 

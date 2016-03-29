@@ -15,6 +15,8 @@ import bor.vulkan.structs.*;
 import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -53,9 +55,9 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  VkMirSurfaceCreateFlagsKHR 	flags	[int]
@@ -142,34 +144,46 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -178,16 +192,17 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		flags0(super.ptr, flags);
+		 flags0(this.ptr,  flags);
 	 }
 
 	/**
-	 * get method for field flags	[int]<br>
+	 * Get method for field flags	[int]<br>
 	 * Prototype: VkMirSurfaceCreateFlagsKHR  flags
 	 */ 
 	 public int flags(){
-		 // return  this.flags;
-		 return flags0(super.ptr);
+		 int var = flags0(super.ptr);
+		 this.flags = var;
+		 return this.flags;
 	 }
 
 	/**
@@ -196,16 +211,27 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void connection(MirConnection connection){
 		 this.connection = connection;
-		connection0(super.ptr, connection);
+		 ByteBuffer buff = (connection==null) ? null : connection.getHandle();
+		 connection0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field connection	[vkhandle]<br>
+	 * Get method for field connection	[vkhandle]<br>
 	 * Prototype: MirConnection*  connection
 	 */ 
 	 public MirConnection connection(){
-		 // return  this.connection;
-		 return connection0(super.ptr);
+
+		 ByteBuffer handle = connection0(super.ptr);
+		 if(handle == null){
+		    this.connection = null;
+		    return null;
+		  } else 
+ 		 if(this.connection == null){
+		    this.connection = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.connection).setHandle(handle);
+		  }
+		 return this.connection;
 	 }
 
 	/**
@@ -214,16 +240,27 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void mirSurface(MirSurface mirSurface){
 		 this.mirSurface = mirSurface;
-		mirSurface0(super.ptr, mirSurface);
+		 ByteBuffer buff = (mirSurface==null) ? null : mirSurface.getHandle();
+		 mirSurface0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field mirSurface	[vkhandle]<br>
+	 * Get method for field mirSurface	[vkhandle]<br>
 	 * Prototype: MirSurface*  mirSurface
 	 */ 
 	 public MirSurface mirSurface(){
-		 // return  this.mirSurface;
-		 return mirSurface0(super.ptr);
+
+		 ByteBuffer handle = mirSurface0(super.ptr);
+		 if(handle == null){
+		    this.mirSurface = null;
+		    return null;
+		  } else 
+ 		 if(this.mirSurface == null){
+		    this.mirSurface = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.mirSurface).setHandle(handle);
+		  }
+		 return this.mirSurface;
 	 }
 
 
@@ -234,90 +271,90 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkMirSurfaceCreateInfoKHR _obj = (VkMirSurfaceCreateInfoKHR)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkMirSurfaceCreateInfoKHR* vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkMirSurfaceCreateInfoKHR _obj = (VkMirSurfaceCreateInfoKHR)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkMirSurfaceCreateInfoKHR vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkMirSurfaceCreateInfoKHR _obj = (VkMirSurfaceCreateInfoKHR)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkMirSurfaceCreateInfoKHR* vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkMirSurfaceCreateInfoKHR _obj = (VkMirSurfaceCreateInfoKHR)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkMirSurfaceCreateInfoKHR vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkMirSurfaceCreateFlagsKHR  flags
 	 */ 
-	 private static native void flags0(ByteBuffer ptr, int _flags);/*
-		  VkMirSurfaceCreateInfoKHR _obj = (VkMirSurfaceCreateInfoKHR)(*ptr);
-		  _obj.flags = (VkMirSurfaceCreateFlagsKHR) (_flags);
+	 private static native void flags0(Buffer ptr, int _flags);/*
+		  VkMirSurfaceCreateInfoKHR* vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
+		  vkObj->flags = (VkMirSurfaceCreateFlagsKHR) (_flags);
 	  */
 
 	/**
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkMirSurfaceCreateFlagsKHR  flags
 	 */ 
-	 private static native int flags0(ByteBuffer ptr);/*
-		  VkMirSurfaceCreateInfoKHR _obj = (VkMirSurfaceCreateInfoKHR)(ptr);
-		  return (jint) (_obj.VkMirSurfaceCreateFlagsKHR);
+	 private static native int flags0(Buffer ptr);/*
+		  VkMirSurfaceCreateInfoKHR vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
+		  return (jint) (vkObj->flags);
 	 */
 
 	/**
 	 * native SET method for field connection	[vkhandle]<br>
 	 * Prototype: MirConnection*  connection
 	 */ 
-	 private static native void connection0(ByteBuffer ptr, MirConnection _connection);/*
-		  VkMirSurfaceCreateInfoKHR _obj = (VkMirSurfaceCreateInfoKHR)(*ptr);
-		  _obj.connection = (MirConnection*) (_connection);
+	 private static native void connection0(Buffer ptr, java.nio.ByteBuffer  _connection);/*
+		  VkMirSurfaceCreateInfoKHR* vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
+		  vkObj->connection = (MirConnection*) (_connection);
 	  */
 
 	/**
 	 * native GET method for field connection	[vkhandle]<br>
 	 * Prototype: MirConnection*  connection
 	 */ 
-	 private static native MirConnection connection0(ByteBuffer ptr);/*
-		  VkMirSurfaceCreateInfoKHR _obj = (VkMirSurfaceCreateInfoKHR)(ptr);
-		  return (MirConnection) (_obj.MirConnection*);
+	 private static native java.nio.ByteBuffer  connection0(Buffer ptr);/*
+		  VkMirSurfaceCreateInfoKHR vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
+		  return (MirConnection) (vkObj->connection);
 	 */
 
 	/**
 	 * native SET method for field mirSurface	[vkhandle]<br>
 	 * Prototype: MirSurface*  mirSurface
 	 */ 
-	 private static native void mirSurface0(ByteBuffer ptr, MirSurface _mirSurface);/*
-		  VkMirSurfaceCreateInfoKHR _obj = (VkMirSurfaceCreateInfoKHR)(*ptr);
-		  _obj.mirSurface = (MirSurface*) (_mirSurface);
+	 private static native void mirSurface0(Buffer ptr, java.nio.ByteBuffer  _mirSurface);/*
+		  VkMirSurfaceCreateInfoKHR* vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
+		  vkObj->mirSurface = (MirSurface*) (_mirSurface);
 	  */
 
 	/**
 	 * native GET method for field mirSurface	[vkhandle]<br>
 	 * Prototype: MirSurface*  mirSurface
 	 */ 
-	 private static native MirSurface mirSurface0(ByteBuffer ptr);/*
-		  VkMirSurfaceCreateInfoKHR _obj = (VkMirSurfaceCreateInfoKHR)(ptr);
-		  return (MirSurface) (_obj.MirSurface*);
+	 private static native java.nio.ByteBuffer  mirSurface0(Buffer ptr);/*
+		  VkMirSurfaceCreateInfoKHR vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
+		  return (MirSurface) (vkObj->mirSurface);
 	 */
 
 
