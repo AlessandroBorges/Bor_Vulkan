@@ -13,33 +13,6 @@ import bor.vulkan.VkHandleInterface;
  * @author Alessandro Borges
  * 
  */
-public class ANativeWindow extends VkHandle implements VkHandleInterface {
+public interface ANativeWindow extends VkHandleInterface {
 
-    private ANativeWindow(){
-        super();
-    }
-    
-    
-    /**
-     * To be called from native side 
-     * 
-     * @param nativePtr - ANativeWindow pointer
-     */
-    protected ANativeWindow(ByteBuffer nativePtr){
-        super(nativePtr);
-    } 
-    
-    /**
-     * Create a pointer P to contain a instance of this,
-     * with unset native pointer.
-     * Use {@link VkStruct#setPointer(ByteBuffer)} to set 
-     * valid native pointer.
-     *    
-     * @return An instance of P for this VkStruct with null pointer 
-     */
-    public static P<ANativeWindow> createNullPointer(){        
-        P<ANativeWindow> p = new P<ANativeWindow>(new ANativeWindow());        
-        return p;
-    }
-    
 }
