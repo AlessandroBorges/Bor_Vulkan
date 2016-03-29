@@ -18,7 +18,7 @@ import bor.vulkan.khr.MirSurface;
  *
  */
 public class PFNvkAllocationFunction extends VkHandle 
-  implements PFN_Function, VkHandleInterface {
+  implements PFNFunction, VkHandleInterface {
 
     /**
      * Ctor
@@ -31,7 +31,7 @@ public class PFNvkAllocationFunction extends VkHandle
      * Package protected Ctor.<br>
      * @param nativePtr - pointer to native PFNvkAllocationFunction
      */
-     PFNvkAllocationFunction(ByteBuffer nativePtr) {
+     public PFNvkAllocationFunction(ByteBuffer nativePtr) {
         super(nativePtr);        
     }
      

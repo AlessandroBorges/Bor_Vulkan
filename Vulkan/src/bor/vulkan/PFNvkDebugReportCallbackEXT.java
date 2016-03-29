@@ -9,7 +9,7 @@ import java.nio.ByteBuffer;
  * @author Alessandro Borges
  *
  */
-public class PFNvkDebugReportCallbackEXT extends VkHandle implements PFN_Function, VkHandleInterface {
+public class PFNvkDebugReportCallbackEXT extends VkHandle implements PFNFunction, VkHandleInterface {
 
     
     private PFNvkDebugReportCallbackEXT(){

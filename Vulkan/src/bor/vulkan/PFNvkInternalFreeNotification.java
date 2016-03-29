@@ -14,7 +14,7 @@ import java.nio.ByteBuffer;
  * @author Alessandro Borges
  *
  */
-public class PFNvkInternalFreeNotification extends VkHandle implements PFN_Function, VkHandleInterface {
+public class PFNvkInternalFreeNotification extends VkHandle implements PFNFunction, VkHandleInterface {
 
     private PFNvkInternalFreeNotification() {
     }
@@ -24,7 +24,7 @@ public class PFNvkInternalFreeNotification extends VkHandle implements PFN_Funct
      * 
      * @param nativePtr - pointer to native PFNvkInternalFreeNotification
      */
-    PFNvkInternalFreeNotification(ByteBuffer nativePtr) {
+    public PFNvkInternalFreeNotification(ByteBuffer nativePtr) {
         super(nativePtr);
     }
 
