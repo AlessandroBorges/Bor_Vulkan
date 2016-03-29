@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -147,16 +149,17 @@ public class VkBufferImageCopy extends VkStruct {
 	 */ 
 	 public void bufferOffset(long bufferOffset){
 		 this.bufferOffset = bufferOffset;
-		bufferOffset0(super.ptr, bufferOffset);
+		 bufferOffset0(this.ptr,  bufferOffset);
 	 }
 
 	/**
-	 * get method for field bufferOffset	[long]<br>
+	 * Get method for field bufferOffset	[long]<br>
 	 * Prototype: VkDeviceSize  bufferOffset
 	 */ 
 	 public long bufferOffset(){
-		 // return  this.bufferOffset;
-		 return bufferOffset0(super.ptr);
+		 long var = bufferOffset0(super.ptr);
+		 this.bufferOffset = var;
+		 return this.bufferOffset;
 	 }
 
 	/**
@@ -165,16 +168,17 @@ public class VkBufferImageCopy extends VkStruct {
 	 */ 
 	 public void bufferRowLength(int bufferRowLength){
 		 this.bufferRowLength = bufferRowLength;
-		bufferRowLength0(super.ptr, bufferRowLength);
+		 bufferRowLength0(this.ptr,  bufferRowLength);
 	 }
 
 	/**
-	 * get method for field bufferRowLength	[int]<br>
+	 * Get method for field bufferRowLength	[int]<br>
 	 * Prototype: uint32_t  bufferRowLength
 	 */ 
 	 public int bufferRowLength(){
-		 // return  this.bufferRowLength;
-		 return bufferRowLength0(super.ptr);
+		 int var = bufferRowLength0(super.ptr);
+		 this.bufferRowLength = var;
+		 return this.bufferRowLength;
 	 }
 
 	/**
@@ -183,16 +187,17 @@ public class VkBufferImageCopy extends VkStruct {
 	 */ 
 	 public void bufferImageHeight(int bufferImageHeight){
 		 this.bufferImageHeight = bufferImageHeight;
-		bufferImageHeight0(super.ptr, bufferImageHeight);
+		 bufferImageHeight0(this.ptr,  bufferImageHeight);
 	 }
 
 	/**
-	 * get method for field bufferImageHeight	[int]<br>
+	 * Get method for field bufferImageHeight	[int]<br>
 	 * Prototype: uint32_t  bufferImageHeight
 	 */ 
 	 public int bufferImageHeight(){
-		 // return  this.bufferImageHeight;
-		 return bufferImageHeight0(super.ptr);
+		 int var = bufferImageHeight0(super.ptr);
+		 this.bufferImageHeight = var;
+		 return this.bufferImageHeight;
 	 }
 
 	/**
@@ -201,16 +206,26 @@ public class VkBufferImageCopy extends VkStruct {
 	 */ 
 	 public void imageSubresource(VkImageSubresourceLayers imageSubresource){
 		 this.imageSubresource = imageSubresource;
-		imageSubresource0(super.ptr, imageSubresource);
+		 ByteBuffer buff = (imageSubresource==null) ? null : imageSubresource.getPointerStruct();
+		 imageSubresource0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field imageSubresource	[vkstruct]<br>
+	 * Get method for field imageSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  imageSubresource
 	 */ 
 	 public VkImageSubresourceLayers imageSubresource(){
-		 // return  this.imageSubresource;
-		 return imageSubresource0(super.ptr);
+		 ByteBuffer pointer = imageSubresource0(super.ptr);
+		 if(pointer == null){
+		    this.imageSubresource = null;
+		    return null;
+		  } else 
+ 		 if(this.imageSubresource == null){
+		    this.imageSubresource = new VkImageSubresourceLayers(pointer);
+		 }else{
+		    this.imageSubresource.setPointer(pointer);
+		  }
+		 return this.imageSubresource;
 	 }
 
 	/**
@@ -219,16 +234,26 @@ public class VkBufferImageCopy extends VkStruct {
 	 */ 
 	 public void imageOffset(VkOffset3D imageOffset){
 		 this.imageOffset = imageOffset;
-		imageOffset0(super.ptr, imageOffset);
+		 ByteBuffer buff = (imageOffset==null) ? null : imageOffset.getPointerStruct();
+		 imageOffset0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field imageOffset	[vkstruct]<br>
+	 * Get method for field imageOffset	[vkstruct]<br>
 	 * Prototype: VkOffset3D  imageOffset
 	 */ 
 	 public VkOffset3D imageOffset(){
-		 // return  this.imageOffset;
-		 return imageOffset0(super.ptr);
+		 ByteBuffer pointer = imageOffset0(super.ptr);
+		 if(pointer == null){
+		    this.imageOffset = null;
+		    return null;
+		  } else 
+ 		 if(this.imageOffset == null){
+		    this.imageOffset = new VkOffset3D(pointer);
+		 }else{
+		    this.imageOffset.setPointer(pointer);
+		  }
+		 return this.imageOffset;
 	 }
 
 	/**
@@ -237,16 +262,26 @@ public class VkBufferImageCopy extends VkStruct {
 	 */ 
 	 public void imageExtent(VkExtent3D imageExtent){
 		 this.imageExtent = imageExtent;
-		imageExtent0(super.ptr, imageExtent);
+		 ByteBuffer buff = (imageExtent==null) ? null : imageExtent.getPointerStruct();
+		 imageExtent0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field imageExtent	[vkstruct]<br>
+	 * Get method for field imageExtent	[vkstruct]<br>
 	 * Prototype: VkExtent3D  imageExtent
 	 */ 
 	 public VkExtent3D imageExtent(){
-		 // return  this.imageExtent;
-		 return imageExtent0(super.ptr);
+		 ByteBuffer pointer = imageExtent0(super.ptr);
+		 if(pointer == null){
+		    this.imageExtent = null;
+		    return null;
+		  } else 
+ 		 if(this.imageExtent == null){
+		    this.imageExtent = new VkExtent3D(pointer);
+		 }else{
+		    this.imageExtent.setPointer(pointer);
+		  }
+		 return this.imageExtent;
 	 }
 
 
@@ -257,108 +292,108 @@ public class VkBufferImageCopy extends VkStruct {
 	 * native SET method for field bufferOffset	[long]<br>
 	 * Prototype: VkDeviceSize  bufferOffset
 	 */ 
-	 private static native void bufferOffset0(ByteBuffer ptr, long _bufferOffset);/*
-		  VkBufferImageCopy _obj = (VkBufferImageCopy)(*ptr);
-		  _obj.bufferOffset = (VkDeviceSize) (_bufferOffset);
+	 private static native void bufferOffset0(Buffer ptr, long _bufferOffset);/*
+		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
+		  vkObj->bufferOffset = (VkDeviceSize) (_bufferOffset);
 	  */
 
 	/**
 	 * native GET method for field bufferOffset	[long]<br>
 	 * Prototype: VkDeviceSize  bufferOffset
 	 */ 
-	 private static native long bufferOffset0(ByteBuffer ptr);/*
-		  VkBufferImageCopy _obj = (VkBufferImageCopy)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long bufferOffset0(Buffer ptr);/*
+		  VkBufferImageCopy vkObj = (VkBufferImageCopy*)(ptr);
+		  return (jlong) (vkObj->bufferOffset);
 	 */
 
 	/**
 	 * native SET method for field bufferRowLength	[int]<br>
 	 * Prototype: uint32_t  bufferRowLength
 	 */ 
-	 private static native void bufferRowLength0(ByteBuffer ptr, int _bufferRowLength);/*
-		  VkBufferImageCopy _obj = (VkBufferImageCopy)(*ptr);
-		  _obj.bufferRowLength = (uint32_t) (_bufferRowLength);
+	 private static native void bufferRowLength0(Buffer ptr, int _bufferRowLength);/*
+		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
+		  vkObj->bufferRowLength = (uint32_t) (_bufferRowLength);
 	  */
 
 	/**
 	 * native GET method for field bufferRowLength	[int]<br>
 	 * Prototype: uint32_t  bufferRowLength
 	 */ 
-	 private static native int bufferRowLength0(ByteBuffer ptr);/*
-		  VkBufferImageCopy _obj = (VkBufferImageCopy)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int bufferRowLength0(Buffer ptr);/*
+		  VkBufferImageCopy vkObj = (VkBufferImageCopy*)(ptr);
+		  return (jint) (vkObj->bufferRowLength);
 	 */
 
 	/**
 	 * native SET method for field bufferImageHeight	[int]<br>
 	 * Prototype: uint32_t  bufferImageHeight
 	 */ 
-	 private static native void bufferImageHeight0(ByteBuffer ptr, int _bufferImageHeight);/*
-		  VkBufferImageCopy _obj = (VkBufferImageCopy)(*ptr);
-		  _obj.bufferImageHeight = (uint32_t) (_bufferImageHeight);
+	 private static native void bufferImageHeight0(Buffer ptr, int _bufferImageHeight);/*
+		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
+		  vkObj->bufferImageHeight = (uint32_t) (_bufferImageHeight);
 	  */
 
 	/**
 	 * native GET method for field bufferImageHeight	[int]<br>
 	 * Prototype: uint32_t  bufferImageHeight
 	 */ 
-	 private static native int bufferImageHeight0(ByteBuffer ptr);/*
-		  VkBufferImageCopy _obj = (VkBufferImageCopy)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int bufferImageHeight0(Buffer ptr);/*
+		  VkBufferImageCopy vkObj = (VkBufferImageCopy*)(ptr);
+		  return (jint) (vkObj->bufferImageHeight);
 	 */
 
 	/**
 	 * native SET method for field imageSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  imageSubresource
 	 */ 
-	 private static native void imageSubresource0(ByteBuffer ptr, VkImageSubresourceLayers _imageSubresource);/*
-		  VkBufferImageCopy _obj = (VkBufferImageCopy)(*ptr);
-		  _obj.imageSubresource = (VkImageSubresourceLayers) (_imageSubresource);
+	 private static native void imageSubresource0(Buffer ptr, java.nio.ByteBuffer  _imageSubresource);/*
+		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
+		  vkObj->imageSubresource = (VkImageSubresourceLayers) (_imageSubresource);
 	  */
 
 	/**
 	 * native GET method for field imageSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  imageSubresource
 	 */ 
-	 private static native VkImageSubresourceLayers imageSubresource0(ByteBuffer ptr);/*
-		  VkBufferImageCopy _obj = (VkBufferImageCopy)(ptr);
-		  return (VkImageSubresourceLayers) (_obj.VkImageSubresourceLayers);
+	 private static native java.nio.ByteBuffer  imageSubresource0(Buffer ptr);/*
+		  VkBufferImageCopy vkObj = (VkBufferImageCopy*)(ptr);
+		  return (VkImageSubresourceLayers) (vkObj->imageSubresource);
 	 */
 
 	/**
 	 * native SET method for field imageOffset	[vkstruct]<br>
 	 * Prototype: VkOffset3D  imageOffset
 	 */ 
-	 private static native void imageOffset0(ByteBuffer ptr, VkOffset3D _imageOffset);/*
-		  VkBufferImageCopy _obj = (VkBufferImageCopy)(*ptr);
-		  _obj.imageOffset = (VkOffset3D) (_imageOffset);
+	 private static native void imageOffset0(Buffer ptr, java.nio.ByteBuffer  _imageOffset);/*
+		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
+		  vkObj->imageOffset = (VkOffset3D) (_imageOffset);
 	  */
 
 	/**
 	 * native GET method for field imageOffset	[vkstruct]<br>
 	 * Prototype: VkOffset3D  imageOffset
 	 */ 
-	 private static native VkOffset3D imageOffset0(ByteBuffer ptr);/*
-		  VkBufferImageCopy _obj = (VkBufferImageCopy)(ptr);
-		  return (VkOffset3D) (_obj.VkOffset3D);
+	 private static native java.nio.ByteBuffer  imageOffset0(Buffer ptr);/*
+		  VkBufferImageCopy vkObj = (VkBufferImageCopy*)(ptr);
+		  return (VkOffset3D) (vkObj->imageOffset);
 	 */
 
 	/**
 	 * native SET method for field imageExtent	[vkstruct]<br>
 	 * Prototype: VkExtent3D  imageExtent
 	 */ 
-	 private static native void imageExtent0(ByteBuffer ptr, VkExtent3D _imageExtent);/*
-		  VkBufferImageCopy _obj = (VkBufferImageCopy)(*ptr);
-		  _obj.imageExtent = (VkExtent3D) (_imageExtent);
+	 private static native void imageExtent0(Buffer ptr, java.nio.ByteBuffer  _imageExtent);/*
+		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
+		  vkObj->imageExtent = (VkExtent3D) (_imageExtent);
 	  */
 
 	/**
 	 * native GET method for field imageExtent	[vkstruct]<br>
 	 * Prototype: VkExtent3D  imageExtent
 	 */ 
-	 private static native VkExtent3D imageExtent0(ByteBuffer ptr);/*
-		  VkBufferImageCopy _obj = (VkBufferImageCopy)(ptr);
-		  return (VkExtent3D) (_obj.VkExtent3D);
+	 private static native java.nio.ByteBuffer  imageExtent0(Buffer ptr);/*
+		  VkBufferImageCopy vkObj = (VkBufferImageCopy*)(ptr);
+		  return (VkExtent3D) (vkObj->imageExtent);
 	 */
 
 

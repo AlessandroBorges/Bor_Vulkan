@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -123,16 +125,17 @@ public class VkMemoryHeap extends VkStruct {
 	 */ 
 	 public void size(long size){
 		 this.size = size;
-		size0(super.ptr, size);
+		 size0(this.ptr,  size);
 	 }
 
 	/**
-	 * get method for field size	[long]<br>
+	 * Get method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public long size(){
-		 // return  this.size;
-		 return size0(super.ptr);
+		 long var = size0(super.ptr);
+		 this.size = var;
+		 return this.size;
 	 }
 
 	/**
@@ -141,16 +144,17 @@ public class VkMemoryHeap extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		flags0(super.ptr, flags);
+		 flags0(this.ptr,  flags);
 	 }
 
 	/**
-	 * get method for field flags	[int]<br>
+	 * Get method for field flags	[int]<br>
 	 * Prototype: VkMemoryHeapFlags  flags
 	 */ 
 	 public int flags(){
-		 // return  this.flags;
-		 return flags0(super.ptr);
+		 int var = flags0(super.ptr);
+		 this.flags = var;
+		 return this.flags;
 	 }
 
 
@@ -161,36 +165,36 @@ public class VkMemoryHeap extends VkStruct {
 	 * native SET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
-	 private static native void size0(ByteBuffer ptr, long _size);/*
-		  VkMemoryHeap _obj = (VkMemoryHeap)(*ptr);
-		  _obj.size = (VkDeviceSize) (_size);
+	 private static native void size0(Buffer ptr, long _size);/*
+		  VkMemoryHeap* vkObj = (VkMemoryHeap*)(ptr);
+		  vkObj->size = (VkDeviceSize) (_size);
 	  */
 
 	/**
 	 * native GET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
-	 private static native long size0(ByteBuffer ptr);/*
-		  VkMemoryHeap _obj = (VkMemoryHeap)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long size0(Buffer ptr);/*
+		  VkMemoryHeap vkObj = (VkMemoryHeap*)(ptr);
+		  return (jlong) (vkObj->size);
 	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkMemoryHeapFlags  flags
 	 */ 
-	 private static native void flags0(ByteBuffer ptr, int _flags);/*
-		  VkMemoryHeap _obj = (VkMemoryHeap)(*ptr);
-		  _obj.flags = (VkMemoryHeapFlags) (_flags);
+	 private static native void flags0(Buffer ptr, int _flags);/*
+		  VkMemoryHeap* vkObj = (VkMemoryHeap*)(ptr);
+		  vkObj->flags = (VkMemoryHeapFlags) (_flags);
 	  */
 
 	/**
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkMemoryHeapFlags  flags
 	 */ 
-	 private static native int flags0(ByteBuffer ptr);/*
-		  VkMemoryHeap _obj = (VkMemoryHeap)(ptr);
-		  return (jint) (_obj.VkMemoryHeapFlags);
+	 private static native int flags0(Buffer ptr);/*
+		  VkMemoryHeap vkObj = (VkMemoryHeap*)(ptr);
+		  return (jint) (vkObj->flags);
 	 */
 
 

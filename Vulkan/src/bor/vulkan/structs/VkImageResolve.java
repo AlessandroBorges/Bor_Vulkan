@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -141,16 +143,26 @@ public class VkImageResolve extends VkStruct {
 	 */ 
 	 public void srcSubresource(VkImageSubresourceLayers srcSubresource){
 		 this.srcSubresource = srcSubresource;
-		srcSubresource0(super.ptr, srcSubresource);
+		 ByteBuffer buff = (srcSubresource==null) ? null : srcSubresource.getPointerStruct();
+		 srcSubresource0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field srcSubresource	[vkstruct]<br>
+	 * Get method for field srcSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
 	 */ 
 	 public VkImageSubresourceLayers srcSubresource(){
-		 // return  this.srcSubresource;
-		 return srcSubresource0(super.ptr);
+		 ByteBuffer pointer = srcSubresource0(super.ptr);
+		 if(pointer == null){
+		    this.srcSubresource = null;
+		    return null;
+		  } else 
+ 		 if(this.srcSubresource == null){
+		    this.srcSubresource = new VkImageSubresourceLayers(pointer);
+		 }else{
+		    this.srcSubresource.setPointer(pointer);
+		  }
+		 return this.srcSubresource;
 	 }
 
 	/**
@@ -159,16 +171,26 @@ public class VkImageResolve extends VkStruct {
 	 */ 
 	 public void srcOffset(VkOffset3D srcOffset){
 		 this.srcOffset = srcOffset;
-		srcOffset0(super.ptr, srcOffset);
+		 ByteBuffer buff = (srcOffset==null) ? null : srcOffset.getPointerStruct();
+		 srcOffset0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field srcOffset	[vkstruct]<br>
+	 * Get method for field srcOffset	[vkstruct]<br>
 	 * Prototype: VkOffset3D  srcOffset
 	 */ 
 	 public VkOffset3D srcOffset(){
-		 // return  this.srcOffset;
-		 return srcOffset0(super.ptr);
+		 ByteBuffer pointer = srcOffset0(super.ptr);
+		 if(pointer == null){
+		    this.srcOffset = null;
+		    return null;
+		  } else 
+ 		 if(this.srcOffset == null){
+		    this.srcOffset = new VkOffset3D(pointer);
+		 }else{
+		    this.srcOffset.setPointer(pointer);
+		  }
+		 return this.srcOffset;
 	 }
 
 	/**
@@ -177,16 +199,26 @@ public class VkImageResolve extends VkStruct {
 	 */ 
 	 public void dstSubresource(VkImageSubresourceLayers dstSubresource){
 		 this.dstSubresource = dstSubresource;
-		dstSubresource0(super.ptr, dstSubresource);
+		 ByteBuffer buff = (dstSubresource==null) ? null : dstSubresource.getPointerStruct();
+		 dstSubresource0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field dstSubresource	[vkstruct]<br>
+	 * Get method for field dstSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
 	 */ 
 	 public VkImageSubresourceLayers dstSubresource(){
-		 // return  this.dstSubresource;
-		 return dstSubresource0(super.ptr);
+		 ByteBuffer pointer = dstSubresource0(super.ptr);
+		 if(pointer == null){
+		    this.dstSubresource = null;
+		    return null;
+		  } else 
+ 		 if(this.dstSubresource == null){
+		    this.dstSubresource = new VkImageSubresourceLayers(pointer);
+		 }else{
+		    this.dstSubresource.setPointer(pointer);
+		  }
+		 return this.dstSubresource;
 	 }
 
 	/**
@@ -195,16 +227,26 @@ public class VkImageResolve extends VkStruct {
 	 */ 
 	 public void dstOffset(VkOffset3D dstOffset){
 		 this.dstOffset = dstOffset;
-		dstOffset0(super.ptr, dstOffset);
+		 ByteBuffer buff = (dstOffset==null) ? null : dstOffset.getPointerStruct();
+		 dstOffset0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field dstOffset	[vkstruct]<br>
+	 * Get method for field dstOffset	[vkstruct]<br>
 	 * Prototype: VkOffset3D  dstOffset
 	 */ 
 	 public VkOffset3D dstOffset(){
-		 // return  this.dstOffset;
-		 return dstOffset0(super.ptr);
+		 ByteBuffer pointer = dstOffset0(super.ptr);
+		 if(pointer == null){
+		    this.dstOffset = null;
+		    return null;
+		  } else 
+ 		 if(this.dstOffset == null){
+		    this.dstOffset = new VkOffset3D(pointer);
+		 }else{
+		    this.dstOffset.setPointer(pointer);
+		  }
+		 return this.dstOffset;
 	 }
 
 	/**
@@ -213,16 +255,26 @@ public class VkImageResolve extends VkStruct {
 	 */ 
 	 public void extent(VkExtent3D extent){
 		 this.extent = extent;
-		extent0(super.ptr, extent);
+		 ByteBuffer buff = (extent==null) ? null : extent.getPointerStruct();
+		 extent0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field extent	[vkstruct]<br>
+	 * Get method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 public VkExtent3D extent(){
-		 // return  this.extent;
-		 return extent0(super.ptr);
+		 ByteBuffer pointer = extent0(super.ptr);
+		 if(pointer == null){
+		    this.extent = null;
+		    return null;
+		  } else 
+ 		 if(this.extent == null){
+		    this.extent = new VkExtent3D(pointer);
+		 }else{
+		    this.extent.setPointer(pointer);
+		  }
+		 return this.extent;
 	 }
 
 
@@ -233,90 +285,90 @@ public class VkImageResolve extends VkStruct {
 	 * native SET method for field srcSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
 	 */ 
-	 private static native void srcSubresource0(ByteBuffer ptr, VkImageSubresourceLayers _srcSubresource);/*
-		  VkImageResolve _obj = (VkImageResolve)(*ptr);
-		  _obj.srcSubresource = (VkImageSubresourceLayers) (_srcSubresource);
+	 private static native void srcSubresource0(Buffer ptr, java.nio.ByteBuffer  _srcSubresource);/*
+		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
+		  vkObj->srcSubresource = (VkImageSubresourceLayers) (_srcSubresource);
 	  */
 
 	/**
 	 * native GET method for field srcSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
 	 */ 
-	 private static native VkImageSubresourceLayers srcSubresource0(ByteBuffer ptr);/*
-		  VkImageResolve _obj = (VkImageResolve)(ptr);
-		  return (VkImageSubresourceLayers) (_obj.VkImageSubresourceLayers);
+	 private static native java.nio.ByteBuffer  srcSubresource0(Buffer ptr);/*
+		  VkImageResolve vkObj = (VkImageResolve*)(ptr);
+		  return (VkImageSubresourceLayers) (vkObj->srcSubresource);
 	 */
 
 	/**
 	 * native SET method for field srcOffset	[vkstruct]<br>
 	 * Prototype: VkOffset3D  srcOffset
 	 */ 
-	 private static native void srcOffset0(ByteBuffer ptr, VkOffset3D _srcOffset);/*
-		  VkImageResolve _obj = (VkImageResolve)(*ptr);
-		  _obj.srcOffset = (VkOffset3D) (_srcOffset);
+	 private static native void srcOffset0(Buffer ptr, java.nio.ByteBuffer  _srcOffset);/*
+		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
+		  vkObj->srcOffset = (VkOffset3D) (_srcOffset);
 	  */
 
 	/**
 	 * native GET method for field srcOffset	[vkstruct]<br>
 	 * Prototype: VkOffset3D  srcOffset
 	 */ 
-	 private static native VkOffset3D srcOffset0(ByteBuffer ptr);/*
-		  VkImageResolve _obj = (VkImageResolve)(ptr);
-		  return (VkOffset3D) (_obj.VkOffset3D);
+	 private static native java.nio.ByteBuffer  srcOffset0(Buffer ptr);/*
+		  VkImageResolve vkObj = (VkImageResolve*)(ptr);
+		  return (VkOffset3D) (vkObj->srcOffset);
 	 */
 
 	/**
 	 * native SET method for field dstSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
 	 */ 
-	 private static native void dstSubresource0(ByteBuffer ptr, VkImageSubresourceLayers _dstSubresource);/*
-		  VkImageResolve _obj = (VkImageResolve)(*ptr);
-		  _obj.dstSubresource = (VkImageSubresourceLayers) (_dstSubresource);
+	 private static native void dstSubresource0(Buffer ptr, java.nio.ByteBuffer  _dstSubresource);/*
+		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
+		  vkObj->dstSubresource = (VkImageSubresourceLayers) (_dstSubresource);
 	  */
 
 	/**
 	 * native GET method for field dstSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
 	 */ 
-	 private static native VkImageSubresourceLayers dstSubresource0(ByteBuffer ptr);/*
-		  VkImageResolve _obj = (VkImageResolve)(ptr);
-		  return (VkImageSubresourceLayers) (_obj.VkImageSubresourceLayers);
+	 private static native java.nio.ByteBuffer  dstSubresource0(Buffer ptr);/*
+		  VkImageResolve vkObj = (VkImageResolve*)(ptr);
+		  return (VkImageSubresourceLayers) (vkObj->dstSubresource);
 	 */
 
 	/**
 	 * native SET method for field dstOffset	[vkstruct]<br>
 	 * Prototype: VkOffset3D  dstOffset
 	 */ 
-	 private static native void dstOffset0(ByteBuffer ptr, VkOffset3D _dstOffset);/*
-		  VkImageResolve _obj = (VkImageResolve)(*ptr);
-		  _obj.dstOffset = (VkOffset3D) (_dstOffset);
+	 private static native void dstOffset0(Buffer ptr, java.nio.ByteBuffer  _dstOffset);/*
+		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
+		  vkObj->dstOffset = (VkOffset3D) (_dstOffset);
 	  */
 
 	/**
 	 * native GET method for field dstOffset	[vkstruct]<br>
 	 * Prototype: VkOffset3D  dstOffset
 	 */ 
-	 private static native VkOffset3D dstOffset0(ByteBuffer ptr);/*
-		  VkImageResolve _obj = (VkImageResolve)(ptr);
-		  return (VkOffset3D) (_obj.VkOffset3D);
+	 private static native java.nio.ByteBuffer  dstOffset0(Buffer ptr);/*
+		  VkImageResolve vkObj = (VkImageResolve*)(ptr);
+		  return (VkOffset3D) (vkObj->dstOffset);
 	 */
 
 	/**
 	 * native SET method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent3D  extent
 	 */ 
-	 private static native void extent0(ByteBuffer ptr, VkExtent3D _extent);/*
-		  VkImageResolve _obj = (VkImageResolve)(*ptr);
-		  _obj.extent = (VkExtent3D) (_extent);
+	 private static native void extent0(Buffer ptr, java.nio.ByteBuffer  _extent);/*
+		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
+		  vkObj->extent = (VkExtent3D) (_extent);
 	  */
 
 	/**
 	 * native GET method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent3D  extent
 	 */ 
-	 private static native VkExtent3D extent0(ByteBuffer ptr);/*
-		  VkImageResolve _obj = (VkImageResolve)(ptr);
-		  return (VkExtent3D) (_obj.VkExtent3D);
+	 private static native java.nio.ByteBuffer  extent0(Buffer ptr);/*
+		  VkImageResolve vkObj = (VkImageResolve*)(ptr);
+		  return (VkExtent3D) (vkObj->extent);
 	 */
 
 

@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -129,16 +131,17 @@ public class VkExtent3D extends VkStruct {
 	 */ 
 	 public void width(int width){
 		 this.width = width;
-		width0(super.ptr, width);
+		 width0(this.ptr,  width);
 	 }
 
 	/**
-	 * get method for field width	[int]<br>
+	 * Get method for field width	[int]<br>
 	 * Prototype: uint32_t  width
 	 */ 
 	 public int width(){
-		 // return  this.width;
-		 return width0(super.ptr);
+		 int var = width0(super.ptr);
+		 this.width = var;
+		 return this.width;
 	 }
 
 	/**
@@ -147,16 +150,17 @@ public class VkExtent3D extends VkStruct {
 	 */ 
 	 public void height(int height){
 		 this.height = height;
-		height0(super.ptr, height);
+		 height0(this.ptr,  height);
 	 }
 
 	/**
-	 * get method for field height	[int]<br>
+	 * Get method for field height	[int]<br>
 	 * Prototype: uint32_t  height
 	 */ 
 	 public int height(){
-		 // return  this.height;
-		 return height0(super.ptr);
+		 int var = height0(super.ptr);
+		 this.height = var;
+		 return this.height;
 	 }
 
 	/**
@@ -165,16 +169,17 @@ public class VkExtent3D extends VkStruct {
 	 */ 
 	 public void depth(int depth){
 		 this.depth = depth;
-		depth0(super.ptr, depth);
+		 depth0(this.ptr,  depth);
 	 }
 
 	/**
-	 * get method for field depth	[int]<br>
+	 * Get method for field depth	[int]<br>
 	 * Prototype: uint32_t  depth
 	 */ 
 	 public int depth(){
-		 // return  this.depth;
-		 return depth0(super.ptr);
+		 int var = depth0(super.ptr);
+		 this.depth = var;
+		 return this.depth;
 	 }
 
 
@@ -185,54 +190,54 @@ public class VkExtent3D extends VkStruct {
 	 * native SET method for field width	[int]<br>
 	 * Prototype: uint32_t  width
 	 */ 
-	 private static native void width0(ByteBuffer ptr, int _width);/*
-		  VkExtent3D _obj = (VkExtent3D)(*ptr);
-		  _obj.width = (uint32_t) (_width);
+	 private static native void width0(Buffer ptr, int _width);/*
+		  VkExtent3D* vkObj = (VkExtent3D*)(ptr);
+		  vkObj->width = (uint32_t) (_width);
 	  */
 
 	/**
 	 * native GET method for field width	[int]<br>
 	 * Prototype: uint32_t  width
 	 */ 
-	 private static native int width0(ByteBuffer ptr);/*
-		  VkExtent3D _obj = (VkExtent3D)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int width0(Buffer ptr);/*
+		  VkExtent3D vkObj = (VkExtent3D*)(ptr);
+		  return (jint) (vkObj->width);
 	 */
 
 	/**
 	 * native SET method for field height	[int]<br>
 	 * Prototype: uint32_t  height
 	 */ 
-	 private static native void height0(ByteBuffer ptr, int _height);/*
-		  VkExtent3D _obj = (VkExtent3D)(*ptr);
-		  _obj.height = (uint32_t) (_height);
+	 private static native void height0(Buffer ptr, int _height);/*
+		  VkExtent3D* vkObj = (VkExtent3D*)(ptr);
+		  vkObj->height = (uint32_t) (_height);
 	  */
 
 	/**
 	 * native GET method for field height	[int]<br>
 	 * Prototype: uint32_t  height
 	 */ 
-	 private static native int height0(ByteBuffer ptr);/*
-		  VkExtent3D _obj = (VkExtent3D)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int height0(Buffer ptr);/*
+		  VkExtent3D vkObj = (VkExtent3D*)(ptr);
+		  return (jint) (vkObj->height);
 	 */
 
 	/**
 	 * native SET method for field depth	[int]<br>
 	 * Prototype: uint32_t  depth
 	 */ 
-	 private static native void depth0(ByteBuffer ptr, int _depth);/*
-		  VkExtent3D _obj = (VkExtent3D)(*ptr);
-		  _obj.depth = (uint32_t) (_depth);
+	 private static native void depth0(Buffer ptr, int _depth);/*
+		  VkExtent3D* vkObj = (VkExtent3D*)(ptr);
+		  vkObj->depth = (uint32_t) (_depth);
 	  */
 
 	/**
 	 * native GET method for field depth	[int]<br>
 	 * Prototype: uint32_t  depth
 	 */ 
-	 private static native int depth0(ByteBuffer ptr);/*
-		  VkExtent3D _obj = (VkExtent3D)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int depth0(Buffer ptr);/*
+		  VkExtent3D vkObj = (VkExtent3D*)(ptr);
+		  return (jint) (vkObj->depth);
 	 */
 
 

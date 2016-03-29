@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -123,16 +125,17 @@ public class VkClearDepthStencilValue extends VkStruct {
 	 */ 
 	 public void depth(float depth){
 		 this.depth = depth;
-		depth0(super.ptr, depth);
+		 depth0(this.ptr,  depth);
 	 }
 
 	/**
-	 * get method for field depth	[float]<br>
+	 * Get method for field depth	[float]<br>
 	 * Prototype: float  depth
 	 */ 
 	 public float depth(){
-		 // return  this.depth;
-		 return depth0(super.ptr);
+		 float var = depth0(super.ptr);
+		 this.depth = var;
+		 return this.depth;
 	 }
 
 	/**
@@ -141,16 +144,17 @@ public class VkClearDepthStencilValue extends VkStruct {
 	 */ 
 	 public void stencil(int stencil){
 		 this.stencil = stencil;
-		stencil0(super.ptr, stencil);
+		 stencil0(this.ptr,  stencil);
 	 }
 
 	/**
-	 * get method for field stencil	[int]<br>
+	 * Get method for field stencil	[int]<br>
 	 * Prototype: uint32_t  stencil
 	 */ 
 	 public int stencil(){
-		 // return  this.stencil;
-		 return stencil0(super.ptr);
+		 int var = stencil0(super.ptr);
+		 this.stencil = var;
+		 return this.stencil;
 	 }
 
 
@@ -161,36 +165,36 @@ public class VkClearDepthStencilValue extends VkStruct {
 	 * native SET method for field depth	[float]<br>
 	 * Prototype: float  depth
 	 */ 
-	 private static native void depth0(ByteBuffer ptr, float _depth);/*
-		  VkClearDepthStencilValue _obj = (VkClearDepthStencilValue)(*ptr);
-		  _obj.depth = (float) (_depth);
+	 private static native void depth0(Buffer ptr, float _depth);/*
+		  VkClearDepthStencilValue* vkObj = (VkClearDepthStencilValue*)(ptr);
+		  vkObj->depth = (float) (_depth);
 	  */
 
 	/**
 	 * native GET method for field depth	[float]<br>
 	 * Prototype: float  depth
 	 */ 
-	 private static native float depth0(ByteBuffer ptr);/*
-		  VkClearDepthStencilValue _obj = (VkClearDepthStencilValue)(ptr);
-		  return (jfloat) (_obj.float);
+	 private static native float depth0(Buffer ptr);/*
+		  VkClearDepthStencilValue vkObj = (VkClearDepthStencilValue*)(ptr);
+		  return (jfloat) (vkObj->depth);
 	 */
 
 	/**
 	 * native SET method for field stencil	[int]<br>
 	 * Prototype: uint32_t  stencil
 	 */ 
-	 private static native void stencil0(ByteBuffer ptr, int _stencil);/*
-		  VkClearDepthStencilValue _obj = (VkClearDepthStencilValue)(*ptr);
-		  _obj.stencil = (uint32_t) (_stencil);
+	 private static native void stencil0(Buffer ptr, int _stencil);/*
+		  VkClearDepthStencilValue* vkObj = (VkClearDepthStencilValue*)(ptr);
+		  vkObj->stencil = (uint32_t) (_stencil);
 	  */
 
 	/**
 	 * native GET method for field stencil	[int]<br>
 	 * Prototype: uint32_t  stencil
 	 */ 
-	 private static native int stencil0(ByteBuffer ptr);/*
-		  VkClearDepthStencilValue _obj = (VkClearDepthStencilValue)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int stencil0(Buffer ptr);/*
+		  VkClearDepthStencilValue vkObj = (VkClearDepthStencilValue*)(ptr);
+		  return (jint) (vkObj->stencil);
 	 */
 
 

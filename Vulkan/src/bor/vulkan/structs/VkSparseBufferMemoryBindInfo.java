@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -55,9 +57,9 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	 int 	bindCount;
 
 	/**
-	 *  const VkSparseMemoryBind* 	pBinds	[p]
+	 *  const VkSparseMemoryBind* 	pBinds	[vkstruct]
 	 */ 
-	 P<VkSparseMemoryBind>  	pBinds;
+	  VkSparseMemoryBind  	pBinds;
 
 	/**
 	 * Ctor
@@ -129,16 +131,27 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	 */ 
 	 public void buffer(VkBuffer buffer){
 		 this.buffer = buffer;
-		buffer0(super.ptr, buffer);
+		 ByteBuffer buff = (buffer==null) ? null : buffer.getHandle();
+		 buffer0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field buffer	[vkhandle]<br>
+	 * Get method for field buffer	[vkhandle]<br>
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 public VkBuffer buffer(){
-		 // return  this.buffer;
-		 return buffer0(super.ptr);
+
+		 ByteBuffer handle = buffer0(super.ptr);
+		 if(handle == null){
+		    this.buffer = null;
+		    return null;
+		  } else 
+ 		 if(this.buffer == null){
+		    this.buffer = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.buffer).setHandle(handle);
+		  }
+		 return this.buffer;
 	 }
 
 	/**
@@ -147,34 +160,45 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	 */ 
 	 public void bindCount(int bindCount){
 		 this.bindCount = bindCount;
-		bindCount0(super.ptr, bindCount);
+		 bindCount0(this.ptr,  bindCount);
 	 }
 
 	/**
-	 * get method for field bindCount	[int]<br>
+	 * Get method for field bindCount	[int]<br>
 	 * Prototype: uint32_t  bindCount
 	 */ 
 	 public int bindCount(){
-		 // return  this.bindCount;
-		 return bindCount0(super.ptr);
+		 int var = bindCount0(super.ptr);
+		 this.bindCount = var;
+		 return this.bindCount;
 	 }
 
 	/**
-	 * Set method for field pBinds	[p]<br>
+	 * Set method for field pBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseMemoryBind*  pBinds
 	 */ 
-	 public void pBinds(P<VkSparseMemoryBind>  pBinds){
+	 public void pBinds( VkSparseMemoryBind  pBinds){
 		 this.pBinds = pBinds;
-		pBinds0(super.ptr, pBinds);
+		 ByteBuffer buff = (pBinds==null) ? null : pBinds.getPointerStruct();
+		 pBinds0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pBinds	[p]<br>
+	 * Get method for field pBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseMemoryBind*  pBinds
 	 */ 
-	 public P<VkSparseMemoryBind>  pBinds(){
-		 // return  this.pBinds;
-		 return pBinds0(super.ptr);
+	 public  VkSparseMemoryBind  pBinds(){
+		 ByteBuffer pointer = pBinds0(super.ptr);
+		 if(pointer == null){
+		    this.pBinds = null;
+		    return null;
+		  } else 
+ 		 if(this.pBinds == null){
+		    this.pBinds = new  VkSparseMemoryBind (pointer);
+		 }else{
+		    this.pBinds.setPointer(pointer);
+		  }
+		 return this.pBinds;
 	 }
 
 
@@ -185,54 +209,54 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	 * native SET method for field buffer	[vkhandle]<br>
 	 * Prototype: VkBuffer  buffer
 	 */ 
-	 private static native void buffer0(ByteBuffer ptr, VkBuffer _buffer);/*
-		  VkSparseBufferMemoryBindInfo _obj = (VkSparseBufferMemoryBindInfo)(*ptr);
-		  _obj.buffer = (VkBuffer) (_buffer);
+	 private static native void buffer0(Buffer ptr, java.nio.ByteBuffer  _buffer);/*
+		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
+		  vkObj->buffer = (VkBuffer) (_buffer);
 	  */
 
 	/**
 	 * native GET method for field buffer	[vkhandle]<br>
 	 * Prototype: VkBuffer  buffer
 	 */ 
-	 private static native VkBuffer buffer0(ByteBuffer ptr);/*
-		  VkSparseBufferMemoryBindInfo _obj = (VkSparseBufferMemoryBindInfo)(ptr);
-		  return (VkBuffer) (_obj.VkBuffer);
+	 private static native java.nio.ByteBuffer  buffer0(Buffer ptr);/*
+		  VkSparseBufferMemoryBindInfo vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
+		  return (jobject) (vkObj->buffer);
 	 */
 
 	/**
 	 * native SET method for field bindCount	[int]<br>
 	 * Prototype: uint32_t  bindCount
 	 */ 
-	 private static native void bindCount0(ByteBuffer ptr, int _bindCount);/*
-		  VkSparseBufferMemoryBindInfo _obj = (VkSparseBufferMemoryBindInfo)(*ptr);
-		  _obj.bindCount = (uint32_t) (_bindCount);
+	 private static native void bindCount0(Buffer ptr, int _bindCount);/*
+		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
+		  vkObj->bindCount = (uint32_t) (_bindCount);
 	  */
 
 	/**
 	 * native GET method for field bindCount	[int]<br>
 	 * Prototype: uint32_t  bindCount
 	 */ 
-	 private static native int bindCount0(ByteBuffer ptr);/*
-		  VkSparseBufferMemoryBindInfo _obj = (VkSparseBufferMemoryBindInfo)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int bindCount0(Buffer ptr);/*
+		  VkSparseBufferMemoryBindInfo vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
+		  return (jint) (vkObj->bindCount);
 	 */
 
 	/**
-	 * native SET method for field pBinds	[p]<br>
+	 * native SET method for field pBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseMemoryBind*  pBinds
 	 */ 
-	 private static native void pBinds0(ByteBuffer ptr, P<VkSparseMemoryBind>  _pBinds);/*
-		  VkSparseBufferMemoryBindInfo _obj = (VkSparseBufferMemoryBindInfo)(*ptr);
-		  _obj.pBinds = (const VkSparseMemoryBind*) (_pBinds);
+	 private static native void pBinds0(Buffer ptr, java.nio.ByteBuffer  _pBinds);/*
+		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
+		  vkObj->pBinds = (const VkSparseMemoryBind*) (_pBinds);
 	  */
 
 	/**
-	 * native GET method for field pBinds	[p]<br>
+	 * native GET method for field pBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseMemoryBind*  pBinds
 	 */ 
-	 private static native P<VkSparseMemoryBind>  pBinds0(ByteBuffer ptr);/*
-		  VkSparseBufferMemoryBindInfo _obj = (VkSparseBufferMemoryBindInfo)(ptr);
-		  return (P<VkSparseMemoryBind> ) (_obj.const VkSparseMemoryBind*);
+	 private static native java.nio.ByteBuffer  pBinds0(Buffer ptr);/*
+		  VkSparseBufferMemoryBindInfo vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
+		  return ( VkSparseMemoryBind ) (vkObj->pBinds);
 	 */
 
 

@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -129,16 +131,17 @@ public class VkBufferCopy extends VkStruct {
 	 */ 
 	 public void srcOffset(long srcOffset){
 		 this.srcOffset = srcOffset;
-		srcOffset0(super.ptr, srcOffset);
+		 srcOffset0(this.ptr,  srcOffset);
 	 }
 
 	/**
-	 * get method for field srcOffset	[long]<br>
+	 * Get method for field srcOffset	[long]<br>
 	 * Prototype: VkDeviceSize  srcOffset
 	 */ 
 	 public long srcOffset(){
-		 // return  this.srcOffset;
-		 return srcOffset0(super.ptr);
+		 long var = srcOffset0(super.ptr);
+		 this.srcOffset = var;
+		 return this.srcOffset;
 	 }
 
 	/**
@@ -147,16 +150,17 @@ public class VkBufferCopy extends VkStruct {
 	 */ 
 	 public void dstOffset(long dstOffset){
 		 this.dstOffset = dstOffset;
-		dstOffset0(super.ptr, dstOffset);
+		 dstOffset0(this.ptr,  dstOffset);
 	 }
 
 	/**
-	 * get method for field dstOffset	[long]<br>
+	 * Get method for field dstOffset	[long]<br>
 	 * Prototype: VkDeviceSize  dstOffset
 	 */ 
 	 public long dstOffset(){
-		 // return  this.dstOffset;
-		 return dstOffset0(super.ptr);
+		 long var = dstOffset0(super.ptr);
+		 this.dstOffset = var;
+		 return this.dstOffset;
 	 }
 
 	/**
@@ -165,16 +169,17 @@ public class VkBufferCopy extends VkStruct {
 	 */ 
 	 public void size(long size){
 		 this.size = size;
-		size0(super.ptr, size);
+		 size0(this.ptr,  size);
 	 }
 
 	/**
-	 * get method for field size	[long]<br>
+	 * Get method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public long size(){
-		 // return  this.size;
-		 return size0(super.ptr);
+		 long var = size0(super.ptr);
+		 this.size = var;
+		 return this.size;
 	 }
 
 
@@ -185,54 +190,54 @@ public class VkBufferCopy extends VkStruct {
 	 * native SET method for field srcOffset	[long]<br>
 	 * Prototype: VkDeviceSize  srcOffset
 	 */ 
-	 private static native void srcOffset0(ByteBuffer ptr, long _srcOffset);/*
-		  VkBufferCopy _obj = (VkBufferCopy)(*ptr);
-		  _obj.srcOffset = (VkDeviceSize) (_srcOffset);
+	 private static native void srcOffset0(Buffer ptr, long _srcOffset);/*
+		  VkBufferCopy* vkObj = (VkBufferCopy*)(ptr);
+		  vkObj->srcOffset = (VkDeviceSize) (_srcOffset);
 	  */
 
 	/**
 	 * native GET method for field srcOffset	[long]<br>
 	 * Prototype: VkDeviceSize  srcOffset
 	 */ 
-	 private static native long srcOffset0(ByteBuffer ptr);/*
-		  VkBufferCopy _obj = (VkBufferCopy)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long srcOffset0(Buffer ptr);/*
+		  VkBufferCopy vkObj = (VkBufferCopy*)(ptr);
+		  return (jlong) (vkObj->srcOffset);
 	 */
 
 	/**
 	 * native SET method for field dstOffset	[long]<br>
 	 * Prototype: VkDeviceSize  dstOffset
 	 */ 
-	 private static native void dstOffset0(ByteBuffer ptr, long _dstOffset);/*
-		  VkBufferCopy _obj = (VkBufferCopy)(*ptr);
-		  _obj.dstOffset = (VkDeviceSize) (_dstOffset);
+	 private static native void dstOffset0(Buffer ptr, long _dstOffset);/*
+		  VkBufferCopy* vkObj = (VkBufferCopy*)(ptr);
+		  vkObj->dstOffset = (VkDeviceSize) (_dstOffset);
 	  */
 
 	/**
 	 * native GET method for field dstOffset	[long]<br>
 	 * Prototype: VkDeviceSize  dstOffset
 	 */ 
-	 private static native long dstOffset0(ByteBuffer ptr);/*
-		  VkBufferCopy _obj = (VkBufferCopy)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long dstOffset0(Buffer ptr);/*
+		  VkBufferCopy vkObj = (VkBufferCopy*)(ptr);
+		  return (jlong) (vkObj->dstOffset);
 	 */
 
 	/**
 	 * native SET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
-	 private static native void size0(ByteBuffer ptr, long _size);/*
-		  VkBufferCopy _obj = (VkBufferCopy)(*ptr);
-		  _obj.size = (VkDeviceSize) (_size);
+	 private static native void size0(Buffer ptr, long _size);/*
+		  VkBufferCopy* vkObj = (VkBufferCopy*)(ptr);
+		  vkObj->size = (VkDeviceSize) (_size);
 	  */
 
 	/**
 	 * native GET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
-	 private static native long size0(ByteBuffer ptr);/*
-		  VkBufferCopy _obj = (VkBufferCopy)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long size0(Buffer ptr);/*
+		  VkBufferCopy vkObj = (VkBufferCopy*)(ptr);
+		  return (jlong) (vkObj->size);
 	 */
 
 

@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -55,9 +57,9 @@ public class VkSparseImageOpaqueMemoryBindInfo extends VkStruct {
 	 int 	bindCount;
 
 	/**
-	 *  const VkSparseMemoryBind* 	pBinds	[p]
+	 *  const VkSparseMemoryBind* 	pBinds	[vkstruct]
 	 */ 
-	 P<VkSparseMemoryBind>  	pBinds;
+	  VkSparseMemoryBind  	pBinds;
 
 	/**
 	 * Ctor
@@ -129,16 +131,27 @@ public class VkSparseImageOpaqueMemoryBindInfo extends VkStruct {
 	 */ 
 	 public void image(VkImage image){
 		 this.image = image;
-		image0(super.ptr, image);
+		 ByteBuffer buff = (image==null) ? null : image.getHandle();
+		 image0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field image	[vkhandle]<br>
+	 * Get method for field image	[vkhandle]<br>
 	 * Prototype: VkImage  image
 	 */ 
 	 public VkImage image(){
-		 // return  this.image;
-		 return image0(super.ptr);
+
+		 ByteBuffer handle = image0(super.ptr);
+		 if(handle == null){
+		    this.image = null;
+		    return null;
+		  } else 
+ 		 if(this.image == null){
+		    this.image = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.image).setHandle(handle);
+		  }
+		 return this.image;
 	 }
 
 	/**
@@ -147,34 +160,45 @@ public class VkSparseImageOpaqueMemoryBindInfo extends VkStruct {
 	 */ 
 	 public void bindCount(int bindCount){
 		 this.bindCount = bindCount;
-		bindCount0(super.ptr, bindCount);
+		 bindCount0(this.ptr,  bindCount);
 	 }
 
 	/**
-	 * get method for field bindCount	[int]<br>
+	 * Get method for field bindCount	[int]<br>
 	 * Prototype: uint32_t  bindCount
 	 */ 
 	 public int bindCount(){
-		 // return  this.bindCount;
-		 return bindCount0(super.ptr);
+		 int var = bindCount0(super.ptr);
+		 this.bindCount = var;
+		 return this.bindCount;
 	 }
 
 	/**
-	 * Set method for field pBinds	[p]<br>
+	 * Set method for field pBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseMemoryBind*  pBinds
 	 */ 
-	 public void pBinds(P<VkSparseMemoryBind>  pBinds){
+	 public void pBinds( VkSparseMemoryBind  pBinds){
 		 this.pBinds = pBinds;
-		pBinds0(super.ptr, pBinds);
+		 ByteBuffer buff = (pBinds==null) ? null : pBinds.getPointerStruct();
+		 pBinds0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pBinds	[p]<br>
+	 * Get method for field pBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseMemoryBind*  pBinds
 	 */ 
-	 public P<VkSparseMemoryBind>  pBinds(){
-		 // return  this.pBinds;
-		 return pBinds0(super.ptr);
+	 public  VkSparseMemoryBind  pBinds(){
+		 ByteBuffer pointer = pBinds0(super.ptr);
+		 if(pointer == null){
+		    this.pBinds = null;
+		    return null;
+		  } else 
+ 		 if(this.pBinds == null){
+		    this.pBinds = new  VkSparseMemoryBind (pointer);
+		 }else{
+		    this.pBinds.setPointer(pointer);
+		  }
+		 return this.pBinds;
 	 }
 
 
@@ -185,54 +209,54 @@ public class VkSparseImageOpaqueMemoryBindInfo extends VkStruct {
 	 * native SET method for field image	[vkhandle]<br>
 	 * Prototype: VkImage  image
 	 */ 
-	 private static native void image0(ByteBuffer ptr, VkImage _image);/*
-		  VkSparseImageOpaqueMemoryBindInfo _obj = (VkSparseImageOpaqueMemoryBindInfo)(*ptr);
-		  _obj.image = (VkImage) (_image);
+	 private static native void image0(Buffer ptr, java.nio.ByteBuffer  _image);/*
+		  VkSparseImageOpaqueMemoryBindInfo* vkObj = (VkSparseImageOpaqueMemoryBindInfo*)(ptr);
+		  vkObj->image = (VkImage) (_image);
 	  */
 
 	/**
 	 * native GET method for field image	[vkhandle]<br>
 	 * Prototype: VkImage  image
 	 */ 
-	 private static native VkImage image0(ByteBuffer ptr);/*
-		  VkSparseImageOpaqueMemoryBindInfo _obj = (VkSparseImageOpaqueMemoryBindInfo)(ptr);
-		  return (VkImage) (_obj.VkImage);
+	 private static native java.nio.ByteBuffer  image0(Buffer ptr);/*
+		  VkSparseImageOpaqueMemoryBindInfo vkObj = (VkSparseImageOpaqueMemoryBindInfo*)(ptr);
+		  return (VkImage) (vkObj->image);
 	 */
 
 	/**
 	 * native SET method for field bindCount	[int]<br>
 	 * Prototype: uint32_t  bindCount
 	 */ 
-	 private static native void bindCount0(ByteBuffer ptr, int _bindCount);/*
-		  VkSparseImageOpaqueMemoryBindInfo _obj = (VkSparseImageOpaqueMemoryBindInfo)(*ptr);
-		  _obj.bindCount = (uint32_t) (_bindCount);
+	 private static native void bindCount0(Buffer ptr, int _bindCount);/*
+		  VkSparseImageOpaqueMemoryBindInfo* vkObj = (VkSparseImageOpaqueMemoryBindInfo*)(ptr);
+		  vkObj->bindCount = (uint32_t) (_bindCount);
 	  */
 
 	/**
 	 * native GET method for field bindCount	[int]<br>
 	 * Prototype: uint32_t  bindCount
 	 */ 
-	 private static native int bindCount0(ByteBuffer ptr);/*
-		  VkSparseImageOpaqueMemoryBindInfo _obj = (VkSparseImageOpaqueMemoryBindInfo)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int bindCount0(Buffer ptr);/*
+		  VkSparseImageOpaqueMemoryBindInfo vkObj = (VkSparseImageOpaqueMemoryBindInfo*)(ptr);
+		  return (jint) (vkObj->bindCount);
 	 */
 
 	/**
-	 * native SET method for field pBinds	[p]<br>
+	 * native SET method for field pBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseMemoryBind*  pBinds
 	 */ 
-	 private static native void pBinds0(ByteBuffer ptr, P<VkSparseMemoryBind>  _pBinds);/*
-		  VkSparseImageOpaqueMemoryBindInfo _obj = (VkSparseImageOpaqueMemoryBindInfo)(*ptr);
-		  _obj.pBinds = (const VkSparseMemoryBind*) (_pBinds);
+	 private static native void pBinds0(Buffer ptr, java.nio.ByteBuffer  _pBinds);/*
+		  VkSparseImageOpaqueMemoryBindInfo* vkObj = (VkSparseImageOpaqueMemoryBindInfo*)(ptr);
+		  vkObj->pBinds = (const VkSparseMemoryBind*) (_pBinds);
 	  */
 
 	/**
-	 * native GET method for field pBinds	[p]<br>
+	 * native GET method for field pBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseMemoryBind*  pBinds
 	 */ 
-	 private static native P<VkSparseMemoryBind>  pBinds0(ByteBuffer ptr);/*
-		  VkSparseImageOpaqueMemoryBindInfo _obj = (VkSparseImageOpaqueMemoryBindInfo)(ptr);
-		  return (P<VkSparseMemoryBind> ) (_obj.const VkSparseMemoryBind*);
+	 private static native java.nio.ByteBuffer  pBinds0(Buffer ptr);/*
+		  VkSparseImageOpaqueMemoryBindInfo vkObj = (VkSparseImageOpaqueMemoryBindInfo*)(ptr);
+		  return ( VkSparseMemoryBind ) (vkObj->pBinds);
 	 */
 
 

@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -153,16 +155,18 @@ public class VkStencilOpState extends VkStruct {
 	 */ 
 	 public void failOp(VkStencilOp failOp){
 		 this.failOp = failOp;
-		failOp0(super.ptr, failOp);
+		 int enumVal = failOp.getValue();
+		 failOp0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field failOp	[vkenum]<br>
+	 * Get method for field failOp	[vkenum]<br>
 	 * Prototype: VkStencilOp  failOp
 	 */ 
 	 public VkStencilOp failOp(){
-		 // return  this.failOp;
-		 return failOp0(super.ptr);
+		 int nativeVal = failOp0(super.ptr);
+		 this.failOp = VkStencilOp.fromValue(nativeVal); 
+		 return this.failOp;
 	 }
 
 	/**
@@ -171,16 +175,18 @@ public class VkStencilOpState extends VkStruct {
 	 */ 
 	 public void passOp(VkStencilOp passOp){
 		 this.passOp = passOp;
-		passOp0(super.ptr, passOp);
+		 int enumVal = passOp.getValue();
+		 passOp0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field passOp	[vkenum]<br>
+	 * Get method for field passOp	[vkenum]<br>
 	 * Prototype: VkStencilOp  passOp
 	 */ 
 	 public VkStencilOp passOp(){
-		 // return  this.passOp;
-		 return passOp0(super.ptr);
+		 int nativeVal = passOp0(super.ptr);
+		 this.passOp = VkStencilOp.fromValue(nativeVal); 
+		 return this.passOp;
 	 }
 
 	/**
@@ -189,16 +195,18 @@ public class VkStencilOpState extends VkStruct {
 	 */ 
 	 public void depthFailOp(VkStencilOp depthFailOp){
 		 this.depthFailOp = depthFailOp;
-		depthFailOp0(super.ptr, depthFailOp);
+		 int enumVal = depthFailOp.getValue();
+		 depthFailOp0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field depthFailOp	[vkenum]<br>
+	 * Get method for field depthFailOp	[vkenum]<br>
 	 * Prototype: VkStencilOp  depthFailOp
 	 */ 
 	 public VkStencilOp depthFailOp(){
-		 // return  this.depthFailOp;
-		 return depthFailOp0(super.ptr);
+		 int nativeVal = depthFailOp0(super.ptr);
+		 this.depthFailOp = VkStencilOp.fromValue(nativeVal); 
+		 return this.depthFailOp;
 	 }
 
 	/**
@@ -207,16 +215,18 @@ public class VkStencilOpState extends VkStruct {
 	 */ 
 	 public void compareOp(VkCompareOp compareOp){
 		 this.compareOp = compareOp;
-		compareOp0(super.ptr, compareOp);
+		 int enumVal = compareOp.getValue();
+		 compareOp0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field compareOp	[vkenum]<br>
+	 * Get method for field compareOp	[vkenum]<br>
 	 * Prototype: VkCompareOp  compareOp
 	 */ 
 	 public VkCompareOp compareOp(){
-		 // return  this.compareOp;
-		 return compareOp0(super.ptr);
+		 int nativeVal = compareOp0(super.ptr);
+		 this.compareOp = VkCompareOp.fromValue(nativeVal); 
+		 return this.compareOp;
 	 }
 
 	/**
@@ -225,16 +235,17 @@ public class VkStencilOpState extends VkStruct {
 	 */ 
 	 public void compareMask(int compareMask){
 		 this.compareMask = compareMask;
-		compareMask0(super.ptr, compareMask);
+		 compareMask0(this.ptr,  compareMask);
 	 }
 
 	/**
-	 * get method for field compareMask	[int]<br>
+	 * Get method for field compareMask	[int]<br>
 	 * Prototype: uint32_t  compareMask
 	 */ 
 	 public int compareMask(){
-		 // return  this.compareMask;
-		 return compareMask0(super.ptr);
+		 int var = compareMask0(super.ptr);
+		 this.compareMask = var;
+		 return this.compareMask;
 	 }
 
 	/**
@@ -243,16 +254,17 @@ public class VkStencilOpState extends VkStruct {
 	 */ 
 	 public void writeMask(int writeMask){
 		 this.writeMask = writeMask;
-		writeMask0(super.ptr, writeMask);
+		 writeMask0(this.ptr,  writeMask);
 	 }
 
 	/**
-	 * get method for field writeMask	[int]<br>
+	 * Get method for field writeMask	[int]<br>
 	 * Prototype: uint32_t  writeMask
 	 */ 
 	 public int writeMask(){
-		 // return  this.writeMask;
-		 return writeMask0(super.ptr);
+		 int var = writeMask0(super.ptr);
+		 this.writeMask = var;
+		 return this.writeMask;
 	 }
 
 	/**
@@ -261,16 +273,17 @@ public class VkStencilOpState extends VkStruct {
 	 */ 
 	 public void reference(int reference){
 		 this.reference = reference;
-		reference0(super.ptr, reference);
+		 reference0(this.ptr,  reference);
 	 }
 
 	/**
-	 * get method for field reference	[int]<br>
+	 * Get method for field reference	[int]<br>
 	 * Prototype: uint32_t  reference
 	 */ 
 	 public int reference(){
-		 // return  this.reference;
-		 return reference0(super.ptr);
+		 int var = reference0(super.ptr);
+		 this.reference = var;
+		 return this.reference;
 	 }
 
 
@@ -281,126 +294,126 @@ public class VkStencilOpState extends VkStruct {
 	 * native SET method for field failOp	[vkenum]<br>
 	 * Prototype: VkStencilOp  failOp
 	 */ 
-	 private static native void failOp0(ByteBuffer ptr, VkStencilOp _failOp);/*
-		  VkStencilOpState _obj = (VkStencilOpState)(*ptr);
-		  _obj.failOp = (VkStencilOp) (_failOp);
+	 private static native void failOp0(Buffer ptr, int  _failOp);/*
+		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
+		  vkObj->failOp = (VkStencilOp) (_failOp);
 	  */
 
 	/**
 	 * native GET method for field failOp	[vkenum]<br>
 	 * Prototype: VkStencilOp  failOp
 	 */ 
-	 private static native VkStencilOp failOp0(ByteBuffer ptr);/*
-		  VkStencilOpState _obj = (VkStencilOpState)(ptr);
-		  return (VkStencilOp) (_obj.VkStencilOp);
+	 private static native int  failOp0(Buffer ptr);/*
+		  VkStencilOpState vkObj = (VkStencilOpState*)(ptr);
+		  return (VkStencilOp) (vkObj->failOp);
 	 */
 
 	/**
 	 * native SET method for field passOp	[vkenum]<br>
 	 * Prototype: VkStencilOp  passOp
 	 */ 
-	 private static native void passOp0(ByteBuffer ptr, VkStencilOp _passOp);/*
-		  VkStencilOpState _obj = (VkStencilOpState)(*ptr);
-		  _obj.passOp = (VkStencilOp) (_passOp);
+	 private static native void passOp0(Buffer ptr, int  _passOp);/*
+		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
+		  vkObj->passOp = (VkStencilOp) (_passOp);
 	  */
 
 	/**
 	 * native GET method for field passOp	[vkenum]<br>
 	 * Prototype: VkStencilOp  passOp
 	 */ 
-	 private static native VkStencilOp passOp0(ByteBuffer ptr);/*
-		  VkStencilOpState _obj = (VkStencilOpState)(ptr);
-		  return (VkStencilOp) (_obj.VkStencilOp);
+	 private static native int  passOp0(Buffer ptr);/*
+		  VkStencilOpState vkObj = (VkStencilOpState*)(ptr);
+		  return (VkStencilOp) (vkObj->passOp);
 	 */
 
 	/**
 	 * native SET method for field depthFailOp	[vkenum]<br>
 	 * Prototype: VkStencilOp  depthFailOp
 	 */ 
-	 private static native void depthFailOp0(ByteBuffer ptr, VkStencilOp _depthFailOp);/*
-		  VkStencilOpState _obj = (VkStencilOpState)(*ptr);
-		  _obj.depthFailOp = (VkStencilOp) (_depthFailOp);
+	 private static native void depthFailOp0(Buffer ptr, int  _depthFailOp);/*
+		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
+		  vkObj->depthFailOp = (VkStencilOp) (_depthFailOp);
 	  */
 
 	/**
 	 * native GET method for field depthFailOp	[vkenum]<br>
 	 * Prototype: VkStencilOp  depthFailOp
 	 */ 
-	 private static native VkStencilOp depthFailOp0(ByteBuffer ptr);/*
-		  VkStencilOpState _obj = (VkStencilOpState)(ptr);
-		  return (VkStencilOp) (_obj.VkStencilOp);
+	 private static native int  depthFailOp0(Buffer ptr);/*
+		  VkStencilOpState vkObj = (VkStencilOpState*)(ptr);
+		  return (VkStencilOp) (vkObj->depthFailOp);
 	 */
 
 	/**
 	 * native SET method for field compareOp	[vkenum]<br>
 	 * Prototype: VkCompareOp  compareOp
 	 */ 
-	 private static native void compareOp0(ByteBuffer ptr, VkCompareOp _compareOp);/*
-		  VkStencilOpState _obj = (VkStencilOpState)(*ptr);
-		  _obj.compareOp = (VkCompareOp) (_compareOp);
+	 private static native void compareOp0(Buffer ptr, int  _compareOp);/*
+		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
+		  vkObj->compareOp = (VkCompareOp) (_compareOp);
 	  */
 
 	/**
 	 * native GET method for field compareOp	[vkenum]<br>
 	 * Prototype: VkCompareOp  compareOp
 	 */ 
-	 private static native VkCompareOp compareOp0(ByteBuffer ptr);/*
-		  VkStencilOpState _obj = (VkStencilOpState)(ptr);
-		  return (VkCompareOp) (_obj.VkCompareOp);
+	 private static native int  compareOp0(Buffer ptr);/*
+		  VkStencilOpState vkObj = (VkStencilOpState*)(ptr);
+		  return (VkCompareOp) (vkObj->compareOp);
 	 */
 
 	/**
 	 * native SET method for field compareMask	[int]<br>
 	 * Prototype: uint32_t  compareMask
 	 */ 
-	 private static native void compareMask0(ByteBuffer ptr, int _compareMask);/*
-		  VkStencilOpState _obj = (VkStencilOpState)(*ptr);
-		  _obj.compareMask = (uint32_t) (_compareMask);
+	 private static native void compareMask0(Buffer ptr, int _compareMask);/*
+		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
+		  vkObj->compareMask = (uint32_t) (_compareMask);
 	  */
 
 	/**
 	 * native GET method for field compareMask	[int]<br>
 	 * Prototype: uint32_t  compareMask
 	 */ 
-	 private static native int compareMask0(ByteBuffer ptr);/*
-		  VkStencilOpState _obj = (VkStencilOpState)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int compareMask0(Buffer ptr);/*
+		  VkStencilOpState vkObj = (VkStencilOpState*)(ptr);
+		  return (jint) (vkObj->compareMask);
 	 */
 
 	/**
 	 * native SET method for field writeMask	[int]<br>
 	 * Prototype: uint32_t  writeMask
 	 */ 
-	 private static native void writeMask0(ByteBuffer ptr, int _writeMask);/*
-		  VkStencilOpState _obj = (VkStencilOpState)(*ptr);
-		  _obj.writeMask = (uint32_t) (_writeMask);
+	 private static native void writeMask0(Buffer ptr, int _writeMask);/*
+		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
+		  vkObj->writeMask = (uint32_t) (_writeMask);
 	  */
 
 	/**
 	 * native GET method for field writeMask	[int]<br>
 	 * Prototype: uint32_t  writeMask
 	 */ 
-	 private static native int writeMask0(ByteBuffer ptr);/*
-		  VkStencilOpState _obj = (VkStencilOpState)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int writeMask0(Buffer ptr);/*
+		  VkStencilOpState vkObj = (VkStencilOpState*)(ptr);
+		  return (jint) (vkObj->writeMask);
 	 */
 
 	/**
 	 * native SET method for field reference	[int]<br>
 	 * Prototype: uint32_t  reference
 	 */ 
-	 private static native void reference0(ByteBuffer ptr, int _reference);/*
-		  VkStencilOpState _obj = (VkStencilOpState)(*ptr);
-		  _obj.reference = (uint32_t) (_reference);
+	 private static native void reference0(Buffer ptr, int _reference);/*
+		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
+		  vkObj->reference = (uint32_t) (_reference);
 	  */
 
 	/**
 	 * native GET method for field reference	[int]<br>
 	 * Prototype: uint32_t  reference
 	 */ 
-	 private static native int reference0(ByteBuffer ptr);/*
-		  VkStencilOpState _obj = (VkStencilOpState)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int reference0(Buffer ptr);/*
+		  VkStencilOpState vkObj = (VkStencilOpState*)(ptr);
+		  return (jint) (vkObj->reference);
 	 */
 
 

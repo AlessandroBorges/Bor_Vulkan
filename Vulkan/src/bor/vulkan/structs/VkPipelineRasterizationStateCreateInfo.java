@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -60,9 +62,9 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  VkPipelineRasterizationStateCreateFlags 	flags	[int]
@@ -189,34 +191,46 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -225,16 +239,17 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		flags0(super.ptr, flags);
+		 flags0(this.ptr,  flags);
 	 }
 
 	/**
-	 * get method for field flags	[int]<br>
+	 * Get method for field flags	[int]<br>
 	 * Prototype: VkPipelineRasterizationStateCreateFlags  flags
 	 */ 
 	 public int flags(){
-		 // return  this.flags;
-		 return flags0(super.ptr);
+		 int var = flags0(super.ptr);
+		 this.flags = var;
+		 return this.flags;
 	 }
 
 	/**
@@ -243,16 +258,17 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */ 
 	 public void depthClampEnable(boolean depthClampEnable){
 		 this.depthClampEnable = depthClampEnable;
-		depthClampEnable0(super.ptr, depthClampEnable);
+		 depthClampEnable0(this.ptr,  depthClampEnable);
 	 }
 
 	/**
-	 * get method for field depthClampEnable	[boolean]<br>
+	 * Get method for field depthClampEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthClampEnable
 	 */ 
 	 public boolean depthClampEnable(){
-		 // return  this.depthClampEnable;
-		 return depthClampEnable0(super.ptr);
+		 boolean var = depthClampEnable0(super.ptr);
+		 this.depthClampEnable = var;
+		 return this.depthClampEnable;
 	 }
 
 	/**
@@ -261,16 +277,17 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */ 
 	 public void rasterizerDiscardEnable(boolean rasterizerDiscardEnable){
 		 this.rasterizerDiscardEnable = rasterizerDiscardEnable;
-		rasterizerDiscardEnable0(super.ptr, rasterizerDiscardEnable);
+		 rasterizerDiscardEnable0(this.ptr,  rasterizerDiscardEnable);
 	 }
 
 	/**
-	 * get method for field rasterizerDiscardEnable	[boolean]<br>
+	 * Get method for field rasterizerDiscardEnable	[boolean]<br>
 	 * Prototype: VkBool32  rasterizerDiscardEnable
 	 */ 
 	 public boolean rasterizerDiscardEnable(){
-		 // return  this.rasterizerDiscardEnable;
-		 return rasterizerDiscardEnable0(super.ptr);
+		 boolean var = rasterizerDiscardEnable0(super.ptr);
+		 this.rasterizerDiscardEnable = var;
+		 return this.rasterizerDiscardEnable;
 	 }
 
 	/**
@@ -279,16 +296,18 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */ 
 	 public void polygonMode(VkPolygonMode polygonMode){
 		 this.polygonMode = polygonMode;
-		polygonMode0(super.ptr, polygonMode);
+		 int enumVal = polygonMode.getValue();
+		 polygonMode0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field polygonMode	[vkenum]<br>
+	 * Get method for field polygonMode	[vkenum]<br>
 	 * Prototype: VkPolygonMode  polygonMode
 	 */ 
 	 public VkPolygonMode polygonMode(){
-		 // return  this.polygonMode;
-		 return polygonMode0(super.ptr);
+		 int nativeVal = polygonMode0(super.ptr);
+		 this.polygonMode = VkPolygonMode.fromValue(nativeVal); 
+		 return this.polygonMode;
 	 }
 
 	/**
@@ -297,16 +316,17 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */ 
 	 public void cullMode(int cullMode){
 		 this.cullMode = cullMode;
-		cullMode0(super.ptr, cullMode);
+		 cullMode0(this.ptr,  cullMode);
 	 }
 
 	/**
-	 * get method for field cullMode	[int]<br>
+	 * Get method for field cullMode	[int]<br>
 	 * Prototype: VkCullModeFlags  cullMode
 	 */ 
 	 public int cullMode(){
-		 // return  this.cullMode;
-		 return cullMode0(super.ptr);
+		 int var = cullMode0(super.ptr);
+		 this.cullMode = var;
+		 return this.cullMode;
 	 }
 
 	/**
@@ -315,16 +335,18 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */ 
 	 public void frontFace(VkFrontFace frontFace){
 		 this.frontFace = frontFace;
-		frontFace0(super.ptr, frontFace);
+		 int enumVal = frontFace.getValue();
+		 frontFace0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field frontFace	[vkenum]<br>
+	 * Get method for field frontFace	[vkenum]<br>
 	 * Prototype: VkFrontFace  frontFace
 	 */ 
 	 public VkFrontFace frontFace(){
-		 // return  this.frontFace;
-		 return frontFace0(super.ptr);
+		 int nativeVal = frontFace0(super.ptr);
+		 this.frontFace = VkFrontFace.fromValue(nativeVal); 
+		 return this.frontFace;
 	 }
 
 	/**
@@ -333,16 +355,17 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */ 
 	 public void depthBiasEnable(boolean depthBiasEnable){
 		 this.depthBiasEnable = depthBiasEnable;
-		depthBiasEnable0(super.ptr, depthBiasEnable);
+		 depthBiasEnable0(this.ptr,  depthBiasEnable);
 	 }
 
 	/**
-	 * get method for field depthBiasEnable	[boolean]<br>
+	 * Get method for field depthBiasEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthBiasEnable
 	 */ 
 	 public boolean depthBiasEnable(){
-		 // return  this.depthBiasEnable;
-		 return depthBiasEnable0(super.ptr);
+		 boolean var = depthBiasEnable0(super.ptr);
+		 this.depthBiasEnable = var;
+		 return this.depthBiasEnable;
 	 }
 
 	/**
@@ -351,16 +374,17 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */ 
 	 public void depthBiasConstantFactor(float depthBiasConstantFactor){
 		 this.depthBiasConstantFactor = depthBiasConstantFactor;
-		depthBiasConstantFactor0(super.ptr, depthBiasConstantFactor);
+		 depthBiasConstantFactor0(this.ptr,  depthBiasConstantFactor);
 	 }
 
 	/**
-	 * get method for field depthBiasConstantFactor	[float]<br>
+	 * Get method for field depthBiasConstantFactor	[float]<br>
 	 * Prototype: float  depthBiasConstantFactor
 	 */ 
 	 public float depthBiasConstantFactor(){
-		 // return  this.depthBiasConstantFactor;
-		 return depthBiasConstantFactor0(super.ptr);
+		 float var = depthBiasConstantFactor0(super.ptr);
+		 this.depthBiasConstantFactor = var;
+		 return this.depthBiasConstantFactor;
 	 }
 
 	/**
@@ -369,16 +393,17 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */ 
 	 public void depthBiasClamp(float depthBiasClamp){
 		 this.depthBiasClamp = depthBiasClamp;
-		depthBiasClamp0(super.ptr, depthBiasClamp);
+		 depthBiasClamp0(this.ptr,  depthBiasClamp);
 	 }
 
 	/**
-	 * get method for field depthBiasClamp	[float]<br>
+	 * Get method for field depthBiasClamp	[float]<br>
 	 * Prototype: float  depthBiasClamp
 	 */ 
 	 public float depthBiasClamp(){
-		 // return  this.depthBiasClamp;
-		 return depthBiasClamp0(super.ptr);
+		 float var = depthBiasClamp0(super.ptr);
+		 this.depthBiasClamp = var;
+		 return this.depthBiasClamp;
 	 }
 
 	/**
@@ -387,16 +412,17 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */ 
 	 public void depthBiasSlopeFactor(float depthBiasSlopeFactor){
 		 this.depthBiasSlopeFactor = depthBiasSlopeFactor;
-		depthBiasSlopeFactor0(super.ptr, depthBiasSlopeFactor);
+		 depthBiasSlopeFactor0(this.ptr,  depthBiasSlopeFactor);
 	 }
 
 	/**
-	 * get method for field depthBiasSlopeFactor	[float]<br>
+	 * Get method for field depthBiasSlopeFactor	[float]<br>
 	 * Prototype: float  depthBiasSlopeFactor
 	 */ 
 	 public float depthBiasSlopeFactor(){
-		 // return  this.depthBiasSlopeFactor;
-		 return depthBiasSlopeFactor0(super.ptr);
+		 float var = depthBiasSlopeFactor0(super.ptr);
+		 this.depthBiasSlopeFactor = var;
+		 return this.depthBiasSlopeFactor;
 	 }
 
 	/**
@@ -405,16 +431,17 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 */ 
 	 public void lineWidth(float lineWidth){
 		 this.lineWidth = lineWidth;
-		lineWidth0(super.ptr, lineWidth);
+		 lineWidth0(this.ptr,  lineWidth);
 	 }
 
 	/**
-	 * get method for field lineWidth	[float]<br>
+	 * Get method for field lineWidth	[float]<br>
 	 * Prototype: float  lineWidth
 	 */ 
 	 public float lineWidth(){
-		 // return  this.lineWidth;
-		 return lineWidth0(super.ptr);
+		 float var = lineWidth0(super.ptr);
+		 this.lineWidth = var;
+		 return this.lineWidth;
 	 }
 
 
@@ -425,234 +452,234 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkPipelineRasterizationStateCreateFlags  flags
 	 */ 
-	 private static native void flags0(ByteBuffer ptr, int _flags);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(*ptr);
-		  _obj.flags = (VkPipelineRasterizationStateCreateFlags) (_flags);
+	 private static native void flags0(Buffer ptr, int _flags);/*
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  vkObj->flags = (VkPipelineRasterizationStateCreateFlags) (_flags);
 	  */
 
 	/**
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkPipelineRasterizationStateCreateFlags  flags
 	 */ 
-	 private static native int flags0(ByteBuffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(ptr);
-		  return (jint) (_obj.VkPipelineRasterizationStateCreateFlags);
+	 private static native int flags0(Buffer ptr);/*
+		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  return (jint) (vkObj->flags);
 	 */
 
 	/**
 	 * native SET method for field depthClampEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthClampEnable
 	 */ 
-	 private static native void depthClampEnable0(ByteBuffer ptr, boolean _depthClampEnable);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(*ptr);
-		  _obj.depthClampEnable = (VkBool32) (_depthClampEnable);
+	 private static native void depthClampEnable0(Buffer ptr, boolean _depthClampEnable);/*
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  vkObj->depthClampEnable = (VkBool32) (_depthClampEnable);
 	  */
 
 	/**
 	 * native GET method for field depthClampEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthClampEnable
 	 */ 
-	 private static native boolean depthClampEnable0(ByteBuffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean depthClampEnable0(Buffer ptr);/*
+		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  return (jboolean) (vkObj->depthClampEnable);
 	 */
 
 	/**
 	 * native SET method for field rasterizerDiscardEnable	[boolean]<br>
 	 * Prototype: VkBool32  rasterizerDiscardEnable
 	 */ 
-	 private static native void rasterizerDiscardEnable0(ByteBuffer ptr, boolean _rasterizerDiscardEnable);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(*ptr);
-		  _obj.rasterizerDiscardEnable = (VkBool32) (_rasterizerDiscardEnable);
+	 private static native void rasterizerDiscardEnable0(Buffer ptr, boolean _rasterizerDiscardEnable);/*
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  vkObj->rasterizerDiscardEnable = (VkBool32) (_rasterizerDiscardEnable);
 	  */
 
 	/**
 	 * native GET method for field rasterizerDiscardEnable	[boolean]<br>
 	 * Prototype: VkBool32  rasterizerDiscardEnable
 	 */ 
-	 private static native boolean rasterizerDiscardEnable0(ByteBuffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean rasterizerDiscardEnable0(Buffer ptr);/*
+		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  return (jboolean) (vkObj->rasterizerDiscardEnable);
 	 */
 
 	/**
 	 * native SET method for field polygonMode	[vkenum]<br>
 	 * Prototype: VkPolygonMode  polygonMode
 	 */ 
-	 private static native void polygonMode0(ByteBuffer ptr, VkPolygonMode _polygonMode);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(*ptr);
-		  _obj.polygonMode = (VkPolygonMode) (_polygonMode);
+	 private static native void polygonMode0(Buffer ptr, int  _polygonMode);/*
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  vkObj->polygonMode = (VkPolygonMode) (_polygonMode);
 	  */
 
 	/**
 	 * native GET method for field polygonMode	[vkenum]<br>
 	 * Prototype: VkPolygonMode  polygonMode
 	 */ 
-	 private static native VkPolygonMode polygonMode0(ByteBuffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(ptr);
-		  return (VkPolygonMode) (_obj.VkPolygonMode);
+	 private static native int  polygonMode0(Buffer ptr);/*
+		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  return (VkPolygonMode) (vkObj->polygonMode);
 	 */
 
 	/**
 	 * native SET method for field cullMode	[int]<br>
 	 * Prototype: VkCullModeFlags  cullMode
 	 */ 
-	 private static native void cullMode0(ByteBuffer ptr, int _cullMode);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(*ptr);
-		  _obj.cullMode = (VkCullModeFlags) (_cullMode);
+	 private static native void cullMode0(Buffer ptr, int _cullMode);/*
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  vkObj->cullMode = (VkCullModeFlags) (_cullMode);
 	  */
 
 	/**
 	 * native GET method for field cullMode	[int]<br>
 	 * Prototype: VkCullModeFlags  cullMode
 	 */ 
-	 private static native int cullMode0(ByteBuffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(ptr);
-		  return (jint) (_obj.VkCullModeFlags);
+	 private static native int cullMode0(Buffer ptr);/*
+		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  return (jint) (vkObj->cullMode);
 	 */
 
 	/**
 	 * native SET method for field frontFace	[vkenum]<br>
 	 * Prototype: VkFrontFace  frontFace
 	 */ 
-	 private static native void frontFace0(ByteBuffer ptr, VkFrontFace _frontFace);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(*ptr);
-		  _obj.frontFace = (VkFrontFace) (_frontFace);
+	 private static native void frontFace0(Buffer ptr, int  _frontFace);/*
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  vkObj->frontFace = (VkFrontFace) (_frontFace);
 	  */
 
 	/**
 	 * native GET method for field frontFace	[vkenum]<br>
 	 * Prototype: VkFrontFace  frontFace
 	 */ 
-	 private static native VkFrontFace frontFace0(ByteBuffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(ptr);
-		  return (VkFrontFace) (_obj.VkFrontFace);
+	 private static native int  frontFace0(Buffer ptr);/*
+		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  return (VkFrontFace) (vkObj->frontFace);
 	 */
 
 	/**
 	 * native SET method for field depthBiasEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthBiasEnable
 	 */ 
-	 private static native void depthBiasEnable0(ByteBuffer ptr, boolean _depthBiasEnable);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(*ptr);
-		  _obj.depthBiasEnable = (VkBool32) (_depthBiasEnable);
+	 private static native void depthBiasEnable0(Buffer ptr, boolean _depthBiasEnable);/*
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  vkObj->depthBiasEnable = (VkBool32) (_depthBiasEnable);
 	  */
 
 	/**
 	 * native GET method for field depthBiasEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthBiasEnable
 	 */ 
-	 private static native boolean depthBiasEnable0(ByteBuffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean depthBiasEnable0(Buffer ptr);/*
+		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  return (jboolean) (vkObj->depthBiasEnable);
 	 */
 
 	/**
 	 * native SET method for field depthBiasConstantFactor	[float]<br>
 	 * Prototype: float  depthBiasConstantFactor
 	 */ 
-	 private static native void depthBiasConstantFactor0(ByteBuffer ptr, float _depthBiasConstantFactor);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(*ptr);
-		  _obj.depthBiasConstantFactor = (float) (_depthBiasConstantFactor);
+	 private static native void depthBiasConstantFactor0(Buffer ptr, float _depthBiasConstantFactor);/*
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  vkObj->depthBiasConstantFactor = (float) (_depthBiasConstantFactor);
 	  */
 
 	/**
 	 * native GET method for field depthBiasConstantFactor	[float]<br>
 	 * Prototype: float  depthBiasConstantFactor
 	 */ 
-	 private static native float depthBiasConstantFactor0(ByteBuffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(ptr);
-		  return (jfloat) (_obj.float);
+	 private static native float depthBiasConstantFactor0(Buffer ptr);/*
+		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  return (jfloat) (vkObj->depthBiasConstantFactor);
 	 */
 
 	/**
 	 * native SET method for field depthBiasClamp	[float]<br>
 	 * Prototype: float  depthBiasClamp
 	 */ 
-	 private static native void depthBiasClamp0(ByteBuffer ptr, float _depthBiasClamp);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(*ptr);
-		  _obj.depthBiasClamp = (float) (_depthBiasClamp);
+	 private static native void depthBiasClamp0(Buffer ptr, float _depthBiasClamp);/*
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  vkObj->depthBiasClamp = (float) (_depthBiasClamp);
 	  */
 
 	/**
 	 * native GET method for field depthBiasClamp	[float]<br>
 	 * Prototype: float  depthBiasClamp
 	 */ 
-	 private static native float depthBiasClamp0(ByteBuffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(ptr);
-		  return (jfloat) (_obj.float);
+	 private static native float depthBiasClamp0(Buffer ptr);/*
+		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  return (jfloat) (vkObj->depthBiasClamp);
 	 */
 
 	/**
 	 * native SET method for field depthBiasSlopeFactor	[float]<br>
 	 * Prototype: float  depthBiasSlopeFactor
 	 */ 
-	 private static native void depthBiasSlopeFactor0(ByteBuffer ptr, float _depthBiasSlopeFactor);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(*ptr);
-		  _obj.depthBiasSlopeFactor = (float) (_depthBiasSlopeFactor);
+	 private static native void depthBiasSlopeFactor0(Buffer ptr, float _depthBiasSlopeFactor);/*
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  vkObj->depthBiasSlopeFactor = (float) (_depthBiasSlopeFactor);
 	  */
 
 	/**
 	 * native GET method for field depthBiasSlopeFactor	[float]<br>
 	 * Prototype: float  depthBiasSlopeFactor
 	 */ 
-	 private static native float depthBiasSlopeFactor0(ByteBuffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(ptr);
-		  return (jfloat) (_obj.float);
+	 private static native float depthBiasSlopeFactor0(Buffer ptr);/*
+		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  return (jfloat) (vkObj->depthBiasSlopeFactor);
 	 */
 
 	/**
 	 * native SET method for field lineWidth	[float]<br>
 	 * Prototype: float  lineWidth
 	 */ 
-	 private static native void lineWidth0(ByteBuffer ptr, float _lineWidth);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(*ptr);
-		  _obj.lineWidth = (float) (_lineWidth);
+	 private static native void lineWidth0(Buffer ptr, float _lineWidth);/*
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  vkObj->lineWidth = (float) (_lineWidth);
 	  */
 
 	/**
 	 * native GET method for field lineWidth	[float]<br>
 	 * Prototype: float  lineWidth
 	 */ 
-	 private static native float lineWidth0(ByteBuffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo _obj = (VkPipelineRasterizationStateCreateInfo)(ptr);
-		  return (jfloat) (_obj.float);
+	 private static native float lineWidth0(Buffer ptr);/*
+		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  return (jfloat) (vkObj->lineWidth);
 	 */
 
 

@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -51,9 +53,9 @@ public class VkMemoryBarrier extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  VkAccessFlags 	srcAccessMask	[int]
@@ -135,34 +137,46 @@ public class VkMemoryBarrier extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -171,16 +185,17 @@ public class VkMemoryBarrier extends VkStruct {
 	 */ 
 	 public void srcAccessMask(int srcAccessMask){
 		 this.srcAccessMask = srcAccessMask;
-		srcAccessMask0(super.ptr, srcAccessMask);
+		 srcAccessMask0(this.ptr,  srcAccessMask);
 	 }
 
 	/**
-	 * get method for field srcAccessMask	[int]<br>
+	 * Get method for field srcAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 public int srcAccessMask(){
-		 // return  this.srcAccessMask;
-		 return srcAccessMask0(super.ptr);
+		 int var = srcAccessMask0(super.ptr);
+		 this.srcAccessMask = var;
+		 return this.srcAccessMask;
 	 }
 
 	/**
@@ -189,16 +204,17 @@ public class VkMemoryBarrier extends VkStruct {
 	 */ 
 	 public void dstAccessMask(int dstAccessMask){
 		 this.dstAccessMask = dstAccessMask;
-		dstAccessMask0(super.ptr, dstAccessMask);
+		 dstAccessMask0(this.ptr,  dstAccessMask);
 	 }
 
 	/**
-	 * get method for field dstAccessMask	[int]<br>
+	 * Get method for field dstAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 public int dstAccessMask(){
-		 // return  this.dstAccessMask;
-		 return dstAccessMask0(super.ptr);
+		 int var = dstAccessMask0(super.ptr);
+		 this.dstAccessMask = var;
+		 return this.dstAccessMask;
 	 }
 
 
@@ -209,72 +225,72 @@ public class VkMemoryBarrier extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkMemoryBarrier _obj = (VkMemoryBarrier)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkMemoryBarrier* vkObj = (VkMemoryBarrier*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkMemoryBarrier _obj = (VkMemoryBarrier)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkMemoryBarrier vkObj = (VkMemoryBarrier*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkMemoryBarrier _obj = (VkMemoryBarrier)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkMemoryBarrier* vkObj = (VkMemoryBarrier*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkMemoryBarrier _obj = (VkMemoryBarrier)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkMemoryBarrier vkObj = (VkMemoryBarrier*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field srcAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
-	 private static native void srcAccessMask0(ByteBuffer ptr, int _srcAccessMask);/*
-		  VkMemoryBarrier _obj = (VkMemoryBarrier)(*ptr);
-		  _obj.srcAccessMask = (VkAccessFlags) (_srcAccessMask);
+	 private static native void srcAccessMask0(Buffer ptr, int _srcAccessMask);/*
+		  VkMemoryBarrier* vkObj = (VkMemoryBarrier*)(ptr);
+		  vkObj->srcAccessMask = (VkAccessFlags) (_srcAccessMask);
 	  */
 
 	/**
 	 * native GET method for field srcAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
-	 private static native int srcAccessMask0(ByteBuffer ptr);/*
-		  VkMemoryBarrier _obj = (VkMemoryBarrier)(ptr);
-		  return (jint) (_obj.VkAccessFlags);
+	 private static native int srcAccessMask0(Buffer ptr);/*
+		  VkMemoryBarrier vkObj = (VkMemoryBarrier*)(ptr);
+		  return (jint) (vkObj->srcAccessMask);
 	 */
 
 	/**
 	 * native SET method for field dstAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
-	 private static native void dstAccessMask0(ByteBuffer ptr, int _dstAccessMask);/*
-		  VkMemoryBarrier _obj = (VkMemoryBarrier)(*ptr);
-		  _obj.dstAccessMask = (VkAccessFlags) (_dstAccessMask);
+	 private static native void dstAccessMask0(Buffer ptr, int _dstAccessMask);/*
+		  VkMemoryBarrier* vkObj = (VkMemoryBarrier*)(ptr);
+		  vkObj->dstAccessMask = (VkAccessFlags) (_dstAccessMask);
 	  */
 
 	/**
 	 * native GET method for field dstAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
-	 private static native int dstAccessMask0(ByteBuffer ptr);/*
-		  VkMemoryBarrier _obj = (VkMemoryBarrier)(ptr);
-		  return (jint) (_obj.VkAccessFlags);
+	 private static native int dstAccessMask0(Buffer ptr);/*
+		  VkMemoryBarrier vkObj = (VkMemoryBarrier*)(ptr);
+		  return (jint) (vkObj->dstAccessMask);
 	 */
 
 

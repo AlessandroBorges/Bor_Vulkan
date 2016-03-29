@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -59,9 +61,9 @@ public class VkBindSparseInfo extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  uint32_t 	waitSemaphoreCount	[int]
@@ -69,9 +71,9 @@ public class VkBindSparseInfo extends VkStruct {
 	 int 	waitSemaphoreCount;
 
 	/**
-	 *  const VkSemaphore* 	pWaitSemaphores	[p]
+	 *  const VkSemaphore* 	pWaitSemaphores	[vkhandle]
 	 */ 
-	 P<VkSemaphore>  	pWaitSemaphores;
+	  VkSemaphore  	pWaitSemaphores;
 
 	/**
 	 *  uint32_t 	bufferBindCount	[int]
@@ -79,9 +81,9 @@ public class VkBindSparseInfo extends VkStruct {
 	 int 	bufferBindCount;
 
 	/**
-	 *  const VkSparseBufferMemoryBindInfo* 	pBufferBinds	[p]
+	 *  const VkSparseBufferMemoryBindInfo* 	pBufferBinds	[vkstruct]
 	 */ 
-	 P<VkSparseBufferMemoryBindInfo>  	pBufferBinds;
+	  VkSparseBufferMemoryBindInfo  	pBufferBinds;
 
 	/**
 	 *  uint32_t 	imageOpaqueBindCount	[int]
@@ -89,9 +91,9 @@ public class VkBindSparseInfo extends VkStruct {
 	 int 	imageOpaqueBindCount;
 
 	/**
-	 *  const VkSparseImageOpaqueMemoryBindInfo* 	pImageOpaqueBinds	[p]
+	 *  const VkSparseImageOpaqueMemoryBindInfo* 	pImageOpaqueBinds	[vkstruct]
 	 */ 
-	 P<VkSparseImageOpaqueMemoryBindInfo>  	pImageOpaqueBinds;
+	  VkSparseImageOpaqueMemoryBindInfo  	pImageOpaqueBinds;
 
 	/**
 	 *  uint32_t 	imageBindCount	[int]
@@ -99,9 +101,9 @@ public class VkBindSparseInfo extends VkStruct {
 	 int 	imageBindCount;
 
 	/**
-	 *  const VkSparseImageMemoryBindInfo* 	pImageBinds	[p]
+	 *  const VkSparseImageMemoryBindInfo* 	pImageBinds	[vkstruct]
 	 */ 
-	 P<VkSparseImageMemoryBindInfo>  	pImageBinds;
+	  VkSparseImageMemoryBindInfo  	pImageBinds;
 
 	/**
 	 *  uint32_t 	signalSemaphoreCount	[int]
@@ -109,9 +111,9 @@ public class VkBindSparseInfo extends VkStruct {
 	 int 	signalSemaphoreCount;
 
 	/**
-	 *  const VkSemaphore* 	pSignalSemaphores	[p]
+	 *  const VkSemaphore* 	pSignalSemaphores	[vkhandle]
 	 */ 
-	 P<VkSemaphore>  	pSignalSemaphores;
+	  VkSemaphore  	pSignalSemaphores;
 
 	/**
 	 * Ctor
@@ -183,34 +185,46 @@ public class VkBindSparseInfo extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -219,34 +233,46 @@ public class VkBindSparseInfo extends VkStruct {
 	 */ 
 	 public void waitSemaphoreCount(int waitSemaphoreCount){
 		 this.waitSemaphoreCount = waitSemaphoreCount;
-		waitSemaphoreCount0(super.ptr, waitSemaphoreCount);
+		 waitSemaphoreCount0(this.ptr,  waitSemaphoreCount);
 	 }
 
 	/**
-	 * get method for field waitSemaphoreCount	[int]<br>
+	 * Get method for field waitSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
 	 public int waitSemaphoreCount(){
-		 // return  this.waitSemaphoreCount;
-		 return waitSemaphoreCount0(super.ptr);
+		 int var = waitSemaphoreCount0(super.ptr);
+		 this.waitSemaphoreCount = var;
+		 return this.waitSemaphoreCount;
 	 }
 
 	/**
-	 * Set method for field pWaitSemaphores	[p]<br>
+	 * Set method for field pWaitSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
-	 public void pWaitSemaphores(P<VkSemaphore>  pWaitSemaphores){
+	 public void pWaitSemaphores( VkSemaphore  pWaitSemaphores){
 		 this.pWaitSemaphores = pWaitSemaphores;
-		pWaitSemaphores0(super.ptr, pWaitSemaphores);
+		 ByteBuffer buff = (pWaitSemaphores==null) ? null : pWaitSemaphores.getHandle();
+		 pWaitSemaphores0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pWaitSemaphores	[p]<br>
+	 * Get method for field pWaitSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
-	 public P<VkSemaphore>  pWaitSemaphores(){
-		 // return  this.pWaitSemaphores;
-		 return pWaitSemaphores0(super.ptr);
+	 public  VkSemaphore  pWaitSemaphores(){
+
+		 ByteBuffer handle = pWaitSemaphores0(super.ptr);
+		 if(handle == null){
+		    this.pWaitSemaphores = null;
+		    return null;
+		  } else 
+ 		 if(this.pWaitSemaphores == null){
+		    this.pWaitSemaphores = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.pWaitSemaphores).setHandle(handle);
+		  }
+		 return this.pWaitSemaphores;
 	 }
 
 	/**
@@ -255,34 +281,45 @@ public class VkBindSparseInfo extends VkStruct {
 	 */ 
 	 public void bufferBindCount(int bufferBindCount){
 		 this.bufferBindCount = bufferBindCount;
-		bufferBindCount0(super.ptr, bufferBindCount);
+		 bufferBindCount0(this.ptr,  bufferBindCount);
 	 }
 
 	/**
-	 * get method for field bufferBindCount	[int]<br>
+	 * Get method for field bufferBindCount	[int]<br>
 	 * Prototype: uint32_t  bufferBindCount
 	 */ 
 	 public int bufferBindCount(){
-		 // return  this.bufferBindCount;
-		 return bufferBindCount0(super.ptr);
+		 int var = bufferBindCount0(super.ptr);
+		 this.bufferBindCount = var;
+		 return this.bufferBindCount;
 	 }
 
 	/**
-	 * Set method for field pBufferBinds	[p]<br>
+	 * Set method for field pBufferBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseBufferMemoryBindInfo*  pBufferBinds
 	 */ 
-	 public void pBufferBinds(P<VkSparseBufferMemoryBindInfo>  pBufferBinds){
+	 public void pBufferBinds( VkSparseBufferMemoryBindInfo  pBufferBinds){
 		 this.pBufferBinds = pBufferBinds;
-		pBufferBinds0(super.ptr, pBufferBinds);
+		 ByteBuffer buff = (pBufferBinds==null) ? null : pBufferBinds.getPointerStruct();
+		 pBufferBinds0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pBufferBinds	[p]<br>
+	 * Get method for field pBufferBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseBufferMemoryBindInfo*  pBufferBinds
 	 */ 
-	 public P<VkSparseBufferMemoryBindInfo>  pBufferBinds(){
-		 // return  this.pBufferBinds;
-		 return pBufferBinds0(super.ptr);
+	 public  VkSparseBufferMemoryBindInfo  pBufferBinds(){
+		 ByteBuffer pointer = pBufferBinds0(super.ptr);
+		 if(pointer == null){
+		    this.pBufferBinds = null;
+		    return null;
+		  } else 
+ 		 if(this.pBufferBinds == null){
+		    this.pBufferBinds = new  VkSparseBufferMemoryBindInfo (pointer);
+		 }else{
+		    this.pBufferBinds.setPointer(pointer);
+		  }
+		 return this.pBufferBinds;
 	 }
 
 	/**
@@ -291,34 +328,45 @@ public class VkBindSparseInfo extends VkStruct {
 	 */ 
 	 public void imageOpaqueBindCount(int imageOpaqueBindCount){
 		 this.imageOpaqueBindCount = imageOpaqueBindCount;
-		imageOpaqueBindCount0(super.ptr, imageOpaqueBindCount);
+		 imageOpaqueBindCount0(this.ptr,  imageOpaqueBindCount);
 	 }
 
 	/**
-	 * get method for field imageOpaqueBindCount	[int]<br>
+	 * Get method for field imageOpaqueBindCount	[int]<br>
 	 * Prototype: uint32_t  imageOpaqueBindCount
 	 */ 
 	 public int imageOpaqueBindCount(){
-		 // return  this.imageOpaqueBindCount;
-		 return imageOpaqueBindCount0(super.ptr);
+		 int var = imageOpaqueBindCount0(super.ptr);
+		 this.imageOpaqueBindCount = var;
+		 return this.imageOpaqueBindCount;
 	 }
 
 	/**
-	 * Set method for field pImageOpaqueBinds	[p]<br>
+	 * Set method for field pImageOpaqueBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseImageOpaqueMemoryBindInfo*  pImageOpaqueBinds
 	 */ 
-	 public void pImageOpaqueBinds(P<VkSparseImageOpaqueMemoryBindInfo>  pImageOpaqueBinds){
+	 public void pImageOpaqueBinds( VkSparseImageOpaqueMemoryBindInfo  pImageOpaqueBinds){
 		 this.pImageOpaqueBinds = pImageOpaqueBinds;
-		pImageOpaqueBinds0(super.ptr, pImageOpaqueBinds);
+		 ByteBuffer buff = (pImageOpaqueBinds==null) ? null : pImageOpaqueBinds.getPointerStruct();
+		 pImageOpaqueBinds0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pImageOpaqueBinds	[p]<br>
+	 * Get method for field pImageOpaqueBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseImageOpaqueMemoryBindInfo*  pImageOpaqueBinds
 	 */ 
-	 public P<VkSparseImageOpaqueMemoryBindInfo>  pImageOpaqueBinds(){
-		 // return  this.pImageOpaqueBinds;
-		 return pImageOpaqueBinds0(super.ptr);
+	 public  VkSparseImageOpaqueMemoryBindInfo  pImageOpaqueBinds(){
+		 ByteBuffer pointer = pImageOpaqueBinds0(super.ptr);
+		 if(pointer == null){
+		    this.pImageOpaqueBinds = null;
+		    return null;
+		  } else 
+ 		 if(this.pImageOpaqueBinds == null){
+		    this.pImageOpaqueBinds = new  VkSparseImageOpaqueMemoryBindInfo (pointer);
+		 }else{
+		    this.pImageOpaqueBinds.setPointer(pointer);
+		  }
+		 return this.pImageOpaqueBinds;
 	 }
 
 	/**
@@ -327,34 +375,45 @@ public class VkBindSparseInfo extends VkStruct {
 	 */ 
 	 public void imageBindCount(int imageBindCount){
 		 this.imageBindCount = imageBindCount;
-		imageBindCount0(super.ptr, imageBindCount);
+		 imageBindCount0(this.ptr,  imageBindCount);
 	 }
 
 	/**
-	 * get method for field imageBindCount	[int]<br>
+	 * Get method for field imageBindCount	[int]<br>
 	 * Prototype: uint32_t  imageBindCount
 	 */ 
 	 public int imageBindCount(){
-		 // return  this.imageBindCount;
-		 return imageBindCount0(super.ptr);
+		 int var = imageBindCount0(super.ptr);
+		 this.imageBindCount = var;
+		 return this.imageBindCount;
 	 }
 
 	/**
-	 * Set method for field pImageBinds	[p]<br>
+	 * Set method for field pImageBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseImageMemoryBindInfo*  pImageBinds
 	 */ 
-	 public void pImageBinds(P<VkSparseImageMemoryBindInfo>  pImageBinds){
+	 public void pImageBinds( VkSparseImageMemoryBindInfo  pImageBinds){
 		 this.pImageBinds = pImageBinds;
-		pImageBinds0(super.ptr, pImageBinds);
+		 ByteBuffer buff = (pImageBinds==null) ? null : pImageBinds.getPointerStruct();
+		 pImageBinds0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pImageBinds	[p]<br>
+	 * Get method for field pImageBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseImageMemoryBindInfo*  pImageBinds
 	 */ 
-	 public P<VkSparseImageMemoryBindInfo>  pImageBinds(){
-		 // return  this.pImageBinds;
-		 return pImageBinds0(super.ptr);
+	 public  VkSparseImageMemoryBindInfo  pImageBinds(){
+		 ByteBuffer pointer = pImageBinds0(super.ptr);
+		 if(pointer == null){
+		    this.pImageBinds = null;
+		    return null;
+		  } else 
+ 		 if(this.pImageBinds == null){
+		    this.pImageBinds = new  VkSparseImageMemoryBindInfo (pointer);
+		 }else{
+		    this.pImageBinds.setPointer(pointer);
+		  }
+		 return this.pImageBinds;
 	 }
 
 	/**
@@ -363,34 +422,46 @@ public class VkBindSparseInfo extends VkStruct {
 	 */ 
 	 public void signalSemaphoreCount(int signalSemaphoreCount){
 		 this.signalSemaphoreCount = signalSemaphoreCount;
-		signalSemaphoreCount0(super.ptr, signalSemaphoreCount);
+		 signalSemaphoreCount0(this.ptr,  signalSemaphoreCount);
 	 }
 
 	/**
-	 * get method for field signalSemaphoreCount	[int]<br>
+	 * Get method for field signalSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  signalSemaphoreCount
 	 */ 
 	 public int signalSemaphoreCount(){
-		 // return  this.signalSemaphoreCount;
-		 return signalSemaphoreCount0(super.ptr);
+		 int var = signalSemaphoreCount0(super.ptr);
+		 this.signalSemaphoreCount = var;
+		 return this.signalSemaphoreCount;
 	 }
 
 	/**
-	 * Set method for field pSignalSemaphores	[p]<br>
+	 * Set method for field pSignalSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pSignalSemaphores
 	 */ 
-	 public void pSignalSemaphores(P<VkSemaphore>  pSignalSemaphores){
+	 public void pSignalSemaphores( VkSemaphore  pSignalSemaphores){
 		 this.pSignalSemaphores = pSignalSemaphores;
-		pSignalSemaphores0(super.ptr, pSignalSemaphores);
+		 ByteBuffer buff = (pSignalSemaphores==null) ? null : pSignalSemaphores.getHandle();
+		 pSignalSemaphores0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pSignalSemaphores	[p]<br>
+	 * Get method for field pSignalSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pSignalSemaphores
 	 */ 
-	 public P<VkSemaphore>  pSignalSemaphores(){
-		 // return  this.pSignalSemaphores;
-		 return pSignalSemaphores0(super.ptr);
+	 public  VkSemaphore  pSignalSemaphores(){
+
+		 ByteBuffer handle = pSignalSemaphores0(super.ptr);
+		 if(handle == null){
+		    this.pSignalSemaphores = null;
+		    return null;
+		  } else 
+ 		 if(this.pSignalSemaphores == null){
+		    this.pSignalSemaphores = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.pSignalSemaphores).setHandle(handle);
+		  }
+		 return this.pSignalSemaphores;
 	 }
 
 
@@ -401,216 +472,216 @@ public class VkBindSparseInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field waitSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
-	 private static native void waitSemaphoreCount0(ByteBuffer ptr, int _waitSemaphoreCount);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(*ptr);
-		  _obj.waitSemaphoreCount = (uint32_t) (_waitSemaphoreCount);
+	 private static native void waitSemaphoreCount0(Buffer ptr, int _waitSemaphoreCount);/*
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		  vkObj->waitSemaphoreCount = (uint32_t) (_waitSemaphoreCount);
 	  */
 
 	/**
 	 * native GET method for field waitSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
-	 private static native int waitSemaphoreCount0(ByteBuffer ptr);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int waitSemaphoreCount0(Buffer ptr);/*
+		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  return (jint) (vkObj->waitSemaphoreCount);
 	 */
 
 	/**
-	 * native SET method for field pWaitSemaphores	[p]<br>
+	 * native SET method for field pWaitSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
-	 private static native void pWaitSemaphores0(ByteBuffer ptr, P<VkSemaphore>  _pWaitSemaphores);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(*ptr);
-		  _obj.pWaitSemaphores = (const VkSemaphore*) (_pWaitSemaphores);
+	 private static native void pWaitSemaphores0(Buffer ptr, java.nio.ByteBuffer  _pWaitSemaphores);/*
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		  vkObj->pWaitSemaphores = (const VkSemaphore*) (_pWaitSemaphores);
 	  */
 
 	/**
-	 * native GET method for field pWaitSemaphores	[p]<br>
+	 * native GET method for field pWaitSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
-	 private static native P<VkSemaphore>  pWaitSemaphores0(ByteBuffer ptr);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(ptr);
-		  return (P<VkSemaphore> ) (_obj.const VkSemaphore*);
+	 private static native java.nio.ByteBuffer  pWaitSemaphores0(Buffer ptr);/*
+		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  return ( VkSemaphore ) (vkObj->pWaitSemaphores);
 	 */
 
 	/**
 	 * native SET method for field bufferBindCount	[int]<br>
 	 * Prototype: uint32_t  bufferBindCount
 	 */ 
-	 private static native void bufferBindCount0(ByteBuffer ptr, int _bufferBindCount);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(*ptr);
-		  _obj.bufferBindCount = (uint32_t) (_bufferBindCount);
+	 private static native void bufferBindCount0(Buffer ptr, int _bufferBindCount);/*
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		  vkObj->bufferBindCount = (uint32_t) (_bufferBindCount);
 	  */
 
 	/**
 	 * native GET method for field bufferBindCount	[int]<br>
 	 * Prototype: uint32_t  bufferBindCount
 	 */ 
-	 private static native int bufferBindCount0(ByteBuffer ptr);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int bufferBindCount0(Buffer ptr);/*
+		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  return (jint) (vkObj->bufferBindCount);
 	 */
 
 	/**
-	 * native SET method for field pBufferBinds	[p]<br>
+	 * native SET method for field pBufferBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseBufferMemoryBindInfo*  pBufferBinds
 	 */ 
-	 private static native void pBufferBinds0(ByteBuffer ptr, P<VkSparseBufferMemoryBindInfo>  _pBufferBinds);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(*ptr);
-		  _obj.pBufferBinds = (const VkSparseBufferMemoryBindInfo*) (_pBufferBinds);
+	 private static native void pBufferBinds0(Buffer ptr, java.nio.ByteBuffer  _pBufferBinds);/*
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		  vkObj->pBufferBinds = (const VkSparseBufferMemoryBindInfo*) (_pBufferBinds);
 	  */
 
 	/**
-	 * native GET method for field pBufferBinds	[p]<br>
+	 * native GET method for field pBufferBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseBufferMemoryBindInfo*  pBufferBinds
 	 */ 
-	 private static native P<VkSparseBufferMemoryBindInfo>  pBufferBinds0(ByteBuffer ptr);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(ptr);
-		  return (P<VkSparseBufferMemoryBindInfo> ) (_obj.const VkSparseBufferMemoryBindInfo*);
+	 private static native java.nio.ByteBuffer  pBufferBinds0(Buffer ptr);/*
+		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  return (jobject) (vkObj->pBufferBinds);
 	 */
 
 	/**
 	 * native SET method for field imageOpaqueBindCount	[int]<br>
 	 * Prototype: uint32_t  imageOpaqueBindCount
 	 */ 
-	 private static native void imageOpaqueBindCount0(ByteBuffer ptr, int _imageOpaqueBindCount);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(*ptr);
-		  _obj.imageOpaqueBindCount = (uint32_t) (_imageOpaqueBindCount);
+	 private static native void imageOpaqueBindCount0(Buffer ptr, int _imageOpaqueBindCount);/*
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		  vkObj->imageOpaqueBindCount = (uint32_t) (_imageOpaqueBindCount);
 	  */
 
 	/**
 	 * native GET method for field imageOpaqueBindCount	[int]<br>
 	 * Prototype: uint32_t  imageOpaqueBindCount
 	 */ 
-	 private static native int imageOpaqueBindCount0(ByteBuffer ptr);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int imageOpaqueBindCount0(Buffer ptr);/*
+		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  return (jint) (vkObj->imageOpaqueBindCount);
 	 */
 
 	/**
-	 * native SET method for field pImageOpaqueBinds	[p]<br>
+	 * native SET method for field pImageOpaqueBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseImageOpaqueMemoryBindInfo*  pImageOpaqueBinds
 	 */ 
-	 private static native void pImageOpaqueBinds0(ByteBuffer ptr, P<VkSparseImageOpaqueMemoryBindInfo>  _pImageOpaqueBinds);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(*ptr);
-		  _obj.pImageOpaqueBinds = (const VkSparseImageOpaqueMemoryBindInfo*) (_pImageOpaqueBinds);
+	 private static native void pImageOpaqueBinds0(Buffer ptr, java.nio.ByteBuffer  _pImageOpaqueBinds);/*
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		  vkObj->pImageOpaqueBinds = (const VkSparseImageOpaqueMemoryBindInfo*) (_pImageOpaqueBinds);
 	  */
 
 	/**
-	 * native GET method for field pImageOpaqueBinds	[p]<br>
+	 * native GET method for field pImageOpaqueBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseImageOpaqueMemoryBindInfo*  pImageOpaqueBinds
 	 */ 
-	 private static native P<VkSparseImageOpaqueMemoryBindInfo>  pImageOpaqueBinds0(ByteBuffer ptr);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(ptr);
-		  return (P<VkSparseImageOpaqueMemoryBindInfo> ) (_obj.const VkSparseImageOpaqueMemoryBindInfo*);
+	 private static native java.nio.ByteBuffer  pImageOpaqueBinds0(Buffer ptr);/*
+		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  return ( VkSparseImageOpaqueMemoryBindInfo ) (vkObj->pImageOpaqueBinds);
 	 */
 
 	/**
 	 * native SET method for field imageBindCount	[int]<br>
 	 * Prototype: uint32_t  imageBindCount
 	 */ 
-	 private static native void imageBindCount0(ByteBuffer ptr, int _imageBindCount);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(*ptr);
-		  _obj.imageBindCount = (uint32_t) (_imageBindCount);
+	 private static native void imageBindCount0(Buffer ptr, int _imageBindCount);/*
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		  vkObj->imageBindCount = (uint32_t) (_imageBindCount);
 	  */
 
 	/**
 	 * native GET method for field imageBindCount	[int]<br>
 	 * Prototype: uint32_t  imageBindCount
 	 */ 
-	 private static native int imageBindCount0(ByteBuffer ptr);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int imageBindCount0(Buffer ptr);/*
+		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  return (jint) (vkObj->imageBindCount);
 	 */
 
 	/**
-	 * native SET method for field pImageBinds	[p]<br>
+	 * native SET method for field pImageBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseImageMemoryBindInfo*  pImageBinds
 	 */ 
-	 private static native void pImageBinds0(ByteBuffer ptr, P<VkSparseImageMemoryBindInfo>  _pImageBinds);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(*ptr);
-		  _obj.pImageBinds = (const VkSparseImageMemoryBindInfo*) (_pImageBinds);
+	 private static native void pImageBinds0(Buffer ptr, java.nio.ByteBuffer  _pImageBinds);/*
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		  vkObj->pImageBinds = (const VkSparseImageMemoryBindInfo*) (_pImageBinds);
 	  */
 
 	/**
-	 * native GET method for field pImageBinds	[p]<br>
+	 * native GET method for field pImageBinds	[vkstruct]<br>
 	 * Prototype: const VkSparseImageMemoryBindInfo*  pImageBinds
 	 */ 
-	 private static native P<VkSparseImageMemoryBindInfo>  pImageBinds0(ByteBuffer ptr);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(ptr);
-		  return (P<VkSparseImageMemoryBindInfo> ) (_obj.const VkSparseImageMemoryBindInfo*);
+	 private static native java.nio.ByteBuffer  pImageBinds0(Buffer ptr);/*
+		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  return ( VkSparseImageMemoryBindInfo ) (vkObj->pImageBinds);
 	 */
 
 	/**
 	 * native SET method for field signalSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  signalSemaphoreCount
 	 */ 
-	 private static native void signalSemaphoreCount0(ByteBuffer ptr, int _signalSemaphoreCount);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(*ptr);
-		  _obj.signalSemaphoreCount = (uint32_t) (_signalSemaphoreCount);
+	 private static native void signalSemaphoreCount0(Buffer ptr, int _signalSemaphoreCount);/*
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		  vkObj->signalSemaphoreCount = (uint32_t) (_signalSemaphoreCount);
 	  */
 
 	/**
 	 * native GET method for field signalSemaphoreCount	[int]<br>
 	 * Prototype: uint32_t  signalSemaphoreCount
 	 */ 
-	 private static native int signalSemaphoreCount0(ByteBuffer ptr);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int signalSemaphoreCount0(Buffer ptr);/*
+		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  return (jint) (vkObj->signalSemaphoreCount);
 	 */
 
 	/**
-	 * native SET method for field pSignalSemaphores	[p]<br>
+	 * native SET method for field pSignalSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pSignalSemaphores
 	 */ 
-	 private static native void pSignalSemaphores0(ByteBuffer ptr, P<VkSemaphore>  _pSignalSemaphores);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(*ptr);
-		  _obj.pSignalSemaphores = (const VkSemaphore*) (_pSignalSemaphores);
+	 private static native void pSignalSemaphores0(Buffer ptr, java.nio.ByteBuffer  _pSignalSemaphores);/*
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		  vkObj->pSignalSemaphores = (const VkSemaphore*) (_pSignalSemaphores);
 	  */
 
 	/**
-	 * native GET method for field pSignalSemaphores	[p]<br>
+	 * native GET method for field pSignalSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pSignalSemaphores
 	 */ 
-	 private static native P<VkSemaphore>  pSignalSemaphores0(ByteBuffer ptr);/*
-		  VkBindSparseInfo _obj = (VkBindSparseInfo)(ptr);
-		  return (P<VkSemaphore> ) (_obj.const VkSemaphore*);
+	 private static native java.nio.ByteBuffer  pSignalSemaphores0(Buffer ptr);/*
+		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  return ( VkSemaphore ) (vkObj->pSignalSemaphores);
 	 */
 
 

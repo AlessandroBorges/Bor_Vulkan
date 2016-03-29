@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -129,16 +131,17 @@ public class VkImageSubresource extends VkStruct {
 	 */ 
 	 public void aspectMask(int aspectMask){
 		 this.aspectMask = aspectMask;
-		aspectMask0(super.ptr, aspectMask);
+		 aspectMask0(this.ptr,  aspectMask);
 	 }
 
 	/**
-	 * get method for field aspectMask	[int]<br>
+	 * Get method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 public int aspectMask(){
-		 // return  this.aspectMask;
-		 return aspectMask0(super.ptr);
+		 int var = aspectMask0(super.ptr);
+		 this.aspectMask = var;
+		 return this.aspectMask;
 	 }
 
 	/**
@@ -147,16 +150,17 @@ public class VkImageSubresource extends VkStruct {
 	 */ 
 	 public void mipLevel(int mipLevel){
 		 this.mipLevel = mipLevel;
-		mipLevel0(super.ptr, mipLevel);
+		 mipLevel0(this.ptr,  mipLevel);
 	 }
 
 	/**
-	 * get method for field mipLevel	[int]<br>
+	 * Get method for field mipLevel	[int]<br>
 	 * Prototype: uint32_t  mipLevel
 	 */ 
 	 public int mipLevel(){
-		 // return  this.mipLevel;
-		 return mipLevel0(super.ptr);
+		 int var = mipLevel0(super.ptr);
+		 this.mipLevel = var;
+		 return this.mipLevel;
 	 }
 
 	/**
@@ -165,16 +169,17 @@ public class VkImageSubresource extends VkStruct {
 	 */ 
 	 public void arrayLayer(int arrayLayer){
 		 this.arrayLayer = arrayLayer;
-		arrayLayer0(super.ptr, arrayLayer);
+		 arrayLayer0(this.ptr,  arrayLayer);
 	 }
 
 	/**
-	 * get method for field arrayLayer	[int]<br>
+	 * Get method for field arrayLayer	[int]<br>
 	 * Prototype: uint32_t  arrayLayer
 	 */ 
 	 public int arrayLayer(){
-		 // return  this.arrayLayer;
-		 return arrayLayer0(super.ptr);
+		 int var = arrayLayer0(super.ptr);
+		 this.arrayLayer = var;
+		 return this.arrayLayer;
 	 }
 
 
@@ -185,54 +190,54 @@ public class VkImageSubresource extends VkStruct {
 	 * native SET method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
-	 private static native void aspectMask0(ByteBuffer ptr, int _aspectMask);/*
-		  VkImageSubresource _obj = (VkImageSubresource)(*ptr);
-		  _obj.aspectMask = (VkImageAspectFlags) (_aspectMask);
+	 private static native void aspectMask0(Buffer ptr, int _aspectMask);/*
+		  VkImageSubresource* vkObj = (VkImageSubresource*)(ptr);
+		  vkObj->aspectMask = (VkImageAspectFlags) (_aspectMask);
 	  */
 
 	/**
 	 * native GET method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
-	 private static native int aspectMask0(ByteBuffer ptr);/*
-		  VkImageSubresource _obj = (VkImageSubresource)(ptr);
-		  return (jint) (_obj.VkImageAspectFlags);
+	 private static native int aspectMask0(Buffer ptr);/*
+		  VkImageSubresource vkObj = (VkImageSubresource*)(ptr);
+		  return (jint) (vkObj->aspectMask);
 	 */
 
 	/**
 	 * native SET method for field mipLevel	[int]<br>
 	 * Prototype: uint32_t  mipLevel
 	 */ 
-	 private static native void mipLevel0(ByteBuffer ptr, int _mipLevel);/*
-		  VkImageSubresource _obj = (VkImageSubresource)(*ptr);
-		  _obj.mipLevel = (uint32_t) (_mipLevel);
+	 private static native void mipLevel0(Buffer ptr, int _mipLevel);/*
+		  VkImageSubresource* vkObj = (VkImageSubresource*)(ptr);
+		  vkObj->mipLevel = (uint32_t) (_mipLevel);
 	  */
 
 	/**
 	 * native GET method for field mipLevel	[int]<br>
 	 * Prototype: uint32_t  mipLevel
 	 */ 
-	 private static native int mipLevel0(ByteBuffer ptr);/*
-		  VkImageSubresource _obj = (VkImageSubresource)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int mipLevel0(Buffer ptr);/*
+		  VkImageSubresource vkObj = (VkImageSubresource*)(ptr);
+		  return (jint) (vkObj->mipLevel);
 	 */
 
 	/**
 	 * native SET method for field arrayLayer	[int]<br>
 	 * Prototype: uint32_t  arrayLayer
 	 */ 
-	 private static native void arrayLayer0(ByteBuffer ptr, int _arrayLayer);/*
-		  VkImageSubresource _obj = (VkImageSubresource)(*ptr);
-		  _obj.arrayLayer = (uint32_t) (_arrayLayer);
+	 private static native void arrayLayer0(Buffer ptr, int _arrayLayer);/*
+		  VkImageSubresource* vkObj = (VkImageSubresource*)(ptr);
+		  vkObj->arrayLayer = (uint32_t) (_arrayLayer);
 	  */
 
 	/**
 	 * native GET method for field arrayLayer	[int]<br>
 	 * Prototype: uint32_t  arrayLayer
 	 */ 
-	 private static native int arrayLayer0(ByteBuffer ptr);/*
-		  VkImageSubresource _obj = (VkImageSubresource)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int arrayLayer0(Buffer ptr);/*
+		  VkImageSubresource vkObj = (VkImageSubresource*)(ptr);
+		  return (jint) (vkObj->arrayLayer);
 	 */
 
 

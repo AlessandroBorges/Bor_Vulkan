@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -141,16 +143,17 @@ public class VkImageSubresourceRange extends VkStruct {
 	 */ 
 	 public void aspectMask(int aspectMask){
 		 this.aspectMask = aspectMask;
-		aspectMask0(super.ptr, aspectMask);
+		 aspectMask0(this.ptr,  aspectMask);
 	 }
 
 	/**
-	 * get method for field aspectMask	[int]<br>
+	 * Get method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 public int aspectMask(){
-		 // return  this.aspectMask;
-		 return aspectMask0(super.ptr);
+		 int var = aspectMask0(super.ptr);
+		 this.aspectMask = var;
+		 return this.aspectMask;
 	 }
 
 	/**
@@ -159,16 +162,17 @@ public class VkImageSubresourceRange extends VkStruct {
 	 */ 
 	 public void baseMipLevel(int baseMipLevel){
 		 this.baseMipLevel = baseMipLevel;
-		baseMipLevel0(super.ptr, baseMipLevel);
+		 baseMipLevel0(this.ptr,  baseMipLevel);
 	 }
 
 	/**
-	 * get method for field baseMipLevel	[int]<br>
+	 * Get method for field baseMipLevel	[int]<br>
 	 * Prototype: uint32_t  baseMipLevel
 	 */ 
 	 public int baseMipLevel(){
-		 // return  this.baseMipLevel;
-		 return baseMipLevel0(super.ptr);
+		 int var = baseMipLevel0(super.ptr);
+		 this.baseMipLevel = var;
+		 return this.baseMipLevel;
 	 }
 
 	/**
@@ -177,16 +181,17 @@ public class VkImageSubresourceRange extends VkStruct {
 	 */ 
 	 public void levelCount(int levelCount){
 		 this.levelCount = levelCount;
-		levelCount0(super.ptr, levelCount);
+		 levelCount0(this.ptr,  levelCount);
 	 }
 
 	/**
-	 * get method for field levelCount	[int]<br>
+	 * Get method for field levelCount	[int]<br>
 	 * Prototype: uint32_t  levelCount
 	 */ 
 	 public int levelCount(){
-		 // return  this.levelCount;
-		 return levelCount0(super.ptr);
+		 int var = levelCount0(super.ptr);
+		 this.levelCount = var;
+		 return this.levelCount;
 	 }
 
 	/**
@@ -195,16 +200,17 @@ public class VkImageSubresourceRange extends VkStruct {
 	 */ 
 	 public void baseArrayLayer(int baseArrayLayer){
 		 this.baseArrayLayer = baseArrayLayer;
-		baseArrayLayer0(super.ptr, baseArrayLayer);
+		 baseArrayLayer0(this.ptr,  baseArrayLayer);
 	 }
 
 	/**
-	 * get method for field baseArrayLayer	[int]<br>
+	 * Get method for field baseArrayLayer	[int]<br>
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
 	 public int baseArrayLayer(){
-		 // return  this.baseArrayLayer;
-		 return baseArrayLayer0(super.ptr);
+		 int var = baseArrayLayer0(super.ptr);
+		 this.baseArrayLayer = var;
+		 return this.baseArrayLayer;
 	 }
 
 	/**
@@ -213,16 +219,17 @@ public class VkImageSubresourceRange extends VkStruct {
 	 */ 
 	 public void layerCount(int layerCount){
 		 this.layerCount = layerCount;
-		layerCount0(super.ptr, layerCount);
+		 layerCount0(this.ptr,  layerCount);
 	 }
 
 	/**
-	 * get method for field layerCount	[int]<br>
+	 * Get method for field layerCount	[int]<br>
 	 * Prototype: uint32_t  layerCount
 	 */ 
 	 public int layerCount(){
-		 // return  this.layerCount;
-		 return layerCount0(super.ptr);
+		 int var = layerCount0(super.ptr);
+		 this.layerCount = var;
+		 return this.layerCount;
 	 }
 
 
@@ -233,90 +240,90 @@ public class VkImageSubresourceRange extends VkStruct {
 	 * native SET method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
-	 private static native void aspectMask0(ByteBuffer ptr, int _aspectMask);/*
-		  VkImageSubresourceRange _obj = (VkImageSubresourceRange)(*ptr);
-		  _obj.aspectMask = (VkImageAspectFlags) (_aspectMask);
+	 private static native void aspectMask0(Buffer ptr, int _aspectMask);/*
+		  VkImageSubresourceRange* vkObj = (VkImageSubresourceRange*)(ptr);
+		  vkObj->aspectMask = (VkImageAspectFlags) (_aspectMask);
 	  */
 
 	/**
 	 * native GET method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
-	 private static native int aspectMask0(ByteBuffer ptr);/*
-		  VkImageSubresourceRange _obj = (VkImageSubresourceRange)(ptr);
-		  return (jint) (_obj.VkImageAspectFlags);
+	 private static native int aspectMask0(Buffer ptr);/*
+		  VkImageSubresourceRange vkObj = (VkImageSubresourceRange*)(ptr);
+		  return (jint) (vkObj->aspectMask);
 	 */
 
 	/**
 	 * native SET method for field baseMipLevel	[int]<br>
 	 * Prototype: uint32_t  baseMipLevel
 	 */ 
-	 private static native void baseMipLevel0(ByteBuffer ptr, int _baseMipLevel);/*
-		  VkImageSubresourceRange _obj = (VkImageSubresourceRange)(*ptr);
-		  _obj.baseMipLevel = (uint32_t) (_baseMipLevel);
+	 private static native void baseMipLevel0(Buffer ptr, int _baseMipLevel);/*
+		  VkImageSubresourceRange* vkObj = (VkImageSubresourceRange*)(ptr);
+		  vkObj->baseMipLevel = (uint32_t) (_baseMipLevel);
 	  */
 
 	/**
 	 * native GET method for field baseMipLevel	[int]<br>
 	 * Prototype: uint32_t  baseMipLevel
 	 */ 
-	 private static native int baseMipLevel0(ByteBuffer ptr);/*
-		  VkImageSubresourceRange _obj = (VkImageSubresourceRange)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int baseMipLevel0(Buffer ptr);/*
+		  VkImageSubresourceRange vkObj = (VkImageSubresourceRange*)(ptr);
+		  return (jint) (vkObj->baseMipLevel);
 	 */
 
 	/**
 	 * native SET method for field levelCount	[int]<br>
 	 * Prototype: uint32_t  levelCount
 	 */ 
-	 private static native void levelCount0(ByteBuffer ptr, int _levelCount);/*
-		  VkImageSubresourceRange _obj = (VkImageSubresourceRange)(*ptr);
-		  _obj.levelCount = (uint32_t) (_levelCount);
+	 private static native void levelCount0(Buffer ptr, int _levelCount);/*
+		  VkImageSubresourceRange* vkObj = (VkImageSubresourceRange*)(ptr);
+		  vkObj->levelCount = (uint32_t) (_levelCount);
 	  */
 
 	/**
 	 * native GET method for field levelCount	[int]<br>
 	 * Prototype: uint32_t  levelCount
 	 */ 
-	 private static native int levelCount0(ByteBuffer ptr);/*
-		  VkImageSubresourceRange _obj = (VkImageSubresourceRange)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int levelCount0(Buffer ptr);/*
+		  VkImageSubresourceRange vkObj = (VkImageSubresourceRange*)(ptr);
+		  return (jint) (vkObj->levelCount);
 	 */
 
 	/**
 	 * native SET method for field baseArrayLayer	[int]<br>
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
-	 private static native void baseArrayLayer0(ByteBuffer ptr, int _baseArrayLayer);/*
-		  VkImageSubresourceRange _obj = (VkImageSubresourceRange)(*ptr);
-		  _obj.baseArrayLayer = (uint32_t) (_baseArrayLayer);
+	 private static native void baseArrayLayer0(Buffer ptr, int _baseArrayLayer);/*
+		  VkImageSubresourceRange* vkObj = (VkImageSubresourceRange*)(ptr);
+		  vkObj->baseArrayLayer = (uint32_t) (_baseArrayLayer);
 	  */
 
 	/**
 	 * native GET method for field baseArrayLayer	[int]<br>
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
-	 private static native int baseArrayLayer0(ByteBuffer ptr);/*
-		  VkImageSubresourceRange _obj = (VkImageSubresourceRange)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int baseArrayLayer0(Buffer ptr);/*
+		  VkImageSubresourceRange vkObj = (VkImageSubresourceRange*)(ptr);
+		  return (jint) (vkObj->baseArrayLayer);
 	 */
 
 	/**
 	 * native SET method for field layerCount	[int]<br>
 	 * Prototype: uint32_t  layerCount
 	 */ 
-	 private static native void layerCount0(ByteBuffer ptr, int _layerCount);/*
-		  VkImageSubresourceRange _obj = (VkImageSubresourceRange)(*ptr);
-		  _obj.layerCount = (uint32_t) (_layerCount);
+	 private static native void layerCount0(Buffer ptr, int _layerCount);/*
+		  VkImageSubresourceRange* vkObj = (VkImageSubresourceRange*)(ptr);
+		  vkObj->layerCount = (uint32_t) (_layerCount);
 	  */
 
 	/**
 	 * native GET method for field layerCount	[int]<br>
 	 * Prototype: uint32_t  layerCount
 	 */ 
-	 private static native int layerCount0(ByteBuffer ptr);/*
-		  VkImageSubresourceRange _obj = (VkImageSubresourceRange)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int layerCount0(Buffer ptr);/*
+		  VkImageSubresourceRange vkObj = (VkImageSubresourceRange*)(ptr);
+		  return (jint) (vkObj->layerCount);
 	 */
 
 

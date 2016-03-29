@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -51,9 +53,9 @@ public class VkCommandPoolCreateInfo extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  VkCommandPoolCreateFlags 	flags	[int]
@@ -135,34 +137,46 @@ public class VkCommandPoolCreateInfo extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -171,16 +185,17 @@ public class VkCommandPoolCreateInfo extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		flags0(super.ptr, flags);
+		 flags0(this.ptr,  flags);
 	 }
 
 	/**
-	 * get method for field flags	[int]<br>
+	 * Get method for field flags	[int]<br>
 	 * Prototype: VkCommandPoolCreateFlags  flags
 	 */ 
 	 public int flags(){
-		 // return  this.flags;
-		 return flags0(super.ptr);
+		 int var = flags0(super.ptr);
+		 this.flags = var;
+		 return this.flags;
 	 }
 
 	/**
@@ -189,16 +204,17 @@ public class VkCommandPoolCreateInfo extends VkStruct {
 	 */ 
 	 public void queueFamilyIndex(int queueFamilyIndex){
 		 this.queueFamilyIndex = queueFamilyIndex;
-		queueFamilyIndex0(super.ptr, queueFamilyIndex);
+		 queueFamilyIndex0(this.ptr,  queueFamilyIndex);
 	 }
 
 	/**
-	 * get method for field queueFamilyIndex	[int]<br>
+	 * Get method for field queueFamilyIndex	[int]<br>
 	 * Prototype: uint32_t  queueFamilyIndex
 	 */ 
 	 public int queueFamilyIndex(){
-		 // return  this.queueFamilyIndex;
-		 return queueFamilyIndex0(super.ptr);
+		 int var = queueFamilyIndex0(super.ptr);
+		 this.queueFamilyIndex = var;
+		 return this.queueFamilyIndex;
 	 }
 
 
@@ -209,72 +225,72 @@ public class VkCommandPoolCreateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkCommandPoolCreateInfo _obj = (VkCommandPoolCreateInfo)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkCommandPoolCreateInfo* vkObj = (VkCommandPoolCreateInfo*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkCommandPoolCreateInfo _obj = (VkCommandPoolCreateInfo)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkCommandPoolCreateInfo vkObj = (VkCommandPoolCreateInfo*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkCommandPoolCreateInfo _obj = (VkCommandPoolCreateInfo)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkCommandPoolCreateInfo* vkObj = (VkCommandPoolCreateInfo*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkCommandPoolCreateInfo _obj = (VkCommandPoolCreateInfo)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkCommandPoolCreateInfo vkObj = (VkCommandPoolCreateInfo*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkCommandPoolCreateFlags  flags
 	 */ 
-	 private static native void flags0(ByteBuffer ptr, int _flags);/*
-		  VkCommandPoolCreateInfo _obj = (VkCommandPoolCreateInfo)(*ptr);
-		  _obj.flags = (VkCommandPoolCreateFlags) (_flags);
+	 private static native void flags0(Buffer ptr, int _flags);/*
+		  VkCommandPoolCreateInfo* vkObj = (VkCommandPoolCreateInfo*)(ptr);
+		  vkObj->flags = (VkCommandPoolCreateFlags) (_flags);
 	  */
 
 	/**
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkCommandPoolCreateFlags  flags
 	 */ 
-	 private static native int flags0(ByteBuffer ptr);/*
-		  VkCommandPoolCreateInfo _obj = (VkCommandPoolCreateInfo)(ptr);
-		  return (jint) (_obj.VkCommandPoolCreateFlags);
+	 private static native int flags0(Buffer ptr);/*
+		  VkCommandPoolCreateInfo vkObj = (VkCommandPoolCreateInfo*)(ptr);
+		  return (jint) (vkObj->flags);
 	 */
 
 	/**
 	 * native SET method for field queueFamilyIndex	[int]<br>
 	 * Prototype: uint32_t  queueFamilyIndex
 	 */ 
-	 private static native void queueFamilyIndex0(ByteBuffer ptr, int _queueFamilyIndex);/*
-		  VkCommandPoolCreateInfo _obj = (VkCommandPoolCreateInfo)(*ptr);
-		  _obj.queueFamilyIndex = (uint32_t) (_queueFamilyIndex);
+	 private static native void queueFamilyIndex0(Buffer ptr, int _queueFamilyIndex);/*
+		  VkCommandPoolCreateInfo* vkObj = (VkCommandPoolCreateInfo*)(ptr);
+		  vkObj->queueFamilyIndex = (uint32_t) (_queueFamilyIndex);
 	  */
 
 	/**
 	 * native GET method for field queueFamilyIndex	[int]<br>
 	 * Prototype: uint32_t  queueFamilyIndex
 	 */ 
-	 private static native int queueFamilyIndex0(ByteBuffer ptr);/*
-		  VkCommandPoolCreateInfo _obj = (VkCommandPoolCreateInfo)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int queueFamilyIndex0(Buffer ptr);/*
+		  VkCommandPoolCreateInfo vkObj = (VkCommandPoolCreateInfo*)(ptr);
+		  return (jint) (vkObj->queueFamilyIndex);
 	 */
 
 

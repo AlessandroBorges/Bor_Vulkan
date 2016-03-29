@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -129,16 +131,17 @@ public class VkMemoryRequirements extends VkStruct {
 	 */ 
 	 public void size(long size){
 		 this.size = size;
-		size0(super.ptr, size);
+		 size0(this.ptr,  size);
 	 }
 
 	/**
-	 * get method for field size	[long]<br>
+	 * Get method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public long size(){
-		 // return  this.size;
-		 return size0(super.ptr);
+		 long var = size0(super.ptr);
+		 this.size = var;
+		 return this.size;
 	 }
 
 	/**
@@ -147,16 +150,17 @@ public class VkMemoryRequirements extends VkStruct {
 	 */ 
 	 public void alignment(long alignment){
 		 this.alignment = alignment;
-		alignment0(super.ptr, alignment);
+		 alignment0(this.ptr,  alignment);
 	 }
 
 	/**
-	 * get method for field alignment	[long]<br>
+	 * Get method for field alignment	[long]<br>
 	 * Prototype: VkDeviceSize  alignment
 	 */ 
 	 public long alignment(){
-		 // return  this.alignment;
-		 return alignment0(super.ptr);
+		 long var = alignment0(super.ptr);
+		 this.alignment = var;
+		 return this.alignment;
 	 }
 
 	/**
@@ -165,16 +169,17 @@ public class VkMemoryRequirements extends VkStruct {
 	 */ 
 	 public void memoryTypeBits(int memoryTypeBits){
 		 this.memoryTypeBits = memoryTypeBits;
-		memoryTypeBits0(super.ptr, memoryTypeBits);
+		 memoryTypeBits0(this.ptr,  memoryTypeBits);
 	 }
 
 	/**
-	 * get method for field memoryTypeBits	[int]<br>
+	 * Get method for field memoryTypeBits	[int]<br>
 	 * Prototype: uint32_t  memoryTypeBits
 	 */ 
 	 public int memoryTypeBits(){
-		 // return  this.memoryTypeBits;
-		 return memoryTypeBits0(super.ptr);
+		 int var = memoryTypeBits0(super.ptr);
+		 this.memoryTypeBits = var;
+		 return this.memoryTypeBits;
 	 }
 
 
@@ -185,54 +190,54 @@ public class VkMemoryRequirements extends VkStruct {
 	 * native SET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
-	 private static native void size0(ByteBuffer ptr, long _size);/*
-		  VkMemoryRequirements _obj = (VkMemoryRequirements)(*ptr);
-		  _obj.size = (VkDeviceSize) (_size);
+	 private static native void size0(Buffer ptr, long _size);/*
+		  VkMemoryRequirements* vkObj = (VkMemoryRequirements*)(ptr);
+		  vkObj->size = (VkDeviceSize) (_size);
 	  */
 
 	/**
 	 * native GET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
-	 private static native long size0(ByteBuffer ptr);/*
-		  VkMemoryRequirements _obj = (VkMemoryRequirements)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long size0(Buffer ptr);/*
+		  VkMemoryRequirements vkObj = (VkMemoryRequirements*)(ptr);
+		  return (jlong) (vkObj->size);
 	 */
 
 	/**
 	 * native SET method for field alignment	[long]<br>
 	 * Prototype: VkDeviceSize  alignment
 	 */ 
-	 private static native void alignment0(ByteBuffer ptr, long _alignment);/*
-		  VkMemoryRequirements _obj = (VkMemoryRequirements)(*ptr);
-		  _obj.alignment = (VkDeviceSize) (_alignment);
+	 private static native void alignment0(Buffer ptr, long _alignment);/*
+		  VkMemoryRequirements* vkObj = (VkMemoryRequirements*)(ptr);
+		  vkObj->alignment = (VkDeviceSize) (_alignment);
 	  */
 
 	/**
 	 * native GET method for field alignment	[long]<br>
 	 * Prototype: VkDeviceSize  alignment
 	 */ 
-	 private static native long alignment0(ByteBuffer ptr);/*
-		  VkMemoryRequirements _obj = (VkMemoryRequirements)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long alignment0(Buffer ptr);/*
+		  VkMemoryRequirements vkObj = (VkMemoryRequirements*)(ptr);
+		  return (jlong) (vkObj->alignment);
 	 */
 
 	/**
 	 * native SET method for field memoryTypeBits	[int]<br>
 	 * Prototype: uint32_t  memoryTypeBits
 	 */ 
-	 private static native void memoryTypeBits0(ByteBuffer ptr, int _memoryTypeBits);/*
-		  VkMemoryRequirements _obj = (VkMemoryRequirements)(*ptr);
-		  _obj.memoryTypeBits = (uint32_t) (_memoryTypeBits);
+	 private static native void memoryTypeBits0(Buffer ptr, int _memoryTypeBits);/*
+		  VkMemoryRequirements* vkObj = (VkMemoryRequirements*)(ptr);
+		  vkObj->memoryTypeBits = (uint32_t) (_memoryTypeBits);
 	  */
 
 	/**
 	 * native GET method for field memoryTypeBits	[int]<br>
 	 * Prototype: uint32_t  memoryTypeBits
 	 */ 
-	 private static native int memoryTypeBits0(ByteBuffer ptr);/*
-		  VkMemoryRequirements _obj = (VkMemoryRequirements)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int memoryTypeBits0(Buffer ptr);/*
+		  VkMemoryRequirements vkObj = (VkMemoryRequirements*)(ptr);
+		  return (jint) (vkObj->memoryTypeBits);
 	 */
 
 

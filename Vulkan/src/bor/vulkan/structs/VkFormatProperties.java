@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -129,16 +131,17 @@ public class VkFormatProperties extends VkStruct {
 	 */ 
 	 public void linearTilingFeatures(int linearTilingFeatures){
 		 this.linearTilingFeatures = linearTilingFeatures;
-		linearTilingFeatures0(super.ptr, linearTilingFeatures);
+		 linearTilingFeatures0(this.ptr,  linearTilingFeatures);
 	 }
 
 	/**
-	 * get method for field linearTilingFeatures	[int]<br>
+	 * Get method for field linearTilingFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  linearTilingFeatures
 	 */ 
 	 public int linearTilingFeatures(){
-		 // return  this.linearTilingFeatures;
-		 return linearTilingFeatures0(super.ptr);
+		 int var = linearTilingFeatures0(super.ptr);
+		 this.linearTilingFeatures = var;
+		 return this.linearTilingFeatures;
 	 }
 
 	/**
@@ -147,16 +150,17 @@ public class VkFormatProperties extends VkStruct {
 	 */ 
 	 public void optimalTilingFeatures(int optimalTilingFeatures){
 		 this.optimalTilingFeatures = optimalTilingFeatures;
-		optimalTilingFeatures0(super.ptr, optimalTilingFeatures);
+		 optimalTilingFeatures0(this.ptr,  optimalTilingFeatures);
 	 }
 
 	/**
-	 * get method for field optimalTilingFeatures	[int]<br>
+	 * Get method for field optimalTilingFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  optimalTilingFeatures
 	 */ 
 	 public int optimalTilingFeatures(){
-		 // return  this.optimalTilingFeatures;
-		 return optimalTilingFeatures0(super.ptr);
+		 int var = optimalTilingFeatures0(super.ptr);
+		 this.optimalTilingFeatures = var;
+		 return this.optimalTilingFeatures;
 	 }
 
 	/**
@@ -165,16 +169,17 @@ public class VkFormatProperties extends VkStruct {
 	 */ 
 	 public void bufferFeatures(int bufferFeatures){
 		 this.bufferFeatures = bufferFeatures;
-		bufferFeatures0(super.ptr, bufferFeatures);
+		 bufferFeatures0(this.ptr,  bufferFeatures);
 	 }
 
 	/**
-	 * get method for field bufferFeatures	[int]<br>
+	 * Get method for field bufferFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  bufferFeatures
 	 */ 
 	 public int bufferFeatures(){
-		 // return  this.bufferFeatures;
-		 return bufferFeatures0(super.ptr);
+		 int var = bufferFeatures0(super.ptr);
+		 this.bufferFeatures = var;
+		 return this.bufferFeatures;
 	 }
 
 
@@ -185,54 +190,54 @@ public class VkFormatProperties extends VkStruct {
 	 * native SET method for field linearTilingFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  linearTilingFeatures
 	 */ 
-	 private static native void linearTilingFeatures0(ByteBuffer ptr, int _linearTilingFeatures);/*
-		  VkFormatProperties _obj = (VkFormatProperties)(*ptr);
-		  _obj.linearTilingFeatures = (VkFormatFeatureFlags) (_linearTilingFeatures);
+	 private static native void linearTilingFeatures0(Buffer ptr, int _linearTilingFeatures);/*
+		  VkFormatProperties* vkObj = (VkFormatProperties*)(ptr);
+		  vkObj->linearTilingFeatures = (VkFormatFeatureFlags) (_linearTilingFeatures);
 	  */
 
 	/**
 	 * native GET method for field linearTilingFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  linearTilingFeatures
 	 */ 
-	 private static native int linearTilingFeatures0(ByteBuffer ptr);/*
-		  VkFormatProperties _obj = (VkFormatProperties)(ptr);
-		  return (jint) (_obj.VkFormatFeatureFlags);
+	 private static native int linearTilingFeatures0(Buffer ptr);/*
+		  VkFormatProperties vkObj = (VkFormatProperties*)(ptr);
+		  return (jint) (vkObj->linearTilingFeatures);
 	 */
 
 	/**
 	 * native SET method for field optimalTilingFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  optimalTilingFeatures
 	 */ 
-	 private static native void optimalTilingFeatures0(ByteBuffer ptr, int _optimalTilingFeatures);/*
-		  VkFormatProperties _obj = (VkFormatProperties)(*ptr);
-		  _obj.optimalTilingFeatures = (VkFormatFeatureFlags) (_optimalTilingFeatures);
+	 private static native void optimalTilingFeatures0(Buffer ptr, int _optimalTilingFeatures);/*
+		  VkFormatProperties* vkObj = (VkFormatProperties*)(ptr);
+		  vkObj->optimalTilingFeatures = (VkFormatFeatureFlags) (_optimalTilingFeatures);
 	  */
 
 	/**
 	 * native GET method for field optimalTilingFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  optimalTilingFeatures
 	 */ 
-	 private static native int optimalTilingFeatures0(ByteBuffer ptr);/*
-		  VkFormatProperties _obj = (VkFormatProperties)(ptr);
-		  return (jint) (_obj.VkFormatFeatureFlags);
+	 private static native int optimalTilingFeatures0(Buffer ptr);/*
+		  VkFormatProperties vkObj = (VkFormatProperties*)(ptr);
+		  return (jint) (vkObj->optimalTilingFeatures);
 	 */
 
 	/**
 	 * native SET method for field bufferFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  bufferFeatures
 	 */ 
-	 private static native void bufferFeatures0(ByteBuffer ptr, int _bufferFeatures);/*
-		  VkFormatProperties _obj = (VkFormatProperties)(*ptr);
-		  _obj.bufferFeatures = (VkFormatFeatureFlags) (_bufferFeatures);
+	 private static native void bufferFeatures0(Buffer ptr, int _bufferFeatures);/*
+		  VkFormatProperties* vkObj = (VkFormatProperties*)(ptr);
+		  vkObj->bufferFeatures = (VkFormatFeatureFlags) (_bufferFeatures);
 	  */
 
 	/**
 	 * native GET method for field bufferFeatures	[int]<br>
 	 * Prototype: VkFormatFeatureFlags  bufferFeatures
 	 */ 
-	 private static native int bufferFeatures0(ByteBuffer ptr);/*
-		  VkFormatProperties _obj = (VkFormatProperties)(ptr);
-		  return (jint) (_obj.VkFormatFeatureFlags);
+	 private static native int bufferFeatures0(Buffer ptr);/*
+		  VkFormatProperties vkObj = (VkFormatProperties*)(ptr);
+		  return (jint) (vkObj->bufferFeatures);
 	 */
 
 

@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -159,16 +161,17 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 */ 
 	 public void blendEnable(boolean blendEnable){
 		 this.blendEnable = blendEnable;
-		blendEnable0(super.ptr, blendEnable);
+		 blendEnable0(this.ptr,  blendEnable);
 	 }
 
 	/**
-	 * get method for field blendEnable	[boolean]<br>
+	 * Get method for field blendEnable	[boolean]<br>
 	 * Prototype: VkBool32  blendEnable
 	 */ 
 	 public boolean blendEnable(){
-		 // return  this.blendEnable;
-		 return blendEnable0(super.ptr);
+		 boolean var = blendEnable0(super.ptr);
+		 this.blendEnable = var;
+		 return this.blendEnable;
 	 }
 
 	/**
@@ -177,16 +180,18 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 */ 
 	 public void srcColorBlendFactor(VkBlendFactor srcColorBlendFactor){
 		 this.srcColorBlendFactor = srcColorBlendFactor;
-		srcColorBlendFactor0(super.ptr, srcColorBlendFactor);
+		 int enumVal = srcColorBlendFactor.getValue();
+		 srcColorBlendFactor0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field srcColorBlendFactor	[vkenum]<br>
+	 * Get method for field srcColorBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  srcColorBlendFactor
 	 */ 
 	 public VkBlendFactor srcColorBlendFactor(){
-		 // return  this.srcColorBlendFactor;
-		 return srcColorBlendFactor0(super.ptr);
+		 int nativeVal = srcColorBlendFactor0(super.ptr);
+		 this.srcColorBlendFactor = VkBlendFactor.fromValue(nativeVal); 
+		 return this.srcColorBlendFactor;
 	 }
 
 	/**
@@ -195,16 +200,18 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 */ 
 	 public void dstColorBlendFactor(VkBlendFactor dstColorBlendFactor){
 		 this.dstColorBlendFactor = dstColorBlendFactor;
-		dstColorBlendFactor0(super.ptr, dstColorBlendFactor);
+		 int enumVal = dstColorBlendFactor.getValue();
+		 dstColorBlendFactor0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field dstColorBlendFactor	[vkenum]<br>
+	 * Get method for field dstColorBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  dstColorBlendFactor
 	 */ 
 	 public VkBlendFactor dstColorBlendFactor(){
-		 // return  this.dstColorBlendFactor;
-		 return dstColorBlendFactor0(super.ptr);
+		 int nativeVal = dstColorBlendFactor0(super.ptr);
+		 this.dstColorBlendFactor = VkBlendFactor.fromValue(nativeVal); 
+		 return this.dstColorBlendFactor;
 	 }
 
 	/**
@@ -213,16 +220,18 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 */ 
 	 public void colorBlendOp(VkBlendOp colorBlendOp){
 		 this.colorBlendOp = colorBlendOp;
-		colorBlendOp0(super.ptr, colorBlendOp);
+		 int enumVal = colorBlendOp.getValue();
+		 colorBlendOp0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field colorBlendOp	[vkenum]<br>
+	 * Get method for field colorBlendOp	[vkenum]<br>
 	 * Prototype: VkBlendOp  colorBlendOp
 	 */ 
 	 public VkBlendOp colorBlendOp(){
-		 // return  this.colorBlendOp;
-		 return colorBlendOp0(super.ptr);
+		 int nativeVal = colorBlendOp0(super.ptr);
+		 this.colorBlendOp = VkBlendOp.fromValue(nativeVal); 
+		 return this.colorBlendOp;
 	 }
 
 	/**
@@ -231,16 +240,18 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 */ 
 	 public void srcAlphaBlendFactor(VkBlendFactor srcAlphaBlendFactor){
 		 this.srcAlphaBlendFactor = srcAlphaBlendFactor;
-		srcAlphaBlendFactor0(super.ptr, srcAlphaBlendFactor);
+		 int enumVal = srcAlphaBlendFactor.getValue();
+		 srcAlphaBlendFactor0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field srcAlphaBlendFactor	[vkenum]<br>
+	 * Get method for field srcAlphaBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  srcAlphaBlendFactor
 	 */ 
 	 public VkBlendFactor srcAlphaBlendFactor(){
-		 // return  this.srcAlphaBlendFactor;
-		 return srcAlphaBlendFactor0(super.ptr);
+		 int nativeVal = srcAlphaBlendFactor0(super.ptr);
+		 this.srcAlphaBlendFactor = VkBlendFactor.fromValue(nativeVal); 
+		 return this.srcAlphaBlendFactor;
 	 }
 
 	/**
@@ -249,16 +260,18 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 */ 
 	 public void dstAlphaBlendFactor(VkBlendFactor dstAlphaBlendFactor){
 		 this.dstAlphaBlendFactor = dstAlphaBlendFactor;
-		dstAlphaBlendFactor0(super.ptr, dstAlphaBlendFactor);
+		 int enumVal = dstAlphaBlendFactor.getValue();
+		 dstAlphaBlendFactor0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field dstAlphaBlendFactor	[vkenum]<br>
+	 * Get method for field dstAlphaBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  dstAlphaBlendFactor
 	 */ 
 	 public VkBlendFactor dstAlphaBlendFactor(){
-		 // return  this.dstAlphaBlendFactor;
-		 return dstAlphaBlendFactor0(super.ptr);
+		 int nativeVal = dstAlphaBlendFactor0(super.ptr);
+		 this.dstAlphaBlendFactor = VkBlendFactor.fromValue(nativeVal); 
+		 return this.dstAlphaBlendFactor;
 	 }
 
 	/**
@@ -267,16 +280,18 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 */ 
 	 public void alphaBlendOp(VkBlendOp alphaBlendOp){
 		 this.alphaBlendOp = alphaBlendOp;
-		alphaBlendOp0(super.ptr, alphaBlendOp);
+		 int enumVal = alphaBlendOp.getValue();
+		 alphaBlendOp0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field alphaBlendOp	[vkenum]<br>
+	 * Get method for field alphaBlendOp	[vkenum]<br>
 	 * Prototype: VkBlendOp  alphaBlendOp
 	 */ 
 	 public VkBlendOp alphaBlendOp(){
-		 // return  this.alphaBlendOp;
-		 return alphaBlendOp0(super.ptr);
+		 int nativeVal = alphaBlendOp0(super.ptr);
+		 this.alphaBlendOp = VkBlendOp.fromValue(nativeVal); 
+		 return this.alphaBlendOp;
 	 }
 
 	/**
@@ -285,16 +300,17 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 */ 
 	 public void colorWriteMask(int colorWriteMask){
 		 this.colorWriteMask = colorWriteMask;
-		colorWriteMask0(super.ptr, colorWriteMask);
+		 colorWriteMask0(this.ptr,  colorWriteMask);
 	 }
 
 	/**
-	 * get method for field colorWriteMask	[int]<br>
+	 * Get method for field colorWriteMask	[int]<br>
 	 * Prototype: VkColorComponentFlags  colorWriteMask
 	 */ 
 	 public int colorWriteMask(){
-		 // return  this.colorWriteMask;
-		 return colorWriteMask0(super.ptr);
+		 int var = colorWriteMask0(super.ptr);
+		 this.colorWriteMask = var;
+		 return this.colorWriteMask;
 	 }
 
 
@@ -305,144 +321,144 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 * native SET method for field blendEnable	[boolean]<br>
 	 * Prototype: VkBool32  blendEnable
 	 */ 
-	 private static native void blendEnable0(ByteBuffer ptr, boolean _blendEnable);/*
-		  VkPipelineColorBlendAttachmentState _obj = (VkPipelineColorBlendAttachmentState)(*ptr);
-		  _obj.blendEnable = (VkBool32) (_blendEnable);
+	 private static native void blendEnable0(Buffer ptr, boolean _blendEnable);/*
+		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  vkObj->blendEnable = (VkBool32) (_blendEnable);
 	  */
 
 	/**
 	 * native GET method for field blendEnable	[boolean]<br>
 	 * Prototype: VkBool32  blendEnable
 	 */ 
-	 private static native boolean blendEnable0(ByteBuffer ptr);/*
-		  VkPipelineColorBlendAttachmentState _obj = (VkPipelineColorBlendAttachmentState)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean blendEnable0(Buffer ptr);/*
+		  VkPipelineColorBlendAttachmentState vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  return (jboolean) (vkObj->blendEnable);
 	 */
 
 	/**
 	 * native SET method for field srcColorBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  srcColorBlendFactor
 	 */ 
-	 private static native void srcColorBlendFactor0(ByteBuffer ptr, VkBlendFactor _srcColorBlendFactor);/*
-		  VkPipelineColorBlendAttachmentState _obj = (VkPipelineColorBlendAttachmentState)(*ptr);
-		  _obj.srcColorBlendFactor = (VkBlendFactor) (_srcColorBlendFactor);
+	 private static native void srcColorBlendFactor0(Buffer ptr, int  _srcColorBlendFactor);/*
+		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  vkObj->srcColorBlendFactor = (VkBlendFactor) (_srcColorBlendFactor);
 	  */
 
 	/**
 	 * native GET method for field srcColorBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  srcColorBlendFactor
 	 */ 
-	 private static native VkBlendFactor srcColorBlendFactor0(ByteBuffer ptr);/*
-		  VkPipelineColorBlendAttachmentState _obj = (VkPipelineColorBlendAttachmentState)(ptr);
-		  return (VkBlendFactor) (_obj.VkBlendFactor);
+	 private static native int  srcColorBlendFactor0(Buffer ptr);/*
+		  VkPipelineColorBlendAttachmentState vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  return (VkBlendFactor) (vkObj->srcColorBlendFactor);
 	 */
 
 	/**
 	 * native SET method for field dstColorBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  dstColorBlendFactor
 	 */ 
-	 private static native void dstColorBlendFactor0(ByteBuffer ptr, VkBlendFactor _dstColorBlendFactor);/*
-		  VkPipelineColorBlendAttachmentState _obj = (VkPipelineColorBlendAttachmentState)(*ptr);
-		  _obj.dstColorBlendFactor = (VkBlendFactor) (_dstColorBlendFactor);
+	 private static native void dstColorBlendFactor0(Buffer ptr, int  _dstColorBlendFactor);/*
+		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  vkObj->dstColorBlendFactor = (VkBlendFactor) (_dstColorBlendFactor);
 	  */
 
 	/**
 	 * native GET method for field dstColorBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  dstColorBlendFactor
 	 */ 
-	 private static native VkBlendFactor dstColorBlendFactor0(ByteBuffer ptr);/*
-		  VkPipelineColorBlendAttachmentState _obj = (VkPipelineColorBlendAttachmentState)(ptr);
-		  return (VkBlendFactor) (_obj.VkBlendFactor);
+	 private static native int  dstColorBlendFactor0(Buffer ptr);/*
+		  VkPipelineColorBlendAttachmentState vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  return (VkBlendFactor) (vkObj->dstColorBlendFactor);
 	 */
 
 	/**
 	 * native SET method for field colorBlendOp	[vkenum]<br>
 	 * Prototype: VkBlendOp  colorBlendOp
 	 */ 
-	 private static native void colorBlendOp0(ByteBuffer ptr, VkBlendOp _colorBlendOp);/*
-		  VkPipelineColorBlendAttachmentState _obj = (VkPipelineColorBlendAttachmentState)(*ptr);
-		  _obj.colorBlendOp = (VkBlendOp) (_colorBlendOp);
+	 private static native void colorBlendOp0(Buffer ptr, int  _colorBlendOp);/*
+		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  vkObj->colorBlendOp = (VkBlendOp) (_colorBlendOp);
 	  */
 
 	/**
 	 * native GET method for field colorBlendOp	[vkenum]<br>
 	 * Prototype: VkBlendOp  colorBlendOp
 	 */ 
-	 private static native VkBlendOp colorBlendOp0(ByteBuffer ptr);/*
-		  VkPipelineColorBlendAttachmentState _obj = (VkPipelineColorBlendAttachmentState)(ptr);
-		  return (VkBlendOp) (_obj.VkBlendOp);
+	 private static native int  colorBlendOp0(Buffer ptr);/*
+		  VkPipelineColorBlendAttachmentState vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  return (VkBlendOp) (vkObj->colorBlendOp);
 	 */
 
 	/**
 	 * native SET method for field srcAlphaBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  srcAlphaBlendFactor
 	 */ 
-	 private static native void srcAlphaBlendFactor0(ByteBuffer ptr, VkBlendFactor _srcAlphaBlendFactor);/*
-		  VkPipelineColorBlendAttachmentState _obj = (VkPipelineColorBlendAttachmentState)(*ptr);
-		  _obj.srcAlphaBlendFactor = (VkBlendFactor) (_srcAlphaBlendFactor);
+	 private static native void srcAlphaBlendFactor0(Buffer ptr, int  _srcAlphaBlendFactor);/*
+		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  vkObj->srcAlphaBlendFactor = (VkBlendFactor) (_srcAlphaBlendFactor);
 	  */
 
 	/**
 	 * native GET method for field srcAlphaBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  srcAlphaBlendFactor
 	 */ 
-	 private static native VkBlendFactor srcAlphaBlendFactor0(ByteBuffer ptr);/*
-		  VkPipelineColorBlendAttachmentState _obj = (VkPipelineColorBlendAttachmentState)(ptr);
-		  return (VkBlendFactor) (_obj.VkBlendFactor);
+	 private static native int  srcAlphaBlendFactor0(Buffer ptr);/*
+		  VkPipelineColorBlendAttachmentState vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  return (VkBlendFactor) (vkObj->srcAlphaBlendFactor);
 	 */
 
 	/**
 	 * native SET method for field dstAlphaBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  dstAlphaBlendFactor
 	 */ 
-	 private static native void dstAlphaBlendFactor0(ByteBuffer ptr, VkBlendFactor _dstAlphaBlendFactor);/*
-		  VkPipelineColorBlendAttachmentState _obj = (VkPipelineColorBlendAttachmentState)(*ptr);
-		  _obj.dstAlphaBlendFactor = (VkBlendFactor) (_dstAlphaBlendFactor);
+	 private static native void dstAlphaBlendFactor0(Buffer ptr, int  _dstAlphaBlendFactor);/*
+		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  vkObj->dstAlphaBlendFactor = (VkBlendFactor) (_dstAlphaBlendFactor);
 	  */
 
 	/**
 	 * native GET method for field dstAlphaBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  dstAlphaBlendFactor
 	 */ 
-	 private static native VkBlendFactor dstAlphaBlendFactor0(ByteBuffer ptr);/*
-		  VkPipelineColorBlendAttachmentState _obj = (VkPipelineColorBlendAttachmentState)(ptr);
-		  return (VkBlendFactor) (_obj.VkBlendFactor);
+	 private static native int  dstAlphaBlendFactor0(Buffer ptr);/*
+		  VkPipelineColorBlendAttachmentState vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  return (VkBlendFactor) (vkObj->dstAlphaBlendFactor);
 	 */
 
 	/**
 	 * native SET method for field alphaBlendOp	[vkenum]<br>
 	 * Prototype: VkBlendOp  alphaBlendOp
 	 */ 
-	 private static native void alphaBlendOp0(ByteBuffer ptr, VkBlendOp _alphaBlendOp);/*
-		  VkPipelineColorBlendAttachmentState _obj = (VkPipelineColorBlendAttachmentState)(*ptr);
-		  _obj.alphaBlendOp = (VkBlendOp) (_alphaBlendOp);
+	 private static native void alphaBlendOp0(Buffer ptr, int  _alphaBlendOp);/*
+		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  vkObj->alphaBlendOp = (VkBlendOp) (_alphaBlendOp);
 	  */
 
 	/**
 	 * native GET method for field alphaBlendOp	[vkenum]<br>
 	 * Prototype: VkBlendOp  alphaBlendOp
 	 */ 
-	 private static native VkBlendOp alphaBlendOp0(ByteBuffer ptr);/*
-		  VkPipelineColorBlendAttachmentState _obj = (VkPipelineColorBlendAttachmentState)(ptr);
-		  return (VkBlendOp) (_obj.VkBlendOp);
+	 private static native int  alphaBlendOp0(Buffer ptr);/*
+		  VkPipelineColorBlendAttachmentState vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  return (VkBlendOp) (vkObj->alphaBlendOp);
 	 */
 
 	/**
 	 * native SET method for field colorWriteMask	[int]<br>
 	 * Prototype: VkColorComponentFlags  colorWriteMask
 	 */ 
-	 private static native void colorWriteMask0(ByteBuffer ptr, int _colorWriteMask);/*
-		  VkPipelineColorBlendAttachmentState _obj = (VkPipelineColorBlendAttachmentState)(*ptr);
-		  _obj.colorWriteMask = (VkColorComponentFlags) (_colorWriteMask);
+	 private static native void colorWriteMask0(Buffer ptr, int _colorWriteMask);/*
+		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  vkObj->colorWriteMask = (VkColorComponentFlags) (_colorWriteMask);
 	  */
 
 	/**
 	 * native GET method for field colorWriteMask	[int]<br>
 	 * Prototype: VkColorComponentFlags  colorWriteMask
 	 */ 
-	 private static native int colorWriteMask0(ByteBuffer ptr);/*
-		  VkPipelineColorBlendAttachmentState _obj = (VkPipelineColorBlendAttachmentState)(ptr);
-		  return (jint) (_obj.VkColorComponentFlags);
+	 private static native int colorWriteMask0(Buffer ptr);/*
+		  VkPipelineColorBlendAttachmentState vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  return (jint) (vkObj->colorWriteMask);
 	 */
 
 

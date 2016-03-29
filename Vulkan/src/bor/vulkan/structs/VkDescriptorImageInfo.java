@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -129,16 +131,27 @@ public class VkDescriptorImageInfo extends VkStruct {
 	 */ 
 	 public void sampler(VkSampler sampler){
 		 this.sampler = sampler;
-		sampler0(super.ptr, sampler);
+		 ByteBuffer buff = (sampler==null) ? null : sampler.getHandle();
+		 sampler0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field sampler	[vkhandle]<br>
+	 * Get method for field sampler	[vkhandle]<br>
 	 * Prototype: VkSampler  sampler
 	 */ 
 	 public VkSampler sampler(){
-		 // return  this.sampler;
-		 return sampler0(super.ptr);
+
+		 ByteBuffer handle = sampler0(super.ptr);
+		 if(handle == null){
+		    this.sampler = null;
+		    return null;
+		  } else 
+ 		 if(this.sampler == null){
+		    this.sampler = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.sampler).setHandle(handle);
+		  }
+		 return this.sampler;
 	 }
 
 	/**
@@ -147,16 +160,27 @@ public class VkDescriptorImageInfo extends VkStruct {
 	 */ 
 	 public void imageView(VkImageView imageView){
 		 this.imageView = imageView;
-		imageView0(super.ptr, imageView);
+		 ByteBuffer buff = (imageView==null) ? null : imageView.getHandle();
+		 imageView0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field imageView	[vkhandle]<br>
+	 * Get method for field imageView	[vkhandle]<br>
 	 * Prototype: VkImageView  imageView
 	 */ 
 	 public VkImageView imageView(){
-		 // return  this.imageView;
-		 return imageView0(super.ptr);
+
+		 ByteBuffer handle = imageView0(super.ptr);
+		 if(handle == null){
+		    this.imageView = null;
+		    return null;
+		  } else 
+ 		 if(this.imageView == null){
+		    this.imageView = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.imageView).setHandle(handle);
+		  }
+		 return this.imageView;
 	 }
 
 	/**
@@ -165,16 +189,18 @@ public class VkDescriptorImageInfo extends VkStruct {
 	 */ 
 	 public void imageLayout(VkImageLayout imageLayout){
 		 this.imageLayout = imageLayout;
-		imageLayout0(super.ptr, imageLayout);
+		 int enumVal = imageLayout.getValue();
+		 imageLayout0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field imageLayout	[vkenum]<br>
+	 * Get method for field imageLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  imageLayout
 	 */ 
 	 public VkImageLayout imageLayout(){
-		 // return  this.imageLayout;
-		 return imageLayout0(super.ptr);
+		 int nativeVal = imageLayout0(super.ptr);
+		 this.imageLayout = VkImageLayout.fromValue(nativeVal); 
+		 return this.imageLayout;
 	 }
 
 
@@ -185,54 +211,54 @@ public class VkDescriptorImageInfo extends VkStruct {
 	 * native SET method for field sampler	[vkhandle]<br>
 	 * Prototype: VkSampler  sampler
 	 */ 
-	 private static native void sampler0(ByteBuffer ptr, VkSampler _sampler);/*
-		  VkDescriptorImageInfo _obj = (VkDescriptorImageInfo)(*ptr);
-		  _obj.sampler = (VkSampler) (_sampler);
+	 private static native void sampler0(Buffer ptr, java.nio.ByteBuffer  _sampler);/*
+		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
+		  vkObj->sampler = (VkSampler) (_sampler);
 	  */
 
 	/**
 	 * native GET method for field sampler	[vkhandle]<br>
 	 * Prototype: VkSampler  sampler
 	 */ 
-	 private static native VkSampler sampler0(ByteBuffer ptr);/*
-		  VkDescriptorImageInfo _obj = (VkDescriptorImageInfo)(ptr);
-		  return (VkSampler) (_obj.VkSampler);
+	 private static native java.nio.ByteBuffer  sampler0(Buffer ptr);/*
+		  VkDescriptorImageInfo vkObj = (VkDescriptorImageInfo*)(ptr);
+		  return (VkSampler) (vkObj->sampler);
 	 */
 
 	/**
 	 * native SET method for field imageView	[vkhandle]<br>
 	 * Prototype: VkImageView  imageView
 	 */ 
-	 private static native void imageView0(ByteBuffer ptr, VkImageView _imageView);/*
-		  VkDescriptorImageInfo _obj = (VkDescriptorImageInfo)(*ptr);
-		  _obj.imageView = (VkImageView) (_imageView);
+	 private static native void imageView0(Buffer ptr, java.nio.ByteBuffer  _imageView);/*
+		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
+		  vkObj->imageView = (VkImageView) (_imageView);
 	  */
 
 	/**
 	 * native GET method for field imageView	[vkhandle]<br>
 	 * Prototype: VkImageView  imageView
 	 */ 
-	 private static native VkImageView imageView0(ByteBuffer ptr);/*
-		  VkDescriptorImageInfo _obj = (VkDescriptorImageInfo)(ptr);
-		  return (VkImageView) (_obj.VkImageView);
+	 private static native java.nio.ByteBuffer  imageView0(Buffer ptr);/*
+		  VkDescriptorImageInfo vkObj = (VkDescriptorImageInfo*)(ptr);
+		  return (VkImageView) (vkObj->imageView);
 	 */
 
 	/**
 	 * native SET method for field imageLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  imageLayout
 	 */ 
-	 private static native void imageLayout0(ByteBuffer ptr, VkImageLayout _imageLayout);/*
-		  VkDescriptorImageInfo _obj = (VkDescriptorImageInfo)(*ptr);
-		  _obj.imageLayout = (VkImageLayout) (_imageLayout);
+	 private static native void imageLayout0(Buffer ptr, int  _imageLayout);/*
+		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
+		  vkObj->imageLayout = (VkImageLayout) (_imageLayout);
 	  */
 
 	/**
 	 * native GET method for field imageLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  imageLayout
 	 */ 
-	 private static native VkImageLayout imageLayout0(ByteBuffer ptr);/*
-		  VkDescriptorImageInfo _obj = (VkDescriptorImageInfo)(ptr);
-		  return (VkImageLayout) (_obj.VkImageLayout);
+	 private static native int  imageLayout0(Buffer ptr);/*
+		  VkDescriptorImageInfo vkObj = (VkDescriptorImageInfo*)(ptr);
+		  return (VkImageLayout) (vkObj->imageLayout);
 	 */
 
 

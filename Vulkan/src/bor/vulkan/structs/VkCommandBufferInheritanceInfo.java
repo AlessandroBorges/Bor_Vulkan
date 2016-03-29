@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -55,9 +57,9 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  VkRenderPass 	renderPass	[vkhandle]
@@ -159,34 +161,46 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -195,16 +209,27 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 */ 
 	 public void renderPass(VkRenderPass renderPass){
 		 this.renderPass = renderPass;
-		renderPass0(super.ptr, renderPass);
+		 ByteBuffer buff = (renderPass==null) ? null : renderPass.getHandle();
+		 renderPass0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field renderPass	[vkhandle]<br>
+	 * Get method for field renderPass	[vkhandle]<br>
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
 	 public VkRenderPass renderPass(){
-		 // return  this.renderPass;
-		 return renderPass0(super.ptr);
+
+		 ByteBuffer handle = renderPass0(super.ptr);
+		 if(handle == null){
+		    this.renderPass = null;
+		    return null;
+		  } else 
+ 		 if(this.renderPass == null){
+		    this.renderPass = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.renderPass).setHandle(handle);
+		  }
+		 return this.renderPass;
 	 }
 
 	/**
@@ -213,16 +238,17 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 */ 
 	 public void subpass(int subpass){
 		 this.subpass = subpass;
-		subpass0(super.ptr, subpass);
+		 subpass0(this.ptr,  subpass);
 	 }
 
 	/**
-	 * get method for field subpass	[int]<br>
+	 * Get method for field subpass	[int]<br>
 	 * Prototype: uint32_t  subpass
 	 */ 
 	 public int subpass(){
-		 // return  this.subpass;
-		 return subpass0(super.ptr);
+		 int var = subpass0(super.ptr);
+		 this.subpass = var;
+		 return this.subpass;
 	 }
 
 	/**
@@ -231,16 +257,27 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 */ 
 	 public void framebuffer(VkFramebuffer framebuffer){
 		 this.framebuffer = framebuffer;
-		framebuffer0(super.ptr, framebuffer);
+		 ByteBuffer buff = (framebuffer==null) ? null : framebuffer.getHandle();
+		 framebuffer0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field framebuffer	[vkhandle]<br>
+	 * Get method for field framebuffer	[vkhandle]<br>
 	 * Prototype: VkFramebuffer  framebuffer
 	 */ 
 	 public VkFramebuffer framebuffer(){
-		 // return  this.framebuffer;
-		 return framebuffer0(super.ptr);
+
+		 ByteBuffer handle = framebuffer0(super.ptr);
+		 if(handle == null){
+		    this.framebuffer = null;
+		    return null;
+		  } else 
+ 		 if(this.framebuffer == null){
+		    this.framebuffer = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.framebuffer).setHandle(handle);
+		  }
+		 return this.framebuffer;
 	 }
 
 	/**
@@ -249,16 +286,17 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 */ 
 	 public void occlusionQueryEnable(boolean occlusionQueryEnable){
 		 this.occlusionQueryEnable = occlusionQueryEnable;
-		occlusionQueryEnable0(super.ptr, occlusionQueryEnable);
+		 occlusionQueryEnable0(this.ptr,  occlusionQueryEnable);
 	 }
 
 	/**
-	 * get method for field occlusionQueryEnable	[boolean]<br>
+	 * Get method for field occlusionQueryEnable	[boolean]<br>
 	 * Prototype: VkBool32  occlusionQueryEnable
 	 */ 
 	 public boolean occlusionQueryEnable(){
-		 // return  this.occlusionQueryEnable;
-		 return occlusionQueryEnable0(super.ptr);
+		 boolean var = occlusionQueryEnable0(super.ptr);
+		 this.occlusionQueryEnable = var;
+		 return this.occlusionQueryEnable;
 	 }
 
 	/**
@@ -267,16 +305,17 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 */ 
 	 public void queryFlags(int queryFlags){
 		 this.queryFlags = queryFlags;
-		queryFlags0(super.ptr, queryFlags);
+		 queryFlags0(this.ptr,  queryFlags);
 	 }
 
 	/**
-	 * get method for field queryFlags	[int]<br>
+	 * Get method for field queryFlags	[int]<br>
 	 * Prototype: VkQueryControlFlags  queryFlags
 	 */ 
 	 public int queryFlags(){
-		 // return  this.queryFlags;
-		 return queryFlags0(super.ptr);
+		 int var = queryFlags0(super.ptr);
+		 this.queryFlags = var;
+		 return this.queryFlags;
 	 }
 
 	/**
@@ -285,16 +324,17 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 */ 
 	 public void pipelineStatistics(int pipelineStatistics){
 		 this.pipelineStatistics = pipelineStatistics;
-		pipelineStatistics0(super.ptr, pipelineStatistics);
+		 pipelineStatistics0(this.ptr,  pipelineStatistics);
 	 }
 
 	/**
-	 * get method for field pipelineStatistics	[int]<br>
+	 * Get method for field pipelineStatistics	[int]<br>
 	 * Prototype: VkQueryPipelineStatisticFlags  pipelineStatistics
 	 */ 
 	 public int pipelineStatistics(){
-		 // return  this.pipelineStatistics;
-		 return pipelineStatistics0(super.ptr);
+		 int var = pipelineStatistics0(super.ptr);
+		 this.pipelineStatistics = var;
+		 return this.pipelineStatistics;
 	 }
 
 
@@ -305,144 +345,144 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkCommandBufferInheritanceInfo _obj = (VkCommandBufferInheritanceInfo)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkCommandBufferInheritanceInfo _obj = (VkCommandBufferInheritanceInfo)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkCommandBufferInheritanceInfo vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkCommandBufferInheritanceInfo _obj = (VkCommandBufferInheritanceInfo)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkCommandBufferInheritanceInfo _obj = (VkCommandBufferInheritanceInfo)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkCommandBufferInheritanceInfo vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field renderPass	[vkhandle]<br>
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
-	 private static native void renderPass0(ByteBuffer ptr, VkRenderPass _renderPass);/*
-		  VkCommandBufferInheritanceInfo _obj = (VkCommandBufferInheritanceInfo)(*ptr);
-		  _obj.renderPass = (VkRenderPass) (_renderPass);
+	 private static native void renderPass0(Buffer ptr, java.nio.ByteBuffer  _renderPass);/*
+		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  vkObj->renderPass = (VkRenderPass) (_renderPass);
 	  */
 
 	/**
 	 * native GET method for field renderPass	[vkhandle]<br>
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
-	 private static native VkRenderPass renderPass0(ByteBuffer ptr);/*
-		  VkCommandBufferInheritanceInfo _obj = (VkCommandBufferInheritanceInfo)(ptr);
-		  return (VkRenderPass) (_obj.VkRenderPass);
+	 private static native java.nio.ByteBuffer  renderPass0(Buffer ptr);/*
+		  VkCommandBufferInheritanceInfo vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  return (VkRenderPass) (vkObj->renderPass);
 	 */
 
 	/**
 	 * native SET method for field subpass	[int]<br>
 	 * Prototype: uint32_t  subpass
 	 */ 
-	 private static native void subpass0(ByteBuffer ptr, int _subpass);/*
-		  VkCommandBufferInheritanceInfo _obj = (VkCommandBufferInheritanceInfo)(*ptr);
-		  _obj.subpass = (uint32_t) (_subpass);
+	 private static native void subpass0(Buffer ptr, int _subpass);/*
+		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  vkObj->subpass = (uint32_t) (_subpass);
 	  */
 
 	/**
 	 * native GET method for field subpass	[int]<br>
 	 * Prototype: uint32_t  subpass
 	 */ 
-	 private static native int subpass0(ByteBuffer ptr);/*
-		  VkCommandBufferInheritanceInfo _obj = (VkCommandBufferInheritanceInfo)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int subpass0(Buffer ptr);/*
+		  VkCommandBufferInheritanceInfo vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  return (jint) (vkObj->subpass);
 	 */
 
 	/**
 	 * native SET method for field framebuffer	[vkhandle]<br>
 	 * Prototype: VkFramebuffer  framebuffer
 	 */ 
-	 private static native void framebuffer0(ByteBuffer ptr, VkFramebuffer _framebuffer);/*
-		  VkCommandBufferInheritanceInfo _obj = (VkCommandBufferInheritanceInfo)(*ptr);
-		  _obj.framebuffer = (VkFramebuffer) (_framebuffer);
+	 private static native void framebuffer0(Buffer ptr, java.nio.ByteBuffer  _framebuffer);/*
+		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  vkObj->framebuffer = (VkFramebuffer) (_framebuffer);
 	  */
 
 	/**
 	 * native GET method for field framebuffer	[vkhandle]<br>
 	 * Prototype: VkFramebuffer  framebuffer
 	 */ 
-	 private static native VkFramebuffer framebuffer0(ByteBuffer ptr);/*
-		  VkCommandBufferInheritanceInfo _obj = (VkCommandBufferInheritanceInfo)(ptr);
-		  return (VkFramebuffer) (_obj.VkFramebuffer);
+	 private static native java.nio.ByteBuffer  framebuffer0(Buffer ptr);/*
+		  VkCommandBufferInheritanceInfo vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  return (VkFramebuffer) (vkObj->framebuffer);
 	 */
 
 	/**
 	 * native SET method for field occlusionQueryEnable	[boolean]<br>
 	 * Prototype: VkBool32  occlusionQueryEnable
 	 */ 
-	 private static native void occlusionQueryEnable0(ByteBuffer ptr, boolean _occlusionQueryEnable);/*
-		  VkCommandBufferInheritanceInfo _obj = (VkCommandBufferInheritanceInfo)(*ptr);
-		  _obj.occlusionQueryEnable = (VkBool32) (_occlusionQueryEnable);
+	 private static native void occlusionQueryEnable0(Buffer ptr, boolean _occlusionQueryEnable);/*
+		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  vkObj->occlusionQueryEnable = (VkBool32) (_occlusionQueryEnable);
 	  */
 
 	/**
 	 * native GET method for field occlusionQueryEnable	[boolean]<br>
 	 * Prototype: VkBool32  occlusionQueryEnable
 	 */ 
-	 private static native boolean occlusionQueryEnable0(ByteBuffer ptr);/*
-		  VkCommandBufferInheritanceInfo _obj = (VkCommandBufferInheritanceInfo)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean occlusionQueryEnable0(Buffer ptr);/*
+		  VkCommandBufferInheritanceInfo vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  return (jboolean) (vkObj->occlusionQueryEnable);
 	 */
 
 	/**
 	 * native SET method for field queryFlags	[int]<br>
 	 * Prototype: VkQueryControlFlags  queryFlags
 	 */ 
-	 private static native void queryFlags0(ByteBuffer ptr, int _queryFlags);/*
-		  VkCommandBufferInheritanceInfo _obj = (VkCommandBufferInheritanceInfo)(*ptr);
-		  _obj.queryFlags = (VkQueryControlFlags) (_queryFlags);
+	 private static native void queryFlags0(Buffer ptr, int _queryFlags);/*
+		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  vkObj->queryFlags = (VkQueryControlFlags) (_queryFlags);
 	  */
 
 	/**
 	 * native GET method for field queryFlags	[int]<br>
 	 * Prototype: VkQueryControlFlags  queryFlags
 	 */ 
-	 private static native int queryFlags0(ByteBuffer ptr);/*
-		  VkCommandBufferInheritanceInfo _obj = (VkCommandBufferInheritanceInfo)(ptr);
-		  return (jint) (_obj.VkQueryControlFlags);
+	 private static native int queryFlags0(Buffer ptr);/*
+		  VkCommandBufferInheritanceInfo vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  return (jint) (vkObj->queryFlags);
 	 */
 
 	/**
 	 * native SET method for field pipelineStatistics	[int]<br>
 	 * Prototype: VkQueryPipelineStatisticFlags  pipelineStatistics
 	 */ 
-	 private static native void pipelineStatistics0(ByteBuffer ptr, int _pipelineStatistics);/*
-		  VkCommandBufferInheritanceInfo _obj = (VkCommandBufferInheritanceInfo)(*ptr);
-		  _obj.pipelineStatistics = (VkQueryPipelineStatisticFlags) (_pipelineStatistics);
+	 private static native void pipelineStatistics0(Buffer ptr, int _pipelineStatistics);/*
+		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  vkObj->pipelineStatistics = (VkQueryPipelineStatisticFlags) (_pipelineStatistics);
 	  */
 
 	/**
 	 * native GET method for field pipelineStatistics	[int]<br>
 	 * Prototype: VkQueryPipelineStatisticFlags  pipelineStatistics
 	 */ 
-	 private static native int pipelineStatistics0(ByteBuffer ptr);/*
-		  VkCommandBufferInheritanceInfo _obj = (VkCommandBufferInheritanceInfo)(ptr);
-		  return (jint) (_obj.VkQueryPipelineStatisticFlags);
+	 private static native int pipelineStatistics0(Buffer ptr);/*
+		  VkCommandBufferInheritanceInfo vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  return (jint) (vkObj->pipelineStatistics);
 	 */
 
 

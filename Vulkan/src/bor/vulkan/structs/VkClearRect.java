@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -129,16 +131,26 @@ public class VkClearRect extends VkStruct {
 	 */ 
 	 public void rect(VkRect2D rect){
 		 this.rect = rect;
-		rect0(super.ptr, rect);
+		 ByteBuffer buff = (rect==null) ? null : rect.getPointerStruct();
+		 rect0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field rect	[vkstruct]<br>
+	 * Get method for field rect	[vkstruct]<br>
 	 * Prototype: VkRect2D  rect
 	 */ 
 	 public VkRect2D rect(){
-		 // return  this.rect;
-		 return rect0(super.ptr);
+		 ByteBuffer pointer = rect0(super.ptr);
+		 if(pointer == null){
+		    this.rect = null;
+		    return null;
+		  } else 
+ 		 if(this.rect == null){
+		    this.rect = new VkRect2D(pointer);
+		 }else{
+		    this.rect.setPointer(pointer);
+		  }
+		 return this.rect;
 	 }
 
 	/**
@@ -147,16 +159,17 @@ public class VkClearRect extends VkStruct {
 	 */ 
 	 public void baseArrayLayer(int baseArrayLayer){
 		 this.baseArrayLayer = baseArrayLayer;
-		baseArrayLayer0(super.ptr, baseArrayLayer);
+		 baseArrayLayer0(this.ptr,  baseArrayLayer);
 	 }
 
 	/**
-	 * get method for field baseArrayLayer	[int]<br>
+	 * Get method for field baseArrayLayer	[int]<br>
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
 	 public int baseArrayLayer(){
-		 // return  this.baseArrayLayer;
-		 return baseArrayLayer0(super.ptr);
+		 int var = baseArrayLayer0(super.ptr);
+		 this.baseArrayLayer = var;
+		 return this.baseArrayLayer;
 	 }
 
 	/**
@@ -165,16 +178,17 @@ public class VkClearRect extends VkStruct {
 	 */ 
 	 public void layerCount(int layerCount){
 		 this.layerCount = layerCount;
-		layerCount0(super.ptr, layerCount);
+		 layerCount0(this.ptr,  layerCount);
 	 }
 
 	/**
-	 * get method for field layerCount	[int]<br>
+	 * Get method for field layerCount	[int]<br>
 	 * Prototype: uint32_t  layerCount
 	 */ 
 	 public int layerCount(){
-		 // return  this.layerCount;
-		 return layerCount0(super.ptr);
+		 int var = layerCount0(super.ptr);
+		 this.layerCount = var;
+		 return this.layerCount;
 	 }
 
 
@@ -185,54 +199,54 @@ public class VkClearRect extends VkStruct {
 	 * native SET method for field rect	[vkstruct]<br>
 	 * Prototype: VkRect2D  rect
 	 */ 
-	 private static native void rect0(ByteBuffer ptr, VkRect2D _rect);/*
-		  VkClearRect _obj = (VkClearRect)(*ptr);
-		  _obj.rect = (VkRect2D) (_rect);
+	 private static native void rect0(Buffer ptr, java.nio.ByteBuffer  _rect);/*
+		  VkClearRect* vkObj = (VkClearRect*)(ptr);
+		  vkObj->rect = (VkRect2D) (_rect);
 	  */
 
 	/**
 	 * native GET method for field rect	[vkstruct]<br>
 	 * Prototype: VkRect2D  rect
 	 */ 
-	 private static native VkRect2D rect0(ByteBuffer ptr);/*
-		  VkClearRect _obj = (VkClearRect)(ptr);
-		  return (VkRect2D) (_obj.VkRect2D);
+	 private static native java.nio.ByteBuffer  rect0(Buffer ptr);/*
+		  VkClearRect vkObj = (VkClearRect*)(ptr);
+		  return (VkRect2D) (vkObj->rect);
 	 */
 
 	/**
 	 * native SET method for field baseArrayLayer	[int]<br>
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
-	 private static native void baseArrayLayer0(ByteBuffer ptr, int _baseArrayLayer);/*
-		  VkClearRect _obj = (VkClearRect)(*ptr);
-		  _obj.baseArrayLayer = (uint32_t) (_baseArrayLayer);
+	 private static native void baseArrayLayer0(Buffer ptr, int _baseArrayLayer);/*
+		  VkClearRect* vkObj = (VkClearRect*)(ptr);
+		  vkObj->baseArrayLayer = (uint32_t) (_baseArrayLayer);
 	  */
 
 	/**
 	 * native GET method for field baseArrayLayer	[int]<br>
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
-	 private static native int baseArrayLayer0(ByteBuffer ptr);/*
-		  VkClearRect _obj = (VkClearRect)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int baseArrayLayer0(Buffer ptr);/*
+		  VkClearRect vkObj = (VkClearRect*)(ptr);
+		  return (jint) (vkObj->baseArrayLayer);
 	 */
 
 	/**
 	 * native SET method for field layerCount	[int]<br>
 	 * Prototype: uint32_t  layerCount
 	 */ 
-	 private static native void layerCount0(ByteBuffer ptr, int _layerCount);/*
-		  VkClearRect _obj = (VkClearRect)(*ptr);
-		  _obj.layerCount = (uint32_t) (_layerCount);
+	 private static native void layerCount0(Buffer ptr, int _layerCount);/*
+		  VkClearRect* vkObj = (VkClearRect*)(ptr);
+		  vkObj->layerCount = (uint32_t) (_layerCount);
 	  */
 
 	/**
 	 * native GET method for field layerCount	[int]<br>
 	 * Prototype: uint32_t  layerCount
 	 */ 
-	 private static native int layerCount0(ByteBuffer ptr);/*
-		  VkClearRect _obj = (VkClearRect)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int layerCount0(Buffer ptr);/*
+		  VkClearRect vkObj = (VkClearRect*)(ptr);
+		  return (jint) (vkObj->layerCount);
 	 */
 
 

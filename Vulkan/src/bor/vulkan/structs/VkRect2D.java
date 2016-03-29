@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -123,16 +125,26 @@ public class VkRect2D extends VkStruct {
 	 */ 
 	 public void offset(VkOffset2D offset){
 		 this.offset = offset;
-		offset0(super.ptr, offset);
+		 ByteBuffer buff = (offset==null) ? null : offset.getPointerStruct();
+		 offset0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field offset	[vkstruct]<br>
+	 * Get method for field offset	[vkstruct]<br>
 	 * Prototype: VkOffset2D  offset
 	 */ 
 	 public VkOffset2D offset(){
-		 // return  this.offset;
-		 return offset0(super.ptr);
+		 ByteBuffer pointer = offset0(super.ptr);
+		 if(pointer == null){
+		    this.offset = null;
+		    return null;
+		  } else 
+ 		 if(this.offset == null){
+		    this.offset = new VkOffset2D(pointer);
+		 }else{
+		    this.offset.setPointer(pointer);
+		  }
+		 return this.offset;
 	 }
 
 	/**
@@ -141,16 +153,26 @@ public class VkRect2D extends VkStruct {
 	 */ 
 	 public void extent(VkExtent2D extent){
 		 this.extent = extent;
-		extent0(super.ptr, extent);
+		 ByteBuffer buff = (extent==null) ? null : extent.getPointerStruct();
+		 extent0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field extent	[vkstruct]<br>
+	 * Get method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  extent
 	 */ 
 	 public VkExtent2D extent(){
-		 // return  this.extent;
-		 return extent0(super.ptr);
+		 ByteBuffer pointer = extent0(super.ptr);
+		 if(pointer == null){
+		    this.extent = null;
+		    return null;
+		  } else 
+ 		 if(this.extent == null){
+		    this.extent = new VkExtent2D(pointer);
+		 }else{
+		    this.extent.setPointer(pointer);
+		  }
+		 return this.extent;
 	 }
 
 
@@ -161,36 +183,36 @@ public class VkRect2D extends VkStruct {
 	 * native SET method for field offset	[vkstruct]<br>
 	 * Prototype: VkOffset2D  offset
 	 */ 
-	 private static native void offset0(ByteBuffer ptr, VkOffset2D _offset);/*
-		  VkRect2D _obj = (VkRect2D)(*ptr);
-		  _obj.offset = (VkOffset2D) (_offset);
+	 private static native void offset0(Buffer ptr, java.nio.ByteBuffer  _offset);/*
+		  VkRect2D* vkObj = (VkRect2D*)(ptr);
+		  vkObj->offset = (VkOffset2D) (_offset);
 	  */
 
 	/**
 	 * native GET method for field offset	[vkstruct]<br>
 	 * Prototype: VkOffset2D  offset
 	 */ 
-	 private static native VkOffset2D offset0(ByteBuffer ptr);/*
-		  VkRect2D _obj = (VkRect2D)(ptr);
-		  return (VkOffset2D) (_obj.VkOffset2D);
+	 private static native java.nio.ByteBuffer  offset0(Buffer ptr);/*
+		  VkRect2D vkObj = (VkRect2D*)(ptr);
+		  return (VkOffset2D) (vkObj->offset);
 	 */
 
 	/**
 	 * native SET method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  extent
 	 */ 
-	 private static native void extent0(ByteBuffer ptr, VkExtent2D _extent);/*
-		  VkRect2D _obj = (VkRect2D)(*ptr);
-		  _obj.extent = (VkExtent2D) (_extent);
+	 private static native void extent0(Buffer ptr, java.nio.ByteBuffer  _extent);/*
+		  VkRect2D* vkObj = (VkRect2D*)(ptr);
+		  vkObj->extent = (VkExtent2D) (_extent);
 	  */
 
 	/**
 	 * native GET method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  extent
 	 */ 
-	 private static native VkExtent2D extent0(ByteBuffer ptr);/*
-		  VkRect2D _obj = (VkRect2D)(ptr);
-		  return (VkExtent2D) (_obj.VkExtent2D);
+	 private static native java.nio.ByteBuffer  extent0(Buffer ptr);/*
+		  VkRect2D vkObj = (VkRect2D*)(ptr);
+		  return (VkExtent2D) (vkObj->extent);
 	 */
 
 

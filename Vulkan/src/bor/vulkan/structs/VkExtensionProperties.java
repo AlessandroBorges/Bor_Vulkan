@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -123,16 +125,17 @@ public class VkExtensionProperties extends VkStruct {
 	 */ 
 	 public void extensionName(String extensionName){
 		 this.extensionName = extensionName;
-		extensionName0(super.ptr, extensionName);
+		 extensionName0(this.ptr,  extensionName);
 	 }
 
 	/**
-	 * get method for field extensionName	[string]<br>
+	 * Get method for field extensionName	[string]<br>
 	 * Prototype: char[]  extensionName
 	 */ 
 	 public String extensionName(){
-		 // return  this.extensionName;
-		 return extensionName0(super.ptr);
+		 String var = extensionName0(super.ptr);
+		 this.extensionName = var;
+		 return this.extensionName;
 	 }
 
 	/**
@@ -141,16 +144,17 @@ public class VkExtensionProperties extends VkStruct {
 	 */ 
 	 public void specVersion(int specVersion){
 		 this.specVersion = specVersion;
-		specVersion0(super.ptr, specVersion);
+		 specVersion0(this.ptr,  specVersion);
 	 }
 
 	/**
-	 * get method for field specVersion	[int]<br>
+	 * Get method for field specVersion	[int]<br>
 	 * Prototype: uint32_t  specVersion
 	 */ 
 	 public int specVersion(){
-		 // return  this.specVersion;
-		 return specVersion0(super.ptr);
+		 int var = specVersion0(super.ptr);
+		 this.specVersion = var;
+		 return this.specVersion;
 	 }
 
 
@@ -161,35 +165,35 @@ public class VkExtensionProperties extends VkStruct {
 	 * native SET method for field extensionName	[string]<br>
 	 * Prototype: char[]  extensionName
 	 */ 
-	 private static native void extensionName0(ByteBuffer ptr, String _extensionName);/*
-		  VkExtensionProperties _obj = (VkExtensionProperties)(*ptr);
-		  _obj.extensionName = (char[]) (_extensionName);
+	 private static native void extensionName0(Buffer ptr, String _extensionName);/*
+		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
+		  vkObj->extensionName = (char[]) (_extensionName);
 	  */
 
 	/**
 	 * native GET method for field extensionName	[string]<br>
 	 * Prototype: char[]  extensionName
 	 */ 
-	 private static native String extensionName0(ByteBuffer ptr);/*
-		  VkExtensionProperties _obj = (VkExtensionProperties)(ptr);
-		  return (jstring)(env->NewStringUTF(_obj.char[]);	 */
+	 private static native String extensionName0(Buffer ptr);/*
+		  VkExtensionProperties vkObj = (VkExtensionProperties*)(ptr);
+		  return (jstring)(env->NewStringUTF(vkObj->.extensionName);	 */
 
 	/**
 	 * native SET method for field specVersion	[int]<br>
 	 * Prototype: uint32_t  specVersion
 	 */ 
-	 private static native void specVersion0(ByteBuffer ptr, int _specVersion);/*
-		  VkExtensionProperties _obj = (VkExtensionProperties)(*ptr);
-		  _obj.specVersion = (uint32_t) (_specVersion);
+	 private static native void specVersion0(Buffer ptr, int _specVersion);/*
+		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
+		  vkObj->specVersion = (uint32_t) (_specVersion);
 	  */
 
 	/**
 	 * native GET method for field specVersion	[int]<br>
 	 * Prototype: uint32_t  specVersion
 	 */ 
-	 private static native int specVersion0(ByteBuffer ptr);/*
-		  VkExtensionProperties _obj = (VkExtensionProperties)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int specVersion0(Buffer ptr);/*
+		  VkExtensionProperties vkObj = (VkExtensionProperties*)(ptr);
+		  return (jint) (vkObj->specVersion);
 	 */
 
 

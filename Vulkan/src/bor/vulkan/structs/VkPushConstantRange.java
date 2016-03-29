@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -129,16 +131,17 @@ public class VkPushConstantRange extends VkStruct {
 	 */ 
 	 public void stageFlags(int stageFlags){
 		 this.stageFlags = stageFlags;
-		stageFlags0(super.ptr, stageFlags);
+		 stageFlags0(this.ptr,  stageFlags);
 	 }
 
 	/**
-	 * get method for field stageFlags	[int]<br>
+	 * Get method for field stageFlags	[int]<br>
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
 	 public int stageFlags(){
-		 // return  this.stageFlags;
-		 return stageFlags0(super.ptr);
+		 int var = stageFlags0(super.ptr);
+		 this.stageFlags = var;
+		 return this.stageFlags;
 	 }
 
 	/**
@@ -147,16 +150,17 @@ public class VkPushConstantRange extends VkStruct {
 	 */ 
 	 public void offset(int offset){
 		 this.offset = offset;
-		offset0(super.ptr, offset);
+		 offset0(this.ptr,  offset);
 	 }
 
 	/**
-	 * get method for field offset	[int]<br>
+	 * Get method for field offset	[int]<br>
 	 * Prototype: uint32_t  offset
 	 */ 
 	 public int offset(){
-		 // return  this.offset;
-		 return offset0(super.ptr);
+		 int var = offset0(super.ptr);
+		 this.offset = var;
+		 return this.offset;
 	 }
 
 	/**
@@ -165,16 +169,17 @@ public class VkPushConstantRange extends VkStruct {
 	 */ 
 	 public void size(int size){
 		 this.size = size;
-		size0(super.ptr, size);
+		 size0(this.ptr,  size);
 	 }
 
 	/**
-	 * get method for field size	[int]<br>
+	 * Get method for field size	[int]<br>
 	 * Prototype: uint32_t  size
 	 */ 
 	 public int size(){
-		 // return  this.size;
-		 return size0(super.ptr);
+		 int var = size0(super.ptr);
+		 this.size = var;
+		 return this.size;
 	 }
 
 
@@ -185,54 +190,54 @@ public class VkPushConstantRange extends VkStruct {
 	 * native SET method for field stageFlags	[int]<br>
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
-	 private static native void stageFlags0(ByteBuffer ptr, int _stageFlags);/*
-		  VkPushConstantRange _obj = (VkPushConstantRange)(*ptr);
-		  _obj.stageFlags = (VkShaderStageFlags) (_stageFlags);
+	 private static native void stageFlags0(Buffer ptr, int _stageFlags);/*
+		  VkPushConstantRange* vkObj = (VkPushConstantRange*)(ptr);
+		  vkObj->stageFlags = (VkShaderStageFlags) (_stageFlags);
 	  */
 
 	/**
 	 * native GET method for field stageFlags	[int]<br>
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
-	 private static native int stageFlags0(ByteBuffer ptr);/*
-		  VkPushConstantRange _obj = (VkPushConstantRange)(ptr);
-		  return (jint) (_obj.VkShaderStageFlags);
+	 private static native int stageFlags0(Buffer ptr);/*
+		  VkPushConstantRange vkObj = (VkPushConstantRange*)(ptr);
+		  return (jint) (vkObj->stageFlags);
 	 */
 
 	/**
 	 * native SET method for field offset	[int]<br>
 	 * Prototype: uint32_t  offset
 	 */ 
-	 private static native void offset0(ByteBuffer ptr, int _offset);/*
-		  VkPushConstantRange _obj = (VkPushConstantRange)(*ptr);
-		  _obj.offset = (uint32_t) (_offset);
+	 private static native void offset0(Buffer ptr, int _offset);/*
+		  VkPushConstantRange* vkObj = (VkPushConstantRange*)(ptr);
+		  vkObj->offset = (uint32_t) (_offset);
 	  */
 
 	/**
 	 * native GET method for field offset	[int]<br>
 	 * Prototype: uint32_t  offset
 	 */ 
-	 private static native int offset0(ByteBuffer ptr);/*
-		  VkPushConstantRange _obj = (VkPushConstantRange)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int offset0(Buffer ptr);/*
+		  VkPushConstantRange vkObj = (VkPushConstantRange*)(ptr);
+		  return (jint) (vkObj->offset);
 	 */
 
 	/**
 	 * native SET method for field size	[int]<br>
 	 * Prototype: uint32_t  size
 	 */ 
-	 private static native void size0(ByteBuffer ptr, int _size);/*
-		  VkPushConstantRange _obj = (VkPushConstantRange)(*ptr);
-		  _obj.size = (uint32_t) (_size);
+	 private static native void size0(Buffer ptr, int _size);/*
+		  VkPushConstantRange* vkObj = (VkPushConstantRange*)(ptr);
+		  vkObj->size = (uint32_t) (_size);
 	  */
 
 	/**
 	 * native GET method for field size	[int]<br>
 	 * Prototype: uint32_t  size
 	 */ 
-	 private static native int size0(ByteBuffer ptr);/*
-		  VkPushConstantRange _obj = (VkPushConstantRange)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int size0(Buffer ptr);/*
+		  VkPushConstantRange vkObj = (VkPushConstantRange*)(ptr);
+		  return (jint) (vkObj->size);
 	 */
 
 

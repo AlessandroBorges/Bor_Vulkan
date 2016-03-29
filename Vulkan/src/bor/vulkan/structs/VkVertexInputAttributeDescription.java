@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -135,16 +137,17 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 */ 
 	 public void location(int location){
 		 this.location = location;
-		location0(super.ptr, location);
+		 location0(this.ptr,  location);
 	 }
 
 	/**
-	 * get method for field location	[int]<br>
+	 * Get method for field location	[int]<br>
 	 * Prototype: uint32_t  location
 	 */ 
 	 public int location(){
-		 // return  this.location;
-		 return location0(super.ptr);
+		 int var = location0(super.ptr);
+		 this.location = var;
+		 return this.location;
 	 }
 
 	/**
@@ -153,16 +156,17 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 */ 
 	 public void binding(int binding){
 		 this.binding = binding;
-		binding0(super.ptr, binding);
+		 binding0(this.ptr,  binding);
 	 }
 
 	/**
-	 * get method for field binding	[int]<br>
+	 * Get method for field binding	[int]<br>
 	 * Prototype: uint32_t  binding
 	 */ 
 	 public int binding(){
-		 // return  this.binding;
-		 return binding0(super.ptr);
+		 int var = binding0(super.ptr);
+		 this.binding = var;
+		 return this.binding;
 	 }
 
 	/**
@@ -171,16 +175,18 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 */ 
 	 public void format(VkFormat format){
 		 this.format = format;
-		format0(super.ptr, format);
+		 int enumVal = format.getValue();
+		 format0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field format	[vkenum]<br>
+	 * Get method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
 	 public VkFormat format(){
-		 // return  this.format;
-		 return format0(super.ptr);
+		 int nativeVal = format0(super.ptr);
+		 this.format = VkFormat.fromValue(nativeVal); 
+		 return this.format;
 	 }
 
 	/**
@@ -189,16 +195,17 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 */ 
 	 public void offset(int offset){
 		 this.offset = offset;
-		offset0(super.ptr, offset);
+		 offset0(this.ptr,  offset);
 	 }
 
 	/**
-	 * get method for field offset	[int]<br>
+	 * Get method for field offset	[int]<br>
 	 * Prototype: uint32_t  offset
 	 */ 
 	 public int offset(){
-		 // return  this.offset;
-		 return offset0(super.ptr);
+		 int var = offset0(super.ptr);
+		 this.offset = var;
+		 return this.offset;
 	 }
 
 
@@ -209,72 +216,72 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 * native SET method for field location	[int]<br>
 	 * Prototype: uint32_t  location
 	 */ 
-	 private static native void location0(ByteBuffer ptr, int _location);/*
-		  VkVertexInputAttributeDescription _obj = (VkVertexInputAttributeDescription)(*ptr);
-		  _obj.location = (uint32_t) (_location);
+	 private static native void location0(Buffer ptr, int _location);/*
+		  VkVertexInputAttributeDescription* vkObj = (VkVertexInputAttributeDescription*)(ptr);
+		  vkObj->location = (uint32_t) (_location);
 	  */
 
 	/**
 	 * native GET method for field location	[int]<br>
 	 * Prototype: uint32_t  location
 	 */ 
-	 private static native int location0(ByteBuffer ptr);/*
-		  VkVertexInputAttributeDescription _obj = (VkVertexInputAttributeDescription)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int location0(Buffer ptr);/*
+		  VkVertexInputAttributeDescription vkObj = (VkVertexInputAttributeDescription*)(ptr);
+		  return (jint) (vkObj->location);
 	 */
 
 	/**
 	 * native SET method for field binding	[int]<br>
 	 * Prototype: uint32_t  binding
 	 */ 
-	 private static native void binding0(ByteBuffer ptr, int _binding);/*
-		  VkVertexInputAttributeDescription _obj = (VkVertexInputAttributeDescription)(*ptr);
-		  _obj.binding = (uint32_t) (_binding);
+	 private static native void binding0(Buffer ptr, int _binding);/*
+		  VkVertexInputAttributeDescription* vkObj = (VkVertexInputAttributeDescription*)(ptr);
+		  vkObj->binding = (uint32_t) (_binding);
 	  */
 
 	/**
 	 * native GET method for field binding	[int]<br>
 	 * Prototype: uint32_t  binding
 	 */ 
-	 private static native int binding0(ByteBuffer ptr);/*
-		  VkVertexInputAttributeDescription _obj = (VkVertexInputAttributeDescription)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int binding0(Buffer ptr);/*
+		  VkVertexInputAttributeDescription vkObj = (VkVertexInputAttributeDescription*)(ptr);
+		  return (jint) (vkObj->binding);
 	 */
 
 	/**
 	 * native SET method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
-	 private static native void format0(ByteBuffer ptr, VkFormat _format);/*
-		  VkVertexInputAttributeDescription _obj = (VkVertexInputAttributeDescription)(*ptr);
-		  _obj.format = (VkFormat) (_format);
+	 private static native void format0(Buffer ptr, int  _format);/*
+		  VkVertexInputAttributeDescription* vkObj = (VkVertexInputAttributeDescription*)(ptr);
+		  vkObj->format = (VkFormat) (_format);
 	  */
 
 	/**
 	 * native GET method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
-	 private static native VkFormat format0(ByteBuffer ptr);/*
-		  VkVertexInputAttributeDescription _obj = (VkVertexInputAttributeDescription)(ptr);
-		  return (VkFormat) (_obj.VkFormat);
+	 private static native int  format0(Buffer ptr);/*
+		  VkVertexInputAttributeDescription vkObj = (VkVertexInputAttributeDescription*)(ptr);
+		  return (VkFormat) (vkObj->format);
 	 */
 
 	/**
 	 * native SET method for field offset	[int]<br>
 	 * Prototype: uint32_t  offset
 	 */ 
-	 private static native void offset0(ByteBuffer ptr, int _offset);/*
-		  VkVertexInputAttributeDescription _obj = (VkVertexInputAttributeDescription)(*ptr);
-		  _obj.offset = (uint32_t) (_offset);
+	 private static native void offset0(Buffer ptr, int _offset);/*
+		  VkVertexInputAttributeDescription* vkObj = (VkVertexInputAttributeDescription*)(ptr);
+		  vkObj->offset = (uint32_t) (_offset);
 	  */
 
 	/**
 	 * native GET method for field offset	[int]<br>
 	 * Prototype: uint32_t  offset
 	 */ 
-	 private static native int offset0(ByteBuffer ptr);/*
-		  VkVertexInputAttributeDescription _obj = (VkVertexInputAttributeDescription)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int offset0(Buffer ptr);/*
+		  VkVertexInputAttributeDescription vkObj = (VkVertexInputAttributeDescription*)(ptr);
+		  return (jint) (vkObj->offset);
 	 */
 
 

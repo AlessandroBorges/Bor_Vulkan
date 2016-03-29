@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -129,16 +131,17 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 */ 
 	 public void x(int x){
 		 this.x = x;
-		x0(super.ptr, x);
+		 x0(this.ptr,  x);
 	 }
 
 	/**
-	 * get method for field x	[int]<br>
+	 * Get method for field x	[int]<br>
 	 * Prototype: uint32_t  x
 	 */ 
 	 public int x(){
-		 // return  this.x;
-		 return x0(super.ptr);
+		 int var = x0(super.ptr);
+		 this.x = var;
+		 return this.x;
 	 }
 
 	/**
@@ -147,16 +150,17 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 */ 
 	 public void y(int y){
 		 this.y = y;
-		y0(super.ptr, y);
+		 y0(this.ptr,  y);
 	 }
 
 	/**
-	 * get method for field y	[int]<br>
+	 * Get method for field y	[int]<br>
 	 * Prototype: uint32_t  y
 	 */ 
 	 public int y(){
-		 // return  this.y;
-		 return y0(super.ptr);
+		 int var = y0(super.ptr);
+		 this.y = var;
+		 return this.y;
 	 }
 
 	/**
@@ -165,16 +169,17 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 */ 
 	 public void z(int z){
 		 this.z = z;
-		z0(super.ptr, z);
+		 z0(this.ptr,  z);
 	 }
 
 	/**
-	 * get method for field z	[int]<br>
+	 * Get method for field z	[int]<br>
 	 * Prototype: uint32_t  z
 	 */ 
 	 public int z(){
-		 // return  this.z;
-		 return z0(super.ptr);
+		 int var = z0(super.ptr);
+		 this.z = var;
+		 return this.z;
 	 }
 
 
@@ -185,54 +190,54 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 * native SET method for field x	[int]<br>
 	 * Prototype: uint32_t  x
 	 */ 
-	 private static native void x0(ByteBuffer ptr, int _x);/*
-		  VkDispatchIndirectCommand _obj = (VkDispatchIndirectCommand)(*ptr);
-		  _obj.x = (uint32_t) (_x);
+	 private static native void x0(Buffer ptr, int _x);/*
+		  VkDispatchIndirectCommand* vkObj = (VkDispatchIndirectCommand*)(ptr);
+		  vkObj->x = (uint32_t) (_x);
 	  */
 
 	/**
 	 * native GET method for field x	[int]<br>
 	 * Prototype: uint32_t  x
 	 */ 
-	 private static native int x0(ByteBuffer ptr);/*
-		  VkDispatchIndirectCommand _obj = (VkDispatchIndirectCommand)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int x0(Buffer ptr);/*
+		  VkDispatchIndirectCommand vkObj = (VkDispatchIndirectCommand*)(ptr);
+		  return (jint) (vkObj->x);
 	 */
 
 	/**
 	 * native SET method for field y	[int]<br>
 	 * Prototype: uint32_t  y
 	 */ 
-	 private static native void y0(ByteBuffer ptr, int _y);/*
-		  VkDispatchIndirectCommand _obj = (VkDispatchIndirectCommand)(*ptr);
-		  _obj.y = (uint32_t) (_y);
+	 private static native void y0(Buffer ptr, int _y);/*
+		  VkDispatchIndirectCommand* vkObj = (VkDispatchIndirectCommand*)(ptr);
+		  vkObj->y = (uint32_t) (_y);
 	  */
 
 	/**
 	 * native GET method for field y	[int]<br>
 	 * Prototype: uint32_t  y
 	 */ 
-	 private static native int y0(ByteBuffer ptr);/*
-		  VkDispatchIndirectCommand _obj = (VkDispatchIndirectCommand)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int y0(Buffer ptr);/*
+		  VkDispatchIndirectCommand vkObj = (VkDispatchIndirectCommand*)(ptr);
+		  return (jint) (vkObj->y);
 	 */
 
 	/**
 	 * native SET method for field z	[int]<br>
 	 * Prototype: uint32_t  z
 	 */ 
-	 private static native void z0(ByteBuffer ptr, int _z);/*
-		  VkDispatchIndirectCommand _obj = (VkDispatchIndirectCommand)(*ptr);
-		  _obj.z = (uint32_t) (_z);
+	 private static native void z0(Buffer ptr, int _z);/*
+		  VkDispatchIndirectCommand* vkObj = (VkDispatchIndirectCommand*)(ptr);
+		  vkObj->z = (uint32_t) (_z);
 	  */
 
 	/**
 	 * native GET method for field z	[int]<br>
 	 * Prototype: uint32_t  z
 	 */ 
-	 private static native int z0(ByteBuffer ptr);/*
-		  VkDispatchIndirectCommand _obj = (VkDispatchIndirectCommand)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int z0(Buffer ptr);/*
+		  VkDispatchIndirectCommand vkObj = (VkDispatchIndirectCommand*)(ptr);
+		  return (jint) (vkObj->z);
 	 */
 
 

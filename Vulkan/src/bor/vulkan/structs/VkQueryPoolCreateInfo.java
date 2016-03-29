@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -53,9 +55,9 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  VkQueryPoolCreateFlags 	flags	[int]
@@ -147,34 +149,46 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -183,16 +197,17 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		flags0(super.ptr, flags);
+		 flags0(this.ptr,  flags);
 	 }
 
 	/**
-	 * get method for field flags	[int]<br>
+	 * Get method for field flags	[int]<br>
 	 * Prototype: VkQueryPoolCreateFlags  flags
 	 */ 
 	 public int flags(){
-		 // return  this.flags;
-		 return flags0(super.ptr);
+		 int var = flags0(super.ptr);
+		 this.flags = var;
+		 return this.flags;
 	 }
 
 	/**
@@ -201,16 +216,18 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 */ 
 	 public void queryType(VkQueryType queryType){
 		 this.queryType = queryType;
-		queryType0(super.ptr, queryType);
+		 int enumVal = queryType.getValue();
+		 queryType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field queryType	[vkenum]<br>
+	 * Get method for field queryType	[vkenum]<br>
 	 * Prototype: VkQueryType  queryType
 	 */ 
 	 public VkQueryType queryType(){
-		 // return  this.queryType;
-		 return queryType0(super.ptr);
+		 int nativeVal = queryType0(super.ptr);
+		 this.queryType = VkQueryType.fromValue(nativeVal); 
+		 return this.queryType;
 	 }
 
 	/**
@@ -219,16 +236,17 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 */ 
 	 public void queryCount(int queryCount){
 		 this.queryCount = queryCount;
-		queryCount0(super.ptr, queryCount);
+		 queryCount0(this.ptr,  queryCount);
 	 }
 
 	/**
-	 * get method for field queryCount	[int]<br>
+	 * Get method for field queryCount	[int]<br>
 	 * Prototype: uint32_t  queryCount
 	 */ 
 	 public int queryCount(){
-		 // return  this.queryCount;
-		 return queryCount0(super.ptr);
+		 int var = queryCount0(super.ptr);
+		 this.queryCount = var;
+		 return this.queryCount;
 	 }
 
 	/**
@@ -237,16 +255,17 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 */ 
 	 public void pipelineStatistics(int pipelineStatistics){
 		 this.pipelineStatistics = pipelineStatistics;
-		pipelineStatistics0(super.ptr, pipelineStatistics);
+		 pipelineStatistics0(this.ptr,  pipelineStatistics);
 	 }
 
 	/**
-	 * get method for field pipelineStatistics	[int]<br>
+	 * Get method for field pipelineStatistics	[int]<br>
 	 * Prototype: VkQueryPipelineStatisticFlags  pipelineStatistics
 	 */ 
 	 public int pipelineStatistics(){
-		 // return  this.pipelineStatistics;
-		 return pipelineStatistics0(super.ptr);
+		 int var = pipelineStatistics0(super.ptr);
+		 this.pipelineStatistics = var;
+		 return this.pipelineStatistics;
 	 }
 
 
@@ -257,108 +276,108 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkQueryPoolCreateInfo _obj = (VkQueryPoolCreateInfo)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkQueryPoolCreateInfo _obj = (VkQueryPoolCreateInfo)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkQueryPoolCreateInfo vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkQueryPoolCreateInfo _obj = (VkQueryPoolCreateInfo)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkQueryPoolCreateInfo _obj = (VkQueryPoolCreateInfo)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkQueryPoolCreateInfo vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkQueryPoolCreateFlags  flags
 	 */ 
-	 private static native void flags0(ByteBuffer ptr, int _flags);/*
-		  VkQueryPoolCreateInfo _obj = (VkQueryPoolCreateInfo)(*ptr);
-		  _obj.flags = (VkQueryPoolCreateFlags) (_flags);
+	 private static native void flags0(Buffer ptr, int _flags);/*
+		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		  vkObj->flags = (VkQueryPoolCreateFlags) (_flags);
 	  */
 
 	/**
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkQueryPoolCreateFlags  flags
 	 */ 
-	 private static native int flags0(ByteBuffer ptr);/*
-		  VkQueryPoolCreateInfo _obj = (VkQueryPoolCreateInfo)(ptr);
-		  return (jint) (_obj.VkQueryPoolCreateFlags);
+	 private static native int flags0(Buffer ptr);/*
+		  VkQueryPoolCreateInfo vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		  return (jint) (vkObj->flags);
 	 */
 
 	/**
 	 * native SET method for field queryType	[vkenum]<br>
 	 * Prototype: VkQueryType  queryType
 	 */ 
-	 private static native void queryType0(ByteBuffer ptr, VkQueryType _queryType);/*
-		  VkQueryPoolCreateInfo _obj = (VkQueryPoolCreateInfo)(*ptr);
-		  _obj.queryType = (VkQueryType) (_queryType);
+	 private static native void queryType0(Buffer ptr, int  _queryType);/*
+		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		  vkObj->queryType = (VkQueryType) (_queryType);
 	  */
 
 	/**
 	 * native GET method for field queryType	[vkenum]<br>
 	 * Prototype: VkQueryType  queryType
 	 */ 
-	 private static native VkQueryType queryType0(ByteBuffer ptr);/*
-		  VkQueryPoolCreateInfo _obj = (VkQueryPoolCreateInfo)(ptr);
-		  return (VkQueryType) (_obj.VkQueryType);
+	 private static native int  queryType0(Buffer ptr);/*
+		  VkQueryPoolCreateInfo vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		  return (VkQueryType) (vkObj->queryType);
 	 */
 
 	/**
 	 * native SET method for field queryCount	[int]<br>
 	 * Prototype: uint32_t  queryCount
 	 */ 
-	 private static native void queryCount0(ByteBuffer ptr, int _queryCount);/*
-		  VkQueryPoolCreateInfo _obj = (VkQueryPoolCreateInfo)(*ptr);
-		  _obj.queryCount = (uint32_t) (_queryCount);
+	 private static native void queryCount0(Buffer ptr, int _queryCount);/*
+		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		  vkObj->queryCount = (uint32_t) (_queryCount);
 	  */
 
 	/**
 	 * native GET method for field queryCount	[int]<br>
 	 * Prototype: uint32_t  queryCount
 	 */ 
-	 private static native int queryCount0(ByteBuffer ptr);/*
-		  VkQueryPoolCreateInfo _obj = (VkQueryPoolCreateInfo)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int queryCount0(Buffer ptr);/*
+		  VkQueryPoolCreateInfo vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		  return (jint) (vkObj->queryCount);
 	 */
 
 	/**
 	 * native SET method for field pipelineStatistics	[int]<br>
 	 * Prototype: VkQueryPipelineStatisticFlags  pipelineStatistics
 	 */ 
-	 private static native void pipelineStatistics0(ByteBuffer ptr, int _pipelineStatistics);/*
-		  VkQueryPoolCreateInfo _obj = (VkQueryPoolCreateInfo)(*ptr);
-		  _obj.pipelineStatistics = (VkQueryPipelineStatisticFlags) (_pipelineStatistics);
+	 private static native void pipelineStatistics0(Buffer ptr, int _pipelineStatistics);/*
+		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		  vkObj->pipelineStatistics = (VkQueryPipelineStatisticFlags) (_pipelineStatistics);
 	  */
 
 	/**
 	 * native GET method for field pipelineStatistics	[int]<br>
 	 * Prototype: VkQueryPipelineStatisticFlags  pipelineStatistics
 	 */ 
-	 private static native int pipelineStatistics0(ByteBuffer ptr);/*
-		  VkQueryPoolCreateInfo _obj = (VkQueryPoolCreateInfo)(ptr);
-		  return (jint) (_obj.VkQueryPipelineStatisticFlags);
+	 private static native int pipelineStatistics0(Buffer ptr);/*
+		  VkQueryPoolCreateInfo vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		  return (jint) (vkObj->pipelineStatistics);
 	 */
 
 

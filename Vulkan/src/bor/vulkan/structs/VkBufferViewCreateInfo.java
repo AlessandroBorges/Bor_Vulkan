@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -54,9 +56,9 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  VkBufferViewCreateFlags 	flags	[int]
@@ -153,34 +155,46 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -189,16 +203,17 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		flags0(super.ptr, flags);
+		 flags0(this.ptr,  flags);
 	 }
 
 	/**
-	 * get method for field flags	[int]<br>
+	 * Get method for field flags	[int]<br>
 	 * Prototype: VkBufferViewCreateFlags  flags
 	 */ 
 	 public int flags(){
-		 // return  this.flags;
-		 return flags0(super.ptr);
+		 int var = flags0(super.ptr);
+		 this.flags = var;
+		 return this.flags;
 	 }
 
 	/**
@@ -207,16 +222,27 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 */ 
 	 public void buffer(VkBuffer buffer){
 		 this.buffer = buffer;
-		buffer0(super.ptr, buffer);
+		 ByteBuffer buff = (buffer==null) ? null : buffer.getHandle();
+		 buffer0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field buffer	[vkhandle]<br>
+	 * Get method for field buffer	[vkhandle]<br>
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 public VkBuffer buffer(){
-		 // return  this.buffer;
-		 return buffer0(super.ptr);
+
+		 ByteBuffer handle = buffer0(super.ptr);
+		 if(handle == null){
+		    this.buffer = null;
+		    return null;
+		  } else 
+ 		 if(this.buffer == null){
+		    this.buffer = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.buffer).setHandle(handle);
+		  }
+		 return this.buffer;
 	 }
 
 	/**
@@ -225,16 +251,18 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 */ 
 	 public void format(VkFormat format){
 		 this.format = format;
-		format0(super.ptr, format);
+		 int enumVal = format.getValue();
+		 format0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field format	[vkenum]<br>
+	 * Get method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
 	 public VkFormat format(){
-		 // return  this.format;
-		 return format0(super.ptr);
+		 int nativeVal = format0(super.ptr);
+		 this.format = VkFormat.fromValue(nativeVal); 
+		 return this.format;
 	 }
 
 	/**
@@ -243,16 +271,17 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 */ 
 	 public void offset(long offset){
 		 this.offset = offset;
-		offset0(super.ptr, offset);
+		 offset0(this.ptr,  offset);
 	 }
 
 	/**
-	 * get method for field offset	[long]<br>
+	 * Get method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 public long offset(){
-		 // return  this.offset;
-		 return offset0(super.ptr);
+		 long var = offset0(super.ptr);
+		 this.offset = var;
+		 return this.offset;
 	 }
 
 	/**
@@ -261,16 +290,17 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 */ 
 	 public void range(long range){
 		 this.range = range;
-		range0(super.ptr, range);
+		 range0(this.ptr,  range);
 	 }
 
 	/**
-	 * get method for field range	[long]<br>
+	 * Get method for field range	[long]<br>
 	 * Prototype: VkDeviceSize  range
 	 */ 
 	 public long range(){
-		 // return  this.range;
-		 return range0(super.ptr);
+		 long var = range0(super.ptr);
+		 this.range = var;
+		 return this.range;
 	 }
 
 
@@ -281,126 +311,126 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkBufferViewCreateInfo _obj = (VkBufferViewCreateInfo)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkBufferViewCreateInfo _obj = (VkBufferViewCreateInfo)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkBufferViewCreateInfo vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkBufferViewCreateInfo _obj = (VkBufferViewCreateInfo)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkBufferViewCreateInfo _obj = (VkBufferViewCreateInfo)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkBufferViewCreateInfo vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkBufferViewCreateFlags  flags
 	 */ 
-	 private static native void flags0(ByteBuffer ptr, int _flags);/*
-		  VkBufferViewCreateInfo _obj = (VkBufferViewCreateInfo)(*ptr);
-		  _obj.flags = (VkBufferViewCreateFlags) (_flags);
+	 private static native void flags0(Buffer ptr, int _flags);/*
+		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  vkObj->flags = (VkBufferViewCreateFlags) (_flags);
 	  */
 
 	/**
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkBufferViewCreateFlags  flags
 	 */ 
-	 private static native int flags0(ByteBuffer ptr);/*
-		  VkBufferViewCreateInfo _obj = (VkBufferViewCreateInfo)(ptr);
-		  return (jint) (_obj.VkBufferViewCreateFlags);
+	 private static native int flags0(Buffer ptr);/*
+		  VkBufferViewCreateInfo vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  return (jint) (vkObj->flags);
 	 */
 
 	/**
 	 * native SET method for field buffer	[vkhandle]<br>
 	 * Prototype: VkBuffer  buffer
 	 */ 
-	 private static native void buffer0(ByteBuffer ptr, VkBuffer _buffer);/*
-		  VkBufferViewCreateInfo _obj = (VkBufferViewCreateInfo)(*ptr);
-		  _obj.buffer = (VkBuffer) (_buffer);
+	 private static native void buffer0(Buffer ptr, java.nio.ByteBuffer  _buffer);/*
+		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  vkObj->buffer = (VkBuffer) (_buffer);
 	  */
 
 	/**
 	 * native GET method for field buffer	[vkhandle]<br>
 	 * Prototype: VkBuffer  buffer
 	 */ 
-	 private static native VkBuffer buffer0(ByteBuffer ptr);/*
-		  VkBufferViewCreateInfo _obj = (VkBufferViewCreateInfo)(ptr);
-		  return (VkBuffer) (_obj.VkBuffer);
+	 private static native java.nio.ByteBuffer  buffer0(Buffer ptr);/*
+		  VkBufferViewCreateInfo vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  return (jobject) (vkObj->buffer);
 	 */
 
 	/**
 	 * native SET method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
-	 private static native void format0(ByteBuffer ptr, VkFormat _format);/*
-		  VkBufferViewCreateInfo _obj = (VkBufferViewCreateInfo)(*ptr);
-		  _obj.format = (VkFormat) (_format);
+	 private static native void format0(Buffer ptr, int  _format);/*
+		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  vkObj->format = (VkFormat) (_format);
 	  */
 
 	/**
 	 * native GET method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
-	 private static native VkFormat format0(ByteBuffer ptr);/*
-		  VkBufferViewCreateInfo _obj = (VkBufferViewCreateInfo)(ptr);
-		  return (VkFormat) (_obj.VkFormat);
+	 private static native int  format0(Buffer ptr);/*
+		  VkBufferViewCreateInfo vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  return (VkFormat) (vkObj->format);
 	 */
 
 	/**
 	 * native SET method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
-	 private static native void offset0(ByteBuffer ptr, long _offset);/*
-		  VkBufferViewCreateInfo _obj = (VkBufferViewCreateInfo)(*ptr);
-		  _obj.offset = (VkDeviceSize) (_offset);
+	 private static native void offset0(Buffer ptr, long _offset);/*
+		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  vkObj->offset = (VkDeviceSize) (_offset);
 	  */
 
 	/**
 	 * native GET method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
-	 private static native long offset0(ByteBuffer ptr);/*
-		  VkBufferViewCreateInfo _obj = (VkBufferViewCreateInfo)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long offset0(Buffer ptr);/*
+		  VkBufferViewCreateInfo vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  return (jlong) (vkObj->offset);
 	 */
 
 	/**
 	 * native SET method for field range	[long]<br>
 	 * Prototype: VkDeviceSize  range
 	 */ 
-	 private static native void range0(ByteBuffer ptr, long _range);/*
-		  VkBufferViewCreateInfo _obj = (VkBufferViewCreateInfo)(*ptr);
-		  _obj.range = (VkDeviceSize) (_range);
+	 private static native void range0(Buffer ptr, long _range);/*
+		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  vkObj->range = (VkDeviceSize) (_range);
 	  */
 
 	/**
 	 * native GET method for field range	[long]<br>
 	 * Prototype: VkDeviceSize  range
 	 */ 
-	 private static native long range0(ByteBuffer ptr);/*
-		  VkBufferViewCreateInfo _obj = (VkBufferViewCreateInfo)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long range0(Buffer ptr);/*
+		  VkBufferViewCreateInfo vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  return (jlong) (vkObj->range);
 	 */
 
 

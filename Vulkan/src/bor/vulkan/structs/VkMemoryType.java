@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -123,16 +125,17 @@ public class VkMemoryType extends VkStruct {
 	 */ 
 	 public void propertyFlags(int propertyFlags){
 		 this.propertyFlags = propertyFlags;
-		propertyFlags0(super.ptr, propertyFlags);
+		 propertyFlags0(this.ptr,  propertyFlags);
 	 }
 
 	/**
-	 * get method for field propertyFlags	[int]<br>
+	 * Get method for field propertyFlags	[int]<br>
 	 * Prototype: VkMemoryPropertyFlags  propertyFlags
 	 */ 
 	 public int propertyFlags(){
-		 // return  this.propertyFlags;
-		 return propertyFlags0(super.ptr);
+		 int var = propertyFlags0(super.ptr);
+		 this.propertyFlags = var;
+		 return this.propertyFlags;
 	 }
 
 	/**
@@ -141,16 +144,17 @@ public class VkMemoryType extends VkStruct {
 	 */ 
 	 public void heapIndex(int heapIndex){
 		 this.heapIndex = heapIndex;
-		heapIndex0(super.ptr, heapIndex);
+		 heapIndex0(this.ptr,  heapIndex);
 	 }
 
 	/**
-	 * get method for field heapIndex	[int]<br>
+	 * Get method for field heapIndex	[int]<br>
 	 * Prototype: uint32_t  heapIndex
 	 */ 
 	 public int heapIndex(){
-		 // return  this.heapIndex;
-		 return heapIndex0(super.ptr);
+		 int var = heapIndex0(super.ptr);
+		 this.heapIndex = var;
+		 return this.heapIndex;
 	 }
 
 
@@ -161,36 +165,36 @@ public class VkMemoryType extends VkStruct {
 	 * native SET method for field propertyFlags	[int]<br>
 	 * Prototype: VkMemoryPropertyFlags  propertyFlags
 	 */ 
-	 private static native void propertyFlags0(ByteBuffer ptr, int _propertyFlags);/*
-		  VkMemoryType _obj = (VkMemoryType)(*ptr);
-		  _obj.propertyFlags = (VkMemoryPropertyFlags) (_propertyFlags);
+	 private static native void propertyFlags0(Buffer ptr, int _propertyFlags);/*
+		  VkMemoryType* vkObj = (VkMemoryType*)(ptr);
+		  vkObj->propertyFlags = (VkMemoryPropertyFlags) (_propertyFlags);
 	  */
 
 	/**
 	 * native GET method for field propertyFlags	[int]<br>
 	 * Prototype: VkMemoryPropertyFlags  propertyFlags
 	 */ 
-	 private static native int propertyFlags0(ByteBuffer ptr);/*
-		  VkMemoryType _obj = (VkMemoryType)(ptr);
-		  return (jint) (_obj.VkMemoryPropertyFlags);
+	 private static native int propertyFlags0(Buffer ptr);/*
+		  VkMemoryType vkObj = (VkMemoryType*)(ptr);
+		  return (jint) (vkObj->propertyFlags);
 	 */
 
 	/**
 	 * native SET method for field heapIndex	[int]<br>
 	 * Prototype: uint32_t  heapIndex
 	 */ 
-	 private static native void heapIndex0(ByteBuffer ptr, int _heapIndex);/*
-		  VkMemoryType _obj = (VkMemoryType)(*ptr);
-		  _obj.heapIndex = (uint32_t) (_heapIndex);
+	 private static native void heapIndex0(Buffer ptr, int _heapIndex);/*
+		  VkMemoryType* vkObj = (VkMemoryType*)(ptr);
+		  vkObj->heapIndex = (uint32_t) (_heapIndex);
 	  */
 
 	/**
 	 * native GET method for field heapIndex	[int]<br>
 	 * Prototype: uint32_t  heapIndex
 	 */ 
-	 private static native int heapIndex0(ByteBuffer ptr);/*
-		  VkMemoryType _obj = (VkMemoryType)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int heapIndex0(Buffer ptr);/*
+		  VkMemoryType vkObj = (VkMemoryType*)(ptr);
+		  return (jint) (vkObj->heapIndex);
 	 */
 
 

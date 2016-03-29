@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -123,16 +125,17 @@ public class VkAttachmentReference extends VkStruct {
 	 */ 
 	 public void attachment(int attachment){
 		 this.attachment = attachment;
-		attachment0(super.ptr, attachment);
+		 attachment0(this.ptr,  attachment);
 	 }
 
 	/**
-	 * get method for field attachment	[int]<br>
+	 * Get method for field attachment	[int]<br>
 	 * Prototype: uint32_t  attachment
 	 */ 
 	 public int attachment(){
-		 // return  this.attachment;
-		 return attachment0(super.ptr);
+		 int var = attachment0(super.ptr);
+		 this.attachment = var;
+		 return this.attachment;
 	 }
 
 	/**
@@ -141,16 +144,18 @@ public class VkAttachmentReference extends VkStruct {
 	 */ 
 	 public void layout(VkImageLayout layout){
 		 this.layout = layout;
-		layout0(super.ptr, layout);
+		 int enumVal = layout.getValue();
+		 layout0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field layout	[vkenum]<br>
+	 * Get method for field layout	[vkenum]<br>
 	 * Prototype: VkImageLayout  layout
 	 */ 
 	 public VkImageLayout layout(){
-		 // return  this.layout;
-		 return layout0(super.ptr);
+		 int nativeVal = layout0(super.ptr);
+		 this.layout = VkImageLayout.fromValue(nativeVal); 
+		 return this.layout;
 	 }
 
 
@@ -161,36 +166,36 @@ public class VkAttachmentReference extends VkStruct {
 	 * native SET method for field attachment	[int]<br>
 	 * Prototype: uint32_t  attachment
 	 */ 
-	 private static native void attachment0(ByteBuffer ptr, int _attachment);/*
-		  VkAttachmentReference _obj = (VkAttachmentReference)(*ptr);
-		  _obj.attachment = (uint32_t) (_attachment);
+	 private static native void attachment0(Buffer ptr, int _attachment);/*
+		  VkAttachmentReference* vkObj = (VkAttachmentReference*)(ptr);
+		  vkObj->attachment = (uint32_t) (_attachment);
 	  */
 
 	/**
 	 * native GET method for field attachment	[int]<br>
 	 * Prototype: uint32_t  attachment
 	 */ 
-	 private static native int attachment0(ByteBuffer ptr);/*
-		  VkAttachmentReference _obj = (VkAttachmentReference)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int attachment0(Buffer ptr);/*
+		  VkAttachmentReference vkObj = (VkAttachmentReference*)(ptr);
+		  return (jint) (vkObj->attachment);
 	 */
 
 	/**
 	 * native SET method for field layout	[vkenum]<br>
 	 * Prototype: VkImageLayout  layout
 	 */ 
-	 private static native void layout0(ByteBuffer ptr, VkImageLayout _layout);/*
-		  VkAttachmentReference _obj = (VkAttachmentReference)(*ptr);
-		  _obj.layout = (VkImageLayout) (_layout);
+	 private static native void layout0(Buffer ptr, int  _layout);/*
+		  VkAttachmentReference* vkObj = (VkAttachmentReference*)(ptr);
+		  vkObj->layout = (VkImageLayout) (_layout);
 	  */
 
 	/**
 	 * native GET method for field layout	[vkenum]<br>
 	 * Prototype: VkImageLayout  layout
 	 */ 
-	 private static native VkImageLayout layout0(ByteBuffer ptr);/*
-		  VkAttachmentReference _obj = (VkAttachmentReference)(ptr);
-		  return (VkImageLayout) (_obj.VkImageLayout);
+	 private static native int  layout0(Buffer ptr);/*
+		  VkAttachmentReference vkObj = (VkAttachmentReference*)(ptr);
+		  return (VkImageLayout) (vkObj->layout);
 	 */
 
 

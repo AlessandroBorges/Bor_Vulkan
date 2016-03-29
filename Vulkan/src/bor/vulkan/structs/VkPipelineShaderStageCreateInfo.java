@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -54,9 +56,9 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  VkPipelineShaderStageCreateFlags 	flags	[int]
@@ -79,9 +81,9 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 String 	pName;
 
 	/**
-	 *  const VkSpecializationInfo* 	pSpecializationInfo	[p]
+	 *  const VkSpecializationInfo* 	pSpecializationInfo	[vkstruct]
 	 */ 
-	 P<VkSpecializationInfo>  	pSpecializationInfo;
+	  VkSpecializationInfo  	pSpecializationInfo;
 
 	/**
 	 * Ctor
@@ -153,34 +155,46 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -189,16 +203,17 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		flags0(super.ptr, flags);
+		 flags0(this.ptr,  flags);
 	 }
 
 	/**
-	 * get method for field flags	[int]<br>
+	 * Get method for field flags	[int]<br>
 	 * Prototype: VkPipelineShaderStageCreateFlags  flags
 	 */ 
 	 public int flags(){
-		 // return  this.flags;
-		 return flags0(super.ptr);
+		 int var = flags0(super.ptr);
+		 this.flags = var;
+		 return this.flags;
 	 }
 
 	/**
@@ -207,16 +222,18 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 */ 
 	 public void stage(VkShaderStageFlagBits stage){
 		 this.stage = stage;
-		stage0(super.ptr, stage);
+		 int enumVal = stage.getValue();
+		 stage0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field stage	[vkenum]<br>
+	 * Get method for field stage	[vkenum]<br>
 	 * Prototype: VkShaderStageFlagBits  stage
 	 */ 
 	 public VkShaderStageFlagBits stage(){
-		 // return  this.stage;
-		 return stage0(super.ptr);
+		 int nativeVal = stage0(super.ptr);
+		 this.stage = VkShaderStageFlagBits.fromValue(nativeVal); 
+		 return this.stage;
 	 }
 
 	/**
@@ -225,16 +242,27 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 */ 
 	 public void module(VkShaderModule module){
 		 this.module = module;
-		module0(super.ptr, module);
+		 ByteBuffer buff = (module==null) ? null : module.getHandle();
+		 module0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field module	[vkhandle]<br>
+	 * Get method for field module	[vkhandle]<br>
 	 * Prototype: VkShaderModule  module
 	 */ 
 	 public VkShaderModule module(){
-		 // return  this.module;
-		 return module0(super.ptr);
+
+		 ByteBuffer handle = module0(super.ptr);
+		 if(handle == null){
+		    this.module = null;
+		    return null;
+		  } else 
+ 		 if(this.module == null){
+		    this.module = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.module).setHandle(handle);
+		  }
+		 return this.module;
 	 }
 
 	/**
@@ -243,34 +271,45 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 */ 
 	 public void pName(String pName){
 		 this.pName = pName;
-		pName0(super.ptr, pName);
+		 pName0(this.ptr,  pName);
 	 }
 
 	/**
-	 * get method for field pName	[string]<br>
+	 * Get method for field pName	[string]<br>
 	 * Prototype: const char*  pName
 	 */ 
 	 public String pName(){
-		 // return  this.pName;
-		 return pName0(super.ptr);
+		 String var = pName0(super.ptr);
+		 this.pName = var;
+		 return this.pName;
 	 }
 
 	/**
-	 * Set method for field pSpecializationInfo	[p]<br>
+	 * Set method for field pSpecializationInfo	[vkstruct]<br>
 	 * Prototype: const VkSpecializationInfo*  pSpecializationInfo
 	 */ 
-	 public void pSpecializationInfo(P<VkSpecializationInfo>  pSpecializationInfo){
+	 public void pSpecializationInfo( VkSpecializationInfo  pSpecializationInfo){
 		 this.pSpecializationInfo = pSpecializationInfo;
-		pSpecializationInfo0(super.ptr, pSpecializationInfo);
+		 ByteBuffer buff = (pSpecializationInfo==null) ? null : pSpecializationInfo.getPointerStruct();
+		 pSpecializationInfo0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pSpecializationInfo	[p]<br>
+	 * Get method for field pSpecializationInfo	[vkstruct]<br>
 	 * Prototype: const VkSpecializationInfo*  pSpecializationInfo
 	 */ 
-	 public P<VkSpecializationInfo>  pSpecializationInfo(){
-		 // return  this.pSpecializationInfo;
-		 return pSpecializationInfo0(super.ptr);
+	 public  VkSpecializationInfo  pSpecializationInfo(){
+		 ByteBuffer pointer = pSpecializationInfo0(super.ptr);
+		 if(pointer == null){
+		    this.pSpecializationInfo = null;
+		    return null;
+		  } else 
+ 		 if(this.pSpecializationInfo == null){
+		    this.pSpecializationInfo = new  VkSpecializationInfo (pointer);
+		 }else{
+		    this.pSpecializationInfo.setPointer(pointer);
+		  }
+		 return this.pSpecializationInfo;
 	 }
 
 
@@ -281,125 +320,125 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkPipelineShaderStageCreateInfo _obj = (VkPipelineShaderStageCreateInfo)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkPipelineShaderStageCreateInfo _obj = (VkPipelineShaderStageCreateInfo)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkPipelineShaderStageCreateInfo vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkPipelineShaderStageCreateInfo _obj = (VkPipelineShaderStageCreateInfo)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkPipelineShaderStageCreateInfo _obj = (VkPipelineShaderStageCreateInfo)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkPipelineShaderStageCreateInfo vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkPipelineShaderStageCreateFlags  flags
 	 */ 
-	 private static native void flags0(ByteBuffer ptr, int _flags);/*
-		  VkPipelineShaderStageCreateInfo _obj = (VkPipelineShaderStageCreateInfo)(*ptr);
-		  _obj.flags = (VkPipelineShaderStageCreateFlags) (_flags);
+	 private static native void flags0(Buffer ptr, int _flags);/*
+		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  vkObj->flags = (VkPipelineShaderStageCreateFlags) (_flags);
 	  */
 
 	/**
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkPipelineShaderStageCreateFlags  flags
 	 */ 
-	 private static native int flags0(ByteBuffer ptr);/*
-		  VkPipelineShaderStageCreateInfo _obj = (VkPipelineShaderStageCreateInfo)(ptr);
-		  return (jint) (_obj.VkPipelineShaderStageCreateFlags);
+	 private static native int flags0(Buffer ptr);/*
+		  VkPipelineShaderStageCreateInfo vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  return (jint) (vkObj->flags);
 	 */
 
 	/**
 	 * native SET method for field stage	[vkenum]<br>
 	 * Prototype: VkShaderStageFlagBits  stage
 	 */ 
-	 private static native void stage0(ByteBuffer ptr, VkShaderStageFlagBits _stage);/*
-		  VkPipelineShaderStageCreateInfo _obj = (VkPipelineShaderStageCreateInfo)(*ptr);
-		  _obj.stage = (VkShaderStageFlagBits) (_stage);
+	 private static native void stage0(Buffer ptr, int  _stage);/*
+		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  vkObj->stage = (VkShaderStageFlagBits) (_stage);
 	  */
 
 	/**
 	 * native GET method for field stage	[vkenum]<br>
 	 * Prototype: VkShaderStageFlagBits  stage
 	 */ 
-	 private static native VkShaderStageFlagBits stage0(ByteBuffer ptr);/*
-		  VkPipelineShaderStageCreateInfo _obj = (VkPipelineShaderStageCreateInfo)(ptr);
-		  return (VkShaderStageFlagBits) (_obj.VkShaderStageFlagBits);
+	 private static native int  stage0(Buffer ptr);/*
+		  VkPipelineShaderStageCreateInfo vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  return (VkShaderStageFlagBits) (vkObj->stage);
 	 */
 
 	/**
 	 * native SET method for field module	[vkhandle]<br>
 	 * Prototype: VkShaderModule  module
 	 */ 
-	 private static native void module0(ByteBuffer ptr, VkShaderModule _module);/*
-		  VkPipelineShaderStageCreateInfo _obj = (VkPipelineShaderStageCreateInfo)(*ptr);
-		  _obj.module = (VkShaderModule) (_module);
+	 private static native void module0(Buffer ptr, java.nio.ByteBuffer  _module);/*
+		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  vkObj->module = (VkShaderModule) (_module);
 	  */
 
 	/**
 	 * native GET method for field module	[vkhandle]<br>
 	 * Prototype: VkShaderModule  module
 	 */ 
-	 private static native VkShaderModule module0(ByteBuffer ptr);/*
-		  VkPipelineShaderStageCreateInfo _obj = (VkPipelineShaderStageCreateInfo)(ptr);
-		  return (VkShaderModule) (_obj.VkShaderModule);
+	 private static native java.nio.ByteBuffer  module0(Buffer ptr);/*
+		  VkPipelineShaderStageCreateInfo vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  return (VkShaderModule) (vkObj->module);
 	 */
 
 	/**
 	 * native SET method for field pName	[string]<br>
 	 * Prototype: const char*  pName
 	 */ 
-	 private static native void pName0(ByteBuffer ptr, String _pName);/*
-		  VkPipelineShaderStageCreateInfo _obj = (VkPipelineShaderStageCreateInfo)(*ptr);
-		  _obj.pName = (const char*) (_pName);
+	 private static native void pName0(Buffer ptr, String _pName);/*
+		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  vkObj->pName = (const char*) (_pName);
 	  */
 
 	/**
 	 * native GET method for field pName	[string]<br>
 	 * Prototype: const char*  pName
 	 */ 
-	 private static native String pName0(ByteBuffer ptr);/*
-		  VkPipelineShaderStageCreateInfo _obj = (VkPipelineShaderStageCreateInfo)(ptr);
-		  return (jstring)(env->NewStringUTF(_obj.const char*);	 */
+	 private static native String pName0(Buffer ptr);/*
+		  VkPipelineShaderStageCreateInfo vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  return (jstring)(env->NewStringUTF(vkObj->.pName);	 */
 
 	/**
-	 * native SET method for field pSpecializationInfo	[p]<br>
+	 * native SET method for field pSpecializationInfo	[vkstruct]<br>
 	 * Prototype: const VkSpecializationInfo*  pSpecializationInfo
 	 */ 
-	 private static native void pSpecializationInfo0(ByteBuffer ptr, P<VkSpecializationInfo>  _pSpecializationInfo);/*
-		  VkPipelineShaderStageCreateInfo _obj = (VkPipelineShaderStageCreateInfo)(*ptr);
-		  _obj.pSpecializationInfo = (const VkSpecializationInfo*) (_pSpecializationInfo);
+	 private static native void pSpecializationInfo0(Buffer ptr, java.nio.ByteBuffer  _pSpecializationInfo);/*
+		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  vkObj->pSpecializationInfo = (const VkSpecializationInfo*) (_pSpecializationInfo);
 	  */
 
 	/**
-	 * native GET method for field pSpecializationInfo	[p]<br>
+	 * native GET method for field pSpecializationInfo	[vkstruct]<br>
 	 * Prototype: const VkSpecializationInfo*  pSpecializationInfo
 	 */ 
-	 private static native P<VkSpecializationInfo>  pSpecializationInfo0(ByteBuffer ptr);/*
-		  VkPipelineShaderStageCreateInfo _obj = (VkPipelineShaderStageCreateInfo)(ptr);
-		  return (P<VkSpecializationInfo> ) (_obj.const VkSpecializationInfo*);
+	 private static native java.nio.ByteBuffer  pSpecializationInfo0(Buffer ptr);/*
+		  VkPipelineShaderStageCreateInfo vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  return ( VkSpecializationInfo ) (vkObj->pSpecializationInfo);
 	 */
 
 

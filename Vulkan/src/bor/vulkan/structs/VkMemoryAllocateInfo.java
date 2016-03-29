@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -51,9 +53,9 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  VkDeviceSize 	allocationSize	[long]
@@ -135,34 +137,46 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -171,16 +185,17 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 */ 
 	 public void allocationSize(long allocationSize){
 		 this.allocationSize = allocationSize;
-		allocationSize0(super.ptr, allocationSize);
+		 allocationSize0(this.ptr,  allocationSize);
 	 }
 
 	/**
-	 * get method for field allocationSize	[long]<br>
+	 * Get method for field allocationSize	[long]<br>
 	 * Prototype: VkDeviceSize  allocationSize
 	 */ 
 	 public long allocationSize(){
-		 // return  this.allocationSize;
-		 return allocationSize0(super.ptr);
+		 long var = allocationSize0(super.ptr);
+		 this.allocationSize = var;
+		 return this.allocationSize;
 	 }
 
 	/**
@@ -189,16 +204,17 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 */ 
 	 public void memoryTypeIndex(int memoryTypeIndex){
 		 this.memoryTypeIndex = memoryTypeIndex;
-		memoryTypeIndex0(super.ptr, memoryTypeIndex);
+		 memoryTypeIndex0(this.ptr,  memoryTypeIndex);
 	 }
 
 	/**
-	 * get method for field memoryTypeIndex	[int]<br>
+	 * Get method for field memoryTypeIndex	[int]<br>
 	 * Prototype: uint32_t  memoryTypeIndex
 	 */ 
 	 public int memoryTypeIndex(){
-		 // return  this.memoryTypeIndex;
-		 return memoryTypeIndex0(super.ptr);
+		 int var = memoryTypeIndex0(super.ptr);
+		 this.memoryTypeIndex = var;
+		 return this.memoryTypeIndex;
 	 }
 
 
@@ -209,72 +225,72 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkMemoryAllocateInfo _obj = (VkMemoryAllocateInfo)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkMemoryAllocateInfo _obj = (VkMemoryAllocateInfo)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkMemoryAllocateInfo vkObj = (VkMemoryAllocateInfo*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkMemoryAllocateInfo _obj = (VkMemoryAllocateInfo)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkMemoryAllocateInfo _obj = (VkMemoryAllocateInfo)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkMemoryAllocateInfo vkObj = (VkMemoryAllocateInfo*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field allocationSize	[long]<br>
 	 * Prototype: VkDeviceSize  allocationSize
 	 */ 
-	 private static native void allocationSize0(ByteBuffer ptr, long _allocationSize);/*
-		  VkMemoryAllocateInfo _obj = (VkMemoryAllocateInfo)(*ptr);
-		  _obj.allocationSize = (VkDeviceSize) (_allocationSize);
+	 private static native void allocationSize0(Buffer ptr, long _allocationSize);/*
+		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
+		  vkObj->allocationSize = (VkDeviceSize) (_allocationSize);
 	  */
 
 	/**
 	 * native GET method for field allocationSize	[long]<br>
 	 * Prototype: VkDeviceSize  allocationSize
 	 */ 
-	 private static native long allocationSize0(ByteBuffer ptr);/*
-		  VkMemoryAllocateInfo _obj = (VkMemoryAllocateInfo)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long allocationSize0(Buffer ptr);/*
+		  VkMemoryAllocateInfo vkObj = (VkMemoryAllocateInfo*)(ptr);
+		  return (jlong) (vkObj->allocationSize);
 	 */
 
 	/**
 	 * native SET method for field memoryTypeIndex	[int]<br>
 	 * Prototype: uint32_t  memoryTypeIndex
 	 */ 
-	 private static native void memoryTypeIndex0(ByteBuffer ptr, int _memoryTypeIndex);/*
-		  VkMemoryAllocateInfo _obj = (VkMemoryAllocateInfo)(*ptr);
-		  _obj.memoryTypeIndex = (uint32_t) (_memoryTypeIndex);
+	 private static native void memoryTypeIndex0(Buffer ptr, int _memoryTypeIndex);/*
+		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
+		  vkObj->memoryTypeIndex = (uint32_t) (_memoryTypeIndex);
 	  */
 
 	/**
 	 * native GET method for field memoryTypeIndex	[int]<br>
 	 * Prototype: uint32_t  memoryTypeIndex
 	 */ 
-	 private static native int memoryTypeIndex0(ByteBuffer ptr);/*
-		  VkMemoryAllocateInfo _obj = (VkMemoryAllocateInfo)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int memoryTypeIndex0(Buffer ptr);/*
+		  VkMemoryAllocateInfo vkObj = (VkMemoryAllocateInfo*)(ptr);
+		  return (jint) (vkObj->memoryTypeIndex);
 	 */
 
 

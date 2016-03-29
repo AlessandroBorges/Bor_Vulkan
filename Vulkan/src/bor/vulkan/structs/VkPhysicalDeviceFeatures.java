@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -441,16 +443,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void robustBufferAccess(boolean robustBufferAccess){
 		 this.robustBufferAccess = robustBufferAccess;
-		robustBufferAccess0(super.ptr, robustBufferAccess);
+		 robustBufferAccess0(this.ptr,  robustBufferAccess);
 	 }
 
 	/**
-	 * get method for field robustBufferAccess	[boolean]<br>
+	 * Get method for field robustBufferAccess	[boolean]<br>
 	 * Prototype: VkBool32  robustBufferAccess
 	 */ 
 	 public boolean robustBufferAccess(){
-		 // return  this.robustBufferAccess;
-		 return robustBufferAccess0(super.ptr);
+		 boolean var = robustBufferAccess0(super.ptr);
+		 this.robustBufferAccess = var;
+		 return this.robustBufferAccess;
 	 }
 
 	/**
@@ -459,16 +462,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void fullDrawIndexUint32(boolean fullDrawIndexUint32){
 		 this.fullDrawIndexUint32 = fullDrawIndexUint32;
-		fullDrawIndexUint320(super.ptr, fullDrawIndexUint32);
+		 fullDrawIndexUint320(this.ptr,  fullDrawIndexUint32);
 	 }
 
 	/**
-	 * get method for field fullDrawIndexUint32	[boolean]<br>
+	 * Get method for field fullDrawIndexUint32	[boolean]<br>
 	 * Prototype: VkBool32  fullDrawIndexUint32
 	 */ 
 	 public boolean fullDrawIndexUint32(){
-		 // return  this.fullDrawIndexUint32;
-		 return fullDrawIndexUint320(super.ptr);
+		 boolean var = fullDrawIndexUint320(super.ptr);
+		 this.fullDrawIndexUint32 = var;
+		 return this.fullDrawIndexUint32;
 	 }
 
 	/**
@@ -477,16 +481,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void imageCubeArray(boolean imageCubeArray){
 		 this.imageCubeArray = imageCubeArray;
-		imageCubeArray0(super.ptr, imageCubeArray);
+		 imageCubeArray0(this.ptr,  imageCubeArray);
 	 }
 
 	/**
-	 * get method for field imageCubeArray	[boolean]<br>
+	 * Get method for field imageCubeArray	[boolean]<br>
 	 * Prototype: VkBool32  imageCubeArray
 	 */ 
 	 public boolean imageCubeArray(){
-		 // return  this.imageCubeArray;
-		 return imageCubeArray0(super.ptr);
+		 boolean var = imageCubeArray0(super.ptr);
+		 this.imageCubeArray = var;
+		 return this.imageCubeArray;
 	 }
 
 	/**
@@ -495,16 +500,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void independentBlend(boolean independentBlend){
 		 this.independentBlend = independentBlend;
-		independentBlend0(super.ptr, independentBlend);
+		 independentBlend0(this.ptr,  independentBlend);
 	 }
 
 	/**
-	 * get method for field independentBlend	[boolean]<br>
+	 * Get method for field independentBlend	[boolean]<br>
 	 * Prototype: VkBool32  independentBlend
 	 */ 
 	 public boolean independentBlend(){
-		 // return  this.independentBlend;
-		 return independentBlend0(super.ptr);
+		 boolean var = independentBlend0(super.ptr);
+		 this.independentBlend = var;
+		 return this.independentBlend;
 	 }
 
 	/**
@@ -513,16 +519,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void geometryShader(boolean geometryShader){
 		 this.geometryShader = geometryShader;
-		geometryShader0(super.ptr, geometryShader);
+		 geometryShader0(this.ptr,  geometryShader);
 	 }
 
 	/**
-	 * get method for field geometryShader	[boolean]<br>
+	 * Get method for field geometryShader	[boolean]<br>
 	 * Prototype: VkBool32  geometryShader
 	 */ 
 	 public boolean geometryShader(){
-		 // return  this.geometryShader;
-		 return geometryShader0(super.ptr);
+		 boolean var = geometryShader0(super.ptr);
+		 this.geometryShader = var;
+		 return this.geometryShader;
 	 }
 
 	/**
@@ -531,16 +538,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void tessellationShader(boolean tessellationShader){
 		 this.tessellationShader = tessellationShader;
-		tessellationShader0(super.ptr, tessellationShader);
+		 tessellationShader0(this.ptr,  tessellationShader);
 	 }
 
 	/**
-	 * get method for field tessellationShader	[boolean]<br>
+	 * Get method for field tessellationShader	[boolean]<br>
 	 * Prototype: VkBool32  tessellationShader
 	 */ 
 	 public boolean tessellationShader(){
-		 // return  this.tessellationShader;
-		 return tessellationShader0(super.ptr);
+		 boolean var = tessellationShader0(super.ptr);
+		 this.tessellationShader = var;
+		 return this.tessellationShader;
 	 }
 
 	/**
@@ -549,16 +557,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void sampleRateShading(boolean sampleRateShading){
 		 this.sampleRateShading = sampleRateShading;
-		sampleRateShading0(super.ptr, sampleRateShading);
+		 sampleRateShading0(this.ptr,  sampleRateShading);
 	 }
 
 	/**
-	 * get method for field sampleRateShading	[boolean]<br>
+	 * Get method for field sampleRateShading	[boolean]<br>
 	 * Prototype: VkBool32  sampleRateShading
 	 */ 
 	 public boolean sampleRateShading(){
-		 // return  this.sampleRateShading;
-		 return sampleRateShading0(super.ptr);
+		 boolean var = sampleRateShading0(super.ptr);
+		 this.sampleRateShading = var;
+		 return this.sampleRateShading;
 	 }
 
 	/**
@@ -567,16 +576,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void dualSrcBlend(boolean dualSrcBlend){
 		 this.dualSrcBlend = dualSrcBlend;
-		dualSrcBlend0(super.ptr, dualSrcBlend);
+		 dualSrcBlend0(this.ptr,  dualSrcBlend);
 	 }
 
 	/**
-	 * get method for field dualSrcBlend	[boolean]<br>
+	 * Get method for field dualSrcBlend	[boolean]<br>
 	 * Prototype: VkBool32  dualSrcBlend
 	 */ 
 	 public boolean dualSrcBlend(){
-		 // return  this.dualSrcBlend;
-		 return dualSrcBlend0(super.ptr);
+		 boolean var = dualSrcBlend0(super.ptr);
+		 this.dualSrcBlend = var;
+		 return this.dualSrcBlend;
 	 }
 
 	/**
@@ -585,16 +595,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void logicOp(boolean logicOp){
 		 this.logicOp = logicOp;
-		logicOp0(super.ptr, logicOp);
+		 logicOp0(this.ptr,  logicOp);
 	 }
 
 	/**
-	 * get method for field logicOp	[boolean]<br>
+	 * Get method for field logicOp	[boolean]<br>
 	 * Prototype: VkBool32  logicOp
 	 */ 
 	 public boolean logicOp(){
-		 // return  this.logicOp;
-		 return logicOp0(super.ptr);
+		 boolean var = logicOp0(super.ptr);
+		 this.logicOp = var;
+		 return this.logicOp;
 	 }
 
 	/**
@@ -603,16 +614,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void multiDrawIndirect(boolean multiDrawIndirect){
 		 this.multiDrawIndirect = multiDrawIndirect;
-		multiDrawIndirect0(super.ptr, multiDrawIndirect);
+		 multiDrawIndirect0(this.ptr,  multiDrawIndirect);
 	 }
 
 	/**
-	 * get method for field multiDrawIndirect	[boolean]<br>
+	 * Get method for field multiDrawIndirect	[boolean]<br>
 	 * Prototype: VkBool32  multiDrawIndirect
 	 */ 
 	 public boolean multiDrawIndirect(){
-		 // return  this.multiDrawIndirect;
-		 return multiDrawIndirect0(super.ptr);
+		 boolean var = multiDrawIndirect0(super.ptr);
+		 this.multiDrawIndirect = var;
+		 return this.multiDrawIndirect;
 	 }
 
 	/**
@@ -621,16 +633,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void drawIndirectFirstInstance(boolean drawIndirectFirstInstance){
 		 this.drawIndirectFirstInstance = drawIndirectFirstInstance;
-		drawIndirectFirstInstance0(super.ptr, drawIndirectFirstInstance);
+		 drawIndirectFirstInstance0(this.ptr,  drawIndirectFirstInstance);
 	 }
 
 	/**
-	 * get method for field drawIndirectFirstInstance	[boolean]<br>
+	 * Get method for field drawIndirectFirstInstance	[boolean]<br>
 	 * Prototype: VkBool32  drawIndirectFirstInstance
 	 */ 
 	 public boolean drawIndirectFirstInstance(){
-		 // return  this.drawIndirectFirstInstance;
-		 return drawIndirectFirstInstance0(super.ptr);
+		 boolean var = drawIndirectFirstInstance0(super.ptr);
+		 this.drawIndirectFirstInstance = var;
+		 return this.drawIndirectFirstInstance;
 	 }
 
 	/**
@@ -639,16 +652,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void depthClamp(boolean depthClamp){
 		 this.depthClamp = depthClamp;
-		depthClamp0(super.ptr, depthClamp);
+		 depthClamp0(this.ptr,  depthClamp);
 	 }
 
 	/**
-	 * get method for field depthClamp	[boolean]<br>
+	 * Get method for field depthClamp	[boolean]<br>
 	 * Prototype: VkBool32  depthClamp
 	 */ 
 	 public boolean depthClamp(){
-		 // return  this.depthClamp;
-		 return depthClamp0(super.ptr);
+		 boolean var = depthClamp0(super.ptr);
+		 this.depthClamp = var;
+		 return this.depthClamp;
 	 }
 
 	/**
@@ -657,16 +671,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void depthBiasClamp(boolean depthBiasClamp){
 		 this.depthBiasClamp = depthBiasClamp;
-		depthBiasClamp0(super.ptr, depthBiasClamp);
+		 depthBiasClamp0(this.ptr,  depthBiasClamp);
 	 }
 
 	/**
-	 * get method for field depthBiasClamp	[boolean]<br>
+	 * Get method for field depthBiasClamp	[boolean]<br>
 	 * Prototype: VkBool32  depthBiasClamp
 	 */ 
 	 public boolean depthBiasClamp(){
-		 // return  this.depthBiasClamp;
-		 return depthBiasClamp0(super.ptr);
+		 boolean var = depthBiasClamp0(super.ptr);
+		 this.depthBiasClamp = var;
+		 return this.depthBiasClamp;
 	 }
 
 	/**
@@ -675,16 +690,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void fillModeNonSolid(boolean fillModeNonSolid){
 		 this.fillModeNonSolid = fillModeNonSolid;
-		fillModeNonSolid0(super.ptr, fillModeNonSolid);
+		 fillModeNonSolid0(this.ptr,  fillModeNonSolid);
 	 }
 
 	/**
-	 * get method for field fillModeNonSolid	[boolean]<br>
+	 * Get method for field fillModeNonSolid	[boolean]<br>
 	 * Prototype: VkBool32  fillModeNonSolid
 	 */ 
 	 public boolean fillModeNonSolid(){
-		 // return  this.fillModeNonSolid;
-		 return fillModeNonSolid0(super.ptr);
+		 boolean var = fillModeNonSolid0(super.ptr);
+		 this.fillModeNonSolid = var;
+		 return this.fillModeNonSolid;
 	 }
 
 	/**
@@ -693,16 +709,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void depthBounds(boolean depthBounds){
 		 this.depthBounds = depthBounds;
-		depthBounds0(super.ptr, depthBounds);
+		 depthBounds0(this.ptr,  depthBounds);
 	 }
 
 	/**
-	 * get method for field depthBounds	[boolean]<br>
+	 * Get method for field depthBounds	[boolean]<br>
 	 * Prototype: VkBool32  depthBounds
 	 */ 
 	 public boolean depthBounds(){
-		 // return  this.depthBounds;
-		 return depthBounds0(super.ptr);
+		 boolean var = depthBounds0(super.ptr);
+		 this.depthBounds = var;
+		 return this.depthBounds;
 	 }
 
 	/**
@@ -711,16 +728,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void wideLines(boolean wideLines){
 		 this.wideLines = wideLines;
-		wideLines0(super.ptr, wideLines);
+		 wideLines0(this.ptr,  wideLines);
 	 }
 
 	/**
-	 * get method for field wideLines	[boolean]<br>
+	 * Get method for field wideLines	[boolean]<br>
 	 * Prototype: VkBool32  wideLines
 	 */ 
 	 public boolean wideLines(){
-		 // return  this.wideLines;
-		 return wideLines0(super.ptr);
+		 boolean var = wideLines0(super.ptr);
+		 this.wideLines = var;
+		 return this.wideLines;
 	 }
 
 	/**
@@ -729,16 +747,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void largePoints(boolean largePoints){
 		 this.largePoints = largePoints;
-		largePoints0(super.ptr, largePoints);
+		 largePoints0(this.ptr,  largePoints);
 	 }
 
 	/**
-	 * get method for field largePoints	[boolean]<br>
+	 * Get method for field largePoints	[boolean]<br>
 	 * Prototype: VkBool32  largePoints
 	 */ 
 	 public boolean largePoints(){
-		 // return  this.largePoints;
-		 return largePoints0(super.ptr);
+		 boolean var = largePoints0(super.ptr);
+		 this.largePoints = var;
+		 return this.largePoints;
 	 }
 
 	/**
@@ -747,16 +766,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void alphaToOne(boolean alphaToOne){
 		 this.alphaToOne = alphaToOne;
-		alphaToOne0(super.ptr, alphaToOne);
+		 alphaToOne0(this.ptr,  alphaToOne);
 	 }
 
 	/**
-	 * get method for field alphaToOne	[boolean]<br>
+	 * Get method for field alphaToOne	[boolean]<br>
 	 * Prototype: VkBool32  alphaToOne
 	 */ 
 	 public boolean alphaToOne(){
-		 // return  this.alphaToOne;
-		 return alphaToOne0(super.ptr);
+		 boolean var = alphaToOne0(super.ptr);
+		 this.alphaToOne = var;
+		 return this.alphaToOne;
 	 }
 
 	/**
@@ -765,16 +785,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void multiViewport(boolean multiViewport){
 		 this.multiViewport = multiViewport;
-		multiViewport0(super.ptr, multiViewport);
+		 multiViewport0(this.ptr,  multiViewport);
 	 }
 
 	/**
-	 * get method for field multiViewport	[boolean]<br>
+	 * Get method for field multiViewport	[boolean]<br>
 	 * Prototype: VkBool32  multiViewport
 	 */ 
 	 public boolean multiViewport(){
-		 // return  this.multiViewport;
-		 return multiViewport0(super.ptr);
+		 boolean var = multiViewport0(super.ptr);
+		 this.multiViewport = var;
+		 return this.multiViewport;
 	 }
 
 	/**
@@ -783,16 +804,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void samplerAnisotropy(boolean samplerAnisotropy){
 		 this.samplerAnisotropy = samplerAnisotropy;
-		samplerAnisotropy0(super.ptr, samplerAnisotropy);
+		 samplerAnisotropy0(this.ptr,  samplerAnisotropy);
 	 }
 
 	/**
-	 * get method for field samplerAnisotropy	[boolean]<br>
+	 * Get method for field samplerAnisotropy	[boolean]<br>
 	 * Prototype: VkBool32  samplerAnisotropy
 	 */ 
 	 public boolean samplerAnisotropy(){
-		 // return  this.samplerAnisotropy;
-		 return samplerAnisotropy0(super.ptr);
+		 boolean var = samplerAnisotropy0(super.ptr);
+		 this.samplerAnisotropy = var;
+		 return this.samplerAnisotropy;
 	 }
 
 	/**
@@ -801,16 +823,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void textureCompressionETC2(boolean textureCompressionETC2){
 		 this.textureCompressionETC2 = textureCompressionETC2;
-		textureCompressionETC20(super.ptr, textureCompressionETC2);
+		 textureCompressionETC20(this.ptr,  textureCompressionETC2);
 	 }
 
 	/**
-	 * get method for field textureCompressionETC2	[boolean]<br>
+	 * Get method for field textureCompressionETC2	[boolean]<br>
 	 * Prototype: VkBool32  textureCompressionETC2
 	 */ 
 	 public boolean textureCompressionETC2(){
-		 // return  this.textureCompressionETC2;
-		 return textureCompressionETC20(super.ptr);
+		 boolean var = textureCompressionETC20(super.ptr);
+		 this.textureCompressionETC2 = var;
+		 return this.textureCompressionETC2;
 	 }
 
 	/**
@@ -819,16 +842,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void textureCompressionASTC_LDR(boolean textureCompressionASTC_LDR){
 		 this.textureCompressionASTC_LDR = textureCompressionASTC_LDR;
-		textureCompressionASTC_LDR0(super.ptr, textureCompressionASTC_LDR);
+		 textureCompressionASTC_LDR0(this.ptr,  textureCompressionASTC_LDR);
 	 }
 
 	/**
-	 * get method for field textureCompressionASTC_LDR	[boolean]<br>
+	 * Get method for field textureCompressionASTC_LDR	[boolean]<br>
 	 * Prototype: VkBool32  textureCompressionASTC_LDR
 	 */ 
 	 public boolean textureCompressionASTC_LDR(){
-		 // return  this.textureCompressionASTC_LDR;
-		 return textureCompressionASTC_LDR0(super.ptr);
+		 boolean var = textureCompressionASTC_LDR0(super.ptr);
+		 this.textureCompressionASTC_LDR = var;
+		 return this.textureCompressionASTC_LDR;
 	 }
 
 	/**
@@ -837,16 +861,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void textureCompressionBC(boolean textureCompressionBC){
 		 this.textureCompressionBC = textureCompressionBC;
-		textureCompressionBC0(super.ptr, textureCompressionBC);
+		 textureCompressionBC0(this.ptr,  textureCompressionBC);
 	 }
 
 	/**
-	 * get method for field textureCompressionBC	[boolean]<br>
+	 * Get method for field textureCompressionBC	[boolean]<br>
 	 * Prototype: VkBool32  textureCompressionBC
 	 */ 
 	 public boolean textureCompressionBC(){
-		 // return  this.textureCompressionBC;
-		 return textureCompressionBC0(super.ptr);
+		 boolean var = textureCompressionBC0(super.ptr);
+		 this.textureCompressionBC = var;
+		 return this.textureCompressionBC;
 	 }
 
 	/**
@@ -855,16 +880,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void occlusionQueryPrecise(boolean occlusionQueryPrecise){
 		 this.occlusionQueryPrecise = occlusionQueryPrecise;
-		occlusionQueryPrecise0(super.ptr, occlusionQueryPrecise);
+		 occlusionQueryPrecise0(this.ptr,  occlusionQueryPrecise);
 	 }
 
 	/**
-	 * get method for field occlusionQueryPrecise	[boolean]<br>
+	 * Get method for field occlusionQueryPrecise	[boolean]<br>
 	 * Prototype: VkBool32  occlusionQueryPrecise
 	 */ 
 	 public boolean occlusionQueryPrecise(){
-		 // return  this.occlusionQueryPrecise;
-		 return occlusionQueryPrecise0(super.ptr);
+		 boolean var = occlusionQueryPrecise0(super.ptr);
+		 this.occlusionQueryPrecise = var;
+		 return this.occlusionQueryPrecise;
 	 }
 
 	/**
@@ -873,16 +899,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void pipelineStatisticsQuery(boolean pipelineStatisticsQuery){
 		 this.pipelineStatisticsQuery = pipelineStatisticsQuery;
-		pipelineStatisticsQuery0(super.ptr, pipelineStatisticsQuery);
+		 pipelineStatisticsQuery0(this.ptr,  pipelineStatisticsQuery);
 	 }
 
 	/**
-	 * get method for field pipelineStatisticsQuery	[boolean]<br>
+	 * Get method for field pipelineStatisticsQuery	[boolean]<br>
 	 * Prototype: VkBool32  pipelineStatisticsQuery
 	 */ 
 	 public boolean pipelineStatisticsQuery(){
-		 // return  this.pipelineStatisticsQuery;
-		 return pipelineStatisticsQuery0(super.ptr);
+		 boolean var = pipelineStatisticsQuery0(super.ptr);
+		 this.pipelineStatisticsQuery = var;
+		 return this.pipelineStatisticsQuery;
 	 }
 
 	/**
@@ -891,16 +918,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void vertexPipelineStoresAndAtomics(boolean vertexPipelineStoresAndAtomics){
 		 this.vertexPipelineStoresAndAtomics = vertexPipelineStoresAndAtomics;
-		vertexPipelineStoresAndAtomics0(super.ptr, vertexPipelineStoresAndAtomics);
+		 vertexPipelineStoresAndAtomics0(this.ptr,  vertexPipelineStoresAndAtomics);
 	 }
 
 	/**
-	 * get method for field vertexPipelineStoresAndAtomics	[boolean]<br>
+	 * Get method for field vertexPipelineStoresAndAtomics	[boolean]<br>
 	 * Prototype: VkBool32  vertexPipelineStoresAndAtomics
 	 */ 
 	 public boolean vertexPipelineStoresAndAtomics(){
-		 // return  this.vertexPipelineStoresAndAtomics;
-		 return vertexPipelineStoresAndAtomics0(super.ptr);
+		 boolean var = vertexPipelineStoresAndAtomics0(super.ptr);
+		 this.vertexPipelineStoresAndAtomics = var;
+		 return this.vertexPipelineStoresAndAtomics;
 	 }
 
 	/**
@@ -909,16 +937,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void fragmentStoresAndAtomics(boolean fragmentStoresAndAtomics){
 		 this.fragmentStoresAndAtomics = fragmentStoresAndAtomics;
-		fragmentStoresAndAtomics0(super.ptr, fragmentStoresAndAtomics);
+		 fragmentStoresAndAtomics0(this.ptr,  fragmentStoresAndAtomics);
 	 }
 
 	/**
-	 * get method for field fragmentStoresAndAtomics	[boolean]<br>
+	 * Get method for field fragmentStoresAndAtomics	[boolean]<br>
 	 * Prototype: VkBool32  fragmentStoresAndAtomics
 	 */ 
 	 public boolean fragmentStoresAndAtomics(){
-		 // return  this.fragmentStoresAndAtomics;
-		 return fragmentStoresAndAtomics0(super.ptr);
+		 boolean var = fragmentStoresAndAtomics0(super.ptr);
+		 this.fragmentStoresAndAtomics = var;
+		 return this.fragmentStoresAndAtomics;
 	 }
 
 	/**
@@ -927,16 +956,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void shaderTessellationAndGeometryPointSize(boolean shaderTessellationAndGeometryPointSize){
 		 this.shaderTessellationAndGeometryPointSize = shaderTessellationAndGeometryPointSize;
-		shaderTessellationAndGeometryPointSize0(super.ptr, shaderTessellationAndGeometryPointSize);
+		 shaderTessellationAndGeometryPointSize0(this.ptr,  shaderTessellationAndGeometryPointSize);
 	 }
 
 	/**
-	 * get method for field shaderTessellationAndGeometryPointSize	[boolean]<br>
+	 * Get method for field shaderTessellationAndGeometryPointSize	[boolean]<br>
 	 * Prototype: VkBool32  shaderTessellationAndGeometryPointSize
 	 */ 
 	 public boolean shaderTessellationAndGeometryPointSize(){
-		 // return  this.shaderTessellationAndGeometryPointSize;
-		 return shaderTessellationAndGeometryPointSize0(super.ptr);
+		 boolean var = shaderTessellationAndGeometryPointSize0(super.ptr);
+		 this.shaderTessellationAndGeometryPointSize = var;
+		 return this.shaderTessellationAndGeometryPointSize;
 	 }
 
 	/**
@@ -945,16 +975,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void shaderImageGatherExtended(boolean shaderImageGatherExtended){
 		 this.shaderImageGatherExtended = shaderImageGatherExtended;
-		shaderImageGatherExtended0(super.ptr, shaderImageGatherExtended);
+		 shaderImageGatherExtended0(this.ptr,  shaderImageGatherExtended);
 	 }
 
 	/**
-	 * get method for field shaderImageGatherExtended	[boolean]<br>
+	 * Get method for field shaderImageGatherExtended	[boolean]<br>
 	 * Prototype: VkBool32  shaderImageGatherExtended
 	 */ 
 	 public boolean shaderImageGatherExtended(){
-		 // return  this.shaderImageGatherExtended;
-		 return shaderImageGatherExtended0(super.ptr);
+		 boolean var = shaderImageGatherExtended0(super.ptr);
+		 this.shaderImageGatherExtended = var;
+		 return this.shaderImageGatherExtended;
 	 }
 
 	/**
@@ -963,16 +994,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void shaderStorageImageExtendedFormats(boolean shaderStorageImageExtendedFormats){
 		 this.shaderStorageImageExtendedFormats = shaderStorageImageExtendedFormats;
-		shaderStorageImageExtendedFormats0(super.ptr, shaderStorageImageExtendedFormats);
+		 shaderStorageImageExtendedFormats0(this.ptr,  shaderStorageImageExtendedFormats);
 	 }
 
 	/**
-	 * get method for field shaderStorageImageExtendedFormats	[boolean]<br>
+	 * Get method for field shaderStorageImageExtendedFormats	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageExtendedFormats
 	 */ 
 	 public boolean shaderStorageImageExtendedFormats(){
-		 // return  this.shaderStorageImageExtendedFormats;
-		 return shaderStorageImageExtendedFormats0(super.ptr);
+		 boolean var = shaderStorageImageExtendedFormats0(super.ptr);
+		 this.shaderStorageImageExtendedFormats = var;
+		 return this.shaderStorageImageExtendedFormats;
 	 }
 
 	/**
@@ -981,16 +1013,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void shaderStorageImageMultisample(boolean shaderStorageImageMultisample){
 		 this.shaderStorageImageMultisample = shaderStorageImageMultisample;
-		shaderStorageImageMultisample0(super.ptr, shaderStorageImageMultisample);
+		 shaderStorageImageMultisample0(this.ptr,  shaderStorageImageMultisample);
 	 }
 
 	/**
-	 * get method for field shaderStorageImageMultisample	[boolean]<br>
+	 * Get method for field shaderStorageImageMultisample	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageMultisample
 	 */ 
 	 public boolean shaderStorageImageMultisample(){
-		 // return  this.shaderStorageImageMultisample;
-		 return shaderStorageImageMultisample0(super.ptr);
+		 boolean var = shaderStorageImageMultisample0(super.ptr);
+		 this.shaderStorageImageMultisample = var;
+		 return this.shaderStorageImageMultisample;
 	 }
 
 	/**
@@ -999,16 +1032,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void shaderStorageImageReadWithoutFormat(boolean shaderStorageImageReadWithoutFormat){
 		 this.shaderStorageImageReadWithoutFormat = shaderStorageImageReadWithoutFormat;
-		shaderStorageImageReadWithoutFormat0(super.ptr, shaderStorageImageReadWithoutFormat);
+		 shaderStorageImageReadWithoutFormat0(this.ptr,  shaderStorageImageReadWithoutFormat);
 	 }
 
 	/**
-	 * get method for field shaderStorageImageReadWithoutFormat	[boolean]<br>
+	 * Get method for field shaderStorageImageReadWithoutFormat	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageReadWithoutFormat
 	 */ 
 	 public boolean shaderStorageImageReadWithoutFormat(){
-		 // return  this.shaderStorageImageReadWithoutFormat;
-		 return shaderStorageImageReadWithoutFormat0(super.ptr);
+		 boolean var = shaderStorageImageReadWithoutFormat0(super.ptr);
+		 this.shaderStorageImageReadWithoutFormat = var;
+		 return this.shaderStorageImageReadWithoutFormat;
 	 }
 
 	/**
@@ -1017,16 +1051,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void shaderStorageImageWriteWithoutFormat(boolean shaderStorageImageWriteWithoutFormat){
 		 this.shaderStorageImageWriteWithoutFormat = shaderStorageImageWriteWithoutFormat;
-		shaderStorageImageWriteWithoutFormat0(super.ptr, shaderStorageImageWriteWithoutFormat);
+		 shaderStorageImageWriteWithoutFormat0(this.ptr,  shaderStorageImageWriteWithoutFormat);
 	 }
 
 	/**
-	 * get method for field shaderStorageImageWriteWithoutFormat	[boolean]<br>
+	 * Get method for field shaderStorageImageWriteWithoutFormat	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageWriteWithoutFormat
 	 */ 
 	 public boolean shaderStorageImageWriteWithoutFormat(){
-		 // return  this.shaderStorageImageWriteWithoutFormat;
-		 return shaderStorageImageWriteWithoutFormat0(super.ptr);
+		 boolean var = shaderStorageImageWriteWithoutFormat0(super.ptr);
+		 this.shaderStorageImageWriteWithoutFormat = var;
+		 return this.shaderStorageImageWriteWithoutFormat;
 	 }
 
 	/**
@@ -1035,16 +1070,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void shaderUniformBufferArrayDynamicIndexing(boolean shaderUniformBufferArrayDynamicIndexing){
 		 this.shaderUniformBufferArrayDynamicIndexing = shaderUniformBufferArrayDynamicIndexing;
-		shaderUniformBufferArrayDynamicIndexing0(super.ptr, shaderUniformBufferArrayDynamicIndexing);
+		 shaderUniformBufferArrayDynamicIndexing0(this.ptr,  shaderUniformBufferArrayDynamicIndexing);
 	 }
 
 	/**
-	 * get method for field shaderUniformBufferArrayDynamicIndexing	[boolean]<br>
+	 * Get method for field shaderUniformBufferArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderUniformBufferArrayDynamicIndexing
 	 */ 
 	 public boolean shaderUniformBufferArrayDynamicIndexing(){
-		 // return  this.shaderUniformBufferArrayDynamicIndexing;
-		 return shaderUniformBufferArrayDynamicIndexing0(super.ptr);
+		 boolean var = shaderUniformBufferArrayDynamicIndexing0(super.ptr);
+		 this.shaderUniformBufferArrayDynamicIndexing = var;
+		 return this.shaderUniformBufferArrayDynamicIndexing;
 	 }
 
 	/**
@@ -1053,16 +1089,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void shaderSampledImageArrayDynamicIndexing(boolean shaderSampledImageArrayDynamicIndexing){
 		 this.shaderSampledImageArrayDynamicIndexing = shaderSampledImageArrayDynamicIndexing;
-		shaderSampledImageArrayDynamicIndexing0(super.ptr, shaderSampledImageArrayDynamicIndexing);
+		 shaderSampledImageArrayDynamicIndexing0(this.ptr,  shaderSampledImageArrayDynamicIndexing);
 	 }
 
 	/**
-	 * get method for field shaderSampledImageArrayDynamicIndexing	[boolean]<br>
+	 * Get method for field shaderSampledImageArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderSampledImageArrayDynamicIndexing
 	 */ 
 	 public boolean shaderSampledImageArrayDynamicIndexing(){
-		 // return  this.shaderSampledImageArrayDynamicIndexing;
-		 return shaderSampledImageArrayDynamicIndexing0(super.ptr);
+		 boolean var = shaderSampledImageArrayDynamicIndexing0(super.ptr);
+		 this.shaderSampledImageArrayDynamicIndexing = var;
+		 return this.shaderSampledImageArrayDynamicIndexing;
 	 }
 
 	/**
@@ -1071,16 +1108,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void shaderStorageBufferArrayDynamicIndexing(boolean shaderStorageBufferArrayDynamicIndexing){
 		 this.shaderStorageBufferArrayDynamicIndexing = shaderStorageBufferArrayDynamicIndexing;
-		shaderStorageBufferArrayDynamicIndexing0(super.ptr, shaderStorageBufferArrayDynamicIndexing);
+		 shaderStorageBufferArrayDynamicIndexing0(this.ptr,  shaderStorageBufferArrayDynamicIndexing);
 	 }
 
 	/**
-	 * get method for field shaderStorageBufferArrayDynamicIndexing	[boolean]<br>
+	 * Get method for field shaderStorageBufferArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageBufferArrayDynamicIndexing
 	 */ 
 	 public boolean shaderStorageBufferArrayDynamicIndexing(){
-		 // return  this.shaderStorageBufferArrayDynamicIndexing;
-		 return shaderStorageBufferArrayDynamicIndexing0(super.ptr);
+		 boolean var = shaderStorageBufferArrayDynamicIndexing0(super.ptr);
+		 this.shaderStorageBufferArrayDynamicIndexing = var;
+		 return this.shaderStorageBufferArrayDynamicIndexing;
 	 }
 
 	/**
@@ -1089,16 +1127,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void shaderStorageImageArrayDynamicIndexing(boolean shaderStorageImageArrayDynamicIndexing){
 		 this.shaderStorageImageArrayDynamicIndexing = shaderStorageImageArrayDynamicIndexing;
-		shaderStorageImageArrayDynamicIndexing0(super.ptr, shaderStorageImageArrayDynamicIndexing);
+		 shaderStorageImageArrayDynamicIndexing0(this.ptr,  shaderStorageImageArrayDynamicIndexing);
 	 }
 
 	/**
-	 * get method for field shaderStorageImageArrayDynamicIndexing	[boolean]<br>
+	 * Get method for field shaderStorageImageArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageArrayDynamicIndexing
 	 */ 
 	 public boolean shaderStorageImageArrayDynamicIndexing(){
-		 // return  this.shaderStorageImageArrayDynamicIndexing;
-		 return shaderStorageImageArrayDynamicIndexing0(super.ptr);
+		 boolean var = shaderStorageImageArrayDynamicIndexing0(super.ptr);
+		 this.shaderStorageImageArrayDynamicIndexing = var;
+		 return this.shaderStorageImageArrayDynamicIndexing;
 	 }
 
 	/**
@@ -1107,16 +1146,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void shaderClipDistance(boolean shaderClipDistance){
 		 this.shaderClipDistance = shaderClipDistance;
-		shaderClipDistance0(super.ptr, shaderClipDistance);
+		 shaderClipDistance0(this.ptr,  shaderClipDistance);
 	 }
 
 	/**
-	 * get method for field shaderClipDistance	[boolean]<br>
+	 * Get method for field shaderClipDistance	[boolean]<br>
 	 * Prototype: VkBool32  shaderClipDistance
 	 */ 
 	 public boolean shaderClipDistance(){
-		 // return  this.shaderClipDistance;
-		 return shaderClipDistance0(super.ptr);
+		 boolean var = shaderClipDistance0(super.ptr);
+		 this.shaderClipDistance = var;
+		 return this.shaderClipDistance;
 	 }
 
 	/**
@@ -1125,16 +1165,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void shaderCullDistance(boolean shaderCullDistance){
 		 this.shaderCullDistance = shaderCullDistance;
-		shaderCullDistance0(super.ptr, shaderCullDistance);
+		 shaderCullDistance0(this.ptr,  shaderCullDistance);
 	 }
 
 	/**
-	 * get method for field shaderCullDistance	[boolean]<br>
+	 * Get method for field shaderCullDistance	[boolean]<br>
 	 * Prototype: VkBool32  shaderCullDistance
 	 */ 
 	 public boolean shaderCullDistance(){
-		 // return  this.shaderCullDistance;
-		 return shaderCullDistance0(super.ptr);
+		 boolean var = shaderCullDistance0(super.ptr);
+		 this.shaderCullDistance = var;
+		 return this.shaderCullDistance;
 	 }
 
 	/**
@@ -1143,16 +1184,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void shaderFloat64(boolean shaderFloat64){
 		 this.shaderFloat64 = shaderFloat64;
-		shaderFloat640(super.ptr, shaderFloat64);
+		 shaderFloat640(this.ptr,  shaderFloat64);
 	 }
 
 	/**
-	 * get method for field shaderFloat64	[boolean]<br>
+	 * Get method for field shaderFloat64	[boolean]<br>
 	 * Prototype: VkBool32  shaderFloat64
 	 */ 
 	 public boolean shaderFloat64(){
-		 // return  this.shaderFloat64;
-		 return shaderFloat640(super.ptr);
+		 boolean var = shaderFloat640(super.ptr);
+		 this.shaderFloat64 = var;
+		 return this.shaderFloat64;
 	 }
 
 	/**
@@ -1161,16 +1203,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void shaderInt64(boolean shaderInt64){
 		 this.shaderInt64 = shaderInt64;
-		shaderInt640(super.ptr, shaderInt64);
+		 shaderInt640(this.ptr,  shaderInt64);
 	 }
 
 	/**
-	 * get method for field shaderInt64	[boolean]<br>
+	 * Get method for field shaderInt64	[boolean]<br>
 	 * Prototype: VkBool32  shaderInt64
 	 */ 
 	 public boolean shaderInt64(){
-		 // return  this.shaderInt64;
-		 return shaderInt640(super.ptr);
+		 boolean var = shaderInt640(super.ptr);
+		 this.shaderInt64 = var;
+		 return this.shaderInt64;
 	 }
 
 	/**
@@ -1179,16 +1222,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void shaderInt16(boolean shaderInt16){
 		 this.shaderInt16 = shaderInt16;
-		shaderInt160(super.ptr, shaderInt16);
+		 shaderInt160(this.ptr,  shaderInt16);
 	 }
 
 	/**
-	 * get method for field shaderInt16	[boolean]<br>
+	 * Get method for field shaderInt16	[boolean]<br>
 	 * Prototype: VkBool32  shaderInt16
 	 */ 
 	 public boolean shaderInt16(){
-		 // return  this.shaderInt16;
-		 return shaderInt160(super.ptr);
+		 boolean var = shaderInt160(super.ptr);
+		 this.shaderInt16 = var;
+		 return this.shaderInt16;
 	 }
 
 	/**
@@ -1197,16 +1241,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void shaderResourceResidency(boolean shaderResourceResidency){
 		 this.shaderResourceResidency = shaderResourceResidency;
-		shaderResourceResidency0(super.ptr, shaderResourceResidency);
+		 shaderResourceResidency0(this.ptr,  shaderResourceResidency);
 	 }
 
 	/**
-	 * get method for field shaderResourceResidency	[boolean]<br>
+	 * Get method for field shaderResourceResidency	[boolean]<br>
 	 * Prototype: VkBool32  shaderResourceResidency
 	 */ 
 	 public boolean shaderResourceResidency(){
-		 // return  this.shaderResourceResidency;
-		 return shaderResourceResidency0(super.ptr);
+		 boolean var = shaderResourceResidency0(super.ptr);
+		 this.shaderResourceResidency = var;
+		 return this.shaderResourceResidency;
 	 }
 
 	/**
@@ -1215,16 +1260,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void shaderResourceMinLod(boolean shaderResourceMinLod){
 		 this.shaderResourceMinLod = shaderResourceMinLod;
-		shaderResourceMinLod0(super.ptr, shaderResourceMinLod);
+		 shaderResourceMinLod0(this.ptr,  shaderResourceMinLod);
 	 }
 
 	/**
-	 * get method for field shaderResourceMinLod	[boolean]<br>
+	 * Get method for field shaderResourceMinLod	[boolean]<br>
 	 * Prototype: VkBool32  shaderResourceMinLod
 	 */ 
 	 public boolean shaderResourceMinLod(){
-		 // return  this.shaderResourceMinLod;
-		 return shaderResourceMinLod0(super.ptr);
+		 boolean var = shaderResourceMinLod0(super.ptr);
+		 this.shaderResourceMinLod = var;
+		 return this.shaderResourceMinLod;
 	 }
 
 	/**
@@ -1233,16 +1279,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void sparseBinding(boolean sparseBinding){
 		 this.sparseBinding = sparseBinding;
-		sparseBinding0(super.ptr, sparseBinding);
+		 sparseBinding0(this.ptr,  sparseBinding);
 	 }
 
 	/**
-	 * get method for field sparseBinding	[boolean]<br>
+	 * Get method for field sparseBinding	[boolean]<br>
 	 * Prototype: VkBool32  sparseBinding
 	 */ 
 	 public boolean sparseBinding(){
-		 // return  this.sparseBinding;
-		 return sparseBinding0(super.ptr);
+		 boolean var = sparseBinding0(super.ptr);
+		 this.sparseBinding = var;
+		 return this.sparseBinding;
 	 }
 
 	/**
@@ -1251,16 +1298,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void sparseResidencyBuffer(boolean sparseResidencyBuffer){
 		 this.sparseResidencyBuffer = sparseResidencyBuffer;
-		sparseResidencyBuffer0(super.ptr, sparseResidencyBuffer);
+		 sparseResidencyBuffer0(this.ptr,  sparseResidencyBuffer);
 	 }
 
 	/**
-	 * get method for field sparseResidencyBuffer	[boolean]<br>
+	 * Get method for field sparseResidencyBuffer	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyBuffer
 	 */ 
 	 public boolean sparseResidencyBuffer(){
-		 // return  this.sparseResidencyBuffer;
-		 return sparseResidencyBuffer0(super.ptr);
+		 boolean var = sparseResidencyBuffer0(super.ptr);
+		 this.sparseResidencyBuffer = var;
+		 return this.sparseResidencyBuffer;
 	 }
 
 	/**
@@ -1269,16 +1317,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void sparseResidencyImage2D(boolean sparseResidencyImage2D){
 		 this.sparseResidencyImage2D = sparseResidencyImage2D;
-		sparseResidencyImage2D0(super.ptr, sparseResidencyImage2D);
+		 sparseResidencyImage2D0(this.ptr,  sparseResidencyImage2D);
 	 }
 
 	/**
-	 * get method for field sparseResidencyImage2D	[boolean]<br>
+	 * Get method for field sparseResidencyImage2D	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyImage2D
 	 */ 
 	 public boolean sparseResidencyImage2D(){
-		 // return  this.sparseResidencyImage2D;
-		 return sparseResidencyImage2D0(super.ptr);
+		 boolean var = sparseResidencyImage2D0(super.ptr);
+		 this.sparseResidencyImage2D = var;
+		 return this.sparseResidencyImage2D;
 	 }
 
 	/**
@@ -1287,16 +1336,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void sparseResidencyImage3D(boolean sparseResidencyImage3D){
 		 this.sparseResidencyImage3D = sparseResidencyImage3D;
-		sparseResidencyImage3D0(super.ptr, sparseResidencyImage3D);
+		 sparseResidencyImage3D0(this.ptr,  sparseResidencyImage3D);
 	 }
 
 	/**
-	 * get method for field sparseResidencyImage3D	[boolean]<br>
+	 * Get method for field sparseResidencyImage3D	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyImage3D
 	 */ 
 	 public boolean sparseResidencyImage3D(){
-		 // return  this.sparseResidencyImage3D;
-		 return sparseResidencyImage3D0(super.ptr);
+		 boolean var = sparseResidencyImage3D0(super.ptr);
+		 this.sparseResidencyImage3D = var;
+		 return this.sparseResidencyImage3D;
 	 }
 
 	/**
@@ -1305,16 +1355,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void sparseResidency2Samples(boolean sparseResidency2Samples){
 		 this.sparseResidency2Samples = sparseResidency2Samples;
-		sparseResidency2Samples0(super.ptr, sparseResidency2Samples);
+		 sparseResidency2Samples0(this.ptr,  sparseResidency2Samples);
 	 }
 
 	/**
-	 * get method for field sparseResidency2Samples	[boolean]<br>
+	 * Get method for field sparseResidency2Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency2Samples
 	 */ 
 	 public boolean sparseResidency2Samples(){
-		 // return  this.sparseResidency2Samples;
-		 return sparseResidency2Samples0(super.ptr);
+		 boolean var = sparseResidency2Samples0(super.ptr);
+		 this.sparseResidency2Samples = var;
+		 return this.sparseResidency2Samples;
 	 }
 
 	/**
@@ -1323,16 +1374,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void sparseResidency4Samples(boolean sparseResidency4Samples){
 		 this.sparseResidency4Samples = sparseResidency4Samples;
-		sparseResidency4Samples0(super.ptr, sparseResidency4Samples);
+		 sparseResidency4Samples0(this.ptr,  sparseResidency4Samples);
 	 }
 
 	/**
-	 * get method for field sparseResidency4Samples	[boolean]<br>
+	 * Get method for field sparseResidency4Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency4Samples
 	 */ 
 	 public boolean sparseResidency4Samples(){
-		 // return  this.sparseResidency4Samples;
-		 return sparseResidency4Samples0(super.ptr);
+		 boolean var = sparseResidency4Samples0(super.ptr);
+		 this.sparseResidency4Samples = var;
+		 return this.sparseResidency4Samples;
 	 }
 
 	/**
@@ -1341,16 +1393,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void sparseResidency8Samples(boolean sparseResidency8Samples){
 		 this.sparseResidency8Samples = sparseResidency8Samples;
-		sparseResidency8Samples0(super.ptr, sparseResidency8Samples);
+		 sparseResidency8Samples0(this.ptr,  sparseResidency8Samples);
 	 }
 
 	/**
-	 * get method for field sparseResidency8Samples	[boolean]<br>
+	 * Get method for field sparseResidency8Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency8Samples
 	 */ 
 	 public boolean sparseResidency8Samples(){
-		 // return  this.sparseResidency8Samples;
-		 return sparseResidency8Samples0(super.ptr);
+		 boolean var = sparseResidency8Samples0(super.ptr);
+		 this.sparseResidency8Samples = var;
+		 return this.sparseResidency8Samples;
 	 }
 
 	/**
@@ -1359,16 +1412,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void sparseResidency16Samples(boolean sparseResidency16Samples){
 		 this.sparseResidency16Samples = sparseResidency16Samples;
-		sparseResidency16Samples0(super.ptr, sparseResidency16Samples);
+		 sparseResidency16Samples0(this.ptr,  sparseResidency16Samples);
 	 }
 
 	/**
-	 * get method for field sparseResidency16Samples	[boolean]<br>
+	 * Get method for field sparseResidency16Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency16Samples
 	 */ 
 	 public boolean sparseResidency16Samples(){
-		 // return  this.sparseResidency16Samples;
-		 return sparseResidency16Samples0(super.ptr);
+		 boolean var = sparseResidency16Samples0(super.ptr);
+		 this.sparseResidency16Samples = var;
+		 return this.sparseResidency16Samples;
 	 }
 
 	/**
@@ -1377,16 +1431,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void sparseResidencyAliased(boolean sparseResidencyAliased){
 		 this.sparseResidencyAliased = sparseResidencyAliased;
-		sparseResidencyAliased0(super.ptr, sparseResidencyAliased);
+		 sparseResidencyAliased0(this.ptr,  sparseResidencyAliased);
 	 }
 
 	/**
-	 * get method for field sparseResidencyAliased	[boolean]<br>
+	 * Get method for field sparseResidencyAliased	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyAliased
 	 */ 
 	 public boolean sparseResidencyAliased(){
-		 // return  this.sparseResidencyAliased;
-		 return sparseResidencyAliased0(super.ptr);
+		 boolean var = sparseResidencyAliased0(super.ptr);
+		 this.sparseResidencyAliased = var;
+		 return this.sparseResidencyAliased;
 	 }
 
 	/**
@@ -1395,16 +1450,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void variableMultisampleRate(boolean variableMultisampleRate){
 		 this.variableMultisampleRate = variableMultisampleRate;
-		variableMultisampleRate0(super.ptr, variableMultisampleRate);
+		 variableMultisampleRate0(this.ptr,  variableMultisampleRate);
 	 }
 
 	/**
-	 * get method for field variableMultisampleRate	[boolean]<br>
+	 * Get method for field variableMultisampleRate	[boolean]<br>
 	 * Prototype: VkBool32  variableMultisampleRate
 	 */ 
 	 public boolean variableMultisampleRate(){
-		 // return  this.variableMultisampleRate;
-		 return variableMultisampleRate0(super.ptr);
+		 boolean var = variableMultisampleRate0(super.ptr);
+		 this.variableMultisampleRate = var;
+		 return this.variableMultisampleRate;
 	 }
 
 	/**
@@ -1413,16 +1469,17 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void inheritedQueries(boolean inheritedQueries){
 		 this.inheritedQueries = inheritedQueries;
-		inheritedQueries0(super.ptr, inheritedQueries);
+		 inheritedQueries0(this.ptr,  inheritedQueries);
 	 }
 
 	/**
-	 * get method for field inheritedQueries	[boolean]<br>
+	 * Get method for field inheritedQueries	[boolean]<br>
 	 * Prototype: VkBool32  inheritedQueries
 	 */ 
 	 public boolean inheritedQueries(){
-		 // return  this.inheritedQueries;
-		 return inheritedQueries0(super.ptr);
+		 boolean var = inheritedQueries0(super.ptr);
+		 this.inheritedQueries = var;
+		 return this.inheritedQueries;
 	 }
 
 
@@ -1433,990 +1490,990 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * native SET method for field robustBufferAccess	[boolean]<br>
 	 * Prototype: VkBool32  robustBufferAccess
 	 */ 
-	 private static native void robustBufferAccess0(ByteBuffer ptr, boolean _robustBufferAccess);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.robustBufferAccess = (VkBool32) (_robustBufferAccess);
+	 private static native void robustBufferAccess0(Buffer ptr, boolean _robustBufferAccess);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->robustBufferAccess = (VkBool32) (_robustBufferAccess);
 	  */
 
 	/**
 	 * native GET method for field robustBufferAccess	[boolean]<br>
 	 * Prototype: VkBool32  robustBufferAccess
 	 */ 
-	 private static native boolean robustBufferAccess0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean robustBufferAccess0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->robustBufferAccess);
 	 */
 
 	/**
 	 * native SET method for field fullDrawIndexUint32	[boolean]<br>
 	 * Prototype: VkBool32  fullDrawIndexUint32
 	 */ 
-	 private static native void fullDrawIndexUint320(ByteBuffer ptr, boolean _fullDrawIndexUint32);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.fullDrawIndexUint32 = (VkBool32) (_fullDrawIndexUint32);
+	 private static native void fullDrawIndexUint320(Buffer ptr, boolean _fullDrawIndexUint32);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->fullDrawIndexUint32 = (VkBool32) (_fullDrawIndexUint32);
 	  */
 
 	/**
 	 * native GET method for field fullDrawIndexUint32	[boolean]<br>
 	 * Prototype: VkBool32  fullDrawIndexUint32
 	 */ 
-	 private static native boolean fullDrawIndexUint320(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean fullDrawIndexUint320(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->fullDrawIndexUint32);
 	 */
 
 	/**
 	 * native SET method for field imageCubeArray	[boolean]<br>
 	 * Prototype: VkBool32  imageCubeArray
 	 */ 
-	 private static native void imageCubeArray0(ByteBuffer ptr, boolean _imageCubeArray);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.imageCubeArray = (VkBool32) (_imageCubeArray);
+	 private static native void imageCubeArray0(Buffer ptr, boolean _imageCubeArray);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->imageCubeArray = (VkBool32) (_imageCubeArray);
 	  */
 
 	/**
 	 * native GET method for field imageCubeArray	[boolean]<br>
 	 * Prototype: VkBool32  imageCubeArray
 	 */ 
-	 private static native boolean imageCubeArray0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean imageCubeArray0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->imageCubeArray);
 	 */
 
 	/**
 	 * native SET method for field independentBlend	[boolean]<br>
 	 * Prototype: VkBool32  independentBlend
 	 */ 
-	 private static native void independentBlend0(ByteBuffer ptr, boolean _independentBlend);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.independentBlend = (VkBool32) (_independentBlend);
+	 private static native void independentBlend0(Buffer ptr, boolean _independentBlend);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->independentBlend = (VkBool32) (_independentBlend);
 	  */
 
 	/**
 	 * native GET method for field independentBlend	[boolean]<br>
 	 * Prototype: VkBool32  independentBlend
 	 */ 
-	 private static native boolean independentBlend0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean independentBlend0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->independentBlend);
 	 */
 
 	/**
 	 * native SET method for field geometryShader	[boolean]<br>
 	 * Prototype: VkBool32  geometryShader
 	 */ 
-	 private static native void geometryShader0(ByteBuffer ptr, boolean _geometryShader);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.geometryShader = (VkBool32) (_geometryShader);
+	 private static native void geometryShader0(Buffer ptr, boolean _geometryShader);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->geometryShader = (VkBool32) (_geometryShader);
 	  */
 
 	/**
 	 * native GET method for field geometryShader	[boolean]<br>
 	 * Prototype: VkBool32  geometryShader
 	 */ 
-	 private static native boolean geometryShader0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean geometryShader0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->geometryShader);
 	 */
 
 	/**
 	 * native SET method for field tessellationShader	[boolean]<br>
 	 * Prototype: VkBool32  tessellationShader
 	 */ 
-	 private static native void tessellationShader0(ByteBuffer ptr, boolean _tessellationShader);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.tessellationShader = (VkBool32) (_tessellationShader);
+	 private static native void tessellationShader0(Buffer ptr, boolean _tessellationShader);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->tessellationShader = (VkBool32) (_tessellationShader);
 	  */
 
 	/**
 	 * native GET method for field tessellationShader	[boolean]<br>
 	 * Prototype: VkBool32  tessellationShader
 	 */ 
-	 private static native boolean tessellationShader0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean tessellationShader0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->tessellationShader);
 	 */
 
 	/**
 	 * native SET method for field sampleRateShading	[boolean]<br>
 	 * Prototype: VkBool32  sampleRateShading
 	 */ 
-	 private static native void sampleRateShading0(ByteBuffer ptr, boolean _sampleRateShading);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.sampleRateShading = (VkBool32) (_sampleRateShading);
+	 private static native void sampleRateShading0(Buffer ptr, boolean _sampleRateShading);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->sampleRateShading = (VkBool32) (_sampleRateShading);
 	  */
 
 	/**
 	 * native GET method for field sampleRateShading	[boolean]<br>
 	 * Prototype: VkBool32  sampleRateShading
 	 */ 
-	 private static native boolean sampleRateShading0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean sampleRateShading0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->sampleRateShading);
 	 */
 
 	/**
 	 * native SET method for field dualSrcBlend	[boolean]<br>
 	 * Prototype: VkBool32  dualSrcBlend
 	 */ 
-	 private static native void dualSrcBlend0(ByteBuffer ptr, boolean _dualSrcBlend);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.dualSrcBlend = (VkBool32) (_dualSrcBlend);
+	 private static native void dualSrcBlend0(Buffer ptr, boolean _dualSrcBlend);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->dualSrcBlend = (VkBool32) (_dualSrcBlend);
 	  */
 
 	/**
 	 * native GET method for field dualSrcBlend	[boolean]<br>
 	 * Prototype: VkBool32  dualSrcBlend
 	 */ 
-	 private static native boolean dualSrcBlend0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean dualSrcBlend0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->dualSrcBlend);
 	 */
 
 	/**
 	 * native SET method for field logicOp	[boolean]<br>
 	 * Prototype: VkBool32  logicOp
 	 */ 
-	 private static native void logicOp0(ByteBuffer ptr, boolean _logicOp);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.logicOp = (VkBool32) (_logicOp);
+	 private static native void logicOp0(Buffer ptr, boolean _logicOp);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->logicOp = (VkBool32) (_logicOp);
 	  */
 
 	/**
 	 * native GET method for field logicOp	[boolean]<br>
 	 * Prototype: VkBool32  logicOp
 	 */ 
-	 private static native boolean logicOp0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean logicOp0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->logicOp);
 	 */
 
 	/**
 	 * native SET method for field multiDrawIndirect	[boolean]<br>
 	 * Prototype: VkBool32  multiDrawIndirect
 	 */ 
-	 private static native void multiDrawIndirect0(ByteBuffer ptr, boolean _multiDrawIndirect);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.multiDrawIndirect = (VkBool32) (_multiDrawIndirect);
+	 private static native void multiDrawIndirect0(Buffer ptr, boolean _multiDrawIndirect);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->multiDrawIndirect = (VkBool32) (_multiDrawIndirect);
 	  */
 
 	/**
 	 * native GET method for field multiDrawIndirect	[boolean]<br>
 	 * Prototype: VkBool32  multiDrawIndirect
 	 */ 
-	 private static native boolean multiDrawIndirect0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean multiDrawIndirect0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->multiDrawIndirect);
 	 */
 
 	/**
 	 * native SET method for field drawIndirectFirstInstance	[boolean]<br>
 	 * Prototype: VkBool32  drawIndirectFirstInstance
 	 */ 
-	 private static native void drawIndirectFirstInstance0(ByteBuffer ptr, boolean _drawIndirectFirstInstance);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.drawIndirectFirstInstance = (VkBool32) (_drawIndirectFirstInstance);
+	 private static native void drawIndirectFirstInstance0(Buffer ptr, boolean _drawIndirectFirstInstance);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->drawIndirectFirstInstance = (VkBool32) (_drawIndirectFirstInstance);
 	  */
 
 	/**
 	 * native GET method for field drawIndirectFirstInstance	[boolean]<br>
 	 * Prototype: VkBool32  drawIndirectFirstInstance
 	 */ 
-	 private static native boolean drawIndirectFirstInstance0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean drawIndirectFirstInstance0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->drawIndirectFirstInstance);
 	 */
 
 	/**
 	 * native SET method for field depthClamp	[boolean]<br>
 	 * Prototype: VkBool32  depthClamp
 	 */ 
-	 private static native void depthClamp0(ByteBuffer ptr, boolean _depthClamp);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.depthClamp = (VkBool32) (_depthClamp);
+	 private static native void depthClamp0(Buffer ptr, boolean _depthClamp);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->depthClamp = (VkBool32) (_depthClamp);
 	  */
 
 	/**
 	 * native GET method for field depthClamp	[boolean]<br>
 	 * Prototype: VkBool32  depthClamp
 	 */ 
-	 private static native boolean depthClamp0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean depthClamp0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->depthClamp);
 	 */
 
 	/**
 	 * native SET method for field depthBiasClamp	[boolean]<br>
 	 * Prototype: VkBool32  depthBiasClamp
 	 */ 
-	 private static native void depthBiasClamp0(ByteBuffer ptr, boolean _depthBiasClamp);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.depthBiasClamp = (VkBool32) (_depthBiasClamp);
+	 private static native void depthBiasClamp0(Buffer ptr, boolean _depthBiasClamp);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->depthBiasClamp = (VkBool32) (_depthBiasClamp);
 	  */
 
 	/**
 	 * native GET method for field depthBiasClamp	[boolean]<br>
 	 * Prototype: VkBool32  depthBiasClamp
 	 */ 
-	 private static native boolean depthBiasClamp0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean depthBiasClamp0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->depthBiasClamp);
 	 */
 
 	/**
 	 * native SET method for field fillModeNonSolid	[boolean]<br>
 	 * Prototype: VkBool32  fillModeNonSolid
 	 */ 
-	 private static native void fillModeNonSolid0(ByteBuffer ptr, boolean _fillModeNonSolid);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.fillModeNonSolid = (VkBool32) (_fillModeNonSolid);
+	 private static native void fillModeNonSolid0(Buffer ptr, boolean _fillModeNonSolid);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->fillModeNonSolid = (VkBool32) (_fillModeNonSolid);
 	  */
 
 	/**
 	 * native GET method for field fillModeNonSolid	[boolean]<br>
 	 * Prototype: VkBool32  fillModeNonSolid
 	 */ 
-	 private static native boolean fillModeNonSolid0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean fillModeNonSolid0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->fillModeNonSolid);
 	 */
 
 	/**
 	 * native SET method for field depthBounds	[boolean]<br>
 	 * Prototype: VkBool32  depthBounds
 	 */ 
-	 private static native void depthBounds0(ByteBuffer ptr, boolean _depthBounds);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.depthBounds = (VkBool32) (_depthBounds);
+	 private static native void depthBounds0(Buffer ptr, boolean _depthBounds);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->depthBounds = (VkBool32) (_depthBounds);
 	  */
 
 	/**
 	 * native GET method for field depthBounds	[boolean]<br>
 	 * Prototype: VkBool32  depthBounds
 	 */ 
-	 private static native boolean depthBounds0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean depthBounds0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->depthBounds);
 	 */
 
 	/**
 	 * native SET method for field wideLines	[boolean]<br>
 	 * Prototype: VkBool32  wideLines
 	 */ 
-	 private static native void wideLines0(ByteBuffer ptr, boolean _wideLines);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.wideLines = (VkBool32) (_wideLines);
+	 private static native void wideLines0(Buffer ptr, boolean _wideLines);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->wideLines = (VkBool32) (_wideLines);
 	  */
 
 	/**
 	 * native GET method for field wideLines	[boolean]<br>
 	 * Prototype: VkBool32  wideLines
 	 */ 
-	 private static native boolean wideLines0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean wideLines0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->wideLines);
 	 */
 
 	/**
 	 * native SET method for field largePoints	[boolean]<br>
 	 * Prototype: VkBool32  largePoints
 	 */ 
-	 private static native void largePoints0(ByteBuffer ptr, boolean _largePoints);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.largePoints = (VkBool32) (_largePoints);
+	 private static native void largePoints0(Buffer ptr, boolean _largePoints);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->largePoints = (VkBool32) (_largePoints);
 	  */
 
 	/**
 	 * native GET method for field largePoints	[boolean]<br>
 	 * Prototype: VkBool32  largePoints
 	 */ 
-	 private static native boolean largePoints0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean largePoints0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->largePoints);
 	 */
 
 	/**
 	 * native SET method for field alphaToOne	[boolean]<br>
 	 * Prototype: VkBool32  alphaToOne
 	 */ 
-	 private static native void alphaToOne0(ByteBuffer ptr, boolean _alphaToOne);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.alphaToOne = (VkBool32) (_alphaToOne);
+	 private static native void alphaToOne0(Buffer ptr, boolean _alphaToOne);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->alphaToOne = (VkBool32) (_alphaToOne);
 	  */
 
 	/**
 	 * native GET method for field alphaToOne	[boolean]<br>
 	 * Prototype: VkBool32  alphaToOne
 	 */ 
-	 private static native boolean alphaToOne0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean alphaToOne0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->alphaToOne);
 	 */
 
 	/**
 	 * native SET method for field multiViewport	[boolean]<br>
 	 * Prototype: VkBool32  multiViewport
 	 */ 
-	 private static native void multiViewport0(ByteBuffer ptr, boolean _multiViewport);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.multiViewport = (VkBool32) (_multiViewport);
+	 private static native void multiViewport0(Buffer ptr, boolean _multiViewport);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->multiViewport = (VkBool32) (_multiViewport);
 	  */
 
 	/**
 	 * native GET method for field multiViewport	[boolean]<br>
 	 * Prototype: VkBool32  multiViewport
 	 */ 
-	 private static native boolean multiViewport0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean multiViewport0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->multiViewport);
 	 */
 
 	/**
 	 * native SET method for field samplerAnisotropy	[boolean]<br>
 	 * Prototype: VkBool32  samplerAnisotropy
 	 */ 
-	 private static native void samplerAnisotropy0(ByteBuffer ptr, boolean _samplerAnisotropy);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.samplerAnisotropy = (VkBool32) (_samplerAnisotropy);
+	 private static native void samplerAnisotropy0(Buffer ptr, boolean _samplerAnisotropy);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->samplerAnisotropy = (VkBool32) (_samplerAnisotropy);
 	  */
 
 	/**
 	 * native GET method for field samplerAnisotropy	[boolean]<br>
 	 * Prototype: VkBool32  samplerAnisotropy
 	 */ 
-	 private static native boolean samplerAnisotropy0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean samplerAnisotropy0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->samplerAnisotropy);
 	 */
 
 	/**
 	 * native SET method for field textureCompressionETC2	[boolean]<br>
 	 * Prototype: VkBool32  textureCompressionETC2
 	 */ 
-	 private static native void textureCompressionETC20(ByteBuffer ptr, boolean _textureCompressionETC2);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.textureCompressionETC2 = (VkBool32) (_textureCompressionETC2);
+	 private static native void textureCompressionETC20(Buffer ptr, boolean _textureCompressionETC2);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->textureCompressionETC2 = (VkBool32) (_textureCompressionETC2);
 	  */
 
 	/**
 	 * native GET method for field textureCompressionETC2	[boolean]<br>
 	 * Prototype: VkBool32  textureCompressionETC2
 	 */ 
-	 private static native boolean textureCompressionETC20(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean textureCompressionETC20(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->textureCompressionETC2);
 	 */
 
 	/**
 	 * native SET method for field textureCompressionASTC_LDR	[boolean]<br>
 	 * Prototype: VkBool32  textureCompressionASTC_LDR
 	 */ 
-	 private static native void textureCompressionASTC_LDR0(ByteBuffer ptr, boolean _textureCompressionASTC_LDR);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.textureCompressionASTC_LDR = (VkBool32) (_textureCompressionASTC_LDR);
+	 private static native void textureCompressionASTC_LDR0(Buffer ptr, boolean _textureCompressionASTC_LDR);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->textureCompressionASTC_LDR = (VkBool32) (_textureCompressionASTC_LDR);
 	  */
 
 	/**
 	 * native GET method for field textureCompressionASTC_LDR	[boolean]<br>
 	 * Prototype: VkBool32  textureCompressionASTC_LDR
 	 */ 
-	 private static native boolean textureCompressionASTC_LDR0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean textureCompressionASTC_LDR0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->textureCompressionASTC_LDR);
 	 */
 
 	/**
 	 * native SET method for field textureCompressionBC	[boolean]<br>
 	 * Prototype: VkBool32  textureCompressionBC
 	 */ 
-	 private static native void textureCompressionBC0(ByteBuffer ptr, boolean _textureCompressionBC);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.textureCompressionBC = (VkBool32) (_textureCompressionBC);
+	 private static native void textureCompressionBC0(Buffer ptr, boolean _textureCompressionBC);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->textureCompressionBC = (VkBool32) (_textureCompressionBC);
 	  */
 
 	/**
 	 * native GET method for field textureCompressionBC	[boolean]<br>
 	 * Prototype: VkBool32  textureCompressionBC
 	 */ 
-	 private static native boolean textureCompressionBC0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean textureCompressionBC0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->textureCompressionBC);
 	 */
 
 	/**
 	 * native SET method for field occlusionQueryPrecise	[boolean]<br>
 	 * Prototype: VkBool32  occlusionQueryPrecise
 	 */ 
-	 private static native void occlusionQueryPrecise0(ByteBuffer ptr, boolean _occlusionQueryPrecise);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.occlusionQueryPrecise = (VkBool32) (_occlusionQueryPrecise);
+	 private static native void occlusionQueryPrecise0(Buffer ptr, boolean _occlusionQueryPrecise);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->occlusionQueryPrecise = (VkBool32) (_occlusionQueryPrecise);
 	  */
 
 	/**
 	 * native GET method for field occlusionQueryPrecise	[boolean]<br>
 	 * Prototype: VkBool32  occlusionQueryPrecise
 	 */ 
-	 private static native boolean occlusionQueryPrecise0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean occlusionQueryPrecise0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->occlusionQueryPrecise);
 	 */
 
 	/**
 	 * native SET method for field pipelineStatisticsQuery	[boolean]<br>
 	 * Prototype: VkBool32  pipelineStatisticsQuery
 	 */ 
-	 private static native void pipelineStatisticsQuery0(ByteBuffer ptr, boolean _pipelineStatisticsQuery);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.pipelineStatisticsQuery = (VkBool32) (_pipelineStatisticsQuery);
+	 private static native void pipelineStatisticsQuery0(Buffer ptr, boolean _pipelineStatisticsQuery);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->pipelineStatisticsQuery = (VkBool32) (_pipelineStatisticsQuery);
 	  */
 
 	/**
 	 * native GET method for field pipelineStatisticsQuery	[boolean]<br>
 	 * Prototype: VkBool32  pipelineStatisticsQuery
 	 */ 
-	 private static native boolean pipelineStatisticsQuery0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean pipelineStatisticsQuery0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->pipelineStatisticsQuery);
 	 */
 
 	/**
 	 * native SET method for field vertexPipelineStoresAndAtomics	[boolean]<br>
 	 * Prototype: VkBool32  vertexPipelineStoresAndAtomics
 	 */ 
-	 private static native void vertexPipelineStoresAndAtomics0(ByteBuffer ptr, boolean _vertexPipelineStoresAndAtomics);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.vertexPipelineStoresAndAtomics = (VkBool32) (_vertexPipelineStoresAndAtomics);
+	 private static native void vertexPipelineStoresAndAtomics0(Buffer ptr, boolean _vertexPipelineStoresAndAtomics);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->vertexPipelineStoresAndAtomics = (VkBool32) (_vertexPipelineStoresAndAtomics);
 	  */
 
 	/**
 	 * native GET method for field vertexPipelineStoresAndAtomics	[boolean]<br>
 	 * Prototype: VkBool32  vertexPipelineStoresAndAtomics
 	 */ 
-	 private static native boolean vertexPipelineStoresAndAtomics0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean vertexPipelineStoresAndAtomics0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->vertexPipelineStoresAndAtomics);
 	 */
 
 	/**
 	 * native SET method for field fragmentStoresAndAtomics	[boolean]<br>
 	 * Prototype: VkBool32  fragmentStoresAndAtomics
 	 */ 
-	 private static native void fragmentStoresAndAtomics0(ByteBuffer ptr, boolean _fragmentStoresAndAtomics);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.fragmentStoresAndAtomics = (VkBool32) (_fragmentStoresAndAtomics);
+	 private static native void fragmentStoresAndAtomics0(Buffer ptr, boolean _fragmentStoresAndAtomics);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->fragmentStoresAndAtomics = (VkBool32) (_fragmentStoresAndAtomics);
 	  */
 
 	/**
 	 * native GET method for field fragmentStoresAndAtomics	[boolean]<br>
 	 * Prototype: VkBool32  fragmentStoresAndAtomics
 	 */ 
-	 private static native boolean fragmentStoresAndAtomics0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean fragmentStoresAndAtomics0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->fragmentStoresAndAtomics);
 	 */
 
 	/**
 	 * native SET method for field shaderTessellationAndGeometryPointSize	[boolean]<br>
 	 * Prototype: VkBool32  shaderTessellationAndGeometryPointSize
 	 */ 
-	 private static native void shaderTessellationAndGeometryPointSize0(ByteBuffer ptr, boolean _shaderTessellationAndGeometryPointSize);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.shaderTessellationAndGeometryPointSize = (VkBool32) (_shaderTessellationAndGeometryPointSize);
+	 private static native void shaderTessellationAndGeometryPointSize0(Buffer ptr, boolean _shaderTessellationAndGeometryPointSize);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->shaderTessellationAndGeometryPointSize = (VkBool32) (_shaderTessellationAndGeometryPointSize);
 	  */
 
 	/**
 	 * native GET method for field shaderTessellationAndGeometryPointSize	[boolean]<br>
 	 * Prototype: VkBool32  shaderTessellationAndGeometryPointSize
 	 */ 
-	 private static native boolean shaderTessellationAndGeometryPointSize0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean shaderTessellationAndGeometryPointSize0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->shaderTessellationAndGeometryPointSize);
 	 */
 
 	/**
 	 * native SET method for field shaderImageGatherExtended	[boolean]<br>
 	 * Prototype: VkBool32  shaderImageGatherExtended
 	 */ 
-	 private static native void shaderImageGatherExtended0(ByteBuffer ptr, boolean _shaderImageGatherExtended);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.shaderImageGatherExtended = (VkBool32) (_shaderImageGatherExtended);
+	 private static native void shaderImageGatherExtended0(Buffer ptr, boolean _shaderImageGatherExtended);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->shaderImageGatherExtended = (VkBool32) (_shaderImageGatherExtended);
 	  */
 
 	/**
 	 * native GET method for field shaderImageGatherExtended	[boolean]<br>
 	 * Prototype: VkBool32  shaderImageGatherExtended
 	 */ 
-	 private static native boolean shaderImageGatherExtended0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean shaderImageGatherExtended0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->shaderImageGatherExtended);
 	 */
 
 	/**
 	 * native SET method for field shaderStorageImageExtendedFormats	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageExtendedFormats
 	 */ 
-	 private static native void shaderStorageImageExtendedFormats0(ByteBuffer ptr, boolean _shaderStorageImageExtendedFormats);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.shaderStorageImageExtendedFormats = (VkBool32) (_shaderStorageImageExtendedFormats);
+	 private static native void shaderStorageImageExtendedFormats0(Buffer ptr, boolean _shaderStorageImageExtendedFormats);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->shaderStorageImageExtendedFormats = (VkBool32) (_shaderStorageImageExtendedFormats);
 	  */
 
 	/**
 	 * native GET method for field shaderStorageImageExtendedFormats	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageExtendedFormats
 	 */ 
-	 private static native boolean shaderStorageImageExtendedFormats0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean shaderStorageImageExtendedFormats0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->shaderStorageImageExtendedFormats);
 	 */
 
 	/**
 	 * native SET method for field shaderStorageImageMultisample	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageMultisample
 	 */ 
-	 private static native void shaderStorageImageMultisample0(ByteBuffer ptr, boolean _shaderStorageImageMultisample);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.shaderStorageImageMultisample = (VkBool32) (_shaderStorageImageMultisample);
+	 private static native void shaderStorageImageMultisample0(Buffer ptr, boolean _shaderStorageImageMultisample);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->shaderStorageImageMultisample = (VkBool32) (_shaderStorageImageMultisample);
 	  */
 
 	/**
 	 * native GET method for field shaderStorageImageMultisample	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageMultisample
 	 */ 
-	 private static native boolean shaderStorageImageMultisample0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean shaderStorageImageMultisample0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->shaderStorageImageMultisample);
 	 */
 
 	/**
 	 * native SET method for field shaderStorageImageReadWithoutFormat	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageReadWithoutFormat
 	 */ 
-	 private static native void shaderStorageImageReadWithoutFormat0(ByteBuffer ptr, boolean _shaderStorageImageReadWithoutFormat);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.shaderStorageImageReadWithoutFormat = (VkBool32) (_shaderStorageImageReadWithoutFormat);
+	 private static native void shaderStorageImageReadWithoutFormat0(Buffer ptr, boolean _shaderStorageImageReadWithoutFormat);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->shaderStorageImageReadWithoutFormat = (VkBool32) (_shaderStorageImageReadWithoutFormat);
 	  */
 
 	/**
 	 * native GET method for field shaderStorageImageReadWithoutFormat	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageReadWithoutFormat
 	 */ 
-	 private static native boolean shaderStorageImageReadWithoutFormat0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean shaderStorageImageReadWithoutFormat0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->shaderStorageImageReadWithoutFormat);
 	 */
 
 	/**
 	 * native SET method for field shaderStorageImageWriteWithoutFormat	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageWriteWithoutFormat
 	 */ 
-	 private static native void shaderStorageImageWriteWithoutFormat0(ByteBuffer ptr, boolean _shaderStorageImageWriteWithoutFormat);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.shaderStorageImageWriteWithoutFormat = (VkBool32) (_shaderStorageImageWriteWithoutFormat);
+	 private static native void shaderStorageImageWriteWithoutFormat0(Buffer ptr, boolean _shaderStorageImageWriteWithoutFormat);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->shaderStorageImageWriteWithoutFormat = (VkBool32) (_shaderStorageImageWriteWithoutFormat);
 	  */
 
 	/**
 	 * native GET method for field shaderStorageImageWriteWithoutFormat	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageWriteWithoutFormat
 	 */ 
-	 private static native boolean shaderStorageImageWriteWithoutFormat0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean shaderStorageImageWriteWithoutFormat0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->shaderStorageImageWriteWithoutFormat);
 	 */
 
 	/**
 	 * native SET method for field shaderUniformBufferArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderUniformBufferArrayDynamicIndexing
 	 */ 
-	 private static native void shaderUniformBufferArrayDynamicIndexing0(ByteBuffer ptr, boolean _shaderUniformBufferArrayDynamicIndexing);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.shaderUniformBufferArrayDynamicIndexing = (VkBool32) (_shaderUniformBufferArrayDynamicIndexing);
+	 private static native void shaderUniformBufferArrayDynamicIndexing0(Buffer ptr, boolean _shaderUniformBufferArrayDynamicIndexing);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->shaderUniformBufferArrayDynamicIndexing = (VkBool32) (_shaderUniformBufferArrayDynamicIndexing);
 	  */
 
 	/**
 	 * native GET method for field shaderUniformBufferArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderUniformBufferArrayDynamicIndexing
 	 */ 
-	 private static native boolean shaderUniformBufferArrayDynamicIndexing0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean shaderUniformBufferArrayDynamicIndexing0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->shaderUniformBufferArrayDynamicIndexing);
 	 */
 
 	/**
 	 * native SET method for field shaderSampledImageArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderSampledImageArrayDynamicIndexing
 	 */ 
-	 private static native void shaderSampledImageArrayDynamicIndexing0(ByteBuffer ptr, boolean _shaderSampledImageArrayDynamicIndexing);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.shaderSampledImageArrayDynamicIndexing = (VkBool32) (_shaderSampledImageArrayDynamicIndexing);
+	 private static native void shaderSampledImageArrayDynamicIndexing0(Buffer ptr, boolean _shaderSampledImageArrayDynamicIndexing);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->shaderSampledImageArrayDynamicIndexing = (VkBool32) (_shaderSampledImageArrayDynamicIndexing);
 	  */
 
 	/**
 	 * native GET method for field shaderSampledImageArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderSampledImageArrayDynamicIndexing
 	 */ 
-	 private static native boolean shaderSampledImageArrayDynamicIndexing0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean shaderSampledImageArrayDynamicIndexing0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->shaderSampledImageArrayDynamicIndexing);
 	 */
 
 	/**
 	 * native SET method for field shaderStorageBufferArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageBufferArrayDynamicIndexing
 	 */ 
-	 private static native void shaderStorageBufferArrayDynamicIndexing0(ByteBuffer ptr, boolean _shaderStorageBufferArrayDynamicIndexing);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.shaderStorageBufferArrayDynamicIndexing = (VkBool32) (_shaderStorageBufferArrayDynamicIndexing);
+	 private static native void shaderStorageBufferArrayDynamicIndexing0(Buffer ptr, boolean _shaderStorageBufferArrayDynamicIndexing);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->shaderStorageBufferArrayDynamicIndexing = (VkBool32) (_shaderStorageBufferArrayDynamicIndexing);
 	  */
 
 	/**
 	 * native GET method for field shaderStorageBufferArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageBufferArrayDynamicIndexing
 	 */ 
-	 private static native boolean shaderStorageBufferArrayDynamicIndexing0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean shaderStorageBufferArrayDynamicIndexing0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->shaderStorageBufferArrayDynamicIndexing);
 	 */
 
 	/**
 	 * native SET method for field shaderStorageImageArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageArrayDynamicIndexing
 	 */ 
-	 private static native void shaderStorageImageArrayDynamicIndexing0(ByteBuffer ptr, boolean _shaderStorageImageArrayDynamicIndexing);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.shaderStorageImageArrayDynamicIndexing = (VkBool32) (_shaderStorageImageArrayDynamicIndexing);
+	 private static native void shaderStorageImageArrayDynamicIndexing0(Buffer ptr, boolean _shaderStorageImageArrayDynamicIndexing);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->shaderStorageImageArrayDynamicIndexing = (VkBool32) (_shaderStorageImageArrayDynamicIndexing);
 	  */
 
 	/**
 	 * native GET method for field shaderStorageImageArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageArrayDynamicIndexing
 	 */ 
-	 private static native boolean shaderStorageImageArrayDynamicIndexing0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean shaderStorageImageArrayDynamicIndexing0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->shaderStorageImageArrayDynamicIndexing);
 	 */
 
 	/**
 	 * native SET method for field shaderClipDistance	[boolean]<br>
 	 * Prototype: VkBool32  shaderClipDistance
 	 */ 
-	 private static native void shaderClipDistance0(ByteBuffer ptr, boolean _shaderClipDistance);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.shaderClipDistance = (VkBool32) (_shaderClipDistance);
+	 private static native void shaderClipDistance0(Buffer ptr, boolean _shaderClipDistance);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->shaderClipDistance = (VkBool32) (_shaderClipDistance);
 	  */
 
 	/**
 	 * native GET method for field shaderClipDistance	[boolean]<br>
 	 * Prototype: VkBool32  shaderClipDistance
 	 */ 
-	 private static native boolean shaderClipDistance0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean shaderClipDistance0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->shaderClipDistance);
 	 */
 
 	/**
 	 * native SET method for field shaderCullDistance	[boolean]<br>
 	 * Prototype: VkBool32  shaderCullDistance
 	 */ 
-	 private static native void shaderCullDistance0(ByteBuffer ptr, boolean _shaderCullDistance);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.shaderCullDistance = (VkBool32) (_shaderCullDistance);
+	 private static native void shaderCullDistance0(Buffer ptr, boolean _shaderCullDistance);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->shaderCullDistance = (VkBool32) (_shaderCullDistance);
 	  */
 
 	/**
 	 * native GET method for field shaderCullDistance	[boolean]<br>
 	 * Prototype: VkBool32  shaderCullDistance
 	 */ 
-	 private static native boolean shaderCullDistance0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean shaderCullDistance0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->shaderCullDistance);
 	 */
 
 	/**
 	 * native SET method for field shaderFloat64	[boolean]<br>
 	 * Prototype: VkBool32  shaderFloat64
 	 */ 
-	 private static native void shaderFloat640(ByteBuffer ptr, boolean _shaderFloat64);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.shaderFloat64 = (VkBool32) (_shaderFloat64);
+	 private static native void shaderFloat640(Buffer ptr, boolean _shaderFloat64);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->shaderFloat64 = (VkBool32) (_shaderFloat64);
 	  */
 
 	/**
 	 * native GET method for field shaderFloat64	[boolean]<br>
 	 * Prototype: VkBool32  shaderFloat64
 	 */ 
-	 private static native boolean shaderFloat640(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean shaderFloat640(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->shaderFloat64);
 	 */
 
 	/**
 	 * native SET method for field shaderInt64	[boolean]<br>
 	 * Prototype: VkBool32  shaderInt64
 	 */ 
-	 private static native void shaderInt640(ByteBuffer ptr, boolean _shaderInt64);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.shaderInt64 = (VkBool32) (_shaderInt64);
+	 private static native void shaderInt640(Buffer ptr, boolean _shaderInt64);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->shaderInt64 = (VkBool32) (_shaderInt64);
 	  */
 
 	/**
 	 * native GET method for field shaderInt64	[boolean]<br>
 	 * Prototype: VkBool32  shaderInt64
 	 */ 
-	 private static native boolean shaderInt640(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean shaderInt640(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->shaderInt64);
 	 */
 
 	/**
 	 * native SET method for field shaderInt16	[boolean]<br>
 	 * Prototype: VkBool32  shaderInt16
 	 */ 
-	 private static native void shaderInt160(ByteBuffer ptr, boolean _shaderInt16);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.shaderInt16 = (VkBool32) (_shaderInt16);
+	 private static native void shaderInt160(Buffer ptr, boolean _shaderInt16);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->shaderInt16 = (VkBool32) (_shaderInt16);
 	  */
 
 	/**
 	 * native GET method for field shaderInt16	[boolean]<br>
 	 * Prototype: VkBool32  shaderInt16
 	 */ 
-	 private static native boolean shaderInt160(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean shaderInt160(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->shaderInt16);
 	 */
 
 	/**
 	 * native SET method for field shaderResourceResidency	[boolean]<br>
 	 * Prototype: VkBool32  shaderResourceResidency
 	 */ 
-	 private static native void shaderResourceResidency0(ByteBuffer ptr, boolean _shaderResourceResidency);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.shaderResourceResidency = (VkBool32) (_shaderResourceResidency);
+	 private static native void shaderResourceResidency0(Buffer ptr, boolean _shaderResourceResidency);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->shaderResourceResidency = (VkBool32) (_shaderResourceResidency);
 	  */
 
 	/**
 	 * native GET method for field shaderResourceResidency	[boolean]<br>
 	 * Prototype: VkBool32  shaderResourceResidency
 	 */ 
-	 private static native boolean shaderResourceResidency0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean shaderResourceResidency0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->shaderResourceResidency);
 	 */
 
 	/**
 	 * native SET method for field shaderResourceMinLod	[boolean]<br>
 	 * Prototype: VkBool32  shaderResourceMinLod
 	 */ 
-	 private static native void shaderResourceMinLod0(ByteBuffer ptr, boolean _shaderResourceMinLod);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.shaderResourceMinLod = (VkBool32) (_shaderResourceMinLod);
+	 private static native void shaderResourceMinLod0(Buffer ptr, boolean _shaderResourceMinLod);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->shaderResourceMinLod = (VkBool32) (_shaderResourceMinLod);
 	  */
 
 	/**
 	 * native GET method for field shaderResourceMinLod	[boolean]<br>
 	 * Prototype: VkBool32  shaderResourceMinLod
 	 */ 
-	 private static native boolean shaderResourceMinLod0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean shaderResourceMinLod0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->shaderResourceMinLod);
 	 */
 
 	/**
 	 * native SET method for field sparseBinding	[boolean]<br>
 	 * Prototype: VkBool32  sparseBinding
 	 */ 
-	 private static native void sparseBinding0(ByteBuffer ptr, boolean _sparseBinding);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.sparseBinding = (VkBool32) (_sparseBinding);
+	 private static native void sparseBinding0(Buffer ptr, boolean _sparseBinding);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->sparseBinding = (VkBool32) (_sparseBinding);
 	  */
 
 	/**
 	 * native GET method for field sparseBinding	[boolean]<br>
 	 * Prototype: VkBool32  sparseBinding
 	 */ 
-	 private static native boolean sparseBinding0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean sparseBinding0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->sparseBinding);
 	 */
 
 	/**
 	 * native SET method for field sparseResidencyBuffer	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyBuffer
 	 */ 
-	 private static native void sparseResidencyBuffer0(ByteBuffer ptr, boolean _sparseResidencyBuffer);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.sparseResidencyBuffer = (VkBool32) (_sparseResidencyBuffer);
+	 private static native void sparseResidencyBuffer0(Buffer ptr, boolean _sparseResidencyBuffer);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->sparseResidencyBuffer = (VkBool32) (_sparseResidencyBuffer);
 	  */
 
 	/**
 	 * native GET method for field sparseResidencyBuffer	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyBuffer
 	 */ 
-	 private static native boolean sparseResidencyBuffer0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean sparseResidencyBuffer0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->sparseResidencyBuffer);
 	 */
 
 	/**
 	 * native SET method for field sparseResidencyImage2D	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyImage2D
 	 */ 
-	 private static native void sparseResidencyImage2D0(ByteBuffer ptr, boolean _sparseResidencyImage2D);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.sparseResidencyImage2D = (VkBool32) (_sparseResidencyImage2D);
+	 private static native void sparseResidencyImage2D0(Buffer ptr, boolean _sparseResidencyImage2D);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->sparseResidencyImage2D = (VkBool32) (_sparseResidencyImage2D);
 	  */
 
 	/**
 	 * native GET method for field sparseResidencyImage2D	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyImage2D
 	 */ 
-	 private static native boolean sparseResidencyImage2D0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean sparseResidencyImage2D0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->sparseResidencyImage2D);
 	 */
 
 	/**
 	 * native SET method for field sparseResidencyImage3D	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyImage3D
 	 */ 
-	 private static native void sparseResidencyImage3D0(ByteBuffer ptr, boolean _sparseResidencyImage3D);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.sparseResidencyImage3D = (VkBool32) (_sparseResidencyImage3D);
+	 private static native void sparseResidencyImage3D0(Buffer ptr, boolean _sparseResidencyImage3D);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->sparseResidencyImage3D = (VkBool32) (_sparseResidencyImage3D);
 	  */
 
 	/**
 	 * native GET method for field sparseResidencyImage3D	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyImage3D
 	 */ 
-	 private static native boolean sparseResidencyImage3D0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean sparseResidencyImage3D0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->sparseResidencyImage3D);
 	 */
 
 	/**
 	 * native SET method for field sparseResidency2Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency2Samples
 	 */ 
-	 private static native void sparseResidency2Samples0(ByteBuffer ptr, boolean _sparseResidency2Samples);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.sparseResidency2Samples = (VkBool32) (_sparseResidency2Samples);
+	 private static native void sparseResidency2Samples0(Buffer ptr, boolean _sparseResidency2Samples);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->sparseResidency2Samples = (VkBool32) (_sparseResidency2Samples);
 	  */
 
 	/**
 	 * native GET method for field sparseResidency2Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency2Samples
 	 */ 
-	 private static native boolean sparseResidency2Samples0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean sparseResidency2Samples0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->sparseResidency2Samples);
 	 */
 
 	/**
 	 * native SET method for field sparseResidency4Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency4Samples
 	 */ 
-	 private static native void sparseResidency4Samples0(ByteBuffer ptr, boolean _sparseResidency4Samples);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.sparseResidency4Samples = (VkBool32) (_sparseResidency4Samples);
+	 private static native void sparseResidency4Samples0(Buffer ptr, boolean _sparseResidency4Samples);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->sparseResidency4Samples = (VkBool32) (_sparseResidency4Samples);
 	  */
 
 	/**
 	 * native GET method for field sparseResidency4Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency4Samples
 	 */ 
-	 private static native boolean sparseResidency4Samples0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean sparseResidency4Samples0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->sparseResidency4Samples);
 	 */
 
 	/**
 	 * native SET method for field sparseResidency8Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency8Samples
 	 */ 
-	 private static native void sparseResidency8Samples0(ByteBuffer ptr, boolean _sparseResidency8Samples);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.sparseResidency8Samples = (VkBool32) (_sparseResidency8Samples);
+	 private static native void sparseResidency8Samples0(Buffer ptr, boolean _sparseResidency8Samples);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->sparseResidency8Samples = (VkBool32) (_sparseResidency8Samples);
 	  */
 
 	/**
 	 * native GET method for field sparseResidency8Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency8Samples
 	 */ 
-	 private static native boolean sparseResidency8Samples0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean sparseResidency8Samples0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->sparseResidency8Samples);
 	 */
 
 	/**
 	 * native SET method for field sparseResidency16Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency16Samples
 	 */ 
-	 private static native void sparseResidency16Samples0(ByteBuffer ptr, boolean _sparseResidency16Samples);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.sparseResidency16Samples = (VkBool32) (_sparseResidency16Samples);
+	 private static native void sparseResidency16Samples0(Buffer ptr, boolean _sparseResidency16Samples);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->sparseResidency16Samples = (VkBool32) (_sparseResidency16Samples);
 	  */
 
 	/**
 	 * native GET method for field sparseResidency16Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency16Samples
 	 */ 
-	 private static native boolean sparseResidency16Samples0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean sparseResidency16Samples0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->sparseResidency16Samples);
 	 */
 
 	/**
 	 * native SET method for field sparseResidencyAliased	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyAliased
 	 */ 
-	 private static native void sparseResidencyAliased0(ByteBuffer ptr, boolean _sparseResidencyAliased);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.sparseResidencyAliased = (VkBool32) (_sparseResidencyAliased);
+	 private static native void sparseResidencyAliased0(Buffer ptr, boolean _sparseResidencyAliased);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->sparseResidencyAliased = (VkBool32) (_sparseResidencyAliased);
 	  */
 
 	/**
 	 * native GET method for field sparseResidencyAliased	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyAliased
 	 */ 
-	 private static native boolean sparseResidencyAliased0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean sparseResidencyAliased0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->sparseResidencyAliased);
 	 */
 
 	/**
 	 * native SET method for field variableMultisampleRate	[boolean]<br>
 	 * Prototype: VkBool32  variableMultisampleRate
 	 */ 
-	 private static native void variableMultisampleRate0(ByteBuffer ptr, boolean _variableMultisampleRate);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.variableMultisampleRate = (VkBool32) (_variableMultisampleRate);
+	 private static native void variableMultisampleRate0(Buffer ptr, boolean _variableMultisampleRate);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->variableMultisampleRate = (VkBool32) (_variableMultisampleRate);
 	  */
 
 	/**
 	 * native GET method for field variableMultisampleRate	[boolean]<br>
 	 * Prototype: VkBool32  variableMultisampleRate
 	 */ 
-	 private static native boolean variableMultisampleRate0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean variableMultisampleRate0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->variableMultisampleRate);
 	 */
 
 	/**
 	 * native SET method for field inheritedQueries	[boolean]<br>
 	 * Prototype: VkBool32  inheritedQueries
 	 */ 
-	 private static native void inheritedQueries0(ByteBuffer ptr, boolean _inheritedQueries);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(*ptr);
-		  _obj.inheritedQueries = (VkBool32) (_inheritedQueries);
+	 private static native void inheritedQueries0(Buffer ptr, boolean _inheritedQueries);/*
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  vkObj->inheritedQueries = (VkBool32) (_inheritedQueries);
 	  */
 
 	/**
 	 * native GET method for field inheritedQueries	[boolean]<br>
 	 * Prototype: VkBool32  inheritedQueries
 	 */ 
-	 private static native boolean inheritedQueries0(ByteBuffer ptr);/*
-		  VkPhysicalDeviceFeatures _obj = (VkPhysicalDeviceFeatures)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean inheritedQueries0(Buffer ptr);/*
+		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  return (jboolean) (vkObj->inheritedQueries);
 	 */
 
 

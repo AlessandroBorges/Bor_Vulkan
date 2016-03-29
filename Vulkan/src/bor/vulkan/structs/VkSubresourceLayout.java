@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -141,16 +143,17 @@ public class VkSubresourceLayout extends VkStruct {
 	 */ 
 	 public void offset(long offset){
 		 this.offset = offset;
-		offset0(super.ptr, offset);
+		 offset0(this.ptr,  offset);
 	 }
 
 	/**
-	 * get method for field offset	[long]<br>
+	 * Get method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 public long offset(){
-		 // return  this.offset;
-		 return offset0(super.ptr);
+		 long var = offset0(super.ptr);
+		 this.offset = var;
+		 return this.offset;
 	 }
 
 	/**
@@ -159,16 +162,17 @@ public class VkSubresourceLayout extends VkStruct {
 	 */ 
 	 public void size(long size){
 		 this.size = size;
-		size0(super.ptr, size);
+		 size0(this.ptr,  size);
 	 }
 
 	/**
-	 * get method for field size	[long]<br>
+	 * Get method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public long size(){
-		 // return  this.size;
-		 return size0(super.ptr);
+		 long var = size0(super.ptr);
+		 this.size = var;
+		 return this.size;
 	 }
 
 	/**
@@ -177,16 +181,17 @@ public class VkSubresourceLayout extends VkStruct {
 	 */ 
 	 public void rowPitch(long rowPitch){
 		 this.rowPitch = rowPitch;
-		rowPitch0(super.ptr, rowPitch);
+		 rowPitch0(this.ptr,  rowPitch);
 	 }
 
 	/**
-	 * get method for field rowPitch	[long]<br>
+	 * Get method for field rowPitch	[long]<br>
 	 * Prototype: VkDeviceSize  rowPitch
 	 */ 
 	 public long rowPitch(){
-		 // return  this.rowPitch;
-		 return rowPitch0(super.ptr);
+		 long var = rowPitch0(super.ptr);
+		 this.rowPitch = var;
+		 return this.rowPitch;
 	 }
 
 	/**
@@ -195,16 +200,17 @@ public class VkSubresourceLayout extends VkStruct {
 	 */ 
 	 public void arrayPitch(long arrayPitch){
 		 this.arrayPitch = arrayPitch;
-		arrayPitch0(super.ptr, arrayPitch);
+		 arrayPitch0(this.ptr,  arrayPitch);
 	 }
 
 	/**
-	 * get method for field arrayPitch	[long]<br>
+	 * Get method for field arrayPitch	[long]<br>
 	 * Prototype: VkDeviceSize  arrayPitch
 	 */ 
 	 public long arrayPitch(){
-		 // return  this.arrayPitch;
-		 return arrayPitch0(super.ptr);
+		 long var = arrayPitch0(super.ptr);
+		 this.arrayPitch = var;
+		 return this.arrayPitch;
 	 }
 
 	/**
@@ -213,16 +219,17 @@ public class VkSubresourceLayout extends VkStruct {
 	 */ 
 	 public void depthPitch(long depthPitch){
 		 this.depthPitch = depthPitch;
-		depthPitch0(super.ptr, depthPitch);
+		 depthPitch0(this.ptr,  depthPitch);
 	 }
 
 	/**
-	 * get method for field depthPitch	[long]<br>
+	 * Get method for field depthPitch	[long]<br>
 	 * Prototype: VkDeviceSize  depthPitch
 	 */ 
 	 public long depthPitch(){
-		 // return  this.depthPitch;
-		 return depthPitch0(super.ptr);
+		 long var = depthPitch0(super.ptr);
+		 this.depthPitch = var;
+		 return this.depthPitch;
 	 }
 
 
@@ -233,90 +240,90 @@ public class VkSubresourceLayout extends VkStruct {
 	 * native SET method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
-	 private static native void offset0(ByteBuffer ptr, long _offset);/*
-		  VkSubresourceLayout _obj = (VkSubresourceLayout)(*ptr);
-		  _obj.offset = (VkDeviceSize) (_offset);
+	 private static native void offset0(Buffer ptr, long _offset);/*
+		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
+		  vkObj->offset = (VkDeviceSize) (_offset);
 	  */
 
 	/**
 	 * native GET method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
-	 private static native long offset0(ByteBuffer ptr);/*
-		  VkSubresourceLayout _obj = (VkSubresourceLayout)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long offset0(Buffer ptr);/*
+		  VkSubresourceLayout vkObj = (VkSubresourceLayout*)(ptr);
+		  return (jlong) (vkObj->offset);
 	 */
 
 	/**
 	 * native SET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
-	 private static native void size0(ByteBuffer ptr, long _size);/*
-		  VkSubresourceLayout _obj = (VkSubresourceLayout)(*ptr);
-		  _obj.size = (VkDeviceSize) (_size);
+	 private static native void size0(Buffer ptr, long _size);/*
+		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
+		  vkObj->size = (VkDeviceSize) (_size);
 	  */
 
 	/**
 	 * native GET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
-	 private static native long size0(ByteBuffer ptr);/*
-		  VkSubresourceLayout _obj = (VkSubresourceLayout)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long size0(Buffer ptr);/*
+		  VkSubresourceLayout vkObj = (VkSubresourceLayout*)(ptr);
+		  return (jlong) (vkObj->size);
 	 */
 
 	/**
 	 * native SET method for field rowPitch	[long]<br>
 	 * Prototype: VkDeviceSize  rowPitch
 	 */ 
-	 private static native void rowPitch0(ByteBuffer ptr, long _rowPitch);/*
-		  VkSubresourceLayout _obj = (VkSubresourceLayout)(*ptr);
-		  _obj.rowPitch = (VkDeviceSize) (_rowPitch);
+	 private static native void rowPitch0(Buffer ptr, long _rowPitch);/*
+		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
+		  vkObj->rowPitch = (VkDeviceSize) (_rowPitch);
 	  */
 
 	/**
 	 * native GET method for field rowPitch	[long]<br>
 	 * Prototype: VkDeviceSize  rowPitch
 	 */ 
-	 private static native long rowPitch0(ByteBuffer ptr);/*
-		  VkSubresourceLayout _obj = (VkSubresourceLayout)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long rowPitch0(Buffer ptr);/*
+		  VkSubresourceLayout vkObj = (VkSubresourceLayout*)(ptr);
+		  return (jlong) (vkObj->rowPitch);
 	 */
 
 	/**
 	 * native SET method for field arrayPitch	[long]<br>
 	 * Prototype: VkDeviceSize  arrayPitch
 	 */ 
-	 private static native void arrayPitch0(ByteBuffer ptr, long _arrayPitch);/*
-		  VkSubresourceLayout _obj = (VkSubresourceLayout)(*ptr);
-		  _obj.arrayPitch = (VkDeviceSize) (_arrayPitch);
+	 private static native void arrayPitch0(Buffer ptr, long _arrayPitch);/*
+		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
+		  vkObj->arrayPitch = (VkDeviceSize) (_arrayPitch);
 	  */
 
 	/**
 	 * native GET method for field arrayPitch	[long]<br>
 	 * Prototype: VkDeviceSize  arrayPitch
 	 */ 
-	 private static native long arrayPitch0(ByteBuffer ptr);/*
-		  VkSubresourceLayout _obj = (VkSubresourceLayout)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long arrayPitch0(Buffer ptr);/*
+		  VkSubresourceLayout vkObj = (VkSubresourceLayout*)(ptr);
+		  return (jlong) (vkObj->arrayPitch);
 	 */
 
 	/**
 	 * native SET method for field depthPitch	[long]<br>
 	 * Prototype: VkDeviceSize  depthPitch
 	 */ 
-	 private static native void depthPitch0(ByteBuffer ptr, long _depthPitch);/*
-		  VkSubresourceLayout _obj = (VkSubresourceLayout)(*ptr);
-		  _obj.depthPitch = (VkDeviceSize) (_depthPitch);
+	 private static native void depthPitch0(Buffer ptr, long _depthPitch);/*
+		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
+		  vkObj->depthPitch = (VkDeviceSize) (_depthPitch);
 	  */
 
 	/**
 	 * native GET method for field depthPitch	[long]<br>
 	 * Prototype: VkDeviceSize  depthPitch
 	 */ 
-	 private static native long depthPitch0(ByteBuffer ptr);/*
-		  VkSubresourceLayout _obj = (VkSubresourceLayout)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long depthPitch0(Buffer ptr);/*
+		  VkSubresourceLayout vkObj = (VkSubresourceLayout*)(ptr);
+		  return (jlong) (vkObj->depthPitch);
 	 */
 
 

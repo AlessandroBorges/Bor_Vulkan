@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -54,9 +56,9 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  VkRenderPass 	renderPass	[vkhandle]
@@ -79,9 +81,9 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 int 	clearValueCount;
 
 	/**
-	 *  const VkClearValue* 	pClearValues	[p]
+	 *  const VkClearValue* 	pClearValues	[vkstruct]
 	 */ 
-	 P<VkClearValue>  	pClearValues;
+	  VkClearValue  	pClearValues;
 
 	/**
 	 * Ctor
@@ -153,34 +155,46 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -189,16 +203,27 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 */ 
 	 public void renderPass(VkRenderPass renderPass){
 		 this.renderPass = renderPass;
-		renderPass0(super.ptr, renderPass);
+		 ByteBuffer buff = (renderPass==null) ? null : renderPass.getHandle();
+		 renderPass0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field renderPass	[vkhandle]<br>
+	 * Get method for field renderPass	[vkhandle]<br>
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
 	 public VkRenderPass renderPass(){
-		 // return  this.renderPass;
-		 return renderPass0(super.ptr);
+
+		 ByteBuffer handle = renderPass0(super.ptr);
+		 if(handle == null){
+		    this.renderPass = null;
+		    return null;
+		  } else 
+ 		 if(this.renderPass == null){
+		    this.renderPass = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.renderPass).setHandle(handle);
+		  }
+		 return this.renderPass;
 	 }
 
 	/**
@@ -207,16 +232,27 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 */ 
 	 public void framebuffer(VkFramebuffer framebuffer){
 		 this.framebuffer = framebuffer;
-		framebuffer0(super.ptr, framebuffer);
+		 ByteBuffer buff = (framebuffer==null) ? null : framebuffer.getHandle();
+		 framebuffer0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field framebuffer	[vkhandle]<br>
+	 * Get method for field framebuffer	[vkhandle]<br>
 	 * Prototype: VkFramebuffer  framebuffer
 	 */ 
 	 public VkFramebuffer framebuffer(){
-		 // return  this.framebuffer;
-		 return framebuffer0(super.ptr);
+
+		 ByteBuffer handle = framebuffer0(super.ptr);
+		 if(handle == null){
+		    this.framebuffer = null;
+		    return null;
+		  } else 
+ 		 if(this.framebuffer == null){
+		    this.framebuffer = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.framebuffer).setHandle(handle);
+		  }
+		 return this.framebuffer;
 	 }
 
 	/**
@@ -225,16 +261,26 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 */ 
 	 public void renderArea(VkRect2D renderArea){
 		 this.renderArea = renderArea;
-		renderArea0(super.ptr, renderArea);
+		 ByteBuffer buff = (renderArea==null) ? null : renderArea.getPointerStruct();
+		 renderArea0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field renderArea	[vkstruct]<br>
+	 * Get method for field renderArea	[vkstruct]<br>
 	 * Prototype: VkRect2D  renderArea
 	 */ 
 	 public VkRect2D renderArea(){
-		 // return  this.renderArea;
-		 return renderArea0(super.ptr);
+		 ByteBuffer pointer = renderArea0(super.ptr);
+		 if(pointer == null){
+		    this.renderArea = null;
+		    return null;
+		  } else 
+ 		 if(this.renderArea == null){
+		    this.renderArea = new VkRect2D(pointer);
+		 }else{
+		    this.renderArea.setPointer(pointer);
+		  }
+		 return this.renderArea;
 	 }
 
 	/**
@@ -243,34 +289,45 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 */ 
 	 public void clearValueCount(int clearValueCount){
 		 this.clearValueCount = clearValueCount;
-		clearValueCount0(super.ptr, clearValueCount);
+		 clearValueCount0(this.ptr,  clearValueCount);
 	 }
 
 	/**
-	 * get method for field clearValueCount	[int]<br>
+	 * Get method for field clearValueCount	[int]<br>
 	 * Prototype: uint32_t  clearValueCount
 	 */ 
 	 public int clearValueCount(){
-		 // return  this.clearValueCount;
-		 return clearValueCount0(super.ptr);
+		 int var = clearValueCount0(super.ptr);
+		 this.clearValueCount = var;
+		 return this.clearValueCount;
 	 }
 
 	/**
-	 * Set method for field pClearValues	[p]<br>
+	 * Set method for field pClearValues	[vkstruct]<br>
 	 * Prototype: const VkClearValue*  pClearValues
 	 */ 
-	 public void pClearValues(P<VkClearValue>  pClearValues){
+	 public void pClearValues( VkClearValue  pClearValues){
 		 this.pClearValues = pClearValues;
-		pClearValues0(super.ptr, pClearValues);
+		 ByteBuffer buff = (pClearValues==null) ? null : pClearValues.getPointerStruct();
+		 pClearValues0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pClearValues	[p]<br>
+	 * Get method for field pClearValues	[vkstruct]<br>
 	 * Prototype: const VkClearValue*  pClearValues
 	 */ 
-	 public P<VkClearValue>  pClearValues(){
-		 // return  this.pClearValues;
-		 return pClearValues0(super.ptr);
+	 public  VkClearValue  pClearValues(){
+		 ByteBuffer pointer = pClearValues0(super.ptr);
+		 if(pointer == null){
+		    this.pClearValues = null;
+		    return null;
+		  } else 
+ 		 if(this.pClearValues == null){
+		    this.pClearValues = new  VkClearValue (pointer);
+		 }else{
+		    this.pClearValues.setPointer(pointer);
+		  }
+		 return this.pClearValues;
 	 }
 
 
@@ -281,126 +338,126 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkRenderPassBeginInfo _obj = (VkRenderPassBeginInfo)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkRenderPassBeginInfo _obj = (VkRenderPassBeginInfo)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkRenderPassBeginInfo vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkRenderPassBeginInfo _obj = (VkRenderPassBeginInfo)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkRenderPassBeginInfo _obj = (VkRenderPassBeginInfo)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkRenderPassBeginInfo vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field renderPass	[vkhandle]<br>
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
-	 private static native void renderPass0(ByteBuffer ptr, VkRenderPass _renderPass);/*
-		  VkRenderPassBeginInfo _obj = (VkRenderPassBeginInfo)(*ptr);
-		  _obj.renderPass = (VkRenderPass) (_renderPass);
+	 private static native void renderPass0(Buffer ptr, java.nio.ByteBuffer  _renderPass);/*
+		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  vkObj->renderPass = (VkRenderPass) (_renderPass);
 	  */
 
 	/**
 	 * native GET method for field renderPass	[vkhandle]<br>
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
-	 private static native VkRenderPass renderPass0(ByteBuffer ptr);/*
-		  VkRenderPassBeginInfo _obj = (VkRenderPassBeginInfo)(ptr);
-		  return (VkRenderPass) (_obj.VkRenderPass);
+	 private static native java.nio.ByteBuffer  renderPass0(Buffer ptr);/*
+		  VkRenderPassBeginInfo vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  return (VkRenderPass) (vkObj->renderPass);
 	 */
 
 	/**
 	 * native SET method for field framebuffer	[vkhandle]<br>
 	 * Prototype: VkFramebuffer  framebuffer
 	 */ 
-	 private static native void framebuffer0(ByteBuffer ptr, VkFramebuffer _framebuffer);/*
-		  VkRenderPassBeginInfo _obj = (VkRenderPassBeginInfo)(*ptr);
-		  _obj.framebuffer = (VkFramebuffer) (_framebuffer);
+	 private static native void framebuffer0(Buffer ptr, java.nio.ByteBuffer  _framebuffer);/*
+		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  vkObj->framebuffer = (VkFramebuffer) (_framebuffer);
 	  */
 
 	/**
 	 * native GET method for field framebuffer	[vkhandle]<br>
 	 * Prototype: VkFramebuffer  framebuffer
 	 */ 
-	 private static native VkFramebuffer framebuffer0(ByteBuffer ptr);/*
-		  VkRenderPassBeginInfo _obj = (VkRenderPassBeginInfo)(ptr);
-		  return (VkFramebuffer) (_obj.VkFramebuffer);
+	 private static native java.nio.ByteBuffer  framebuffer0(Buffer ptr);/*
+		  VkRenderPassBeginInfo vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  return (VkFramebuffer) (vkObj->framebuffer);
 	 */
 
 	/**
 	 * native SET method for field renderArea	[vkstruct]<br>
 	 * Prototype: VkRect2D  renderArea
 	 */ 
-	 private static native void renderArea0(ByteBuffer ptr, VkRect2D _renderArea);/*
-		  VkRenderPassBeginInfo _obj = (VkRenderPassBeginInfo)(*ptr);
-		  _obj.renderArea = (VkRect2D) (_renderArea);
+	 private static native void renderArea0(Buffer ptr, java.nio.ByteBuffer  _renderArea);/*
+		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  vkObj->renderArea = (VkRect2D) (_renderArea);
 	  */
 
 	/**
 	 * native GET method for field renderArea	[vkstruct]<br>
 	 * Prototype: VkRect2D  renderArea
 	 */ 
-	 private static native VkRect2D renderArea0(ByteBuffer ptr);/*
-		  VkRenderPassBeginInfo _obj = (VkRenderPassBeginInfo)(ptr);
-		  return (VkRect2D) (_obj.VkRect2D);
+	 private static native java.nio.ByteBuffer  renderArea0(Buffer ptr);/*
+		  VkRenderPassBeginInfo vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  return (VkRect2D) (vkObj->renderArea);
 	 */
 
 	/**
 	 * native SET method for field clearValueCount	[int]<br>
 	 * Prototype: uint32_t  clearValueCount
 	 */ 
-	 private static native void clearValueCount0(ByteBuffer ptr, int _clearValueCount);/*
-		  VkRenderPassBeginInfo _obj = (VkRenderPassBeginInfo)(*ptr);
-		  _obj.clearValueCount = (uint32_t) (_clearValueCount);
+	 private static native void clearValueCount0(Buffer ptr, int _clearValueCount);/*
+		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  vkObj->clearValueCount = (uint32_t) (_clearValueCount);
 	  */
 
 	/**
 	 * native GET method for field clearValueCount	[int]<br>
 	 * Prototype: uint32_t  clearValueCount
 	 */ 
-	 private static native int clearValueCount0(ByteBuffer ptr);/*
-		  VkRenderPassBeginInfo _obj = (VkRenderPassBeginInfo)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int clearValueCount0(Buffer ptr);/*
+		  VkRenderPassBeginInfo vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  return (jint) (vkObj->clearValueCount);
 	 */
 
 	/**
-	 * native SET method for field pClearValues	[p]<br>
+	 * native SET method for field pClearValues	[vkstruct]<br>
 	 * Prototype: const VkClearValue*  pClearValues
 	 */ 
-	 private static native void pClearValues0(ByteBuffer ptr, P<VkClearValue>  _pClearValues);/*
-		  VkRenderPassBeginInfo _obj = (VkRenderPassBeginInfo)(*ptr);
-		  _obj.pClearValues = (const VkClearValue*) (_pClearValues);
+	 private static native void pClearValues0(Buffer ptr, java.nio.ByteBuffer  _pClearValues);/*
+		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  vkObj->pClearValues = (const VkClearValue*) (_pClearValues);
 	  */
 
 	/**
-	 * native GET method for field pClearValues	[p]<br>
+	 * native GET method for field pClearValues	[vkstruct]<br>
 	 * Prototype: const VkClearValue*  pClearValues
 	 */ 
-	 private static native P<VkClearValue>  pClearValues0(ByteBuffer ptr);/*
-		  VkRenderPassBeginInfo _obj = (VkRenderPassBeginInfo)(ptr);
-		  return (P<VkClearValue> ) (_obj.const VkClearValue*);
+	 private static native java.nio.ByteBuffer  pClearValues0(Buffer ptr);/*
+		  VkRenderPassBeginInfo vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  return ( VkClearValue ) (vkObj->pClearValues);
 	 */
 
 

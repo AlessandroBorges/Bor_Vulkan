@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -51,9 +53,9 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  VkCommandBufferUsageFlags 	flags	[int]
@@ -61,9 +63,9 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	 int 	flags;
 
 	/**
-	 *  const VkCommandBufferInheritanceInfo* 	pInheritanceInfo	[p]
+	 *  const VkCommandBufferInheritanceInfo* 	pInheritanceInfo	[vkstruct]
 	 */ 
-	 P<VkCommandBufferInheritanceInfo>  	pInheritanceInfo;
+	  VkCommandBufferInheritanceInfo  	pInheritanceInfo;
 
 	/**
 	 * Ctor
@@ -135,34 +137,46 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -171,34 +185,45 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		flags0(super.ptr, flags);
+		 flags0(this.ptr,  flags);
 	 }
 
 	/**
-	 * get method for field flags	[int]<br>
+	 * Get method for field flags	[int]<br>
 	 * Prototype: VkCommandBufferUsageFlags  flags
 	 */ 
 	 public int flags(){
-		 // return  this.flags;
-		 return flags0(super.ptr);
+		 int var = flags0(super.ptr);
+		 this.flags = var;
+		 return this.flags;
 	 }
 
 	/**
-	 * Set method for field pInheritanceInfo	[p]<br>
+	 * Set method for field pInheritanceInfo	[vkstruct]<br>
 	 * Prototype: const VkCommandBufferInheritanceInfo*  pInheritanceInfo
 	 */ 
-	 public void pInheritanceInfo(P<VkCommandBufferInheritanceInfo>  pInheritanceInfo){
+	 public void pInheritanceInfo( VkCommandBufferInheritanceInfo  pInheritanceInfo){
 		 this.pInheritanceInfo = pInheritanceInfo;
-		pInheritanceInfo0(super.ptr, pInheritanceInfo);
+		 ByteBuffer buff = (pInheritanceInfo==null) ? null : pInheritanceInfo.getPointerStruct();
+		 pInheritanceInfo0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pInheritanceInfo	[p]<br>
+	 * Get method for field pInheritanceInfo	[vkstruct]<br>
 	 * Prototype: const VkCommandBufferInheritanceInfo*  pInheritanceInfo
 	 */ 
-	 public P<VkCommandBufferInheritanceInfo>  pInheritanceInfo(){
-		 // return  this.pInheritanceInfo;
-		 return pInheritanceInfo0(super.ptr);
+	 public  VkCommandBufferInheritanceInfo  pInheritanceInfo(){
+		 ByteBuffer pointer = pInheritanceInfo0(super.ptr);
+		 if(pointer == null){
+		    this.pInheritanceInfo = null;
+		    return null;
+		  } else 
+ 		 if(this.pInheritanceInfo == null){
+		    this.pInheritanceInfo = new  VkCommandBufferInheritanceInfo (pointer);
+		 }else{
+		    this.pInheritanceInfo.setPointer(pointer);
+		  }
+		 return this.pInheritanceInfo;
 	 }
 
 
@@ -209,72 +234,72 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkCommandBufferBeginInfo _obj = (VkCommandBufferBeginInfo)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkCommandBufferBeginInfo _obj = (VkCommandBufferBeginInfo)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkCommandBufferBeginInfo vkObj = (VkCommandBufferBeginInfo*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkCommandBufferBeginInfo _obj = (VkCommandBufferBeginInfo)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkCommandBufferBeginInfo _obj = (VkCommandBufferBeginInfo)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkCommandBufferBeginInfo vkObj = (VkCommandBufferBeginInfo*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkCommandBufferUsageFlags  flags
 	 */ 
-	 private static native void flags0(ByteBuffer ptr, int _flags);/*
-		  VkCommandBufferBeginInfo _obj = (VkCommandBufferBeginInfo)(*ptr);
-		  _obj.flags = (VkCommandBufferUsageFlags) (_flags);
+	 private static native void flags0(Buffer ptr, int _flags);/*
+		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
+		  vkObj->flags = (VkCommandBufferUsageFlags) (_flags);
 	  */
 
 	/**
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkCommandBufferUsageFlags  flags
 	 */ 
-	 private static native int flags0(ByteBuffer ptr);/*
-		  VkCommandBufferBeginInfo _obj = (VkCommandBufferBeginInfo)(ptr);
-		  return (jint) (_obj.VkCommandBufferUsageFlags);
+	 private static native int flags0(Buffer ptr);/*
+		  VkCommandBufferBeginInfo vkObj = (VkCommandBufferBeginInfo*)(ptr);
+		  return (jint) (vkObj->flags);
 	 */
 
 	/**
-	 * native SET method for field pInheritanceInfo	[p]<br>
+	 * native SET method for field pInheritanceInfo	[vkstruct]<br>
 	 * Prototype: const VkCommandBufferInheritanceInfo*  pInheritanceInfo
 	 */ 
-	 private static native void pInheritanceInfo0(ByteBuffer ptr, P<VkCommandBufferInheritanceInfo>  _pInheritanceInfo);/*
-		  VkCommandBufferBeginInfo _obj = (VkCommandBufferBeginInfo)(*ptr);
-		  _obj.pInheritanceInfo = (const VkCommandBufferInheritanceInfo*) (_pInheritanceInfo);
+	 private static native void pInheritanceInfo0(Buffer ptr, java.nio.ByteBuffer  _pInheritanceInfo);/*
+		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
+		  vkObj->pInheritanceInfo = (const VkCommandBufferInheritanceInfo*) (_pInheritanceInfo);
 	  */
 
 	/**
-	 * native GET method for field pInheritanceInfo	[p]<br>
+	 * native GET method for field pInheritanceInfo	[vkstruct]<br>
 	 * Prototype: const VkCommandBufferInheritanceInfo*  pInheritanceInfo
 	 */ 
-	 private static native P<VkCommandBufferInheritanceInfo>  pInheritanceInfo0(ByteBuffer ptr);/*
-		  VkCommandBufferBeginInfo _obj = (VkCommandBufferBeginInfo)(ptr);
-		  return (P<VkCommandBufferInheritanceInfo> ) (_obj.const VkCommandBufferInheritanceInfo*);
+	 private static native java.nio.ByteBuffer  pInheritanceInfo0(Buffer ptr);/*
+		  VkCommandBufferBeginInfo vkObj = (VkCommandBufferBeginInfo*)(ptr);
+		  return (jobject) (vkObj->pInheritanceInfo);
 	 */
 
 

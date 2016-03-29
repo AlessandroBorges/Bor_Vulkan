@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -56,9 +58,9 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  VkDescriptorSet 	srcSet	[vkhandle]
@@ -165,34 +167,46 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -201,16 +215,27 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 */ 
 	 public void srcSet(VkDescriptorSet srcSet){
 		 this.srcSet = srcSet;
-		srcSet0(super.ptr, srcSet);
+		 ByteBuffer buff = (srcSet==null) ? null : srcSet.getHandle();
+		 srcSet0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field srcSet	[vkhandle]<br>
+	 * Get method for field srcSet	[vkhandle]<br>
 	 * Prototype: VkDescriptorSet  srcSet
 	 */ 
 	 public VkDescriptorSet srcSet(){
-		 // return  this.srcSet;
-		 return srcSet0(super.ptr);
+
+		 ByteBuffer handle = srcSet0(super.ptr);
+		 if(handle == null){
+		    this.srcSet = null;
+		    return null;
+		  } else 
+ 		 if(this.srcSet == null){
+		    this.srcSet = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.srcSet).setHandle(handle);
+		  }
+		 return this.srcSet;
 	 }
 
 	/**
@@ -219,16 +244,17 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 */ 
 	 public void srcBinding(int srcBinding){
 		 this.srcBinding = srcBinding;
-		srcBinding0(super.ptr, srcBinding);
+		 srcBinding0(this.ptr,  srcBinding);
 	 }
 
 	/**
-	 * get method for field srcBinding	[int]<br>
+	 * Get method for field srcBinding	[int]<br>
 	 * Prototype: uint32_t  srcBinding
 	 */ 
 	 public int srcBinding(){
-		 // return  this.srcBinding;
-		 return srcBinding0(super.ptr);
+		 int var = srcBinding0(super.ptr);
+		 this.srcBinding = var;
+		 return this.srcBinding;
 	 }
 
 	/**
@@ -237,16 +263,17 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 */ 
 	 public void srcArrayElement(int srcArrayElement){
 		 this.srcArrayElement = srcArrayElement;
-		srcArrayElement0(super.ptr, srcArrayElement);
+		 srcArrayElement0(this.ptr,  srcArrayElement);
 	 }
 
 	/**
-	 * get method for field srcArrayElement	[int]<br>
+	 * Get method for field srcArrayElement	[int]<br>
 	 * Prototype: uint32_t  srcArrayElement
 	 */ 
 	 public int srcArrayElement(){
-		 // return  this.srcArrayElement;
-		 return srcArrayElement0(super.ptr);
+		 int var = srcArrayElement0(super.ptr);
+		 this.srcArrayElement = var;
+		 return this.srcArrayElement;
 	 }
 
 	/**
@@ -255,16 +282,27 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 */ 
 	 public void dstSet(VkDescriptorSet dstSet){
 		 this.dstSet = dstSet;
-		dstSet0(super.ptr, dstSet);
+		 ByteBuffer buff = (dstSet==null) ? null : dstSet.getHandle();
+		 dstSet0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field dstSet	[vkhandle]<br>
+	 * Get method for field dstSet	[vkhandle]<br>
 	 * Prototype: VkDescriptorSet  dstSet
 	 */ 
 	 public VkDescriptorSet dstSet(){
-		 // return  this.dstSet;
-		 return dstSet0(super.ptr);
+
+		 ByteBuffer handle = dstSet0(super.ptr);
+		 if(handle == null){
+		    this.dstSet = null;
+		    return null;
+		  } else 
+ 		 if(this.dstSet == null){
+		    this.dstSet = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.dstSet).setHandle(handle);
+		  }
+		 return this.dstSet;
 	 }
 
 	/**
@@ -273,16 +311,17 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 */ 
 	 public void dstBinding(int dstBinding){
 		 this.dstBinding = dstBinding;
-		dstBinding0(super.ptr, dstBinding);
+		 dstBinding0(this.ptr,  dstBinding);
 	 }
 
 	/**
-	 * get method for field dstBinding	[int]<br>
+	 * Get method for field dstBinding	[int]<br>
 	 * Prototype: uint32_t  dstBinding
 	 */ 
 	 public int dstBinding(){
-		 // return  this.dstBinding;
-		 return dstBinding0(super.ptr);
+		 int var = dstBinding0(super.ptr);
+		 this.dstBinding = var;
+		 return this.dstBinding;
 	 }
 
 	/**
@@ -291,16 +330,17 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 */ 
 	 public void dstArrayElement(int dstArrayElement){
 		 this.dstArrayElement = dstArrayElement;
-		dstArrayElement0(super.ptr, dstArrayElement);
+		 dstArrayElement0(this.ptr,  dstArrayElement);
 	 }
 
 	/**
-	 * get method for field dstArrayElement	[int]<br>
+	 * Get method for field dstArrayElement	[int]<br>
 	 * Prototype: uint32_t  dstArrayElement
 	 */ 
 	 public int dstArrayElement(){
-		 // return  this.dstArrayElement;
-		 return dstArrayElement0(super.ptr);
+		 int var = dstArrayElement0(super.ptr);
+		 this.dstArrayElement = var;
+		 return this.dstArrayElement;
 	 }
 
 	/**
@@ -309,16 +349,17 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 */ 
 	 public void descriptorCount(int descriptorCount){
 		 this.descriptorCount = descriptorCount;
-		descriptorCount0(super.ptr, descriptorCount);
+		 descriptorCount0(this.ptr,  descriptorCount);
 	 }
 
 	/**
-	 * get method for field descriptorCount	[int]<br>
+	 * Get method for field descriptorCount	[int]<br>
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 public int descriptorCount(){
-		 // return  this.descriptorCount;
-		 return descriptorCount0(super.ptr);
+		 int var = descriptorCount0(super.ptr);
+		 this.descriptorCount = var;
+		 return this.descriptorCount;
 	 }
 
 
@@ -329,162 +370,162 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkCopyDescriptorSet vkObj = (VkCopyDescriptorSet*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkCopyDescriptorSet vkObj = (VkCopyDescriptorSet*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field srcSet	[vkhandle]<br>
 	 * Prototype: VkDescriptorSet  srcSet
 	 */ 
-	 private static native void srcSet0(ByteBuffer ptr, VkDescriptorSet _srcSet);/*
-		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(*ptr);
-		  _obj.srcSet = (VkDescriptorSet) (_srcSet);
+	 private static native void srcSet0(Buffer ptr, java.nio.ByteBuffer  _srcSet);/*
+		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
+		  vkObj->srcSet = (VkDescriptorSet) (_srcSet);
 	  */
 
 	/**
 	 * native GET method for field srcSet	[vkhandle]<br>
 	 * Prototype: VkDescriptorSet  srcSet
 	 */ 
-	 private static native VkDescriptorSet srcSet0(ByteBuffer ptr);/*
-		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(ptr);
-		  return (VkDescriptorSet) (_obj.VkDescriptorSet);
+	 private static native java.nio.ByteBuffer  srcSet0(Buffer ptr);/*
+		  VkCopyDescriptorSet vkObj = (VkCopyDescriptorSet*)(ptr);
+		  return (VkDescriptorSet) (vkObj->srcSet);
 	 */
 
 	/**
 	 * native SET method for field srcBinding	[int]<br>
 	 * Prototype: uint32_t  srcBinding
 	 */ 
-	 private static native void srcBinding0(ByteBuffer ptr, int _srcBinding);/*
-		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(*ptr);
-		  _obj.srcBinding = (uint32_t) (_srcBinding);
+	 private static native void srcBinding0(Buffer ptr, int _srcBinding);/*
+		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
+		  vkObj->srcBinding = (uint32_t) (_srcBinding);
 	  */
 
 	/**
 	 * native GET method for field srcBinding	[int]<br>
 	 * Prototype: uint32_t  srcBinding
 	 */ 
-	 private static native int srcBinding0(ByteBuffer ptr);/*
-		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int srcBinding0(Buffer ptr);/*
+		  VkCopyDescriptorSet vkObj = (VkCopyDescriptorSet*)(ptr);
+		  return (jint) (vkObj->srcBinding);
 	 */
 
 	/**
 	 * native SET method for field srcArrayElement	[int]<br>
 	 * Prototype: uint32_t  srcArrayElement
 	 */ 
-	 private static native void srcArrayElement0(ByteBuffer ptr, int _srcArrayElement);/*
-		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(*ptr);
-		  _obj.srcArrayElement = (uint32_t) (_srcArrayElement);
+	 private static native void srcArrayElement0(Buffer ptr, int _srcArrayElement);/*
+		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
+		  vkObj->srcArrayElement = (uint32_t) (_srcArrayElement);
 	  */
 
 	/**
 	 * native GET method for field srcArrayElement	[int]<br>
 	 * Prototype: uint32_t  srcArrayElement
 	 */ 
-	 private static native int srcArrayElement0(ByteBuffer ptr);/*
-		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int srcArrayElement0(Buffer ptr);/*
+		  VkCopyDescriptorSet vkObj = (VkCopyDescriptorSet*)(ptr);
+		  return (jint) (vkObj->srcArrayElement);
 	 */
 
 	/**
 	 * native SET method for field dstSet	[vkhandle]<br>
 	 * Prototype: VkDescriptorSet  dstSet
 	 */ 
-	 private static native void dstSet0(ByteBuffer ptr, VkDescriptorSet _dstSet);/*
-		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(*ptr);
-		  _obj.dstSet = (VkDescriptorSet) (_dstSet);
+	 private static native void dstSet0(Buffer ptr, java.nio.ByteBuffer  _dstSet);/*
+		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
+		  vkObj->dstSet = (VkDescriptorSet) (_dstSet);
 	  */
 
 	/**
 	 * native GET method for field dstSet	[vkhandle]<br>
 	 * Prototype: VkDescriptorSet  dstSet
 	 */ 
-	 private static native VkDescriptorSet dstSet0(ByteBuffer ptr);/*
-		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(ptr);
-		  return (VkDescriptorSet) (_obj.VkDescriptorSet);
+	 private static native java.nio.ByteBuffer  dstSet0(Buffer ptr);/*
+		  VkCopyDescriptorSet vkObj = (VkCopyDescriptorSet*)(ptr);
+		  return (VkDescriptorSet) (vkObj->dstSet);
 	 */
 
 	/**
 	 * native SET method for field dstBinding	[int]<br>
 	 * Prototype: uint32_t  dstBinding
 	 */ 
-	 private static native void dstBinding0(ByteBuffer ptr, int _dstBinding);/*
-		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(*ptr);
-		  _obj.dstBinding = (uint32_t) (_dstBinding);
+	 private static native void dstBinding0(Buffer ptr, int _dstBinding);/*
+		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
+		  vkObj->dstBinding = (uint32_t) (_dstBinding);
 	  */
 
 	/**
 	 * native GET method for field dstBinding	[int]<br>
 	 * Prototype: uint32_t  dstBinding
 	 */ 
-	 private static native int dstBinding0(ByteBuffer ptr);/*
-		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int dstBinding0(Buffer ptr);/*
+		  VkCopyDescriptorSet vkObj = (VkCopyDescriptorSet*)(ptr);
+		  return (jint) (vkObj->dstBinding);
 	 */
 
 	/**
 	 * native SET method for field dstArrayElement	[int]<br>
 	 * Prototype: uint32_t  dstArrayElement
 	 */ 
-	 private static native void dstArrayElement0(ByteBuffer ptr, int _dstArrayElement);/*
-		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(*ptr);
-		  _obj.dstArrayElement = (uint32_t) (_dstArrayElement);
+	 private static native void dstArrayElement0(Buffer ptr, int _dstArrayElement);/*
+		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
+		  vkObj->dstArrayElement = (uint32_t) (_dstArrayElement);
 	  */
 
 	/**
 	 * native GET method for field dstArrayElement	[int]<br>
 	 * Prototype: uint32_t  dstArrayElement
 	 */ 
-	 private static native int dstArrayElement0(ByteBuffer ptr);/*
-		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int dstArrayElement0(Buffer ptr);/*
+		  VkCopyDescriptorSet vkObj = (VkCopyDescriptorSet*)(ptr);
+		  return (jint) (vkObj->dstArrayElement);
 	 */
 
 	/**
 	 * native SET method for field descriptorCount	[int]<br>
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
-	 private static native void descriptorCount0(ByteBuffer ptr, int _descriptorCount);/*
-		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(*ptr);
-		  _obj.descriptorCount = (uint32_t) (_descriptorCount);
+	 private static native void descriptorCount0(Buffer ptr, int _descriptorCount);/*
+		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
+		  vkObj->descriptorCount = (uint32_t) (_descriptorCount);
 	  */
 
 	/**
 	 * native GET method for field descriptorCount	[int]<br>
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
-	 private static native int descriptorCount0(ByteBuffer ptr);/*
-		  VkCopyDescriptorSet _obj = (VkCopyDescriptorSet)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int descriptorCount0(Buffer ptr);/*
+		  VkCopyDescriptorSet vkObj = (VkCopyDescriptorSet*)(ptr);
+		  return (jint) (vkObj->descriptorCount);
 	 */
 
 

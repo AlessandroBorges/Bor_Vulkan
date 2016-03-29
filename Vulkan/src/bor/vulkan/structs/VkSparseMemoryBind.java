@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -141,16 +143,17 @@ public class VkSparseMemoryBind extends VkStruct {
 	 */ 
 	 public void resourceOffset(long resourceOffset){
 		 this.resourceOffset = resourceOffset;
-		resourceOffset0(super.ptr, resourceOffset);
+		 resourceOffset0(this.ptr,  resourceOffset);
 	 }
 
 	/**
-	 * get method for field resourceOffset	[long]<br>
+	 * Get method for field resourceOffset	[long]<br>
 	 * Prototype: VkDeviceSize  resourceOffset
 	 */ 
 	 public long resourceOffset(){
-		 // return  this.resourceOffset;
-		 return resourceOffset0(super.ptr);
+		 long var = resourceOffset0(super.ptr);
+		 this.resourceOffset = var;
+		 return this.resourceOffset;
 	 }
 
 	/**
@@ -159,16 +162,17 @@ public class VkSparseMemoryBind extends VkStruct {
 	 */ 
 	 public void size(long size){
 		 this.size = size;
-		size0(super.ptr, size);
+		 size0(this.ptr,  size);
 	 }
 
 	/**
-	 * get method for field size	[long]<br>
+	 * Get method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public long size(){
-		 // return  this.size;
-		 return size0(super.ptr);
+		 long var = size0(super.ptr);
+		 this.size = var;
+		 return this.size;
 	 }
 
 	/**
@@ -177,16 +181,27 @@ public class VkSparseMemoryBind extends VkStruct {
 	 */ 
 	 public void memory(VkDeviceMemory memory){
 		 this.memory = memory;
-		memory0(super.ptr, memory);
+		 ByteBuffer buff = (memory==null) ? null : memory.getHandle();
+		 memory0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field memory	[vkhandle]<br>
+	 * Get method for field memory	[vkhandle]<br>
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
 	 public VkDeviceMemory memory(){
-		 // return  this.memory;
-		 return memory0(super.ptr);
+
+		 ByteBuffer handle = memory0(super.ptr);
+		 if(handle == null){
+		    this.memory = null;
+		    return null;
+		  } else 
+ 		 if(this.memory == null){
+		    this.memory = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.memory).setHandle(handle);
+		  }
+		 return this.memory;
 	 }
 
 	/**
@@ -195,16 +210,17 @@ public class VkSparseMemoryBind extends VkStruct {
 	 */ 
 	 public void memoryOffset(long memoryOffset){
 		 this.memoryOffset = memoryOffset;
-		memoryOffset0(super.ptr, memoryOffset);
+		 memoryOffset0(this.ptr,  memoryOffset);
 	 }
 
 	/**
-	 * get method for field memoryOffset	[long]<br>
+	 * Get method for field memoryOffset	[long]<br>
 	 * Prototype: VkDeviceSize  memoryOffset
 	 */ 
 	 public long memoryOffset(){
-		 // return  this.memoryOffset;
-		 return memoryOffset0(super.ptr);
+		 long var = memoryOffset0(super.ptr);
+		 this.memoryOffset = var;
+		 return this.memoryOffset;
 	 }
 
 	/**
@@ -213,16 +229,17 @@ public class VkSparseMemoryBind extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		flags0(super.ptr, flags);
+		 flags0(this.ptr,  flags);
 	 }
 
 	/**
-	 * get method for field flags	[int]<br>
+	 * Get method for field flags	[int]<br>
 	 * Prototype: VkSparseMemoryBindFlags  flags
 	 */ 
 	 public int flags(){
-		 // return  this.flags;
-		 return flags0(super.ptr);
+		 int var = flags0(super.ptr);
+		 this.flags = var;
+		 return this.flags;
 	 }
 
 
@@ -233,90 +250,90 @@ public class VkSparseMemoryBind extends VkStruct {
 	 * native SET method for field resourceOffset	[long]<br>
 	 * Prototype: VkDeviceSize  resourceOffset
 	 */ 
-	 private static native void resourceOffset0(ByteBuffer ptr, long _resourceOffset);/*
-		  VkSparseMemoryBind _obj = (VkSparseMemoryBind)(*ptr);
-		  _obj.resourceOffset = (VkDeviceSize) (_resourceOffset);
+	 private static native void resourceOffset0(Buffer ptr, long _resourceOffset);/*
+		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
+		  vkObj->resourceOffset = (VkDeviceSize) (_resourceOffset);
 	  */
 
 	/**
 	 * native GET method for field resourceOffset	[long]<br>
 	 * Prototype: VkDeviceSize  resourceOffset
 	 */ 
-	 private static native long resourceOffset0(ByteBuffer ptr);/*
-		  VkSparseMemoryBind _obj = (VkSparseMemoryBind)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long resourceOffset0(Buffer ptr);/*
+		  VkSparseMemoryBind vkObj = (VkSparseMemoryBind*)(ptr);
+		  return (jlong) (vkObj->resourceOffset);
 	 */
 
 	/**
 	 * native SET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
-	 private static native void size0(ByteBuffer ptr, long _size);/*
-		  VkSparseMemoryBind _obj = (VkSparseMemoryBind)(*ptr);
-		  _obj.size = (VkDeviceSize) (_size);
+	 private static native void size0(Buffer ptr, long _size);/*
+		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
+		  vkObj->size = (VkDeviceSize) (_size);
 	  */
 
 	/**
 	 * native GET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
-	 private static native long size0(ByteBuffer ptr);/*
-		  VkSparseMemoryBind _obj = (VkSparseMemoryBind)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long size0(Buffer ptr);/*
+		  VkSparseMemoryBind vkObj = (VkSparseMemoryBind*)(ptr);
+		  return (jlong) (vkObj->size);
 	 */
 
 	/**
 	 * native SET method for field memory	[vkhandle]<br>
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
-	 private static native void memory0(ByteBuffer ptr, VkDeviceMemory _memory);/*
-		  VkSparseMemoryBind _obj = (VkSparseMemoryBind)(*ptr);
-		  _obj.memory = (VkDeviceMemory) (_memory);
+	 private static native void memory0(Buffer ptr, java.nio.ByteBuffer  _memory);/*
+		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
+		  vkObj->memory = (VkDeviceMemory) (_memory);
 	  */
 
 	/**
 	 * native GET method for field memory	[vkhandle]<br>
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
-	 private static native VkDeviceMemory memory0(ByteBuffer ptr);/*
-		  VkSparseMemoryBind _obj = (VkSparseMemoryBind)(ptr);
-		  return (VkDeviceMemory) (_obj.VkDeviceMemory);
+	 private static native java.nio.ByteBuffer  memory0(Buffer ptr);/*
+		  VkSparseMemoryBind vkObj = (VkSparseMemoryBind*)(ptr);
+		  return (VkDeviceMemory) (vkObj->memory);
 	 */
 
 	/**
 	 * native SET method for field memoryOffset	[long]<br>
 	 * Prototype: VkDeviceSize  memoryOffset
 	 */ 
-	 private static native void memoryOffset0(ByteBuffer ptr, long _memoryOffset);/*
-		  VkSparseMemoryBind _obj = (VkSparseMemoryBind)(*ptr);
-		  _obj.memoryOffset = (VkDeviceSize) (_memoryOffset);
+	 private static native void memoryOffset0(Buffer ptr, long _memoryOffset);/*
+		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
+		  vkObj->memoryOffset = (VkDeviceSize) (_memoryOffset);
 	  */
 
 	/**
 	 * native GET method for field memoryOffset	[long]<br>
 	 * Prototype: VkDeviceSize  memoryOffset
 	 */ 
-	 private static native long memoryOffset0(ByteBuffer ptr);/*
-		  VkSparseMemoryBind _obj = (VkSparseMemoryBind)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long memoryOffset0(Buffer ptr);/*
+		  VkSparseMemoryBind vkObj = (VkSparseMemoryBind*)(ptr);
+		  return (jlong) (vkObj->memoryOffset);
 	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkSparseMemoryBindFlags  flags
 	 */ 
-	 private static native void flags0(ByteBuffer ptr, int _flags);/*
-		  VkSparseMemoryBind _obj = (VkSparseMemoryBind)(*ptr);
-		  _obj.flags = (VkSparseMemoryBindFlags) (_flags);
+	 private static native void flags0(Buffer ptr, int _flags);/*
+		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
+		  vkObj->flags = (VkSparseMemoryBindFlags) (_flags);
 	  */
 
 	/**
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkSparseMemoryBindFlags  flags
 	 */ 
-	 private static native int flags0(ByteBuffer ptr);/*
-		  VkSparseMemoryBind _obj = (VkSparseMemoryBind)(ptr);
-		  return (jint) (_obj.VkSparseMemoryBindFlags);
+	 private static native int flags0(Buffer ptr);/*
+		  VkSparseMemoryBind vkObj = (VkSparseMemoryBind*)(ptr);
+		  return (jint) (vkObj->flags);
 	 */
 
 

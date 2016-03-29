@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -123,16 +125,17 @@ public class VkExtent2D extends VkStruct {
 	 */ 
 	 public void width(int width){
 		 this.width = width;
-		width0(super.ptr, width);
+		 width0(this.ptr,  width);
 	 }
 
 	/**
-	 * get method for field width	[int]<br>
+	 * Get method for field width	[int]<br>
 	 * Prototype: uint32_t  width
 	 */ 
 	 public int width(){
-		 // return  this.width;
-		 return width0(super.ptr);
+		 int var = width0(super.ptr);
+		 this.width = var;
+		 return this.width;
 	 }
 
 	/**
@@ -141,16 +144,17 @@ public class VkExtent2D extends VkStruct {
 	 */ 
 	 public void height(int height){
 		 this.height = height;
-		height0(super.ptr, height);
+		 height0(this.ptr,  height);
 	 }
 
 	/**
-	 * get method for field height	[int]<br>
+	 * Get method for field height	[int]<br>
 	 * Prototype: uint32_t  height
 	 */ 
 	 public int height(){
-		 // return  this.height;
-		 return height0(super.ptr);
+		 int var = height0(super.ptr);
+		 this.height = var;
+		 return this.height;
 	 }
 
 
@@ -161,36 +165,36 @@ public class VkExtent2D extends VkStruct {
 	 * native SET method for field width	[int]<br>
 	 * Prototype: uint32_t  width
 	 */ 
-	 private static native void width0(ByteBuffer ptr, int _width);/*
-		  VkExtent2D _obj = (VkExtent2D)(*ptr);
-		  _obj.width = (uint32_t) (_width);
+	 private static native void width0(Buffer ptr, int _width);/*
+		  VkExtent2D* vkObj = (VkExtent2D*)(ptr);
+		  vkObj->width = (uint32_t) (_width);
 	  */
 
 	/**
 	 * native GET method for field width	[int]<br>
 	 * Prototype: uint32_t  width
 	 */ 
-	 private static native int width0(ByteBuffer ptr);/*
-		  VkExtent2D _obj = (VkExtent2D)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int width0(Buffer ptr);/*
+		  VkExtent2D vkObj = (VkExtent2D*)(ptr);
+		  return (jint) (vkObj->width);
 	 */
 
 	/**
 	 * native SET method for field height	[int]<br>
 	 * Prototype: uint32_t  height
 	 */ 
-	 private static native void height0(ByteBuffer ptr, int _height);/*
-		  VkExtent2D _obj = (VkExtent2D)(*ptr);
-		  _obj.height = (uint32_t) (_height);
+	 private static native void height0(Buffer ptr, int _height);/*
+		  VkExtent2D* vkObj = (VkExtent2D*)(ptr);
+		  vkObj->height = (uint32_t) (_height);
 	  */
 
 	/**
 	 * native GET method for field height	[int]<br>
 	 * Prototype: uint32_t  height
 	 */ 
-	 private static native int height0(ByteBuffer ptr);/*
-		  VkExtent2D _obj = (VkExtent2D)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int height0(Buffer ptr);/*
+		  VkExtent2D vkObj = (VkExtent2D*)(ptr);
+		  return (jint) (vkObj->height);
 	 */
 
 

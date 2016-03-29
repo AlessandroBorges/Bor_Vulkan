@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -52,9 +54,9 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  VkPipelineDynamicStateCreateFlags 	flags	[int]
@@ -141,34 +143,46 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -177,16 +191,17 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		flags0(super.ptr, flags);
+		 flags0(this.ptr,  flags);
 	 }
 
 	/**
-	 * get method for field flags	[int]<br>
+	 * Get method for field flags	[int]<br>
 	 * Prototype: VkPipelineDynamicStateCreateFlags  flags
 	 */ 
 	 public int flags(){
-		 // return  this.flags;
-		 return flags0(super.ptr);
+		 int var = flags0(super.ptr);
+		 this.flags = var;
+		 return this.flags;
 	 }
 
 	/**
@@ -195,16 +210,17 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 */ 
 	 public void dynamicStateCount(int dynamicStateCount){
 		 this.dynamicStateCount = dynamicStateCount;
-		dynamicStateCount0(super.ptr, dynamicStateCount);
+		 dynamicStateCount0(this.ptr,  dynamicStateCount);
 	 }
 
 	/**
-	 * get method for field dynamicStateCount	[int]<br>
+	 * Get method for field dynamicStateCount	[int]<br>
 	 * Prototype: uint32_t  dynamicStateCount
 	 */ 
 	 public int dynamicStateCount(){
-		 // return  this.dynamicStateCount;
-		 return dynamicStateCount0(super.ptr);
+		 int var = dynamicStateCount0(super.ptr);
+		 this.dynamicStateCount = var;
+		 return this.dynamicStateCount;
 	 }
 
 	/**
@@ -213,16 +229,17 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 */ 
 	 public void pDynamicStates(Penum<VkDynamicState> pDynamicStates){
 		 this.pDynamicStates = pDynamicStates;
-		pDynamicStates0(super.ptr, pDynamicStates);
+		 pDynamicStates0(this.ptr,  pDynamicStates);
 	 }
 
 	/**
-	 * get method for field pDynamicStates	<br>
+	 * Get method for field pDynamicStates	<br>
 	 * Prototype: const VkDynamicState*  pDynamicStates
 	 */ 
 	 public Penum<VkDynamicState> pDynamicStates(){
-		 // return  this.pDynamicStates;
-		 return pDynamicStates0(super.ptr);
+		 Penum<VkDynamicState> var = pDynamicStates0(super.ptr);
+		 this.pDynamicStates = var;
+		 return this.pDynamicStates;
 	 }
 
 
@@ -233,90 +250,90 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkPipelineDynamicStateCreateInfo _obj = (VkPipelineDynamicStateCreateInfo)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkPipelineDynamicStateCreateInfo _obj = (VkPipelineDynamicStateCreateInfo)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkPipelineDynamicStateCreateInfo vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkPipelineDynamicStateCreateInfo _obj = (VkPipelineDynamicStateCreateInfo)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkPipelineDynamicStateCreateInfo _obj = (VkPipelineDynamicStateCreateInfo)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkPipelineDynamicStateCreateInfo vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkPipelineDynamicStateCreateFlags  flags
 	 */ 
-	 private static native void flags0(ByteBuffer ptr, int _flags);/*
-		  VkPipelineDynamicStateCreateInfo _obj = (VkPipelineDynamicStateCreateInfo)(*ptr);
-		  _obj.flags = (VkPipelineDynamicStateCreateFlags) (_flags);
+	 private static native void flags0(Buffer ptr, int _flags);/*
+		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
+		  vkObj->flags = (VkPipelineDynamicStateCreateFlags) (_flags);
 	  */
 
 	/**
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkPipelineDynamicStateCreateFlags  flags
 	 */ 
-	 private static native int flags0(ByteBuffer ptr);/*
-		  VkPipelineDynamicStateCreateInfo _obj = (VkPipelineDynamicStateCreateInfo)(ptr);
-		  return (jint) (_obj.VkPipelineDynamicStateCreateFlags);
+	 private static native int flags0(Buffer ptr);/*
+		  VkPipelineDynamicStateCreateInfo vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
+		  return (jint) (vkObj->flags);
 	 */
 
 	/**
 	 * native SET method for field dynamicStateCount	[int]<br>
 	 * Prototype: uint32_t  dynamicStateCount
 	 */ 
-	 private static native void dynamicStateCount0(ByteBuffer ptr, int _dynamicStateCount);/*
-		  VkPipelineDynamicStateCreateInfo _obj = (VkPipelineDynamicStateCreateInfo)(*ptr);
-		  _obj.dynamicStateCount = (uint32_t) (_dynamicStateCount);
+	 private static native void dynamicStateCount0(Buffer ptr, int _dynamicStateCount);/*
+		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
+		  vkObj->dynamicStateCount = (uint32_t) (_dynamicStateCount);
 	  */
 
 	/**
 	 * native GET method for field dynamicStateCount	[int]<br>
 	 * Prototype: uint32_t  dynamicStateCount
 	 */ 
-	 private static native int dynamicStateCount0(ByteBuffer ptr);/*
-		  VkPipelineDynamicStateCreateInfo _obj = (VkPipelineDynamicStateCreateInfo)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int dynamicStateCount0(Buffer ptr);/*
+		  VkPipelineDynamicStateCreateInfo vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
+		  return (jint) (vkObj->dynamicStateCount);
 	 */
 
 	/**
 	 * native SET method for field pDynamicStates	<br>
 	 * Prototype: const VkDynamicState*  pDynamicStates
 	 */ 
-	 private static native void pDynamicStates0(ByteBuffer ptr, Penum<VkDynamicState> _pDynamicStates);/*
-		  VkPipelineDynamicStateCreateInfo _obj = (VkPipelineDynamicStateCreateInfo)(*ptr);
-		  _obj.pDynamicStates = (const VkDynamicState*) (_pDynamicStates);
+	 private static native void pDynamicStates0(Buffer ptr, Penum<VkDynamicState> _pDynamicStates);/*
+		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
+		  vkObj->pDynamicStates = (const VkDynamicState*) (_pDynamicStates);
 	  */
 
 	/**
 	 * native GET method for field pDynamicStates	<br>
 	 * Prototype: const VkDynamicState*  pDynamicStates
 	 */ 
-	 private static native Penum<VkDynamicState> pDynamicStates0(ByteBuffer ptr);/*
-		  VkPipelineDynamicStateCreateInfo _obj = (VkPipelineDynamicStateCreateInfo)(ptr);
-		  return (Penum<VkDynamicState>) (_obj.const VkDynamicState*);
+	 private static native Penum<VkDynamicState> pDynamicStates0(Buffer ptr);/*
+		  VkPipelineDynamicStateCreateInfo vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
+		  return (Penum<VkDynamicState>) (vkObj->pDynamicStates);
 	 */
 
 

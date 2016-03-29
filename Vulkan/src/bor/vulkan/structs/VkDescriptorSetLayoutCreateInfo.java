@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -52,9 +54,9 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  VkDescriptorSetLayoutCreateFlags 	flags	[int]
@@ -67,9 +69,9 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 int 	bindingCount;
 
 	/**
-	 *  const VkDescriptorSetLayoutBinding* 	pBindings	[p]
+	 *  const VkDescriptorSetLayoutBinding* 	pBindings	[vkstruct]
 	 */ 
-	 P<VkDescriptorSetLayoutBinding>  	pBindings;
+	  VkDescriptorSetLayoutBinding  	pBindings;
 
 	/**
 	 * Ctor
@@ -141,34 +143,46 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -177,16 +191,17 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		flags0(super.ptr, flags);
+		 flags0(this.ptr,  flags);
 	 }
 
 	/**
-	 * get method for field flags	[int]<br>
+	 * Get method for field flags	[int]<br>
 	 * Prototype: VkDescriptorSetLayoutCreateFlags  flags
 	 */ 
 	 public int flags(){
-		 // return  this.flags;
-		 return flags0(super.ptr);
+		 int var = flags0(super.ptr);
+		 this.flags = var;
+		 return this.flags;
 	 }
 
 	/**
@@ -195,34 +210,45 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 */ 
 	 public void bindingCount(int bindingCount){
 		 this.bindingCount = bindingCount;
-		bindingCount0(super.ptr, bindingCount);
+		 bindingCount0(this.ptr,  bindingCount);
 	 }
 
 	/**
-	 * get method for field bindingCount	[int]<br>
+	 * Get method for field bindingCount	[int]<br>
 	 * Prototype: uint32_t  bindingCount
 	 */ 
 	 public int bindingCount(){
-		 // return  this.bindingCount;
-		 return bindingCount0(super.ptr);
+		 int var = bindingCount0(super.ptr);
+		 this.bindingCount = var;
+		 return this.bindingCount;
 	 }
 
 	/**
-	 * Set method for field pBindings	[p]<br>
+	 * Set method for field pBindings	[vkstruct]<br>
 	 * Prototype: const VkDescriptorSetLayoutBinding*  pBindings
 	 */ 
-	 public void pBindings(P<VkDescriptorSetLayoutBinding>  pBindings){
+	 public void pBindings( VkDescriptorSetLayoutBinding  pBindings){
 		 this.pBindings = pBindings;
-		pBindings0(super.ptr, pBindings);
+		 ByteBuffer buff = (pBindings==null) ? null : pBindings.getPointerStruct();
+		 pBindings0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pBindings	[p]<br>
+	 * Get method for field pBindings	[vkstruct]<br>
 	 * Prototype: const VkDescriptorSetLayoutBinding*  pBindings
 	 */ 
-	 public P<VkDescriptorSetLayoutBinding>  pBindings(){
-		 // return  this.pBindings;
-		 return pBindings0(super.ptr);
+	 public  VkDescriptorSetLayoutBinding  pBindings(){
+		 ByteBuffer pointer = pBindings0(super.ptr);
+		 if(pointer == null){
+		    this.pBindings = null;
+		    return null;
+		  } else 
+ 		 if(this.pBindings == null){
+		    this.pBindings = new  VkDescriptorSetLayoutBinding (pointer);
+		 }else{
+		    this.pBindings.setPointer(pointer);
+		  }
+		 return this.pBindings;
 	 }
 
 
@@ -233,90 +259,90 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkDescriptorSetLayoutCreateInfo _obj = (VkDescriptorSetLayoutCreateInfo)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkDescriptorSetLayoutCreateInfo* vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkDescriptorSetLayoutCreateInfo _obj = (VkDescriptorSetLayoutCreateInfo)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkDescriptorSetLayoutCreateInfo vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkDescriptorSetLayoutCreateInfo _obj = (VkDescriptorSetLayoutCreateInfo)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkDescriptorSetLayoutCreateInfo* vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkDescriptorSetLayoutCreateInfo _obj = (VkDescriptorSetLayoutCreateInfo)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkDescriptorSetLayoutCreateInfo vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkDescriptorSetLayoutCreateFlags  flags
 	 */ 
-	 private static native void flags0(ByteBuffer ptr, int _flags);/*
-		  VkDescriptorSetLayoutCreateInfo _obj = (VkDescriptorSetLayoutCreateInfo)(*ptr);
-		  _obj.flags = (VkDescriptorSetLayoutCreateFlags) (_flags);
+	 private static native void flags0(Buffer ptr, int _flags);/*
+		  VkDescriptorSetLayoutCreateInfo* vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		  vkObj->flags = (VkDescriptorSetLayoutCreateFlags) (_flags);
 	  */
 
 	/**
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkDescriptorSetLayoutCreateFlags  flags
 	 */ 
-	 private static native int flags0(ByteBuffer ptr);/*
-		  VkDescriptorSetLayoutCreateInfo _obj = (VkDescriptorSetLayoutCreateInfo)(ptr);
-		  return (jint) (_obj.VkDescriptorSetLayoutCreateFlags);
+	 private static native int flags0(Buffer ptr);/*
+		  VkDescriptorSetLayoutCreateInfo vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		  return (jint) (vkObj->flags);
 	 */
 
 	/**
 	 * native SET method for field bindingCount	[int]<br>
 	 * Prototype: uint32_t  bindingCount
 	 */ 
-	 private static native void bindingCount0(ByteBuffer ptr, int _bindingCount);/*
-		  VkDescriptorSetLayoutCreateInfo _obj = (VkDescriptorSetLayoutCreateInfo)(*ptr);
-		  _obj.bindingCount = (uint32_t) (_bindingCount);
+	 private static native void bindingCount0(Buffer ptr, int _bindingCount);/*
+		  VkDescriptorSetLayoutCreateInfo* vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		  vkObj->bindingCount = (uint32_t) (_bindingCount);
 	  */
 
 	/**
 	 * native GET method for field bindingCount	[int]<br>
 	 * Prototype: uint32_t  bindingCount
 	 */ 
-	 private static native int bindingCount0(ByteBuffer ptr);/*
-		  VkDescriptorSetLayoutCreateInfo _obj = (VkDescriptorSetLayoutCreateInfo)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int bindingCount0(Buffer ptr);/*
+		  VkDescriptorSetLayoutCreateInfo vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		  return (jint) (vkObj->bindingCount);
 	 */
 
 	/**
-	 * native SET method for field pBindings	[p]<br>
+	 * native SET method for field pBindings	[vkstruct]<br>
 	 * Prototype: const VkDescriptorSetLayoutBinding*  pBindings
 	 */ 
-	 private static native void pBindings0(ByteBuffer ptr, P<VkDescriptorSetLayoutBinding>  _pBindings);/*
-		  VkDescriptorSetLayoutCreateInfo _obj = (VkDescriptorSetLayoutCreateInfo)(*ptr);
-		  _obj.pBindings = (const VkDescriptorSetLayoutBinding*) (_pBindings);
+	 private static native void pBindings0(Buffer ptr, java.nio.ByteBuffer  _pBindings);/*
+		  VkDescriptorSetLayoutCreateInfo* vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		  vkObj->pBindings = (const VkDescriptorSetLayoutBinding*) (_pBindings);
 	  */
 
 	/**
-	 * native GET method for field pBindings	[p]<br>
+	 * native GET method for field pBindings	[vkstruct]<br>
 	 * Prototype: const VkDescriptorSetLayoutBinding*  pBindings
 	 */ 
-	 private static native P<VkDescriptorSetLayoutBinding>  pBindings0(ByteBuffer ptr);/*
-		  VkDescriptorSetLayoutCreateInfo _obj = (VkDescriptorSetLayoutCreateInfo)(ptr);
-		  return (P<VkDescriptorSetLayoutBinding> ) (_obj.const VkDescriptorSetLayoutBinding*);
+	 private static native java.nio.ByteBuffer  pBindings0(Buffer ptr);/*
+		  VkDescriptorSetLayoutCreateInfo vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		  return ( VkDescriptorSetLayoutBinding ) (vkObj->pBindings);
 	 */
 
 

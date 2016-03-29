@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -135,16 +137,17 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 */ 
 	 public void queueFlags(int queueFlags){
 		 this.queueFlags = queueFlags;
-		queueFlags0(super.ptr, queueFlags);
+		 queueFlags0(this.ptr,  queueFlags);
 	 }
 
 	/**
-	 * get method for field queueFlags	[int]<br>
+	 * Get method for field queueFlags	[int]<br>
 	 * Prototype: VkQueueFlags  queueFlags
 	 */ 
 	 public int queueFlags(){
-		 // return  this.queueFlags;
-		 return queueFlags0(super.ptr);
+		 int var = queueFlags0(super.ptr);
+		 this.queueFlags = var;
+		 return this.queueFlags;
 	 }
 
 	/**
@@ -153,16 +156,17 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 */ 
 	 public void queueCount(int queueCount){
 		 this.queueCount = queueCount;
-		queueCount0(super.ptr, queueCount);
+		 queueCount0(this.ptr,  queueCount);
 	 }
 
 	/**
-	 * get method for field queueCount	[int]<br>
+	 * Get method for field queueCount	[int]<br>
 	 * Prototype: uint32_t  queueCount
 	 */ 
 	 public int queueCount(){
-		 // return  this.queueCount;
-		 return queueCount0(super.ptr);
+		 int var = queueCount0(super.ptr);
+		 this.queueCount = var;
+		 return this.queueCount;
 	 }
 
 	/**
@@ -171,16 +175,17 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 */ 
 	 public void timestampValidBits(int timestampValidBits){
 		 this.timestampValidBits = timestampValidBits;
-		timestampValidBits0(super.ptr, timestampValidBits);
+		 timestampValidBits0(this.ptr,  timestampValidBits);
 	 }
 
 	/**
-	 * get method for field timestampValidBits	[int]<br>
+	 * Get method for field timestampValidBits	[int]<br>
 	 * Prototype: uint32_t  timestampValidBits
 	 */ 
 	 public int timestampValidBits(){
-		 // return  this.timestampValidBits;
-		 return timestampValidBits0(super.ptr);
+		 int var = timestampValidBits0(super.ptr);
+		 this.timestampValidBits = var;
+		 return this.timestampValidBits;
 	 }
 
 	/**
@@ -189,16 +194,26 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 */ 
 	 public void minImageTransferGranularity(VkExtent3D minImageTransferGranularity){
 		 this.minImageTransferGranularity = minImageTransferGranularity;
-		minImageTransferGranularity0(super.ptr, minImageTransferGranularity);
+		 ByteBuffer buff = (minImageTransferGranularity==null) ? null : minImageTransferGranularity.getPointerStruct();
+		 minImageTransferGranularity0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field minImageTransferGranularity	[vkstruct]<br>
+	 * Get method for field minImageTransferGranularity	[vkstruct]<br>
 	 * Prototype: VkExtent3D  minImageTransferGranularity
 	 */ 
 	 public VkExtent3D minImageTransferGranularity(){
-		 // return  this.minImageTransferGranularity;
-		 return minImageTransferGranularity0(super.ptr);
+		 ByteBuffer pointer = minImageTransferGranularity0(super.ptr);
+		 if(pointer == null){
+		    this.minImageTransferGranularity = null;
+		    return null;
+		  } else 
+ 		 if(this.minImageTransferGranularity == null){
+		    this.minImageTransferGranularity = new VkExtent3D(pointer);
+		 }else{
+		    this.minImageTransferGranularity.setPointer(pointer);
+		  }
+		 return this.minImageTransferGranularity;
 	 }
 
 
@@ -209,72 +224,72 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 * native SET method for field queueFlags	[int]<br>
 	 * Prototype: VkQueueFlags  queueFlags
 	 */ 
-	 private static native void queueFlags0(ByteBuffer ptr, int _queueFlags);/*
-		  VkQueueFamilyProperties _obj = (VkQueueFamilyProperties)(*ptr);
-		  _obj.queueFlags = (VkQueueFlags) (_queueFlags);
+	 private static native void queueFlags0(Buffer ptr, int _queueFlags);/*
+		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
+		  vkObj->queueFlags = (VkQueueFlags) (_queueFlags);
 	  */
 
 	/**
 	 * native GET method for field queueFlags	[int]<br>
 	 * Prototype: VkQueueFlags  queueFlags
 	 */ 
-	 private static native int queueFlags0(ByteBuffer ptr);/*
-		  VkQueueFamilyProperties _obj = (VkQueueFamilyProperties)(ptr);
-		  return (jint) (_obj.VkQueueFlags);
+	 private static native int queueFlags0(Buffer ptr);/*
+		  VkQueueFamilyProperties vkObj = (VkQueueFamilyProperties*)(ptr);
+		  return (jint) (vkObj->queueFlags);
 	 */
 
 	/**
 	 * native SET method for field queueCount	[int]<br>
 	 * Prototype: uint32_t  queueCount
 	 */ 
-	 private static native void queueCount0(ByteBuffer ptr, int _queueCount);/*
-		  VkQueueFamilyProperties _obj = (VkQueueFamilyProperties)(*ptr);
-		  _obj.queueCount = (uint32_t) (_queueCount);
+	 private static native void queueCount0(Buffer ptr, int _queueCount);/*
+		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
+		  vkObj->queueCount = (uint32_t) (_queueCount);
 	  */
 
 	/**
 	 * native GET method for field queueCount	[int]<br>
 	 * Prototype: uint32_t  queueCount
 	 */ 
-	 private static native int queueCount0(ByteBuffer ptr);/*
-		  VkQueueFamilyProperties _obj = (VkQueueFamilyProperties)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int queueCount0(Buffer ptr);/*
+		  VkQueueFamilyProperties vkObj = (VkQueueFamilyProperties*)(ptr);
+		  return (jint) (vkObj->queueCount);
 	 */
 
 	/**
 	 * native SET method for field timestampValidBits	[int]<br>
 	 * Prototype: uint32_t  timestampValidBits
 	 */ 
-	 private static native void timestampValidBits0(ByteBuffer ptr, int _timestampValidBits);/*
-		  VkQueueFamilyProperties _obj = (VkQueueFamilyProperties)(*ptr);
-		  _obj.timestampValidBits = (uint32_t) (_timestampValidBits);
+	 private static native void timestampValidBits0(Buffer ptr, int _timestampValidBits);/*
+		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
+		  vkObj->timestampValidBits = (uint32_t) (_timestampValidBits);
 	  */
 
 	/**
 	 * native GET method for field timestampValidBits	[int]<br>
 	 * Prototype: uint32_t  timestampValidBits
 	 */ 
-	 private static native int timestampValidBits0(ByteBuffer ptr);/*
-		  VkQueueFamilyProperties _obj = (VkQueueFamilyProperties)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int timestampValidBits0(Buffer ptr);/*
+		  VkQueueFamilyProperties vkObj = (VkQueueFamilyProperties*)(ptr);
+		  return (jint) (vkObj->timestampValidBits);
 	 */
 
 	/**
 	 * native SET method for field minImageTransferGranularity	[vkstruct]<br>
 	 * Prototype: VkExtent3D  minImageTransferGranularity
 	 */ 
-	 private static native void minImageTransferGranularity0(ByteBuffer ptr, VkExtent3D _minImageTransferGranularity);/*
-		  VkQueueFamilyProperties _obj = (VkQueueFamilyProperties)(*ptr);
-		  _obj.minImageTransferGranularity = (VkExtent3D) (_minImageTransferGranularity);
+	 private static native void minImageTransferGranularity0(Buffer ptr, java.nio.ByteBuffer  _minImageTransferGranularity);/*
+		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
+		  vkObj->minImageTransferGranularity = (VkExtent3D) (_minImageTransferGranularity);
 	  */
 
 	/**
 	 * native GET method for field minImageTransferGranularity	[vkstruct]<br>
 	 * Prototype: VkExtent3D  minImageTransferGranularity
 	 */ 
-	 private static native VkExtent3D minImageTransferGranularity0(ByteBuffer ptr);/*
-		  VkQueueFamilyProperties _obj = (VkQueueFamilyProperties)(ptr);
-		  return (VkExtent3D) (_obj.VkExtent3D);
+	 private static native java.nio.ByteBuffer  minImageTransferGranularity0(Buffer ptr);/*
+		  VkQueueFamilyProperties vkObj = (VkQueueFamilyProperties*)(ptr);
+		  return (VkExtent3D) (vkObj->minImageTransferGranularity);
 	 */
 
 

@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -54,9 +56,9 @@ public class VkApplicationInfo extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  const char* 	pApplicationName	[string]
@@ -153,34 +155,46 @@ public class VkApplicationInfo extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -189,16 +203,17 @@ public class VkApplicationInfo extends VkStruct {
 	 */ 
 	 public void pApplicationName(String pApplicationName){
 		 this.pApplicationName = pApplicationName;
-		pApplicationName0(super.ptr, pApplicationName);
+		 pApplicationName0(this.ptr,  pApplicationName);
 	 }
 
 	/**
-	 * get method for field pApplicationName	[string]<br>
+	 * Get method for field pApplicationName	[string]<br>
 	 * Prototype: const char*  pApplicationName
 	 */ 
 	 public String pApplicationName(){
-		 // return  this.pApplicationName;
-		 return pApplicationName0(super.ptr);
+		 String var = pApplicationName0(super.ptr);
+		 this.pApplicationName = var;
+		 return this.pApplicationName;
 	 }
 
 	/**
@@ -207,16 +222,17 @@ public class VkApplicationInfo extends VkStruct {
 	 */ 
 	 public void applicationVersion(int applicationVersion){
 		 this.applicationVersion = applicationVersion;
-		applicationVersion0(super.ptr, applicationVersion);
+		 applicationVersion0(this.ptr,  applicationVersion);
 	 }
 
 	/**
-	 * get method for field applicationVersion	[int]<br>
+	 * Get method for field applicationVersion	[int]<br>
 	 * Prototype: uint32_t  applicationVersion
 	 */ 
 	 public int applicationVersion(){
-		 // return  this.applicationVersion;
-		 return applicationVersion0(super.ptr);
+		 int var = applicationVersion0(super.ptr);
+		 this.applicationVersion = var;
+		 return this.applicationVersion;
 	 }
 
 	/**
@@ -225,16 +241,17 @@ public class VkApplicationInfo extends VkStruct {
 	 */ 
 	 public void pEngineName(String pEngineName){
 		 this.pEngineName = pEngineName;
-		pEngineName0(super.ptr, pEngineName);
+		 pEngineName0(this.ptr,  pEngineName);
 	 }
 
 	/**
-	 * get method for field pEngineName	[string]<br>
+	 * Get method for field pEngineName	[string]<br>
 	 * Prototype: const char*  pEngineName
 	 */ 
 	 public String pEngineName(){
-		 // return  this.pEngineName;
-		 return pEngineName0(super.ptr);
+		 String var = pEngineName0(super.ptr);
+		 this.pEngineName = var;
+		 return this.pEngineName;
 	 }
 
 	/**
@@ -243,16 +260,17 @@ public class VkApplicationInfo extends VkStruct {
 	 */ 
 	 public void engineVersion(int engineVersion){
 		 this.engineVersion = engineVersion;
-		engineVersion0(super.ptr, engineVersion);
+		 engineVersion0(this.ptr,  engineVersion);
 	 }
 
 	/**
-	 * get method for field engineVersion	[int]<br>
+	 * Get method for field engineVersion	[int]<br>
 	 * Prototype: uint32_t  engineVersion
 	 */ 
 	 public int engineVersion(){
-		 // return  this.engineVersion;
-		 return engineVersion0(super.ptr);
+		 int var = engineVersion0(super.ptr);
+		 this.engineVersion = var;
+		 return this.engineVersion;
 	 }
 
 	/**
@@ -261,16 +279,17 @@ public class VkApplicationInfo extends VkStruct {
 	 */ 
 	 public void apiVersion(int apiVersion){
 		 this.apiVersion = apiVersion;
-		apiVersion0(super.ptr, apiVersion);
+		 apiVersion0(this.ptr,  apiVersion);
 	 }
 
 	/**
-	 * get method for field apiVersion	[int]<br>
+	 * Get method for field apiVersion	[int]<br>
 	 * Prototype: uint32_t  apiVersion
 	 */ 
 	 public int apiVersion(){
-		 // return  this.apiVersion;
-		 return apiVersion0(super.ptr);
+		 int var = apiVersion0(super.ptr);
+		 this.apiVersion = var;
+		 return this.apiVersion;
 	 }
 
 
@@ -281,124 +300,124 @@ public class VkApplicationInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkApplicationInfo _obj = (VkApplicationInfo)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkApplicationInfo _obj = (VkApplicationInfo)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkApplicationInfo vkObj = (VkApplicationInfo*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkApplicationInfo _obj = (VkApplicationInfo)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkApplicationInfo _obj = (VkApplicationInfo)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkApplicationInfo vkObj = (VkApplicationInfo*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field pApplicationName	[string]<br>
 	 * Prototype: const char*  pApplicationName
 	 */ 
-	 private static native void pApplicationName0(ByteBuffer ptr, String _pApplicationName);/*
-		  VkApplicationInfo _obj = (VkApplicationInfo)(*ptr);
-		  _obj.pApplicationName = (const char*) (_pApplicationName);
+	 private static native void pApplicationName0(Buffer ptr, String _pApplicationName);/*
+		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
+		  vkObj->pApplicationName = (const char*) (_pApplicationName);
 	  */
 
 	/**
 	 * native GET method for field pApplicationName	[string]<br>
 	 * Prototype: const char*  pApplicationName
 	 */ 
-	 private static native String pApplicationName0(ByteBuffer ptr);/*
-		  VkApplicationInfo _obj = (VkApplicationInfo)(ptr);
-		  return (jstring)(env->NewStringUTF(_obj.const char*);	 */
+	 private static native String pApplicationName0(Buffer ptr);/*
+		  VkApplicationInfo vkObj = (VkApplicationInfo*)(ptr);
+		  return (jstring)(env->NewStringUTF(vkObj->.pApplicationName);	 */
 
 	/**
 	 * native SET method for field applicationVersion	[int]<br>
 	 * Prototype: uint32_t  applicationVersion
 	 */ 
-	 private static native void applicationVersion0(ByteBuffer ptr, int _applicationVersion);/*
-		  VkApplicationInfo _obj = (VkApplicationInfo)(*ptr);
-		  _obj.applicationVersion = (uint32_t) (_applicationVersion);
+	 private static native void applicationVersion0(Buffer ptr, int _applicationVersion);/*
+		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
+		  vkObj->applicationVersion = (uint32_t) (_applicationVersion);
 	  */
 
 	/**
 	 * native GET method for field applicationVersion	[int]<br>
 	 * Prototype: uint32_t  applicationVersion
 	 */ 
-	 private static native int applicationVersion0(ByteBuffer ptr);/*
-		  VkApplicationInfo _obj = (VkApplicationInfo)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int applicationVersion0(Buffer ptr);/*
+		  VkApplicationInfo vkObj = (VkApplicationInfo*)(ptr);
+		  return (jint) (vkObj->applicationVersion);
 	 */
 
 	/**
 	 * native SET method for field pEngineName	[string]<br>
 	 * Prototype: const char*  pEngineName
 	 */ 
-	 private static native void pEngineName0(ByteBuffer ptr, String _pEngineName);/*
-		  VkApplicationInfo _obj = (VkApplicationInfo)(*ptr);
-		  _obj.pEngineName = (const char*) (_pEngineName);
+	 private static native void pEngineName0(Buffer ptr, String _pEngineName);/*
+		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
+		  vkObj->pEngineName = (const char*) (_pEngineName);
 	  */
 
 	/**
 	 * native GET method for field pEngineName	[string]<br>
 	 * Prototype: const char*  pEngineName
 	 */ 
-	 private static native String pEngineName0(ByteBuffer ptr);/*
-		  VkApplicationInfo _obj = (VkApplicationInfo)(ptr);
-		  return (jstring)(env->NewStringUTF(_obj.const char*);	 */
+	 private static native String pEngineName0(Buffer ptr);/*
+		  VkApplicationInfo vkObj = (VkApplicationInfo*)(ptr);
+		  return (jstring)(env->NewStringUTF(vkObj->.pEngineName);	 */
 
 	/**
 	 * native SET method for field engineVersion	[int]<br>
 	 * Prototype: uint32_t  engineVersion
 	 */ 
-	 private static native void engineVersion0(ByteBuffer ptr, int _engineVersion);/*
-		  VkApplicationInfo _obj = (VkApplicationInfo)(*ptr);
-		  _obj.engineVersion = (uint32_t) (_engineVersion);
+	 private static native void engineVersion0(Buffer ptr, int _engineVersion);/*
+		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
+		  vkObj->engineVersion = (uint32_t) (_engineVersion);
 	  */
 
 	/**
 	 * native GET method for field engineVersion	[int]<br>
 	 * Prototype: uint32_t  engineVersion
 	 */ 
-	 private static native int engineVersion0(ByteBuffer ptr);/*
-		  VkApplicationInfo _obj = (VkApplicationInfo)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int engineVersion0(Buffer ptr);/*
+		  VkApplicationInfo vkObj = (VkApplicationInfo*)(ptr);
+		  return (jint) (vkObj->engineVersion);
 	 */
 
 	/**
 	 * native SET method for field apiVersion	[int]<br>
 	 * Prototype: uint32_t  apiVersion
 	 */ 
-	 private static native void apiVersion0(ByteBuffer ptr, int _apiVersion);/*
-		  VkApplicationInfo _obj = (VkApplicationInfo)(*ptr);
-		  _obj.apiVersion = (uint32_t) (_apiVersion);
+	 private static native void apiVersion0(Buffer ptr, int _apiVersion);/*
+		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
+		  vkObj->apiVersion = (uint32_t) (_apiVersion);
 	  */
 
 	/**
 	 * native GET method for field apiVersion	[int]<br>
 	 * Prototype: uint32_t  apiVersion
 	 */ 
-	 private static native int apiVersion0(ByteBuffer ptr);/*
-		  VkApplicationInfo _obj = (VkApplicationInfo)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int apiVersion0(Buffer ptr);/*
+		  VkApplicationInfo vkObj = (VkApplicationInfo*)(ptr);
+		  return (jint) (vkObj->apiVersion);
 	 */
 
 

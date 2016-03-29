@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -52,9 +54,9 @@ public class VkMappedMemoryRange extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  VkDeviceMemory 	memory	[vkhandle]
@@ -141,34 +143,46 @@ public class VkMappedMemoryRange extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -177,16 +191,27 @@ public class VkMappedMemoryRange extends VkStruct {
 	 */ 
 	 public void memory(VkDeviceMemory memory){
 		 this.memory = memory;
-		memory0(super.ptr, memory);
+		 ByteBuffer buff = (memory==null) ? null : memory.getHandle();
+		 memory0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field memory	[vkhandle]<br>
+	 * Get method for field memory	[vkhandle]<br>
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
 	 public VkDeviceMemory memory(){
-		 // return  this.memory;
-		 return memory0(super.ptr);
+
+		 ByteBuffer handle = memory0(super.ptr);
+		 if(handle == null){
+		    this.memory = null;
+		    return null;
+		  } else 
+ 		 if(this.memory == null){
+		    this.memory = new VkHandle(handle);
+		 }else{
+		    ((VkHandle)this.memory).setHandle(handle);
+		  }
+		 return this.memory;
 	 }
 
 	/**
@@ -195,16 +220,17 @@ public class VkMappedMemoryRange extends VkStruct {
 	 */ 
 	 public void offset(long offset){
 		 this.offset = offset;
-		offset0(super.ptr, offset);
+		 offset0(this.ptr,  offset);
 	 }
 
 	/**
-	 * get method for field offset	[long]<br>
+	 * Get method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 public long offset(){
-		 // return  this.offset;
-		 return offset0(super.ptr);
+		 long var = offset0(super.ptr);
+		 this.offset = var;
+		 return this.offset;
 	 }
 
 	/**
@@ -213,16 +239,17 @@ public class VkMappedMemoryRange extends VkStruct {
 	 */ 
 	 public void size(long size){
 		 this.size = size;
-		size0(super.ptr, size);
+		 size0(this.ptr,  size);
 	 }
 
 	/**
-	 * get method for field size	[long]<br>
+	 * Get method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public long size(){
-		 // return  this.size;
-		 return size0(super.ptr);
+		 long var = size0(super.ptr);
+		 this.size = var;
+		 return this.size;
 	 }
 
 
@@ -233,90 +260,90 @@ public class VkMappedMemoryRange extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkMappedMemoryRange _obj = (VkMappedMemoryRange)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkMappedMemoryRange _obj = (VkMappedMemoryRange)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkMappedMemoryRange vkObj = (VkMappedMemoryRange*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkMappedMemoryRange _obj = (VkMappedMemoryRange)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkMappedMemoryRange _obj = (VkMappedMemoryRange)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkMappedMemoryRange vkObj = (VkMappedMemoryRange*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field memory	[vkhandle]<br>
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
-	 private static native void memory0(ByteBuffer ptr, VkDeviceMemory _memory);/*
-		  VkMappedMemoryRange _obj = (VkMappedMemoryRange)(*ptr);
-		  _obj.memory = (VkDeviceMemory) (_memory);
+	 private static native void memory0(Buffer ptr, java.nio.ByteBuffer  _memory);/*
+		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
+		  vkObj->memory = (VkDeviceMemory) (_memory);
 	  */
 
 	/**
 	 * native GET method for field memory	[vkhandle]<br>
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
-	 private static native VkDeviceMemory memory0(ByteBuffer ptr);/*
-		  VkMappedMemoryRange _obj = (VkMappedMemoryRange)(ptr);
-		  return (VkDeviceMemory) (_obj.VkDeviceMemory);
+	 private static native java.nio.ByteBuffer  memory0(Buffer ptr);/*
+		  VkMappedMemoryRange vkObj = (VkMappedMemoryRange*)(ptr);
+		  return (VkDeviceMemory) (vkObj->memory);
 	 */
 
 	/**
 	 * native SET method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
-	 private static native void offset0(ByteBuffer ptr, long _offset);/*
-		  VkMappedMemoryRange _obj = (VkMappedMemoryRange)(*ptr);
-		  _obj.offset = (VkDeviceSize) (_offset);
+	 private static native void offset0(Buffer ptr, long _offset);/*
+		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
+		  vkObj->offset = (VkDeviceSize) (_offset);
 	  */
 
 	/**
 	 * native GET method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
-	 private static native long offset0(ByteBuffer ptr);/*
-		  VkMappedMemoryRange _obj = (VkMappedMemoryRange)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long offset0(Buffer ptr);/*
+		  VkMappedMemoryRange vkObj = (VkMappedMemoryRange*)(ptr);
+		  return (jlong) (vkObj->offset);
 	 */
 
 	/**
 	 * native SET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
-	 private static native void size0(ByteBuffer ptr, long _size);/*
-		  VkMappedMemoryRange _obj = (VkMappedMemoryRange)(*ptr);
-		  _obj.size = (VkDeviceSize) (_size);
+	 private static native void size0(Buffer ptr, long _size);/*
+		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
+		  vkObj->size = (VkDeviceSize) (_size);
 	  */
 
 	/**
 	 * native GET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
-	 private static native long size0(ByteBuffer ptr);/*
-		  VkMappedMemoryRange _obj = (VkMappedMemoryRange)(ptr);
-		  return (jlong) (_obj.VkDeviceSize);
+	 private static native long size0(Buffer ptr);/*
+		  VkMappedMemoryRange vkObj = (VkMappedMemoryRange*)(ptr);
+		  return (jlong) (vkObj->size);
 	 */
 
 

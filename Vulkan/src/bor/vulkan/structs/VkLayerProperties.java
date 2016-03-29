@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -135,16 +137,17 @@ public class VkLayerProperties extends VkStruct {
 	 */ 
 	 public void layerName(String layerName){
 		 this.layerName = layerName;
-		layerName0(super.ptr, layerName);
+		 layerName0(this.ptr,  layerName);
 	 }
 
 	/**
-	 * get method for field layerName	[string]<br>
+	 * Get method for field layerName	[string]<br>
 	 * Prototype: char[]  layerName
 	 */ 
 	 public String layerName(){
-		 // return  this.layerName;
-		 return layerName0(super.ptr);
+		 String var = layerName0(super.ptr);
+		 this.layerName = var;
+		 return this.layerName;
 	 }
 
 	/**
@@ -153,16 +156,17 @@ public class VkLayerProperties extends VkStruct {
 	 */ 
 	 public void specVersion(int specVersion){
 		 this.specVersion = specVersion;
-		specVersion0(super.ptr, specVersion);
+		 specVersion0(this.ptr,  specVersion);
 	 }
 
 	/**
-	 * get method for field specVersion	[int]<br>
+	 * Get method for field specVersion	[int]<br>
 	 * Prototype: uint32_t  specVersion
 	 */ 
 	 public int specVersion(){
-		 // return  this.specVersion;
-		 return specVersion0(super.ptr);
+		 int var = specVersion0(super.ptr);
+		 this.specVersion = var;
+		 return this.specVersion;
 	 }
 
 	/**
@@ -171,16 +175,17 @@ public class VkLayerProperties extends VkStruct {
 	 */ 
 	 public void implementationVersion(int implementationVersion){
 		 this.implementationVersion = implementationVersion;
-		implementationVersion0(super.ptr, implementationVersion);
+		 implementationVersion0(this.ptr,  implementationVersion);
 	 }
 
 	/**
-	 * get method for field implementationVersion	[int]<br>
+	 * Get method for field implementationVersion	[int]<br>
 	 * Prototype: uint32_t  implementationVersion
 	 */ 
 	 public int implementationVersion(){
-		 // return  this.implementationVersion;
-		 return implementationVersion0(super.ptr);
+		 int var = implementationVersion0(super.ptr);
+		 this.implementationVersion = var;
+		 return this.implementationVersion;
 	 }
 
 	/**
@@ -189,16 +194,17 @@ public class VkLayerProperties extends VkStruct {
 	 */ 
 	 public void description(String description){
 		 this.description = description;
-		description0(super.ptr, description);
+		 description0(this.ptr,  description);
 	 }
 
 	/**
-	 * get method for field description	[string]<br>
+	 * Get method for field description	[string]<br>
 	 * Prototype: char[]  description
 	 */ 
 	 public String description(){
-		 // return  this.description;
-		 return description0(super.ptr);
+		 String var = description0(super.ptr);
+		 this.description = var;
+		 return this.description;
 	 }
 
 
@@ -209,71 +215,71 @@ public class VkLayerProperties extends VkStruct {
 	 * native SET method for field layerName	[string]<br>
 	 * Prototype: char[]  layerName
 	 */ 
-	 private static native void layerName0(ByteBuffer ptr, String _layerName);/*
-		  VkLayerProperties _obj = (VkLayerProperties)(*ptr);
-		  _obj.layerName = (char[]) (_layerName);
+	 private static native void layerName0(Buffer ptr, String _layerName);/*
+		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
+		  vkObj->layerName = (char[]) (_layerName);
 	  */
 
 	/**
 	 * native GET method for field layerName	[string]<br>
 	 * Prototype: char[]  layerName
 	 */ 
-	 private static native String layerName0(ByteBuffer ptr);/*
-		  VkLayerProperties _obj = (VkLayerProperties)(ptr);
-		  return (jstring)(env->NewStringUTF(_obj.char[]);	 */
+	 private static native String layerName0(Buffer ptr);/*
+		  VkLayerProperties vkObj = (VkLayerProperties*)(ptr);
+		  return (jstring)(env->NewStringUTF(vkObj->.layerName);	 */
 
 	/**
 	 * native SET method for field specVersion	[int]<br>
 	 * Prototype: uint32_t  specVersion
 	 */ 
-	 private static native void specVersion0(ByteBuffer ptr, int _specVersion);/*
-		  VkLayerProperties _obj = (VkLayerProperties)(*ptr);
-		  _obj.specVersion = (uint32_t) (_specVersion);
+	 private static native void specVersion0(Buffer ptr, int _specVersion);/*
+		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
+		  vkObj->specVersion = (uint32_t) (_specVersion);
 	  */
 
 	/**
 	 * native GET method for field specVersion	[int]<br>
 	 * Prototype: uint32_t  specVersion
 	 */ 
-	 private static native int specVersion0(ByteBuffer ptr);/*
-		  VkLayerProperties _obj = (VkLayerProperties)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int specVersion0(Buffer ptr);/*
+		  VkLayerProperties vkObj = (VkLayerProperties*)(ptr);
+		  return (jint) (vkObj->specVersion);
 	 */
 
 	/**
 	 * native SET method for field implementationVersion	[int]<br>
 	 * Prototype: uint32_t  implementationVersion
 	 */ 
-	 private static native void implementationVersion0(ByteBuffer ptr, int _implementationVersion);/*
-		  VkLayerProperties _obj = (VkLayerProperties)(*ptr);
-		  _obj.implementationVersion = (uint32_t) (_implementationVersion);
+	 private static native void implementationVersion0(Buffer ptr, int _implementationVersion);/*
+		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
+		  vkObj->implementationVersion = (uint32_t) (_implementationVersion);
 	  */
 
 	/**
 	 * native GET method for field implementationVersion	[int]<br>
 	 * Prototype: uint32_t  implementationVersion
 	 */ 
-	 private static native int implementationVersion0(ByteBuffer ptr);/*
-		  VkLayerProperties _obj = (VkLayerProperties)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int implementationVersion0(Buffer ptr);/*
+		  VkLayerProperties vkObj = (VkLayerProperties*)(ptr);
+		  return (jint) (vkObj->implementationVersion);
 	 */
 
 	/**
 	 * native SET method for field description	[string]<br>
 	 * Prototype: char[]  description
 	 */ 
-	 private static native void description0(ByteBuffer ptr, String _description);/*
-		  VkLayerProperties _obj = (VkLayerProperties)(*ptr);
-		  _obj.description = (char[]) (_description);
+	 private static native void description0(Buffer ptr, String _description);/*
+		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
+		  vkObj->description = (char[]) (_description);
 	  */
 
 	/**
 	 * native GET method for field description	[string]<br>
 	 * Prototype: char[]  description
 	 */ 
-	 private static native String description0(ByteBuffer ptr);/*
-		  VkLayerProperties _obj = (VkLayerProperties)(ptr);
-		  return (jstring)(env->NewStringUTF(_obj.char[]);	 */
+	 private static native String description0(Buffer ptr);/*
+		  VkLayerProperties vkObj = (VkLayerProperties*)(ptr);
+		  return (jstring)(env->NewStringUTF(vkObj->.description);	 */
 
 
 

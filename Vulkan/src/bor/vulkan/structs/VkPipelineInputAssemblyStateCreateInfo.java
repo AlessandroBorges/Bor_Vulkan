@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -52,9 +54,9 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  VkPipelineInputAssemblyStateCreateFlags 	flags	[int]
@@ -141,34 +143,46 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -177,16 +191,17 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		flags0(super.ptr, flags);
+		 flags0(this.ptr,  flags);
 	 }
 
 	/**
-	 * get method for field flags	[int]<br>
+	 * Get method for field flags	[int]<br>
 	 * Prototype: VkPipelineInputAssemblyStateCreateFlags  flags
 	 */ 
 	 public int flags(){
-		 // return  this.flags;
-		 return flags0(super.ptr);
+		 int var = flags0(super.ptr);
+		 this.flags = var;
+		 return this.flags;
 	 }
 
 	/**
@@ -195,16 +210,18 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 */ 
 	 public void topology(VkPrimitiveTopology topology){
 		 this.topology = topology;
-		topology0(super.ptr, topology);
+		 int enumVal = topology.getValue();
+		 topology0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field topology	[vkenum]<br>
+	 * Get method for field topology	[vkenum]<br>
 	 * Prototype: VkPrimitiveTopology  topology
 	 */ 
 	 public VkPrimitiveTopology topology(){
-		 // return  this.topology;
-		 return topology0(super.ptr);
+		 int nativeVal = topology0(super.ptr);
+		 this.topology = VkPrimitiveTopology.fromValue(nativeVal); 
+		 return this.topology;
 	 }
 
 	/**
@@ -213,16 +230,17 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 */ 
 	 public void primitiveRestartEnable(boolean primitiveRestartEnable){
 		 this.primitiveRestartEnable = primitiveRestartEnable;
-		primitiveRestartEnable0(super.ptr, primitiveRestartEnable);
+		 primitiveRestartEnable0(this.ptr,  primitiveRestartEnable);
 	 }
 
 	/**
-	 * get method for field primitiveRestartEnable	[boolean]<br>
+	 * Get method for field primitiveRestartEnable	[boolean]<br>
 	 * Prototype: VkBool32  primitiveRestartEnable
 	 */ 
 	 public boolean primitiveRestartEnable(){
-		 // return  this.primitiveRestartEnable;
-		 return primitiveRestartEnable0(super.ptr);
+		 boolean var = primitiveRestartEnable0(super.ptr);
+		 this.primitiveRestartEnable = var;
+		 return this.primitiveRestartEnable;
 	 }
 
 
@@ -233,90 +251,90 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkPipelineInputAssemblyStateCreateInfo _obj = (VkPipelineInputAssemblyStateCreateInfo)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkPipelineInputAssemblyStateCreateInfo _obj = (VkPipelineInputAssemblyStateCreateInfo)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkPipelineInputAssemblyStateCreateInfo vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkPipelineInputAssemblyStateCreateInfo _obj = (VkPipelineInputAssemblyStateCreateInfo)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkPipelineInputAssemblyStateCreateInfo _obj = (VkPipelineInputAssemblyStateCreateInfo)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkPipelineInputAssemblyStateCreateInfo vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkPipelineInputAssemblyStateCreateFlags  flags
 	 */ 
-	 private static native void flags0(ByteBuffer ptr, int _flags);/*
-		  VkPipelineInputAssemblyStateCreateInfo _obj = (VkPipelineInputAssemblyStateCreateInfo)(*ptr);
-		  _obj.flags = (VkPipelineInputAssemblyStateCreateFlags) (_flags);
+	 private static native void flags0(Buffer ptr, int _flags);/*
+		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		  vkObj->flags = (VkPipelineInputAssemblyStateCreateFlags) (_flags);
 	  */
 
 	/**
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkPipelineInputAssemblyStateCreateFlags  flags
 	 */ 
-	 private static native int flags0(ByteBuffer ptr);/*
-		  VkPipelineInputAssemblyStateCreateInfo _obj = (VkPipelineInputAssemblyStateCreateInfo)(ptr);
-		  return (jint) (_obj.VkPipelineInputAssemblyStateCreateFlags);
+	 private static native int flags0(Buffer ptr);/*
+		  VkPipelineInputAssemblyStateCreateInfo vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		  return (jint) (vkObj->flags);
 	 */
 
 	/**
 	 * native SET method for field topology	[vkenum]<br>
 	 * Prototype: VkPrimitiveTopology  topology
 	 */ 
-	 private static native void topology0(ByteBuffer ptr, VkPrimitiveTopology _topology);/*
-		  VkPipelineInputAssemblyStateCreateInfo _obj = (VkPipelineInputAssemblyStateCreateInfo)(*ptr);
-		  _obj.topology = (VkPrimitiveTopology) (_topology);
+	 private static native void topology0(Buffer ptr, int  _topology);/*
+		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		  vkObj->topology = (VkPrimitiveTopology) (_topology);
 	  */
 
 	/**
 	 * native GET method for field topology	[vkenum]<br>
 	 * Prototype: VkPrimitiveTopology  topology
 	 */ 
-	 private static native VkPrimitiveTopology topology0(ByteBuffer ptr);/*
-		  VkPipelineInputAssemblyStateCreateInfo _obj = (VkPipelineInputAssemblyStateCreateInfo)(ptr);
-		  return (VkPrimitiveTopology) (_obj.VkPrimitiveTopology);
+	 private static native int  topology0(Buffer ptr);/*
+		  VkPipelineInputAssemblyStateCreateInfo vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		  return (VkPrimitiveTopology) (vkObj->topology);
 	 */
 
 	/**
 	 * native SET method for field primitiveRestartEnable	[boolean]<br>
 	 * Prototype: VkBool32  primitiveRestartEnable
 	 */ 
-	 private static native void primitiveRestartEnable0(ByteBuffer ptr, boolean _primitiveRestartEnable);/*
-		  VkPipelineInputAssemblyStateCreateInfo _obj = (VkPipelineInputAssemblyStateCreateInfo)(*ptr);
-		  _obj.primitiveRestartEnable = (VkBool32) (_primitiveRestartEnable);
+	 private static native void primitiveRestartEnable0(Buffer ptr, boolean _primitiveRestartEnable);/*
+		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		  vkObj->primitiveRestartEnable = (VkBool32) (_primitiveRestartEnable);
 	  */
 
 	/**
 	 * native GET method for field primitiveRestartEnable	[boolean]<br>
 	 * Prototype: VkBool32  primitiveRestartEnable
 	 */ 
-	 private static native boolean primitiveRestartEnable0(ByteBuffer ptr);/*
-		  VkPipelineInputAssemblyStateCreateInfo _obj = (VkPipelineInputAssemblyStateCreateInfo)(ptr);
-		  return (jboolean) (_obj.VkBool32);
+	 private static native boolean primitiveRestartEnable0(Buffer ptr);/*
+		  VkPipelineInputAssemblyStateCreateInfo vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		  return (jboolean) (vkObj->primitiveRestartEnable);
 	 */
 
 

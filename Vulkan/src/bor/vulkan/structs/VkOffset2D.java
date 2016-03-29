@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -123,16 +125,17 @@ public class VkOffset2D extends VkStruct {
 	 */ 
 	 public void x(int x){
 		 this.x = x;
-		x0(super.ptr, x);
+		 x0(this.ptr,  x);
 	 }
 
 	/**
-	 * get method for field x	[int]<br>
+	 * Get method for field x	[int]<br>
 	 * Prototype: int32_t  x
 	 */ 
 	 public int x(){
-		 // return  this.x;
-		 return x0(super.ptr);
+		 int var = x0(super.ptr);
+		 this.x = var;
+		 return this.x;
 	 }
 
 	/**
@@ -141,16 +144,17 @@ public class VkOffset2D extends VkStruct {
 	 */ 
 	 public void y(int y){
 		 this.y = y;
-		y0(super.ptr, y);
+		 y0(this.ptr,  y);
 	 }
 
 	/**
-	 * get method for field y	[int]<br>
+	 * Get method for field y	[int]<br>
 	 * Prototype: int32_t  y
 	 */ 
 	 public int y(){
-		 // return  this.y;
-		 return y0(super.ptr);
+		 int var = y0(super.ptr);
+		 this.y = var;
+		 return this.y;
 	 }
 
 
@@ -161,36 +165,36 @@ public class VkOffset2D extends VkStruct {
 	 * native SET method for field x	[int]<br>
 	 * Prototype: int32_t  x
 	 */ 
-	 private static native void x0(ByteBuffer ptr, int _x);/*
-		  VkOffset2D _obj = (VkOffset2D)(*ptr);
-		  _obj.x = (int32_t) (_x);
+	 private static native void x0(Buffer ptr, int _x);/*
+		  VkOffset2D* vkObj = (VkOffset2D*)(ptr);
+		  vkObj->x = (int32_t) (_x);
 	  */
 
 	/**
 	 * native GET method for field x	[int]<br>
 	 * Prototype: int32_t  x
 	 */ 
-	 private static native int x0(ByteBuffer ptr);/*
-		  VkOffset2D _obj = (VkOffset2D)(ptr);
-		  return (jint) (_obj.int32_t);
+	 private static native int x0(Buffer ptr);/*
+		  VkOffset2D vkObj = (VkOffset2D*)(ptr);
+		  return (jint) (vkObj->x);
 	 */
 
 	/**
 	 * native SET method for field y	[int]<br>
 	 * Prototype: int32_t  y
 	 */ 
-	 private static native void y0(ByteBuffer ptr, int _y);/*
-		  VkOffset2D _obj = (VkOffset2D)(*ptr);
-		  _obj.y = (int32_t) (_y);
+	 private static native void y0(Buffer ptr, int _y);/*
+		  VkOffset2D* vkObj = (VkOffset2D*)(ptr);
+		  vkObj->y = (int32_t) (_y);
 	  */
 
 	/**
 	 * native GET method for field y	[int]<br>
 	 * Prototype: int32_t  y
 	 */ 
-	 private static native int y0(ByteBuffer ptr);/*
-		  VkOffset2D _obj = (VkOffset2D)(ptr);
-		  return (jint) (_obj.int32_t);
+	 private static native int y0(Buffer ptr);/*
+		  VkOffset2D vkObj = (VkOffset2D*)(ptr);
+		  return (jint) (vkObj->y);
 	 */
 
 

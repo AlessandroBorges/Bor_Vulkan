@@ -52,6 +52,13 @@ public class VkClearValue extends VkStruct {
         super(buff, size);       
     }
     
+    /**
+     * @param buff
+     * @param size
+     */
+    public VkClearValue(ByteBuffer buff) {
+        super(buff);       
+    }
     
     @Override
     public P<VkClearValue> getP() {

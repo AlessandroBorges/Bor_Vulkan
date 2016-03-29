@@ -14,6 +14,8 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
+import java.nio.Buffer;
+
 
 /**
  *  Project Bor-Vulkan 
@@ -51,9 +53,9 @@ public class VkPipelineTessellationStateCreateInfo extends VkStruct {
 	 VkStructureType 	sType;
 
 	/**
-	 *  const void* 	pNext	[p]
+	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 P<VkObject> 	pNext;
+	 VkObject 	pNext;
 
 	/**
 	 *  VkPipelineTessellationStateCreateFlags 	flags	[int]
@@ -135,34 +137,46 @@ public class VkPipelineTessellationStateCreateInfo extends VkStruct {
 	 */ 
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
-		sType0(super.ptr, sType);
+		 int enumVal = sType.getValue();
+		 sType0(this.ptr, enumVal );
 	 }
 
 	/**
-	 * get method for field sType	[vkenum]<br>
+	 * Get method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 // return  this.sType;
-		 return sType0(super.ptr);
+		 int nativeVal = sType0(super.ptr);
+		 this.sType = VkStructureType.fromValue(nativeVal); 
+		 return this.sType;
 	 }
 
 	/**
-	 * Set method for field pNext	[p]<br>
+	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public void pNext(P<VkObject> pNext){
+	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
-		pNext0(super.ptr, pNext);
+		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
+		 pNext0(this.ptr, buff);
 	 }
 
 	/**
-	 * get method for field pNext	[p]<br>
+	 * Get method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 public P<VkObject> pNext(){
-		 // return  this.pNext;
-		 return pNext0(super.ptr);
+	 public VkObject pNext(){
+		 ByteBuffer pointer = pNext0(super.ptr);
+		 if(pointer == null){
+		    this.pNext = null;
+		    return null;
+		  } else 
+ 		 if(this.pNext == null){
+		    this.pNext = (VkObject)(new VkHandle(pointer));
+		 }else{
+		    this.pNext.setPointer(pointer);
+		  }
+		 return this.pNext;
 	 }
 
 	/**
@@ -171,16 +185,17 @@ public class VkPipelineTessellationStateCreateInfo extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		flags0(super.ptr, flags);
+		 flags0(this.ptr,  flags);
 	 }
 
 	/**
-	 * get method for field flags	[int]<br>
+	 * Get method for field flags	[int]<br>
 	 * Prototype: VkPipelineTessellationStateCreateFlags  flags
 	 */ 
 	 public int flags(){
-		 // return  this.flags;
-		 return flags0(super.ptr);
+		 int var = flags0(super.ptr);
+		 this.flags = var;
+		 return this.flags;
 	 }
 
 	/**
@@ -189,16 +204,17 @@ public class VkPipelineTessellationStateCreateInfo extends VkStruct {
 	 */ 
 	 public void patchControlPoints(int patchControlPoints){
 		 this.patchControlPoints = patchControlPoints;
-		patchControlPoints0(super.ptr, patchControlPoints);
+		 patchControlPoints0(this.ptr,  patchControlPoints);
 	 }
 
 	/**
-	 * get method for field patchControlPoints	[int]<br>
+	 * Get method for field patchControlPoints	[int]<br>
 	 * Prototype: uint32_t  patchControlPoints
 	 */ 
 	 public int patchControlPoints(){
-		 // return  this.patchControlPoints;
-		 return patchControlPoints0(super.ptr);
+		 int var = patchControlPoints0(super.ptr);
+		 this.patchControlPoints = var;
+		 return this.patchControlPoints;
 	 }
 
 
@@ -209,72 +225,72 @@ public class VkPipelineTessellationStateCreateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(ByteBuffer ptr, VkStructureType _sType);/*
-		  VkPipelineTessellationStateCreateInfo _obj = (VkPipelineTessellationStateCreateInfo)(*ptr);
-		  _obj.sType = (VkStructureType) (_sType);
+	 private static native void sType0(Buffer ptr, int  _sType);/*
+		  VkPipelineTessellationStateCreateInfo* vkObj = (VkPipelineTessellationStateCreateInfo*)(ptr);
+		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
 	/**
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native VkStructureType sType0(ByteBuffer ptr);/*
-		  VkPipelineTessellationStateCreateInfo _obj = (VkPipelineTessellationStateCreateInfo)(ptr);
-		  return (VkStructureType) (_obj.VkStructureType);
+	 private static native int  sType0(Buffer ptr);/*
+		  VkPipelineTessellationStateCreateInfo vkObj = (VkPipelineTessellationStateCreateInfo*)(ptr);
+		  return (VkStructureType) (vkObj->sType);
 	 */
 
 	/**
-	 * native SET method for field pNext	[p]<br>
+	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(ByteBuffer ptr, P<VkObject> _pNext);/*
-		  VkPipelineTessellationStateCreateInfo _obj = (VkPipelineTessellationStateCreateInfo)(*ptr);
-		  _obj.pNext = (const void*) (_pNext);
+	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+		  VkPipelineTessellationStateCreateInfo* vkObj = (VkPipelineTessellationStateCreateInfo*)(ptr);
+		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
 	/**
-	 * native GET method for field pNext	[p]<br>
+	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native P<VkObject> pNext0(ByteBuffer ptr);/*
-		  VkPipelineTessellationStateCreateInfo _obj = (VkPipelineTessellationStateCreateInfo)(ptr);
-		  return (P<VkObject>) (_obj.const void*);
+	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+		  VkPipelineTessellationStateCreateInfo vkObj = (VkPipelineTessellationStateCreateInfo*)(ptr);
+		  return (VkObject) (vkObj->pNext);
 	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkPipelineTessellationStateCreateFlags  flags
 	 */ 
-	 private static native void flags0(ByteBuffer ptr, int _flags);/*
-		  VkPipelineTessellationStateCreateInfo _obj = (VkPipelineTessellationStateCreateInfo)(*ptr);
-		  _obj.flags = (VkPipelineTessellationStateCreateFlags) (_flags);
+	 private static native void flags0(Buffer ptr, int _flags);/*
+		  VkPipelineTessellationStateCreateInfo* vkObj = (VkPipelineTessellationStateCreateInfo*)(ptr);
+		  vkObj->flags = (VkPipelineTessellationStateCreateFlags) (_flags);
 	  */
 
 	/**
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkPipelineTessellationStateCreateFlags  flags
 	 */ 
-	 private static native int flags0(ByteBuffer ptr);/*
-		  VkPipelineTessellationStateCreateInfo _obj = (VkPipelineTessellationStateCreateInfo)(ptr);
-		  return (jint) (_obj.VkPipelineTessellationStateCreateFlags);
+	 private static native int flags0(Buffer ptr);/*
+		  VkPipelineTessellationStateCreateInfo vkObj = (VkPipelineTessellationStateCreateInfo*)(ptr);
+		  return (jint) (vkObj->flags);
 	 */
 
 	/**
 	 * native SET method for field patchControlPoints	[int]<br>
 	 * Prototype: uint32_t  patchControlPoints
 	 */ 
-	 private static native void patchControlPoints0(ByteBuffer ptr, int _patchControlPoints);/*
-		  VkPipelineTessellationStateCreateInfo _obj = (VkPipelineTessellationStateCreateInfo)(*ptr);
-		  _obj.patchControlPoints = (uint32_t) (_patchControlPoints);
+	 private static native void patchControlPoints0(Buffer ptr, int _patchControlPoints);/*
+		  VkPipelineTessellationStateCreateInfo* vkObj = (VkPipelineTessellationStateCreateInfo*)(ptr);
+		  vkObj->patchControlPoints = (uint32_t) (_patchControlPoints);
 	  */
 
 	/**
 	 * native GET method for field patchControlPoints	[int]<br>
 	 * Prototype: uint32_t  patchControlPoints
 	 */ 
-	 private static native int patchControlPoints0(ByteBuffer ptr);/*
-		  VkPipelineTessellationStateCreateInfo _obj = (VkPipelineTessellationStateCreateInfo)(ptr);
-		  return (jint) (_obj.uint32_t);
+	 private static native int patchControlPoints0(Buffer ptr);/*
+		  VkPipelineTessellationStateCreateInfo vkObj = (VkPipelineTessellationStateCreateInfo*)(ptr);
+		  return (jint) (vkObj->patchControlPoints);
 	 */
 
 
