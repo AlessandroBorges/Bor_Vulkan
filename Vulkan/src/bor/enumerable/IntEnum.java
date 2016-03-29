@@ -5,20 +5,24 @@ package bor.enumerable;
 
 import java.lang.reflect.Array;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Alessandro Borges
  *
  */
 @SuppressWarnings("rawtypes")
-public class IntEnum<T> implements IntEnumInterface<T> {
+public abstract class IntEnum<T> implements IntEnumInterface<T> {
     
     private String name;
     private int ordinal=-1;
-    private int value;
-    private static IntEnum[] values = {};
+    private int value = 0;
+    private static Class<IntEnum> myClass = IntEnum.class;
+    
+  //  private /*static*/ IntEnum[] values = {};
     
     /**
      * Default constructor
@@ -37,17 +41,17 @@ public class IntEnum<T> implements IntEnumInterface<T> {
         this.name = name;
         this.ordinal = ordinal;
         this.value = value;
-        addEnum(this);
+       // addEnum(this);
     }
 
     /* (non-Javadoc)
      * @see bor.bitmask.BitmaskEnumInterface#or(int[])
      */
     @Override
-    public final T or(IntEnumInterface... values) {        
-        int res = values[0].getValue();        
-        for (int i=1; i<values.length; i++) {
-            IntEnumInterface item = values[i];
+    public final T or(IntEnumInterface... bits) {        
+        int res = bits[0].getValue();        
+        for (int i=1; i<bits.length; i++) {
+            IntEnumInterface item = bits[i];
             res |= item.getValue();
         }        
         return createNew(res);
@@ -101,7 +105,8 @@ public class IntEnum<T> implements IntEnumInterface<T> {
      * @return
      */
     @SuppressWarnings("unchecked")
-    public static final <E> E[] values(){
+    public static <E> E[] values(){        
+        IntEnum<?>[] values = values();//staticMap.get(myGetClass());
         int length = values.length;
         IntEnum one = values[0];
         Class myType = one.getClass();
@@ -114,6 +119,11 @@ public class IntEnum<T> implements IntEnumInterface<T> {
         return r;
     }
     
+    protected static Class myGetClass(){
+        return myClass;
+    }
+  
+    
     /**
      * <pre>
      *  Get unique enumeration by value.
@@ -122,13 +132,15 @@ public class IntEnum<T> implements IntEnumInterface<T> {
      * @return return exact the enumeration with the value val, or 
      *  null if there is no matching  enumeration. 
      */
-    public <E> E getEnumByValue(int val){
+    @SuppressWarnings("unchecked")
+    public  T getEnumByValue(int val) {
+        IntEnum<T>[] values = values();// staticMap.get(cl);
         int len = values.length;
-        for(int i = 0; i<len; i++){
+        for (int i = 0; i < len; i++) {
             IntEnum ie = values[i];
             int ieVal = ie.value;
-            if(ieVal==val){
-                return (E) ie;
+            if (ieVal == val) { 
+                return (T) ie; 
             }
         }
         return null;
@@ -147,7 +159,9 @@ public class IntEnum<T> implements IntEnumInterface<T> {
      * contains valid values of this enumeration  
      */
     @SuppressWarnings("unchecked")
-    public <E> E[] getEnumsByValue(int flag){
+    public T[] getEnumsByValue(int flag){             
+        IntEnum[] values = values();//staticMap.get(cl); 
+        
         List<IntEnum> list = new java.util.ArrayList<IntEnum>();
         int len = values.length;
         
@@ -170,11 +184,32 @@ public class IntEnum<T> implements IntEnumInterface<T> {
         int length = values.length;        
         Class myType = this.getClass();
         
-        E[] array = ((Object)myType == (Object)Object[].class)
-                   ? (E[]) new Object[length]
-                   : (E[]) Array.newInstance(myType.getComponentType(), length);
+        T[] array = ((Object)myType == (Object)Object[].class)
+                   ? (T[]) new Object[length]
+                   : (T[]) Array.newInstance(myType.getComponentType(), length);
        
         return list.toArray(array);
+    }
+    
+    /**
+     * Check is a given value is a valid ORed enumeration of this. 
+     * @param enumValue - value to test
+     * @return true if this is a valid value.
+     */
+    public boolean isValidEnum(int enumValue){
+        Class cl = this.getClass();        
+        IntEnum<T>[] values = values();
+        
+        int len = values.length;
+        int test = enumValue;
+        for(int i = 0; i<len; i++){
+            IntEnum<T> ie = values[i];
+            int ieVal = ie.value;
+            if(isOred(enumValue,ieVal)){
+               test = test ^ ieVal; 
+            }
+        }
+        return (test == 0);
     }
     
     /**
@@ -183,8 +218,7 @@ public class IntEnum<T> implements IntEnumInterface<T> {
      * @return
      */
     public <E> E[] getEnumsByValue(E oredEnumeration){
-        
-        return null;    
+        throw new UnsupportedOperationException("Not implemented yet!");           
        }
     
     /**
@@ -202,6 +236,14 @@ public class IntEnum<T> implements IntEnumInterface<T> {
         return (a==b) || ((a & b)==b);
     }
     
+    /**
+     * Get value as int[]. <br>
+     * To be used in JNI bridging
+     * @return internal value int array with length 1.  
+     */
+//    public int[] getArrayValue(){
+//        return value;
+//    }
     
     /**
      * Evaluate if enumeration enumA is flagged with enumB.   
@@ -251,25 +293,74 @@ public class IntEnum<T> implements IntEnumInterface<T> {
     }
     
     /**
+     * Get best matching enum for value.
+     * It can be one of declared values or a ORed one.
+     * 
+     * @param value - value of enumeration
+     * @return a instance of this. Null if value is not valid.
+     */
+    public T getEnum(int value){
+        // try exact match
+        T type = getEnumByValue(value);
+        if(type != null)
+            return type;
+        if(isValidEnum(value)){
+            
+        }
+        // try ored
+        
+        return null;
+    }
+    
+    /**
      * Add a new item to this ordinal enumeration
      * @param newItem
      */
-    private void addEnum(IntEnum newItem){
-        IntEnum[] newArr = new IntEnum[values.length + 1];
-        int i;
-        for ( i=0; i<values.length; i++) {
-            newArr[i] = values[i];            
-        } 
-        newArr[i] = (IntEnum)newItem;
-        values = newArr;
-    }
+//    private void addEnum(IntEnum newItem){
+//        IntEnum[] values = getStaticValues();
+//        IntEnum[] newArr = new IntEnum[values.length + 1];
+//        int i;
+//        for ( i=0; i<values.length; i++) {
+//            newArr[i] = values[i];            
+//        } 
+//        newArr[i] = (IntEnum)newItem;
+//        values = newArr;
+//        setStaticValues(values);
+//    }
+    
+    /**
+     * Maps subclasses to its values[]
+     */
+   // private static Map<Class, IntEnum[]> staticMap = new HashMap<Class, IntEnum[]>();
+    
+    /**
+     * 
+     * @return
+     */
+//    protected IntEnum[] getStaticValues(){
+//        Class cl = this.getClass();
+//        IntEnum[] array = staticMap.get(cl);    
+//        if(array==null){
+//            IntEnum[] values = {};
+//            array = values;
+//            staticMap.put(cl, values);
+//        }
+//        return array;        
+//    }
+    
+//    protected void setStaticValues(IntEnum[] values){
+//        Class clazz = this.getClass();
+//        staticMap.put(clazz, values);
+//    }
+    
 
     /**
      * Returns an iterator over a set of elements of this enumeration.
      * @return Iterator for this enumeration.
      */
     public Iterator<T> iterator(){
-        Class cl = this.getClass();
+        Class cl = this.getClass();        
+        IntEnum[] values = values(); 
         T[] array = (T[])Array.newInstance(cl, values.length);        
         List<T> list = Arrays.asList(array);
         return list.iterator();
