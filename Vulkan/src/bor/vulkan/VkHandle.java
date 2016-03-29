@@ -7,10 +7,21 @@ import java.nio.ByteBuffer;
 import java.util.Hashtable;
 import java.util.Map;
 
+import bor.vulkan.khr.ANativeWindow;
+import bor.vulkan.khr.MirConnection;
+import bor.vulkan.khr.MirSurface;
 import bor.vulkan.khr.VkDisplayKHR;
 import bor.vulkan.khr.VkDisplayModeKHR;
 import bor.vulkan.khr.VkSurfaceKHR;
 import bor.vulkan.khr.VkSwapchainKHR;
+import bor.vulkan.khr.Win32HINSTANCE;
+import bor.vulkan.khr.Win32HWND;
+import bor.vulkan.khr.WlDisplay;
+import bor.vulkan.khr.WlSurface;
+import bor.vulkan.khr.XCBconnection;
+import bor.vulkan.khr.XCBwindow;
+import bor.vulkan.khr.XlibDisplay;
+import bor.vulkan.khr.XlibWindow;
 
 /**
  * Non public class implementing Vulkan handlers.<br>
@@ -74,7 +85,8 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
         VkDebugReportCallbackEXT, VkDescriptorPool, VkDescriptorSet, VkDescriptorSetLayout, VkDevice, VkDeviceMemory,
         VkDisplayKHR, VkDisplayModeKHR, VkEvent, VkFence, VkFramebuffer, VkImage, VkImageView, VkInstance,
         VkPhysicalDevice, VkPipeline, VkPipelineCache, VkPipelineLayout, VkQueryPool, VkQueue, VkRenderPass, VkSampler,
-        VkSemaphore, VkShaderModule, VkSurfaceKHR, VkSwapchainKHR {
+        VkSemaphore, VkShaderModule, VkSurfaceKHR, VkSwapchainKHR, ANativeWindow, MirConnection, MirSurface, Win32HINSTANCE, 
+        Win32HWND, WlDisplay, WlSurface, XCBconnection, XCBwindow, XlibDisplay,XlibWindow {
 
     /**
      * This static map holds handlers and avoid GC on handlers and pointers.
@@ -110,7 +122,7 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
      * 
      * @throws IllegalArgumentException if nativePtr is null or non direct.
      */
-     protected VkHandle(ByteBuffer nativePtr) {
+     public VkHandle(ByteBuffer nativePtr) {
        prepareHandler(nativePtr);
     }
      
@@ -152,7 +164,7 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
      * Set a native handle.
      * @param hnd - native created handle
      */
-    void setHandle(ByteBuffer nativeHandle){
+    public void setHandle(ByteBuffer nativeHandle){
         prepareHandler(nativeHandle);        
     }
     

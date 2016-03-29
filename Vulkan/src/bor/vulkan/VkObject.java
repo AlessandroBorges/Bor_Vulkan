@@ -36,7 +36,7 @@ public interface VkObject {
     public static final int TYPE_HANDLER = 0x02;
     
     /**
-     * Flag. This VkObject is a pointer for a PFN_Function
+     * Flag. This VkObject is a pointer for a PFNFunction
      */
     public static final int TYPE_PFN_FUNCTION = 0x04;
     
@@ -50,7 +50,7 @@ public interface VkObject {
      * Return the native pointer to VkObject.
      * @return native pointer wrapped by a ByteBuffer
      */
-    public ByteBuffer getPointer();
+    public java.nio.ByteBuffer getPointer();
     
     /**
      * check if internal pointer to VkObject is null.
@@ -72,6 +72,6 @@ public interface VkObject {
      * @param nativePtr - native pointer to set
      * @
      */
-     void setPointer(ByteBuffer nativePtr);
+     void setPointer(java.nio.ByteBuffer nativePtr);
  
 }

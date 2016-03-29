@@ -1,6 +1,6 @@
 package bor.vulkan;
 
-import java.nio.ByteBuffer;
+import java.nio.Buffer;
 
 import bor.vulkan.khr.VkDisplayKHR;
 import bor.vulkan.khr.VkDisplayModeKHR;
@@ -95,7 +95,7 @@ public interface VkHandleInterface extends VkObject{
      *  
      * @return read-only ByteBuffer wrapping a native handler.      
      */
-    public ByteBuffer getHandle();
+    public java.nio.ByteBuffer getHandle();
     
         
     
