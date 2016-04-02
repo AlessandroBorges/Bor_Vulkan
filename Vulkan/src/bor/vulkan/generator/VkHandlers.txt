@@ -9,6 +9,7 @@ PFNvkInternalAllocationNotification
 PFNvkInternalFreeNotification
 PFNvkReallocationFunction
 PFNinterface
+PFNvkVoidFunction
 VkBuffer
 VkBufferView
 VkCommandBuffer

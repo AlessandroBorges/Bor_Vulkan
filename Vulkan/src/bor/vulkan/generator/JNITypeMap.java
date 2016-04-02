@@ -134,9 +134,13 @@ public class JNITypeMap {
      */
     private static String check(String s){
         s = s.trim();
-        if(s.contains(" ")){
-            throw new IllegalArgumentException("invalid object name");
-        }
+        s = s.replace("const","").trim();
+        s = s.replace("*","").trim();
+       // s = s.replace("void","").trim();
+        s = s.replace("struct","").trim();
+        
+        if(s.contains(" "))
+            System.err.println("invalid object name: " + s);
         return s;
     }
     
@@ -184,7 +188,7 @@ public class JNITypeMap {
     
     public static boolean isInt(String name){
         name = check(name);
-        return name.equals("int");
+        return name.equals("int") || name.contains("int32") ;
     }
     
     public static boolean isFloat(String name){
@@ -219,7 +223,7 @@ public class JNITypeMap {
     
     public static boolean isBoolean(String name){
         name = check(name);
-        return name.equals("boolean");
+        return name.contains("boolean") || name.contains("VkBoolean");
     }
     
     public static boolean isByteArray(String name){
@@ -254,8 +258,18 @@ public class JNITypeMap {
         return vkHandlerNames.contains(name);
     }
     
-    
+    /**
+     * Get Type of Vulkan type
+     * @param name
+     * @return
+     */
     public static Util.CLASS_TYPE getType(String name){
+        name = name.trim();
+       
+        if(name.contains("Xlib")){
+           // System.err.println("erro");
+        }
+               
         if(isVkEnum(name)){
             return CLASS_TYPE.VKENUM;
         }
@@ -265,7 +279,7 @@ public class JNITypeMap {
         }
         
         if(isVkHandler(name)){
-            if(name.startsWith("PFN"))
+            if(name.contains("PFN"))
                 return CLASS_TYPE.VKPFN;
             else
                 return CLASS_TYPE.VKHANDLE;
@@ -273,6 +287,14 @@ public class JNITypeMap {
         
         if(isVkObject(name)){
             return CLASS_TYPE.VKOBJECT;
+        }
+        
+        if(name.contains("void") && !name.contains("*")){
+            return CLASS_TYPE.VOID;
+        }
+        
+        if(isBoolean(name) && name.contains("[]")){
+            return CLASS_TYPE.BOOLEAN_ARRAY; 
         }
         
         if(isBoolean(name)){

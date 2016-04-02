@@ -5,6 +5,10 @@ package bor.vulkan.generator;
 
 import java.util.*;
 
+import bor.vulkan.generator.Util.CLASS_TYPE;
+import jdk.nashorn.internal.ir.CallNode.EvalArgs;
+
+import static bor.vulkan.generator.JNITypeMap.getType;
 import static bor.vulkan.generator.Util.*;
 
 /**
@@ -21,14 +25,90 @@ public class ProcInfo {
      * return type
      */
     String returnType;
+    CLASS_TYPE returnTypeType;
+    boolean isPointerReturnType;
+    
     /** procedure name */    
     String procName;
     /** parameter types */ 
     String[] paramTypes;
+    
+    /**
+     * Full parameter, including type casting and dereferencing.
+     */
+    private String[] fullParameter;
+    
+   
     /** parameter names */
     String[] pnames;
     
+    /** check if a parameter is a pointer */
+    boolean[] isPointer;
+    
+    /**
+     * get type of parameter. 
+     * @see #eval()
+     */
+    CLASS_TYPE[] type;
+    
+    /**
+     * The source code
+     */    
     String[] cppSource;
+    
+    /**
+     * initialize isPointer[] and type[]
+     */
+    public void eval() {
+        int len = paramTypes.length;
+        isPointer = new boolean[len];
+        type = new CLASS_TYPE[len];
+
+        for (int i = 0; i < paramTypes.length; i++) {
+            String pType = paramTypes[i];
+            isPointer[i] = pType.contains("*");
+            String jtype = StructInfo.getJavaType(pType, pnames[i], "");
+            type[i] = getType(jtype);//getType(pType);
+        }
+        if(returnType.contains("PFN_")){
+                returnType = returnType.replace("PFN_", "PFN");
+        }
+        if(returnType.equals("VkBool32")){
+            returnType = "boolean";
+            returnTypeType = CLASS_TYPE.BOOLEAN;
+        }else{
+            returnTypeType = getType(returnType);
+        }
+        isPointerReturnType = returnType.contains("*");
+     }
+    
+    /**
+     * For non pointer parameters, cast then for pointer type.
+     * One cast per String.  
+     * @return
+     */
+    private String[] getParamPointerCast(){       
+        List<String> list = new ArrayList<String>();
+      
+        fullParameter = paramTypes.clone();
+        
+        for (int i=0; i<isPointer.length; i++){
+            CLASS_TYPE ty = type[i];
+            boolean isVkType = (ty == CLASS_TYPE.VKHANDLE || ty == CLASS_TYPE.VKSTRUCT || ty == CLASS_TYPE.VKOBJECT);
+            if(!isPointer[i] && isVkType){
+                String alternateName = "ptr_" + this.pnames[i];
+               // pnamesAlt[i] = alternateName;
+                fullParameter[i] = "(" + paramTypes[i]+") (*" + alternateName +")"; 
+                String cast = paramTypes[i] + "* " + alternateName+ " = (" + paramTypes[i] + "*) " + this.pnames[i];
+                list.add(cast);
+            } else{
+                fullParameter[i] = "(" + paramTypes[i]+") " + pnames[i]; 
+            }
+        }
+        
+        String[] res = new String[list.size()];
+        return list.toArray(res);
+    }
     
     /**
      * Converts Proc info in a Java src
@@ -36,34 +116,155 @@ public class ProcInfo {
      * @return String with java source code
      */
     public String toJavaSrc(String unused){
+        if(id==157){
+            System.out.println(157);
+        }
+         eval();
          String src = "";
          String tab = "\n\t\t";
-         // add comment
+         boolean isVoid = returnTypeType == CLASS_TYPE.VOID;
          
-         src +=  "\t/**\n"
-                +"\t * <h2>Prototype</h2><pre>\n";
+         
+         
+         String returnJava = StructInfo.getParamBridge(returnTypeType, "void");
+         String jniType = StructInfo.toJNItype(returnJava, "");
+         
+        
+         // add comment         
+         src +=   "   /**\n"
+                + "    *  Vulkan procedure ID: " + this.id +"\n"
+                + "    * <h2>Prototype</h2><pre>\n";
                 
          if(cppSource!= null){
              for (String line : cppSource) {
-                 src +="\t * " + line+"\n"; 
+                 line = line.replace("VKAPI_ATTR", "").replace("VKAPI_CALL","");
+                 src +="    * " + line+"\n"; 
             }             
          }
-         src +="\t * </pre>\n\t */\n";
-         
-         
-         src += "   public abstract " + this.returnType + " " + this.procName+"(";
+         src +="    * </pre>\n";
+         src +="    * \n";
+         // @param
          int len = pnames.length;
          for (int i = 0; i < len; i++) {
-            src += tab + paramTypes[i] + "  " + pnames[i] + (i+1<len?",":");") ;
+             String field = pnames[i];
+             src +="    * @param "+ field +" - \n";
+         }
+         if(!isVoid){
+             src +="    * \n";
+             src +="    * @return "+ returnType  +"\n";
+         }
+         src += "    */\n";
+         ////////////////////////////////////
+         // public Java Method
+         /////////////////////////////////////        
+         src += "   public " + returnType + " " + this.procName+"(";
+         for (int i = 0; i < len; i++) {
+             String field = pnames[i];
+             String cType = paramTypes[i];
+             String jType = StructInfo.getJavaType(cType, field, procName);         
+             src += tab + jType + " " + field + (i+1<len?",":")") ;
             allTypes.add(paramTypes[i]);
         }
-         
-         src +="\n\n";
-        // native
-         src += "    private static native " + this.returnType + " " + this.procName+"0(";         
+         // Java code calling native method
+         src +="{\n";
+         String paramTab = "\n\t\t";
+         if(isVoid){
+             src +=  "\t" + this.procName+"0(";            
+         }else{
+             src +=  "\t" + returnJava + " _val = " +this.procName+"0(";
+             paramTab = "\n\t\t\t";
+         }
+         //parameters for native call
          for (int i = 0; i < len; i++) {
-            src += tab + paramTypes[i] + "  " + pnames[i] + (i+1<len?",":");") ;
+             CLASS_TYPE type = this.type[i]; 
+             String field = pnames[i];
+             String cType = paramTypes[i];
+             String jType = StructInfo.getJavaType(cType, field, procName); 
+             String method = StructInfo.getMethodTypeBridge(type, "");
+             String bridge = "";
+             
+             if(type == CLASS_TYPE.VKSTRUCT || type==CLASS_TYPE.VKHANDLE || type==CLASS_TYPE.VKOBJECT || type==CLASS_TYPE.VKPFN){
+                 bridge =  "("+field+"==null ? null : " +field+method +") /* ByteBuffer */ ";                        
+             } else if(type == CLASS_TYPE.VKENUM ){
+                 bridge = field+method+" /* enum */"; 
+             }else {
+                 bridge = field+" ";
+             }
+             
+             src += paramTab + bridge + (i+1<len ? "," : "") ;
+         }
+         src += " );\n";
+         
+         if(!isVoid){
+             String bridge = "";
+             if(returnTypeType == CLASS_TYPE.VKSTRUCT 
+                     || returnTypeType==CLASS_TYPE.VKHANDLE 
+                     || returnTypeType==CLASS_TYPE.VKOBJECT 
+                     || returnTypeType==CLASS_TYPE.VKPFN)
+             {
+                 bridge =  "new " + returnType +"(_val)";                        
+             } else 
+                 if(returnTypeType == CLASS_TYPE.VKENUM ){
+                     bridge = returnType+".fromValue(_val)"; 
+             }else {
+                 bridge = "_val";
+             }             
+             src += "\t return " + bridge +";"; 
+         }
+         
+         src +="\n   } \n\n";
+         
+         /////////////////////////////////////////////////////
+         // native method
+         //////////////////////////////////////////////////////
+         src +=    "   /**\n"
+                 + "    *  Native interface for Vulkan method #" + this.id +"\n"
+                 + "    *  " + procName +" \n"
+                 + "    * \n";        
+         // @param        
+         for (int i = 0; i < len; i++) {
+             String field = pnames[i];
+             src +="    * @param "+ field +" - \n";
+         }
+         if(!isVoid){
+             src +="    * \n";
+             src +="    * @return "+ returnType + " as " +returnJava  +" \n";
+         }
+         src += "    */\n";
+         src += "    private static native " + returnJava + " " + this.procName+"0(";         
+         for (int i = 0; i < len; i++) {
+             String field = pnames[i];
+             String cType = paramTypes[i];
+             String jType = StructInfo.getJavaType(cType, field, procName); 
+             CLASS_TYPE type = getType(jType);         
+             String typeMod = StructInfo.getParamBridge(type, jType);         
+             src += tab + typeMod + "  " + field + (i+1<len?",":");") ;
         }
+         /////////////////
+         // jnigen code
+         /////////////////
+         src +="/* \n";
+         String[] list = getParamPointerCast();
+         for (String casting : list) {
+            src += "\t" + casting + ";\n";
+        }
+         
+         if(!isVoid){
+             src += "\t"+this.returnType + " res = "+ this.procName +"(";
+         }else{
+             src += "\t" + this.procName +"(";
+         }
+         for (int i = 0; i < len; i++) {
+             src += tab + "\t"+ fullParameter[i]+ (i+1<len?",":"");
+         }
+         src += ");\n";
+         
+         if(!isVoid){
+             src += "\t return ("+jniType+") res;";
+         }
+         
+         src +="\n  */ \n";
+         ////////////////////////////
          
         return src;
     }
@@ -169,13 +370,13 @@ public class ProcInfo {
         return "ProcInfo [id="
                 + id
                 + ", "
-                + (returnType != null ? "returnType=" + returnType + ", " : "")
-                + (procName != null ? "procName=" + procName + ", " : "")
-                + (paramTypes != null ? "paramTypes="
+                + (returnType != null ? "\n returnType=" + returnType + ", " : "")
+                +  (procName != null ? "\n procName=" + procName + ", " : "")
+                + (paramTypes != null ? "\n paramTypes="
                         + Arrays.asList(paramTypes).subList(0, Math.min(paramTypes.length, maxLen)) + ", " : "")
                 + (pnames != null ? "pnames=" + Arrays.asList(pnames).subList(0, Math.min(pnames.length, maxLen))
                         + ", " : "")
-                + (cppSource != null ? "cppSource="
+                + (cppSource != null ? "\ncppSource="
                         + Arrays.asList(cppSource).subList(0, Math.min(cppSource.length, maxLen)) : "") + "]";
     }
     

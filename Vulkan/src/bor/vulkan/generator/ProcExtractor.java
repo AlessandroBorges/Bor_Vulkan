@@ -42,9 +42,9 @@ public class ProcExtractor {
     public static int processProcedure(List<String> vkh) {
         System.out.println("Processing Procedures.");
         // boolean printStructs = true;
-        boolean exportProc = false;
-        boolean showAtConsole = false;
-        boolean showVars = true;
+        boolean exportProc = true;
+        boolean showAtConsole = true;
+        boolean showVars = false;
         boolean printID = false;
 
         int[] positions = { 0, 0 };
@@ -107,8 +107,15 @@ public class ProcExtractor {
             sb.append(info.toJavaSrc("")).append("\n\n\t/////////////////////////////////////\n\n");
         }
 
-        String src = "package bor.vulkan;\n" + " import bor.vulkan.khr.*;\n" + " import java.nio.*;\n\n"
-                + " public class Vk extends Vulkan\n" + " {\n";
+        String src =" package bor.vulkan;\n\n" + 
+                    " import java.nio.*;\n"+
+                    " import bor.vulkan.khr.*;\n" +                   
+                    " import bor.vulkan.structs.*;\n" +
+                    " import bor.vulkan.enumerations.*;\n" +
+                    " import bor.vulkan.khr.*;\n" +
+                    " import bor.vulkan.khr.structs.*;\n" +
+                    "\n" +
+                    " public class Vk extends Vulkan\n" + " {\n";
 
         src += sb.toString();
 

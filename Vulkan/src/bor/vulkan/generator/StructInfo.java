@@ -1,5 +1,7 @@
 package bor.vulkan.generator;
 
+import static bor.vulkan.generator.JNITypeMap.getType;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -7,10 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import bor.vulkan.P;
-import bor.vulkan.VkHandle;
 import bor.vulkan.generator.Util.CLASS_TYPE;
-import static bor.vulkan.generator.JNITypeMap.*;
 
 
 
@@ -82,7 +81,7 @@ public class StructInfo {
      * @param type type of parameter
      * @return string with method name to get bridge type
      */
-    public String getMethodTypeBridge(CLASS_TYPE type, String defaultType){
+    public static String getMethodTypeBridge(CLASS_TYPE type, String defaultType){
         switch (type) {
             case VKHANDLE:
             case VKPFN:    return ".getHandle()";
@@ -101,13 +100,14 @@ public class StructInfo {
      * @param defaultParam - default type to use
      * @return text with paramenter type.
      */
-    public String getParamBridge(CLASS_TYPE type, String defaultParam){
+    public static String getParamBridge(CLASS_TYPE type, String defaultParam){
         switch (type) {
             case VKHANDLE:
             case VKSTRUCT: 
             case VKPFN:    
             case VKOBJECT: return "java.nio.ByteBuffer ";            
             case VKENUM : return "int ";
+            case BOOLEAN: return "boolean";
             
             default: return defaultParam;
         }
@@ -578,7 +578,7 @@ public class StructInfo {
      * @return JNI type compatible with Java Type
      */
     public static String toJNItype(String jType, String fieldName){        
-        switch (jType) {
+        switch (jType.trim()) {
             case "boolean": return "jboolean";
             case "byte" : return "jbyte";
             case "char" : return "jchar";
@@ -798,7 +798,7 @@ public class StructInfo {
             
             
             // some KHR Handlers & results
-            c2JavaTypes.put("VkResult*", "PInteger");
+            c2JavaTypes.put("VkResult*", "VkResult[]");
           //KHR Android stuff
             c2JavaTypes.put("ANativeWindow*", "ANativeWindow");
             
@@ -817,6 +817,8 @@ public class StructInfo {
             //KHR XCB stuff
             c2JavaTypes.put("xcb_connection_t*", "XCBconnection");
             c2JavaTypes.put("xcb_window_t", "XCBwindow");
+            c2JavaTypes.put("xcb_visualid_t", "XCBVisualID");
+            //xcb_visualid_t
             
             // KHR Xlib stuf
             c2JavaTypes.put("Display*", "XlibDisplay");
@@ -832,20 +834,33 @@ public class StructInfo {
             c2JavaTypes.put("const void* ", "ByteBuffer");
             */
             c2JavaTypes.put("size_t", "long");
+            c2JavaTypes.put("size_t*", "long[]");
             c2JavaTypes.put("const char* const*", "String[]");
             
             c2JavaTypes.put("float", "float");
+            c2JavaTypes.put("const float[]", "float[]");
+            //const float[]
             c2JavaTypes.put("double", "double");
             
             
             c2JavaTypes.put("VkBool32", "boolean");
+            c2JavaTypes.put("VkBool32*", "boolean[]");
+            //VkBool32*
             
-            c2JavaTypes.put("VkFlags", "int");            
+            c2JavaTypes.put("VkFlags", "int");
+            c2JavaTypes.put("VkFlags*", "int[]");
+            
             c2JavaTypes.put("VkSampleMask", "int");
-            c2JavaTypes.put("VkDeviceSize", "long");
+            c2JavaTypes.put("VkSampleMask*", "int[]");
             
-            c2JavaTypes.put("const VkDynamicState*", "Penum<VkDynamicState>");
-            c2JavaTypes.put("const VkSampleMask*",    "PInteger");
+            c2JavaTypes.put("VkDeviceSize", "long");
+            c2JavaTypes.put("VkDeviceSize*", "long[]");
+            c2JavaTypes.put("const VkDeviceSize*", "long[]");
+            //VkDeviceSize*
+            //const VkDeviceSize*
+            
+            c2JavaTypes.put("const VkDynamicState*", "VkDynamicState[]");
+            c2JavaTypes.put("const VkSampleMask*",    "int[]");
             c2JavaTypes.put("const VkPipelineStageFlags*", "PInteger");
             
            
