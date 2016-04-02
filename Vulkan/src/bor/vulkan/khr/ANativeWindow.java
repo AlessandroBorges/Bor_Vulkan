@@ -3,9 +3,6 @@
  */
 package bor.vulkan.khr;
 
-import java.nio.ByteBuffer;
-import bor.vulkan.VkHandle;
-import bor.vulkan.P;
 import bor.vulkan.VkHandleInterface;
 
 /**
