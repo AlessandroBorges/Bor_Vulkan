@@ -18,6 +18,7 @@ import bor.vulkan.khr.Win32HINSTANCE;
 import bor.vulkan.khr.Win32HWND;
 import bor.vulkan.khr.WlDisplay;
 import bor.vulkan.khr.WlSurface;
+import bor.vulkan.khr.XCBVisualID;
 import bor.vulkan.khr.XCBconnection;
 import bor.vulkan.khr.XCBwindow;
 import bor.vulkan.khr.XlibDisplay;
@@ -86,7 +87,7 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
         VkDisplayKHR, VkDisplayModeKHR, VkEvent, VkFence, VkFramebuffer, VkImage, VkImageView, VkInstance,
         VkPhysicalDevice, VkPipeline, VkPipelineCache, VkPipelineLayout, VkQueryPool, VkQueue, VkRenderPass, VkSampler,
         VkSemaphore, VkShaderModule, VkSurfaceKHR, VkSwapchainKHR, ANativeWindow, MirConnection, MirSurface, Win32HINSTANCE, 
-        Win32HWND, WlDisplay, WlSurface, XCBconnection, XCBwindow, XlibDisplay,XlibWindow {
+        Win32HWND, WlDisplay, WlSurface, XCBconnection, XCBwindow, XCBVisualID, XlibDisplay,XlibWindow {
 
     /**
      * This static map holds handlers and avoid GC on handlers and pointers.
