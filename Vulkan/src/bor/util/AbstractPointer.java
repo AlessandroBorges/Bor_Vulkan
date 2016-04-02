@@ -6,9 +6,6 @@ package bor.util;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 
-import bor.vulkan.P;
-import bor.vulkan.VkObject;
-
 /**
  * @author Alessandro Borges
  *
