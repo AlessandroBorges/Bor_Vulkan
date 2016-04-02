@@ -9,12 +9,15 @@
  */
 package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 
-import java.nio.Buffer;
+import bor.vulkan.P;
+import bor.vulkan.enumerations.VkAttachmentLoadOp;
+import bor.vulkan.enumerations.VkAttachmentStoreOp;
+import bor.vulkan.enumerations.VkFormat;
+import bor.vulkan.enumerations.VkImageLayout;
+import bor.vulkan.enumerations.VkSampleCountFlagBits;
 
 
 /**
