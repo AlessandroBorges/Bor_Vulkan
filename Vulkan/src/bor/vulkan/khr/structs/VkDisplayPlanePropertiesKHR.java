@@ -9,13 +9,13 @@
  */
 package bor.vulkan.khr.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import bor.vulkan.khr.*;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 
-import java.nio.Buffer;
+import bor.vulkan.P;
+import bor.vulkan.VkHandle;
+import bor.vulkan.khr.VkDisplayKHR;
+import bor.vulkan.structs.VkStruct;
 
 
 /**
