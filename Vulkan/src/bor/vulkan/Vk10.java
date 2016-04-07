@@ -106,6 +106,7 @@ import bor.vulkan.structs.VkSemaphoreCreateInfo;
 import bor.vulkan.structs.VkShaderModuleCreateInfo;
 import bor.vulkan.structs.VkSparseImageFormatProperties;
 import bor.vulkan.structs.VkSparseImageMemoryRequirements;
+import bor.vulkan.structs.VkStruct;
 import bor.vulkan.structs.VkSubmitInfo;
 import bor.vulkan.structs.VkSubresourceLayout;
 import bor.vulkan.structs.VkViewport;
@@ -116,6 +117,12 @@ public class Vk10 extends Vulkan {
     /** Includes **/
     //@off
     /*JNI
+      #define VK_USE_PLATFORM_WIN32_KHR 1
+      
+      
+      #define BOR_LOADER 0
+      #undef BOR_LOADER
+      
       #include <vulkan/vulkan.h>      
       #include <stdio.h>
       #include <stdlib.h>
@@ -125,16 +132,7 @@ public class Vk10 extends Vulkan {
       static jclass byteBufferClass;
       
       // Cache method IDs each time the class is loaded. 
-      static void
-      nativeClassInit(JNIEnv *_env, jclass glImplClass)
-      {                      
-            jclass bufferClassLocal = _env->FindClass("java/nio/ByteBuffer");
-            byteBufferClass = (jclass) _env->NewGlobalRef(bufferClassLocal);     
-      }
-      
-      /////////////////
-      //
-      /////////////////  
+        
       inline VkInstance deferVkInstance(unsigned char* pInstance)
       {
        VkInstance* instance = (VkInstance*)(pInstance);  
@@ -145,8 +143,8 @@ public class Vk10 extends Vulkan {
      */
     
     private static native void init();/*
-       jclass bufferClassLocal = _env->FindClass("java/nio/ByteBuffer");
-       byteBufferClass = (jclass) _env->NewGlobalRef(bufferClassLocal);
+       jclass bufferClassLocal = env->FindClass("java/nio/ByteBuffer");
+       byteBufferClass = (jclass) env->NewGlobalRef(bufferClassLocal);
     */
     
    /**
@@ -166,13 +164,17 @@ public class Vk10 extends Vulkan {
     */
    public VkResult vkCreateInstance(VkInstanceCreateInfo pCreateInfo,
                                     VkAllocationCallbacks pAllocator,
-                                    VkInstance pInstance) {
+                                    VkInstance[] pInstance) {
        int[] result = { 0 };
        ByteBuffer pInstanceHandle = vkCreateInstance0(pCreateInfo.getPointerStruct(), 
                pAllocator.getPointerStruct(),
                result);
 
-       ((VkHandle) pInstance).setHandle(pInstanceHandle);
+       if(pInstance[0]==null){
+           pInstance[0] = new VkHandle(pInstanceHandle);
+       }else{
+           pInstance[0].setPointer(pInstanceHandle);           
+       }
        return VkResult.fromValue(result[0]);
    }
 
@@ -222,8 +224,7 @@ public class Vk10 extends Vulkan {
                                 VkAllocationCallbacks  pAllocator){
       
       vkDestroyInstance0(instance.getHandle(), 
-                         pAllocator.getPointerStruct());
-      
+                         pAllocator.getPointerStruct());      
   }
 
   /**
@@ -307,17 +308,18 @@ public class Vk10 extends Vulkan {
     * @return
     */
    private static native int vkEnumeratePhysicalDevices0(
-                                       Buffer instance,
+                                       Buffer _instance,
                                        int[]   pPhysicalDeviceCount,
                                        Buffer[]  pPhysicalDevicesRet,
                                        int size);/*
-       
-       VkPhysicalDevice* pPhysicalDevices;        
+       VkInstance* instance = (VkInstance*)_instance;
+       VkPhysicalDevice* pPhysicalDevices = NULL;        
        if(size>0){
           pPhysicalDevices =  new VkPhysicalDevice[size];
         }     
               
-       VkResult res = vkEnumeratePhysicalDevices(deferVkInstance(instance),
+       VkResult res = vkEnumeratePhysicalDevices(
+                                  (VkInstance) (*instance),
                                   (uint32_t*)  pPhysicalDeviceCount,
                                   (VkPhysicalDevice*) pPhysicalDevices);
                                   
@@ -336,8 +338,6 @@ public class Vk10 extends Vulkan {
               delete pPhysicalDevices; 
          
          return (jint) res;
-                     
-                     
        */
 
        /////////////////////////////////////
@@ -1120,7 +1120,7 @@ public class Vk10 extends Vulkan {
                int  queueFamilyIndex,
                int  queueIndex);/*
                
-       VkQueue*   pQueue;
+       VkQueue*   pQueue = NULL;
        VkDevice* device = (VkDevice*) pDevice;
        
        VKAPI_CALL vkGetDeviceQueue(
@@ -1516,19 +1516,46 @@ public VkResult vkFlushMappedMemoryRanges(
              VkDevice device,
              int memoryRangeCount,
              VkMappedMemoryRange[]  pMemoryRanges){
-     //FIXING - 
-     int len = pMemoryRanges.length;
-     ByteBuffer[] pMemoryRangesBuffers = new ByteBuffer[len];
-     for(int i=0; i<len; i++){
-         pMemoryRangesBuffers[i] = (pMemoryRanges[i]==null ? null : pMemoryRanges[i].getPointerStruct());
-     }
-     
+     //FIXING -     
+     ByteBuffer[] pMemoryRangesBuffers = getBuffers(pMemoryRanges, memoryRangeCount);
      int  _val = vkFlushMappedMemoryRanges0(
                      (device==null ? null : device.getHandle()) /* ByteBuffer */ ,
-                     memoryRangeCount ,
+                     pMemoryRangesBuffers.length,
                      pMemoryRangesBuffers);
-      return VkResult.fromValue(_val);
+     
+     setBuffers(pMemoryRanges, pMemoryRangesBuffers);
+     return VkResult.fromValue(_val);
 } 
+
+/**
+ * Set new buffer to VkStruct or VkHandkers.
+ * @param vkObjArray - array of Structs
+ * @param buffers - array of buffers to set
+ */
+ private static void setBuffers(VkObject[] vkObjArray, ByteBuffer[] buffers){
+     int len = Math.min(vkObjArray.length, buffers.length);
+     for(int i=0; i<len; i++){
+         VkObject stru = vkObjArray[i];
+         if(stru != null){
+             stru.setPointer(buffers[i]);
+         }
+     }
+ }
+ 
+ /**
+  * Get native buffers from VkObject array
+  * @param vkObjArray - array of VkStructs or VkHandlers to extract buffers
+  * @param max - max number of buffers to read.
+  * @return array of Bytebuffers 
+  */
+ private static ByteBuffer[] getBuffers(VkObject[] vkObjArray, int max){
+     int len = Math.min(max,vkObjArray.length);
+     ByteBuffer[] buffers = new ByteBuffer[len];     
+     for(int i=0; i<len; i++){
+        buffers[i] = (vkObjArray[i] == null) ? null : vkObjArray[i].getPointer();
+     }
+     return buffers;
+ }
 
 /**
  *  Native interface for Vulkan method #26
@@ -1546,22 +1573,15 @@ public VkResult vkFlushMappedMemoryRanges(
              java.nio.ByteBuffer[]   pMemoryRangesArray);/* 
      //FIXED
                     
-     VkDevice* ptr_device = (VkDevice*) device;
-     const VkMappedMemoryRange* pMemoryRanges = new VkMappedMemoryRange[memoryRangeCount];
-     
-     for(int i = 0; i < memoryRangeCount; i++){
-       jobject obj = (jobject) env->GetObjectArrayElement(pMemoryRangesArray, i);
-       if(obj){
-        pMemoryRanges[i] =  (VkMappedMemoryRange) (env->GetDirectBufferAddress(obj));
-       }
-     }
-     
+      VkDevice* ptr_device = (VkDevice*) device;      
+     JBufferArray buffers (env, pMemoryRangesArray);          
+     const VkMappedMemoryRange* pMemoryRanges = (const VkMappedMemoryRange*) buffers.getPointers();
      VkResult res = vkFlushMappedMemoryRanges(
                      (VkDevice) (*ptr_device),
                      (uint32_t) memoryRangeCount,
                      (const VkMappedMemoryRange*) pMemoryRanges);
                      
-      delete[] pMemoryRanges;                
+                     
       return (jint) res;
 */ 
 
@@ -1586,11 +1606,17 @@ public VkResult vkFlushMappedMemoryRanges(
 public VkResult vkInvalidateMappedMemoryRanges(
              VkDevice device,
              int memoryRangeCount,
-              VkMappedMemoryRange  pMemoryRanges){
+             VkMappedMemoryRange[]  pMemoryRanges){
+    
+    
+    ByteBuffer[] pMemoryRangesBuffers = getBuffers(pMemoryRanges, memoryRangeCount);
+       
      int  _val = vkInvalidateMappedMemoryRanges0(
                      (device==null ? null : device.getHandle()) /* ByteBuffer */ ,
                      memoryRangeCount ,
-                     (pMemoryRanges==null ? null : pMemoryRanges.getPointerStruct()) /* ByteBuffer */  );
+                     pMemoryRangesBuffers);
+      setBuffers(pMemoryRanges, pMemoryRangesBuffers);
+      
       return VkResult.fromValue(_val);
 } 
 
@@ -1607,12 +1633,16 @@ public VkResult vkInvalidateMappedMemoryRanges(
  private static native int  vkInvalidateMappedMemoryRanges0(
              java.nio.ByteBuffer   device,
              int  memoryRangeCount,
-             java.nio.ByteBuffer   pMemoryRanges);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+             java.nio.ByteBuffer[]   pMemoryRanges);/*
+                           
+     VkDevice* ptr_device = (VkDevice*) device;     
+     JBufferArray bufferArray (env, pMemoryRanges);
+     PointerToAnything* buffers = bufferArray.getPointers();
      VkResult res = vkInvalidateMappedMemoryRanges(
                      (VkDevice) (*ptr_device),
                      (uint32_t) memoryRangeCount,
-                     (const VkMappedMemoryRange*) pMemoryRanges);
+                     (const VkMappedMemoryRange*) buffers);
+                     
       return (jint) res;
 */ 
 
@@ -1803,7 +1833,7 @@ public VkResult vkBindImageMemory(
 public void vkGetBufferMemoryRequirements(
              VkDevice device,
              VkBuffer buffer,
-              VkMemoryRequirements  pMemoryRequirements){
+             VkMemoryRequirements  pMemoryRequirements){
      vkGetBufferMemoryRequirements0(
              (device==null ? null : device.getHandle()) /* ByteBuffer */ ,
              (buffer==null ? null : buffer.getHandle()) /* ByteBuffer */ ,
@@ -1851,7 +1881,7 @@ public void vkGetBufferMemoryRequirements(
 public void vkGetImageMemoryRequirements(
              VkDevice device,
              VkImage image,
-              VkMemoryRequirements  pMemoryRequirements){
+             VkMemoryRequirements  pMemoryRequirements){
      vkGetImageMemoryRequirements0(
              (device==null ? null : device.getHandle()) /* ByteBuffer */ ,
              (image==null ? null : image.getHandle()) /* ByteBuffer */ ,
@@ -1902,13 +1932,17 @@ public void vkGetImageSparseMemoryRequirements(
              VkDevice device,
              VkImage image,
              int[] pSparseMemoryRequirementCount,
-              VkSparseImageMemoryRequirements  pSparseMemoryRequirements){
+             VkSparseImageMemoryRequirements[]  pSparseMemoryRequirements){
+    
+     ByteBuffer[] buffers = getBuffers(pSparseMemoryRequirements, pSparseMemoryRequirementCount[0]);
+     
      vkGetImageSparseMemoryRequirements0(
              (device==null ? null : device.getHandle()) /* ByteBuffer */ ,
              (image==null ? null : image.getHandle()) /* ByteBuffer */ ,
              pSparseMemoryRequirementCount ,
-             (pSparseMemoryRequirements==null ? null : pSparseMemoryRequirements.getPointerStruct()) /* ByteBuffer */  );
-
+             buffers);
+     
+     setBuffers(pSparseMemoryRequirements, buffers);
 } 
 
 /**
@@ -1924,14 +1958,15 @@ public void vkGetImageSparseMemoryRequirements(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   image,
              int[]  pSparseMemoryRequirementCount,
-             java.nio.ByteBuffer   pSparseMemoryRequirements);/* 
+             java.nio.ByteBuffer[]   pSparseMemoryRequirements);/* 
      VkDevice* ptr_device = (VkDevice*) device;
      VkImage* ptr_image = (VkImage*) image;
+     JBufferArray buffers(env,pSparseMemoryRequirements);
      vkGetImageSparseMemoryRequirements(
                      (VkDevice) (*ptr_device),
                      (VkImage) (*ptr_image),
                      (uint32_t*) pSparseMemoryRequirementCount,
-                     (VkSparseImageMemoryRequirements*) pSparseMemoryRequirements);
+                     (VkSparseImageMemoryRequirements*) buffers.getPointers());
 
 */ 
 
@@ -1969,7 +2004,9 @@ public void vkGetPhysicalDeviceSparseImageFormatProperties(
              int usage,
              VkImageTiling tiling,
              int[] pPropertyCount,
-              VkSparseImageFormatProperties  pProperties){
+             VkSparseImageFormatProperties[]  pProperties){
+    
+     ByteBuffer[] buffers = getBuffers(pProperties, pPropertyCount[0]);
      vkGetPhysicalDeviceSparseImageFormatProperties0(
              (physicalDevice==null ? null : physicalDevice.getHandle()) /* ByteBuffer */ ,
              format.getValue() /* enum */,
@@ -1978,7 +2015,9 @@ public void vkGetPhysicalDeviceSparseImageFormatProperties(
              usage ,
              tiling.getValue() /* enum */,
              pPropertyCount ,
-             (pProperties==null ? null : pProperties.getPointerStruct()) /* ByteBuffer */  );
+             buffers );
+     
+     setBuffers(pProperties, buffers);
 
 } 
 
@@ -2003,8 +2042,10 @@ public void vkGetPhysicalDeviceSparseImageFormatProperties(
              int  usage,
              int   tiling,
              int[]  pPropertyCount,
-             java.nio.ByteBuffer   pProperties);/* 
+             java.nio.ByteBuffer[]   pProperties);/* 
      VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
+     JBufferArray buffers (env, pProperties);
+     
      vkGetPhysicalDeviceSparseImageFormatProperties(
                      (VkPhysicalDevice) (*ptr_physicalDevice),
                      (VkFormat) format,
@@ -2013,7 +2054,7 @@ public void vkGetPhysicalDeviceSparseImageFormatProperties(
                      (VkImageUsageFlags) usage,
                      (VkImageTiling) tiling,
                      (uint32_t*) pPropertyCount,
-                     (VkSparseImageFormatProperties*) pProperties);
+                     (VkSparseImageFormatProperties*) buffers.getPointers());
 
 */ 
 
@@ -2153,7 +2194,7 @@ public VkResult vkCreateFence(
 public void vkDestroyFence(
              VkDevice device,
              VkFence fence,
-              VkAllocationCallbacks  pAllocator){
+             VkAllocationCallbacks  pAllocator){
      vkDestroyFence0(
              (device==null ? null : device.getHandle()) /* ByteBuffer */ ,
              (fence==null ? null : fence.getHandle()) /* ByteBuffer */ ,
@@ -2203,11 +2244,14 @@ public void vkDestroyFence(
 public VkResult vkResetFences(
              VkDevice device,
              int fenceCount,
-              VkFence  pFences){
+             VkFence[]  pFences){
+     ByteBuffer[] buffers = getBuffers(pFences, fenceCount);
      int  _val = vkResetFences0(
                      (device==null ? null : device.getHandle()) /* ByteBuffer */ ,
                      fenceCount ,
-                     (pFences==null ? null : pFences.getHandle()) /* ByteBuffer */  );
+                     buffers);
+     
+     setBuffers(pFences, buffers);
       return VkResult.fromValue(_val);
 } 
 
@@ -2224,12 +2268,14 @@ public VkResult vkResetFences(
  private static native int  vkResetFences0(
              java.nio.ByteBuffer   device,
              int  fenceCount,
-             java.nio.ByteBuffer   pFences);/* 
+             java.nio.ByteBuffer[]   pFences);/* 
      VkDevice* ptr_device = (VkDevice*) device;
+     JBufferArray buffers (env, pFences);
+     
      VkResult res = vkResetFences(
                      (VkDevice) (*ptr_device),
                      (uint32_t) fenceCount,
-                     (const VkFence*) pFences);
+                     (const VkFence*) buffers.getPointers());
       return (jint) res;
 */ 
 
@@ -2303,15 +2349,17 @@ public VkResult vkGetFenceStatus(
 public VkResult vkWaitForFences(
              VkDevice device,
              int fenceCount,
-              VkFence  pFences,
+             VkFence[]  pFences,
              boolean waitAll,
              long timeout){
+     ByteBuffer[] buffers = getBuffers(pFences, fenceCount); 
      int  _val = vkWaitForFences0(
                      (device==null ? null : device.getHandle()) /* ByteBuffer */ ,
                      fenceCount ,
-                     (pFences==null ? null : pFences.getHandle()) /* ByteBuffer */ ,
+                     buffers /* ByteBuffer */ ,
                      waitAll ,
                      timeout  );
+      setBuffers(pFences, buffers);
       return VkResult.fromValue(_val);
 } 
 
@@ -2330,14 +2378,16 @@ public VkResult vkWaitForFences(
  private static native int  vkWaitForFences0(
              java.nio.ByteBuffer   device,
              int  fenceCount,
-             java.nio.ByteBuffer   pFences,
+             java.nio.ByteBuffer[]   pFences,
              boolean  waitAll,
              long  timeout);/* 
      VkDevice* ptr_device = (VkDevice*) device;
+     JBufferArray buffers (env, pFences);
+     
      VkResult res = vkWaitForFences(
                      (VkDevice) (*ptr_device),
                      (uint32_t) fenceCount,
-                     (const VkFence*) pFences,
+                     (const VkFence*) buffers.getPointers(),
                      (VkBool32) waitAll,
                      (uint64_t) timeout);
       return (jint) res;
@@ -2420,7 +2470,7 @@ public VkResult vkCreateSemaphore(
 public void vkDestroySemaphore(
              VkDevice device,
              VkSemaphore semaphore,
-              VkAllocationCallbacks  pAllocator){
+             VkAllocationCallbacks  pAllocator){
      vkDestroySemaphore0(
              (device==null ? null : device.getHandle()) /* ByteBuffer */ ,
              (semaphore==null ? null : semaphore.getHandle()) /* ByteBuffer */ ,
@@ -2471,9 +2521,9 @@ public void vkDestroySemaphore(
  */
 public VkResult vkCreateEvent(
              VkDevice device,
-              VkEventCreateInfo  pCreateInfo,
-              VkAllocationCallbacks  pAllocator,
-              VkEvent  pEvent){
+             VkEventCreateInfo  pCreateInfo,
+             VkAllocationCallbacks  pAllocator,
+             VkEvent  pEvent){
      int  _val = vkCreateEvent0(
                      (device==null ? null : device.getHandle()) /* ByteBuffer */ ,
                      (pCreateInfo==null ? null : pCreateInfo.getPointerStruct()) /* ByteBuffer */ ,
@@ -2833,17 +2883,39 @@ public VkResult vkGetQueryPoolResults(
              java.nio.Buffer pData,
              long stride,
              int flags){
+     
+     // pData must respect Buffers position
+     Buffer pData2 = (pData.position() == 0)? pData : slice(pData);
      int  _val = vkGetQueryPoolResults0(
                      (device==null ? null : device.getHandle()) /* ByteBuffer */ ,
                      (queryPool==null ? null : queryPool.getHandle()) /* ByteBuffer */ ,
                      firstQuery ,
                      queryCount ,
                      dataSize ,
-                     pData ,
+                     pData2,
                      stride ,
                      flags  );
       return VkResult.fromValue(_val);
 } 
+
+/**
+ * Slice a buffer at current position
+ * @param b - buffer to slice
+ * @return sliced buffer
+ */
+ private static final Buffer slice(Buffer b){
+     if(b==null) return null;
+     if(b.position()==0) return b;
+     
+     if(b instanceof java.nio.IntBuffer) return ((java.nio.IntBuffer)b).slice();
+     if(b instanceof java.nio.LongBuffer) return ((java.nio.LongBuffer)b).slice();
+     if(b instanceof java.nio.ByteBuffer) return ((java.nio.LongBuffer)b).slice();
+     if(b instanceof java.nio.FloatBuffer) return ((java.nio.FloatBuffer)b).slice();
+     if(b instanceof java.nio.CharBuffer) return ((java.nio.CharBuffer)b).slice();
+     if(b instanceof java.nio.DoubleBuffer) return ((java.nio.DoubleBuffer)b).slice();
+          
+     return b;
+ }
 
 /**
  *  Native interface for Vulkan method #50
@@ -2904,16 +2976,24 @@ public VkResult vkGetQueryPoolResults(
  * @return VkResult
  */
 public VkResult vkCreateBuffer(
-             VkDevice device,
+              VkDevice device,
               VkBufferCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
-              VkBuffer  pBuffer){
-     int  _val = vkCreateBuffer0(
+              VkBuffer[]  pBuffer){
+    
+     int[] result = {0};     
+     ByteBuffer handle = vkCreateBuffer0(
                      (device==null ? null : device.getHandle()) /* ByteBuffer */ ,
                      (pCreateInfo==null ? null : pCreateInfo.getPointerStruct()) /* ByteBuffer */ ,
                      (pAllocator==null ? null : pAllocator.getPointerStruct()) /* ByteBuffer */ ,
-                     (pBuffer==null ? null : pBuffer.getHandle()) /* ByteBuffer */  );
-      return VkResult.fromValue(_val);
+                     result);   
+     
+     if(pBuffer[0]==null){
+         pBuffer[0] = new VkHandle(handle);
+     }else{
+         pBuffer[0].setPointer(handle);
+     }
+      return VkResult.fromValue(result[0]);
 } 
 
 /**
@@ -2927,18 +3007,27 @@ public VkResult vkCreateBuffer(
  * 
  * @return VkResult as int  
  */
- private static native int  vkCreateBuffer0(
+ private static native ByteBuffer vkCreateBuffer0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   pCreateInfo,
-             java.nio.ByteBuffer   pAllocator,
-             java.nio.ByteBuffer   pBuffer);/* 
+             java.nio.ByteBuffer   pAllocator,             
+             int[] result);/* 
+             
      VkDevice* ptr_device = (VkDevice*) device;
+     VkBuffer* pBuffer = NULL;
+         
      VkResult res = vkCreateBuffer(
                      (VkDevice) (*ptr_device),
                      (const VkBufferCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkBuffer*) pBuffer);
-      return (jint) res;
+      result[0] = res;
+      if(pBuffer){      
+            jobject buffer = (jobject)(env->NewDirectByteBuffer((void*)(pBuffer), sizeof(void*)));  
+           return buffer;               
+      }
+      
+      return NULL;
 */ 
 
 
@@ -2960,7 +3049,7 @@ public VkResult vkCreateBuffer(
 public void vkDestroyBuffer(
              VkDevice device,
              VkBuffer buffer,
-              VkAllocationCallbacks  pAllocator){
+             VkAllocationCallbacks  pAllocator){
      vkDestroyBuffer0(
              (device==null ? null : device.getHandle()) /* ByteBuffer */ ,
              (buffer==null ? null : buffer.getHandle()) /* ByteBuffer */ ,
@@ -3010,16 +3099,27 @@ public void vkDestroyBuffer(
  * @return VkResult
  */
 public VkResult vkCreateBufferView(
-             VkDevice device,
+              VkDevice device,
               VkBufferViewCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
-              VkBufferView  pView){
+              VkBufferView[]  pView){
+    
+     ByteBuffer[] buffer = new ByteBuffer[1];
      int  _val = vkCreateBufferView0(
                      (device==null ? null : device.getHandle()) /* ByteBuffer */ ,
                      (pCreateInfo==null ? null : pCreateInfo.getPointerStruct()) /* ByteBuffer */ ,
                      (pAllocator==null ? null : pAllocator.getPointerStruct()) /* ByteBuffer */ ,
-                     (pView==null ? null : pView.getHandle()) /* ByteBuffer */  );
-      return VkResult.fromValue(_val);
+                     buffer);
+     
+     ByteBuffer handle = buffer[0]; 
+     // smart checking
+     if(pView[0] == null){
+         pView[0] = new VkHandle(handle);
+     }else{
+         pView[0].setPointer(handle);    
+     }
+     
+     return VkResult.fromValue(_val);
 } 
 
 /**
@@ -3037,13 +3137,21 @@ public VkResult vkCreateBufferView(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
-             java.nio.ByteBuffer   pView);/* 
+             java.nio.ByteBuffer[]   _pView);/* 
+             
      VkDevice* ptr_device = (VkDevice*) device;
+     VkBufferView* pView = NULL;
+     
      VkResult res = vkCreateBufferView(
                      (VkDevice) (*ptr_device),
                      (const VkBufferViewCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkBufferView*) pView);
+      if(pView){
+         jobject buffer = (jobject)(env->NewDirectByteBuffer((void *)pView, sizeof(void*)));        
+         env->SetObjectArrayElement(_pView, 0, buffer);
+       }
+                     
       return (jint) res;
 */ 
 
@@ -4814,16 +4922,18 @@ public void vkGetRenderAreaGranularity(
  * @return VkResult
  */
 public VkResult vkCreateCommandPool(
-             VkDevice device,
+              VkDevice device,
               VkCommandPoolCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
-              VkCommandPool  pCommandPool){
-     int  _val = vkCreateCommandPool0(
+              VkCommandPool[]  pCommandPool){
+     int[] result = {0};
+     ByteBuffer handle = vkCreateCommandPool0(
                      (device==null ? null : device.getHandle()) /* ByteBuffer */ ,
                      (pCreateInfo==null ? null : pCreateInfo.getPointerStruct()) /* ByteBuffer */ ,
                      (pAllocator==null ? null : pAllocator.getPointerStruct()) /* ByteBuffer */ ,
-                     (pCommandPool==null ? null : pCommandPool.getHandle()) /* ByteBuffer */  );
-      return VkResult.fromValue(_val);
+                     result );
+     
+      return VkResult.fromValue(result[0]);
 } 
 
 /**
@@ -4837,18 +4947,27 @@ public VkResult vkCreateCommandPool(
  * 
  * @return VkResult as int  
  */
- private static native int  vkCreateCommandPool0(
+ private static native ByteBuffer  vkCreateCommandPool0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
-             java.nio.ByteBuffer   pCommandPool);/* 
+             int[] result);/* 
+             
      VkDevice* ptr_device = (VkDevice*) device;
+     VkCommandPool* pCommandPool = NULL;
+     
      VkResult res = vkCreateCommandPool(
                      (VkDevice) (*ptr_device),
                      (const VkCommandPoolCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkCommandPool*) pCommandPool);
-      return (jint) res;
+                     
+      result[0] = res;
+      if(pCommandPool){
+       jobject buffer = (jobject)(env->NewDirectByteBuffer(pCommandPool, sizeof(void*)));
+       return buffer;
+      }   
+      return NULL;
 */ 
 
 
@@ -5468,7 +5587,7 @@ public void vkCmdSetBlendConstants(
      VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
      vkCmdSetBlendConstants(
                      (VkCommandBuffer) (*ptr_commandBuffer),
-                     (const float[]) blendConstants);
+                     blendConstants);
 
 */ 
 
@@ -8048,13 +8167,25 @@ public VkResult vkGetPhysicalDeviceSurfacePresentModesKHR(
              VkPhysicalDevice physicalDevice,
              VkSurfaceKHR surface,
              int[] pPresentModeCount,
-              VkPresentModeKHR  pPresentModes){
+             VkPresentModeKHR[]  pPresentModes){
+     int len = Math.min(pPresentModeCount[0],pPresentModes.length);
+     
+     int[] enumValues = new int[len];
      int  _val = vkGetPhysicalDeviceSurfacePresentModesKHR0(
                      (physicalDevice==null ? null : physicalDevice.getHandle()) /* ByteBuffer */ ,
                      (surface==null ? null : surface.getHandle()) /* ByteBuffer */ ,
                      pPresentModeCount ,
-                     pPresentModes.getValue() /* enum */ );
-      return VkResult.fromValue(_val);
+                     enumValues /* enum */ );
+     
+    for (int i = 0; i < enumValues.length; i++) {
+          pPresentModes[i] = VkPresentModeKHR.fromValue(enumValues[i]);
+    }
+    // remove dirty
+    for(int i = enumValues.length; i < pPresentModes.length; i++){
+        pPresentModes[i] = null;
+    }
+    
+    return VkResult.fromValue(_val);
 } 
 
 /**
@@ -8072,7 +8203,8 @@ public VkResult vkGetPhysicalDeviceSurfacePresentModesKHR(
              java.nio.ByteBuffer   physicalDevice,
              java.nio.ByteBuffer   surface,
              int[]  pPresentModeCount,
-             int   pPresentModes);/* 
+             int[]   pPresentModes);/* 
+             
      VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
      VkSurfaceKHR* ptr_surface = (VkSurfaceKHR*) surface;
      VkResult res = vkGetPhysicalDeviceSurfacePresentModesKHR(
@@ -8410,12 +8542,16 @@ public VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
              java.nio.ByteBuffer   physicalDevice,
              int[]  pPropertyCount,
              java.nio.ByteBuffer   pProperties);/* 
+    #ifdef BOR_LOADER         
      VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
      VkResult res = vkGetPhysicalDeviceDisplayPropertiesKHR(
                      (VkPhysicalDevice) (*ptr_physicalDevice),
                      (uint32_t*) pPropertyCount,
                      (VkDisplayPropertiesKHR*) pProperties);
       return (jint) res;
+    #else
+      return (jint) VkResult::VK_ERROR_EXTENSION_NOT_PRESENT;
+    #endif    
 */ 
 
 
@@ -8461,12 +8597,17 @@ public VkResult vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
              java.nio.ByteBuffer   physicalDevice,
              int[]  pPropertyCount,
              java.nio.ByteBuffer   pProperties);/* 
+  #ifdef BOR_LOADER 
      VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
      VkResult res = vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
                      (VkPhysicalDevice) (*ptr_physicalDevice),
                      (uint32_t*) pPropertyCount,
                      (VkDisplayPlanePropertiesKHR*) pProperties);
       return (jint) res;
+  #else
+      return (jint) VkResult::VK_ERROR_EXTENSION_NOT_PRESENT;
+  #endif     
+      
 */ 
 
 
@@ -8518,6 +8659,7 @@ public VkResult vkGetDisplayPlaneSupportedDisplaysKHR(
              int  planeIndex,
              int[]  pDisplayCount,
              java.nio.ByteBuffer   pDisplays);/* 
+#ifdef BOR_LOADER            
      VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
      VkResult res = vkGetDisplayPlaneSupportedDisplaysKHR(
                      (VkPhysicalDevice) (*ptr_physicalDevice),
@@ -8525,6 +8667,9 @@ public VkResult vkGetDisplayPlaneSupportedDisplaysKHR(
                      (uint32_t*) pDisplayCount,
                      (VkDisplayKHR*) pDisplays);
       return (jint) res;
+ #else
+      return (jint) VkResult::VK_ERROR_EXTENSION_NOT_PRESENT;
+ #endif  
 */ 
 
 
@@ -8576,6 +8721,7 @@ public VkResult vkGetDisplayModePropertiesKHR(
              java.nio.ByteBuffer   display,
              int[]  pPropertyCount,
              java.nio.ByteBuffer   pProperties);/* 
+ #ifdef BOR_LOADER 
      VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
      VkDisplayKHR* ptr_display = (VkDisplayKHR*) display;
      VkResult res = vkGetDisplayModePropertiesKHR(
@@ -8584,6 +8730,9 @@ public VkResult vkGetDisplayModePropertiesKHR(
                      (uint32_t*) pPropertyCount,
                      (VkDisplayModePropertiesKHR*) pProperties);
       return (jint) res;
+ #else
+      return (jint) VkResult::VK_ERROR_EXTENSION_NOT_PRESENT;
+ #endif      
 */ 
 
 
@@ -8641,6 +8790,7 @@ public VkResult vkCreateDisplayModeKHR(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pMode);/* 
+ #ifdef BOR_LOADER            
      VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
      VkDisplayKHR* ptr_display = (VkDisplayKHR*) display;
      VkResult res = vkCreateDisplayModeKHR(
@@ -8650,6 +8800,11 @@ public VkResult vkCreateDisplayModeKHR(
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkDisplayModeKHR*) pMode);
       return (jint) res;
+      
+ #else
+      return (jint) VkResult::VK_ERROR_EXTENSION_NOT_PRESENT;
+ #endif        
+      
 */ 
 
 
@@ -8701,6 +8856,7 @@ public VkResult vkGetDisplayPlaneCapabilitiesKHR(
              java.nio.ByteBuffer   mode,
              int  planeIndex,
              java.nio.ByteBuffer   pCapabilities);/* 
+   #ifdef BOR_LOADER            
      VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
      VkDisplayModeKHR* ptr_mode = (VkDisplayModeKHR*) mode;
      VkResult res = vkGetDisplayPlaneCapabilitiesKHR(
@@ -8709,6 +8865,11 @@ public VkResult vkGetDisplayPlaneCapabilitiesKHR(
                      (uint32_t) planeIndex,
                      (VkDisplayPlaneCapabilitiesKHR*) pCapabilities);
       return (jint) res;
+    
+ #else
+      return (jint) VkResult::VK_ERROR_EXTENSION_NOT_PRESENT;
+ #endif    
+      
 */ 
 
 
@@ -8760,6 +8921,7 @@ public VkResult vkCreateDisplayPlaneSurfaceKHR(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pSurface);/* 
+   #ifdef BOR_LOADER            
      VkInstance* ptr_instance = (VkInstance*) instance;
      VkResult res = vkCreateDisplayPlaneSurfaceKHR(
                      (VkInstance) (*ptr_instance),
@@ -8767,6 +8929,9 @@ public VkResult vkCreateDisplayPlaneSurfaceKHR(
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkSurfaceKHR*) pSurface);
       return (jint) res;
+ #else
+      return (jint) VkResult::VK_ERROR_EXTENSION_NOT_PRESENT;
+ #endif    
 */ 
 
 
@@ -8824,6 +8989,7 @@ public VkResult vkCreateSharedSwapchainsKHR(
              java.nio.ByteBuffer   pCreateInfos,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pSwapchains);/* 
+ #ifdef BOR_LOADER
      VkDevice* ptr_device = (VkDevice*) device;
      VkResult res = vkCreateSharedSwapchainsKHR(
                      (VkDevice) (*ptr_device),
@@ -8832,6 +8998,9 @@ public VkResult vkCreateSharedSwapchainsKHR(
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkSwapchainKHR*) pSwapchains);
       return (jint) res;
+  #else
+      return (jint) VkResult::VK_ERROR_EXTENSION_NOT_PRESENT;
+ #endif      
 */ 
 
 
@@ -8883,13 +9052,18 @@ public VkResult vkCreateXlibSurfaceKHR(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pSurface);/* 
+             
+    #ifdef VK_USE_PLATFORM_XLIB_KHR         
      VkInstance* ptr_instance = (VkInstance*) instance;
      VkResult res = vkCreateXlibSurfaceKHR(
                      (VkInstance) (*ptr_instance),
-                     (const VkXlibSurfaceCreateInfoKHR*) pCreateInfo,
-                     (const VkAllocationCallbacks*) pAllocator,
+                     (VkXlibSurfaceCreateInfoKHR*) pCreateInfo,
+                     (VkAllocationCallbacks*) pAllocator,
                      (VkSurfaceKHR*) pSurface);
       return (jint) res;
+     #else
+      return (jint) VkResult::VK_ERROR_INCOMPATIBLE_DRIVER;
+     #endif   
 */ 
 
 
@@ -8941,6 +9115,7 @@ public boolean vkGetPhysicalDeviceXlibPresentationSupportKHR(
              int  queueFamilyIndex,
              java.nio.ByteBuffer   dpy,
              java.nio.ByteBuffer   visualID);/* 
+   #ifdef VK_USE_PLATFORM_XCB_KHR
      VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
      VisualID* ptr_visualID = (VisualID*) visualID;
      boolean res = vkGetPhysicalDeviceXlibPresentationSupportKHR(
@@ -8949,6 +9124,9 @@ public boolean vkGetPhysicalDeviceXlibPresentationSupportKHR(
                      (Display*) dpy,
                      (VisualID) (*ptr_visualID));
       return (jboolean) res;
+   #else
+    return (jboolean)JNI_FALSE;
+   #endif    
 */ 
 
 
@@ -9000,13 +9178,17 @@ public VkResult vkCreateXcbSurfaceKHR(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pSurface);/* 
+   #ifdef VK_USE_PLATFORM_XCB_KHR          
      VkInstance* ptr_instance = (VkInstance*) instance;
      VkResult res = vkCreateXcbSurfaceKHR(
                      (VkInstance) (*ptr_instance),
-                     (const VkXcbSurfaceCreateInfoKHR*) pCreateInfo,
-                     (const VkAllocationCallbacks*) pAllocator,
+                     (VkXcbSurfaceCreateInfoKHR*) pCreateInfo,
+                     (VkAllocationCallbacks*) pAllocator,
                      (VkSurfaceKHR*) pSurface);
       return (jint) res;
+   #else
+    return (jint) VkResult::VK_ERROR_INCOMPATIBLE_DRIVER;
+   #endif 
 */ 
 
 
@@ -9058,6 +9240,7 @@ public boolean vkGetPhysicalDeviceXcbPresentationSupportKHR(
              int  queueFamilyIndex,
              java.nio.ByteBuffer   connection,
              XCBVisualID  visual_id);/* 
+   #ifdef VK_USE_PLATFORM_XCB_KHR         
      VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
      boolean res = vkGetPhysicalDeviceXcbPresentationSupportKHR(
                      (VkPhysicalDevice) (*ptr_physicalDevice),
@@ -9065,6 +9248,9 @@ public boolean vkGetPhysicalDeviceXcbPresentationSupportKHR(
                      (xcb_connection_t*) connection,
                      (xcb_visualid_t) visual_id);
       return (jboolean) res;
+    #else
+     return JNI_FALSE;
+    #endif   
 */ 
 
 
@@ -9116,13 +9302,17 @@ public VkResult vkCreateWaylandSurfaceKHR(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pSurface);/* 
+  #ifdef VK_USE_PLATFORM_WAYLAND_KHR        
      VkInstance* ptr_instance = (VkInstance*) instance;
      VkResult res = vkCreateWaylandSurfaceKHR(
                      (VkInstance) (*ptr_instance),
-                     (const VkWaylandSurfaceCreateInfoKHR*) pCreateInfo,
-                     (const VkAllocationCallbacks*) pAllocator,
+                     ( VkWaylandSurfaceCreateInfoKHR*) pCreateInfo,
+                     ( VkAllocationCallbacks*) pAllocator,
                      (VkSurfaceKHR*) pSurface);
-      return (jint) res;
+      return (jint) res;  
+#else
+      return (jint) VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;  
+#endif       
 */ 
 
 
@@ -9167,13 +9357,17 @@ public boolean vkGetPhysicalDeviceWaylandPresentationSupportKHR(
  private static native boolean vkGetPhysicalDeviceWaylandPresentationSupportKHR0(
              java.nio.ByteBuffer   physicalDevice,
              int  queueFamilyIndex,
-             java.nio.ByteBuffer   display);/* 
+             java.nio.ByteBuffer   display);/*
+   #ifdef VK_USE_PLATFORM_WAYLAND_KHR           
      VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
-     boolean res = vkGetPhysicalDeviceWaylandPresentationSupportKHR(
+     bool res = vkGetPhysicalDeviceWaylandPresentationSupportKHR(
                      (VkPhysicalDevice) (*ptr_physicalDevice),
                      (uint32_t) queueFamilyIndex,
                      (struct wl_display*) display);
       return (jboolean) res;
+   #else
+     return (jboolean) JNI_FALSE;   
+   #endif  
 */ 
 
 
@@ -9225,6 +9419,8 @@ public VkResult vkCreateMirSurfaceKHR(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pSurface);/* 
+    #ifdef VK_USE_PLATFORM_MIR_KHR         
+             
      VkInstance* ptr_instance = (VkInstance*) instance;
      VkResult res = vkCreateMirSurfaceKHR(
                      (VkInstance) (*ptr_instance),
@@ -9232,6 +9428,9 @@ public VkResult vkCreateMirSurfaceKHR(
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkSurfaceKHR*) pSurface);
       return (jint) res;
+    #else
+      return (jint) VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;  
+    #endif  
 */ 
 
 
@@ -9277,12 +9476,17 @@ public boolean vkGetPhysicalDeviceMirPresentationSupportKHR(
              java.nio.ByteBuffer   physicalDevice,
              int  queueFamilyIndex,
              java.nio.ByteBuffer   connection);/* 
+             
+    #ifdef VK_USE_PLATFORM_MIR_KHR              
      VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
-     boolean res = vkGetPhysicalDeviceMirPresentationSupportKHR(
+     bool res = vkGetPhysicalDeviceMirPresentationSupportKHR(
                      (VkPhysicalDevice) (*ptr_physicalDevice),
                      (uint32_t) queueFamilyIndex,
                      (MirConnection*) connection);
       return (jboolean) res;
+     #else
+      return (jboolean) JNI_FALSE; //VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;  
+     #endif 
 */ 
 
 
@@ -9309,13 +9513,20 @@ public VkResult vkCreateAndroidSurfaceKHR(
              VkInstance instance,
               VkAndroidSurfaceCreateInfoKHR  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
-              VkSurfaceKHR  pSurface){
-     int  _val = vkCreateAndroidSurfaceKHR0(
+              VkSurfaceKHR[]  pSurface){
+     int[] result = {0};
+     ByteBuffer handle = vkCreateAndroidSurfaceKHR0(
                      (instance==null ? null : instance.getHandle()) /* ByteBuffer */ ,
                      (pCreateInfo==null ? null : pCreateInfo.getPointerStruct()) /* ByteBuffer */ ,
                      (pAllocator==null ? null : pAllocator.getPointerStruct()) /* ByteBuffer */ ,
-                     (pSurface==null ? null : pSurface.getHandle()) /* ByteBuffer */  );
-      return VkResult.fromValue(_val);
+                     result);
+     
+     if(pSurface[0]==null){
+         pSurface[0] = new VkHandle(handle);
+     }else{
+         pSurface[0].setPointer(handle);
+     }
+      return VkResult.fromValue(result[0]);
 } 
 
 /**
@@ -9329,18 +9540,30 @@ public VkResult vkCreateAndroidSurfaceKHR(
  * 
  * @return VkResult as int  
  */
- private static native int  vkCreateAndroidSurfaceKHR0(
+ private static native java.nio.ByteBuffer vkCreateAndroidSurfaceKHR0(
              java.nio.ByteBuffer   instance,
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
-             java.nio.ByteBuffer   pSurface);/* 
+             int[] result);/*
+    #ifdef VK_USE_PLATFORM_ANDROID_KHR         
      VkInstance* ptr_instance = (VkInstance*) instance;
+     VkSurfaceKHR* pSurface = NULL;
+     jobject buffer = NULL;
      VkResult res = vkCreateAndroidSurfaceKHR(
                      (VkInstance) (*ptr_instance),
                      (const VkAndroidSurfaceCreateInfoKHR*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkSurfaceKHR*) pSurface);
-      return (jint) res;
+                     
+       if(pSurface){
+         buffer = (jobject)(env->NewDirectByteBuffer((void*)pSurface, sizeof(void*)));
+       }
+      result[0] = (jint) res;               
+      return buffer;
+    #else
+     result[0] = (jint)VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;  
+     return NULL;
+    #endif  
 */ 
 
 
@@ -9392,13 +9615,18 @@ public VkResult vkCreateWin32SurfaceKHR(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pSurface);/* 
+             
+ #ifdef VK_USE_PLATFORM_WIN32_KHR            
      VkInstance* ptr_instance = (VkInstance*) instance;
      VkResult res = vkCreateWin32SurfaceKHR(
                      (VkInstance) (*ptr_instance),
-                     (const VkWin32SurfaceCreateInfoKHR*) pCreateInfo,
-                     (const VkAllocationCallbacks*) pAllocator,
+                     ( VkWin32SurfaceCreateInfoKHR*) pCreateInfo,
+                     ( VkAllocationCallbacks*) pAllocator,
                      (VkSurfaceKHR*) pSurface);
-      return (jint) res;
+      return (jint) res;      
+#else
+      return (jint) VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;  
+#endif  
 */ 
 
 
@@ -9438,11 +9666,16 @@ public boolean vkGetPhysicalDeviceWin32PresentationSupportKHR(
  private static native boolean vkGetPhysicalDeviceWin32PresentationSupportKHR0(
              java.nio.ByteBuffer   physicalDevice,
              int  queueFamilyIndex);/* 
+   #ifdef VK_USE_PLATFORM_WIN32_KHR          
      VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
-     boolean res = vkGetPhysicalDeviceWin32PresentationSupportKHR(
+     bool res = vkGetPhysicalDeviceWin32PresentationSupportKHR(
                      (VkPhysicalDevice) (*ptr_physicalDevice),
                      (uint32_t) queueFamilyIndex);
       return (jboolean) res;
+    #else
+        return (jboolean) JNI_FALSE;
+    #endif      
+      
 */ 
 
 
@@ -9494,6 +9727,7 @@ public VkResult vkCreateDebugReportCallbackEXT(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pCallback);/* 
+  #ifdef BOR_LOADER            
      VkInstance* ptr_instance = (VkInstance*) instance;
      VkResult res = vkCreateDebugReportCallbackEXT(
                      (VkInstance) (*ptr_instance),
@@ -9501,6 +9735,10 @@ public VkResult vkCreateDebugReportCallbackEXT(
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkDebugReportCallbackEXT*) pCallback);
       return (jint) res;
+ #else
+      return (jint) VkResult::VK_ERROR_EXTENSION_NOT_PRESENT;
+ #endif 
+      
 */ 
 
 
@@ -9542,13 +9780,16 @@ public void vkDestroyDebugReportCallbackEXT(
              java.nio.ByteBuffer   instance,
              java.nio.ByteBuffer   callback,
              java.nio.ByteBuffer   pAllocator);/* 
+#ifdef BOR_LOADER              
      VkInstance* ptr_instance = (VkInstance*) instance;
      VkDebugReportCallbackEXT* ptr_callback = (VkDebugReportCallbackEXT*) callback;
      vkDestroyDebugReportCallbackEXT(
                      (VkInstance) (*ptr_instance),
                      (VkDebugReportCallbackEXT) (*ptr_callback),
                      (const VkAllocationCallbacks*) pAllocator);
-
+ #else
+     // return (jint) VkResult::VK_ERROR_EXTENSION_NOT_PRESENT;
+ #endif  
 */ 
 
 
@@ -9620,6 +9861,8 @@ public void vkDebugReportMessageEXT(
              int  messageCode,
              String  pLayerPrefix,
              String  pMessage);/* 
+             
+  #ifdef BOR_LOADER             
      VkInstance* ptr_instance = (VkInstance*) instance;
      vkDebugReportMessageEXT(
                      (VkInstance) (*ptr_instance),
@@ -9630,7 +9873,9 @@ public void vkDebugReportMessageEXT(
                      (int32_t) messageCode,
                      (const char*) pLayerPrefix,
                      (const char*) pMessage);
-
+ #else
+    //  return (jint) VkResult::VK_ERROR_EXTENSION_NOT_PRESENT;
+ #endif   
 */ 
 
 
