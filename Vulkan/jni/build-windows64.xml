@@ -30,14 +30,14 @@
 	<property name="g++-opts" value="-c -Wall -O2 -mfpmath=sse -msse2 -fmessage-length=0 -m64 -std=gnu++11"/>
 	<fileset id="g++-files" dir="./">
 		<exclude name="target/"/>
-				<include name="-I/D/VulkanSDK/1.0.5.0/Include"/>
+				<include name="**/*.cpp"/>
 
 		
 	</fileset>
 
 	<!-- define linker and options -->
 	<property name="linker" value="${compilerPrefix}g++${compilerSuffix}"/>
-	<property name="linker-opts" value="-Wl,--kill-at -shared -static -static-libgcc -static-libstdc++ -m64"/>
+	<property name="linker-opts" value="-Wl,--kill-at -shared -static -static-libgcc -static-libstdc++ -m64 "/>
 	<property name="libraries" value="-LD:/VulkanSDK/1.0.5.0/Bin -lvulkan-1 "/>
 	
 	<!-- cleans the build directory, removes all object files and shared libs -->

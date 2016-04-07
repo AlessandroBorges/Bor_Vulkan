@@ -87,6 +87,14 @@ extern "C" {
 #define bor_vulkan_Vk10_VK_NV_GLSL_SHADER_SPEC_VERSION 1L
 /*
  * Class:     bor_vulkan_Vk10
+ * Method:    init
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_init
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     bor_vulkan_Vk10
  * Method:    vkCreateInstance0
  * Signature: (Ljava/nio/Buffer;Ljava/nio/Buffer;[I)Ljava/nio/ByteBuffer;
  */
@@ -228,6 +236,1214 @@ JNIEXPORT jobjectArray JNICALL Java_bor_vulkan_Vk10_vkEnumerateDeviceLayerProper
  */
 JNIEXPORT jobject JNICALL Java_bor_vulkan_Vk10_vkGetDeviceQueue0
   (JNIEnv *, jclass, jobject, jint, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkQueueSubmit0
+ * Signature: (Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkQueueSubmit0
+  (JNIEnv *, jclass, jobject, jint, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkQueueWaitIdle0
+ * Signature: (Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkQueueWaitIdle0
+  (JNIEnv *, jclass, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDeviceWaitIdle0
+ * Signature: (Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkDeviceWaitIdle0
+  (JNIEnv *, jclass, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkAllocateMemory0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkAllocateMemory0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkFreeMemory0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkFreeMemory0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkMapMemory0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;JJI[I)Ljava/nio/ByteBuffer;
+ */
+JNIEXPORT jobject JNICALL Java_bor_vulkan_Vk10_vkMapMemory0
+  (JNIEnv *, jclass, jobject, jobject, jlong, jlong, jint, jintArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkUnmapMemory0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkUnmapMemory0
+  (JNIEnv *, jclass, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkFlushMappedMemoryRanges0
+ * Signature: (Ljava/nio/ByteBuffer;I[Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkFlushMappedMemoryRanges0
+  (JNIEnv *, jclass, jobject, jint, jobjectArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkInvalidateMappedMemoryRanges0
+ * Signature: (Ljava/nio/ByteBuffer;I[Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkInvalidateMappedMemoryRanges0
+  (JNIEnv *, jclass, jobject, jint, jobjectArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetDeviceMemoryCommitment0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[J)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetDeviceMemoryCommitment0
+  (JNIEnv *, jclass, jobject, jobject, jlongArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkBindBufferMemory0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;J)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkBindBufferMemory0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jlong);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkBindImageMemory0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;J)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkBindImageMemory0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jlong);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetBufferMemoryRequirements0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetBufferMemoryRequirements0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetImageMemoryRequirements0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetImageMemoryRequirements0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetImageSparseMemoryRequirements0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[I[Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetImageSparseMemoryRequirements0
+  (JNIEnv *, jclass, jobject, jobject, jintArray, jobjectArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetPhysicalDeviceSparseImageFormatProperties0
+ * Signature: (Ljava/nio/ByteBuffer;IIIII[I[Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceSparseImageFormatProperties0
+  (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint, jintArray, jobjectArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkQueueBindSparse0
+ * Signature: (Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkQueueBindSparse0
+  (JNIEnv *, jclass, jobject, jint, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateFence0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateFence0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroyFence0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyFence0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkResetFences0
+ * Signature: (Ljava/nio/ByteBuffer;I[Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkResetFences0
+  (JNIEnv *, jclass, jobject, jint, jobjectArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetFenceStatus0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetFenceStatus0
+  (JNIEnv *, jclass, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkWaitForFences0
+ * Signature: (Ljava/nio/ByteBuffer;I[Ljava/nio/ByteBuffer;ZJ)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkWaitForFences0
+  (JNIEnv *, jclass, jobject, jint, jobjectArray, jboolean, jlong);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateSemaphore0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateSemaphore0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroySemaphore0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroySemaphore0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateEvent0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateEvent0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroyEvent0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyEvent0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetEventStatus0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetEventStatus0
+  (JNIEnv *, jclass, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkSetEvent0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkSetEvent0
+  (JNIEnv *, jclass, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkResetEvent0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkResetEvent0
+  (JNIEnv *, jclass, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateQueryPool0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateQueryPool0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroyQueryPool0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyQueryPool0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetQueryPoolResults0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;IIJLjava/nio/Buffer;JI)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetQueryPoolResults0
+  (JNIEnv *, jclass, jobject, jobject, jint, jint, jlong, jobject, jlong, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateBuffer0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[I)Ljava/nio/ByteBuffer;
+ */
+JNIEXPORT jobject JNICALL Java_bor_vulkan_Vk10_vkCreateBuffer0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jintArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroyBuffer0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyBuffer0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateBufferView0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateBufferView0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobjectArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroyBufferView0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyBufferView0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateImage0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateImage0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroyImage0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyImage0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetImageSubresourceLayout0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetImageSubresourceLayout0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateImageView0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateImageView0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroyImageView0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyImageView0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateShaderModule0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateShaderModule0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroyShaderModule0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyShaderModule0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreatePipelineCache0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreatePipelineCache0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroyPipelineCache0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyPipelineCache0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetPipelineCacheData0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[JLjava/nio/Buffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetPipelineCacheData0
+  (JNIEnv *, jclass, jobject, jobject, jlongArray, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkMergePipelineCaches0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkMergePipelineCaches0
+  (JNIEnv *, jclass, jobject, jobject, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateGraphicsPipelines0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateGraphicsPipelines0
+  (JNIEnv *, jclass, jobject, jobject, jint, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateComputePipelines0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateComputePipelines0
+  (JNIEnv *, jclass, jobject, jobject, jint, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroyPipeline0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyPipeline0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreatePipelineLayout0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreatePipelineLayout0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroyPipelineLayout0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyPipelineLayout0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateSampler0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateSampler0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroySampler0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroySampler0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateDescriptorSetLayout0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateDescriptorSetLayout0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroyDescriptorSetLayout0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyDescriptorSetLayout0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateDescriptorPool0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateDescriptorPool0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroyDescriptorPool0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyDescriptorPool0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkResetDescriptorPool0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;I)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkResetDescriptorPool0
+  (JNIEnv *, jclass, jobject, jobject, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkAllocateDescriptorSets0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkAllocateDescriptorSets0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkFreeDescriptorSets0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkFreeDescriptorSets0
+  (JNIEnv *, jclass, jobject, jobject, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkUpdateDescriptorSets0
+ * Signature: (Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;ILjava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkUpdateDescriptorSets0
+  (JNIEnv *, jclass, jobject, jint, jobject, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateFramebuffer0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateFramebuffer0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroyFramebuffer0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyFramebuffer0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateRenderPass0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateRenderPass0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroyRenderPass0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyRenderPass0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetRenderAreaGranularity0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetRenderAreaGranularity0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateCommandPool0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[I)Ljava/nio/ByteBuffer;
+ */
+JNIEXPORT jobject JNICALL Java_bor_vulkan_Vk10_vkCreateCommandPool0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jintArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroyCommandPool0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyCommandPool0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkResetCommandPool0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;I)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkResetCommandPool0
+  (JNIEnv *, jclass, jobject, jobject, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkAllocateCommandBuffers0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkAllocateCommandBuffers0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkFreeCommandBuffers0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkFreeCommandBuffers0
+  (JNIEnv *, jclass, jobject, jobject, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkBeginCommandBuffer0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkBeginCommandBuffer0
+  (JNIEnv *, jclass, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkEndCommandBuffer0
+ * Signature: (Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkEndCommandBuffer0
+  (JNIEnv *, jclass, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkResetCommandBuffer0
+ * Signature: (Ljava/nio/ByteBuffer;I)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkResetCommandBuffer0
+  (JNIEnv *, jclass, jobject, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdBindPipeline0
+ * Signature: (Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdBindPipeline0
+  (JNIEnv *, jclass, jobject, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdSetViewport0
+ * Signature: (Ljava/nio/ByteBuffer;IILjava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetViewport0
+  (JNIEnv *, jclass, jobject, jint, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdSetScissor0
+ * Signature: (Ljava/nio/ByteBuffer;IILjava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetScissor0
+  (JNIEnv *, jclass, jobject, jint, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdSetLineWidth0
+ * Signature: (Ljava/nio/ByteBuffer;F)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetLineWidth0
+  (JNIEnv *, jclass, jobject, jfloat);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdSetDepthBias0
+ * Signature: (Ljava/nio/ByteBuffer;FFF)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetDepthBias0
+  (JNIEnv *, jclass, jobject, jfloat, jfloat, jfloat);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdSetBlendConstants0
+ * Signature: (Ljava/nio/ByteBuffer;[F)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetBlendConstants0
+  (JNIEnv *, jclass, jobject, jfloatArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdSetDepthBounds0
+ * Signature: (Ljava/nio/ByteBuffer;FF)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetDepthBounds0
+  (JNIEnv *, jclass, jobject, jfloat, jfloat);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdSetStencilCompareMask0
+ * Signature: (Ljava/nio/ByteBuffer;II)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetStencilCompareMask0
+  (JNIEnv *, jclass, jobject, jint, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdSetStencilWriteMask0
+ * Signature: (Ljava/nio/ByteBuffer;II)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetStencilWriteMask0
+  (JNIEnv *, jclass, jobject, jint, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdSetStencilReference0
+ * Signature: (Ljava/nio/ByteBuffer;II)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetStencilReference0
+  (JNIEnv *, jclass, jobject, jint, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdBindDescriptorSets0
+ * Signature: (Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;IILjava/nio/ByteBuffer;I[I)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdBindDescriptorSets0
+  (JNIEnv *, jclass, jobject, jint, jobject, jint, jint, jobject, jint, jintArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdBindIndexBuffer0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;JI)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdBindIndexBuffer0
+  (JNIEnv *, jclass, jobject, jobject, jlong, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdBindVertexBuffers0
+ * Signature: (Ljava/nio/ByteBuffer;IILjava/nio/ByteBuffer;[J)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdBindVertexBuffers0
+  (JNIEnv *, jclass, jobject, jint, jint, jobject, jlongArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdDraw0
+ * Signature: (Ljava/nio/ByteBuffer;IIII)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDraw0
+  (JNIEnv *, jclass, jobject, jint, jint, jint, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdDrawIndexed0
+ * Signature: (Ljava/nio/ByteBuffer;IIIII)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDrawIndexed0
+  (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdDrawIndirect0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;JII)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDrawIndirect0
+  (JNIEnv *, jclass, jobject, jobject, jlong, jint, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdDrawIndexedIndirect0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;JII)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDrawIndexedIndirect0
+  (JNIEnv *, jclass, jobject, jobject, jlong, jint, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdDispatch0
+ * Signature: (Ljava/nio/ByteBuffer;III)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDispatch0
+  (JNIEnv *, jclass, jobject, jint, jint, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdDispatchIndirect0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;J)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDispatchIndirect0
+  (JNIEnv *, jclass, jobject, jobject, jlong);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdCopyBuffer0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdCopyBuffer0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdCopyImage0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;IILjava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdCopyImage0
+  (JNIEnv *, jclass, jobject, jobject, jint, jobject, jint, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdBlitImage0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;IILjava/nio/ByteBuffer;I)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdBlitImage0
+  (JNIEnv *, jclass, jobject, jobject, jint, jobject, jint, jint, jobject, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdCopyBufferToImage0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;IILjava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdCopyBufferToImage0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jint, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdCopyImageToBuffer0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;ILjava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdCopyImageToBuffer0
+  (JNIEnv *, jclass, jobject, jobject, jint, jobject, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdUpdateBuffer0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;JJ[I)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdUpdateBuffer0
+  (JNIEnv *, jclass, jobject, jobject, jlong, jlong, jintArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdFillBuffer0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;JJI)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdFillBuffer0
+  (JNIEnv *, jclass, jobject, jobject, jlong, jlong, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdClearColorImage0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;ILjava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdClearColorImage0
+  (JNIEnv *, jclass, jobject, jobject, jint, jobject, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdClearDepthStencilImage0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;ILjava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdClearDepthStencilImage0
+  (JNIEnv *, jclass, jobject, jobject, jint, jobject, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdClearAttachments0
+ * Signature: (Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;ILjava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdClearAttachments0
+  (JNIEnv *, jclass, jobject, jint, jobject, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdResolveImage0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;IILjava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdResolveImage0
+  (JNIEnv *, jclass, jobject, jobject, jint, jobject, jint, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdSetEvent0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;I)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetEvent0
+  (JNIEnv *, jclass, jobject, jobject, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdResetEvent0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;I)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdResetEvent0
+  (JNIEnv *, jclass, jobject, jobject, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdWaitEvents0
+ * Signature: (Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;IIILjava/nio/ByteBuffer;ILjava/nio/ByteBuffer;ILjava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdWaitEvents0
+  (JNIEnv *, jclass, jobject, jint, jobject, jint, jint, jint, jobject, jint, jobject, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdPipelineBarrier0
+ * Signature: (Ljava/nio/ByteBuffer;IIIILjava/nio/ByteBuffer;ILjava/nio/ByteBuffer;ILjava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdPipelineBarrier0
+  (JNIEnv *, jclass, jobject, jint, jint, jint, jint, jobject, jint, jobject, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdBeginQuery0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;II)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdBeginQuery0
+  (JNIEnv *, jclass, jobject, jobject, jint, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdEndQuery0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;I)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdEndQuery0
+  (JNIEnv *, jclass, jobject, jobject, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdResetQueryPool0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;II)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdResetQueryPool0
+  (JNIEnv *, jclass, jobject, jobject, jint, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdWriteTimestamp0
+ * Signature: (Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;I)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdWriteTimestamp0
+  (JNIEnv *, jclass, jobject, jint, jobject, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdCopyQueryPoolResults0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;IILjava/nio/ByteBuffer;JJI)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdCopyQueryPoolResults0
+  (JNIEnv *, jclass, jobject, jobject, jint, jint, jobject, jlong, jlong, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdPushConstants0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;IIILjava/nio/Buffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdPushConstants0
+  (JNIEnv *, jclass, jobject, jobject, jint, jint, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdBeginRenderPass0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;I)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdBeginRenderPass0
+  (JNIEnv *, jclass, jobject, jobject, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdNextSubpass0
+ * Signature: (Ljava/nio/ByteBuffer;I)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdNextSubpass0
+  (JNIEnv *, jclass, jobject, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdEndRenderPass0
+ * Signature: (Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdEndRenderPass0
+  (JNIEnv *, jclass, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCmdExecuteCommands0
+ * Signature: (Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdExecuteCommands0
+  (JNIEnv *, jclass, jobject, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroySurfaceKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroySurfaceKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetPhysicalDeviceSurfaceSupportKHR0
+ * Signature: (Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;[Z)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceSurfaceSupportKHR0
+  (JNIEnv *, jclass, jobject, jint, jobject, jbooleanArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetPhysicalDeviceSurfaceCapabilitiesKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceSurfaceCapabilitiesKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetPhysicalDeviceSurfaceFormatsKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[ILjava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceSurfaceFormatsKHR0
+  (JNIEnv *, jclass, jobject, jobject, jintArray, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetPhysicalDeviceSurfacePresentModesKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[I[I)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceSurfacePresentModesKHR0
+  (JNIEnv *, jclass, jobject, jobject, jintArray, jintArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateSwapchainKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateSwapchainKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroySwapchainKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroySwapchainKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetSwapchainImagesKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[ILjava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetSwapchainImagesKHR0
+  (JNIEnv *, jclass, jobject, jobject, jintArray, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkAcquireNextImageKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;JLjava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[I)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkAcquireNextImageKHR0
+  (JNIEnv *, jclass, jobject, jobject, jlong, jobject, jobject, jintArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkQueuePresentKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkQueuePresentKHR0
+  (JNIEnv *, jclass, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetPhysicalDeviceDisplayPropertiesKHR0
+ * Signature: (Ljava/nio/ByteBuffer;[ILjava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceDisplayPropertiesKHR0
+  (JNIEnv *, jclass, jobject, jintArray, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetPhysicalDeviceDisplayPlanePropertiesKHR0
+ * Signature: (Ljava/nio/ByteBuffer;[ILjava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceDisplayPlanePropertiesKHR0
+  (JNIEnv *, jclass, jobject, jintArray, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetDisplayPlaneSupportedDisplaysKHR0
+ * Signature: (Ljava/nio/ByteBuffer;I[ILjava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetDisplayPlaneSupportedDisplaysKHR0
+  (JNIEnv *, jclass, jobject, jint, jintArray, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetDisplayModePropertiesKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[ILjava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetDisplayModePropertiesKHR0
+  (JNIEnv *, jclass, jobject, jobject, jintArray, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateDisplayModeKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateDisplayModeKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetDisplayPlaneCapabilitiesKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetDisplayPlaneCapabilitiesKHR0
+  (JNIEnv *, jclass, jobject, jobject, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateDisplayPlaneSurfaceKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateDisplayPlaneSurfaceKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateSharedSwapchainsKHR0
+ * Signature: (Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateSharedSwapchainsKHR0
+  (JNIEnv *, jclass, jobject, jint, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateXlibSurfaceKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateXlibSurfaceKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetPhysicalDeviceXlibPresentationSupportKHR0
+ * Signature: (Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)Z
+ */
+JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceXlibPresentationSupportKHR0
+  (JNIEnv *, jclass, jobject, jint, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateXcbSurfaceKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateXcbSurfaceKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetPhysicalDeviceXcbPresentationSupportKHR0
+ * Signature: (Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;Lbor/vulkan/khr/XCBVisualID;)Z
+ */
+JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceXcbPresentationSupportKHR0
+  (JNIEnv *, jclass, jobject, jint, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateWaylandSurfaceKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateWaylandSurfaceKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetPhysicalDeviceWaylandPresentationSupportKHR0
+ * Signature: (Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;)Z
+ */
+JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceWaylandPresentationSupportKHR0
+  (JNIEnv *, jclass, jobject, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateMirSurfaceKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateMirSurfaceKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetPhysicalDeviceMirPresentationSupportKHR0
+ * Signature: (Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;)Z
+ */
+JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceMirPresentationSupportKHR0
+  (JNIEnv *, jclass, jobject, jint, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateAndroidSurfaceKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[I)Ljava/nio/ByteBuffer;
+ */
+JNIEXPORT jobject JNICALL Java_bor_vulkan_Vk10_vkCreateAndroidSurfaceKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jintArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateWin32SurfaceKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateWin32SurfaceKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkGetPhysicalDeviceWin32PresentationSupportKHR0
+ * Signature: (Ljava/nio/ByteBuffer;I)Z
+ */
+JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceWin32PresentationSupportKHR0
+  (JNIEnv *, jclass, jobject, jint);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateDebugReportCallbackEXT0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateDebugReportCallbackEXT0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroyDebugReportCallbackEXT0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyDebugReportCallbackEXT0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDebugReportMessageEXT0
+ * Signature: (Ljava/nio/ByteBuffer;IIJJILjava/lang/String;Ljava/lang/String;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDebugReportMessageEXT0
+  (JNIEnv *, jclass, jobject, jint, jint, jlong, jlong, jint, jstring, jstring);
 
 #ifdef __cplusplus
 }
