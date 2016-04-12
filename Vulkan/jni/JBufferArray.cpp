@@ -5,12 +5,13 @@ JBufferArray::JBufferArray(JNIEnv* _env, jobjectArray _buffers)
 {
     env = _env;
     bufferArr = _buffers;
-    size = (int) env->GetArrayLength(bufferArr);
-    pointers = new PointerToAnything[size];
-    pinnedPointers = new PointerToAnything[size];
+    size = bufferArr ? (int) env->GetArrayLength(bufferArr):0;
+    pointers = bufferArr ? new PointerToAnything[size] : NULL;
+    pinnedPointers = bufferArr ? new PointerToAnything[size] : NULL;
      #ifdef DEBUG
        cout<< "instancing pointers" <<endl;
      #endif // DEBUG
+
     for( int i = 0; i < size; i++){
          jobject obj = (bufferArr) ?(jobject) env->GetObjectArrayElement(bufferArr, i):NULL;
          if(obj){
@@ -23,6 +24,9 @@ JBufferArray::JBufferArray(JNIEnv* _env, jobjectArray _buffers)
 }
 
 void JBufferArray::setPointer(PointerToAnything ptr,jsize length, int index){
+       if(bufferArr==NULL || pinnedPointers==NULL){
+        return;
+       }
        if(length==0){
         length = sizeof(void*);
        }
@@ -39,8 +43,14 @@ bool JBufferArray::isNull(int index){
  return (bool)(pinnedPointers==NULL || pinnedPointers[index]==NULL);
  }
 
+ /**
+  * commit all pending pointers to internal buffer
+  */
 void JBufferArray::commit()
 {
+    if(bufferArr==NULL){
+        return;
+       }
     #ifdef DEBUG
        cout<< "commit" <<endl;
      #endif // DEBUG
@@ -57,17 +67,20 @@ void JBufferArray::commit()
 
 PointerToAnything JBufferArray::getPointer(int i)
 {
-    return (i>=0 && i<size)? pointers[i] : NULL;
+    return (pointers != null && i>=0 && i<size)? pointers[i] : NULL;
 }
 
 JBufferArray::~JBufferArray()
 {
-     commit();
+     if(bufferArr)
+            commit();
      #ifdef DEBUG
        cout<< "Deleting pointers" <<endl;
      #endif // DEBUG
-     delete[] pointers;
-     delete[] pinnedPointers;
+     if(pointers)
+            delete[] pointers;
+     if(pinnedPointers)
+            delete[] pinnedPointers;
 }
 
 
