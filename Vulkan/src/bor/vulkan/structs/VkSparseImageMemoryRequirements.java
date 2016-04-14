@@ -93,15 +93,31 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkSparseImageMemoryRequirements(long address, int memSize){ 
+	 public VkSparseImageMemoryRequirements(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkSparseImageMemoryRequirements(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -143,8 +159,8 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 */ 
 	 public void formatProperties(VkSparseImageFormatProperties formatProperties){
 		 this.formatProperties = formatProperties;
-		 ByteBuffer buff = (formatProperties==null) ? null : formatProperties.getPointerStruct();
-		 formatProperties0(this.ptr, buff);
+		 ByteBuffer buff = (formatProperties==null) ? null : formatProperties.getPointer();
+		 setFormatProperties0(this.ptr, buff);
 	 }
 
 	/**
@@ -152,12 +168,13 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * Prototype: VkSparseImageFormatProperties  formatProperties
 	 */ 
 	 public VkSparseImageFormatProperties formatProperties(){
-		 ByteBuffer pointer = formatProperties0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getFormatProperties0(super.ptr);
+		 if(pointer == 0){
 		    this.formatProperties = null;
 		    return null;
-		  } else 
- 		 if(this.formatProperties == null){
+		  } 
+
+		 if(this.formatProperties == null){
 		    this.formatProperties = new VkSparseImageFormatProperties(pointer);
 		 }else{
 		    this.formatProperties.setPointer(pointer);
@@ -171,7 +188,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 */ 
 	 public void imageMipTailFirstLod(int imageMipTailFirstLod){
 		 this.imageMipTailFirstLod = imageMipTailFirstLod;
-		 imageMipTailFirstLod0(this.ptr,  imageMipTailFirstLod);
+		 setImageMipTailFirstLod0(this.ptr,  imageMipTailFirstLod);
 	 }
 
 	/**
@@ -179,7 +196,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * Prototype: uint32_t  imageMipTailFirstLod
 	 */ 
 	 public int imageMipTailFirstLod(){
-		 int var = imageMipTailFirstLod0(super.ptr);
+		 int var = getImageMipTailFirstLod0(super.ptr);
 		 this.imageMipTailFirstLod = var;
 		 return this.imageMipTailFirstLod;
 	 }
@@ -190,7 +207,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 */ 
 	 public void imageMipTailSize(long imageMipTailSize){
 		 this.imageMipTailSize = imageMipTailSize;
-		 imageMipTailSize0(this.ptr,  imageMipTailSize);
+		 setImageMipTailSize0(this.ptr,  imageMipTailSize);
 	 }
 
 	/**
@@ -198,7 +215,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * Prototype: VkDeviceSize  imageMipTailSize
 	 */ 
 	 public long imageMipTailSize(){
-		 long var = imageMipTailSize0(super.ptr);
+		 long var = getImageMipTailSize0(super.ptr);
 		 this.imageMipTailSize = var;
 		 return this.imageMipTailSize;
 	 }
@@ -209,7 +226,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 */ 
 	 public void imageMipTailOffset(long imageMipTailOffset){
 		 this.imageMipTailOffset = imageMipTailOffset;
-		 imageMipTailOffset0(this.ptr,  imageMipTailOffset);
+		 setImageMipTailOffset0(this.ptr,  imageMipTailOffset);
 	 }
 
 	/**
@@ -217,7 +234,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * Prototype: VkDeviceSize  imageMipTailOffset
 	 */ 
 	 public long imageMipTailOffset(){
-		 long var = imageMipTailOffset0(super.ptr);
+		 long var = getImageMipTailOffset0(super.ptr);
 		 this.imageMipTailOffset = var;
 		 return this.imageMipTailOffset;
 	 }
@@ -228,7 +245,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 */ 
 	 public void imageMipTailStride(long imageMipTailStride){
 		 this.imageMipTailStride = imageMipTailStride;
-		 imageMipTailStride0(this.ptr,  imageMipTailStride);
+		 setImageMipTailStride0(this.ptr,  imageMipTailStride);
 	 }
 
 	/**
@@ -236,7 +253,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * Prototype: VkDeviceSize  imageMipTailStride
 	 */ 
 	 public long imageMipTailStride(){
-		 long var = imageMipTailStride0(super.ptr);
+		 long var = getImageMipTailStride0(super.ptr);
 		 this.imageMipTailStride = var;
 		 return this.imageMipTailStride;
 	 }
@@ -249,7 +266,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * native SET method for field formatProperties	[vkstruct]<br>
 	 * Prototype: VkSparseImageFormatProperties  formatProperties
 	 */ 
-	 private static native void formatProperties0(Buffer ptr, java.nio.ByteBuffer  _formatProperties);/*
+	 private static native void setFormatProperties0(Buffer ptr, java.nio.ByteBuffer  _formatProperties);/*
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  vkObj->formatProperties = (VkSparseImageFormatProperties) (_formatProperties);
 	  */
@@ -258,16 +275,15 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * native GET method for field formatProperties	[vkstruct]<br>
 	 * Prototype: VkSparseImageFormatProperties  formatProperties
 	 */ 
-	 private static native java.nio.ByteBuffer  formatProperties0(Buffer ptr);/*
+	 private static native long getFormatProperties0(Buffer ptr);/*
 		  VkSparseImageMemoryRequirements vkObj = (VkSparseImageMemoryRequirements*)(ptr);
-		  return (VkSparseImageFormatProperties) (vkObj->formatProperties);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->formatProperties);	 */
 
 	/**
 	 * native SET method for field imageMipTailFirstLod	[int]<br>
 	 * Prototype: uint32_t  imageMipTailFirstLod
 	 */ 
-	 private static native void imageMipTailFirstLod0(Buffer ptr, int _imageMipTailFirstLod);/*
+	 private static native void setImageMipTailFirstLod0(Buffer ptr, int _imageMipTailFirstLod);/*
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  vkObj->imageMipTailFirstLod = (uint32_t) (_imageMipTailFirstLod);
 	  */
@@ -276,7 +292,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * native GET method for field imageMipTailFirstLod	[int]<br>
 	 * Prototype: uint32_t  imageMipTailFirstLod
 	 */ 
-	 private static native int imageMipTailFirstLod0(Buffer ptr);/*
+	 private static native int getImageMipTailFirstLod0(Buffer ptr);/*
 		  VkSparseImageMemoryRequirements vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  return (jint) (vkObj->imageMipTailFirstLod);
 	 */
@@ -285,7 +301,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * native SET method for field imageMipTailSize	[long]<br>
 	 * Prototype: VkDeviceSize  imageMipTailSize
 	 */ 
-	 private static native void imageMipTailSize0(Buffer ptr, long _imageMipTailSize);/*
+	 private static native void setImageMipTailSize0(Buffer ptr, long _imageMipTailSize);/*
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  vkObj->imageMipTailSize = (VkDeviceSize) (_imageMipTailSize);
 	  */
@@ -294,7 +310,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * native GET method for field imageMipTailSize	[long]<br>
 	 * Prototype: VkDeviceSize  imageMipTailSize
 	 */ 
-	 private static native long imageMipTailSize0(Buffer ptr);/*
+	 private static native long getImageMipTailSize0(Buffer ptr);/*
 		  VkSparseImageMemoryRequirements vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  return (jlong) (vkObj->imageMipTailSize);
 	 */
@@ -303,7 +319,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * native SET method for field imageMipTailOffset	[long]<br>
 	 * Prototype: VkDeviceSize  imageMipTailOffset
 	 */ 
-	 private static native void imageMipTailOffset0(Buffer ptr, long _imageMipTailOffset);/*
+	 private static native void setImageMipTailOffset0(Buffer ptr, long _imageMipTailOffset);/*
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  vkObj->imageMipTailOffset = (VkDeviceSize) (_imageMipTailOffset);
 	  */
@@ -312,7 +328,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * native GET method for field imageMipTailOffset	[long]<br>
 	 * Prototype: VkDeviceSize  imageMipTailOffset
 	 */ 
-	 private static native long imageMipTailOffset0(Buffer ptr);/*
+	 private static native long getImageMipTailOffset0(Buffer ptr);/*
 		  VkSparseImageMemoryRequirements vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  return (jlong) (vkObj->imageMipTailOffset);
 	 */
@@ -321,7 +337,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * native SET method for field imageMipTailStride	[long]<br>
 	 * Prototype: VkDeviceSize  imageMipTailStride
 	 */ 
-	 private static native void imageMipTailStride0(Buffer ptr, long _imageMipTailStride);/*
+	 private static native void setImageMipTailStride0(Buffer ptr, long _imageMipTailStride);/*
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  vkObj->imageMipTailStride = (VkDeviceSize) (_imageMipTailStride);
 	  */
@@ -330,7 +346,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * native GET method for field imageMipTailStride	[long]<br>
 	 * Prototype: VkDeviceSize  imageMipTailStride
 	 */ 
-	 private static native long imageMipTailStride0(Buffer ptr);/*
+	 private static native long getImageMipTailStride0(Buffer ptr);/*
 		  VkSparseImageMemoryRequirements vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  return (jlong) (vkObj->imageMipTailStride);
 	 */

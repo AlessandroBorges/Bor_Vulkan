@@ -75,15 +75,31 @@ public class VkRect2D extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkRect2D(long address, int memSize){ 
+	 public VkRect2D(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkRect2D(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -125,8 +141,8 @@ public class VkRect2D extends VkStruct {
 	 */ 
 	 public void offset(VkOffset2D offset){
 		 this.offset = offset;
-		 ByteBuffer buff = (offset==null) ? null : offset.getPointerStruct();
-		 offset0(this.ptr, buff);
+		 ByteBuffer buff = (offset==null) ? null : offset.getPointer();
+		 setOffset0(this.ptr, buff);
 	 }
 
 	/**
@@ -134,12 +150,13 @@ public class VkRect2D extends VkStruct {
 	 * Prototype: VkOffset2D  offset
 	 */ 
 	 public VkOffset2D offset(){
-		 ByteBuffer pointer = offset0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getOffset0(super.ptr);
+		 if(pointer == 0){
 		    this.offset = null;
 		    return null;
-		  } else 
- 		 if(this.offset == null){
+		  } 
+
+		 if(this.offset == null){
 		    this.offset = new VkOffset2D(pointer);
 		 }else{
 		    this.offset.setPointer(pointer);
@@ -153,8 +170,8 @@ public class VkRect2D extends VkStruct {
 	 */ 
 	 public void extent(VkExtent2D extent){
 		 this.extent = extent;
-		 ByteBuffer buff = (extent==null) ? null : extent.getPointerStruct();
-		 extent0(this.ptr, buff);
+		 ByteBuffer buff = (extent==null) ? null : extent.getPointer();
+		 setExtent0(this.ptr, buff);
 	 }
 
 	/**
@@ -162,12 +179,13 @@ public class VkRect2D extends VkStruct {
 	 * Prototype: VkExtent2D  extent
 	 */ 
 	 public VkExtent2D extent(){
-		 ByteBuffer pointer = extent0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getExtent0(super.ptr);
+		 if(pointer == 0){
 		    this.extent = null;
 		    return null;
-		  } else 
- 		 if(this.extent == null){
+		  } 
+
+		 if(this.extent == null){
 		    this.extent = new VkExtent2D(pointer);
 		 }else{
 		    this.extent.setPointer(pointer);
@@ -183,7 +201,7 @@ public class VkRect2D extends VkStruct {
 	 * native SET method for field offset	[vkstruct]<br>
 	 * Prototype: VkOffset2D  offset
 	 */ 
-	 private static native void offset0(Buffer ptr, java.nio.ByteBuffer  _offset);/*
+	 private static native void setOffset0(Buffer ptr, java.nio.ByteBuffer  _offset);/*
 		  VkRect2D* vkObj = (VkRect2D*)(ptr);
 		  vkObj->offset = (VkOffset2D) (_offset);
 	  */
@@ -192,16 +210,15 @@ public class VkRect2D extends VkStruct {
 	 * native GET method for field offset	[vkstruct]<br>
 	 * Prototype: VkOffset2D  offset
 	 */ 
-	 private static native java.nio.ByteBuffer  offset0(Buffer ptr);/*
+	 private static native long getOffset0(Buffer ptr);/*
 		  VkRect2D vkObj = (VkRect2D*)(ptr);
-		  return (VkOffset2D) (vkObj->offset);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->offset);	 */
 
 	/**
 	 * native SET method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  extent
 	 */ 
-	 private static native void extent0(Buffer ptr, java.nio.ByteBuffer  _extent);/*
+	 private static native void setExtent0(Buffer ptr, java.nio.ByteBuffer  _extent);/*
 		  VkRect2D* vkObj = (VkRect2D*)(ptr);
 		  vkObj->extent = (VkExtent2D) (_extent);
 	  */
@@ -210,10 +227,9 @@ public class VkRect2D extends VkStruct {
 	 * native GET method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  extent
 	 */ 
-	 private static native java.nio.ByteBuffer  extent0(Buffer ptr);/*
+	 private static native long getExtent0(Buffer ptr);/*
 		  VkRect2D vkObj = (VkRect2D*)(ptr);
-		  return (VkExtent2D) (vkObj->extent);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->extent);	 */
 
 
 

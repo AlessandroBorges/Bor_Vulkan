@@ -99,15 +99,31 @@ public class VkViewport extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkViewport(long address, int memSize){ 
+	 public VkViewport(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkViewport(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -149,7 +165,7 @@ public class VkViewport extends VkStruct {
 	 */ 
 	 public void x(float x){
 		 this.x = x;
-		 x0(this.ptr,  x);
+		 setX0(this.ptr,  x);
 	 }
 
 	/**
@@ -157,7 +173,7 @@ public class VkViewport extends VkStruct {
 	 * Prototype: float  x
 	 */ 
 	 public float x(){
-		 float var = x0(super.ptr);
+		 float var = getX0(super.ptr);
 		 this.x = var;
 		 return this.x;
 	 }
@@ -168,7 +184,7 @@ public class VkViewport extends VkStruct {
 	 */ 
 	 public void y(float y){
 		 this.y = y;
-		 y0(this.ptr,  y);
+		 setY0(this.ptr,  y);
 	 }
 
 	/**
@@ -176,7 +192,7 @@ public class VkViewport extends VkStruct {
 	 * Prototype: float  y
 	 */ 
 	 public float y(){
-		 float var = y0(super.ptr);
+		 float var = getY0(super.ptr);
 		 this.y = var;
 		 return this.y;
 	 }
@@ -187,7 +203,7 @@ public class VkViewport extends VkStruct {
 	 */ 
 	 public void width(float width){
 		 this.width = width;
-		 width0(this.ptr,  width);
+		 setWidth0(this.ptr,  width);
 	 }
 
 	/**
@@ -195,7 +211,7 @@ public class VkViewport extends VkStruct {
 	 * Prototype: float  width
 	 */ 
 	 public float width(){
-		 float var = width0(super.ptr);
+		 float var = getWidth0(super.ptr);
 		 this.width = var;
 		 return this.width;
 	 }
@@ -206,7 +222,7 @@ public class VkViewport extends VkStruct {
 	 */ 
 	 public void height(float height){
 		 this.height = height;
-		 height0(this.ptr,  height);
+		 setHeight0(this.ptr,  height);
 	 }
 
 	/**
@@ -214,7 +230,7 @@ public class VkViewport extends VkStruct {
 	 * Prototype: float  height
 	 */ 
 	 public float height(){
-		 float var = height0(super.ptr);
+		 float var = getHeight0(super.ptr);
 		 this.height = var;
 		 return this.height;
 	 }
@@ -225,7 +241,7 @@ public class VkViewport extends VkStruct {
 	 */ 
 	 public void minDepth(float minDepth){
 		 this.minDepth = minDepth;
-		 minDepth0(this.ptr,  minDepth);
+		 setMinDepth0(this.ptr,  minDepth);
 	 }
 
 	/**
@@ -233,7 +249,7 @@ public class VkViewport extends VkStruct {
 	 * Prototype: float  minDepth
 	 */ 
 	 public float minDepth(){
-		 float var = minDepth0(super.ptr);
+		 float var = getMinDepth0(super.ptr);
 		 this.minDepth = var;
 		 return this.minDepth;
 	 }
@@ -244,7 +260,7 @@ public class VkViewport extends VkStruct {
 	 */ 
 	 public void maxDepth(float maxDepth){
 		 this.maxDepth = maxDepth;
-		 maxDepth0(this.ptr,  maxDepth);
+		 setMaxDepth0(this.ptr,  maxDepth);
 	 }
 
 	/**
@@ -252,7 +268,7 @@ public class VkViewport extends VkStruct {
 	 * Prototype: float  maxDepth
 	 */ 
 	 public float maxDepth(){
-		 float var = maxDepth0(super.ptr);
+		 float var = getMaxDepth0(super.ptr);
 		 this.maxDepth = var;
 		 return this.maxDepth;
 	 }
@@ -265,7 +281,7 @@ public class VkViewport extends VkStruct {
 	 * native SET method for field x	[float]<br>
 	 * Prototype: float  x
 	 */ 
-	 private static native void x0(Buffer ptr, float _x);/*
+	 private static native void setX0(Buffer ptr, float _x);/*
 		  VkViewport* vkObj = (VkViewport*)(ptr);
 		  vkObj->x = (float) (_x);
 	  */
@@ -274,7 +290,7 @@ public class VkViewport extends VkStruct {
 	 * native GET method for field x	[float]<br>
 	 * Prototype: float  x
 	 */ 
-	 private static native float x0(Buffer ptr);/*
+	 private static native float getX0(Buffer ptr);/*
 		  VkViewport vkObj = (VkViewport*)(ptr);
 		  return (jfloat) (vkObj->x);
 	 */
@@ -283,7 +299,7 @@ public class VkViewport extends VkStruct {
 	 * native SET method for field y	[float]<br>
 	 * Prototype: float  y
 	 */ 
-	 private static native void y0(Buffer ptr, float _y);/*
+	 private static native void setY0(Buffer ptr, float _y);/*
 		  VkViewport* vkObj = (VkViewport*)(ptr);
 		  vkObj->y = (float) (_y);
 	  */
@@ -292,7 +308,7 @@ public class VkViewport extends VkStruct {
 	 * native GET method for field y	[float]<br>
 	 * Prototype: float  y
 	 */ 
-	 private static native float y0(Buffer ptr);/*
+	 private static native float getY0(Buffer ptr);/*
 		  VkViewport vkObj = (VkViewport*)(ptr);
 		  return (jfloat) (vkObj->y);
 	 */
@@ -301,7 +317,7 @@ public class VkViewport extends VkStruct {
 	 * native SET method for field width	[float]<br>
 	 * Prototype: float  width
 	 */ 
-	 private static native void width0(Buffer ptr, float _width);/*
+	 private static native void setWidth0(Buffer ptr, float _width);/*
 		  VkViewport* vkObj = (VkViewport*)(ptr);
 		  vkObj->width = (float) (_width);
 	  */
@@ -310,7 +326,7 @@ public class VkViewport extends VkStruct {
 	 * native GET method for field width	[float]<br>
 	 * Prototype: float  width
 	 */ 
-	 private static native float width0(Buffer ptr);/*
+	 private static native float getWidth0(Buffer ptr);/*
 		  VkViewport vkObj = (VkViewport*)(ptr);
 		  return (jfloat) (vkObj->width);
 	 */
@@ -319,7 +335,7 @@ public class VkViewport extends VkStruct {
 	 * native SET method for field height	[float]<br>
 	 * Prototype: float  height
 	 */ 
-	 private static native void height0(Buffer ptr, float _height);/*
+	 private static native void setHeight0(Buffer ptr, float _height);/*
 		  VkViewport* vkObj = (VkViewport*)(ptr);
 		  vkObj->height = (float) (_height);
 	  */
@@ -328,7 +344,7 @@ public class VkViewport extends VkStruct {
 	 * native GET method for field height	[float]<br>
 	 * Prototype: float  height
 	 */ 
-	 private static native float height0(Buffer ptr);/*
+	 private static native float getHeight0(Buffer ptr);/*
 		  VkViewport vkObj = (VkViewport*)(ptr);
 		  return (jfloat) (vkObj->height);
 	 */
@@ -337,7 +353,7 @@ public class VkViewport extends VkStruct {
 	 * native SET method for field minDepth	[float]<br>
 	 * Prototype: float  minDepth
 	 */ 
-	 private static native void minDepth0(Buffer ptr, float _minDepth);/*
+	 private static native void setMinDepth0(Buffer ptr, float _minDepth);/*
 		  VkViewport* vkObj = (VkViewport*)(ptr);
 		  vkObj->minDepth = (float) (_minDepth);
 	  */
@@ -346,7 +362,7 @@ public class VkViewport extends VkStruct {
 	 * native GET method for field minDepth	[float]<br>
 	 * Prototype: float  minDepth
 	 */ 
-	 private static native float minDepth0(Buffer ptr);/*
+	 private static native float getMinDepth0(Buffer ptr);/*
 		  VkViewport vkObj = (VkViewport*)(ptr);
 		  return (jfloat) (vkObj->minDepth);
 	 */
@@ -355,7 +371,7 @@ public class VkViewport extends VkStruct {
 	 * native SET method for field maxDepth	[float]<br>
 	 * Prototype: float  maxDepth
 	 */ 
-	 private static native void maxDepth0(Buffer ptr, float _maxDepth);/*
+	 private static native void setMaxDepth0(Buffer ptr, float _maxDepth);/*
 		  VkViewport* vkObj = (VkViewport*)(ptr);
 		  vkObj->maxDepth = (float) (_maxDepth);
 	  */
@@ -364,7 +380,7 @@ public class VkViewport extends VkStruct {
 	 * native GET method for field maxDepth	[float]<br>
 	 * Prototype: float  maxDepth
 	 */ 
-	 private static native float maxDepth0(Buffer ptr);/*
+	 private static native float getMaxDepth0(Buffer ptr);/*
 		  VkViewport vkObj = (VkViewport*)(ptr);
 		  return (jfloat) (vkObj->maxDepth);
 	 */

@@ -84,38 +84,9 @@ public interface VkHandleInterface extends VkObject{
     public static final int   TYPE_HANDLER_VKDISPLAYMODEKHR = 130;
     public static final int   TYPE_HANDLER_VKDEBUGREPORTCALLBACKEXT = 131;
 
-    /**
-     * Get native handler wrapped by a internally stored ByteBuffer.
-     * <h3>Note:</h3>
-     * This method <b>must</b> returns a read-only buffer. 
-     *  
-     *  @see VkObject#getPointer()
-     * 
-     *  @see VkStructs#getPointerStruct()
-     *  
-     * @return read-only ByteBuffer wrapping a native handler.      
-     */
-    public java.nio.ByteBuffer getHandle();
-    
-        
-    
-    /**
-     * Set native handle / pointer
-     * @param native created ByteBuffer wrapping a handle 
-     */
- //   void setHandle(ByteBuffer handle);
-    
-    
-    /**
-     * Free this handle on native side.<br>
-     * After calling this, any use of this handle will throw a NullPointerException.<br>
-     * 
-     * @TODO put Visibility as private package, and let it be called from vkDestroyXXXX() method calls 
-     * @TODO Move this method to another interface
-     * 
-     * @return true if it was successful released. False if it was already released.
-     */
-     public boolean free();
+            
+  
+   
      
      /**
       * 

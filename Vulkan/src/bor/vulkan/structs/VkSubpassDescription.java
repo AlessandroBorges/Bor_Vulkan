@@ -123,15 +123,31 @@ public class VkSubpassDescription extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkSubpassDescription(long address, int memSize){ 
+	 public VkSubpassDescription(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkSubpassDescription(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -173,7 +189,7 @@ public class VkSubpassDescription extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		 flags0(this.ptr,  flags);
+		 setFlags0(this.ptr,  flags);
 	 }
 
 	/**
@@ -181,7 +197,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: VkSubpassDescriptionFlags  flags
 	 */ 
 	 public int flags(){
-		 int var = flags0(super.ptr);
+		 int var = getFlags0(super.ptr);
 		 this.flags = var;
 		 return this.flags;
 	 }
@@ -193,7 +209,7 @@ public class VkSubpassDescription extends VkStruct {
 	 public void pipelineBindPoint(VkPipelineBindPoint pipelineBindPoint){
 		 this.pipelineBindPoint = pipelineBindPoint;
 		 int enumVal = pipelineBindPoint.getValue();
-		 pipelineBindPoint0(this.ptr, enumVal );
+		 setPipelineBindPoint0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -201,7 +217,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: VkPipelineBindPoint  pipelineBindPoint
 	 */ 
 	 public VkPipelineBindPoint pipelineBindPoint(){
-		 int nativeVal = pipelineBindPoint0(super.ptr);
+		 int nativeVal = getPipelineBindPoint0(super.ptr);
 		 this.pipelineBindPoint = VkPipelineBindPoint.fromValue(nativeVal); 
 		 return this.pipelineBindPoint;
 	 }
@@ -212,7 +228,7 @@ public class VkSubpassDescription extends VkStruct {
 	 */ 
 	 public void inputAttachmentCount(int inputAttachmentCount){
 		 this.inputAttachmentCount = inputAttachmentCount;
-		 inputAttachmentCount0(this.ptr,  inputAttachmentCount);
+		 setInputAttachmentCount0(this.ptr,  inputAttachmentCount);
 	 }
 
 	/**
@@ -220,7 +236,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: uint32_t  inputAttachmentCount
 	 */ 
 	 public int inputAttachmentCount(){
-		 int var = inputAttachmentCount0(super.ptr);
+		 int var = getInputAttachmentCount0(super.ptr);
 		 this.inputAttachmentCount = var;
 		 return this.inputAttachmentCount;
 	 }
@@ -231,8 +247,8 @@ public class VkSubpassDescription extends VkStruct {
 	 */ 
 	 public void pInputAttachments( VkAttachmentReference  pInputAttachments){
 		 this.pInputAttachments = pInputAttachments;
-		 ByteBuffer buff = (pInputAttachments==null) ? null : pInputAttachments.getPointerStruct();
-		 pInputAttachments0(this.ptr, buff);
+		 ByteBuffer buff = (pInputAttachments==null) ? null : pInputAttachments.getPointer();
+		 setPInputAttachments0(this.ptr, buff);
 	 }
 
 	/**
@@ -240,12 +256,13 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: const VkAttachmentReference*  pInputAttachments
 	 */ 
 	 public  VkAttachmentReference  pInputAttachments(){
-		 ByteBuffer pointer = pInputAttachments0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPInputAttachments0(super.ptr);
+		 if(pointer == 0){
 		    this.pInputAttachments = null;
 		    return null;
-		  } else 
- 		 if(this.pInputAttachments == null){
+		  } 
+
+		 if(this.pInputAttachments == null){
 		    this.pInputAttachments = new  VkAttachmentReference (pointer);
 		 }else{
 		    this.pInputAttachments.setPointer(pointer);
@@ -259,7 +276,7 @@ public class VkSubpassDescription extends VkStruct {
 	 */ 
 	 public void colorAttachmentCount(int colorAttachmentCount){
 		 this.colorAttachmentCount = colorAttachmentCount;
-		 colorAttachmentCount0(this.ptr,  colorAttachmentCount);
+		 setColorAttachmentCount0(this.ptr,  colorAttachmentCount);
 	 }
 
 	/**
@@ -267,7 +284,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: uint32_t  colorAttachmentCount
 	 */ 
 	 public int colorAttachmentCount(){
-		 int var = colorAttachmentCount0(super.ptr);
+		 int var = getColorAttachmentCount0(super.ptr);
 		 this.colorAttachmentCount = var;
 		 return this.colorAttachmentCount;
 	 }
@@ -278,8 +295,8 @@ public class VkSubpassDescription extends VkStruct {
 	 */ 
 	 public void pColorAttachments( VkAttachmentReference  pColorAttachments){
 		 this.pColorAttachments = pColorAttachments;
-		 ByteBuffer buff = (pColorAttachments==null) ? null : pColorAttachments.getPointerStruct();
-		 pColorAttachments0(this.ptr, buff);
+		 ByteBuffer buff = (pColorAttachments==null) ? null : pColorAttachments.getPointer();
+		 setPColorAttachments0(this.ptr, buff);
 	 }
 
 	/**
@@ -287,12 +304,13 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: const VkAttachmentReference*  pColorAttachments
 	 */ 
 	 public  VkAttachmentReference  pColorAttachments(){
-		 ByteBuffer pointer = pColorAttachments0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPColorAttachments0(super.ptr);
+		 if(pointer == 0){
 		    this.pColorAttachments = null;
 		    return null;
-		  } else 
- 		 if(this.pColorAttachments == null){
+		  } 
+
+		 if(this.pColorAttachments == null){
 		    this.pColorAttachments = new  VkAttachmentReference (pointer);
 		 }else{
 		    this.pColorAttachments.setPointer(pointer);
@@ -306,8 +324,8 @@ public class VkSubpassDescription extends VkStruct {
 	 */ 
 	 public void pResolveAttachments( VkAttachmentReference  pResolveAttachments){
 		 this.pResolveAttachments = pResolveAttachments;
-		 ByteBuffer buff = (pResolveAttachments==null) ? null : pResolveAttachments.getPointerStruct();
-		 pResolveAttachments0(this.ptr, buff);
+		 ByteBuffer buff = (pResolveAttachments==null) ? null : pResolveAttachments.getPointer();
+		 setPResolveAttachments0(this.ptr, buff);
 	 }
 
 	/**
@@ -315,12 +333,13 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: const VkAttachmentReference*  pResolveAttachments
 	 */ 
 	 public  VkAttachmentReference  pResolveAttachments(){
-		 ByteBuffer pointer = pResolveAttachments0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPResolveAttachments0(super.ptr);
+		 if(pointer == 0){
 		    this.pResolveAttachments = null;
 		    return null;
-		  } else 
- 		 if(this.pResolveAttachments == null){
+		  } 
+
+		 if(this.pResolveAttachments == null){
 		    this.pResolveAttachments = new  VkAttachmentReference (pointer);
 		 }else{
 		    this.pResolveAttachments.setPointer(pointer);
@@ -334,8 +353,8 @@ public class VkSubpassDescription extends VkStruct {
 	 */ 
 	 public void pDepthStencilAttachment( VkAttachmentReference  pDepthStencilAttachment){
 		 this.pDepthStencilAttachment = pDepthStencilAttachment;
-		 ByteBuffer buff = (pDepthStencilAttachment==null) ? null : pDepthStencilAttachment.getPointerStruct();
-		 pDepthStencilAttachment0(this.ptr, buff);
+		 ByteBuffer buff = (pDepthStencilAttachment==null) ? null : pDepthStencilAttachment.getPointer();
+		 setPDepthStencilAttachment0(this.ptr, buff);
 	 }
 
 	/**
@@ -343,12 +362,13 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: const VkAttachmentReference*  pDepthStencilAttachment
 	 */ 
 	 public  VkAttachmentReference  pDepthStencilAttachment(){
-		 ByteBuffer pointer = pDepthStencilAttachment0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPDepthStencilAttachment0(super.ptr);
+		 if(pointer == 0){
 		    this.pDepthStencilAttachment = null;
 		    return null;
-		  } else 
- 		 if(this.pDepthStencilAttachment == null){
+		  } 
+
+		 if(this.pDepthStencilAttachment == null){
 		    this.pDepthStencilAttachment = new  VkAttachmentReference (pointer);
 		 }else{
 		    this.pDepthStencilAttachment.setPointer(pointer);
@@ -362,7 +382,7 @@ public class VkSubpassDescription extends VkStruct {
 	 */ 
 	 public void preserveAttachmentCount(int preserveAttachmentCount){
 		 this.preserveAttachmentCount = preserveAttachmentCount;
-		 preserveAttachmentCount0(this.ptr,  preserveAttachmentCount);
+		 setPreserveAttachmentCount0(this.ptr,  preserveAttachmentCount);
 	 }
 
 	/**
@@ -370,7 +390,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: uint32_t  preserveAttachmentCount
 	 */ 
 	 public int preserveAttachmentCount(){
-		 int var = preserveAttachmentCount0(super.ptr);
+		 int var = getPreserveAttachmentCount0(super.ptr);
 		 this.preserveAttachmentCount = var;
 		 return this.preserveAttachmentCount;
 	 }
@@ -381,7 +401,7 @@ public class VkSubpassDescription extends VkStruct {
 	 */ 
 	 public void pPreserveAttachments(int[] pPreserveAttachments){
 		 this.pPreserveAttachments = pPreserveAttachments;
-		 pPreserveAttachments0(this.ptr,  pPreserveAttachments);
+		 setPPreserveAttachments0(this.ptr,  pPreserveAttachments);
 	 }
 
 	/**
@@ -389,7 +409,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: const uint32_t*  pPreserveAttachments
 	 */ 
 	 public int[] pPreserveAttachments(){
-		 int[] var = pPreserveAttachments0(super.ptr);
+		 int[] var = getPPreserveAttachments0(super.ptr);
 		 this.pPreserveAttachments = var;
 		 return this.pPreserveAttachments;
 	 }
@@ -402,7 +422,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkSubpassDescriptionFlags  flags
 	 */ 
-	 private static native void flags0(Buffer ptr, int _flags);/*
+	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  vkObj->flags = (VkSubpassDescriptionFlags) (_flags);
 	  */
@@ -411,7 +431,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkSubpassDescriptionFlags  flags
 	 */ 
-	 private static native int flags0(Buffer ptr);/*
+	 private static native int getFlags0(Buffer ptr);/*
 		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
@@ -420,7 +440,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * native SET method for field pipelineBindPoint	[vkenum]<br>
 	 * Prototype: VkPipelineBindPoint  pipelineBindPoint
 	 */ 
-	 private static native void pipelineBindPoint0(Buffer ptr, int  _pipelineBindPoint);/*
+	 private static native void setPipelineBindPoint0(Buffer ptr, int  _pipelineBindPoint);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  vkObj->pipelineBindPoint = (VkPipelineBindPoint) (_pipelineBindPoint);
 	  */
@@ -429,7 +449,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * native GET method for field pipelineBindPoint	[vkenum]<br>
 	 * Prototype: VkPipelineBindPoint  pipelineBindPoint
 	 */ 
-	 private static native int  pipelineBindPoint0(Buffer ptr);/*
+	 private static native int  getPipelineBindPoint0(Buffer ptr);/*
 		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
 		  return (VkPipelineBindPoint) (vkObj->pipelineBindPoint);
 	 */
@@ -438,7 +458,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * native SET method for field inputAttachmentCount	[int]<br>
 	 * Prototype: uint32_t  inputAttachmentCount
 	 */ 
-	 private static native void inputAttachmentCount0(Buffer ptr, int _inputAttachmentCount);/*
+	 private static native void setInputAttachmentCount0(Buffer ptr, int _inputAttachmentCount);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  vkObj->inputAttachmentCount = (uint32_t) (_inputAttachmentCount);
 	  */
@@ -447,7 +467,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * native GET method for field inputAttachmentCount	[int]<br>
 	 * Prototype: uint32_t  inputAttachmentCount
 	 */ 
-	 private static native int inputAttachmentCount0(Buffer ptr);/*
+	 private static native int getInputAttachmentCount0(Buffer ptr);/*
 		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
 		  return (jint) (vkObj->inputAttachmentCount);
 	 */
@@ -456,7 +476,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * native SET method for field pInputAttachments	[vkstruct]<br>
 	 * Prototype: const VkAttachmentReference*  pInputAttachments
 	 */ 
-	 private static native void pInputAttachments0(Buffer ptr, java.nio.ByteBuffer  _pInputAttachments);/*
+	 private static native void setPInputAttachments0(Buffer ptr, java.nio.ByteBuffer  _pInputAttachments);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  vkObj->pInputAttachments = (const VkAttachmentReference*) (_pInputAttachments);
 	  */
@@ -465,16 +485,15 @@ public class VkSubpassDescription extends VkStruct {
 	 * native GET method for field pInputAttachments	[vkstruct]<br>
 	 * Prototype: const VkAttachmentReference*  pInputAttachments
 	 */ 
-	 private static native java.nio.ByteBuffer  pInputAttachments0(Buffer ptr);/*
+	 private static native long getPInputAttachments0(Buffer ptr);/*
 		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
-		  return ( VkAttachmentReference ) (vkObj->pInputAttachments);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pInputAttachments);	 */
 
 	/**
 	 * native SET method for field colorAttachmentCount	[int]<br>
 	 * Prototype: uint32_t  colorAttachmentCount
 	 */ 
-	 private static native void colorAttachmentCount0(Buffer ptr, int _colorAttachmentCount);/*
+	 private static native void setColorAttachmentCount0(Buffer ptr, int _colorAttachmentCount);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  vkObj->colorAttachmentCount = (uint32_t) (_colorAttachmentCount);
 	  */
@@ -483,7 +502,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * native GET method for field colorAttachmentCount	[int]<br>
 	 * Prototype: uint32_t  colorAttachmentCount
 	 */ 
-	 private static native int colorAttachmentCount0(Buffer ptr);/*
+	 private static native int getColorAttachmentCount0(Buffer ptr);/*
 		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
 		  return (jint) (vkObj->colorAttachmentCount);
 	 */
@@ -492,7 +511,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * native SET method for field pColorAttachments	[vkstruct]<br>
 	 * Prototype: const VkAttachmentReference*  pColorAttachments
 	 */ 
-	 private static native void pColorAttachments0(Buffer ptr, java.nio.ByteBuffer  _pColorAttachments);/*
+	 private static native void setPColorAttachments0(Buffer ptr, java.nio.ByteBuffer  _pColorAttachments);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  vkObj->pColorAttachments = (const VkAttachmentReference*) (_pColorAttachments);
 	  */
@@ -501,16 +520,15 @@ public class VkSubpassDescription extends VkStruct {
 	 * native GET method for field pColorAttachments	[vkstruct]<br>
 	 * Prototype: const VkAttachmentReference*  pColorAttachments
 	 */ 
-	 private static native java.nio.ByteBuffer  pColorAttachments0(Buffer ptr);/*
+	 private static native long getPColorAttachments0(Buffer ptr);/*
 		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
-		  return ( VkAttachmentReference ) (vkObj->pColorAttachments);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pColorAttachments);	 */
 
 	/**
 	 * native SET method for field pResolveAttachments	[vkstruct]<br>
 	 * Prototype: const VkAttachmentReference*  pResolveAttachments
 	 */ 
-	 private static native void pResolveAttachments0(Buffer ptr, java.nio.ByteBuffer  _pResolveAttachments);/*
+	 private static native void setPResolveAttachments0(Buffer ptr, java.nio.ByteBuffer  _pResolveAttachments);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  vkObj->pResolveAttachments = (const VkAttachmentReference*) (_pResolveAttachments);
 	  */
@@ -519,16 +537,15 @@ public class VkSubpassDescription extends VkStruct {
 	 * native GET method for field pResolveAttachments	[vkstruct]<br>
 	 * Prototype: const VkAttachmentReference*  pResolveAttachments
 	 */ 
-	 private static native java.nio.ByteBuffer  pResolveAttachments0(Buffer ptr);/*
+	 private static native long getPResolveAttachments0(Buffer ptr);/*
 		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
-		  return ( VkAttachmentReference ) (vkObj->pResolveAttachments);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pResolveAttachments);	 */
 
 	/**
 	 * native SET method for field pDepthStencilAttachment	[vkstruct]<br>
 	 * Prototype: const VkAttachmentReference*  pDepthStencilAttachment
 	 */ 
-	 private static native void pDepthStencilAttachment0(Buffer ptr, java.nio.ByteBuffer  _pDepthStencilAttachment);/*
+	 private static native void setPDepthStencilAttachment0(Buffer ptr, java.nio.ByteBuffer  _pDepthStencilAttachment);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  vkObj->pDepthStencilAttachment = (const VkAttachmentReference*) (_pDepthStencilAttachment);
 	  */
@@ -537,16 +554,15 @@ public class VkSubpassDescription extends VkStruct {
 	 * native GET method for field pDepthStencilAttachment	[vkstruct]<br>
 	 * Prototype: const VkAttachmentReference*  pDepthStencilAttachment
 	 */ 
-	 private static native java.nio.ByteBuffer  pDepthStencilAttachment0(Buffer ptr);/*
+	 private static native long getPDepthStencilAttachment0(Buffer ptr);/*
 		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
-		  return ( VkAttachmentReference ) (vkObj->pDepthStencilAttachment);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pDepthStencilAttachment);	 */
 
 	/**
 	 * native SET method for field preserveAttachmentCount	[int]<br>
 	 * Prototype: uint32_t  preserveAttachmentCount
 	 */ 
-	 private static native void preserveAttachmentCount0(Buffer ptr, int _preserveAttachmentCount);/*
+	 private static native void setPreserveAttachmentCount0(Buffer ptr, int _preserveAttachmentCount);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  vkObj->preserveAttachmentCount = (uint32_t) (_preserveAttachmentCount);
 	  */
@@ -555,7 +571,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * native GET method for field preserveAttachmentCount	[int]<br>
 	 * Prototype: uint32_t  preserveAttachmentCount
 	 */ 
-	 private static native int preserveAttachmentCount0(Buffer ptr);/*
+	 private static native int getPreserveAttachmentCount0(Buffer ptr);/*
 		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
 		  return (jint) (vkObj->preserveAttachmentCount);
 	 */
@@ -564,7 +580,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * native SET method for field pPreserveAttachments	[int_array]<br>
 	 * Prototype: const uint32_t*  pPreserveAttachments
 	 */ 
-	 private static native void pPreserveAttachments0(Buffer ptr, int[] _pPreserveAttachments);/*
+	 private static native void setPPreserveAttachments0(Buffer ptr, int[] _pPreserveAttachments);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  vkObj->pPreserveAttachments = (const uint32_t*) (_pPreserveAttachments);
 	  */
@@ -573,7 +589,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * native GET method for field pPreserveAttachments	[int_array]<br>
 	 * Prototype: const uint32_t*  pPreserveAttachments
 	 */ 
-	 private static native int[] pPreserveAttachments0(Buffer ptr);/*
+	 private static native int[] getPPreserveAttachments0(Buffer ptr);/*
 		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
 		  return (int[]) (vkObj->pPreserveAttachments);
 	 */

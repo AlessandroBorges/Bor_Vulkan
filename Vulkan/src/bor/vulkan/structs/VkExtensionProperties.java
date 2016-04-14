@@ -9,10 +9,12 @@
  */
 package bor.vulkan.structs;
 
-import java.nio.Buffer;
+import bor.vulkan.*;
+import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
-import bor.vulkan.P;
+import java.nio.Buffer;
 
 
 /**
@@ -73,15 +75,31 @@ public class VkExtensionProperties extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkExtensionProperties(long address, int memSize){ 
+	 public VkExtensionProperties(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkExtensionProperties(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -123,7 +141,7 @@ public class VkExtensionProperties extends VkStruct {
 	 */ 
 	 public void extensionName(String extensionName){
 		 this.extensionName = extensionName;
-		 extensionName0(this.ptr,  extensionName);
+		 setExtensionName0(this.ptr,  extensionName);
 	 }
 
 	/**
@@ -131,7 +149,7 @@ public class VkExtensionProperties extends VkStruct {
 	 * Prototype: char[]  extensionName
 	 */ 
 	 public String extensionName(){
-		 String var = extensionName0(super.ptr);
+		 String var = getExtensionName0(super.ptr);
 		 this.extensionName = var;
 		 return this.extensionName;
 	 }
@@ -142,7 +160,7 @@ public class VkExtensionProperties extends VkStruct {
 	 */ 
 	 public void specVersion(int specVersion){
 		 this.specVersion = specVersion;
-		 specVersion0(this.ptr,  specVersion);
+		 setSpecVersion0(this.ptr,  specVersion);
 	 }
 
 	/**
@@ -150,7 +168,7 @@ public class VkExtensionProperties extends VkStruct {
 	 * Prototype: uint32_t  specVersion
 	 */ 
 	 public int specVersion(){
-		 int var = specVersion0(super.ptr);
+		 int var = getSpecVersion0(super.ptr);
 		 this.specVersion = var;
 		 return this.specVersion;
 	 }
@@ -163,7 +181,7 @@ public class VkExtensionProperties extends VkStruct {
 	 * native SET method for field extensionName	[string]<br>
 	 * Prototype: char[]  extensionName
 	 */ 
-	 private static native void extensionName0(Buffer ptr, String _extensionName);/*
+	 private static native void setExtensionName0(Buffer ptr, String _extensionName);/*
 		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
 		  vkObj->extensionName = (char[]) (_extensionName);
 	  */
@@ -172,15 +190,15 @@ public class VkExtensionProperties extends VkStruct {
 	 * native GET method for field extensionName	[string]<br>
 	 * Prototype: char[]  extensionName
 	 */ 
-	 private static native String extensionName0(Buffer ptr);/*
+	 private static native String getExtensionName0(Buffer ptr);/*
 		  VkExtensionProperties vkObj = (VkExtensionProperties*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->.extensionName);	 */
+		  return (jstring)(env->NewStringUTF(vkObj->extensionName);	 */
 
 	/**
 	 * native SET method for field specVersion	[int]<br>
 	 * Prototype: uint32_t  specVersion
 	 */ 
-	 private static native void specVersion0(Buffer ptr, int _specVersion);/*
+	 private static native void setSpecVersion0(Buffer ptr, int _specVersion);/*
 		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
 		  vkObj->specVersion = (uint32_t) (_specVersion);
 	  */
@@ -189,7 +207,7 @@ public class VkExtensionProperties extends VkStruct {
 	 * native GET method for field specVersion	[int]<br>
 	 * Prototype: uint32_t  specVersion
 	 */ 
-	 private static native int specVersion0(Buffer ptr);/*
+	 private static native int getSpecVersion0(Buffer ptr);/*
 		  VkExtensionProperties vkObj = (VkExtensionProperties*)(ptr);
 		  return (jint) (vkObj->specVersion);
 	 */

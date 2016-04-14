@@ -99,15 +99,31 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkDescriptorPoolCreateInfo(long address, int memSize){ 
+	 public VkDescriptorPoolCreateInfo(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkDescriptorPoolCreateInfo(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -150,7 +166,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
-		 sType0(this.ptr, enumVal );
+		 setSType0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -158,7 +174,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 int nativeVal = sType0(super.ptr);
+		 int nativeVal = getSType0(super.ptr);
 		 this.sType = VkStructureType.fromValue(nativeVal); 
 		 return this.sType;
 	 }
@@ -170,7 +186,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
-		 pNext0(this.ptr, buff);
+		 setPNext0(this.ptr, buff);
 	 }
 
 	/**
@@ -178,8 +194,8 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 public VkObject pNext(){
-		 ByteBuffer pointer = pNext0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPNext0(super.ptr);
+		 if(pointer == 0){
 		    this.pNext = null;
 		    return null;
 		  } else 
@@ -197,7 +213,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		 flags0(this.ptr,  flags);
+		 setFlags0(this.ptr,  flags);
 	 }
 
 	/**
@@ -205,7 +221,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * Prototype: VkDescriptorPoolCreateFlags  flags
 	 */ 
 	 public int flags(){
-		 int var = flags0(super.ptr);
+		 int var = getFlags0(super.ptr);
 		 this.flags = var;
 		 return this.flags;
 	 }
@@ -216,7 +232,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 */ 
 	 public void maxSets(int maxSets){
 		 this.maxSets = maxSets;
-		 maxSets0(this.ptr,  maxSets);
+		 setMaxSets0(this.ptr,  maxSets);
 	 }
 
 	/**
@@ -224,7 +240,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  maxSets
 	 */ 
 	 public int maxSets(){
-		 int var = maxSets0(super.ptr);
+		 int var = getMaxSets0(super.ptr);
 		 this.maxSets = var;
 		 return this.maxSets;
 	 }
@@ -235,7 +251,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 */ 
 	 public void poolSizeCount(int poolSizeCount){
 		 this.poolSizeCount = poolSizeCount;
-		 poolSizeCount0(this.ptr,  poolSizeCount);
+		 setPoolSizeCount0(this.ptr,  poolSizeCount);
 	 }
 
 	/**
@@ -243,7 +259,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  poolSizeCount
 	 */ 
 	 public int poolSizeCount(){
-		 int var = poolSizeCount0(super.ptr);
+		 int var = getPoolSizeCount0(super.ptr);
 		 this.poolSizeCount = var;
 		 return this.poolSizeCount;
 	 }
@@ -254,8 +270,8 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 */ 
 	 public void pPoolSizes( VkDescriptorPoolSize  pPoolSizes){
 		 this.pPoolSizes = pPoolSizes;
-		 ByteBuffer buff = (pPoolSizes==null) ? null : pPoolSizes.getPointerStruct();
-		 pPoolSizes0(this.ptr, buff);
+		 ByteBuffer buff = (pPoolSizes==null) ? null : pPoolSizes.getPointer();
+		 setPPoolSizes0(this.ptr, buff);
 	 }
 
 	/**
@@ -263,12 +279,13 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * Prototype: const VkDescriptorPoolSize*  pPoolSizes
 	 */ 
 	 public  VkDescriptorPoolSize  pPoolSizes(){
-		 ByteBuffer pointer = pPoolSizes0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPPoolSizes0(super.ptr);
+		 if(pointer == 0){
 		    this.pPoolSizes = null;
 		    return null;
-		  } else 
- 		 if(this.pPoolSizes == null){
+		  } 
+
+		 if(this.pPoolSizes == null){
 		    this.pPoolSizes = new  VkDescriptorPoolSize (pointer);
 		 }else{
 		    this.pPoolSizes.setPointer(pointer);
@@ -284,7 +301,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(Buffer ptr, int  _sType);/*
+	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
@@ -293,7 +310,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  sType0(Buffer ptr);/*
+	 private static native int  getSType0(Buffer ptr);/*
 		  VkDescriptorPoolCreateInfo vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
@@ -302,7 +319,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
@@ -311,16 +328,15 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+	 private static native long getPNext0(Buffer ptr);/*
 		  VkDescriptorPoolCreateInfo vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
-		  return (VkObject) (vkObj->pNext);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkDescriptorPoolCreateFlags  flags
 	 */ 
-	 private static native void flags0(Buffer ptr, int _flags);/*
+	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
 		  vkObj->flags = (VkDescriptorPoolCreateFlags) (_flags);
 	  */
@@ -329,7 +345,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkDescriptorPoolCreateFlags  flags
 	 */ 
-	 private static native int flags0(Buffer ptr);/*
+	 private static native int getFlags0(Buffer ptr);/*
 		  VkDescriptorPoolCreateInfo vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
@@ -338,7 +354,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * native SET method for field maxSets	[int]<br>
 	 * Prototype: uint32_t  maxSets
 	 */ 
-	 private static native void maxSets0(Buffer ptr, int _maxSets);/*
+	 private static native void setMaxSets0(Buffer ptr, int _maxSets);/*
 		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
 		  vkObj->maxSets = (uint32_t) (_maxSets);
 	  */
@@ -347,7 +363,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * native GET method for field maxSets	[int]<br>
 	 * Prototype: uint32_t  maxSets
 	 */ 
-	 private static native int maxSets0(Buffer ptr);/*
+	 private static native int getMaxSets0(Buffer ptr);/*
 		  VkDescriptorPoolCreateInfo vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
 		  return (jint) (vkObj->maxSets);
 	 */
@@ -356,7 +372,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * native SET method for field poolSizeCount	[int]<br>
 	 * Prototype: uint32_t  poolSizeCount
 	 */ 
-	 private static native void poolSizeCount0(Buffer ptr, int _poolSizeCount);/*
+	 private static native void setPoolSizeCount0(Buffer ptr, int _poolSizeCount);/*
 		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
 		  vkObj->poolSizeCount = (uint32_t) (_poolSizeCount);
 	  */
@@ -365,7 +381,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * native GET method for field poolSizeCount	[int]<br>
 	 * Prototype: uint32_t  poolSizeCount
 	 */ 
-	 private static native int poolSizeCount0(Buffer ptr);/*
+	 private static native int getPoolSizeCount0(Buffer ptr);/*
 		  VkDescriptorPoolCreateInfo vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
 		  return (jint) (vkObj->poolSizeCount);
 	 */
@@ -374,7 +390,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * native SET method for field pPoolSizes	[vkstruct]<br>
 	 * Prototype: const VkDescriptorPoolSize*  pPoolSizes
 	 */ 
-	 private static native void pPoolSizes0(Buffer ptr, java.nio.ByteBuffer  _pPoolSizes);/*
+	 private static native void setPPoolSizes0(Buffer ptr, java.nio.ByteBuffer  _pPoolSizes);/*
 		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
 		  vkObj->pPoolSizes = (const VkDescriptorPoolSize*) (_pPoolSizes);
 	  */
@@ -383,10 +399,9 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * native GET method for field pPoolSizes	[vkstruct]<br>
 	 * Prototype: const VkDescriptorPoolSize*  pPoolSizes
 	 */ 
-	 private static native java.nio.ByteBuffer  pPoolSizes0(Buffer ptr);/*
+	 private static native long getPPoolSizes0(Buffer ptr);/*
 		  VkDescriptorPoolCreateInfo vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
-		  return ( VkDescriptorPoolSize ) (vkObj->pPoolSizes);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pPoolSizes);	 */
 
 
 

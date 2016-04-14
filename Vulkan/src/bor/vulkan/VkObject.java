@@ -53,6 +53,12 @@ public interface VkObject {
     public java.nio.ByteBuffer getPointer();
     
     /**
+     * Return the native address of this VkObject.
+     * @return native address of this.
+     */
+    public long getNativeHandle();
+    
+    /**
      * check if internal pointer to VkObject is null.
      * @return
      */
@@ -73,5 +79,24 @@ public interface VkObject {
      * @
      */
      void setPointer(java.nio.ByteBuffer nativePtr);
+     
+     /**
+      * used to set or update a native pointer.
+      * It should verify if the given nativeHandle isn't the same already used pointer
+      * 
+      * @param nativeHandle - native address to update
+      */
+     void setPointer(long nativeHandler);
+     
+     /**
+      * Free this handle on native side.<br>
+      * After calling this, any use of this handle will throw a NullPointerException.<br>
+      * 
+      * @TODO put Visibility as private package, and let it be called from vkDestroyXXXX() method calls 
+      * @TODO Move this method to another interface
+      * 
+      * @return true if it was successful released. False if it was already released.
+      */
+      public boolean free();
  
 }

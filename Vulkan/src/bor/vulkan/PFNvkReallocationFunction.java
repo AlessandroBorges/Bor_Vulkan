@@ -28,6 +28,10 @@ public class PFNvkReallocationFunction extends VkHandle implements PFNFunction, 
         super(nativePtr);
     }
 
+    public PFNvkReallocationFunction(long nativePtr) {
+        super(nativePtr);
+    }
+    
     /**
      * Create a pointer P to contains a instance of this,
      * with unset native pointer.

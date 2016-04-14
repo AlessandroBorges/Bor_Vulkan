@@ -76,15 +76,31 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkSurfaceFormatKHR(long address, int memSize){ 
+	 public VkSurfaceFormatKHR(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkSurfaceFormatKHR(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -127,7 +143,7 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	 public void format(VkFormat format){
 		 this.format = format;
 		 int enumVal = format.getValue();
-		 format0(this.ptr, enumVal );
+		 setFormat0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -135,7 +151,7 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	 * Prototype: VkFormat  format
 	 */ 
 	 public VkFormat format(){
-		 int nativeVal = format0(super.ptr);
+		 int nativeVal = getFormat0(super.ptr);
 		 this.format = VkFormat.fromValue(nativeVal); 
 		 return this.format;
 	 }
@@ -147,7 +163,7 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	 public void colorSpace(VkColorSpaceKHR colorSpace){
 		 this.colorSpace = colorSpace;
 		 int enumVal = colorSpace.getValue();
-		 colorSpace0(this.ptr, enumVal );
+		 setColorSpace0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -155,7 +171,7 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	 * Prototype: VkColorSpaceKHR  colorSpace
 	 */ 
 	 public VkColorSpaceKHR colorSpace(){
-		 int nativeVal = colorSpace0(super.ptr);
+		 int nativeVal = getColorSpace0(super.ptr);
 		 this.colorSpace = VkColorSpaceKHR.fromValue(nativeVal); 
 		 return this.colorSpace;
 	 }
@@ -168,7 +184,7 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	 * native SET method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
-	 private static native void format0(Buffer ptr, int  _format);/*
+	 private static native void setFormat0(Buffer ptr, int  _format);/*
 		  VkSurfaceFormatKHR* vkObj = (VkSurfaceFormatKHR*)(ptr);
 		  vkObj->format = (VkFormat) (_format);
 	  */
@@ -177,7 +193,7 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	 * native GET method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
-	 private static native int  format0(Buffer ptr);/*
+	 private static native int  getFormat0(Buffer ptr);/*
 		  VkSurfaceFormatKHR vkObj = (VkSurfaceFormatKHR*)(ptr);
 		  return (VkFormat) (vkObj->format);
 	 */
@@ -186,7 +202,7 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	 * native SET method for field colorSpace	[vkenum]<br>
 	 * Prototype: VkColorSpaceKHR  colorSpace
 	 */ 
-	 private static native void colorSpace0(Buffer ptr, int  _colorSpace);/*
+	 private static native void setColorSpace0(Buffer ptr, int  _colorSpace);/*
 		  VkSurfaceFormatKHR* vkObj = (VkSurfaceFormatKHR*)(ptr);
 		  vkObj->colorSpace = (VkColorSpaceKHR) (_colorSpace);
 	  */
@@ -195,7 +211,7 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	 * native GET method for field colorSpace	[vkenum]<br>
 	 * Prototype: VkColorSpaceKHR  colorSpace
 	 */ 
-	 private static native int  colorSpace0(Buffer ptr);/*
+	 private static native int  getColorSpace0(Buffer ptr);/*
 		  VkSurfaceFormatKHR vkObj = (VkSurfaceFormatKHR*)(ptr);
 		  return (VkColorSpaceKHR) (vkObj->colorSpace);
 	 */

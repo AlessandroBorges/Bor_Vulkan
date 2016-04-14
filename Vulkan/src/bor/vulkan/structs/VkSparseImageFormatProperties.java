@@ -81,15 +81,31 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkSparseImageFormatProperties(long address, int memSize){ 
+	 public VkSparseImageFormatProperties(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkSparseImageFormatProperties(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -131,7 +147,7 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 */ 
 	 public void aspectMask(int aspectMask){
 		 this.aspectMask = aspectMask;
-		 aspectMask0(this.ptr,  aspectMask);
+		 setAspectMask0(this.ptr,  aspectMask);
 	 }
 
 	/**
@@ -139,7 +155,7 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 public int aspectMask(){
-		 int var = aspectMask0(super.ptr);
+		 int var = getAspectMask0(super.ptr);
 		 this.aspectMask = var;
 		 return this.aspectMask;
 	 }
@@ -150,8 +166,8 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 */ 
 	 public void imageGranularity(VkExtent3D imageGranularity){
 		 this.imageGranularity = imageGranularity;
-		 ByteBuffer buff = (imageGranularity==null) ? null : imageGranularity.getPointerStruct();
-		 imageGranularity0(this.ptr, buff);
+		 ByteBuffer buff = (imageGranularity==null) ? null : imageGranularity.getPointer();
+		 setImageGranularity0(this.ptr, buff);
 	 }
 
 	/**
@@ -159,12 +175,13 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 * Prototype: VkExtent3D  imageGranularity
 	 */ 
 	 public VkExtent3D imageGranularity(){
-		 ByteBuffer pointer = imageGranularity0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getImageGranularity0(super.ptr);
+		 if(pointer == 0){
 		    this.imageGranularity = null;
 		    return null;
-		  } else 
- 		 if(this.imageGranularity == null){
+		  } 
+
+		 if(this.imageGranularity == null){
 		    this.imageGranularity = new VkExtent3D(pointer);
 		 }else{
 		    this.imageGranularity.setPointer(pointer);
@@ -178,7 +195,7 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		 flags0(this.ptr,  flags);
+		 setFlags0(this.ptr,  flags);
 	 }
 
 	/**
@@ -186,7 +203,7 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 * Prototype: VkSparseImageFormatFlags  flags
 	 */ 
 	 public int flags(){
-		 int var = flags0(super.ptr);
+		 int var = getFlags0(super.ptr);
 		 this.flags = var;
 		 return this.flags;
 	 }
@@ -199,7 +216,7 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 * native SET method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
-	 private static native void aspectMask0(Buffer ptr, int _aspectMask);/*
+	 private static native void setAspectMask0(Buffer ptr, int _aspectMask);/*
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
 		  vkObj->aspectMask = (VkImageAspectFlags) (_aspectMask);
 	  */
@@ -208,7 +225,7 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 * native GET method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
-	 private static native int aspectMask0(Buffer ptr);/*
+	 private static native int getAspectMask0(Buffer ptr);/*
 		  VkSparseImageFormatProperties vkObj = (VkSparseImageFormatProperties*)(ptr);
 		  return (jint) (vkObj->aspectMask);
 	 */
@@ -217,7 +234,7 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 * native SET method for field imageGranularity	[vkstruct]<br>
 	 * Prototype: VkExtent3D  imageGranularity
 	 */ 
-	 private static native void imageGranularity0(Buffer ptr, java.nio.ByteBuffer  _imageGranularity);/*
+	 private static native void setImageGranularity0(Buffer ptr, java.nio.ByteBuffer  _imageGranularity);/*
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
 		  vkObj->imageGranularity = (VkExtent3D) (_imageGranularity);
 	  */
@@ -226,16 +243,15 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 * native GET method for field imageGranularity	[vkstruct]<br>
 	 * Prototype: VkExtent3D  imageGranularity
 	 */ 
-	 private static native java.nio.ByteBuffer  imageGranularity0(Buffer ptr);/*
+	 private static native long getImageGranularity0(Buffer ptr);/*
 		  VkSparseImageFormatProperties vkObj = (VkSparseImageFormatProperties*)(ptr);
-		  return (VkExtent3D) (vkObj->imageGranularity);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->imageGranularity);	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkSparseImageFormatFlags  flags
 	 */ 
-	 private static native void flags0(Buffer ptr, int _flags);/*
+	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
 		  vkObj->flags = (VkSparseImageFormatFlags) (_flags);
 	  */
@@ -244,7 +260,7 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkSparseImageFormatFlags  flags
 	 */ 
-	 private static native int flags0(Buffer ptr);/*
+	 private static native int getFlags0(Buffer ptr);/*
 		  VkSparseImageFormatProperties vkObj = (VkSparseImageFormatProperties*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */

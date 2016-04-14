@@ -93,15 +93,31 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkPipelineCacheCreateInfo(long address, int memSize){ 
+	 public VkPipelineCacheCreateInfo(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkPipelineCacheCreateInfo(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -144,7 +160,7 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
-		 sType0(this.ptr, enumVal );
+		 setSType0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -152,7 +168,7 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 int nativeVal = sType0(super.ptr);
+		 int nativeVal = getSType0(super.ptr);
 		 this.sType = VkStructureType.fromValue(nativeVal); 
 		 return this.sType;
 	 }
@@ -164,7 +180,7 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
-		 pNext0(this.ptr, buff);
+		 setPNext0(this.ptr, buff);
 	 }
 
 	/**
@@ -172,8 +188,8 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 public VkObject pNext(){
-		 ByteBuffer pointer = pNext0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPNext0(super.ptr);
+		 if(pointer == 0){
 		    this.pNext = null;
 		    return null;
 		  } else 
@@ -191,7 +207,7 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		 flags0(this.ptr,  flags);
+		 setFlags0(this.ptr,  flags);
 	 }
 
 	/**
@@ -199,7 +215,7 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 * Prototype: VkPipelineCacheCreateFlags  flags
 	 */ 
 	 public int flags(){
-		 int var = flags0(super.ptr);
+		 int var = getFlags0(super.ptr);
 		 this.flags = var;
 		 return this.flags;
 	 }
@@ -210,7 +226,7 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 */ 
 	 public void initialDataSize(long initialDataSize){
 		 this.initialDataSize = initialDataSize;
-		 initialDataSize0(this.ptr,  initialDataSize);
+		 setInitialDataSize0(this.ptr,  initialDataSize);
 	 }
 
 	/**
@@ -218,7 +234,7 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 * Prototype: size_t  initialDataSize
 	 */ 
 	 public long initialDataSize(){
-		 long var = initialDataSize0(super.ptr);
+		 long var = getInitialDataSize0(super.ptr);
 		 this.initialDataSize = var;
 		 return this.initialDataSize;
 	 }
@@ -229,16 +245,14 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 */ 
 	 public void pInitialData(java.nio.Buffer pInitialData){
 		 this.pInitialData = pInitialData;
-		 pInitialData0(this.ptr,  pInitialData);
+		 setPInitialData0(this.ptr,  pInitialData);
 	 }
 
 	/**
 	 * Get method for field pInitialData	[buffer]<br>
 	 * Prototype: const void*  pInitialData
 	 */ 
-	 public java.nio.Buffer pInitialData(){
-		 java.nio.Buffer var = pInitialData0(super.ptr);
-		 this.pInitialData = var;
+	 public java.nio.Buffer pInitialData(){		 
 		 return this.pInitialData;
 	 }
 
@@ -250,7 +264,7 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(Buffer ptr, int  _sType);/*
+	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkPipelineCacheCreateInfo* vkObj = (VkPipelineCacheCreateInfo*)(ptr);
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
@@ -259,7 +273,7 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  sType0(Buffer ptr);/*
+	 private static native int  getSType0(Buffer ptr);/*
 		  VkPipelineCacheCreateInfo vkObj = (VkPipelineCacheCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
@@ -268,7 +282,7 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineCacheCreateInfo* vkObj = (VkPipelineCacheCreateInfo*)(ptr);
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
@@ -277,16 +291,15 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineCacheCreateInfo vkObj = (VkPipelineCacheCreateInfo*)(ptr);
-		  return (VkObject) (vkObj->pNext);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkPipelineCacheCreateFlags  flags
 	 */ 
-	 private static native void flags0(Buffer ptr, int _flags);/*
+	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkPipelineCacheCreateInfo* vkObj = (VkPipelineCacheCreateInfo*)(ptr);
 		  vkObj->flags = (VkPipelineCacheCreateFlags) (_flags);
 	  */
@@ -295,7 +308,7 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkPipelineCacheCreateFlags  flags
 	 */ 
-	 private static native int flags0(Buffer ptr);/*
+	 private static native int getFlags0(Buffer ptr);/*
 		  VkPipelineCacheCreateInfo vkObj = (VkPipelineCacheCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
@@ -304,7 +317,7 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 * native SET method for field initialDataSize	[long]<br>
 	 * Prototype: size_t  initialDataSize
 	 */ 
-	 private static native void initialDataSize0(Buffer ptr, long _initialDataSize);/*
+	 private static native void setInitialDataSize0(Buffer ptr, long _initialDataSize);/*
 		  VkPipelineCacheCreateInfo* vkObj = (VkPipelineCacheCreateInfo*)(ptr);
 		  vkObj->initialDataSize = (size_t) (_initialDataSize);
 	  */
@@ -313,7 +326,7 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 * native GET method for field initialDataSize	[long]<br>
 	 * Prototype: size_t  initialDataSize
 	 */ 
-	 private static native long initialDataSize0(Buffer ptr);/*
+	 private static native long getInitialDataSize0(Buffer ptr);/*
 		  VkPipelineCacheCreateInfo vkObj = (VkPipelineCacheCreateInfo*)(ptr);
 		  return (jlong) (vkObj->initialDataSize);
 	 */
@@ -322,7 +335,7 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 * native SET method for field pInitialData	[buffer]<br>
 	 * Prototype: const void*  pInitialData
 	 */ 
-	 private static native void pInitialData0(Buffer ptr, java.nio.Buffer _pInitialData);/*
+	 private static native void setPInitialData0(Buffer ptr, java.nio.Buffer _pInitialData);/*
 		  VkPipelineCacheCreateInfo* vkObj = (VkPipelineCacheCreateInfo*)(ptr);
 		  vkObj->pInitialData = (const void*) (_pInitialData);
 	  */
@@ -331,10 +344,9 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 * native GET method for field pInitialData	[buffer]<br>
 	 * Prototype: const void*  pInitialData
 	 */ 
-	 private static native java.nio.Buffer pInitialData0(Buffer ptr);/*
+	 private static native long getPInitialData0(Buffer ptr);/*
 		  VkPipelineCacheCreateInfo vkObj = (VkPipelineCacheCreateInfo*)(ptr);
-		  return (jobject) (vkObj->pInitialData);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pInitialData);	 */
 
 
 

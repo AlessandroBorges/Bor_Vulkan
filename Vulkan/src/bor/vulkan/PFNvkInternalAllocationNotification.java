@@ -27,6 +27,11 @@ public class PFNvkInternalAllocationNotification extends VkHandle implements PFN
     public PFNvkInternalAllocationNotification(ByteBuffer nativePtr) {
         super(nativePtr);
     }
+    
+    
+    public PFNvkInternalAllocationNotification(long nativePtr) {
+        super(nativePtr);
+    }
 
     /**
      * Create a pointer P to contains a instance of this,

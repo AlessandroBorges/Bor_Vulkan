@@ -100,8 +100,8 @@ public class ExtractStruts {
     public static int processUnions(List<String> vkh, int ID) {
         System.out.println("Processing Structs.");
         //boolean printStructs = true;
-        boolean exportStructs = true;
-        boolean showAtConsole = false;
+        boolean exportStructs = false;
+        boolean showAtConsole = true;
 
         int[] positions = { 0, 0 };
         //int ID = 0;

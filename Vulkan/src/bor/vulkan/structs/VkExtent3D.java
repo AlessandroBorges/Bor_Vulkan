@@ -81,15 +81,31 @@ public class VkExtent3D extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkExtent3D(long address, int memSize){ 
+	 public VkExtent3D(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkExtent3D(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -131,7 +147,7 @@ public class VkExtent3D extends VkStruct {
 	 */ 
 	 public void width(int width){
 		 this.width = width;
-		 width0(this.ptr,  width);
+		 setWidth0(this.ptr,  width);
 	 }
 
 	/**
@@ -139,7 +155,7 @@ public class VkExtent3D extends VkStruct {
 	 * Prototype: uint32_t  width
 	 */ 
 	 public int width(){
-		 int var = width0(super.ptr);
+		 int var = getWidth0(super.ptr);
 		 this.width = var;
 		 return this.width;
 	 }
@@ -150,7 +166,7 @@ public class VkExtent3D extends VkStruct {
 	 */ 
 	 public void height(int height){
 		 this.height = height;
-		 height0(this.ptr,  height);
+		 setHeight0(this.ptr,  height);
 	 }
 
 	/**
@@ -158,7 +174,7 @@ public class VkExtent3D extends VkStruct {
 	 * Prototype: uint32_t  height
 	 */ 
 	 public int height(){
-		 int var = height0(super.ptr);
+		 int var = getHeight0(super.ptr);
 		 this.height = var;
 		 return this.height;
 	 }
@@ -169,7 +185,7 @@ public class VkExtent3D extends VkStruct {
 	 */ 
 	 public void depth(int depth){
 		 this.depth = depth;
-		 depth0(this.ptr,  depth);
+		 setDepth0(this.ptr,  depth);
 	 }
 
 	/**
@@ -177,7 +193,7 @@ public class VkExtent3D extends VkStruct {
 	 * Prototype: uint32_t  depth
 	 */ 
 	 public int depth(){
-		 int var = depth0(super.ptr);
+		 int var = getDepth0(super.ptr);
 		 this.depth = var;
 		 return this.depth;
 	 }
@@ -190,7 +206,7 @@ public class VkExtent3D extends VkStruct {
 	 * native SET method for field width	[int]<br>
 	 * Prototype: uint32_t  width
 	 */ 
-	 private static native void width0(Buffer ptr, int _width);/*
+	 private static native void setWidth0(Buffer ptr, int _width);/*
 		  VkExtent3D* vkObj = (VkExtent3D*)(ptr);
 		  vkObj->width = (uint32_t) (_width);
 	  */
@@ -199,7 +215,7 @@ public class VkExtent3D extends VkStruct {
 	 * native GET method for field width	[int]<br>
 	 * Prototype: uint32_t  width
 	 */ 
-	 private static native int width0(Buffer ptr);/*
+	 private static native int getWidth0(Buffer ptr);/*
 		  VkExtent3D vkObj = (VkExtent3D*)(ptr);
 		  return (jint) (vkObj->width);
 	 */
@@ -208,7 +224,7 @@ public class VkExtent3D extends VkStruct {
 	 * native SET method for field height	[int]<br>
 	 * Prototype: uint32_t  height
 	 */ 
-	 private static native void height0(Buffer ptr, int _height);/*
+	 private static native void setHeight0(Buffer ptr, int _height);/*
 		  VkExtent3D* vkObj = (VkExtent3D*)(ptr);
 		  vkObj->height = (uint32_t) (_height);
 	  */
@@ -217,7 +233,7 @@ public class VkExtent3D extends VkStruct {
 	 * native GET method for field height	[int]<br>
 	 * Prototype: uint32_t  height
 	 */ 
-	 private static native int height0(Buffer ptr);/*
+	 private static native int getHeight0(Buffer ptr);/*
 		  VkExtent3D vkObj = (VkExtent3D*)(ptr);
 		  return (jint) (vkObj->height);
 	 */
@@ -226,7 +242,7 @@ public class VkExtent3D extends VkStruct {
 	 * native SET method for field depth	[int]<br>
 	 * Prototype: uint32_t  depth
 	 */ 
-	 private static native void depth0(Buffer ptr, int _depth);/*
+	 private static native void setDepth0(Buffer ptr, int _depth);/*
 		  VkExtent3D* vkObj = (VkExtent3D*)(ptr);
 		  vkObj->depth = (uint32_t) (_depth);
 	  */
@@ -235,7 +251,7 @@ public class VkExtent3D extends VkStruct {
 	 * native GET method for field depth	[int]<br>
 	 * Prototype: uint32_t  depth
 	 */ 
-	 private static native int depth0(Buffer ptr);/*
+	 private static native int getDepth0(Buffer ptr);/*
 		  VkExtent3D vkObj = (VkExtent3D*)(ptr);
 		  return (jint) (vkObj->depth);
 	 */

@@ -77,6 +77,8 @@ public class P<T extends VkObject>
             e.printStackTrace();
         }
     }
+    
+    
    
     /**
      * Creates a container wrapping a VkObject
@@ -343,7 +345,6 @@ public class P<T extends VkObject>
                 (objs != null ? "objs=" + Arrays.toString(objs) + ", " : "")
                 +"]";
     }
-    
     
     
    

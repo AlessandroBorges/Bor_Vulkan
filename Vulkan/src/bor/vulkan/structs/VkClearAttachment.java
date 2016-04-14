@@ -81,15 +81,31 @@ public class VkClearAttachment extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkClearAttachment(long address, int memSize){ 
+	 public VkClearAttachment(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkClearAttachment(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -131,7 +147,7 @@ public class VkClearAttachment extends VkStruct {
 	 */ 
 	 public void aspectMask(int aspectMask){
 		 this.aspectMask = aspectMask;
-		 aspectMask0(this.ptr,  aspectMask);
+		 setAspectMask0(this.ptr,  aspectMask);
 	 }
 
 	/**
@@ -139,7 +155,7 @@ public class VkClearAttachment extends VkStruct {
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 public int aspectMask(){
-		 int var = aspectMask0(super.ptr);
+		 int var = getAspectMask0(super.ptr);
 		 this.aspectMask = var;
 		 return this.aspectMask;
 	 }
@@ -150,7 +166,7 @@ public class VkClearAttachment extends VkStruct {
 	 */ 
 	 public void colorAttachment(int colorAttachment){
 		 this.colorAttachment = colorAttachment;
-		 colorAttachment0(this.ptr,  colorAttachment);
+		 setColorAttachment0(this.ptr,  colorAttachment);
 	 }
 
 	/**
@@ -158,7 +174,7 @@ public class VkClearAttachment extends VkStruct {
 	 * Prototype: uint32_t  colorAttachment
 	 */ 
 	 public int colorAttachment(){
-		 int var = colorAttachment0(super.ptr);
+		 int var = getColorAttachment0(super.ptr);
 		 this.colorAttachment = var;
 		 return this.colorAttachment;
 	 }
@@ -169,8 +185,8 @@ public class VkClearAttachment extends VkStruct {
 	 */ 
 	 public void clearValue(VkClearValue clearValue){
 		 this.clearValue = clearValue;
-		 ByteBuffer buff = (clearValue==null) ? null : clearValue.getPointerStruct();
-		 clearValue0(this.ptr, buff);
+		 ByteBuffer buff = (clearValue==null) ? null : clearValue.getPointer();
+		 setClearValue0(this.ptr, buff);
 	 }
 
 	/**
@@ -178,12 +194,13 @@ public class VkClearAttachment extends VkStruct {
 	 * Prototype: VkClearValue  clearValue
 	 */ 
 	 public VkClearValue clearValue(){
-		 ByteBuffer pointer = clearValue0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getClearValue0(super.ptr);
+		 if(pointer == 0){
 		    this.clearValue = null;
 		    return null;
-		  } else 
- 		 if(this.clearValue == null){
+		  } 
+
+		 if(this.clearValue == null){
 		    this.clearValue = new VkClearValue(pointer);
 		 }else{
 		    this.clearValue.setPointer(pointer);
@@ -199,7 +216,7 @@ public class VkClearAttachment extends VkStruct {
 	 * native SET method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
-	 private static native void aspectMask0(Buffer ptr, int _aspectMask);/*
+	 private static native void setAspectMask0(Buffer ptr, int _aspectMask);/*
 		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
 		  vkObj->aspectMask = (VkImageAspectFlags) (_aspectMask);
 	  */
@@ -208,7 +225,7 @@ public class VkClearAttachment extends VkStruct {
 	 * native GET method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
-	 private static native int aspectMask0(Buffer ptr);/*
+	 private static native int getAspectMask0(Buffer ptr);/*
 		  VkClearAttachment vkObj = (VkClearAttachment*)(ptr);
 		  return (jint) (vkObj->aspectMask);
 	 */
@@ -217,7 +234,7 @@ public class VkClearAttachment extends VkStruct {
 	 * native SET method for field colorAttachment	[int]<br>
 	 * Prototype: uint32_t  colorAttachment
 	 */ 
-	 private static native void colorAttachment0(Buffer ptr, int _colorAttachment);/*
+	 private static native void setColorAttachment0(Buffer ptr, int _colorAttachment);/*
 		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
 		  vkObj->colorAttachment = (uint32_t) (_colorAttachment);
 	  */
@@ -226,7 +243,7 @@ public class VkClearAttachment extends VkStruct {
 	 * native GET method for field colorAttachment	[int]<br>
 	 * Prototype: uint32_t  colorAttachment
 	 */ 
-	 private static native int colorAttachment0(Buffer ptr);/*
+	 private static native int getColorAttachment0(Buffer ptr);/*
 		  VkClearAttachment vkObj = (VkClearAttachment*)(ptr);
 		  return (jint) (vkObj->colorAttachment);
 	 */
@@ -235,7 +252,7 @@ public class VkClearAttachment extends VkStruct {
 	 * native SET method for field clearValue	[vkstruct]<br>
 	 * Prototype: VkClearValue  clearValue
 	 */ 
-	 private static native void clearValue0(Buffer ptr, java.nio.ByteBuffer  _clearValue);/*
+	 private static native void setClearValue0(Buffer ptr, java.nio.ByteBuffer  _clearValue);/*
 		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
 		  vkObj->clearValue = (VkClearValue) (_clearValue);
 	  */
@@ -244,10 +261,9 @@ public class VkClearAttachment extends VkStruct {
 	 * native GET method for field clearValue	[vkstruct]<br>
 	 * Prototype: VkClearValue  clearValue
 	 */ 
-	 private static native java.nio.ByteBuffer  clearValue0(Buffer ptr);/*
+	 private static native long getClearValue0(Buffer ptr);/*
 		  VkClearAttachment vkObj = (VkClearAttachment*)(ptr);
-		  return (VkClearValue) (vkObj->clearValue);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->clearValue);	 */
 
 
 

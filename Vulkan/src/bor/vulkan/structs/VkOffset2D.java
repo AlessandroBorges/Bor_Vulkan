@@ -75,15 +75,31 @@ public class VkOffset2D extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkOffset2D(long address, int memSize){ 
+	 public VkOffset2D(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkOffset2D(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -125,7 +141,7 @@ public class VkOffset2D extends VkStruct {
 	 */ 
 	 public void x(int x){
 		 this.x = x;
-		 x0(this.ptr,  x);
+		 setX0(this.ptr,  x);
 	 }
 
 	/**
@@ -133,7 +149,7 @@ public class VkOffset2D extends VkStruct {
 	 * Prototype: int32_t  x
 	 */ 
 	 public int x(){
-		 int var = x0(super.ptr);
+		 int var = getX0(super.ptr);
 		 this.x = var;
 		 return this.x;
 	 }
@@ -144,7 +160,7 @@ public class VkOffset2D extends VkStruct {
 	 */ 
 	 public void y(int y){
 		 this.y = y;
-		 y0(this.ptr,  y);
+		 setY0(this.ptr,  y);
 	 }
 
 	/**
@@ -152,7 +168,7 @@ public class VkOffset2D extends VkStruct {
 	 * Prototype: int32_t  y
 	 */ 
 	 public int y(){
-		 int var = y0(super.ptr);
+		 int var = getY0(super.ptr);
 		 this.y = var;
 		 return this.y;
 	 }
@@ -165,7 +181,7 @@ public class VkOffset2D extends VkStruct {
 	 * native SET method for field x	[int]<br>
 	 * Prototype: int32_t  x
 	 */ 
-	 private static native void x0(Buffer ptr, int _x);/*
+	 private static native void setX0(Buffer ptr, int _x);/*
 		  VkOffset2D* vkObj = (VkOffset2D*)(ptr);
 		  vkObj->x = (int32_t) (_x);
 	  */
@@ -174,7 +190,7 @@ public class VkOffset2D extends VkStruct {
 	 * native GET method for field x	[int]<br>
 	 * Prototype: int32_t  x
 	 */ 
-	 private static native int x0(Buffer ptr);/*
+	 private static native int getX0(Buffer ptr);/*
 		  VkOffset2D vkObj = (VkOffset2D*)(ptr);
 		  return (jint) (vkObj->x);
 	 */
@@ -183,7 +199,7 @@ public class VkOffset2D extends VkStruct {
 	 * native SET method for field y	[int]<br>
 	 * Prototype: int32_t  y
 	 */ 
-	 private static native void y0(Buffer ptr, int _y);/*
+	 private static native void setY0(Buffer ptr, int _y);/*
 		  VkOffset2D* vkObj = (VkOffset2D*)(ptr);
 		  vkObj->y = (int32_t) (_y);
 	  */
@@ -192,7 +208,7 @@ public class VkOffset2D extends VkStruct {
 	 * native GET method for field y	[int]<br>
 	 * Prototype: int32_t  y
 	 */ 
-	 private static native int y0(Buffer ptr);/*
+	 private static native int getY0(Buffer ptr);/*
 		  VkOffset2D vkObj = (VkOffset2D*)(ptr);
 		  return (jint) (vkObj->y);
 	 */

@@ -87,15 +87,31 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkPhysicalDeviceMemoryProperties(long address, int memSize){ 
+	 public VkPhysicalDeviceMemoryProperties(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkPhysicalDeviceMemoryProperties(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -137,7 +153,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 */ 
 	 public void memoryTypeCount(int memoryTypeCount){
 		 this.memoryTypeCount = memoryTypeCount;
-		 memoryTypeCount0(this.ptr,  memoryTypeCount);
+		 setMemoryTypeCount0(this.ptr,  memoryTypeCount);
 	 }
 
 	/**
@@ -145,7 +161,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * Prototype: uint32_t  memoryTypeCount
 	 */ 
 	 public int memoryTypeCount(){
-		 int var = memoryTypeCount0(super.ptr);
+		 int var = getMemoryTypeCount0(super.ptr);
 		 this.memoryTypeCount = var;
 		 return this.memoryTypeCount;
 	 }
@@ -156,7 +172,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 */ 
 	 public void memoryTypes(VkMemoryType[] memoryTypes){
 		 this.memoryTypes = memoryTypes;
-		 memoryTypes0(this.ptr,  memoryTypes);
+		 setMemoryTypes0(this.ptr,  memoryTypes);
 	 }
 
 	/**
@@ -164,7 +180,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * Prototype: VkMemoryType[]  memoryTypes
 	 */ 
 	 public VkMemoryType[] memoryTypes(){
-		 VkMemoryType[] var = memoryTypes0(super.ptr);
+		 VkMemoryType[] var = getMemoryTypes0(super.ptr);
 		 this.memoryTypes = var;
 		 return this.memoryTypes;
 	 }
@@ -175,7 +191,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 */ 
 	 public void memoryHeapCount(int memoryHeapCount){
 		 this.memoryHeapCount = memoryHeapCount;
-		 memoryHeapCount0(this.ptr,  memoryHeapCount);
+		 setMemoryHeapCount0(this.ptr,  memoryHeapCount);
 	 }
 
 	/**
@@ -183,7 +199,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * Prototype: uint32_t  memoryHeapCount
 	 */ 
 	 public int memoryHeapCount(){
-		 int var = memoryHeapCount0(super.ptr);
+		 int var = getMemoryHeapCount0(super.ptr);
 		 this.memoryHeapCount = var;
 		 return this.memoryHeapCount;
 	 }
@@ -194,7 +210,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 */ 
 	 public void memoryHeaps(VkMemoryHeap[] memoryHeaps){
 		 this.memoryHeaps = memoryHeaps;
-		 memoryHeaps0(this.ptr,  memoryHeaps);
+		 setMemoryHeaps0(this.ptr,  memoryHeaps);
 	 }
 
 	/**
@@ -202,7 +218,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * Prototype: VkMemoryHeap[]  memoryHeaps
 	 */ 
 	 public VkMemoryHeap[] memoryHeaps(){
-		 VkMemoryHeap[] var = memoryHeaps0(super.ptr);
+		 VkMemoryHeap[] var = getMemoryHeaps0(super.ptr);
 		 this.memoryHeaps = var;
 		 return this.memoryHeaps;
 	 }
@@ -215,7 +231,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * native SET method for field memoryTypeCount	[int]<br>
 	 * Prototype: uint32_t  memoryTypeCount
 	 */ 
-	 private static native void memoryTypeCount0(Buffer ptr, int _memoryTypeCount);/*
+	 private static native void setMemoryTypeCount0(Buffer ptr, int _memoryTypeCount);/*
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  vkObj->memoryTypeCount = (uint32_t) (_memoryTypeCount);
 	  */
@@ -224,7 +240,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * native GET method for field memoryTypeCount	[int]<br>
 	 * Prototype: uint32_t  memoryTypeCount
 	 */ 
-	 private static native int memoryTypeCount0(Buffer ptr);/*
+	 private static native int getMemoryTypeCount0(Buffer ptr);/*
 		  VkPhysicalDeviceMemoryProperties vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  return (jint) (vkObj->memoryTypeCount);
 	 */
@@ -233,7 +249,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * native SET method for field memoryTypes	<br>
 	 * Prototype: VkMemoryType[]  memoryTypes
 	 */ 
-	 private static native void memoryTypes0(Buffer ptr, VkMemoryType[] _memoryTypes);/*
+	 private static native void setMemoryTypes0(Buffer ptr, VkMemoryType[] _memoryTypes);/*
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  vkObj->memoryTypes = (VkMemoryType[]) (_memoryTypes);
 	  */
@@ -242,7 +258,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * native GET method for field memoryTypes	<br>
 	 * Prototype: VkMemoryType[]  memoryTypes
 	 */ 
-	 private static native VkMemoryType[] memoryTypes0(Buffer ptr);/*
+	 private static native VkMemoryType[] getMemoryTypes0(Buffer ptr);/*
 		  VkPhysicalDeviceMemoryProperties vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  return (VkMemoryType[]) (vkObj->memoryTypes);
 	 */
@@ -251,7 +267,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * native SET method for field memoryHeapCount	[int]<br>
 	 * Prototype: uint32_t  memoryHeapCount
 	 */ 
-	 private static native void memoryHeapCount0(Buffer ptr, int _memoryHeapCount);/*
+	 private static native void setMemoryHeapCount0(Buffer ptr, int _memoryHeapCount);/*
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  vkObj->memoryHeapCount = (uint32_t) (_memoryHeapCount);
 	  */
@@ -260,7 +276,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * native GET method for field memoryHeapCount	[int]<br>
 	 * Prototype: uint32_t  memoryHeapCount
 	 */ 
-	 private static native int memoryHeapCount0(Buffer ptr);/*
+	 private static native int getMemoryHeapCount0(Buffer ptr);/*
 		  VkPhysicalDeviceMemoryProperties vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  return (jint) (vkObj->memoryHeapCount);
 	 */
@@ -269,7 +285,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * native SET method for field memoryHeaps	<br>
 	 * Prototype: VkMemoryHeap[]  memoryHeaps
 	 */ 
-	 private static native void memoryHeaps0(Buffer ptr, VkMemoryHeap[] _memoryHeaps);/*
+	 private static native void setMemoryHeaps0(Buffer ptr, VkMemoryHeap[] _memoryHeaps);/*
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  vkObj->memoryHeaps = (VkMemoryHeap[]) (_memoryHeaps);
 	  */
@@ -278,7 +294,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * native GET method for field memoryHeaps	<br>
 	 * Prototype: VkMemoryHeap[]  memoryHeaps
 	 */ 
-	 private static native VkMemoryHeap[] memoryHeaps0(Buffer ptr);/*
+	 private static native VkMemoryHeap[] getMemoryHeaps0(Buffer ptr);/*
 		  VkPhysicalDeviceMemoryProperties vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  return (VkMemoryHeap[]) (vkObj->memoryHeaps);
 	 */

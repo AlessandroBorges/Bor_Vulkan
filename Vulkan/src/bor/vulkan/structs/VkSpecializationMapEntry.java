@@ -81,15 +81,31 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkSpecializationMapEntry(long address, int memSize){ 
+	 public VkSpecializationMapEntry(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkSpecializationMapEntry(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -131,7 +147,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 */ 
 	 public void constantID(int constantID){
 		 this.constantID = constantID;
-		 constantID0(this.ptr,  constantID);
+		 setConstantID0(this.ptr,  constantID);
 	 }
 
 	/**
@@ -139,7 +155,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 * Prototype: uint32_t  constantID
 	 */ 
 	 public int constantID(){
-		 int var = constantID0(super.ptr);
+		 int var = getConstantID0(super.ptr);
 		 this.constantID = var;
 		 return this.constantID;
 	 }
@@ -150,7 +166,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 */ 
 	 public void offset(int offset){
 		 this.offset = offset;
-		 offset0(this.ptr,  offset);
+		 setOffset0(this.ptr,  offset);
 	 }
 
 	/**
@@ -158,7 +174,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 * Prototype: uint32_t  offset
 	 */ 
 	 public int offset(){
-		 int var = offset0(super.ptr);
+		 int var = getOffset0(super.ptr);
 		 this.offset = var;
 		 return this.offset;
 	 }
@@ -169,7 +185,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 */ 
 	 public void size(long size){
 		 this.size = size;
-		 size0(this.ptr,  size);
+		 setSize0(this.ptr,  size);
 	 }
 
 	/**
@@ -177,7 +193,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 * Prototype: size_t  size
 	 */ 
 	 public long size(){
-		 long var = size0(super.ptr);
+		 long var = getSize0(super.ptr);
 		 this.size = var;
 		 return this.size;
 	 }
@@ -190,7 +206,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 * native SET method for field constantID	[int]<br>
 	 * Prototype: uint32_t  constantID
 	 */ 
-	 private static native void constantID0(Buffer ptr, int _constantID);/*
+	 private static native void setConstantID0(Buffer ptr, int _constantID);/*
 		  VkSpecializationMapEntry* vkObj = (VkSpecializationMapEntry*)(ptr);
 		  vkObj->constantID = (uint32_t) (_constantID);
 	  */
@@ -199,7 +215,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 * native GET method for field constantID	[int]<br>
 	 * Prototype: uint32_t  constantID
 	 */ 
-	 private static native int constantID0(Buffer ptr);/*
+	 private static native int getConstantID0(Buffer ptr);/*
 		  VkSpecializationMapEntry vkObj = (VkSpecializationMapEntry*)(ptr);
 		  return (jint) (vkObj->constantID);
 	 */
@@ -208,7 +224,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 * native SET method for field offset	[int]<br>
 	 * Prototype: uint32_t  offset
 	 */ 
-	 private static native void offset0(Buffer ptr, int _offset);/*
+	 private static native void setOffset0(Buffer ptr, int _offset);/*
 		  VkSpecializationMapEntry* vkObj = (VkSpecializationMapEntry*)(ptr);
 		  vkObj->offset = (uint32_t) (_offset);
 	  */
@@ -217,7 +233,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 * native GET method for field offset	[int]<br>
 	 * Prototype: uint32_t  offset
 	 */ 
-	 private static native int offset0(Buffer ptr);/*
+	 private static native int getOffset0(Buffer ptr);/*
 		  VkSpecializationMapEntry vkObj = (VkSpecializationMapEntry*)(ptr);
 		  return (jint) (vkObj->offset);
 	 */
@@ -226,7 +242,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 * native SET method for field size	[long]<br>
 	 * Prototype: size_t  size
 	 */ 
-	 private static native void size0(Buffer ptr, long _size);/*
+	 private static native void setSize0(Buffer ptr, long _size);/*
 		  VkSpecializationMapEntry* vkObj = (VkSpecializationMapEntry*)(ptr);
 		  vkObj->size = (size_t) (_size);
 	  */
@@ -235,7 +251,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 * native GET method for field size	[long]<br>
 	 * Prototype: size_t  size
 	 */ 
-	 private static native long size0(Buffer ptr);/*
+	 private static native long getSize0(Buffer ptr);/*
 		  VkSpecializationMapEntry vkObj = (VkSpecializationMapEntry*)(ptr);
 		  return (jlong) (vkObj->size);
 	 */

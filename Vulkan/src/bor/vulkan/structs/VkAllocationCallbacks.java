@@ -9,15 +9,12 @@
  */
 package bor.vulkan.structs;
 
-import java.nio.Buffer;
+import bor.vulkan.*;
+import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
-import bor.vulkan.P;
-import bor.vulkan.PFNvkAllocationFunction;
-import bor.vulkan.PFNvkFreeFunction;
-import bor.vulkan.PFNvkInternalAllocationNotification;
-import bor.vulkan.PFNvkInternalFreeNotification;
-import bor.vulkan.PFNvkReallocationFunction;
+import java.nio.Buffer;
 
 
 /**
@@ -102,15 +99,31 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkAllocationCallbacks(long address, int memSize){ 
+	 public VkAllocationCallbacks(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkAllocationCallbacks(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -152,7 +165,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */ 
 	 public void pUserData(java.nio.Buffer pUserData){
 		 this.pUserData = pUserData;
-		 pUserData0(this.ptr,  pUserData);
+		 setPUserData0(this.ptr,  pUserData);
 	 }
 
 	/**
@@ -160,8 +173,8 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * Prototype: void*  pUserData
 	 */ 
 	 public java.nio.Buffer pUserData(){
-		 java.nio.Buffer var = pUserData0(super.ptr);
-		 this.pUserData = var;
+		 //java.nio.Buffer var = getPUserData0(super.ptr);
+		 //this.pUserData = var;
 		 return this.pUserData;
 	 }
 
@@ -171,8 +184,8 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */ 
 	 public void pfnAllocation(PFNvkAllocationFunction pfnAllocation){
 		 this.pfnAllocation = pfnAllocation;
-		 ByteBuffer buff = (pfnAllocation==null) ? null : pfnAllocation.getHandle();
-		 pfnAllocation0(this.ptr, buff);
+		 ByteBuffer buff = (pfnAllocation==null) ? null : pfnAllocation.getPointer();
+		 setPfnAllocation0(this.ptr, buff);
 	 }
 
 	/**
@@ -181,15 +194,16 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */ 
 	 public PFNvkAllocationFunction pfnAllocation(){
 
-		  ByteBuffer handle = pfnAllocation0(super.ptr);
-		 if(handle == null){
+		  long handle = getPfnAllocation0(super.ptr);
+		 if(handle == 0){
 		    this.pfnAllocation = null;
 		    return null;
-		  } else 
- 		 if(this.pfnAllocation == null){
+		  }  
+
+		 if(this.pfnAllocation == null){
 		    this.pfnAllocation = new PFNvkAllocationFunction(handle);
 		 }else{
-		    this.pfnAllocation.setHandle(handle);
+		    this.pfnAllocation.setPointer(handle);
 		  }
 		 return this.pfnAllocation;
 	 }
@@ -200,8 +214,8 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */ 
 	 public void pfnReallocation(PFNvkReallocationFunction pfnReallocation){
 		 this.pfnReallocation = pfnReallocation;
-		 ByteBuffer buff = (pfnReallocation==null) ? null : pfnReallocation.getHandle();
-		 pfnReallocation0(this.ptr, buff);
+		 ByteBuffer buff = (pfnReallocation==null) ? null : pfnReallocation.getPointer();
+		 setPfnReallocation0(this.ptr, buff);
 	 }
 
 	/**
@@ -210,15 +224,16 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */ 
 	 public PFNvkReallocationFunction pfnReallocation(){
 
-		  ByteBuffer handle = pfnReallocation0(super.ptr);
-		 if(handle == null){
+		  long handle = getPfnReallocation0(super.ptr);
+		 if(handle == 0){
 		    this.pfnReallocation = null;
 		    return null;
-		  } else 
- 		 if(this.pfnReallocation == null){
+		  }  
+
+		 if(this.pfnReallocation == null){
 		    this.pfnReallocation = new PFNvkReallocationFunction(handle);
 		 }else{
-		    this.pfnReallocation.setHandle(handle);
+		    this.pfnReallocation.setPointer(handle);
 		  }
 		 return this.pfnReallocation;
 	 }
@@ -229,8 +244,8 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */ 
 	 public void pfnFree(PFNvkFreeFunction pfnFree){
 		 this.pfnFree = pfnFree;
-		 ByteBuffer buff = (pfnFree==null) ? null : pfnFree.getHandle();
-		 pfnFree0(this.ptr, buff);
+		 ByteBuffer buff = (pfnFree==null) ? null : pfnFree.getPointer();
+		 setPfnFree0(this.ptr, buff);
 	 }
 
 	/**
@@ -239,15 +254,16 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */ 
 	 public PFNvkFreeFunction pfnFree(){
 
-		  ByteBuffer handle = pfnFree0(super.ptr);
-		 if(handle == null){
+		  long handle = getPfnFree0(super.ptr);
+		 if(handle == 0){
 		    this.pfnFree = null;
 		    return null;
-		  } else 
- 		 if(this.pfnFree == null){
+		  }  
+
+		 if(this.pfnFree == null){
 		    this.pfnFree = new PFNvkFreeFunction(handle);
 		 }else{
-		    this.pfnFree.setHandle(handle);
+		    this.pfnFree.setPointer(handle);
 		  }
 		 return this.pfnFree;
 	 }
@@ -258,8 +274,8 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */ 
 	 public void pfnInternalAllocation(PFNvkInternalAllocationNotification pfnInternalAllocation){
 		 this.pfnInternalAllocation = pfnInternalAllocation;
-		 ByteBuffer buff = (pfnInternalAllocation==null) ? null : pfnInternalAllocation.getHandle();
-		 pfnInternalAllocation0(this.ptr, buff);
+		 ByteBuffer buff = (pfnInternalAllocation==null) ? null : pfnInternalAllocation.getPointer();
+		 setPfnInternalAllocation0(this.ptr, buff);
 	 }
 
 	/**
@@ -268,15 +284,16 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */ 
 	 public PFNvkInternalAllocationNotification pfnInternalAllocation(){
 
-		  ByteBuffer handle = pfnInternalAllocation0(super.ptr);
-		 if(handle == null){
+		  long handle = getPfnInternalAllocation0(super.ptr);
+		 if(handle == 0){
 		    this.pfnInternalAllocation = null;
 		    return null;
-		  } else 
- 		 if(this.pfnInternalAllocation == null){
+		  }  
+
+		 if(this.pfnInternalAllocation == null){
 		    this.pfnInternalAllocation = new PFNvkInternalAllocationNotification(handle);
 		 }else{
-		    this.pfnInternalAllocation.setHandle(handle);
+		    this.pfnInternalAllocation.setPointer(handle);
 		  }
 		 return this.pfnInternalAllocation;
 	 }
@@ -287,8 +304,8 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */ 
 	 public void pfnInternalFree(PFNvkInternalFreeNotification pfnInternalFree){
 		 this.pfnInternalFree = pfnInternalFree;
-		 ByteBuffer buff = (pfnInternalFree==null) ? null : pfnInternalFree.getHandle();
-		 pfnInternalFree0(this.ptr, buff);
+		 ByteBuffer buff = (pfnInternalFree==null) ? null : pfnInternalFree.getPointer();
+		 setPfnInternalFree0(this.ptr, buff);
 	 }
 
 	/**
@@ -297,15 +314,16 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */ 
 	 public PFNvkInternalFreeNotification pfnInternalFree(){
 
-		  ByteBuffer handle = pfnInternalFree0(super.ptr);
-		 if(handle == null){
+		  long handle = getPfnInternalFree0(super.ptr);
+		 if(handle == 0){
 		    this.pfnInternalFree = null;
 		    return null;
-		  } else 
- 		 if(this.pfnInternalFree == null){
+		  }  
+
+		 if(this.pfnInternalFree == null){
 		    this.pfnInternalFree = new PFNvkInternalFreeNotification(handle);
 		 }else{
-		    this.pfnInternalFree.setHandle(handle);
+		    this.pfnInternalFree.setPointer(handle);
 		  }
 		 return this.pfnInternalFree;
 	 }
@@ -318,7 +336,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * native SET method for field pUserData	[buffer]<br>
 	 * Prototype: void*  pUserData
 	 */ 
-	 private static native void pUserData0(Buffer ptr, java.nio.Buffer _pUserData);/*
+	 private static native void setPUserData0(Buffer ptr, java.nio.Buffer _pUserData);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		  vkObj->pUserData = (void*) (_pUserData);
 	  */
@@ -327,16 +345,15 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * native GET method for field pUserData	[buffer]<br>
 	 * Prototype: void*  pUserData
 	 */ 
-	 private static native java.nio.Buffer pUserData0(Buffer ptr);/*
+	 private static native long getPUserData0(Buffer ptr);/*
 		  VkAllocationCallbacks vkObj = (VkAllocationCallbacks*)(ptr);
-		  return (jobject) (vkObj->pUserData);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pUserData);	 */
 
 	/**
 	 * native SET method for field pfnAllocation	[vkpfn]<br>
 	 * Prototype: PFN_vkAllocationFunction  pfnAllocation
 	 */ 
-	 private static native void pfnAllocation0(Buffer ptr, java.nio.ByteBuffer  _pfnAllocation);/*
+	 private static native void setPfnAllocation0(Buffer ptr, java.nio.ByteBuffer  _pfnAllocation);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		  vkObj->pfnAllocation = (PFN_vkAllocationFunction) (_pfnAllocation);
 	  */
@@ -345,16 +362,15 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * native GET method for field pfnAllocation	[vkpfn]<br>
 	 * Prototype: PFN_vkAllocationFunction  pfnAllocation
 	 */ 
-	 private static native java.nio.ByteBuffer  pfnAllocation0(Buffer ptr);/*
+	 private static native long getPfnAllocation0(Buffer ptr);/*
 		  VkAllocationCallbacks vkObj = (VkAllocationCallbacks*)(ptr);
-		  return (PFNvkAllocationFunction) (vkObj->pfnAllocation);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pfnAllocation);	 */
 
 	/**
 	 * native SET method for field pfnReallocation	[vkpfn]<br>
 	 * Prototype: PFN_vkReallocationFunction  pfnReallocation
 	 */ 
-	 private static native void pfnReallocation0(Buffer ptr, java.nio.ByteBuffer  _pfnReallocation);/*
+	 private static native void setPfnReallocation0(Buffer ptr, java.nio.ByteBuffer  _pfnReallocation);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		  vkObj->pfnReallocation = (PFN_vkReallocationFunction) (_pfnReallocation);
 	  */
@@ -363,16 +379,15 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * native GET method for field pfnReallocation	[vkpfn]<br>
 	 * Prototype: PFN_vkReallocationFunction  pfnReallocation
 	 */ 
-	 private static native java.nio.ByteBuffer  pfnReallocation0(Buffer ptr);/*
+	 private static native long getPfnReallocation0(Buffer ptr);/*
 		  VkAllocationCallbacks vkObj = (VkAllocationCallbacks*)(ptr);
-		  return (PFNvkReallocationFunction) (vkObj->pfnReallocation);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pfnReallocation);	 */
 
 	/**
 	 * native SET method for field pfnFree	[vkpfn]<br>
 	 * Prototype: PFN_vkFreeFunction  pfnFree
 	 */ 
-	 private static native void pfnFree0(Buffer ptr, java.nio.ByteBuffer  _pfnFree);/*
+	 private static native void setPfnFree0(Buffer ptr, java.nio.ByteBuffer  _pfnFree);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		  vkObj->pfnFree = (PFN_vkFreeFunction) (_pfnFree);
 	  */
@@ -381,16 +396,15 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * native GET method for field pfnFree	[vkpfn]<br>
 	 * Prototype: PFN_vkFreeFunction  pfnFree
 	 */ 
-	 private static native java.nio.ByteBuffer  pfnFree0(Buffer ptr);/*
+	 private static native long getPfnFree0(Buffer ptr);/*
 		  VkAllocationCallbacks vkObj = (VkAllocationCallbacks*)(ptr);
-		  return (PFNvkFreeFunction) (vkObj->pfnFree);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pfnFree);	 */
 
 	/**
 	 * native SET method for field pfnInternalAllocation	[vkpfn]<br>
 	 * Prototype: PFN_vkInternalAllocationNotification  pfnInternalAllocation
 	 */ 
-	 private static native void pfnInternalAllocation0(Buffer ptr, java.nio.ByteBuffer  _pfnInternalAllocation);/*
+	 private static native void setPfnInternalAllocation0(Buffer ptr, java.nio.ByteBuffer  _pfnInternalAllocation);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		  vkObj->pfnInternalAllocation = (PFN_vkInternalAllocationNotification) (_pfnInternalAllocation);
 	  */
@@ -399,16 +413,15 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * native GET method for field pfnInternalAllocation	[vkpfn]<br>
 	 * Prototype: PFN_vkInternalAllocationNotification  pfnInternalAllocation
 	 */ 
-	 private static native java.nio.ByteBuffer  pfnInternalAllocation0(Buffer ptr);/*
+	 private static native long getPfnInternalAllocation0(Buffer ptr);/*
 		  VkAllocationCallbacks vkObj = (VkAllocationCallbacks*)(ptr);
-		  return (PFNvkInternalAllocationNotification) (vkObj->pfnInternalAllocation);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pfnInternalAllocation);	 */
 
 	/**
 	 * native SET method for field pfnInternalFree	[vkpfn]<br>
 	 * Prototype: PFN_vkInternalFreeNotification  pfnInternalFree
 	 */ 
-	 private static native void pfnInternalFree0(Buffer ptr, java.nio.ByteBuffer  _pfnInternalFree);/*
+	 private static native void setPfnInternalFree0(Buffer ptr, java.nio.ByteBuffer  _pfnInternalFree);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		  vkObj->pfnInternalFree = (PFN_vkInternalFreeNotification) (_pfnInternalFree);
 	  */
@@ -417,10 +430,9 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * native GET method for field pfnInternalFree	[vkpfn]<br>
 	 * Prototype: PFN_vkInternalFreeNotification  pfnInternalFree
 	 */ 
-	 private static native java.nio.ByteBuffer  pfnInternalFree0(Buffer ptr);/*
+	 private static native long getPfnInternalFree0(Buffer ptr);/*
 		  VkAllocationCallbacks vkObj = (VkAllocationCallbacks*)(ptr);
-		  return (PFNvkInternalFreeNotification) (vkObj->pfnInternalFree);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pfnInternalFree);	 */
 
 
 

@@ -75,15 +75,31 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkDescriptorPoolSize(long address, int memSize){ 
+	 public VkDescriptorPoolSize(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkDescriptorPoolSize(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -126,7 +142,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 public void type(VkDescriptorType type){
 		 this.type = type;
 		 int enumVal = type.getValue();
-		 type0(this.ptr, enumVal );
+		 setType0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -134,7 +150,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 * Prototype: VkDescriptorType  type
 	 */ 
 	 public VkDescriptorType type(){
-		 int nativeVal = type0(super.ptr);
+		 int nativeVal = getType0(super.ptr);
 		 this.type = VkDescriptorType.fromValue(nativeVal); 
 		 return this.type;
 	 }
@@ -145,7 +161,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 */ 
 	 public void descriptorCount(int descriptorCount){
 		 this.descriptorCount = descriptorCount;
-		 descriptorCount0(this.ptr,  descriptorCount);
+		 setDescriptorCount0(this.ptr,  descriptorCount);
 	 }
 
 	/**
@@ -153,7 +169,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 public int descriptorCount(){
-		 int var = descriptorCount0(super.ptr);
+		 int var = getDescriptorCount0(super.ptr);
 		 this.descriptorCount = var;
 		 return this.descriptorCount;
 	 }
@@ -166,7 +182,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 * native SET method for field type	[vkenum]<br>
 	 * Prototype: VkDescriptorType  type
 	 */ 
-	 private static native void type0(Buffer ptr, int  _type);/*
+	 private static native void setType0(Buffer ptr, int  _type);/*
 		  VkDescriptorPoolSize* vkObj = (VkDescriptorPoolSize*)(ptr);
 		  vkObj->type = (VkDescriptorType) (_type);
 	  */
@@ -175,7 +191,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 * native GET method for field type	[vkenum]<br>
 	 * Prototype: VkDescriptorType  type
 	 */ 
-	 private static native int  type0(Buffer ptr);/*
+	 private static native int  getType0(Buffer ptr);/*
 		  VkDescriptorPoolSize vkObj = (VkDescriptorPoolSize*)(ptr);
 		  return (VkDescriptorType) (vkObj->type);
 	 */
@@ -184,7 +200,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 * native SET method for field descriptorCount	[int]<br>
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
-	 private static native void descriptorCount0(Buffer ptr, int _descriptorCount);/*
+	 private static native void setDescriptorCount0(Buffer ptr, int _descriptorCount);/*
 		  VkDescriptorPoolSize* vkObj = (VkDescriptorPoolSize*)(ptr);
 		  vkObj->descriptorCount = (uint32_t) (_descriptorCount);
 	  */
@@ -193,7 +209,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 * native GET method for field descriptorCount	[int]<br>
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
-	 private static native int descriptorCount0(Buffer ptr);/*
+	 private static native int getDescriptorCount0(Buffer ptr);/*
 		  VkDescriptorPoolSize vkObj = (VkDescriptorPoolSize*)(ptr);
 		  return (jint) (vkObj->descriptorCount);
 	 */

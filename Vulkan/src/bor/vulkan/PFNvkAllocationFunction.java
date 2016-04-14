@@ -35,6 +35,10 @@ public class PFNvkAllocationFunction extends VkHandle
         super(nativePtr);        
     }
      
+     public PFNvkAllocationFunction(long nativeHandle) {
+         super(nativeHandle);        
+     } 
+     
     /**
      *  Implements {@link VkObject#getType()}. <br>
      *  Always return {@link VkObject#TYPE_PFN_FUNCTION}

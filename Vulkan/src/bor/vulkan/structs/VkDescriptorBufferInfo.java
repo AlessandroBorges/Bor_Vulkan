@@ -9,12 +9,12 @@
  */
 package bor.vulkan.structs;
 
-import java.nio.Buffer;
+import bor.vulkan.*;
+import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
-import bor.vulkan.P;
-import bor.vulkan.VkBuffer;
-import bor.vulkan.VkHandle;
+import java.nio.Buffer;
 
 
 /**
@@ -81,15 +81,31 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkDescriptorBufferInfo(long address, int memSize){ 
+	 public VkDescriptorBufferInfo(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkDescriptorBufferInfo(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -131,8 +147,8 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 */ 
 	 public void buffer(VkBuffer buffer){
 		 this.buffer = buffer;
-		 ByteBuffer buff = (buffer==null) ? null : buffer.getHandle();
-		 buffer0(this.ptr, buff);
+		 ByteBuffer buff = (buffer==null) ? null : buffer.getPointer();
+		 setBuffer0(this.ptr, buff);
 	 }
 
 	/**
@@ -141,15 +157,16 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 */ 
 	 public VkBuffer buffer(){
 
-		 ByteBuffer handle = buffer0(super.ptr);
-		 if(handle == null){
+		 long handle = getBuffer0(super.ptr);
+		 if(handle == 0){
 		    this.buffer = null;
 		    return null;
-		  } else 
- 		 if(this.buffer == null){
+		  }  
+
+		 if(this.buffer == null){
 		    this.buffer = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.buffer).setHandle(handle);
+		    ((VkHandle)this.buffer).setPointer(handle);
 		  }
 		 return this.buffer;
 	 }
@@ -160,7 +177,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 */ 
 	 public void offset(long offset){
 		 this.offset = offset;
-		 offset0(this.ptr,  offset);
+		 setOffset0(this.ptr,  offset);
 	 }
 
 	/**
@@ -168,7 +185,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 public long offset(){
-		 long var = offset0(super.ptr);
+		 long var = getOffset0(super.ptr);
 		 this.offset = var;
 		 return this.offset;
 	 }
@@ -179,7 +196,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 */ 
 	 public void range(long range){
 		 this.range = range;
-		 range0(this.ptr,  range);
+		 setRange0(this.ptr,  range);
 	 }
 
 	/**
@@ -187,7 +204,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 * Prototype: VkDeviceSize  range
 	 */ 
 	 public long range(){
-		 long var = range0(super.ptr);
+		 long var = getRange0(super.ptr);
 		 this.range = var;
 		 return this.range;
 	 }
@@ -200,7 +217,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 * native SET method for field buffer	[vkhandle]<br>
 	 * Prototype: VkBuffer  buffer
 	 */ 
-	 private static native void buffer0(Buffer ptr, java.nio.ByteBuffer  _buffer);/*
+	 private static native void setBuffer0(Buffer ptr, java.nio.ByteBuffer  _buffer);/*
 		  VkDescriptorBufferInfo* vkObj = (VkDescriptorBufferInfo*)(ptr);
 		  vkObj->buffer = (VkBuffer) (_buffer);
 	  */
@@ -209,16 +226,15 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 * native GET method for field buffer	[vkhandle]<br>
 	 * Prototype: VkBuffer  buffer
 	 */ 
-	 private static native java.nio.ByteBuffer  buffer0(Buffer ptr);/*
+	 private static native long getBuffer0(Buffer ptr);/*
 		  VkDescriptorBufferInfo vkObj = (VkDescriptorBufferInfo*)(ptr);
-		  return (jobject) (vkObj->buffer);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->buffer);	 */
 
 	/**
 	 * native SET method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
-	 private static native void offset0(Buffer ptr, long _offset);/*
+	 private static native void setOffset0(Buffer ptr, long _offset);/*
 		  VkDescriptorBufferInfo* vkObj = (VkDescriptorBufferInfo*)(ptr);
 		  vkObj->offset = (VkDeviceSize) (_offset);
 	  */
@@ -227,7 +243,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 * native GET method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
-	 private static native long offset0(Buffer ptr);/*
+	 private static native long getOffset0(Buffer ptr);/*
 		  VkDescriptorBufferInfo vkObj = (VkDescriptorBufferInfo*)(ptr);
 		  return (jlong) (vkObj->offset);
 	 */
@@ -236,7 +252,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 * native SET method for field range	[long]<br>
 	 * Prototype: VkDeviceSize  range
 	 */ 
-	 private static native void range0(Buffer ptr, long _range);/*
+	 private static native void setRange0(Buffer ptr, long _range);/*
 		  VkDescriptorBufferInfo* vkObj = (VkDescriptorBufferInfo*)(ptr);
 		  vkObj->range = (VkDeviceSize) (_range);
 	  */
@@ -245,7 +261,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 * native GET method for field range	[long]<br>
 	 * Prototype: VkDeviceSize  range
 	 */ 
-	 private static native long range0(Buffer ptr);/*
+	 private static native long getRange0(Buffer ptr);/*
 		  VkDescriptorBufferInfo vkObj = (VkDescriptorBufferInfo*)(ptr);
 		  return (jlong) (vkObj->range);
 	 */

@@ -111,15 +111,31 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkBufferCreateInfo(long address, int memSize){ 
+	 public VkBufferCreateInfo(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkBufferCreateInfo(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -162,7 +178,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
-		 sType0(this.ptr, enumVal );
+		 setSType0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -170,7 +186,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 int nativeVal = sType0(super.ptr);
+		 int nativeVal = getSType0(super.ptr);
 		 this.sType = VkStructureType.fromValue(nativeVal); 
 		 return this.sType;
 	 }
@@ -182,7 +198,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
-		 pNext0(this.ptr, buff);
+		 setPNext0(this.ptr, buff);
 	 }
 
 	/**
@@ -190,8 +206,8 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 public VkObject pNext(){
-		 ByteBuffer pointer = pNext0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPNext0(super.ptr);
+		 if(pointer == 0){
 		    this.pNext = null;
 		    return null;
 		  } else 
@@ -209,7 +225,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		 flags0(this.ptr,  flags);
+		 setFlags0(this.ptr,  flags);
 	 }
 
 	/**
@@ -217,7 +233,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * Prototype: VkBufferCreateFlags  flags
 	 */ 
 	 public int flags(){
-		 int var = flags0(super.ptr);
+		 int var = getFlags0(super.ptr);
 		 this.flags = var;
 		 return this.flags;
 	 }
@@ -228,7 +244,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 */ 
 	 public void size(long size){
 		 this.size = size;
-		 size0(this.ptr,  size);
+		 setSize0(this.ptr,  size);
 	 }
 
 	/**
@@ -236,7 +252,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public long size(){
-		 long var = size0(super.ptr);
+		 long var = getSize0(super.ptr);
 		 this.size = var;
 		 return this.size;
 	 }
@@ -247,7 +263,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 */ 
 	 public void usage(int usage){
 		 this.usage = usage;
-		 usage0(this.ptr,  usage);
+		 setUsage0(this.ptr,  usage);
 	 }
 
 	/**
@@ -255,7 +271,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * Prototype: VkBufferUsageFlags  usage
 	 */ 
 	 public int usage(){
-		 int var = usage0(super.ptr);
+		 int var = getUsage0(super.ptr);
 		 this.usage = var;
 		 return this.usage;
 	 }
@@ -267,7 +283,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 public void sharingMode(VkSharingMode sharingMode){
 		 this.sharingMode = sharingMode;
 		 int enumVal = sharingMode.getValue();
-		 sharingMode0(this.ptr, enumVal );
+		 setSharingMode0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -275,7 +291,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
 	 public VkSharingMode sharingMode(){
-		 int nativeVal = sharingMode0(super.ptr);
+		 int nativeVal = getSharingMode0(super.ptr);
 		 this.sharingMode = VkSharingMode.fromValue(nativeVal); 
 		 return this.sharingMode;
 	 }
@@ -286,7 +302,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 */ 
 	 public void queueFamilyIndexCount(int queueFamilyIndexCount){
 		 this.queueFamilyIndexCount = queueFamilyIndexCount;
-		 queueFamilyIndexCount0(this.ptr,  queueFamilyIndexCount);
+		 setQueueFamilyIndexCount0(this.ptr,  queueFamilyIndexCount);
 	 }
 
 	/**
@@ -294,7 +310,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
 	 public int queueFamilyIndexCount(){
-		 int var = queueFamilyIndexCount0(super.ptr);
+		 int var = getQueueFamilyIndexCount0(super.ptr);
 		 this.queueFamilyIndexCount = var;
 		 return this.queueFamilyIndexCount;
 	 }
@@ -305,7 +321,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 */ 
 	 public void pQueueFamilyIndices(int[] pQueueFamilyIndices){
 		 this.pQueueFamilyIndices = pQueueFamilyIndices;
-		 pQueueFamilyIndices0(this.ptr,  pQueueFamilyIndices);
+		 setPQueueFamilyIndices0(this.ptr,  pQueueFamilyIndices);
 	 }
 
 	/**
@@ -313,7 +329,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 public int[] pQueueFamilyIndices(){
-		 int[] var = pQueueFamilyIndices0(super.ptr);
+		 int[] var = getPQueueFamilyIndices0(super.ptr);
 		 this.pQueueFamilyIndices = var;
 		 return this.pQueueFamilyIndices;
 	 }
@@ -326,7 +342,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(Buffer ptr, int  _sType);/*
+	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
@@ -335,7 +351,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  sType0(Buffer ptr);/*
+	 private static native int  getSType0(Buffer ptr);/*
 		  VkBufferCreateInfo vkObj = (VkBufferCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
@@ -344,7 +360,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
@@ -353,16 +369,15 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+	 private static native long getPNext0(Buffer ptr);/*
 		  VkBufferCreateInfo vkObj = (VkBufferCreateInfo*)(ptr);
-		  return (VkObject) (vkObj->pNext);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkBufferCreateFlags  flags
 	 */ 
-	 private static native void flags0(Buffer ptr, int _flags);/*
+	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
 		  vkObj->flags = (VkBufferCreateFlags) (_flags);
 	  */
@@ -371,7 +386,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkBufferCreateFlags  flags
 	 */ 
-	 private static native int flags0(Buffer ptr);/*
+	 private static native int getFlags0(Buffer ptr);/*
 		  VkBufferCreateInfo vkObj = (VkBufferCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
@@ -380,7 +395,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * native SET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
-	 private static native void size0(Buffer ptr, long _size);/*
+	 private static native void setSize0(Buffer ptr, long _size);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
 		  vkObj->size = (VkDeviceSize) (_size);
 	  */
@@ -389,7 +404,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * native GET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
-	 private static native long size0(Buffer ptr);/*
+	 private static native long getSize0(Buffer ptr);/*
 		  VkBufferCreateInfo vkObj = (VkBufferCreateInfo*)(ptr);
 		  return (jlong) (vkObj->size);
 	 */
@@ -398,7 +413,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * native SET method for field usage	[int]<br>
 	 * Prototype: VkBufferUsageFlags  usage
 	 */ 
-	 private static native void usage0(Buffer ptr, int _usage);/*
+	 private static native void setUsage0(Buffer ptr, int _usage);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
 		  vkObj->usage = (VkBufferUsageFlags) (_usage);
 	  */
@@ -407,7 +422,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * native GET method for field usage	[int]<br>
 	 * Prototype: VkBufferUsageFlags  usage
 	 */ 
-	 private static native int usage0(Buffer ptr);/*
+	 private static native int getUsage0(Buffer ptr);/*
 		  VkBufferCreateInfo vkObj = (VkBufferCreateInfo*)(ptr);
 		  return (jint) (vkObj->usage);
 	 */
@@ -416,7 +431,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * native SET method for field sharingMode	[vkenum]<br>
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
-	 private static native void sharingMode0(Buffer ptr, int  _sharingMode);/*
+	 private static native void setSharingMode0(Buffer ptr, int  _sharingMode);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
 		  vkObj->sharingMode = (VkSharingMode) (_sharingMode);
 	  */
@@ -425,7 +440,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * native GET method for field sharingMode	[vkenum]<br>
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
-	 private static native int  sharingMode0(Buffer ptr);/*
+	 private static native int  getSharingMode0(Buffer ptr);/*
 		  VkBufferCreateInfo vkObj = (VkBufferCreateInfo*)(ptr);
 		  return (VkSharingMode) (vkObj->sharingMode);
 	 */
@@ -434,7 +449,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * native SET method for field queueFamilyIndexCount	[int]<br>
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
-	 private static native void queueFamilyIndexCount0(Buffer ptr, int _queueFamilyIndexCount);/*
+	 private static native void setQueueFamilyIndexCount0(Buffer ptr, int _queueFamilyIndexCount);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
 		  vkObj->queueFamilyIndexCount = (uint32_t) (_queueFamilyIndexCount);
 	  */
@@ -443,7 +458,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * native GET method for field queueFamilyIndexCount	[int]<br>
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
-	 private static native int queueFamilyIndexCount0(Buffer ptr);/*
+	 private static native int getQueueFamilyIndexCount0(Buffer ptr);/*
 		  VkBufferCreateInfo vkObj = (VkBufferCreateInfo*)(ptr);
 		  return (jint) (vkObj->queueFamilyIndexCount);
 	 */
@@ -452,7 +467,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * native SET method for field pQueueFamilyIndices	[int_array]<br>
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
-	 private static native void pQueueFamilyIndices0(Buffer ptr, int[] _pQueueFamilyIndices);/*
+	 private static native void setPQueueFamilyIndices0(Buffer ptr, int[] _pQueueFamilyIndices);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
 		  vkObj->pQueueFamilyIndices = (const uint32_t*) (_pQueueFamilyIndices);
 	  */
@@ -461,7 +476,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * native GET method for field pQueueFamilyIndices	[int_array]<br>
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
-	 private static native int[] pQueueFamilyIndices0(Buffer ptr);/*
+	 private static native int[] getPQueueFamilyIndices0(Buffer ptr);/*
 		  VkBufferCreateInfo vkObj = (VkBufferCreateInfo*)(ptr);
 		  return (int[]) (vkObj->pQueueFamilyIndices);
 	 */

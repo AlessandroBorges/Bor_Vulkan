@@ -75,15 +75,31 @@ public class VkMemoryHeap extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkMemoryHeap(long address, int memSize){ 
+	 public VkMemoryHeap(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkMemoryHeap(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -125,7 +141,7 @@ public class VkMemoryHeap extends VkStruct {
 	 */ 
 	 public void size(long size){
 		 this.size = size;
-		 size0(this.ptr,  size);
+		 setSize0(this.ptr,  size);
 	 }
 
 	/**
@@ -133,7 +149,7 @@ public class VkMemoryHeap extends VkStruct {
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 public long size(){
-		 long var = size0(super.ptr);
+		 long var = getSize0(super.ptr);
 		 this.size = var;
 		 return this.size;
 	 }
@@ -144,7 +160,7 @@ public class VkMemoryHeap extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		 flags0(this.ptr,  flags);
+		 setFlags0(this.ptr,  flags);
 	 }
 
 	/**
@@ -152,7 +168,7 @@ public class VkMemoryHeap extends VkStruct {
 	 * Prototype: VkMemoryHeapFlags  flags
 	 */ 
 	 public int flags(){
-		 int var = flags0(super.ptr);
+		 int var = getFlags0(super.ptr);
 		 this.flags = var;
 		 return this.flags;
 	 }
@@ -165,7 +181,7 @@ public class VkMemoryHeap extends VkStruct {
 	 * native SET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
-	 private static native void size0(Buffer ptr, long _size);/*
+	 private static native void setSize0(Buffer ptr, long _size);/*
 		  VkMemoryHeap* vkObj = (VkMemoryHeap*)(ptr);
 		  vkObj->size = (VkDeviceSize) (_size);
 	  */
@@ -174,7 +190,7 @@ public class VkMemoryHeap extends VkStruct {
 	 * native GET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
-	 private static native long size0(Buffer ptr);/*
+	 private static native long getSize0(Buffer ptr);/*
 		  VkMemoryHeap vkObj = (VkMemoryHeap*)(ptr);
 		  return (jlong) (vkObj->size);
 	 */
@@ -183,7 +199,7 @@ public class VkMemoryHeap extends VkStruct {
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkMemoryHeapFlags  flags
 	 */ 
-	 private static native void flags0(Buffer ptr, int _flags);/*
+	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkMemoryHeap* vkObj = (VkMemoryHeap*)(ptr);
 		  vkObj->flags = (VkMemoryHeapFlags) (_flags);
 	  */
@@ -192,7 +208,7 @@ public class VkMemoryHeap extends VkStruct {
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkMemoryHeapFlags  flags
 	 */ 
-	 private static native int flags0(Buffer ptr);/*
+	 private static native int getFlags0(Buffer ptr);/*
 		  VkMemoryHeap vkObj = (VkMemoryHeap*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */

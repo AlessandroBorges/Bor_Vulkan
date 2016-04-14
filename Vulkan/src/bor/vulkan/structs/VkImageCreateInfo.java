@@ -153,15 +153,31 @@ public class VkImageCreateInfo extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkImageCreateInfo(long address, int memSize){ 
+	 public VkImageCreateInfo(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkImageCreateInfo(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -204,7 +220,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
-		 sType0(this.ptr, enumVal );
+		 setSType0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -212,7 +228,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 int nativeVal = sType0(super.ptr);
+		 int nativeVal = getSType0(super.ptr);
 		 this.sType = VkStructureType.fromValue(nativeVal); 
 		 return this.sType;
 	 }
@@ -224,7 +240,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
-		 pNext0(this.ptr, buff);
+		 setPNext0(this.ptr, buff);
 	 }
 
 	/**
@@ -232,8 +248,8 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 public VkObject pNext(){
-		 ByteBuffer pointer = pNext0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPNext0(super.ptr);
+		 if(pointer == 0){
 		    this.pNext = null;
 		    return null;
 		  } else 
@@ -251,7 +267,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		 flags0(this.ptr,  flags);
+		 setFlags0(this.ptr,  flags);
 	 }
 
 	/**
@@ -259,7 +275,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkImageCreateFlags  flags
 	 */ 
 	 public int flags(){
-		 int var = flags0(super.ptr);
+		 int var = getFlags0(super.ptr);
 		 this.flags = var;
 		 return this.flags;
 	 }
@@ -271,7 +287,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 public void imageType(VkImageType imageType){
 		 this.imageType = imageType;
 		 int enumVal = imageType.getValue();
-		 imageType0(this.ptr, enumVal );
+		 setImageType0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -279,7 +295,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkImageType  imageType
 	 */ 
 	 public VkImageType imageType(){
-		 int nativeVal = imageType0(super.ptr);
+		 int nativeVal = getImageType0(super.ptr);
 		 this.imageType = VkImageType.fromValue(nativeVal); 
 		 return this.imageType;
 	 }
@@ -291,7 +307,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 public void format(VkFormat format){
 		 this.format = format;
 		 int enumVal = format.getValue();
-		 format0(this.ptr, enumVal );
+		 setFormat0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -299,7 +315,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkFormat  format
 	 */ 
 	 public VkFormat format(){
-		 int nativeVal = format0(super.ptr);
+		 int nativeVal = getFormat0(super.ptr);
 		 this.format = VkFormat.fromValue(nativeVal); 
 		 return this.format;
 	 }
@@ -310,8 +326,8 @@ public class VkImageCreateInfo extends VkStruct {
 	 */ 
 	 public void extent(VkExtent3D extent){
 		 this.extent = extent;
-		 ByteBuffer buff = (extent==null) ? null : extent.getPointerStruct();
-		 extent0(this.ptr, buff);
+		 ByteBuffer buff = (extent==null) ? null : extent.getPointer();
+		 setExtent0(this.ptr, buff);
 	 }
 
 	/**
@@ -319,12 +335,13 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 public VkExtent3D extent(){
-		 ByteBuffer pointer = extent0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getExtent0(super.ptr);
+		 if(pointer == 0){
 		    this.extent = null;
 		    return null;
-		  } else 
- 		 if(this.extent == null){
+		  } 
+
+		 if(this.extent == null){
 		    this.extent = new VkExtent3D(pointer);
 		 }else{
 		    this.extent.setPointer(pointer);
@@ -338,7 +355,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */ 
 	 public void mipLevels(int mipLevels){
 		 this.mipLevels = mipLevels;
-		 mipLevels0(this.ptr,  mipLevels);
+		 setMipLevels0(this.ptr,  mipLevels);
 	 }
 
 	/**
@@ -346,7 +363,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  mipLevels
 	 */ 
 	 public int mipLevels(){
-		 int var = mipLevels0(super.ptr);
+		 int var = getMipLevels0(super.ptr);
 		 this.mipLevels = var;
 		 return this.mipLevels;
 	 }
@@ -357,7 +374,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */ 
 	 public void arrayLayers(int arrayLayers){
 		 this.arrayLayers = arrayLayers;
-		 arrayLayers0(this.ptr,  arrayLayers);
+		 setArrayLayers0(this.ptr,  arrayLayers);
 	 }
 
 	/**
@@ -365,7 +382,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  arrayLayers
 	 */ 
 	 public int arrayLayers(){
-		 int var = arrayLayers0(super.ptr);
+		 int var = getArrayLayers0(super.ptr);
 		 this.arrayLayers = var;
 		 return this.arrayLayers;
 	 }
@@ -377,7 +394,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 public void samples(VkSampleCountFlagBits samples){
 		 this.samples = samples;
 		 int enumVal = samples.getValue();
-		 samples0(this.ptr, enumVal );
+		 setSamples0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -385,7 +402,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkSampleCountFlagBits  samples
 	 */ 
 	 public VkSampleCountFlagBits samples(){
-		 int nativeVal = samples0(super.ptr);
+		 int nativeVal = getSamples0(super.ptr);
 		 this.samples = VkSampleCountFlagBits.fromValue(nativeVal); 
 		 return this.samples;
 	 }
@@ -397,7 +414,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 public void tiling(VkImageTiling tiling){
 		 this.tiling = tiling;
 		 int enumVal = tiling.getValue();
-		 tiling0(this.ptr, enumVal );
+		 setTiling0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -405,7 +422,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkImageTiling  tiling
 	 */ 
 	 public VkImageTiling tiling(){
-		 int nativeVal = tiling0(super.ptr);
+		 int nativeVal = getTiling0(super.ptr);
 		 this.tiling = VkImageTiling.fromValue(nativeVal); 
 		 return this.tiling;
 	 }
@@ -416,7 +433,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */ 
 	 public void usage(int usage){
 		 this.usage = usage;
-		 usage0(this.ptr,  usage);
+		 setUsage0(this.ptr,  usage);
 	 }
 
 	/**
@@ -424,7 +441,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkImageUsageFlags  usage
 	 */ 
 	 public int usage(){
-		 int var = usage0(super.ptr);
+		 int var = getUsage0(super.ptr);
 		 this.usage = var;
 		 return this.usage;
 	 }
@@ -436,7 +453,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 public void sharingMode(VkSharingMode sharingMode){
 		 this.sharingMode = sharingMode;
 		 int enumVal = sharingMode.getValue();
-		 sharingMode0(this.ptr, enumVal );
+		 setSharingMode0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -444,7 +461,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
 	 public VkSharingMode sharingMode(){
-		 int nativeVal = sharingMode0(super.ptr);
+		 int nativeVal = getSharingMode0(super.ptr);
 		 this.sharingMode = VkSharingMode.fromValue(nativeVal); 
 		 return this.sharingMode;
 	 }
@@ -455,7 +472,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */ 
 	 public void queueFamilyIndexCount(int queueFamilyIndexCount){
 		 this.queueFamilyIndexCount = queueFamilyIndexCount;
-		 queueFamilyIndexCount0(this.ptr,  queueFamilyIndexCount);
+		 setQueueFamilyIndexCount0(this.ptr,  queueFamilyIndexCount);
 	 }
 
 	/**
@@ -463,7 +480,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
 	 public int queueFamilyIndexCount(){
-		 int var = queueFamilyIndexCount0(super.ptr);
+		 int var = getQueueFamilyIndexCount0(super.ptr);
 		 this.queueFamilyIndexCount = var;
 		 return this.queueFamilyIndexCount;
 	 }
@@ -474,7 +491,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 */ 
 	 public void pQueueFamilyIndices(int[] pQueueFamilyIndices){
 		 this.pQueueFamilyIndices = pQueueFamilyIndices;
-		 pQueueFamilyIndices0(this.ptr,  pQueueFamilyIndices);
+		 setPQueueFamilyIndices0(this.ptr,  pQueueFamilyIndices);
 	 }
 
 	/**
@@ -482,7 +499,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 public int[] pQueueFamilyIndices(){
-		 int[] var = pQueueFamilyIndices0(super.ptr);
+		 int[] var = getPQueueFamilyIndices0(super.ptr);
 		 this.pQueueFamilyIndices = var;
 		 return this.pQueueFamilyIndices;
 	 }
@@ -494,7 +511,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 public void initialLayout(VkImageLayout initialLayout){
 		 this.initialLayout = initialLayout;
 		 int enumVal = initialLayout.getValue();
-		 initialLayout0(this.ptr, enumVal );
+		 setInitialLayout0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -502,7 +519,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkImageLayout  initialLayout
 	 */ 
 	 public VkImageLayout initialLayout(){
-		 int nativeVal = initialLayout0(super.ptr);
+		 int nativeVal = getInitialLayout0(super.ptr);
 		 this.initialLayout = VkImageLayout.fromValue(nativeVal); 
 		 return this.initialLayout;
 	 }
@@ -515,7 +532,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(Buffer ptr, int  _sType);/*
+	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
@@ -524,7 +541,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  sType0(Buffer ptr);/*
+	 private static native int  getSType0(Buffer ptr);/*
 		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
@@ -533,7 +550,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
@@ -542,16 +559,15 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+	 private static native long getPNext0(Buffer ptr);/*
 		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
-		  return (VkObject) (vkObj->pNext);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkImageCreateFlags  flags
 	 */ 
-	 private static native void flags0(Buffer ptr, int _flags);/*
+	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  vkObj->flags = (VkImageCreateFlags) (_flags);
 	  */
@@ -560,7 +576,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkImageCreateFlags  flags
 	 */ 
-	 private static native int flags0(Buffer ptr);/*
+	 private static native int getFlags0(Buffer ptr);/*
 		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
@@ -569,7 +585,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native SET method for field imageType	[vkenum]<br>
 	 * Prototype: VkImageType  imageType
 	 */ 
-	 private static native void imageType0(Buffer ptr, int  _imageType);/*
+	 private static native void setImageType0(Buffer ptr, int  _imageType);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  vkObj->imageType = (VkImageType) (_imageType);
 	  */
@@ -578,7 +594,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native GET method for field imageType	[vkenum]<br>
 	 * Prototype: VkImageType  imageType
 	 */ 
-	 private static native int  imageType0(Buffer ptr);/*
+	 private static native int  getImageType0(Buffer ptr);/*
 		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
 		  return (VkImageType) (vkObj->imageType);
 	 */
@@ -587,7 +603,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native SET method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
-	 private static native void format0(Buffer ptr, int  _format);/*
+	 private static native void setFormat0(Buffer ptr, int  _format);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  vkObj->format = (VkFormat) (_format);
 	  */
@@ -596,7 +612,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native GET method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
-	 private static native int  format0(Buffer ptr);/*
+	 private static native int  getFormat0(Buffer ptr);/*
 		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
 		  return (VkFormat) (vkObj->format);
 	 */
@@ -605,7 +621,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native SET method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent3D  extent
 	 */ 
-	 private static native void extent0(Buffer ptr, java.nio.ByteBuffer  _extent);/*
+	 private static native void setExtent0(Buffer ptr, java.nio.ByteBuffer  _extent);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  vkObj->extent = (VkExtent3D) (_extent);
 	  */
@@ -614,16 +630,15 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native GET method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent3D  extent
 	 */ 
-	 private static native java.nio.ByteBuffer  extent0(Buffer ptr);/*
+	 private static native long getExtent0(Buffer ptr);/*
 		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
-		  return (VkExtent3D) (vkObj->extent);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->extent);	 */
 
 	/**
 	 * native SET method for field mipLevels	[int]<br>
 	 * Prototype: uint32_t  mipLevels
 	 */ 
-	 private static native void mipLevels0(Buffer ptr, int _mipLevels);/*
+	 private static native void setMipLevels0(Buffer ptr, int _mipLevels);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  vkObj->mipLevels = (uint32_t) (_mipLevels);
 	  */
@@ -632,7 +647,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native GET method for field mipLevels	[int]<br>
 	 * Prototype: uint32_t  mipLevels
 	 */ 
-	 private static native int mipLevels0(Buffer ptr);/*
+	 private static native int getMipLevels0(Buffer ptr);/*
 		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
 		  return (jint) (vkObj->mipLevels);
 	 */
@@ -641,7 +656,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native SET method for field arrayLayers	[int]<br>
 	 * Prototype: uint32_t  arrayLayers
 	 */ 
-	 private static native void arrayLayers0(Buffer ptr, int _arrayLayers);/*
+	 private static native void setArrayLayers0(Buffer ptr, int _arrayLayers);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  vkObj->arrayLayers = (uint32_t) (_arrayLayers);
 	  */
@@ -650,7 +665,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native GET method for field arrayLayers	[int]<br>
 	 * Prototype: uint32_t  arrayLayers
 	 */ 
-	 private static native int arrayLayers0(Buffer ptr);/*
+	 private static native int getArrayLayers0(Buffer ptr);/*
 		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
 		  return (jint) (vkObj->arrayLayers);
 	 */
@@ -659,7 +674,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native SET method for field samples	[vkenum]<br>
 	 * Prototype: VkSampleCountFlagBits  samples
 	 */ 
-	 private static native void samples0(Buffer ptr, int  _samples);/*
+	 private static native void setSamples0(Buffer ptr, int  _samples);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  vkObj->samples = (VkSampleCountFlagBits) (_samples);
 	  */
@@ -668,7 +683,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native GET method for field samples	[vkenum]<br>
 	 * Prototype: VkSampleCountFlagBits  samples
 	 */ 
-	 private static native int  samples0(Buffer ptr);/*
+	 private static native int  getSamples0(Buffer ptr);/*
 		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
 		  return (VkSampleCountFlagBits) (vkObj->samples);
 	 */
@@ -677,7 +692,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native SET method for field tiling	[vkenum]<br>
 	 * Prototype: VkImageTiling  tiling
 	 */ 
-	 private static native void tiling0(Buffer ptr, int  _tiling);/*
+	 private static native void setTiling0(Buffer ptr, int  _tiling);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  vkObj->tiling = (VkImageTiling) (_tiling);
 	  */
@@ -686,7 +701,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native GET method for field tiling	[vkenum]<br>
 	 * Prototype: VkImageTiling  tiling
 	 */ 
-	 private static native int  tiling0(Buffer ptr);/*
+	 private static native int  getTiling0(Buffer ptr);/*
 		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
 		  return (VkImageTiling) (vkObj->tiling);
 	 */
@@ -695,7 +710,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native SET method for field usage	[int]<br>
 	 * Prototype: VkImageUsageFlags  usage
 	 */ 
-	 private static native void usage0(Buffer ptr, int _usage);/*
+	 private static native void setUsage0(Buffer ptr, int _usage);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  vkObj->usage = (VkImageUsageFlags) (_usage);
 	  */
@@ -704,7 +719,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native GET method for field usage	[int]<br>
 	 * Prototype: VkImageUsageFlags  usage
 	 */ 
-	 private static native int usage0(Buffer ptr);/*
+	 private static native int getUsage0(Buffer ptr);/*
 		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
 		  return (jint) (vkObj->usage);
 	 */
@@ -713,7 +728,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native SET method for field sharingMode	[vkenum]<br>
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
-	 private static native void sharingMode0(Buffer ptr, int  _sharingMode);/*
+	 private static native void setSharingMode0(Buffer ptr, int  _sharingMode);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  vkObj->sharingMode = (VkSharingMode) (_sharingMode);
 	  */
@@ -722,7 +737,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native GET method for field sharingMode	[vkenum]<br>
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
-	 private static native int  sharingMode0(Buffer ptr);/*
+	 private static native int  getSharingMode0(Buffer ptr);/*
 		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
 		  return (VkSharingMode) (vkObj->sharingMode);
 	 */
@@ -731,7 +746,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native SET method for field queueFamilyIndexCount	[int]<br>
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
-	 private static native void queueFamilyIndexCount0(Buffer ptr, int _queueFamilyIndexCount);/*
+	 private static native void setQueueFamilyIndexCount0(Buffer ptr, int _queueFamilyIndexCount);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  vkObj->queueFamilyIndexCount = (uint32_t) (_queueFamilyIndexCount);
 	  */
@@ -740,7 +755,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native GET method for field queueFamilyIndexCount	[int]<br>
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
-	 private static native int queueFamilyIndexCount0(Buffer ptr);/*
+	 private static native int getQueueFamilyIndexCount0(Buffer ptr);/*
 		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
 		  return (jint) (vkObj->queueFamilyIndexCount);
 	 */
@@ -749,7 +764,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native SET method for field pQueueFamilyIndices	[int_array]<br>
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
-	 private static native void pQueueFamilyIndices0(Buffer ptr, int[] _pQueueFamilyIndices);/*
+	 private static native void setPQueueFamilyIndices0(Buffer ptr, int[] _pQueueFamilyIndices);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  vkObj->pQueueFamilyIndices = (const uint32_t*) (_pQueueFamilyIndices);
 	  */
@@ -758,7 +773,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native GET method for field pQueueFamilyIndices	[int_array]<br>
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
-	 private static native int[] pQueueFamilyIndices0(Buffer ptr);/*
+	 private static native int[] getPQueueFamilyIndices0(Buffer ptr);/*
 		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
 		  return (int[]) (vkObj->pQueueFamilyIndices);
 	 */
@@ -767,7 +782,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native SET method for field initialLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  initialLayout
 	 */ 
-	 private static native void initialLayout0(Buffer ptr, int  _initialLayout);/*
+	 private static native void setInitialLayout0(Buffer ptr, int  _initialLayout);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  vkObj->initialLayout = (VkImageLayout) (_initialLayout);
 	  */
@@ -776,7 +791,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * native GET method for field initialLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  initialLayout
 	 */ 
-	 private static native int  initialLayout0(Buffer ptr);/*
+	 private static native int  getInitialLayout0(Buffer ptr);/*
 		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
 		  return (VkImageLayout) (vkObj->initialLayout);
 	 */

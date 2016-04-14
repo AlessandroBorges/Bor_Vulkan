@@ -9,15 +9,12 @@
  */
 package bor.vulkan.structs;
 
-import java.nio.Buffer;
+import bor.vulkan.*;
+import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
-import bor.vulkan.P;
-import bor.vulkan.enumerations.VkAttachmentLoadOp;
-import bor.vulkan.enumerations.VkAttachmentStoreOp;
-import bor.vulkan.enumerations.VkFormat;
-import bor.vulkan.enumerations.VkImageLayout;
-import bor.vulkan.enumerations.VkSampleCountFlagBits;
+import java.nio.Buffer;
 
 
 /**
@@ -120,15 +117,31 @@ public class VkAttachmentDescription extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkAttachmentDescription(long address, int memSize){ 
+	 public VkAttachmentDescription(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkAttachmentDescription(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -170,7 +183,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		 flags0(this.ptr,  flags);
+		 setFlags0(this.ptr,  flags);
 	 }
 
 	/**
@@ -178,7 +191,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Prototype: VkAttachmentDescriptionFlags  flags
 	 */ 
 	 public int flags(){
-		 int var = flags0(super.ptr);
+		 int var = getFlags0(super.ptr);
 		 this.flags = var;
 		 return this.flags;
 	 }
@@ -190,7 +203,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 public void format(VkFormat format){
 		 this.format = format;
 		 int enumVal = format.getValue();
-		 format0(this.ptr, enumVal );
+		 setFormat0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -198,7 +211,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Prototype: VkFormat  format
 	 */ 
 	 public VkFormat format(){
-		 int nativeVal = format0(super.ptr);
+		 int nativeVal = getFormat0(super.ptr);
 		 this.format = VkFormat.fromValue(nativeVal); 
 		 return this.format;
 	 }
@@ -210,7 +223,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 public void samples(VkSampleCountFlagBits samples){
 		 this.samples = samples;
 		 int enumVal = samples.getValue();
-		 samples0(this.ptr, enumVal );
+		 setSamples0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -218,7 +231,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Prototype: VkSampleCountFlagBits  samples
 	 */ 
 	 public VkSampleCountFlagBits samples(){
-		 int nativeVal = samples0(super.ptr);
+		 int nativeVal = getSamples0(super.ptr);
 		 this.samples = VkSampleCountFlagBits.fromValue(nativeVal); 
 		 return this.samples;
 	 }
@@ -230,7 +243,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 public void loadOp(VkAttachmentLoadOp loadOp){
 		 this.loadOp = loadOp;
 		 int enumVal = loadOp.getValue();
-		 loadOp0(this.ptr, enumVal );
+		 setLoadOp0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -238,7 +251,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Prototype: VkAttachmentLoadOp  loadOp
 	 */ 
 	 public VkAttachmentLoadOp loadOp(){
-		 int nativeVal = loadOp0(super.ptr);
+		 int nativeVal = getLoadOp0(super.ptr);
 		 this.loadOp = VkAttachmentLoadOp.fromValue(nativeVal); 
 		 return this.loadOp;
 	 }
@@ -250,7 +263,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 public void storeOp(VkAttachmentStoreOp storeOp){
 		 this.storeOp = storeOp;
 		 int enumVal = storeOp.getValue();
-		 storeOp0(this.ptr, enumVal );
+		 setStoreOp0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -258,7 +271,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Prototype: VkAttachmentStoreOp  storeOp
 	 */ 
 	 public VkAttachmentStoreOp storeOp(){
-		 int nativeVal = storeOp0(super.ptr);
+		 int nativeVal = getStoreOp0(super.ptr);
 		 this.storeOp = VkAttachmentStoreOp.fromValue(nativeVal); 
 		 return this.storeOp;
 	 }
@@ -270,7 +283,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 public void stencilLoadOp(VkAttachmentLoadOp stencilLoadOp){
 		 this.stencilLoadOp = stencilLoadOp;
 		 int enumVal = stencilLoadOp.getValue();
-		 stencilLoadOp0(this.ptr, enumVal );
+		 setStencilLoadOp0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -278,7 +291,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Prototype: VkAttachmentLoadOp  stencilLoadOp
 	 */ 
 	 public VkAttachmentLoadOp stencilLoadOp(){
-		 int nativeVal = stencilLoadOp0(super.ptr);
+		 int nativeVal = getStencilLoadOp0(super.ptr);
 		 this.stencilLoadOp = VkAttachmentLoadOp.fromValue(nativeVal); 
 		 return this.stencilLoadOp;
 	 }
@@ -290,7 +303,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 public void stencilStoreOp(VkAttachmentStoreOp stencilStoreOp){
 		 this.stencilStoreOp = stencilStoreOp;
 		 int enumVal = stencilStoreOp.getValue();
-		 stencilStoreOp0(this.ptr, enumVal );
+		 setStencilStoreOp0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -298,7 +311,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Prototype: VkAttachmentStoreOp  stencilStoreOp
 	 */ 
 	 public VkAttachmentStoreOp stencilStoreOp(){
-		 int nativeVal = stencilStoreOp0(super.ptr);
+		 int nativeVal = getStencilStoreOp0(super.ptr);
 		 this.stencilStoreOp = VkAttachmentStoreOp.fromValue(nativeVal); 
 		 return this.stencilStoreOp;
 	 }
@@ -310,7 +323,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 public void initialLayout(VkImageLayout initialLayout){
 		 this.initialLayout = initialLayout;
 		 int enumVal = initialLayout.getValue();
-		 initialLayout0(this.ptr, enumVal );
+		 setInitialLayout0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -318,7 +331,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Prototype: VkImageLayout  initialLayout
 	 */ 
 	 public VkImageLayout initialLayout(){
-		 int nativeVal = initialLayout0(super.ptr);
+		 int nativeVal = getInitialLayout0(super.ptr);
 		 this.initialLayout = VkImageLayout.fromValue(nativeVal); 
 		 return this.initialLayout;
 	 }
@@ -330,7 +343,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 public void finalLayout(VkImageLayout finalLayout){
 		 this.finalLayout = finalLayout;
 		 int enumVal = finalLayout.getValue();
-		 finalLayout0(this.ptr, enumVal );
+		 setFinalLayout0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -338,7 +351,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Prototype: VkImageLayout  finalLayout
 	 */ 
 	 public VkImageLayout finalLayout(){
-		 int nativeVal = finalLayout0(super.ptr);
+		 int nativeVal = getFinalLayout0(super.ptr);
 		 this.finalLayout = VkImageLayout.fromValue(nativeVal); 
 		 return this.finalLayout;
 	 }
@@ -351,7 +364,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkAttachmentDescriptionFlags  flags
 	 */ 
-	 private static native void flags0(Buffer ptr, int _flags);/*
+	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  vkObj->flags = (VkAttachmentDescriptionFlags) (_flags);
 	  */
@@ -360,7 +373,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkAttachmentDescriptionFlags  flags
 	 */ 
-	 private static native int flags0(Buffer ptr);/*
+	 private static native int getFlags0(Buffer ptr);/*
 		  VkAttachmentDescription vkObj = (VkAttachmentDescription*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
@@ -369,7 +382,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * native SET method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
-	 private static native void format0(Buffer ptr, int  _format);/*
+	 private static native void setFormat0(Buffer ptr, int  _format);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  vkObj->format = (VkFormat) (_format);
 	  */
@@ -378,7 +391,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * native GET method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
-	 private static native int  format0(Buffer ptr);/*
+	 private static native int  getFormat0(Buffer ptr);/*
 		  VkAttachmentDescription vkObj = (VkAttachmentDescription*)(ptr);
 		  return (VkFormat) (vkObj->format);
 	 */
@@ -387,7 +400,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * native SET method for field samples	[vkenum]<br>
 	 * Prototype: VkSampleCountFlagBits  samples
 	 */ 
-	 private static native void samples0(Buffer ptr, int  _samples);/*
+	 private static native void setSamples0(Buffer ptr, int  _samples);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  vkObj->samples = (VkSampleCountFlagBits) (_samples);
 	  */
@@ -396,7 +409,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * native GET method for field samples	[vkenum]<br>
 	 * Prototype: VkSampleCountFlagBits  samples
 	 */ 
-	 private static native int  samples0(Buffer ptr);/*
+	 private static native int  getSamples0(Buffer ptr);/*
 		  VkAttachmentDescription vkObj = (VkAttachmentDescription*)(ptr);
 		  return (VkSampleCountFlagBits) (vkObj->samples);
 	 */
@@ -405,7 +418,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * native SET method for field loadOp	[vkenum]<br>
 	 * Prototype: VkAttachmentLoadOp  loadOp
 	 */ 
-	 private static native void loadOp0(Buffer ptr, int  _loadOp);/*
+	 private static native void setLoadOp0(Buffer ptr, int  _loadOp);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  vkObj->loadOp = (VkAttachmentLoadOp) (_loadOp);
 	  */
@@ -414,7 +427,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * native GET method for field loadOp	[vkenum]<br>
 	 * Prototype: VkAttachmentLoadOp  loadOp
 	 */ 
-	 private static native int  loadOp0(Buffer ptr);/*
+	 private static native int  getLoadOp0(Buffer ptr);/*
 		  VkAttachmentDescription vkObj = (VkAttachmentDescription*)(ptr);
 		  return (VkAttachmentLoadOp) (vkObj->loadOp);
 	 */
@@ -423,7 +436,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * native SET method for field storeOp	[vkenum]<br>
 	 * Prototype: VkAttachmentStoreOp  storeOp
 	 */ 
-	 private static native void storeOp0(Buffer ptr, int  _storeOp);/*
+	 private static native void setStoreOp0(Buffer ptr, int  _storeOp);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  vkObj->storeOp = (VkAttachmentStoreOp) (_storeOp);
 	  */
@@ -432,7 +445,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * native GET method for field storeOp	[vkenum]<br>
 	 * Prototype: VkAttachmentStoreOp  storeOp
 	 */ 
-	 private static native int  storeOp0(Buffer ptr);/*
+	 private static native int  getStoreOp0(Buffer ptr);/*
 		  VkAttachmentDescription vkObj = (VkAttachmentDescription*)(ptr);
 		  return (VkAttachmentStoreOp) (vkObj->storeOp);
 	 */
@@ -441,7 +454,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * native SET method for field stencilLoadOp	[vkenum]<br>
 	 * Prototype: VkAttachmentLoadOp  stencilLoadOp
 	 */ 
-	 private static native void stencilLoadOp0(Buffer ptr, int  _stencilLoadOp);/*
+	 private static native void setStencilLoadOp0(Buffer ptr, int  _stencilLoadOp);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  vkObj->stencilLoadOp = (VkAttachmentLoadOp) (_stencilLoadOp);
 	  */
@@ -450,7 +463,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * native GET method for field stencilLoadOp	[vkenum]<br>
 	 * Prototype: VkAttachmentLoadOp  stencilLoadOp
 	 */ 
-	 private static native int  stencilLoadOp0(Buffer ptr);/*
+	 private static native int  getStencilLoadOp0(Buffer ptr);/*
 		  VkAttachmentDescription vkObj = (VkAttachmentDescription*)(ptr);
 		  return (VkAttachmentLoadOp) (vkObj->stencilLoadOp);
 	 */
@@ -459,7 +472,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * native SET method for field stencilStoreOp	[vkenum]<br>
 	 * Prototype: VkAttachmentStoreOp  stencilStoreOp
 	 */ 
-	 private static native void stencilStoreOp0(Buffer ptr, int  _stencilStoreOp);/*
+	 private static native void setStencilStoreOp0(Buffer ptr, int  _stencilStoreOp);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  vkObj->stencilStoreOp = (VkAttachmentStoreOp) (_stencilStoreOp);
 	  */
@@ -468,7 +481,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * native GET method for field stencilStoreOp	[vkenum]<br>
 	 * Prototype: VkAttachmentStoreOp  stencilStoreOp
 	 */ 
-	 private static native int  stencilStoreOp0(Buffer ptr);/*
+	 private static native int  getStencilStoreOp0(Buffer ptr);/*
 		  VkAttachmentDescription vkObj = (VkAttachmentDescription*)(ptr);
 		  return (VkAttachmentStoreOp) (vkObj->stencilStoreOp);
 	 */
@@ -477,7 +490,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * native SET method for field initialLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  initialLayout
 	 */ 
-	 private static native void initialLayout0(Buffer ptr, int  _initialLayout);/*
+	 private static native void setInitialLayout0(Buffer ptr, int  _initialLayout);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  vkObj->initialLayout = (VkImageLayout) (_initialLayout);
 	  */
@@ -486,7 +499,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * native GET method for field initialLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  initialLayout
 	 */ 
-	 private static native int  initialLayout0(Buffer ptr);/*
+	 private static native int  getInitialLayout0(Buffer ptr);/*
 		  VkAttachmentDescription vkObj = (VkAttachmentDescription*)(ptr);
 		  return (VkImageLayout) (vkObj->initialLayout);
 	 */
@@ -495,7 +508,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * native SET method for field finalLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  finalLayout
 	 */ 
-	 private static native void finalLayout0(Buffer ptr, int  _finalLayout);/*
+	 private static native void setFinalLayout0(Buffer ptr, int  _finalLayout);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  vkObj->finalLayout = (VkImageLayout) (_finalLayout);
 	  */
@@ -504,7 +517,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * native GET method for field finalLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  finalLayout
 	 */ 
-	 private static native int  finalLayout0(Buffer ptr);/*
+	 private static native int  getFinalLayout0(Buffer ptr);/*
 		  VkAttachmentDescription vkObj = (VkAttachmentDescription*)(ptr);
 		  return (VkImageLayout) (vkObj->finalLayout);
 	 */

@@ -9,10 +9,12 @@
  */
 package bor.vulkan.structs;
 
-import java.nio.Buffer;
+import bor.vulkan.*;
+import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
-import bor.vulkan.P;
+import java.nio.Buffer;
 
 
 /**
@@ -79,15 +81,31 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkDispatchIndirectCommand(long address, int memSize){ 
+	 public VkDispatchIndirectCommand(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkDispatchIndirectCommand(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -129,7 +147,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 */ 
 	 public void x(int x){
 		 this.x = x;
-		 x0(this.ptr,  x);
+		 setX0(this.ptr,  x);
 	 }
 
 	/**
@@ -137,7 +155,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 * Prototype: uint32_t  x
 	 */ 
 	 public int x(){
-		 int var = x0(super.ptr);
+		 int var = getX0(super.ptr);
 		 this.x = var;
 		 return this.x;
 	 }
@@ -148,7 +166,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 */ 
 	 public void y(int y){
 		 this.y = y;
-		 y0(this.ptr,  y);
+		 setY0(this.ptr,  y);
 	 }
 
 	/**
@@ -156,7 +174,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 * Prototype: uint32_t  y
 	 */ 
 	 public int y(){
-		 int var = y0(super.ptr);
+		 int var = getY0(super.ptr);
 		 this.y = var;
 		 return this.y;
 	 }
@@ -167,7 +185,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 */ 
 	 public void z(int z){
 		 this.z = z;
-		 z0(this.ptr,  z);
+		 setZ0(this.ptr,  z);
 	 }
 
 	/**
@@ -175,7 +193,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 * Prototype: uint32_t  z
 	 */ 
 	 public int z(){
-		 int var = z0(super.ptr);
+		 int var = getZ0(super.ptr);
 		 this.z = var;
 		 return this.z;
 	 }
@@ -188,7 +206,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 * native SET method for field x	[int]<br>
 	 * Prototype: uint32_t  x
 	 */ 
-	 private static native void x0(Buffer ptr, int _x);/*
+	 private static native void setX0(Buffer ptr, int _x);/*
 		  VkDispatchIndirectCommand* vkObj = (VkDispatchIndirectCommand*)(ptr);
 		  vkObj->x = (uint32_t) (_x);
 	  */
@@ -197,7 +215,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 * native GET method for field x	[int]<br>
 	 * Prototype: uint32_t  x
 	 */ 
-	 private static native int x0(Buffer ptr);/*
+	 private static native int getX0(Buffer ptr);/*
 		  VkDispatchIndirectCommand vkObj = (VkDispatchIndirectCommand*)(ptr);
 		  return (jint) (vkObj->x);
 	 */
@@ -206,7 +224,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 * native SET method for field y	[int]<br>
 	 * Prototype: uint32_t  y
 	 */ 
-	 private static native void y0(Buffer ptr, int _y);/*
+	 private static native void setY0(Buffer ptr, int _y);/*
 		  VkDispatchIndirectCommand* vkObj = (VkDispatchIndirectCommand*)(ptr);
 		  vkObj->y = (uint32_t) (_y);
 	  */
@@ -215,7 +233,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 * native GET method for field y	[int]<br>
 	 * Prototype: uint32_t  y
 	 */ 
-	 private static native int y0(Buffer ptr);/*
+	 private static native int getY0(Buffer ptr);/*
 		  VkDispatchIndirectCommand vkObj = (VkDispatchIndirectCommand*)(ptr);
 		  return (jint) (vkObj->y);
 	 */
@@ -224,7 +242,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 * native SET method for field z	[int]<br>
 	 * Prototype: uint32_t  z
 	 */ 
-	 private static native void z0(Buffer ptr, int _z);/*
+	 private static native void setZ0(Buffer ptr, int _z);/*
 		  VkDispatchIndirectCommand* vkObj = (VkDispatchIndirectCommand*)(ptr);
 		  vkObj->z = (uint32_t) (_z);
 	  */
@@ -233,7 +251,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 * native GET method for field z	[int]<br>
 	 * Prototype: uint32_t  z
 	 */ 
-	 private static native int z0(Buffer ptr);/*
+	 private static native int getZ0(Buffer ptr);/*
 		  VkDispatchIndirectCommand vkObj = (VkDispatchIndirectCommand*)(ptr);
 		  return (jint) (vkObj->z);
 	 */

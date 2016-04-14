@@ -27,6 +27,10 @@ public class PFNvkFreeFunction extends VkHandle implements PFNFunction, VkHandle
     public PFNvkFreeFunction(ByteBuffer nativePtr) {
         super(nativePtr);
     }
+    
+    public PFNvkFreeFunction(long nativePtr) {
+        super(nativePtr);
+    }
 
     /**
      * Create a pointer P to contains a instance of this,

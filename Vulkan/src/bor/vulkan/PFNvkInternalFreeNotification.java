@@ -27,6 +27,11 @@ public class PFNvkInternalFreeNotification extends VkHandle implements PFNFuncti
     public PFNvkInternalFreeNotification(ByteBuffer nativePtr) {
         super(nativePtr);
     }
+    
+    
+    public PFNvkInternalFreeNotification(long nativePtr) {
+        super(nativePtr);
+    }
 
     /**
      * Create a pointer P to contains a instance of this,

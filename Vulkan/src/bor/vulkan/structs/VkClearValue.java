@@ -16,6 +16,8 @@ public class VkClearValue extends VkStruct {
     
     private P<VkClearValue> p;
     
+    private static final int TAG_ID = VkStruct.VKCLEARVALUE_ID;
+    private static final String TAG = "VkClearValue";
     
     // Fields
     VkClearColorValue           color;
@@ -43,15 +45,16 @@ public class VkClearValue extends VkStruct {
     public VkClearValue(long address, int size) {
         super(address, size);       
     }
-
+    
+    
     /**
-     * @param buff
+     * @param address
      * @param size
      */
-    public VkClearValue(ByteBuffer buff, int size) {
-        super(buff, size);       
+    public VkClearValue(long address) {
+        super(address);       
     }
-    
+
     /**
      * @param buff
      * @param size
@@ -68,4 +71,19 @@ public class VkClearValue extends VkStruct {
         return p;
     }
 
+    /**
+     * 
+     */
+    @Override
+    public int getSizeBytes() {
+        return sizeof();
+    }
+
+    /**
+     * Size of this 
+     * @return
+     */
+    public static int sizeof(){
+        return sizeOf(TAG_ID);
+    }
 }

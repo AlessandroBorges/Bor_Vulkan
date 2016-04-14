@@ -8,6 +8,7 @@ import java.nio.ByteOrder;
 import java.util.HashMap;
 import java.util.Map;
 
+import bor.util.Utils;
 import bor.vulkan.*;
 
 /**
@@ -57,7 +58,7 @@ public abstract class VkStruct implements VkObject{
      * It is safe from Java side and can be cast to (void *) in both 
      * 32 and 64 bits in all major O.S. supported by Java JRE. <br>
      */
-    public static final int SIZEOF_PTR = 8; 
+    public static  int SIZEOF_PTR = 8; 
     
     /** internal ID of Vulkan structure */
     public static final int VKAPPLICATIONINFO_ID = 1;
@@ -184,6 +185,9 @@ public abstract class VkStruct implements VkObject{
     public static final int VKANDROIDSURFACECREATEINFOKHR_ID = 122;
     public static final int VKWIN32SURFACECREATEINFOKHR_ID = 123;
     public static final int VKDEBUGREPORTCALLBACKCREATEINFOEXT_ID = 124;
+    
+    public static final int VKCLEARVALUE_ID = 125;
+    public static final int VKCLEARCOLORVALUE_ID = 126;
 
         
     
@@ -191,12 +195,32 @@ public abstract class VkStruct implements VkObject{
      * A Direct Buffer to native
      */
     protected ByteBuffer ptr;
+    /**
+     * Size in bytes hold by this pointer
+     */
     protected int memSize;
+    /**
+     * Native address
+     */
+    protected long nativeHandle = 0;
+    /**
+     * number of objects hold
+     */
+    protected int count = 1;
+    
+    
     /**
      * Define policy for this
      */
     protected int type;
     
+    static{
+        try {
+            SIZEOF_PTR = Utils.sizeOfPtr();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
         
     /**
      * Used to recover VkStruct reference after a native call.
@@ -231,6 +255,7 @@ public abstract class VkStruct implements VkObject{
      */
     protected VkStruct(int memSize, int unused){
         ByteBuffer nativeBuffer = ByteBuffer.allocateDirect(memSize);
+        this.memSize = memSize;
         preparePtr(nativeBuffer);
     }
     
@@ -244,22 +269,32 @@ public abstract class VkStruct implements VkObject{
      * @param address - native address to wrap with an Direct ByteBuffer  
      * @param size - size in bytes pointed by this address
      */
-    protected VkStruct(long address, int size){
-         ByteBuffer nativeBuffer = wrapPointer(address, size);
-         preparePtr(nativeBuffer);
+    protected VkStruct(long address, int size){         
+         setPointer(address, size);
     }
     
+    /**
+     * Ctor for natively allocated buffer.
+     * It wraps the address, assumed as a valid native pointer to memory buffer
+     * allocated somehow,
+     * and wraps it with a ByteBuffer.
+     * 
+     * @param address - native address to wrap with an Direct ByteBuffer
+     */
+    protected VkStruct(long address){
+         setPointer(address);
+    }
     
     /**
      * Ctor for natively allocated buffer.
      * @param nativeBuffer - native buffer wrapped by a Direct ByteBuffer  
      * @param size - size in bytes pointed by this buffer
      */
-    @Deprecated
-    protected VkStruct(ByteBuffer nativeBuffer, int size){
-        preparePtr(nativeBuffer);
-    }
-    
+//    @Deprecated
+//    protected VkStruct(ByteBuffer nativeBuffer, int size){
+//        preparePtr(nativeBuffer);
+//    }
+//    
     
     /**
      * Ctor for natively allocated buffer.
@@ -295,6 +330,7 @@ public abstract class VkStruct implements VkObject{
      * 
      * @return the structs's native pointer, wrapped by a ByteBuffer
      */
+    @Deprecated
     public ByteBuffer getPointerStruct(){
         return this.ptr;
     }
@@ -313,6 +349,14 @@ public abstract class VkStruct implements VkObject{
     }
     
     /**
+     * Get native address.
+     * @return long value holding native address.
+     */
+    public long getNativeHandle(){
+        return nativeHandle;
+    }
+    
+    /**
      * Prepare native pointer to be used in this object. <br><pre>
      *  - unregister ptr
      *  - make it  native order
@@ -325,12 +369,16 @@ public abstract class VkStruct implements VkObject{
    private void preparePtr(ByteBuffer nativePtr) {
        if(this.ptr != null )
            objManager.remove(this.ptr);
-       
+              
        this.ptr = nativePtr;
-       this.ptr.order(ByteOrder.nativeOrder());
-       this.ptr.rewind();
-       this.memSize = ptr.capacity();
+       
+       if(ptr!=null){
+           this.ptr.order(ByteOrder.nativeOrder());
+           this.ptr.rewind();
+           this.memSize = ptr.capacity();
+           this.nativeHandle = Utils.getNativeAddress(ptr);
        objManager.put(ptr, this);
+       }
    }
     
    
@@ -343,6 +391,37 @@ public abstract class VkStruct implements VkObject{
         preparePtr(nativePtr);
     }
     
+     /*
+      * (non-Javadoc)
+      * @see bor.vulkan.VkObject#setPointer(long)
+      */
+      public void setPointer(long nativeHnd){
+         if(nativeHnd==this.nativeHandle){
+             //same pointer
+             return;
+         }         
+         ByteBuffer nativePtr = Utils.wrapPointer(nativeHnd, getSizeBytes());         
+         preparePtr(nativePtr);
+     }
+      
+      /*
+       * (non-Javadoc)
+       * @see bor.vulkan.VkObject#setPointer(long)
+       */
+       public void setPointer(long nativeHnd, int size){
+          if(nativeHnd==this.nativeHandle){
+              //same pointer
+              return;
+          }         
+          ByteBuffer nativePtr = Utils.wrapPointer(nativeHnd, size);         
+          preparePtr(nativePtr);
+      } 
+     
+     /**
+      * Get the size in bytes of this Struct
+      * @return
+      */
+     public abstract int getSizeBytes(); 
     
     /**
      * Make sure buffer is filled with null or zero values
@@ -404,10 +483,11 @@ public abstract class VkStruct implements VkObject{
             objManager.remove(ptr); 
         }        
         synchronized (ptr) {
-            op = deleteBuffer(this.ptr);
+            op = Utils.deleteDirectBuffer(this.ptr);
+            nativeHandle = 0;
             ptr = null;
             op=true;
-        } 
+        }         
         return op;
     }
     
@@ -424,41 +504,8 @@ public abstract class VkStruct implements VkObject{
         return null==ptr;
     }
     
-    /**
-     * alocate a ByteBuffer on native side, wrapping a pointer 
-     * @param size
-     * @return
-     */
-    protected static final native ByteBuffer wrapPointer(long address, int size);/*
-     void* buffer = (void *)(address);
-     jobject directBuffer = env->NewDirectByteBuffer(buffer, size);
-     return directBuffer;
-    */
+   
     
-    
-    /**
-     * alocate a Byte Buffer on native side 
-     * @param size
-     * @return
-     */
-    protected static final native ByteBuffer nativeBuffer(int size);/*
-     void* pbuffer = calloc((size_t) 1, (size_t)size);
-     jobject directBuffer = env->NewDirectByteBuffer(pbuffer, size);
-     return directBuffer;
-    */
-    
-    /**
-     * Delete byte buffer
-     * @param ptr
-     * @return
-     */
-    protected static final native boolean deleteBuffer(ByteBuffer ptr);/*
-       void* pbuffer = (void*)ptr;
-       if(pbuffer)
-              free(pbuffer);
-       return JNI_TRUE;
-    */
-      
     /**
      * Native method to retrieve any Vulkan struct size, in bytes
      * 

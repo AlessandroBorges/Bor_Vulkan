@@ -9,13 +9,13 @@
  */
 package bor.vulkan.khr.structs;
 
-import java.nio.Buffer;
+import bor.vulkan.*;
+import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
+import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
 
-import bor.vulkan.P;
-import bor.vulkan.VkHandle;
-import bor.vulkan.khr.VkDisplayModeKHR;
-import bor.vulkan.structs.VkStruct;
+import java.nio.Buffer;
 
 
 /**
@@ -76,15 +76,31 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkDisplayModePropertiesKHR(long address, int memSize){ 
+	 public VkDisplayModePropertiesKHR(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkDisplayModePropertiesKHR(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -126,8 +142,8 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 */ 
 	 public void displayMode(VkDisplayModeKHR displayMode){
 		 this.displayMode = displayMode;
-		 ByteBuffer buff = (displayMode==null) ? null : displayMode.getHandle();
-		 displayMode0(this.ptr, buff);
+		 ByteBuffer buff = (displayMode==null) ? null : displayMode.getPointer();
+		 setDisplayMode0(this.ptr, buff);
 	 }
 
 	/**
@@ -136,15 +152,16 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 */ 
 	 public VkDisplayModeKHR displayMode(){
 
-		 ByteBuffer handle = displayMode0(super.ptr);
-		 if(handle == null){
+		 long handle = getDisplayMode0(super.ptr);
+		 if(handle == 0){
 		    this.displayMode = null;
 		    return null;
-		  } else 
- 		 if(this.displayMode == null){
+		  }  
+
+		 if(this.displayMode == null){
 		    this.displayMode = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.displayMode).setHandle(handle);
+		    ((VkHandle)this.displayMode).setPointer(handle);
 		  }
 		 return this.displayMode;
 	 }
@@ -155,8 +172,8 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 */ 
 	 public void parameters(VkDisplayModeParametersKHR parameters){
 		 this.parameters = parameters;
-		 ByteBuffer buff = (parameters==null) ? null : parameters.getPointerStruct();
-		 parameters0(this.ptr, buff);
+		 ByteBuffer buff = (parameters==null) ? null : parameters.getPointer();
+		 setParameters0(this.ptr, buff);
 	 }
 
 	/**
@@ -164,12 +181,13 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 * Prototype: VkDisplayModeParametersKHR  parameters
 	 */ 
 	 public VkDisplayModeParametersKHR parameters(){
-		 ByteBuffer pointer = parameters0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getParameters0(super.ptr);
+		 if(pointer == 0){
 		    this.parameters = null;
 		    return null;
-		  } else 
- 		 if(this.parameters == null){
+		  } 
+
+		 if(this.parameters == null){
 		    this.parameters = new VkDisplayModeParametersKHR(pointer);
 		 }else{
 		    this.parameters.setPointer(pointer);
@@ -185,7 +203,7 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 * native SET method for field displayMode	[vkhandle]<br>
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
-	 private static native void displayMode0(Buffer ptr, java.nio.ByteBuffer  _displayMode);/*
+	 private static native void setDisplayMode0(Buffer ptr, java.nio.ByteBuffer  _displayMode);/*
 		  VkDisplayModePropertiesKHR* vkObj = (VkDisplayModePropertiesKHR*)(ptr);
 		  vkObj->displayMode = (VkDisplayModeKHR) (_displayMode);
 	  */
@@ -194,16 +212,15 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 * native GET method for field displayMode	[vkhandle]<br>
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
-	 private static native java.nio.ByteBuffer  displayMode0(Buffer ptr);/*
+	 private static native long getDisplayMode0(Buffer ptr);/*
 		  VkDisplayModePropertiesKHR vkObj = (VkDisplayModePropertiesKHR*)(ptr);
-		  return (VkDisplayModeKHR) (vkObj->displayMode);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->displayMode);	 */
 
 	/**
 	 * native SET method for field parameters	[vkstruct]<br>
 	 * Prototype: VkDisplayModeParametersKHR  parameters
 	 */ 
-	 private static native void parameters0(Buffer ptr, java.nio.ByteBuffer  _parameters);/*
+	 private static native void setParameters0(Buffer ptr, java.nio.ByteBuffer  _parameters);/*
 		  VkDisplayModePropertiesKHR* vkObj = (VkDisplayModePropertiesKHR*)(ptr);
 		  vkObj->parameters = (VkDisplayModeParametersKHR) (_parameters);
 	  */
@@ -212,10 +229,9 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 * native GET method for field parameters	[vkstruct]<br>
 	 * Prototype: VkDisplayModeParametersKHR  parameters
 	 */ 
-	 private static native java.nio.ByteBuffer  parameters0(Buffer ptr);/*
+	 private static native long getParameters0(Buffer ptr);/*
 		  VkDisplayModePropertiesKHR vkObj = (VkDisplayModePropertiesKHR*)(ptr);
-		  return (VkDisplayModeParametersKHR) (vkObj->parameters);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->parameters);	 */
 
 
 

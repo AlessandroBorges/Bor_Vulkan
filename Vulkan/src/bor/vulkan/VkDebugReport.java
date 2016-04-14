@@ -61,10 +61,10 @@ public class VkDebugReport {
                   VkAllocationCallbacks  pAllocator,
                   VkDebugReportCallbackEXT  pCallback){
          int  _val = vkCreateDebugReportCallbackEXT0(
-                         (instance==null ? null : instance.getHandle()) /* ByteBuffer */ ,
-                         (pCreateInfo==null ? null : pCreateInfo.getPointerStruct()) /* ByteBuffer */ ,
-                         (pAllocator==null ? null : pAllocator.getPointerStruct()) /* ByteBuffer */ ,
-                         (pCallback==null ? null : pCallback.getHandle()) /* ByteBuffer */  );
+                         (instance==null ? null : instance.getPointer()) /* ByteBuffer */ ,
+                         (pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
+                         (pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
+                         (pCallback==null ? null : pCallback.getPointer()) /* ByteBuffer */  );
           return VkResult.fromValue(_val);
     } 
 
@@ -119,9 +119,9 @@ public class VkDebugReport {
                  VkDebugReportCallbackEXT callback,
                   VkAllocationCallbacks  pAllocator){
          vkDestroyDebugReportCallbackEXT0(
-                 (instance==null ? null : instance.getHandle()) /* ByteBuffer */ ,
-                 (callback==null ? null : callback.getHandle()) /* ByteBuffer */ ,
-                 (pAllocator==null ? null : pAllocator.getPointerStruct()) /* ByteBuffer */  );
+                 (instance==null ? null : instance.getPointer()) /* ByteBuffer */ ,
+                 (callback==null ? null : callback.getPointer()) /* ByteBuffer */ ,
+                 (pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
 
     } 
 
@@ -185,7 +185,7 @@ public class VkDebugReport {
                  String pLayerPrefix,
                  String pMessage){
          vkDebugReportMessageEXT0(
-                 (instance==null ? null : instance.getHandle()) /* ByteBuffer */ ,
+                 (instance==null ? null : instance.getPointer()) /* ByteBuffer */ ,
                  flags ,
                  objectType.getValue() /* enum */,
                  object ,

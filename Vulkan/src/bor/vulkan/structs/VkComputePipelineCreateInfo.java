@@ -105,15 +105,31 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkComputePipelineCreateInfo(long address, int memSize){ 
+	 public VkComputePipelineCreateInfo(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkComputePipelineCreateInfo(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -156,7 +172,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
-		 sType0(this.ptr, enumVal );
+		 setSType0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -164,7 +180,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 int nativeVal = sType0(super.ptr);
+		 int nativeVal = getSType0(super.ptr);
 		 this.sType = VkStructureType.fromValue(nativeVal); 
 		 return this.sType;
 	 }
@@ -176,7 +192,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
-		 pNext0(this.ptr, buff);
+		 setPNext0(this.ptr, buff);
 	 }
 
 	/**
@@ -184,8 +200,8 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 public VkObject pNext(){
-		 ByteBuffer pointer = pNext0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPNext0(super.ptr);
+		 if(pointer == 0){
 		    this.pNext = null;
 		    return null;
 		  } else 
@@ -203,7 +219,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		 flags0(this.ptr,  flags);
+		 setFlags0(this.ptr,  flags);
 	 }
 
 	/**
@@ -211,7 +227,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * Prototype: VkPipelineCreateFlags  flags
 	 */ 
 	 public int flags(){
-		 int var = flags0(super.ptr);
+		 int var = getFlags0(super.ptr);
 		 this.flags = var;
 		 return this.flags;
 	 }
@@ -222,8 +238,8 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void stage(VkPipelineShaderStageCreateInfo stage){
 		 this.stage = stage;
-		 ByteBuffer buff = (stage==null) ? null : stage.getPointerStruct();
-		 stage0(this.ptr, buff);
+		 ByteBuffer buff = (stage==null) ? null : stage.getPointer();
+		 setStage0(this.ptr, buff);
 	 }
 
 	/**
@@ -231,12 +247,13 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * Prototype: VkPipelineShaderStageCreateInfo  stage
 	 */ 
 	 public VkPipelineShaderStageCreateInfo stage(){
-		 ByteBuffer pointer = stage0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getStage0(super.ptr);
+		 if(pointer == 0){
 		    this.stage = null;
 		    return null;
-		  } else 
- 		 if(this.stage == null){
+		  } 
+
+		 if(this.stage == null){
 		    this.stage = new VkPipelineShaderStageCreateInfo(pointer);
 		 }else{
 		    this.stage.setPointer(pointer);
@@ -250,8 +267,8 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void layout(VkPipelineLayout layout){
 		 this.layout = layout;
-		 ByteBuffer buff = (layout==null) ? null : layout.getHandle();
-		 layout0(this.ptr, buff);
+		 ByteBuffer buff = (layout==null) ? null : layout.getPointer();
+		 setLayout0(this.ptr, buff);
 	 }
 
 	/**
@@ -260,15 +277,16 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 */ 
 	 public VkPipelineLayout layout(){
 
-		 ByteBuffer handle = layout0(super.ptr);
-		 if(handle == null){
+		 long handle = getLayout0(super.ptr);
+		 if(handle == 0){
 		    this.layout = null;
 		    return null;
-		  } else 
- 		 if(this.layout == null){
+		  }  
+
+		 if(this.layout == null){
 		    this.layout = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.layout).setHandle(handle);
+		    ((VkHandle)this.layout).setPointer(handle);
 		  }
 		 return this.layout;
 	 }
@@ -279,8 +297,8 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void basePipelineHandle(VkPipeline basePipelineHandle){
 		 this.basePipelineHandle = basePipelineHandle;
-		 ByteBuffer buff = (basePipelineHandle==null) ? null : basePipelineHandle.getHandle();
-		 basePipelineHandle0(this.ptr, buff);
+		 ByteBuffer buff = (basePipelineHandle==null) ? null : basePipelineHandle.getPointer();
+		 setBasePipelineHandle0(this.ptr, buff);
 	 }
 
 	/**
@@ -289,15 +307,16 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 */ 
 	 public VkPipeline basePipelineHandle(){
 
-		 ByteBuffer handle = basePipelineHandle0(super.ptr);
-		 if(handle == null){
+		 long handle = getBasePipelineHandle0(super.ptr);
+		 if(handle == 0){
 		    this.basePipelineHandle = null;
 		    return null;
-		  } else 
- 		 if(this.basePipelineHandle == null){
+		  }  
+
+		 if(this.basePipelineHandle == null){
 		    this.basePipelineHandle = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.basePipelineHandle).setHandle(handle);
+		    ((VkHandle)this.basePipelineHandle).setPointer(handle);
 		  }
 		 return this.basePipelineHandle;
 	 }
@@ -308,7 +327,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void basePipelineIndex(int basePipelineIndex){
 		 this.basePipelineIndex = basePipelineIndex;
-		 basePipelineIndex0(this.ptr,  basePipelineIndex);
+		 setBasePipelineIndex0(this.ptr,  basePipelineIndex);
 	 }
 
 	/**
@@ -316,7 +335,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * Prototype: int32_t  basePipelineIndex
 	 */ 
 	 public int basePipelineIndex(){
-		 int var = basePipelineIndex0(super.ptr);
+		 int var = getBasePipelineIndex0(super.ptr);
 		 this.basePipelineIndex = var;
 		 return this.basePipelineIndex;
 	 }
@@ -329,7 +348,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(Buffer ptr, int  _sType);/*
+	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
@@ -338,7 +357,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  sType0(Buffer ptr);/*
+	 private static native int  getSType0(Buffer ptr);/*
 		  VkComputePipelineCreateInfo vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
@@ -347,7 +366,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
@@ -356,16 +375,15 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+	 private static native long getPNext0(Buffer ptr);/*
 		  VkComputePipelineCreateInfo vkObj = (VkComputePipelineCreateInfo*)(ptr);
-		  return (VkObject) (vkObj->pNext);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkPipelineCreateFlags  flags
 	 */ 
-	 private static native void flags0(Buffer ptr, int _flags);/*
+	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  vkObj->flags = (VkPipelineCreateFlags) (_flags);
 	  */
@@ -374,7 +392,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkPipelineCreateFlags  flags
 	 */ 
-	 private static native int flags0(Buffer ptr);/*
+	 private static native int getFlags0(Buffer ptr);/*
 		  VkComputePipelineCreateInfo vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
@@ -383,7 +401,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * native SET method for field stage	[vkstruct]<br>
 	 * Prototype: VkPipelineShaderStageCreateInfo  stage
 	 */ 
-	 private static native void stage0(Buffer ptr, java.nio.ByteBuffer  _stage);/*
+	 private static native void setStage0(Buffer ptr, java.nio.ByteBuffer  _stage);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  vkObj->stage = (VkPipelineShaderStageCreateInfo) (_stage);
 	  */
@@ -392,16 +410,15 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * native GET method for field stage	[vkstruct]<br>
 	 * Prototype: VkPipelineShaderStageCreateInfo  stage
 	 */ 
-	 private static native java.nio.ByteBuffer  stage0(Buffer ptr);/*
+	 private static native long getStage0(Buffer ptr);/*
 		  VkComputePipelineCreateInfo vkObj = (VkComputePipelineCreateInfo*)(ptr);
-		  return (VkPipelineShaderStageCreateInfo) (vkObj->stage);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->stage);	 */
 
 	/**
 	 * native SET method for field layout	[vkhandle]<br>
 	 * Prototype: VkPipelineLayout  layout
 	 */ 
-	 private static native void layout0(Buffer ptr, java.nio.ByteBuffer  _layout);/*
+	 private static native void setLayout0(Buffer ptr, java.nio.ByteBuffer  _layout);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  vkObj->layout = (VkPipelineLayout) (_layout);
 	  */
@@ -410,16 +427,15 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * native GET method for field layout	[vkhandle]<br>
 	 * Prototype: VkPipelineLayout  layout
 	 */ 
-	 private static native java.nio.ByteBuffer  layout0(Buffer ptr);/*
+	 private static native long getLayout0(Buffer ptr);/*
 		  VkComputePipelineCreateInfo vkObj = (VkComputePipelineCreateInfo*)(ptr);
-		  return (VkPipelineLayout) (vkObj->layout);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->layout);	 */
 
 	/**
 	 * native SET method for field basePipelineHandle	[vkhandle]<br>
 	 * Prototype: VkPipeline  basePipelineHandle
 	 */ 
-	 private static native void basePipelineHandle0(Buffer ptr, java.nio.ByteBuffer  _basePipelineHandle);/*
+	 private static native void setBasePipelineHandle0(Buffer ptr, java.nio.ByteBuffer  _basePipelineHandle);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  vkObj->basePipelineHandle = (VkPipeline) (_basePipelineHandle);
 	  */
@@ -428,16 +444,15 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * native GET method for field basePipelineHandle	[vkhandle]<br>
 	 * Prototype: VkPipeline  basePipelineHandle
 	 */ 
-	 private static native java.nio.ByteBuffer  basePipelineHandle0(Buffer ptr);/*
+	 private static native long getBasePipelineHandle0(Buffer ptr);/*
 		  VkComputePipelineCreateInfo vkObj = (VkComputePipelineCreateInfo*)(ptr);
-		  return (VkPipeline) (vkObj->basePipelineHandle);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->basePipelineHandle);	 */
 
 	/**
 	 * native SET method for field basePipelineIndex	[int]<br>
 	 * Prototype: int32_t  basePipelineIndex
 	 */ 
-	 private static native void basePipelineIndex0(Buffer ptr, int _basePipelineIndex);/*
+	 private static native void setBasePipelineIndex0(Buffer ptr, int _basePipelineIndex);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  vkObj->basePipelineIndex = (int32_t) (_basePipelineIndex);
 	  */
@@ -446,7 +461,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * native GET method for field basePipelineIndex	[int]<br>
 	 * Prototype: int32_t  basePipelineIndex
 	 */ 
-	 private static native int basePipelineIndex0(Buffer ptr);/*
+	 private static native int getBasePipelineIndex0(Buffer ptr);/*
 		  VkComputePipelineCreateInfo vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  return (jint) (vkObj->basePipelineIndex);
 	 */

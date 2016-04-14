@@ -87,15 +87,31 @@ public class VkSpecializationInfo extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkSpecializationInfo(long address, int memSize){ 
+	 public VkSpecializationInfo(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkSpecializationInfo(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -137,7 +153,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 */ 
 	 public void mapEntryCount(int mapEntryCount){
 		 this.mapEntryCount = mapEntryCount;
-		 mapEntryCount0(this.ptr,  mapEntryCount);
+		 setMapEntryCount0(this.ptr,  mapEntryCount);
 	 }
 
 	/**
@@ -145,7 +161,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 * Prototype: uint32_t  mapEntryCount
 	 */ 
 	 public int mapEntryCount(){
-		 int var = mapEntryCount0(super.ptr);
+		 int var = getMapEntryCount0(super.ptr);
 		 this.mapEntryCount = var;
 		 return this.mapEntryCount;
 	 }
@@ -156,8 +172,8 @@ public class VkSpecializationInfo extends VkStruct {
 	 */ 
 	 public void pMapEntries( VkSpecializationMapEntry  pMapEntries){
 		 this.pMapEntries = pMapEntries;
-		 ByteBuffer buff = (pMapEntries==null) ? null : pMapEntries.getPointerStruct();
-		 pMapEntries0(this.ptr, buff);
+		 ByteBuffer buff = (pMapEntries==null) ? null : pMapEntries.getPointer();
+		 setPMapEntries0(this.ptr, buff);
 	 }
 
 	/**
@@ -165,12 +181,13 @@ public class VkSpecializationInfo extends VkStruct {
 	 * Prototype: const VkSpecializationMapEntry*  pMapEntries
 	 */ 
 	 public  VkSpecializationMapEntry  pMapEntries(){
-		 ByteBuffer pointer = pMapEntries0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPMapEntries0(super.ptr);
+		 if(pointer == 0){
 		    this.pMapEntries = null;
 		    return null;
-		  } else 
- 		 if(this.pMapEntries == null){
+		  } 
+
+		 if(this.pMapEntries == null){
 		    this.pMapEntries = new  VkSpecializationMapEntry (pointer);
 		 }else{
 		    this.pMapEntries.setPointer(pointer);
@@ -184,7 +201,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 */ 
 	 public void dataSize(long dataSize){
 		 this.dataSize = dataSize;
-		 dataSize0(this.ptr,  dataSize);
+		 setDataSize0(this.ptr,  dataSize);
 	 }
 
 	/**
@@ -192,7 +209,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 * Prototype: size_t  dataSize
 	 */ 
 	 public long dataSize(){
-		 long var = dataSize0(super.ptr);
+		 long var = getDataSize0(super.ptr);
 		 this.dataSize = var;
 		 return this.dataSize;
 	 }
@@ -203,16 +220,14 @@ public class VkSpecializationInfo extends VkStruct {
 	 */ 
 	 public void pData(java.nio.Buffer pData){
 		 this.pData = pData;
-		 pData0(this.ptr,  pData);
+		 setPData0(this.ptr,  pData);
 	 }
 
 	/**
 	 * Get method for field pData	[buffer]<br>
 	 * Prototype: const void*  pData
 	 */ 
-	 public java.nio.Buffer pData(){
-		 java.nio.Buffer var = pData0(super.ptr);
-		 this.pData = var;
+	 public java.nio.Buffer pData(){		 
 		 return this.pData;
 	 }
 
@@ -224,7 +239,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 * native SET method for field mapEntryCount	[int]<br>
 	 * Prototype: uint32_t  mapEntryCount
 	 */ 
-	 private static native void mapEntryCount0(Buffer ptr, int _mapEntryCount);/*
+	 private static native void setMapEntryCount0(Buffer ptr, int _mapEntryCount);/*
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
 		  vkObj->mapEntryCount = (uint32_t) (_mapEntryCount);
 	  */
@@ -233,7 +248,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 * native GET method for field mapEntryCount	[int]<br>
 	 * Prototype: uint32_t  mapEntryCount
 	 */ 
-	 private static native int mapEntryCount0(Buffer ptr);/*
+	 private static native int getMapEntryCount0(Buffer ptr);/*
 		  VkSpecializationInfo vkObj = (VkSpecializationInfo*)(ptr);
 		  return (jint) (vkObj->mapEntryCount);
 	 */
@@ -242,7 +257,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 * native SET method for field pMapEntries	[vkstruct]<br>
 	 * Prototype: const VkSpecializationMapEntry*  pMapEntries
 	 */ 
-	 private static native void pMapEntries0(Buffer ptr, java.nio.ByteBuffer  _pMapEntries);/*
+	 private static native void setPMapEntries0(Buffer ptr, java.nio.ByteBuffer  _pMapEntries);/*
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
 		  vkObj->pMapEntries = (const VkSpecializationMapEntry*) (_pMapEntries);
 	  */
@@ -251,16 +266,15 @@ public class VkSpecializationInfo extends VkStruct {
 	 * native GET method for field pMapEntries	[vkstruct]<br>
 	 * Prototype: const VkSpecializationMapEntry*  pMapEntries
 	 */ 
-	 private static native java.nio.ByteBuffer  pMapEntries0(Buffer ptr);/*
+	 private static native long getPMapEntries0(Buffer ptr);/*
 		  VkSpecializationInfo vkObj = (VkSpecializationInfo*)(ptr);
-		  return ( VkSpecializationMapEntry ) (vkObj->pMapEntries);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pMapEntries);	 */
 
 	/**
 	 * native SET method for field dataSize	[long]<br>
 	 * Prototype: size_t  dataSize
 	 */ 
-	 private static native void dataSize0(Buffer ptr, long _dataSize);/*
+	 private static native void setDataSize0(Buffer ptr, long _dataSize);/*
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
 		  vkObj->dataSize = (size_t) (_dataSize);
 	  */
@@ -269,7 +283,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 * native GET method for field dataSize	[long]<br>
 	 * Prototype: size_t  dataSize
 	 */ 
-	 private static native long dataSize0(Buffer ptr);/*
+	 private static native long getDataSize0(Buffer ptr);/*
 		  VkSpecializationInfo vkObj = (VkSpecializationInfo*)(ptr);
 		  return (jlong) (vkObj->dataSize);
 	 */
@@ -278,7 +292,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 * native SET method for field pData	[buffer]<br>
 	 * Prototype: const void*  pData
 	 */ 
-	 private static native void pData0(Buffer ptr, java.nio.Buffer _pData);/*
+	 private static native void setPData0(Buffer ptr, java.nio.Buffer _pData);/*
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
 		  vkObj->pData = (const void*) (_pData);
 	  */
@@ -287,10 +301,9 @@ public class VkSpecializationInfo extends VkStruct {
 	 * native GET method for field pData	[buffer]<br>
 	 * Prototype: const void*  pData
 	 */ 
-	 private static native java.nio.Buffer pData0(Buffer ptr);/*
+	 private static native long getPData0(Buffer ptr);/*
 		  VkSpecializationInfo vkObj = (VkSpecializationInfo*)(ptr);
-		  return (jobject) (vkObj->pData);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pData);	 */
 
 
 

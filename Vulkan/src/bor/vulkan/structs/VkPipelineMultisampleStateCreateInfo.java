@@ -83,9 +83,9 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 float 	minSampleShading;
 
 	/**
-	 *  const VkSampleMask* 	pSampleMask	[pinteger]
+	 *  const VkSampleMask* 	pSampleMask	[int_array]
 	 */ 
-	 PInteger 	pSampleMask;
+	 int[] 	pSampleMask;
 
 	/**
 	 *  VkBool32 	alphaToCoverageEnable	[boolean]
@@ -117,15 +117,31 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkPipelineMultisampleStateCreateInfo(long address, int memSize){ 
+	 public VkPipelineMultisampleStateCreateInfo(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkPipelineMultisampleStateCreateInfo(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -168,7 +184,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
-		 sType0(this.ptr, enumVal );
+		 setSType0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -176,7 +192,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 int nativeVal = sType0(super.ptr);
+		 int nativeVal = getSType0(super.ptr);
 		 this.sType = VkStructureType.fromValue(nativeVal); 
 		 return this.sType;
 	 }
@@ -188,7 +204,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
-		 pNext0(this.ptr, buff);
+		 setPNext0(this.ptr, buff);
 	 }
 
 	/**
@@ -196,8 +212,8 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 public VkObject pNext(){
-		 ByteBuffer pointer = pNext0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPNext0(super.ptr);
+		 if(pointer == 0){
 		    this.pNext = null;
 		    return null;
 		  } else 
@@ -215,7 +231,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		 flags0(this.ptr,  flags);
+		 setFlags0(this.ptr,  flags);
 	 }
 
 	/**
@@ -223,7 +239,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * Prototype: VkPipelineMultisampleStateCreateFlags  flags
 	 */ 
 	 public int flags(){
-		 int var = flags0(super.ptr);
+		 int var = getFlags0(super.ptr);
 		 this.flags = var;
 		 return this.flags;
 	 }
@@ -235,7 +251,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 public void rasterizationSamples(VkSampleCountFlagBits rasterizationSamples){
 		 this.rasterizationSamples = rasterizationSamples;
 		 int enumVal = rasterizationSamples.getValue();
-		 rasterizationSamples0(this.ptr, enumVal );
+		 setRasterizationSamples0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -243,7 +259,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * Prototype: VkSampleCountFlagBits  rasterizationSamples
 	 */ 
 	 public VkSampleCountFlagBits rasterizationSamples(){
-		 int nativeVal = rasterizationSamples0(super.ptr);
+		 int nativeVal = getRasterizationSamples0(super.ptr);
 		 this.rasterizationSamples = VkSampleCountFlagBits.fromValue(nativeVal); 
 		 return this.rasterizationSamples;
 	 }
@@ -254,7 +270,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 */ 
 	 public void sampleShadingEnable(boolean sampleShadingEnable){
 		 this.sampleShadingEnable = sampleShadingEnable;
-		 sampleShadingEnable0(this.ptr,  sampleShadingEnable);
+		 setSampleShadingEnable0(this.ptr,  sampleShadingEnable);
 	 }
 
 	/**
@@ -262,7 +278,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * Prototype: VkBool32  sampleShadingEnable
 	 */ 
 	 public boolean sampleShadingEnable(){
-		 boolean var = sampleShadingEnable0(super.ptr);
+		 boolean var = getSampleShadingEnable0(super.ptr);
 		 this.sampleShadingEnable = var;
 		 return this.sampleShadingEnable;
 	 }
@@ -273,7 +289,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 */ 
 	 public void minSampleShading(float minSampleShading){
 		 this.minSampleShading = minSampleShading;
-		 minSampleShading0(this.ptr,  minSampleShading);
+		 setMinSampleShading0(this.ptr,  minSampleShading);
 	 }
 
 	/**
@@ -281,26 +297,26 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * Prototype: float  minSampleShading
 	 */ 
 	 public float minSampleShading(){
-		 float var = minSampleShading0(super.ptr);
+		 float var = getMinSampleShading0(super.ptr);
 		 this.minSampleShading = var;
 		 return this.minSampleShading;
 	 }
 
 	/**
-	 * Set method for field pSampleMask	[pinteger]<br>
+	 * Set method for field pSampleMask	[int_array]<br>
 	 * Prototype: const VkSampleMask*  pSampleMask
 	 */ 
-	 public void pSampleMask(PInteger pSampleMask){
+	 public void pSampleMask(int[] pSampleMask){
 		 this.pSampleMask = pSampleMask;
-		 pSampleMask0(this.ptr,  pSampleMask);
+		 setPSampleMask0(this.ptr,  pSampleMask);
 	 }
 
 	/**
-	 * Get method for field pSampleMask	[pinteger]<br>
+	 * Get method for field pSampleMask	[int_array]<br>
 	 * Prototype: const VkSampleMask*  pSampleMask
 	 */ 
-	 public PInteger pSampleMask(){
-		 PInteger var = pSampleMask0(super.ptr);
+	 public int[] pSampleMask(){
+		 int[] var = getPSampleMask0(super.ptr);
 		 this.pSampleMask = var;
 		 return this.pSampleMask;
 	 }
@@ -311,7 +327,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 */ 
 	 public void alphaToCoverageEnable(boolean alphaToCoverageEnable){
 		 this.alphaToCoverageEnable = alphaToCoverageEnable;
-		 alphaToCoverageEnable0(this.ptr,  alphaToCoverageEnable);
+		 setAlphaToCoverageEnable0(this.ptr,  alphaToCoverageEnable);
 	 }
 
 	/**
@@ -319,7 +335,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * Prototype: VkBool32  alphaToCoverageEnable
 	 */ 
 	 public boolean alphaToCoverageEnable(){
-		 boolean var = alphaToCoverageEnable0(super.ptr);
+		 boolean var = getAlphaToCoverageEnable0(super.ptr);
 		 this.alphaToCoverageEnable = var;
 		 return this.alphaToCoverageEnable;
 	 }
@@ -330,7 +346,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 */ 
 	 public void alphaToOneEnable(boolean alphaToOneEnable){
 		 this.alphaToOneEnable = alphaToOneEnable;
-		 alphaToOneEnable0(this.ptr,  alphaToOneEnable);
+		 setAlphaToOneEnable0(this.ptr,  alphaToOneEnable);
 	 }
 
 	/**
@@ -338,7 +354,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * Prototype: VkBool32  alphaToOneEnable
 	 */ 
 	 public boolean alphaToOneEnable(){
-		 boolean var = alphaToOneEnable0(super.ptr);
+		 boolean var = getAlphaToOneEnable0(super.ptr);
 		 this.alphaToOneEnable = var;
 		 return this.alphaToOneEnable;
 	 }
@@ -351,7 +367,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(Buffer ptr, int  _sType);/*
+	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
@@ -360,7 +376,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  sType0(Buffer ptr);/*
+	 private static native int  getSType0(Buffer ptr);/*
 		  VkPipelineMultisampleStateCreateInfo vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
@@ -369,7 +385,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
@@ -378,16 +394,15 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineMultisampleStateCreateInfo vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
-		  return (VkObject) (vkObj->pNext);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkPipelineMultisampleStateCreateFlags  flags
 	 */ 
-	 private static native void flags0(Buffer ptr, int _flags);/*
+	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  vkObj->flags = (VkPipelineMultisampleStateCreateFlags) (_flags);
 	  */
@@ -396,7 +411,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkPipelineMultisampleStateCreateFlags  flags
 	 */ 
-	 private static native int flags0(Buffer ptr);/*
+	 private static native int getFlags0(Buffer ptr);/*
 		  VkPipelineMultisampleStateCreateInfo vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
@@ -405,7 +420,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * native SET method for field rasterizationSamples	[vkenum]<br>
 	 * Prototype: VkSampleCountFlagBits  rasterizationSamples
 	 */ 
-	 private static native void rasterizationSamples0(Buffer ptr, int  _rasterizationSamples);/*
+	 private static native void setRasterizationSamples0(Buffer ptr, int  _rasterizationSamples);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  vkObj->rasterizationSamples = (VkSampleCountFlagBits) (_rasterizationSamples);
 	  */
@@ -414,7 +429,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * native GET method for field rasterizationSamples	[vkenum]<br>
 	 * Prototype: VkSampleCountFlagBits  rasterizationSamples
 	 */ 
-	 private static native int  rasterizationSamples0(Buffer ptr);/*
+	 private static native int  getRasterizationSamples0(Buffer ptr);/*
 		  VkPipelineMultisampleStateCreateInfo vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  return (VkSampleCountFlagBits) (vkObj->rasterizationSamples);
 	 */
@@ -423,7 +438,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * native SET method for field sampleShadingEnable	[boolean]<br>
 	 * Prototype: VkBool32  sampleShadingEnable
 	 */ 
-	 private static native void sampleShadingEnable0(Buffer ptr, boolean _sampleShadingEnable);/*
+	 private static native void setSampleShadingEnable0(Buffer ptr, boolean _sampleShadingEnable);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  vkObj->sampleShadingEnable = (VkBool32) (_sampleShadingEnable);
 	  */
@@ -432,7 +447,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * native GET method for field sampleShadingEnable	[boolean]<br>
 	 * Prototype: VkBool32  sampleShadingEnable
 	 */ 
-	 private static native boolean sampleShadingEnable0(Buffer ptr);/*
+	 private static native boolean getSampleShadingEnable0(Buffer ptr);/*
 		  VkPipelineMultisampleStateCreateInfo vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->sampleShadingEnable);
 	 */
@@ -441,7 +456,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * native SET method for field minSampleShading	[float]<br>
 	 * Prototype: float  minSampleShading
 	 */ 
-	 private static native void minSampleShading0(Buffer ptr, float _minSampleShading);/*
+	 private static native void setMinSampleShading0(Buffer ptr, float _minSampleShading);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  vkObj->minSampleShading = (float) (_minSampleShading);
 	  */
@@ -450,34 +465,34 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * native GET method for field minSampleShading	[float]<br>
 	 * Prototype: float  minSampleShading
 	 */ 
-	 private static native float minSampleShading0(Buffer ptr);/*
+	 private static native float getMinSampleShading0(Buffer ptr);/*
 		  VkPipelineMultisampleStateCreateInfo vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->minSampleShading);
 	 */
 
 	/**
-	 * native SET method for field pSampleMask	[pinteger]<br>
+	 * native SET method for field pSampleMask	[int_array]<br>
 	 * Prototype: const VkSampleMask*  pSampleMask
 	 */ 
-	 private static native void pSampleMask0(Buffer ptr, PInteger _pSampleMask);/*
+	 private static native void setPSampleMask0(Buffer ptr, int[] _pSampleMask);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  vkObj->pSampleMask = (const VkSampleMask*) (_pSampleMask);
 	  */
 
 	/**
-	 * native GET method for field pSampleMask	[pinteger]<br>
+	 * native GET method for field pSampleMask	[int_array]<br>
 	 * Prototype: const VkSampleMask*  pSampleMask
 	 */ 
-	 private static native PInteger pSampleMask0(Buffer ptr);/*
+	 private static native int[] getPSampleMask0(Buffer ptr);/*
 		  VkPipelineMultisampleStateCreateInfo vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
-		  return (PInteger) (vkObj->pSampleMask);
+		  return (int[]) (vkObj->pSampleMask);
 	 */
 
 	/**
 	 * native SET method for field alphaToCoverageEnable	[boolean]<br>
 	 * Prototype: VkBool32  alphaToCoverageEnable
 	 */ 
-	 private static native void alphaToCoverageEnable0(Buffer ptr, boolean _alphaToCoverageEnable);/*
+	 private static native void setAlphaToCoverageEnable0(Buffer ptr, boolean _alphaToCoverageEnable);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  vkObj->alphaToCoverageEnable = (VkBool32) (_alphaToCoverageEnable);
 	  */
@@ -486,7 +501,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * native GET method for field alphaToCoverageEnable	[boolean]<br>
 	 * Prototype: VkBool32  alphaToCoverageEnable
 	 */ 
-	 private static native boolean alphaToCoverageEnable0(Buffer ptr);/*
+	 private static native boolean getAlphaToCoverageEnable0(Buffer ptr);/*
 		  VkPipelineMultisampleStateCreateInfo vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->alphaToCoverageEnable);
 	 */
@@ -495,7 +510,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * native SET method for field alphaToOneEnable	[boolean]<br>
 	 * Prototype: VkBool32  alphaToOneEnable
 	 */ 
-	 private static native void alphaToOneEnable0(Buffer ptr, boolean _alphaToOneEnable);/*
+	 private static native void setAlphaToOneEnable0(Buffer ptr, boolean _alphaToOneEnable);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  vkObj->alphaToOneEnable = (VkBool32) (_alphaToOneEnable);
 	  */
@@ -504,7 +519,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * native GET method for field alphaToOneEnable	[boolean]<br>
 	 * Prototype: VkBool32  alphaToOneEnable
 	 */ 
-	 private static native boolean alphaToOneEnable0(Buffer ptr);/*
+	 private static native boolean getAlphaToOneEnable0(Buffer ptr);/*
 		  VkPipelineMultisampleStateCreateInfo vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->alphaToOneEnable);
 	 */

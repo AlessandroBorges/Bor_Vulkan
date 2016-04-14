@@ -111,15 +111,31 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkImageViewCreateInfo(long address, int memSize){ 
+	 public VkImageViewCreateInfo(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkImageViewCreateInfo(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -162,7 +178,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
-		 sType0(this.ptr, enumVal );
+		 setSType0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -170,7 +186,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 int nativeVal = sType0(super.ptr);
+		 int nativeVal = getSType0(super.ptr);
 		 this.sType = VkStructureType.fromValue(nativeVal); 
 		 return this.sType;
 	 }
@@ -182,7 +198,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
-		 pNext0(this.ptr, buff);
+		 setPNext0(this.ptr, buff);
 	 }
 
 	/**
@@ -190,8 +206,8 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 public VkObject pNext(){
-		 ByteBuffer pointer = pNext0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPNext0(super.ptr);
+		 if(pointer == 0){
 		    this.pNext = null;
 		    return null;
 		  } else 
@@ -209,7 +225,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		 flags0(this.ptr,  flags);
+		 setFlags0(this.ptr,  flags);
 	 }
 
 	/**
@@ -217,7 +233,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * Prototype: VkImageViewCreateFlags  flags
 	 */ 
 	 public int flags(){
-		 int var = flags0(super.ptr);
+		 int var = getFlags0(super.ptr);
 		 this.flags = var;
 		 return this.flags;
 	 }
@@ -228,8 +244,8 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 */ 
 	 public void image(VkImage image){
 		 this.image = image;
-		 ByteBuffer buff = (image==null) ? null : image.getHandle();
-		 image0(this.ptr, buff);
+		 ByteBuffer buff = (image==null) ? null : image.getPointer();
+		 setImage0(this.ptr, buff);
 	 }
 
 	/**
@@ -238,15 +254,16 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 */ 
 	 public VkImage image(){
 
-		 ByteBuffer handle = image0(super.ptr);
-		 if(handle == null){
+		 long handle = getImage0(super.ptr);
+		 if(handle == 0){
 		    this.image = null;
 		    return null;
-		  } else 
- 		 if(this.image == null){
+		  }  
+
+		 if(this.image == null){
 		    this.image = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.image).setHandle(handle);
+		    ((VkHandle)this.image).setPointer(handle);
 		  }
 		 return this.image;
 	 }
@@ -258,7 +275,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 public void viewType(VkImageViewType viewType){
 		 this.viewType = viewType;
 		 int enumVal = viewType.getValue();
-		 viewType0(this.ptr, enumVal );
+		 setViewType0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -266,7 +283,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * Prototype: VkImageViewType  viewType
 	 */ 
 	 public VkImageViewType viewType(){
-		 int nativeVal = viewType0(super.ptr);
+		 int nativeVal = getViewType0(super.ptr);
 		 this.viewType = VkImageViewType.fromValue(nativeVal); 
 		 return this.viewType;
 	 }
@@ -278,7 +295,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 public void format(VkFormat format){
 		 this.format = format;
 		 int enumVal = format.getValue();
-		 format0(this.ptr, enumVal );
+		 setFormat0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -286,7 +303,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * Prototype: VkFormat  format
 	 */ 
 	 public VkFormat format(){
-		 int nativeVal = format0(super.ptr);
+		 int nativeVal = getFormat0(super.ptr);
 		 this.format = VkFormat.fromValue(nativeVal); 
 		 return this.format;
 	 }
@@ -297,8 +314,8 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 */ 
 	 public void components(VkComponentMapping components){
 		 this.components = components;
-		 ByteBuffer buff = (components==null) ? null : components.getPointerStruct();
-		 components0(this.ptr, buff);
+		 ByteBuffer buff = (components==null) ? null : components.getPointer();
+		 setComponents0(this.ptr, buff);
 	 }
 
 	/**
@@ -306,12 +323,13 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * Prototype: VkComponentMapping  components
 	 */ 
 	 public VkComponentMapping components(){
-		 ByteBuffer pointer = components0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getComponents0(super.ptr);
+		 if(pointer == 0){
 		    this.components = null;
 		    return null;
-		  } else 
- 		 if(this.components == null){
+		  } 
+
+		 if(this.components == null){
 		    this.components = new VkComponentMapping(pointer);
 		 }else{
 		    this.components.setPointer(pointer);
@@ -325,8 +343,8 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 */ 
 	 public void subresourceRange(VkImageSubresourceRange subresourceRange){
 		 this.subresourceRange = subresourceRange;
-		 ByteBuffer buff = (subresourceRange==null) ? null : subresourceRange.getPointerStruct();
-		 subresourceRange0(this.ptr, buff);
+		 ByteBuffer buff = (subresourceRange==null) ? null : subresourceRange.getPointer();
+		 setSubresourceRange0(this.ptr, buff);
 	 }
 
 	/**
@@ -334,12 +352,13 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * Prototype: VkImageSubresourceRange  subresourceRange
 	 */ 
 	 public VkImageSubresourceRange subresourceRange(){
-		 ByteBuffer pointer = subresourceRange0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getSubresourceRange0(super.ptr);
+		 if(pointer == 0){
 		    this.subresourceRange = null;
 		    return null;
-		  } else 
- 		 if(this.subresourceRange == null){
+		  } 
+
+		 if(this.subresourceRange == null){
 		    this.subresourceRange = new VkImageSubresourceRange(pointer);
 		 }else{
 		    this.subresourceRange.setPointer(pointer);
@@ -355,7 +374,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(Buffer ptr, int  _sType);/*
+	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
@@ -364,7 +383,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  sType0(Buffer ptr);/*
+	 private static native int  getSType0(Buffer ptr);/*
 		  VkImageViewCreateInfo vkObj = (VkImageViewCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
@@ -373,7 +392,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
@@ -382,16 +401,15 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+	 private static native long getPNext0(Buffer ptr);/*
 		  VkImageViewCreateInfo vkObj = (VkImageViewCreateInfo*)(ptr);
-		  return (VkObject) (vkObj->pNext);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkImageViewCreateFlags  flags
 	 */ 
-	 private static native void flags0(Buffer ptr, int _flags);/*
+	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  vkObj->flags = (VkImageViewCreateFlags) (_flags);
 	  */
@@ -400,7 +418,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkImageViewCreateFlags  flags
 	 */ 
-	 private static native int flags0(Buffer ptr);/*
+	 private static native int getFlags0(Buffer ptr);/*
 		  VkImageViewCreateInfo vkObj = (VkImageViewCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
@@ -409,7 +427,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * native SET method for field image	[vkhandle]<br>
 	 * Prototype: VkImage  image
 	 */ 
-	 private static native void image0(Buffer ptr, java.nio.ByteBuffer  _image);/*
+	 private static native void setImage0(Buffer ptr, java.nio.ByteBuffer  _image);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  vkObj->image = (VkImage) (_image);
 	  */
@@ -418,16 +436,15 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * native GET method for field image	[vkhandle]<br>
 	 * Prototype: VkImage  image
 	 */ 
-	 private static native java.nio.ByteBuffer  image0(Buffer ptr);/*
+	 private static native long getImage0(Buffer ptr);/*
 		  VkImageViewCreateInfo vkObj = (VkImageViewCreateInfo*)(ptr);
-		  return (VkImage) (vkObj->image);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->image);	 */
 
 	/**
 	 * native SET method for field viewType	[vkenum]<br>
 	 * Prototype: VkImageViewType  viewType
 	 */ 
-	 private static native void viewType0(Buffer ptr, int  _viewType);/*
+	 private static native void setViewType0(Buffer ptr, int  _viewType);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  vkObj->viewType = (VkImageViewType) (_viewType);
 	  */
@@ -436,7 +453,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * native GET method for field viewType	[vkenum]<br>
 	 * Prototype: VkImageViewType  viewType
 	 */ 
-	 private static native int  viewType0(Buffer ptr);/*
+	 private static native int  getViewType0(Buffer ptr);/*
 		  VkImageViewCreateInfo vkObj = (VkImageViewCreateInfo*)(ptr);
 		  return (VkImageViewType) (vkObj->viewType);
 	 */
@@ -445,7 +462,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * native SET method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
-	 private static native void format0(Buffer ptr, int  _format);/*
+	 private static native void setFormat0(Buffer ptr, int  _format);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  vkObj->format = (VkFormat) (_format);
 	  */
@@ -454,7 +471,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * native GET method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
-	 private static native int  format0(Buffer ptr);/*
+	 private static native int  getFormat0(Buffer ptr);/*
 		  VkImageViewCreateInfo vkObj = (VkImageViewCreateInfo*)(ptr);
 		  return (VkFormat) (vkObj->format);
 	 */
@@ -463,7 +480,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * native SET method for field components	[vkstruct]<br>
 	 * Prototype: VkComponentMapping  components
 	 */ 
-	 private static native void components0(Buffer ptr, java.nio.ByteBuffer  _components);/*
+	 private static native void setComponents0(Buffer ptr, java.nio.ByteBuffer  _components);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  vkObj->components = (VkComponentMapping) (_components);
 	  */
@@ -472,16 +489,15 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * native GET method for field components	[vkstruct]<br>
 	 * Prototype: VkComponentMapping  components
 	 */ 
-	 private static native java.nio.ByteBuffer  components0(Buffer ptr);/*
+	 private static native long getComponents0(Buffer ptr);/*
 		  VkImageViewCreateInfo vkObj = (VkImageViewCreateInfo*)(ptr);
-		  return (VkComponentMapping) (vkObj->components);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->components);	 */
 
 	/**
 	 * native SET method for field subresourceRange	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceRange  subresourceRange
 	 */ 
-	 private static native void subresourceRange0(Buffer ptr, java.nio.ByteBuffer  _subresourceRange);/*
+	 private static native void setSubresourceRange0(Buffer ptr, java.nio.ByteBuffer  _subresourceRange);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  vkObj->subresourceRange = (VkImageSubresourceRange) (_subresourceRange);
 	  */
@@ -490,10 +506,9 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * native GET method for field subresourceRange	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceRange  subresourceRange
 	 */ 
-	 private static native java.nio.ByteBuffer  subresourceRange0(Buffer ptr);/*
+	 private static native long getSubresourceRange0(Buffer ptr);/*
 		  VkImageViewCreateInfo vkObj = (VkImageViewCreateInfo*)(ptr);
-		  return (VkImageSubresourceRange) (vkObj->subresourceRange);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->subresourceRange);	 */
 
 
 

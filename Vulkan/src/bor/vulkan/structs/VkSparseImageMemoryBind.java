@@ -99,15 +99,31 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkSparseImageMemoryBind(long address, int memSize){ 
+	 public VkSparseImageMemoryBind(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkSparseImageMemoryBind(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -149,8 +165,8 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 */ 
 	 public void subresource(VkImageSubresource subresource){
 		 this.subresource = subresource;
-		 ByteBuffer buff = (subresource==null) ? null : subresource.getPointerStruct();
-		 subresource0(this.ptr, buff);
+		 ByteBuffer buff = (subresource==null) ? null : subresource.getPointer();
+		 setSubresource0(this.ptr, buff);
 	 }
 
 	/**
@@ -158,12 +174,13 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 * Prototype: VkImageSubresource  subresource
 	 */ 
 	 public VkImageSubresource subresource(){
-		 ByteBuffer pointer = subresource0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getSubresource0(super.ptr);
+		 if(pointer == 0){
 		    this.subresource = null;
 		    return null;
-		  } else 
- 		 if(this.subresource == null){
+		  } 
+
+		 if(this.subresource == null){
 		    this.subresource = new VkImageSubresource(pointer);
 		 }else{
 		    this.subresource.setPointer(pointer);
@@ -177,8 +194,8 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 */ 
 	 public void offset(VkOffset3D offset){
 		 this.offset = offset;
-		 ByteBuffer buff = (offset==null) ? null : offset.getPointerStruct();
-		 offset0(this.ptr, buff);
+		 ByteBuffer buff = (offset==null) ? null : offset.getPointer();
+		 setOffset0(this.ptr, buff);
 	 }
 
 	/**
@@ -186,12 +203,13 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 * Prototype: VkOffset3D  offset
 	 */ 
 	 public VkOffset3D offset(){
-		 ByteBuffer pointer = offset0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getOffset0(super.ptr);
+		 if(pointer == 0){
 		    this.offset = null;
 		    return null;
-		  } else 
- 		 if(this.offset == null){
+		  } 
+
+		 if(this.offset == null){
 		    this.offset = new VkOffset3D(pointer);
 		 }else{
 		    this.offset.setPointer(pointer);
@@ -205,8 +223,8 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 */ 
 	 public void extent(VkExtent3D extent){
 		 this.extent = extent;
-		 ByteBuffer buff = (extent==null) ? null : extent.getPointerStruct();
-		 extent0(this.ptr, buff);
+		 ByteBuffer buff = (extent==null) ? null : extent.getPointer();
+		 setExtent0(this.ptr, buff);
 	 }
 
 	/**
@@ -214,12 +232,13 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 public VkExtent3D extent(){
-		 ByteBuffer pointer = extent0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getExtent0(super.ptr);
+		 if(pointer == 0){
 		    this.extent = null;
 		    return null;
-		  } else 
- 		 if(this.extent == null){
+		  } 
+
+		 if(this.extent == null){
 		    this.extent = new VkExtent3D(pointer);
 		 }else{
 		    this.extent.setPointer(pointer);
@@ -233,8 +252,8 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 */ 
 	 public void memory(VkDeviceMemory memory){
 		 this.memory = memory;
-		 ByteBuffer buff = (memory==null) ? null : memory.getHandle();
-		 memory0(this.ptr, buff);
+		 ByteBuffer buff = (memory==null) ? null : memory.getPointer();
+		 setMemory0(this.ptr, buff);
 	 }
 
 	/**
@@ -243,15 +262,16 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 */ 
 	 public VkDeviceMemory memory(){
 
-		 ByteBuffer handle = memory0(super.ptr);
-		 if(handle == null){
+		 long handle = getMemory0(super.ptr);
+		 if(handle == 0){
 		    this.memory = null;
 		    return null;
-		  } else 
- 		 if(this.memory == null){
+		  }  
+
+		 if(this.memory == null){
 		    this.memory = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.memory).setHandle(handle);
+		    ((VkHandle)this.memory).setPointer(handle);
 		  }
 		 return this.memory;
 	 }
@@ -262,7 +282,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 */ 
 	 public void memoryOffset(long memoryOffset){
 		 this.memoryOffset = memoryOffset;
-		 memoryOffset0(this.ptr,  memoryOffset);
+		 setMemoryOffset0(this.ptr,  memoryOffset);
 	 }
 
 	/**
@@ -270,7 +290,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 * Prototype: VkDeviceSize  memoryOffset
 	 */ 
 	 public long memoryOffset(){
-		 long var = memoryOffset0(super.ptr);
+		 long var = getMemoryOffset0(super.ptr);
 		 this.memoryOffset = var;
 		 return this.memoryOffset;
 	 }
@@ -281,7 +301,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		 flags0(this.ptr,  flags);
+		 setFlags0(this.ptr,  flags);
 	 }
 
 	/**
@@ -289,7 +309,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 * Prototype: VkSparseMemoryBindFlags  flags
 	 */ 
 	 public int flags(){
-		 int var = flags0(super.ptr);
+		 int var = getFlags0(super.ptr);
 		 this.flags = var;
 		 return this.flags;
 	 }
@@ -302,7 +322,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 * native SET method for field subresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresource  subresource
 	 */ 
-	 private static native void subresource0(Buffer ptr, java.nio.ByteBuffer  _subresource);/*
+	 private static native void setSubresource0(Buffer ptr, java.nio.ByteBuffer  _subresource);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
 		  vkObj->subresource = (VkImageSubresource) (_subresource);
 	  */
@@ -311,16 +331,15 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 * native GET method for field subresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresource  subresource
 	 */ 
-	 private static native java.nio.ByteBuffer  subresource0(Buffer ptr);/*
+	 private static native long getSubresource0(Buffer ptr);/*
 		  VkSparseImageMemoryBind vkObj = (VkSparseImageMemoryBind*)(ptr);
-		  return (VkImageSubresource) (vkObj->subresource);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->subresource);	 */
 
 	/**
 	 * native SET method for field offset	[vkstruct]<br>
 	 * Prototype: VkOffset3D  offset
 	 */ 
-	 private static native void offset0(Buffer ptr, java.nio.ByteBuffer  _offset);/*
+	 private static native void setOffset0(Buffer ptr, java.nio.ByteBuffer  _offset);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
 		  vkObj->offset = (VkOffset3D) (_offset);
 	  */
@@ -329,16 +348,15 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 * native GET method for field offset	[vkstruct]<br>
 	 * Prototype: VkOffset3D  offset
 	 */ 
-	 private static native java.nio.ByteBuffer  offset0(Buffer ptr);/*
+	 private static native long getOffset0(Buffer ptr);/*
 		  VkSparseImageMemoryBind vkObj = (VkSparseImageMemoryBind*)(ptr);
-		  return (VkOffset3D) (vkObj->offset);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->offset);	 */
 
 	/**
 	 * native SET method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent3D  extent
 	 */ 
-	 private static native void extent0(Buffer ptr, java.nio.ByteBuffer  _extent);/*
+	 private static native void setExtent0(Buffer ptr, java.nio.ByteBuffer  _extent);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
 		  vkObj->extent = (VkExtent3D) (_extent);
 	  */
@@ -347,16 +365,15 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 * native GET method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent3D  extent
 	 */ 
-	 private static native java.nio.ByteBuffer  extent0(Buffer ptr);/*
+	 private static native long getExtent0(Buffer ptr);/*
 		  VkSparseImageMemoryBind vkObj = (VkSparseImageMemoryBind*)(ptr);
-		  return (VkExtent3D) (vkObj->extent);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->extent);	 */
 
 	/**
 	 * native SET method for field memory	[vkhandle]<br>
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
-	 private static native void memory0(Buffer ptr, java.nio.ByteBuffer  _memory);/*
+	 private static native void setMemory0(Buffer ptr, java.nio.ByteBuffer  _memory);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
 		  vkObj->memory = (VkDeviceMemory) (_memory);
 	  */
@@ -365,16 +382,15 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 * native GET method for field memory	[vkhandle]<br>
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
-	 private static native java.nio.ByteBuffer  memory0(Buffer ptr);/*
+	 private static native long getMemory0(Buffer ptr);/*
 		  VkSparseImageMemoryBind vkObj = (VkSparseImageMemoryBind*)(ptr);
-		  return (VkDeviceMemory) (vkObj->memory);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->memory);	 */
 
 	/**
 	 * native SET method for field memoryOffset	[long]<br>
 	 * Prototype: VkDeviceSize  memoryOffset
 	 */ 
-	 private static native void memoryOffset0(Buffer ptr, long _memoryOffset);/*
+	 private static native void setMemoryOffset0(Buffer ptr, long _memoryOffset);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
 		  vkObj->memoryOffset = (VkDeviceSize) (_memoryOffset);
 	  */
@@ -383,7 +399,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 * native GET method for field memoryOffset	[long]<br>
 	 * Prototype: VkDeviceSize  memoryOffset
 	 */ 
-	 private static native long memoryOffset0(Buffer ptr);/*
+	 private static native long getMemoryOffset0(Buffer ptr);/*
 		  VkSparseImageMemoryBind vkObj = (VkSparseImageMemoryBind*)(ptr);
 		  return (jlong) (vkObj->memoryOffset);
 	 */
@@ -392,7 +408,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkSparseMemoryBindFlags  flags
 	 */ 
-	 private static native void flags0(Buffer ptr, int _flags);/*
+	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
 		  vkObj->flags = (VkSparseMemoryBindFlags) (_flags);
 	  */
@@ -401,7 +417,7 @@ public class VkSparseImageMemoryBind extends VkStruct {
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkSparseMemoryBindFlags  flags
 	 */ 
-	 private static native int flags0(Buffer ptr);/*
+	 private static native int getFlags0(Buffer ptr);/*
 		  VkSparseImageMemoryBind vkObj = (VkSparseImageMemoryBind*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */

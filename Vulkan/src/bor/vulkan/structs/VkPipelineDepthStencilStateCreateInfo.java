@@ -135,15 +135,31 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkPipelineDepthStencilStateCreateInfo(long address, int memSize){ 
+	 public VkPipelineDepthStencilStateCreateInfo(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkPipelineDepthStencilStateCreateInfo(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -186,7 +202,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
-		 sType0(this.ptr, enumVal );
+		 setSType0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -194,7 +210,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 int nativeVal = sType0(super.ptr);
+		 int nativeVal = getSType0(super.ptr);
 		 this.sType = VkStructureType.fromValue(nativeVal); 
 		 return this.sType;
 	 }
@@ -206,7 +222,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
-		 pNext0(this.ptr, buff);
+		 setPNext0(this.ptr, buff);
 	 }
 
 	/**
@@ -214,8 +230,8 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 public VkObject pNext(){
-		 ByteBuffer pointer = pNext0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPNext0(super.ptr);
+		 if(pointer == 0){
 		    this.pNext = null;
 		    return null;
 		  } else 
@@ -233,7 +249,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		 flags0(this.ptr,  flags);
+		 setFlags0(this.ptr,  flags);
 	 }
 
 	/**
@@ -241,7 +257,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * Prototype: VkPipelineDepthStencilStateCreateFlags  flags
 	 */ 
 	 public int flags(){
-		 int var = flags0(super.ptr);
+		 int var = getFlags0(super.ptr);
 		 this.flags = var;
 		 return this.flags;
 	 }
@@ -252,7 +268,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */ 
 	 public void depthTestEnable(boolean depthTestEnable){
 		 this.depthTestEnable = depthTestEnable;
-		 depthTestEnable0(this.ptr,  depthTestEnable);
+		 setDepthTestEnable0(this.ptr,  depthTestEnable);
 	 }
 
 	/**
@@ -260,7 +276,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * Prototype: VkBool32  depthTestEnable
 	 */ 
 	 public boolean depthTestEnable(){
-		 boolean var = depthTestEnable0(super.ptr);
+		 boolean var = getDepthTestEnable0(super.ptr);
 		 this.depthTestEnable = var;
 		 return this.depthTestEnable;
 	 }
@@ -271,7 +287,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */ 
 	 public void depthWriteEnable(boolean depthWriteEnable){
 		 this.depthWriteEnable = depthWriteEnable;
-		 depthWriteEnable0(this.ptr,  depthWriteEnable);
+		 setDepthWriteEnable0(this.ptr,  depthWriteEnable);
 	 }
 
 	/**
@@ -279,7 +295,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * Prototype: VkBool32  depthWriteEnable
 	 */ 
 	 public boolean depthWriteEnable(){
-		 boolean var = depthWriteEnable0(super.ptr);
+		 boolean var = getDepthWriteEnable0(super.ptr);
 		 this.depthWriteEnable = var;
 		 return this.depthWriteEnable;
 	 }
@@ -291,7 +307,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 public void depthCompareOp(VkCompareOp depthCompareOp){
 		 this.depthCompareOp = depthCompareOp;
 		 int enumVal = depthCompareOp.getValue();
-		 depthCompareOp0(this.ptr, enumVal );
+		 setDepthCompareOp0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -299,7 +315,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * Prototype: VkCompareOp  depthCompareOp
 	 */ 
 	 public VkCompareOp depthCompareOp(){
-		 int nativeVal = depthCompareOp0(super.ptr);
+		 int nativeVal = getDepthCompareOp0(super.ptr);
 		 this.depthCompareOp = VkCompareOp.fromValue(nativeVal); 
 		 return this.depthCompareOp;
 	 }
@@ -310,7 +326,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */ 
 	 public void depthBoundsTestEnable(boolean depthBoundsTestEnable){
 		 this.depthBoundsTestEnable = depthBoundsTestEnable;
-		 depthBoundsTestEnable0(this.ptr,  depthBoundsTestEnable);
+		 setDepthBoundsTestEnable0(this.ptr,  depthBoundsTestEnable);
 	 }
 
 	/**
@@ -318,7 +334,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * Prototype: VkBool32  depthBoundsTestEnable
 	 */ 
 	 public boolean depthBoundsTestEnable(){
-		 boolean var = depthBoundsTestEnable0(super.ptr);
+		 boolean var = getDepthBoundsTestEnable0(super.ptr);
 		 this.depthBoundsTestEnable = var;
 		 return this.depthBoundsTestEnable;
 	 }
@@ -329,7 +345,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */ 
 	 public void stencilTestEnable(boolean stencilTestEnable){
 		 this.stencilTestEnable = stencilTestEnable;
-		 stencilTestEnable0(this.ptr,  stencilTestEnable);
+		 setStencilTestEnable0(this.ptr,  stencilTestEnable);
 	 }
 
 	/**
@@ -337,7 +353,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * Prototype: VkBool32  stencilTestEnable
 	 */ 
 	 public boolean stencilTestEnable(){
-		 boolean var = stencilTestEnable0(super.ptr);
+		 boolean var = getStencilTestEnable0(super.ptr);
 		 this.stencilTestEnable = var;
 		 return this.stencilTestEnable;
 	 }
@@ -348,8 +364,8 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */ 
 	 public void front(VkStencilOpState front){
 		 this.front = front;
-		 ByteBuffer buff = (front==null) ? null : front.getPointerStruct();
-		 front0(this.ptr, buff);
+		 ByteBuffer buff = (front==null) ? null : front.getPointer();
+		 setFront0(this.ptr, buff);
 	 }
 
 	/**
@@ -357,12 +373,13 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * Prototype: VkStencilOpState  front
 	 */ 
 	 public VkStencilOpState front(){
-		 ByteBuffer pointer = front0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getFront0(super.ptr);
+		 if(pointer == 0){
 		    this.front = null;
 		    return null;
-		  } else 
- 		 if(this.front == null){
+		  } 
+
+		 if(this.front == null){
 		    this.front = new VkStencilOpState(pointer);
 		 }else{
 		    this.front.setPointer(pointer);
@@ -376,8 +393,8 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */ 
 	 public void back(VkStencilOpState back){
 		 this.back = back;
-		 ByteBuffer buff = (back==null) ? null : back.getPointerStruct();
-		 back0(this.ptr, buff);
+		 ByteBuffer buff = (back==null) ? null : back.getPointer();
+		 setBack0(this.ptr, buff);
 	 }
 
 	/**
@@ -385,12 +402,13 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * Prototype: VkStencilOpState  back
 	 */ 
 	 public VkStencilOpState back(){
-		 ByteBuffer pointer = back0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getBack0(super.ptr);
+		 if(pointer == 0){
 		    this.back = null;
 		    return null;
-		  } else 
- 		 if(this.back == null){
+		  } 
+
+		 if(this.back == null){
 		    this.back = new VkStencilOpState(pointer);
 		 }else{
 		    this.back.setPointer(pointer);
@@ -404,7 +422,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */ 
 	 public void minDepthBounds(float minDepthBounds){
 		 this.minDepthBounds = minDepthBounds;
-		 minDepthBounds0(this.ptr,  minDepthBounds);
+		 setMinDepthBounds0(this.ptr,  minDepthBounds);
 	 }
 
 	/**
@@ -412,7 +430,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * Prototype: float  minDepthBounds
 	 */ 
 	 public float minDepthBounds(){
-		 float var = minDepthBounds0(super.ptr);
+		 float var = getMinDepthBounds0(super.ptr);
 		 this.minDepthBounds = var;
 		 return this.minDepthBounds;
 	 }
@@ -423,7 +441,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 */ 
 	 public void maxDepthBounds(float maxDepthBounds){
 		 this.maxDepthBounds = maxDepthBounds;
-		 maxDepthBounds0(this.ptr,  maxDepthBounds);
+		 setMaxDepthBounds0(this.ptr,  maxDepthBounds);
 	 }
 
 	/**
@@ -431,7 +449,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * Prototype: float  maxDepthBounds
 	 */ 
 	 public float maxDepthBounds(){
-		 float var = maxDepthBounds0(super.ptr);
+		 float var = getMaxDepthBounds0(super.ptr);
 		 this.maxDepthBounds = var;
 		 return this.maxDepthBounds;
 	 }
@@ -444,7 +462,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(Buffer ptr, int  _sType);/*
+	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
@@ -453,7 +471,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  sType0(Buffer ptr);/*
+	 private static native int  getSType0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
@@ -462,7 +480,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
@@ -471,16 +489,15 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
-		  return (VkObject) (vkObj->pNext);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkPipelineDepthStencilStateCreateFlags  flags
 	 */ 
-	 private static native void flags0(Buffer ptr, int _flags);/*
+	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  vkObj->flags = (VkPipelineDepthStencilStateCreateFlags) (_flags);
 	  */
@@ -489,7 +506,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkPipelineDepthStencilStateCreateFlags  flags
 	 */ 
-	 private static native int flags0(Buffer ptr);/*
+	 private static native int getFlags0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
@@ -498,7 +515,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native SET method for field depthTestEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthTestEnable
 	 */ 
-	 private static native void depthTestEnable0(Buffer ptr, boolean _depthTestEnable);/*
+	 private static native void setDepthTestEnable0(Buffer ptr, boolean _depthTestEnable);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  vkObj->depthTestEnable = (VkBool32) (_depthTestEnable);
 	  */
@@ -507,7 +524,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native GET method for field depthTestEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthTestEnable
 	 */ 
-	 private static native boolean depthTestEnable0(Buffer ptr);/*
+	 private static native boolean getDepthTestEnable0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->depthTestEnable);
 	 */
@@ -516,7 +533,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native SET method for field depthWriteEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthWriteEnable
 	 */ 
-	 private static native void depthWriteEnable0(Buffer ptr, boolean _depthWriteEnable);/*
+	 private static native void setDepthWriteEnable0(Buffer ptr, boolean _depthWriteEnable);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  vkObj->depthWriteEnable = (VkBool32) (_depthWriteEnable);
 	  */
@@ -525,7 +542,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native GET method for field depthWriteEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthWriteEnable
 	 */ 
-	 private static native boolean depthWriteEnable0(Buffer ptr);/*
+	 private static native boolean getDepthWriteEnable0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->depthWriteEnable);
 	 */
@@ -534,7 +551,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native SET method for field depthCompareOp	[vkenum]<br>
 	 * Prototype: VkCompareOp  depthCompareOp
 	 */ 
-	 private static native void depthCompareOp0(Buffer ptr, int  _depthCompareOp);/*
+	 private static native void setDepthCompareOp0(Buffer ptr, int  _depthCompareOp);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  vkObj->depthCompareOp = (VkCompareOp) (_depthCompareOp);
 	  */
@@ -543,7 +560,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native GET method for field depthCompareOp	[vkenum]<br>
 	 * Prototype: VkCompareOp  depthCompareOp
 	 */ 
-	 private static native int  depthCompareOp0(Buffer ptr);/*
+	 private static native int  getDepthCompareOp0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  return (VkCompareOp) (vkObj->depthCompareOp);
 	 */
@@ -552,7 +569,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native SET method for field depthBoundsTestEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthBoundsTestEnable
 	 */ 
-	 private static native void depthBoundsTestEnable0(Buffer ptr, boolean _depthBoundsTestEnable);/*
+	 private static native void setDepthBoundsTestEnable0(Buffer ptr, boolean _depthBoundsTestEnable);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  vkObj->depthBoundsTestEnable = (VkBool32) (_depthBoundsTestEnable);
 	  */
@@ -561,7 +578,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native GET method for field depthBoundsTestEnable	[boolean]<br>
 	 * Prototype: VkBool32  depthBoundsTestEnable
 	 */ 
-	 private static native boolean depthBoundsTestEnable0(Buffer ptr);/*
+	 private static native boolean getDepthBoundsTestEnable0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->depthBoundsTestEnable);
 	 */
@@ -570,7 +587,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native SET method for field stencilTestEnable	[boolean]<br>
 	 * Prototype: VkBool32  stencilTestEnable
 	 */ 
-	 private static native void stencilTestEnable0(Buffer ptr, boolean _stencilTestEnable);/*
+	 private static native void setStencilTestEnable0(Buffer ptr, boolean _stencilTestEnable);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  vkObj->stencilTestEnable = (VkBool32) (_stencilTestEnable);
 	  */
@@ -579,7 +596,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native GET method for field stencilTestEnable	[boolean]<br>
 	 * Prototype: VkBool32  stencilTestEnable
 	 */ 
-	 private static native boolean stencilTestEnable0(Buffer ptr);/*
+	 private static native boolean getStencilTestEnable0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->stencilTestEnable);
 	 */
@@ -588,7 +605,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native SET method for field front	[vkstruct]<br>
 	 * Prototype: VkStencilOpState  front
 	 */ 
-	 private static native void front0(Buffer ptr, java.nio.ByteBuffer  _front);/*
+	 private static native void setFront0(Buffer ptr, java.nio.ByteBuffer  _front);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  vkObj->front = (VkStencilOpState) (_front);
 	  */
@@ -597,16 +614,15 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native GET method for field front	[vkstruct]<br>
 	 * Prototype: VkStencilOpState  front
 	 */ 
-	 private static native java.nio.ByteBuffer  front0(Buffer ptr);/*
+	 private static native long getFront0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
-		  return (VkStencilOpState) (vkObj->front);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->front);	 */
 
 	/**
 	 * native SET method for field back	[vkstruct]<br>
 	 * Prototype: VkStencilOpState  back
 	 */ 
-	 private static native void back0(Buffer ptr, java.nio.ByteBuffer  _back);/*
+	 private static native void setBack0(Buffer ptr, java.nio.ByteBuffer  _back);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  vkObj->back = (VkStencilOpState) (_back);
 	  */
@@ -615,16 +631,15 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native GET method for field back	[vkstruct]<br>
 	 * Prototype: VkStencilOpState  back
 	 */ 
-	 private static native java.nio.ByteBuffer  back0(Buffer ptr);/*
+	 private static native long getBack0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
-		  return (VkStencilOpState) (vkObj->back);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->back);	 */
 
 	/**
 	 * native SET method for field minDepthBounds	[float]<br>
 	 * Prototype: float  minDepthBounds
 	 */ 
-	 private static native void minDepthBounds0(Buffer ptr, float _minDepthBounds);/*
+	 private static native void setMinDepthBounds0(Buffer ptr, float _minDepthBounds);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  vkObj->minDepthBounds = (float) (_minDepthBounds);
 	  */
@@ -633,7 +648,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native GET method for field minDepthBounds	[float]<br>
 	 * Prototype: float  minDepthBounds
 	 */ 
-	 private static native float minDepthBounds0(Buffer ptr);/*
+	 private static native float getMinDepthBounds0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->minDepthBounds);
 	 */
@@ -642,7 +657,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native SET method for field maxDepthBounds	[float]<br>
 	 * Prototype: float  maxDepthBounds
 	 */ 
-	 private static native void maxDepthBounds0(Buffer ptr, float _maxDepthBounds);/*
+	 private static native void setMaxDepthBounds0(Buffer ptr, float _maxDepthBounds);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  vkObj->maxDepthBounds = (float) (_maxDepthBounds);
 	  */
@@ -651,7 +666,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * native GET method for field maxDepthBounds	[float]<br>
 	 * Prototype: float  maxDepthBounds
 	 */ 
-	 private static native float maxDepthBounds0(Buffer ptr);/*
+	 private static native float getMaxDepthBounds0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->maxDepthBounds);
 	 */

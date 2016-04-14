@@ -9,11 +9,12 @@
  */
 package bor.vulkan.structs;
 
-import java.nio.Buffer;
+import bor.vulkan.*;
+import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
 
-import bor.vulkan.P;
-import bor.vulkan.enumerations.VkImageLayout;
+import java.nio.Buffer;
 
 
 /**
@@ -74,15 +75,31 @@ public class VkAttachmentReference extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkAttachmentReference(long address, int memSize){ 
+	 public VkAttachmentReference(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkAttachmentReference(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -124,7 +141,7 @@ public class VkAttachmentReference extends VkStruct {
 	 */ 
 	 public void attachment(int attachment){
 		 this.attachment = attachment;
-		 attachment0(this.ptr,  attachment);
+		 setAttachment0(this.ptr,  attachment);
 	 }
 
 	/**
@@ -132,7 +149,7 @@ public class VkAttachmentReference extends VkStruct {
 	 * Prototype: uint32_t  attachment
 	 */ 
 	 public int attachment(){
-		 int var = attachment0(super.ptr);
+		 int var = getAttachment0(super.ptr);
 		 this.attachment = var;
 		 return this.attachment;
 	 }
@@ -144,7 +161,7 @@ public class VkAttachmentReference extends VkStruct {
 	 public void layout(VkImageLayout layout){
 		 this.layout = layout;
 		 int enumVal = layout.getValue();
-		 layout0(this.ptr, enumVal );
+		 setLayout0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -152,7 +169,7 @@ public class VkAttachmentReference extends VkStruct {
 	 * Prototype: VkImageLayout  layout
 	 */ 
 	 public VkImageLayout layout(){
-		 int nativeVal = layout0(super.ptr);
+		 int nativeVal = getLayout0(super.ptr);
 		 this.layout = VkImageLayout.fromValue(nativeVal); 
 		 return this.layout;
 	 }
@@ -165,7 +182,7 @@ public class VkAttachmentReference extends VkStruct {
 	 * native SET method for field attachment	[int]<br>
 	 * Prototype: uint32_t  attachment
 	 */ 
-	 private static native void attachment0(Buffer ptr, int _attachment);/*
+	 private static native void setAttachment0(Buffer ptr, int _attachment);/*
 		  VkAttachmentReference* vkObj = (VkAttachmentReference*)(ptr);
 		  vkObj->attachment = (uint32_t) (_attachment);
 	  */
@@ -174,7 +191,7 @@ public class VkAttachmentReference extends VkStruct {
 	 * native GET method for field attachment	[int]<br>
 	 * Prototype: uint32_t  attachment
 	 */ 
-	 private static native int attachment0(Buffer ptr);/*
+	 private static native int getAttachment0(Buffer ptr);/*
 		  VkAttachmentReference vkObj = (VkAttachmentReference*)(ptr);
 		  return (jint) (vkObj->attachment);
 	 */
@@ -183,7 +200,7 @@ public class VkAttachmentReference extends VkStruct {
 	 * native SET method for field layout	[vkenum]<br>
 	 * Prototype: VkImageLayout  layout
 	 */ 
-	 private static native void layout0(Buffer ptr, int  _layout);/*
+	 private static native void setLayout0(Buffer ptr, int  _layout);/*
 		  VkAttachmentReference* vkObj = (VkAttachmentReference*)(ptr);
 		  vkObj->layout = (VkImageLayout) (_layout);
 	  */
@@ -192,7 +209,7 @@ public class VkAttachmentReference extends VkStruct {
 	 * native GET method for field layout	[vkenum]<br>
 	 * Prototype: VkImageLayout  layout
 	 */ 
-	 private static native int  layout0(Buffer ptr);/*
+	 private static native int  getLayout0(Buffer ptr);/*
 		  VkAttachmentReference vkObj = (VkAttachmentReference*)(ptr);
 		  return (VkImageLayout) (vkObj->layout);
 	 */

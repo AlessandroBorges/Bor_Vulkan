@@ -177,15 +177,31 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkGraphicsPipelineCreateInfo(long address, int memSize){ 
+	 public VkGraphicsPipelineCreateInfo(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkGraphicsPipelineCreateInfo(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -228,7 +244,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
-		 sType0(this.ptr, enumVal );
+		 setSType0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -236,7 +252,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 int nativeVal = sType0(super.ptr);
+		 int nativeVal = getSType0(super.ptr);
 		 this.sType = VkStructureType.fromValue(nativeVal); 
 		 return this.sType;
 	 }
@@ -248,7 +264,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
-		 pNext0(this.ptr, buff);
+		 setPNext0(this.ptr, buff);
 	 }
 
 	/**
@@ -256,8 +272,8 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 public VkObject pNext(){
-		 ByteBuffer pointer = pNext0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPNext0(super.ptr);
+		 if(pointer == 0){
 		    this.pNext = null;
 		    return null;
 		  } else 
@@ -275,7 +291,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		 flags0(this.ptr,  flags);
+		 setFlags0(this.ptr,  flags);
 	 }
 
 	/**
@@ -283,7 +299,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: VkPipelineCreateFlags  flags
 	 */ 
 	 public int flags(){
-		 int var = flags0(super.ptr);
+		 int var = getFlags0(super.ptr);
 		 this.flags = var;
 		 return this.flags;
 	 }
@@ -294,7 +310,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void stageCount(int stageCount){
 		 this.stageCount = stageCount;
-		 stageCount0(this.ptr,  stageCount);
+		 setStageCount0(this.ptr,  stageCount);
 	 }
 
 	/**
@@ -302,7 +318,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  stageCount
 	 */ 
 	 public int stageCount(){
-		 int var = stageCount0(super.ptr);
+		 int var = getStageCount0(super.ptr);
 		 this.stageCount = var;
 		 return this.stageCount;
 	 }
@@ -313,8 +329,8 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void pStages( VkPipelineShaderStageCreateInfo  pStages){
 		 this.pStages = pStages;
-		 ByteBuffer buff = (pStages==null) ? null : pStages.getPointerStruct();
-		 pStages0(this.ptr, buff);
+		 ByteBuffer buff = (pStages==null) ? null : pStages.getPointer();
+		 setPStages0(this.ptr, buff);
 	 }
 
 	/**
@@ -322,12 +338,13 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineShaderStageCreateInfo*  pStages
 	 */ 
 	 public  VkPipelineShaderStageCreateInfo  pStages(){
-		 ByteBuffer pointer = pStages0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPStages0(super.ptr);
+		 if(pointer == 0){
 		    this.pStages = null;
 		    return null;
-		  } else 
- 		 if(this.pStages == null){
+		  } 
+
+		 if(this.pStages == null){
 		    this.pStages = new  VkPipelineShaderStageCreateInfo (pointer);
 		 }else{
 		    this.pStages.setPointer(pointer);
@@ -341,8 +358,8 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void pVertexInputState( VkPipelineVertexInputStateCreateInfo  pVertexInputState){
 		 this.pVertexInputState = pVertexInputState;
-		 ByteBuffer buff = (pVertexInputState==null) ? null : pVertexInputState.getPointerStruct();
-		 pVertexInputState0(this.ptr, buff);
+		 ByteBuffer buff = (pVertexInputState==null) ? null : pVertexInputState.getPointer();
+		 setPVertexInputState0(this.ptr, buff);
 	 }
 
 	/**
@@ -350,12 +367,13 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineVertexInputStateCreateInfo*  pVertexInputState
 	 */ 
 	 public  VkPipelineVertexInputStateCreateInfo  pVertexInputState(){
-		 ByteBuffer pointer = pVertexInputState0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPVertexInputState0(super.ptr);
+		 if(pointer == 0){
 		    this.pVertexInputState = null;
 		    return null;
-		  } else 
- 		 if(this.pVertexInputState == null){
+		  } 
+
+		 if(this.pVertexInputState == null){
 		    this.pVertexInputState = new  VkPipelineVertexInputStateCreateInfo (pointer);
 		 }else{
 		    this.pVertexInputState.setPointer(pointer);
@@ -369,8 +387,8 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void pInputAssemblyState( VkPipelineInputAssemblyStateCreateInfo  pInputAssemblyState){
 		 this.pInputAssemblyState = pInputAssemblyState;
-		 ByteBuffer buff = (pInputAssemblyState==null) ? null : pInputAssemblyState.getPointerStruct();
-		 pInputAssemblyState0(this.ptr, buff);
+		 ByteBuffer buff = (pInputAssemblyState==null) ? null : pInputAssemblyState.getPointer();
+		 setPInputAssemblyState0(this.ptr, buff);
 	 }
 
 	/**
@@ -378,12 +396,13 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineInputAssemblyStateCreateInfo*  pInputAssemblyState
 	 */ 
 	 public  VkPipelineInputAssemblyStateCreateInfo  pInputAssemblyState(){
-		 ByteBuffer pointer = pInputAssemblyState0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPInputAssemblyState0(super.ptr);
+		 if(pointer == 0){
 		    this.pInputAssemblyState = null;
 		    return null;
-		  } else 
- 		 if(this.pInputAssemblyState == null){
+		  } 
+
+		 if(this.pInputAssemblyState == null){
 		    this.pInputAssemblyState = new  VkPipelineInputAssemblyStateCreateInfo (pointer);
 		 }else{
 		    this.pInputAssemblyState.setPointer(pointer);
@@ -397,8 +416,8 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void pTessellationState( VkPipelineTessellationStateCreateInfo  pTessellationState){
 		 this.pTessellationState = pTessellationState;
-		 ByteBuffer buff = (pTessellationState==null) ? null : pTessellationState.getPointerStruct();
-		 pTessellationState0(this.ptr, buff);
+		 ByteBuffer buff = (pTessellationState==null) ? null : pTessellationState.getPointer();
+		 setPTessellationState0(this.ptr, buff);
 	 }
 
 	/**
@@ -406,12 +425,13 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineTessellationStateCreateInfo*  pTessellationState
 	 */ 
 	 public  VkPipelineTessellationStateCreateInfo  pTessellationState(){
-		 ByteBuffer pointer = pTessellationState0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPTessellationState0(super.ptr);
+		 if(pointer == 0){
 		    this.pTessellationState = null;
 		    return null;
-		  } else 
- 		 if(this.pTessellationState == null){
+		  } 
+
+		 if(this.pTessellationState == null){
 		    this.pTessellationState = new  VkPipelineTessellationStateCreateInfo (pointer);
 		 }else{
 		    this.pTessellationState.setPointer(pointer);
@@ -425,8 +445,8 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void pViewportState( VkPipelineViewportStateCreateInfo  pViewportState){
 		 this.pViewportState = pViewportState;
-		 ByteBuffer buff = (pViewportState==null) ? null : pViewportState.getPointerStruct();
-		 pViewportState0(this.ptr, buff);
+		 ByteBuffer buff = (pViewportState==null) ? null : pViewportState.getPointer();
+		 setPViewportState0(this.ptr, buff);
 	 }
 
 	/**
@@ -434,12 +454,13 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineViewportStateCreateInfo*  pViewportState
 	 */ 
 	 public  VkPipelineViewportStateCreateInfo  pViewportState(){
-		 ByteBuffer pointer = pViewportState0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPViewportState0(super.ptr);
+		 if(pointer == 0){
 		    this.pViewportState = null;
 		    return null;
-		  } else 
- 		 if(this.pViewportState == null){
+		  } 
+
+		 if(this.pViewportState == null){
 		    this.pViewportState = new  VkPipelineViewportStateCreateInfo (pointer);
 		 }else{
 		    this.pViewportState.setPointer(pointer);
@@ -453,8 +474,8 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void pRasterizationState( VkPipelineRasterizationStateCreateInfo  pRasterizationState){
 		 this.pRasterizationState = pRasterizationState;
-		 ByteBuffer buff = (pRasterizationState==null) ? null : pRasterizationState.getPointerStruct();
-		 pRasterizationState0(this.ptr, buff);
+		 ByteBuffer buff = (pRasterizationState==null) ? null : pRasterizationState.getPointer();
+		 setPRasterizationState0(this.ptr, buff);
 	 }
 
 	/**
@@ -462,12 +483,13 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineRasterizationStateCreateInfo*  pRasterizationState
 	 */ 
 	 public  VkPipelineRasterizationStateCreateInfo  pRasterizationState(){
-		 ByteBuffer pointer = pRasterizationState0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPRasterizationState0(super.ptr);
+		 if(pointer == 0){
 		    this.pRasterizationState = null;
 		    return null;
-		  } else 
- 		 if(this.pRasterizationState == null){
+		  } 
+
+		 if(this.pRasterizationState == null){
 		    this.pRasterizationState = new  VkPipelineRasterizationStateCreateInfo (pointer);
 		 }else{
 		    this.pRasterizationState.setPointer(pointer);
@@ -481,8 +503,8 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void pMultisampleState( VkPipelineMultisampleStateCreateInfo  pMultisampleState){
 		 this.pMultisampleState = pMultisampleState;
-		 ByteBuffer buff = (pMultisampleState==null) ? null : pMultisampleState.getPointerStruct();
-		 pMultisampleState0(this.ptr, buff);
+		 ByteBuffer buff = (pMultisampleState==null) ? null : pMultisampleState.getPointer();
+		 setPMultisampleState0(this.ptr, buff);
 	 }
 
 	/**
@@ -490,12 +512,13 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineMultisampleStateCreateInfo*  pMultisampleState
 	 */ 
 	 public  VkPipelineMultisampleStateCreateInfo  pMultisampleState(){
-		 ByteBuffer pointer = pMultisampleState0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPMultisampleState0(super.ptr);
+		 if(pointer == 0){
 		    this.pMultisampleState = null;
 		    return null;
-		  } else 
- 		 if(this.pMultisampleState == null){
+		  } 
+
+		 if(this.pMultisampleState == null){
 		    this.pMultisampleState = new  VkPipelineMultisampleStateCreateInfo (pointer);
 		 }else{
 		    this.pMultisampleState.setPointer(pointer);
@@ -509,8 +532,8 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void pDepthStencilState( VkPipelineDepthStencilStateCreateInfo  pDepthStencilState){
 		 this.pDepthStencilState = pDepthStencilState;
-		 ByteBuffer buff = (pDepthStencilState==null) ? null : pDepthStencilState.getPointerStruct();
-		 pDepthStencilState0(this.ptr, buff);
+		 ByteBuffer buff = (pDepthStencilState==null) ? null : pDepthStencilState.getPointer();
+		 setPDepthStencilState0(this.ptr, buff);
 	 }
 
 	/**
@@ -518,12 +541,13 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineDepthStencilStateCreateInfo*  pDepthStencilState
 	 */ 
 	 public  VkPipelineDepthStencilStateCreateInfo  pDepthStencilState(){
-		 ByteBuffer pointer = pDepthStencilState0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPDepthStencilState0(super.ptr);
+		 if(pointer == 0){
 		    this.pDepthStencilState = null;
 		    return null;
-		  } else 
- 		 if(this.pDepthStencilState == null){
+		  } 
+
+		 if(this.pDepthStencilState == null){
 		    this.pDepthStencilState = new  VkPipelineDepthStencilStateCreateInfo (pointer);
 		 }else{
 		    this.pDepthStencilState.setPointer(pointer);
@@ -537,8 +561,8 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void pColorBlendState( VkPipelineColorBlendStateCreateInfo  pColorBlendState){
 		 this.pColorBlendState = pColorBlendState;
-		 ByteBuffer buff = (pColorBlendState==null) ? null : pColorBlendState.getPointerStruct();
-		 pColorBlendState0(this.ptr, buff);
+		 ByteBuffer buff = (pColorBlendState==null) ? null : pColorBlendState.getPointer();
+		 setPColorBlendState0(this.ptr, buff);
 	 }
 
 	/**
@@ -546,12 +570,13 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineColorBlendStateCreateInfo*  pColorBlendState
 	 */ 
 	 public  VkPipelineColorBlendStateCreateInfo  pColorBlendState(){
-		 ByteBuffer pointer = pColorBlendState0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPColorBlendState0(super.ptr);
+		 if(pointer == 0){
 		    this.pColorBlendState = null;
 		    return null;
-		  } else 
- 		 if(this.pColorBlendState == null){
+		  } 
+
+		 if(this.pColorBlendState == null){
 		    this.pColorBlendState = new  VkPipelineColorBlendStateCreateInfo (pointer);
 		 }else{
 		    this.pColorBlendState.setPointer(pointer);
@@ -565,8 +590,8 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void pDynamicState( VkPipelineDynamicStateCreateInfo  pDynamicState){
 		 this.pDynamicState = pDynamicState;
-		 ByteBuffer buff = (pDynamicState==null) ? null : pDynamicState.getPointerStruct();
-		 pDynamicState0(this.ptr, buff);
+		 ByteBuffer buff = (pDynamicState==null) ? null : pDynamicState.getPointer();
+		 setPDynamicState0(this.ptr, buff);
 	 }
 
 	/**
@@ -574,12 +599,13 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineDynamicStateCreateInfo*  pDynamicState
 	 */ 
 	 public  VkPipelineDynamicStateCreateInfo  pDynamicState(){
-		 ByteBuffer pointer = pDynamicState0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPDynamicState0(super.ptr);
+		 if(pointer == 0){
 		    this.pDynamicState = null;
 		    return null;
-		  } else 
- 		 if(this.pDynamicState == null){
+		  } 
+
+		 if(this.pDynamicState == null){
 		    this.pDynamicState = new  VkPipelineDynamicStateCreateInfo (pointer);
 		 }else{
 		    this.pDynamicState.setPointer(pointer);
@@ -593,8 +619,8 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void layout(VkPipelineLayout layout){
 		 this.layout = layout;
-		 ByteBuffer buff = (layout==null) ? null : layout.getHandle();
-		 layout0(this.ptr, buff);
+		 ByteBuffer buff = (layout==null) ? null : layout.getPointer();
+		 setLayout0(this.ptr, buff);
 	 }
 
 	/**
@@ -603,15 +629,16 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public VkPipelineLayout layout(){
 
-		 ByteBuffer handle = layout0(super.ptr);
-		 if(handle == null){
+		 long handle = getLayout0(super.ptr);
+		 if(handle == 0){
 		    this.layout = null;
 		    return null;
-		  } else 
- 		 if(this.layout == null){
+		  }  
+
+		 if(this.layout == null){
 		    this.layout = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.layout).setHandle(handle);
+		    ((VkHandle)this.layout).setPointer(handle);
 		  }
 		 return this.layout;
 	 }
@@ -622,8 +649,8 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void renderPass(VkRenderPass renderPass){
 		 this.renderPass = renderPass;
-		 ByteBuffer buff = (renderPass==null) ? null : renderPass.getHandle();
-		 renderPass0(this.ptr, buff);
+		 ByteBuffer buff = (renderPass==null) ? null : renderPass.getPointer();
+		 setRenderPass0(this.ptr, buff);
 	 }
 
 	/**
@@ -632,15 +659,16 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public VkRenderPass renderPass(){
 
-		 ByteBuffer handle = renderPass0(super.ptr);
-		 if(handle == null){
+		 long handle = getRenderPass0(super.ptr);
+		 if(handle == 0){
 		    this.renderPass = null;
 		    return null;
-		  } else 
- 		 if(this.renderPass == null){
+		  }  
+
+		 if(this.renderPass == null){
 		    this.renderPass = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.renderPass).setHandle(handle);
+		    ((VkHandle)this.renderPass).setPointer(handle);
 		  }
 		 return this.renderPass;
 	 }
@@ -651,7 +679,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void subpass(int subpass){
 		 this.subpass = subpass;
-		 subpass0(this.ptr,  subpass);
+		 setSubpass0(this.ptr,  subpass);
 	 }
 
 	/**
@@ -659,7 +687,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  subpass
 	 */ 
 	 public int subpass(){
-		 int var = subpass0(super.ptr);
+		 int var = getSubpass0(super.ptr);
 		 this.subpass = var;
 		 return this.subpass;
 	 }
@@ -670,8 +698,8 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void basePipelineHandle(VkPipeline basePipelineHandle){
 		 this.basePipelineHandle = basePipelineHandle;
-		 ByteBuffer buff = (basePipelineHandle==null) ? null : basePipelineHandle.getHandle();
-		 basePipelineHandle0(this.ptr, buff);
+		 ByteBuffer buff = (basePipelineHandle==null) ? null : basePipelineHandle.getPointer();
+		 setBasePipelineHandle0(this.ptr, buff);
 	 }
 
 	/**
@@ -680,15 +708,16 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public VkPipeline basePipelineHandle(){
 
-		 ByteBuffer handle = basePipelineHandle0(super.ptr);
-		 if(handle == null){
+		 long handle = getBasePipelineHandle0(super.ptr);
+		 if(handle == 0){
 		    this.basePipelineHandle = null;
 		    return null;
-		  } else 
- 		 if(this.basePipelineHandle == null){
+		  }  
+
+		 if(this.basePipelineHandle == null){
 		    this.basePipelineHandle = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.basePipelineHandle).setHandle(handle);
+		    ((VkHandle)this.basePipelineHandle).setPointer(handle);
 		  }
 		 return this.basePipelineHandle;
 	 }
@@ -699,7 +728,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 */ 
 	 public void basePipelineIndex(int basePipelineIndex){
 		 this.basePipelineIndex = basePipelineIndex;
-		 basePipelineIndex0(this.ptr,  basePipelineIndex);
+		 setBasePipelineIndex0(this.ptr,  basePipelineIndex);
 	 }
 
 	/**
@@ -707,7 +736,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: int32_t  basePipelineIndex
 	 */ 
 	 public int basePipelineIndex(){
-		 int var = basePipelineIndex0(super.ptr);
+		 int var = getBasePipelineIndex0(super.ptr);
 		 this.basePipelineIndex = var;
 		 return this.basePipelineIndex;
 	 }
@@ -720,7 +749,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(Buffer ptr, int  _sType);/*
+	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
@@ -729,7 +758,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  sType0(Buffer ptr);/*
+	 private static native int  getSType0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
@@ -738,7 +767,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
@@ -747,16 +776,15 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+	 private static native long getPNext0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  return (VkObject) (vkObj->pNext);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkPipelineCreateFlags  flags
 	 */ 
-	 private static native void flags0(Buffer ptr, int _flags);/*
+	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  vkObj->flags = (VkPipelineCreateFlags) (_flags);
 	  */
@@ -765,7 +793,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkPipelineCreateFlags  flags
 	 */ 
-	 private static native int flags0(Buffer ptr);/*
+	 private static native int getFlags0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
@@ -774,7 +802,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native SET method for field stageCount	[int]<br>
 	 * Prototype: uint32_t  stageCount
 	 */ 
-	 private static native void stageCount0(Buffer ptr, int _stageCount);/*
+	 private static native void setStageCount0(Buffer ptr, int _stageCount);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  vkObj->stageCount = (uint32_t) (_stageCount);
 	  */
@@ -783,7 +811,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native GET method for field stageCount	[int]<br>
 	 * Prototype: uint32_t  stageCount
 	 */ 
-	 private static native int stageCount0(Buffer ptr);/*
+	 private static native int getStageCount0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jint) (vkObj->stageCount);
 	 */
@@ -792,7 +820,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native SET method for field pStages	[vkstruct]<br>
 	 * Prototype: const VkPipelineShaderStageCreateInfo*  pStages
 	 */ 
-	 private static native void pStages0(Buffer ptr, java.nio.ByteBuffer  _pStages);/*
+	 private static native void setPStages0(Buffer ptr, java.nio.ByteBuffer  _pStages);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  vkObj->pStages = (const VkPipelineShaderStageCreateInfo*) (_pStages);
 	  */
@@ -801,16 +829,15 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native GET method for field pStages	[vkstruct]<br>
 	 * Prototype: const VkPipelineShaderStageCreateInfo*  pStages
 	 */ 
-	 private static native java.nio.ByteBuffer  pStages0(Buffer ptr);/*
+	 private static native long getPStages0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  return ( VkPipelineShaderStageCreateInfo ) (vkObj->pStages);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pStages);	 */
 
 	/**
 	 * native SET method for field pVertexInputState	[vkstruct]<br>
 	 * Prototype: const VkPipelineVertexInputStateCreateInfo*  pVertexInputState
 	 */ 
-	 private static native void pVertexInputState0(Buffer ptr, java.nio.ByteBuffer  _pVertexInputState);/*
+	 private static native void setPVertexInputState0(Buffer ptr, java.nio.ByteBuffer  _pVertexInputState);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  vkObj->pVertexInputState = (const VkPipelineVertexInputStateCreateInfo*) (_pVertexInputState);
 	  */
@@ -819,16 +846,15 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native GET method for field pVertexInputState	[vkstruct]<br>
 	 * Prototype: const VkPipelineVertexInputStateCreateInfo*  pVertexInputState
 	 */ 
-	 private static native java.nio.ByteBuffer  pVertexInputState0(Buffer ptr);/*
+	 private static native long getPVertexInputState0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  return ( VkPipelineVertexInputStateCreateInfo ) (vkObj->pVertexInputState);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pVertexInputState);	 */
 
 	/**
 	 * native SET method for field pInputAssemblyState	[vkstruct]<br>
 	 * Prototype: const VkPipelineInputAssemblyStateCreateInfo*  pInputAssemblyState
 	 */ 
-	 private static native void pInputAssemblyState0(Buffer ptr, java.nio.ByteBuffer  _pInputAssemblyState);/*
+	 private static native void setPInputAssemblyState0(Buffer ptr, java.nio.ByteBuffer  _pInputAssemblyState);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  vkObj->pInputAssemblyState = (const VkPipelineInputAssemblyStateCreateInfo*) (_pInputAssemblyState);
 	  */
@@ -837,16 +863,15 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native GET method for field pInputAssemblyState	[vkstruct]<br>
 	 * Prototype: const VkPipelineInputAssemblyStateCreateInfo*  pInputAssemblyState
 	 */ 
-	 private static native java.nio.ByteBuffer  pInputAssemblyState0(Buffer ptr);/*
+	 private static native long getPInputAssemblyState0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  return ( VkPipelineInputAssemblyStateCreateInfo ) (vkObj->pInputAssemblyState);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pInputAssemblyState);	 */
 
 	/**
 	 * native SET method for field pTessellationState	[vkstruct]<br>
 	 * Prototype: const VkPipelineTessellationStateCreateInfo*  pTessellationState
 	 */ 
-	 private static native void pTessellationState0(Buffer ptr, java.nio.ByteBuffer  _pTessellationState);/*
+	 private static native void setPTessellationState0(Buffer ptr, java.nio.ByteBuffer  _pTessellationState);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  vkObj->pTessellationState = (const VkPipelineTessellationStateCreateInfo*) (_pTessellationState);
 	  */
@@ -855,16 +880,15 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native GET method for field pTessellationState	[vkstruct]<br>
 	 * Prototype: const VkPipelineTessellationStateCreateInfo*  pTessellationState
 	 */ 
-	 private static native java.nio.ByteBuffer  pTessellationState0(Buffer ptr);/*
+	 private static native long getPTessellationState0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  return ( VkPipelineTessellationStateCreateInfo ) (vkObj->pTessellationState);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pTessellationState);	 */
 
 	/**
 	 * native SET method for field pViewportState	[vkstruct]<br>
 	 * Prototype: const VkPipelineViewportStateCreateInfo*  pViewportState
 	 */ 
-	 private static native void pViewportState0(Buffer ptr, java.nio.ByteBuffer  _pViewportState);/*
+	 private static native void setPViewportState0(Buffer ptr, java.nio.ByteBuffer  _pViewportState);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  vkObj->pViewportState = (const VkPipelineViewportStateCreateInfo*) (_pViewportState);
 	  */
@@ -873,16 +897,15 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native GET method for field pViewportState	[vkstruct]<br>
 	 * Prototype: const VkPipelineViewportStateCreateInfo*  pViewportState
 	 */ 
-	 private static native java.nio.ByteBuffer  pViewportState0(Buffer ptr);/*
+	 private static native long getPViewportState0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  return ( VkPipelineViewportStateCreateInfo ) (vkObj->pViewportState);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pViewportState);	 */
 
 	/**
 	 * native SET method for field pRasterizationState	[vkstruct]<br>
 	 * Prototype: const VkPipelineRasterizationStateCreateInfo*  pRasterizationState
 	 */ 
-	 private static native void pRasterizationState0(Buffer ptr, java.nio.ByteBuffer  _pRasterizationState);/*
+	 private static native void setPRasterizationState0(Buffer ptr, java.nio.ByteBuffer  _pRasterizationState);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  vkObj->pRasterizationState = (const VkPipelineRasterizationStateCreateInfo*) (_pRasterizationState);
 	  */
@@ -891,16 +914,15 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native GET method for field pRasterizationState	[vkstruct]<br>
 	 * Prototype: const VkPipelineRasterizationStateCreateInfo*  pRasterizationState
 	 */ 
-	 private static native java.nio.ByteBuffer  pRasterizationState0(Buffer ptr);/*
+	 private static native long getPRasterizationState0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  return ( VkPipelineRasterizationStateCreateInfo ) (vkObj->pRasterizationState);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pRasterizationState);	 */
 
 	/**
 	 * native SET method for field pMultisampleState	[vkstruct]<br>
 	 * Prototype: const VkPipelineMultisampleStateCreateInfo*  pMultisampleState
 	 */ 
-	 private static native void pMultisampleState0(Buffer ptr, java.nio.ByteBuffer  _pMultisampleState);/*
+	 private static native void setPMultisampleState0(Buffer ptr, java.nio.ByteBuffer  _pMultisampleState);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  vkObj->pMultisampleState = (const VkPipelineMultisampleStateCreateInfo*) (_pMultisampleState);
 	  */
@@ -909,16 +931,15 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native GET method for field pMultisampleState	[vkstruct]<br>
 	 * Prototype: const VkPipelineMultisampleStateCreateInfo*  pMultisampleState
 	 */ 
-	 private static native java.nio.ByteBuffer  pMultisampleState0(Buffer ptr);/*
+	 private static native long getPMultisampleState0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  return ( VkPipelineMultisampleStateCreateInfo ) (vkObj->pMultisampleState);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pMultisampleState);	 */
 
 	/**
 	 * native SET method for field pDepthStencilState	[vkstruct]<br>
 	 * Prototype: const VkPipelineDepthStencilStateCreateInfo*  pDepthStencilState
 	 */ 
-	 private static native void pDepthStencilState0(Buffer ptr, java.nio.ByteBuffer  _pDepthStencilState);/*
+	 private static native void setPDepthStencilState0(Buffer ptr, java.nio.ByteBuffer  _pDepthStencilState);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  vkObj->pDepthStencilState = (const VkPipelineDepthStencilStateCreateInfo*) (_pDepthStencilState);
 	  */
@@ -927,16 +948,15 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native GET method for field pDepthStencilState	[vkstruct]<br>
 	 * Prototype: const VkPipelineDepthStencilStateCreateInfo*  pDepthStencilState
 	 */ 
-	 private static native java.nio.ByteBuffer  pDepthStencilState0(Buffer ptr);/*
+	 private static native long getPDepthStencilState0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  return ( VkPipelineDepthStencilStateCreateInfo ) (vkObj->pDepthStencilState);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pDepthStencilState);	 */
 
 	/**
 	 * native SET method for field pColorBlendState	[vkstruct]<br>
 	 * Prototype: const VkPipelineColorBlendStateCreateInfo*  pColorBlendState
 	 */ 
-	 private static native void pColorBlendState0(Buffer ptr, java.nio.ByteBuffer  _pColorBlendState);/*
+	 private static native void setPColorBlendState0(Buffer ptr, java.nio.ByteBuffer  _pColorBlendState);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  vkObj->pColorBlendState = (const VkPipelineColorBlendStateCreateInfo*) (_pColorBlendState);
 	  */
@@ -945,16 +965,15 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native GET method for field pColorBlendState	[vkstruct]<br>
 	 * Prototype: const VkPipelineColorBlendStateCreateInfo*  pColorBlendState
 	 */ 
-	 private static native java.nio.ByteBuffer  pColorBlendState0(Buffer ptr);/*
+	 private static native long getPColorBlendState0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  return ( VkPipelineColorBlendStateCreateInfo ) (vkObj->pColorBlendState);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pColorBlendState);	 */
 
 	/**
 	 * native SET method for field pDynamicState	[vkstruct]<br>
 	 * Prototype: const VkPipelineDynamicStateCreateInfo*  pDynamicState
 	 */ 
-	 private static native void pDynamicState0(Buffer ptr, java.nio.ByteBuffer  _pDynamicState);/*
+	 private static native void setPDynamicState0(Buffer ptr, java.nio.ByteBuffer  _pDynamicState);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  vkObj->pDynamicState = (const VkPipelineDynamicStateCreateInfo*) (_pDynamicState);
 	  */
@@ -963,16 +982,15 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native GET method for field pDynamicState	[vkstruct]<br>
 	 * Prototype: const VkPipelineDynamicStateCreateInfo*  pDynamicState
 	 */ 
-	 private static native java.nio.ByteBuffer  pDynamicState0(Buffer ptr);/*
+	 private static native long getPDynamicState0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  return ( VkPipelineDynamicStateCreateInfo ) (vkObj->pDynamicState);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pDynamicState);	 */
 
 	/**
 	 * native SET method for field layout	[vkhandle]<br>
 	 * Prototype: VkPipelineLayout  layout
 	 */ 
-	 private static native void layout0(Buffer ptr, java.nio.ByteBuffer  _layout);/*
+	 private static native void setLayout0(Buffer ptr, java.nio.ByteBuffer  _layout);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  vkObj->layout = (VkPipelineLayout) (_layout);
 	  */
@@ -981,16 +999,15 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native GET method for field layout	[vkhandle]<br>
 	 * Prototype: VkPipelineLayout  layout
 	 */ 
-	 private static native java.nio.ByteBuffer  layout0(Buffer ptr);/*
+	 private static native long getLayout0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  return (VkPipelineLayout) (vkObj->layout);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->layout);	 */
 
 	/**
 	 * native SET method for field renderPass	[vkhandle]<br>
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
-	 private static native void renderPass0(Buffer ptr, java.nio.ByteBuffer  _renderPass);/*
+	 private static native void setRenderPass0(Buffer ptr, java.nio.ByteBuffer  _renderPass);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  vkObj->renderPass = (VkRenderPass) (_renderPass);
 	  */
@@ -999,16 +1016,15 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native GET method for field renderPass	[vkhandle]<br>
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
-	 private static native java.nio.ByteBuffer  renderPass0(Buffer ptr);/*
+	 private static native long getRenderPass0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  return (VkRenderPass) (vkObj->renderPass);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->renderPass);	 */
 
 	/**
 	 * native SET method for field subpass	[int]<br>
 	 * Prototype: uint32_t  subpass
 	 */ 
-	 private static native void subpass0(Buffer ptr, int _subpass);/*
+	 private static native void setSubpass0(Buffer ptr, int _subpass);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  vkObj->subpass = (uint32_t) (_subpass);
 	  */
@@ -1017,7 +1033,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native GET method for field subpass	[int]<br>
 	 * Prototype: uint32_t  subpass
 	 */ 
-	 private static native int subpass0(Buffer ptr);/*
+	 private static native int getSubpass0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jint) (vkObj->subpass);
 	 */
@@ -1026,7 +1042,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native SET method for field basePipelineHandle	[vkhandle]<br>
 	 * Prototype: VkPipeline  basePipelineHandle
 	 */ 
-	 private static native void basePipelineHandle0(Buffer ptr, java.nio.ByteBuffer  _basePipelineHandle);/*
+	 private static native void setBasePipelineHandle0(Buffer ptr, java.nio.ByteBuffer  _basePipelineHandle);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  vkObj->basePipelineHandle = (VkPipeline) (_basePipelineHandle);
 	  */
@@ -1035,16 +1051,15 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native GET method for field basePipelineHandle	[vkhandle]<br>
 	 * Prototype: VkPipeline  basePipelineHandle
 	 */ 
-	 private static native java.nio.ByteBuffer  basePipelineHandle0(Buffer ptr);/*
+	 private static native long getBasePipelineHandle0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  return (VkPipeline) (vkObj->basePipelineHandle);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->basePipelineHandle);	 */
 
 	/**
 	 * native SET method for field basePipelineIndex	[int]<br>
 	 * Prototype: int32_t  basePipelineIndex
 	 */ 
-	 private static native void basePipelineIndex0(Buffer ptr, int _basePipelineIndex);/*
+	 private static native void setBasePipelineIndex0(Buffer ptr, int _basePipelineIndex);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  vkObj->basePipelineIndex = (int32_t) (_basePipelineIndex);
 	  */
@@ -1053,7 +1068,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * native GET method for field basePipelineIndex	[int]<br>
 	 * Prototype: int32_t  basePipelineIndex
 	 */ 
-	 private static native int basePipelineIndex0(Buffer ptr);/*
+	 private static native int getBasePipelineIndex0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jint) (vkObj->basePipelineIndex);
 	 */

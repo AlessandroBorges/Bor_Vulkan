@@ -81,15 +81,31 @@ public class VkPushConstantRange extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkPushConstantRange(long address, int memSize){ 
+	 public VkPushConstantRange(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkPushConstantRange(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -131,7 +147,7 @@ public class VkPushConstantRange extends VkStruct {
 	 */ 
 	 public void stageFlags(int stageFlags){
 		 this.stageFlags = stageFlags;
-		 stageFlags0(this.ptr,  stageFlags);
+		 setStageFlags0(this.ptr,  stageFlags);
 	 }
 
 	/**
@@ -139,7 +155,7 @@ public class VkPushConstantRange extends VkStruct {
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
 	 public int stageFlags(){
-		 int var = stageFlags0(super.ptr);
+		 int var = getStageFlags0(super.ptr);
 		 this.stageFlags = var;
 		 return this.stageFlags;
 	 }
@@ -150,7 +166,7 @@ public class VkPushConstantRange extends VkStruct {
 	 */ 
 	 public void offset(int offset){
 		 this.offset = offset;
-		 offset0(this.ptr,  offset);
+		 setOffset0(this.ptr,  offset);
 	 }
 
 	/**
@@ -158,7 +174,7 @@ public class VkPushConstantRange extends VkStruct {
 	 * Prototype: uint32_t  offset
 	 */ 
 	 public int offset(){
-		 int var = offset0(super.ptr);
+		 int var = getOffset0(super.ptr);
 		 this.offset = var;
 		 return this.offset;
 	 }
@@ -169,7 +185,7 @@ public class VkPushConstantRange extends VkStruct {
 	 */ 
 	 public void size(int size){
 		 this.size = size;
-		 size0(this.ptr,  size);
+		 setSize0(this.ptr,  size);
 	 }
 
 	/**
@@ -177,7 +193,7 @@ public class VkPushConstantRange extends VkStruct {
 	 * Prototype: uint32_t  size
 	 */ 
 	 public int size(){
-		 int var = size0(super.ptr);
+		 int var = getSize0(super.ptr);
 		 this.size = var;
 		 return this.size;
 	 }
@@ -190,7 +206,7 @@ public class VkPushConstantRange extends VkStruct {
 	 * native SET method for field stageFlags	[int]<br>
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
-	 private static native void stageFlags0(Buffer ptr, int _stageFlags);/*
+	 private static native void setStageFlags0(Buffer ptr, int _stageFlags);/*
 		  VkPushConstantRange* vkObj = (VkPushConstantRange*)(ptr);
 		  vkObj->stageFlags = (VkShaderStageFlags) (_stageFlags);
 	  */
@@ -199,7 +215,7 @@ public class VkPushConstantRange extends VkStruct {
 	 * native GET method for field stageFlags	[int]<br>
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
-	 private static native int stageFlags0(Buffer ptr);/*
+	 private static native int getStageFlags0(Buffer ptr);/*
 		  VkPushConstantRange vkObj = (VkPushConstantRange*)(ptr);
 		  return (jint) (vkObj->stageFlags);
 	 */
@@ -208,7 +224,7 @@ public class VkPushConstantRange extends VkStruct {
 	 * native SET method for field offset	[int]<br>
 	 * Prototype: uint32_t  offset
 	 */ 
-	 private static native void offset0(Buffer ptr, int _offset);/*
+	 private static native void setOffset0(Buffer ptr, int _offset);/*
 		  VkPushConstantRange* vkObj = (VkPushConstantRange*)(ptr);
 		  vkObj->offset = (uint32_t) (_offset);
 	  */
@@ -217,7 +233,7 @@ public class VkPushConstantRange extends VkStruct {
 	 * native GET method for field offset	[int]<br>
 	 * Prototype: uint32_t  offset
 	 */ 
-	 private static native int offset0(Buffer ptr);/*
+	 private static native int getOffset0(Buffer ptr);/*
 		  VkPushConstantRange vkObj = (VkPushConstantRange*)(ptr);
 		  return (jint) (vkObj->offset);
 	 */
@@ -226,7 +242,7 @@ public class VkPushConstantRange extends VkStruct {
 	 * native SET method for field size	[int]<br>
 	 * Prototype: uint32_t  size
 	 */ 
-	 private static native void size0(Buffer ptr, int _size);/*
+	 private static native void setSize0(Buffer ptr, int _size);/*
 		  VkPushConstantRange* vkObj = (VkPushConstantRange*)(ptr);
 		  vkObj->size = (uint32_t) (_size);
 	  */
@@ -235,7 +251,7 @@ public class VkPushConstantRange extends VkStruct {
 	 * native GET method for field size	[int]<br>
 	 * Prototype: uint32_t  size
 	 */ 
-	 private static native int size0(Buffer ptr);/*
+	 private static native int getSize0(Buffer ptr);/*
 		  VkPushConstantRange vkObj = (VkPushConstantRange*)(ptr);
 		  return (jint) (vkObj->size);
 	 */

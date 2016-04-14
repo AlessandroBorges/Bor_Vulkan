@@ -22,6 +22,10 @@ public class PFNvkDebugReportCallbackEXT extends VkHandle implements PFNFunction
     public PFNvkDebugReportCallbackEXT(ByteBuffer nativePtr) {
         super(nativePtr);
     }
+    
+    public PFNvkDebugReportCallbackEXT(long nativePtr) {
+        super(nativePtr);
+    }
 
     /**
      * Implements {@link VkObject#getType()}. <br>

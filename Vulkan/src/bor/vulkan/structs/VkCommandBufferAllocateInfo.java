@@ -93,15 +93,31 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkCommandBufferAllocateInfo(long address, int memSize){ 
+	 public VkCommandBufferAllocateInfo(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkCommandBufferAllocateInfo(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -144,7 +160,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
-		 sType0(this.ptr, enumVal );
+		 setSType0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -152,7 +168,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 int nativeVal = sType0(super.ptr);
+		 int nativeVal = getSType0(super.ptr);
 		 this.sType = VkStructureType.fromValue(nativeVal); 
 		 return this.sType;
 	 }
@@ -164,7 +180,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
-		 pNext0(this.ptr, buff);
+		 setPNext0(this.ptr, buff);
 	 }
 
 	/**
@@ -172,8 +188,8 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 public VkObject pNext(){
-		 ByteBuffer pointer = pNext0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPNext0(super.ptr);
+		 if(pointer == 0){
 		    this.pNext = null;
 		    return null;
 		  } else 
@@ -191,8 +207,8 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 */ 
 	 public void commandPool(VkCommandPool commandPool){
 		 this.commandPool = commandPool;
-		 ByteBuffer buff = (commandPool==null) ? null : commandPool.getHandle();
-		 commandPool0(this.ptr, buff);
+		 ByteBuffer buff = (commandPool==null) ? null : commandPool.getPointer();
+		 setCommandPool0(this.ptr, buff);
 	 }
 
 	/**
@@ -201,15 +217,16 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 */ 
 	 public VkCommandPool commandPool(){
 
-		 ByteBuffer handle = commandPool0(super.ptr);
-		 if(handle == null){
+		 long handle = getCommandPool0(super.ptr);
+		 if(handle == 0){
 		    this.commandPool = null;
 		    return null;
-		  } else 
- 		 if(this.commandPool == null){
+		  }  
+
+		 if(this.commandPool == null){
 		    this.commandPool = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.commandPool).setHandle(handle);
+		    ((VkHandle)this.commandPool).setPointer(handle);
 		  }
 		 return this.commandPool;
 	 }
@@ -221,7 +238,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 public void level(VkCommandBufferLevel level){
 		 this.level = level;
 		 int enumVal = level.getValue();
-		 level0(this.ptr, enumVal );
+		 setLevel0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -229,7 +246,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 * Prototype: VkCommandBufferLevel  level
 	 */ 
 	 public VkCommandBufferLevel level(){
-		 int nativeVal = level0(super.ptr);
+		 int nativeVal = getLevel0(super.ptr);
 		 this.level = VkCommandBufferLevel.fromValue(nativeVal); 
 		 return this.level;
 	 }
@@ -240,7 +257,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 */ 
 	 public void commandBufferCount(int commandBufferCount){
 		 this.commandBufferCount = commandBufferCount;
-		 commandBufferCount0(this.ptr,  commandBufferCount);
+		 setCommandBufferCount0(this.ptr,  commandBufferCount);
 	 }
 
 	/**
@@ -248,7 +265,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 * Prototype: uint32_t  commandBufferCount
 	 */ 
 	 public int commandBufferCount(){
-		 int var = commandBufferCount0(super.ptr);
+		 int var = getCommandBufferCount0(super.ptr);
 		 this.commandBufferCount = var;
 		 return this.commandBufferCount;
 	 }
@@ -261,7 +278,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(Buffer ptr, int  _sType);/*
+	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkCommandBufferAllocateInfo* vkObj = (VkCommandBufferAllocateInfo*)(ptr);
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
@@ -270,7 +287,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  sType0(Buffer ptr);/*
+	 private static native int  getSType0(Buffer ptr);/*
 		  VkCommandBufferAllocateInfo vkObj = (VkCommandBufferAllocateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
@@ -279,7 +296,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkCommandBufferAllocateInfo* vkObj = (VkCommandBufferAllocateInfo*)(ptr);
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
@@ -288,16 +305,15 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+	 private static native long getPNext0(Buffer ptr);/*
 		  VkCommandBufferAllocateInfo vkObj = (VkCommandBufferAllocateInfo*)(ptr);
-		  return (VkObject) (vkObj->pNext);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
 	 * native SET method for field commandPool	[vkhandle]<br>
 	 * Prototype: VkCommandPool  commandPool
 	 */ 
-	 private static native void commandPool0(Buffer ptr, java.nio.ByteBuffer  _commandPool);/*
+	 private static native void setCommandPool0(Buffer ptr, java.nio.ByteBuffer  _commandPool);/*
 		  VkCommandBufferAllocateInfo* vkObj = (VkCommandBufferAllocateInfo*)(ptr);
 		  vkObj->commandPool = (VkCommandPool) (_commandPool);
 	  */
@@ -306,16 +322,15 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 * native GET method for field commandPool	[vkhandle]<br>
 	 * Prototype: VkCommandPool  commandPool
 	 */ 
-	 private static native java.nio.ByteBuffer  commandPool0(Buffer ptr);/*
+	 private static native long getCommandPool0(Buffer ptr);/*
 		  VkCommandBufferAllocateInfo vkObj = (VkCommandBufferAllocateInfo*)(ptr);
-		  return (VkCommandPool) (vkObj->commandPool);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->commandPool);	 */
 
 	/**
 	 * native SET method for field level	[vkenum]<br>
 	 * Prototype: VkCommandBufferLevel  level
 	 */ 
-	 private static native void level0(Buffer ptr, int  _level);/*
+	 private static native void setLevel0(Buffer ptr, int  _level);/*
 		  VkCommandBufferAllocateInfo* vkObj = (VkCommandBufferAllocateInfo*)(ptr);
 		  vkObj->level = (VkCommandBufferLevel) (_level);
 	  */
@@ -324,7 +339,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 * native GET method for field level	[vkenum]<br>
 	 * Prototype: VkCommandBufferLevel  level
 	 */ 
-	 private static native int  level0(Buffer ptr);/*
+	 private static native int  getLevel0(Buffer ptr);/*
 		  VkCommandBufferAllocateInfo vkObj = (VkCommandBufferAllocateInfo*)(ptr);
 		  return (jobject) (vkObj->level);
 	 */
@@ -333,7 +348,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 * native SET method for field commandBufferCount	[int]<br>
 	 * Prototype: uint32_t  commandBufferCount
 	 */ 
-	 private static native void commandBufferCount0(Buffer ptr, int _commandBufferCount);/*
+	 private static native void setCommandBufferCount0(Buffer ptr, int _commandBufferCount);/*
 		  VkCommandBufferAllocateInfo* vkObj = (VkCommandBufferAllocateInfo*)(ptr);
 		  vkObj->commandBufferCount = (uint32_t) (_commandBufferCount);
 	  */
@@ -342,7 +357,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 * native GET method for field commandBufferCount	[int]<br>
 	 * Prototype: uint32_t  commandBufferCount
 	 */ 
-	 private static native int commandBufferCount0(Buffer ptr);/*
+	 private static native int getCommandBufferCount0(Buffer ptr);/*
 		  VkCommandBufferAllocateInfo vkObj = (VkCommandBufferAllocateInfo*)(ptr);
 		  return (jint) (vkObj->commandBufferCount);
 	 */

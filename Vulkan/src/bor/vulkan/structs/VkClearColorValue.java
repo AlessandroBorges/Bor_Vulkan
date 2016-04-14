@@ -16,6 +16,8 @@ import bor.vulkan.VkObject;
  */
 public class VkClearColorValue extends VkStruct {
 
+    private static final int TAG_ID = VkStruct.VKCLEARCOLORVALUE_ID;
+    private static final String TAG = "VkClearColorValue";
     
     private P<VkClearColorValue> p;
     
@@ -42,16 +44,16 @@ public class VkClearColorValue extends VkStruct {
      * @param address
      * @param size
      */
-    public VkClearColorValue(long address, int size) {
-        super(address, size);       
+    public VkClearColorValue(long address) {
+        super(address);       
     }
 
     /**
      * @param buff
      * @param size
      */
-    public VkClearColorValue(ByteBuffer buff, int size) {
-        super(buff, size);     
+    public VkClearColorValue(ByteBuffer buff) {
+        super(buff);     
     }
 
     @Override
@@ -61,5 +63,21 @@ public class VkClearColorValue extends VkStruct {
        }
         return p;
     }
+    
+    /**
+     * 
+     */
+    @Override
+    public int getSizeBytes() {
+        return sizeof();
+    }
 
+    /**
+     * Size of this 
+     * @return
+     */
+    public static int sizeof(){
+        return sizeOf(TAG_ID);
+    }
+  
 }

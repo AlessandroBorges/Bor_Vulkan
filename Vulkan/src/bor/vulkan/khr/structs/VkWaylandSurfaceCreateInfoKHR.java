@@ -94,15 +94,31 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkWaylandSurfaceCreateInfoKHR(long address, int memSize){ 
+	 public VkWaylandSurfaceCreateInfoKHR(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkWaylandSurfaceCreateInfoKHR(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -145,7 +161,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
-		 sType0(this.ptr, enumVal );
+		 setSType0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -153,7 +169,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 int nativeVal = sType0(super.ptr);
+		 int nativeVal = getSType0(super.ptr);
 		 this.sType = VkStructureType.fromValue(nativeVal); 
 		 return this.sType;
 	 }
@@ -165,7 +181,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
-		 pNext0(this.ptr, buff);
+		 setPNext0(this.ptr, buff);
 	 }
 
 	/**
@@ -173,8 +189,8 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 public VkObject pNext(){
-		 ByteBuffer pointer = pNext0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPNext0(super.ptr);
+		 if(pointer == 0){
 		    this.pNext = null;
 		    return null;
 		  } else 
@@ -192,7 +208,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		 flags0(this.ptr,  flags);
+		 setFlags0(this.ptr,  flags);
 	 }
 
 	/**
@@ -200,7 +216,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: VkWaylandSurfaceCreateFlagsKHR  flags
 	 */ 
 	 public int flags(){
-		 int var = flags0(super.ptr);
+		 int var = getFlags0(super.ptr);
 		 this.flags = var;
 		 return this.flags;
 	 }
@@ -211,8 +227,8 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void display(WlDisplay display){
 		 this.display = display;
-		 ByteBuffer buff = (display==null) ? null : display.getHandle();
-		 display0(this.ptr, buff);
+		 ByteBuffer buff = (display==null) ? null : display.getPointer();
+		 setDisplay0(this.ptr, buff);
 	 }
 
 	/**
@@ -221,15 +237,16 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public WlDisplay display(){
 
-		 ByteBuffer handle = display0(super.ptr);
-		 if(handle == null){
+		 long handle = getDisplay0(super.ptr);
+		 if(handle == 0){
 		    this.display = null;
 		    return null;
-		  } else 
- 		 if(this.display == null){
+		  }  
+
+		 if(this.display == null){
 		    this.display = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.display).setHandle(handle);
+		    ((VkHandle)this.display).setPointer(handle);
 		  }
 		 return this.display;
 	 }
@@ -240,8 +257,8 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void surface(WlSurface surface){
 		 this.surface = surface;
-		 ByteBuffer buff = (surface==null) ? null : surface.getHandle();
-		 surface0(this.ptr, buff);
+		 ByteBuffer buff = (surface==null) ? null : surface.getPointer();
+		 setSurface0(this.ptr, buff);
 	 }
 
 	/**
@@ -250,15 +267,16 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public WlSurface surface(){
 
-		 ByteBuffer handle = surface0(super.ptr);
-		 if(handle == null){
+		 long handle = getSurface0(super.ptr);
+		 if(handle == 0){
 		    this.surface = null;
 		    return null;
-		  } else 
- 		 if(this.surface == null){
+		  }  
+
+		 if(this.surface == null){
 		    this.surface = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.surface).setHandle(handle);
+		    ((VkHandle)this.surface).setPointer(handle);
 		  }
 		 return this.surface;
 	 }
@@ -271,7 +289,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(Buffer ptr, int  _sType);/*
+	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
@@ -280,7 +298,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  sType0(Buffer ptr);/*
+	 private static native int  getSType0(Buffer ptr);/*
 		  VkWaylandSurfaceCreateInfoKHR vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
@@ -289,7 +307,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
@@ -298,16 +316,15 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+	 private static native long getPNext0(Buffer ptr);/*
 		  VkWaylandSurfaceCreateInfoKHR vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
-		  return (VkObject) (vkObj->pNext);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkWaylandSurfaceCreateFlagsKHR  flags
 	 */ 
-	 private static native void flags0(Buffer ptr, int _flags);/*
+	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
 		  vkObj->flags = (VkWaylandSurfaceCreateFlagsKHR) (_flags);
 	  */
@@ -316,7 +333,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkWaylandSurfaceCreateFlagsKHR  flags
 	 */ 
-	 private static native int flags0(Buffer ptr);/*
+	 private static native int getFlags0(Buffer ptr);/*
 		  VkWaylandSurfaceCreateInfoKHR vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
@@ -325,7 +342,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * native SET method for field display	[vkhandle]<br>
 	 * Prototype: struct wl_display*  display
 	 */ 
-	 private static native void display0(Buffer ptr, java.nio.ByteBuffer  _display);/*
+	 private static native void setDisplay0(Buffer ptr, java.nio.ByteBuffer  _display);/*
 		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
 		  vkObj->display = (struct wl_display*) (_display);
 	  */
@@ -334,16 +351,15 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * native GET method for field display	[vkhandle]<br>
 	 * Prototype: struct wl_display*  display
 	 */ 
-	 private static native java.nio.ByteBuffer  display0(Buffer ptr);/*
+	 private static native long getDisplay0(Buffer ptr);/*
 		  VkWaylandSurfaceCreateInfoKHR vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
-		  return (WlDisplay) (vkObj->display);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->display);	 */
 
 	/**
 	 * native SET method for field surface	[vkhandle]<br>
 	 * Prototype: struct wl_surface*  surface
 	 */ 
-	 private static native void surface0(Buffer ptr, java.nio.ByteBuffer  _surface);/*
+	 private static native void setSurface0(Buffer ptr, java.nio.ByteBuffer  _surface);/*
 		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
 		  vkObj->surface = (struct wl_surface*) (_surface);
 	  */
@@ -352,10 +368,9 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * native GET method for field surface	[vkhandle]<br>
 	 * Prototype: struct wl_surface*  surface
 	 */ 
-	 private static native java.nio.ByteBuffer  surface0(Buffer ptr);/*
+	 private static native long getSurface0(Buffer ptr);/*
 		  VkWaylandSurfaceCreateInfoKHR vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
-		  return (WlSurface) (vkObj->surface);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->surface);	 */
 
 
 

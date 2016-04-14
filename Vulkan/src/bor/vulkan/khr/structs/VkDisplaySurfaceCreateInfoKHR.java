@@ -124,15 +124,31 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkDisplaySurfaceCreateInfoKHR(long address, int memSize){ 
+	 public VkDisplaySurfaceCreateInfoKHR(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkDisplaySurfaceCreateInfoKHR(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -175,7 +191,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 public void sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
-		 sType0(this.ptr, enumVal );
+		 setSType0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -183,7 +199,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 public VkStructureType sType(){
-		 int nativeVal = sType0(super.ptr);
+		 int nativeVal = getSType0(super.ptr);
 		 this.sType = VkStructureType.fromValue(nativeVal); 
 		 return this.sType;
 	 }
@@ -195,7 +211,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 public void pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
-		 pNext0(this.ptr, buff);
+		 setPNext0(this.ptr, buff);
 	 }
 
 	/**
@@ -203,8 +219,8 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 public VkObject pNext(){
-		 ByteBuffer pointer = pNext0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getPNext0(super.ptr);
+		 if(pointer == 0){
 		    this.pNext = null;
 		    return null;
 		  } else 
@@ -222,7 +238,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void flags(int flags){
 		 this.flags = flags;
-		 flags0(this.ptr,  flags);
+		 setFlags0(this.ptr,  flags);
 	 }
 
 	/**
@@ -230,7 +246,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: VkDisplaySurfaceCreateFlagsKHR  flags
 	 */ 
 	 public int flags(){
-		 int var = flags0(super.ptr);
+		 int var = getFlags0(super.ptr);
 		 this.flags = var;
 		 return this.flags;
 	 }
@@ -241,8 +257,8 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void displayMode(VkDisplayModeKHR displayMode){
 		 this.displayMode = displayMode;
-		 ByteBuffer buff = (displayMode==null) ? null : displayMode.getHandle();
-		 displayMode0(this.ptr, buff);
+		 ByteBuffer buff = (displayMode==null) ? null : displayMode.getPointer();
+		 setDisplayMode0(this.ptr, buff);
 	 }
 
 	/**
@@ -251,15 +267,16 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public VkDisplayModeKHR displayMode(){
 
-		 ByteBuffer handle = displayMode0(super.ptr);
-		 if(handle == null){
+		 long handle = getDisplayMode0(super.ptr);
+		 if(handle == 0){
 		    this.displayMode = null;
 		    return null;
-		  } else 
- 		 if(this.displayMode == null){
+		  }  
+
+		 if(this.displayMode == null){
 		    this.displayMode = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.displayMode).setHandle(handle);
+		    ((VkHandle)this.displayMode).setPointer(handle);
 		  }
 		 return this.displayMode;
 	 }
@@ -270,7 +287,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void planeIndex(int planeIndex){
 		 this.planeIndex = planeIndex;
-		 planeIndex0(this.ptr,  planeIndex);
+		 setPlaneIndex0(this.ptr,  planeIndex);
 	 }
 
 	/**
@@ -278,7 +295,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: uint32_t  planeIndex
 	 */ 
 	 public int planeIndex(){
-		 int var = planeIndex0(super.ptr);
+		 int var = getPlaneIndex0(super.ptr);
 		 this.planeIndex = var;
 		 return this.planeIndex;
 	 }
@@ -289,7 +306,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void planeStackIndex(int planeStackIndex){
 		 this.planeStackIndex = planeStackIndex;
-		 planeStackIndex0(this.ptr,  planeStackIndex);
+		 setPlaneStackIndex0(this.ptr,  planeStackIndex);
 	 }
 
 	/**
@@ -297,7 +314,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: uint32_t  planeStackIndex
 	 */ 
 	 public int planeStackIndex(){
-		 int var = planeStackIndex0(super.ptr);
+		 int var = getPlaneStackIndex0(super.ptr);
 		 this.planeStackIndex = var;
 		 return this.planeStackIndex;
 	 }
@@ -309,7 +326,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 public void transform(VkSurfaceTransformFlagBitsKHR transform){
 		 this.transform = transform;
 		 int enumVal = transform.getValue();
-		 transform0(this.ptr, enumVal );
+		 setTransform0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -317,7 +334,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  transform
 	 */ 
 	 public VkSurfaceTransformFlagBitsKHR transform(){
-		 int nativeVal = transform0(super.ptr);
+		 int nativeVal = getTransform0(super.ptr);
 		 this.transform = VkSurfaceTransformFlagBitsKHR.fromValue(nativeVal); 
 		 return this.transform;
 	 }
@@ -328,7 +345,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void globalAlpha(float globalAlpha){
 		 this.globalAlpha = globalAlpha;
-		 globalAlpha0(this.ptr,  globalAlpha);
+		 setGlobalAlpha0(this.ptr,  globalAlpha);
 	 }
 
 	/**
@@ -336,7 +353,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: float  globalAlpha
 	 */ 
 	 public float globalAlpha(){
-		 float var = globalAlpha0(super.ptr);
+		 float var = getGlobalAlpha0(super.ptr);
 		 this.globalAlpha = var;
 		 return this.globalAlpha;
 	 }
@@ -348,7 +365,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 public void alphaMode(VkDisplayPlaneAlphaFlagBitsKHR alphaMode){
 		 this.alphaMode = alphaMode;
 		 int enumVal = alphaMode.getValue();
-		 alphaMode0(this.ptr, enumVal );
+		 setAlphaMode0(this.ptr, enumVal );
 	 }
 
 	/**
@@ -356,7 +373,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: VkDisplayPlaneAlphaFlagBitsKHR  alphaMode
 	 */ 
 	 public VkDisplayPlaneAlphaFlagBitsKHR alphaMode(){
-		 int nativeVal = alphaMode0(super.ptr);
+		 int nativeVal = getAlphaMode0(super.ptr);
 		 this.alphaMode = VkDisplayPlaneAlphaFlagBitsKHR.fromValue(nativeVal); 
 		 return this.alphaMode;
 	 }
@@ -367,8 +384,8 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 */ 
 	 public void imageExtent(VkExtent2D imageExtent){
 		 this.imageExtent = imageExtent;
-		 ByteBuffer buff = (imageExtent==null) ? null : imageExtent.getPointerStruct();
-		 imageExtent0(this.ptr, buff);
+		 ByteBuffer buff = (imageExtent==null) ? null : imageExtent.getPointer();
+		 setImageExtent0(this.ptr, buff);
 	 }
 
 	/**
@@ -376,12 +393,13 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: VkExtent2D  imageExtent
 	 */ 
 	 public VkExtent2D imageExtent(){
-		 ByteBuffer pointer = imageExtent0(super.ptr);
-		 if(pointer == null){
+		 long pointer = getImageExtent0(super.ptr);
+		 if(pointer == 0){
 		    this.imageExtent = null;
 		    return null;
-		  } else 
- 		 if(this.imageExtent == null){
+		  } 
+
+		 if(this.imageExtent == null){
 		    this.imageExtent = new VkExtent2D(pointer);
 		 }else{
 		    this.imageExtent.setPointer(pointer);
@@ -397,7 +415,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native void sType0(Buffer ptr, int  _sType);/*
+	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
@@ -406,7 +424,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  sType0(Buffer ptr);/*
+	 private static native int  getSType0(Buffer ptr);/*
 		  VkDisplaySurfaceCreateInfoKHR vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
@@ -415,7 +433,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native void pNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
@@ -424,16 +442,15 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
-	 private static native java.nio.ByteBuffer  pNext0(Buffer ptr);/*
+	 private static native long getPNext0(Buffer ptr);/*
 		  VkDisplaySurfaceCreateInfoKHR vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		  return (VkObject) (vkObj->pNext);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
 	 * native SET method for field flags	[int]<br>
 	 * Prototype: VkDisplaySurfaceCreateFlagsKHR  flags
 	 */ 
-	 private static native void flags0(Buffer ptr, int _flags);/*
+	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  vkObj->flags = (VkDisplaySurfaceCreateFlagsKHR) (_flags);
 	  */
@@ -442,7 +459,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * native GET method for field flags	[int]<br>
 	 * Prototype: VkDisplaySurfaceCreateFlagsKHR  flags
 	 */ 
-	 private static native int flags0(Buffer ptr);/*
+	 private static native int getFlags0(Buffer ptr);/*
 		  VkDisplaySurfaceCreateInfoKHR vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
@@ -451,7 +468,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * native SET method for field displayMode	[vkhandle]<br>
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
-	 private static native void displayMode0(Buffer ptr, java.nio.ByteBuffer  _displayMode);/*
+	 private static native void setDisplayMode0(Buffer ptr, java.nio.ByteBuffer  _displayMode);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  vkObj->displayMode = (VkDisplayModeKHR) (_displayMode);
 	  */
@@ -460,16 +477,15 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * native GET method for field displayMode	[vkhandle]<br>
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
-	 private static native java.nio.ByteBuffer  displayMode0(Buffer ptr);/*
+	 private static native long getDisplayMode0(Buffer ptr);/*
 		  VkDisplaySurfaceCreateInfoKHR vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		  return (VkDisplayModeKHR) (vkObj->displayMode);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->displayMode);	 */
 
 	/**
 	 * native SET method for field planeIndex	[int]<br>
 	 * Prototype: uint32_t  planeIndex
 	 */ 
-	 private static native void planeIndex0(Buffer ptr, int _planeIndex);/*
+	 private static native void setPlaneIndex0(Buffer ptr, int _planeIndex);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  vkObj->planeIndex = (uint32_t) (_planeIndex);
 	  */
@@ -478,7 +494,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * native GET method for field planeIndex	[int]<br>
 	 * Prototype: uint32_t  planeIndex
 	 */ 
-	 private static native int planeIndex0(Buffer ptr);/*
+	 private static native int getPlaneIndex0(Buffer ptr);/*
 		  VkDisplaySurfaceCreateInfoKHR vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->planeIndex);
 	 */
@@ -487,7 +503,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * native SET method for field planeStackIndex	[int]<br>
 	 * Prototype: uint32_t  planeStackIndex
 	 */ 
-	 private static native void planeStackIndex0(Buffer ptr, int _planeStackIndex);/*
+	 private static native void setPlaneStackIndex0(Buffer ptr, int _planeStackIndex);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  vkObj->planeStackIndex = (uint32_t) (_planeStackIndex);
 	  */
@@ -496,7 +512,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * native GET method for field planeStackIndex	[int]<br>
 	 * Prototype: uint32_t  planeStackIndex
 	 */ 
-	 private static native int planeStackIndex0(Buffer ptr);/*
+	 private static native int getPlaneStackIndex0(Buffer ptr);/*
 		  VkDisplaySurfaceCreateInfoKHR vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->planeStackIndex);
 	 */
@@ -505,7 +521,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * native SET method for field transform	[vkenum]<br>
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  transform
 	 */ 
-	 private static native void transform0(Buffer ptr, int  _transform);/*
+	 private static native void setTransform0(Buffer ptr, int  _transform);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  vkObj->transform = (VkSurfaceTransformFlagBitsKHR) (_transform);
 	  */
@@ -514,7 +530,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * native GET method for field transform	[vkenum]<br>
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  transform
 	 */ 
-	 private static native int  transform0(Buffer ptr);/*
+	 private static native int  getTransform0(Buffer ptr);/*
 		  VkDisplaySurfaceCreateInfoKHR vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  return (VkSurfaceTransformFlagBitsKHR) (vkObj->transform);
 	 */
@@ -523,7 +539,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * native SET method for field globalAlpha	[float]<br>
 	 * Prototype: float  globalAlpha
 	 */ 
-	 private static native void globalAlpha0(Buffer ptr, float _globalAlpha);/*
+	 private static native void setGlobalAlpha0(Buffer ptr, float _globalAlpha);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  vkObj->globalAlpha = (float) (_globalAlpha);
 	  */
@@ -532,7 +548,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * native GET method for field globalAlpha	[float]<br>
 	 * Prototype: float  globalAlpha
 	 */ 
-	 private static native float globalAlpha0(Buffer ptr);/*
+	 private static native float getGlobalAlpha0(Buffer ptr);/*
 		  VkDisplaySurfaceCreateInfoKHR vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  return (jfloat) (vkObj->globalAlpha);
 	 */
@@ -541,7 +557,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * native SET method for field alphaMode	[vkenum]<br>
 	 * Prototype: VkDisplayPlaneAlphaFlagBitsKHR  alphaMode
 	 */ 
-	 private static native void alphaMode0(Buffer ptr, int  _alphaMode);/*
+	 private static native void setAlphaMode0(Buffer ptr, int  _alphaMode);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  vkObj->alphaMode = (VkDisplayPlaneAlphaFlagBitsKHR) (_alphaMode);
 	  */
@@ -550,7 +566,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * native GET method for field alphaMode	[vkenum]<br>
 	 * Prototype: VkDisplayPlaneAlphaFlagBitsKHR  alphaMode
 	 */ 
-	 private static native int  alphaMode0(Buffer ptr);/*
+	 private static native int  getAlphaMode0(Buffer ptr);/*
 		  VkDisplaySurfaceCreateInfoKHR vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  return (VkDisplayPlaneAlphaFlagBitsKHR) (vkObj->alphaMode);
 	 */
@@ -559,7 +575,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * native SET method for field imageExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  imageExtent
 	 */ 
-	 private static native void imageExtent0(Buffer ptr, java.nio.ByteBuffer  _imageExtent);/*
+	 private static native void setImageExtent0(Buffer ptr, java.nio.ByteBuffer  _imageExtent);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  vkObj->imageExtent = (VkExtent2D) (_imageExtent);
 	  */
@@ -568,10 +584,9 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * native GET method for field imageExtent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  imageExtent
 	 */ 
-	 private static native java.nio.ByteBuffer  imageExtent0(Buffer ptr);/*
+	 private static native long getImageExtent0(Buffer ptr);/*
 		  VkDisplaySurfaceCreateInfoKHR vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		  return (VkExtent2D) (vkObj->imageExtent);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->imageExtent);	 */
 
 
 

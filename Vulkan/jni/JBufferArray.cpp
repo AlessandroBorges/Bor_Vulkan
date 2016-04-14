@@ -67,7 +67,7 @@ void JBufferArray::commit()
 
 PointerToAnything JBufferArray::getPointer(int i)
 {
-    return (pointers != null && i>=0 && i<size)? pointers[i] : NULL;
+    return (pointers != NULL && i>=0 && i<size)? pointers[i] : NULL;
 }
 
 JBufferArray::~JBufferArray()

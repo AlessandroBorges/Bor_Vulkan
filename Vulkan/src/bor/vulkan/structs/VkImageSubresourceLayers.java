@@ -87,15 +87,31 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkImageSubresourceLayers(long address, int memSize){ 
+	 public VkImageSubresourceLayers(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkImageSubresourceLayers(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -137,7 +153,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 */ 
 	 public void aspectMask(int aspectMask){
 		 this.aspectMask = aspectMask;
-		 aspectMask0(this.ptr,  aspectMask);
+		 setAspectMask0(this.ptr,  aspectMask);
 	 }
 
 	/**
@@ -145,7 +161,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 public int aspectMask(){
-		 int var = aspectMask0(super.ptr);
+		 int var = getAspectMask0(super.ptr);
 		 this.aspectMask = var;
 		 return this.aspectMask;
 	 }
@@ -156,7 +172,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 */ 
 	 public void mipLevel(int mipLevel){
 		 this.mipLevel = mipLevel;
-		 mipLevel0(this.ptr,  mipLevel);
+		 setMipLevel0(this.ptr,  mipLevel);
 	 }
 
 	/**
@@ -164,7 +180,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 * Prototype: uint32_t  mipLevel
 	 */ 
 	 public int mipLevel(){
-		 int var = mipLevel0(super.ptr);
+		 int var = getMipLevel0(super.ptr);
 		 this.mipLevel = var;
 		 return this.mipLevel;
 	 }
@@ -175,7 +191,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 */ 
 	 public void baseArrayLayer(int baseArrayLayer){
 		 this.baseArrayLayer = baseArrayLayer;
-		 baseArrayLayer0(this.ptr,  baseArrayLayer);
+		 setBaseArrayLayer0(this.ptr,  baseArrayLayer);
 	 }
 
 	/**
@@ -183,7 +199,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
 	 public int baseArrayLayer(){
-		 int var = baseArrayLayer0(super.ptr);
+		 int var = getBaseArrayLayer0(super.ptr);
 		 this.baseArrayLayer = var;
 		 return this.baseArrayLayer;
 	 }
@@ -194,7 +210,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 */ 
 	 public void layerCount(int layerCount){
 		 this.layerCount = layerCount;
-		 layerCount0(this.ptr,  layerCount);
+		 setLayerCount0(this.ptr,  layerCount);
 	 }
 
 	/**
@@ -202,7 +218,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 * Prototype: uint32_t  layerCount
 	 */ 
 	 public int layerCount(){
-		 int var = layerCount0(super.ptr);
+		 int var = getLayerCount0(super.ptr);
 		 this.layerCount = var;
 		 return this.layerCount;
 	 }
@@ -215,7 +231,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 * native SET method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
-	 private static native void aspectMask0(Buffer ptr, int _aspectMask);/*
+	 private static native void setAspectMask0(Buffer ptr, int _aspectMask);/*
 		  VkImageSubresourceLayers* vkObj = (VkImageSubresourceLayers*)(ptr);
 		  vkObj->aspectMask = (VkImageAspectFlags) (_aspectMask);
 	  */
@@ -224,7 +240,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 * native GET method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
-	 private static native int aspectMask0(Buffer ptr);/*
+	 private static native int getAspectMask0(Buffer ptr);/*
 		  VkImageSubresourceLayers vkObj = (VkImageSubresourceLayers*)(ptr);
 		  return (jint) (vkObj->aspectMask);
 	 */
@@ -233,7 +249,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 * native SET method for field mipLevel	[int]<br>
 	 * Prototype: uint32_t  mipLevel
 	 */ 
-	 private static native void mipLevel0(Buffer ptr, int _mipLevel);/*
+	 private static native void setMipLevel0(Buffer ptr, int _mipLevel);/*
 		  VkImageSubresourceLayers* vkObj = (VkImageSubresourceLayers*)(ptr);
 		  vkObj->mipLevel = (uint32_t) (_mipLevel);
 	  */
@@ -242,7 +258,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 * native GET method for field mipLevel	[int]<br>
 	 * Prototype: uint32_t  mipLevel
 	 */ 
-	 private static native int mipLevel0(Buffer ptr);/*
+	 private static native int getMipLevel0(Buffer ptr);/*
 		  VkImageSubresourceLayers vkObj = (VkImageSubresourceLayers*)(ptr);
 		  return (jint) (vkObj->mipLevel);
 	 */
@@ -251,7 +267,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 * native SET method for field baseArrayLayer	[int]<br>
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
-	 private static native void baseArrayLayer0(Buffer ptr, int _baseArrayLayer);/*
+	 private static native void setBaseArrayLayer0(Buffer ptr, int _baseArrayLayer);/*
 		  VkImageSubresourceLayers* vkObj = (VkImageSubresourceLayers*)(ptr);
 		  vkObj->baseArrayLayer = (uint32_t) (_baseArrayLayer);
 	  */
@@ -260,7 +276,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 * native GET method for field baseArrayLayer	[int]<br>
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
-	 private static native int baseArrayLayer0(Buffer ptr);/*
+	 private static native int getBaseArrayLayer0(Buffer ptr);/*
 		  VkImageSubresourceLayers vkObj = (VkImageSubresourceLayers*)(ptr);
 		  return (jint) (vkObj->baseArrayLayer);
 	 */
@@ -269,7 +285,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 * native SET method for field layerCount	[int]<br>
 	 * Prototype: uint32_t  layerCount
 	 */ 
-	 private static native void layerCount0(Buffer ptr, int _layerCount);/*
+	 private static native void setLayerCount0(Buffer ptr, int _layerCount);/*
 		  VkImageSubresourceLayers* vkObj = (VkImageSubresourceLayers*)(ptr);
 		  vkObj->layerCount = (uint32_t) (_layerCount);
 	  */
@@ -278,7 +294,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 * native GET method for field layerCount	[int]<br>
 	 * Prototype: uint32_t  layerCount
 	 */ 
-	 private static native int layerCount0(Buffer ptr);/*
+	 private static native int getLayerCount0(Buffer ptr);/*
 		  VkImageSubresourceLayers vkObj = (VkImageSubresourceLayers*)(ptr);
 		  return (jint) (vkObj->layerCount);
 	 */

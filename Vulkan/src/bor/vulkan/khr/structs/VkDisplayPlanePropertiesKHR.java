@@ -9,13 +9,13 @@
  */
 package bor.vulkan.khr.structs;
 
-import java.nio.Buffer;
+import bor.vulkan.*;
+import bor.vulkan.enumerations.*;
+import bor.vulkan.structs.*;
+import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
 
-import bor.vulkan.P;
-import bor.vulkan.VkHandle;
-import bor.vulkan.khr.VkDisplayKHR;
-import bor.vulkan.structs.VkStruct;
+import java.nio.Buffer;
 
 
 /**
@@ -76,15 +76,31 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	 * @param address - native address 
 	 * @param memSize - buffer size 
 	 */
-	 public VkDisplayPlanePropertiesKHR(long address, int memSize){ 
+	 public VkDisplayPlanePropertiesKHR(long address , int memSize){ 
 		 super(address, memSize); 
 	 }
+
+	/**
+	 * Ctor with Address only. Size guessed by #sizeof()
+	 * @param address - native address 
+	 */
+	 public VkDisplayPlanePropertiesKHR(long address){ 
+		 super(address); 
+	 }
+
+	/** 
+	 * Static Method to get native size of this structure 
+	 */
+	 public static int sizeOf(){ 
+		 return sizeOf(TAG_ID); 
+	}
 
 	/** 
 	 * Method to get native size of this structure 
 	 */
-	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	 @Override
+	 public int getSizeBytes(){ 
+		 return sizeOf(); 
 	}
 
 
@@ -126,8 +142,8 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	 */ 
 	 public void currentDisplay(VkDisplayKHR currentDisplay){
 		 this.currentDisplay = currentDisplay;
-		 ByteBuffer buff = (currentDisplay==null) ? null : currentDisplay.getHandle();
-		 currentDisplay0(this.ptr, buff);
+		 ByteBuffer buff = (currentDisplay==null) ? null : currentDisplay.getPointer();
+		 setCurrentDisplay0(this.ptr, buff);
 	 }
 
 	/**
@@ -136,15 +152,16 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	 */ 
 	 public VkDisplayKHR currentDisplay(){
 
-		 ByteBuffer handle = currentDisplay0(super.ptr);
-		 if(handle == null){
+		 long handle = getCurrentDisplay0(super.ptr);
+		 if(handle == 0){
 		    this.currentDisplay = null;
 		    return null;
-		  } else 
- 		 if(this.currentDisplay == null){
+		  }  
+
+		 if(this.currentDisplay == null){
 		    this.currentDisplay = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.currentDisplay).setHandle(handle);
+		    ((VkHandle)this.currentDisplay).setPointer(handle);
 		  }
 		 return this.currentDisplay;
 	 }
@@ -155,7 +172,7 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	 */ 
 	 public void currentStackIndex(int currentStackIndex){
 		 this.currentStackIndex = currentStackIndex;
-		 currentStackIndex0(this.ptr,  currentStackIndex);
+		 setCurrentStackIndex0(this.ptr,  currentStackIndex);
 	 }
 
 	/**
@@ -163,7 +180,7 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	 * Prototype: uint32_t  currentStackIndex
 	 */ 
 	 public int currentStackIndex(){
-		 int var = currentStackIndex0(super.ptr);
+		 int var = getCurrentStackIndex0(super.ptr);
 		 this.currentStackIndex = var;
 		 return this.currentStackIndex;
 	 }
@@ -176,7 +193,7 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	 * native SET method for field currentDisplay	[vkhandle]<br>
 	 * Prototype: VkDisplayKHR  currentDisplay
 	 */ 
-	 private static native void currentDisplay0(Buffer ptr, java.nio.ByteBuffer  _currentDisplay);/*
+	 private static native void setCurrentDisplay0(Buffer ptr, java.nio.ByteBuffer  _currentDisplay);/*
 		  VkDisplayPlanePropertiesKHR* vkObj = (VkDisplayPlanePropertiesKHR*)(ptr);
 		  vkObj->currentDisplay = (VkDisplayKHR) (_currentDisplay);
 	  */
@@ -185,16 +202,15 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	 * native GET method for field currentDisplay	[vkhandle]<br>
 	 * Prototype: VkDisplayKHR  currentDisplay
 	 */ 
-	 private static native java.nio.ByteBuffer  currentDisplay0(Buffer ptr);/*
+	 private static native long getCurrentDisplay0(Buffer ptr);/*
 		  VkDisplayPlanePropertiesKHR vkObj = (VkDisplayPlanePropertiesKHR*)(ptr);
-		  return (VkDisplayKHR) (vkObj->currentDisplay);
-	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->currentDisplay);	 */
 
 	/**
 	 * native SET method for field currentStackIndex	[int]<br>
 	 * Prototype: uint32_t  currentStackIndex
 	 */ 
-	 private static native void currentStackIndex0(Buffer ptr, int _currentStackIndex);/*
+	 private static native void setCurrentStackIndex0(Buffer ptr, int _currentStackIndex);/*
 		  VkDisplayPlanePropertiesKHR* vkObj = (VkDisplayPlanePropertiesKHR*)(ptr);
 		  vkObj->currentStackIndex = (uint32_t) (_currentStackIndex);
 	  */
@@ -203,7 +219,7 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	 * native GET method for field currentStackIndex	[int]<br>
 	 * Prototype: uint32_t  currentStackIndex
 	 */ 
-	 private static native int currentStackIndex0(Buffer ptr);/*
+	 private static native int getCurrentStackIndex0(Buffer ptr);/*
 		  VkDisplayPlanePropertiesKHR vkObj = (VkDisplayPlanePropertiesKHR*)(ptr);
 		  return (jint) (vkObj->currentStackIndex);
 	 */

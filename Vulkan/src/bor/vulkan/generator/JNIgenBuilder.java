@@ -10,9 +10,14 @@ public class JNIgenBuilder {
 
     public static void main(String[] args) throws Exception {
         
+        String[] src = {
+                "**/bor/vulkan/util/Utils.java",
+                "**/bor/vulkan/Vk10.java",
+        };
+        
         NativeCodeGenerator jnigen = new NativeCodeGenerator();
         jnigen.generate("src", "bin", "jni", 
-                       new String[] {"**/bor/vulkan/Vk10.java"}, 
+                      src, 
                        null);
 
         BuildTarget win32 = BuildTarget.newDefaultTarget(TargetOs.Windows, false);
