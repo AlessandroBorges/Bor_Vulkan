@@ -89,11 +89,13 @@ class WSI
 	
 	
     // device procedures
+	
     PFN_vkCreateSwapchainKHR    pfnCreateSwapchainKHR; //d01
     PFN_vkDestroySwapchainKHR   pfnDestroySwapchainKHR; //d02
     PFN_vkGetSwapchainImagesKHR pfnGetSwapchainImagesKHR; //d03
     PFN_vkAcquireNextImageKHR   pfnAcquireNextImageKHR; //d04
     PFN_vkQueuePresentKHR       pfnQueuePresentKHR; //d05
+	PFN_vkCreateSharedSwapchainsKHR pfnCreateSharedSwapchainsKHR;//d06
 
     protected:
     private:

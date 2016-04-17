@@ -74,8 +74,9 @@ void WSI::init(){
 	  isXLIB = true;
 	#endif   
    
-   
+   //pfnCreateSharedSwapchainsKHR
    //device 
+   GET_DEVICE_PROC_ADDR(device,CreateSharedSwapchainsKHR);
    GET_DEVICE_PROC_ADDR(device,CreateSwapchainKHR);
    GET_DEVICE_PROC_ADDR(device,DestroySwapchainKHR);
    GET_DEVICE_PROC_ADDR(device,GetSwapchainImagesKHR);
