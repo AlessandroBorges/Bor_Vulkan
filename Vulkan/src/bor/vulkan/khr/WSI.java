@@ -49,22 +49,26 @@ public class WSI {
     /** Includes **/
     //@off
     /*JNI
-      #define VK_USE_PLATFORM_WIN32_KHR 1     
-      
-      #define BOR_LOADER 1
+     #if defined(_WIN32)
+        #define VK_USE_PLATFORM_WIN32_KHR 1
+        #define WIN32_LEAN_AND_MEAN 1
+        #define VC_EXTRALEAN 1
+     #elif defined(__ANDROID__) && defined(__ARM_EABI__) && !defined(__ARM_ARCH_7A__)
+       #define VK_USE_PLATFORM_ANDROID_KHR 1
+     #elif defined(__ANDROID__) && defined(__ARM_ARCH_7A__)
+       #define VK_USE_PLATFORM_ANDROID_KHR 1
+     #else
+       #define VK_USE_PLATFORM_XLIB_KHR 1
+     #endif    
           
-     
-            
+      #define BOR_LOADER 1
+      
       #include <vulkan/vulkan.h>      
       #include <stdio.h>
       #include <stdlib.h>     
       #include <JBufferArray.h>
       #include <WSI.h>  
-      
-      #define GET_WSI() WSI* wsi = (WSI*)_wsi
-      //#define CREATE_PTR(TYPE, VAR)  TYPE* VAR = (TYPE*)malloc(sizeof(TYPE))
-      
-      
+  
       using namespace std;
      
       */
@@ -95,9 +99,9 @@ public class WSI {
      * @return
      */
     private static native ByteBuffer createWSI(ByteBuffer instance, ByteBuffer device);/*       
-          VkInstance* pInstance = (VkInstance*)_instance;
-          VkDevice*   pDevice = (VkDevice*)_device;
-          WSI* wsi = new WSI((VkInstance) (*instance), (VkDevice) (*device));
+          VkInstance* pInstance = (VkInstance*)instance;
+          VkDevice*   pDevice = (VkDevice*)device;
+          WSI* wsi = new WSI((VkInstance) (*pInstance), (VkDevice) (*pDevice));
          
           if(wsi){
               jobject buffer = (jobject)(env->NewDirectByteBuffer(wsi, sizeof(WSI)));
@@ -239,10 +243,8 @@ public VkResult vkCreateWin32SurfaceKHR(
              int[] result);/* 
              
  #ifdef VK_USE_PLATFORM_WIN32_KHR                 
-     WSI* wsi = (WSI*)_wsi;
-     
-     CREATE_PTR(VkSurfaceKHR, pSurface);
-     
+     WSI* wsi = (WSI*)_wsi;   
+     VkSurfaceKHR* pSurface = (VkSurfaceKHR*)malloc(sizeof(VkSurfaceKHR));     
      VkResult res = wsi->pfnCreateWin32SurfaceKHR(
                      (VkInstance) wsi->instance,
                      ( VkWin32SurfaceCreateInfoKHR*) pCreateInfo,
@@ -250,7 +252,7 @@ public VkResult vkCreateWin32SurfaceKHR(
                      (VkSurfaceKHR*) pSurface);
       result[0] = (jint) res;  
       
-      if(pSurface){
+      if(pSurface && res >= 0){
         jobject buffer = (jobject)(env->NewDirectByteBuffer((void*)pSurface, sizeof(VkSurfaceKHR)));
         return buffer;
       }                   
@@ -396,18 +398,18 @@ public VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
              int[] structSize);/* 
     #ifdef BOR_LOADER   
      
-     GET_WSI();       
-     VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;     
+     WSI* wsi = (WSI*)_wsi;;       
+     VkPhysicalDevice* pPhysicalDevice = (VkPhysicalDevice*) physicalDevice;     
      
      uint32_t displayCount;
      VkDisplayPropertiesKHR* pDisplayProps = NULL;
      VkResult res;
      // first thing to do 
-     structSize[0] =(jint)sizeof(VkDisplayPropertiesKHR));
+     structSize[0] =(jint)sizeof(VkDisplayPropertiesKHR);
      
      // find the  properties count
      displayCount = 0;
-     res = wsi->pfnGetPhysicalDeviceDisplayPropertiesKHR(physDevice, &displayCount, NULL);
+     res = wsi->pfnGetPhysicalDeviceDisplayPropertiesKHR((VkPhysicalDevice) (*pPhysicalDevice), &displayCount, NULL);
       
      if(arrayLen==0){ // just to know how many structures
        result[0] = res;
@@ -429,7 +431,7 @@ public VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
       pDisplayProps = (VkDisplayPropertiesKHR*)malloc(sizeProps);
       
       res = wsi->pfnGetPhysicalDeviceDisplayPropertiesKHR(
-                     (VkPhysicalDevice) (*ptr_physicalDevice),
+                     (VkPhysicalDevice) (*pPhysicalDevice),
                      (uint32_t*) &displayCount,
                      (VkDisplayPropertiesKHR*) pDisplayProps); // pProperties);
       result[0] = res;
@@ -523,13 +525,13 @@ public VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
               int[] result
               );/* 
    #ifdef BOR_LOADER 
-      GET_WSI();
-      structSize[0] = sizeof(sizeof(VkDisplayPlanePropertiesKHR);     
+      WSI* wsi = (WSI*)_wsi;;
+      structSize[0] = sizeof(sizeof(VkDisplayPlanePropertiesKHR));     
       VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
       
       VkResult res;
       uint32_t planeCount = 0;
-      VkDisplayPlanePropertiesKHR*) pPlaneProps;
+      VkDisplayPlanePropertiesKHR* pPlaneProps;
             
       res = wsi->pfnGetPhysicalDeviceDisplayPlanePropertiesKHR(
                       (VkPhysicalDevice) (*ptr_physicalDevice),
@@ -542,13 +544,13 @@ public VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
          return NULL;
       }
       
-      if( pPropertyCount[0] == 0 || pPropertyCount[0] >=  planeCount){
+      if( pPropertyCount[0] == 0 || pPropertyCount[0] >= (jint)planeCount){
           pPropertyCount[0] = (jint) planeCount;
        }else{
           planeCount =   (uint32_t) pPropertyCount[0];
        }
       
-      size_t sizeAll = sizeof(sizeof(VkDisplayPlanePropertiesKHR) * planeCount;
+      size_t sizeAll = sizeof(sizeof(VkDisplayPlanePropertiesKHR) * planeCount);
       pPlaneProps = (VkDisplayPlanePropertiesKHR*)malloc(sizeAll);
        
       res = wsi->pfnGetPhysicalDeviceDisplayPlanePropertiesKHR(
@@ -558,7 +560,7 @@ public VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
        result[0] = res;
                       
        if( res >= 0){   
-         jobject buffer = (jobject)(env->NewDirectByteBuffer((void*)(pPlaneProps), sizeAll);            
+         jobject buffer = (jobject)(env->NewDirectByteBuffer((void*)(pPlaneProps), sizeAll));            
          return buffer;
        }       
        return NULL;       
@@ -656,16 +658,19 @@ public VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
                int[] structSize,
                int[] result);/* 
    #ifdef BOR_LOADER 
-       GET_WSI();
-       VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
-       VkDisplayKHR* ptr_display = (VkDisplayKHR*) display;
+       WSI* wsi = (WSI*)_wsi;;
+       VkPhysicalDevice* pPhysicalDevice = (VkPhysicalDevice*) physicalDevice;
+       VkDisplayKHR* pDisplay = (VkDisplayKHR*) display;
        
        VkDisplayModePropertiesKHR* pModes;
-       uint32_t modeCount;
+       uint32_t modeCount=0;
        
        structSize[0] = sizeof(VkDisplayModePropertiesKHR);
        
-       VkResult res =  wsi->pfnGetDisplayModePropertiesKHR(physDevice, display, &modeCount, NULL);
+       VkResult res =  wsi->pfnGetDisplayModePropertiesKHR((VkPhysicalDevice)(*pPhysicalDevice),
+                                                            (VkDisplayKHR) (*pDisplay), 
+                                                            &modeCount, 
+                                                            NULL);
       
       if(justCount==JNI_TRUE){
           result[0] = res;
@@ -682,20 +687,21 @@ public VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
       pModes = (VkDisplayModePropertiesKHR*)malloc(sizeof(VkDisplayModePropertiesKHR) * modeCount);
        
        res = wsi->pfnGetDisplayModePropertiesKHR(
-                       (VkPhysicalDevice) (*ptr_physicalDevice),
-                       (VkDisplayKHR) (*ptr_display),
-                       (uint32_t*) modeCount,
+                       (VkPhysicalDevice) (*pPhysicalDevice),
+                       (VkDisplayKHR) (*pDisplay),
+                       (uint32_t*) &modeCount,
                        (VkDisplayModePropertiesKHR*) pModes);
                        
          pPropertyCount[0] = (jint) modeCount;               
         result[0] = res;
         if(res >= 0){
-           jobject buffer = (jobject)(env->NewDirectByteBuffer((void*)(pModes), sizeof(VkDisplayModePropertiesKHR) * modeCount);            
+           jobject buffer = (jobject)(env->NewDirectByteBuffer((void*)(pModes), sizeof(VkDisplayModePropertiesKHR) * modeCount));            
          return buffer;
          }
-        return (jint) res;
+        return (jobject) NULL;
    #else
-        return (jint) VkResult::VK_ERROR_EXTENSION_NOT_PRESENT;
+         result[0] = VkResult::VK_ERROR_EXTENSION_NOT_PRESENT;
+        return (jobject) NULL;
    #endif      
   */ 
 
@@ -762,21 +768,24 @@ public VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
                 java.nio.ByteBuffer   pAllocator,
                 java.nio.ByteBuffer[]   _pMode);/* 
     #ifdef BOR_LOADER  
-        GET_WSI();      
+        WSI* wsi = (WSI*)_wsi;;      
         VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
         VkDisplayKHR* ptr_display = (VkDisplayKHR*) display;
-        VkDisplayModeKHR* mode = ;
+        VkDisplayModeKHR* pMode = (VkDisplayModeKHR*) malloc(sizeof(VkDisplayModeKHR)) ;
         
         VkResult res = wsi->pfnCreateDisplayModeKHR(
                         (VkPhysicalDevice) (*ptr_physicalDevice),
                         (VkDisplayKHR) (*ptr_display),
                         (const VkDisplayModeCreateInfoKHR*) pCreateInfo,
                         (const VkAllocationCallbacks*) pAllocator,
-                        (VkDisplayModeKHR*) &mode);
+                        (VkDisplayModeKHR*) pMode);
          
-         JBufferArray buffers(env, _pMode);
-         buffers.setPointer(&mode, sizeof(VkDisplayModeKHR),0);                        
+         if(res>=0){
+            JBufferArray buffers(env, _pMode);
+            buffers.setPointer(pMode, sizeof(VkDisplayModeKHR),0);                        
+         }
          return (jint) res;
+         
          
     #else
          return (jint) VkResult::VK_ERROR_EXTENSION_NOT_PRESENT;
@@ -840,8 +849,8 @@ public VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
                  java.nio.ByteBuffer   pCreateInfo,
                  java.nio.ByteBuffer   pAllocator,
                  java.nio.ByteBuffer[]   buffer);/* 
-       #ifdef BOR_LOADER            
-         VkInstance* ptr_instance = (VkInstance*) instance;
+       #ifdef BOR_LOADER          
+         WSI* wsi = (WSI*)_wsi;;
          VkSurfaceKHR* pSurface = (VkSurfaceKHR*)malloc(sizeof(VkSurfaceKHR));
          
          VkResult res = wsi->pfnCreateDisplayPlaneSurfaceKHR(
@@ -931,7 +940,7 @@ public VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
                  int[] sizeofPTR,
                  ByteBuffer[]   bufferArr);/* 
      #ifdef BOR_LOADER
-         GET_WSI();
+         WSI* wsi = (WSI*)_wsi;;
         
          VkSwapchainKHR* pSwapchains = (VkSwapchainKHR*)malloc(sizeof(VkSwapchainKHR) * swapchainCount);
          
@@ -943,7 +952,7 @@ public VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
                          (VkSwapchainKHR*) pSwapchains);
          
          if(pSwapchains){           
-           sizeofPTR[0] = sizeof(void*);
+           sizeofPTR[0] = sizeof(VkSwapchainKHR);
            JBufferArray buffers (env, bufferArr);           
            for(int i=0; i<swapchainCount; i++){
                buffers.setPointer(pSwapchains+i, sizeof(VkSwapchainKHR), i);
@@ -1013,7 +1022,7 @@ public VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
                  java.nio.ByteBuffer[]   buffer);/* 
                  
         #ifdef VK_USE_PLATFORM_XLIB_KHR         
-         GET_WSI();
+         WSI* wsi = (WSI*)_wsi;;
          VkSurfaceKHR surface;
          
          VkResult res = wsi->pfnCreateXlibSurfaceKHR(
@@ -1085,7 +1094,7 @@ public VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
                  java.nio.ByteBuffer   dpy,
                  java.nio.ByteBuffer   visualID);/* 
        #ifdef VK_USE_PLATFORM_XCB_KHR
-         GET_WSI();
+         WSI* wsi = (WSI*)_wsi;;
          VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
          VisualID* ptr_visualID = (VisualID*) visualID;
          
@@ -1156,7 +1165,7 @@ public VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
                  java.nio.ByteBuffer   pAllocator,
                  java.nio.ByteBuffer[]   buffer);/* 
        #ifdef VK_USE_PLATFORM_XCB_KHR          
-         GET_WSI();
+         WSI* wsi = (WSI*)_wsi;;
          VkSurfaceKHR* pSurface;
          
          VkResult res = wsi->pfnCreateXcbSurfaceKHR(
@@ -1518,14 +1527,19 @@ public VkResult vkGetDisplayPlaneCapabilitiesKHR(
              VkPhysicalDevice physicalDevice,
              VkDisplayModeKHR mode,
              int planeIndex,
-             VkDisplayPlaneCapabilitiesKHR  pCapabilities){
+             VkDisplayPlaneCapabilitiesKHR[]  pCapabilities){
      
+    VkDisplayPlaneCapabilitiesKHR caps = new VkDisplayPlaneCapabilitiesKHR();
+    
      int  _val = vkGetDisplayPlaneCapabilitiesKHR0(
+                     wsi.getPointer(),
                      (physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
                      (mode==null ? null : mode.getPointer()) /* ByteBuffer */ ,
                      planeIndex ,
-                     (pCapabilities==null ? null : pCapabilities.getPointer()) /* ByteBuffer */  );
-      return VkResult.fromValue(_val);
+                     (caps==null ? null : caps.getPointer()) /* ByteBuffer */  );
+     
+     pCapabilities[0] = caps;
+     return VkResult.fromValue(_val);
 } 
 
 /**
@@ -1540,15 +1554,17 @@ public VkResult vkGetDisplayPlaneCapabilitiesKHR(
  * @return VkResult as int  
  */
  private static native int  vkGetDisplayPlaneCapabilitiesKHR0(
+             java.nio.ByteBuffer   _wsi,                                                  
              java.nio.ByteBuffer   physicalDevice,
              java.nio.ByteBuffer   mode,
              int  planeIndex,
              java.nio.ByteBuffer   pCapabilities);/* 
-   #ifdef BOR_LOADER            
+   #ifdef BOR_LOADER     
+     WSI* wsi = (WSI*) _wsi;       
      VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
      VkDisplayModeKHR* ptr_mode = (VkDisplayModeKHR*) mode;
      
-     VkResult res = vkGetDisplayPlaneCapabilitiesKHR(
+     VkResult res = wsi->pfnGetDisplayPlaneCapabilitiesKHR(
                      (VkPhysicalDevice) (*ptr_physicalDevice),
                      (VkDisplayModeKHR) (*ptr_mode),
                      (uint32_t) planeIndex,
@@ -1588,6 +1604,7 @@ public VkResult vkGetDisplayPlaneSupportedDisplaysKHR(
      ByteBuffer[] buffers = pDisplays == null ? null : new ByteBuffer[pDisplays.length];
              
      int  _val = vkGetDisplayPlaneSupportedDisplaysKHR0(
+                      wsi.getPointer(),
                      (physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
                      planeIndex ,
                      pDisplayCount ,
@@ -1614,29 +1631,33 @@ public VkResult vkGetDisplayPlaneSupportedDisplaysKHR(
  * @return VkResult as int  
  */
  private static native int  vkGetDisplayPlaneSupportedDisplaysKHR0(
+             java.nio.ByteBuffer   _wsi,                                                      
              java.nio.ByteBuffer   physicalDevice,
              int  planeIndex,
              int[]  pDisplayCount,
              java.nio.ByteBuffer[]   buffers );/* 
-#ifdef BOR_LOADER            
+#ifdef BOR_LOADER 
+     WSI* wsi = (WSI*)_wsi;            
      VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
-     (VkDisplayKHR*) pDisplays = NULL;
+     VkDisplayKHR* pDisplays = NULL;
      
-     JBufferArray buffers(env, buffers);
-     int size = (int)buffers.getSize();     
+     JBufferArray buff(env, buffers);
+     int size = (int)buff.getSize();     
      pDisplays = (size == 0) ? NULL : (VkDisplayKHR*) malloc(sizeof(VkDisplayKHR) * size);
      
-     VkResult res = vkGetDisplayPlaneSupportedDisplaysKHR(
+     VkResult res = wsi->pfnGetDisplayPlaneSupportedDisplaysKHR(
                      (VkPhysicalDevice) (*ptr_physicalDevice),
                      (uint32_t) planeIndex,
                      (uint32_t*) pDisplayCount,
                      (VkDisplayKHR*) pDisplays);
       
       if(pDisplays){
+        
         int len = (int) pDisplayCount[0];
         // avoid index out of bounds at all costs
         for(int i=0; (i < len && i < size); i++){
-            buffers.setPointer(pDisplays+i, 0, 0);
+            if(pDisplays+i)
+                 buff.setPointer(pDisplays+i, sizeof(VkDisplayKHR), i);
         } 
       }
                      
@@ -1843,6 +1864,7 @@ public VkResult vkGetPhysicalDeviceSurfaceFormatsKHR(
  ByteBuffer[] bigBuffer = pSurfaceFormats ==null ? null : new ByteBuffer[1];
  int[] sizeofStr = {0};
  int  _val = vkGetPhysicalDeviceSurfaceFormatsKHR0(
+                 wsi.getPointer(),
                  (physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
                  (surface==null ? null : surface.getPointer()) /* ByteBuffer */ ,
                  pSurfaceFormatCount,
@@ -1891,12 +1913,13 @@ public VkResult vkGetPhysicalDeviceSurfaceFormatsKHR(
 * @return VkResult as int  
 */
 private static native int  vkGetPhysicalDeviceSurfaceFormatsKHR0(
+         java.nio.ByteBuffer   _wsi,                                                        
          java.nio.ByteBuffer   physicalDevice,
          java.nio.ByteBuffer   surface,
          int[]  pSurfaceFormatCount,
          int[] sizeofStr,
          java.nio.ByteBuffer[]   buffers);/* 
-         
+ WSI* wsi = (WSI*)_wsi;       
  VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
  VkSurfaceKHR* ptr_surface = (VkSurfaceKHR*) surface;
  
@@ -1906,7 +1929,7 @@ private static native int  vkGetPhysicalDeviceSurfaceFormatsKHR0(
  JBufferArray buff(env, buffers);
  int size = (int) buff.getSize(); 
  
- uint32_t formatCount;
+ uint32_t formatCount = 0;
  
  VkResult res = vkGetPhysicalDeviceSurfaceFormatsKHR(
                  (VkPhysicalDevice) (*ptr_physicalDevice),
@@ -1920,19 +1943,19 @@ private static native int  vkGetPhysicalDeviceSurfaceFormatsKHR0(
   if(size==0){                 
      return (jint) res;    
  } 
- 
- 
- VkSurfaceFormatKHR* pSurfaceFormats = (VkSurfaceFormatKHR*)malloc(formatCount * sizeof(VkSurfaceFormatKHR));
   
- VkResult res = vkGetPhysicalDeviceSurfaceFormatsKHR(
+ pSurfaceFormats = (VkSurfaceFormatKHR*) malloc(formatCount * sizeof(VkSurfaceFormatKHR));
+  
+ res = wsi->pfnGetPhysicalDeviceSurfaceFormatsKHR(
                  (VkPhysicalDevice) (*ptr_physicalDevice),
                  (VkSurfaceKHR) (*ptr_surface),
                  (uint32_t*) &formatCount, //pSurfaceFormatCount,
                  (VkSurfaceFormatKHR*) pSurfaceFormats);
-                  
-   buffers.setPointer(pSurfaceFormats,
+  if(res>=0){                
+   buff.setPointer(pSurfaceFormats,
                      formatCount * sizeof(VkSurfaceFormatKHR),
                      0);                  
+   }
                                  
   return (jint) res;
 */ 
@@ -2061,22 +2084,23 @@ public VkResult vkCreateSwapchainKHR(
 * @return VkResult as int  
 */
 private static native int  vkCreateSwapchainKHR0(
-         java.nio.ByteBuffer   device,
+         java.nio.ByteBuffer   _wsi,
          java.nio.ByteBuffer   pCreateInfo,
          java.nio.ByteBuffer   pAllocator,
          java.nio.ByteBuffer[]   buffer);/* 
- VkDevice* ptr_device = (VkDevice*) device;
- VkSwapchainKHR swapchain;
+ WSI* wsi = (WSI*)_wsi;;        
  
- VkResult res = vkCreateSwapchainKHR(
-                 (VkDevice) (*ptr_device),
+ VkSwapchainKHR* pSwapchain = (VkSwapchainKHR*) malloc(sizeof(VkSwapchainKHR));
+ 
+ VkResult res = wsi->pfnCreateSwapchainKHR(
+                 (VkDevice) (wsi->device),
                  (const VkSwapchainCreateInfoKHR*) pCreateInfo,
                  (const VkAllocationCallbacks*) pAllocator,
-                 (VkSwapchainKHR*) &swapchain);
+                 (VkSwapchainKHR*) pSwapchain);
                  
   if(pSwapchain){
      JBufferArray buffers(env, buffer);
-     buffers.setPointer(&swapchain, sizeof(VkSwapchainKHR*), 0);
+     buffers.setPointer(pSwapchain, sizeof(VkSwapchainKHR*), 0);
    }
   return (jint) res;
 */ 
@@ -2120,7 +2144,7 @@ private static native void vkDestroySwapchainKHR0(
          java.nio.ByteBuffer   _wsi,
          java.nio.ByteBuffer   swapchain,
          java.nio.ByteBuffer   pAllocator);/* 
- WSI* wsi = (WSI*)wsi;
+ WSI* wsi = (WSI*)_wsi;
  VkSwapchainKHR* pSwapChain = (VkSwapchainKHR*) swapchain;
  wsi->pfnDestroySwapchainKHR(
                  (VkDevice) wsi->device,
@@ -2306,14 +2330,13 @@ private static native int  vkAcquireNextImageKHR0(
          java.nio.ByteBuffer   fence,
          int[]  pImageIndex);/* 
          
- //VkDevice* ptr_device = (VkDevice*) device;
  WSI* wsi = (WSI*) _wsi;
  VkSwapchainKHR* ptr_swapchain = (VkSwapchainKHR*) swapchain;
  VkSemaphore* ptr_semaphore = (VkSemaphore*) semaphore;
  VkFence* ptr_fence = (VkFence*) fence;
  
  VkResult res = wsi->pfnAcquireNextImageKHR(
-                 (VkDevice) wsi->device, //(*ptr_device),
+                 (VkDevice) wsi->device, 
                  (VkSwapchainKHR) (*ptr_swapchain),
                  (uint64_t) timeout,
                  (VkSemaphore) (*ptr_semaphore),
@@ -2363,7 +2386,7 @@ private static native int  vkQueuePresentKHR0(
          java.nio.ByteBuffer   pPresentInfo);/* 
  VkQueue* ptr_queue = (VkQueue*) queue;
  WSI* wsi = (WSI*)_wsi;
- VkResult res = wsi->QueuePresentKHR(
+ VkResult res = wsi->pfnQueuePresentKHR(
                  (VkQueue) (*ptr_queue),
                  (const VkPresentInfoKHR*) pPresentInfo);
   return (jint) res;
