@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDisplayModeParametersKHR extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [111]  */
 	 private static final String TAG = "VkDisplayModeParametersKHR";
 
@@ -202,7 +208,7 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	 * Prototype: VkExtent2D  visibleRegion
 	 */ 
 	 private static native long getVisibleRegion0(Buffer ptr);/*
-		  VkDisplayModeParametersKHR vkObj = (VkDisplayModeParametersKHR*)(ptr);
+		  VkDisplayModeParametersKHR* vkObj = (VkDisplayModeParametersKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->visibleRegion);	 */
 
 	/**
@@ -219,7 +225,7 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	 * Prototype: uint32_t  refreshRate
 	 */ 
 	 private static native int getRefreshRate0(Buffer ptr);/*
-		  VkDisplayModeParametersKHR vkObj = (VkDisplayModeParametersKHR*)(ptr);
+		  VkDisplayModeParametersKHR* vkObj = (VkDisplayModeParametersKHR*)(ptr);
 		  return (jint) (vkObj->refreshRate);
 	 */
 

@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkSurfaceFormatKHR extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [107]  */
 	 private static final String TAG = "VkSurfaceFormatKHR";
 
@@ -194,7 +200,7 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	 * Prototype: VkFormat  format
 	 */ 
 	 private static native int  getFormat0(Buffer ptr);/*
-		  VkSurfaceFormatKHR vkObj = (VkSurfaceFormatKHR*)(ptr);
+		  VkSurfaceFormatKHR* vkObj = (VkSurfaceFormatKHR*)(ptr);
 		  return (VkFormat) (vkObj->format);
 	 */
 
@@ -212,7 +218,7 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	 * Prototype: VkColorSpaceKHR  colorSpace
 	 */ 
 	 private static native int  getColorSpace0(Buffer ptr);/*
-		  VkSurfaceFormatKHR vkObj = (VkSurfaceFormatKHR*)(ptr);
+		  VkSurfaceFormatKHR* vkObj = (VkSurfaceFormatKHR*)(ptr);
 		  return (VkColorSpaceKHR) (vkObj->colorSpace);
 	 */
 

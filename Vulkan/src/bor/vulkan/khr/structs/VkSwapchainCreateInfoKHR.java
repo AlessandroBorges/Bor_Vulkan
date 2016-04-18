@@ -50,6 +50,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkSwapchainCreateInfoKHR extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [108]  */
 	 private static final String TAG = "VkSwapchainCreateInfoKHR";
 
@@ -640,7 +646,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkSwapchainCreateInfoKHR vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -658,7 +664,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkSwapchainCreateInfoKHR vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -675,7 +681,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Prototype: VkSwapchainCreateFlagsKHR  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkSwapchainCreateInfoKHR vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -693,7 +699,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Prototype: VkSurfaceKHR  surface
 	 */ 
 	 private static native long getSurface0(Buffer ptr);/*
-		  VkSwapchainCreateInfoKHR vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->surface);	 */
 
 	/**
@@ -710,7 +716,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Prototype: uint32_t  minImageCount
 	 */ 
 	 private static native int getMinImageCount0(Buffer ptr);/*
-		  VkSwapchainCreateInfoKHR vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->minImageCount);
 	 */
 
@@ -728,7 +734,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Prototype: VkFormat  imageFormat
 	 */ 
 	 private static native int  getImageFormat0(Buffer ptr);/*
-		  VkSwapchainCreateInfoKHR vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
 		  return (VkFormat) (vkObj->imageFormat);
 	 */
 
@@ -746,7 +752,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Prototype: VkColorSpaceKHR  imageColorSpace
 	 */ 
 	 private static native int  getImageColorSpace0(Buffer ptr);/*
-		  VkSwapchainCreateInfoKHR vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
 		  return (VkColorSpaceKHR) (vkObj->imageColorSpace);
 	 */
 
@@ -764,7 +770,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Prototype: VkExtent2D  imageExtent
 	 */ 
 	 private static native long getImageExtent0(Buffer ptr);/*
-		  VkSwapchainCreateInfoKHR vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->imageExtent);	 */
 
 	/**
@@ -781,7 +787,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Prototype: uint32_t  imageArrayLayers
 	 */ 
 	 private static native int getImageArrayLayers0(Buffer ptr);/*
-		  VkSwapchainCreateInfoKHR vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->imageArrayLayers);
 	 */
 
@@ -799,7 +805,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Prototype: VkImageUsageFlags  imageUsage
 	 */ 
 	 private static native int getImageUsage0(Buffer ptr);/*
-		  VkSwapchainCreateInfoKHR vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->imageUsage);
 	 */
 
@@ -817,7 +823,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Prototype: VkSharingMode  imageSharingMode
 	 */ 
 	 private static native int  getImageSharingMode0(Buffer ptr);/*
-		  VkSwapchainCreateInfoKHR vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
 		  return (VkSharingMode) (vkObj->imageSharingMode);
 	 */
 
@@ -835,7 +841,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
 	 private static native int getQueueFamilyIndexCount0(Buffer ptr);/*
-		  VkSwapchainCreateInfoKHR vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->queueFamilyIndexCount);
 	 */
 
@@ -853,7 +859,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 private static native int[] getPQueueFamilyIndices0(Buffer ptr);/*
-		  VkSwapchainCreateInfoKHR vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
 		  return (int[]) (vkObj->pQueueFamilyIndices);
 	 */
 
@@ -871,7 +877,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  preTransform
 	 */ 
 	 private static native int  getPreTransform0(Buffer ptr);/*
-		  VkSwapchainCreateInfoKHR vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
 		  return (VkSurfaceTransformFlagBitsKHR) (vkObj->preTransform);
 	 */
 
@@ -889,7 +895,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Prototype: VkCompositeAlphaFlagBitsKHR  compositeAlpha
 	 */ 
 	 private static native int  getCompositeAlpha0(Buffer ptr);/*
-		  VkSwapchainCreateInfoKHR vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
 		  return (VkCompositeAlphaFlagBitsKHR) (vkObj->compositeAlpha);
 	 */
 
@@ -907,7 +913,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Prototype: VkPresentModeKHR  presentMode
 	 */ 
 	 private static native int  getPresentMode0(Buffer ptr);/*
-		  VkSwapchainCreateInfoKHR vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
 		  return (VkPresentModeKHR) (vkObj->presentMode);
 	 */
 
@@ -925,7 +931,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Prototype: VkBool32  clipped
 	 */ 
 	 private static native boolean getClipped0(Buffer ptr);/*
-		  VkSwapchainCreateInfoKHR vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
 		  return (jboolean) (vkObj->clipped);
 	 */
 
@@ -943,7 +949,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Prototype: VkSwapchainKHR  oldSwapchain
 	 */ 
 	 private static native long getOldSwapchain0(Buffer ptr);/*
-		  VkSwapchainCreateInfoKHR vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->oldSwapchain);	 */
 
 

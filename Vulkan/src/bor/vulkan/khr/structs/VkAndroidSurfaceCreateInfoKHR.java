@@ -36,6 +36,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [122]  */
 	 private static final String TAG = "VkAndroidSurfaceCreateInfoKHR";
 
@@ -263,7 +269,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkAndroidSurfaceCreateInfoKHR vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
+		  VkAndroidSurfaceCreateInfoKHR* vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -281,7 +287,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkAndroidSurfaceCreateInfoKHR vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
+		  VkAndroidSurfaceCreateInfoKHR* vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -298,7 +304,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: VkAndroidSurfaceCreateFlagsKHR  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkAndroidSurfaceCreateInfoKHR vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
+		  VkAndroidSurfaceCreateInfoKHR* vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -316,7 +322,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: ANativeWindow*  window
 	 */ 
 	 private static native long getWindow0(Buffer ptr);/*
-		  VkAndroidSurfaceCreateInfoKHR vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
+		  VkAndroidSurfaceCreateInfoKHR* vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->window);	 */
 
 

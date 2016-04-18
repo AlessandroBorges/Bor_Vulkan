@@ -36,6 +36,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDisplayModeCreateInfoKHR extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [113]  */
 	 private static final String TAG = "VkDisplayModeCreateInfoKHR";
 
@@ -262,7 +268,7 @@ public class VkDisplayModeCreateInfoKHR extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkDisplayModeCreateInfoKHR vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
+		  VkDisplayModeCreateInfoKHR* vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -280,7 +286,7 @@ public class VkDisplayModeCreateInfoKHR extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkDisplayModeCreateInfoKHR vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
+		  VkDisplayModeCreateInfoKHR* vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -297,7 +303,7 @@ public class VkDisplayModeCreateInfoKHR extends VkStruct {
 	 * Prototype: VkDisplayModeCreateFlagsKHR  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkDisplayModeCreateInfoKHR vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
+		  VkDisplayModeCreateInfoKHR* vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -315,7 +321,7 @@ public class VkDisplayModeCreateInfoKHR extends VkStruct {
 	 * Prototype: VkDisplayModeParametersKHR  parameters
 	 */ 
 	 private static native long getParameters0(Buffer ptr);/*
-		  VkDisplayModeCreateInfoKHR vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
+		  VkDisplayModeCreateInfoKHR* vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->parameters);	 */
 
 

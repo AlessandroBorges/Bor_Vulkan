@@ -37,6 +37,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkXcbSurfaceCreateInfoKHR extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [119]  */
 	 private static final String TAG = "VkXcbSurfaceCreateInfoKHR";
 
@@ -299,7 +305,7 @@ public class VkXcbSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkXcbSurfaceCreateInfoKHR vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);
+		  VkXcbSurfaceCreateInfoKHR* vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -317,7 +323,7 @@ public class VkXcbSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkXcbSurfaceCreateInfoKHR vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);
+		  VkXcbSurfaceCreateInfoKHR* vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -334,7 +340,7 @@ public class VkXcbSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: VkXcbSurfaceCreateFlagsKHR  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkXcbSurfaceCreateInfoKHR vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);
+		  VkXcbSurfaceCreateInfoKHR* vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -352,7 +358,7 @@ public class VkXcbSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: xcb_connection_t*  connection
 	 */ 
 	 private static native long getConnection0(Buffer ptr);/*
-		  VkXcbSurfaceCreateInfoKHR vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);
+		  VkXcbSurfaceCreateInfoKHR* vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->connection);	 */
 
 	/**
@@ -369,7 +375,7 @@ public class VkXcbSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: xcb_window_t  window
 	 */ 
 	 private static native long getWindow0(Buffer ptr);/*
-		  VkXcbSurfaceCreateInfoKHR vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);
+		  VkXcbSurfaceCreateInfoKHR* vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->window);	 */
 
 

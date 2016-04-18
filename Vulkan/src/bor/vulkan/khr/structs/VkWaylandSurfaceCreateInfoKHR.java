@@ -37,6 +37,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [120]  */
 	 private static final String TAG = "VkWaylandSurfaceCreateInfoKHR";
 
@@ -299,7 +305,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkWaylandSurfaceCreateInfoKHR vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
+		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -317,7 +323,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkWaylandSurfaceCreateInfoKHR vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
+		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -334,7 +340,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: VkWaylandSurfaceCreateFlagsKHR  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkWaylandSurfaceCreateInfoKHR vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
+		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -352,7 +358,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: struct wl_display*  display
 	 */ 
 	 private static native long getDisplay0(Buffer ptr);/*
-		  VkWaylandSurfaceCreateInfoKHR vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
+		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->display);	 */
 
 	/**
@@ -369,7 +375,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: struct wl_surface*  surface
 	 */ 
 	 private static native long getSurface0(Buffer ptr);/*
-		  VkWaylandSurfaceCreateInfoKHR vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
+		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->surface);	 */
 
 

@@ -37,6 +37,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkMirSurfaceCreateInfoKHR extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [121]  */
 	 private static final String TAG = "VkMirSurfaceCreateInfoKHR";
 
@@ -299,7 +305,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkMirSurfaceCreateInfoKHR vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
+		  VkMirSurfaceCreateInfoKHR* vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -317,7 +323,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkMirSurfaceCreateInfoKHR vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
+		  VkMirSurfaceCreateInfoKHR* vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -334,7 +340,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: VkMirSurfaceCreateFlagsKHR  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkMirSurfaceCreateInfoKHR vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
+		  VkMirSurfaceCreateInfoKHR* vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -352,7 +358,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: MirConnection*  connection
 	 */ 
 	 private static native long getConnection0(Buffer ptr);/*
-		  VkMirSurfaceCreateInfoKHR vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
+		  VkMirSurfaceCreateInfoKHR* vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->connection);	 */
 
 	/**
@@ -369,7 +375,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: MirSurface*  mirSurface
 	 */ 
 	 private static native long getMirSurface0(Buffer ptr);/*
-		  VkMirSurfaceCreateInfoKHR vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
+		  VkMirSurfaceCreateInfoKHR* vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->mirSurface);	 */
 
 

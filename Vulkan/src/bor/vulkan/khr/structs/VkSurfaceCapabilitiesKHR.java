@@ -42,6 +42,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkSurfaceCapabilitiesKHR extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [106]  */
 	 private static final String TAG = "VkSurfaceCapabilitiesKHR";
 
@@ -423,7 +429,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 * Prototype: uint32_t  minImageCount
 	 */ 
 	 private static native int getMinImageCount0(Buffer ptr);/*
-		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		  return (jint) (vkObj->minImageCount);
 	 */
 
@@ -441,7 +447,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 * Prototype: uint32_t  maxImageCount
 	 */ 
 	 private static native int getMaxImageCount0(Buffer ptr);/*
-		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		  return (jint) (vkObj->maxImageCount);
 	 */
 
@@ -459,7 +465,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 * Prototype: VkExtent2D  currentExtent
 	 */ 
 	 private static native long getCurrentExtent0(Buffer ptr);/*
-		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->currentExtent);	 */
 
 	/**
@@ -476,7 +482,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 * Prototype: VkExtent2D  minImageExtent
 	 */ 
 	 private static native long getMinImageExtent0(Buffer ptr);/*
-		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->minImageExtent);	 */
 
 	/**
@@ -493,7 +499,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 * Prototype: VkExtent2D  maxImageExtent
 	 */ 
 	 private static native long getMaxImageExtent0(Buffer ptr);/*
-		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->maxImageExtent);	 */
 
 	/**
@@ -510,7 +516,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 * Prototype: uint32_t  maxImageArrayLayers
 	 */ 
 	 private static native int getMaxImageArrayLayers0(Buffer ptr);/*
-		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		  return (jint) (vkObj->maxImageArrayLayers);
 	 */
 
@@ -528,7 +534,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 * Prototype: VkSurfaceTransformFlagsKHR  supportedTransforms
 	 */ 
 	 private static native int getSupportedTransforms0(Buffer ptr);/*
-		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		  return (jint) (vkObj->supportedTransforms);
 	 */
 
@@ -546,7 +552,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  currentTransform
 	 */ 
 	 private static native int  getCurrentTransform0(Buffer ptr);/*
-		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		  return (VkSurfaceTransformFlagBitsKHR) (vkObj->currentTransform);
 	 */
 
@@ -564,7 +570,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 * Prototype: VkCompositeAlphaFlagsKHR  supportedCompositeAlpha
 	 */ 
 	 private static native int getSupportedCompositeAlpha0(Buffer ptr);/*
-		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		  return (jint) (vkObj->supportedCompositeAlpha);
 	 */
 
@@ -582,7 +588,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 * Prototype: VkImageUsageFlags  supportedUsageFlags
 	 */ 
 	 private static native int getSupportedUsageFlags0(Buffer ptr);/*
-		  VkSurfaceCapabilitiesKHR vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		  return (jint) (vkObj->supportedUsageFlags);
 	 */
 

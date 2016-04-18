@@ -37,6 +37,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDisplayPresentInfoKHR extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [117]  */
 	 private static final String TAG = "VkDisplayPresentInfoKHR";
 
@@ -297,7 +303,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkDisplayPresentInfoKHR vkObj = (VkDisplayPresentInfoKHR*)(ptr);
+		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -315,7 +321,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkDisplayPresentInfoKHR vkObj = (VkDisplayPresentInfoKHR*)(ptr);
+		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -332,7 +338,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 * Prototype: VkRect2D  srcRect
 	 */ 
 	 private static native long getSrcRect0(Buffer ptr);/*
-		  VkDisplayPresentInfoKHR vkObj = (VkDisplayPresentInfoKHR*)(ptr);
+		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->srcRect);	 */
 
 	/**
@@ -349,7 +355,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 * Prototype: VkRect2D  dstRect
 	 */ 
 	 private static native long getDstRect0(Buffer ptr);/*
-		  VkDisplayPresentInfoKHR vkObj = (VkDisplayPresentInfoKHR*)(ptr);
+		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->dstRect);	 */
 
 	/**
@@ -366,7 +372,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 * Prototype: VkBool32  persistent
 	 */ 
 	 private static native boolean getPersistent0(Buffer ptr);/*
-		  VkDisplayPresentInfoKHR vkObj = (VkDisplayPresentInfoKHR*)(ptr);
+		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
 		  return (jboolean) (vkObj->persistent);
 	 */
 

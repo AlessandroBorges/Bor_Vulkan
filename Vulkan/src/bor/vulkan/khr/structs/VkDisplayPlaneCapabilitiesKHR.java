@@ -41,6 +41,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [114]  */
 	 private static final String TAG = "VkDisplayPlaneCapabilitiesKHR";
 
@@ -447,7 +453,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 * Prototype: VkDisplayPlaneAlphaFlagsKHR  supportedAlpha
 	 */ 
 	 private static native int getSupportedAlpha0(Buffer ptr);/*
-		  VkDisplayPlaneCapabilitiesKHR vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  return (jint) (vkObj->supportedAlpha);
 	 */
 
@@ -465,7 +471,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 * Prototype: VkOffset2D  minSrcPosition
 	 */ 
 	 private static native long getMinSrcPosition0(Buffer ptr);/*
-		  VkDisplayPlaneCapabilitiesKHR vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->minSrcPosition);	 */
 
 	/**
@@ -482,7 +488,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 * Prototype: VkOffset2D  maxSrcPosition
 	 */ 
 	 private static native long getMaxSrcPosition0(Buffer ptr);/*
-		  VkDisplayPlaneCapabilitiesKHR vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->maxSrcPosition);	 */
 
 	/**
@@ -499,7 +505,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 * Prototype: VkExtent2D  minSrcExtent
 	 */ 
 	 private static native long getMinSrcExtent0(Buffer ptr);/*
-		  VkDisplayPlaneCapabilitiesKHR vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->minSrcExtent);	 */
 
 	/**
@@ -516,7 +522,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 * Prototype: VkExtent2D  maxSrcExtent
 	 */ 
 	 private static native long getMaxSrcExtent0(Buffer ptr);/*
-		  VkDisplayPlaneCapabilitiesKHR vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->maxSrcExtent);	 */
 
 	/**
@@ -533,7 +539,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 * Prototype: VkOffset2D  minDstPosition
 	 */ 
 	 private static native long getMinDstPosition0(Buffer ptr);/*
-		  VkDisplayPlaneCapabilitiesKHR vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->minDstPosition);	 */
 
 	/**
@@ -550,7 +556,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 * Prototype: VkOffset2D  maxDstPosition
 	 */ 
 	 private static native long getMaxDstPosition0(Buffer ptr);/*
-		  VkDisplayPlaneCapabilitiesKHR vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->maxDstPosition);	 */
 
 	/**
@@ -567,7 +573,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 * Prototype: VkExtent2D  minDstExtent
 	 */ 
 	 private static native long getMinDstExtent0(Buffer ptr);/*
-		  VkDisplayPlaneCapabilitiesKHR vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->minDstExtent);	 */
 
 	/**
@@ -584,7 +590,7 @@ public class VkDisplayPlaneCapabilitiesKHR extends VkStruct {
 	 * Prototype: VkExtent2D  maxDstExtent
 	 */ 
 	 private static native long getMaxDstExtent0(Buffer ptr);/*
-		  VkDisplayPlaneCapabilitiesKHR vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->maxDstExtent);	 */
 
 

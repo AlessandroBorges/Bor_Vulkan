@@ -40,6 +40,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPresentInfoKHR extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [109]  */
 	 private static final String TAG = "VkPresentInfoKHR";
 
@@ -374,7 +380,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkPresentInfoKHR vkObj = (VkPresentInfoKHR*)(ptr);
+		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -392,7 +398,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkPresentInfoKHR vkObj = (VkPresentInfoKHR*)(ptr);
+		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -409,7 +415,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
 	 private static native int getWaitSemaphoreCount0(Buffer ptr);/*
-		  VkPresentInfoKHR vkObj = (VkPresentInfoKHR*)(ptr);
+		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  return (jint) (vkObj->waitSemaphoreCount);
 	 */
 
@@ -427,7 +433,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
 	 private static native long getPWaitSemaphores0(Buffer ptr);/*
-		  VkPresentInfoKHR vkObj = (VkPresentInfoKHR*)(ptr);
+		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pWaitSemaphores);	 */
 
 	/**
@@ -444,7 +450,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 * Prototype: uint32_t  swapchainCount
 	 */ 
 	 private static native int getSwapchainCount0(Buffer ptr);/*
-		  VkPresentInfoKHR vkObj = (VkPresentInfoKHR*)(ptr);
+		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  return (jint) (vkObj->swapchainCount);
 	 */
 
@@ -462,7 +468,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 * Prototype: const VkSwapchainKHR*  pSwapchains
 	 */ 
 	 private static native long getPSwapchains0(Buffer ptr);/*
-		  VkPresentInfoKHR vkObj = (VkPresentInfoKHR*)(ptr);
+		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pSwapchains);	 */
 
 	/**
@@ -479,7 +485,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 * Prototype: const uint32_t*  pImageIndices
 	 */ 
 	 private static native int[] getPImageIndices0(Buffer ptr);/*
-		  VkPresentInfoKHR vkObj = (VkPresentInfoKHR*)(ptr);
+		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  return (int[]) (vkObj->pImageIndices);
 	 */
 
@@ -497,7 +503,7 @@ public class VkPresentInfoKHR extends VkStruct {
 	 * Prototype: VkResult*  pResults
 	 */ 
 	 private static native VkResult[] getPResults0(Buffer ptr);/*
-		  VkPresentInfoKHR vkObj = (VkPresentInfoKHR*)(ptr);
+		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  return (VkResult[]) (vkObj->pResults);
 	 */
 

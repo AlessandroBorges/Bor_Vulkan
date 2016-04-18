@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDisplayPlanePropertiesKHR extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [115]  */
 	 private static final String TAG = "VkDisplayPlanePropertiesKHR";
 
@@ -203,7 +209,7 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	 * Prototype: VkDisplayKHR  currentDisplay
 	 */ 
 	 private static native long getCurrentDisplay0(Buffer ptr);/*
-		  VkDisplayPlanePropertiesKHR vkObj = (VkDisplayPlanePropertiesKHR*)(ptr);
+		  VkDisplayPlanePropertiesKHR* vkObj = (VkDisplayPlanePropertiesKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->currentDisplay);	 */
 
 	/**
@@ -220,7 +226,7 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	 * Prototype: uint32_t  currentStackIndex
 	 */ 
 	 private static native int getCurrentStackIndex0(Buffer ptr);/*
-		  VkDisplayPlanePropertiesKHR vkObj = (VkDisplayPlanePropertiesKHR*)(ptr);
+		  VkDisplayPlanePropertiesKHR* vkObj = (VkDisplayPlanePropertiesKHR*)(ptr);
 		  return (jint) (vkObj->currentStackIndex);
 	 */
 

@@ -39,6 +39,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDisplayPropertiesKHR extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [110]  */
 	 private static final String TAG = "VkDisplayPropertiesKHR";
 
@@ -348,7 +354,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 * Prototype: VkDisplayKHR  display
 	 */ 
 	 private static native long getDisplay0(Buffer ptr);/*
-		  VkDisplayPropertiesKHR vkObj = (VkDisplayPropertiesKHR*)(ptr);
+		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->display);	 */
 
 	/**
@@ -365,8 +371,8 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 * Prototype: const char*  displayName
 	 */ 
 	 private static native String getDisplayName0(Buffer ptr);/*
-		  VkDisplayPropertiesKHR vkObj = (VkDisplayPropertiesKHR*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->displayName);	 */
+		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
+		  return (jstring)(env->NewStringUTF(vkObj->displayName));	 */
 
 	/**
 	 * native SET method for field physicalDimensions	[vkstruct]<br>
@@ -382,7 +388,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 * Prototype: VkExtent2D  physicalDimensions
 	 */ 
 	 private static native long getPhysicalDimensions0(Buffer ptr);/*
-		  VkDisplayPropertiesKHR vkObj = (VkDisplayPropertiesKHR*)(ptr);
+		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->physicalDimensions);	 */
 
 	/**
@@ -399,7 +405,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 * Prototype: VkExtent2D  physicalResolution
 	 */ 
 	 private static native long getPhysicalResolution0(Buffer ptr);/*
-		  VkDisplayPropertiesKHR vkObj = (VkDisplayPropertiesKHR*)(ptr);
+		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->physicalResolution);	 */
 
 	/**
@@ -416,7 +422,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 * Prototype: VkSurfaceTransformFlagsKHR  supportedTransforms
 	 */ 
 	 private static native int getSupportedTransforms0(Buffer ptr);/*
-		  VkDisplayPropertiesKHR vkObj = (VkDisplayPropertiesKHR*)(ptr);
+		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  return (jint) (vkObj->supportedTransforms);
 	 */
 
@@ -434,7 +440,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 * Prototype: VkBool32  planeReorderPossible
 	 */ 
 	 private static native boolean getPlaneReorderPossible0(Buffer ptr);/*
-		  VkDisplayPropertiesKHR vkObj = (VkDisplayPropertiesKHR*)(ptr);
+		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  return (jboolean) (vkObj->planeReorderPossible);
 	 */
 
@@ -452,7 +458,7 @@ public class VkDisplayPropertiesKHR extends VkStruct {
 	 * Prototype: VkBool32  persistentContent
 	 */ 
 	 private static native boolean getPersistentContent0(Buffer ptr);/*
-		  VkDisplayPropertiesKHR vkObj = (VkDisplayPropertiesKHR*)(ptr);
+		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  return (jboolean) (vkObj->persistentContent);
 	 */
 

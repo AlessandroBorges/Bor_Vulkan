@@ -37,6 +37,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [123]  */
 	 private static final String TAG = "VkWin32SurfaceCreateInfoKHR";
 
@@ -299,7 +305,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkWin32SurfaceCreateInfoKHR vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
+		  VkWin32SurfaceCreateInfoKHR* vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -317,7 +323,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkWin32SurfaceCreateInfoKHR vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
+		  VkWin32SurfaceCreateInfoKHR* vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -334,7 +340,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: VkWin32SurfaceCreateFlagsKHR  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkWin32SurfaceCreateInfoKHR vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
+		  VkWin32SurfaceCreateInfoKHR* vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -352,7 +358,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: HINSTANCE  hinstance
 	 */ 
 	 private static native long getHinstance0(Buffer ptr);/*
-		  VkWin32SurfaceCreateInfoKHR vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
+		  VkWin32SurfaceCreateInfoKHR* vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->hinstance);	 */
 
 	/**
@@ -369,7 +375,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 * Prototype: HWND  hwnd
 	 */ 
 	 private static native long getHwnd0(Buffer ptr);/*
-		  VkWin32SurfaceCreateInfoKHR vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
+		  VkWin32SurfaceCreateInfoKHR* vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->hwnd);	 */
 
 

@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDisplayModePropertiesKHR extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [112]  */
 	 private static final String TAG = "VkDisplayModePropertiesKHR";
 
@@ -213,7 +219,7 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 * Prototype: VkDisplayModeKHR  displayMode
 	 */ 
 	 private static native long getDisplayMode0(Buffer ptr);/*
-		  VkDisplayModePropertiesKHR vkObj = (VkDisplayModePropertiesKHR*)(ptr);
+		  VkDisplayModePropertiesKHR* vkObj = (VkDisplayModePropertiesKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->displayMode);	 */
 
 	/**
@@ -230,7 +236,7 @@ public class VkDisplayModePropertiesKHR extends VkStruct {
 	 * Prototype: VkDisplayModeParametersKHR  parameters
 	 */ 
 	 private static native long getParameters0(Buffer ptr);/*
-		  VkDisplayModePropertiesKHR vkObj = (VkDisplayModePropertiesKHR*)(ptr);
+		  VkDisplayModePropertiesKHR* vkObj = (VkDisplayModePropertiesKHR*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->parameters);	 */
 
 
