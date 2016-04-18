@@ -129,7 +129,9 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
      * The pointer to native side will be created later.
      * @see VkHandle#getNullHandler()
      */
-    protected VkHandle(){        
+    protected VkHandle(){ 
+        //TODO - get correct ptr size at runtime
+        this(ByteBuffer.allocateDirect(8));
     }
 
     /**
