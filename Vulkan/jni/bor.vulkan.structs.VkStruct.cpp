@@ -2,29 +2,12 @@
 
 //@line:35
 
-      
-    #if defined(_WIN32)
-        #define VK_USE_PLATFORM_WIN32_KHR 1
-        #define WIN32_LEAN_AND_MEAN 1
-        #define VC_EXTRALEAN 1
-    #elif defined(__ANDROID__) && defined(__ARM_EABI__) && !defined(__ARM_ARCH_7A__)
-       #define VK_USE_PLATFORM_ANDROID_KHR 1
-    #elif defined(__ANDROID__) && defined(__ARM_ARCH_7A__)
-       #define VK_USE_PLATFORM_ANDROID_KHR 1
-    #else
-     #define VK_USE_PLATFORM_XLIB_KHR 1
-    #endif    
-      
-    // include other platform here
-      
-      #include <stdio.h>
-      #include <stdlib.h>      
-      #include <vulkan/vulkan.h>
+   #include <BorVulkan.hpp>
      
      JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkStruct_sizeOf(JNIEnv* env, jclass clazz, jint structID) {
 
 
-//@line:517
+//@line:500
 
      
      size_t _size = 0; 

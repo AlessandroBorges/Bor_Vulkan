@@ -96,15 +96,23 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_init
 /*
  * Class:     bor_vulkan_Vk10
  * Method:    vkCreateInstance0
+ * Signature: (Ljava/nio/Buffer;Ljava/nio/Buffer;Ljava/nio/Buffer;)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateInstance0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateInstance1
  * Signature: (Ljava/nio/Buffer;Ljava/nio/Buffer;[I)Ljava/nio/ByteBuffer;
  */
-JNIEXPORT jobject JNICALL Java_bor_vulkan_Vk10_vkCreateInstance0
+JNIEXPORT jobject JNICALL Java_bor_vulkan_Vk10_vkCreateInstance1
   (JNIEnv *, jclass, jobject, jobject, jintArray);
 
 /*
  * Class:     bor_vulkan_Vk10
  * Method:    vkDestroyInstance0
- * Signature: (Ljava/nio/Buffer;Ljava/nio/Buffer;)V
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
  */
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyInstance0
   (JNIEnv *, jclass, jobject, jobject);
@@ -112,7 +120,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyInstance0
 /*
  * Class:     bor_vulkan_Vk10
  * Method:    vkEnumeratePhysicalDevices0
- * Signature: (Ljava/nio/Buffer;[I[Ljava/nio/Buffer;I)I
+ * Signature: (Ljava/nio/ByteBuffer;[I[Ljava/nio/Buffer;I)I
  */
 JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkEnumeratePhysicalDevices0
   (JNIEnv *, jclass, jobject, jintArray, jobjectArray, jint);
