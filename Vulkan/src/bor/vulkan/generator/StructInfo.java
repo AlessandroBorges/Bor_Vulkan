@@ -155,6 +155,12 @@ public class StructInfo {
         output += disclaimer;
         output += "public class " + this.name + " extends VkStruct {\n";
         
+        output += "\n"
+                + "    //@formatter:off\n"
+                + "    /*JNI\n"
+                + "    #include <BorVulkan.hpp>\n"
+                + "    */  \n\n" ;
+        
         output += "\t/** TAG of this structure [" + this.id + "]  */\n";
         output += "\t private static final String TAG = \"" + name + "\";\n\n";
         
@@ -425,7 +431,7 @@ public class StructInfo {
            String nativeRes = "\t\t  return (" + jniType + ") (vkObj->"+ field + ");\n";
            if(jType.equalsIgnoreCase("string")){
                // Strings must be converted
-               nativeRes = "\t\t  return (jstring)(env->NewStringUTF(vkObj->"+field +");";
+               nativeRes = "\t\t  return (jstring)(env->NewStringUTF(vkObj->"+field +"));";
            }
            if(typeMod.contains("Buffer")){
                typeMod = "long";
@@ -433,7 +439,7 @@ public class StructInfo {
            }
            
            output += "\t private static native " + typeMod + " " + getName + "0(Buffer ptr);/*\n" 
-                   + "\t\t  " + this.name + " vkObj = ("+ this.name+"*)(ptr);\n"                   
+                   + "\t\t  " + this.name + "* vkObj = ("+ this.name+"*)(ptr);\n"                   
                    + nativeRes
                    +"\t */\n\n";
               

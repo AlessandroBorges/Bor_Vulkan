@@ -11,8 +11,23 @@ public class JNIgenBuilder {
     public static void main(String[] args) throws Exception {
         
         String[] src = {
-                "**/bor/vulkan/util/Utils.java",
+                "**/bor/util/Utils.java",
+                "**/bor/vulkan/khr/WSI.java",
                 "**/bor/vulkan/Vk10.java",
+                "**/bor/vulkan/structs/VkStruct.java",
+                "**/bor/vulkan/structs/VkApplicationInfo.java",
+                
+                "**/bor/vulkan/structs/VkPhysicalDeviceProperties.java",
+                "**/bor/vulkan/structs/VkPhysicalDeviceType.java",
+                "**/bor/vulkan/structs/VkPhysicalDeviceLimits.java",
+                "**/bor/vulkan/structs/VkPhysicalDeviceSparseProperties.java",
+                "**/bor/vulkan/structs/VkDeviceCreateInfo.java",
+                "**/bor/vulkan/structs/vkGetPhysicalDeviceFeatures.java",
+                //vkGetPhysicalDeviceFeatures(
+                "**/bor/vulkan/structs/VkInstanceCreateInfo.java",
+                "**/bor/vulkan/structs/VkInstanceCreateInfo.java",//VkAllocationCallbacks
+                //VkPhysicalDeviceProperties
+          
         };
         
         NativeCodeGenerator jnigen = new NativeCodeGenerator();

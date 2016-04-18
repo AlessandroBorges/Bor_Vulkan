@@ -204,6 +204,9 @@ public class ExtractStruts {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
+        if(true){
+            throw new RuntimeException("DO Not run it anymore");
+        }
         List<String> vkh = readVKH();
         // String vk = toString(vkh);       
         boolean processStructs = true;
