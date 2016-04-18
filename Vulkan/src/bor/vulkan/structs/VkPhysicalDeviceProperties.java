@@ -285,7 +285,8 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 */ 
 	 public void deviceName(String deviceName){
 		 this.deviceName = deviceName;
-		 setDeviceName0(this.ptr,  deviceName);
+		 String s = (deviceName==null) ? null : deviceName.substring(0, 254);
+		 setDeviceName0(this.ptr,  s, (s==null ? 0 : s.length()) );
 	 }
 
 	/**
@@ -303,7 +304,10 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * Prototype: uint8_t[]  pipelineCacheUUID
 	 */ 
 	 public void pipelineCacheUUID(byte[] pipelineCacheUUID){
-		 this.pipelineCacheUUID = pipelineCacheUUID;
+	         if(pipelineCacheUUID.length < 16){
+	             throw new IllegalArgumentException("Length of pipelineCacheUUID must be at least 16.");
+	         }
+		 this.pipelineCacheUUID = pipelineCacheUUID;		 
 		 setPipelineCacheUUID0(this.ptr,  pipelineCacheUUID);
 	 }
 
@@ -312,9 +316,11 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * Prototype: uint8_t[]  pipelineCacheUUID
 	 */ 
 	 public byte[] pipelineCacheUUID(){
-		 byte[] var = getPipelineCacheUUID0(super.ptr);
-		 this.pipelineCacheUUID = var;
-		 return this.pipelineCacheUUID;
+	         if(pipelineCacheUUID == null){
+	             pipelineCacheUUID = new byte[16]; 
+	         }
+		getPipelineCacheUUID0(super.ptr,pipelineCacheUUID);		 
+	        return this.pipelineCacheUUID;
 	 }
 
 	/**
@@ -491,11 +497,12 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	/**
 	 * native SET method for field deviceName	[string]<br>
 	 * Prototype: char[]  deviceName
-	 */ 
-	 @Deprecated
-	 private static native void setDeviceName0(Buffer ptr, String _deviceName);/*
-		 // VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);		  
-		 // vkObj->deviceName = _deviceName;
+	 * @TODO implement it
+	 */
+	 private static native void setDeviceName0(Buffer ptr, String _deviceName, int len);/*
+		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);		  
+		  strncpy(vkObj->deviceName, _deviceName, len);		  
+		  vkObj->deviceName[len] = '\0';
 	  */
 
 	/**
@@ -510,19 +517,24 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * native SET method for field pipelineCacheUUID	[byte_array]<br>
 	 * Prototype: uint8_t[]  pipelineCacheUUID
 	 */ 
-	 @Deprecated
+	 
 	 private static native void setPipelineCacheUUID0(Buffer ptr, byte[] _pipelineCacheUUID);/*
-		//  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		//  vkObj->pipelineCacheUUID = (uint8_t[]) (_pipelineCacheUUID);
+		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		  for(int i = 0; i< VK_UUID_SIZE; i++){
+		     vkObj->pipelineCacheUUID[i] = (uint8_t) (_pipelineCacheUUID[i]);
+		  }
 	  */
 
 	/**
 	 * native GET method for field pipelineCacheUUID	[byte_array]<br>
 	 * Prototype: uint8_t[]  pipelineCacheUUID
 	 */ 
-	 private static native byte[] getPipelineCacheUUID0(Buffer ptr);/*
-		//  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		//  return (byte[]) (vkObj->pipelineCacheUUID);
+	 private static native void getPipelineCacheUUID0(Buffer ptr, byte[] retByte);/*
+		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		  //copy it
+		  for(int i=0; i<VK_UUID_SIZE; i++){
+		   retByte[i] = (jbyte) vkObj->pipelineCacheUUID[i];
+		  }
 	 */
 
 	/**
@@ -530,8 +542,9 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * Prototype: VkPhysicalDeviceLimits  limits
 	 */ 
 	 private static native void setLimits0(Buffer ptr, java.nio.ByteBuffer  _limits);/*
-		//  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		//  vkObj->limits = (VkPhysicalDeviceLimits) (_limits);
+		 VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		 VkPhysicalDeviceLimits*   pLimits = (VkPhysicalDeviceLimits*)_limits;
+		 vkObj->limits = (VkPhysicalDeviceLimits) (*pLimits);
 	  */
 
 	/**

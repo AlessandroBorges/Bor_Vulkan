@@ -167,45 +167,45 @@ public class Vk10 extends Vulkan {
    * @param result
    * @return
    */
-   private static native int vkCreateInstance0(
-       Buffer  pCreateInfo,
-       Buffer  pAllocator,
-       Buffer  _pInstance);/*
-       
-       // isolate [in][out] parameter and cast it
-       jobject buff = NULL; 
-       VkInstance* pInstance = (VkInstance*) _pInstance;
-               
-       VkResult res =  vkCreateInstance(
-        (const VkInstanceCreateInfo*)                 pCreateInfo,
-        (const VkAllocationCallbacks*)                pAllocator,
-        (VkInstance*)                                 pInstance);
-               
-        printf("VkInstance* %p \n",  pInstance);
-        printf("VkInstance  %p \n", (*pInstance));
-        return (jint) res; 
-       */
+//   private static native int vkCreateInstance0(
+//       Buffer  pCreateInfo,
+//       Buffer  pAllocator,
+//       Buffer  _pInstance);/*
+//       
+//       // isolate [in][out] parameter and cast it
+//       jobject buff = NULL; 
+//       VkInstance* pInstance = (VkInstance*) _pInstance;
+//               
+//       VkResult res =  vkCreateInstance(
+//        (const VkInstanceCreateInfo*)                 pCreateInfo,
+//        (const VkAllocationCallbacks*)                pAllocator,
+//        (VkInstance*)                                 pInstance);
+//               
+//        printf("VkInstance* %p \n",  pInstance);
+//        printf("VkInstance  %p \n", (*pInstance));
+//        return (jint) res; 
+//       */
 
    private static native ByteBuffer vkCreateInstance1(
                                                Buffer  pCreateInfo,
                                                Buffer  pAllocator,
                                                int[] result);/*
                                                
-      VkInstance* pInstance = (VkInstance*)malloc(sizeof(VkInstance));                                
+      VkInstance* pInstance_ = (VkInstance*)malloc(sizeof(VkInstance));                                
       VkResult res =  vkCreateInstance(
                        (const VkInstanceCreateInfo*)                 pCreateInfo,
                        (const VkAllocationCallbacks*)                pAllocator,
-                       (VkInstance*)                                 pInstance);
+                       (VkInstance*)                                 pInstance_);
       result[0] = (jint) res;
                                                      
-      printf("VkInstance* %p \n",  pInstance);
-      printf("VkInstance  %p \n", (*pInstance));
+    //  printf("VkInstance* %p \n",  pInstance);
+    //  printf("VkInstance  %p \n", (*pInstance));
       
       jobject buff = NULL; 
-      if(pInstance){
-        VkInstance instance = (*pInstance);
-        buff = (jobject)(env->NewDirectByteBuffer((void*)(instance), sizeof(VkInstance)));
-        free(pInstance);
+      if(pInstance_){
+        VkInstance instance_ = (*pInstance_);
+        buff = (jobject)(env->NewDirectByteBuffer((void*)(instance_), sizeof(VkInstance)));
+        free(pInstance_);
       }    
       
       return buff; 
@@ -311,21 +311,21 @@ public class Vk10 extends Vulkan {
                                        Buffer[]   pPhysicalDevicesRet,
                                        int        size);/*
       
-       VkPhysicalDevice* pPhysicalDevices = NULL;        
+       VkPhysicalDevice* pPhysicalDevices_ = NULL;        
        if(size>0){
-          pPhysicalDevices = new VkPhysicalDevice[size];
+          pPhysicalDevices_ = new VkPhysicalDevice[size];
           //(VkPhysicalDevice*)malloc(size * sizeof(VkPhysicalDevice));
         }     
               
        VkResult res = vkEnumeratePhysicalDevices(
                                   (VkInstance) (instance),
                                   (uint32_t*)  pPhysicalDeviceCount,
-                                  (VkPhysicalDevice*) pPhysicalDevices);
+                                  (VkPhysicalDevice*) pPhysicalDevices_);
                                   
          // wrap pointers to ByteBuffer[] pPhysicalDevicesRet
-         if(pPhysicalDevices){
+         if(pPhysicalDevices_){
            for(int i=0; i<size; i++){
-               VkPhysicalDevice step = pPhysicalDevices[i];
+               VkPhysicalDevice step = pPhysicalDevices_[i];
                if(step){
                   jobject buff =  env->NewDirectByteBuffer((void*) (step), 
                                                            (jlong) sizeof(VkPhysicalDevice));               
@@ -336,8 +336,8 @@ public class Vk10 extends Vulkan {
          }//if
         
          //delete array
-          if(pPhysicalDevices){
-              delete[]  pPhysicalDevices;
+          if(pPhysicalDevices_){
+              delete[]  pPhysicalDevices_;
               //printf("Delete array");
           }
          return (jint) res;
@@ -1297,9 +1297,9 @@ public VkResult vkDeviceWaitIdle(
  */
  private static native int  vkDeviceWaitIdle0(
              java.nio.ByteBuffer   device);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkDeviceWaitIdle(
-                     (VkDevice) (*ptr_device));
+                     (VkDevice) (device));
       return (jint) res;
 */ 
 
@@ -1352,9 +1352,9 @@ public VkResult vkAllocateMemory(
              java.nio.ByteBuffer   pAllocateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pMemory);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkAllocateMemory(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkMemoryAllocateInfo*) pAllocateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkDeviceMemory*) pMemory);
@@ -1400,10 +1400,10 @@ public void vkFreeMemory(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   memory,
              java.nio.ByteBuffer   pAllocator);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
      vkFreeMemory(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkDeviceMemory) (*ptr_memory),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -1475,13 +1475,13 @@ public VkResult vkMapMemory(
              int  flags,
              int[] result);/* 
      // FIXED        
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
      void* pData = nullptr;
      jobject buff = NULL;
      
      VkResult res = vkMapMemory(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkDeviceMemory) (*ptr_memory),
                      (VkDeviceSize) offset,
                      (VkDeviceSize) size,
@@ -1530,10 +1530,10 @@ public void vkUnmapMemory(
  private static native void vkUnmapMemory0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   memory);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
      vkUnmapMemory(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkDeviceMemory) (*ptr_memory));
 
 */ 
@@ -1617,11 +1617,11 @@ public VkResult vkFlushMappedMemoryRanges(
              java.nio.ByteBuffer[]   pMemoryRangesArray);/* 
      //FIXED
                     
-      VkDevice* ptr_device = (VkDevice*) device;      
+            
      JBufferArray buffers (env, pMemoryRangesArray);          
      const VkMappedMemoryRange* pMemoryRanges = (const VkMappedMemoryRange*) buffers.getPointers();
      VkResult res = vkFlushMappedMemoryRanges(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (uint32_t) memoryRangeCount,
                      (const VkMappedMemoryRange*) pMemoryRanges);
                      
@@ -1679,11 +1679,11 @@ public VkResult vkInvalidateMappedMemoryRanges(
              int  memoryRangeCount,
              java.nio.ByteBuffer[]   pMemoryRanges);/*
                            
-     VkDevice* ptr_device = (VkDevice*) device;     
+          
      JBufferArray bufferArray (env, pMemoryRanges);
      PointerToAnything* buffers = bufferArray.getPointers();
      VkResult res = vkInvalidateMappedMemoryRanges(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (uint32_t) memoryRangeCount,
                      (const VkMappedMemoryRange*) buffers);
                      
@@ -1729,10 +1729,10 @@ public void vkGetDeviceMemoryCommitment(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   memory,
              long[]  pCommittedMemoryInBytes);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
      vkGetDeviceMemoryCommitment(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkDeviceMemory) (*ptr_memory),
                      (VkDeviceSize*) pCommittedMemoryInBytes);
 
@@ -1787,11 +1787,11 @@ public VkResult vkBindBufferMemory(
              java.nio.ByteBuffer   buffer,
              java.nio.ByteBuffer   memory,
              long  memoryOffset);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkBuffer* ptr_buffer = (VkBuffer*) buffer;
      VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
      VkResult res = vkBindBufferMemory(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkBuffer) (*ptr_buffer),
                      (VkDeviceMemory) (*ptr_memory),
                      (VkDeviceSize) memoryOffset);
@@ -1847,11 +1847,11 @@ public VkResult vkBindImageMemory(
              java.nio.ByteBuffer   image,
              java.nio.ByteBuffer   memory,
              long  memoryOffset);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkImage* ptr_image = (VkImage*) image;
      VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
      VkResult res = vkBindImageMemory(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkImage) (*ptr_image),
                      (VkDeviceMemory) (*ptr_memory),
                      (VkDeviceSize) memoryOffset);
@@ -1897,10 +1897,10 @@ public void vkGetBufferMemoryRequirements(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   buffer,
              java.nio.ByteBuffer   pMemoryRequirements);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkBuffer* ptr_buffer = (VkBuffer*) buffer;
      vkGetBufferMemoryRequirements(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkBuffer) (*ptr_buffer),
                      (VkMemoryRequirements*) pMemoryRequirements);
 
@@ -1945,10 +1945,10 @@ public void vkGetImageMemoryRequirements(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   image,
              java.nio.ByteBuffer   pMemoryRequirements);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkImage* ptr_image = (VkImage*) image;
      vkGetImageMemoryRequirements(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkImage) (*ptr_image),
                      (VkMemoryRequirements*) pMemoryRequirements);
 
@@ -2003,11 +2003,11 @@ public void vkGetImageSparseMemoryRequirements(
              java.nio.ByteBuffer   image,
              int[]  pSparseMemoryRequirementCount,
              java.nio.ByteBuffer[]   pSparseMemoryRequirements);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkImage* ptr_image = (VkImage*) image;
      JBufferArray buffers(env,pSparseMemoryRequirements);
      vkGetImageSparseMemoryRequirements(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkImage) (*ptr_image),
                      (uint32_t*) pSparseMemoryRequirementCount,
                      (VkSparseImageMemoryRequirements*) buffers.getPointers());
@@ -2210,9 +2210,9 @@ public VkResult vkCreateFence(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pFence);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateFence(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkFenceCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkFence*) pFence);
@@ -2258,10 +2258,10 @@ public void vkDestroyFence(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   fence,
              java.nio.ByteBuffer   pAllocator);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkFence* ptr_fence = (VkFence*) fence;
      vkDestroyFence(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkFence) (*ptr_fence),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -2313,11 +2313,11 @@ public VkResult vkResetFences(
              java.nio.ByteBuffer   device,
              int  fenceCount,
              java.nio.ByteBuffer[]   pFences);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      JBufferArray buffers (env, pFences);
      
      VkResult res = vkResetFences(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (uint32_t) fenceCount,
                      (const VkFence*) buffers.getPointers());
       return (jint) res;
@@ -2360,10 +2360,10 @@ public VkResult vkGetFenceStatus(
  private static native int  vkGetFenceStatus0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   fence);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkFence* ptr_fence = (VkFence*) fence;
      VkResult res = vkGetFenceStatus(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkFence) (*ptr_fence));
       return (jint) res;
 */ 
@@ -2425,11 +2425,11 @@ public VkResult vkWaitForFences(
              java.nio.ByteBuffer[]   pFences,
              boolean  waitAll,
              long  timeout);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      JBufferArray buffers (env, pFences);
      
      VkResult res = vkWaitForFences(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (uint32_t) fenceCount,
                      (const VkFence*) buffers.getPointers(),
                      (VkBool32) waitAll,
@@ -2486,9 +2486,9 @@ public VkResult vkCreateSemaphore(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pSemaphore);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateSemaphore(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkSemaphoreCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkSemaphore*) pSemaphore);
@@ -2534,10 +2534,10 @@ public void vkDestroySemaphore(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   semaphore,
              java.nio.ByteBuffer   pAllocator);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkSemaphore* ptr_semaphore = (VkSemaphore*) semaphore;
      vkDestroySemaphore(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkSemaphore) (*ptr_semaphore),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -2592,9 +2592,9 @@ public VkResult vkCreateEvent(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pEvent);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateEvent(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkEventCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkEvent*) pEvent);
@@ -2640,10 +2640,10 @@ public void vkDestroyEvent(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   event,
              java.nio.ByteBuffer   pAllocator);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkEvent* ptr_event = (VkEvent*) event;
      vkDestroyEvent(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkEvent) (*ptr_event),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -2686,10 +2686,10 @@ public VkResult vkGetEventStatus(
  private static native int  vkGetEventStatus0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   event);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkEvent* ptr_event = (VkEvent*) event;
      VkResult res = vkGetEventStatus(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkEvent) (*ptr_event));
       return (jint) res;
 */ 
@@ -2731,10 +2731,10 @@ public VkResult vkSetEvent(
  private static native int  vkSetEvent0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   event);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkEvent* ptr_event = (VkEvent*) event;
      VkResult res = vkSetEvent(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkEvent) (*ptr_event));
       return (jint) res;
 */ 
@@ -2776,10 +2776,10 @@ public VkResult vkResetEvent(
  private static native int  vkResetEvent0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   event);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkEvent* ptr_event = (VkEvent*) event;
      VkResult res = vkResetEvent(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkEvent) (*ptr_event));
       return (jint) res;
 */ 
@@ -2833,9 +2833,9 @@ public VkResult vkCreateQueryPool(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pQueryPool);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateQueryPool(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkQueryPoolCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkQueryPool*) pQueryPool);
@@ -2881,10 +2881,10 @@ public void vkDestroyQueryPool(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   queryPool,
              java.nio.ByteBuffer   pAllocator);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkQueryPool* ptr_queryPool = (VkQueryPool*) queryPool;
      vkDestroyQueryPool(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkQueryPool) (*ptr_queryPool),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -2985,10 +2985,10 @@ public VkResult vkGetQueryPoolResults(
              java.nio.Buffer  pData,
              long  stride,
              int  flags);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkQueryPool* ptr_queryPool = (VkQueryPool*) queryPool;
      VkResult res = vkGetQueryPoolResults(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkQueryPool) (*ptr_queryPool),
                      (uint32_t) firstQuery,
                      (uint32_t) queryCount,
@@ -3057,11 +3057,11 @@ public VkResult vkCreateBuffer(
              java.nio.ByteBuffer   pAllocator,             
              int[] result);/* 
              
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkBuffer* pBuffer = NULL;
          
      VkResult res = vkCreateBuffer(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkBufferCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkBuffer*) pBuffer);
@@ -3113,10 +3113,10 @@ public void vkDestroyBuffer(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   buffer,
              java.nio.ByteBuffer   pAllocator);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkBuffer* ptr_buffer = (VkBuffer*) buffer;
      vkDestroyBuffer(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkBuffer) (*ptr_buffer),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -3183,11 +3183,11 @@ public VkResult vkCreateBufferView(
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer[]   _pView);/* 
              
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkBufferView* pView = NULL;
      
      VkResult res = vkCreateBufferView(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkBufferViewCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkBufferView*) pView);
@@ -3238,10 +3238,10 @@ public void vkDestroyBufferView(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   bufferView,
              java.nio.ByteBuffer   pAllocator);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkBufferView* ptr_bufferView = (VkBufferView*) bufferView;
      vkDestroyBufferView(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkBufferView) (*ptr_bufferView),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -3296,9 +3296,9 @@ public VkResult vkCreateImage(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pImage);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateImage(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkImageCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkImage*) pImage);
@@ -3344,10 +3344,10 @@ public void vkDestroyImage(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   image,
              java.nio.ByteBuffer   pAllocator);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkImage* ptr_image = (VkImage*) image;
      vkDestroyImage(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkImage) (*ptr_image),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -3398,10 +3398,10 @@ public void vkGetImageSubresourceLayout(
              java.nio.ByteBuffer   image,
              java.nio.ByteBuffer   pSubresource,
              java.nio.ByteBuffer   pLayout);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkImage* ptr_image = (VkImage*) image;
      vkGetImageSubresourceLayout(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkImage) (*ptr_image),
                      (const VkImageSubresource*) pSubresource,
                      (VkSubresourceLayout*) pLayout);
@@ -3457,9 +3457,9 @@ public VkResult vkCreateImageView(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pView);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateImageView(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkImageViewCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkImageView*) pView);
@@ -3505,10 +3505,10 @@ public void vkDestroyImageView(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   imageView,
              java.nio.ByteBuffer   pAllocator);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkImageView* ptr_imageView = (VkImageView*) imageView;
      vkDestroyImageView(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkImageView) (*ptr_imageView),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -3563,9 +3563,9 @@ public VkResult vkCreateShaderModule(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pShaderModule);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateShaderModule(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkShaderModuleCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkShaderModule*) pShaderModule);
@@ -3611,10 +3611,10 @@ public void vkDestroyShaderModule(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   shaderModule,
              java.nio.ByteBuffer   pAllocator);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkShaderModule* ptr_shaderModule = (VkShaderModule*) shaderModule;
      vkDestroyShaderModule(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkShaderModule) (*ptr_shaderModule),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -3669,9 +3669,9 @@ public VkResult vkCreatePipelineCache(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pPipelineCache);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreatePipelineCache(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkPipelineCacheCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkPipelineCache*) pPipelineCache);
@@ -3717,10 +3717,10 @@ public void vkDestroyPipelineCache(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   pipelineCache,
              java.nio.ByteBuffer   pAllocator);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkPipelineCache* ptr_pipelineCache = (VkPipelineCache*) pipelineCache;
      vkDestroyPipelineCache(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkPipelineCache) (*ptr_pipelineCache),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -3775,10 +3775,10 @@ public VkResult vkGetPipelineCacheData(
              java.nio.ByteBuffer   pipelineCache,
              long[]  pDataSize,
              java.nio.Buffer  pData);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkPipelineCache* ptr_pipelineCache = (VkPipelineCache*) pipelineCache;
      VkResult res = vkGetPipelineCacheData(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkPipelineCache) (*ptr_pipelineCache),
                      (size_t*) pDataSize,
                      (void*) pData);
@@ -3834,10 +3834,10 @@ public VkResult vkMergePipelineCaches(
              java.nio.ByteBuffer   dstCache,
              int  srcCacheCount,
              java.nio.ByteBuffer   pSrcCaches);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkPipelineCache* ptr_dstCache = (VkPipelineCache*) dstCache;
      VkResult res = vkMergePipelineCaches(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkPipelineCache) (*ptr_dstCache),
                      (uint32_t) srcCacheCount,
                      (const VkPipelineCache*) pSrcCaches);
@@ -3905,10 +3905,10 @@ public VkResult vkCreateGraphicsPipelines(
              java.nio.ByteBuffer   pCreateInfos,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pPipelines);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkPipelineCache* ptr_pipelineCache = (VkPipelineCache*) pipelineCache;
      VkResult res = vkCreateGraphicsPipelines(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkPipelineCache) (*ptr_pipelineCache),
                      (uint32_t) createInfoCount,
                      (const VkGraphicsPipelineCreateInfo*) pCreateInfos,
@@ -3978,10 +3978,10 @@ public VkResult vkCreateComputePipelines(
              java.nio.ByteBuffer   pCreateInfos,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pPipelines);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkPipelineCache* ptr_pipelineCache = (VkPipelineCache*) pipelineCache;
      VkResult res = vkCreateComputePipelines(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkPipelineCache) (*ptr_pipelineCache),
                      (uint32_t) createInfoCount,
                      (const VkComputePipelineCreateInfo*) pCreateInfos,
@@ -4029,10 +4029,10 @@ public void vkDestroyPipeline(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   pipeline,
              java.nio.ByteBuffer   pAllocator);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkPipeline* ptr_pipeline = (VkPipeline*) pipeline;
      vkDestroyPipeline(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkPipeline) (*ptr_pipeline),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -4087,9 +4087,9 @@ public VkResult vkCreatePipelineLayout(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pPipelineLayout);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreatePipelineLayout(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkPipelineLayoutCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkPipelineLayout*) pPipelineLayout);
@@ -4135,10 +4135,10 @@ public void vkDestroyPipelineLayout(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   pipelineLayout,
              java.nio.ByteBuffer   pAllocator);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkPipelineLayout* ptr_pipelineLayout = (VkPipelineLayout*) pipelineLayout;
      vkDestroyPipelineLayout(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkPipelineLayout) (*ptr_pipelineLayout),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -4193,9 +4193,9 @@ public VkResult vkCreateSampler(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pSampler);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateSampler(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkSamplerCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkSampler*) pSampler);
@@ -4241,10 +4241,10 @@ public void vkDestroySampler(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   sampler,
              java.nio.ByteBuffer   pAllocator);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkSampler* ptr_sampler = (VkSampler*) sampler;
      vkDestroySampler(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkSampler) (*ptr_sampler),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -4299,9 +4299,9 @@ public VkResult vkCreateDescriptorSetLayout(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pSetLayout);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateDescriptorSetLayout(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkDescriptorSetLayoutCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkDescriptorSetLayout*) pSetLayout);
@@ -4347,10 +4347,10 @@ public void vkDestroyDescriptorSetLayout(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   descriptorSetLayout,
              java.nio.ByteBuffer   pAllocator);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkDescriptorSetLayout* ptr_descriptorSetLayout = (VkDescriptorSetLayout*) descriptorSetLayout;
      vkDestroyDescriptorSetLayout(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkDescriptorSetLayout) (*ptr_descriptorSetLayout),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -4405,9 +4405,9 @@ public VkResult vkCreateDescriptorPool(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pDescriptorPool);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateDescriptorPool(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkDescriptorPoolCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkDescriptorPool*) pDescriptorPool);
@@ -4453,10 +4453,10 @@ public void vkDestroyDescriptorPool(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   descriptorPool,
              java.nio.ByteBuffer   pAllocator);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkDescriptorPool* ptr_descriptorPool = (VkDescriptorPool*) descriptorPool;
      vkDestroyDescriptorPool(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkDescriptorPool) (*ptr_descriptorPool),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -4505,10 +4505,10 @@ public VkResult vkResetDescriptorPool(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   descriptorPool,
              int  flags);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkDescriptorPool* ptr_descriptorPool = (VkDescriptorPool*) descriptorPool;
      VkResult res = vkResetDescriptorPool(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkDescriptorPool) (*ptr_descriptorPool),
                      (VkDescriptorPoolResetFlags) flags);
       return (jint) res;
@@ -4557,9 +4557,9 @@ public VkResult vkAllocateDescriptorSets(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   pAllocateInfo,
              java.nio.ByteBuffer   pDescriptorSets);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkAllocateDescriptorSets(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkDescriptorSetAllocateInfo*) pAllocateInfo,
                      (VkDescriptorSet*) pDescriptorSets);
       return (jint) res;
@@ -4614,10 +4614,10 @@ public VkResult vkFreeDescriptorSets(
              java.nio.ByteBuffer   descriptorPool,
              int  descriptorSetCount,
              java.nio.ByteBuffer   pDescriptorSets);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkDescriptorPool* ptr_descriptorPool = (VkDescriptorPool*) descriptorPool;
      VkResult res = vkFreeDescriptorSets(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkDescriptorPool) (*ptr_descriptorPool),
                      (uint32_t) descriptorSetCount,
                      (const VkDescriptorSet*) pDescriptorSets);
@@ -4675,9 +4675,9 @@ public void vkUpdateDescriptorSets(
              java.nio.ByteBuffer   pDescriptorWrites,
              int  descriptorCopyCount,
              java.nio.ByteBuffer   pDescriptorCopies);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      vkUpdateDescriptorSets(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (uint32_t) descriptorWriteCount,
                      (const VkWriteDescriptorSet*) pDescriptorWrites,
                      (uint32_t) descriptorCopyCount,
@@ -4734,9 +4734,9 @@ public VkResult vkCreateFramebuffer(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pFramebuffer);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateFramebuffer(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkFramebufferCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkFramebuffer*) pFramebuffer);
@@ -4782,10 +4782,10 @@ public void vkDestroyFramebuffer(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   framebuffer,
              java.nio.ByteBuffer   pAllocator);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkFramebuffer* ptr_framebuffer = (VkFramebuffer*) framebuffer;
      vkDestroyFramebuffer(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkFramebuffer) (*ptr_framebuffer),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -4840,9 +4840,9 @@ public VkResult vkCreateRenderPass(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pRenderPass);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateRenderPass(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkRenderPassCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkRenderPass*) pRenderPass);
@@ -4888,10 +4888,10 @@ public void vkDestroyRenderPass(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   renderPass,
              java.nio.ByteBuffer   pAllocator);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkRenderPass* ptr_renderPass = (VkRenderPass*) renderPass;
      vkDestroyRenderPass(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkRenderPass) (*ptr_renderPass),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -4936,10 +4936,10 @@ public void vkGetRenderAreaGranularity(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   renderPass,
              java.nio.ByteBuffer   pGranularity);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkRenderPass* ptr_renderPass = (VkRenderPass*) renderPass;
      vkGetRenderAreaGranularity(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkRenderPass) (*ptr_renderPass),
                      (VkExtent2D*) pGranularity);
 
@@ -4997,11 +4997,11 @@ public VkResult vkCreateCommandPool(
              java.nio.ByteBuffer   pAllocator,
              int[] result);/* 
              
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkCommandPool* pCommandPool = NULL;
      
      VkResult res = vkCreateCommandPool(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkCommandPoolCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkCommandPool*) pCommandPool);
@@ -5053,10 +5053,10 @@ public void vkDestroyCommandPool(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   commandPool,
              java.nio.ByteBuffer   pAllocator);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkCommandPool* ptr_commandPool = (VkCommandPool*) commandPool;
      vkDestroyCommandPool(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkCommandPool) (*ptr_commandPool),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -5105,10 +5105,10 @@ public VkResult vkResetCommandPool(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   commandPool,
              int  flags);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkCommandPool* ptr_commandPool = (VkCommandPool*) commandPool;
      VkResult res = vkResetCommandPool(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkCommandPool) (*ptr_commandPool),
                      (VkCommandPoolResetFlags) flags);
       return (jint) res;
@@ -5157,9 +5157,9 @@ public VkResult vkAllocateCommandBuffers(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   pAllocateInfo,
              java.nio.ByteBuffer   pCommandBuffers);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkAllocateCommandBuffers(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkCommandBufferAllocateInfo*) pAllocateInfo,
                      (VkCommandBuffer*) pCommandBuffers);
       return (jint) res;
@@ -5210,10 +5210,10 @@ public void vkFreeCommandBuffers(
              java.nio.ByteBuffer   commandPool,
              int  commandBufferCount,
              java.nio.ByteBuffer   pCommandBuffers);/* 
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkCommandPool* ptr_commandPool = (VkCommandPool*) commandPool;
      vkFreeCommandBuffers(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkCommandPool) (*ptr_commandPool),
                      (uint32_t) commandBufferCount,
                      (const VkCommandBuffer*) pCommandBuffers);

@@ -3850,8 +3850,10 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */ 
 	 @Deprecated
 	 private static native void setMaxComputeWorkGroupCount0(Buffer ptr, int[] _maxComputeWorkGroupCount);/*
-		//  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		//  vkObj->maxComputeWorkGroupCount = (uint32_t[]) (_maxComputeWorkGroupCount);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  vkObj->maxComputeWorkGroupCount[0] = (uint32_t) _maxComputeWorkGroupCount[0];
+		  vkObj->maxComputeWorkGroupCount[1] = (uint32_t) _maxComputeWorkGroupCount[1];
+		  vkObj->maxComputeWorkGroupCount[2] = (uint32_t) _maxComputeWorkGroupCount[2];
 	  */
 
 	/**
@@ -4673,15 +4675,14 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 private static native void setPointSizeRange0(Buffer ptr, float[] _pointSizeRange);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  vkObj->pointSizeRange[0] = (float) (_pointSizeRange[0]);
-		  vkObj->pointSizeRange[1] = (float) (_pointSizeRange[1]);
-		  vkObj->pointSizeRange[2] = (float) (_pointSizeRange[2]);
+		  vkObj->pointSizeRange[1] = (float) (_pointSizeRange[1]);		  
 	  */
 
 	/**
 	 * native GET method for field pointSizeRange	[float_array]<br>
 	 * Prototype: float[]  pointSizeRange
 	 */ 
-	 private static native float[] getPointSizeRange0(Buffer ptr, float[] input);/*
+	 private static native void getPointSizeRange0(Buffer ptr, float[] input);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  input[0] = (jfloat) (vkObj->pointSizeRange[0]);
 		  input[1] = (jfloat) (vkObj->pointSizeRange[1]);

@@ -95,14 +95,6 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_init
 
 /*
  * Class:     bor_vulkan_Vk10
- * Method:    vkCreateInstance0
- * Signature: (Ljava/nio/Buffer;Ljava/nio/Buffer;Ljava/nio/Buffer;)I
- */
-JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateInstance0
-  (JNIEnv *, jclass, jobject, jobject, jobject);
-
-/*
- * Class:     bor_vulkan_Vk10
  * Method:    vkCreateInstance1
  * Signature: (Ljava/nio/Buffer;Ljava/nio/Buffer;[I)Ljava/nio/ByteBuffer;
  */

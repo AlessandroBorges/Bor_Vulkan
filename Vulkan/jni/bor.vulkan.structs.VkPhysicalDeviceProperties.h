@@ -344,10 +344,10 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getDev
 /*
  * Class:     bor_vulkan_structs_VkPhysicalDeviceProperties
  * Method:    setDeviceName0
- * Signature: (Ljava/nio/Buffer;Ljava/lang/String;)V
+ * Signature: (Ljava/nio/Buffer;Ljava/lang/String;I)V
  */
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setDeviceName0
-  (JNIEnv *, jclass, jobject, jstring);
+  (JNIEnv *, jclass, jobject, jstring, jint);
 
 /*
  * Class:     bor_vulkan_structs_VkPhysicalDeviceProperties
@@ -368,10 +368,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setPip
 /*
  * Class:     bor_vulkan_structs_VkPhysicalDeviceProperties
  * Method:    getPipelineCacheUUID0
- * Signature: (Ljava/nio/Buffer;)[B
+ * Signature: (Ljava/nio/Buffer;[B)V
  */
-JNIEXPORT jbyteArray JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getPipelineCacheUUID0
-  (JNIEnv *, jclass, jobject);
+JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getPipelineCacheUUID0
+  (JNIEnv *, jclass, jobject, jbyteArray);
 
 /*
  * Class:     bor_vulkan_structs_VkPhysicalDeviceProperties

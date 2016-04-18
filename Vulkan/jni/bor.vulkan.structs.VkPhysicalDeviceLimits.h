@@ -1824,9 +1824,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setPointSi
 /*
  * Class:     bor_vulkan_structs_VkPhysicalDeviceLimits
  * Method:    getPointSizeRange0
- * Signature: (Ljava/nio/Buffer;[F)[F
+ * Signature: (Ljava/nio/Buffer;[F)V
  */
-JNIEXPORT jfloatArray JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getPointSizeRange0
+JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getPointSizeRange0
   (JNIEnv *, jclass, jobject, jfloatArray);
 
 /*

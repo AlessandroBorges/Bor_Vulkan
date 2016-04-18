@@ -36,59 +36,27 @@
 
 }
 
-static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateInstance0
-(JNIEnv* env, jclass clazz, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj__pInstance, unsigned char* pCreateInfo, unsigned char* pAllocator, unsigned char* _pInstance) {
-
-//@line:173
-
-       
-       // isolate [in][out] parameter and cast it
-       jobject buff = NULL; 
-       VkInstance* pInstance = (VkInstance*) _pInstance;
-               
-       VkResult res =  vkCreateInstance(
-        (const VkInstanceCreateInfo*)                 pCreateInfo,
-        (const VkAllocationCallbacks*)                pAllocator,
-        (VkInstance*)                                 pInstance);
-               
-        printf("VkInstance* %p \n",  pInstance);
-        printf("VkInstance  %p \n", (*pInstance));
-        return (jint) res; 
-       
-}
-
-JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateInstance0(JNIEnv* env, jclass clazz, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj__pInstance) {
-	unsigned char* pCreateInfo = (unsigned char*)(obj_pCreateInfo?env->GetDirectBufferAddress(obj_pCreateInfo):0);
-	unsigned char* pAllocator = (unsigned char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator):0);
-	unsigned char* _pInstance = (unsigned char*)(obj__pInstance?env->GetDirectBufferAddress(obj__pInstance):0);
-
-	jint JNI_returnValue = wrapped_Java_bor_vulkan_Vk10_vkCreateInstance0(env, clazz, obj_pCreateInfo, obj_pAllocator, obj__pInstance, pCreateInfo, pAllocator, _pInstance);
-
-
-	return JNI_returnValue;
-}
-
 static inline jobject wrapped_Java_bor_vulkan_Vk10_vkCreateInstance1
 (JNIEnv* env, jclass clazz, jobject obj_pCreateInfo, jobject obj_pAllocator, jintArray obj_result, unsigned char* pCreateInfo, unsigned char* pAllocator, int* result) {
 
 //@line:192
 
                                                
-      VkInstance* pInstance = (VkInstance*)malloc(sizeof(VkInstance));                                
+      VkInstance* pInstance_ = (VkInstance*)malloc(sizeof(VkInstance));                                
       VkResult res =  vkCreateInstance(
                        (const VkInstanceCreateInfo*)                 pCreateInfo,
                        (const VkAllocationCallbacks*)                pAllocator,
-                       (VkInstance*)                                 pInstance);
+                       (VkInstance*)                                 pInstance_);
       result[0] = (jint) res;
                                                      
-      printf("VkInstance* %p \n",  pInstance);
-      printf("VkInstance  %p \n", (*pInstance));
+    //  printf("VkInstance* %p \n",  pInstance);
+    //  printf("VkInstance  %p \n", (*pInstance));
       
       jobject buff = NULL; 
-      if(pInstance){
-        VkInstance instance = (*pInstance);
-        buff = (jobject)(env->NewDirectByteBuffer((void*)(instance), sizeof(VkInstance)));
-        free(pInstance);
+      if(pInstance_){
+        VkInstance instance_ = (*pInstance_);
+        buff = (jobject)(env->NewDirectByteBuffer((void*)(instance_), sizeof(VkInstance)));
+        free(pInstance_);
       }    
       
       return buff; 
@@ -126,21 +94,21 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkEnumeratePhysicalDevices0
 //@line:312
 
       
-       VkPhysicalDevice* pPhysicalDevices = NULL;        
+       VkPhysicalDevice* pPhysicalDevices_ = NULL;        
        if(size>0){
-          pPhysicalDevices = new VkPhysicalDevice[size];
+          pPhysicalDevices_ = new VkPhysicalDevice[size];
           //(VkPhysicalDevice*)malloc(size * sizeof(VkPhysicalDevice));
         }     
               
        VkResult res = vkEnumeratePhysicalDevices(
                                   (VkInstance) (instance),
                                   (uint32_t*)  pPhysicalDeviceCount,
-                                  (VkPhysicalDevice*) pPhysicalDevices);
+                                  (VkPhysicalDevice*) pPhysicalDevices_);
                                   
          // wrap pointers to ByteBuffer[] pPhysicalDevicesRet
-         if(pPhysicalDevices){
+         if(pPhysicalDevices_){
            for(int i=0; i<size; i++){
-               VkPhysicalDevice step = pPhysicalDevices[i];
+               VkPhysicalDevice step = pPhysicalDevices_[i];
                if(step){
                   jobject buff =  env->NewDirectByteBuffer((void*) (step), 
                                                            (jlong) sizeof(VkPhysicalDevice));               
@@ -151,8 +119,8 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkEnumeratePhysicalDevices0
          }//if
         
          //delete array
-          if(pPhysicalDevices){
-              delete[]  pPhysicalDevices;
+          if(pPhysicalDevices_){
+              delete[]  pPhysicalDevices_;
               //printf("Delete array");
           }
          return (jint) res;
@@ -692,9 +660,9 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkDeviceWaitIdle0
 
 //@line:1299
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkDeviceWaitIdle(
-                     (VkDevice) (*ptr_device));
+                     (VkDevice) (device));
       return (jint) res;
 
 }
@@ -713,9 +681,9 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkAllocateMemory0
 
 //@line:1354
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkAllocateMemory(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkMemoryAllocateInfo*) pAllocateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkDeviceMemory*) pMemory);
@@ -743,10 +711,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkFreeMemory0(JNIEnv* env, jclass cl
 
 //@line:1402
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
      vkFreeMemory(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkDeviceMemory) (*ptr_memory),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -760,13 +728,13 @@ static inline jobject wrapped_Java_bor_vulkan_Vk10_vkMapMemory0
 //@line:1476
  
      // FIXED        
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
      void* pData = nullptr;
      jobject buff = NULL;
      
      VkResult res = vkMapMemory(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkDeviceMemory) (*ptr_memory),
                      (VkDeviceSize) offset,
                      (VkDeviceSize) size,
@@ -802,10 +770,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkUnmapMemory0(JNIEnv* env, jclass c
 
 //@line:1532
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
      vkUnmapMemory(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkDeviceMemory) (*ptr_memory));
 
 
@@ -819,11 +787,11 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkFlushMappedMemoryRanges0
  
      //FIXED
                     
-      VkDevice* ptr_device = (VkDevice*) device;      
+            
      JBufferArray buffers (env, pMemoryRangesArray);          
      const VkMappedMemoryRange* pMemoryRanges = (const VkMappedMemoryRange*) buffers.getPointers();
      VkResult res = vkFlushMappedMemoryRanges(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (uint32_t) memoryRangeCount,
                      (const VkMappedMemoryRange*) pMemoryRanges);
                      
@@ -847,11 +815,11 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkInvalidateMappedMemoryRanges0
 //@line:1680
 
                            
-     VkDevice* ptr_device = (VkDevice*) device;     
+          
      JBufferArray bufferArray (env, pMemoryRanges);
      PointerToAnything* buffers = bufferArray.getPointers();
      VkResult res = vkInvalidateMappedMemoryRanges(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (uint32_t) memoryRangeCount,
                      (const VkMappedMemoryRange*) buffers);
                      
@@ -876,10 +844,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetDeviceMemoryCommitment0(JNIEnv*
 
 //@line:1731
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
      vkGetDeviceMemoryCommitment(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkDeviceMemory) (*ptr_memory),
                      (VkDeviceSize*) pCommittedMemoryInBytes);
 
@@ -893,11 +861,11 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkBindBufferMemory0
 
 //@line:1789
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkBuffer* ptr_buffer = (VkBuffer*) buffer;
      VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
      VkResult res = vkBindBufferMemory(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkBuffer) (*ptr_buffer),
                      (VkDeviceMemory) (*ptr_memory),
                      (VkDeviceSize) memoryOffset);
@@ -921,11 +889,11 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkBindImageMemory0
 
 //@line:1849
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkImage* ptr_image = (VkImage*) image;
      VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
      VkResult res = vkBindImageMemory(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkImage) (*ptr_image),
                      (VkDeviceMemory) (*ptr_memory),
                      (VkDeviceSize) memoryOffset);
@@ -952,10 +920,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetBufferMemoryRequirements0(JNIEn
 
 //@line:1899
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkBuffer* ptr_buffer = (VkBuffer*) buffer;
      vkGetBufferMemoryRequirements(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkBuffer) (*ptr_buffer),
                      (VkMemoryRequirements*) pMemoryRequirements);
 
@@ -971,10 +939,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetImageMemoryRequirements0(JNIEnv
 
 //@line:1947
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkImage* ptr_image = (VkImage*) image;
      vkGetImageMemoryRequirements(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkImage) (*ptr_image),
                      (VkMemoryRequirements*) pMemoryRequirements);
 
@@ -990,11 +958,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetImageSparseMemoryRequirements0(
 
 //@line:2005
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkImage* ptr_image = (VkImage*) image;
      JBufferArray buffers(env,pSparseMemoryRequirements);
      vkGetImageSparseMemoryRequirements(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkImage) (*ptr_image),
                      (uint32_t*) pSparseMemoryRequirementCount,
                      (VkSparseImageMemoryRequirements*) buffers.getPointers());
@@ -1061,9 +1029,9 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateFence0
 
 //@line:2212
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateFence(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkFenceCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkFence*) pFence);
@@ -1091,10 +1059,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyFence0(JNIEnv* env, jclass 
 
 //@line:2260
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkFence* ptr_fence = (VkFence*) fence;
      vkDestroyFence(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkFence) (*ptr_fence),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -1107,11 +1075,11 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkResetFences0
 
 //@line:2315
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      JBufferArray buffers (env, pFences);
      
      VkResult res = vkResetFences(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (uint32_t) fenceCount,
                      (const VkFence*) buffers.getPointers());
       return (jint) res;
@@ -1132,10 +1100,10 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkGetFenceStatus0
 
 //@line:2362
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkFence* ptr_fence = (VkFence*) fence;
      VkResult res = vkGetFenceStatus(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkFence) (*ptr_fence));
       return (jint) res;
 
@@ -1156,11 +1124,11 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkWaitForFences0
 
 //@line:2427
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      JBufferArray buffers (env, pFences);
      
      VkResult res = vkWaitForFences(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (uint32_t) fenceCount,
                      (const VkFence*) buffers.getPointers(),
                      (VkBool32) waitAll,
@@ -1183,9 +1151,9 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateSemaphore0
 
 //@line:2488
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateSemaphore(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkSemaphoreCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkSemaphore*) pSemaphore);
@@ -1213,10 +1181,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroySemaphore0(JNIEnv* env, jcl
 
 //@line:2536
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkSemaphore* ptr_semaphore = (VkSemaphore*) semaphore;
      vkDestroySemaphore(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkSemaphore) (*ptr_semaphore),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -1229,9 +1197,9 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateEvent0
 
 //@line:2594
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateEvent(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkEventCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkEvent*) pEvent);
@@ -1259,10 +1227,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyEvent0(JNIEnv* env, jclass 
 
 //@line:2642
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkEvent* ptr_event = (VkEvent*) event;
      vkDestroyEvent(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkEvent) (*ptr_event),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -1275,10 +1243,10 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkGetEventStatus0
 
 //@line:2688
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkEvent* ptr_event = (VkEvent*) event;
      VkResult res = vkGetEventStatus(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkEvent) (*ptr_event));
       return (jint) res;
 
@@ -1299,10 +1267,10 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkSetEvent0
 
 //@line:2733
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkEvent* ptr_event = (VkEvent*) event;
      VkResult res = vkSetEvent(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkEvent) (*ptr_event));
       return (jint) res;
 
@@ -1323,10 +1291,10 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkResetEvent0
 
 //@line:2778
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkEvent* ptr_event = (VkEvent*) event;
      VkResult res = vkResetEvent(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkEvent) (*ptr_event));
       return (jint) res;
 
@@ -1347,9 +1315,9 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateQueryPool0
 
 //@line:2835
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateQueryPool(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkQueryPoolCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkQueryPool*) pQueryPool);
@@ -1377,10 +1345,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyQueryPool0(JNIEnv* env, jcl
 
 //@line:2883
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkQueryPool* ptr_queryPool = (VkQueryPool*) queryPool;
      vkDestroyQueryPool(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkQueryPool) (*ptr_queryPool),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -1393,10 +1361,10 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkGetQueryPoolResults0
 
 //@line:2987
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkQueryPool* ptr_queryPool = (VkQueryPool*) queryPool;
      VkResult res = vkGetQueryPoolResults(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkQueryPool) (*ptr_queryPool),
                      (uint32_t) firstQuery,
                      (uint32_t) queryCount,
@@ -1425,11 +1393,11 @@ static inline jobject wrapped_Java_bor_vulkan_Vk10_vkCreateBuffer0
 //@line:3058
  
              
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkBuffer* pBuffer = NULL;
          
      VkResult res = vkCreateBuffer(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkBufferCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkBuffer*) pBuffer);
@@ -1464,10 +1432,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyBuffer0(JNIEnv* env, jclass
 
 //@line:3115
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkBuffer* ptr_buffer = (VkBuffer*) buffer;
      vkDestroyBuffer(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkBuffer) (*ptr_buffer),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -1481,11 +1449,11 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateBufferView0
 //@line:3184
  
              
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkBufferView* pView = NULL;
      
      VkResult res = vkCreateBufferView(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkBufferViewCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkBufferView*) pView);
@@ -1517,10 +1485,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyBufferView0(JNIEnv* env, jc
 
 //@line:3240
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkBufferView* ptr_bufferView = (VkBufferView*) bufferView;
      vkDestroyBufferView(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkBufferView) (*ptr_bufferView),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -1533,9 +1501,9 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateImage0
 
 //@line:3298
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateImage(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkImageCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkImage*) pImage);
@@ -1563,10 +1531,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyImage0(JNIEnv* env, jclass 
 
 //@line:3346
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkImage* ptr_image = (VkImage*) image;
      vkDestroyImage(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkImage) (*ptr_image),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -1583,10 +1551,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetImageSubresourceLayout0(JNIEnv*
 
 //@line:3400
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkImage* ptr_image = (VkImage*) image;
      vkGetImageSubresourceLayout(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkImage) (*ptr_image),
                      (const VkImageSubresource*) pSubresource,
                      (VkSubresourceLayout*) pLayout);
@@ -1600,9 +1568,9 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateImageView0
 
 //@line:3459
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateImageView(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkImageViewCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkImageView*) pView);
@@ -1630,10 +1598,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyImageView0(JNIEnv* env, jcl
 
 //@line:3507
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkImageView* ptr_imageView = (VkImageView*) imageView;
      vkDestroyImageView(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkImageView) (*ptr_imageView),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -1646,9 +1614,9 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateShaderModule0
 
 //@line:3565
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateShaderModule(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkShaderModuleCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkShaderModule*) pShaderModule);
@@ -1676,10 +1644,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyShaderModule0(JNIEnv* env, 
 
 //@line:3613
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkShaderModule* ptr_shaderModule = (VkShaderModule*) shaderModule;
      vkDestroyShaderModule(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkShaderModule) (*ptr_shaderModule),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -1692,9 +1660,9 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreatePipelineCache0
 
 //@line:3671
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreatePipelineCache(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkPipelineCacheCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkPipelineCache*) pPipelineCache);
@@ -1722,10 +1690,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyPipelineCache0(JNIEnv* env,
 
 //@line:3719
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkPipelineCache* ptr_pipelineCache = (VkPipelineCache*) pipelineCache;
      vkDestroyPipelineCache(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkPipelineCache) (*ptr_pipelineCache),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -1738,10 +1706,10 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkGetPipelineCacheData0
 
 //@line:3777
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkPipelineCache* ptr_pipelineCache = (VkPipelineCache*) pipelineCache;
      VkResult res = vkGetPipelineCacheData(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkPipelineCache) (*ptr_pipelineCache),
                      (size_t*) pDataSize,
                      (void*) pData);
@@ -1767,10 +1735,10 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkMergePipelineCaches0
 
 //@line:3836
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkPipelineCache* ptr_dstCache = (VkPipelineCache*) dstCache;
      VkResult res = vkMergePipelineCaches(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkPipelineCache) (*ptr_dstCache),
                      (uint32_t) srcCacheCount,
                      (const VkPipelineCache*) pSrcCaches);
@@ -1794,10 +1762,10 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateGraphicsPipelines0
 
 //@line:3907
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkPipelineCache* ptr_pipelineCache = (VkPipelineCache*) pipelineCache;
      VkResult res = vkCreateGraphicsPipelines(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkPipelineCache) (*ptr_pipelineCache),
                      (uint32_t) createInfoCount,
                      (const VkGraphicsPipelineCreateInfo*) pCreateInfos,
@@ -1825,10 +1793,10 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateComputePipelines0
 
 //@line:3980
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkPipelineCache* ptr_pipelineCache = (VkPipelineCache*) pipelineCache;
      VkResult res = vkCreateComputePipelines(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkPipelineCache) (*ptr_pipelineCache),
                      (uint32_t) createInfoCount,
                      (const VkComputePipelineCreateInfo*) pCreateInfos,
@@ -1859,10 +1827,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyPipeline0(JNIEnv* env, jcla
 
 //@line:4031
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkPipeline* ptr_pipeline = (VkPipeline*) pipeline;
      vkDestroyPipeline(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkPipeline) (*ptr_pipeline),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -1875,9 +1843,9 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreatePipelineLayout0
 
 //@line:4089
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreatePipelineLayout(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkPipelineLayoutCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkPipelineLayout*) pPipelineLayout);
@@ -1905,10 +1873,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyPipelineLayout0(JNIEnv* env
 
 //@line:4137
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkPipelineLayout* ptr_pipelineLayout = (VkPipelineLayout*) pipelineLayout;
      vkDestroyPipelineLayout(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkPipelineLayout) (*ptr_pipelineLayout),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -1921,9 +1889,9 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateSampler0
 
 //@line:4195
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateSampler(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkSamplerCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkSampler*) pSampler);
@@ -1951,10 +1919,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroySampler0(JNIEnv* env, jclas
 
 //@line:4243
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkSampler* ptr_sampler = (VkSampler*) sampler;
      vkDestroySampler(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkSampler) (*ptr_sampler),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -1967,9 +1935,9 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateDescriptorSetLayout0
 
 //@line:4301
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateDescriptorSetLayout(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkDescriptorSetLayoutCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkDescriptorSetLayout*) pSetLayout);
@@ -1997,10 +1965,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyDescriptorSetLayout0(JNIEnv
 
 //@line:4349
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkDescriptorSetLayout* ptr_descriptorSetLayout = (VkDescriptorSetLayout*) descriptorSetLayout;
      vkDestroyDescriptorSetLayout(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkDescriptorSetLayout) (*ptr_descriptorSetLayout),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -2013,9 +1981,9 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateDescriptorPool0
 
 //@line:4407
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateDescriptorPool(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkDescriptorPoolCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkDescriptorPool*) pDescriptorPool);
@@ -2043,10 +2011,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyDescriptorPool0(JNIEnv* env
 
 //@line:4455
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkDescriptorPool* ptr_descriptorPool = (VkDescriptorPool*) descriptorPool;
      vkDestroyDescriptorPool(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkDescriptorPool) (*ptr_descriptorPool),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -2059,10 +2027,10 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkResetDescriptorPool0
 
 //@line:4507
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkDescriptorPool* ptr_descriptorPool = (VkDescriptorPool*) descriptorPool;
      VkResult res = vkResetDescriptorPool(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkDescriptorPool) (*ptr_descriptorPool),
                      (VkDescriptorPoolResetFlags) flags);
       return (jint) res;
@@ -2084,9 +2052,9 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkAllocateDescriptorSets0
 
 //@line:4559
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkAllocateDescriptorSets(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkDescriptorSetAllocateInfo*) pAllocateInfo,
                      (VkDescriptorSet*) pDescriptorSets);
       return (jint) res;
@@ -2109,10 +2077,10 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkFreeDescriptorSets0
 
 //@line:4616
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkDescriptorPool* ptr_descriptorPool = (VkDescriptorPool*) descriptorPool;
      VkResult res = vkFreeDescriptorSets(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkDescriptorPool) (*ptr_descriptorPool),
                      (uint32_t) descriptorSetCount,
                      (const VkDescriptorSet*) pDescriptorSets);
@@ -2139,9 +2107,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkUpdateDescriptorSets0(JNIEnv* env,
 
 //@line:4677
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      vkUpdateDescriptorSets(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (uint32_t) descriptorWriteCount,
                      (const VkWriteDescriptorSet*) pDescriptorWrites,
                      (uint32_t) descriptorCopyCount,
@@ -2156,9 +2124,9 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateFramebuffer0
 
 //@line:4736
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateFramebuffer(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkFramebufferCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkFramebuffer*) pFramebuffer);
@@ -2186,10 +2154,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyFramebuffer0(JNIEnv* env, j
 
 //@line:4784
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkFramebuffer* ptr_framebuffer = (VkFramebuffer*) framebuffer;
      vkDestroyFramebuffer(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkFramebuffer) (*ptr_framebuffer),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -2202,9 +2170,9 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateRenderPass0
 
 //@line:4842
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkCreateRenderPass(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkRenderPassCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkRenderPass*) pRenderPass);
@@ -2232,10 +2200,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyRenderPass0(JNIEnv* env, jc
 
 //@line:4890
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkRenderPass* ptr_renderPass = (VkRenderPass*) renderPass;
      vkDestroyRenderPass(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkRenderPass) (*ptr_renderPass),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -2251,10 +2219,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetRenderAreaGranularity0(JNIEnv* 
 
 //@line:4938
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkRenderPass* ptr_renderPass = (VkRenderPass*) renderPass;
      vkGetRenderAreaGranularity(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkRenderPass) (*ptr_renderPass),
                      (VkExtent2D*) pGranularity);
 
@@ -2268,11 +2236,11 @@ static inline jobject wrapped_Java_bor_vulkan_Vk10_vkCreateCommandPool0
 //@line:4998
  
              
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkCommandPool* pCommandPool = NULL;
      
      VkResult res = vkCreateCommandPool(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkCommandPoolCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkCommandPool*) pCommandPool);
@@ -2307,10 +2275,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyCommandPool0(JNIEnv* env, j
 
 //@line:5055
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkCommandPool* ptr_commandPool = (VkCommandPool*) commandPool;
      vkDestroyCommandPool(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkCommandPool) (*ptr_commandPool),
                      (const VkAllocationCallbacks*) pAllocator);
 
@@ -2323,10 +2291,10 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkResetCommandPool0
 
 //@line:5107
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkCommandPool* ptr_commandPool = (VkCommandPool*) commandPool;
      VkResult res = vkResetCommandPool(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkCommandPool) (*ptr_commandPool),
                      (VkCommandPoolResetFlags) flags);
       return (jint) res;
@@ -2348,9 +2316,9 @@ static inline jint wrapped_Java_bor_vulkan_Vk10_vkAllocateCommandBuffers0
 
 //@line:5159
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkResult res = vkAllocateCommandBuffers(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (const VkCommandBufferAllocateInfo*) pAllocateInfo,
                      (VkCommandBuffer*) pCommandBuffers);
       return (jint) res;
@@ -2376,10 +2344,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkFreeCommandBuffers0(JNIEnv* env, j
 
 //@line:5212
  
-     VkDevice* ptr_device = (VkDevice*) device;
+     
      VkCommandPool* ptr_commandPool = (VkCommandPool*) commandPool;
      vkFreeCommandBuffers(
-                     (VkDevice) (*ptr_device),
+                     (VkDevice) (device),
                      (VkCommandPool) (*ptr_commandPool),
                      (uint32_t) commandBufferCount,
                      (const VkCommandBuffer*) pCommandBuffers);
