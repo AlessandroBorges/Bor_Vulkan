@@ -36,6 +36,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkSparseMemoryBind extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [25]  */
 	 private static final String TAG = "VkSparseMemoryBind";
 
@@ -277,7 +283,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 * Prototype: VkDeviceSize  resourceOffset
 	 */ 
 	 private static native long getResourceOffset0(Buffer ptr);/*
-		  VkSparseMemoryBind vkObj = (VkSparseMemoryBind*)(ptr);
+		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
 		  return (jlong) (vkObj->resourceOffset);
 	 */
 
@@ -295,7 +301,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long getSize0(Buffer ptr);/*
-		  VkSparseMemoryBind vkObj = (VkSparseMemoryBind*)(ptr);
+		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
 		  return (jlong) (vkObj->size);
 	 */
 
@@ -313,7 +319,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
 	 private static native long getMemory0(Buffer ptr);/*
-		  VkSparseMemoryBind vkObj = (VkSparseMemoryBind*)(ptr);
+		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->memory);	 */
 
 	/**
@@ -330,7 +336,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 * Prototype: VkDeviceSize  memoryOffset
 	 */ 
 	 private static native long getMemoryOffset0(Buffer ptr);/*
-		  VkSparseMemoryBind vkObj = (VkSparseMemoryBind*)(ptr);
+		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
 		  return (jlong) (vkObj->memoryOffset);
 	 */
 
@@ -348,7 +354,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 * Prototype: VkSparseMemoryBindFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkSparseMemoryBind vkObj = (VkSparseMemoryBind*)(ptr);
+		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 

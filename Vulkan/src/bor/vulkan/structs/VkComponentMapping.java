@@ -35,6 +35,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkComponentMapping extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [41]  */
 	 private static final String TAG = "VkComponentMapping";
 
@@ -245,7 +251,7 @@ public class VkComponentMapping extends VkStruct {
 	 * Prototype: VkComponentSwizzle  r
 	 */ 
 	 private static native int  getR0(Buffer ptr);/*
-		  VkComponentMapping vkObj = (VkComponentMapping*)(ptr);
+		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
 		  return (VkComponentSwizzle) (vkObj->r);
 	 */
 
@@ -263,7 +269,7 @@ public class VkComponentMapping extends VkStruct {
 	 * Prototype: VkComponentSwizzle  g
 	 */ 
 	 private static native int  getG0(Buffer ptr);/*
-		  VkComponentMapping vkObj = (VkComponentMapping*)(ptr);
+		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
 		  return (VkComponentSwizzle) (vkObj->g);
 	 */
 
@@ -281,7 +287,7 @@ public class VkComponentMapping extends VkStruct {
 	 * Prototype: VkComponentSwizzle  b
 	 */ 
 	 private static native int  getB0(Buffer ptr);/*
-		  VkComponentMapping vkObj = (VkComponentMapping*)(ptr);
+		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
 		  return (VkComponentSwizzle) (vkObj->b);
 	 */
 
@@ -299,7 +305,7 @@ public class VkComponentMapping extends VkStruct {
 	 * Prototype: VkComponentSwizzle  a
 	 */ 
 	 private static native int  getA0(Buffer ptr);/*
-		  VkComponentMapping vkObj = (VkComponentMapping*)(ptr);
+		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
 		  return (VkComponentSwizzle) (vkObj->a);
 	 */
 

@@ -36,6 +36,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkShaderModuleCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [44]  */
 	 private static final String TAG = "VkShaderModuleCreateInfo";
 
@@ -276,7 +282,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkShaderModuleCreateInfo vkObj = (VkShaderModuleCreateInfo*)(ptr);
+		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -294,7 +300,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkShaderModuleCreateInfo vkObj = (VkShaderModuleCreateInfo*)(ptr);
+		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -311,7 +317,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 * Prototype: VkShaderModuleCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkShaderModuleCreateInfo vkObj = (VkShaderModuleCreateInfo*)(ptr);
+		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -329,7 +335,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 * Prototype: size_t  codeSize
 	 */ 
 	 private static native long getCodeSize0(Buffer ptr);/*
-		  VkShaderModuleCreateInfo vkObj = (VkShaderModuleCreateInfo*)(ptr);
+		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
 		  return (jlong) (vkObj->codeSize);
 	 */
 
@@ -347,7 +353,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 * Prototype: const uint32_t*  pCode
 	 */ 
 	 private static native int[] getPCode0(Buffer ptr);/*
-		  VkShaderModuleCreateInfo vkObj = (VkShaderModuleCreateInfo*)(ptr);
+		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
 		  return (int[]) (vkObj->pCode);
 	 */
 

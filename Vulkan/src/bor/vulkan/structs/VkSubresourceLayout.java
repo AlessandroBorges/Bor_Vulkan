@@ -36,6 +36,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkSubresourceLayout extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [40]  */
 	 private static final String TAG = "VkSubresourceLayout";
 
@@ -266,7 +272,7 @@ public class VkSubresourceLayout extends VkStruct {
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 private static native long getOffset0(Buffer ptr);/*
-		  VkSubresourceLayout vkObj = (VkSubresourceLayout*)(ptr);
+		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
 		  return (jlong) (vkObj->offset);
 	 */
 
@@ -284,7 +290,7 @@ public class VkSubresourceLayout extends VkStruct {
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long getSize0(Buffer ptr);/*
-		  VkSubresourceLayout vkObj = (VkSubresourceLayout*)(ptr);
+		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
 		  return (jlong) (vkObj->size);
 	 */
 
@@ -302,7 +308,7 @@ public class VkSubresourceLayout extends VkStruct {
 	 * Prototype: VkDeviceSize  rowPitch
 	 */ 
 	 private static native long getRowPitch0(Buffer ptr);/*
-		  VkSubresourceLayout vkObj = (VkSubresourceLayout*)(ptr);
+		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
 		  return (jlong) (vkObj->rowPitch);
 	 */
 
@@ -320,7 +326,7 @@ public class VkSubresourceLayout extends VkStruct {
 	 * Prototype: VkDeviceSize  arrayPitch
 	 */ 
 	 private static native long getArrayPitch0(Buffer ptr);/*
-		  VkSubresourceLayout vkObj = (VkSubresourceLayout*)(ptr);
+		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
 		  return (jlong) (vkObj->arrayPitch);
 	 */
 
@@ -338,7 +344,7 @@ public class VkSubresourceLayout extends VkStruct {
 	 * Prototype: VkDeviceSize  depthPitch
 	 */ 
 	 private static native long getDepthPitch0(Buffer ptr);/*
-		  VkSubresourceLayout vkObj = (VkSubresourceLayout*)(ptr);
+		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
 		  return (jlong) (vkObj->depthPitch);
 	 */
 

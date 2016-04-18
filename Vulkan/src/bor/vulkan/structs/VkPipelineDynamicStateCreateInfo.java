@@ -36,6 +36,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPipelineDynamicStateCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [65]  */
 	 private static final String TAG = "VkPipelineDynamicStateCreateInfo";
 
@@ -276,7 +282,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkPipelineDynamicStateCreateInfo vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
+		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -294,7 +300,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkPipelineDynamicStateCreateInfo vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
+		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -311,7 +317,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 * Prototype: VkPipelineDynamicStateCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkPipelineDynamicStateCreateInfo vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
+		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -329,7 +335,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  dynamicStateCount
 	 */ 
 	 private static native int getDynamicStateCount0(Buffer ptr);/*
-		  VkPipelineDynamicStateCreateInfo vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
+		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->dynamicStateCount);
 	 */
 
@@ -347,7 +353,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 * Prototype: const VkDynamicState*  pDynamicStates
 	 */ 
 	 private static native VkDynamicState[] getPDynamicStates0(Buffer ptr);/*
-		  VkPipelineDynamicStateCreateInfo vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
+		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
 		  return (VkDynamicState[]) (vkObj->pDynamicStates);
 	 */
 

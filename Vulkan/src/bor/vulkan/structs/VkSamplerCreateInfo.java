@@ -49,6 +49,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkSamplerCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [70]  */
 	 private static final String TAG = "VkSamplerCreateInfo";
 
@@ -609,7 +615,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkSamplerCreateInfo vkObj = (VkSamplerCreateInfo*)(ptr);
+		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -627,7 +633,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkSamplerCreateInfo vkObj = (VkSamplerCreateInfo*)(ptr);
+		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -644,7 +650,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 * Prototype: VkSamplerCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkSamplerCreateInfo vkObj = (VkSamplerCreateInfo*)(ptr);
+		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -662,7 +668,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 * Prototype: VkFilter  magFilter
 	 */ 
 	 private static native int  getMagFilter0(Buffer ptr);/*
-		  VkSamplerCreateInfo vkObj = (VkSamplerCreateInfo*)(ptr);
+		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (VkFilter) (vkObj->magFilter);
 	 */
 
@@ -680,7 +686,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 * Prototype: VkFilter  minFilter
 	 */ 
 	 private static native int  getMinFilter0(Buffer ptr);/*
-		  VkSamplerCreateInfo vkObj = (VkSamplerCreateInfo*)(ptr);
+		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (VkFilter) (vkObj->minFilter);
 	 */
 
@@ -698,7 +704,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 * Prototype: VkSamplerMipmapMode  mipmapMode
 	 */ 
 	 private static native int  getMipmapMode0(Buffer ptr);/*
-		  VkSamplerCreateInfo vkObj = (VkSamplerCreateInfo*)(ptr);
+		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (VkSamplerMipmapMode) (vkObj->mipmapMode);
 	 */
 
@@ -716,7 +722,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 * Prototype: VkSamplerAddressMode  addressModeU
 	 */ 
 	 private static native int  getAddressModeU0(Buffer ptr);/*
-		  VkSamplerCreateInfo vkObj = (VkSamplerCreateInfo*)(ptr);
+		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (VkSamplerAddressMode) (vkObj->addressModeU);
 	 */
 
@@ -734,7 +740,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 * Prototype: VkSamplerAddressMode  addressModeV
 	 */ 
 	 private static native int  getAddressModeV0(Buffer ptr);/*
-		  VkSamplerCreateInfo vkObj = (VkSamplerCreateInfo*)(ptr);
+		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (VkSamplerAddressMode) (vkObj->addressModeV);
 	 */
 
@@ -752,7 +758,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 * Prototype: VkSamplerAddressMode  addressModeW
 	 */ 
 	 private static native int  getAddressModeW0(Buffer ptr);/*
-		  VkSamplerCreateInfo vkObj = (VkSamplerCreateInfo*)(ptr);
+		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (VkSamplerAddressMode) (vkObj->addressModeW);
 	 */
 
@@ -770,7 +776,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 * Prototype: float  mipLodBias
 	 */ 
 	 private static native float getMipLodBias0(Buffer ptr);/*
-		  VkSamplerCreateInfo vkObj = (VkSamplerCreateInfo*)(ptr);
+		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->mipLodBias);
 	 */
 
@@ -788,7 +794,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 * Prototype: VkBool32  anisotropyEnable
 	 */ 
 	 private static native boolean getAnisotropyEnable0(Buffer ptr);/*
-		  VkSamplerCreateInfo vkObj = (VkSamplerCreateInfo*)(ptr);
+		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->anisotropyEnable);
 	 */
 
@@ -806,7 +812,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 * Prototype: float  maxAnisotropy
 	 */ 
 	 private static native float getMaxAnisotropy0(Buffer ptr);/*
-		  VkSamplerCreateInfo vkObj = (VkSamplerCreateInfo*)(ptr);
+		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->maxAnisotropy);
 	 */
 
@@ -824,7 +830,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 * Prototype: VkBool32  compareEnable
 	 */ 
 	 private static native boolean getCompareEnable0(Buffer ptr);/*
-		  VkSamplerCreateInfo vkObj = (VkSamplerCreateInfo*)(ptr);
+		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->compareEnable);
 	 */
 
@@ -842,7 +848,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 * Prototype: VkCompareOp  compareOp
 	 */ 
 	 private static native int  getCompareOp0(Buffer ptr);/*
-		  VkSamplerCreateInfo vkObj = (VkSamplerCreateInfo*)(ptr);
+		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (VkCompareOp) (vkObj->compareOp);
 	 */
 
@@ -860,7 +866,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 * Prototype: float  minLod
 	 */ 
 	 private static native float getMinLod0(Buffer ptr);/*
-		  VkSamplerCreateInfo vkObj = (VkSamplerCreateInfo*)(ptr);
+		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->minLod);
 	 */
 
@@ -878,7 +884,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 * Prototype: float  maxLod
 	 */ 
 	 private static native float getMaxLod0(Buffer ptr);/*
-		  VkSamplerCreateInfo vkObj = (VkSamplerCreateInfo*)(ptr);
+		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->maxLod);
 	 */
 
@@ -896,7 +902,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 * Prototype: VkBorderColor  borderColor
 	 */ 
 	 private static native int  getBorderColor0(Buffer ptr);/*
-		  VkSamplerCreateInfo vkObj = (VkSamplerCreateInfo*)(ptr);
+		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (VkBorderColor) (vkObj->borderColor);
 	 */
 
@@ -914,7 +920,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 * Prototype: VkBool32  unnormalizedCoordinates
 	 */ 
 	 private static native boolean getUnnormalizedCoordinates0(Buffer ptr);/*
-		  VkSamplerCreateInfo vkObj = (VkSamplerCreateInfo*)(ptr);
+		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->unnormalizedCoordinates);
 	 */
 

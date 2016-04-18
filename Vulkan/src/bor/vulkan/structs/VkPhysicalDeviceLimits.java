@@ -13,7 +13,7 @@ import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
-
+import java.util.Arrays;
 import java.nio.Buffer;
 
 
@@ -137,6 +137,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPhysicalDeviceLimits extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [8]  */
 	 private static final String TAG = "VkPhysicalDeviceLimits";
 
@@ -1761,8 +1767,10 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t[]  maxComputeWorkGroupCount
 	 */ 
 	 public int[] maxComputeWorkGroupCount(){
-		 int[] var = getMaxComputeWorkGroupCount0(super.ptr);
-		 this.maxComputeWorkGroupCount = var;
+	         if(maxComputeWorkGroupCount==null){
+	             maxComputeWorkGroupCount = new int[3];
+		     getMaxComputeWorkGroupCount0(super.ptr, this.maxComputeWorkGroupCount);
+	         }
 		 return this.maxComputeWorkGroupCount;
 	 }
 
@@ -1799,8 +1807,10 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t[]  maxComputeWorkGroupSize
 	 */ 
 	 public int[] maxComputeWorkGroupSize(){
-		 int[] var = getMaxComputeWorkGroupSize0(super.ptr);
-		 this.maxComputeWorkGroupSize = var;
+	       if(maxComputeWorkGroupSize==null){
+	           maxComputeWorkGroupSize = new int[3];  
+		 getMaxComputeWorkGroupSize0(super.ptr,maxComputeWorkGroupSize );
+	       } 
 		 return this.maxComputeWorkGroupSize;
 	 }
 
@@ -1970,17 +1980,132 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t[]  maxViewportDimensions
 	 */ 
 	 public int[] maxViewportDimensions(){
-		 int[] var = getMaxViewportDimensions0(super.ptr);
-		 this.maxViewportDimensions = var;
-		 return this.maxViewportDimensions;
+	     if(maxViewportDimensions==null){
+	         maxViewportDimensions = new int[2];
+	         getMaxViewportDimensions0(super.ptr, maxViewportDimensions);
+	     }		
+            return this.maxViewportDimensions;
 	 }
 
-	/**
+	/* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "VkPhysicalDeviceLimits [maxImageDimension1D=" + maxImageDimension1D() + 
+                ",\n\t maxImageDimension2D="+ maxImageDimension2D() + 
+                ",\n\t maxImageDimension3D=" + maxImageDimension3D() + 
+                ",\n\t maxImageDimensionCube=" + maxImageDimensionCube() 
+                + ",\n\t maxImageArrayLayers=" + maxImageArrayLayers() 
+                + ",\n\t maxTexelBufferElements=" + maxTexelBufferElements() 
+                + ",\n\t maxUniformBufferRange=" + maxUniformBufferRange()
+                + ",\n\t maxStorageBufferRange=" + maxStorageBufferRange() 
+                + ",\n\t maxPushConstantsSize=" + maxPushConstantsSize()
+                + ",\n\t maxMemoryAllocationCount=" + maxMemoryAllocationCount()  
+                + ",\n\t maxSamplerAllocationCount="  + maxSamplerAllocationCount() 
+                + ",\n\t bufferImageGranularity=" + bufferImageGranularity()
+                + ",\n\t sparseAddressSpaceSize=" + sparseAddressSpaceSize() 
+                + ",\n\t maxBoundDescriptorSets=" + maxBoundDescriptorSets() 
+                + ",\n\t maxPerStageDescriptorSamplers=" + maxPerStageDescriptorSamplers()
+                + ",\n\t maxPerStageDescriptorUniformBuffers=" + maxPerStageDescriptorUniformBuffers()
+                + ",\n\t maxPerStageDescriptorStorageBuffers=" + maxPerStageDescriptorStorageBuffers()
+                + ",\n\t maxPerStageDescriptorSampledImages=" + maxPerStageDescriptorSampledImages()
+                + ",\n\t maxPerStageDescriptorStorageImages=" + maxPerStageDescriptorStorageImages()
+                + ",\n\t maxPerStageDescriptorInputAttachments=" + maxPerStageDescriptorInputAttachments()
+                + ",\n\t maxPerStageResources=" + maxPerStageResources()
+                + ",\n\t maxDescriptorSetSamplers="            + maxDescriptorSetSamplers() 
+                + ",\n\t maxDescriptorSetUniformBuffers=" + maxDescriptorSetUniformBuffers()
+                + ",\n\t maxDescriptorSetUniformBuffersDynamic=" + maxDescriptorSetUniformBuffersDynamic()
+                + ",\n\t maxDescriptorSetStorageBuffers=" + maxDescriptorSetStorageBuffers()
+                + ",\n\t maxDescriptorSetStorageBuffersDynamic=" + maxDescriptorSetStorageBuffersDynamic()
+                + ",\n\t maxDescriptorSetSampledImages=" + maxDescriptorSetSampledImages()
+                + ",\n\t maxDescriptorSetStorageImages=" + maxDescriptorSetStorageImages()
+                + ",\n\t maxDescriptorSetInputAttachments=" + maxDescriptorSetInputAttachments()
+                + ",\n\t maxVertexInputAttributes=" + maxVertexInputAttributes() 
+                + ",\n\t maxVertexInputBindings="   + maxVertexInputBindings()  
+                + ",\n\t maxVertexInputAttributeOffset=" + maxVertexInputAttributeOffset()
+                + ",\n\t maxVertexInputBindingStride=" + maxVertexInputBindingStride() 
+                + ",\n\t maxVertexOutputComponents="   + maxVertexOutputComponents() 
+                + ",\n\t maxTessellationGenerationLevel=" + maxTessellationGenerationLevel()
+                + ",\n\t maxTessellationPatchSize=" + maxTessellationPatchSize()
+                + ",\n\t maxTessellationControlPerVertexInputComponents=" + maxTessellationControlPerVertexInputComponents()
+                + ",\n\t maxTessellationControlPerVertexOutputComponents=" + maxTessellationControlPerVertexOutputComponents()
+                + ",\n\t maxTessellationControlPerPatchOutputComponents=" + maxTessellationControlPerPatchOutputComponents()
+                + ",\n\t maxTessellationControlTotalOutputComponents=" + maxTessellationControlTotalOutputComponents()
+                + ",\n\t maxTessellationEvaluationInputComponents=" + maxTessellationEvaluationInputComponents()
+                + ",\n\t maxTessellationEvaluationOutputComponents=" + maxTessellationEvaluationOutputComponents()
+                + ",\n\t maxGeometryShaderInvocations=" + maxGeometryShaderInvocations()
+                + ",\n\t maxGeometryInputComponents="   + maxGeometryInputComponents()
+                + ",\n\t maxGeometryOutputComponents=" + maxGeometryOutputComponents()
+                + ",\n\t maxGeometryOutputVertices=" + maxGeometryOutputVertices()
+                + ",\n\t maxGeometryTotalOutputComponents=" + maxGeometryTotalOutputComponents()
+                + ",\n\t maxFragmentInputComponents=" + maxFragmentInputComponents()
+                + ",\n\t maxFragmentOutputAttachments=" + maxFragmentOutputAttachments()
+                + ",\n\t maxFragmentDualSrcAttachments=" + maxFragmentDualSrcAttachments()
+                + ",\n\t maxFragmentCombinedOutputResources=" + maxFragmentCombinedOutputResources()
+                + ",\n\t maxComputeSharedMemorySize=" + maxComputeSharedMemorySize()
+                + ",\n\t maxComputeWorkGroupCount=" + Arrays.toString(maxComputeWorkGroupCount())
+                + ",\n\t maxComputeWorkGroupInvocations=" + maxComputeWorkGroupInvocations() 
+                + ",\n\t maxComputeWorkGroupSize="+ Arrays.toString(maxComputeWorkGroupSize()) 
+                + ",\n\t subPixelPrecisionBits=" + subPixelPrecisionBits()
+                + ",\n\t subTexelPrecisionBits=" + subTexelPrecisionBits() 
+                + ",\n\t mipmapPrecisionBits=" + mipmapPrecisionBits()
+                + ",\n\t maxDrawIndexedIndexValue=" + maxDrawIndexedIndexValue()
+                + ",\n\t maxDrawIndirectCount=" + maxDrawIndirectCount() 
+                + ",\n\t maxSamplerLodBias=" + maxSamplerLodBias() 
+                + ",\n\t maxSamplerAnisotropy=" + maxSamplerAnisotropy() 
+                + ",\n\t maxViewports=" + maxViewports()
+                + ",\n\t maxViewportDimensions=" + Arrays.toString(maxViewportDimensions()) 
+                + ",\n\t viewportBoundsRange="    + Arrays.toString(viewportBoundsRange()) 
+                + ",\n\t viewportSubPixelBits=" + viewportSubPixelBits()
+                + ",\n\t minMemoryMapAlignment=" + minMemoryMapAlignment() 
+                + ",\n\t minTexelBufferOffsetAlignment=" + minTexelBufferOffsetAlignment()
+                + ",\n\t minUniformBufferOffsetAlignment=" + minUniformBufferOffsetAlignment()                
+                + ",\n\t minStorageBufferOffsetAlignment=" + minStorageBufferOffsetAlignment()
+                + ",\n\t minTexelOffset="  + minTexelOffset() 
+                + ",\n\t maxTexelOffset=" + maxTexelOffset()  
+                + ",\n\t minTexelGatherOffset=" + minTexelGatherOffset() 
+                + ",\n\t maxTexelGatherOffset=" + maxTexelGatherOffset() 
+                + ",\n\t minInterpolationOffset="+ minInterpolationOffset() 
+                + ",\n\t maxInterpolationOffset=" + maxInterpolationOffset()
+                + ",\n\t subPixelInterpolationOffsetBits=" + subPixelInterpolationOffsetBits()
+                + ",\n\t maxFramebufferWidth="+ maxFramebufferWidth() 
+                + ",\n\t maxFramebufferHeight=" + maxFramebufferHeight() 
+                + ",\n\t maxFramebufferLayers=" + maxFramebufferLayers() 
+                + ",\n\t framebufferColorSampleCounts=" + framebufferColorSampleCounts()
+                + ",\n\t framebufferDepthSampleCounts=" + framebufferDepthSampleCounts() 
+                + ",\n\t framebufferStencilSampleCounts="+ framebufferStencilSampleCounts() 
+                + ",\n\t framebufferNoAttachmentsSampleCounts=" + framebufferNoAttachmentsSampleCounts() 
+                + ",\n\t maxColorAttachments=" + maxColorAttachments()
+                + ",\n\t sampledImageColorSampleCounts=" + sampledImageColorSampleCounts()
+                + ",\n\t sampledImageIntegerSampleCounts=" + sampledImageIntegerSampleCounts()
+                + ",\n\t sampledImageDepthSampleCounts=" + sampledImageDepthSampleCounts()
+                + ",\n\t sampledImageStencilSampleCounts=" + sampledImageStencilSampleCounts()
+                + ",\n\t storageImageSampleCounts=" + storageImageSampleCounts() 
+                + ",\n\t maxSampleMaskWords=" + maxSampleMaskWords()
+                + ",\n\t timestampComputeAndGraphics=" + timestampComputeAndGraphics() 
+                + ",\n\t timestampPeriod=" + timestampPeriod() 
+                + ",\n\t maxClipDistances=" + maxClipDistances() 
+                + ",\n\t maxCullDistances=" + maxCullDistances()
+                + ",\n\t maxCombinedClipAndCullDistances=" + maxCombinedClipAndCullDistances() 
+                + ",\n\t discreteQueuePriorities=" + discreteQueuePriorities() 
+                + ",\n\t pointSizeRange=" + Arrays.toString(pointSizeRange()) 
+                + ",\n\t lineWidthRange=" + Arrays.toString(lineWidthRange()) 
+                + ",\n\t pointSizeGranularity=" + pointSizeGranularity()
+                + ",\n\t lineWidthGranularity=" + lineWidthGranularity() 
+                + ",\n\t strictLines=" + strictLines()
+                + ",\n\t standardSampleLocations=" + standardSampleLocations() 
+                + ",\n\t optimalBufferCopyOffsetAlignment="+ optimalBufferCopyOffsetAlignment() 
+                + ",\n\t optimalBufferCopyRowPitchAlignment=" + optimalBufferCopyRowPitchAlignment() 
+                + ",\n\t nonCoherentAtomSize=" + nonCoherentAtomSize + "]\n";
+    }
+
+    /**
 	 * Set method for field viewportBoundsRange	[float_array]<br>
 	 * Prototype: float[]  viewportBoundsRange
 	 */ 
 	 public void viewportBoundsRange(float[] viewportBoundsRange){
-		 this.viewportBoundsRange = viewportBoundsRange;
+		 this.viewportBoundsRange = viewportBoundsRange.clone();
 		 setViewportBoundsRange0(this.ptr,  viewportBoundsRange);
 	 }
 
@@ -1989,9 +2114,11 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: float[]  viewportBoundsRange
 	 */ 
 	 public float[] viewportBoundsRange(){
-		 float[] var = getViewportBoundsRange0(super.ptr);
-		 this.viewportBoundsRange = var;
-		 return this.viewportBoundsRange;
+	     if(viewportBoundsRange==null){
+	         viewportBoundsRange = new float[2];
+	         getViewportBoundsRange0(super.ptr,viewportBoundsRange );
+	     }		
+	    return this.viewportBoundsRange;
 	 }
 
 	/**
@@ -2616,9 +2743,11 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: float[]  pointSizeRange
 	 */ 
 	 public float[] pointSizeRange(){
-		 float[] var = getPointSizeRange0(super.ptr);
-		 this.pointSizeRange = var;
-		 return this.pointSizeRange;
+	     if(pointSizeRange==null){
+	         pointSizeRange = new float[2];
+	         getPointSizeRange0(super.ptr,pointSizeRange);
+	     }
+	     return this.pointSizeRange;
 	 }
 
 	/**
@@ -2635,9 +2764,11 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: float[]  lineWidthRange
 	 */ 
 	 public float[] lineWidthRange(){
-		 float[] var = getLineWidthRange0(super.ptr);
-		 this.lineWidthRange = var;
-		 return this.lineWidthRange;
+	     if(lineWidthRange==null){
+	         lineWidthRange = new float[2];
+	         getLineWidthRange0(super.ptr,lineWidthRange);
+	     }
+	     return this.lineWidthRange;
 	 }
 
 	/**
@@ -2791,7 +2922,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxImageDimension1D
 	 */ 
 	 private static native int getMaxImageDimension1D0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxImageDimension1D);
 	 */
 
@@ -2809,7 +2940,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxImageDimension2D
 	 */ 
 	 private static native int getMaxImageDimension2D0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxImageDimension2D);
 	 */
 
@@ -2827,7 +2958,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxImageDimension3D
 	 */ 
 	 private static native int getMaxImageDimension3D0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxImageDimension3D);
 	 */
 
@@ -2845,7 +2976,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxImageDimensionCube
 	 */ 
 	 private static native int getMaxImageDimensionCube0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxImageDimensionCube);
 	 */
 
@@ -2863,7 +2994,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxImageArrayLayers
 	 */ 
 	 private static native int getMaxImageArrayLayers0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxImageArrayLayers);
 	 */
 
@@ -2881,7 +3012,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxTexelBufferElements
 	 */ 
 	 private static native int getMaxTexelBufferElements0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxTexelBufferElements);
 	 */
 
@@ -2899,7 +3030,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxUniformBufferRange
 	 */ 
 	 private static native int getMaxUniformBufferRange0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxUniformBufferRange);
 	 */
 
@@ -2917,7 +3048,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxStorageBufferRange
 	 */ 
 	 private static native int getMaxStorageBufferRange0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxStorageBufferRange);
 	 */
 
@@ -2935,7 +3066,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxPushConstantsSize
 	 */ 
 	 private static native int getMaxPushConstantsSize0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxPushConstantsSize);
 	 */
 
@@ -2953,7 +3084,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxMemoryAllocationCount
 	 */ 
 	 private static native int getMaxMemoryAllocationCount0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxMemoryAllocationCount);
 	 */
 
@@ -2971,7 +3102,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxSamplerAllocationCount
 	 */ 
 	 private static native int getMaxSamplerAllocationCount0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxSamplerAllocationCount);
 	 */
 
@@ -2989,7 +3120,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkDeviceSize  bufferImageGranularity
 	 */ 
 	 private static native long getBufferImageGranularity0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jlong) (vkObj->bufferImageGranularity);
 	 */
 
@@ -3007,7 +3138,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkDeviceSize  sparseAddressSpaceSize
 	 */ 
 	 private static native long getSparseAddressSpaceSize0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jlong) (vkObj->sparseAddressSpaceSize);
 	 */
 
@@ -3025,7 +3156,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxBoundDescriptorSets
 	 */ 
 	 private static native int getMaxBoundDescriptorSets0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxBoundDescriptorSets);
 	 */
 
@@ -3043,7 +3174,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxPerStageDescriptorSamplers
 	 */ 
 	 private static native int getMaxPerStageDescriptorSamplers0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxPerStageDescriptorSamplers);
 	 */
 
@@ -3061,7 +3192,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxPerStageDescriptorUniformBuffers
 	 */ 
 	 private static native int getMaxPerStageDescriptorUniformBuffers0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxPerStageDescriptorUniformBuffers);
 	 */
 
@@ -3079,7 +3210,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxPerStageDescriptorStorageBuffers
 	 */ 
 	 private static native int getMaxPerStageDescriptorStorageBuffers0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxPerStageDescriptorStorageBuffers);
 	 */
 
@@ -3097,7 +3228,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxPerStageDescriptorSampledImages
 	 */ 
 	 private static native int getMaxPerStageDescriptorSampledImages0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxPerStageDescriptorSampledImages);
 	 */
 
@@ -3115,7 +3246,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxPerStageDescriptorStorageImages
 	 */ 
 	 private static native int getMaxPerStageDescriptorStorageImages0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxPerStageDescriptorStorageImages);
 	 */
 
@@ -3133,7 +3264,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxPerStageDescriptorInputAttachments
 	 */ 
 	 private static native int getMaxPerStageDescriptorInputAttachments0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxPerStageDescriptorInputAttachments);
 	 */
 
@@ -3151,7 +3282,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxPerStageResources
 	 */ 
 	 private static native int getMaxPerStageResources0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxPerStageResources);
 	 */
 
@@ -3169,7 +3300,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxDescriptorSetSamplers
 	 */ 
 	 private static native int getMaxDescriptorSetSamplers0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxDescriptorSetSamplers);
 	 */
 
@@ -3187,7 +3318,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxDescriptorSetUniformBuffers
 	 */ 
 	 private static native int getMaxDescriptorSetUniformBuffers0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxDescriptorSetUniformBuffers);
 	 */
 
@@ -3205,7 +3336,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxDescriptorSetUniformBuffersDynamic
 	 */ 
 	 private static native int getMaxDescriptorSetUniformBuffersDynamic0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxDescriptorSetUniformBuffersDynamic);
 	 */
 
@@ -3223,7 +3354,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxDescriptorSetStorageBuffers
 	 */ 
 	 private static native int getMaxDescriptorSetStorageBuffers0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxDescriptorSetStorageBuffers);
 	 */
 
@@ -3241,7 +3372,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxDescriptorSetStorageBuffersDynamic
 	 */ 
 	 private static native int getMaxDescriptorSetStorageBuffersDynamic0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxDescriptorSetStorageBuffersDynamic);
 	 */
 
@@ -3259,7 +3390,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxDescriptorSetSampledImages
 	 */ 
 	 private static native int getMaxDescriptorSetSampledImages0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxDescriptorSetSampledImages);
 	 */
 
@@ -3277,7 +3408,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxDescriptorSetStorageImages
 	 */ 
 	 private static native int getMaxDescriptorSetStorageImages0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxDescriptorSetStorageImages);
 	 */
 
@@ -3295,7 +3426,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxDescriptorSetInputAttachments
 	 */ 
 	 private static native int getMaxDescriptorSetInputAttachments0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxDescriptorSetInputAttachments);
 	 */
 
@@ -3313,7 +3444,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxVertexInputAttributes
 	 */ 
 	 private static native int getMaxVertexInputAttributes0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxVertexInputAttributes);
 	 */
 
@@ -3331,7 +3462,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxVertexInputBindings
 	 */ 
 	 private static native int getMaxVertexInputBindings0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxVertexInputBindings);
 	 */
 
@@ -3349,7 +3480,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxVertexInputAttributeOffset
 	 */ 
 	 private static native int getMaxVertexInputAttributeOffset0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxVertexInputAttributeOffset);
 	 */
 
@@ -3367,7 +3498,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxVertexInputBindingStride
 	 */ 
 	 private static native int getMaxVertexInputBindingStride0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxVertexInputBindingStride);
 	 */
 
@@ -3385,7 +3516,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxVertexOutputComponents
 	 */ 
 	 private static native int getMaxVertexOutputComponents0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxVertexOutputComponents);
 	 */
 
@@ -3403,7 +3534,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxTessellationGenerationLevel
 	 */ 
 	 private static native int getMaxTessellationGenerationLevel0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxTessellationGenerationLevel);
 	 */
 
@@ -3421,7 +3552,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxTessellationPatchSize
 	 */ 
 	 private static native int getMaxTessellationPatchSize0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxTessellationPatchSize);
 	 */
 
@@ -3439,7 +3570,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxTessellationControlPerVertexInputComponents
 	 */ 
 	 private static native int getMaxTessellationControlPerVertexInputComponents0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxTessellationControlPerVertexInputComponents);
 	 */
 
@@ -3457,7 +3588,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxTessellationControlPerVertexOutputComponents
 	 */ 
 	 private static native int getMaxTessellationControlPerVertexOutputComponents0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxTessellationControlPerVertexOutputComponents);
 	 */
 
@@ -3475,7 +3606,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxTessellationControlPerPatchOutputComponents
 	 */ 
 	 private static native int getMaxTessellationControlPerPatchOutputComponents0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxTessellationControlPerPatchOutputComponents);
 	 */
 
@@ -3493,7 +3624,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxTessellationControlTotalOutputComponents
 	 */ 
 	 private static native int getMaxTessellationControlTotalOutputComponents0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxTessellationControlTotalOutputComponents);
 	 */
 
@@ -3511,7 +3642,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxTessellationEvaluationInputComponents
 	 */ 
 	 private static native int getMaxTessellationEvaluationInputComponents0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxTessellationEvaluationInputComponents);
 	 */
 
@@ -3529,7 +3660,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxTessellationEvaluationOutputComponents
 	 */ 
 	 private static native int getMaxTessellationEvaluationOutputComponents0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxTessellationEvaluationOutputComponents);
 	 */
 
@@ -3547,7 +3678,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxGeometryShaderInvocations
 	 */ 
 	 private static native int getMaxGeometryShaderInvocations0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxGeometryShaderInvocations);
 	 */
 
@@ -3565,7 +3696,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxGeometryInputComponents
 	 */ 
 	 private static native int getMaxGeometryInputComponents0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxGeometryInputComponents);
 	 */
 
@@ -3583,7 +3714,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxGeometryOutputComponents
 	 */ 
 	 private static native int getMaxGeometryOutputComponents0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxGeometryOutputComponents);
 	 */
 
@@ -3601,7 +3732,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxGeometryOutputVertices
 	 */ 
 	 private static native int getMaxGeometryOutputVertices0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxGeometryOutputVertices);
 	 */
 
@@ -3619,7 +3750,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxGeometryTotalOutputComponents
 	 */ 
 	 private static native int getMaxGeometryTotalOutputComponents0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxGeometryTotalOutputComponents);
 	 */
 
@@ -3637,7 +3768,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxFragmentInputComponents
 	 */ 
 	 private static native int getMaxFragmentInputComponents0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxFragmentInputComponents);
 	 */
 
@@ -3655,7 +3786,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxFragmentOutputAttachments
 	 */ 
 	 private static native int getMaxFragmentOutputAttachments0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxFragmentOutputAttachments);
 	 */
 
@@ -3673,7 +3804,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxFragmentDualSrcAttachments
 	 */ 
 	 private static native int getMaxFragmentDualSrcAttachments0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxFragmentDualSrcAttachments);
 	 */
 
@@ -3691,7 +3822,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxFragmentCombinedOutputResources
 	 */ 
 	 private static native int getMaxFragmentCombinedOutputResources0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxFragmentCombinedOutputResources);
 	 */
 
@@ -3709,7 +3840,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxComputeSharedMemorySize
 	 */ 
 	 private static native int getMaxComputeSharedMemorySize0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxComputeSharedMemorySize);
 	 */
 
@@ -3717,18 +3848,21 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * native SET method for field maxComputeWorkGroupCount	[int_array]<br>
 	 * Prototype: uint32_t[]  maxComputeWorkGroupCount
 	 */ 
+	 @Deprecated
 	 private static native void setMaxComputeWorkGroupCount0(Buffer ptr, int[] _maxComputeWorkGroupCount);/*
-		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  vkObj->maxComputeWorkGroupCount = (uint32_t[]) (_maxComputeWorkGroupCount);
+		//  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		//  vkObj->maxComputeWorkGroupCount = (uint32_t[]) (_maxComputeWorkGroupCount);
 	  */
 
 	/**
 	 * native GET method for field maxComputeWorkGroupCount	[int_array]<br>
 	 * Prototype: uint32_t[]  maxComputeWorkGroupCount
 	 */ 
-	 private static native int[] getMaxComputeWorkGroupCount0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  return (int[]) (vkObj->maxComputeWorkGroupCount);
+	 private static native void getMaxComputeWorkGroupCount0(Buffer ptr,int[] input);/*
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  for(int i=0; i<3; i++){
+		     input[i] = (jint) vkObj->maxComputeWorkGroupCount[i];
+		  }
 	 */
 
 	/**
@@ -3745,7 +3879,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxComputeWorkGroupInvocations
 	 */ 
 	 private static native int getMaxComputeWorkGroupInvocations0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxComputeWorkGroupInvocations);
 	 */
 
@@ -3755,16 +3889,21 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */ 
 	 private static native void setMaxComputeWorkGroupSize0(Buffer ptr, int[] _maxComputeWorkGroupSize);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  vkObj->maxComputeWorkGroupSize = (uint32_t[]) (_maxComputeWorkGroupSize);
+		  vkObj->maxComputeWorkGroupSize[0] = (uint32_t) (_maxComputeWorkGroupSize[0]);
+		  vkObj->maxComputeWorkGroupSize[1] = (uint32_t) (_maxComputeWorkGroupSize[1]);
+		  vkObj->maxComputeWorkGroupSize[2] = (uint32_t) (_maxComputeWorkGroupSize[2]);
 	  */
 
 	/**
 	 * native GET method for field maxComputeWorkGroupSize	[int_array]<br>
 	 * Prototype: uint32_t[]  maxComputeWorkGroupSize
 	 */ 
-	 private static native int[] getMaxComputeWorkGroupSize0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  return (int[]) (vkObj->maxComputeWorkGroupSize);
+	 private static native void getMaxComputeWorkGroupSize0(Buffer ptr, int[] input);/*
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  //return (int[]) (vkObj->maxComputeWorkGroupSize);
+		  for(int i=0; i<3; i++){
+		   input[i] = (jint)vkObj->maxComputeWorkGroupSize[i];
+		  }
 	 */
 
 	/**
@@ -3781,7 +3920,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  subPixelPrecisionBits
 	 */ 
 	 private static native int getSubPixelPrecisionBits0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->subPixelPrecisionBits);
 	 */
 
@@ -3799,7 +3938,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  subTexelPrecisionBits
 	 */ 
 	 private static native int getSubTexelPrecisionBits0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->subTexelPrecisionBits);
 	 */
 
@@ -3817,7 +3956,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  mipmapPrecisionBits
 	 */ 
 	 private static native int getMipmapPrecisionBits0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->mipmapPrecisionBits);
 	 */
 
@@ -3835,7 +3974,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxDrawIndexedIndexValue
 	 */ 
 	 private static native int getMaxDrawIndexedIndexValue0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxDrawIndexedIndexValue);
 	 */
 
@@ -3853,7 +3992,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxDrawIndirectCount
 	 */ 
 	 private static native int getMaxDrawIndirectCount0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxDrawIndirectCount);
 	 */
 
@@ -3871,7 +4010,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: float  maxSamplerLodBias
 	 */ 
 	 private static native float getMaxSamplerLodBias0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jfloat) (vkObj->maxSamplerLodBias);
 	 */
 
@@ -3889,7 +4028,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: float  maxSamplerAnisotropy
 	 */ 
 	 private static native float getMaxSamplerAnisotropy0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jfloat) (vkObj->maxSamplerAnisotropy);
 	 */
 
@@ -3907,7 +4046,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxViewports
 	 */ 
 	 private static native int getMaxViewports0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxViewports);
 	 */
 
@@ -3917,16 +4056,18 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */ 
 	 private static native void setMaxViewportDimensions0(Buffer ptr, int[] _maxViewportDimensions);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  vkObj->maxViewportDimensions = (uint32_t[]) (_maxViewportDimensions);
+		  vkObj->maxViewportDimensions[0] = (uint32_t) (_maxViewportDimensions[0]);
+		  vkObj->maxViewportDimensions[1] = (uint32_t) (_maxViewportDimensions[1]);
 	  */
 
 	/**
 	 * native GET method for field maxViewportDimensions	[int_array]<br>
 	 * Prototype: uint32_t[]  maxViewportDimensions
 	 */ 
-	 private static native int[] getMaxViewportDimensions0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  return (int[]) (vkObj->maxViewportDimensions);
+	 private static native void getMaxViewportDimensions0(Buffer ptr,int[] input);/*
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  input[0] = (jint) (vkObj->maxViewportDimensions[0]);
+		  input[1] = (jint) (vkObj->maxViewportDimensions[1]);
 	 */
 
 	/**
@@ -3935,16 +4076,18 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */ 
 	 private static native void setViewportBoundsRange0(Buffer ptr, float[] _viewportBoundsRange);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  vkObj->viewportBoundsRange = (float[]) (_viewportBoundsRange);
+		  vkObj->viewportBoundsRange[0] = (float) (_viewportBoundsRange[0]);
+		  vkObj->viewportBoundsRange[1] = (float) (_viewportBoundsRange[1]);
 	  */
 
 	/**
 	 * native GET method for field viewportBoundsRange	[float_array]<br>
 	 * Prototype: float[]  viewportBoundsRange
 	 */ 
-	 private static native float[] getViewportBoundsRange0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  return (float[]) (vkObj->viewportBoundsRange);
+	 private static native void getViewportBoundsRange0(Buffer ptr, float[] input);/*
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  input[0] = (jfloat) (vkObj->viewportBoundsRange[0]);
+		  input[1] = (jfloat) (vkObj->viewportBoundsRange[1]);
 	 */
 
 	/**
@@ -3961,7 +4104,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  viewportSubPixelBits
 	 */ 
 	 private static native int getViewportSubPixelBits0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->viewportSubPixelBits);
 	 */
 
@@ -3979,7 +4122,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: size_t  minMemoryMapAlignment
 	 */ 
 	 private static native long getMinMemoryMapAlignment0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jlong) (vkObj->minMemoryMapAlignment);
 	 */
 
@@ -3997,7 +4140,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkDeviceSize  minTexelBufferOffsetAlignment
 	 */ 
 	 private static native long getMinTexelBufferOffsetAlignment0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jlong) (vkObj->minTexelBufferOffsetAlignment);
 	 */
 
@@ -4015,7 +4158,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkDeviceSize  minUniformBufferOffsetAlignment
 	 */ 
 	 private static native long getMinUniformBufferOffsetAlignment0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jlong) (vkObj->minUniformBufferOffsetAlignment);
 	 */
 
@@ -4033,7 +4176,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkDeviceSize  minStorageBufferOffsetAlignment
 	 */ 
 	 private static native long getMinStorageBufferOffsetAlignment0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jlong) (vkObj->minStorageBufferOffsetAlignment);
 	 */
 
@@ -4051,7 +4194,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: int32_t  minTexelOffset
 	 */ 
 	 private static native int getMinTexelOffset0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->minTexelOffset);
 	 */
 
@@ -4069,7 +4212,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxTexelOffset
 	 */ 
 	 private static native int getMaxTexelOffset0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxTexelOffset);
 	 */
 
@@ -4087,7 +4230,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: int32_t  minTexelGatherOffset
 	 */ 
 	 private static native int getMinTexelGatherOffset0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->minTexelGatherOffset);
 	 */
 
@@ -4105,7 +4248,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxTexelGatherOffset
 	 */ 
 	 private static native int getMaxTexelGatherOffset0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxTexelGatherOffset);
 	 */
 
@@ -4123,7 +4266,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: float  minInterpolationOffset
 	 */ 
 	 private static native float getMinInterpolationOffset0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jfloat) (vkObj->minInterpolationOffset);
 	 */
 
@@ -4141,7 +4284,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: float  maxInterpolationOffset
 	 */ 
 	 private static native float getMaxInterpolationOffset0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jfloat) (vkObj->maxInterpolationOffset);
 	 */
 
@@ -4159,7 +4302,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  subPixelInterpolationOffsetBits
 	 */ 
 	 private static native int getSubPixelInterpolationOffsetBits0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->subPixelInterpolationOffsetBits);
 	 */
 
@@ -4177,7 +4320,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxFramebufferWidth
 	 */ 
 	 private static native int getMaxFramebufferWidth0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxFramebufferWidth);
 	 */
 
@@ -4195,7 +4338,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxFramebufferHeight
 	 */ 
 	 private static native int getMaxFramebufferHeight0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxFramebufferHeight);
 	 */
 
@@ -4213,7 +4356,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxFramebufferLayers
 	 */ 
 	 private static native int getMaxFramebufferLayers0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxFramebufferLayers);
 	 */
 
@@ -4231,7 +4374,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkSampleCountFlags  framebufferColorSampleCounts
 	 */ 
 	 private static native int getFramebufferColorSampleCounts0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->framebufferColorSampleCounts);
 	 */
 
@@ -4249,7 +4392,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkSampleCountFlags  framebufferDepthSampleCounts
 	 */ 
 	 private static native int getFramebufferDepthSampleCounts0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->framebufferDepthSampleCounts);
 	 */
 
@@ -4267,7 +4410,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkSampleCountFlags  framebufferStencilSampleCounts
 	 */ 
 	 private static native int getFramebufferStencilSampleCounts0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->framebufferStencilSampleCounts);
 	 */
 
@@ -4285,7 +4428,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkSampleCountFlags  framebufferNoAttachmentsSampleCounts
 	 */ 
 	 private static native int getFramebufferNoAttachmentsSampleCounts0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->framebufferNoAttachmentsSampleCounts);
 	 */
 
@@ -4303,7 +4446,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxColorAttachments
 	 */ 
 	 private static native int getMaxColorAttachments0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxColorAttachments);
 	 */
 
@@ -4321,7 +4464,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkSampleCountFlags  sampledImageColorSampleCounts
 	 */ 
 	 private static native int getSampledImageColorSampleCounts0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->sampledImageColorSampleCounts);
 	 */
 
@@ -4339,7 +4482,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkSampleCountFlags  sampledImageIntegerSampleCounts
 	 */ 
 	 private static native int getSampledImageIntegerSampleCounts0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->sampledImageIntegerSampleCounts);
 	 */
 
@@ -4357,7 +4500,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkSampleCountFlags  sampledImageDepthSampleCounts
 	 */ 
 	 private static native int getSampledImageDepthSampleCounts0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->sampledImageDepthSampleCounts);
 	 */
 
@@ -4375,7 +4518,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkSampleCountFlags  sampledImageStencilSampleCounts
 	 */ 
 	 private static native int getSampledImageStencilSampleCounts0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->sampledImageStencilSampleCounts);
 	 */
 
@@ -4393,7 +4536,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkSampleCountFlags  storageImageSampleCounts
 	 */ 
 	 private static native int getStorageImageSampleCounts0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->storageImageSampleCounts);
 	 */
 
@@ -4411,7 +4554,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxSampleMaskWords
 	 */ 
 	 private static native int getMaxSampleMaskWords0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxSampleMaskWords);
 	 */
 
@@ -4429,7 +4572,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkBool32  timestampComputeAndGraphics
 	 */ 
 	 private static native boolean getTimestampComputeAndGraphics0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jboolean) (vkObj->timestampComputeAndGraphics);
 	 */
 
@@ -4447,7 +4590,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: float  timestampPeriod
 	 */ 
 	 private static native float getTimestampPeriod0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jfloat) (vkObj->timestampPeriod);
 	 */
 
@@ -4465,7 +4608,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxClipDistances
 	 */ 
 	 private static native int getMaxClipDistances0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxClipDistances);
 	 */
 
@@ -4483,7 +4626,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxCullDistances
 	 */ 
 	 private static native int getMaxCullDistances0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxCullDistances);
 	 */
 
@@ -4501,7 +4644,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  maxCombinedClipAndCullDistances
 	 */ 
 	 private static native int getMaxCombinedClipAndCullDistances0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->maxCombinedClipAndCullDistances);
 	 */
 
@@ -4519,7 +4662,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: uint32_t  discreteQueuePriorities
 	 */ 
 	 private static native int getDiscreteQueuePriorities0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jint) (vkObj->discreteQueuePriorities);
 	 */
 
@@ -4529,16 +4672,19 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */ 
 	 private static native void setPointSizeRange0(Buffer ptr, float[] _pointSizeRange);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  vkObj->pointSizeRange = (float[]) (_pointSizeRange);
+		  vkObj->pointSizeRange[0] = (float) (_pointSizeRange[0]);
+		  vkObj->pointSizeRange[1] = (float) (_pointSizeRange[1]);
+		  vkObj->pointSizeRange[2] = (float) (_pointSizeRange[2]);
 	  */
 
 	/**
 	 * native GET method for field pointSizeRange	[float_array]<br>
 	 * Prototype: float[]  pointSizeRange
 	 */ 
-	 private static native float[] getPointSizeRange0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  return (float[]) (vkObj->pointSizeRange);
+	 private static native float[] getPointSizeRange0(Buffer ptr, float[] input);/*
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  input[0] = (jfloat) (vkObj->pointSizeRange[0]);
+		  input[1] = (jfloat) (vkObj->pointSizeRange[1]);
 	 */
 
 	/**
@@ -4547,16 +4693,18 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 */ 
 	 private static native void setLineWidthRange0(Buffer ptr, float[] _lineWidthRange);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  vkObj->lineWidthRange = (float[]) (_lineWidthRange);
+		  vkObj->lineWidthRange[0] = (float) (_lineWidthRange[0]);
+		  vkObj->lineWidthRange[1] = (float) (_lineWidthRange[1]);
 	  */
 
 	/**
 	 * native GET method for field lineWidthRange	[float_array]<br>
 	 * Prototype: float[]  lineWidthRange
 	 */ 
-	 private static native float[] getLineWidthRange0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  return (float[]) (vkObj->lineWidthRange);
+	 private static native void getLineWidthRange0(Buffer ptr, float[] input);/*
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  input[0] = (jfloat) (vkObj->lineWidthRange[0]);
+		  input[1] = (jfloat) (vkObj->lineWidthRange[1]);
 	 */
 
 	/**
@@ -4573,7 +4721,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: float  pointSizeGranularity
 	 */ 
 	 private static native float getPointSizeGranularity0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jfloat) (vkObj->pointSizeGranularity);
 	 */
 
@@ -4591,7 +4739,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: float  lineWidthGranularity
 	 */ 
 	 private static native float getLineWidthGranularity0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jfloat) (vkObj->lineWidthGranularity);
 	 */
 
@@ -4609,7 +4757,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkBool32  strictLines
 	 */ 
 	 private static native boolean getStrictLines0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jboolean) (vkObj->strictLines);
 	 */
 
@@ -4627,7 +4775,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkBool32  standardSampleLocations
 	 */ 
 	 private static native boolean getStandardSampleLocations0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jboolean) (vkObj->standardSampleLocations);
 	 */
 
@@ -4645,7 +4793,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkDeviceSize  optimalBufferCopyOffsetAlignment
 	 */ 
 	 private static native long getOptimalBufferCopyOffsetAlignment0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jlong) (vkObj->optimalBufferCopyOffsetAlignment);
 	 */
 
@@ -4663,7 +4811,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkDeviceSize  optimalBufferCopyRowPitchAlignment
 	 */ 
 	 private static native long getOptimalBufferCopyRowPitchAlignment0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jlong) (vkObj->optimalBufferCopyRowPitchAlignment);
 	 */
 
@@ -4681,7 +4829,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Prototype: VkDeviceSize  nonCoherentAtomSize
 	 */ 
 	 private static native long getNonCoherentAtomSize0(Buffer ptr);/*
-		  VkPhysicalDeviceLimits vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jlong) (vkObj->nonCoherentAtomSize);
 	 */
 

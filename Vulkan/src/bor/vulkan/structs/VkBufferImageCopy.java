@@ -37,6 +37,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkBufferImageCopy extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [94]  */
 	 private static final String TAG = "VkBufferImageCopy";
 
@@ -321,7 +327,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 * Prototype: VkDeviceSize  bufferOffset
 	 */ 
 	 private static native long getBufferOffset0(Buffer ptr);/*
-		  VkBufferImageCopy vkObj = (VkBufferImageCopy*)(ptr);
+		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		  return (jlong) (vkObj->bufferOffset);
 	 */
 
@@ -339,7 +345,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 * Prototype: uint32_t  bufferRowLength
 	 */ 
 	 private static native int getBufferRowLength0(Buffer ptr);/*
-		  VkBufferImageCopy vkObj = (VkBufferImageCopy*)(ptr);
+		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		  return (jint) (vkObj->bufferRowLength);
 	 */
 
@@ -357,7 +363,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 * Prototype: uint32_t  bufferImageHeight
 	 */ 
 	 private static native int getBufferImageHeight0(Buffer ptr);/*
-		  VkBufferImageCopy vkObj = (VkBufferImageCopy*)(ptr);
+		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		  return (jint) (vkObj->bufferImageHeight);
 	 */
 
@@ -375,7 +381,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 * Prototype: VkImageSubresourceLayers  imageSubresource
 	 */ 
 	 private static native long getImageSubresource0(Buffer ptr);/*
-		  VkBufferImageCopy vkObj = (VkBufferImageCopy*)(ptr);
+		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->imageSubresource);	 */
 
 	/**
@@ -392,7 +398,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 * Prototype: VkOffset3D  imageOffset
 	 */ 
 	 private static native long getImageOffset0(Buffer ptr);/*
-		  VkBufferImageCopy vkObj = (VkBufferImageCopy*)(ptr);
+		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->imageOffset);	 */
 
 	/**
@@ -409,7 +415,7 @@ public class VkBufferImageCopy extends VkStruct {
 	 * Prototype: VkExtent3D  imageExtent
 	 */ 
 	 private static native long getImageExtent0(Buffer ptr);/*
-		  VkBufferImageCopy vkObj = (VkBufferImageCopy*)(ptr);
+		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->imageExtent);	 */
 
 

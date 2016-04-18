@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDispatchIndirectCommand extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [103]  */
 	 private static final String TAG = "VkDispatchIndirectCommand";
 
@@ -216,7 +222,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 * Prototype: uint32_t  x
 	 */ 
 	 private static native int getX0(Buffer ptr);/*
-		  VkDispatchIndirectCommand vkObj = (VkDispatchIndirectCommand*)(ptr);
+		  VkDispatchIndirectCommand* vkObj = (VkDispatchIndirectCommand*)(ptr);
 		  return (jint) (vkObj->x);
 	 */
 
@@ -234,7 +240,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 * Prototype: uint32_t  y
 	 */ 
 	 private static native int getY0(Buffer ptr);/*
-		  VkDispatchIndirectCommand vkObj = (VkDispatchIndirectCommand*)(ptr);
+		  VkDispatchIndirectCommand* vkObj = (VkDispatchIndirectCommand*)(ptr);
 		  return (jint) (vkObj->y);
 	 */
 
@@ -252,7 +258,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 * Prototype: uint32_t  z
 	 */ 
 	 private static native int getZ0(Buffer ptr);/*
-		  VkDispatchIndirectCommand vkObj = (VkDispatchIndirectCommand*)(ptr);
+		  VkDispatchIndirectCommand* vkObj = (VkDispatchIndirectCommand*)(ptr);
 		  return (jint) (vkObj->z);
 	 */
 

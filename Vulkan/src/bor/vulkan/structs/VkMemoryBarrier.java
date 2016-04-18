@@ -35,6 +35,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkMemoryBarrier extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [99]  */
 	 private static final String TAG = "VkMemoryBarrier";
 
@@ -251,7 +257,7 @@ public class VkMemoryBarrier extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkMemoryBarrier vkObj = (VkMemoryBarrier*)(ptr);
+		  VkMemoryBarrier* vkObj = (VkMemoryBarrier*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -269,7 +275,7 @@ public class VkMemoryBarrier extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkMemoryBarrier vkObj = (VkMemoryBarrier*)(ptr);
+		  VkMemoryBarrier* vkObj = (VkMemoryBarrier*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -286,7 +292,7 @@ public class VkMemoryBarrier extends VkStruct {
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 private static native int getSrcAccessMask0(Buffer ptr);/*
-		  VkMemoryBarrier vkObj = (VkMemoryBarrier*)(ptr);
+		  VkMemoryBarrier* vkObj = (VkMemoryBarrier*)(ptr);
 		  return (jint) (vkObj->srcAccessMask);
 	 */
 
@@ -304,7 +310,7 @@ public class VkMemoryBarrier extends VkStruct {
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 private static native int getDstAccessMask0(Buffer ptr);/*
-		  VkMemoryBarrier vkObj = (VkMemoryBarrier*)(ptr);
+		  VkMemoryBarrier* vkObj = (VkMemoryBarrier*)(ptr);
 		  return (jint) (vkObj->dstAccessMask);
 	 */
 

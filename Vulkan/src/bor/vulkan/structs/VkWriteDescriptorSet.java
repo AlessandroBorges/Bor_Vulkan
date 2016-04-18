@@ -41,6 +41,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkWriteDescriptorSet extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [78]  */
 	 private static final String TAG = "VkWriteDescriptorSet";
 
@@ -444,7 +450,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkWriteDescriptorSet vkObj = (VkWriteDescriptorSet*)(ptr);
+		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -462,7 +468,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkWriteDescriptorSet vkObj = (VkWriteDescriptorSet*)(ptr);
+		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -479,7 +485,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 * Prototype: VkDescriptorSet  dstSet
 	 */ 
 	 private static native long getDstSet0(Buffer ptr);/*
-		  VkWriteDescriptorSet vkObj = (VkWriteDescriptorSet*)(ptr);
+		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->dstSet);	 */
 
 	/**
@@ -496,7 +502,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 * Prototype: uint32_t  dstBinding
 	 */ 
 	 private static native int getDstBinding0(Buffer ptr);/*
-		  VkWriteDescriptorSet vkObj = (VkWriteDescriptorSet*)(ptr);
+		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
 		  return (jint) (vkObj->dstBinding);
 	 */
 
@@ -514,7 +520,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 * Prototype: uint32_t  dstArrayElement
 	 */ 
 	 private static native int getDstArrayElement0(Buffer ptr);/*
-		  VkWriteDescriptorSet vkObj = (VkWriteDescriptorSet*)(ptr);
+		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
 		  return (jint) (vkObj->dstArrayElement);
 	 */
 
@@ -532,7 +538,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 private static native int getDescriptorCount0(Buffer ptr);/*
-		  VkWriteDescriptorSet vkObj = (VkWriteDescriptorSet*)(ptr);
+		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
 		  return (jint) (vkObj->descriptorCount);
 	 */
 
@@ -550,7 +556,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 * Prototype: VkDescriptorType  descriptorType
 	 */ 
 	 private static native int  getDescriptorType0(Buffer ptr);/*
-		  VkWriteDescriptorSet vkObj = (VkWriteDescriptorSet*)(ptr);
+		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
 		  return (VkDescriptorType) (vkObj->descriptorType);
 	 */
 
@@ -568,7 +574,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 * Prototype: const VkDescriptorImageInfo*  pImageInfo
 	 */ 
 	 private static native long getPImageInfo0(Buffer ptr);/*
-		  VkWriteDescriptorSet vkObj = (VkWriteDescriptorSet*)(ptr);
+		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pImageInfo);	 */
 
 	/**
@@ -585,7 +591,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 * Prototype: const VkDescriptorBufferInfo*  pBufferInfo
 	 */ 
 	 private static native long getPBufferInfo0(Buffer ptr);/*
-		  VkWriteDescriptorSet vkObj = (VkWriteDescriptorSet*)(ptr);
+		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pBufferInfo);	 */
 
 	/**
@@ -602,7 +608,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 * Prototype: const VkBufferView*  pTexelBufferView
 	 */ 
 	 private static native long getPTexelBufferView0(Buffer ptr);/*
-		  VkWriteDescriptorSet vkObj = (VkWriteDescriptorSet*)(ptr);
+		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pTexelBufferView);	 */
 
 

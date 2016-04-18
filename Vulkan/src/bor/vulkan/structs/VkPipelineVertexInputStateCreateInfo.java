@@ -38,6 +38,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [51]  */
 	 private static final String TAG = "VkPipelineVertexInputStateCreateInfo";
 
@@ -346,7 +352,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkPipelineVertexInputStateCreateInfo vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
+		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -364,7 +370,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkPipelineVertexInputStateCreateInfo vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
+		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -381,7 +387,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * Prototype: VkPipelineVertexInputStateCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkPipelineVertexInputStateCreateInfo vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
+		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -399,7 +405,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  vertexBindingDescriptionCount
 	 */ 
 	 private static native int getVertexBindingDescriptionCount0(Buffer ptr);/*
-		  VkPipelineVertexInputStateCreateInfo vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
+		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->vertexBindingDescriptionCount);
 	 */
 
@@ -417,7 +423,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * Prototype: const VkVertexInputBindingDescription*  pVertexBindingDescriptions
 	 */ 
 	 private static native long getPVertexBindingDescriptions0(Buffer ptr);/*
-		  VkPipelineVertexInputStateCreateInfo vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
+		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pVertexBindingDescriptions);	 */
 
 	/**
@@ -434,7 +440,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  vertexAttributeDescriptionCount
 	 */ 
 	 private static native int getVertexAttributeDescriptionCount0(Buffer ptr);/*
-		  VkPipelineVertexInputStateCreateInfo vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
+		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->vertexAttributeDescriptionCount);
 	 */
 
@@ -452,7 +458,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * Prototype: const VkVertexInputAttributeDescription*  pVertexAttributeDescriptions
 	 */ 
 	 private static native long getPVertexAttributeDescriptions0(Buffer ptr);/*
-		  VkPipelineVertexInputStateCreateInfo vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
+		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pVertexAttributeDescriptions);	 */
 
 

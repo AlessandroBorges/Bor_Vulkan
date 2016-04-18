@@ -33,6 +33,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkMemoryType extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [12]  */
 	 private static final String TAG = "VkMemoryType";
 
@@ -191,7 +197,7 @@ public class VkMemoryType extends VkStruct {
 	 * Prototype: VkMemoryPropertyFlags  propertyFlags
 	 */ 
 	 private static native int getPropertyFlags0(Buffer ptr);/*
-		  VkMemoryType vkObj = (VkMemoryType*)(ptr);
+		  VkMemoryType* vkObj = (VkMemoryType*)(ptr);
 		  return (jint) (vkObj->propertyFlags);
 	 */
 
@@ -209,7 +215,7 @@ public class VkMemoryType extends VkStruct {
 	 * Prototype: uint32_t  heapIndex
 	 */ 
 	 private static native int getHeapIndex0(Buffer ptr);/*
-		  VkMemoryType vkObj = (VkMemoryType*)(ptr);
+		  VkMemoryType* vkObj = (VkMemoryType*)(ptr);
 		  return (jint) (vkObj->heapIndex);
 	 */
 

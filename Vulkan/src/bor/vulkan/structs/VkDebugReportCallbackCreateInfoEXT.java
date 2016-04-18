@@ -36,6 +36,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDebugReportCallbackCreateInfoEXT extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [124]  */
 	 private static final String TAG = "VkDebugReportCallbackCreateInfoEXT";
 
@@ -263,7 +269,9 @@ public class VkDebugReportCallbackCreateInfoEXT extends VkStruct {
 	 * Get method for field pUserData	[buffer]<br>
 	 * Prototype: void*  pUserData
 	 */ 
-	 public java.nio.Buffer pUserData(){		
+	 public java.nio.Buffer pUserData(){
+		 java.nio.Buffer var = getPUserData0(super.ptr);
+		 this.pUserData = var;
 		 return this.pUserData;
 	 }
 
@@ -285,7 +293,7 @@ public class VkDebugReportCallbackCreateInfoEXT extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkDebugReportCallbackCreateInfoEXT vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
+		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -303,7 +311,7 @@ public class VkDebugReportCallbackCreateInfoEXT extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkDebugReportCallbackCreateInfoEXT vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
+		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -320,7 +328,7 @@ public class VkDebugReportCallbackCreateInfoEXT extends VkStruct {
 	 * Prototype: VkDebugReportFlagsEXT  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkDebugReportCallbackCreateInfoEXT vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
+		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -338,7 +346,7 @@ public class VkDebugReportCallbackCreateInfoEXT extends VkStruct {
 	 * Prototype: PFN_vkDebugReportCallbackEXT  pfnCallback
 	 */ 
 	 private static native long getPfnCallback0(Buffer ptr);/*
-		  VkDebugReportCallbackCreateInfoEXT vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
+		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pfnCallback);	 */
 
 	/**
@@ -355,7 +363,7 @@ public class VkDebugReportCallbackCreateInfoEXT extends VkStruct {
 	 * Prototype: void*  pUserData
 	 */ 
 	 private static native long getPUserData0(Buffer ptr);/*
-		  VkDebugReportCallbackCreateInfoEXT vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
+		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pUserData);	 */
 
 

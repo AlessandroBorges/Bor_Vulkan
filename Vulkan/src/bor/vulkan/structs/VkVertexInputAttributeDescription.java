@@ -35,6 +35,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkVertexInputAttributeDescription extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [50]  */
 	 private static final String TAG = "VkVertexInputAttributeDescription";
 
@@ -242,7 +248,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 * Prototype: uint32_t  location
 	 */ 
 	 private static native int getLocation0(Buffer ptr);/*
-		  VkVertexInputAttributeDescription vkObj = (VkVertexInputAttributeDescription*)(ptr);
+		  VkVertexInputAttributeDescription* vkObj = (VkVertexInputAttributeDescription*)(ptr);
 		  return (jint) (vkObj->location);
 	 */
 
@@ -260,7 +266,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 * Prototype: uint32_t  binding
 	 */ 
 	 private static native int getBinding0(Buffer ptr);/*
-		  VkVertexInputAttributeDescription vkObj = (VkVertexInputAttributeDescription*)(ptr);
+		  VkVertexInputAttributeDescription* vkObj = (VkVertexInputAttributeDescription*)(ptr);
 		  return (jint) (vkObj->binding);
 	 */
 
@@ -278,7 +284,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 * Prototype: VkFormat  format
 	 */ 
 	 private static native int  getFormat0(Buffer ptr);/*
-		  VkVertexInputAttributeDescription vkObj = (VkVertexInputAttributeDescription*)(ptr);
+		  VkVertexInputAttributeDescription* vkObj = (VkVertexInputAttributeDescription*)(ptr);
 		  return (VkFormat) (vkObj->format);
 	 */
 
@@ -296,7 +302,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 * Prototype: uint32_t  offset
 	 */ 
 	 private static native int getOffset0(Buffer ptr);/*
-		  VkVertexInputAttributeDescription vkObj = (VkVertexInputAttributeDescription*)(ptr);
+		  VkVertexInputAttributeDescription* vkObj = (VkVertexInputAttributeDescription*)(ptr);
 		  return (jint) (vkObj->offset);
 	 */
 

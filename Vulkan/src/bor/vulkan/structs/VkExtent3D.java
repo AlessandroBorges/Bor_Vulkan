@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkExtent3D extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [6]  */
 	 private static final String TAG = "VkExtent3D";
 
@@ -216,7 +222,7 @@ public class VkExtent3D extends VkStruct {
 	 * Prototype: uint32_t  width
 	 */ 
 	 private static native int getWidth0(Buffer ptr);/*
-		  VkExtent3D vkObj = (VkExtent3D*)(ptr);
+		  VkExtent3D* vkObj = (VkExtent3D*)(ptr);
 		  return (jint) (vkObj->width);
 	 */
 
@@ -234,7 +240,7 @@ public class VkExtent3D extends VkStruct {
 	 * Prototype: uint32_t  height
 	 */ 
 	 private static native int getHeight0(Buffer ptr);/*
-		  VkExtent3D vkObj = (VkExtent3D*)(ptr);
+		  VkExtent3D* vkObj = (VkExtent3D*)(ptr);
 		  return (jint) (vkObj->height);
 	 */
 
@@ -252,7 +258,7 @@ public class VkExtent3D extends VkStruct {
 	 * Prototype: uint32_t  depth
 	 */ 
 	 private static native int getDepth0(Buffer ptr);/*
-		  VkExtent3D vkObj = (VkExtent3D*)(ptr);
+		  VkExtent3D* vkObj = (VkExtent3D*)(ptr);
 		  return (jint) (vkObj->depth);
 	 */
 

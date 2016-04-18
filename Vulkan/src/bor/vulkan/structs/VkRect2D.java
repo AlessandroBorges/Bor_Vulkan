@@ -33,6 +33,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkRect2D extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [57]  */
 	 private static final String TAG = "VkRect2D";
 
@@ -211,7 +217,7 @@ public class VkRect2D extends VkStruct {
 	 * Prototype: VkOffset2D  offset
 	 */ 
 	 private static native long getOffset0(Buffer ptr);/*
-		  VkRect2D vkObj = (VkRect2D*)(ptr);
+		  VkRect2D* vkObj = (VkRect2D*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->offset);	 */
 
 	/**
@@ -228,7 +234,7 @@ public class VkRect2D extends VkStruct {
 	 * Prototype: VkExtent2D  extent
 	 */ 
 	 private static native long getExtent0(Buffer ptr);/*
-		  VkRect2D vkObj = (VkRect2D*)(ptr);
+		  VkRect2D* vkObj = (VkRect2D*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->extent);	 */
 
 

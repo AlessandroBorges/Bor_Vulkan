@@ -36,6 +36,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkSparseImageMemoryRequirements extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [24]  */
 	 private static final String TAG = "VkSparseImageMemoryRequirements";
 
@@ -276,7 +282,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * Prototype: VkSparseImageFormatProperties  formatProperties
 	 */ 
 	 private static native long getFormatProperties0(Buffer ptr);/*
-		  VkSparseImageMemoryRequirements vkObj = (VkSparseImageMemoryRequirements*)(ptr);
+		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->formatProperties);	 */
 
 	/**
@@ -293,7 +299,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * Prototype: uint32_t  imageMipTailFirstLod
 	 */ 
 	 private static native int getImageMipTailFirstLod0(Buffer ptr);/*
-		  VkSparseImageMemoryRequirements vkObj = (VkSparseImageMemoryRequirements*)(ptr);
+		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  return (jint) (vkObj->imageMipTailFirstLod);
 	 */
 
@@ -311,7 +317,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * Prototype: VkDeviceSize  imageMipTailSize
 	 */ 
 	 private static native long getImageMipTailSize0(Buffer ptr);/*
-		  VkSparseImageMemoryRequirements vkObj = (VkSparseImageMemoryRequirements*)(ptr);
+		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  return (jlong) (vkObj->imageMipTailSize);
 	 */
 
@@ -329,7 +335,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * Prototype: VkDeviceSize  imageMipTailOffset
 	 */ 
 	 private static native long getImageMipTailOffset0(Buffer ptr);/*
-		  VkSparseImageMemoryRequirements vkObj = (VkSparseImageMemoryRequirements*)(ptr);
+		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  return (jlong) (vkObj->imageMipTailOffset);
 	 */
 
@@ -347,7 +353,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * Prototype: VkDeviceSize  imageMipTailStride
 	 */ 
 	 private static native long getImageMipTailStride0(Buffer ptr);/*
-		  VkSparseImageMemoryRequirements vkObj = (VkSparseImageMemoryRequirements*)(ptr);
+		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  return (jlong) (vkObj->imageMipTailStride);
 	 */
 

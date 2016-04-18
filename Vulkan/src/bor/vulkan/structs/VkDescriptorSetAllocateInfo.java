@@ -36,6 +36,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDescriptorSetAllocateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [75]  */
 	 private static final String TAG = "VkDescriptorSetAllocateInfo";
 
@@ -298,7 +304,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkDescriptorSetAllocateInfo vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
+		  VkDescriptorSetAllocateInfo* vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -316,7 +322,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkDescriptorSetAllocateInfo vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
+		  VkDescriptorSetAllocateInfo* vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -333,7 +339,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 * Prototype: VkDescriptorPool  descriptorPool
 	 */ 
 	 private static native long getDescriptorPool0(Buffer ptr);/*
-		  VkDescriptorSetAllocateInfo vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
+		  VkDescriptorSetAllocateInfo* vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->descriptorPool);	 */
 
 	/**
@@ -350,7 +356,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 * Prototype: uint32_t  descriptorSetCount
 	 */ 
 	 private static native int getDescriptorSetCount0(Buffer ptr);/*
-		  VkDescriptorSetAllocateInfo vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
+		  VkDescriptorSetAllocateInfo* vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
 		  return (jint) (vkObj->descriptorSetCount);
 	 */
 
@@ -368,7 +374,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
 	 private static native long getPSetLayouts0(Buffer ptr);/*
-		  VkDescriptorSetAllocateInfo vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
+		  VkDescriptorSetAllocateInfo* vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pSetLayouts);	 */
 
 

@@ -37,6 +37,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkQueryPoolCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [36]  */
 	 private static final String TAG = "VkQueryPoolCreateInfo";
 
@@ -302,7 +308,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkQueryPoolCreateInfo vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -320,7 +326,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkQueryPoolCreateInfo vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -337,7 +343,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 * Prototype: VkQueryPoolCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkQueryPoolCreateInfo vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -355,7 +361,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 * Prototype: VkQueryType  queryType
 	 */ 
 	 private static native int  getQueryType0(Buffer ptr);/*
-		  VkQueryPoolCreateInfo vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
 		  return (VkQueryType) (vkObj->queryType);
 	 */
 
@@ -373,7 +379,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  queryCount
 	 */ 
 	 private static native int getQueryCount0(Buffer ptr);/*
-		  VkQueryPoolCreateInfo vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
 		  return (jint) (vkObj->queryCount);
 	 */
 
@@ -391,7 +397,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 * Prototype: VkQueryPipelineStatisticFlags  pipelineStatistics
 	 */ 
 	 private static native int getPipelineStatistics0(Buffer ptr);/*
-		  VkQueryPoolCreateInfo vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
 		  return (jint) (vkObj->pipelineStatistics);
 	 */
 

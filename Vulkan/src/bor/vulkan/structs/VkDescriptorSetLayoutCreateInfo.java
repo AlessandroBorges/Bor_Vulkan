@@ -36,6 +36,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [72]  */
 	 private static final String TAG = "VkDescriptorSetLayoutCreateInfo";
 
@@ -286,7 +292,7 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkDescriptorSetLayoutCreateInfo vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		  VkDescriptorSetLayoutCreateInfo* vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -304,7 +310,7 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkDescriptorSetLayoutCreateInfo vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		  VkDescriptorSetLayoutCreateInfo* vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -321,7 +327,7 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 * Prototype: VkDescriptorSetLayoutCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkDescriptorSetLayoutCreateInfo vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		  VkDescriptorSetLayoutCreateInfo* vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -339,7 +345,7 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  bindingCount
 	 */ 
 	 private static native int getBindingCount0(Buffer ptr);/*
-		  VkDescriptorSetLayoutCreateInfo vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		  VkDescriptorSetLayoutCreateInfo* vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
 		  return (jint) (vkObj->bindingCount);
 	 */
 
@@ -357,7 +363,7 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 * Prototype: const VkDescriptorSetLayoutBinding*  pBindings
 	 */ 
 	 private static native long getPBindings0(Buffer ptr);/*
-		  VkDescriptorSetLayoutCreateInfo vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		  VkDescriptorSetLayoutCreateInfo* vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pBindings);	 */
 
 

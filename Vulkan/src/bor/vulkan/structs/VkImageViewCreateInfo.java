@@ -39,6 +39,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkImageViewCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [43]  */
 	 private static final String TAG = "VkImageViewCreateInfo";
 
@@ -384,7 +390,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkImageViewCreateInfo vkObj = (VkImageViewCreateInfo*)(ptr);
+		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -402,7 +408,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkImageViewCreateInfo vkObj = (VkImageViewCreateInfo*)(ptr);
+		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -419,7 +425,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * Prototype: VkImageViewCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkImageViewCreateInfo vkObj = (VkImageViewCreateInfo*)(ptr);
+		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -437,7 +443,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * Prototype: VkImage  image
 	 */ 
 	 private static native long getImage0(Buffer ptr);/*
-		  VkImageViewCreateInfo vkObj = (VkImageViewCreateInfo*)(ptr);
+		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->image);	 */
 
 	/**
@@ -454,7 +460,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * Prototype: VkImageViewType  viewType
 	 */ 
 	 private static native int  getViewType0(Buffer ptr);/*
-		  VkImageViewCreateInfo vkObj = (VkImageViewCreateInfo*)(ptr);
+		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  return (VkImageViewType) (vkObj->viewType);
 	 */
 
@@ -472,7 +478,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * Prototype: VkFormat  format
 	 */ 
 	 private static native int  getFormat0(Buffer ptr);/*
-		  VkImageViewCreateInfo vkObj = (VkImageViewCreateInfo*)(ptr);
+		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  return (VkFormat) (vkObj->format);
 	 */
 
@@ -490,7 +496,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * Prototype: VkComponentMapping  components
 	 */ 
 	 private static native long getComponents0(Buffer ptr);/*
-		  VkImageViewCreateInfo vkObj = (VkImageViewCreateInfo*)(ptr);
+		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->components);	 */
 
 	/**
@@ -507,7 +513,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * Prototype: VkImageSubresourceRange  subresourceRange
 	 */ 
 	 private static native long getSubresourceRange0(Buffer ptr);/*
-		  VkImageViewCreateInfo vkObj = (VkImageViewCreateInfo*)(ptr);
+		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->subresourceRange);	 */
 
 

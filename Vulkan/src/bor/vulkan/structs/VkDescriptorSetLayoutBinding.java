@@ -36,6 +36,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDescriptorSetLayoutBinding extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [71]  */
 	 private static final String TAG = "VkDescriptorSetLayoutBinding";
 
@@ -278,7 +284,7 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	 * Prototype: uint32_t  binding
 	 */ 
 	 private static native int getBinding0(Buffer ptr);/*
-		  VkDescriptorSetLayoutBinding vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
+		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
 		  return (jint) (vkObj->binding);
 	 */
 
@@ -296,7 +302,7 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	 * Prototype: VkDescriptorType  descriptorType
 	 */ 
 	 private static native int  getDescriptorType0(Buffer ptr);/*
-		  VkDescriptorSetLayoutBinding vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
+		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
 		  return (VkDescriptorType) (vkObj->descriptorType);
 	 */
 
@@ -314,7 +320,7 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 private static native int getDescriptorCount0(Buffer ptr);/*
-		  VkDescriptorSetLayoutBinding vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
+		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
 		  return (jint) (vkObj->descriptorCount);
 	 */
 
@@ -332,7 +338,7 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
 	 private static native int getStageFlags0(Buffer ptr);/*
-		  VkDescriptorSetLayoutBinding vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
+		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
 		  return (jint) (vkObj->stageFlags);
 	 */
 
@@ -350,7 +356,7 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	 * Prototype: const VkSampler*  pImmutableSamplers
 	 */ 
 	 private static native long getPImmutableSamplers0(Buffer ptr);/*
-		  VkDescriptorSetLayoutBinding vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
+		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pImmutableSamplers);	 */
 
 

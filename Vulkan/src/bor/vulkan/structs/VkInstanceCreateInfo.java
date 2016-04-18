@@ -39,6 +39,17 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkInstanceCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    #include <vector>
+    #include <string>
+    #include <iostream>
+    
+    using namespace std;
+    */  
+
 	/** TAG of this structure [2]  */
 	 private static final String TAG = "VkInstanceCreateInfo";
 
@@ -95,7 +106,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkInstanceCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(sizeOf(),0); 
 	 }
 
 	/**
@@ -300,9 +311,10 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * Prototype: const char* const*  ppEnabledLayerNames
 	 */ 
 	 public String[] ppEnabledLayerNames(){
-		 String[] var = getPpEnabledLayerNames0(super.ptr);
-		 this.ppEnabledLayerNames = var;
-		 return this.ppEnabledLayerNames;
+	     return this.ppEnabledLayerNames;
+//		 String[] var = getPpEnabledLayerNames0(super.ptr);
+//		 this.ppEnabledLayerNames = var;
+//		 return this.ppEnabledLayerNames;
 	 }
 
 	/**
@@ -338,9 +350,12 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * Prototype: const char* const*  ppEnabledExtensionNames
 	 */ 
 	 public String[] ppEnabledExtensionNames(){
-		 String[] var = getPpEnabledExtensionNames0(super.ptr);
-		 this.ppEnabledExtensionNames = var;
-		 return this.ppEnabledExtensionNames;
+	    //  if(ppEnabledExtensionNames != null){
+	         return this.ppEnabledExtensionNames;
+	   //   }
+//		String[] var = getPpEnabledExtensionNames0(super.ptr);
+//		this.ppEnabledExtensionNames = var;
+//		return this.ppEnabledExtensionNames;
 	 }
 
 
@@ -361,7 +376,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkInstanceCreateInfo vkObj = (VkInstanceCreateInfo*)(ptr);
+		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -379,7 +394,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkInstanceCreateInfo vkObj = (VkInstanceCreateInfo*)(ptr);
+		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -396,7 +411,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * Prototype: VkInstanceCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkInstanceCreateInfo vkObj = (VkInstanceCreateInfo*)(ptr);
+		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -414,7 +429,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * Prototype: const VkApplicationInfo*  pApplicationInfo
 	 */ 
 	 private static native long getPApplicationInfo0(Buffer ptr);/*
-		  VkInstanceCreateInfo vkObj = (VkInstanceCreateInfo*)(ptr);
+		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pApplicationInfo);	 */
 
 	/**
@@ -431,7 +446,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  enabledLayerCount
 	 */ 
 	 private static native int getEnabledLayerCount0(Buffer ptr);/*
-		  VkInstanceCreateInfo vkObj = (VkInstanceCreateInfo*)(ptr);
+		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  return (jint) (vkObj->enabledLayerCount);
 	 */
 
@@ -439,9 +454,24 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * native SET method for field ppEnabledLayerNames	[string_arr]<br>
 	 * Prototype: const char* const*  ppEnabledLayerNames
 	 */ 
-	 private static native void setPpEnabledLayerNames0(Buffer ptr, String[] _ppEnabledLayerNames);/*
-		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
-		  vkObj->ppEnabledLayerNames = (const char* const*) (_ppEnabledLayerNames);
+	 private static native void setPpEnabledLayerNames0(Buffer ptr, String[] enabledLayerNames);/*
+	          VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
+                  
+                  int stringCount = enabledLayerNames ? env->GetArrayLength(enabledLayerNames) : 0;
+                  std::vector<const char*> enabledLayers;
+                  
+                  for (int i=0; i<stringCount; i++) {
+                          jstring string = (jstring) env->GetObjectArrayElement(enabledLayerNames, i);
+                          const char *rawString = env->GetStringUTFChars(string, 0);
+                          enabledLayers.push_back(rawString);
+                        // Don't forget to call `ReleaseStringUTFChars` when you're done.
+                          env->ReleaseStringUTFChars(string, rawString);
+                   }
+                   
+                  vkObj->enabledLayerCount = enabledLayers.size();
+                  vkObj->ppEnabledLayerNames = (const char* const*) enabledLayers.data();
+                  
+		  //vkObj->ppEnabledLayerNames = (const char* const*) (_ppEnabledLayerNames);
 	  */
 
 	/**
@@ -449,8 +479,29 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * Prototype: const char* const*  ppEnabledLayerNames
 	 */ 
 	 private static native String[] getPpEnabledLayerNames0(Buffer ptr);/*
-		  VkInstanceCreateInfo vkObj = (VkInstanceCreateInfo*)(ptr);
-		  return (String[]) (vkObj->ppEnabledLayerNames);
+		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
+				  
+                  int count = (int) vkObj->enabledLayerCount;
+                  
+                  jobjectArray ret;
+                  
+                  if(count>0){
+                   
+                   // thanks to code ranch 
+                   // http://www.coderanch.com/t/326467/java/java/Returning-String-array-program-Java
+                   ret= (jobjectArray)env->NewObjectArray(count,
+                                                          env->FindClass("java/lang/String"),
+                                                          env->NewStringUTF(""));
+                   // const char *ppLayerNames[] = (vkObj->ppEnabledLayerNames);
+                    for(int i = 0; i<count; i++){
+                         env->SetObjectArrayElement(ret, 
+                                                    i,
+                                                    env->NewStringUTF(vkObj->ppEnabledLayerNames[i]));
+                      }//for
+                      return ret;
+                  }//if count
+                   
+                  return NULL; 
 	 */
 
 	/**
@@ -467,7 +518,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  enabledExtensionCount
 	 */ 
 	 private static native int getEnabledExtensionCount0(Buffer ptr);/*
-		  VkInstanceCreateInfo vkObj = (VkInstanceCreateInfo*)(ptr);
+		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  return (jint) (vkObj->enabledExtensionCount);
 	 */
 
@@ -475,9 +526,23 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * native SET method for field ppEnabledExtensionNames	[string_arr]<br>
 	 * Prototype: const char* const*  ppEnabledExtensionNames
 	 */ 
-	 private static native void setPpEnabledExtensionNames0(Buffer ptr, String[] _ppEnabledExtensionNames);/*
+	 private static native void setPpEnabledExtensionNames0(Buffer ptr, String[] enabledExtensionNames);/*
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
-		  vkObj->ppEnabledExtensionNames = (const char* const*) (_ppEnabledExtensionNames);
+		  
+		  int stringCount = enabledExtensionNames ? env->GetArrayLength(enabledExtensionNames) : 0;
+                  std::vector<const char*> enabledExtensions;
+                  
+                  for (int i=0; i<stringCount; i++) {
+                          jstring string = (jstring) env->GetObjectArrayElement(enabledExtensionNames, i);
+                          const char *rawString = env->GetStringUTFChars(string, 0);
+                          enabledExtensions.push_back(rawString);
+                        // Don't forget to call `ReleaseStringUTFChars` when you're done.
+                          env->ReleaseStringUTFChars(string, rawString);
+                   }
+		   
+		  vkObj->enabledExtensionCount = enabledExtensions.size();
+                  vkObj->ppEnabledExtensionNames = (const char* const*) enabledExtensions.data();
+		  
 	  */
 
 	/**
@@ -485,8 +550,27 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * Prototype: const char* const*  ppEnabledExtensionNames
 	 */ 
 	 private static native String[] getPpEnabledExtensionNames0(Buffer ptr);/*
-		  VkInstanceCreateInfo vkObj = (VkInstanceCreateInfo*)(ptr);
-		  return (String[]) (vkObj->ppEnabledExtensionNames);
+		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
+		  int count = (int) vkObj->enabledExtensionCount;
+		  
+		  jobjectArray ret;
+		  
+		  if(count>0){
+		  // const char *ppEnabledExtensionNames[] = (vkObj->ppEnabledExtensionNames);
+		   // thanks to code ranch 
+		   // http://www.coderanch.com/t/326467/java/java/Returning-String-array-program-Java
+		   ret= (jobjectArray)env->NewObjectArray(count,
+		                                          env->FindClass("java/lang/String"),
+		                                          env->NewStringUTF(""));
+		     for(int i = 0; i<count; i++){
+		      env->SetObjectArrayElement(ret, 
+		                                  i,
+		                                  env->NewStringUTF(vkObj->ppEnabledExtensionNames[i]));
+		      }
+		      return ret;
+		  }
+		   
+		  return NULL; //(String[]) (vkObj->ppEnabledExtensionNames);
 	 */
 
 

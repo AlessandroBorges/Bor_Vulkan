@@ -86,6 +86,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPhysicalDeviceFeatures extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [4]  */
 	 private static final String TAG = "VkPhysicalDeviceFeatures";
 
@@ -1516,7 +1522,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  robustBufferAccess
 	 */ 
 	 private static native boolean getRobustBufferAccess0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->robustBufferAccess);
 	 */
 
@@ -1534,7 +1540,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  fullDrawIndexUint32
 	 */ 
 	 private static native boolean getFullDrawIndexUint320(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->fullDrawIndexUint32);
 	 */
 
@@ -1552,7 +1558,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  imageCubeArray
 	 */ 
 	 private static native boolean getImageCubeArray0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->imageCubeArray);
 	 */
 
@@ -1570,7 +1576,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  independentBlend
 	 */ 
 	 private static native boolean getIndependentBlend0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->independentBlend);
 	 */
 
@@ -1588,7 +1594,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  geometryShader
 	 */ 
 	 private static native boolean getGeometryShader0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->geometryShader);
 	 */
 
@@ -1606,7 +1612,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  tessellationShader
 	 */ 
 	 private static native boolean getTessellationShader0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->tessellationShader);
 	 */
 
@@ -1624,7 +1630,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  sampleRateShading
 	 */ 
 	 private static native boolean getSampleRateShading0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sampleRateShading);
 	 */
 
@@ -1642,7 +1648,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  dualSrcBlend
 	 */ 
 	 private static native boolean getDualSrcBlend0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->dualSrcBlend);
 	 */
 
@@ -1660,7 +1666,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  logicOp
 	 */ 
 	 private static native boolean getLogicOp0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->logicOp);
 	 */
 
@@ -1678,7 +1684,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  multiDrawIndirect
 	 */ 
 	 private static native boolean getMultiDrawIndirect0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->multiDrawIndirect);
 	 */
 
@@ -1696,7 +1702,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  drawIndirectFirstInstance
 	 */ 
 	 private static native boolean getDrawIndirectFirstInstance0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->drawIndirectFirstInstance);
 	 */
 
@@ -1714,7 +1720,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  depthClamp
 	 */ 
 	 private static native boolean getDepthClamp0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->depthClamp);
 	 */
 
@@ -1732,7 +1738,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  depthBiasClamp
 	 */ 
 	 private static native boolean getDepthBiasClamp0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->depthBiasClamp);
 	 */
 
@@ -1750,7 +1756,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  fillModeNonSolid
 	 */ 
 	 private static native boolean getFillModeNonSolid0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->fillModeNonSolid);
 	 */
 
@@ -1768,7 +1774,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  depthBounds
 	 */ 
 	 private static native boolean getDepthBounds0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->depthBounds);
 	 */
 
@@ -1786,7 +1792,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  wideLines
 	 */ 
 	 private static native boolean getWideLines0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->wideLines);
 	 */
 
@@ -1804,7 +1810,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  largePoints
 	 */ 
 	 private static native boolean getLargePoints0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->largePoints);
 	 */
 
@@ -1822,7 +1828,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  alphaToOne
 	 */ 
 	 private static native boolean getAlphaToOne0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->alphaToOne);
 	 */
 
@@ -1840,7 +1846,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  multiViewport
 	 */ 
 	 private static native boolean getMultiViewport0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->multiViewport);
 	 */
 
@@ -1858,7 +1864,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  samplerAnisotropy
 	 */ 
 	 private static native boolean getSamplerAnisotropy0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->samplerAnisotropy);
 	 */
 
@@ -1876,7 +1882,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  textureCompressionETC2
 	 */ 
 	 private static native boolean getTextureCompressionETC20(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->textureCompressionETC2);
 	 */
 
@@ -1894,7 +1900,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  textureCompressionASTC_LDR
 	 */ 
 	 private static native boolean getTextureCompressionASTC_LDR0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->textureCompressionASTC_LDR);
 	 */
 
@@ -1912,7 +1918,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  textureCompressionBC
 	 */ 
 	 private static native boolean getTextureCompressionBC0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->textureCompressionBC);
 	 */
 
@@ -1930,7 +1936,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  occlusionQueryPrecise
 	 */ 
 	 private static native boolean getOcclusionQueryPrecise0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->occlusionQueryPrecise);
 	 */
 
@@ -1948,7 +1954,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  pipelineStatisticsQuery
 	 */ 
 	 private static native boolean getPipelineStatisticsQuery0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->pipelineStatisticsQuery);
 	 */
 
@@ -1966,7 +1972,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  vertexPipelineStoresAndAtomics
 	 */ 
 	 private static native boolean getVertexPipelineStoresAndAtomics0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->vertexPipelineStoresAndAtomics);
 	 */
 
@@ -1984,7 +1990,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  fragmentStoresAndAtomics
 	 */ 
 	 private static native boolean getFragmentStoresAndAtomics0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->fragmentStoresAndAtomics);
 	 */
 
@@ -2002,7 +2008,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  shaderTessellationAndGeometryPointSize
 	 */ 
 	 private static native boolean getShaderTessellationAndGeometryPointSize0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderTessellationAndGeometryPointSize);
 	 */
 
@@ -2020,7 +2026,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  shaderImageGatherExtended
 	 */ 
 	 private static native boolean getShaderImageGatherExtended0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderImageGatherExtended);
 	 */
 
@@ -2038,7 +2044,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  shaderStorageImageExtendedFormats
 	 */ 
 	 private static native boolean getShaderStorageImageExtendedFormats0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderStorageImageExtendedFormats);
 	 */
 
@@ -2056,7 +2062,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  shaderStorageImageMultisample
 	 */ 
 	 private static native boolean getShaderStorageImageMultisample0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderStorageImageMultisample);
 	 */
 
@@ -2074,7 +2080,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  shaderStorageImageReadWithoutFormat
 	 */ 
 	 private static native boolean getShaderStorageImageReadWithoutFormat0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderStorageImageReadWithoutFormat);
 	 */
 
@@ -2092,7 +2098,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  shaderStorageImageWriteWithoutFormat
 	 */ 
 	 private static native boolean getShaderStorageImageWriteWithoutFormat0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderStorageImageWriteWithoutFormat);
 	 */
 
@@ -2110,7 +2116,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  shaderUniformBufferArrayDynamicIndexing
 	 */ 
 	 private static native boolean getShaderUniformBufferArrayDynamicIndexing0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderUniformBufferArrayDynamicIndexing);
 	 */
 
@@ -2128,7 +2134,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  shaderSampledImageArrayDynamicIndexing
 	 */ 
 	 private static native boolean getShaderSampledImageArrayDynamicIndexing0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderSampledImageArrayDynamicIndexing);
 	 */
 
@@ -2146,7 +2152,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  shaderStorageBufferArrayDynamicIndexing
 	 */ 
 	 private static native boolean getShaderStorageBufferArrayDynamicIndexing0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderStorageBufferArrayDynamicIndexing);
 	 */
 
@@ -2164,7 +2170,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  shaderStorageImageArrayDynamicIndexing
 	 */ 
 	 private static native boolean getShaderStorageImageArrayDynamicIndexing0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderStorageImageArrayDynamicIndexing);
 	 */
 
@@ -2182,7 +2188,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  shaderClipDistance
 	 */ 
 	 private static native boolean getShaderClipDistance0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderClipDistance);
 	 */
 
@@ -2200,7 +2206,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  shaderCullDistance
 	 */ 
 	 private static native boolean getShaderCullDistance0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderCullDistance);
 	 */
 
@@ -2218,7 +2224,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  shaderFloat64
 	 */ 
 	 private static native boolean getShaderFloat640(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderFloat64);
 	 */
 
@@ -2236,7 +2242,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  shaderInt64
 	 */ 
 	 private static native boolean getShaderInt640(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderInt64);
 	 */
 
@@ -2254,7 +2260,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  shaderInt16
 	 */ 
 	 private static native boolean getShaderInt160(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderInt16);
 	 */
 
@@ -2272,7 +2278,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  shaderResourceResidency
 	 */ 
 	 private static native boolean getShaderResourceResidency0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderResourceResidency);
 	 */
 
@@ -2290,7 +2296,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  shaderResourceMinLod
 	 */ 
 	 private static native boolean getShaderResourceMinLod0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderResourceMinLod);
 	 */
 
@@ -2308,7 +2314,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  sparseBinding
 	 */ 
 	 private static native boolean getSparseBinding0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sparseBinding);
 	 */
 
@@ -2326,7 +2332,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  sparseResidencyBuffer
 	 */ 
 	 private static native boolean getSparseResidencyBuffer0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sparseResidencyBuffer);
 	 */
 
@@ -2344,7 +2350,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  sparseResidencyImage2D
 	 */ 
 	 private static native boolean getSparseResidencyImage2D0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sparseResidencyImage2D);
 	 */
 
@@ -2362,7 +2368,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  sparseResidencyImage3D
 	 */ 
 	 private static native boolean getSparseResidencyImage3D0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sparseResidencyImage3D);
 	 */
 
@@ -2380,7 +2386,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  sparseResidency2Samples
 	 */ 
 	 private static native boolean getSparseResidency2Samples0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sparseResidency2Samples);
 	 */
 
@@ -2398,7 +2404,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  sparseResidency4Samples
 	 */ 
 	 private static native boolean getSparseResidency4Samples0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sparseResidency4Samples);
 	 */
 
@@ -2416,7 +2422,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  sparseResidency8Samples
 	 */ 
 	 private static native boolean getSparseResidency8Samples0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sparseResidency8Samples);
 	 */
 
@@ -2434,7 +2440,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  sparseResidency16Samples
 	 */ 
 	 private static native boolean getSparseResidency16Samples0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sparseResidency16Samples);
 	 */
 
@@ -2452,7 +2458,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  sparseResidencyAliased
 	 */ 
 	 private static native boolean getSparseResidencyAliased0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sparseResidencyAliased);
 	 */
 
@@ -2470,7 +2476,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  variableMultisampleRate
 	 */ 
 	 private static native boolean getVariableMultisampleRate0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->variableMultisampleRate);
 	 */
 
@@ -2488,7 +2494,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  inheritedQueries
 	 */ 
 	 private static native boolean getInheritedQueries0(Buffer ptr);/*
-		  VkPhysicalDeviceFeatures vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->inheritedQueries);
 	 */
 

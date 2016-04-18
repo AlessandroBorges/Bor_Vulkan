@@ -35,6 +35,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPhysicalDeviceMemoryProperties extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [14]  */
 	 private static final String TAG = "VkPhysicalDeviceMemoryProperties";
 
@@ -241,7 +247,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * Prototype: uint32_t  memoryTypeCount
 	 */ 
 	 private static native int getMemoryTypeCount0(Buffer ptr);/*
-		  VkPhysicalDeviceMemoryProperties vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
+		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  return (jint) (vkObj->memoryTypeCount);
 	 */
 
@@ -259,7 +265,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * Prototype: VkMemoryType[]  memoryTypes
 	 */ 
 	 private static native VkMemoryType[] getMemoryTypes0(Buffer ptr);/*
-		  VkPhysicalDeviceMemoryProperties vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
+		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  return (VkMemoryType[]) (vkObj->memoryTypes);
 	 */
 
@@ -277,7 +283,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * Prototype: uint32_t  memoryHeapCount
 	 */ 
 	 private static native int getMemoryHeapCount0(Buffer ptr);/*
-		  VkPhysicalDeviceMemoryProperties vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
+		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  return (jint) (vkObj->memoryHeapCount);
 	 */
 
@@ -295,7 +301,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * Prototype: VkMemoryHeap[]  memoryHeaps
 	 */ 
 	 private static native VkMemoryHeap[] getMemoryHeaps0(Buffer ptr);/*
-		  VkPhysicalDeviceMemoryProperties vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
+		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  return (VkMemoryHeap[]) (vkObj->memoryHeaps);
 	 */
 

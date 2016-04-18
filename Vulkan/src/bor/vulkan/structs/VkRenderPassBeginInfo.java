@@ -38,6 +38,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkRenderPassBeginInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [102]  */
 	 private static final String TAG = "VkRenderPassBeginInfo";
 
@@ -368,7 +374,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkRenderPassBeginInfo vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -386,7 +392,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkRenderPassBeginInfo vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -403,7 +409,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
 	 private static native long getRenderPass0(Buffer ptr);/*
-		  VkRenderPassBeginInfo vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->renderPass);	 */
 
 	/**
@@ -420,7 +426,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 * Prototype: VkFramebuffer  framebuffer
 	 */ 
 	 private static native long getFramebuffer0(Buffer ptr);/*
-		  VkRenderPassBeginInfo vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->framebuffer);	 */
 
 	/**
@@ -437,7 +443,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 * Prototype: VkRect2D  renderArea
 	 */ 
 	 private static native long getRenderArea0(Buffer ptr);/*
-		  VkRenderPassBeginInfo vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->renderArea);	 */
 
 	/**
@@ -454,7 +460,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 * Prototype: uint32_t  clearValueCount
 	 */ 
 	 private static native int getClearValueCount0(Buffer ptr);/*
-		  VkRenderPassBeginInfo vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		  return (jint) (vkObj->clearValueCount);
 	 */
 
@@ -472,7 +478,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 * Prototype: const VkClearValue*  pClearValues
 	 */ 
 	 private static native long getPClearValues0(Buffer ptr);/*
-		  VkRenderPassBeginInfo vkObj = (VkRenderPassBeginInfo*)(ptr);
+		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pClearValues);	 */
 
 

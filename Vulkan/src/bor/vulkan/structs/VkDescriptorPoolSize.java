@@ -33,6 +33,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDescriptorPoolSize extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [73]  */
 	 private static final String TAG = "VkDescriptorPoolSize";
 
@@ -192,7 +198,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 * Prototype: VkDescriptorType  type
 	 */ 
 	 private static native int  getType0(Buffer ptr);/*
-		  VkDescriptorPoolSize vkObj = (VkDescriptorPoolSize*)(ptr);
+		  VkDescriptorPoolSize* vkObj = (VkDescriptorPoolSize*)(ptr);
 		  return (VkDescriptorType) (vkObj->type);
 	 */
 
@@ -210,7 +216,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 private static native int getDescriptorCount0(Buffer ptr);/*
-		  VkDescriptorPoolSize vkObj = (VkDescriptorPoolSize*)(ptr);
+		  VkDescriptorPoolSize* vkObj = (VkDescriptorPoolSize*)(ptr);
 		  return (jint) (vkObj->descriptorCount);
 	 */
 

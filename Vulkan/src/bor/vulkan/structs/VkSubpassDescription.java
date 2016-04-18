@@ -41,6 +41,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkSubpassDescription extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [83]  */
 	 private static final String TAG = "VkSubpassDescription";
 
@@ -432,7 +438,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: VkSubpassDescriptionFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
+		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -450,7 +456,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: VkPipelineBindPoint  pipelineBindPoint
 	 */ 
 	 private static native int  getPipelineBindPoint0(Buffer ptr);/*
-		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
+		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  return (VkPipelineBindPoint) (vkObj->pipelineBindPoint);
 	 */
 
@@ -468,7 +474,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: uint32_t  inputAttachmentCount
 	 */ 
 	 private static native int getInputAttachmentCount0(Buffer ptr);/*
-		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
+		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  return (jint) (vkObj->inputAttachmentCount);
 	 */
 
@@ -486,7 +492,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: const VkAttachmentReference*  pInputAttachments
 	 */ 
 	 private static native long getPInputAttachments0(Buffer ptr);/*
-		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
+		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pInputAttachments);	 */
 
 	/**
@@ -503,7 +509,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: uint32_t  colorAttachmentCount
 	 */ 
 	 private static native int getColorAttachmentCount0(Buffer ptr);/*
-		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
+		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  return (jint) (vkObj->colorAttachmentCount);
 	 */
 
@@ -521,7 +527,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: const VkAttachmentReference*  pColorAttachments
 	 */ 
 	 private static native long getPColorAttachments0(Buffer ptr);/*
-		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
+		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pColorAttachments);	 */
 
 	/**
@@ -538,7 +544,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: const VkAttachmentReference*  pResolveAttachments
 	 */ 
 	 private static native long getPResolveAttachments0(Buffer ptr);/*
-		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
+		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pResolveAttachments);	 */
 
 	/**
@@ -555,7 +561,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: const VkAttachmentReference*  pDepthStencilAttachment
 	 */ 
 	 private static native long getPDepthStencilAttachment0(Buffer ptr);/*
-		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
+		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pDepthStencilAttachment);	 */
 
 	/**
@@ -572,7 +578,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: uint32_t  preserveAttachmentCount
 	 */ 
 	 private static native int getPreserveAttachmentCount0(Buffer ptr);/*
-		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
+		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  return (jint) (vkObj->preserveAttachmentCount);
 	 */
 
@@ -590,7 +596,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * Prototype: const uint32_t*  pPreserveAttachments
 	 */ 
 	 private static native int[] getPPreserveAttachments0(Buffer ptr);/*
-		  VkSubpassDescription vkObj = (VkSubpassDescription*)(ptr);
+		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  return (int[]) (vkObj->pPreserveAttachments);
 	 */
 

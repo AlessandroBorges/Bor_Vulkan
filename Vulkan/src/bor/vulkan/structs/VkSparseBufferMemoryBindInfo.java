@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkSparseBufferMemoryBindInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [26]  */
 	 private static final String TAG = "VkSparseBufferMemoryBindInfo";
 
@@ -237,7 +243,7 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 private static native long getBuffer0(Buffer ptr);/*
-		  VkSparseBufferMemoryBindInfo vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
+		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->buffer);	 */
 
 	/**
@@ -254,7 +260,7 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	 * Prototype: uint32_t  bindCount
 	 */ 
 	 private static native int getBindCount0(Buffer ptr);/*
-		  VkSparseBufferMemoryBindInfo vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
+		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
 		  return (jint) (vkObj->bindCount);
 	 */
 
@@ -272,7 +278,7 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	 * Prototype: const VkSparseMemoryBind*  pBinds
 	 */ 
 	 private static native long getPBinds0(Buffer ptr);/*
-		  VkSparseBufferMemoryBindInfo vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
+		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pBinds);	 */
 
 

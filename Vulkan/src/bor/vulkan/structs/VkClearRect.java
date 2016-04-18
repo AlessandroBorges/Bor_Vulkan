@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkClearRect extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [97]  */
 	 private static final String TAG = "VkClearRect";
 
@@ -226,7 +232,7 @@ public class VkClearRect extends VkStruct {
 	 * Prototype: VkRect2D  rect
 	 */ 
 	 private static native long getRect0(Buffer ptr);/*
-		  VkClearRect vkObj = (VkClearRect*)(ptr);
+		  VkClearRect* vkObj = (VkClearRect*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->rect);	 */
 
 	/**
@@ -243,7 +249,7 @@ public class VkClearRect extends VkStruct {
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
 	 private static native int getBaseArrayLayer0(Buffer ptr);/*
-		  VkClearRect vkObj = (VkClearRect*)(ptr);
+		  VkClearRect* vkObj = (VkClearRect*)(ptr);
 		  return (jint) (vkObj->baseArrayLayer);
 	 */
 
@@ -261,7 +267,7 @@ public class VkClearRect extends VkStruct {
 	 * Prototype: uint32_t  layerCount
 	 */ 
 	 private static native int getLayerCount0(Buffer ptr);/*
-		  VkClearRect vkObj = (VkClearRect*)(ptr);
+		  VkClearRect* vkObj = (VkClearRect*)(ptr);
 		  return (jint) (vkObj->layerCount);
 	 */
 

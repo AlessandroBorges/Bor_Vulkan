@@ -50,6 +50,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkGraphicsPipelineCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [66]  */
 	 private static final String TAG = "VkGraphicsPipelineCreateInfo";
 
@@ -759,7 +765,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
+		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -777,7 +783,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
+		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -794,7 +800,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: VkPipelineCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
+		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -812,7 +818,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  stageCount
 	 */ 
 	 private static native int getStageCount0(Buffer ptr);/*
-		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
+		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jint) (vkObj->stageCount);
 	 */
 
@@ -830,7 +836,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineShaderStageCreateInfo*  pStages
 	 */ 
 	 private static native long getPStages0(Buffer ptr);/*
-		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
+		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pStages);	 */
 
 	/**
@@ -847,7 +853,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineVertexInputStateCreateInfo*  pVertexInputState
 	 */ 
 	 private static native long getPVertexInputState0(Buffer ptr);/*
-		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
+		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pVertexInputState);	 */
 
 	/**
@@ -864,7 +870,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineInputAssemblyStateCreateInfo*  pInputAssemblyState
 	 */ 
 	 private static native long getPInputAssemblyState0(Buffer ptr);/*
-		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
+		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pInputAssemblyState);	 */
 
 	/**
@@ -881,7 +887,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineTessellationStateCreateInfo*  pTessellationState
 	 */ 
 	 private static native long getPTessellationState0(Buffer ptr);/*
-		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
+		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pTessellationState);	 */
 
 	/**
@@ -898,7 +904,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineViewportStateCreateInfo*  pViewportState
 	 */ 
 	 private static native long getPViewportState0(Buffer ptr);/*
-		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
+		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pViewportState);	 */
 
 	/**
@@ -915,7 +921,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineRasterizationStateCreateInfo*  pRasterizationState
 	 */ 
 	 private static native long getPRasterizationState0(Buffer ptr);/*
-		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
+		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pRasterizationState);	 */
 
 	/**
@@ -932,7 +938,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineMultisampleStateCreateInfo*  pMultisampleState
 	 */ 
 	 private static native long getPMultisampleState0(Buffer ptr);/*
-		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
+		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pMultisampleState);	 */
 
 	/**
@@ -949,7 +955,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineDepthStencilStateCreateInfo*  pDepthStencilState
 	 */ 
 	 private static native long getPDepthStencilState0(Buffer ptr);/*
-		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
+		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pDepthStencilState);	 */
 
 	/**
@@ -966,7 +972,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineColorBlendStateCreateInfo*  pColorBlendState
 	 */ 
 	 private static native long getPColorBlendState0(Buffer ptr);/*
-		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
+		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pColorBlendState);	 */
 
 	/**
@@ -983,7 +989,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineDynamicStateCreateInfo*  pDynamicState
 	 */ 
 	 private static native long getPDynamicState0(Buffer ptr);/*
-		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
+		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pDynamicState);	 */
 
 	/**
@@ -1000,7 +1006,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: VkPipelineLayout  layout
 	 */ 
 	 private static native long getLayout0(Buffer ptr);/*
-		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
+		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->layout);	 */
 
 	/**
@@ -1017,7 +1023,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
 	 private static native long getRenderPass0(Buffer ptr);/*
-		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
+		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->renderPass);	 */
 
 	/**
@@ -1034,7 +1040,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  subpass
 	 */ 
 	 private static native int getSubpass0(Buffer ptr);/*
-		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
+		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jint) (vkObj->subpass);
 	 */
 
@@ -1052,7 +1058,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: VkPipeline  basePipelineHandle
 	 */ 
 	 private static native long getBasePipelineHandle0(Buffer ptr);/*
-		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
+		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->basePipelineHandle);	 */
 
 	/**
@@ -1069,7 +1075,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Prototype: int32_t  basePipelineIndex
 	 */ 
 	 private static native int getBasePipelineIndex0(Buffer ptr);/*
-		  VkGraphicsPipelineCreateInfo vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
+		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jint) (vkObj->basePipelineIndex);
 	 */
 

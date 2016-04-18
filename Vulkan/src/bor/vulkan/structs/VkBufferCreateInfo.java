@@ -39,6 +39,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkBufferCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [37]  */
 	 private static final String TAG = "VkBufferCreateInfo";
 
@@ -352,7 +358,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkBufferCreateInfo vkObj = (VkBufferCreateInfo*)(ptr);
+		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -370,7 +376,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkBufferCreateInfo vkObj = (VkBufferCreateInfo*)(ptr);
+		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -387,7 +393,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * Prototype: VkBufferCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkBufferCreateInfo vkObj = (VkBufferCreateInfo*)(ptr);
+		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -405,7 +411,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long getSize0(Buffer ptr);/*
-		  VkBufferCreateInfo vkObj = (VkBufferCreateInfo*)(ptr);
+		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
 		  return (jlong) (vkObj->size);
 	 */
 
@@ -423,7 +429,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * Prototype: VkBufferUsageFlags  usage
 	 */ 
 	 private static native int getUsage0(Buffer ptr);/*
-		  VkBufferCreateInfo vkObj = (VkBufferCreateInfo*)(ptr);
+		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
 		  return (jint) (vkObj->usage);
 	 */
 
@@ -441,7 +447,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
 	 private static native int  getSharingMode0(Buffer ptr);/*
-		  VkBufferCreateInfo vkObj = (VkBufferCreateInfo*)(ptr);
+		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
 		  return (VkSharingMode) (vkObj->sharingMode);
 	 */
 
@@ -459,7 +465,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
 	 private static native int getQueueFamilyIndexCount0(Buffer ptr);/*
-		  VkBufferCreateInfo vkObj = (VkBufferCreateInfo*)(ptr);
+		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
 		  return (jint) (vkObj->queueFamilyIndexCount);
 	 */
 
@@ -477,7 +483,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 private static native int[] getPQueueFamilyIndices0(Buffer ptr);/*
-		  VkBufferCreateInfo vkObj = (VkBufferCreateInfo*)(ptr);
+		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
 		  return (int[]) (vkObj->pQueueFamilyIndices);
 	 */
 

@@ -37,6 +37,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkViewport extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [54]  */
 	 private static final String TAG = "VkViewport";
 
@@ -291,7 +297,7 @@ public class VkViewport extends VkStruct {
 	 * Prototype: float  x
 	 */ 
 	 private static native float getX0(Buffer ptr);/*
-		  VkViewport vkObj = (VkViewport*)(ptr);
+		  VkViewport* vkObj = (VkViewport*)(ptr);
 		  return (jfloat) (vkObj->x);
 	 */
 
@@ -309,7 +315,7 @@ public class VkViewport extends VkStruct {
 	 * Prototype: float  y
 	 */ 
 	 private static native float getY0(Buffer ptr);/*
-		  VkViewport vkObj = (VkViewport*)(ptr);
+		  VkViewport* vkObj = (VkViewport*)(ptr);
 		  return (jfloat) (vkObj->y);
 	 */
 
@@ -327,7 +333,7 @@ public class VkViewport extends VkStruct {
 	 * Prototype: float  width
 	 */ 
 	 private static native float getWidth0(Buffer ptr);/*
-		  VkViewport vkObj = (VkViewport*)(ptr);
+		  VkViewport* vkObj = (VkViewport*)(ptr);
 		  return (jfloat) (vkObj->width);
 	 */
 
@@ -345,7 +351,7 @@ public class VkViewport extends VkStruct {
 	 * Prototype: float  height
 	 */ 
 	 private static native float getHeight0(Buffer ptr);/*
-		  VkViewport vkObj = (VkViewport*)(ptr);
+		  VkViewport* vkObj = (VkViewport*)(ptr);
 		  return (jfloat) (vkObj->height);
 	 */
 
@@ -363,7 +369,7 @@ public class VkViewport extends VkStruct {
 	 * Prototype: float  minDepth
 	 */ 
 	 private static native float getMinDepth0(Buffer ptr);/*
-		  VkViewport vkObj = (VkViewport*)(ptr);
+		  VkViewport* vkObj = (VkViewport*)(ptr);
 		  return (jfloat) (vkObj->minDepth);
 	 */
 
@@ -381,7 +387,7 @@ public class VkViewport extends VkStruct {
 	 * Prototype: float  maxDepth
 	 */ 
 	 private static native float getMaxDepth0(Buffer ptr);/*
-		  VkViewport vkObj = (VkViewport*)(ptr);
+		  VkViewport* vkObj = (VkViewport*)(ptr);
 		  return (jfloat) (vkObj->maxDepth);
 	 */
 

@@ -39,6 +39,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkCommandBufferInheritanceInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [88]  */
 	 private static final String TAG = "VkCommandBufferInheritanceInfo";
 
@@ -373,7 +379,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkCommandBufferInheritanceInfo vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -391,7 +397,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkCommandBufferInheritanceInfo vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -408,7 +414,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
 	 private static native long getRenderPass0(Buffer ptr);/*
-		  VkCommandBufferInheritanceInfo vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->renderPass);	 */
 
 	/**
@@ -425,7 +431,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 * Prototype: uint32_t  subpass
 	 */ 
 	 private static native int getSubpass0(Buffer ptr);/*
-		  VkCommandBufferInheritanceInfo vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
 		  return (jint) (vkObj->subpass);
 	 */
 
@@ -443,7 +449,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 * Prototype: VkFramebuffer  framebuffer
 	 */ 
 	 private static native long getFramebuffer0(Buffer ptr);/*
-		  VkCommandBufferInheritanceInfo vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->framebuffer);	 */
 
 	/**
@@ -460,7 +466,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 * Prototype: VkBool32  occlusionQueryEnable
 	 */ 
 	 private static native boolean getOcclusionQueryEnable0(Buffer ptr);/*
-		  VkCommandBufferInheritanceInfo vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
 		  return (jboolean) (vkObj->occlusionQueryEnable);
 	 */
 
@@ -478,7 +484,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 * Prototype: VkQueryControlFlags  queryFlags
 	 */ 
 	 private static native int getQueryFlags0(Buffer ptr);/*
-		  VkCommandBufferInheritanceInfo vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
 		  return (jint) (vkObj->queryFlags);
 	 */
 
@@ -496,7 +502,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 * Prototype: VkQueryPipelineStatisticFlags  pipelineStatistics
 	 */ 
 	 private static native int getPipelineStatistics0(Buffer ptr);/*
-		  VkCommandBufferInheritanceInfo vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
 		  return (jint) (vkObj->pipelineStatistics);
 	 */
 

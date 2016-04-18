@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkMemoryRequirements extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [22]  */
 	 private static final String TAG = "VkMemoryRequirements";
 
@@ -216,7 +222,7 @@ public class VkMemoryRequirements extends VkStruct {
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long getSize0(Buffer ptr);/*
-		  VkMemoryRequirements vkObj = (VkMemoryRequirements*)(ptr);
+		  VkMemoryRequirements* vkObj = (VkMemoryRequirements*)(ptr);
 		  return (jlong) (vkObj->size);
 	 */
 
@@ -234,7 +240,7 @@ public class VkMemoryRequirements extends VkStruct {
 	 * Prototype: VkDeviceSize  alignment
 	 */ 
 	 private static native long getAlignment0(Buffer ptr);/*
-		  VkMemoryRequirements vkObj = (VkMemoryRequirements*)(ptr);
+		  VkMemoryRequirements* vkObj = (VkMemoryRequirements*)(ptr);
 		  return (jlong) (vkObj->alignment);
 	 */
 
@@ -252,7 +258,7 @@ public class VkMemoryRequirements extends VkStruct {
 	 * Prototype: uint32_t  memoryTypeBits
 	 */ 
 	 private static native int getMemoryTypeBits0(Buffer ptr);/*
-		  VkMemoryRequirements vkObj = (VkMemoryRequirements*)(ptr);
+		  VkMemoryRequirements* vkObj = (VkMemoryRequirements*)(ptr);
 		  return (jint) (vkObj->memoryTypeBits);
 	 */
 

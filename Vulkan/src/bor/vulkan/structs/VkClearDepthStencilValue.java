@@ -33,6 +33,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkClearDepthStencilValue extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [95]  */
 	 private static final String TAG = "VkClearDepthStencilValue";
 
@@ -191,7 +197,7 @@ public class VkClearDepthStencilValue extends VkStruct {
 	 * Prototype: float  depth
 	 */ 
 	 private static native float getDepth0(Buffer ptr);/*
-		  VkClearDepthStencilValue vkObj = (VkClearDepthStencilValue*)(ptr);
+		  VkClearDepthStencilValue* vkObj = (VkClearDepthStencilValue*)(ptr);
 		  return (jfloat) (vkObj->depth);
 	 */
 
@@ -209,7 +215,7 @@ public class VkClearDepthStencilValue extends VkStruct {
 	 * Prototype: uint32_t  stencil
 	 */ 
 	 private static native int getStencil0(Buffer ptr);/*
-		  VkClearDepthStencilValue vkObj = (VkClearDepthStencilValue*)(ptr);
+		  VkClearDepthStencilValue* vkObj = (VkClearDepthStencilValue*)(ptr);
 		  return (jint) (vkObj->stencil);
 	 */
 

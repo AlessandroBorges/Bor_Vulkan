@@ -39,6 +39,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPipelineColorBlendAttachmentState extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [63]  */
 	 private static final String TAG = "VkPipelineColorBlendAttachmentState";
 
@@ -347,7 +353,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 * Prototype: VkBool32  blendEnable
 	 */ 
 	 private static native boolean getBlendEnable0(Buffer ptr);/*
-		  VkPipelineColorBlendAttachmentState vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
 		  return (jboolean) (vkObj->blendEnable);
 	 */
 
@@ -365,7 +371,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 * Prototype: VkBlendFactor  srcColorBlendFactor
 	 */ 
 	 private static native int  getSrcColorBlendFactor0(Buffer ptr);/*
-		  VkPipelineColorBlendAttachmentState vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
 		  return (VkBlendFactor) (vkObj->srcColorBlendFactor);
 	 */
 
@@ -383,7 +389,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 * Prototype: VkBlendFactor  dstColorBlendFactor
 	 */ 
 	 private static native int  getDstColorBlendFactor0(Buffer ptr);/*
-		  VkPipelineColorBlendAttachmentState vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
 		  return (VkBlendFactor) (vkObj->dstColorBlendFactor);
 	 */
 
@@ -401,7 +407,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 * Prototype: VkBlendOp  colorBlendOp
 	 */ 
 	 private static native int  getColorBlendOp0(Buffer ptr);/*
-		  VkPipelineColorBlendAttachmentState vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
 		  return (VkBlendOp) (vkObj->colorBlendOp);
 	 */
 
@@ -419,7 +425,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 * Prototype: VkBlendFactor  srcAlphaBlendFactor
 	 */ 
 	 private static native int  getSrcAlphaBlendFactor0(Buffer ptr);/*
-		  VkPipelineColorBlendAttachmentState vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
 		  return (VkBlendFactor) (vkObj->srcAlphaBlendFactor);
 	 */
 
@@ -437,7 +443,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 * Prototype: VkBlendFactor  dstAlphaBlendFactor
 	 */ 
 	 private static native int  getDstAlphaBlendFactor0(Buffer ptr);/*
-		  VkPipelineColorBlendAttachmentState vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
 		  return (VkBlendFactor) (vkObj->dstAlphaBlendFactor);
 	 */
 
@@ -455,7 +461,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 * Prototype: VkBlendOp  alphaBlendOp
 	 */ 
 	 private static native int  getAlphaBlendOp0(Buffer ptr);/*
-		  VkPipelineColorBlendAttachmentState vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
 		  return (VkBlendOp) (vkObj->alphaBlendOp);
 	 */
 
@@ -473,7 +479,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 * Prototype: VkColorComponentFlags  colorWriteMask
 	 */ 
 	 private static native int getColorWriteMask0(Buffer ptr);/*
-		  VkPipelineColorBlendAttachmentState vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
 		  return (jint) (vkObj->colorWriteMask);
 	 */
 

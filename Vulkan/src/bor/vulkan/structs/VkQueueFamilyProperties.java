@@ -35,6 +35,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkQueueFamilyProperties extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [11]  */
 	 private static final String TAG = "VkQueueFamilyProperties";
 
@@ -251,7 +257,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 * Prototype: VkQueueFlags  queueFlags
 	 */ 
 	 private static native int getQueueFlags0(Buffer ptr);/*
-		  VkQueueFamilyProperties vkObj = (VkQueueFamilyProperties*)(ptr);
+		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
 		  return (jint) (vkObj->queueFlags);
 	 */
 
@@ -269,7 +275,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 * Prototype: uint32_t  queueCount
 	 */ 
 	 private static native int getQueueCount0(Buffer ptr);/*
-		  VkQueueFamilyProperties vkObj = (VkQueueFamilyProperties*)(ptr);
+		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
 		  return (jint) (vkObj->queueCount);
 	 */
 
@@ -287,7 +293,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 * Prototype: uint32_t  timestampValidBits
 	 */ 
 	 private static native int getTimestampValidBits0(Buffer ptr);/*
-		  VkQueueFamilyProperties vkObj = (VkQueueFamilyProperties*)(ptr);
+		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
 		  return (jint) (vkObj->timestampValidBits);
 	 */
 
@@ -305,7 +311,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 * Prototype: VkExtent3D  minImageTransferGranularity
 	 */ 
 	 private static native long getMinImageTransferGranularity0(Buffer ptr);/*
-		  VkQueueFamilyProperties vkObj = (VkQueueFamilyProperties*)(ptr);
+		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->minImageTransferGranularity);	 */
 
 

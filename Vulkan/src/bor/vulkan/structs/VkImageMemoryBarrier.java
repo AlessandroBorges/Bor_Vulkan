@@ -41,6 +41,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkImageMemoryBarrier extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [101]  */
 	 private static final String TAG = "VkImageMemoryBarrier";
 
@@ -424,7 +430,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkImageMemoryBarrier vkObj = (VkImageMemoryBarrier*)(ptr);
+		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -442,7 +448,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkImageMemoryBarrier vkObj = (VkImageMemoryBarrier*)(ptr);
+		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -459,7 +465,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 private static native int getSrcAccessMask0(Buffer ptr);/*
-		  VkImageMemoryBarrier vkObj = (VkImageMemoryBarrier*)(ptr);
+		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  return (jint) (vkObj->srcAccessMask);
 	 */
 
@@ -477,7 +483,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 private static native int getDstAccessMask0(Buffer ptr);/*
-		  VkImageMemoryBarrier vkObj = (VkImageMemoryBarrier*)(ptr);
+		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  return (jint) (vkObj->dstAccessMask);
 	 */
 
@@ -495,7 +501,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 * Prototype: VkImageLayout  oldLayout
 	 */ 
 	 private static native int  getOldLayout0(Buffer ptr);/*
-		  VkImageMemoryBarrier vkObj = (VkImageMemoryBarrier*)(ptr);
+		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  return (VkImageLayout) (vkObj->oldLayout);
 	 */
 
@@ -513,7 +519,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 * Prototype: VkImageLayout  newLayout
 	 */ 
 	 private static native int  getNewLayout0(Buffer ptr);/*
-		  VkImageMemoryBarrier vkObj = (VkImageMemoryBarrier*)(ptr);
+		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  return (VkImageLayout) (vkObj->newLayout);
 	 */
 
@@ -531,7 +537,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 * Prototype: uint32_t  srcQueueFamilyIndex
 	 */ 
 	 private static native int getSrcQueueFamilyIndex0(Buffer ptr);/*
-		  VkImageMemoryBarrier vkObj = (VkImageMemoryBarrier*)(ptr);
+		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  return (jint) (vkObj->srcQueueFamilyIndex);
 	 */
 
@@ -549,7 +555,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 * Prototype: uint32_t  dstQueueFamilyIndex
 	 */ 
 	 private static native int getDstQueueFamilyIndex0(Buffer ptr);/*
-		  VkImageMemoryBarrier vkObj = (VkImageMemoryBarrier*)(ptr);
+		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  return (jint) (vkObj->dstQueueFamilyIndex);
 	 */
 
@@ -567,7 +573,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 * Prototype: VkImage  image
 	 */ 
 	 private static native long getImage0(Buffer ptr);/*
-		  VkImageMemoryBarrier vkObj = (VkImageMemoryBarrier*)(ptr);
+		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->image);	 */
 
 	/**
@@ -584,7 +590,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 * Prototype: VkImageSubresourceRange  subresourceRange
 	 */ 
 	 private static native long getSubresourceRange0(Buffer ptr);/*
-		  VkImageMemoryBarrier vkObj = (VkImageMemoryBarrier*)(ptr);
+		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->subresourceRange);	 */
 
 

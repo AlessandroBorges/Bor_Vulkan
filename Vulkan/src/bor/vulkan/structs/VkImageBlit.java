@@ -35,6 +35,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkImageBlit extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [93]  */
 	 private static final String TAG = "VkImageBlit";
 
@@ -261,7 +267,7 @@ public class VkImageBlit extends VkStruct {
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
 	 */ 
 	 private static native long getSrcSubresource0(Buffer ptr);/*
-		  VkImageBlit vkObj = (VkImageBlit*)(ptr);
+		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->srcSubresource);	 */
 
 	/**
@@ -278,7 +284,7 @@ public class VkImageBlit extends VkStruct {
 	 * Prototype: VkOffset3D[]  srcOffsets
 	 */ 
 	 private static native VkOffset3D[] getSrcOffsets0(Buffer ptr);/*
-		  VkImageBlit vkObj = (VkImageBlit*)(ptr);
+		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
 		  return (VkOffset3D[]) (vkObj->srcOffsets);
 	 */
 
@@ -296,7 +302,7 @@ public class VkImageBlit extends VkStruct {
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
 	 */ 
 	 private static native long getDstSubresource0(Buffer ptr);/*
-		  VkImageBlit vkObj = (VkImageBlit*)(ptr);
+		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->dstSubresource);	 */
 
 	/**
@@ -313,7 +319,7 @@ public class VkImageBlit extends VkStruct {
 	 * Prototype: VkOffset3D[]  dstOffsets
 	 */ 
 	 private static native VkOffset3D[] getDstOffsets0(Buffer ptr);/*
-		  VkImageBlit vkObj = (VkImageBlit*)(ptr);
+		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
 		  return (VkOffset3D[]) (vkObj->dstOffsets);
 	 */
 

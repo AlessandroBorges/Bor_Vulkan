@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkSpecializationMapEntry extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [46]  */
 	 private static final String TAG = "VkSpecializationMapEntry";
 
@@ -216,7 +222,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 * Prototype: uint32_t  constantID
 	 */ 
 	 private static native int getConstantID0(Buffer ptr);/*
-		  VkSpecializationMapEntry vkObj = (VkSpecializationMapEntry*)(ptr);
+		  VkSpecializationMapEntry* vkObj = (VkSpecializationMapEntry*)(ptr);
 		  return (jint) (vkObj->constantID);
 	 */
 
@@ -234,7 +240,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 * Prototype: uint32_t  offset
 	 */ 
 	 private static native int getOffset0(Buffer ptr);/*
-		  VkSpecializationMapEntry vkObj = (VkSpecializationMapEntry*)(ptr);
+		  VkSpecializationMapEntry* vkObj = (VkSpecializationMapEntry*)(ptr);
 		  return (jint) (vkObj->offset);
 	 */
 
@@ -252,7 +258,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 * Prototype: size_t  size
 	 */ 
 	 private static native long getSize0(Buffer ptr);/*
-		  VkSpecializationMapEntry vkObj = (VkSpecializationMapEntry*)(ptr);
+		  VkSpecializationMapEntry* vkObj = (VkSpecializationMapEntry*)(ptr);
 		  return (jlong) (vkObj->size);
 	 */
 

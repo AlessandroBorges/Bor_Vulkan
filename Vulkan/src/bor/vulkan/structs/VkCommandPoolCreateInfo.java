@@ -35,6 +35,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkCommandPoolCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [86]  */
 	 private static final String TAG = "VkCommandPoolCreateInfo";
 
@@ -251,7 +257,7 @@ public class VkCommandPoolCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkCommandPoolCreateInfo vkObj = (VkCommandPoolCreateInfo*)(ptr);
+		  VkCommandPoolCreateInfo* vkObj = (VkCommandPoolCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -269,7 +275,7 @@ public class VkCommandPoolCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkCommandPoolCreateInfo vkObj = (VkCommandPoolCreateInfo*)(ptr);
+		  VkCommandPoolCreateInfo* vkObj = (VkCommandPoolCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -286,7 +292,7 @@ public class VkCommandPoolCreateInfo extends VkStruct {
 	 * Prototype: VkCommandPoolCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkCommandPoolCreateInfo vkObj = (VkCommandPoolCreateInfo*)(ptr);
+		  VkCommandPoolCreateInfo* vkObj = (VkCommandPoolCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -304,7 +310,7 @@ public class VkCommandPoolCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  queueFamilyIndex
 	 */ 
 	 private static native int getQueueFamilyIndex0(Buffer ptr);/*
-		  VkCommandPoolCreateInfo vkObj = (VkCommandPoolCreateInfo*)(ptr);
+		  VkCommandPoolCreateInfo* vkObj = (VkCommandPoolCreateInfo*)(ptr);
 		  return (jint) (vkObj->queueFamilyIndex);
 	 */
 

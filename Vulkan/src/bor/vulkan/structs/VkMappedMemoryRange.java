@@ -36,6 +36,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkMappedMemoryRange extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [21]  */
 	 private static final String TAG = "VkMappedMemoryRange";
 
@@ -287,7 +293,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkMappedMemoryRange vkObj = (VkMappedMemoryRange*)(ptr);
+		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -305,7 +311,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkMappedMemoryRange vkObj = (VkMappedMemoryRange*)(ptr);
+		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -322,7 +328,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	 * Prototype: VkDeviceMemory  memory
 	 */ 
 	 private static native long getMemory0(Buffer ptr);/*
-		  VkMappedMemoryRange vkObj = (VkMappedMemoryRange*)(ptr);
+		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->memory);	 */
 
 	/**
@@ -339,7 +345,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 private static native long getOffset0(Buffer ptr);/*
-		  VkMappedMemoryRange vkObj = (VkMappedMemoryRange*)(ptr);
+		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
 		  return (jlong) (vkObj->offset);
 	 */
 
@@ -357,7 +363,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long getSize0(Buffer ptr);/*
-		  VkMappedMemoryRange vkObj = (VkMappedMemoryRange*)(ptr);
+		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
 		  return (jlong) (vkObj->size);
 	 */
 

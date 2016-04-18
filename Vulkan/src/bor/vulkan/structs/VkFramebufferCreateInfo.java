@@ -40,6 +40,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkFramebufferCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [80]  */
 	 private static final String TAG = "VkFramebufferCreateInfo";
 
@@ -398,7 +404,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkFramebufferCreateInfo vkObj = (VkFramebufferCreateInfo*)(ptr);
+		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -416,7 +422,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkFramebufferCreateInfo vkObj = (VkFramebufferCreateInfo*)(ptr);
+		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -433,7 +439,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 * Prototype: VkFramebufferCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkFramebufferCreateInfo vkObj = (VkFramebufferCreateInfo*)(ptr);
+		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -451,7 +457,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
 	 private static native long getRenderPass0(Buffer ptr);/*
-		  VkFramebufferCreateInfo vkObj = (VkFramebufferCreateInfo*)(ptr);
+		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->renderPass);	 */
 
 	/**
@@ -468,7 +474,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  attachmentCount
 	 */ 
 	 private static native int getAttachmentCount0(Buffer ptr);/*
-		  VkFramebufferCreateInfo vkObj = (VkFramebufferCreateInfo*)(ptr);
+		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  return (jint) (vkObj->attachmentCount);
 	 */
 
@@ -486,7 +492,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 * Prototype: const VkImageView*  pAttachments
 	 */ 
 	 private static native long getPAttachments0(Buffer ptr);/*
-		  VkFramebufferCreateInfo vkObj = (VkFramebufferCreateInfo*)(ptr);
+		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pAttachments);	 */
 
 	/**
@@ -503,7 +509,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  width
 	 */ 
 	 private static native int getWidth0(Buffer ptr);/*
-		  VkFramebufferCreateInfo vkObj = (VkFramebufferCreateInfo*)(ptr);
+		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  return (jint) (vkObj->width);
 	 */
 
@@ -521,7 +527,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  height
 	 */ 
 	 private static native int getHeight0(Buffer ptr);/*
-		  VkFramebufferCreateInfo vkObj = (VkFramebufferCreateInfo*)(ptr);
+		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  return (jint) (vkObj->height);
 	 */
 
@@ -539,7 +545,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  layers
 	 */ 
 	 private static native int getLayers0(Buffer ptr);/*
-		  VkFramebufferCreateInfo vkObj = (VkFramebufferCreateInfo*)(ptr);
+		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  return (jint) (vkObj->layers);
 	 */
 

@@ -35,6 +35,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkImageSubresourceLayers extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [91]  */
 	 private static final String TAG = "VkImageSubresourceLayers";
 
@@ -241,7 +247,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 private static native int getAspectMask0(Buffer ptr);/*
-		  VkImageSubresourceLayers vkObj = (VkImageSubresourceLayers*)(ptr);
+		  VkImageSubresourceLayers* vkObj = (VkImageSubresourceLayers*)(ptr);
 		  return (jint) (vkObj->aspectMask);
 	 */
 
@@ -259,7 +265,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 * Prototype: uint32_t  mipLevel
 	 */ 
 	 private static native int getMipLevel0(Buffer ptr);/*
-		  VkImageSubresourceLayers vkObj = (VkImageSubresourceLayers*)(ptr);
+		  VkImageSubresourceLayers* vkObj = (VkImageSubresourceLayers*)(ptr);
 		  return (jint) (vkObj->mipLevel);
 	 */
 
@@ -277,7 +283,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
 	 private static native int getBaseArrayLayer0(Buffer ptr);/*
-		  VkImageSubresourceLayers vkObj = (VkImageSubresourceLayers*)(ptr);
+		  VkImageSubresourceLayers* vkObj = (VkImageSubresourceLayers*)(ptr);
 		  return (jint) (vkObj->baseArrayLayer);
 	 */
 
@@ -295,7 +301,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 * Prototype: uint32_t  layerCount
 	 */ 
 	 private static native int getLayerCount0(Buffer ptr);/*
-		  VkImageSubresourceLayers vkObj = (VkImageSubresourceLayers*)(ptr);
+		  VkImageSubresourceLayers* vkObj = (VkImageSubresourceLayers*)(ptr);
 		  return (jint) (vkObj->layerCount);
 	 */
 

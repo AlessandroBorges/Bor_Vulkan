@@ -38,6 +38,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPipelineViewportStateCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [58]  */
 	 private static final String TAG = "VkPipelineViewportStateCreateInfo";
 
@@ -346,7 +352,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkPipelineViewportStateCreateInfo vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
+		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -364,7 +370,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkPipelineViewportStateCreateInfo vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
+		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -381,7 +387,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * Prototype: VkPipelineViewportStateCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkPipelineViewportStateCreateInfo vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
+		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -399,7 +405,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  viewportCount
 	 */ 
 	 private static native int getViewportCount0(Buffer ptr);/*
-		  VkPipelineViewportStateCreateInfo vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
+		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->viewportCount);
 	 */
 
@@ -417,7 +423,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * Prototype: const VkViewport*  pViewports
 	 */ 
 	 private static native long getPViewports0(Buffer ptr);/*
-		  VkPipelineViewportStateCreateInfo vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
+		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pViewports);	 */
 
 	/**
@@ -434,7 +440,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  scissorCount
 	 */ 
 	 private static native int getScissorCount0(Buffer ptr);/*
-		  VkPipelineViewportStateCreateInfo vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
+		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->scissorCount);
 	 */
 
@@ -452,7 +458,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * Prototype: const VkRect2D*  pScissors
 	 */ 
 	 private static native long getPScissors0(Buffer ptr);/*
-		  VkPipelineViewportStateCreateInfo vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
+		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pScissors);	 */
 
 

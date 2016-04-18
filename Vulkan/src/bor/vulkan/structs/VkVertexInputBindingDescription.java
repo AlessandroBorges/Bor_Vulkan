@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkVertexInputBindingDescription extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [49]  */
 	 private static final String TAG = "VkVertexInputBindingDescription";
 
@@ -217,7 +223,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	 * Prototype: uint32_t  binding
 	 */ 
 	 private static native int getBinding0(Buffer ptr);/*
-		  VkVertexInputBindingDescription vkObj = (VkVertexInputBindingDescription*)(ptr);
+		  VkVertexInputBindingDescription* vkObj = (VkVertexInputBindingDescription*)(ptr);
 		  return (jint) (vkObj->binding);
 	 */
 
@@ -235,7 +241,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	 * Prototype: uint32_t  stride
 	 */ 
 	 private static native int getStride0(Buffer ptr);/*
-		  VkVertexInputBindingDescription vkObj = (VkVertexInputBindingDescription*)(ptr);
+		  VkVertexInputBindingDescription* vkObj = (VkVertexInputBindingDescription*)(ptr);
 		  return (jint) (vkObj->stride);
 	 */
 
@@ -253,7 +259,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	 * Prototype: VkVertexInputRate  inputRate
 	 */ 
 	 private static native int  getInputRate0(Buffer ptr);/*
-		  VkVertexInputBindingDescription vkObj = (VkVertexInputBindingDescription*)(ptr);
+		  VkVertexInputBindingDescription* vkObj = (VkVertexInputBindingDescription*)(ptr);
 		  return (VkVertexInputRate) (vkObj->inputRate);
 	 */
 

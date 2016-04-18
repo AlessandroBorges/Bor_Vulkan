@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDescriptorBufferInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [77]  */
 	 private static final String TAG = "VkDescriptorBufferInfo";
 
@@ -227,7 +233,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 private static native long getBuffer0(Buffer ptr);/*
-		  VkDescriptorBufferInfo vkObj = (VkDescriptorBufferInfo*)(ptr);
+		  VkDescriptorBufferInfo* vkObj = (VkDescriptorBufferInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->buffer);	 */
 
 	/**
@@ -244,7 +250,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 private static native long getOffset0(Buffer ptr);/*
-		  VkDescriptorBufferInfo vkObj = (VkDescriptorBufferInfo*)(ptr);
+		  VkDescriptorBufferInfo* vkObj = (VkDescriptorBufferInfo*)(ptr);
 		  return (jlong) (vkObj->offset);
 	 */
 
@@ -262,7 +268,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 * Prototype: VkDeviceSize  range
 	 */ 
 	 private static native long getRange0(Buffer ptr);/*
-		  VkDescriptorBufferInfo vkObj = (VkDescriptorBufferInfo*)(ptr);
+		  VkDescriptorBufferInfo* vkObj = (VkDescriptorBufferInfo*)(ptr);
 		  return (jlong) (vkObj->range);
 	 */
 

@@ -40,6 +40,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkRenderPassCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [85]  */
 	 private static final String TAG = "VkRenderPassCreateInfo";
 
@@ -406,7 +412,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkRenderPassCreateInfo vkObj = (VkRenderPassCreateInfo*)(ptr);
+		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -424,7 +430,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkRenderPassCreateInfo vkObj = (VkRenderPassCreateInfo*)(ptr);
+		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -441,7 +447,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 * Prototype: VkRenderPassCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkRenderPassCreateInfo vkObj = (VkRenderPassCreateInfo*)(ptr);
+		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -459,7 +465,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  attachmentCount
 	 */ 
 	 private static native int getAttachmentCount0(Buffer ptr);/*
-		  VkRenderPassCreateInfo vkObj = (VkRenderPassCreateInfo*)(ptr);
+		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
 		  return (jint) (vkObj->attachmentCount);
 	 */
 
@@ -477,7 +483,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 * Prototype: const VkAttachmentDescription*  pAttachments
 	 */ 
 	 private static native long getPAttachments0(Buffer ptr);/*
-		  VkRenderPassCreateInfo vkObj = (VkRenderPassCreateInfo*)(ptr);
+		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pAttachments);	 */
 
 	/**
@@ -494,7 +500,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  subpassCount
 	 */ 
 	 private static native int getSubpassCount0(Buffer ptr);/*
-		  VkRenderPassCreateInfo vkObj = (VkRenderPassCreateInfo*)(ptr);
+		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
 		  return (jint) (vkObj->subpassCount);
 	 */
 
@@ -512,7 +518,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 * Prototype: const VkSubpassDescription*  pSubpasses
 	 */ 
 	 private static native long getPSubpasses0(Buffer ptr);/*
-		  VkRenderPassCreateInfo vkObj = (VkRenderPassCreateInfo*)(ptr);
+		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pSubpasses);	 */
 
 	/**
@@ -529,7 +535,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  dependencyCount
 	 */ 
 	 private static native int getDependencyCount0(Buffer ptr);/*
-		  VkRenderPassCreateInfo vkObj = (VkRenderPassCreateInfo*)(ptr);
+		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
 		  return (jint) (vkObj->dependencyCount);
 	 */
 
@@ -547,7 +553,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 * Prototype: const VkSubpassDependency*  pDependencies
 	 */ 
 	 private static native long getPDependencies0(Buffer ptr);/*
-		  VkRenderPassCreateInfo vkObj = (VkRenderPassCreateInfo*)(ptr);
+		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pDependencies);	 */
 
 

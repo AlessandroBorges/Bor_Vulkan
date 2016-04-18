@@ -43,6 +43,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkBindSparseInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [32]  */
 	 private static final String TAG = "VkBindSparseInfo";
 
@@ -503,7 +509,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -521,7 +527,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -538,7 +544,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
 	 private static native int getWaitSemaphoreCount0(Buffer ptr);/*
-		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  return (jint) (vkObj->waitSemaphoreCount);
 	 */
 
@@ -556,7 +562,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
 	 private static native long getPWaitSemaphores0(Buffer ptr);/*
-		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pWaitSemaphores);	 */
 
 	/**
@@ -573,7 +579,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 * Prototype: uint32_t  bufferBindCount
 	 */ 
 	 private static native int getBufferBindCount0(Buffer ptr);/*
-		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  return (jint) (vkObj->bufferBindCount);
 	 */
 
@@ -591,7 +597,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 * Prototype: const VkSparseBufferMemoryBindInfo*  pBufferBinds
 	 */ 
 	 private static native long getPBufferBinds0(Buffer ptr);/*
-		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pBufferBinds);	 */
 
 	/**
@@ -608,7 +614,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 * Prototype: uint32_t  imageOpaqueBindCount
 	 */ 
 	 private static native int getImageOpaqueBindCount0(Buffer ptr);/*
-		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  return (jint) (vkObj->imageOpaqueBindCount);
 	 */
 
@@ -626,7 +632,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 * Prototype: const VkSparseImageOpaqueMemoryBindInfo*  pImageOpaqueBinds
 	 */ 
 	 private static native long getPImageOpaqueBinds0(Buffer ptr);/*
-		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pImageOpaqueBinds);	 */
 
 	/**
@@ -643,7 +649,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 * Prototype: uint32_t  imageBindCount
 	 */ 
 	 private static native int getImageBindCount0(Buffer ptr);/*
-		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  return (jint) (vkObj->imageBindCount);
 	 */
 
@@ -661,7 +667,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 * Prototype: const VkSparseImageMemoryBindInfo*  pImageBinds
 	 */ 
 	 private static native long getPImageBinds0(Buffer ptr);/*
-		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pImageBinds);	 */
 
 	/**
@@ -678,7 +684,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 * Prototype: uint32_t  signalSemaphoreCount
 	 */ 
 	 private static native int getSignalSemaphoreCount0(Buffer ptr);/*
-		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  return (jint) (vkObj->signalSemaphoreCount);
 	 */
 
@@ -696,7 +702,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 * Prototype: const VkSemaphore*  pSignalSemaphores
 	 */ 
 	 private static native long getPSignalSemaphores0(Buffer ptr);/*
-		  VkBindSparseInfo vkObj = (VkBindSparseInfo*)(ptr);
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pSignalSemaphores);	 */
 
 

@@ -35,6 +35,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkCommandBufferBeginInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [89]  */
 	 private static final String TAG = "VkCommandBufferBeginInfo";
 
@@ -261,7 +267,7 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkCommandBufferBeginInfo vkObj = (VkCommandBufferBeginInfo*)(ptr);
+		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -279,7 +285,7 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkCommandBufferBeginInfo vkObj = (VkCommandBufferBeginInfo*)(ptr);
+		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -296,7 +302,7 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	 * Prototype: VkCommandBufferUsageFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkCommandBufferBeginInfo vkObj = (VkCommandBufferBeginInfo*)(ptr);
+		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -314,7 +320,7 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	 * Prototype: const VkCommandBufferInheritanceInfo*  pInheritanceInfo
 	 */ 
 	 private static native long getPInheritanceInfo0(Buffer ptr);/*
-		  VkCommandBufferBeginInfo vkObj = (VkCommandBufferBeginInfo*)(ptr);
+		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pInheritanceInfo);	 */
 
 

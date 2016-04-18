@@ -35,6 +35,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkLayerProperties extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [18]  */
 	 private static final String TAG = "VkLayerProperties";
 
@@ -241,8 +247,8 @@ public class VkLayerProperties extends VkStruct {
 	 * Prototype: char[]  layerName
 	 */ 
 	 private static native String getLayerName0(Buffer ptr);/*
-		  VkLayerProperties vkObj = (VkLayerProperties*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->layerName);	 */
+		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
+		  return (jstring)(env->NewStringUTF(vkObj->layerName));	 */
 
 	/**
 	 * native SET method for field specVersion	[int]<br>
@@ -258,7 +264,7 @@ public class VkLayerProperties extends VkStruct {
 	 * Prototype: uint32_t  specVersion
 	 */ 
 	 private static native int getSpecVersion0(Buffer ptr);/*
-		  VkLayerProperties vkObj = (VkLayerProperties*)(ptr);
+		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
 		  return (jint) (vkObj->specVersion);
 	 */
 
@@ -276,7 +282,7 @@ public class VkLayerProperties extends VkStruct {
 	 * Prototype: uint32_t  implementationVersion
 	 */ 
 	 private static native int getImplementationVersion0(Buffer ptr);/*
-		  VkLayerProperties vkObj = (VkLayerProperties*)(ptr);
+		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
 		  return (jint) (vkObj->implementationVersion);
 	 */
 
@@ -294,8 +300,8 @@ public class VkLayerProperties extends VkStruct {
 	 * Prototype: char[]  description
 	 */ 
 	 private static native String getDescription0(Buffer ptr);/*
-		  VkLayerProperties vkObj = (VkLayerProperties*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->description);	 */
+		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
+		  return (jstring)(env->NewStringUTF(vkObj->description));	 */
 
 
 

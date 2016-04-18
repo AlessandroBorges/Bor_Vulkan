@@ -36,6 +36,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [52]  */
 	 private static final String TAG = "VkPipelineInputAssemblyStateCreateInfo";
 
@@ -277,7 +283,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkPipelineInputAssemblyStateCreateInfo vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -295,7 +301,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkPipelineInputAssemblyStateCreateInfo vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -312,7 +318,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 * Prototype: VkPipelineInputAssemblyStateCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkPipelineInputAssemblyStateCreateInfo vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -330,7 +336,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 * Prototype: VkPrimitiveTopology  topology
 	 */ 
 	 private static native int  getTopology0(Buffer ptr);/*
-		  VkPipelineInputAssemblyStateCreateInfo vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
 		  return (VkPrimitiveTopology) (vkObj->topology);
 	 */
 
@@ -348,7 +354,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 * Prototype: VkBool32  primitiveRestartEnable
 	 */ 
 	 private static native boolean getPrimitiveRestartEnable0(Buffer ptr);/*
-		  VkPipelineInputAssemblyStateCreateInfo vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->primitiveRestartEnable);
 	 */
 

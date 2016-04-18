@@ -38,6 +38,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkComputePipelineCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [67]  */
 	 private static final String TAG = "VkComputePipelineCreateInfo";
 
@@ -358,7 +364,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkComputePipelineCreateInfo vkObj = (VkComputePipelineCreateInfo*)(ptr);
+		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -376,7 +382,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkComputePipelineCreateInfo vkObj = (VkComputePipelineCreateInfo*)(ptr);
+		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -393,7 +399,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * Prototype: VkPipelineCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkComputePipelineCreateInfo vkObj = (VkComputePipelineCreateInfo*)(ptr);
+		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -411,7 +417,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * Prototype: VkPipelineShaderStageCreateInfo  stage
 	 */ 
 	 private static native long getStage0(Buffer ptr);/*
-		  VkComputePipelineCreateInfo vkObj = (VkComputePipelineCreateInfo*)(ptr);
+		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->stage);	 */
 
 	/**
@@ -428,7 +434,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * Prototype: VkPipelineLayout  layout
 	 */ 
 	 private static native long getLayout0(Buffer ptr);/*
-		  VkComputePipelineCreateInfo vkObj = (VkComputePipelineCreateInfo*)(ptr);
+		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->layout);	 */
 
 	/**
@@ -445,7 +451,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * Prototype: VkPipeline  basePipelineHandle
 	 */ 
 	 private static native long getBasePipelineHandle0(Buffer ptr);/*
-		  VkComputePipelineCreateInfo vkObj = (VkComputePipelineCreateInfo*)(ptr);
+		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->basePipelineHandle);	 */
 
 	/**
@@ -462,7 +468,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * Prototype: int32_t  basePipelineIndex
 	 */ 
 	 private static native int getBasePipelineIndex0(Buffer ptr);/*
-		  VkComputePipelineCreateInfo vkObj = (VkComputePipelineCreateInfo*)(ptr);
+		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  return (jint) (vkObj->basePipelineIndex);
 	 */
 

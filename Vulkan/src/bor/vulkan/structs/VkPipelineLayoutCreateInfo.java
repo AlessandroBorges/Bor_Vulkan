@@ -38,6 +38,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPipelineLayoutCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [69]  */
 	 private static final String TAG = "VkPipelineLayoutCreateInfo";
 
@@ -347,7 +353,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkPipelineLayoutCreateInfo vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
+		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -365,7 +371,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkPipelineLayoutCreateInfo vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
+		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -382,7 +388,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * Prototype: VkPipelineLayoutCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkPipelineLayoutCreateInfo vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
+		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -400,7 +406,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  setLayoutCount
 	 */ 
 	 private static native int getSetLayoutCount0(Buffer ptr);/*
-		  VkPipelineLayoutCreateInfo vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
+		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
 		  return (jint) (vkObj->setLayoutCount);
 	 */
 
@@ -418,7 +424,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
 	 private static native long getPSetLayouts0(Buffer ptr);/*
-		  VkPipelineLayoutCreateInfo vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
+		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pSetLayouts);	 */
 
 	/**
@@ -435,7 +441,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  pushConstantRangeCount
 	 */ 
 	 private static native int getPushConstantRangeCount0(Buffer ptr);/*
-		  VkPipelineLayoutCreateInfo vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
+		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
 		  return (jint) (vkObj->pushConstantRangeCount);
 	 */
 
@@ -453,7 +459,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * Prototype: const VkPushConstantRange*  pPushConstantRanges
 	 */ 
 	 private static native long getPPushConstantRanges0(Buffer ptr);/*
-		  VkPipelineLayoutCreateInfo vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
+		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pPushConstantRanges);	 */
 
 

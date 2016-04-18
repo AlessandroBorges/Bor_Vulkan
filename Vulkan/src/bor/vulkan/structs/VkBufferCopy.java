@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkBufferCopy extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [90]  */
 	 private static final String TAG = "VkBufferCopy";
 
@@ -216,7 +222,7 @@ public class VkBufferCopy extends VkStruct {
 	 * Prototype: VkDeviceSize  srcOffset
 	 */ 
 	 private static native long getSrcOffset0(Buffer ptr);/*
-		  VkBufferCopy vkObj = (VkBufferCopy*)(ptr);
+		  VkBufferCopy* vkObj = (VkBufferCopy*)(ptr);
 		  return (jlong) (vkObj->srcOffset);
 	 */
 
@@ -234,7 +240,7 @@ public class VkBufferCopy extends VkStruct {
 	 * Prototype: VkDeviceSize  dstOffset
 	 */ 
 	 private static native long getDstOffset0(Buffer ptr);/*
-		  VkBufferCopy vkObj = (VkBufferCopy*)(ptr);
+		  VkBufferCopy* vkObj = (VkBufferCopy*)(ptr);
 		  return (jlong) (vkObj->dstOffset);
 	 */
 
@@ -252,7 +258,7 @@ public class VkBufferCopy extends VkStruct {
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long getSize0(Buffer ptr);/*
-		  VkBufferCopy vkObj = (VkBufferCopy*)(ptr);
+		  VkBufferCopy* vkObj = (VkBufferCopy*)(ptr);
 		  return (jlong) (vkObj->size);
 	 */
 

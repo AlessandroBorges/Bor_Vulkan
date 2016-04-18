@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkOffset3D extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [29]  */
 	 private static final String TAG = "VkOffset3D";
 
@@ -216,7 +222,7 @@ public class VkOffset3D extends VkStruct {
 	 * Prototype: int32_t  x
 	 */ 
 	 private static native int getX0(Buffer ptr);/*
-		  VkOffset3D vkObj = (VkOffset3D*)(ptr);
+		  VkOffset3D* vkObj = (VkOffset3D*)(ptr);
 		  return (jint) (vkObj->x);
 	 */
 
@@ -234,7 +240,7 @@ public class VkOffset3D extends VkStruct {
 	 * Prototype: int32_t  y
 	 */ 
 	 private static native int getY0(Buffer ptr);/*
-		  VkOffset3D vkObj = (VkOffset3D*)(ptr);
+		  VkOffset3D* vkObj = (VkOffset3D*)(ptr);
 		  return (jint) (vkObj->y);
 	 */
 
@@ -252,7 +258,7 @@ public class VkOffset3D extends VkStruct {
 	 * Prototype: int32_t  z
 	 */ 
 	 private static native int getZ0(Buffer ptr);/*
-		  VkOffset3D vkObj = (VkOffset3D*)(ptr);
+		  VkOffset3D* vkObj = (VkOffset3D*)(ptr);
 		  return (jint) (vkObj->z);
 	 */
 

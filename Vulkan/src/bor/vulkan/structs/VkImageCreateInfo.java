@@ -46,6 +46,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkImageCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [39]  */
 	 private static final String TAG = "VkImageCreateInfo";
 
@@ -542,7 +548,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
+		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -560,7 +566,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
+		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -577,7 +583,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkImageCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
+		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -595,7 +601,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkImageType  imageType
 	 */ 
 	 private static native int  getImageType0(Buffer ptr);/*
-		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
+		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  return (VkImageType) (vkObj->imageType);
 	 */
 
@@ -613,7 +619,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkFormat  format
 	 */ 
 	 private static native int  getFormat0(Buffer ptr);/*
-		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
+		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  return (VkFormat) (vkObj->format);
 	 */
 
@@ -631,7 +637,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 private static native long getExtent0(Buffer ptr);/*
-		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
+		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->extent);	 */
 
 	/**
@@ -648,7 +654,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  mipLevels
 	 */ 
 	 private static native int getMipLevels0(Buffer ptr);/*
-		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
+		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  return (jint) (vkObj->mipLevels);
 	 */
 
@@ -666,7 +672,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  arrayLayers
 	 */ 
 	 private static native int getArrayLayers0(Buffer ptr);/*
-		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
+		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  return (jint) (vkObj->arrayLayers);
 	 */
 
@@ -684,7 +690,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkSampleCountFlagBits  samples
 	 */ 
 	 private static native int  getSamples0(Buffer ptr);/*
-		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
+		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  return (VkSampleCountFlagBits) (vkObj->samples);
 	 */
 
@@ -702,7 +708,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkImageTiling  tiling
 	 */ 
 	 private static native int  getTiling0(Buffer ptr);/*
-		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
+		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  return (VkImageTiling) (vkObj->tiling);
 	 */
 
@@ -720,7 +726,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkImageUsageFlags  usage
 	 */ 
 	 private static native int getUsage0(Buffer ptr);/*
-		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
+		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  return (jint) (vkObj->usage);
 	 */
 
@@ -738,7 +744,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
 	 private static native int  getSharingMode0(Buffer ptr);/*
-		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
+		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  return (VkSharingMode) (vkObj->sharingMode);
 	 */
 
@@ -756,7 +762,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
 	 private static native int getQueueFamilyIndexCount0(Buffer ptr);/*
-		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
+		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  return (jint) (vkObj->queueFamilyIndexCount);
 	 */
 
@@ -774,7 +780,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 private static native int[] getPQueueFamilyIndices0(Buffer ptr);/*
-		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
+		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  return (int[]) (vkObj->pQueueFamilyIndices);
 	 */
 
@@ -792,7 +798,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Prototype: VkImageLayout  initialLayout
 	 */ 
 	 private static native int  getInitialLayout0(Buffer ptr);/*
-		  VkImageCreateInfo vkObj = (VkImageCreateInfo*)(ptr);
+		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  return (VkImageLayout) (vkObj->initialLayout);
 	 */
 

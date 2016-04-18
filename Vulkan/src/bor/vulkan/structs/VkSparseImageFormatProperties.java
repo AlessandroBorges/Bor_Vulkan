@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkSparseImageFormatProperties extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [23]  */
 	 private static final String TAG = "VkSparseImageFormatProperties";
 
@@ -226,7 +232,7 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 private static native int getAspectMask0(Buffer ptr);/*
-		  VkSparseImageFormatProperties vkObj = (VkSparseImageFormatProperties*)(ptr);
+		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
 		  return (jint) (vkObj->aspectMask);
 	 */
 
@@ -244,7 +250,7 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 * Prototype: VkExtent3D  imageGranularity
 	 */ 
 	 private static native long getImageGranularity0(Buffer ptr);/*
-		  VkSparseImageFormatProperties vkObj = (VkSparseImageFormatProperties*)(ptr);
+		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->imageGranularity);	 */
 
 	/**
@@ -261,7 +267,7 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 * Prototype: VkSparseImageFormatFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkSparseImageFormatProperties vkObj = (VkSparseImageFormatProperties*)(ptr);
+		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 

@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDescriptorImageInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [76]  */
 	 private static final String TAG = "VkDescriptorImageInfo";
 
@@ -239,7 +245,7 @@ public class VkDescriptorImageInfo extends VkStruct {
 	 * Prototype: VkSampler  sampler
 	 */ 
 	 private static native long getSampler0(Buffer ptr);/*
-		  VkDescriptorImageInfo vkObj = (VkDescriptorImageInfo*)(ptr);
+		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->sampler);	 */
 
 	/**
@@ -256,7 +262,7 @@ public class VkDescriptorImageInfo extends VkStruct {
 	 * Prototype: VkImageView  imageView
 	 */ 
 	 private static native long getImageView0(Buffer ptr);/*
-		  VkDescriptorImageInfo vkObj = (VkDescriptorImageInfo*)(ptr);
+		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->imageView);	 */
 
 	/**
@@ -273,7 +279,7 @@ public class VkDescriptorImageInfo extends VkStruct {
 	 * Prototype: VkImageLayout  imageLayout
 	 */ 
 	 private static native int  getImageLayout0(Buffer ptr);/*
-		  VkDescriptorImageInfo vkObj = (VkDescriptorImageInfo*)(ptr);
+		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
 		  return (VkImageLayout) (vkObj->imageLayout);
 	 */
 

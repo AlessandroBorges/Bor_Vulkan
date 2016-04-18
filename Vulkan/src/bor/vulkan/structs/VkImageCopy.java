@@ -36,6 +36,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkImageCopy extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [92]  */
 	 private static final String TAG = "VkImageCopy";
 
@@ -316,7 +322,7 @@ public class VkImageCopy extends VkStruct {
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
 	 */ 
 	 private static native long getSrcSubresource0(Buffer ptr);/*
-		  VkImageCopy vkObj = (VkImageCopy*)(ptr);
+		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->srcSubresource);	 */
 
 	/**
@@ -333,7 +339,7 @@ public class VkImageCopy extends VkStruct {
 	 * Prototype: VkOffset3D  srcOffset
 	 */ 
 	 private static native long getSrcOffset0(Buffer ptr);/*
-		  VkImageCopy vkObj = (VkImageCopy*)(ptr);
+		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->srcOffset);	 */
 
 	/**
@@ -350,7 +356,7 @@ public class VkImageCopy extends VkStruct {
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
 	 */ 
 	 private static native long getDstSubresource0(Buffer ptr);/*
-		  VkImageCopy vkObj = (VkImageCopy*)(ptr);
+		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->dstSubresource);	 */
 
 	/**
@@ -367,7 +373,7 @@ public class VkImageCopy extends VkStruct {
 	 * Prototype: VkOffset3D  dstOffset
 	 */ 
 	 private static native long getDstOffset0(Buffer ptr);/*
-		  VkImageCopy vkObj = (VkImageCopy*)(ptr);
+		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->dstOffset);	 */
 
 	/**
@@ -384,7 +390,7 @@ public class VkImageCopy extends VkStruct {
 	 * Prototype: VkExtent3D  extent
 	 */ 
 	 private static native long getExtent0(Buffer ptr);/*
-		  VkImageCopy vkObj = (VkImageCopy*)(ptr);
+		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->extent);	 */
 
 

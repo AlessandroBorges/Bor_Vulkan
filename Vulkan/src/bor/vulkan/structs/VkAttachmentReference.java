@@ -33,6 +33,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkAttachmentReference extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [82]  */
 	 private static final String TAG = "VkAttachmentReference";
 
@@ -192,7 +198,7 @@ public class VkAttachmentReference extends VkStruct {
 	 * Prototype: uint32_t  attachment
 	 */ 
 	 private static native int getAttachment0(Buffer ptr);/*
-		  VkAttachmentReference vkObj = (VkAttachmentReference*)(ptr);
+		  VkAttachmentReference* vkObj = (VkAttachmentReference*)(ptr);
 		  return (jint) (vkObj->attachment);
 	 */
 
@@ -210,7 +216,7 @@ public class VkAttachmentReference extends VkStruct {
 	 * Prototype: VkImageLayout  layout
 	 */ 
 	 private static native int  getLayout0(Buffer ptr);/*
-		  VkAttachmentReference vkObj = (VkAttachmentReference*)(ptr);
+		  VkAttachmentReference* vkObj = (VkAttachmentReference*)(ptr);
 		  return (VkImageLayout) (vkObj->layout);
 	 */
 

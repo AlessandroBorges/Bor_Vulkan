@@ -40,6 +40,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkCopyDescriptorSet extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [79]  */
 	 private static final String TAG = "VkCopyDescriptorSet";
 
@@ -398,7 +404,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkCopyDescriptorSet vkObj = (VkCopyDescriptorSet*)(ptr);
+		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -416,7 +422,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkCopyDescriptorSet vkObj = (VkCopyDescriptorSet*)(ptr);
+		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -433,7 +439,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 * Prototype: VkDescriptorSet  srcSet
 	 */ 
 	 private static native long getSrcSet0(Buffer ptr);/*
-		  VkCopyDescriptorSet vkObj = (VkCopyDescriptorSet*)(ptr);
+		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->srcSet);	 */
 
 	/**
@@ -450,7 +456,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 * Prototype: uint32_t  srcBinding
 	 */ 
 	 private static native int getSrcBinding0(Buffer ptr);/*
-		  VkCopyDescriptorSet vkObj = (VkCopyDescriptorSet*)(ptr);
+		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		  return (jint) (vkObj->srcBinding);
 	 */
 
@@ -468,7 +474,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 * Prototype: uint32_t  srcArrayElement
 	 */ 
 	 private static native int getSrcArrayElement0(Buffer ptr);/*
-		  VkCopyDescriptorSet vkObj = (VkCopyDescriptorSet*)(ptr);
+		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		  return (jint) (vkObj->srcArrayElement);
 	 */
 
@@ -486,7 +492,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 * Prototype: VkDescriptorSet  dstSet
 	 */ 
 	 private static native long getDstSet0(Buffer ptr);/*
-		  VkCopyDescriptorSet vkObj = (VkCopyDescriptorSet*)(ptr);
+		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->dstSet);	 */
 
 	/**
@@ -503,7 +509,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 * Prototype: uint32_t  dstBinding
 	 */ 
 	 private static native int getDstBinding0(Buffer ptr);/*
-		  VkCopyDescriptorSet vkObj = (VkCopyDescriptorSet*)(ptr);
+		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		  return (jint) (vkObj->dstBinding);
 	 */
 
@@ -521,7 +527,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 * Prototype: uint32_t  dstArrayElement
 	 */ 
 	 private static native int getDstArrayElement0(Buffer ptr);/*
-		  VkCopyDescriptorSet vkObj = (VkCopyDescriptorSet*)(ptr);
+		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		  return (jint) (vkObj->dstArrayElement);
 	 */
 
@@ -539,7 +545,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 private static native int getDescriptorCount0(Buffer ptr);/*
-		  VkCopyDescriptorSet vkObj = (VkCopyDescriptorSet*)(ptr);
+		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		  return (jint) (vkObj->descriptorCount);
 	 */
 

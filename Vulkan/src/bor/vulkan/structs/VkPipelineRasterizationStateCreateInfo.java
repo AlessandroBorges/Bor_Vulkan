@@ -44,6 +44,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [59]  */
 	 private static final String TAG = "VkPipelineRasterizationStateCreateInfo";
 
@@ -478,7 +484,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -496,7 +502,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -513,7 +519,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * Prototype: VkPipelineRasterizationStateCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -531,7 +537,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * Prototype: VkBool32  depthClampEnable
 	 */ 
 	 private static native boolean getDepthClampEnable0(Buffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->depthClampEnable);
 	 */
 
@@ -549,7 +555,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * Prototype: VkBool32  rasterizerDiscardEnable
 	 */ 
 	 private static native boolean getRasterizerDiscardEnable0(Buffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->rasterizerDiscardEnable);
 	 */
 
@@ -567,7 +573,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * Prototype: VkPolygonMode  polygonMode
 	 */ 
 	 private static native int  getPolygonMode0(Buffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (VkPolygonMode) (vkObj->polygonMode);
 	 */
 
@@ -585,7 +591,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * Prototype: VkCullModeFlags  cullMode
 	 */ 
 	 private static native int getCullMode0(Buffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->cullMode);
 	 */
 
@@ -603,7 +609,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * Prototype: VkFrontFace  frontFace
 	 */ 
 	 private static native int  getFrontFace0(Buffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (VkFrontFace) (vkObj->frontFace);
 	 */
 
@@ -621,7 +627,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * Prototype: VkBool32  depthBiasEnable
 	 */ 
 	 private static native boolean getDepthBiasEnable0(Buffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->depthBiasEnable);
 	 */
 
@@ -639,7 +645,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * Prototype: float  depthBiasConstantFactor
 	 */ 
 	 private static native float getDepthBiasConstantFactor0(Buffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->depthBiasConstantFactor);
 	 */
 
@@ -657,7 +663,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * Prototype: float  depthBiasClamp
 	 */ 
 	 private static native float getDepthBiasClamp0(Buffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->depthBiasClamp);
 	 */
 
@@ -675,7 +681,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * Prototype: float  depthBiasSlopeFactor
 	 */ 
 	 private static native float getDepthBiasSlopeFactor0(Buffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->depthBiasSlopeFactor);
 	 */
 
@@ -693,7 +699,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * Prototype: float  lineWidth
 	 */ 
 	 private static native float getLineWidth0(Buffer ptr);/*
-		  VkPipelineRasterizationStateCreateInfo vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->lineWidth);
 	 */
 

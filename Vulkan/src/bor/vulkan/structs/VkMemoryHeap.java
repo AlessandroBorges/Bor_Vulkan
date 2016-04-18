@@ -33,6 +33,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkMemoryHeap extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [13]  */
 	 private static final String TAG = "VkMemoryHeap";
 
@@ -191,7 +197,7 @@ public class VkMemoryHeap extends VkStruct {
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long getSize0(Buffer ptr);/*
-		  VkMemoryHeap vkObj = (VkMemoryHeap*)(ptr);
+		  VkMemoryHeap* vkObj = (VkMemoryHeap*)(ptr);
 		  return (jlong) (vkObj->size);
 	 */
 
@@ -209,7 +215,7 @@ public class VkMemoryHeap extends VkStruct {
 	 * Prototype: VkMemoryHeapFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkMemoryHeap vkObj = (VkMemoryHeap*)(ptr);
+		  VkMemoryHeap* vkObj = (VkMemoryHeap*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 

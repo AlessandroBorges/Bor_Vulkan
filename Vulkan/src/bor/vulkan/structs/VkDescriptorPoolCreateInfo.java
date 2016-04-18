@@ -37,6 +37,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDescriptorPoolCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [74]  */
 	 private static final String TAG = "VkDescriptorPoolCreateInfo";
 
@@ -311,7 +317,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkDescriptorPoolCreateInfo vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
+		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -329,7 +335,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkDescriptorPoolCreateInfo vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
+		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -346,7 +352,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * Prototype: VkDescriptorPoolCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkDescriptorPoolCreateInfo vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
+		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -364,7 +370,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  maxSets
 	 */ 
 	 private static native int getMaxSets0(Buffer ptr);/*
-		  VkDescriptorPoolCreateInfo vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
+		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
 		  return (jint) (vkObj->maxSets);
 	 */
 
@@ -382,7 +388,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  poolSizeCount
 	 */ 
 	 private static native int getPoolSizeCount0(Buffer ptr);/*
-		  VkDescriptorPoolCreateInfo vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
+		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
 		  return (jint) (vkObj->poolSizeCount);
 	 */
 
@@ -400,7 +406,7 @@ public class VkDescriptorPoolCreateInfo extends VkStruct {
 	 * Prototype: const VkDescriptorPoolSize*  pPoolSizes
 	 */ 
 	 private static native long getPPoolSizes0(Buffer ptr);/*
-		  VkDescriptorPoolCreateInfo vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
+		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pPoolSizes);	 */
 
 

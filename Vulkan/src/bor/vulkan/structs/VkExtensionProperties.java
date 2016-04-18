@@ -33,6 +33,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkExtensionProperties extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [17]  */
 	 private static final String TAG = "VkExtensionProperties";
 
@@ -191,8 +197,8 @@ public class VkExtensionProperties extends VkStruct {
 	 * Prototype: char[]  extensionName
 	 */ 
 	 private static native String getExtensionName0(Buffer ptr);/*
-		  VkExtensionProperties vkObj = (VkExtensionProperties*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->extensionName);	 */
+		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
+		  return (jstring)(env->NewStringUTF(vkObj->extensionName));	 */
 
 	/**
 	 * native SET method for field specVersion	[int]<br>
@@ -208,7 +214,7 @@ public class VkExtensionProperties extends VkStruct {
 	 * Prototype: uint32_t  specVersion
 	 */ 
 	 private static native int getSpecVersion0(Buffer ptr);/*
-		  VkExtensionProperties vkObj = (VkExtensionProperties*)(ptr);
+		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
 		  return (jint) (vkObj->specVersion);
 	 */
 

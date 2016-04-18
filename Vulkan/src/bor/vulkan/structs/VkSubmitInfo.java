@@ -40,6 +40,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkSubmitInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [19]  */
 	 private static final String TAG = "VkSubmitInfo";
 
@@ -409,7 +415,7 @@ public class VkSubmitInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkSubmitInfo vkObj = (VkSubmitInfo*)(ptr);
+		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -427,7 +433,7 @@ public class VkSubmitInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkSubmitInfo vkObj = (VkSubmitInfo*)(ptr);
+		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -444,7 +450,7 @@ public class VkSubmitInfo extends VkStruct {
 	 * Prototype: uint32_t  waitSemaphoreCount
 	 */ 
 	 private static native int getWaitSemaphoreCount0(Buffer ptr);/*
-		  VkSubmitInfo vkObj = (VkSubmitInfo*)(ptr);
+		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  return (jint) (vkObj->waitSemaphoreCount);
 	 */
 
@@ -462,7 +468,7 @@ public class VkSubmitInfo extends VkStruct {
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
 	 private static native long getPWaitSemaphores0(Buffer ptr);/*
-		  VkSubmitInfo vkObj = (VkSubmitInfo*)(ptr);
+		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pWaitSemaphores);	 */
 
 	/**
@@ -479,7 +485,7 @@ public class VkSubmitInfo extends VkStruct {
 	 * Prototype: const VkPipelineStageFlags*  pWaitDstStageMask
 	 */ 
 	 private static native PInteger getPWaitDstStageMask0(Buffer ptr);/*
-		  VkSubmitInfo vkObj = (VkSubmitInfo*)(ptr);
+		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  return (PInteger) (vkObj->pWaitDstStageMask);
 	 */
 
@@ -497,7 +503,7 @@ public class VkSubmitInfo extends VkStruct {
 	 * Prototype: uint32_t  commandBufferCount
 	 */ 
 	 private static native int getCommandBufferCount0(Buffer ptr);/*
-		  VkSubmitInfo vkObj = (VkSubmitInfo*)(ptr);
+		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  return (jint) (vkObj->commandBufferCount);
 	 */
 
@@ -515,7 +521,7 @@ public class VkSubmitInfo extends VkStruct {
 	 * Prototype: const VkCommandBuffer*  pCommandBuffers
 	 */ 
 	 private static native long getPCommandBuffers0(Buffer ptr);/*
-		  VkSubmitInfo vkObj = (VkSubmitInfo*)(ptr);
+		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pCommandBuffers);	 */
 
 	/**
@@ -532,7 +538,7 @@ public class VkSubmitInfo extends VkStruct {
 	 * Prototype: uint32_t  signalSemaphoreCount
 	 */ 
 	 private static native int getSignalSemaphoreCount0(Buffer ptr);/*
-		  VkSubmitInfo vkObj = (VkSubmitInfo*)(ptr);
+		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  return (jint) (vkObj->signalSemaphoreCount);
 	 */
 
@@ -550,7 +556,7 @@ public class VkSubmitInfo extends VkStruct {
 	 * Prototype: const VkSemaphore*  pSignalSemaphores
 	 */ 
 	 private static native long getPSignalSemaphores0(Buffer ptr);/*
-		  VkSubmitInfo vkObj = (VkSubmitInfo*)(ptr);
+		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pSignalSemaphores);	 */
 
 

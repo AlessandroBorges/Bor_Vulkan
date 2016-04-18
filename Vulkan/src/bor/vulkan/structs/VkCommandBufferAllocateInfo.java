@@ -36,6 +36,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkCommandBufferAllocateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [87]  */
 	 private static final String TAG = "VkCommandBufferAllocateInfo";
 
@@ -288,7 +294,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkCommandBufferAllocateInfo vkObj = (VkCommandBufferAllocateInfo*)(ptr);
+		  VkCommandBufferAllocateInfo* vkObj = (VkCommandBufferAllocateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -306,7 +312,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkCommandBufferAllocateInfo vkObj = (VkCommandBufferAllocateInfo*)(ptr);
+		  VkCommandBufferAllocateInfo* vkObj = (VkCommandBufferAllocateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -323,7 +329,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 * Prototype: VkCommandPool  commandPool
 	 */ 
 	 private static native long getCommandPool0(Buffer ptr);/*
-		  VkCommandBufferAllocateInfo vkObj = (VkCommandBufferAllocateInfo*)(ptr);
+		  VkCommandBufferAllocateInfo* vkObj = (VkCommandBufferAllocateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->commandPool);	 */
 
 	/**
@@ -340,7 +346,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 * Prototype: VkCommandBufferLevel  level
 	 */ 
 	 private static native int  getLevel0(Buffer ptr);/*
-		  VkCommandBufferAllocateInfo vkObj = (VkCommandBufferAllocateInfo*)(ptr);
+		  VkCommandBufferAllocateInfo* vkObj = (VkCommandBufferAllocateInfo*)(ptr);
 		  return (jobject) (vkObj->level);
 	 */
 
@@ -358,7 +364,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 * Prototype: uint32_t  commandBufferCount
 	 */ 
 	 private static native int getCommandBufferCount0(Buffer ptr);/*
-		  VkCommandBufferAllocateInfo vkObj = (VkCommandBufferAllocateInfo*)(ptr);
+		  VkCommandBufferAllocateInfo* vkObj = (VkCommandBufferAllocateInfo*)(ptr);
 		  return (jint) (vkObj->commandBufferCount);
 	 */
 

@@ -13,7 +13,7 @@ import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
-
+import java.util.Arrays;
 import java.nio.Buffer;
 
 
@@ -41,6 +41,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDeviceCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [16]  */
 	 private static final String TAG = "VkDeviceCreateInfo";
 
@@ -331,8 +337,8 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * Prototype: const char* const*  ppEnabledLayerNames
 	 */ 
 	 public String[] ppEnabledLayerNames(){
-		 String[] var = getPpEnabledLayerNames0(super.ptr);
-		 this.ppEnabledLayerNames = var;
+		// String[] var = getPpEnabledLayerNames0(super.ptr);
+		// this.ppEnabledLayerNames = var;
 		 return this.ppEnabledLayerNames;
 	 }
 
@@ -369,8 +375,8 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * Prototype: const char* const*  ppEnabledExtensionNames
 	 */ 
 	 public String[] ppEnabledExtensionNames(){
-		 String[] var = getPpEnabledExtensionNames0(super.ptr);
-		 this.ppEnabledExtensionNames = var;
+		// String[] var = getPpEnabledExtensionNames0(super.ptr);
+		// this.ppEnabledExtensionNames = var;
 		 return this.ppEnabledExtensionNames;
 	 }
 
@@ -404,7 +410,41 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 }
 
 
-	 //////////////////////////////////
+	 /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        final int maxLen = 20;
+        StringBuilder builder = new StringBuilder(300);
+        builder.append("VkDeviceCreateInfo [sType=")
+                .append(sType)
+                .append(", pNext=")
+                .append(pNext)
+                .append(", flags=")
+                .append(flags)
+                .append(", queueCreateInfoCount=")
+                .append(queueCreateInfoCount)
+                .append(", pQueueCreateInfos=")
+                .append(pQueueCreateInfos)
+                .append(", enabledLayerCount=")
+                .append(enabledLayerCount)
+                .append(", ppEnabledLayerNames=")
+                .append(ppEnabledLayerNames != null
+                        ? Arrays.asList(ppEnabledLayerNames).subList(0, Math.min(ppEnabledLayerNames.length, maxLen))
+                        : null)
+                .append(", enabledExtensionCount=")
+                .append(enabledExtensionCount)
+                .append(", ppEnabledExtensionNames=")
+                .append(ppEnabledExtensionNames != null ? Arrays.asList(ppEnabledExtensionNames).subList(0,
+                        Math.min(ppEnabledExtensionNames.length, maxLen)) : null)
+                .append(", pEnabledFeatures=")
+                .append(pEnabledFeatures)
+                .append("]");
+        return builder.toString();
+    }
+
+    //////////////////////////////////
 	 // native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
@@ -421,7 +461,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkDeviceCreateInfo vkObj = (VkDeviceCreateInfo*)(ptr);
+		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -439,7 +479,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkDeviceCreateInfo vkObj = (VkDeviceCreateInfo*)(ptr);
+		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -456,7 +496,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * Prototype: VkDeviceCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkDeviceCreateInfo vkObj = (VkDeviceCreateInfo*)(ptr);
+		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -474,7 +514,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  queueCreateInfoCount
 	 */ 
 	 private static native int getQueueCreateInfoCount0(Buffer ptr);/*
-		  VkDeviceCreateInfo vkObj = (VkDeviceCreateInfo*)(ptr);
+		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  return (jint) (vkObj->queueCreateInfoCount);
 	 */
 
@@ -492,7 +532,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * Prototype: const VkDeviceQueueCreateInfo*  pQueueCreateInfos
 	 */ 
 	 private static native long getPQueueCreateInfos0(Buffer ptr);/*
-		  VkDeviceCreateInfo vkObj = (VkDeviceCreateInfo*)(ptr);
+		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pQueueCreateInfos);	 */
 
 	/**
@@ -509,7 +549,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  enabledLayerCount
 	 */ 
 	 private static native int getEnabledLayerCount0(Buffer ptr);/*
-		  VkDeviceCreateInfo vkObj = (VkDeviceCreateInfo*)(ptr);
+		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  return (jint) (vkObj->enabledLayerCount);
 	 */
 
@@ -526,10 +566,10 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * native GET method for field ppEnabledLayerNames	[string_arr]<br>
 	 * Prototype: const char* const*  ppEnabledLayerNames
 	 */ 
-	 private static native String[] getPpEnabledLayerNames0(Buffer ptr);/*
-		  VkDeviceCreateInfo vkObj = (VkDeviceCreateInfo*)(ptr);
-		  return (String[]) (vkObj->ppEnabledLayerNames);
-	 */
+	// private static native String[] getPpEnabledLayerNames0(Buffer ptr);/*
+		 // VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
+		 // return (String[]) (vkObj->ppEnabledLayerNames);
+	// */
 
 	/**
 	 * native SET method for field enabledExtensionCount	[int]<br>
@@ -545,7 +585,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  enabledExtensionCount
 	 */ 
 	 private static native int getEnabledExtensionCount0(Buffer ptr);/*
-		  VkDeviceCreateInfo vkObj = (VkDeviceCreateInfo*)(ptr);
+		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  return (jint) (vkObj->enabledExtensionCount);
 	 */
 
@@ -562,10 +602,10 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * native GET method for field ppEnabledExtensionNames	[string_arr]<br>
 	 * Prototype: const char* const*  ppEnabledExtensionNames
 	 */ 
-	 private static native String[] getPpEnabledExtensionNames0(Buffer ptr);/*
-		  VkDeviceCreateInfo vkObj = (VkDeviceCreateInfo*)(ptr);
-		  return (String[]) (vkObj->ppEnabledExtensionNames);
-	 */
+//	 private static native String[] getPpEnabledExtensionNames0(Buffer ptr);/*
+//		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
+//		  return (String[]) (vkObj->ppEnabledExtensionNames);
+//	 */
 
 	/**
 	 * native SET method for field pEnabledFeatures	[vkstruct]<br>
@@ -581,7 +621,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * Prototype: const VkPhysicalDeviceFeatures*  pEnabledFeatures
 	 */ 
 	 private static native long getPEnabledFeatures0(Buffer ptr);/*
-		  VkDeviceCreateInfo vkObj = (VkDeviceCreateInfo*)(ptr);
+		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pEnabledFeatures);	 */
 
 

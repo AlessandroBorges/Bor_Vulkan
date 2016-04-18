@@ -38,6 +38,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkStencilOpState extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [61]  */
 	 private static final String TAG = "VkStencilOpState";
 
@@ -320,7 +326,7 @@ public class VkStencilOpState extends VkStruct {
 	 * Prototype: VkStencilOp  failOp
 	 */ 
 	 private static native int  getFailOp0(Buffer ptr);/*
-		  VkStencilOpState vkObj = (VkStencilOpState*)(ptr);
+		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		  return (VkStencilOp) (vkObj->failOp);
 	 */
 
@@ -338,7 +344,7 @@ public class VkStencilOpState extends VkStruct {
 	 * Prototype: VkStencilOp  passOp
 	 */ 
 	 private static native int  getPassOp0(Buffer ptr);/*
-		  VkStencilOpState vkObj = (VkStencilOpState*)(ptr);
+		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		  return (VkStencilOp) (vkObj->passOp);
 	 */
 
@@ -356,7 +362,7 @@ public class VkStencilOpState extends VkStruct {
 	 * Prototype: VkStencilOp  depthFailOp
 	 */ 
 	 private static native int  getDepthFailOp0(Buffer ptr);/*
-		  VkStencilOpState vkObj = (VkStencilOpState*)(ptr);
+		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		  return (VkStencilOp) (vkObj->depthFailOp);
 	 */
 
@@ -374,7 +380,7 @@ public class VkStencilOpState extends VkStruct {
 	 * Prototype: VkCompareOp  compareOp
 	 */ 
 	 private static native int  getCompareOp0(Buffer ptr);/*
-		  VkStencilOpState vkObj = (VkStencilOpState*)(ptr);
+		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		  return (VkCompareOp) (vkObj->compareOp);
 	 */
 
@@ -392,7 +398,7 @@ public class VkStencilOpState extends VkStruct {
 	 * Prototype: uint32_t  compareMask
 	 */ 
 	 private static native int getCompareMask0(Buffer ptr);/*
-		  VkStencilOpState vkObj = (VkStencilOpState*)(ptr);
+		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		  return (jint) (vkObj->compareMask);
 	 */
 
@@ -410,7 +416,7 @@ public class VkStencilOpState extends VkStruct {
 	 * Prototype: uint32_t  writeMask
 	 */ 
 	 private static native int getWriteMask0(Buffer ptr);/*
-		  VkStencilOpState vkObj = (VkStencilOpState*)(ptr);
+		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		  return (jint) (vkObj->writeMask);
 	 */
 
@@ -428,7 +434,7 @@ public class VkStencilOpState extends VkStruct {
 	 * Prototype: uint32_t  reference
 	 */ 
 	 private static native int getReference0(Buffer ptr);/*
-		  VkStencilOpState vkObj = (VkStencilOpState*)(ptr);
+		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		  return (jint) (vkObj->reference);
 	 */
 

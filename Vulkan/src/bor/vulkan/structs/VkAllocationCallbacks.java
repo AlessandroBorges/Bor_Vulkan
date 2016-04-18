@@ -9,6 +9,7 @@
  */
 package bor.vulkan.structs;
 
+import bor.util.Utils;
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
@@ -37,6 +38,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkAllocationCallbacks extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [3]  */
 	 private static final String TAG = "VkAllocationCallbacks";
 
@@ -173,8 +180,13 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * Prototype: void*  pUserData
 	 */ 
 	 public java.nio.Buffer pUserData(){
-		 //java.nio.Buffer var = getPUserData0(super.ptr);
-		 //this.pUserData = var;
+		  long address = getPUserData0(super.ptr);
+		  if(this.pUserData==null && address != 0){
+		      ByteBuffer bb = Utils.wrapPointer(address, 8);
+		      this.pUserData = bb;      
+		  }
+		  
+		 
 		 return this.pUserData;
 	 }
 
@@ -346,7 +358,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * Prototype: void*  pUserData
 	 */ 
 	 private static native long getPUserData0(Buffer ptr);/*
-		  VkAllocationCallbacks vkObj = (VkAllocationCallbacks*)(ptr);
+		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pUserData);	 */
 
 	/**
@@ -363,7 +375,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * Prototype: PFN_vkAllocationFunction  pfnAllocation
 	 */ 
 	 private static native long getPfnAllocation0(Buffer ptr);/*
-		  VkAllocationCallbacks vkObj = (VkAllocationCallbacks*)(ptr);
+		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pfnAllocation);	 */
 
 	/**
@@ -380,7 +392,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * Prototype: PFN_vkReallocationFunction  pfnReallocation
 	 */ 
 	 private static native long getPfnReallocation0(Buffer ptr);/*
-		  VkAllocationCallbacks vkObj = (VkAllocationCallbacks*)(ptr);
+		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pfnReallocation);	 */
 
 	/**
@@ -397,7 +409,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * Prototype: PFN_vkFreeFunction  pfnFree
 	 */ 
 	 private static native long getPfnFree0(Buffer ptr);/*
-		  VkAllocationCallbacks vkObj = (VkAllocationCallbacks*)(ptr);
+		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pfnFree);	 */
 
 	/**
@@ -414,7 +426,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * Prototype: PFN_vkInternalAllocationNotification  pfnInternalAllocation
 	 */ 
 	 private static native long getPfnInternalAllocation0(Buffer ptr);/*
-		  VkAllocationCallbacks vkObj = (VkAllocationCallbacks*)(ptr);
+		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pfnInternalAllocation);	 */
 
 	/**
@@ -431,7 +443,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * Prototype: PFN_vkInternalFreeNotification  pfnInternalFree
 	 */ 
 	 private static native long getPfnInternalFree0(Buffer ptr);/*
-		  VkAllocationCallbacks vkObj = (VkAllocationCallbacks*)(ptr);
+		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pfnInternalFree);	 */
 
 

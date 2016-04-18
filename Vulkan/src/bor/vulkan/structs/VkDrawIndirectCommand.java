@@ -35,6 +35,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDrawIndirectCommand extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [105]  */
 	 private static final String TAG = "VkDrawIndirectCommand";
 
@@ -241,7 +247,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	 * Prototype: uint32_t  vertexCount
 	 */ 
 	 private static native int getVertexCount0(Buffer ptr);/*
-		  VkDrawIndirectCommand vkObj = (VkDrawIndirectCommand*)(ptr);
+		  VkDrawIndirectCommand* vkObj = (VkDrawIndirectCommand*)(ptr);
 		  return (jint) (vkObj->vertexCount);
 	 */
 
@@ -259,7 +265,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	 * Prototype: uint32_t  instanceCount
 	 */ 
 	 private static native int getInstanceCount0(Buffer ptr);/*
-		  VkDrawIndirectCommand vkObj = (VkDrawIndirectCommand*)(ptr);
+		  VkDrawIndirectCommand* vkObj = (VkDrawIndirectCommand*)(ptr);
 		  return (jint) (vkObj->instanceCount);
 	 */
 
@@ -277,7 +283,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	 * Prototype: uint32_t  firstVertex
 	 */ 
 	 private static native int getFirstVertex0(Buffer ptr);/*
-		  VkDrawIndirectCommand vkObj = (VkDrawIndirectCommand*)(ptr);
+		  VkDrawIndirectCommand* vkObj = (VkDrawIndirectCommand*)(ptr);
 		  return (jint) (vkObj->firstVertex);
 	 */
 
@@ -295,7 +301,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	 * Prototype: uint32_t  firstInstance
 	 */ 
 	 private static native int getFirstInstance0(Buffer ptr);/*
-		  VkDrawIndirectCommand vkObj = (VkDrawIndirectCommand*)(ptr);
+		  VkDrawIndirectCommand* vkObj = (VkDrawIndirectCommand*)(ptr);
 		  return (jint) (vkObj->firstInstance);
 	 */
 

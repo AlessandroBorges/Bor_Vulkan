@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkFormatProperties extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [5]  */
 	 private static final String TAG = "VkFormatProperties";
 
@@ -216,7 +222,7 @@ public class VkFormatProperties extends VkStruct {
 	 * Prototype: VkFormatFeatureFlags  linearTilingFeatures
 	 */ 
 	 private static native int getLinearTilingFeatures0(Buffer ptr);/*
-		  VkFormatProperties vkObj = (VkFormatProperties*)(ptr);
+		  VkFormatProperties* vkObj = (VkFormatProperties*)(ptr);
 		  return (jint) (vkObj->linearTilingFeatures);
 	 */
 
@@ -234,7 +240,7 @@ public class VkFormatProperties extends VkStruct {
 	 * Prototype: VkFormatFeatureFlags  optimalTilingFeatures
 	 */ 
 	 private static native int getOptimalTilingFeatures0(Buffer ptr);/*
-		  VkFormatProperties vkObj = (VkFormatProperties*)(ptr);
+		  VkFormatProperties* vkObj = (VkFormatProperties*)(ptr);
 		  return (jint) (vkObj->optimalTilingFeatures);
 	 */
 
@@ -252,7 +258,7 @@ public class VkFormatProperties extends VkStruct {
 	 * Prototype: VkFormatFeatureFlags  bufferFeatures
 	 */ 
 	 private static native int getBufferFeatures0(Buffer ptr);/*
-		  VkFormatProperties vkObj = (VkFormatProperties*)(ptr);
+		  VkFormatProperties* vkObj = (VkFormatProperties*)(ptr);
 		  return (jint) (vkObj->bufferFeatures);
 	 */
 

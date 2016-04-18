@@ -38,6 +38,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkSubpassDependency extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [84]  */
 	 private static final String TAG = "VkSubpassDependency";
 
@@ -316,7 +322,7 @@ public class VkSubpassDependency extends VkStruct {
 	 * Prototype: uint32_t  srcSubpass
 	 */ 
 	 private static native int getSrcSubpass0(Buffer ptr);/*
-		  VkSubpassDependency vkObj = (VkSubpassDependency*)(ptr);
+		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		  return (jint) (vkObj->srcSubpass);
 	 */
 
@@ -334,7 +340,7 @@ public class VkSubpassDependency extends VkStruct {
 	 * Prototype: uint32_t  dstSubpass
 	 */ 
 	 private static native int getDstSubpass0(Buffer ptr);/*
-		  VkSubpassDependency vkObj = (VkSubpassDependency*)(ptr);
+		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		  return (jint) (vkObj->dstSubpass);
 	 */
 
@@ -352,7 +358,7 @@ public class VkSubpassDependency extends VkStruct {
 	 * Prototype: VkPipelineStageFlags  srcStageMask
 	 */ 
 	 private static native int getSrcStageMask0(Buffer ptr);/*
-		  VkSubpassDependency vkObj = (VkSubpassDependency*)(ptr);
+		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		  return (jint) (vkObj->srcStageMask);
 	 */
 
@@ -370,7 +376,7 @@ public class VkSubpassDependency extends VkStruct {
 	 * Prototype: VkPipelineStageFlags  dstStageMask
 	 */ 
 	 private static native int getDstStageMask0(Buffer ptr);/*
-		  VkSubpassDependency vkObj = (VkSubpassDependency*)(ptr);
+		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		  return (jint) (vkObj->dstStageMask);
 	 */
 
@@ -388,7 +394,7 @@ public class VkSubpassDependency extends VkStruct {
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 private static native int getSrcAccessMask0(Buffer ptr);/*
-		  VkSubpassDependency vkObj = (VkSubpassDependency*)(ptr);
+		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		  return (jint) (vkObj->srcAccessMask);
 	 */
 
@@ -406,7 +412,7 @@ public class VkSubpassDependency extends VkStruct {
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 private static native int getDstAccessMask0(Buffer ptr);/*
-		  VkSubpassDependency vkObj = (VkSubpassDependency*)(ptr);
+		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		  return (jint) (vkObj->dstAccessMask);
 	 */
 
@@ -424,7 +430,7 @@ public class VkSubpassDependency extends VkStruct {
 	 * Prototype: VkDependencyFlags  dependencyFlags
 	 */ 
 	 private static native int getDependencyFlags0(Buffer ptr);/*
-		  VkSubpassDependency vkObj = (VkSubpassDependency*)(ptr);
+		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		  return (jint) (vkObj->dependencyFlags);
 	 */
 

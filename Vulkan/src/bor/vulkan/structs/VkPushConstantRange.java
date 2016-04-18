@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPushConstantRange extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [68]  */
 	 private static final String TAG = "VkPushConstantRange";
 
@@ -216,7 +222,7 @@ public class VkPushConstantRange extends VkStruct {
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
 	 private static native int getStageFlags0(Buffer ptr);/*
-		  VkPushConstantRange vkObj = (VkPushConstantRange*)(ptr);
+		  VkPushConstantRange* vkObj = (VkPushConstantRange*)(ptr);
 		  return (jint) (vkObj->stageFlags);
 	 */
 
@@ -234,7 +240,7 @@ public class VkPushConstantRange extends VkStruct {
 	 * Prototype: uint32_t  offset
 	 */ 
 	 private static native int getOffset0(Buffer ptr);/*
-		  VkPushConstantRange vkObj = (VkPushConstantRange*)(ptr);
+		  VkPushConstantRange* vkObj = (VkPushConstantRange*)(ptr);
 		  return (jint) (vkObj->offset);
 	 */
 
@@ -252,7 +258,7 @@ public class VkPushConstantRange extends VkStruct {
 	 * Prototype: uint32_t  size
 	 */ 
 	 private static native int getSize0(Buffer ptr);/*
-		  VkPushConstantRange vkObj = (VkPushConstantRange*)(ptr);
+		  VkPushConstantRange* vkObj = (VkPushConstantRange*)(ptr);
 		  return (jint) (vkObj->size);
 	 */
 

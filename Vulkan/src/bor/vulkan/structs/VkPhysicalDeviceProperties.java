@@ -13,7 +13,7 @@ import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
-
+import java.util.Arrays;
 import java.nio.Buffer;
 
 
@@ -40,6 +40,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPhysicalDeviceProperties extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [10]  */
 	 private static final String TAG = "VkPhysicalDeviceProperties";
 
@@ -101,7 +107,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * Ctor
 	 */
 	public VkPhysicalDeviceProperties(){ 
-		 super(sizeOf()); 
+		 super(sizeOf(),0); 
 	 }
 
 	/**
@@ -370,7 +376,26 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 }
 
 
-	 //////////////////////////////////
+	 /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return "VkPhysicalDeviceProperties [apiVersion=" + apiVersion() + 
+                 ",\n driverVersion=" + driverVersion()
+                +",\n vendorID=" + vendorID() 
+                +",\n deviceID=" + deviceID() 
+                + ",\n "
+                + "deviceType= " + (deviceType == null ? deviceType() : deviceType) +",\n"
+                + "deviceName= " + (deviceName == null ? deviceName() : deviceName) + ",\n"
+                + "pipelineCacheUUID=" + (pipelineCacheUUID == null ? 
+                                           Arrays.toString(pipelineCacheUUID()) : 
+                                           Arrays.toString(pipelineCacheUUID)) + ",\n"
+                + "limits=" + (limits == null ?  limits() : limits)+",\n"
+                +  "sparseProperties=" + (sparseProperties == null ?sparseProperties() :  sparseProperties) + "]\n";
+    }
+
+    //////////////////////////////////
 	 // native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
@@ -387,7 +412,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * Prototype: uint32_t  apiVersion
 	 */ 
 	 private static native int getApiVersion0(Buffer ptr);/*
-		  VkPhysicalDeviceProperties vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
 		  return (jint) (vkObj->apiVersion);
 	 */
 
@@ -405,7 +430,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * Prototype: uint32_t  driverVersion
 	 */ 
 	 private static native int getDriverVersion0(Buffer ptr);/*
-		  VkPhysicalDeviceProperties vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
 		  return (jint) (vkObj->driverVersion);
 	 */
 
@@ -423,7 +448,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * Prototype: uint32_t  vendorID
 	 */ 
 	 private static native int getVendorID0(Buffer ptr);/*
-		  VkPhysicalDeviceProperties vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
 		  return (jint) (vkObj->vendorID);
 	 */
 
@@ -441,7 +466,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * Prototype: uint32_t  deviceID
 	 */ 
 	 private static native int getDeviceID0(Buffer ptr);/*
-		  VkPhysicalDeviceProperties vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
 		  return (jint) (vkObj->deviceID);
 	 */
 
@@ -459,7 +484,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * Prototype: VkPhysicalDeviceType  deviceType
 	 */ 
 	 private static native int  getDeviceType0(Buffer ptr);/*
-		  VkPhysicalDeviceProperties vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
 		  return (VkPhysicalDeviceType) (vkObj->deviceType);
 	 */
 
@@ -467,9 +492,10 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * native SET method for field deviceName	[string]<br>
 	 * Prototype: char[]  deviceName
 	 */ 
+	 @Deprecated
 	 private static native void setDeviceName0(Buffer ptr, String _deviceName);/*
-		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  vkObj->deviceName = (char[]) (_deviceName);
+		 // VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);		  
+		 // vkObj->deviceName = _deviceName;
 	  */
 
 	/**
@@ -477,16 +503,17 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * Prototype: char[]  deviceName
 	 */ 
 	 private static native String getDeviceName0(Buffer ptr);/*
-		  VkPhysicalDeviceProperties vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->deviceName);	 */
+		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		  return (jstring)(env->NewStringUTF(vkObj->deviceName));	 */
 
 	/**
 	 * native SET method for field pipelineCacheUUID	[byte_array]<br>
 	 * Prototype: uint8_t[]  pipelineCacheUUID
 	 */ 
+	 @Deprecated
 	 private static native void setPipelineCacheUUID0(Buffer ptr, byte[] _pipelineCacheUUID);/*
-		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  vkObj->pipelineCacheUUID = (uint8_t[]) (_pipelineCacheUUID);
+		//  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		//  vkObj->pipelineCacheUUID = (uint8_t[]) (_pipelineCacheUUID);
 	  */
 
 	/**
@@ -494,8 +521,8 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * Prototype: uint8_t[]  pipelineCacheUUID
 	 */ 
 	 private static native byte[] getPipelineCacheUUID0(Buffer ptr);/*
-		  VkPhysicalDeviceProperties vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  return (byte[]) (vkObj->pipelineCacheUUID);
+		//  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		//  return (byte[]) (vkObj->pipelineCacheUUID);
 	 */
 
 	/**
@@ -503,8 +530,8 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * Prototype: VkPhysicalDeviceLimits  limits
 	 */ 
 	 private static native void setLimits0(Buffer ptr, java.nio.ByteBuffer  _limits);/*
-		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  vkObj->limits = (VkPhysicalDeviceLimits) (_limits);
+		//  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		//  vkObj->limits = (VkPhysicalDeviceLimits) (_limits);
 	  */
 
 	/**
@@ -512,8 +539,10 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * Prototype: VkPhysicalDeviceLimits  limits
 	 */ 
 	 private static native long getLimits0(Buffer ptr);/*
-		  VkPhysicalDeviceProperties vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->limits);	 */
+		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);		  
+		  VkPhysicalDeviceLimits* pLimits = &(vkObj->limits);
+		  return (jlong) reinterpret_cast<jlong>(pLimits);
+        */
 
 	/**
 	 * native SET method for field sparseProperties	[vkstruct]<br>
@@ -521,7 +550,9 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 */ 
 	 private static native void setSparseProperties0(Buffer ptr, java.nio.ByteBuffer  _sparseProperties);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  vkObj->sparseProperties = (VkPhysicalDeviceSparseProperties) (_sparseProperties);
+		  VkPhysicalDeviceSparseProperties* sparseProperties = (VkPhysicalDeviceSparseProperties*)_sparseProperties;
+		  vkObj->sparseProperties = (VkPhysicalDeviceSparseProperties) (*sparseProperties);
+		  
 	  */
 
 	/**
@@ -529,8 +560,10 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * Prototype: VkPhysicalDeviceSparseProperties  sparseProperties
 	 */ 
 	 private static native long getSparseProperties0(Buffer ptr);/*
-		  VkPhysicalDeviceProperties vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->sparseProperties);	 */
+		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		  VkPhysicalDeviceSparseProperties* pSparse = &(vkObj->sparseProperties);		  
+		  return (jlong) reinterpret_cast<jlong>(pSparse);
+	 */
 
 
 

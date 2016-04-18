@@ -35,6 +35,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkMemoryAllocateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [20]  */
 	 private static final String TAG = "VkMemoryAllocateInfo";
 
@@ -251,7 +257,7 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkMemoryAllocateInfo vkObj = (VkMemoryAllocateInfo*)(ptr);
+		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -269,7 +275,7 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkMemoryAllocateInfo vkObj = (VkMemoryAllocateInfo*)(ptr);
+		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -286,7 +292,7 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 * Prototype: VkDeviceSize  allocationSize
 	 */ 
 	 private static native long getAllocationSize0(Buffer ptr);/*
-		  VkMemoryAllocateInfo vkObj = (VkMemoryAllocateInfo*)(ptr);
+		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
 		  return (jlong) (vkObj->allocationSize);
 	 */
 
@@ -304,7 +310,7 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 * Prototype: uint32_t  memoryTypeIndex
 	 */ 
 	 private static native int getMemoryTypeIndex0(Buffer ptr);/*
-		  VkMemoryAllocateInfo vkObj = (VkMemoryAllocateInfo*)(ptr);
+		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
 		  return (jint) (vkObj->memoryTypeIndex);
 	 */
 

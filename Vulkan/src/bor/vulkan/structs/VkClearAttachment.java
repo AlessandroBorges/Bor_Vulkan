@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkClearAttachment extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [96]  */
 	 private static final String TAG = "VkClearAttachment";
 
@@ -226,7 +232,7 @@ public class VkClearAttachment extends VkStruct {
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 private static native int getAspectMask0(Buffer ptr);/*
-		  VkClearAttachment vkObj = (VkClearAttachment*)(ptr);
+		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
 		  return (jint) (vkObj->aspectMask);
 	 */
 
@@ -244,7 +250,7 @@ public class VkClearAttachment extends VkStruct {
 	 * Prototype: uint32_t  colorAttachment
 	 */ 
 	 private static native int getColorAttachment0(Buffer ptr);/*
-		  VkClearAttachment vkObj = (VkClearAttachment*)(ptr);
+		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
 		  return (jint) (vkObj->colorAttachment);
 	 */
 
@@ -262,7 +268,7 @@ public class VkClearAttachment extends VkStruct {
 	 * Prototype: VkClearValue  clearValue
 	 */ 
 	 private static native long getClearValue0(Buffer ptr);/*
-		  VkClearAttachment vkObj = (VkClearAttachment*)(ptr);
+		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->clearValue);	 */
 
 

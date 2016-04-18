@@ -38,6 +38,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPipelineShaderStageCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [48]  */
 	 private static final String TAG = "VkPipelineShaderStageCreateInfo";
 
@@ -348,7 +354,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkPipelineShaderStageCreateInfo vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -366,7 +372,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkPipelineShaderStageCreateInfo vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -383,7 +389,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 * Prototype: VkPipelineShaderStageCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkPipelineShaderStageCreateInfo vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -401,7 +407,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 * Prototype: VkShaderStageFlagBits  stage
 	 */ 
 	 private static native int  getStage0(Buffer ptr);/*
-		  VkPipelineShaderStageCreateInfo vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		  return (VkShaderStageFlagBits) (vkObj->stage);
 	 */
 
@@ -419,7 +425,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 * Prototype: VkShaderModule  module
 	 */ 
 	 private static native long getModule0(Buffer ptr);/*
-		  VkPipelineShaderStageCreateInfo vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->module);	 */
 
 	/**
@@ -436,8 +442,8 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 * Prototype: const char*  pName
 	 */ 
 	 private static native String getPName0(Buffer ptr);/*
-		  VkPipelineShaderStageCreateInfo vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->pName);	 */
+		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  return (jstring)(env->NewStringUTF(vkObj->pName));	 */
 
 	/**
 	 * native SET method for field pSpecializationInfo	[vkstruct]<br>
@@ -453,7 +459,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 * Prototype: const VkSpecializationInfo*  pSpecializationInfo
 	 */ 
 	 private static native long getPSpecializationInfo0(Buffer ptr);/*
-		  VkPipelineShaderStageCreateInfo vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pSpecializationInfo);	 */
 
 

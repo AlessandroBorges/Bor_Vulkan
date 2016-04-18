@@ -35,6 +35,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkSpecializationInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [47]  */
 	 private static final String TAG = "VkSpecializationInfo";
 
@@ -226,8 +232,11 @@ public class VkSpecializationInfo extends VkStruct {
 	/**
 	 * Get method for field pData	[buffer]<br>
 	 * Prototype: const void*  pData
+	 * @TODO - check behavior for return 
 	 */ 
-	 public java.nio.Buffer pData(){		 
+	 public java.nio.Buffer pData(){
+//		 java.nio.Buffer var = getPData0(super.ptr);
+//		 this.pData = var;
 		 return this.pData;
 	 }
 
@@ -249,7 +258,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 * Prototype: uint32_t  mapEntryCount
 	 */ 
 	 private static native int getMapEntryCount0(Buffer ptr);/*
-		  VkSpecializationInfo vkObj = (VkSpecializationInfo*)(ptr);
+		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
 		  return (jint) (vkObj->mapEntryCount);
 	 */
 
@@ -267,7 +276,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 * Prototype: const VkSpecializationMapEntry*  pMapEntries
 	 */ 
 	 private static native long getPMapEntries0(Buffer ptr);/*
-		  VkSpecializationInfo vkObj = (VkSpecializationInfo*)(ptr);
+		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pMapEntries);	 */
 
 	/**
@@ -284,7 +293,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 * Prototype: size_t  dataSize
 	 */ 
 	 private static native long getDataSize0(Buffer ptr);/*
-		  VkSpecializationInfo vkObj = (VkSpecializationInfo*)(ptr);
+		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
 		  return (jlong) (vkObj->dataSize);
 	 */
 
@@ -302,7 +311,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 * Prototype: const void*  pData
 	 */ 
 	 private static native long getPData0(Buffer ptr);/*
-		  VkSpecializationInfo vkObj = (VkSpecializationInfo*)(ptr);
+		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pData);	 */
 
 

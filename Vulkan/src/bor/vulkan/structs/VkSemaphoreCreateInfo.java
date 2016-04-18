@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkSemaphoreCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [34]  */
 	 private static final String TAG = "VkSemaphoreCreateInfo";
 
@@ -226,7 +232,7 @@ public class VkSemaphoreCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkSemaphoreCreateInfo vkObj = (VkSemaphoreCreateInfo*)(ptr);
+		  VkSemaphoreCreateInfo* vkObj = (VkSemaphoreCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -244,7 +250,7 @@ public class VkSemaphoreCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkSemaphoreCreateInfo vkObj = (VkSemaphoreCreateInfo*)(ptr);
+		  VkSemaphoreCreateInfo* vkObj = (VkSemaphoreCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -261,7 +267,7 @@ public class VkSemaphoreCreateInfo extends VkStruct {
 	 * Prototype: VkSemaphoreCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkSemaphoreCreateInfo vkObj = (VkSemaphoreCreateInfo*)(ptr);
+		  VkSemaphoreCreateInfo* vkObj = (VkSemaphoreCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 

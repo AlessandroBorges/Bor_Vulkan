@@ -39,6 +39,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [64]  */
 	 private static final String TAG = "VkPipelineColorBlendStateCreateInfo";
 
@@ -362,7 +368,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkPipelineColorBlendStateCreateInfo vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
+		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -380,7 +386,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkPipelineColorBlendStateCreateInfo vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
+		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -397,7 +403,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 * Prototype: VkPipelineColorBlendStateCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkPipelineColorBlendStateCreateInfo vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
+		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -415,7 +421,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 * Prototype: VkBool32  logicOpEnable
 	 */ 
 	 private static native boolean getLogicOpEnable0(Buffer ptr);/*
-		  VkPipelineColorBlendStateCreateInfo vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
+		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->logicOpEnable);
 	 */
 
@@ -433,7 +439,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 * Prototype: VkLogicOp  logicOp
 	 */ 
 	 private static native int  getLogicOp0(Buffer ptr);/*
-		  VkPipelineColorBlendStateCreateInfo vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
+		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		  return (VkLogicOp) (vkObj->logicOp);
 	 */
 
@@ -451,7 +457,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 * Prototype: uint32_t  attachmentCount
 	 */ 
 	 private static native int getAttachmentCount0(Buffer ptr);/*
-		  VkPipelineColorBlendStateCreateInfo vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
+		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->attachmentCount);
 	 */
 
@@ -469,7 +475,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 * Prototype: const VkPipelineColorBlendAttachmentState*  pAttachments
 	 */ 
 	 private static native long getPAttachments0(Buffer ptr);/*
-		  VkPipelineColorBlendStateCreateInfo vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
+		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pAttachments);	 */
 
 	/**
@@ -486,7 +492,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 * Prototype: float[]  blendConstants
 	 */ 
 	 private static native float[] getBlendConstants0(Buffer ptr);/*
-		  VkPipelineColorBlendStateCreateInfo vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
+		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		  return (float[]) (vkObj->blendConstants);
 	 */
 

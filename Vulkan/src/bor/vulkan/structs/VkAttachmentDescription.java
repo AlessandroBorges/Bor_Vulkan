@@ -40,6 +40,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkAttachmentDescription extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [81]  */
 	 private static final String TAG = "VkAttachmentDescription";
 
@@ -374,7 +380,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Prototype: VkAttachmentDescriptionFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkAttachmentDescription vkObj = (VkAttachmentDescription*)(ptr);
+		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -392,7 +398,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Prototype: VkFormat  format
 	 */ 
 	 private static native int  getFormat0(Buffer ptr);/*
-		  VkAttachmentDescription vkObj = (VkAttachmentDescription*)(ptr);
+		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  return (VkFormat) (vkObj->format);
 	 */
 
@@ -410,7 +416,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Prototype: VkSampleCountFlagBits  samples
 	 */ 
 	 private static native int  getSamples0(Buffer ptr);/*
-		  VkAttachmentDescription vkObj = (VkAttachmentDescription*)(ptr);
+		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  return (VkSampleCountFlagBits) (vkObj->samples);
 	 */
 
@@ -428,7 +434,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Prototype: VkAttachmentLoadOp  loadOp
 	 */ 
 	 private static native int  getLoadOp0(Buffer ptr);/*
-		  VkAttachmentDescription vkObj = (VkAttachmentDescription*)(ptr);
+		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  return (VkAttachmentLoadOp) (vkObj->loadOp);
 	 */
 
@@ -446,7 +452,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Prototype: VkAttachmentStoreOp  storeOp
 	 */ 
 	 private static native int  getStoreOp0(Buffer ptr);/*
-		  VkAttachmentDescription vkObj = (VkAttachmentDescription*)(ptr);
+		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  return (VkAttachmentStoreOp) (vkObj->storeOp);
 	 */
 
@@ -464,7 +470,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Prototype: VkAttachmentLoadOp  stencilLoadOp
 	 */ 
 	 private static native int  getStencilLoadOp0(Buffer ptr);/*
-		  VkAttachmentDescription vkObj = (VkAttachmentDescription*)(ptr);
+		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  return (VkAttachmentLoadOp) (vkObj->stencilLoadOp);
 	 */
 
@@ -482,7 +488,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Prototype: VkAttachmentStoreOp  stencilStoreOp
 	 */ 
 	 private static native int  getStencilStoreOp0(Buffer ptr);/*
-		  VkAttachmentDescription vkObj = (VkAttachmentDescription*)(ptr);
+		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  return (VkAttachmentStoreOp) (vkObj->stencilStoreOp);
 	 */
 
@@ -500,7 +506,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Prototype: VkImageLayout  initialLayout
 	 */ 
 	 private static native int  getInitialLayout0(Buffer ptr);/*
-		  VkAttachmentDescription vkObj = (VkAttachmentDescription*)(ptr);
+		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  return (VkImageLayout) (vkObj->initialLayout);
 	 */
 
@@ -518,7 +524,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Prototype: VkImageLayout  finalLayout
 	 */ 
 	 private static native int  getFinalLayout0(Buffer ptr);/*
-		  VkAttachmentDescription vkObj = (VkAttachmentDescription*)(ptr);
+		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  return (VkImageLayout) (vkObj->finalLayout);
 	 */
 

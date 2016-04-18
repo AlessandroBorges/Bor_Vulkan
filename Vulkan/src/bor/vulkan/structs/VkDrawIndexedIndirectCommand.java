@@ -36,6 +36,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkDrawIndexedIndirectCommand extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [104]  */
 	 private static final String TAG = "VkDrawIndexedIndirectCommand";
 
@@ -266,7 +272,7 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	 * Prototype: uint32_t  indexCount
 	 */ 
 	 private static native int getIndexCount0(Buffer ptr);/*
-		  VkDrawIndexedIndirectCommand vkObj = (VkDrawIndexedIndirectCommand*)(ptr);
+		  VkDrawIndexedIndirectCommand* vkObj = (VkDrawIndexedIndirectCommand*)(ptr);
 		  return (jint) (vkObj->indexCount);
 	 */
 
@@ -284,7 +290,7 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	 * Prototype: uint32_t  instanceCount
 	 */ 
 	 private static native int getInstanceCount0(Buffer ptr);/*
-		  VkDrawIndexedIndirectCommand vkObj = (VkDrawIndexedIndirectCommand*)(ptr);
+		  VkDrawIndexedIndirectCommand* vkObj = (VkDrawIndexedIndirectCommand*)(ptr);
 		  return (jint) (vkObj->instanceCount);
 	 */
 
@@ -302,7 +308,7 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	 * Prototype: uint32_t  firstIndex
 	 */ 
 	 private static native int getFirstIndex0(Buffer ptr);/*
-		  VkDrawIndexedIndirectCommand vkObj = (VkDrawIndexedIndirectCommand*)(ptr);
+		  VkDrawIndexedIndirectCommand* vkObj = (VkDrawIndexedIndirectCommand*)(ptr);
 		  return (jint) (vkObj->firstIndex);
 	 */
 
@@ -320,7 +326,7 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	 * Prototype: int32_t  vertexOffset
 	 */ 
 	 private static native int getVertexOffset0(Buffer ptr);/*
-		  VkDrawIndexedIndirectCommand vkObj = (VkDrawIndexedIndirectCommand*)(ptr);
+		  VkDrawIndexedIndirectCommand* vkObj = (VkDrawIndexedIndirectCommand*)(ptr);
 		  return (jint) (vkObj->vertexOffset);
 	 */
 
@@ -338,7 +344,7 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	 * Prototype: uint32_t  firstInstance
 	 */ 
 	 private static native int getFirstInstance0(Buffer ptr);/*
-		  VkDrawIndexedIndirectCommand vkObj = (VkDrawIndexedIndirectCommand*)(ptr);
+		  VkDrawIndexedIndirectCommand* vkObj = (VkDrawIndexedIndirectCommand*)(ptr);
 		  return (jint) (vkObj->firstInstance);
 	 */
 

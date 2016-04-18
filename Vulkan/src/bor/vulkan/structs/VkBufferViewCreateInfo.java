@@ -38,6 +38,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkBufferViewCreateInfo extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [38]  */
 	 private static final String TAG = "VkBufferViewCreateInfo";
 
@@ -338,7 +344,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
-		  VkBufferViewCreateInfo vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
 	 */
 
@@ -356,7 +362,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
-		  VkBufferViewCreateInfo vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
 
 	/**
@@ -373,7 +379,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 * Prototype: VkBufferViewCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
-		  VkBufferViewCreateInfo vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
 	 */
 
@@ -391,7 +397,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 private static native long getBuffer0(Buffer ptr);/*
-		  VkBufferViewCreateInfo vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->buffer);	 */
 
 	/**
@@ -408,7 +414,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 * Prototype: VkFormat  format
 	 */ 
 	 private static native int  getFormat0(Buffer ptr);/*
-		  VkBufferViewCreateInfo vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		  return (VkFormat) (vkObj->format);
 	 */
 
@@ -426,7 +432,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 private static native long getOffset0(Buffer ptr);/*
-		  VkBufferViewCreateInfo vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		  return (jlong) (vkObj->offset);
 	 */
 
@@ -444,7 +450,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 * Prototype: VkDeviceSize  range
 	 */ 
 	 private static native long getRange0(Buffer ptr);/*
-		  VkBufferViewCreateInfo vkObj = (VkBufferViewCreateInfo*)(ptr);
+		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		  return (jlong) (vkObj->range);
 	 */
 

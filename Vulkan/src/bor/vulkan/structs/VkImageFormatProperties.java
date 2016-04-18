@@ -36,6 +36,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkImageFormatProperties extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [7]  */
 	 private static final String TAG = "VkImageFormatProperties";
 
@@ -276,7 +282,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 * Prototype: VkExtent3D  maxExtent
 	 */ 
 	 private static native long getMaxExtent0(Buffer ptr);/*
-		  VkImageFormatProperties vkObj = (VkImageFormatProperties*)(ptr);
+		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->maxExtent);	 */
 
 	/**
@@ -293,7 +299,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 * Prototype: uint32_t  maxMipLevels
 	 */ 
 	 private static native int getMaxMipLevels0(Buffer ptr);/*
-		  VkImageFormatProperties vkObj = (VkImageFormatProperties*)(ptr);
+		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
 		  return (jint) (vkObj->maxMipLevels);
 	 */
 
@@ -311,7 +317,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 * Prototype: uint32_t  maxArrayLayers
 	 */ 
 	 private static native int getMaxArrayLayers0(Buffer ptr);/*
-		  VkImageFormatProperties vkObj = (VkImageFormatProperties*)(ptr);
+		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
 		  return (jint) (vkObj->maxArrayLayers);
 	 */
 
@@ -329,7 +335,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 * Prototype: VkSampleCountFlags  sampleCounts
 	 */ 
 	 private static native int getSampleCounts0(Buffer ptr);/*
-		  VkImageFormatProperties vkObj = (VkImageFormatProperties*)(ptr);
+		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
 		  return (jint) (vkObj->sampleCounts);
 	 */
 
@@ -347,7 +353,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 * Prototype: VkDeviceSize  maxResourceSize
 	 */ 
 	 private static native long getMaxResourceSize0(Buffer ptr);/*
-		  VkImageFormatProperties vkObj = (VkImageFormatProperties*)(ptr);
+		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
 		  return (jlong) (vkObj->maxResourceSize);
 	 */
 

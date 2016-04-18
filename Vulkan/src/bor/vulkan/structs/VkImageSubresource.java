@@ -34,6 +34,12 @@ import java.nio.Buffer;
  * @version Ver. 0.8.01 (beta) 
  */
 public class VkImageSubresource extends VkStruct {
+
+    //@formatter:off
+    /*JNI
+    #include <BorVulkan.hpp>
+    */  
+
 	/** TAG of this structure [28]  */
 	 private static final String TAG = "VkImageSubresource";
 
@@ -216,7 +222,7 @@ public class VkImageSubresource extends VkStruct {
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 private static native int getAspectMask0(Buffer ptr);/*
-		  VkImageSubresource vkObj = (VkImageSubresource*)(ptr);
+		  VkImageSubresource* vkObj = (VkImageSubresource*)(ptr);
 		  return (jint) (vkObj->aspectMask);
 	 */
 
@@ -234,7 +240,7 @@ public class VkImageSubresource extends VkStruct {
 	 * Prototype: uint32_t  mipLevel
 	 */ 
 	 private static native int getMipLevel0(Buffer ptr);/*
-		  VkImageSubresource vkObj = (VkImageSubresource*)(ptr);
+		  VkImageSubresource* vkObj = (VkImageSubresource*)(ptr);
 		  return (jint) (vkObj->mipLevel);
 	 */
 
@@ -252,7 +258,7 @@ public class VkImageSubresource extends VkStruct {
 	 * Prototype: uint32_t  arrayLayer
 	 */ 
 	 private static native int getArrayLayer0(Buffer ptr);/*
-		  VkImageSubresource vkObj = (VkImageSubresource*)(ptr);
+		  VkImageSubresource* vkObj = (VkImageSubresource*)(ptr);
 		  return (jint) (vkObj->arrayLayer);
 	 */
 
