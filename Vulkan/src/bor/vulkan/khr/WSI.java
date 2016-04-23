@@ -1627,7 +1627,7 @@ public VkResult vkGetDisplayPlaneSupportedDisplaysKHR(
                      pDisplayCount ,
                      buffers);
      
-     if(pDisplays != null){
+     if(pDisplays != null && buffers != null){
          for (int i = 0; i < buffers.length; i++) {
             pDisplays[i] = buffers[i] == null ? null : new VkHandle(buffers[i]);
         }
@@ -1871,13 +1871,14 @@ private static native int  vkGetPhysicalDeviceSurfaceCapabilitiesKHR0(
 */
 public VkResult vkGetPhysicalDeviceSurfaceFormatsKHR(
          VkPhysicalDevice physicalDevice,
-         VkSurfaceKHR surface,
-         int[] pSurfaceFormatCount,
+         VkSurfaceKHR surface,        
          List<VkSurfaceFormatKHR>  pSurfaceFormats){
     
- if(pSurfaceFormats != null){
-     pSurfaceFormats.clear();
+ if(pSurfaceFormats == null){
+     throw new NullPointerException("pSurfaceFormats is null.");
  }
+ pSurfaceFormats.clear();
+ int[] pSurfaceFormatCount = {0};
  ByteBuffer[] bigBuffer = pSurfaceFormats ==null ? null : new ByteBuffer[1];
  int[] sizeofStr = {0};
  int  _val = vkGetPhysicalDeviceSurfaceFormatsKHR0(
@@ -1896,7 +1897,7 @@ public VkResult vkGetPhysicalDeviceSurfaceFormatsKHR(
      master.rewind();
      
      int len = pSurfaceFormatCount[0];
-     if(len==1){
+     if(len==1 && pSurfaceFormats != null){
          VkSurfaceFormatKHR obj = new VkSurfaceFormatKHR(master);
          pSurfaceFormats.add(obj);
          return res;

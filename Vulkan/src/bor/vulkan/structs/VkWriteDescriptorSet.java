@@ -113,7 +113,7 @@ public class VkWriteDescriptorSet extends VkStruct {
 	 * Ctor
 	 */
 	public VkWriteDescriptorSet(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

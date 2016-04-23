@@ -71,7 +71,7 @@ public class VkSpecializationMapEntry extends VkStruct {
 	 * Ctor
 	 */
 	public VkSpecializationMapEntry(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

@@ -84,7 +84,7 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 	 * Ctor
 	 */
 	public VkWin32SurfaceCreateInfoKHR(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

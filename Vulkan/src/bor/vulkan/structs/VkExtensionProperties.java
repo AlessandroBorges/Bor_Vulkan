@@ -65,7 +65,7 @@ public class VkExtensionProperties extends VkStruct {
 	 * Ctor
 	 */
 	public VkExtensionProperties(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

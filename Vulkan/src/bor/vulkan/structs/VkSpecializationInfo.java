@@ -77,7 +77,7 @@ public class VkSpecializationInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkSpecializationInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

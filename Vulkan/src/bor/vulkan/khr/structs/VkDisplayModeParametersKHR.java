@@ -66,7 +66,7 @@ public class VkDisplayModeParametersKHR extends VkStruct {
 	 * Ctor
 	 */
 	public VkDisplayModeParametersKHR(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

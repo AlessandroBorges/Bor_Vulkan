@@ -77,7 +77,7 @@ public class VkVertexInputAttributeDescription extends VkStruct {
 	 * Ctor
 	 */
 	public VkVertexInputAttributeDescription(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

@@ -131,7 +131,7 @@ public class VkPipelineRasterizationStateCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkPipelineRasterizationStateCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

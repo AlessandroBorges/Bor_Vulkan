@@ -107,7 +107,7 @@ public class VkPipelineMultisampleStateCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkPipelineMultisampleStateCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

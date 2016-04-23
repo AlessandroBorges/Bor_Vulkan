@@ -77,7 +77,7 @@ public class VkLayerProperties extends VkStruct {
 	 * Ctor
 	 */
 	public VkLayerProperties(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

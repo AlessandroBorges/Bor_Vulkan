@@ -77,7 +77,7 @@ public class VkPipelineTessellationStateCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkPipelineTessellationStateCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

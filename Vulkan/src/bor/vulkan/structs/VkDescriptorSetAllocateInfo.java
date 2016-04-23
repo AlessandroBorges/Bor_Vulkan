@@ -83,7 +83,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkDescriptorSetAllocateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

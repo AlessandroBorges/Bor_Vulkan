@@ -101,7 +101,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkBufferCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

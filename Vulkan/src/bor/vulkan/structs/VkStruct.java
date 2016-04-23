@@ -223,8 +223,8 @@ public abstract class VkStruct implements VkObject{
     
     /**
      * creates a instance of this struct with a data in native side.    
-     * @param structID - Id Of this 
-     */
+     * @param structID - Id Of this struct
+     */  
     protected VkStruct(int structID){
         this(sizeOf(structID), 0);       
     }
@@ -252,7 +252,7 @@ public abstract class VkStruct implements VkObject{
      * @param address - native address to wrap with an Direct ByteBuffer  
      * @param size - size in bytes pointed by this address
      */
-    protected VkStruct(long address, int size){         
+    protected VkStruct(final long address, int size){         
          setPointer(address, size);
     }
     

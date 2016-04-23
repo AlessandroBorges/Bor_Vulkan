@@ -71,7 +71,7 @@ public class VkFormatProperties extends VkStruct {
 	 * Ctor
 	 */
 	public VkFormatProperties(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

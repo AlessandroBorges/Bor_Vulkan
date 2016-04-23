@@ -83,7 +83,7 @@ public class VkShaderModuleCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkShaderModuleCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

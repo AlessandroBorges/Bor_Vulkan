@@ -2,10 +2,10 @@
  * Class wrapping Vulkan's VkDeviceQueueCreateInfo struct.
  * 
  * Bor_Vulkan Project Ver. 0.8.01 (beta)
- * Licence terms: 
+ * Licence terms:
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
- * See https://opensource.org/licenses/MIT 
+ * See https://opensource.org/licenses/MIT
  */
 package bor.vulkan.structs;
 
@@ -16,12 +16,12 @@ import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.nio.Buffer;
 
-
 /**
- *  Project Bor-Vulkan 
- *  Class for Java-Vulkan integration 
- *  This class is a Java front end for struct VkDeviceQueueCreateInfo. 
- *  <h3>Prototype:</h3>
+ * Project Bor-Vulkan
+ * Class for Java-Vulkan integration
+ * This class is a Java front end for struct VkDeviceQueueCreateInfo.
+ * <h3>Prototype:</h3>
+ * 
  * <pre>
  * typedef struct VkDeviceQueueCreateInfo {
  *     VkStructureType             sType;
@@ -33,8 +33,8 @@ import java.nio.Buffer;
  * } VkDeviceQueueCreateInfo;
  * </pre>
  * 
- * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @author Alessandro Borges
+ * @version Ver. 0.8.01 (beta)
  */
 public class VkDeviceQueueCreateInfo extends VkStruct {
 
@@ -89,7 +89,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkDeviceQueueCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(sizeOf(),0); 
 	 }
 
 	/**

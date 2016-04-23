@@ -107,7 +107,7 @@ public class VkAttachmentDescription extends VkStruct {
 	 * Ctor
 	 */
 	public VkAttachmentDescription(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

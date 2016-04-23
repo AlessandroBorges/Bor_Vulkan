@@ -83,7 +83,7 @@ public class VkPipelineDynamicStateCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkPipelineDynamicStateCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

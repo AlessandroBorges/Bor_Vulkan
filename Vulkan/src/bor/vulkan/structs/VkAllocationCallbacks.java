@@ -9,13 +9,16 @@
  */
 package bor.vulkan.structs;
 
-import bor.util.Utils;
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 
-import java.nio.Buffer;
+import bor.util.Utils;
+import bor.vulkan.P;
+import bor.vulkan.PFNvkAllocationFunction;
+import bor.vulkan.PFNvkFreeFunction;
+import bor.vulkan.PFNvkInternalAllocationNotification;
+import bor.vulkan.PFNvkInternalFreeNotification;
+import bor.vulkan.PFNvkReallocationFunction;
 
 
 /**
@@ -90,7 +93,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * Ctor
 	 */
 	public VkAllocationCallbacks(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

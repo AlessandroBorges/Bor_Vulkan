@@ -101,7 +101,7 @@ public class VkPipelineColorBlendAttachmentState extends VkStruct {
 	 * Ctor
 	 */
 	public VkPipelineColorBlendAttachmentState(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

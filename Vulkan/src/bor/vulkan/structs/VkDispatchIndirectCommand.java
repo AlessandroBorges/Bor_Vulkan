@@ -71,7 +71,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 * Ctor
 	 */
 	public VkDispatchIndirectCommand(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

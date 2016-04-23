@@ -65,7 +65,7 @@ public class VkExtent2D extends VkStruct {
 	 * Ctor
 	 */
 	public VkExtent2D(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

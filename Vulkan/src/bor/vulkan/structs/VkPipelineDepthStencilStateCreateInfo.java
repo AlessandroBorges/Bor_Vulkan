@@ -125,7 +125,7 @@ public class VkPipelineDepthStencilStateCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkPipelineDepthStencilStateCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

@@ -65,7 +65,7 @@ public class VkAttachmentReference extends VkStruct {
 	 * Ctor
 	 */
 	public VkAttachmentReference(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

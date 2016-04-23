@@ -83,7 +83,7 @@ public class VkImageSubresourceRange extends VkStruct {
 	 * Ctor
 	 */
 	public VkImageSubresourceRange(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

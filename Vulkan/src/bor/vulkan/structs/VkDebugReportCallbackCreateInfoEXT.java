@@ -9,13 +9,14 @@
  */
 package bor.vulkan.structs;
 
-import bor.util.Utils;
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 
-import java.nio.Buffer;
+import bor.vulkan.P;
+import bor.vulkan.PFNvkDebugReportCallbackEXT;
+import bor.vulkan.VkHandle;
+import bor.vulkan.VkObject;
+import bor.vulkan.enumerations.VkStructureType;
 
 
 /**
@@ -84,7 +85,7 @@ public class VkDebugReportCallbackCreateInfoEXT extends VkStruct {
 	 * Ctor
 	 */
 	public VkDebugReportCallbackCreateInfoEXT(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

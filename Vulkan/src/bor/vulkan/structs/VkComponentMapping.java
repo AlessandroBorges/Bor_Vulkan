@@ -77,7 +77,7 @@ public class VkComponentMapping extends VkStruct {
 	 * Ctor
 	 */
 	public VkComponentMapping(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

@@ -71,7 +71,7 @@ public class VkPushConstantRange extends VkStruct {
 	 * Ctor
 	 */
 	public VkPushConstantRange(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

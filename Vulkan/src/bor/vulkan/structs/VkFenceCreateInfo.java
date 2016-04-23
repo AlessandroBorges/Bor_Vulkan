@@ -71,7 +71,7 @@ public class VkFenceCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkFenceCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

@@ -95,7 +95,7 @@ public class VkPipelineShaderStageCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkPipelineShaderStageCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

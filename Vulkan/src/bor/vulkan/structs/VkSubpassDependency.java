@@ -95,7 +95,7 @@ public class VkSubpassDependency extends VkStruct {
 	 * Ctor
 	 */
 	public VkSubpassDependency(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

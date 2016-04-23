@@ -95,7 +95,7 @@ public class VkStencilOpState extends VkStruct {
 	 * Ctor
 	 */
 	public VkStencilOpState(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

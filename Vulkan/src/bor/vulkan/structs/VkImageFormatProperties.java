@@ -83,7 +83,7 @@ public class VkImageFormatProperties extends VkStruct {
 	 * Ctor
 	 */
 	public VkImageFormatProperties(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

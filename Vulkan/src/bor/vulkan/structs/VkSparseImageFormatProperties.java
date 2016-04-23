@@ -71,7 +71,7 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 * Ctor
 	 */
 	public VkSparseImageFormatProperties(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

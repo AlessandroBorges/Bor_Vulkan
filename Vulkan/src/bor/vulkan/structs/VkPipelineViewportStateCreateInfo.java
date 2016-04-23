@@ -95,7 +95,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkPipelineViewportStateCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

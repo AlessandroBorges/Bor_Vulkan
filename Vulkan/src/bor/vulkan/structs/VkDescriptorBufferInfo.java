@@ -71,7 +71,7 @@ public class VkDescriptorBufferInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkDescriptorBufferInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

@@ -83,7 +83,7 @@ public class VkSubresourceLayout extends VkStruct {
 	 * Ctor
 	 */
 	public VkSubresourceLayout(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

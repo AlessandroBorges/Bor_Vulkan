@@ -65,7 +65,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 * Ctor
 	 */
 	public VkDescriptorPoolSize(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

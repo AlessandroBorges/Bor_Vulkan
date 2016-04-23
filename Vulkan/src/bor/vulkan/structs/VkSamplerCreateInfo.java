@@ -161,7 +161,7 @@ public class VkSamplerCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkSamplerCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

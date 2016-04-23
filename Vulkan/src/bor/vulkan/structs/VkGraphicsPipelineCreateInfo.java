@@ -167,7 +167,7 @@ public class VkGraphicsPipelineCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkGraphicsPipelineCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

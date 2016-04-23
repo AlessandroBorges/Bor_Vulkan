@@ -95,7 +95,7 @@ public class VkPipelineLayoutCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkPipelineLayoutCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

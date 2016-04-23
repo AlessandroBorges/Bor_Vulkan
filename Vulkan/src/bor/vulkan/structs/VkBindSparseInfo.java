@@ -125,7 +125,7 @@ public class VkBindSparseInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkBindSparseInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

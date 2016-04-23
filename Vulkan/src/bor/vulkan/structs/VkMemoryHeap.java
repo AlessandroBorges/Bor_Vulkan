@@ -65,7 +65,7 @@ public class VkMemoryHeap extends VkStruct {
 	 * Ctor
 	 */
 	public VkMemoryHeap(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

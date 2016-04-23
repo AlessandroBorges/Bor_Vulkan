@@ -89,7 +89,7 @@ public class VkViewport extends VkStruct {
 	 * Ctor
 	 */
 	public VkViewport(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

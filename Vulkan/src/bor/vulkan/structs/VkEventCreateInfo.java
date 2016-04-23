@@ -71,7 +71,7 @@ public class VkEventCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkEventCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

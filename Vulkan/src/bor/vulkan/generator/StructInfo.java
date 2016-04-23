@@ -203,7 +203,7 @@ public class StructInfo {
         //// Ctor
         /////////////////////////////////////////////
         output += "\t/**\n\t * Ctor\n\t */\n";
-        output += "\tpublic " + name + "(){ \n\t\t super(sizeOf()); \n\t }\n\n";
+        output += "\tpublic " + name + "(){ \n\t\t super(TAG_ID);\n\t }\n\n";
         
         output += "\t/**\n\t * Ctor with ByteBuffer\n"
                 + "\t * @param nativeBuffer - Direct bytebuffer for this struct \n"

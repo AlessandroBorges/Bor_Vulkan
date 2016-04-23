@@ -77,7 +77,7 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * Ctor
 	 */
 	public VkPhysicalDeviceMemoryProperties(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

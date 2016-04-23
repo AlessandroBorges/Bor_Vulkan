@@ -383,7 +383,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Ctor
 	 */
 	public VkPhysicalDeviceFeatures(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

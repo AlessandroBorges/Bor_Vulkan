@@ -71,7 +71,7 @@ public class VkMemoryRequirements extends VkStruct {
 	 * Ctor
 	 */
 	public VkMemoryRequirements(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

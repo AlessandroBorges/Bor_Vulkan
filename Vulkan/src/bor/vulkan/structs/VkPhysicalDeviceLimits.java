@@ -689,7 +689,7 @@ public class VkPhysicalDeviceLimits extends VkStruct {
 	 * Ctor
 	 */
 	public VkPhysicalDeviceLimits(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

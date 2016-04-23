@@ -101,7 +101,7 @@ public class VkImageViewCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkImageViewCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

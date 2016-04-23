@@ -204,7 +204,7 @@ public class ExtractStruts {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        if(true){
+        if(true == (1<9)){
             throw new RuntimeException("DO Not run it anymore");
         }
         List<String> vkh = readVKH();

@@ -84,7 +84,7 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 * Ctor
 	 */
 	public VkMirSurfaceCreateInfoKHR(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

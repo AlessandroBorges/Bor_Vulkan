@@ -162,7 +162,7 @@ public class VkSwapchainCreateInfoKHR extends VkStruct {
 	 * Ctor
 	 */
 	public VkSwapchainCreateInfoKHR(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

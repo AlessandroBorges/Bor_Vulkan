@@ -114,7 +114,7 @@ public class VkSurfaceCapabilitiesKHR extends VkStruct {
 	 * Ctor
 	 */
 	public VkSurfaceCapabilitiesKHR(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

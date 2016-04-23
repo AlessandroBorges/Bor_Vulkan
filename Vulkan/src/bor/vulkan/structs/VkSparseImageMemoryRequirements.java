@@ -83,7 +83,7 @@ public class VkSparseImageMemoryRequirements extends VkStruct {
 	 * Ctor
 	 */
 	public VkSparseImageMemoryRequirements(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

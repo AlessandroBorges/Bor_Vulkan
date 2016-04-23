@@ -71,7 +71,7 @@ public class VkSemaphoreCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkSemaphoreCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

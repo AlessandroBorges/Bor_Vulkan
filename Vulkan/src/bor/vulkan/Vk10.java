@@ -272,7 +272,7 @@ public class Vk10 extends Vulkan {
        //sanity check
        if(pPhysicalDeviceCount==null || pPhysicalDeviceCount.length < 1){
            pPhysicalDeviceCount = new int[1];
-           pPhysicalDeviceCount[0] = pPhysicalDevices.length;
+           pPhysicalDeviceCount[0] = pPhysicalDevices==null? 0: pPhysicalDevices.length;
        }
              
        int res = vkEnumeratePhysicalDevices0(instance.getPointer(),
@@ -280,7 +280,7 @@ public class Vk10 extends Vulkan {
                                               pPhysicalDevicesArray,
                                               size);
        // prepare to return
-       if (pPhysicalDevices != null && res>=0) {
+       if (pPhysicalDevices != null && res>=0 && pPhysicalDevicesArray!= null) {
            for (int i = 0; i < pPhysicalDevicesArray.length; i++) {
                ByteBuffer handle = pPhysicalDevicesArray[i];
                if (handle != null) {

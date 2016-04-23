@@ -89,7 +89,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkQueryPoolCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

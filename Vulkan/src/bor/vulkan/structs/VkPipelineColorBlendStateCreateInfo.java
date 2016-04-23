@@ -101,7 +101,7 @@ public class VkPipelineColorBlendStateCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkPipelineColorBlendStateCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

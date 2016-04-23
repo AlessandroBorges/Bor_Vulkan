@@ -107,7 +107,7 @@ public class VkCopyDescriptorSet extends VkStruct {
 	 * Ctor
 	 */
 	public VkCopyDescriptorSet(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

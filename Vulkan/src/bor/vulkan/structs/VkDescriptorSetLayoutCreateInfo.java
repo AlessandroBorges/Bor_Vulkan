@@ -83,7 +83,7 @@ public class VkDescriptorSetLayoutCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkDescriptorSetLayoutCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

@@ -77,7 +77,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 * Ctor
 	 */
 	public VkQueueFamilyProperties(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

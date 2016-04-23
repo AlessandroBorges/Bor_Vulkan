@@ -83,7 +83,7 @@ public class VkMappedMemoryRange extends VkStruct {
 	 * Ctor
 	 */
 	public VkMappedMemoryRange(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

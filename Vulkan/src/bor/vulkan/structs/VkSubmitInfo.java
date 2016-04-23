@@ -107,7 +107,7 @@ public class VkSubmitInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkSubmitInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

@@ -71,7 +71,7 @@ public class VkDescriptorImageInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkDescriptorImageInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

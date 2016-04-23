@@ -107,7 +107,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkFramebufferCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

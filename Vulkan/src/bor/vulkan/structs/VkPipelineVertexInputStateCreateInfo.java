@@ -95,7 +95,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkPipelineVertexInputStateCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

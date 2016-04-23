@@ -95,7 +95,7 @@ public class VkComputePipelineCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkComputePipelineCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

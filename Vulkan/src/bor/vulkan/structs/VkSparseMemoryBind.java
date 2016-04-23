@@ -83,7 +83,7 @@ public class VkSparseMemoryBind extends VkStruct {
 	 * Ctor
 	 */
 	public VkSparseMemoryBind(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

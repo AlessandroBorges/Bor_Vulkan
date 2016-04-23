@@ -84,7 +84,7 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 * Ctor
 	 */
 	public VkWaylandSurfaceCreateInfoKHR(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

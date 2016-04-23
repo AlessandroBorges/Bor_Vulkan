@@ -83,7 +83,7 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	 * Ctor
 	 */
 	public VkDescriptorSetLayoutBinding(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

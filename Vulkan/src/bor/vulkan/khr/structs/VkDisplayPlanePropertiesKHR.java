@@ -66,7 +66,7 @@ public class VkDisplayPlanePropertiesKHR extends VkStruct {
 	 * Ctor
 	 */
 	public VkDisplayPlanePropertiesKHR(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

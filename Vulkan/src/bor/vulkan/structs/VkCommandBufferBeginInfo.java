@@ -77,7 +77,7 @@ public class VkCommandBufferBeginInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkCommandBufferBeginInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

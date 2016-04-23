@@ -83,7 +83,7 @@ public class VkImageResolve extends VkStruct {
 	 * Ctor
 	 */
 	public VkImageResolve(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

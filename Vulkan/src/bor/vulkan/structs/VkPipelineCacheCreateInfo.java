@@ -83,7 +83,7 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkPipelineCacheCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

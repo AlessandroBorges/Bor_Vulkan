@@ -95,7 +95,7 @@ public class VkRenderPassBeginInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkRenderPassBeginInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

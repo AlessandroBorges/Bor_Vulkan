@@ -77,7 +77,7 @@ public class VkMemoryAllocateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkMemoryAllocateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

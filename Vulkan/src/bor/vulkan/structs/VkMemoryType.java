@@ -65,7 +65,7 @@ public class VkMemoryType extends VkStruct {
 	 * Ctor
 	 */
 	public VkMemoryType(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

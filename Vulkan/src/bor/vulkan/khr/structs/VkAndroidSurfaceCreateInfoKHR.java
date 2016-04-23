@@ -78,7 +78,7 @@ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
 	 * Ctor
 	 */
 	public VkAndroidSurfaceCreateInfoKHR(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

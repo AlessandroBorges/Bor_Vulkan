@@ -101,7 +101,7 @@ public class VkCommandBufferInheritanceInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkCommandBufferInheritanceInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

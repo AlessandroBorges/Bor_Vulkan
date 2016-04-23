@@ -77,7 +77,7 @@ public class VkImageSubresourceLayers extends VkStruct {
 	 * Ctor
 	 */
 	public VkImageSubresourceLayers(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

@@ -113,7 +113,7 @@ public class VkSubpassDescription extends VkStruct {
 	 * Ctor
 	 */
 	public VkSubpassDescription(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

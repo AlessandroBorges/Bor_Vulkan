@@ -83,7 +83,7 @@ public class VkImageCopy extends VkStruct {
 	 * Ctor
 	 */
 	public VkImageCopy(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

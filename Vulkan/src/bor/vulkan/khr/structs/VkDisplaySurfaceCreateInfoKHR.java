@@ -114,7 +114,7 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 	 * Ctor
 	 */
 	public VkDisplaySurfaceCreateInfoKHR(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

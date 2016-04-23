@@ -95,7 +95,7 @@ public class VkBufferViewCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkBufferViewCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

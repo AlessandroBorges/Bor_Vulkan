@@ -107,7 +107,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkRenderPassCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

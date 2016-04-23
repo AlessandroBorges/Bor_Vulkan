@@ -71,7 +71,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	 * Ctor
 	 */
 	public VkVertexInputBindingDescription(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

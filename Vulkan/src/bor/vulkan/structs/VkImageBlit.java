@@ -77,7 +77,7 @@ public class VkImageBlit extends VkStruct {
 	 * Ctor
 	 */
 	public VkImageBlit(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

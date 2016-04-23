@@ -66,7 +66,7 @@ public class VkSurfaceFormatKHR extends VkStruct {
 	 * Ctor
 	 */
 	public VkSurfaceFormatKHR(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

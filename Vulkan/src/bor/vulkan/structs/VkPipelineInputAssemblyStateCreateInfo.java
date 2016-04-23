@@ -83,7 +83,7 @@ public class VkPipelineInputAssemblyStateCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkPipelineInputAssemblyStateCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

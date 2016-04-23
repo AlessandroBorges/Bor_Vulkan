@@ -107,7 +107,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 * Ctor
 	 */
 	public VkBufferMemoryBarrier(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

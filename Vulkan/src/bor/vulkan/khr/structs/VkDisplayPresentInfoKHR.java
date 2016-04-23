@@ -84,7 +84,7 @@ public class VkDisplayPresentInfoKHR extends VkStruct {
 	 * Ctor
 	 */
 	public VkDisplayPresentInfoKHR(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

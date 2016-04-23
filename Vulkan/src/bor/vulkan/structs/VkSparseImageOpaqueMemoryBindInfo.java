@@ -71,7 +71,7 @@ public class VkSparseImageOpaqueMemoryBindInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkSparseImageOpaqueMemoryBindInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

@@ -143,7 +143,7 @@ public class VkImageCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkImageCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

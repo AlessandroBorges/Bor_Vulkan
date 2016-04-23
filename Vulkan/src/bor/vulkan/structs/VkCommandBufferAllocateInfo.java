@@ -83,7 +83,7 @@ public class VkCommandBufferAllocateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkCommandBufferAllocateInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

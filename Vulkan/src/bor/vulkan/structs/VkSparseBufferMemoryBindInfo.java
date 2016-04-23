@@ -71,7 +71,7 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkSparseBufferMemoryBindInfo(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

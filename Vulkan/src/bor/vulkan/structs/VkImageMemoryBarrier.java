@@ -113,7 +113,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 * Ctor
 	 */
 	public VkImageMemoryBarrier(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

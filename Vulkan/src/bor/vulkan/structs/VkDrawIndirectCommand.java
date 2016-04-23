@@ -77,7 +77,7 @@ public class VkDrawIndirectCommand extends VkStruct {
 	 * Ctor
 	 */
 	public VkDrawIndirectCommand(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**

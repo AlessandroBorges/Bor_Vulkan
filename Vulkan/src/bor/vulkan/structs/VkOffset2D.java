@@ -65,7 +65,7 @@ public class VkOffset2D extends VkStruct {
 	 * Ctor
 	 */
 	public VkOffset2D(){ 
-		 super(sizeOf()); 
+		 super(TAG_ID);
 	 }
 
 	/**
