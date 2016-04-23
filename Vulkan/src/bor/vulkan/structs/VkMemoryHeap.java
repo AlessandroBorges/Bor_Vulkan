@@ -179,8 +179,20 @@ public class VkMemoryHeap extends VkStruct {
 		 return this.flags;
 	 }
 
+         public   VkMemoryHeapFlagBits getFlagsEnum(){             
+             return VkMemoryHeapFlagBits.fromValue(flags());
+         }
+         
+	 /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        VkMemoryHeapFlagBits flag = getFlagsEnum();
+        return "VkMemoryHeap [ size:" + size() + ", flags:" + (flag==null? 0 : flag) + "]\n";
+    }
 
-	 //////////////////////////////////
+    //////////////////////////////////
 	 // native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**

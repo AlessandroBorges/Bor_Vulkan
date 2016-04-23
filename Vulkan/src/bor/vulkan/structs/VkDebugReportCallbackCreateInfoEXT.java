@@ -9,6 +9,7 @@
  */
 package bor.vulkan.structs;
 
+import bor.util.Utils;
 import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
@@ -270,8 +271,13 @@ public class VkDebugReportCallbackCreateInfoEXT extends VkStruct {
 	 * Prototype: void*  pUserData
 	 */ 
 	 public java.nio.Buffer pUserData(){
-		 java.nio.Buffer var = getPUserData0(super.ptr);
-		 this.pUserData = var;
+//	         int[] size = {0};
+//		 long address = getPUserData0(super.ptr, this.pUserData, size);
+//		 
+//		 if(address != 0){
+//		     this.pUserData = Utils.wrapPointer(address, size[0]);
+//		 }
+//		 
 		 return this.pUserData;
 	 }
 
@@ -362,9 +368,9 @@ public class VkDebugReportCallbackCreateInfoEXT extends VkStruct {
 	 * native GET method for field pUserData	[buffer]<br>
 	 * Prototype: void*  pUserData
 	 */ 
-	 private static native long getPUserData0(Buffer ptr);/*
-		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pUserData);	 */
+//	 private static native long getPUserData0(Buffer ptr);/*
+//		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
+//		  return (jlong) reinterpret_cast<jlong>(vkObj->pUserData);	 */
 
 
 

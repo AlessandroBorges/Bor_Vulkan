@@ -201,6 +201,15 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 		 this.apiVersion = var;
 		 return this.apiVersion;
 	 }
+	 
+	 /**
+          * Get API version
+          * @return String representation of Vulkan API 
+          */
+         public String apiVersionString(){
+             int spec = apiVersion();
+             return Vulkan.getAPIVersionString(spec);
+         }
 
 	/**
 	 * Set method for field driverVersion	[int]<br>
@@ -387,18 +396,32 @@ public class VkPhysicalDeviceProperties extends VkStruct {
      */
     @Override
     public String toString() {
-        return "VkPhysicalDeviceProperties [apiVersion=" + apiVersion() + 
-                 ",\n driverVersion=" + driverVersion()
-                +",\n vendorID=" + vendorID() 
-                +",\n deviceID=" + deviceID() 
+        return "VkPhysicalDeviceProperties [\n"
+                +   " apiVersion = " + apiVersion() +  "  [" + this.apiVersionString() +"]" +
+                 ",\n driverVersion = " + driverVersion()
+                +",\n vendorID = " + vendorID() 
+                +",\n deviceID = " + deviceID() 
                 + ",\n "
-                + "deviceType= " + (deviceType == null ? deviceType() : deviceType) +",\n"
-                + "deviceName= " + (deviceName == null ? deviceName() : deviceName) + ",\n"
-                + "pipelineCacheUUID=" + (pipelineCacheUUID == null ? 
-                                           Arrays.toString(pipelineCacheUUID()) : 
-                                           Arrays.toString(pipelineCacheUUID)) + ",\n"
-                + "limits=" + (limits == null ?  limits() : limits)+",\n"
-                +  "sparseProperties=" + (sparseProperties == null ?sparseProperties() :  sparseProperties) + "]\n";
+                + "deviceType = " + (deviceType == null ? deviceType() : deviceType) +",\n"
+                + "deviceName = " + (deviceName == null ? deviceName() : deviceName) + ",\n"
+                + "pipelineCacheUUID = " + (pipelineCacheUUID == null ? 
+                                           toString(pipelineCacheUUID()) : 
+                                           toString(pipelineCacheUUID)) + ",\n"
+                + "limits {\n\t" + (limits == null ?  limits() : limits)+"\n\t},\n"
+                +  "sparseProperties {\n\t" + (sparseProperties == null ?sparseProperties() :  sparseProperties) + 
+                "\n\t}\n\t]\n";
+    }
+    
+    private static String toString(byte[] array){
+        if(array==null) 
+            return "[ null ]";
+        String ret = "[";
+        for(int i=0; i<array.length; i++){
+            int v = array[i] & 0xFF;
+            ret += (i==0?" ":", ") + v;
+        }        
+        ret +=" ]";
+        return ret;
     }
 
     //////////////////////////////////
@@ -500,6 +523,11 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * @TODO implement it
 	 */
 	 private static native void setDeviceName0(Buffer ptr, String _deviceName, int len);/*
+	        ///MANUAL
+	 
+                //  unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+                //  char* _deviceName = (char*)env->GetStringUTFChars(obj__deviceName, 0);
+	
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);		  
 		  strncpy(vkObj->deviceName, _deviceName, len);		  
 		  vkObj->deviceName[len] = '\0';
@@ -510,8 +538,10 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * Prototype: char[]  deviceName
 	 */ 
 	 private static native String getDeviceName0(Buffer ptr);/*
-		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->deviceName));	 */
+        
+	         VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		 return (jstring)(env->NewStringUTF(vkObj->deviceName));	 
+        */
 
 	/**
 	 * native SET method for field pipelineCacheUUID	[byte_array]<br>

@@ -314,8 +314,33 @@ public class VkApplicationInfo extends VkStruct {
 		 return this.apiVersion;
 	 }
 
+         
+         
+	 /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("VkApplicationInfo [\n\t sType : ")
+                .append(sType())
+                .append(",\n\t\t pNext : ")
+                .append(pNext())
+                .append(",\n\t\t pApplicationName : ")
+                .append(pApplicationName())
+                .append(",\n\t\t applicationVersion : ")
+                .append(applicationVersion())
+                .append(",\n\t\t pEngineName : ")
+                .append(pEngineName())
+                .append(",\n\t\t engineVersion : ")
+                .append(engineVersion())
+                .append(",\n\t\t apiVersion : ")
+                .append(apiVersion())
+                .append(" ]");
+        return builder.toString();
+    }
 
-	 //////////////////////////////////
+    //////////////////////////////////
 	 // native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
@@ -357,7 +382,10 @@ public class VkApplicationInfo extends VkStruct {
 	 * native SET method for field pApplicationName	[string]<br>
 	 * Prototype: const char*  pApplicationName
 	 */ 
-	 private static native void setPApplicationName0(Buffer ptr, String _pApplicationName);/*
+	 private static native void setPApplicationName0(Buffer ptr, String _pApplicationName);/*MANUAL
+	 unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+         char* _pApplicationName = (char*)env->GetStringUTFChars(obj__pApplicationName, 0);
+         
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  vkObj->pApplicationName = (const char*) (_pApplicationName);
 	  */
@@ -392,7 +420,10 @@ public class VkApplicationInfo extends VkStruct {
 	 * native SET method for field pEngineName	[string]<br>
 	 * Prototype: const char*  pEngineName
 	 */ 
-	 private static native void setPEngineName0(Buffer ptr, String _pEngineName);/*
+	 private static native void setPEngineName0(Buffer ptr, String _pEngineName);/*MANUAL
+                unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+                char* _pEngineName = (char*)env->GetStringUTFChars(obj__pEngineName, 0);
+		
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  vkObj->pEngineName = (const char*) (_pEngineName);
 	  */

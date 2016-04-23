@@ -864,7 +864,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 */ 
 	 public void textureCompressionASTC_LDR(boolean textureCompressionASTC_LDR){
 		 this.textureCompressionASTC_LDR = textureCompressionASTC_LDR;
-		 setTextureCompressionASTC_LDR0(this.ptr,  textureCompressionASTC_LDR);
+		 setTextureCompressionASTCLDR0(this.ptr,  textureCompressionASTC_LDR);
 	 }
 
 	/**
@@ -872,7 +872,7 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * Prototype: VkBool32  textureCompressionASTC_LDR
 	 */ 
 	 public boolean textureCompressionASTC_LDR(){
-		 boolean var = getTextureCompressionASTC_LDR0(super.ptr);
+		 boolean var = getTextureCompressionASTCLDR0(super.ptr);
 		 this.textureCompressionASTC_LDR = var;
 		 return this.textureCompressionASTC_LDR;
 	 }
@@ -1504,8 +1504,131 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 		 return this.inheritedQueries;
 	 }
 
+	 
+	 
 
-	 //////////////////////////////////
+	 /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("VkPhysicalDeviceFeatures [\n")              
+                .append(" robustBufferAccess :\t")
+                .append(robustBufferAccess())
+                .append(",\n fullDrawIndexUint32 :\t")
+                .append(fullDrawIndexUint32())
+                .append(",\n imageCubeArray :\t")
+                .append(imageCubeArray())
+                .append(",\n independentBlend :\t")
+                .append(independentBlend())
+                .append(",\n geometryShader :\t")
+                .append(geometryShader())
+                .append(",\n tessellationShader :\t")
+                .append(tessellationShader())
+                .append(",\n sampleRateShading :\t")
+                .append(sampleRateShading())
+                .append(",\n dualSrcBlend :\t")
+                .append(dualSrcBlend())
+                .append(",\n logicOp :\t")
+                .append(logicOp())
+                .append(",\n multiDrawIndirect :\t")
+                .append(multiDrawIndirect())
+                .append(",\n drawIndirectFirstInstance :\t")
+                .append(drawIndirectFirstInstance())
+                .append(",\n depthClamp :\t")
+                .append(depthClamp())
+                .append(",\n depthBiasClamp :\t")
+                .append(depthBiasClamp())
+                .append(",\n fillModeNonSolid :\t")
+                .append(fillModeNonSolid())
+                .append(",\n depthBounds :\t")
+                .append(depthBounds())
+                .append(",\n wideLines :\t")
+                .append(wideLines())
+                .append(",\n largePoints :\t")
+                .append(largePoints())
+                .append(",\n alphaToOne :\t")
+                .append(alphaToOne())
+                .append(",\n multiViewport :\t")
+                .append(multiViewport())
+                .append(",\n samplerAnisotropy :\t")
+                .append(samplerAnisotropy())
+                .append(",\n textureCompressionETC2 :\t")
+                .append(textureCompressionETC2())
+                .append(",\n textureCompressionASTC_LDR :\t")
+                .append(textureCompressionASTC_LDR())
+                .append(",\n textureCompressionBC :\t")
+                .append(textureCompressionBC())
+                .append(",\n occlusionQueryPrecise :\t")
+                .append(occlusionQueryPrecise())
+                .append(",\n pipelineStatisticsQuery :\t")
+                .append(pipelineStatisticsQuery())
+                .append(",\n vertexPipelineStoresAndAtomics :\t")
+                .append(vertexPipelineStoresAndAtomics())
+                .append(",\n fragmentStoresAndAtomics :\t")
+                .append(fragmentStoresAndAtomics())
+                .append(",\n shaderTessellationAndGeometryPointSize :\t")
+                .append(shaderTessellationAndGeometryPointSize())
+                .append(",\n shaderImageGatherExtended :\t")
+                .append(shaderImageGatherExtended())
+                .append(",\n shaderStorageImageExtendedFormats :\t")
+                .append(shaderStorageImageExtendedFormats())
+                .append(",\n shaderStorageImageMultisample :\t")
+                .append(shaderStorageImageMultisample())
+                .append(",\n shaderStorageImageReadWithoutFormat :\t")
+                .append(shaderStorageImageReadWithoutFormat())
+                .append(",\n shaderStorageImageWriteWithoutFormat :\t")
+                .append(shaderStorageImageWriteWithoutFormat())
+                .append(",\n shaderUniformBufferArrayDynamicIndexing :\t")
+                .append(shaderUniformBufferArrayDynamicIndexing())
+                .append(",\n shaderSampledImageArrayDynamicIndexing :\t")
+                .append(shaderSampledImageArrayDynamicIndexing())
+                .append(",\n shaderStorageBufferArrayDynamicIndexing :\t")
+                .append(shaderStorageBufferArrayDynamicIndexing())
+                .append(",\n shaderStorageImageArrayDynamicIndexing :\t")
+                .append(shaderStorageImageArrayDynamicIndexing())
+                .append(",\n shaderClipDistance :\t")
+                .append(shaderClipDistance())
+                .append(",\n shaderCullDistance :\t")
+                .append(shaderCullDistance())
+                .append(",\n shaderFloat64 :\t")
+                .append(shaderFloat64())
+                .append(",\n shaderInt64 :\t")
+                .append(shaderInt64())
+                .append(",\n shaderInt16 :\t")
+                .append(shaderInt16())
+                .append(",\n shaderResourceResidency :\t")
+                .append(shaderResourceResidency())
+                .append(",\n shaderResourceMinLod :\t")
+                .append(shaderResourceMinLod())
+                .append(",\n sparseBinding :\t")
+                .append(sparseBinding())
+                .append(",\n sparseResidencyBuffer :\t")
+                .append(sparseResidencyBuffer())
+                .append(",\n sparseResidencyImage2D :\t")
+                .append(sparseResidencyImage2D())
+                .append(",\n sparseResidencyImage3D :\t")
+                .append(sparseResidencyImage3D())
+                .append(",\n sparseResidency2Samples :\t")
+                .append(sparseResidency2Samples())
+                .append(",\n sparseResidency4Samples :\t")
+                .append(sparseResidency4Samples())
+                .append(",\n sparseResidency8Samples :\t")
+                .append(sparseResidency8Samples())
+                .append(",\n sparseResidency16Samples :\t")
+                .append(sparseResidency16Samples())
+                .append(",\n sparseResidencyAliased :\t")
+                .append(sparseResidencyAliased())
+                .append(",\n variableMultisampleRate :\t")
+                .append(variableMultisampleRate())
+                .append(",\n inheritedQueries :\t")
+                .append(inheritedQueries())
+                .append("\n\t]\n");
+        return builder.toString();
+    }
+
+    //////////////////////////////////
 	 // native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
@@ -1890,16 +2013,16 @@ public class VkPhysicalDeviceFeatures extends VkStruct {
 	 * native SET method for field textureCompressionASTC_LDR	[boolean]<br>
 	 * Prototype: VkBool32  textureCompressionASTC_LDR
 	 */ 
-	 private static native void setTextureCompressionASTC_LDR0(Buffer ptr, boolean _textureCompressionASTC_LDR);/*
+	 private static native void setTextureCompressionASTCLDR0(Buffer ptr, boolean _textureCompressionASTCLDR);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
-		  vkObj->textureCompressionASTC_LDR = (VkBool32) (_textureCompressionASTC_LDR);
+		  vkObj->textureCompressionASTC_LDR = (VkBool32) (_textureCompressionASTCLDR);
 	  */
 
 	/**
 	 * native GET method for field textureCompressionASTC_LDR	[boolean]<br>
 	 * Prototype: VkBool32  textureCompressionASTC_LDR
 	 */ 
-	 private static native boolean getTextureCompressionASTC_LDR0(Buffer ptr);/*
+	 private static native boolean getTextureCompressionASTCLDR0(Buffer ptr);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->textureCompressionASTC_LDR);
 	 */

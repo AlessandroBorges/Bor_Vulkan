@@ -13,7 +13,7 @@ import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
-
+import java.util.Arrays;
 import java.nio.Buffer;
 
 
@@ -48,7 +48,13 @@ public class VkInstanceCreateInfo extends VkStruct {
     #include <iostream>
     
     using namespace std;
-    */  
+    static jclass stringClass;
+      
+     
+      ////////////////////////////////////////
+     */
+    
+   
 
 	/** TAG of this structure [2]  */
 	 private static final String TAG = "VkInstanceCreateInfo";
@@ -102,6 +108,18 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 */ 
 	 String[] 	ppEnabledExtensionNames;
 
+	 static{
+	     initNative();
+	 }
+
+	 
+	 private static native void initNative();/*
+	       jclass stringClassLocal = env->FindClass("java/lang/String");
+	       stringClass = (jclass) env->NewGlobalRef(stringClassLocal);
+	    */
+	    
+	 
+	 
 	/**
 	 * Ctor
 	 */
@@ -359,7 +377,36 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 }
 
 
-	 //////////////////////////////////
+	 /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("VkInstanceCreateInfo ["
+                + "\n\t sType : ")
+                .append(sType())
+                .append(",\n\t pNext : ")
+                .append(pNext())
+                .append(",\n\t flags : ")
+                .append(flags())
+                .append(",\n\t pApplicationInfo : ")
+                .append(pApplicationInfo())
+                .append(",\n\t enabledLayerCount : ")
+                .append(enabledLayerCount())
+                .append(",\n\t ppEnabledLayerNames : ")
+                .append(Arrays.toString(ppEnabledLayerNames()))
+                .append(",\n\t enabledExtensionCount : ")
+                .append(enabledExtensionCount())
+                .append(",\n\t ppEnabledExtensionNames : ")
+                .append(Arrays.toString(ppEnabledExtensionNames()))
+                .append("]");
+        return builder.toString();
+    }
+
+
+
+    //////////////////////////////////
 	 // native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
@@ -464,8 +511,8 @@ public class VkInstanceCreateInfo extends VkStruct {
                           jstring string = (jstring) env->GetObjectArrayElement(enabledLayerNames, i);
                           const char *rawString = env->GetStringUTFChars(string, 0);
                           enabledLayers.push_back(rawString);
-                        // Don't forget to call `ReleaseStringUTFChars` when you're done.
-                          env->ReleaseStringUTFChars(string, rawString);
+                        // Don't call `ReleaseStringUTFChars` when you're done.
+                        //  env->ReleaseStringUTFChars(string, rawString);
                    }
                    
                   vkObj->enabledLayerCount = enabledLayers.size();
@@ -485,13 +532,12 @@ public class VkInstanceCreateInfo extends VkStruct {
                   
                   jobjectArray ret;
                   
-                  if(count>0){
-                   
+                  if(count>0){                   
                    // thanks to code ranch 
                    // http://www.coderanch.com/t/326467/java/java/Returning-String-array-program-Java
                    ret= (jobjectArray)env->NewObjectArray(count,
-                                                          env->FindClass("java/lang/String"),
-                                                          env->NewStringUTF(""));
+                                                          stringClass,
+                                                          NULL); //env->NewStringUTF(""));
                    // const char *ppLayerNames[] = (vkObj->ppEnabledLayerNames);
                     for(int i = 0; i<count; i++){
                          env->SetObjectArrayElement(ret, 
@@ -536,8 +582,8 @@ public class VkInstanceCreateInfo extends VkStruct {
                           jstring string = (jstring) env->GetObjectArrayElement(enabledExtensionNames, i);
                           const char *rawString = env->GetStringUTFChars(string, 0);
                           enabledExtensions.push_back(rawString);
-                        // Don't forget to call `ReleaseStringUTFChars` when you're done.
-                          env->ReleaseStringUTFChars(string, rawString);
+                        // Don't call `ReleaseStringUTFChars` when you're done.
+                        //   env->ReleaseStringUTFChars(string, rawString);
                    }
 		   
 		  vkObj->enabledExtensionCount = enabledExtensions.size();
@@ -560,7 +606,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 		   // thanks to code ranch 
 		   // http://www.coderanch.com/t/326467/java/java/Returning-String-array-program-Java
 		   ret= (jobjectArray)env->NewObjectArray(count,
-		                                          env->FindClass("java/lang/String"),
+		                                          stringClass,//env->FindClass("java/lang/String"),
 		                                          env->NewStringUTF(""));
 		     for(int i = 0; i<count; i++){
 		      env->SetObjectArrayElement(ret, 

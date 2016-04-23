@@ -141,7 +141,22 @@ public class VkMemoryType extends VkStruct {
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
-	/**
+	/* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();        
+        String flag = getPropertyFlagsEnum()==null ? " 0 " : getPropertyFlagsEnum().toString();
+        builder.append("VkMemoryType [propertyFlags : ")
+                .append(flag)
+                .append(",\t heapIndex() :")
+                .append(heapIndex())
+                .append("]\n");
+        return builder.toString();
+    }
+
+    /**
 	 * Set method for field propertyFlags	[int]<br>
 	 * Prototype: VkMemoryPropertyFlags  propertyFlags
 	 */ 
@@ -158,6 +173,15 @@ public class VkMemoryType extends VkStruct {
 		 int var = getPropertyFlags0(super.ptr);
 		 this.propertyFlags = var;
 		 return this.propertyFlags;
+	 }
+	 
+	 /**
+	  * Get VkMemoryPropertyFlagBits from value
+	  * @return
+	  */
+	 public VkMemoryPropertyFlagBits getPropertyFlagsEnum(){
+	     int flags = propertyFlags();
+	     return VkMemoryPropertyFlagBits.fromValue(flags);	     
 	 }
 
 	/**

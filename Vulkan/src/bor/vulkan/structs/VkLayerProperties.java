@@ -190,6 +190,15 @@ public class VkLayerProperties extends VkStruct {
 		 this.specVersion = var;
 		 return this.specVersion;
 	 }
+	 
+	 /**
+	  * Get API version
+	  * @return String representation of Vulkan API 
+	  */
+	 public String specVersionString(){
+	     int spec = specVersion();
+	     return Vulkan.getAPIVersionString(spec);
+	 }
 
 	/**
 	 * Set method for field implementationVersion	[int]<br>
@@ -215,8 +224,13 @@ public class VkLayerProperties extends VkStruct {
 	 * Prototype: char[]  description
 	 */ 
 	 public void description(String description){
+		 int len = 0;
+		 if(description!= null){
+		    description = description.substring(0,Vulkan.VK_MAX_DESCRIPTION_SIZE);
+		    len = description.length();
+		 }
 		 this.description = description;
-		 setDescription0(this.ptr,  description);
+		 setDescription0(this.ptr,  description, len);
 	 }
 
 	/**
@@ -229,17 +243,36 @@ public class VkLayerProperties extends VkStruct {
 		 return this.description;
 	 }
 
+          
+	 /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("VkLayerProperties [layerName : ")
+                .append(layerName())
+                .append(",\n\t specVersion : ")
+                .append(specVersion() + "  [" + this.specVersionString() +"]")
+                .append(",\n\t implementationVersion : ")
+                .append(implementationVersion())
+                .append(",\n\t description : ")
+                .append(description())
+                .append("]\n");
+        return builder.toString();
+    }
 
-	 //////////////////////////////////
+    //////////////////////////////////
 	 // native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
 	 * native SET method for field layerName	[string]<br>
 	 * Prototype: char[]  layerName
 	 */ 
-	 private static native void setLayerName0(Buffer ptr, String _layerName);/*
+	 private static native void setLayerName0(Buffer ptr, String layerName);/*
 		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
-		  vkObj->layerName = (char[]) (_layerName);
+		  memcpy ( vkObj->layerName, layerName, strlen(layerName)+1 );
+		  //vkObj->layerName = (char[]) (_layerName);
 	  */
 
 	/**
@@ -247,7 +280,7 @@ public class VkLayerProperties extends VkStruct {
 	 * Prototype: char[]  layerName
 	 */ 
 	 private static native String getLayerName0(Buffer ptr);/*
-		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
+		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);		  
 		  return (jstring)(env->NewStringUTF(vkObj->layerName));	 */
 
 	/**
@@ -290,9 +323,15 @@ public class VkLayerProperties extends VkStruct {
 	 * native SET method for field description	[string]<br>
 	 * Prototype: char[]  description
 	 */ 
-	 private static native void setDescription0(Buffer ptr, String _description);/*
+       private static native void setDescription0(Buffer ptr, String description, int len);/*MANUAL
+	        unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+                char* description = (char*)env->GetStringUTFChars(obj_description, 0);
+                  
 		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
-		  vkObj->description = (char[]) (_description);
+		  strncpy(vkObj->description, description, len);                 
+                  vkObj->description[len] = '\0';
+		  
+		//  vkObj->description = (char[]) (_description);
 	  */
 
 	/**

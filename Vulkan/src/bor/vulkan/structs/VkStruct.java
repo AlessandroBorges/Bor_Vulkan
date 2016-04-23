@@ -487,7 +487,25 @@ public abstract class VkStruct implements VkObject{
         return null==ptr;
     }
     
-   
+    public void dump(){
+         ByteBuffer bb = ptr;
+         if(ptr==null){
+             System.out.println("null");
+             return;
+         }
+        java.nio.IntBuffer intBB = bb.asIntBuffer();
+        int size = intBB.capacity();
+        String name = this.getClass().getSimpleName();
+        System.out.println("Dump of " + name + ". Size in Byte " + bb.capacity());
+        for(int i=0; i<size; i++){            
+            int v = intBB.get(i);
+            String hex = "0x" + Integer.toHexString(v);
+            System.out.println(hex);
+        }
+        System.out.println("end of dump");
+        
+        
+    }
     
     /**
      * Native method to retrieve any Vulkan struct size, in bytes

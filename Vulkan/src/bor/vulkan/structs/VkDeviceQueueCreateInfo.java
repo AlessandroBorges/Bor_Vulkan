@@ -13,7 +13,7 @@ import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
-
+import java.util.Arrays;
 import java.nio.Buffer;
 
 
@@ -275,8 +275,11 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 * Prototype: const float*  pQueuePriorities
 	 */ 
 	 public void pQueuePriorities(float[] pQueuePriorities){
-		 this.pQueuePriorities = pQueuePriorities;
-		 setPQueuePriorities0(this.ptr,  pQueuePriorities);
+		 
+		 int len = pQueuePriorities==null ? 0 : pQueuePriorities.length;
+		 this.pQueuePriorities = pQueuePriorities==null ? null : pQueuePriorities.clone();
+		// this.queueCount(len);
+		 setPQueuePriorities0(this.ptr,  pQueuePriorities, len);
 	 }
 
 	/**
@@ -284,13 +287,36 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 * Prototype: const float*  pQueuePriorities
 	 */ 
 	 public float[] pQueuePriorities(){
-		 float[] var = getPQueuePriorities0(super.ptr);
-		 this.pQueuePriorities = var;
+		// float[] var = getPQueuePriorities0(super.ptr);
+		// this.pQueuePriorities = var;
 		 return this.pQueuePriorities;
 	 }
 
+	 
 
-	 //////////////////////////////////
+	 /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("VkDeviceQueueCreateInfo [sType : ")
+                .append(sType())
+                .append(", pNext : ")
+                .append(pNext())
+                .append(", flags : ")
+                .append(flags())
+                .append(", queueFamilyIndex : ")
+                .append(queueFamilyIndex())
+                .append(", queueCount : ")
+                .append(queueCount())
+                .append(", pQueuePriorities : ")
+                .append(Arrays.toString(pQueuePriorities()))
+                .append("]");
+        return builder.toString();
+    }
+
+    //////////////////////////////////
 	 // native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
@@ -386,18 +412,30 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 * native SET method for field pQueuePriorities	[float_array]<br>
 	 * Prototype: const float*  pQueuePriorities
 	 */ 
-	 private static native void setPQueuePriorities0(Buffer ptr, float[] _pQueuePriorities);/*
+	 private static native void setPQueuePriorities0(Buffer ptr, float[] _pQueuePriorities, int len);/*
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
-		  vkObj->pQueuePriorities = (const float*) (_pQueuePriorities);
+		 
+		  if(vkObj->pQueuePriorities)
+		          delete vkObj->pQueuePriorities;
+		  		  
+		  float* fArray = new float[len];
+		  for(int i=0; i<len; i++){
+		     fArray[i] = (float) (_pQueuePriorities[i]);
+		  }
+		  vkObj->pQueuePriorities = fArray;
+		  vkObj->queueCount = (uint32_t)len;
 	  */
 
 	/**
 	 * native GET method for field pQueuePriorities	[float_array]<br>
 	 * Prototype: const float*  pQueuePriorities
 	 */ 
-	 private static native float[] getPQueuePriorities0(Buffer ptr);/*
+	 private static native void getPQueuePriorities0(Buffer ptr, float[] array);/*
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
-		  return (float[]) (vkObj->pQueuePriorities);
+		  uint32_t queueCount = vkObj->queueCount;
+		  for(uint32_t i=0; i<queueCount; i++){
+		      array[i] = (jfloat)(vkObj->pQueuePriorities[i]);
+		  }
 	 */
 
 

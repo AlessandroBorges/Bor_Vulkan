@@ -257,11 +257,12 @@ public class VkPipelineCacheCreateInfo extends VkStruct {
 	/**
 	 * Get method for field pInitialData	[buffer]<br>
 	 * Prototype: const void*  pInitialData
+	 * @TODO improve implementation
 	 */ 
 	 public java.nio.Buffer pInitialData(){
-		  long address= getPInitialData0(super.ptr);
-		 java.nio.Buffer var = bor.util.Utils.wrapPointer(address, size)
-		 this.pInitialData = var;
+//		 long address= getPInitialData0(super.ptr);
+//		 java.nio.Buffer var = bor.util.Utils.wrapPointer(address, size);
+		
 		 return this.pInitialData;
 	 }
 

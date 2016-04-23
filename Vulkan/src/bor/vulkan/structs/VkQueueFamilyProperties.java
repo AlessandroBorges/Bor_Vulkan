@@ -239,8 +239,27 @@ public class VkQueueFamilyProperties extends VkStruct {
 		 return this.minImageTransferGranularity;
 	 }
 
+	 
 
-	 //////////////////////////////////
+	 /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("VkQueueFamilyProperties [queueFlags()=")
+                .append(queueFlags())
+                .append(", queueCount : ")
+                .append(queueCount())
+                .append(", timestampValidBits : ")
+                .append(timestampValidBits())
+                .append(", minImageTransferGranularity : ")
+                .append(minImageTransferGranularity())
+                .append("]");
+        return builder.toString();
+    }
+
+    //////////////////////////////////
 	 // native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
@@ -303,7 +322,9 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 */ 
 	 private static native void setMinImageTransferGranularity0(Buffer ptr, java.nio.ByteBuffer  _minImageTransferGranularity);/*
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
-		  vkObj->minImageTransferGranularity = (VkExtent3D) (_minImageTransferGranularity);
+		  VkExtent3D* pObj  = (VkExtent3D*) _minImageTransferGranularity;
+		  VkExtent3D obj = (VkExtent3D)(*pObj);
+		  vkObj->minImageTransferGranularity = (VkExtent3D) (obj);
 	  */
 
 	/**
@@ -312,8 +333,6 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 */ 
 	 private static native long getMinImageTransferGranularity0(Buffer ptr);/*
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->minImageTransferGranularity);	 */
-
-
-
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->minImageTransferGranularity);
+		  */
 } // end of class VkQueueFamilyProperties

@@ -91,6 +91,18 @@ public class WSI {
         wsi = (handle == null) ? null : new VkHandle(handle) ;
     }
     
+    /**
+     * releases wsi on exit
+     */
+    @Override
+    public void finalize() throws Throwable {
+        super.finalize();
+        if(wsi==null) return;
+        destroyWSI0(wsi.getPointer());
+        
+    }
+    
+    
     
     /**
      * Create WSI instance
@@ -98,10 +110,8 @@ public class WSI {
      * @param device - VkDevice instance
      * @return
      */
-    private static native ByteBuffer createWSI(ByteBuffer instance, ByteBuffer device);/*       
-          VkInstance* pInstance = (VkInstance*)instance;
-          VkDevice*   pDevice = (VkDevice*)device;
-          WSI* wsi = new WSI((VkInstance) (*pInstance), (VkDevice) (*pDevice));
+    private static native ByteBuffer createWSI(ByteBuffer instance, ByteBuffer device);/*  
+          WSI* wsi = new WSI((VkInstance) (instance), (VkDevice) (device));
          
           if(wsi){
               jobject buffer = (jobject)(env->NewDirectByteBuffer(wsi, sizeof(WSI)));
@@ -109,6 +119,13 @@ public class WSI {
          }else{
            return NULL;
          }
+    */
+    
+    private static native void destroyWSI0(ByteBuffer _wsi);/*
+       WSI* wsi = (WSI*) _wsi;
+       if(wsi){
+         delete wsi;
+      }   
     */
 
     /**

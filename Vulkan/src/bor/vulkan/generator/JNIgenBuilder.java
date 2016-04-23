@@ -16,11 +16,25 @@ public class JNIgenBuilder {
                 "**/bor/vulkan/Vk10.java",
                 "**/bor/vulkan/structs/VkStruct.java",
                 "**/bor/vulkan/structs/VkApplicationInfo.java",
-                
+                "**/bor/vulkan/structs/VkDeviceQueueCreateInfo.java",
+                //VkDeviceQueueCreateInfo
                 "**/bor/vulkan/structs/VkPhysicalDeviceProperties.java",
                 "**/bor/vulkan/structs/VkPhysicalDeviceType.java",
                 "**/bor/vulkan/structs/VkPhysicalDeviceLimits.java",
                 "**/bor/vulkan/structs/VkPhysicalDeviceSparseProperties.java",
+                "**/bor/vulkan/structs/VkPhysicalDeviceFeatures.java",
+                "**/bor/vulkan/structs/VkPhysicalDeviceMemoryProperties.java",
+                "**/bor/vulkan/structs/VkLayerProperties.java",
+                
+                "**/bor/vulkan/structs/VkExtent3D.java",
+                "**/bor/vulkan/structs/VkQueueFamilyProperties.java",
+                // VkExtent3D
+                //VkQueueFamilyProperties
+                
+                "**/bor/vulkan/structs/VkMemoryHeap.java",
+                "**/bor/vulkan/structs/VkMemoryHeap.java",
+                //VkMemoryHeap
+                
                 "**/bor/vulkan/structs/VkDeviceCreateInfo.java",
                 "**/bor/vulkan/structs/vkGetPhysicalDeviceFeatures.java",
                 //vkGetPhysicalDeviceFeatures(
@@ -37,7 +51,7 @@ public class JNIgenBuilder {
 
         BuildTarget win32 = BuildTarget.newDefaultTarget(TargetOs.Windows, false);
         win32.compilerPrefix = "mingw32-";
-        win32.cppFlags += " -std=gnu++11 -I/D/VulkanSDK/1.0.5.0/Include -L/D/VulkanSDK/1.0.5.0/Bin";
+        win32.cppFlags += " -std=gnu++11 -I/D/VulkanSDK/1.0.8.0/Include -L/D/VulkanSDK/1.0.8.0/Bin";
         
         String[] includes = {"-I/D/VulkanSDK/1.0.5.0/Include"};
         

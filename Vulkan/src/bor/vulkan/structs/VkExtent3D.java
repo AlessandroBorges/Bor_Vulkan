@@ -205,7 +205,23 @@ public class VkExtent3D extends VkStruct {
 	 }
 
 
-	 //////////////////////////////////
+	 /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("VkExtent3D [width()=")
+                .append(width())
+                .append(", height()=")
+                .append(height())
+                .append(", depth()=")
+                .append(depth())
+                .append("]");
+        return builder.toString();
+    }
+
+    //////////////////////////////////
 	 // native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**

@@ -13,7 +13,7 @@ import bor.vulkan.*;
 import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import java.nio.ByteBuffer;
-
+import java.util.Arrays;
 import java.nio.Buffer;
 
 
@@ -178,7 +178,13 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 */ 
 	 public void memoryTypes(VkMemoryType[] memoryTypes){
 		 this.memoryTypes = memoryTypes;
-		 setMemoryTypes0(this.ptr,  memoryTypes);
+		 int len = memoryTypes.length;
+		 memoryTypeCount(len);
+		 long[] types = new long[len];
+		 for (int i = 0; i < types.length; i++) {
+                    types[i] = memoryTypes[i].getNativeHandle();
+                }		 
+		 setMemoryTypes0(this.ptr,  types);
 	 }
 
 	/**
@@ -186,7 +192,16 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * Prototype: VkMemoryType[]  memoryTypes
 	 */ 
 	 public VkMemoryType[] memoryTypes(){
-		 VkMemoryType[] var = getMemoryTypes0(super.ptr);
+	         int len = getMemoryTypeCount0(ptr);
+	         long[] typesAddr = new long[len];
+		 getMemoryTypes0(super.ptr,typesAddr);
+		 
+		 VkMemoryType[] var = new  VkMemoryType[len];
+		 for (int i = 0; i < var.length; i++) {
+		    long address = typesAddr[i]; 
+                    var[i] = new VkMemoryType(address);
+                }
+		 
 		 this.memoryTypes = var;
 		 return this.memoryTypes;
 	 }
@@ -216,7 +231,13 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 */ 
 	 public void memoryHeaps(VkMemoryHeap[] memoryHeaps){
 		 this.memoryHeaps = memoryHeaps;
-		 setMemoryHeaps0(this.ptr,  memoryHeaps);
+		 int len = memoryHeaps.length;
+		 memoryHeapCount(len);
+		 long[] heaps = new long[len];
+		 for(int i=0; i<len; i++){
+		     heaps[i] = memoryHeaps[i].nativeHandle;
+		 }
+		 setMemoryHeaps0(this.ptr,  heaps, len);
 	 }
 
 	/**
@@ -224,13 +245,43 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * Prototype: VkMemoryHeap[]  memoryHeaps
 	 */ 
 	 public VkMemoryHeap[] memoryHeaps(){
-		 VkMemoryHeap[] var = getMemoryHeaps0(super.ptr);
-		 this.memoryHeaps = var;
+	         if(this.memoryHeaps==null){
+	             int len = getMemoryHeapCount0(ptr);
+	             long[] heaps = new long[len];
+	             getMemoryHeaps0(super.ptr,heaps);
+	             this.memoryHeaps = new VkMemoryHeap[len];
+	             for(int i=0; i<len; i++){
+	                 long address = heaps[i];
+	                 this.memoryHeaps[i] = new VkMemoryHeap(address);
+	             }
+	         }
 		 return this.memoryHeaps;
 	 }
 
 
-	 //////////////////////////////////
+	 /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        final int maxLen = 20;
+        StringBuilder builder = new StringBuilder();
+        builder.append("VkPhysicalDeviceMemoryProperties [\n"
+                + "\t memoryTypeCount : \t")
+                .append(memoryTypeCount())
+                .append(",\n\t memoryTypes : \t")
+                .append(memoryTypes() != null
+                        ? Arrays.asList(memoryTypes()) : null)
+                .append(",\n\t memoryHeapCount : \t")
+                .append(memoryHeapCount())
+                .append(",\n\t memoryHeaps : \t")
+                .append(memoryHeaps() != null
+                        ? Arrays.asList(memoryHeaps()).subList(0, Math.min(memoryHeaps().length, maxLen)) : null)
+                .append("\n\t]");
+        return builder.toString();
+    }
+
+    //////////////////////////////////
 	 // native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
@@ -255,18 +306,28 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * native SET method for field memoryTypes	<br>
 	 * Prototype: VkMemoryType[]  memoryTypes
 	 */ 
-	 private static native void setMemoryTypes0(Buffer ptr, VkMemoryType[] _memoryTypes);/*
+	 private static native void setMemoryTypes0(Buffer ptr, long[] _memoryTypes);/*
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
-		  vkObj->memoryTypes = (VkMemoryType[]) (_memoryTypes);
+		  uint32_t count = vkObj->memoryTypeCount;
+                  for(uint32_t i = 0;  i<count; i++){
+                    VkMemoryType* pType = (VkMemoryType*) reinterpret_cast<VkMemoryType*>(_memoryTypes[i]);
+                    VkMemoryType type = *pType;
+                    vkObj->memoryTypes[i] = type;
+                  }
+		  //vkObj->memoryTypes = (VkMemoryType[]) (_memoryTypes);
 	  */
 
 	/**
 	 * native GET method for field memoryTypes	<br>
 	 * Prototype: VkMemoryType[]  memoryTypes
 	 */ 
-	 private static native VkMemoryType[] getMemoryTypes0(Buffer ptr);/*
+	 private static native void getMemoryTypes0(Buffer ptr, long[] types);/*
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
-		  return (VkMemoryType[]) (vkObj->memoryTypes);
+		  uint32_t count = vkObj->memoryTypeCount;
+		  for(uint32_t i = 0;  i<count; i++){
+		     types[i] = reinterpret_cast<jlong>(&vkObj->memoryTypes[i]);
+		  }
+		  //return (VkMemoryType[]) (vkObj->memoryTypes);
 	 */
 
 	/**
@@ -291,18 +352,28 @@ public class VkPhysicalDeviceMemoryProperties extends VkStruct {
 	 * native SET method for field memoryHeaps	<br>
 	 * Prototype: VkMemoryHeap[]  memoryHeaps
 	 */ 
-	 private static native void setMemoryHeaps0(Buffer ptr, VkMemoryHeap[] _memoryHeaps);/*
+	 private static native void setMemoryHeaps0(Buffer ptr, long[] _memoryHeaps, int len);/*
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
-		  vkObj->memoryHeaps = (VkMemoryHeap[]) (_memoryHeaps);
+		  vkObj->memoryHeapCount = (uint32_t)len;
+		  for(jint i = 0; i<len; i++){
+		    VkMemoryHeap* pHeap =  reinterpret_cast<VkMemoryHeap*>(_memoryHeaps[i]);
+		    VkMemoryHeap heap = *pHeap; 
+		    vkObj->memoryHeaps[i] =  heap;
+		  }
+		  
 	  */
 
 	/**
 	 * native GET method for field memoryHeaps	<br>
 	 * Prototype: VkMemoryHeap[]  memoryHeaps
 	 */ 
-	 private static native VkMemoryHeap[] getMemoryHeaps0(Buffer ptr);/*
+	 private static native void getMemoryHeaps0(Buffer ptr, long[] heaps);/*
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
-		  return (VkMemoryHeap[]) (vkObj->memoryHeaps);
+		  uint32_t len = vkObj->memoryHeapCount;
+                  for(uint32_t i = 0; i < len; i++){
+                    VkMemoryHeap* pHeap = &vkObj->memoryHeaps[i];
+                    heaps[i] = reinterpret_cast<jlong>(pHeap);
+                  }
 	 */
 
 

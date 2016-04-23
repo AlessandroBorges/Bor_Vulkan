@@ -8,7 +8,7 @@ package bor.vulkan;
  */
 public class Vulkan {
 
-    public static final int     VK_API_VERSION                          = VK_MAKE_VERSION(1, 0, 5);
+    public static final int     VK_API_VERSION                          = VK_MAKE_VERSION(1, 0, 0);
 
     public static final float   VK_LOD_CLAMP_NONE                       = 1000.0f;
     public static final int     VK_REMAINING_MIP_LEVELS                 = Integer.MAX_VALUE;         // (~0);
@@ -58,17 +58,25 @@ public class Vulkan {
     public static final int     VK_EXT_debug_report                     = 1;
     public static final int     VK_EXT_DEBUG_REPORT_SPEC_VERSION        = 2;
     public static final String  VK_EXT_DEBUG_REPORT_EXTENSION_NAME      = "VK_EXT_debug_report";
+    
+    public static final int VK_KHR_sampler_mirror_clamp_to_edge = 1;
+    public static final int VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_SPEC_VERSION = 1;
+    public static final String VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_EXTENSION_NAME = "VK_KHR_sampler_mirror_clamp_to_edge";
 
     public static final int VK_NV_glsl_shader = 1;
     public static final int VK_NV_GLSL_SHADER_SPEC_VERSION =   1;
     public static final String VK_NV_GLSL_SHADER_EXTENSION_NAME = "VK_NV_glsl_shader";
     
-    public static VkHandle  VK_NULL_HANDLE = null;
+    public static final int VK_IMG_filter_cubic = 1;
+    public static final int VK_IMG_FILTER_CUBIC_SPEC_VERSION =  1;
+    public static final String VK_IMG_FILTER_CUBIC_EXTENSION_NAME = "VK_IMG_filter_cubic";
+    
+    public static VkHandle  VK_NULL_HANDLE = new VkHandle(0);
     
     
     
     
-    private static int VK_MAKE_VERSION(int major, int minor, int patch) {
+    public static int VK_MAKE_VERSION(int major, int minor, int patch) {
         return (((major) << 22) | ((minor) << 12) | (patch));
     }
 
@@ -82,6 +90,18 @@ public class Vulkan {
 
     public static final int VK_VERSION_PATCH(int version) {
         return ((int) (version) & 0xfff);
+    }
+    
+    /**
+     * Get string of version
+     * @param apiVersion
+     * @return
+     */
+    public static final String getAPIVersionString(int apiVersion){
+        int major = VK_VERSION_MAJOR(apiVersion);
+        int minor = VK_VERSION_MINOR(apiVersion);
+        int patch = VK_VERSION_PATCH(apiVersion);
+        return "" + major+"."+minor+"."+patch;
     }
 
 }

@@ -45,6 +45,13 @@ public class VkDeviceCreateInfo extends VkStruct {
     //@formatter:off
     /*JNI
     #include <BorVulkan.hpp>
+    #include <vector>
+    #include <string>
+    #include <iostream>
+    #include <JBufferArray.h>
+    
+    using namespace std;
+    static jclass stringClass;
     */  
 
 	/** TAG of this structure [16]  */
@@ -82,7 +89,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	/**
 	 *  const VkDeviceQueueCreateInfo* 	pQueueCreateInfos	[vkstruct]
 	 */ 
-	  VkDeviceQueueCreateInfo  	pQueueCreateInfos;
+	  VkDeviceQueueCreateInfo[]  	pQueueCreateInfos;
 
 	/**
 	 *  uint32_t 	enabledLayerCount	[int]
@@ -109,11 +116,24 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 */ 
 	  VkPhysicalDeviceFeatures  	pEnabledFeatures;
 
+	  static{
+	             initNative();
+	   } 
+	  /**
+	   * initilize native side 
+	   */
+	  private static native void initNative();/*
+	               jclass stringClassLocal = env->FindClass("java/lang/String");
+	               stringClass = (jclass) env->NewGlobalRef(stringClassLocal);
+	   */
+	            
+	  
+	  
 	/**
 	 * Ctor
 	 */
 	public VkDeviceCreateInfo(){ 
-		 super(sizeOf()); 
+		 super(sizeOf(),0); 
 	 }
 
 	/**
@@ -145,7 +165,9 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * Static Method to get native size of this structure 
 	 */
 	 public static int sizeOf(){ 
-		 return sizeOf(TAG_ID); 
+	         int size = sizeOf(TAG_ID);
+	         System.err.println("TAG_ID: " + TAG_ID + " size: " + size);
+		 return size; 
 	}
 
 	/** 
@@ -279,28 +301,60 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * Set method for field pQueueCreateInfos	[vkstruct]<br>
 	 * Prototype: const VkDeviceQueueCreateInfo*  pQueueCreateInfos
 	 */ 
-	 public void pQueueCreateInfos( VkDeviceQueueCreateInfo  pQueueCreateInfos){
+	 public void pQueueCreateInfos( VkDeviceQueueCreateInfo[]  pQueueCreateInfos){
 		 this.pQueueCreateInfos = pQueueCreateInfos;
-		 ByteBuffer buff = (pQueueCreateInfos==null) ? null : pQueueCreateInfos.getPointer();
-		 setPQueueCreateInfos0(this.ptr, buff);
+		 ByteBuffer[] buff = null; 
+		 int len = 0;
+		 
+		 if(pQueueCreateInfos!=null){
+		    len =  pQueueCreateInfos.length;
+		    
+		    buff = new ByteBuffer[len];
+		    for (int i = 0; i < len; i++) {
+		        VkDeviceQueueCreateInfo info = pQueueCreateInfos[i];
+                        buff[i] = (info == null) ? null : info.getPointer();   
+                    }
+		 }
+		 
+		 this.queueCreateInfoCount =  len;
+		 setPQueueCreateInfos0(this.ptr, buff, len);
 	 }
 
 	/**
 	 * Get method for field pQueueCreateInfos	[vkstruct]<br>
 	 * Prototype: const VkDeviceQueueCreateInfo*  pQueueCreateInfos
 	 */ 
-	 public  VkDeviceQueueCreateInfo  pQueueCreateInfos(){
-		 long pointer = getPQueueCreateInfos0(super.ptr);
-		 if(pointer == 0){
+	 public  VkDeviceQueueCreateInfo[]  pQueueCreateInfos(){
+	         int len = 0;
+	         long[] pointer = null;
+	         
+	         if(pQueueCreateInfos!=null){
+	             len = pQueueCreateInfos.length;
+	             pointer = new long[len];
+	         }
+	         	         
+		 getPQueueCreateInfos0(super.ptr, pointer,len);
+		 
+		 if(pointer == null){
 		    this.pQueueCreateInfos = null;
+		    this.queueCreateInfoCount = 0;
 		    return null;
 		  } 
 
 		 if(this.pQueueCreateInfos == null){
-		    this.pQueueCreateInfos = new  VkDeviceQueueCreateInfo (pointer);
-		 }else{
-		    this.pQueueCreateInfos.setPointer(pointer);
-		  }
+		    this.pQueueCreateInfos = new  VkDeviceQueueCreateInfo[len];
+		    
+		 }
+		 
+		 for(int i=0; i<len; i++){
+		     long address = pointer[i];
+		     if(this.pQueueCreateInfos[i]==null){
+		         this.pQueueCreateInfos[i] = new VkDeviceQueueCreateInfo(address);
+		     }else{
+		         this.pQueueCreateInfos[i].setPointer(address);
+		     }
+		 }
+		 
 		 return this.pQueueCreateInfos;
 	 }
 
@@ -337,8 +391,8 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * Prototype: const char* const*  ppEnabledLayerNames
 	 */ 
 	 public String[] ppEnabledLayerNames(){
-		// String[] var = getPpEnabledLayerNames0(super.ptr);
-		// this.ppEnabledLayerNames = var;
+		 String[] var = getPpEnabledLayerNames0(super.ptr);
+		 this.ppEnabledLayerNames = var;
 		 return this.ppEnabledLayerNames;
 	 }
 
@@ -375,8 +429,8 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * Prototype: const char* const*  ppEnabledExtensionNames
 	 */ 
 	 public String[] ppEnabledExtensionNames(){
-		// String[] var = getPpEnabledExtensionNames0(super.ptr);
-		// this.ppEnabledExtensionNames = var;
+		 String[] var = getPpEnabledExtensionNames0(super.ptr);
+		 this.ppEnabledExtensionNames = var;
 		 return this.ppEnabledExtensionNames;
 	 }
 
@@ -417,30 +471,28 @@ public class VkDeviceCreateInfo extends VkStruct {
     public String toString() {
         final int maxLen = 20;
         StringBuilder builder = new StringBuilder(300);
-        builder.append("VkDeviceCreateInfo [sType=")
+        builder.append("VkDeviceCreateInfo ["
+                + "\n\t sType=")
                 .append(sType)
-                .append(", pNext=")
-                .append(pNext)
-                .append(", flags=")
-                .append(flags)
-                .append(", queueCreateInfoCount=")
-                .append(queueCreateInfoCount)
-                .append(", pQueueCreateInfos=")
-                .append(pQueueCreateInfos)
-                .append(", enabledLayerCount=")
-                .append(enabledLayerCount)
-                .append(", ppEnabledLayerNames=")
-                .append(ppEnabledLayerNames != null
-                        ? Arrays.asList(ppEnabledLayerNames).subList(0, Math.min(ppEnabledLayerNames.length, maxLen))
-                        : null)
-                .append(", enabledExtensionCount=")
-                .append(enabledExtensionCount)
-                .append(", ppEnabledExtensionNames=")
-                .append(ppEnabledExtensionNames != null ? Arrays.asList(ppEnabledExtensionNames).subList(0,
-                        Math.min(ppEnabledExtensionNames.length, maxLen)) : null)
-                .append(", pEnabledFeatures=")
-                .append(pEnabledFeatures)
-                .append("]");
+                .append(",\n\t pNext=")
+                .append(pNext())
+                .append(",\n\t flags=")
+                .append(flags())
+                .append(",\n\t queueCreateInfoCount=")
+                .append(queueCreateInfoCount())
+                .append(",\n\t pQueueCreateInfos=")
+                .append(pQueueCreateInfos()!= null ? Arrays.asList(pQueueCreateInfos()) : null)
+                .append(",\n\t enabledLayerCount=")
+                .append(enabledLayerCount())
+                .append(",\n\t ppEnabledLayerNames=")
+                .append(ppEnabledLayerNames() != null ? Arrays.asList(ppEnabledLayerNames()) : null)
+                .append(",\n\t enabledExtensionCount=")
+                .append(enabledExtensionCount())
+                .append(",\n\t ppEnabledExtensionNames=")
+                .append(ppEnabledExtensionNames() != null ? Arrays.asList(ppEnabledExtensionNames) : null)
+                .append(",\n\t pEnabledFeatures=")
+                .append(pEnabledFeatures())
+                .append(" ]\n");
         return builder.toString();
     }
 
@@ -522,18 +574,44 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * native SET method for field pQueueCreateInfos	[vkstruct]<br>
 	 * Prototype: const VkDeviceQueueCreateInfo*  pQueueCreateInfos
 	 */ 
-	 private static native void setPQueueCreateInfos0(Buffer ptr, java.nio.ByteBuffer  _pQueueCreateInfos);/*
+	 private static native void setPQueueCreateInfos0(Buffer ptr, java.nio.ByteBuffer[]  pQueueCreateInfos, int len);/*
+		  VkDeviceQueueCreateInfo* array = NULL;		  
+		  if(len>0 && pQueueCreateInfos ){
+		    array = new VkDeviceQueueCreateInfo[len];
+		    for(jint i = 0; i<len; i++){
+		      jobject obj = (pQueueCreateInfos) ?(jobject) env->GetObjectArrayElement(pQueueCreateInfos, i):NULL;
+                       if(obj){
+                          VkDeviceQueueCreateInfo* pInfo = (VkDeviceQueueCreateInfo*)(env->GetDirectBufferAddress(obj));
+                          VkDeviceQueueCreateInfo info = *pInfo; 
+                          array[i] = info;
+                         }else{
+                          VkDeviceQueueCreateInfo info; // blank info
+                          array[i] = info;
+                         }
+		    }
+		   // JBufferArray jba (env, pQueueCreateInfos);
+		   // jba.copyPointers((PointerToAnythingArray) array, (int)len);
+		  }		  
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
-		  vkObj->pQueueCreateInfos = (const VkDeviceQueueCreateInfo*) (_pQueueCreateInfos);
+		  vkObj->queueCreateInfoCount = len;
+		  vkObj->pQueueCreateInfos = (const VkDeviceQueueCreateInfo*) (array);
 	  */
 
 	/**
 	 * native GET method for field pQueueCreateInfos	[vkstruct]<br>
 	 * Prototype: const VkDeviceQueueCreateInfo*  pQueueCreateInfos
+	 * @param ptr - native struct
+	 * @param pointers - storage to pointers
+	 * @param len - length of pointers array
 	 */ 
-	 private static native long getPQueueCreateInfos0(Buffer ptr);/*
-		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pQueueCreateInfos);	 */
+	 private static native void getPQueueCreateInfos0(Buffer ptr, long[] pointers, int len);/*
+		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);		  
+		  uint32_t count = vkObj->queueCreateInfoCount;
+		  if(vkObj->pQueueCreateInfos)
+		   for(uint32_t i=0; i<count && i<(uint32_t)len; i++){		            
+		     pointers[i] = reinterpret_cast<jlong>(&vkObj->pQueueCreateInfos[i]);
+		   }
+          */
 
 	/**
 	 * native SET method for field enabledLayerCount	[int]<br>
@@ -557,19 +635,46 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * native SET method for field ppEnabledLayerNames	[string_arr]<br>
 	 * Prototype: const char* const*  ppEnabledLayerNames
 	 */ 
-	 private static native void setPpEnabledLayerNames0(Buffer ptr, String[] _ppEnabledLayerNames);/*
+	 private static native void setPpEnabledLayerNames0(Buffer ptr, String[] ppEnabledLayerNames);/*
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
-		  vkObj->ppEnabledLayerNames = (const char* const*) (_ppEnabledLayerNames);
+		  int stringCount = ppEnabledLayerNames ? env->GetArrayLength(ppEnabledLayerNames) : 0;
+                  std::vector<const char*> enabledLayers;
+                  
+                  for (int i=0; i<stringCount; i++) {
+                          jstring string = (jstring) env->GetObjectArrayElement(ppEnabledLayerNames, i);
+                          const char *rawString = env->GetStringUTFChars(string, 0);
+                          enabledLayers.push_back(rawString);
+                        // MUST keep strings and don't `ReleaseStringUTFChars` when you're done.
+                        //  env->ReleaseStringUTFChars(string, rawString);
+                   }
+                  vkObj->enabledLayerCount = stringCount;
+                  vkObj->ppEnabledLayerNames = (const char* const*) enabledLayers.data();
 	  */
 
 	/**
 	 * native GET method for field ppEnabledLayerNames	[string_arr]<br>
 	 * Prototype: const char* const*  ppEnabledLayerNames
 	 */ 
-	// private static native String[] getPpEnabledLayerNames0(Buffer ptr);/*
-		 // VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
-		 // return (String[]) (vkObj->ppEnabledLayerNames);
-	// */
+	 private static native String[] getPpEnabledLayerNames0(Buffer ptr);/*
+		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
+		  int count = (int) vkObj->enabledLayerCount;
+                  printf("vkObj->enabledLayerCount %d \n ", count);
+                  
+                  jobjectArray ret = NULL;                  
+                  if(count > 0){
+                   ret= (jobjectArray)env->NewObjectArray(count,
+                                                          env->FindClass("java/lang/String"),
+                                                          env->NewStringUTF(""));   
+                   printf("created jobjectArray ");                                                        
+                    for(int i = 0; i<count; i++){
+                         env->SetObjectArrayElement(ret, 
+                                                    i,
+                                                    env->NewStringUTF(vkObj->ppEnabledLayerNames[i]));
+                      }//for                      
+                  }//if count
+                  
+		 return ret;
+	 */
 
 	/**
 	 * native SET method for field enabledExtensionCount	[int]<br>
@@ -595,17 +700,47 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 */ 
 	 private static native void setPpEnabledExtensionNames0(Buffer ptr, String[] _ppEnabledExtensionNames);/*
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
-		  vkObj->ppEnabledExtensionNames = (const char* const*) (_ppEnabledExtensionNames);
+		  //vkObj->ppEnabledExtensionNames = (const char* const*) (_ppEnabledExtensionNames);
+		  int stringCount = _ppEnabledExtensionNames ? env->GetArrayLength(_ppEnabledExtensionNames) : 0;
+                  std::vector<const char*> vecNames;  
+                                  
+                  for (int i=0; i<stringCount; i++) {
+                          jstring string = (jstring) env->GetObjectArrayElement(_ppEnabledExtensionNames, i);
+                          const char *rawString = env->GetStringUTFChars(string, 0);
+                          vecNames.push_back(rawString);
+                        //  env->ReleaseStringUTFChars(string, rawString);
+                   }                   
+                  vkObj->enabledExtensionCount = stringCount;
+                  vkObj->ppEnabledExtensionNames = (const char* const*) vecNames.data(); 
+		    
 	  */
 
 	/**
 	 * native GET method for field ppEnabledExtensionNames	[string_arr]<br>
 	 * Prototype: const char* const*  ppEnabledExtensionNames
 	 */ 
-//	 private static native String[] getPpEnabledExtensionNames0(Buffer ptr);/*
-//		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
-//		  return (String[]) (vkObj->ppEnabledExtensionNames);
-//	 */
+	 private static native String[] getPpEnabledExtensionNames0(Buffer ptr);/*
+		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
+		  int count = (int) vkObj->enabledExtensionCount;
+		  
+		                    
+		                    
+                  jobjectArray ret = NULL;                  
+                  if(count>0){                   
+                   // thanks to code ranch 
+                   // http://www.coderanch.com/t/326467/java/java/Returning-String-array-program-Java
+                   ret = (jobjectArray)env->NewObjectArray(count,
+                                                           env->FindClass("java/lang/String"),
+                                                           env->NewStringUTF(""));                  
+                    for(int i = 0; i<count; i++){
+                         env->SetObjectArrayElement(ret, 
+                                                    i,
+                                                    env->NewStringUTF(vkObj->ppEnabledExtensionNames[i]));
+                      }//for
+                  }//if count
+                  
+		return ret;
+	 */
 
 	/**
 	 * native SET method for field pEnabledFeatures	[vkstruct]<br>
