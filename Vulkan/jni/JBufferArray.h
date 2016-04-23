@@ -34,7 +34,20 @@ class JBufferArray
          *
          */
         PointerToAnythingArray getPointers() { return pointers; }
-
+		
+		/**
+		 * Copy current pointers to dstArray
+		 * @param dstArray - a pointer array
+		 * @param len - number of pointers to copy
+		 * 
+		 */
+        void copyPointers(PointerToAnythingArray dstArray, int len){
+			if(bufferArr && dstArray ){
+				for(int i=0; i<size && i<len; i++){
+					dstArray[i] = pointers[i];
+				}
+			}
+		}; 
         /**
          * @return the PointerToAnything and index i. Out of bounds indexes
          *          return null.

@@ -263,6 +263,14 @@ extern "C" {
 #define bor_vulkan_structs_VkDeviceCreateInfo_TAG_ID 16L
 /*
  * Class:     bor_vulkan_structs_VkDeviceCreateInfo
+ * Method:    initNative
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_initNative
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     bor_vulkan_structs_VkDeviceCreateInfo
  * Method:    setSType0
  * Signature: (Ljava/nio/Buffer;I)V
  */
@@ -328,18 +336,18 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_getQueueCreate
 /*
  * Class:     bor_vulkan_structs_VkDeviceCreateInfo
  * Method:    setPQueueCreateInfos0
- * Signature: (Ljava/nio/Buffer;Ljava/nio/ByteBuffer;)V
+ * Signature: (Ljava/nio/Buffer;[Ljava/nio/ByteBuffer;I)V
  */
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setPQueueCreateInfos0
-  (JNIEnv *, jclass, jobject, jobject);
+  (JNIEnv *, jclass, jobject, jobjectArray, jint);
 
 /*
  * Class:     bor_vulkan_structs_VkDeviceCreateInfo
  * Method:    getPQueueCreateInfos0
- * Signature: (Ljava/nio/Buffer;)J
+ * Signature: (Ljava/nio/Buffer;[JI)V
  */
-JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_getPQueueCreateInfos0
-  (JNIEnv *, jclass, jobject);
+JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_getPQueueCreateInfos0
+  (JNIEnv *, jclass, jobject, jlongArray, jint);
 
 /*
  * Class:     bor_vulkan_structs_VkDeviceCreateInfo
@@ -367,6 +375,14 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setPpEnabledLa
 
 /*
  * Class:     bor_vulkan_structs_VkDeviceCreateInfo
+ * Method:    getPpEnabledLayerNames0
+ * Signature: (Ljava/nio/Buffer;)[Ljava/lang/String;
+ */
+JNIEXPORT jobjectArray JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_getPpEnabledLayerNames0
+  (JNIEnv *, jclass, jobject);
+
+/*
+ * Class:     bor_vulkan_structs_VkDeviceCreateInfo
  * Method:    setEnabledExtensionCount0
  * Signature: (Ljava/nio/Buffer;I)V
  */
@@ -388,6 +404,14 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_getEnabledExte
  */
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setPpEnabledExtensionNames0
   (JNIEnv *, jclass, jobject, jobjectArray);
+
+/*
+ * Class:     bor_vulkan_structs_VkDeviceCreateInfo
+ * Method:    getPpEnabledExtensionNames0
+ * Signature: (Ljava/nio/Buffer;)[Ljava/lang/String;
+ */
+JNIEXPORT jobjectArray JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_getPpEnabledExtensionNames0
+  (JNIEnv *, jclass, jobject);
 
 /*
  * Class:     bor_vulkan_structs_VkDeviceCreateInfo

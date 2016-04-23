@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
 
 
-//@line:325
+//@line:350
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  vkObj->sType = (VkStructureType) (_sType);
@@ -18,7 +18,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:334
+//@line:359
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setPNext0(JNIEn
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext):0);
 
 
-//@line:343
+//@line:368
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  vkObj->pNext = (const void*) (_pNext);
@@ -50,7 +50,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setPNext0(JNIEn
 static inline jlong wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:352
+//@line:377
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 
@@ -66,23 +66,21 @@ JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkApplicationInfo_getPNext0(JNIE
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setPApplicationName0(JNIEnv* env, jclass clazz, jobject obj_ptr, jstring obj__pApplicationName) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	char* _pApplicationName = (char*)env->GetStringUTFChars(obj__pApplicationName, 0);
 
+//@line:385
 
-//@line:360
-
+	 unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+         char* _pApplicationName = (char*)env->GetStringUTFChars(obj__pApplicationName, 0);
+         
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  vkObj->pApplicationName = (const char*) (_pApplicationName);
 	  
-	env->ReleaseStringUTFChars(obj__pApplicationName, _pApplicationName);
-
 }
 
 static inline jstring wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getPApplicationName0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:369
+//@line:397
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  return (jstring)(env->NewStringUTF(vkObj->pApplicationName));	 
@@ -101,7 +99,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setApplicationV
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
 
 
-//@line:377
+//@line:405
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  vkObj->applicationVersion = (uint32_t) (_applicationVersion);
@@ -112,7 +110,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setApplicationV
 static inline jint wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getApplicationVersion0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:386
+//@line:414
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  return (jint) (vkObj->applicationVersion);
@@ -129,23 +127,21 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkApplicationInfo_getApplicationV
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setPEngineName0(JNIEnv* env, jclass clazz, jobject obj_ptr, jstring obj__pEngineName) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	char* _pEngineName = (char*)env->GetStringUTFChars(obj__pEngineName, 0);
 
+//@line:423
 
-//@line:395
-
+                unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+                char* _pEngineName = (char*)env->GetStringUTFChars(obj__pEngineName, 0);
+		
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  vkObj->pEngineName = (const char*) (_pEngineName);
 	  
-	env->ReleaseStringUTFChars(obj__pEngineName, _pEngineName);
-
 }
 
 static inline jstring wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getPEngineName0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:404
+//@line:435
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  return (jstring)(env->NewStringUTF(vkObj->pEngineName));	 
@@ -164,7 +160,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setEngineVersio
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
 
 
-//@line:412
+//@line:443
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  vkObj->engineVersion = (uint32_t) (_engineVersion);
@@ -175,7 +171,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setEngineVersio
 static inline jint wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getEngineVersion0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:421
+//@line:452
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  return (jint) (vkObj->engineVersion);
@@ -195,7 +191,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setApiVersion0(
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
 
 
-//@line:430
+//@line:461
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  vkObj->apiVersion = (uint32_t) (_apiVersion);
@@ -206,7 +202,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setApiVersion0(
 static inline jint wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getApiVersion0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:439
+//@line:470
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  return (jint) (vkObj->apiVersion);

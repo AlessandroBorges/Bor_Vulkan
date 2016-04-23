@@ -263,6 +263,14 @@ extern "C" {
 #define bor_vulkan_structs_VkInstanceCreateInfo_TAG_ID 2L
 /*
  * Class:     bor_vulkan_structs_VkInstanceCreateInfo
+ * Method:    initNative
+ * Signature: ()V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_initNative
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     bor_vulkan_structs_VkInstanceCreateInfo
  * Method:    setSType0
  * Signature: (Ljava/nio/Buffer;I)V
  */

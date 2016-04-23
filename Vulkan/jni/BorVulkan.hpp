@@ -24,7 +24,7 @@ extern "C" {
 
  #include <vulkan/vulkan.h>
  #include <jni.h>
- 
+
 
 #ifdef __cplusplus
 }

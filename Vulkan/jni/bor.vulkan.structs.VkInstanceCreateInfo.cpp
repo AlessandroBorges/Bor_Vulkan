@@ -8,11 +8,26 @@
     #include <iostream>
     
     using namespace std;
-    JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setSType0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _sType) {
+    static jclass stringClass;
+      
+     
+      ////////////////////////////////////////
+     JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_initNative(JNIEnv* env, jclass clazz) {
+
+
+//@line:116
+
+	       jclass stringClassLocal = env->FindClass("java/lang/String");
+	       stringClass = (jclass) env->NewGlobalRef(stringClassLocal);
+	    
+
+}
+
+JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setSType0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _sType) {
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
 
 
-//@line:369
+//@line:416
 
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  vkObj->sType = (VkStructureType) (_sType);
@@ -23,7 +38,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkInstanceCreateInfo_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:378
+//@line:425
 
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
@@ -44,7 +59,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setPNext0(JN
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext):0);
 
 
-//@line:387
+//@line:434
 
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  vkObj->pNext = (const void*) (_pNext);
@@ -55,7 +70,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setPNext0(JN
 static inline jlong wrapped_Java_bor_vulkan_structs_VkInstanceCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:396
+//@line:443
 
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 
@@ -74,7 +89,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setFlags0(JN
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
 
 
-//@line:404
+//@line:451
 
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  vkObj->flags = (VkInstanceCreateFlags) (_flags);
@@ -85,7 +100,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setFlags0(JN
 static inline jint wrapped_Java_bor_vulkan_structs_VkInstanceCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:413
+//@line:460
 
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -106,7 +121,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setPApplicat
 	char* _pApplicationInfo = (char*)(obj__pApplicationInfo?env->GetDirectBufferAddress(obj__pApplicationInfo):0);
 
 
-//@line:422
+//@line:469
 
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  vkObj->pApplicationInfo = (const VkApplicationInfo*) (_pApplicationInfo);
@@ -117,7 +132,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setPApplicat
 static inline jlong wrapped_Java_bor_vulkan_structs_VkInstanceCreateInfo_getPApplicationInfo0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:431
+//@line:478
 
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  return (jlong) reinterpret_cast<jlong>(vkObj->pApplicationInfo);	 
@@ -136,7 +151,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setEnabledLa
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
 
 
-//@line:439
+//@line:486
 
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  vkObj->enabledLayerCount = (uint32_t) (_enabledLayerCount);
@@ -147,7 +162,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setEnabledLa
 static inline jint wrapped_Java_bor_vulkan_structs_VkInstanceCreateInfo_getEnabledLayerCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:448
+//@line:495
 
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  return (jint) (vkObj->enabledLayerCount);
@@ -167,7 +182,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setPpEnabled
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
 
 
-//@line:457
+//@line:504
 
 	          VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
                   
@@ -178,8 +193,8 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setPpEnabled
                           jstring string = (jstring) env->GetObjectArrayElement(enabledLayerNames, i);
                           const char *rawString = env->GetStringUTFChars(string, 0);
                           enabledLayers.push_back(rawString);
-                        // Don't forget to call `ReleaseStringUTFChars` when you're done.
-                          env->ReleaseStringUTFChars(string, rawString);
+                        // Don't call `ReleaseStringUTFChars` when you're done.
+                        //  env->ReleaseStringUTFChars(string, rawString);
                    }
                    
                   vkObj->enabledLayerCount = enabledLayers.size();
@@ -193,7 +208,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setPpEnabled
 static inline jobjectArray wrapped_Java_bor_vulkan_structs_VkInstanceCreateInfo_getPpEnabledLayerNames0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:481
+//@line:528
 
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 				  
@@ -201,13 +216,12 @@ static inline jobjectArray wrapped_Java_bor_vulkan_structs_VkInstanceCreateInfo_
                   
                   jobjectArray ret;
                   
-                  if(count>0){
-                   
+                  if(count>0){                   
                    // thanks to code ranch 
                    // http://www.coderanch.com/t/326467/java/java/Returning-String-array-program-Java
                    ret= (jobjectArray)env->NewObjectArray(count,
-                                                          env->FindClass("java/lang/String"),
-                                                          env->NewStringUTF(""));
+                                                          stringClass,
+                                                          NULL); //env->NewStringUTF(""));
                    // const char *ppLayerNames[] = (vkObj->ppEnabledLayerNames);
                     for(int i = 0; i<count; i++){
                          env->SetObjectArrayElement(ret, 
@@ -234,7 +248,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setEnabledEx
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
 
 
-//@line:511
+//@line:557
 
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  vkObj->enabledExtensionCount = (uint32_t) (_enabledExtensionCount);
@@ -245,7 +259,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setEnabledEx
 static inline jint wrapped_Java_bor_vulkan_structs_VkInstanceCreateInfo_getEnabledExtensionCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:520
+//@line:566
 
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  return (jint) (vkObj->enabledExtensionCount);
@@ -265,7 +279,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setPpEnabled
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
 
 
-//@line:529
+//@line:575
 
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  
@@ -276,8 +290,8 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setPpEnabled
                           jstring string = (jstring) env->GetObjectArrayElement(enabledExtensionNames, i);
                           const char *rawString = env->GetStringUTFChars(string, 0);
                           enabledExtensions.push_back(rawString);
-                        // Don't forget to call `ReleaseStringUTFChars` when you're done.
-                          env->ReleaseStringUTFChars(string, rawString);
+                        // Don't call `ReleaseStringUTFChars` when you're done.
+                        //   env->ReleaseStringUTFChars(string, rawString);
                    }
 		   
 		  vkObj->enabledExtensionCount = enabledExtensions.size();
@@ -290,7 +304,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setPpEnabled
 static inline jobjectArray wrapped_Java_bor_vulkan_structs_VkInstanceCreateInfo_getPpEnabledExtensionNames0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:552
+//@line:598
 
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
 		  int count = (int) vkObj->enabledExtensionCount;
@@ -302,7 +316,7 @@ static inline jobjectArray wrapped_Java_bor_vulkan_structs_VkInstanceCreateInfo_
 		   // thanks to code ranch 
 		   // http://www.coderanch.com/t/326467/java/java/Returning-String-array-program-Java
 		   ret= (jobjectArray)env->NewObjectArray(count,
-		                                          env->FindClass("java/lang/String"),
+		                                          stringClass,//env->FindClass("java/lang/String"),
 		                                          env->NewStringUTF(""));
 		     for(int i = 0; i<count; i++){
 		      env->SetObjectArrayElement(ret, 

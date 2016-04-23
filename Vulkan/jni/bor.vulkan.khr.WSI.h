@@ -17,6 +17,14 @@ JNIEXPORT jobject JNICALL Java_bor_vulkan_khr_WSI_createWSI
 
 /*
  * Class:     bor_vulkan_khr_WSI
+ * Method:    destroyWSI0
+ * Signature: (Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_khr_WSI_destroyWSI0
+  (JNIEnv *, jclass, jobject);
+
+/*
+ * Class:     bor_vulkan_khr_WSI
  * Method:    vkCreateAndroidSurfaceKHR0
  * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[I)Ljava/nio/ByteBuffer;
  */

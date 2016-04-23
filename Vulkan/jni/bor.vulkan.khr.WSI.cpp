@@ -27,11 +27,9 @@
       static inline jobject wrapped_Java_bor_vulkan_khr_WSI_createWSI
 (JNIEnv* env, jclass clazz, jobject obj_instance, jobject obj_device, char* instance, char* device) {
 
-//@line:101
-       
-          VkInstance* pInstance = (VkInstance*)instance;
-          VkDevice*   pDevice = (VkDevice*)device;
-          WSI* wsi = new WSI((VkInstance) (*pInstance), (VkDevice) (*pDevice));
+//@line:113
+  
+          WSI* wsi = new WSI((VkInstance) (instance), (VkDevice) (device));
          
           if(wsi){
               jobject buffer = (jobject)(env->NewDirectByteBuffer(wsi, sizeof(WSI)));
@@ -52,10 +50,24 @@ JNIEXPORT jobject JNICALL Java_bor_vulkan_khr_WSI_createWSI(JNIEnv* env, jclass 
 	return JNI_returnValue;
 }
 
+JNIEXPORT void JNICALL Java_bor_vulkan_khr_WSI_destroyWSI0(JNIEnv* env, jclass clazz, jobject obj__wsi) {
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
+
+
+//@line:124
+
+       WSI* wsi = (WSI*) _wsi;
+       if(wsi){
+         delete wsi;
+      }   
+    
+
+}
+
 static inline jobject wrapped_Java_bor_vulkan_khr_WSI_vkCreateAndroidSurfaceKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_pCreateInfo, jobject obj_pAllocator, jintArray obj_result, char* _wsi, char* pCreateInfo, char* pAllocator, int* result) {
 
-//@line:167
+//@line:184
 
         #ifdef VK_USE_PLATFORM_ANDROID_KHR        
          WSI* wsi = (WSI*) _wsi;
@@ -97,7 +109,7 @@ JNIEXPORT jobject JNICALL Java_bor_vulkan_khr_WSI_vkCreateAndroidSurfaceKHR0(JNI
 static inline jobject wrapped_Java_bor_vulkan_khr_WSI_vkCreateWin32SurfaceKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_pCreateInfo, jobject obj_pAllocator, jintArray obj_result, char* _wsi, char* pCreateInfo, char* pAllocator, int* result) {
 
-//@line:243
+//@line:260
  
              
  #ifdef VK_USE_PLATFORM_WIN32_KHR                 
@@ -137,7 +149,7 @@ JNIEXPORT jobject JNICALL Java_bor_vulkan_khr_WSI_vkCreateWin32SurfaceKHR0(JNIEn
 static inline jboolean wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceWin32PresentationSupportKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_physicalDevice, jint queueFamilyIndex, char* _wsi, char* physicalDevice) {
 
-//@line:303
+//@line:320
  
    #ifdef VK_USE_PLATFORM_WIN32_KHR          
      VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
@@ -167,7 +179,7 @@ JNIEXPORT jboolean JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceWin32Prese
 static inline jobject wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceDisplayPropertiesKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_physicalDevice, jintArray obj_pPropertyCount, jint arrayLen, jintArray obj_result, jintArray obj_structSize, char* _wsi, char* physicalDevice, int* pPropertyCount, int* result, int* structSize) {
 
-//@line:398
+//@line:415
  
     #ifdef BOR_LOADER   
      
@@ -237,7 +249,7 @@ JNIEXPORT jobject JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceDisplayProp
 static inline jobject wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceDisplayPlanePropertiesKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_physicalDevice, jintArray obj_pPropertyCount, jboolean justCount, jintArray obj_structSize, jintArray obj_result, char* _wsi, char* physicalDevice, int* pPropertyCount, int* structSize, int* result) {
 
-//@line:526
+//@line:543
  
    #ifdef BOR_LOADER 
       WSI* wsi = (WSI*)_wsi;;
@@ -306,7 +318,7 @@ JNIEXPORT jobject JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceDisplayPlan
 static inline jobject wrapped_Java_bor_vulkan_khr_WSI_vkGetDisplayModePropertiesKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_physicalDevice, jobject obj_display, jintArray obj_pPropertyCount, jboolean justCount, jintArray obj_structSize, jintArray obj_result, char* _wsi, char* physicalDevice, char* display, int* pPropertyCount, int* structSize, int* result) {
 
-//@line:659
+//@line:676
  
    #ifdef BOR_LOADER 
        WSI* wsi = (WSI*)_wsi;;
@@ -377,7 +389,7 @@ JNIEXPORT jobject JNICALL Java_bor_vulkan_khr_WSI_vkGetDisplayModePropertiesKHR0
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkCreateDisplayModeKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_physicalDevice, jobject obj_display, jobject obj_pCreateInfo, jobject obj_pAllocator, jobjectArray _pMode, char* _wsi, char* physicalDevice, char* display, char* pCreateInfo, char* pAllocator) {
 
-//@line:769
+//@line:786
  
     #ifdef BOR_LOADER  
         WSI* wsi = (WSI*)_wsi;;      
@@ -422,7 +434,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkCreateDisplayModeKHR0(JNIEnv* e
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkCreateDisplayPlaneSurfaceKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_pCreateInfo, jobject obj_pAllocator, jobjectArray buffer, char* _wsi, char* pCreateInfo, char* pAllocator) {
 
-//@line:851
+//@line:868
  
        #ifdef BOR_LOADER          
          WSI* wsi = (WSI*)_wsi;;
@@ -459,7 +471,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkCreateDisplayPlaneSurfaceKHR0(J
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkCreateSharedSwapchainsKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jint swapchainCount, jobject obj_pCreateInfos, jobject obj_pAllocator, jintArray obj_sizeofPTR, jobjectArray bufferArr, char* _wsi, char* pCreateInfos, char* pAllocator, int* sizeofPTR) {
 
-//@line:941
+//@line:958
  
      #ifdef BOR_LOADER
          WSI* wsi = (WSI*)_wsi;;
@@ -504,7 +516,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkCreateSharedSwapchainsKHR0(JNIE
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkCreateXlibSurfaceKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_pCreateInfo, jobject obj_pAllocator, jobjectArray buffer, char* _wsi, char* pCreateInfo, char* pAllocator) {
 
-//@line:1022
+//@line:1039
  
                  
         #ifdef VK_USE_PLATFORM_XLIB_KHR         
@@ -543,7 +555,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkCreateXlibSurfaceKHR0(JNIEnv* e
 static inline jboolean wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceXlibPresentationSupportKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_physicalDevice, jint queueFamilyIndex, jobject obj_dpy, jobject obj_visualID, char* _wsi, char* physicalDevice, char* dpy, char* visualID) {
 
-//@line:1095
+//@line:1112
  
        #ifdef VK_USE_PLATFORM_XCB_KHR
          WSI* wsi = (WSI*)_wsi;;
@@ -577,7 +589,7 @@ JNIEXPORT jboolean JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceXlibPresen
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkCreateXcbSurfaceKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_pCreateInfo, jobject obj_pAllocator, jobjectArray buffer, char* _wsi, char* pCreateInfo, char* pAllocator) {
 
-//@line:1166
+//@line:1183
  
        #ifdef VK_USE_PLATFORM_XCB_KHR          
          WSI* wsi = (WSI*)_wsi;;
@@ -613,7 +625,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkCreateXcbSurfaceKHR0(JNIEnv* en
 static inline jboolean wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceXcbPresentationSupportKHR0
 (JNIEnv* env, jclass clazz, jobject obj_physicalDevice, jint queueFamilyIndex, jobject obj_connection, jobject visual_id, char* physicalDevice, char* connection) {
 
-//@line:1234
+//@line:1251
  
        #ifdef VK_USE_PLATFORM_XCB_KHR         
          VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
@@ -642,7 +654,7 @@ JNIEXPORT jboolean JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceXcbPresent
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkCreateWaylandSurfaceKHR0
 (JNIEnv* env, jclass clazz, jobject obj_instance, jobject obj_pCreateInfo, jobject obj_pAllocator, jobjectArray buffer, char* instance, char* pCreateInfo, char* pAllocator) {
 
-//@line:1303
+//@line:1320
  
       #ifdef VK_USE_PLATFORM_WAYLAND_KHR        
          VkInstance* ptr_instance = (VkInstance*) instance;
@@ -678,7 +690,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkCreateWaylandSurfaceKHR0(JNIEnv
 static inline jboolean wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceWaylandPresentationSupportKHR0
 (JNIEnv* env, jclass clazz, jobject obj_physicalDevice, jint queueFamilyIndex, jobject obj_display, char* physicalDevice, char* display) {
 
-//@line:1365
+//@line:1382
 
        #ifdef VK_USE_PLATFORM_WAYLAND_KHR           
          VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
@@ -707,7 +719,7 @@ JNIEXPORT jboolean JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceWaylandPre
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkCreateMirSurfaceKHR0
 (JNIEnv* env, jclass clazz, jobject obj_instance, jobject obj_pCreateInfo, jobject obj_pAllocator, jobjectArray buff, char* instance, char* pCreateInfo, char* pAllocator) {
 
-//@line:1431
+//@line:1448
  
         #ifdef VK_USE_PLATFORM_MIR_KHR         
                  
@@ -744,7 +756,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkCreateMirSurfaceKHR0(JNIEnv* en
 static inline jboolean wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceMirPresentationSupportKHR0
 (JNIEnv* env, jclass clazz, jobject obj_physicalDevice, jint queueFamilyIndex, jobject obj_connection, char* physicalDevice, char* connection) {
 
-//@line:1494
+//@line:1511
  
                  
         #ifdef VK_USE_PLATFORM_MIR_KHR              
@@ -773,7 +785,7 @@ JNIEXPORT jboolean JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceMirPresent
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkGetDisplayPlaneCapabilitiesKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_physicalDevice, jobject obj_mode, jint planeIndex, jobject obj_pCapabilities, char* _wsi, char* physicalDevice, char* mode, char* pCapabilities) {
 
-//@line:1561
+//@line:1578
  
    #ifdef BOR_LOADER     
      WSI* wsi = (WSI*) _wsi;       
@@ -809,7 +821,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkGetDisplayPlaneCapabilitiesKHR0
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkGetDisplayPlaneSupportedDisplaysKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_physicalDevice, jint planeIndex, jintArray obj_pDisplayCount, jobjectArray buffers, char* _wsi, char* physicalDevice, int* pDisplayCount) {
 
-//@line:1638
+//@line:1655
  
 #ifdef BOR_LOADER 
      WSI* wsi = (WSI*)_wsi;            
@@ -861,7 +873,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_khr_WSI_vkDestroySurfaceKHR0(JNIEnv* env,
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator):0);
 
 
-//@line:1708
+//@line:1725
  
  VkInstance* ptr_instance = (VkInstance*) instance;
  VkSurfaceKHR* ptr_surface = (VkSurfaceKHR*) surface;
@@ -877,7 +889,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_khr_WSI_vkDestroySurfaceKHR0(JNIEnv* env,
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfaceSupportKHR0
 (JNIEnv* env, jclass clazz, jobject obj_physicalDevice, jint queueFamilyIndex, jobject obj_surface, jbooleanArray obj_pSupported, char* physicalDevice, char* surface, bool* pSupported) {
 
-//@line:1767
+//@line:1784
  
  VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
  VkSurfaceKHR* ptr_surface = (VkSurfaceKHR*) surface;
@@ -909,7 +921,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfaceSupport
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfaceCapabilitiesKHR0
 (JNIEnv* env, jclass clazz, jobject obj_physicalDevice, jobject obj_surface, jobject obj_pSurfaceCapabilities, char* physicalDevice, char* surface, char* pSurfaceCapabilities) {
 
-//@line:1824
+//@line:1841
  
  VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
  VkSurfaceKHR* ptr_surface = (VkSurfaceKHR*) surface;
@@ -936,7 +948,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfaceCapabil
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfaceFormatsKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_physicalDevice, jobject obj_surface, jintArray obj_pSurfaceFormatCount, jintArray obj_sizeofStr, jobjectArray buffers, char* _wsi, char* physicalDevice, char* surface, int* pSurfaceFormatCount, int* sizeofStr) {
 
-//@line:1921
+//@line:1938
  
  WSI* wsi = (WSI*)_wsi;       
  VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
@@ -998,7 +1010,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfaceFormats
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfacePresentModesKHR0
 (JNIEnv* env, jclass clazz, jobject obj_physicalDevice, jobject obj_surface, jintArray obj_pPresentModeCount, jintArray obj_pPresentModes, char* physicalDevice, char* surface, int* pPresentModeCount, int* pPresentModes) {
 
-//@line:2024
+//@line:2041
  
          
  VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
@@ -1029,7 +1041,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfacePresent
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkCreateSwapchainKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_pCreateInfo, jobject obj_pAllocator, jobjectArray buffer, char* _wsi, char* pCreateInfo, char* pAllocator) {
 
-//@line:2090
+//@line:2107
  
  WSI* wsi = (WSI*)_wsi;;        
  
@@ -1066,7 +1078,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_khr_WSI_vkDestroySwapchainKHR0(JNIEnv* en
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator):0);
 
 
-//@line:2146
+//@line:2163
  
  WSI* wsi = (WSI*)_wsi;
  VkSwapchainKHR* pSwapChain = (VkSwapchainKHR*) swapchain;
@@ -1082,7 +1094,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_khr_WSI_vkDestroySwapchainKHR0(JNIEnv* en
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkGetSwapchainImagesKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_swapchain, jintArray obj_pSwapchainImageCount, jobjectArray bigBuffer, char* _wsi, char* swapchain, int* pSwapchainImageCount) {
 
-//@line:2234
+//@line:2251
  
  WSI* wsi = (WSI*)_wsi;
  VkSwapchainKHR* ptr_swapchain = (VkSwapchainKHR*) swapchain;
@@ -1133,7 +1145,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkGetSwapchainImagesKHR0(JNIEnv* 
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkAcquireNextImageKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_swapchain, jlong timeout, jobject obj_semaphore, jobject obj_fence, jintArray obj_pImageIndex, char* _wsi, char* swapchain, char* semaphore, char* fence, int* pImageIndex) {
 
-//@line:2331
+//@line:2348
  
          
  WSI* wsi = (WSI*) _wsi;
@@ -1169,7 +1181,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkAcquireNextImageKHR0(JNIEnv* en
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkQueuePresentKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_queue, jobject obj_pPresentInfo, char* _wsi, char* queue, char* pPresentInfo) {
 
-//@line:2386
+//@line:2403
  
  VkQueue* ptr_queue = (VkQueue*) queue;
  WSI* wsi = (WSI*)_wsi;
