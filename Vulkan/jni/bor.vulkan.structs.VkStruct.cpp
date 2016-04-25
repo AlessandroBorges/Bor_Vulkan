@@ -7,7 +7,7 @@
      JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkStruct_sizeOf(JNIEnv* env, jclass clazz, jint structID) {
 
 
-//@line:500
+//@line:519
 
      
      size_t _size = 0; 

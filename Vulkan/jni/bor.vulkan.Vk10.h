@@ -81,10 +81,18 @@ extern "C" {
 #define bor_vulkan_Vk10_VK_EXT_debug_report 1L
 #undef bor_vulkan_Vk10_VK_EXT_DEBUG_REPORT_SPEC_VERSION
 #define bor_vulkan_Vk10_VK_EXT_DEBUG_REPORT_SPEC_VERSION 2L
+#undef bor_vulkan_Vk10_VK_KHR_sampler_mirror_clamp_to_edge
+#define bor_vulkan_Vk10_VK_KHR_sampler_mirror_clamp_to_edge 1L
+#undef bor_vulkan_Vk10_VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_SPEC_VERSION
+#define bor_vulkan_Vk10_VK_KHR_SAMPLER_MIRROR_CLAMP_TO_EDGE_SPEC_VERSION 1L
 #undef bor_vulkan_Vk10_VK_NV_glsl_shader
 #define bor_vulkan_Vk10_VK_NV_glsl_shader 1L
 #undef bor_vulkan_Vk10_VK_NV_GLSL_SHADER_SPEC_VERSION
 #define bor_vulkan_Vk10_VK_NV_GLSL_SHADER_SPEC_VERSION 1L
+#undef bor_vulkan_Vk10_VK_IMG_filter_cubic
+#define bor_vulkan_Vk10_VK_IMG_filter_cubic 1L
+#undef bor_vulkan_Vk10_VK_IMG_FILTER_CUBIC_SPEC_VERSION
+#define bor_vulkan_Vk10_VK_IMG_FILTER_CUBIC_SPEC_VERSION 1L
 /*
  * Class:     bor_vulkan_Vk10
  * Method:    init

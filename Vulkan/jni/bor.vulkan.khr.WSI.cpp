@@ -948,7 +948,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfaceCapabil
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfaceFormatsKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_physicalDevice, jobject obj_surface, jintArray obj_pSurfaceFormatCount, jintArray obj_sizeofStr, jobjectArray buffers, char* _wsi, char* physicalDevice, char* surface, int* pSurfaceFormatCount, int* sizeofStr) {
 
-//@line:1938
+//@line:1940
  
  WSI* wsi = (WSI*)_wsi;       
  VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
@@ -1010,7 +1010,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfaceFormats
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfacePresentModesKHR0
 (JNIEnv* env, jclass clazz, jobject obj_physicalDevice, jobject obj_surface, jintArray obj_pPresentModeCount, jintArray obj_pPresentModes, char* physicalDevice, char* surface, int* pPresentModeCount, int* pPresentModes) {
 
-//@line:2041
+//@line:2043
  
          
  VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
@@ -1041,7 +1041,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfacePresent
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkCreateSwapchainKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_pCreateInfo, jobject obj_pAllocator, jobjectArray buffer, char* _wsi, char* pCreateInfo, char* pAllocator) {
 
-//@line:2107
+//@line:2109
  
  WSI* wsi = (WSI*)_wsi;;        
  
@@ -1078,7 +1078,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_khr_WSI_vkDestroySwapchainKHR0(JNIEnv* en
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator):0);
 
 
-//@line:2163
+//@line:2165
  
  WSI* wsi = (WSI*)_wsi;
  VkSwapchainKHR* pSwapChain = (VkSwapchainKHR*) swapchain;
@@ -1094,7 +1094,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_khr_WSI_vkDestroySwapchainKHR0(JNIEnv* en
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkGetSwapchainImagesKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_swapchain, jintArray obj_pSwapchainImageCount, jobjectArray bigBuffer, char* _wsi, char* swapchain, int* pSwapchainImageCount) {
 
-//@line:2251
+//@line:2253
  
  WSI* wsi = (WSI*)_wsi;
  VkSwapchainKHR* ptr_swapchain = (VkSwapchainKHR*) swapchain;
@@ -1145,7 +1145,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkGetSwapchainImagesKHR0(JNIEnv* 
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkAcquireNextImageKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_swapchain, jlong timeout, jobject obj_semaphore, jobject obj_fence, jintArray obj_pImageIndex, char* _wsi, char* swapchain, char* semaphore, char* fence, int* pImageIndex) {
 
-//@line:2348
+//@line:2350
  
          
  WSI* wsi = (WSI*) _wsi;
@@ -1181,7 +1181,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkAcquireNextImageKHR0(JNIEnv* en
 static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkQueuePresentKHR0
 (JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_queue, jobject obj_pPresentInfo, char* _wsi, char* queue, char* pPresentInfo) {
 
-//@line:2403
+//@line:2405
  
  VkQueue* ptr_queue = (VkQueue*) queue;
  WSI* wsi = (WSI*)_wsi;
