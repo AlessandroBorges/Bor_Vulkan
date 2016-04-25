@@ -914,13 +914,13 @@ public VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
                  VkSwapchainCreateInfoKHR  pCreateInfos,
                  VkAllocationCallbacks  pAllocator,
                  VkSwapchainKHR[]  pSwapchains){
-         
+        
          ByteBuffer[] buffers = new ByteBuffer[pSwapchains.length];
          int[] sizeOfPtr = {0};
          int  _val = vkCreateSharedSwapchainsKHR0(
                          wsi.getPointer(),
                          //(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-                         (pSwapchains == null? 0 : pSwapchains.length),//swapchainCount ,
+                         buffers.length,//(pSwapchains == null? 0 : pSwapchains.length),//swapchainCount ,
                          (pCreateInfos==null ? null : pCreateInfos.getPointer()) /* ByteBuffer */ ,
                          (pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
                           sizeOfPtr,
@@ -1553,7 +1553,7 @@ public VkResult vkGetDisplayPlaneCapabilitiesKHR(
                      (physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
                      (mode==null ? null : mode.getPointer()) /* ByteBuffer */ ,
                      planeIndex ,
-                     (caps==null ? null : caps.getPointer()) /* ByteBuffer */  );
+                     (/*caps==null ? null :*/ caps.getPointer()) /* ByteBuffer */  );
      
      pCapabilities[0] = caps;
      return VkResult.fromValue(_val);
@@ -1877,9 +1877,10 @@ public VkResult vkGetPhysicalDeviceSurfaceFormatsKHR(
  if(pSurfaceFormats == null){
      throw new NullPointerException("pSurfaceFormats is null.");
  }
+ 
  pSurfaceFormats.clear();
  int[] pSurfaceFormatCount = {0};
- ByteBuffer[] bigBuffer = pSurfaceFormats ==null ? null : new ByteBuffer[1];
+ ByteBuffer[] bigBuffer = /*pSurfaceFormats == null ? null : */ new ByteBuffer[1];
  int[] sizeofStr = {0};
  int  _val = vkGetPhysicalDeviceSurfaceFormatsKHR0(
                  wsi.getPointer(),
@@ -1891,7 +1892,7 @@ public VkResult vkGetPhysicalDeviceSurfaceFormatsKHR(
  
  VkResult res = VkResult.fromValue(_val);
  
- if(bigBuffer!=null && bigBuffer[0] != null){
+ if(/*bigBuffer!=null && */ bigBuffer[0] != null){
      ByteBuffer master = bigBuffer[0];
      master.order(ByteOrder.nativeOrder());
      master.rewind();
