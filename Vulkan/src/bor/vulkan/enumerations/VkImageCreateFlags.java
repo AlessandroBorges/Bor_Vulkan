@@ -10,7 +10,6 @@ package bor.vulkan.enumerations;
  * @author Alessandro Borges
  *
  */
-@SuppressWarnings("serial")
 public class VkImageCreateFlags {
 
     private int value;
