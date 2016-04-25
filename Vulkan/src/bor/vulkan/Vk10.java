@@ -152,7 +152,7 @@ public class Vk10 extends Vulkan {
     * @param pInstance - Pointer to variable which will receive the new instance handle.
     * 
     */
-   public VkResult vkCreateInstance(VkInstanceCreateInfo pCreateInfo,
+   public static VkResult vkCreateInstance(VkInstanceCreateInfo pCreateInfo,
                                     VkAllocationCallbacks pAllocator,
                                     VkInstance[] pInstance) {
 
@@ -216,7 +216,7 @@ public class Vk10 extends Vulkan {
         *  @param instance - Vulkan instance to release. 
         *  @param pAllocator - callBacks
         */
-  public void vkDestroyInstance(VkInstance  instance,
+  public static void vkDestroyInstance(VkInstance  instance,
                                 VkAllocationCallbacks  pAllocator){
       
       vkDestroyInstance0(instance.getPointer(), 
@@ -254,7 +254,7 @@ public class Vk10 extends Vulkan {
     * 
     * 
     */
-   public VkResult vkEnumeratePhysicalDevices(VkInstance instance,
+   public static VkResult vkEnumeratePhysicalDevices(VkInstance instance,
                                               int[] pPhysicalDeviceCount,
                                               VkPhysicalDevice[] pPhysicalDevices){
        
@@ -345,7 +345,7 @@ public class Vk10 extends Vulkan {
     * @param physicalDevicesList
     * @return
     */
-   public VkResult vkEnumeratePhysicalDevices(VkInstance instance,                                              
+   public static VkResult vkEnumeratePhysicalDevices(VkInstance instance,                                              
                                               List<VkPhysicalDevice> physicalDevicesList){         
        if(physicalDevicesList==null || instance== null) 
            return VkResult.VK_ERROR_INITIALIZATION_FAILED;              
@@ -388,7 +388,7 @@ public class Vk10 extends Vulkan {
         *     VkPhysicalDeviceFeatures*                   pFeatures);
         * </pre>
         */
-  public  void vkGetPhysicalDeviceFeatures(VkPhysicalDevice  physicalDevice,
+  public static  void vkGetPhysicalDeviceFeatures(VkPhysicalDevice  physicalDevice,
                                            VkPhysicalDeviceFeatures  pFeatures){
       vkGetPhysicalDeviceFeatures0( physicalDevice.getPointer(),
                                     pFeatures.getPointer());      
@@ -417,7 +417,7 @@ public class Vk10 extends Vulkan {
         *  receive the result of the query. . 
         * 
         */
-   public void vkGetPhysicalDeviceFormatProperties(VkPhysicalDevice physicalDevice,
+   public static void vkGetPhysicalDeviceFormatProperties(VkPhysicalDevice physicalDevice,
                                                    VkFormat format,
                                                    VkFormatProperties pFormatProperties) {
        vkGetPhysicalDeviceFormatProperties0( physicalDevice.getPointer(),
@@ -426,11 +426,10 @@ public class Vk10 extends Vulkan {
       }
 
    private static native void vkGetPhysicalDeviceFormatProperties0(
-               Buffer  pphysicalDevice,
+               Buffer  physicalDevice,
                int  format,
                Buffer  pFormatProperties);/*
-               
-     VkPhysicalDevice* physicalDevice = (VkPhysicalDevice*)pphysicalDevice;          
+           
      vkGetPhysicalDeviceFormatProperties(
               (VkPhysicalDevice)  physicalDevice,
               (VkFormat)  format,
@@ -451,7 +450,7 @@ public class Vk10 extends Vulkan {
         *     VkImageFormatProperties*                    pImageFormatProperties);
         * </pre>
         */
-  public  VkResult vkGetPhysicalDeviceImageFormatProperties(
+  public static  VkResult vkGetPhysicalDeviceImageFormatProperties(
                VkPhysicalDevice  physicalDevice,
                VkFormat  format,
                VkImageType  type,
@@ -487,7 +486,7 @@ public class Vk10 extends Vulkan {
     * @return VkResult
     */
    private static native int vkGetPhysicalDeviceImageFormatProperties0(
-               Buffer  pphysicalDevice,
+               Buffer  physicalDevice,
                int  format,
                int  type,
                int  tiling,
@@ -495,7 +494,7 @@ public class Vk10 extends Vulkan {
                int  flags,
                Buffer  pImageFormatProperties);/*
                
-         VkPhysicalDevice* physicalDevice = (VkPhysicalDevice*)pphysicalDevice;
+         
          VkResult res = 
          vkGetPhysicalDeviceImageFormatProperties(
                (VkPhysicalDevice) physicalDevice,
@@ -518,7 +517,7 @@ public class Vk10 extends Vulkan {
         *     VkPhysicalDeviceProperties*                 pProperties);
         * </pre>
         */
-  public  void vkGetPhysicalDeviceProperties(
+  public static  void vkGetPhysicalDeviceProperties(
                VkPhysicalDevice  physicalDevice,
                VkPhysicalDeviceProperties  pProperties){
       
@@ -537,8 +536,8 @@ public class Vk10 extends Vulkan {
    private static native void vkGetPhysicalDeviceProperties0(
                Buffer  physicalDevice,
                Buffer  pProperties);/* 
-       printf("VkPhysicalDevice %p \n", physicalDevice);
-       printf("VkPhysicalDeviceProperties %p \n", pProperties);  
+      // printf("VkPhysicalDevice %p \n", physicalDevice);
+      // printf("VkPhysicalDeviceProperties %p \n", pProperties);  
              
        vkGetPhysicalDeviceProperties(
             (VkPhysicalDevice)   (physicalDevice),
@@ -567,7 +566,7 @@ public class Vk10 extends Vulkan {
      * 
      * 
      */
-  public  void vkGetPhysicalDeviceQueueFamilyProperties(
+  public static  void vkGetPhysicalDeviceQueueFamilyProperties(
                VkPhysicalDevice  physicalDevice,
                int[]  pQueueFamilyPropertyCount,
                List<VkQueueFamilyProperties>  pQueueFamilyProperties){
@@ -651,7 +650,7 @@ public class Vk10 extends Vulkan {
         *     VkPhysicalDeviceMemoryProperties*           pMemoryProperties);
         * </pre>
         */
-  public void vkGetPhysicalDeviceMemoryProperties(
+  public static void vkGetPhysicalDeviceMemoryProperties(
                VkPhysicalDevice  physicalDevice,
                VkPhysicalDeviceMemoryProperties  pMemoryProperties){
       // call native method
@@ -682,7 +681,7 @@ public class Vk10 extends Vulkan {
         *     const char*                                 pName);
         * </pre>
         */
-  public PFNvkVoidFunction vkGetInstanceProcAddr(
+  public static PFNvkVoidFunction vkGetInstanceProcAddr(
                VkInstance  instance,
                String  pName){
       ByteBuffer pFunc = vkGetInstanceProcAddr0(instance.getPointer(),pName);
@@ -698,7 +697,7 @@ public class Vk10 extends Vulkan {
                             (VkInstance)   instance,
                             (const char*)     pName);                            
               jobject pFunc = env->NewDirectByteBuffer((void*) func, 
-                                                      (jlong) sizeof(void*));                                                       
+                                                      (jlong) sizeof(PFN_vkVoidFunction));                                                       
               return pFunc;                                                                               
        */
 
@@ -711,7 +710,7 @@ public class Vk10 extends Vulkan {
         *     const char*                                 pName);
         * </pre>
         */
-  public PFNvkVoidFunction vkGetDeviceProcAddr(
+  public static PFNvkVoidFunction vkGetDeviceProcAddr(
                VkDevice  device,
                String  pName){
       
@@ -743,7 +742,7 @@ public class Vk10 extends Vulkan {
         *     VkDevice*                                   pDevice);
         * </pre>
         */
-  public VkResult vkCreateDevice(
+  public static VkResult vkCreateDevice(
                VkPhysicalDevice  physicalDevice,
                VkDeviceCreateInfo  pCreateDeviceInfo,
                VkAllocationCallbacks  pAllocator,
@@ -810,11 +809,11 @@ public class Vk10 extends Vulkan {
         *     const VkAllocationCallbacks*                pAllocator);
         * </pre>
         */
-  public void vkDestroyDevice(
+  public static void vkDestroyDevice(
                VkDevice  device,
                VkAllocationCallbacks  pAllocator){
       vkDestroyDevice0( device.getPointer(),
-                        pAllocator.getPointer());
+                        ( pAllocator==null ? null : pAllocator.getPointer()));
       
   }
 
@@ -850,12 +849,13 @@ public class Vk10 extends Vulkan {
      *        structures.
      * 
      */
-  public VkResult vkEnumerateInstanceExtensionProperties(
+  public static VkResult vkEnumerateInstanceExtensionProperties(
                String pLayerName,
-               int[]  pPropertyCount,
+               //int[]  pPropertyCount,
                List<VkExtensionProperties>  pProperties){
       
       int[] result = {0};
+      int[] pPropertyCount = {0};
       ByteBuffer[] props = vkEnumerateInstanceExtensionProperties0(pLayerName,
               pPropertyCount,
               result );
@@ -944,7 +944,7 @@ public class Vk10 extends Vulkan {
         * 
         * 
         */
-  public  VkResult vkEnumerateDeviceExtensionProperties(
+  public static  VkResult vkEnumerateDeviceExtensionProperties(
                VkPhysicalDevice  physicalDevice,
                String  pLayerName,
               // int[]  pPropertyCount,
@@ -1042,7 +1042,7 @@ public class Vk10 extends Vulkan {
         * 
         * @return VkResult
         */
-  public VkResult vkEnumerateInstanceLayerProperties(
+  public static VkResult vkEnumerateInstanceLayerProperties(
                //int[]  pPropertyCount,
                List<VkLayerProperties>  pProperties){
       
@@ -1113,7 +1113,7 @@ public class Vk10 extends Vulkan {
         * 
         * @return VkResult
         */
-  public  VkResult vkEnumerateDeviceLayerProperties(
+  public static  VkResult vkEnumerateDeviceLayerProperties(
                VkPhysicalDevice  physicalDevice,
              //  int[]  pPropertyCount,
                List<VkLayerProperties>  pProperties){
@@ -1191,7 +1191,7 @@ public class Vk10 extends Vulkan {
         * 
         * @return pQueue -   A pointer to a variable that is to receive the resulting handle.
         */
-  public  VkQueue vkGetDeviceQueue(
+  public static  VkQueue vkGetDeviceQueue(
                VkDevice  device,
                int  queueFamilyIndex,
                int  queueIndex){
@@ -1244,7 +1244,7 @@ public class Vk10 extends Vulkan {
     * @param pSubmits - 
     * @param fence - 
     */
-public VkResult vkQueueSubmit(
+    public static VkResult vkQueueSubmit(
            VkQueue queue,
            int submitCount,
            VkSubmitInfo  pSubmits,
@@ -1294,7 +1294,7 @@ private static native int vkQueueSubmit0(
  * 
  * @return VkResult
  */
-public VkResult vkQueueWaitIdle(
+    public static VkResult vkQueueWaitIdle(
              VkQueue queue){
      int  _val = vkQueueWaitIdle0(
                      (queue==null ? null : queue.getPointer()) /* ByteBuffer */  );
@@ -1331,7 +1331,7 @@ public VkResult vkQueueWaitIdle(
  * 
  * @return VkResult
  */
-public VkResult vkDeviceWaitIdle(
+    public static VkResult vkDeviceWaitIdle(
              VkDevice device){
      int  _val = vkDeviceWaitIdle0(
                      (device==null ? null : device.getPointer()) /* ByteBuffer */  );
@@ -1374,7 +1374,7 @@ public VkResult vkDeviceWaitIdle(
  * 
  * @return VkResult
  */
-public VkResult vkAllocateMemory(
+    public static VkResult vkAllocateMemory(
              VkDevice device,
               VkMemoryAllocateInfo  pAllocateInfo,
               VkAllocationCallbacks  pAllocator,
@@ -1428,7 +1428,7 @@ public VkResult vkAllocateMemory(
  * @param memory - 
  * @param pAllocator - 
  */
-public void vkFreeMemory(
+    public static void  vkFreeMemory(
              VkDevice device,
              VkDeviceMemory memory,
               VkAllocationCallbacks  pAllocator){
@@ -1484,7 +1484,7 @@ public void vkFreeMemory(
  * 
  * @return VkResult
  */
-public VkResult vkMapMemory(
+    public static VkResult vkMapMemory(
              VkDevice device,
              VkDeviceMemory memory,
              long offset,
@@ -1562,7 +1562,7 @@ public VkResult vkMapMemory(
  * @param device - 
  * @param memory - 
  */
-public void vkUnmapMemory(
+    public static void  vkUnmapMemory(
              VkDevice device,
              VkDeviceMemory memory){
      vkUnmapMemory0(
@@ -1607,7 +1607,7 @@ public void vkUnmapMemory(
  * 
  * @return VkResult
  */
-public VkResult vkFlushMappedMemoryRanges(
+    public static VkResult vkFlushMappedMemoryRanges(
              VkDevice device,
              int memoryRangeCount,
              VkMappedMemoryRange[]  pMemoryRanges){
@@ -1698,7 +1698,7 @@ public VkResult vkFlushMappedMemoryRanges(
  * 
  * @return VkResult
  */
-public VkResult vkInvalidateMappedMemoryRanges(
+    public static VkResult vkInvalidateMappedMemoryRanges(
              VkDevice device,
              int memoryRangeCount,
              VkMappedMemoryRange[]  pMemoryRanges){
@@ -1757,7 +1757,7 @@ public VkResult vkInvalidateMappedMemoryRanges(
  * @param memory - 
  * @param pCommittedMemoryInBytes - 
  */
-public void vkGetDeviceMemoryCommitment(
+    public static void  vkGetDeviceMemoryCommitment(
              VkDevice device,
              VkDeviceMemory memory,
              long[] pCommittedMemoryInBytes){
@@ -1809,7 +1809,7 @@ public void vkGetDeviceMemoryCommitment(
  * 
  * @return VkResult
  */
-public VkResult vkBindBufferMemory(
+    public static VkResult vkBindBufferMemory(
              VkDevice device,
              VkBuffer buffer,
              VkDeviceMemory memory,
@@ -1869,7 +1869,7 @@ public VkResult vkBindBufferMemory(
  * 
  * @return VkResult
  */
-public VkResult vkBindImageMemory(
+    public static VkResult vkBindImageMemory(
              VkDevice device,
              VkImage image,
              VkDeviceMemory memory,
@@ -1925,7 +1925,7 @@ public VkResult vkBindImageMemory(
  * @param buffer - 
  * @param pMemoryRequirements - 
  */
-public void vkGetBufferMemoryRequirements(
+    public static void  vkGetBufferMemoryRequirements(
              VkDevice device,
              VkBuffer buffer,
              VkMemoryRequirements  pMemoryRequirements){
@@ -1973,7 +1973,7 @@ public void vkGetBufferMemoryRequirements(
  * @param image - 
  * @param pMemoryRequirements - 
  */
-public void vkGetImageMemoryRequirements(
+    public static void  vkGetImageMemoryRequirements(
              VkDevice device,
              VkImage image,
              VkMemoryRequirements  pMemoryRequirements){
@@ -2023,7 +2023,7 @@ public void vkGetImageMemoryRequirements(
  * @param pSparseMemoryRequirementCount - 
  * @param pSparseMemoryRequirements - 
  */
-public void vkGetImageSparseMemoryRequirements(
+    public static void  vkGetImageSparseMemoryRequirements(
              VkDevice device,
              VkImage image,
              int[] pSparseMemoryRequirementCount,
@@ -2091,7 +2091,7 @@ public void vkGetImageSparseMemoryRequirements(
  * @param pPropertyCount - 
  * @param pProperties - 
  */
-public void vkGetPhysicalDeviceSparseImageFormatProperties(
+    public static void  vkGetPhysicalDeviceSparseImageFormatProperties(
              VkPhysicalDevice physicalDevice,
              VkFormat format,
              VkImageType type,
@@ -2173,7 +2173,7 @@ public void vkGetPhysicalDeviceSparseImageFormatProperties(
  * 
  * @return VkResult
  */
-public VkResult vkQueueBindSparse(
+    public static VkResult vkQueueBindSparse(
              VkQueue queue,
              int bindInfoCount,
               VkBindSparseInfo  pBindInfo,
@@ -2232,7 +2232,7 @@ public VkResult vkQueueBindSparse(
  * 
  * @return VkResult
  */
-public VkResult vkCreateFence(
+    public static VkResult vkCreateFence(
              VkDevice device,
               VkFenceCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
@@ -2286,7 +2286,7 @@ public VkResult vkCreateFence(
  * @param fence - 
  * @param pAllocator - 
  */
-public void vkDestroyFence(
+    public static void  vkDestroyFence(
              VkDevice device,
              VkFence fence,
              VkAllocationCallbacks  pAllocator){
@@ -2336,7 +2336,7 @@ public void vkDestroyFence(
  * 
  * @return VkResult
  */
-public VkResult vkResetFences(
+    public static VkResult vkResetFences(
              VkDevice device,
              int fenceCount,
              VkFence[]  pFences){
@@ -2390,7 +2390,7 @@ public VkResult vkResetFences(
  * 
  * @return VkResult
  */
-public VkResult vkGetFenceStatus(
+    public static VkResult vkGetFenceStatus(
              VkDevice device,
              VkFence fence){
      int  _val = vkGetFenceStatus0(
@@ -2441,7 +2441,7 @@ public VkResult vkGetFenceStatus(
  * 
  * @return VkResult
  */
-public VkResult vkWaitForFences(
+    public static VkResult vkWaitForFences(
              VkDevice device,
              int fenceCount,
              VkFence[]  pFences,
@@ -2508,7 +2508,7 @@ public VkResult vkWaitForFences(
  * 
  * @return VkResult
  */
-public VkResult vkCreateSemaphore(
+    public static VkResult vkCreateSemaphore(
              VkDevice device,
               VkSemaphoreCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
@@ -2562,7 +2562,7 @@ public VkResult vkCreateSemaphore(
  * @param semaphore - 
  * @param pAllocator - 
  */
-public void vkDestroySemaphore(
+    public static void  vkDestroySemaphore(
              VkDevice device,
              VkSemaphore semaphore,
              VkAllocationCallbacks  pAllocator){
@@ -2614,7 +2614,7 @@ public void vkDestroySemaphore(
  * 
  * @return VkResult
  */
-public VkResult vkCreateEvent(
+    public static VkResult vkCreateEvent(
              VkDevice device,
              VkEventCreateInfo  pCreateInfo,
              VkAllocationCallbacks  pAllocator,
@@ -2668,7 +2668,7 @@ public VkResult vkCreateEvent(
  * @param event - 
  * @param pAllocator - 
  */
-public void vkDestroyEvent(
+    public static void  vkDestroyEvent(
              VkDevice device,
              VkEvent event,
               VkAllocationCallbacks  pAllocator){
@@ -2716,7 +2716,7 @@ public void vkDestroyEvent(
  * 
  * @return VkResult
  */
-public VkResult vkGetEventStatus(
+    public static VkResult vkGetEventStatus(
              VkDevice device,
              VkEvent event){
      int  _val = vkGetEventStatus0(
@@ -2761,7 +2761,7 @@ public VkResult vkGetEventStatus(
  * 
  * @return VkResult
  */
-public VkResult vkSetEvent(
+    public static VkResult vkSetEvent(
              VkDevice device,
              VkEvent event){
      int  _val = vkSetEvent0(
@@ -2806,7 +2806,7 @@ public VkResult vkSetEvent(
  * 
  * @return VkResult
  */
-public VkResult vkResetEvent(
+    public static VkResult vkResetEvent(
              VkDevice device,
              VkEvent event){
      int  _val = vkResetEvent0(
@@ -2855,7 +2855,7 @@ public VkResult vkResetEvent(
  * 
  * @return VkResult
  */
-public VkResult vkCreateQueryPool(
+    public static VkResult vkCreateQueryPool(
              VkDevice device,
               VkQueryPoolCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
@@ -2926,7 +2926,7 @@ public VkResult vkCreateQueryPool(
  * @param queryPool - 
  * @param pAllocator - 
  */
-public void vkDestroyQueryPool(
+    public static void  vkDestroyQueryPool(
              VkDevice device,
              VkQueryPool queryPool,
               VkAllocationCallbacks  pAllocator){
@@ -2985,7 +2985,7 @@ public void vkDestroyQueryPool(
  * 
  * @return VkResult
  */
-public VkResult vkGetQueryPoolResults(
+    public static VkResult vkGetQueryPoolResults(
              VkDevice device,
              VkQueryPool queryPool,
              int firstQuery,
@@ -3086,7 +3086,7 @@ public VkResult vkGetQueryPoolResults(
  * 
  * @return VkResult
  */
-public VkResult vkCreateBuffer(
+    public static VkResult vkCreateBuffer(
               VkDevice device,
               VkBufferCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
@@ -3153,7 +3153,7 @@ public VkResult vkCreateBuffer(
  * @param buffer - 
  * @param pAllocator - 
  */
-public void vkDestroyBuffer(
+    public static void  vkDestroyBuffer(
              VkDevice device,
              VkBuffer buffer,
              VkAllocationCallbacks  pAllocator){
@@ -3203,7 +3203,7 @@ public void vkDestroyBuffer(
  * 
  * @return VkResult
  */
-public VkResult vkCreateBufferView(
+    public static VkResult vkCreateBufferView(
               VkDevice device,
               VkBufferViewCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
@@ -3275,7 +3275,7 @@ public VkResult vkCreateBufferView(
  * @param bufferView - 
  * @param pAllocator - 
  */
-public void vkDestroyBufferView(
+    public static void  vkDestroyBufferView(
              VkDevice device,
              VkBufferView bufferView,
               VkAllocationCallbacks  pAllocator){
@@ -3327,7 +3327,7 @@ public void vkDestroyBufferView(
  * 
  * @return VkResult
  */
-public VkResult vkCreateImage(
+    public static VkResult vkCreateImage(
              VkDevice device,
               VkImageCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
@@ -3394,7 +3394,7 @@ public VkResult vkCreateImage(
  * @param image - 
  * @param pAllocator - 
  */
-public void vkDestroyImage(
+    public static void  vkDestroyImage(
              VkDevice device,
              VkImage image,
               VkAllocationCallbacks  pAllocator){
@@ -3444,7 +3444,7 @@ public void vkDestroyImage(
  * @param pSubresource - 
  * @param pLayout - 
  */
-public void vkGetImageSubresourceLayout(
+    public static void  vkGetImageSubresourceLayout(
              VkDevice device,
              VkImage image,
               VkImageSubresource  pSubresource,
@@ -3501,7 +3501,7 @@ public void vkGetImageSubresourceLayout(
  * 
  * @return VkResult
  */
-public VkResult vkCreateImageView(
+    public static VkResult vkCreateImageView(
              VkDevice device,
               VkImageViewCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
@@ -3555,7 +3555,7 @@ public VkResult vkCreateImageView(
  * @param imageView - 
  * @param pAllocator - 
  */
-public void vkDestroyImageView(
+    public static void  vkDestroyImageView(
              VkDevice device,
              VkImageView imageView,
               VkAllocationCallbacks  pAllocator){
@@ -3607,7 +3607,7 @@ public void vkDestroyImageView(
  * 
  * @return VkResult
  */
-public VkResult vkCreateShaderModule(
+    public static VkResult vkCreateShaderModule(
              VkDevice device,
               VkShaderModuleCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
@@ -3661,7 +3661,7 @@ public VkResult vkCreateShaderModule(
  * @param shaderModule - 
  * @param pAllocator - 
  */
-public void vkDestroyShaderModule(
+    public static void  vkDestroyShaderModule(
              VkDevice device,
              VkShaderModule shaderModule,
               VkAllocationCallbacks  pAllocator){
@@ -3713,7 +3713,7 @@ public void vkDestroyShaderModule(
  * 
  * @return VkResult
  */
-public VkResult vkCreatePipelineCache(
+    public static VkResult vkCreatePipelineCache(
              VkDevice device,
               VkPipelineCacheCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
@@ -3767,7 +3767,7 @@ public VkResult vkCreatePipelineCache(
  * @param pipelineCache - 
  * @param pAllocator - 
  */
-public void vkDestroyPipelineCache(
+    public static void  vkDestroyPipelineCache(
              VkDevice device,
              VkPipelineCache pipelineCache,
               VkAllocationCallbacks  pAllocator){
@@ -3819,7 +3819,7 @@ public void vkDestroyPipelineCache(
  * 
  * @return VkResult
  */
-public VkResult vkGetPipelineCacheData(
+    public static VkResult vkGetPipelineCacheData(
              VkDevice device,
              VkPipelineCache pipelineCache,
              long[] pDataSize,
@@ -3878,7 +3878,7 @@ public VkResult vkGetPipelineCacheData(
  * 
  * @return VkResult
  */
-public VkResult vkMergePipelineCaches(
+    public static VkResult vkMergePipelineCaches(
              VkDevice device,
              VkPipelineCache dstCache,
              int srcCacheCount,
@@ -3941,7 +3941,7 @@ public VkResult vkMergePipelineCaches(
  * 
  * @return VkResult
  */
-public VkResult vkCreateGraphicsPipelines(
+    public static VkResult vkCreateGraphicsPipelines(
              VkDevice device,
              VkPipelineCache pipelineCache,
              int createInfoCount,
@@ -4014,7 +4014,7 @@ public VkResult vkCreateGraphicsPipelines(
  * 
  * @return VkResult
  */
-public VkResult vkCreateComputePipelines(
+    public static VkResult vkCreateComputePipelines(
              VkDevice device,
              VkPipelineCache pipelineCache,
              int createInfoCount,
@@ -4079,7 +4079,7 @@ public VkResult vkCreateComputePipelines(
  * @param pipeline - 
  * @param pAllocator - 
  */
-public void vkDestroyPipeline(
+    public static void  vkDestroyPipeline(
              VkDevice device,
              VkPipeline pipeline,
               VkAllocationCallbacks  pAllocator){
@@ -4131,7 +4131,7 @@ public void vkDestroyPipeline(
  * 
  * @return VkResult
  */
-public VkResult vkCreatePipelineLayout(
+    public static VkResult vkCreatePipelineLayout(
              VkDevice device,
               VkPipelineLayoutCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
@@ -4185,7 +4185,7 @@ public VkResult vkCreatePipelineLayout(
  * @param pipelineLayout - 
  * @param pAllocator - 
  */
-public void vkDestroyPipelineLayout(
+    public static void  vkDestroyPipelineLayout(
              VkDevice device,
              VkPipelineLayout pipelineLayout,
               VkAllocationCallbacks  pAllocator){
@@ -4237,7 +4237,7 @@ public void vkDestroyPipelineLayout(
  * 
  * @return VkResult
  */
-public VkResult vkCreateSampler(
+    public static VkResult vkCreateSampler(
              VkDevice device,
               VkSamplerCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
@@ -4304,7 +4304,7 @@ public VkResult vkCreateSampler(
  * @param sampler - 
  * @param pAllocator - 
  */
-public void vkDestroySampler(
+    public static void  vkDestroySampler(
              VkDevice device,
              VkSampler sampler,
               VkAllocationCallbacks  pAllocator){
@@ -4355,7 +4355,7 @@ public void vkDestroySampler(
  * 
  * @return VkResult
  */
-public VkResult vkCreateDescriptorSetLayout(
+    public static VkResult vkCreateDescriptorSetLayout(
               VkDevice device,
               VkDescriptorSetLayoutCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
@@ -4423,7 +4423,7 @@ public VkResult vkCreateDescriptorSetLayout(
  * @param descriptorSetLayout - 
  * @param pAllocator - 
  */
-public void vkDestroyDescriptorSetLayout(
+    public static void  vkDestroyDescriptorSetLayout(
              VkDevice device,
              VkDescriptorSetLayout descriptorSetLayout,
               VkAllocationCallbacks  pAllocator){
@@ -4474,7 +4474,7 @@ public void vkDestroyDescriptorSetLayout(
  * 
  * @return VkResult
  */
-public VkResult vkCreateDescriptorPool(
+    public static VkResult vkCreateDescriptorPool(
              VkDevice device,
               VkDescriptorPoolCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
@@ -4541,7 +4541,7 @@ public VkResult vkCreateDescriptorPool(
  * @param descriptorPool - 
  * @param pAllocator - 
  */
-public void vkDestroyDescriptorPool(
+    public static void  vkDestroyDescriptorPool(
              VkDevice device,
              VkDescriptorPool descriptorPool,
               VkAllocationCallbacks  pAllocator){
@@ -4590,7 +4590,7 @@ public void vkDestroyDescriptorPool(
  * 
  * @return VkResult
  */
-public VkResult vkResetDescriptorPool(
+    public static VkResult vkResetDescriptorPool(
              VkDevice device,
              VkDescriptorPool descriptorPool,
              int flags){
@@ -4640,7 +4640,7 @@ public VkResult vkResetDescriptorPool(
  * 
  * @return VkResult
  */
-public VkResult vkAllocateDescriptorSets(
+    public static VkResult vkAllocateDescriptorSets(
              VkDevice device,
               VkDescriptorSetAllocateInfo  pAllocateInfo,
               VkDescriptorSet  pDescriptorSets){
@@ -4693,7 +4693,7 @@ public VkResult vkAllocateDescriptorSets(
  * 
  * @return VkResult
  */
-public VkResult vkFreeDescriptorSets(
+    public static VkResult vkFreeDescriptorSets(
              VkDevice device,
              VkDescriptorPool descriptorPool,
              int descriptorSetCount,
@@ -4752,7 +4752,7 @@ public VkResult vkFreeDescriptorSets(
  * @param descriptorCopyCount - 
  * @param pDescriptorCopies - 
  */
-public void vkUpdateDescriptorSets(
+    public static void  vkUpdateDescriptorSets(
              VkDevice device,
              int descriptorWriteCount,
               VkWriteDescriptorSet  pDescriptorWrites,
@@ -4813,7 +4813,7 @@ public void vkUpdateDescriptorSets(
  * 
  * @return VkResult
  */
-public VkResult vkCreateFramebuffer(
+    public static VkResult vkCreateFramebuffer(
               VkDevice device,
               VkFramebufferCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
@@ -4881,7 +4881,7 @@ public VkResult vkCreateFramebuffer(
  * @param framebuffer - 
  * @param pAllocator - 
  */
-public void vkDestroyFramebuffer(
+    public static void  vkDestroyFramebuffer(
              VkDevice device,
              VkFramebuffer framebuffer,
               VkAllocationCallbacks  pAllocator){
@@ -4932,7 +4932,7 @@ public void vkDestroyFramebuffer(
  * 
  * @return VkResult
  */
-public VkResult vkCreateRenderPass(
+    public static VkResult vkCreateRenderPass(
              VkDevice device,
               VkRenderPassCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
@@ -5002,7 +5002,7 @@ public VkResult vkCreateRenderPass(
  * @param renderPass - 
  * @param pAllocator - 
  */
-public void vkDestroyRenderPass(
+    public static void  vkDestroyRenderPass(
              VkDevice device,
              VkRenderPass renderPass,
              VkAllocationCallbacks  pAllocator){
@@ -5049,7 +5049,7 @@ public void vkDestroyRenderPass(
  * @param renderPass - 
  * @param pGranularity - 
  */
-public void vkGetRenderAreaGranularity(
+    public static void  vkGetRenderAreaGranularity(
              VkDevice device,
              VkRenderPass renderPass,
               VkExtent2D  pGranularity){
@@ -5101,7 +5101,7 @@ public void vkGetRenderAreaGranularity(
  * 
  * @return VkResult
  */
-public VkResult vkCreateCommandPool(
+    public static VkResult vkCreateCommandPool(
               VkDevice device,
               VkCommandPoolCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
@@ -5166,7 +5166,7 @@ public VkResult vkCreateCommandPool(
  * @param commandPool - 
  * @param pAllocator - 
  */
-public void vkDestroyCommandPool(
+    public static void  vkDestroyCommandPool(
              VkDevice device,
              VkCommandPool commandPool,
               VkAllocationCallbacks  pAllocator){
@@ -5216,7 +5216,7 @@ public void vkDestroyCommandPool(
  * 
  * @return VkResult
  */
-public VkResult vkResetCommandPool(
+    public static VkResult vkResetCommandPool(
              VkDevice device,
              VkCommandPool commandPool,
              int flags){
@@ -5268,7 +5268,7 @@ public VkResult vkResetCommandPool(
  * 
  * @return VkResult
  */
-public VkResult vkAllocateCommandBuffers(
+    public static VkResult vkAllocateCommandBuffers(
              VkDevice device,
               VkCommandBufferAllocateInfo  pAllocateInfo,
               VkCommandBuffer  pCommandBuffers){
@@ -5319,7 +5319,7 @@ public VkResult vkAllocateCommandBuffers(
  * @param commandBufferCount - 
  * @param pCommandBuffers - 
  */
-public void vkFreeCommandBuffers(
+    public static void  vkFreeCommandBuffers(
              VkDevice device,
              VkCommandPool commandPool,
              int commandBufferCount,
@@ -5372,7 +5372,7 @@ public void vkFreeCommandBuffers(
  * 
  * @return VkResult
  */
-public VkResult vkBeginCommandBuffer(
+    public static VkResult vkBeginCommandBuffer(
              VkCommandBuffer commandBuffer,
               VkCommandBufferBeginInfo  pBeginInfo){
      int  _val = vkBeginCommandBuffer0(
@@ -5414,7 +5414,7 @@ public VkResult vkBeginCommandBuffer(
  * 
  * @return VkResult
  */
-public VkResult vkEndCommandBuffer(
+    public static VkResult vkEndCommandBuffer(
              VkCommandBuffer commandBuffer){
      int  _val = vkEndCommandBuffer0(
                      (commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */  );
@@ -5453,7 +5453,7 @@ public VkResult vkEndCommandBuffer(
  * 
  * @return VkResult
  */
-public VkResult vkResetCommandBuffer(
+    public static VkResult vkResetCommandBuffer(
              VkCommandBuffer commandBuffer,
              int flags){
      int  _val = vkResetCommandBuffer0(
@@ -5497,7 +5497,7 @@ public VkResult vkResetCommandBuffer(
  * @param pipelineBindPoint - 
  * @param pipeline - 
  */
-public void vkCmdBindPipeline(
+    public static void  vkCmdBindPipeline(
              VkCommandBuffer commandBuffer,
              VkPipelineBindPoint pipelineBindPoint,
              VkPipeline pipeline){
@@ -5547,7 +5547,7 @@ public void vkCmdBindPipeline(
  * @param viewportCount - 
  * @param pViewports - 
  */
-public void vkCmdSetViewport(
+    public static void  vkCmdSetViewport(
              VkCommandBuffer commandBuffer,
              int firstViewport,
              int viewportCount,
@@ -5601,7 +5601,7 @@ public void vkCmdSetViewport(
  * @param scissorCount - 
  * @param pScissors - 
  */
-public void vkCmdSetScissor(
+    public static void  vkCmdSetScissor(
              VkCommandBuffer commandBuffer,
              int firstScissor,
              int scissorCount,
@@ -5651,7 +5651,7 @@ public void vkCmdSetScissor(
  * @param commandBuffer - 
  * @param lineWidth - 
  */
-public void vkCmdSetLineWidth(
+    public static void  vkCmdSetLineWidth(
              VkCommandBuffer commandBuffer,
              float lineWidth){
      vkCmdSetLineWidth0(
@@ -5695,7 +5695,7 @@ public void vkCmdSetLineWidth(
  * @param depthBiasClamp - 
  * @param depthBiasSlopeFactor - 
  */
-public void vkCmdSetDepthBias(
+    public static void  vkCmdSetDepthBias(
              VkCommandBuffer commandBuffer,
              float depthBiasConstantFactor,
              float depthBiasClamp,
@@ -5745,7 +5745,7 @@ public void vkCmdSetDepthBias(
  * @param commandBuffer - 
  * @param blendConstants - 
  */
-public void vkCmdSetBlendConstants(
+    public static void  vkCmdSetBlendConstants(
              VkCommandBuffer commandBuffer,
              float[] blendConstants){
      vkCmdSetBlendConstants0(
@@ -5787,7 +5787,7 @@ public void vkCmdSetBlendConstants(
  * @param minDepthBounds - 
  * @param maxDepthBounds - 
  */
-public void vkCmdSetDepthBounds(
+    public static void  vkCmdSetDepthBounds(
              VkCommandBuffer commandBuffer,
              float minDepthBounds,
              float maxDepthBounds){
@@ -5834,7 +5834,7 @@ public void vkCmdSetDepthBounds(
  * @param faceMask - 
  * @param compareMask - 
  */
-public void vkCmdSetStencilCompareMask(
+    public static void  vkCmdSetStencilCompareMask(
              VkCommandBuffer commandBuffer,
              int faceMask,
              int compareMask){
@@ -5881,7 +5881,7 @@ public void vkCmdSetStencilCompareMask(
  * @param faceMask - 
  * @param writeMask - 
  */
-public void vkCmdSetStencilWriteMask(
+    public static void  vkCmdSetStencilWriteMask(
              VkCommandBuffer commandBuffer,
              int faceMask,
              int writeMask){
@@ -5928,7 +5928,7 @@ public void vkCmdSetStencilWriteMask(
  * @param faceMask - 
  * @param reference - 
  */
-public void vkCmdSetStencilReference(
+    public static void  vkCmdSetStencilReference(
              VkCommandBuffer commandBuffer,
              int faceMask,
              int reference){
@@ -5985,7 +5985,7 @@ public void vkCmdSetStencilReference(
  * @param dynamicOffsetCount - 
  * @param pDynamicOffsets - 
  */
-public void vkCmdBindDescriptorSets(
+    public static void  vkCmdBindDescriptorSets(
              VkCommandBuffer commandBuffer,
              VkPipelineBindPoint pipelineBindPoint,
              VkPipelineLayout layout,
@@ -6060,7 +6060,7 @@ public void vkCmdBindDescriptorSets(
  * @param offset - 
  * @param indexType - 
  */
-public void vkCmdBindIndexBuffer(
+    public static void  vkCmdBindIndexBuffer(
              VkCommandBuffer commandBuffer,
              VkBuffer buffer,
              long offset,
@@ -6117,7 +6117,7 @@ public void vkCmdBindIndexBuffer(
  * @param pBuffers - 
  * @param pOffsets - 
  */
-public void vkCmdBindVertexBuffers(
+    public static void  vkCmdBindVertexBuffers(
              VkCommandBuffer commandBuffer,
              int firstBinding,
              int bindingCount,
@@ -6178,7 +6178,7 @@ public void vkCmdBindVertexBuffers(
  * @param firstVertex - 
  * @param firstInstance - 
  */
-public void vkCmdDraw(
+    public static void  vkCmdDraw(
              VkCommandBuffer commandBuffer,
              int vertexCount,
              int instanceCount,
@@ -6241,7 +6241,7 @@ public void vkCmdDraw(
  * @param vertexOffset - 
  * @param firstInstance - 
  */
-public void vkCmdDrawIndexed(
+    public static void  vkCmdDrawIndexed(
              VkCommandBuffer commandBuffer,
              int indexCount,
              int instanceCount,
@@ -6307,7 +6307,7 @@ public void vkCmdDrawIndexed(
  * @param drawCount - 
  * @param stride - 
  */
-public void vkCmdDrawIndirect(
+    public static void  vkCmdDrawIndirect(
              VkCommandBuffer commandBuffer,
              VkBuffer buffer,
              long offset,
@@ -6369,7 +6369,7 @@ public void vkCmdDrawIndirect(
  * @param drawCount - 
  * @param stride - 
  */
-public void vkCmdDrawIndexedIndirect(
+    public static void  vkCmdDrawIndexedIndirect(
              VkCommandBuffer commandBuffer,
              VkBuffer buffer,
              long offset,
@@ -6429,7 +6429,7 @@ public void vkCmdDrawIndexedIndirect(
  * @param y - 
  * @param z - 
  */
-public void vkCmdDispatch(
+    public static void  vkCmdDispatch(
              VkCommandBuffer commandBuffer,
              int x,
              int y,
@@ -6481,7 +6481,7 @@ public void vkCmdDispatch(
  * @param buffer - 
  * @param offset - 
  */
-public void vkCmdDispatchIndirect(
+    public static void  vkCmdDispatchIndirect(
              VkCommandBuffer commandBuffer,
              VkBuffer buffer,
              long offset){
@@ -6533,7 +6533,7 @@ public void vkCmdDispatchIndirect(
  * @param regionCount - 
  * @param pRegions - 
  */
-public void vkCmdCopyBuffer(
+    public static void  vkCmdCopyBuffer(
              VkCommandBuffer commandBuffer,
              VkBuffer srcBuffer,
              VkBuffer dstBuffer,
@@ -6600,7 +6600,7 @@ public void vkCmdCopyBuffer(
  * @param regionCount - 
  * @param pRegions - 
  */
-public void vkCmdCopyImage(
+    public static void  vkCmdCopyImage(
              VkCommandBuffer commandBuffer,
              VkImage srcImage,
              VkImageLayout srcImageLayout,
@@ -6679,7 +6679,7 @@ public void vkCmdCopyImage(
  * @param pRegions - 
  * @param filter - 
  */
-public void vkCmdBlitImage(
+    public static void  vkCmdBlitImage(
              VkCommandBuffer commandBuffer,
              VkImage srcImage,
              VkImageLayout srcImageLayout,
@@ -6759,7 +6759,7 @@ public void vkCmdBlitImage(
  * @param regionCount - 
  * @param pRegions - 
  */
-public void vkCmdCopyBufferToImage(
+    public static void  vkCmdCopyBufferToImage(
              VkCommandBuffer commandBuffer,
              VkBuffer srcBuffer,
              VkImage dstImage,
@@ -6829,7 +6829,7 @@ public void vkCmdCopyBufferToImage(
  * @param regionCount - 
  * @param pRegions - 
  */
-public void vkCmdCopyImageToBuffer(
+    public static void  vkCmdCopyImageToBuffer(
              VkCommandBuffer commandBuffer,
              VkImage srcImage,
              VkImageLayout srcImageLayout,
@@ -6897,7 +6897,7 @@ public void vkCmdCopyImageToBuffer(
  * @param dataSize - 
  * @param pData - 
  */
-public void vkCmdUpdateBuffer(
+    public static void  vkCmdUpdateBuffer(
              VkCommandBuffer commandBuffer,
              VkBuffer dstBuffer,
              long dstOffset,
@@ -6959,7 +6959,7 @@ public void vkCmdUpdateBuffer(
  * @param size - 
  * @param data - 
  */
-public void vkCmdFillBuffer(
+    public static void  vkCmdFillBuffer(
              VkCommandBuffer commandBuffer,
              VkBuffer dstBuffer,
              long dstOffset,
@@ -7023,7 +7023,7 @@ public void vkCmdFillBuffer(
  * @param rangeCount - 
  * @param pRanges - 
  */
-public void vkCmdClearColorImage(
+    public static void  vkCmdClearColorImage(
              VkCommandBuffer commandBuffer,
              VkImage image,
              VkImageLayout imageLayout,
@@ -7092,7 +7092,7 @@ public void vkCmdClearColorImage(
  * @param rangeCount - 
  * @param pRanges - 
  */
-public void vkCmdClearDepthStencilImage(
+    public static void  vkCmdClearDepthStencilImage(
              VkCommandBuffer commandBuffer,
              VkImage image,
              VkImageLayout imageLayout,
@@ -7159,7 +7159,7 @@ public void vkCmdClearDepthStencilImage(
  * @param rectCount - 
  * @param pRects - 
  */
-public void vkCmdClearAttachments(
+    public static void  vkCmdClearAttachments(
              VkCommandBuffer commandBuffer,
              int attachmentCount,
               VkClearAttachment  pAttachments,
@@ -7224,7 +7224,7 @@ public void vkCmdClearAttachments(
  * @param regionCount - 
  * @param pRegions - 
  */
-public void vkCmdResolveImage(
+    public static void  vkCmdResolveImage(
              VkCommandBuffer commandBuffer,
              VkImage srcImage,
              VkImageLayout srcImageLayout,
@@ -7293,7 +7293,7 @@ public void vkCmdResolveImage(
  * @param event - 
  * @param stageMask - 
  */
-public void vkCmdSetEvent(
+    public static void  vkCmdSetEvent(
              VkCommandBuffer commandBuffer,
              VkEvent event,
              int stageMask){
@@ -7341,7 +7341,7 @@ public void vkCmdSetEvent(
  * @param event - 
  * @param stageMask - 
  */
-public void vkCmdResetEvent(
+    public static void  vkCmdResetEvent(
              VkCommandBuffer commandBuffer,
              VkEvent event,
              int stageMask){
@@ -7405,7 +7405,7 @@ public void vkCmdResetEvent(
  * @param imageMemoryBarrierCount - 
  * @param pImageMemoryBarriers - 
  */
-public void vkCmdWaitEvents(
+    public static void  vkCmdWaitEvents(
              VkCommandBuffer commandBuffer,
              int eventCount,
               VkEvent  pEvents,
@@ -7506,7 +7506,7 @@ public void vkCmdWaitEvents(
  * @param imageMemoryBarrierCount - 
  * @param pImageMemoryBarriers - 
  */
-public void vkCmdPipelineBarrier(
+    public static void  vkCmdPipelineBarrier(
              VkCommandBuffer commandBuffer,
              int srcStageMask,
              int dstStageMask,
@@ -7590,7 +7590,7 @@ public void vkCmdPipelineBarrier(
  * @param query - 
  * @param flags - 
  */
-public void vkCmdBeginQuery(
+    public static void  vkCmdBeginQuery(
              VkCommandBuffer commandBuffer,
              VkQueryPool queryPool,
              int query,
@@ -7643,7 +7643,7 @@ public void vkCmdBeginQuery(
  * @param queryPool - 
  * @param query - 
  */
-public void vkCmdEndQuery(
+    public static void  vkCmdEndQuery(
              VkCommandBuffer commandBuffer,
              VkQueryPool queryPool,
              int query){
@@ -7693,7 +7693,7 @@ public void vkCmdEndQuery(
  * @param firstQuery - 
  * @param queryCount - 
  */
-public void vkCmdResetQueryPool(
+    public static void  vkCmdResetQueryPool(
              VkCommandBuffer commandBuffer,
              VkQueryPool queryPool,
              int firstQuery,
@@ -7748,7 +7748,7 @@ public void vkCmdResetQueryPool(
  * @param queryPool - 
  * @param query - 
  */
-public void vkCmdWriteTimestamp(
+    public static void  vkCmdWriteTimestamp(
              VkCommandBuffer commandBuffer,
              VkPipelineStageFlagBits pipelineStage,
              VkQueryPool queryPool,
@@ -7811,7 +7811,7 @@ public void vkCmdWriteTimestamp(
  * @param stride - 
  * @param flags - 
  */
-public void vkCmdCopyQueryPoolResults(
+    public static void  vkCmdCopyQueryPoolResults(
              VkCommandBuffer commandBuffer,
              VkQueryPool queryPool,
              int firstQuery,
@@ -7891,7 +7891,7 @@ public void vkCmdCopyQueryPoolResults(
  * @param size - 
  * @param pValues - 
  */
-public void vkCmdPushConstants(
+    public static void  vkCmdPushConstants(
              VkCommandBuffer commandBuffer,
              VkPipelineLayout layout,
              int stageFlags,
@@ -7954,7 +7954,7 @@ public void vkCmdPushConstants(
  * @param pRenderPassBegin - 
  * @param contents - 
  */
-public void vkCmdBeginRenderPass(
+    public static void  vkCmdBeginRenderPass(
              VkCommandBuffer commandBuffer,
               VkRenderPassBeginInfo  pRenderPassBegin,
              VkSubpassContents contents){
@@ -7999,7 +7999,7 @@ public void vkCmdBeginRenderPass(
  * @param commandBuffer - 
  * @param contents - 
  */
-public void vkCmdNextSubpass(
+    public static void  vkCmdNextSubpass(
              VkCommandBuffer commandBuffer,
              VkSubpassContents contents){
      vkCmdNextSubpass0(
@@ -8037,7 +8037,7 @@ public void vkCmdNextSubpass(
  * 
  * @param commandBuffer - 
  */
-public void vkCmdEndRenderPass(
+    public static void  vkCmdEndRenderPass(
              VkCommandBuffer commandBuffer){
      vkCmdEndRenderPass0(
              (commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */  );
@@ -8074,7 +8074,7 @@ public void vkCmdEndRenderPass(
  * @param commandBufferCount - 
  * @param pCommandBuffers - 
  */
-public void vkCmdExecuteCommands(
+    public static void  vkCmdExecuteCommands(
              VkCommandBuffer commandBuffer,
              int commandBufferCount,
               VkCommandBuffer  pCommandBuffers){
@@ -8106,23 +8106,10 @@ public void vkCmdExecuteCommands(
 */ 
 
 
-
-
-     /////////////////////////////////////
-
-
-
-     /////////////////////////////////////
-
-
-
-     /////////////////////////////////////
-
-
-   
-
-
-    public Vk10() {       
+   /**
+    * There is no need to instance this class
+    */
+    private Vk10() {       
     }
 
 }

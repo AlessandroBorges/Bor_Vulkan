@@ -18,13 +18,13 @@ public interface IntEnumInterface<T> extends EnumInterface<T> {
      * @param values - values to be ORed
      * @return
      */    
-    public T or(IntEnumInterface... values);
+    public T or(IntEnumInterface<T>... values);
     /**
      * Perform logic AND operations on enumeration set 
      * @param values - values to be ANDed
      * @return value
      */   
-    public T and(IntEnumInterface... values);
+    public T and(IntEnumInterface<T>... values);
     
     /**
      * Perform logic OR operations on enumeration set 

@@ -73,7 +73,7 @@ public abstract class IntEnum<T> implements IntEnumInterface<T> {
     /* (non-Javadoc)
      * @see bor.bitmask.BitmaskEnumInterface#xor(int[])
      */
-    @SuppressWarnings("rawtypes")
+    
     @Override
     public final T xor(IntEnumInterface... values) {        
         int res = values[0].getValue();        
