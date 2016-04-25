@@ -70,10 +70,10 @@ public class Lesson02 {
                                           Vulkan.VK_EXT_DEBUG_REPORT_EXTENSION_NAME };
     /**
      * Create VkInstance
-     * @param vk - Vulkan 1.0 hub instance
+     * @param Vk10 - Vulkan 1.0 hub instance
      * @return a valid VkInstance or null 
      */
-    public static VkInstance createVkInstance(Vk10 vk){
+    public static VkInstance createVkInstance(){
         VkAllocationCallbacks pAllocator = null;        
         VkInstance[] pInstance = new VkInstance[1];   
         
@@ -97,7 +97,7 @@ public class Lesson02 {
         
         System.out.println("VkInstanceCreateInfo : " + pCreateInfo.toString()); 
         
-        VkResult res =  vk.vkCreateInstance(pCreateInfo, pAllocator, pInstance);
+        VkResult res =  Vk10.vkCreateInstance(pCreateInfo, pAllocator, pInstance);
         VkInstance instance = pInstance[0];
          
         System.out.println("VkResult for CreateInstance : " + res);
@@ -110,12 +110,12 @@ public class Lesson02 {
     
     /**
      * Enumerate and print Instance Layers
-     * @param vk
+     * @param Vk10
      * @return list of Instance Layers
      */
-    public static List<VkLayerProperties> enumerateInstaceLayers(Vk10 vk){
+    public static List<VkLayerProperties> enumerateInstaceLayers(){
         List<VkLayerProperties> pProperties = new ArrayList<VkLayerProperties>();
-        VkResult res =  vk.vkEnumerateInstanceLayerProperties(pProperties );
+        VkResult res =  Vk10.vkEnumerateInstanceLayerProperties(pProperties );
         System.out.println("VkResult for Enumerate Instance Layer Properties " + res);
         System.out.println("VkLayerProperties count: " + pProperties.size());
         int count=0;
@@ -126,9 +126,9 @@ public class Lesson02 {
         return pProperties;
     }
     
-    public static List<VkPhysicalDevice> enumeratePhysicalDevices(Vk10 vk, VkInstance instance){
+    public static List<VkPhysicalDevice> enumeratePhysicalDevices(VkInstance instance){
         List<VkPhysicalDevice> physicalDevicesList = new ArrayList<VkPhysicalDevice>();
-        VkResult resEnumerateDevices = vk.vkEnumeratePhysicalDevices(instance, physicalDevicesList );
+        VkResult resEnumerateDevices = Vk10.vkEnumeratePhysicalDevices(instance, physicalDevicesList );
         
         System.out.println("VkResult for Enumerate Physical Devices " + resEnumerateDevices);       
         System.out.println("PhysicalDevices count: " + physicalDevicesList.size());
@@ -150,34 +150,32 @@ public class Lesson02 {
      */
     public static void main(String[] args) {
         printStructsSize();
-        
-        Vk10 vk = new Vk10();        
-  // First Step - Create a VkInstance
-       VkInstance instance = createVkInstance(vk); 
+       
+       VkInstance instance = createVkInstance(); 
        
   // enumerate instance layers
-       List<VkLayerProperties> instanceLayrPropss = enumerateInstaceLayers(vk);
+       List<VkLayerProperties> instanceLayrPropss = enumerateInstaceLayers();
         
   //Step 2 - Enumerate Phisical Devices       
-       List<VkPhysicalDevice> physicalDevicesList = enumeratePhysicalDevices(vk, instance);
+       List<VkPhysicalDevice> physicalDevicesList = enumeratePhysicalDevices( instance);
        
         System.out.println("PhysicalDevices Properties: ");
         int count = 0;
         for (VkPhysicalDevice physicalDevice : physicalDevicesList) {
             VkPhysicalDeviceProperties prop = new VkPhysicalDeviceProperties();
-            vk.vkGetPhysicalDeviceProperties(physicalDevice, prop);
+            Vk10.vkGetPhysicalDeviceProperties(physicalDevice, prop);
             System.out.println("Properties for PhysicalDevice #" + count++);
             System.out.println(prop);
             System.out.println("==============================================");
             
             System.out.println("Features for PhysicalDevice #" + count++);
             VkPhysicalDeviceFeatures features = new VkPhysicalDeviceFeatures();
-            vk.vkGetPhysicalDeviceFeatures(physicalDevice, features);
+            Vk10.vkGetPhysicalDeviceFeatures(physicalDevice, features);
             System.out.println(features);
             
             System.out.println("Memory for PhysicalDevice #" + count++);
             VkPhysicalDeviceMemoryProperties pMemoryProperties = new VkPhysicalDeviceMemoryProperties();
-            vk.vkGetPhysicalDeviceMemoryProperties(physicalDevice, pMemoryProperties); 
+            Vk10.vkGetPhysicalDeviceMemoryProperties(physicalDevice, pMemoryProperties); 
             System.out.println(pMemoryProperties);
             
         }
@@ -190,7 +188,7 @@ public class Lesson02 {
         
         int[] pQueueFamilyPropertyCount = {1};
         List<VkQueueFamilyProperties> pQueueFamilyProperties = new ArrayList<VkQueueFamilyProperties>();
-        vk.vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties);
+        Vk10.vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties);
         
         for (int i = 0; i < pQueueFamilyProperties.size(); i++) {
             VkQueueFamilyProperties queueFamily = pQueueFamilyProperties.get(i);
@@ -231,12 +229,12 @@ public class Lesson02 {
         
         VkAllocationCallbacks pAllocator = null;
         
-        VkResult resDevice = vk.vkCreateDevice(physicalDevice, pCreateDeviceInfo, pAllocator , pDevice );
+        VkResult resDevice = Vk10.vkCreateDevice(physicalDevice, pCreateDeviceInfo, pAllocator , pDevice );
         System.out.println("VkResult for Device Creation: " + resDevice);
         VkDevice device = pDevice[0];
         
-        vk.vkDestroyDevice(device , pAllocator);
-        vk.vkDestroyInstance(instance, pAllocator);
+        Vk10.vkDestroyDevice(device , pAllocator);
+        Vk10.vkDestroyInstance(instance, pAllocator);
     }
 
 }

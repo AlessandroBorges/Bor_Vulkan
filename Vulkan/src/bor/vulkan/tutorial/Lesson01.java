@@ -29,7 +29,7 @@ public class Lesson01 {
      */
     public static void main(String[] args) {
         
-        Vk10 vk = new Vk10();        
+        
         
         VkInstanceCreateInfo pCreateInfo = new VkInstanceCreateInfo();        
         VkAllocationCallbacks pAllocator = null;
@@ -48,12 +48,12 @@ public class Lesson01 {
         pCreateInfo.pApplicationInfo(appInfo);
         pCreateInfo.enabledExtensionCount(0);
         
-        VkResult res =  vk.vkCreateInstance(pCreateInfo, pAllocator, pInstance); 
+        VkResult res =  Vk10.vkCreateInstance(pCreateInfo, pAllocator, pInstance); 
         
         System.out.println("VkResult : " + res);
         
         VkInstance instance = pInstance[0];        
-        vk.vkDestroyInstance(instance, pAllocator);
+        Vk10.vkDestroyInstance(instance, pAllocator);
     }
 
 }
