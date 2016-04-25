@@ -124,7 +124,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkInstanceCreateInfo(){ 
-		 super(sizeOf(),0); 
+		 super(TAG_ID); 
 	 }
 
 	/**

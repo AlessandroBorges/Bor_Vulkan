@@ -95,7 +95,7 @@ public class VkApplicationInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkApplicationInfo(){ 
-		 super(sizeOf(),0); 
+		 super(TAG_ID); 
 	 }
 
 	/**

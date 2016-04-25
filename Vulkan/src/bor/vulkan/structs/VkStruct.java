@@ -226,17 +226,18 @@ public abstract class VkStruct implements VkObject{
      * @param structID - Id Of this struct
      */  
     protected VkStruct(int structID){
-        this(sizeOf(structID), 0);       
+        this(sizeOf(structID), true);       
     }
     
    
     /**
      * Constructor.
      * Creates a native pointer with memSize bytes 
-     * @param memSize - native size of structure, in byte
+     * @param memSize - native size of structure, in bytes
      * @param unused - not used.
      */
-    protected VkStruct(int memSize, int unused){
+    @Deprecated
+    protected VkStruct(int memSize, boolean unused){
         ByteBuffer nativeBuffer = ByteBuffer.allocateDirect(memSize);
         this.memSize = memSize;
         preparePtr(nativeBuffer);

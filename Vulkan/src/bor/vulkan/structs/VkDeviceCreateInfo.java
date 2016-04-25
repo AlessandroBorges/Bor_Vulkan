@@ -133,7 +133,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkDeviceCreateInfo(){ 
-		 super(sizeOf(),0); 
+		 super(TAG_ID); 
 	 }
 
 	/**

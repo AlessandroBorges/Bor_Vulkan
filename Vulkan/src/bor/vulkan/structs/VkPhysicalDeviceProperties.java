@@ -107,7 +107,7 @@ public class VkPhysicalDeviceProperties extends VkStruct {
 	 * Ctor
 	 */
 	public VkPhysicalDeviceProperties(){ 
-		 super(sizeOf(),0); 
+		 super(TAG_ID); 
 	 }
 
 	/**

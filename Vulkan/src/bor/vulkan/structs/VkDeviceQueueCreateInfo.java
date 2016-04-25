@@ -89,7 +89,7 @@ public class VkDeviceQueueCreateInfo extends VkStruct {
 	 * Ctor
 	 */
 	public VkDeviceQueueCreateInfo(){ 
-		 super(sizeOf(),0); 
+		 super(TAG_ID); 
 	 }
 
 	/**
