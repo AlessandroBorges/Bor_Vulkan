@@ -1,0 +1,31 @@
+# depslib dependency file v1.0
+1385313278 source:d:\users\livia\documents\github\bor_vulkan\vulkan\proto\wsi\main.cpp
+	<iostream>
+
+1460388016 source:d:\users\livia\documents\github\bor_vulkan\vulkan\proto\wsi\wsi.cpp
+	"WSI.h"
+
+1460398561 d:\users\livia\documents\github\bor_vulkan\vulkan\proto\wsi\wsi.h
+	<vulkan.h>
+	<stdio.h>
+	<stdlib.h>
+
+1457729668 d:\vulkansdk\1.0.5.0\include\vulkan\vulkan.h
+	"vk_platform.h"
+	<X11/Xlib.h>
+	<xcb/xcb.h>
+	<wayland-client.h>
+	<mir_toolkit/client_types.h>
+	<android/native_window.h>
+	<windows.h>
+
+1457542534 d:\vulkansdk\1.0.5.0\include\vulkan\vk_platform.h
+	<stddef.h>
+	<stdint.h>
+	<android/native_window.h>
+	<mir_toolkit/client_types.h>
+	<wayland-client.h>
+	<windows.h>
+	<X11/Xlib.h>
+	<xcb/xcb.h>
+
