@@ -42,10 +42,11 @@ public class ProcExtractor {
     public static int processProcedure(List<String> vkh) {
         System.out.println("Processing Procedures.");
         // boolean printStructs = true;
-        boolean exportProc = true;
-        boolean showAtConsole = true;
+        boolean exportProc = false;
+        boolean showAtConsole = false;
         boolean showVars = false;
         boolean printID = false;
+        boolean showHeader = true;
 
         int[] positions = { 0, 0 };
         int ID = 0;
@@ -69,6 +70,14 @@ public class ProcExtractor {
                 System.out.println("____________________________________________________________________________");
                 // System.out.println("public static final int " + info.getID_NAME()+";");
             }
+        }
+        
+        if(showHeader){
+        for (ProcInfo info : allProcs) {
+            System.out.println(info.toString());
+           
+            // System.out.println("public static final int " + info.getID_NAME()+";");
+        }
         }
 
         if (exportProc) {

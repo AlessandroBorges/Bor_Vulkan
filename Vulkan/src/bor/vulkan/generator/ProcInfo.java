@@ -367,17 +367,24 @@ public class ProcInfo {
     @Override
     public String toString() {
         final int maxLen = 20;
-        return "ProcInfo [id="
+        String params = "";
+        for (int i = 0; i < pnames.length; i++) {
+            String s = (i==0 ?"":",  ")+ paramTypes[i] + " " + pnames[i];
+            s = s.replace("const", "").replace("*","");
+            params +=s;            
+        }
+        
+        
+        return //"ProcInfo [id="
                 + id
-                + ", "
-                + (returnType != null ? "\n returnType=" + returnType + ", " : "")
-                +  (procName != null ? "\n procName=" + procName + ", " : "")
-                + (paramTypes != null ? "\n paramTypes="
-                        + Arrays.asList(paramTypes).subList(0, Math.min(paramTypes.length, maxLen)) + ", " : "")
-                + (pnames != null ? "pnames=" + Arrays.asList(pnames).subList(0, Math.min(pnames.length, maxLen))
-                        + ", " : "")
-                + (cppSource != null ? "\ncppSource="
-                        + Arrays.asList(cppSource).subList(0, Math.min(cppSource.length, maxLen)) : "") + "]";
+                + ",  "
+                + (returnType != null ? " " + returnType + "\t" : "")
+                +  (procName != null ? " " + procName + "\t( " : "")
+                + params
+                + ");"
+               // + 
+                //(cppSource != null ? "\ncppSource="+ Arrays.asList(cppSource).subList(0, Math.min(cppSource.length, maxLen)) : "") + "]"
+                ;
     }
     
    
