@@ -3,6 +3,8 @@
  */
 package bor.vulkan.structs;
 
+import java.lang.reflect.Field;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.HashMap;
@@ -10,6 +12,7 @@ import java.util.Map;
 
 import bor.util.Utils;
 import bor.vulkan.*;
+import sun.nio.ch.DirectBuffer;
 
 /**
  *
@@ -191,6 +194,10 @@ public abstract class VkStruct implements VkObject{
      */
     protected int count = 1;
     
+    /**
+     * 
+     */
+    private boolean isJni = true;
     
     /**
      * Define policy for this
@@ -235,11 +242,11 @@ public abstract class VkStruct implements VkObject{
      * Creates a native pointer with memSize bytes 
      * @param memSize - native size of structure, in bytes
      * @param unused - not used.
-     */
-    @Deprecated
+     */    
     protected VkStruct(int memSize, boolean unused){
         ByteBuffer nativeBuffer = ByteBuffer.allocateDirect(memSize);
         this.memSize = memSize;
+        this.isJni = false;
         preparePtr(nativeBuffer);
     }
     
@@ -397,7 +404,8 @@ public abstract class VkStruct implements VkObject{
               //same pointer
               return;
           }         
-          ByteBuffer nativePtr = Utils.wrapPointer(nativeHnd, size);         
+          ByteBuffer nativePtr = Utils.wrapPointer(nativeHnd, size); 
+          isJni = true;
           preparePtr(nativePtr);
       } 
      
@@ -461,18 +469,34 @@ public abstract class VkStruct implements VkObject{
      * 
      * @return true if everything goes OK
      */
+    @Override
     public boolean free(){
         boolean op = false;
         synchronized (objManager) {
             objManager.remove(ptr); 
         }        
         synchronized (ptr) {
-            op = Utils.deleteDirectBuffer(this.ptr);
-            nativeHandle = 0;
+            if(isJni){
+                op = Utils.deleteDirectBuffer(this.ptr);
+            }
             ptr = null;
-            op=true;
-        }         
+        }
+        nativeHandle = 0;
+        op=true;
         return op;
+    }
+    
+    /**
+     * 
+     * @param bb - buffer to check
+     * @return true if it native allocated
+     */
+    public boolean isJNIBuffer(Buffer bb){
+        if(!bb.isDirect()) return false;
+        
+        
+        
+        return false;
     }
     
     /**
