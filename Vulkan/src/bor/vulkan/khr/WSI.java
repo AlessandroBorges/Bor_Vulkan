@@ -2431,4 +2431,13 @@ private static native int  vkQueuePresentKHR0(
         return buffer == null ? null : new VkHandle(buffer);
     }
 
+    /**
+     * 
+     */
+    public void free() {
+        this.device = null;
+        this.instance = null;
+        this.wsi.free();
+    }
+
 }
