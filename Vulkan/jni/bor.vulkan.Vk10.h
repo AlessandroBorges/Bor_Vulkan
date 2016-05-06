@@ -1197,6 +1197,70 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdEndRenderPass0
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdExecuteCommands0
   (JNIEnv *, jclass, jobject, jint, jobject);
 
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateAndroidSurfaceKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[I)Ljava/nio/ByteBuffer;
+ */
+JNIEXPORT jobject JNICALL Java_bor_vulkan_Vk10_vkCreateAndroidSurfaceKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jintArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateMirSurfaceKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[I)Ljava/nio/ByteBuffer;
+ */
+JNIEXPORT jobject JNICALL Java_bor_vulkan_Vk10_vkCreateMirSurfaceKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jintArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateWaylandSurfaceKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[I)Ljava/nio/ByteBuffer;
+ */
+JNIEXPORT jobject JNICALL Java_bor_vulkan_Vk10_vkCreateWaylandSurfaceKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jintArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateWin32SurfaceKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[I)Ljava/nio/ByteBuffer;
+ */
+JNIEXPORT jobject JNICALL Java_bor_vulkan_Vk10_vkCreateWin32SurfaceKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jintArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateXcbSurfaceKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[I)Ljava/nio/ByteBuffer;
+ */
+JNIEXPORT jobject JNICALL Java_bor_vulkan_Vk10_vkCreateXcbSurfaceKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jintArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateXlibSurfaceKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[I)Ljava/nio/ByteBuffer;
+ */
+JNIEXPORT jobject JNICALL Java_bor_vulkan_Vk10_vkCreateXlibSurfaceKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jintArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkDestroySurfaceKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
+ */
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroySurfaceKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateDisplayPlaneSurfaceKHR0
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[I)Ljava/nio/ByteBuffer;
+ */
+JNIEXPORT jobject JNICALL Java_bor_vulkan_Vk10_vkCreateDisplayPlaneSurfaceKHR0
+  (JNIEnv *, jclass, jobject, jobject, jobject, jintArray);
+
 #ifdef __cplusplus
 }
 #endif

@@ -1,13 +1,13 @@
 #include <bor.vulkan.structs.VkStruct.h>
 
-//@line:35
+//@line:38
 
    #include <BorVulkan.hpp>
      
      JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkStruct_sizeOf(JNIEnv* env, jclass clazz, jint structID) {
 
 
-//@line:519
+//@line:543
 
      
      size_t _size = 0; 
