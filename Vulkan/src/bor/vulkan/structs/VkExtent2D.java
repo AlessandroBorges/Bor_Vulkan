@@ -178,9 +178,20 @@ public class VkExtent2D extends VkStruct {
 		 this.height = var;
 		 return this.height;
 	 }
+          
+	 
 
+	 /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("VkExtent2D [width: ").append(width()).append(", height: ").append(height()).append("]");
+        return builder.toString();
+    }
 
-	 //////////////////////////////////
+    //////////////////////////////////
 	 // native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**

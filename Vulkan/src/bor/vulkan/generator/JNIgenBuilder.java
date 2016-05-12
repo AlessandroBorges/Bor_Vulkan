@@ -25,9 +25,17 @@ public class JNIgenBuilder {
                 "**/bor/vulkan/structs/VkPhysicalDeviceFeatures.java",
                 "**/bor/vulkan/structs/VkPhysicalDeviceMemoryProperties.java",
                 "**/bor/vulkan/structs/VkLayerProperties.java",
-                
+                "**/bor/vulkan/structs/VkWin32SurfaceCreateInfoKHR",
+                "**/bor/vulkan/structs/VkExtent2D.java",
                 "**/bor/vulkan/structs/VkExtent3D.java",
                 "**/bor/vulkan/structs/VkQueueFamilyProperties.java",
+                
+                "**/bor/vulkan/structs/VkDisplaySurfaceCreateInfoKHR.java",
+                "**/bor/vulkan/structs/VkXcbSurfaceCreateInfoKHR",
+                "**/bor/vulkan/structs/VkAndroidSurfaceCreateInfoKHR",
+                "**/bor/vulkan/structs/VkMirSurfaceCreateInfoKHR",
+                "**/bor/vulkan/structs/VkWaylandSurfaceCreateInfoKHR",
+                //VkDisplaySurfaceCreateInfoKHR
                 // VkExtent3D
                 //VkQueueFamilyProperties
                 

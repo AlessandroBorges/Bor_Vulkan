@@ -287,8 +287,29 @@ public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
 		 return this.window;
 	 }
 
+	 
 
-	 //////////////////////////////////
+	 /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("VkXlibSurfaceCreateInfoKHR [sType: ")
+                .append(sType())
+                .append(", pNext: ")
+                .append(pNext())
+                .append(", flags: ")
+                .append(flags())
+                .append(", dpy: ")
+                .append(dpy())
+                .append(", window: ")
+                .append(window())
+                .append("]");
+        return builder.toString();
+    }
+
+    //////////////////////////////////
 	 // native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**

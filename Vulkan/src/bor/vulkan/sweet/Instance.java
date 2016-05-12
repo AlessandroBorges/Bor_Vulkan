@@ -178,6 +178,11 @@ public class Instance {
         return surface;
     }
     
+    /**
+     * 
+     * @param pCreateXlibInfo
+     * @return
+     */
     public VkSurfaceKHR createXlibSurfaceKHR (VkXlibSurfaceCreateInfoKHR pCreateXlibInfo){        
         VkSurfaceKHR[] pSurface = new VkSurfaceKHR[1];
         VkResult res = Vk10.vkCreateXlibSurfaceKHR(this.vkInstance, pCreateXlibInfo, this.pAllocator, pSurface);
@@ -280,10 +285,26 @@ public class Instance {
     public VkAllocationCallbacks getVkAllocatorCallback() {
         return pAllocator;
     }
-    
-    
-    
 
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Instance [vkInstance: ")
+                .append(vkInstance)
+                .append(", pCreateInfo: ")
+                .append(pCreateInfo)
+                .append(", pAllocator: ")
+                .append(pAllocator)
+                .append("]");
+        return builder.toString();
+    }
+    
+    
+    
+    
     
 
 }

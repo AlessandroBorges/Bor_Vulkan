@@ -288,7 +288,27 @@ public class VkMirSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 
-	 //////////////////////////////////
+	 /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("VkMirSurfaceCreateInfoKHR [sType: ")
+                .append(sType())
+                .append(", pNext: ")
+                .append(pNext())
+                .append(", flags: ")
+                .append(flags())
+                .append(", connection: ")
+                .append(connection())
+                .append(", mirSurface: ")
+                .append(mirSurface())
+                .append("]");
+        return builder.toString();
+    }
+
+    //////////////////////////////////
 	 // native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**

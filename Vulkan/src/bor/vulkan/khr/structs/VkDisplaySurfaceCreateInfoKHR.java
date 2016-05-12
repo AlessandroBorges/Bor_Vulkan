@@ -413,8 +413,39 @@ public class VkDisplaySurfaceCreateInfoKHR extends VkStruct {
 		 return this.imageExtent;
 	 }
 
+	 
 
-	 //////////////////////////////////
+	 /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("VkDisplaySurfaceCreateInfoKHR [sType : ")
+                .append(sType())
+                .append(", pNext: ")
+                .append(pNext())
+                .append(", flags: ")
+                .append(flags())
+                .append(", displayMode: ")
+                .append(displayMode())
+                .append(", planeIndex: ")
+                .append(planeIndex())
+                .append(", planeStackIndex: ")
+                .append(planeStackIndex())
+                .append(", transform: ")
+                .append(transform())
+                .append(", globalAlpha: ")
+                .append(globalAlpha())
+                .append(", alphaMode: ")
+                .append(alphaMode())
+                .append(", imageExtent: ")
+                .append(imageExtent())
+                .append("]");
+        return builder.toString();
+    }
+
+    //////////////////////////////////
 	 // native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**

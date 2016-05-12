@@ -287,8 +287,28 @@ public class VkWin32SurfaceCreateInfoKHR extends VkStruct {
 		 return this.hwnd;
 	 }
 
+          
+	 /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("VkWin32SurfaceCreateInfoKHR [sType: ")
+                .append(sType())
+                .append(", pNext: ")
+                .append(pNext())
+                .append(", flags: ")
+                .append(flags())
+                .append(", hinstance: ")
+                .append(hinstance())
+                .append(", hwnd: ")
+                .append(hwnd())
+                .append("]");
+        return builder.toString();
+    }
 
-	 //////////////////////////////////
+    //////////////////////////////////
 	 // native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**

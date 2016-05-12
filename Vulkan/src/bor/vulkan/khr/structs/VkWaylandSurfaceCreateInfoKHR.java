@@ -288,7 +288,27 @@ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
 	 }
 
 
-	 //////////////////////////////////
+	 /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("VkWaylandSurfaceCreateInfoKHR [sType: ")
+                .append(sType())
+                .append(", pNext: ")
+                .append(pNext())
+                .append(", flags: ")
+                .append(flags())
+                .append(", display: ")
+                .append(display())
+                .append(", surface: ")
+                .append(surface())
+                .append("]");
+        return builder.toString();
+    }
+
+    //////////////////////////////////
 	 // native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**

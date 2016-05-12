@@ -17,6 +17,14 @@ import bor.vulkan.enumerations.VkPipelineStageFlagBits;
 import bor.vulkan.enumerations.VkResult;
 import bor.vulkan.enumerations.VkSampleCountFlagBits;
 import bor.vulkan.enumerations.VkSubpassContents;
+import bor.vulkan.khr.VkSurfaceKHR;
+import bor.vulkan.khr.structs.VkAndroidSurfaceCreateInfoKHR;
+import bor.vulkan.khr.structs.VkDisplaySurfaceCreateInfoKHR;
+import bor.vulkan.khr.structs.VkMirSurfaceCreateInfoKHR;
+import bor.vulkan.khr.structs.VkWaylandSurfaceCreateInfoKHR;
+import bor.vulkan.khr.structs.VkWin32SurfaceCreateInfoKHR;
+import bor.vulkan.khr.structs.VkXcbSurfaceCreateInfoKHR;
+import bor.vulkan.khr.structs.VkXlibSurfaceCreateInfoKHR;
 import bor.vulkan.structs.VkAllocationCallbacks;
 import bor.vulkan.structs.VkBindSparseInfo;
 import bor.vulkan.structs.VkBufferCopy;
@@ -97,6 +105,120 @@ public class Vk10 extends Vulkan {
       using namespace std;
       
       static jclass byteBufferClass;
+      
+      #define GET_INSTANCE_PROC_ADDR(inst, entrypoint)                       \
+    {                                                                     \
+        pfn##entrypoint =                                                 \
+            (PFN_vk##entrypoint)vkGetInstanceProcAddr(inst, "vk"#entrypoint); \
+        if (pfn##entrypoint == NULL) {                                    \
+            printf("vkGetInstanceProcAddr failed to find vk"#entrypoint); \
+        }                                                                 \
+    } \
+      
+      static PFN_vkGetPhysicalDeviceDisplayPropertiesKHR       pfnGetPhysicalDeviceDisplayPropertiesKHR;
+      static PFN_vkGetPhysicalDeviceDisplayPlanePropertiesKHR  pfnGetPhysicalDeviceDisplayPlanePropertiesKHR;
+      static PFN_vkGetDisplayModePropertiesKHR                 pfnGetDisplayModePropertiesKHR;
+      static PFN_vkGetDisplayPlaneCapabilitiesKHR              pfnGetDisplayPlaneCapabilitiesKHR;
+      static PFN_vkGetDisplayPlaneSupportedDisplaysKHR         pfnGetDisplayPlaneSupportedDisplaysKHR;
+      static PFN_vkCreateDisplayPlaneSurfaceKHR                pfnCreateDisplayPlaneSurfaceKHR;
+      static PFN_vkGetPhysicalDeviceSurfaceSupportKHR          pfnGetPhysicalDeviceSurfaceSupportKHR;
+      static PFN_vkCreateDisplayModeKHR                        pfnCreateDisplayModeKHR;
+      
+      PFN_vkGetPhysicalDeviceSurfaceSupportKHR         pfnGetPhysicalDeviceSurfaceSupportKHR;
+      
+      static  bool isWin32;
+      static  bool isAndroid;
+      static  bool isMIR;
+      static  bool isWayland;
+      static  bool isXCB;
+      static  bool isXLIB;
+      
+      
+   #ifdef VK_USE_PLATFORM_ANDROID_KHR  
+     static PFN_vkCreateAndroidSurfaceKHR pfnCreateAndroidSurfaceKHR;
+   #endif
+   #ifdef VK_USE_PLATFORM_WIN32_KHR
+     static PFN_vkCreateWin32SurfaceKHR pfnCreateWin32SurfaceKHR;
+     static PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR pfnGetPhysicalDeviceWin32PresentationSupportKHR;
+   #endif 
+
+   #ifdef VK_USE_PLATFORM_MIR_KHR
+        static PFN_vkCreateMirSurfaceKHR pfnCreateMirSurfaceKHR;
+        static PFN_vkGetPhysicalDeviceMirPresentationSupportKHR pfnGetPhysicalDeviceMirPresentationSupportKHR;
+   #endif
+   
+   #ifdef VK_USE_PLATFORM_WAYLAND_KHR
+      static PFN_vkCreateWaylandSurfaceKHR pfnCreateWaylandSurfaceKHR;
+      static PFN_vkGetPhysicalDeviceWaylandPresentationSupportKHR pfnGetPhysicalDeviceWaylandPresentationSupportKHR;
+   #endif
+        
+   #ifdef VK_USE_PLATFORM_XCB_KHR
+    static PFN_vkCreateXcbSurfaceKHR pfnCreateXcbSurfaceKHR;
+    static PFN_vkGetPhysicalDeviceXcbPresentationSupportKHR pfnGetPhysicalDeviceXcbPresentationSupportKHR;
+   #endif   
+        
+   #ifdef VK_USE_PLATFORM_XLIB_KHR
+    static PFN_vkCreateXlibSurfaceKHR pfnCreateXlibSurfaceKHR;
+    static PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR pfnGetPhysicalDeviceXlibPresentationSupportKHR;
+   #endif
+   
+    static void initInstance(VkInstance instance){
+         // platforms support 
+        isWin32 = false;
+        isAndroid = false;
+        isMIR = false;
+        isWayland = false;
+        isXCB = false;
+        isXLIB = false;
+        
+        //instance  
+   GET_INSTANCE_PROC_ADDR(instance, GetPhysicalDeviceSurfaceSupportKHR);
+   GET_INSTANCE_PROC_ADDR(instance, GetPhysicalDeviceSurfaceCapabilitiesKHR);
+   GET_INSTANCE_PROC_ADDR(instance, GetPhysicalDeviceSurfaceFormatsKHR);
+   GET_INSTANCE_PROC_ADDR(instance, GetPhysicalDeviceSurfacePresentModesKHR);
+   GET_INSTANCE_PROC_ADDR(instance, GetPhysicalDeviceDisplayPropertiesKHR);
+   GET_INSTANCE_PROC_ADDR(instance, GetPhysicalDeviceDisplayPlanePropertiesKHR);
+   GET_INSTANCE_PROC_ADDR(instance, GetDisplayModePropertiesKHR);
+   GET_INSTANCE_PROC_ADDR(instance, GetDisplayPlaneCapabilitiesKHR);
+   GET_INSTANCE_PROC_ADDR(instance, GetDisplayPlaneSupportedDisplaysKHR);
+   GET_INSTANCE_PROC_ADDR(instance, CreateDisplayPlaneSurfaceKHR);
+   
+   #ifdef VK_USE_PLATFORM_ANDROID_KHR  
+     GET_INSTANCE_PROC_ADDR(instance, CreateAndroidSurfaceKHR);
+         isAndroid = true;
+   #endif
+   
+    #ifdef VK_USE_PLATFORM_WIN32_KHR
+    GET_INSTANCE_PROC_ADDR(instance, CreateWin32SurfaceKHR);
+        GET_INSTANCE_PROC_ADDR(instance, GetPhysicalDeviceWin32PresentationSupportKHR);
+        isWin32 = true;
+   #endif 
+
+   #ifdef VK_USE_PLATFORM_MIR_KHR
+        GET_INSTANCE_PROC_ADDR(instance, CreateMirSurfaceKHR);
+        GET_INSTANCE_PROC_ADDR(instance, GetPhysicalDeviceMirPresentationSupportKHR);
+        isMIR = true;
+   #endif
+   
+   #ifdef VK_USE_PLATFORM_WAYLAND_KHR
+       GET_INSTANCE_PROC_ADDR(instance, CreateWaylandSurfaceKHR);
+       GET_INSTANCE_PROC_ADDR(instance, pfnGetPhysicalDeviceWaylandPresentationSupportKHR);
+       isWayland = true;
+   #endif
+        
+   #ifdef VK_USE_PLATFORM_XCB_KHR
+        GET_INSTANCE_PROC_ADDR(instance, CreateXcbSurfaceKHR);
+        GET_INSTANCE_PROC_ADDR(instance, GetPhysicalDeviceXcbPresentationSupportKHR);
+        isXCB = true;
+   #endif   
+        
+        #ifdef VK_USE_PLATFORM_XLIB_KHR
+          GET_INSTANCE_PROC_ADDR(instance, CreateXlibSurfaceKHR);
+          GET_INSTANCE_PROC_ADDR(instance, GetPhysicalDeviceXlibPresentationSupportKHR);
+          isXLIB = true;
+        #endif    
+      
+      }
       
      
       ////////////////////////////////////////
@@ -8105,6 +8227,415 @@ private static native int vkQueueSubmit0(
 
 */ 
 
+ ////////////////////////////////////////////////////////////
+ // WSI SURFACES
+ ///////////////////////////////////////////////////////////
+ 
+   public static VkResult vkCreateAndroidSurfaceKHR(VkInstance  instance,
+                                             VkAndroidSurfaceCreateInfoKHR        pCreateInfo,
+                                             VkAllocationCallbacks   pAllocator,
+                                             VkSurfaceKHR[]   pSurface){
+       int[] result = {0};
+       
+       ByteBuffer bb = vkCreateAndroidSurfaceKHR0(instance.getPointer(), 
+                                                  pCreateInfo.getPointer(), 
+                                                  (pAllocator == null? null : pAllocator.getPointer()), 
+                                                  result); 
+       pSurface[0] = wrap(bb);
+       
+       return VkResult.fromValue(result[0]);
+   }
+   
+   private static native  ByteBuffer vkCreateAndroidSurfaceKHR0(ByteBuffer  instance,
+                                                                ByteBuffer   pCreateInfo,
+                                                                ByteBuffer   pAllocator,
+                                                                int[] result);/*
+    #ifdef VK_USE_PLATFORM_ANDROID_KHR                                                        
+           VkSurfaceKHR* pSurface = (VkSurfaceKHR*)malloc(sizeof(VkSurfaceKHR));                                                     
+           VkResult res =  vkCreateAndroidSurfaceKHR( (VkInstance) instance,
+                                                      (VkAndroidSurfaceCreateInfoKHR*) pCreateInfo,
+                                                      (VkAllocationCallbacks*)   pAllocator,
+                                                      (VkSurfaceKHR*)  pSurface);
+           result[0] = (jint) res;
+           jobject buffer = NULL; 
+           if(res>=0){
+               buffer = (jobject)(env->NewDirectByteBuffer((void*)pSurface, sizeof(VkSurfaceKHR)));                 
+            }else{
+              if(pSurface)
+                 free(pSurface);
+            }
+            return buffer;
+      #else
+              result[0] = (jint)VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;  
+              return NULL;
+      #endif  
+    */
+   
+   
+  
+   
+
+   /**
+    * 
+    * @param instance
+    * @param pCreateInfo
+    * @param pAllocator
+    * @param pSurface
+    * @return
+    */
+   public static VkResult vkCreateMirSurfaceKHR(VkInstance  instance,
+                                                VkMirSurfaceCreateInfoKHR        pCreateInfo,
+                                                VkAllocationCallbacks   pAllocator,
+                                                VkSurfaceKHR[]   pSurface){
+              int[] result = {0};              
+              ByteBuffer bb = vkCreateMirSurfaceKHR0(instance.getPointer(), 
+                                                     pCreateInfo.getPointer(), 
+                                                     (pAllocator == null? null : pAllocator.getPointer()), 
+                                                     result); 
+              pSurface[0] = wrap(bb);              
+              return VkResult.fromValue(result[0]);
+          }
+          
+    private static native  ByteBuffer vkCreateMirSurfaceKHR0(ByteBuffer  instance,
+                                                                       ByteBuffer   pCreateInfo,
+                                                                       ByteBuffer   pAllocator,
+                                                                       int[] result);/*
+           #ifdef VK_USE_PLATFORM_MIR_KHR                                                        
+                  VkSurfaceKHR* pSurface = (VkSurfaceKHR*)malloc(sizeof(VkSurfaceKHR));                                                     
+                  VkResult res =  vkCreateMirSurfaceKHR( (VkInstance) instance,
+                                                             (VkMirSurfaceCreateInfoKHR*) pCreateInfo,
+                                                             (VkAllocationCallbacks*)   pAllocator,
+                                                             (VkSurfaceKHR*)  pSurface);
+                  result[0] = (jint) res;
+                  jobject buffer = NULL; 
+                  if(res>=0){
+                      buffer = (jobject)(env->NewDirectByteBuffer((void*)pSurface, sizeof(VkSurfaceKHR)));                 
+                   }else{
+                     if(pSurface)
+                        free(pSurface);
+                   }
+                   return buffer;
+             #else
+                     result[0] = (jint)VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;  
+                     return NULL;
+             #endif  
+           */
+   
+   
+  // vkCreateWaylandSurfaceKHR
+   
+   /**
+    * 
+    * @param instance
+    * @param pCreateInfo
+    * @param pAllocator
+    * @param pSurface
+    * @return
+    */
+   public static VkResult vkCreateWaylandSurfaceKHR(VkInstance  instance,
+                                                    VkWaylandSurfaceCreateInfoKHR        pCreateInfo,
+                                                    VkAllocationCallbacks   pAllocator,
+                                                    VkSurfaceKHR[]   pSurface){
+              int[] result = {0};              
+              ByteBuffer bb = vkCreateWaylandSurfaceKHR0(instance.getPointer(), 
+                                                     pCreateInfo.getPointer(), 
+                                                     (pAllocator == null? null : pAllocator.getPointer()), 
+                                                     result); 
+              pSurface[0] = wrap(bb);              
+              return VkResult.fromValue(result[0]);
+          }
+    
+   /**
+    * 
+    * @param instance
+    * @param pCreateInfo
+    * @param pAllocator
+    * @param result
+    * @return
+    */
+    private static native  ByteBuffer vkCreateWaylandSurfaceKHR0(ByteBuffer  instance,
+                                                                 ByteBuffer   pCreateInfo,
+                                                                 ByteBuffer   pAllocator,
+                                                                 int[] result);/*
+           #ifdef VK_USE_PLATFORM_MIR_KHR                                                        
+                  VkSurfaceKHR* pSurface = (VkSurfaceKHR*)malloc(sizeof(VkSurfaceKHR));                                                     
+                  VkResult res =  vkCreateWaylandSurfaceKHR( (VkInstance) instance,
+                                                             (VkMirSurfaceCreateInfoKHR*) pCreateInfo,
+                                                             (VkAllocationCallbacks*)   pAllocator,
+                                                             (VkSurfaceKHR*)  pSurface);
+                  result[0] = (jint) res;
+                  jobject buffer = NULL; 
+                  if(res>=0){
+                      buffer = (jobject)(env->NewDirectByteBuffer((void*)pSurface, sizeof(VkSurfaceKHR)));                 
+                   }else{
+                     if(pSurface)
+                        free(pSurface);
+                   }
+                   return buffer;
+             #else
+                     result[0] = (jint)VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;  
+                     return NULL;
+             #endif  
+           */
+   
+   
+   // vkCreateWin32SurfaceKHR
+   
+    /**
+     * 
+     * @param instance
+     * @param pCreateInfo
+     * @param pAllocator
+     * @param pSurface
+     * @return
+     */
+    public static VkResult vkCreateWin32SurfaceKHR(VkInstance  instance,
+                                                   VkWin32SurfaceCreateInfoKHR  pCreateInfo,
+                                                   VkAllocationCallbacks   pAllocator,
+                                                   VkSurfaceKHR[]   pSurface){
+               int[] result = {0};              
+               ByteBuffer bb = vkCreateWaylandSurfaceKHR0(instance.getPointer(), 
+                                                      pCreateInfo.getPointer(), 
+                                                      (pAllocator == null? null : pAllocator.getPointer()), 
+                                                      result); 
+               pSurface[0] = wrap(bb);              
+               return VkResult.fromValue(result[0]);
+           }
+     
+    /**
+     * 
+     * @param instance
+     * @param pCreateInfo
+     * @param pAllocator
+     * @param result
+     * @return
+     */
+     private static native  ByteBuffer vkCreateWin32SurfaceKHR0(ByteBuffer  instance,
+                                                                  ByteBuffer   pCreateInfo,
+                                                                  ByteBuffer   pAllocator,
+                                                                  int[] result);/*
+            // used in Windows OS only                                                      
+            #ifdef VK_USE_PLATFORM_WIN32_KHR                                                        
+                   VkSurfaceKHR* pSurface = (VkSurfaceKHR*)malloc(sizeof(VkSurfaceKHR));                                                     
+                   VkResult res =  vkCreateWin32SurfaceKHR( (VkInstance) instance,
+                                                              (VkWin32SurfaceCreateInfoKHR*) pCreateInfo,
+                                                              (VkAllocationCallbacks*)   pAllocator,
+                                                              (VkSurfaceKHR*)  pSurface);
+                   result[0] = (jint) res;
+                   jobject buffer = NULL; 
+                   if(res>=0){
+                       buffer = (jobject)(env->NewDirectByteBuffer((void*)pSurface, sizeof(VkSurfaceKHR)));                 
+                    }else{
+                      if(pSurface)
+                         free(pSurface);
+                    }
+                    return buffer;
+              #else
+                      result[0] = (jint)VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;  
+                      return NULL;
+              #endif  
+            */
+   
+   //vkCreateXcbSurfaceKHR
+   
+     /**
+      * 
+      * @param instance
+      * @param pCreateInfo
+      * @param pAllocator
+      * @param pSurface
+      * @return
+      */
+     public static VkResult vkCreateXcbSurfaceKHR(VkInstance  instance,
+                                                  VkXcbSurfaceCreateInfoKHR  pCreateInfo,
+                                                  VkAllocationCallbacks   pAllocator,
+                                                  VkSurfaceKHR[]   pSurface){
+                int[] result = {0};              
+                ByteBuffer bb = vkCreateXcbSurfaceKHR0(instance.getPointer(), 
+                                                       pCreateInfo.getPointer(), 
+                                                       (pAllocator == null? null : pAllocator.getPointer()), 
+                                                       result); 
+                pSurface[0] = wrap(bb);              
+                return VkResult.fromValue(result[0]);
+            }
+      
+     /**
+      * 
+      * @param instance
+      * @param pCreateInfo
+      * @param pAllocator
+      * @param result
+      * @return
+      */
+      private static native  ByteBuffer vkCreateXcbSurfaceKHR0(ByteBuffer  instance,
+                                                               ByteBuffer   pCreateInfo,
+                                                               ByteBuffer   pAllocator,
+                                                               int[] result);/*
+             #ifdef VK_USE_PLATFORM_XCB_KHR                                                        
+                    VkSurfaceKHR* pSurface = (VkSurfaceKHR*)malloc(sizeof(VkSurfaceKHR));                                                     
+                    VkResult res =  vkCreateXcbSurfaceKHR( (VkInstance) instance,
+                                                               (VkXcbSurfaceCreateInfoKHR*) pCreateInfo,
+                                                               (VkAllocationCallbacks*)   pAllocator,
+                                                               (VkSurfaceKHR*)  pSurface);
+                    result[0] = (jint) res;
+                    jobject buffer = NULL; 
+                    if(res>=0){
+                        buffer = (jobject)(env->NewDirectByteBuffer((void*)pSurface, sizeof(VkSurfaceKHR)));                 
+                     }else{
+                       if(pSurface)
+                          free(pSurface);
+                     }
+                     return buffer;
+               #else
+                       result[0] = (jint)VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;  
+                       return NULL;
+               #endif  
+             */
+   
+   //vkCreateXlibSurfaceKHR
+      /**
+       * 
+       * @param instance
+       * @param pCreateInfo
+       * @param pAllocator
+       * @param pSurface
+       * @return
+       */
+      public static VkResult vkCreateXlibSurfaceKHR(VkInstance  instance,
+                                                    VkXlibSurfaceCreateInfoKHR  pCreateInfo,
+                                                    VkAllocationCallbacks   pAllocator,
+                                                    VkSurfaceKHR[]   pSurface){
+                 int[] result = {0};              
+                 ByteBuffer bb = vkCreateXlibSurfaceKHR0(instance.getPointer(), 
+                                                        pCreateInfo.getPointer(), 
+                                                        (pAllocator == null? null : pAllocator.getPointer()), 
+                                                        result); 
+                 pSurface[0] = wrap(bb);              
+                 return VkResult.fromValue(result[0]);
+             }
+       
+      /**
+       * 
+       * @param instance
+       * @param pCreateInfo
+       * @param pAllocator
+       * @param result
+       * @return
+       */
+       private static native  ByteBuffer vkCreateXlibSurfaceKHR0(ByteBuffer  instance,
+                                                                ByteBuffer   pCreateInfo,
+                                                                ByteBuffer   pAllocator,
+                                                                int[] result);/*
+              #ifdef VK_USE_PLATFORM_XCB_KHR                                                        
+                     VkSurfaceKHR* pSurface = (VkSurfaceKHR*)malloc(sizeof(VkSurfaceKHR));                                                     
+                     VkResult res =  vkCreateXlibSurfaceKHR( (VkInstance) instance,
+                                                                (VkXlibSurfaceCreateInfoKHR*) pCreateInfo,
+                                                                (VkAllocationCallbacks*)   pAllocator,
+                                                                (VkSurfaceKHR*)  pSurface);
+                     result[0] = (jint) res;
+                     jobject buffer = NULL; 
+                     if(res>=0){
+                         buffer = (jobject)(env->NewDirectByteBuffer((void*)pSurface, sizeof(VkSurfaceKHR)));                 
+                      }else{
+                        if(pSurface)
+                           free(pSurface);
+                      }
+                      return buffer;
+                #else
+                        result[0] = (jint)VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;  
+                        return NULL;
+                #endif  
+              */
+   
+ 
+
+   /**
+    *      
+    * @param instance
+    * @param surface
+    * @param pAllocator
+    */
+   public static void vkDestroySurfaceKHR(VkInstance   instance,
+                                          VkSurfaceKHR surface,
+                                          VkAllocationCallbacks  pAllocator){
+     vkDestroySurfaceKHR0(instance.getPointer(),
+                          surface.getPointer(),
+                          (pAllocator == null ? null : pAllocator.getPointer()));
+     
+ }
+
+ /**
+  * 
+  * @param instance
+  * @param surface
+  * @param pAllocator
+  */
+ private static native void vkDestroySurfaceKHR0(ByteBuffer instance,
+                                                 ByteBuffer surface,
+                                                 ByteBuffer pAllocator);/*
+         vkDestroySurfaceKHR((VkInstance)   instance,
+                             (VkSurfaceKHR) surface,
+                             (VkAllocationCallbacks*)   pAllocator);
+                                                     
+                                                 
+     */
+ 
+ 
+ //vkCreateDisplayPlaneSurfaceKHR
+ 
+ public static  VkResult vkCreateDisplayPlaneSurfaceKHR( VkInstance  instance,
+                                                         VkDisplaySurfaceCreateInfoKHR        pCreateInfo,
+                                                         VkAllocationCallbacks pAllocator,
+                                                         VkSurfaceKHR[] pSurface){
+     int[] result = {0};              
+     ByteBuffer bb = vkCreateDisplayPlaneSurfaceKHR0(instance.getPointer(), 
+                                                     pCreateInfo.getPointer(), 
+                                                     (pAllocator == null? null : pAllocator.getPointer()), 
+                                                      result); 
+     pSurface[0] = wrap(bb);              
+     return VkResult.fromValue(result[0]);
+ }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ private static native ByteBuffer vkCreateDisplayPlaneSurfaceKHR0(ByteBuffer instance,
+                                                                  ByteBuffer pCreateInfo,
+                                                                  ByteBuffer pAllocator,
+                                                                  int[] result);/*
+                        
+     if(pfnCreateDisplayPlaneSurfaceKHR == NULL){
+       result[0] = (jint) VkResult::VK_ERROR_EXTENSION_NOT_PRESENT;
+       return (jobject) NULL;
+     }
+     
+     VkSurfaceKHR* pSurface = (VkSurfaceKHR*)malloc(sizeof(VkSurfaceKHR)); 
+                                                                
+     VkResult res =  pfnCreateDisplayPlaneSurfaceKHR((VkInstance) instance,
+                                                     (VkDisplaySurfaceCreateInfoKHR*)  pCreateInfo,
+                                                     (VkAllocationCallbacks*) pAllocator,
+                                                     (VkSurfaceKHR*)  pSurface);
+                                                     
+       result[0] = (jint) res;
+       jobject buffer = NULL; 
+       if(res>=0){
+          buffer = (jobject)(env->NewDirectByteBuffer((void*)pSurface, sizeof(VkSurfaceKHR)));                 
+       }else{
+             if(pSurface)
+             free(pSurface);
+       }
+       return buffer;
+//    #else
+//        result[0] = (jint)VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;  
+//        return NULL;
+//    #endif                                                                                            
+                                                                 
+    */
+ /////////////////////////////////////////////////////////
 
    /**
     * There is no need to instance this class

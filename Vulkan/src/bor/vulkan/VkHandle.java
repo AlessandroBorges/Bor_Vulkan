@@ -257,10 +257,11 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
      @Override
     public boolean free(){
         if(null==ptr) 
-            return false;        
+            return false;
+        mapHandlers.remove(this);        
+        Utils.deleteDirectBuffer(this.ptr);
         ptr = null;
         nativeHandle = 0;
-        mapHandlers.remove(this);
         return true;
     }
      
@@ -300,14 +301,31 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
         return true;
     }
 
+        
     /* (non-Javadoc)
      * @see java.lang.Object#toString()
      */
     @Override
-    public String toString() {        
-        return "VkHandle [" + (ptr != null ? "ptr=" + ptr : "") + "]";
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("VkHandle [ptr=")
+                .append(ptr)
+                .append(", nativeHandle=")
+                .append(nativeHandle)
+                .append(", p=")
+                .append(p)
+                .append(", getType: ")
+                .append(getType())
+                .append(", getPointer: ")
+                .append(getPointer())
+                .append(", getNativeHandle: 0x")            
+                .append( Long.toHexString(getNativeHandle()))
+                .append(", isNull: ")
+                .append(isNull())
+                .append("]");
+        return builder.toString();
     }
-    
+
     /**
      * Release all handlers.
      * Call it when you are about to close your application.
