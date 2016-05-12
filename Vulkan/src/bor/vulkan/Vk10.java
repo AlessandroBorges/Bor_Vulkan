@@ -615,8 +615,7 @@ public class Vk10 extends Vulkan {
                int  usage,
                int  flags,
                Buffer  pImageFormatProperties);/*
-               
-         
+  
          VkResult res = 
          vkGetPhysicalDeviceImageFormatProperties(
                (VkPhysicalDevice) physicalDevice,
@@ -718,8 +717,7 @@ public class Vk10 extends Vulkan {
    private static native ByteBuffer[] vkGetPhysicalDeviceQueueFamilyProperties0(
                Buffer  physicalDevice,
                int[]  pQueueFamilyPropertyCount);/*
-                                             
-     
+    
      uint32_t count = 0;                                
      vkGetPhysicalDeviceQueueFamilyProperties(
              (VkPhysicalDevice) (physicalDevice),
@@ -790,8 +788,7 @@ public class Vk10 extends Vulkan {
                Buffer  pMemoryProperties);/*
          vkGetPhysicalDeviceMemoryProperties(
              (VkPhysicalDevice)  physicalDevice,
-             (VkPhysicalDeviceMemoryProperties*)  pMemoryProperties);        
-               
+             (VkPhysicalDeviceMemoryProperties*)  pMemoryProperties);     
     */
 
        /////////////////////////////////////
@@ -1008,8 +1005,7 @@ public class Vk10 extends Vulkan {
                String  pLayerName,
                int[]  pPropertyCount,
                int[] result);/*
-       
-     
+  
      uint32_t count = 0;          
      VkResult res = vkEnumerateInstanceExtensionProperties(
                         (const char*)  pLayerName,
@@ -1109,8 +1105,7 @@ public class Vk10 extends Vulkan {
                String  pLayerName,
              //  int[]  pPropertyCount,
                int[] result);/*
-               
-     
+      
      uint32_t count = 0;          
      VkResult res =  vkEnumerateDeviceExtensionProperties(
                   (VkPhysicalDevice)  physicalDevice,
@@ -1433,9 +1428,9 @@ private static native int vkQueueSubmit0(
  */
  private static native int  vkQueueWaitIdle0(
              java.nio.ByteBuffer   queue);/* 
-     VkQueue* ptr_queue = (VkQueue*) queue;
+      
      VkResult res = vkQueueWaitIdle(
-                     (VkQueue) (*ptr_queue));
+                     (VkQueue) queue);
       return (jint) res;
 */ 
 
@@ -1573,11 +1568,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   memory,
              java.nio.ByteBuffer   pAllocator);/* 
-     
-     VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
+
      vkFreeMemory(
                      (VkDevice) (device),
-                     (VkDeviceMemory) (*ptr_memory),
+                     (VkDeviceMemory) memory,
                      (const VkAllocationCallbacks*) pAllocator);
 
 */ 
@@ -1648,14 +1642,13 @@ private static native int vkQueueSubmit0(
              int  flags,
              int[] result);/* 
      // FIXED        
-     
-     VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
+
      void* pData = nullptr;
      jobject buff = NULL;
      
      VkResult res = vkMapMemory(
                      (VkDevice) (device),
-                     (VkDeviceMemory) (*ptr_memory),
+                     (VkDeviceMemory) memory,
                      (VkDeviceSize) offset,
                      (VkDeviceSize) size,
                      (VkMemoryMapFlags) flags,
@@ -1703,11 +1696,10 @@ private static native int vkQueueSubmit0(
  private static native void vkUnmapMemory0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   memory);/* 
-     
-     VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
+
      vkUnmapMemory(
                      (VkDevice) (device),
-                     (VkDeviceMemory) (*ptr_memory));
+                     (VkDeviceMemory) memory);
 
 */ 
 
@@ -1902,11 +1894,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   memory,
              long[]  pCommittedMemoryInBytes);/* 
-     
-     VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
+
      vkGetDeviceMemoryCommitment(
                      (VkDevice) (device),
-                     (VkDeviceMemory) (*ptr_memory),
+                     (VkDeviceMemory) memory,
                      (VkDeviceSize*) pCommittedMemoryInBytes);
 
 */ 
@@ -1960,13 +1951,11 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   buffer,
              java.nio.ByteBuffer   memory,
              long  memoryOffset);/* 
-     
-     VkBuffer* ptr_buffer = (VkBuffer*) buffer;
-     VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
+  
      VkResult res = vkBindBufferMemory(
                      (VkDevice) (device),
-                     (VkBuffer) (*ptr_buffer),
-                     (VkDeviceMemory) (*ptr_memory),
+                     (VkBuffer) buffer,
+                     (VkDeviceMemory) memory,
                      (VkDeviceSize) memoryOffset);
       return (jint) res;
 */ 
@@ -2021,12 +2010,11 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   memory,
              long  memoryOffset);/* 
      
-     VkImage* ptr_image = (VkImage*) image;
-     VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
+
      VkResult res = vkBindImageMemory(
                      (VkDevice) (device),
-                     (VkImage) (*ptr_image),
-                     (VkDeviceMemory) (*ptr_memory),
+                     (VkImage) image,
+                     (VkDeviceMemory) memory,
                      (VkDeviceSize) memoryOffset);
       return (jint) res;
 */ 
@@ -2070,11 +2058,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   buffer,
              java.nio.ByteBuffer   pMemoryRequirements);/* 
-     
-     VkBuffer* ptr_buffer = (VkBuffer*) buffer;
+
      vkGetBufferMemoryRequirements(
                      (VkDevice) (device),
-                     (VkBuffer) (*ptr_buffer),
+                     (VkBuffer) buffer,
                      (VkMemoryRequirements*) pMemoryRequirements);
 
 */ 
@@ -2118,11 +2105,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   image,
              java.nio.ByteBuffer   pMemoryRequirements);/* 
-     
-     VkImage* ptr_image = (VkImage*) image;
+
      vkGetImageMemoryRequirements(
                      (VkDevice) (device),
-                     (VkImage) (*ptr_image),
+                     (VkImage) image,
                      (VkMemoryRequirements*) pMemoryRequirements);
 
 */ 
@@ -2176,12 +2162,11 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   image,
              int[]  pSparseMemoryRequirementCount,
              java.nio.ByteBuffer[]   pSparseMemoryRequirements);/* 
-     
-     VkImage* ptr_image = (VkImage*) image;
+
      JBufferArray buffers(env,pSparseMemoryRequirements);
      vkGetImageSparseMemoryRequirements(
                      (VkDevice) (device),
-                     (VkImage) (*ptr_image),
+                     (VkImage) image,
                      (uint32_t*) pSparseMemoryRequirementCount,
                      (VkSparseImageMemoryRequirements*) buffers.getPointers());
 
@@ -2260,11 +2245,11 @@ private static native int vkQueueSubmit0(
              int   tiling,
              int[]  pPropertyCount,
              java.nio.ByteBuffer[]   pProperties);/* 
-     VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
+     
      JBufferArray buffers (env, pProperties);
      
      vkGetPhysicalDeviceSparseImageFormatProperties(
-                     (VkPhysicalDevice) (*ptr_physicalDevice),
+                     (VkPhysicalDevice) physicalDevice,
                      (VkFormat) format,
                      (VkImageType) type,
                      (VkSampleCountFlagBits) samples,
@@ -2324,13 +2309,12 @@ private static native int vkQueueSubmit0(
              int  bindInfoCount,
              java.nio.ByteBuffer   pBindInfo,
              java.nio.ByteBuffer   fence);/* 
-     VkQueue* ptr_queue = (VkQueue*) queue;
-     VkFence* ptr_fence = (VkFence*) fence;
+ 
      VkResult res = vkQueueBindSparse(
-                     (VkQueue) (*ptr_queue),
+                     (VkQueue) queue,
                      (uint32_t) bindInfoCount,
                      (const VkBindSparseInfo*) pBindInfo,
-                     (VkFence) (*ptr_fence));
+                     (VkFence) );
       return (jint) res;
 */ 
 
@@ -2431,11 +2415,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   fence,
              java.nio.ByteBuffer   pAllocator);/* 
-     
-     VkFence* ptr_fence = (VkFence*) fence;
+
      vkDestroyFence(
                      (VkDevice) (device),
-                     (VkFence) (*ptr_fence),
+                     (VkFence) ,
                      (const VkAllocationCallbacks*) pAllocator);
 
 */ 
@@ -2533,11 +2516,10 @@ private static native int vkQueueSubmit0(
  private static native int  vkGetFenceStatus0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   fence);/* 
-     
-     VkFence* ptr_fence = (VkFence*) fence;
+
      VkResult res = vkGetFenceStatus(
                      (VkDevice) (device),
-                     (VkFence) (*ptr_fence));
+                     (VkFence) );
       return (jint) res;
 */ 
 
@@ -2707,11 +2689,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   semaphore,
              java.nio.ByteBuffer   pAllocator);/* 
-     
-     VkSemaphore* ptr_semaphore = (VkSemaphore*) semaphore;
+
      vkDestroySemaphore(
                      (VkDevice) (device),
-                     (VkSemaphore) (*ptr_semaphore),
+                     (VkSemaphore) semaphore,
                      (const VkAllocationCallbacks*) pAllocator);
 
 */ 
@@ -2813,11 +2794,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   event,
              java.nio.ByteBuffer   pAllocator);/* 
-     
-     VkEvent* ptr_event = (VkEvent*) event;
+
      vkDestroyEvent(
                      (VkDevice) (device),
-                     (VkEvent) (*ptr_event),
+                     (VkEvent) ,
                      (const VkAllocationCallbacks*) pAllocator);
 
 */ 
@@ -2860,10 +2840,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   event);/* 
      
-     VkEvent* ptr_event = (VkEvent*) event;
+     
      VkResult res = vkGetEventStatus(
                      (VkDevice) (device),
-                     (VkEvent) (*ptr_event));
+                     (VkEvent) );
       return (jint) res;
 */ 
 
@@ -2904,11 +2884,10 @@ private static native int vkQueueSubmit0(
  private static native int  vkSetEvent0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   event);/* 
-     
-     VkEvent* ptr_event = (VkEvent*) event;
+
      VkResult res = vkSetEvent(
                      (VkDevice) (device),
-                     (VkEvent) (*ptr_event));
+                     (VkEvent) );
       return (jint) res;
 */ 
 
@@ -2949,11 +2928,10 @@ private static native int vkQueueSubmit0(
  private static native int  vkResetEvent0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   event);/* 
-     
-     VkEvent* ptr_event = (VkEvent*) event;
+
      VkResult res = vkResetEvent(
                      (VkDevice) (device),
-                     (VkEvent) (*ptr_event));
+                     (VkEvent) );
       return (jint) res;
 */ 
 
@@ -2989,8 +2967,7 @@ private static native int vkQueueSubmit0(
                      (pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
                      (pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
                      buff /* ByteBuffer */  );
-     
-     
+
       pQueryPool[0] = buff[0] == null ? null : new VkHandle(buff[0]);     
       buff[0] = null;
       
@@ -3174,8 +3151,7 @@ private static native int vkQueueSubmit0(
              java.nio.Buffer  pData,
              long  stride,
              int  flags);/* 
-     
-     
+
      VkResult res = vkGetQueryPoolResults(
                      (VkDevice) (device),
                      (VkQueryPool) (queryPool),
@@ -3239,8 +3215,7 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,             
-             int[] result);/*             
-     
+             int[] result);/*        
      VkBuffer* pBuffer = new VkBuffer[1];         
      VkResult res = vkCreateBuffer(
                      (VkDevice) (device),
@@ -3360,8 +3335,7 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer[]   retView);/* 
-             
-     
+        
      VkBufferView* pView = new VkBufferView[1] ;
      
      VkResult res = vkCreateBufferView(
@@ -3420,11 +3394,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   bufferView,
              java.nio.ByteBuffer   pAllocator);/* 
-     
-     VkBufferView* ptr_bufferView = (VkBufferView*) bufferView;
+
      vkDestroyBufferView(
                      (VkDevice) (device),
-                     (VkBufferView) (*ptr_bufferView),
+                     (VkBufferView) bufferView,
                      (const VkAllocationCallbacks*) pAllocator);
 
 */ 
@@ -3539,11 +3512,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   image,
              java.nio.ByteBuffer   pAllocator);/* 
-     
-     VkImage* ptr_image = (VkImage*) image;
+
      vkDestroyImage(
                      (VkDevice) (device),
-                     (VkImage) (*ptr_image),
+                     (VkImage) image,
                      (const VkAllocationCallbacks*) pAllocator);
 
 */ 
@@ -3594,10 +3566,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   pSubresource,
              java.nio.ByteBuffer   pLayout);/* 
      
-     VkImage* ptr_image = (VkImage*) image;
+     
      vkGetImageSubresourceLayout(
                      (VkDevice) (device),
-                     (VkImage) (*ptr_image),
+                     (VkImage) image,
                      (const VkImageSubresource*) pSubresource,
                      (VkSubresourceLayout*) pLayout);
 
@@ -3700,11 +3672,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   imageView,
              java.nio.ByteBuffer   pAllocator);/* 
-     
-     VkImageView* ptr_imageView = (VkImageView*) imageView;
+    
      vkDestroyImageView(
                      (VkDevice) (device),
-                     (VkImageView) (*ptr_imageView),
+                     (VkImageView) (imageView),
                      (const VkAllocationCallbacks*) pAllocator);
 
 */ 
@@ -3806,11 +3777,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   shaderModule,
              java.nio.ByteBuffer   pAllocator);/* 
-     
-     VkShaderModule* ptr_shaderModule = (VkShaderModule*) shaderModule;
+   
      vkDestroyShaderModule(
                      (VkDevice) (device),
-                     (VkShaderModule) (*ptr_shaderModule),
+                     (VkShaderModule) (shaderModule),
                      (const VkAllocationCallbacks*) pAllocator);
 
 */ 
@@ -3913,10 +3883,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   pipelineCache,
              java.nio.ByteBuffer   pAllocator);/* 
      
-     VkPipelineCache* ptr_pipelineCache = (VkPipelineCache*) pipelineCache;
+     
      vkDestroyPipelineCache(
                      (VkDevice) (device),
-                     (VkPipelineCache) (*ptr_pipelineCache),
+                     (VkPipelineCache) pipelineCache,
                      (const VkAllocationCallbacks*) pAllocator);
 
 */ 
@@ -3971,10 +3941,10 @@ private static native int vkQueueSubmit0(
              long[]  pDataSize,
              java.nio.Buffer  pData);/* 
      
-     VkPipelineCache* ptr_pipelineCache = (VkPipelineCache*) pipelineCache;
+     
      VkResult res = vkGetPipelineCacheData(
                      (VkDevice) (device),
-                     (VkPipelineCache) (*ptr_pipelineCache),
+                     (VkPipelineCache) pipelineCache,
                      (size_t*) pDataSize,
                      (void*) pData);
       return (jint) res;
@@ -4029,11 +3999,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   dstCache,
              int  srcCacheCount,
              java.nio.ByteBuffer   pSrcCaches);/* 
-     
-     VkPipelineCache* ptr_dstCache = (VkPipelineCache*) dstCache;
+
      VkResult res = vkMergePipelineCaches(
                      (VkDevice) (device),
-                     (VkPipelineCache) (*ptr_dstCache),
+                     (VkPipelineCache) (dstCache),
                      (uint32_t) srcCacheCount,
                      (const VkPipelineCache*) pSrcCaches);
       return (jint) res;
@@ -4101,10 +4070,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pPipelines);/* 
      
-     VkPipelineCache* ptr_pipelineCache = (VkPipelineCache*) pipelineCache;
+     
      VkResult res = vkCreateGraphicsPipelines(
                      (VkDevice) (device),
-                     (VkPipelineCache) (*ptr_pipelineCache),
+                     (VkPipelineCache) pipelineCache,
                      (uint32_t) createInfoCount,
                      (const VkGraphicsPipelineCreateInfo*) pCreateInfos,
                      (const VkAllocationCallbacks*) pAllocator,
@@ -4174,10 +4143,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer   pPipelines);/* 
      
-     VkPipelineCache* ptr_pipelineCache = (VkPipelineCache*) pipelineCache;
+     
      VkResult res = vkCreateComputePipelines(
                      (VkDevice) (device),
-                     (VkPipelineCache) (*ptr_pipelineCache),
+                     (VkPipelineCache) pipelineCache,
                      (uint32_t) createInfoCount,
                      (const VkComputePipelineCreateInfo*) pCreateInfos,
                      (const VkAllocationCallbacks*) pAllocator,
@@ -4224,11 +4193,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   pipeline,
              java.nio.ByteBuffer   pAllocator);/* 
-     
-     VkPipeline* ptr_pipeline = (VkPipeline*) pipeline;
+    
      vkDestroyPipeline(
                      (VkDevice) (device),
-                     (VkPipeline) (*ptr_pipeline),
+                     (VkPipeline) (pipeline),
                      (const VkAllocationCallbacks*) pAllocator);
 
 */ 
@@ -4330,11 +4298,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   pipelineLayout,
              java.nio.ByteBuffer   pAllocator);/* 
-     
-     VkPipelineLayout* ptr_pipelineLayout = (VkPipelineLayout*) pipelineLayout;
+   
      vkDestroyPipelineLayout(
                      (VkDevice) (device),
-                     (VkPipelineLayout) (*ptr_pipelineLayout),
+                     (VkPipelineLayout) (pipelineLayout),
                      (const VkAllocationCallbacks*) pAllocator);
 
 */ 
@@ -4845,10 +4812,10 @@ private static native int vkQueueSubmit0(
              int  descriptorSetCount,
              java.nio.ByteBuffer   pDescriptorSets);/* 
      
-     VkDescriptorPool* ptr_descriptorPool = (VkDescriptorPool*) descriptorPool;
+    
      VkResult res = vkFreeDescriptorSets(
                      (VkDevice) (device),
-                     (VkDescriptorPool) (*ptr_descriptorPool),
+                     (VkDescriptorPool) (descriptorPool),
                      (uint32_t) descriptorSetCount,
                      (const VkDescriptorSet*) pDescriptorSets);
       return (jint) res;
@@ -5194,11 +5161,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   renderPass,
              java.nio.ByteBuffer   pGranularity);/* 
-     
-     VkRenderPass* ptr_renderPass = (VkRenderPass*) renderPass;
+    
      vkGetRenderAreaGranularity(
                      (VkDevice) (device),
-                     (VkRenderPass) (*ptr_renderPass),
+                     (VkRenderPass) (renderPass),
                      (VkExtent2D*) pGranularity);
 
 */ 
@@ -5312,10 +5278,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   commandPool,
              java.nio.ByteBuffer   pAllocator);/* 
      
-     VkCommandPool* ptr_commandPool = (VkCommandPool*) commandPool;
+     
      vkDestroyCommandPool(
                      (VkDevice) (device),
-                     (VkCommandPool) (*ptr_commandPool),
+                     (VkCommandPool) commandPool,
                      (const VkAllocationCallbacks*) pAllocator);
 
 */ 
@@ -5364,10 +5330,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   commandPool,
              int  flags);/* 
      
-     VkCommandPool* ptr_commandPool = (VkCommandPool*) commandPool;
+     
      VkResult res = vkResetCommandPool(
                      (VkDevice) (device),
-                     (VkCommandPool) (*ptr_commandPool),
+                     (VkCommandPool) commandPool,
                      (VkCommandPoolResetFlags) flags);
       return (jint) res;
 */ 
@@ -5469,10 +5435,10 @@ private static native int vkQueueSubmit0(
              int  commandBufferCount,
              java.nio.ByteBuffer   pCommandBuffers);/* 
      
-     VkCommandPool* ptr_commandPool = (VkCommandPool*) commandPool;
+     
      vkFreeCommandBuffers(
                      (VkDevice) (device),
-                     (VkCommandPool) (*ptr_commandPool),
+                     (VkCommandPool) commandPool,
                      (uint32_t) commandBufferCount,
                      (const VkCommandBuffer*) pCommandBuffers);
 
@@ -5515,9 +5481,9 @@ private static native int vkQueueSubmit0(
  private static native int  vkBeginCommandBuffer0(
              java.nio.ByteBuffer   commandBuffer,
              java.nio.ByteBuffer   pBeginInfo);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      VkResult res = vkBeginCommandBuffer(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (const VkCommandBufferBeginInfo*) pBeginInfo);
       return (jint) res;
 */ 
@@ -5553,9 +5519,9 @@ private static native int vkQueueSubmit0(
  */
  private static native int  vkEndCommandBuffer0(
              java.nio.ByteBuffer   commandBuffer);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      VkResult res = vkEndCommandBuffer(
-                     (VkCommandBuffer) (*ptr_commandBuffer));
+                     (VkCommandBuffer) commandBuffer);
       return (jint) res;
 */ 
 
@@ -5596,9 +5562,9 @@ private static native int vkQueueSubmit0(
  private static native int  vkResetCommandBuffer0(
              java.nio.ByteBuffer   commandBuffer,
              int  flags);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      VkResult res = vkResetCommandBuffer(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (VkCommandBufferResetFlags) flags);
       return (jint) res;
 */ 
@@ -5642,12 +5608,12 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   commandBuffer,
              int   pipelineBindPoint,
              java.nio.ByteBuffer   pipeline);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkPipeline* ptr_pipeline = (VkPipeline*) pipeline;
+     
+   
      vkCmdBindPipeline(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (VkPipelineBindPoint) pipelineBindPoint,
-                     (VkPipeline) (*ptr_pipeline));
+                     (VkPipeline) pipeline);
 
 */ 
 
@@ -5696,9 +5662,9 @@ private static native int vkQueueSubmit0(
              int  firstViewport,
              int  viewportCount,
              java.nio.ByteBuffer   pViewports);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdSetViewport(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (uint32_t) firstViewport,
                      (uint32_t) viewportCount,
                      (const VkViewport*) pViewports);
@@ -5750,9 +5716,9 @@ private static native int vkQueueSubmit0(
              int  firstScissor,
              int  scissorCount,
              java.nio.ByteBuffer   pScissors);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdSetScissor(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (uint32_t) firstScissor,
                      (uint32_t) scissorCount,
                      (const VkRect2D*) pScissors);
@@ -5792,9 +5758,9 @@ private static native int vkQueueSubmit0(
  private static native void vkCmdSetLineWidth0(
              java.nio.ByteBuffer   commandBuffer,
              float  lineWidth);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdSetLineWidth(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (float) lineWidth);
 
 */ 
@@ -5844,9 +5810,9 @@ private static native int vkQueueSubmit0(
              float  depthBiasConstantFactor,
              float  depthBiasClamp,
              float  depthBiasSlopeFactor);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdSetDepthBias(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (float) depthBiasConstantFactor,
                      (float) depthBiasClamp,
                      (float) depthBiasSlopeFactor);
@@ -5886,9 +5852,9 @@ private static native int vkQueueSubmit0(
  private static native void vkCmdSetBlendConstants0(
              java.nio.ByteBuffer   commandBuffer,
              float[]  blendConstants);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdSetBlendConstants(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      blendConstants);
 
 */ 
@@ -5932,9 +5898,9 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   commandBuffer,
              float  minDepthBounds,
              float  maxDepthBounds);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdSetDepthBounds(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (float) minDepthBounds,
                      (float) maxDepthBounds);
 
@@ -5979,9 +5945,9 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   commandBuffer,
              int  faceMask,
              int  compareMask);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdSetStencilCompareMask(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (VkStencilFaceFlags) faceMask,
                      (uint32_t) compareMask);
 
@@ -6026,9 +5992,9 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   commandBuffer,
              int  faceMask,
              int  writeMask);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdSetStencilWriteMask(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (VkStencilFaceFlags) faceMask,
                      (uint32_t) writeMask);
 
@@ -6073,9 +6039,9 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   commandBuffer,
              int  faceMask,
              int  reference);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdSetStencilReference(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (VkStencilFaceFlags) faceMask,
                      (uint32_t) reference);
 
@@ -6150,12 +6116,12 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   pDescriptorSets,
              int  dynamicOffsetCount,
              int[]  pDynamicOffsets);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkPipelineLayout* ptr_layout = (VkPipelineLayout*) layout;
+     
+     
      vkCmdBindDescriptorSets(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (VkPipelineBindPoint) pipelineBindPoint,
-                     (VkPipelineLayout) (*ptr_layout),
+                     (VkPipelineLayout) layout,
                      (uint32_t) firstSet,
                      (uint32_t) descriptorSetCount,
                      (const VkDescriptorSet*) pDescriptorSets,
@@ -6209,11 +6175,11 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   buffer,
              long  offset,
              int   indexType);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkBuffer* ptr_buffer = (VkBuffer*) buffer;
+     
+     
      vkCmdBindIndexBuffer(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkBuffer) (*ptr_buffer),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkBuffer) buffer,
                      (VkDeviceSize) offset,
                      (VkIndexType) indexType);
 
@@ -6270,9 +6236,9 @@ private static native int vkQueueSubmit0(
              int  bindingCount,
              java.nio.ByteBuffer   pBuffers,
              long[]  pOffsets);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdBindVertexBuffers(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (uint32_t) firstBinding,
                      (uint32_t) bindingCount,
                      (const VkBuffer*) pBuffers,
@@ -6331,9 +6297,9 @@ private static native int vkQueueSubmit0(
              int  instanceCount,
              int  firstVertex,
              int  firstInstance);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdDraw(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (uint32_t) vertexCount,
                      (uint32_t) instanceCount,
                      (uint32_t) firstVertex,
@@ -6398,9 +6364,9 @@ private static native int vkQueueSubmit0(
              int  firstIndex,
              int  vertexOffset,
              int  firstInstance);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdDrawIndexed(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (uint32_t) indexCount,
                      (uint32_t) instanceCount,
                      (uint32_t) firstIndex,
@@ -6460,11 +6426,11 @@ private static native int vkQueueSubmit0(
              long  offset,
              int  drawCount,
              int  stride);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkBuffer* ptr_buffer = (VkBuffer*) buffer;
+     
+     
      vkCmdDrawIndirect(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkBuffer) (*ptr_buffer),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkBuffer) buffer,
                      (VkDeviceSize) offset,
                      (uint32_t) drawCount,
                      (uint32_t) stride);
@@ -6522,11 +6488,11 @@ private static native int vkQueueSubmit0(
              long  offset,
              int  drawCount,
              int  stride);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkBuffer* ptr_buffer = (VkBuffer*) buffer;
+     
+     
      vkCmdDrawIndexedIndirect(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkBuffer) (*ptr_buffer),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkBuffer) buffer,
                      (VkDeviceSize) offset,
                      (uint32_t) drawCount,
                      (uint32_t) stride);
@@ -6578,9 +6544,9 @@ private static native int vkQueueSubmit0(
              int  x,
              int  y,
              int  z);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdDispatch(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (uint32_t) x,
                      (uint32_t) y,
                      (uint32_t) z);
@@ -6626,11 +6592,11 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   commandBuffer,
              java.nio.ByteBuffer   buffer,
              long  offset);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkBuffer* ptr_buffer = (VkBuffer*) buffer;
+     
+     
      vkCmdDispatchIndirect(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkBuffer) (*ptr_buffer),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkBuffer) buffer,
                      (VkDeviceSize) offset);
 
 */ 
@@ -6686,13 +6652,13 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   dstBuffer,
              int  regionCount,
              java.nio.ByteBuffer   pRegions);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkBuffer* ptr_srcBuffer = (VkBuffer*) srcBuffer;
-     VkBuffer* ptr_dstBuffer = (VkBuffer*) dstBuffer;
+     
+     
+     
      vkCmdCopyBuffer(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkBuffer) (*ptr_srcBuffer),
-                     (VkBuffer) (*ptr_dstBuffer),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkBuffer) srcBuffer,
+                     (VkBuffer) dstBuffer,
                      (uint32_t) regionCount,
                      (const VkBufferCopy*) pRegions);
 
@@ -6761,14 +6727,14 @@ private static native int vkQueueSubmit0(
              int   dstImageLayout,
              int  regionCount,
              java.nio.ByteBuffer   pRegions);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkImage* ptr_srcImage = (VkImage*) srcImage;
-     VkImage* ptr_dstImage = (VkImage*) dstImage;
+     
+     
+     
      vkCmdCopyImage(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkImage) (*ptr_srcImage),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkImage) srcImage,
                      (VkImageLayout) srcImageLayout,
-                     (VkImage) (*ptr_dstImage),
+                     (VkImage) dstImage,
                      (VkImageLayout) dstImageLayout,
                      (uint32_t) regionCount,
                      (const VkImageCopy*) pRegions);
@@ -6844,14 +6810,14 @@ private static native int vkQueueSubmit0(
              int  regionCount,
              java.nio.ByteBuffer   pRegions,
              int   filter);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkImage* ptr_srcImage = (VkImage*) srcImage;
-     VkImage* ptr_dstImage = (VkImage*) dstImage;
+     
+     
+     
      vkCmdBlitImage(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkImage) (*ptr_srcImage),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkImage) srcImage,
                      (VkImageLayout) srcImageLayout,
-                     (VkImage) (*ptr_dstImage),
+                     (VkImage) dstImage,
                      (VkImageLayout) dstImageLayout,
                      (uint32_t) regionCount,
                      (const VkImageBlit*) pRegions,
@@ -6916,13 +6882,13 @@ private static native int vkQueueSubmit0(
              int   dstImageLayout,
              int  regionCount,
              java.nio.ByteBuffer   pRegions);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkBuffer* ptr_srcBuffer = (VkBuffer*) srcBuffer;
-     VkImage* ptr_dstImage = (VkImage*) dstImage;
+     
+     
+     
      vkCmdCopyBufferToImage(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkBuffer) (*ptr_srcBuffer),
-                     (VkImage) (*ptr_dstImage),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkBuffer) srcBuffer,
+                     (VkImage) dstImage,
                      (VkImageLayout) dstImageLayout,
                      (uint32_t) regionCount,
                      (const VkBufferImageCopy*) pRegions);
@@ -6986,14 +6952,14 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   dstBuffer,
              int  regionCount,
              java.nio.ByteBuffer   pRegions);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkImage* ptr_srcImage = (VkImage*) srcImage;
-     VkBuffer* ptr_dstBuffer = (VkBuffer*) dstBuffer;
+     
+     
+     
      vkCmdCopyImageToBuffer(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkImage) (*ptr_srcImage),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkImage) srcImage,
                      (VkImageLayout) srcImageLayout,
-                     (VkBuffer) (*ptr_dstBuffer),
+                     (VkBuffer) dstBuffer,
                      (uint32_t) regionCount,
                      (const VkBufferImageCopy*) pRegions);
 
@@ -7050,11 +7016,10 @@ private static native int vkQueueSubmit0(
              long  dstOffset,
              long  dataSize,
              int[]  pData);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkBuffer* ptr_dstBuffer = (VkBuffer*) dstBuffer;
+     
      vkCmdUpdateBuffer(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkBuffer) (*ptr_dstBuffer),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkBuffer) dstBuffer,
                      (VkDeviceSize) dstOffset,
                      (VkDeviceSize) dataSize,
                      (const uint32_t*) pData);
@@ -7112,11 +7077,10 @@ private static native int vkQueueSubmit0(
              long  dstOffset,
              long  size,
              int  data);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkBuffer* ptr_dstBuffer = (VkBuffer*) dstBuffer;
+         
      vkCmdFillBuffer(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkBuffer) (*ptr_dstBuffer),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkBuffer) dstBuffer,
                      (VkDeviceSize) dstOffset,
                      (VkDeviceSize) size,
                      (uint32_t) data);
@@ -7180,11 +7144,11 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   pColor,
              int  rangeCount,
              java.nio.ByteBuffer   pRanges);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkImage* ptr_image = (VkImage*) image;
+     
+     
      vkCmdClearColorImage(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkImage) (*ptr_image),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkImage) image,
                      (VkImageLayout) imageLayout,
                      (const VkClearColorValue*) pColor,
                      (uint32_t) rangeCount,
@@ -7249,11 +7213,11 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   pDepthStencil,
              int  rangeCount,
              java.nio.ByteBuffer   pRanges);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkImage* ptr_image = (VkImage*) image;
+     
+     
      vkCmdClearDepthStencilImage(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkImage) (*ptr_image),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkImage) image,
                      (VkImageLayout) imageLayout,
                      (const VkClearDepthStencilValue*) pDepthStencil,
                      (uint32_t) rangeCount,
@@ -7312,9 +7276,9 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   pAttachments,
              int  rectCount,
              java.nio.ByteBuffer   pRects);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdClearAttachments(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (uint32_t) attachmentCount,
                      (const VkClearAttachment*) pAttachments,
                      (uint32_t) rectCount,
@@ -7385,14 +7349,12 @@ private static native int vkQueueSubmit0(
              int   dstImageLayout,
              int  regionCount,
              java.nio.ByteBuffer   pRegions);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkImage* ptr_srcImage = (VkImage*) srcImage;
-     VkImage* ptr_dstImage = (VkImage*) dstImage;
+          
      vkCmdResolveImage(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkImage) (*ptr_srcImage),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkImage) srcImage,
                      (VkImageLayout) srcImageLayout,
-                     (VkImage) (*ptr_dstImage),
+                     (VkImage) dstImage,
                      (VkImageLayout) dstImageLayout,
                      (uint32_t) regionCount,
                      (const VkImageResolve*) pRegions);
@@ -7438,11 +7400,11 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   commandBuffer,
              java.nio.ByteBuffer   event,
              int  stageMask);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkEvent* ptr_event = (VkEvent*) event;
+     
+     
      vkCmdSetEvent(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkEvent) (*ptr_event),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkEvent) ,
                      (VkPipelineStageFlags) stageMask);
 
 */ 
@@ -7486,11 +7448,11 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   commandBuffer,
              java.nio.ByteBuffer   event,
              int  stageMask);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkEvent* ptr_event = (VkEvent*) event;
+     
+     
      vkCmdResetEvent(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkEvent) (*ptr_event),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkEvent) ,
                      (VkPipelineStageFlags) stageMask);
 
 */ 
@@ -7582,9 +7544,9 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   pBufferMemoryBarriers,
              int  imageMemoryBarrierCount,
              java.nio.ByteBuffer   pImageMemoryBarriers);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdWaitEvents(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (uint32_t) eventCount,
                      (const VkEvent*) pEvents,
                      (VkPipelineStageFlags) srcStageMask,
@@ -7679,9 +7641,9 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   pBufferMemoryBarriers,
              int  imageMemoryBarrierCount,
              java.nio.ByteBuffer   pImageMemoryBarriers);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdPipelineBarrier(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (VkPipelineStageFlags) srcStageMask,
                      (VkPipelineStageFlags) dstStageMask,
                      (VkDependencyFlags) dependencyFlags,
@@ -7739,11 +7701,11 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   queryPool,
              int  query,
              int  flags);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkQueryPool* ptr_queryPool = (VkQueryPool*) queryPool;
+     
+     
      vkCmdBeginQuery(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkQueryPool) (*ptr_queryPool),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkQueryPool) queryPool,
                      (uint32_t) query,
                      (VkQueryControlFlags) flags);
 
@@ -7788,11 +7750,11 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   commandBuffer,
              java.nio.ByteBuffer   queryPool,
              int  query);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkQueryPool* ptr_queryPool = (VkQueryPool*) queryPool;
+     
+     
      vkCmdEndQuery(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkQueryPool) (*ptr_queryPool),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkQueryPool) queryPool,
                      (uint32_t) query);
 
 */ 
@@ -7842,11 +7804,11 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   queryPool,
              int  firstQuery,
              int  queryCount);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkQueryPool* ptr_queryPool = (VkQueryPool*) queryPool;
+     
+     
      vkCmdResetQueryPool(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkQueryPool) (*ptr_queryPool),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkQueryPool) queryPool,
                      (uint32_t) firstQuery,
                      (uint32_t) queryCount);
 
@@ -7897,12 +7859,10 @@ private static native int vkQueueSubmit0(
              int   pipelineStage,
              java.nio.ByteBuffer   queryPool,
              int  query);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkQueryPool* ptr_queryPool = (VkQueryPool*) queryPool;
      vkCmdWriteTimestamp(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (VkPipelineStageFlagBits) pipelineStage,
-                     (VkQueryPool) (*ptr_queryPool),
+                     (VkQueryPool) queryPool,
                      (uint32_t) query);
 
 */ 
@@ -7976,19 +7936,16 @@ private static native int vkQueueSubmit0(
              long  dstOffset,
              long  stride,
              int  flags);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkQueryPool* ptr_queryPool = (VkQueryPool*) queryPool;
-     VkBuffer* ptr_dstBuffer = (VkBuffer*) dstBuffer;
+   
      vkCmdCopyQueryPoolResults(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkQueryPool) (*ptr_queryPool),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkQueryPool) queryPool,
                      (uint32_t) firstQuery,
                      (uint32_t) queryCount,
-                     (VkBuffer) (*ptr_dstBuffer),
+                     (VkBuffer) dstBuffer,
                      (VkDeviceSize) dstOffset,
                      (VkDeviceSize) stride,
                      (VkQueryResultFlags) flags);
-
 */ 
 
 
@@ -8048,11 +8005,11 @@ private static native int vkQueueSubmit0(
              int  offset,
              int  size,
              java.nio.Buffer  pValues);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-     VkPipelineLayout* ptr_layout = (VkPipelineLayout*) layout;
+     
+     
      vkCmdPushConstants(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
-                     (VkPipelineLayout) (*ptr_layout),
+                     (VkCommandBuffer) commandBuffer,
+                     (VkPipelineLayout) layout,
                      (VkShaderStageFlags) stageFlags,
                      (uint32_t) offset,
                      (uint32_t) size,
@@ -8099,9 +8056,9 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   commandBuffer,
              java.nio.ByteBuffer   pRenderPassBegin,
              int   contents);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdBeginRenderPass(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (const VkRenderPassBeginInfo*) pRenderPassBegin,
                      (VkSubpassContents) contents);
 
@@ -8140,9 +8097,9 @@ private static native int vkQueueSubmit0(
  private static native void vkCmdNextSubpass0(
              java.nio.ByteBuffer   commandBuffer,
              int   contents);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdNextSubpass(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (VkSubpassContents) contents);
 
 */ 
@@ -8174,9 +8131,9 @@ private static native int vkQueueSubmit0(
  */
  private static native void vkCmdEndRenderPass0(
              java.nio.ByteBuffer   commandBuffer);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdEndRenderPass(
-                     (VkCommandBuffer) (*ptr_commandBuffer));
+                     (VkCommandBuffer) commandBuffer);
 
 */ 
 
@@ -8219,9 +8176,9 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   commandBuffer,
              int  commandBufferCount,
              java.nio.ByteBuffer   pCommandBuffers);/* 
-     VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+     
      vkCmdExecuteCommands(
-                     (VkCommandBuffer) (*ptr_commandBuffer),
+                     (VkCommandBuffer) commandBuffer,
                      (uint32_t) commandBufferCount,
                      (const VkCommandBuffer*) pCommandBuffers);
 
