@@ -31,16 +31,15 @@ public class JNIgenBuilder {
                 "**/bor/vulkan/structs/VkQueueFamilyProperties.java",
                 
                 "**/bor/vulkan/structs/VkDisplaySurfaceCreateInfoKHR.java",
-                "**/bor/vulkan/structs/VkXcbSurfaceCreateInfoKHR",
-                "**/bor/vulkan/structs/VkAndroidSurfaceCreateInfoKHR",
-                "**/bor/vulkan/structs/VkMirSurfaceCreateInfoKHR",
-                "**/bor/vulkan/structs/VkWaylandSurfaceCreateInfoKHR",
-                //VkDisplaySurfaceCreateInfoKHR
-                // VkExtent3D
-                //VkQueueFamilyProperties
+                "**/bor/vulkan/structs/VkXcbSurfaceCreateInfoKHR.java",
+                "**/bor/vulkan/structs/VkAndroidSurfaceCreateInfoKHR.java",
+                "**/bor/vulkan/structs/VkMirSurfaceCreateInfoKHR.java",
+                "**/bor/vulkan/structs/VkWaylandSurfaceCreateInfoKHR.java",
+                "**/bor/vulkan/structs/VkExtensionProperties.java",
+                
                 
                 "**/bor/vulkan/structs/VkMemoryHeap.java",
-                "**/bor/vulkan/structs/VkMemoryHeap.java",
+               // "**/bor/vulkan/structs/VkMemoryHeap.java",
                 //VkMemoryHeap
                 
                 "**/bor/vulkan/structs/VkDeviceCreateInfo.java",
@@ -53,15 +52,16 @@ public class JNIgenBuilder {
         };
         
         NativeCodeGenerator jnigen = new NativeCodeGenerator();
+        jnigen.setUsePrimitiveArrayCritical(false);
         jnigen.generate("src", "bin", "jni", 
-                      src, 
-                       null);
+                        src, 
+                        null);
 
         BuildTarget win32 = BuildTarget.newDefaultTarget(TargetOs.Windows, false);
         win32.compilerPrefix = "mingw32-";
-        win32.cppFlags += " -std=gnu++11 -I/D/VulkanSDK/1.0.8.0/Include -L/D/VulkanSDK/1.0.8.0/Bin";
+        win32.cppFlags += " -std=gnu++11 -I/D/VulkanSDK/1.0.11.1/Include -L/D/VulkanSDK/1.0.11.1/Bin";
         
-        String[] includes = {"-I/D/VulkanSDK/1.0.5.0/Include"};
+        String[] includes = {"-I/D/VulkanSDK/1.0.11.1/Include"};
         
         BuildTarget win64 = BuildTarget.newDefaultTarget(TargetOs.Windows, true);
        // win64.cFlags += " -std=gnu++11";
@@ -70,7 +70,7 @@ public class JNIgenBuilder {
        // win64.cppFlags += "-MMD -MP -MF \"jni/target\" ";
         System.err.println(win64.cppIncludes);
        // win64.cppIncludes = includes;    
-        win64.libraries += "-LD:/VulkanSDK/1.0.5.0/Bin -lvulkan-1 ";
+        //win64.libraries += "-LD:/VulkanSDK/1.0.11.1/Bin -lvulkan-1 ";
         win64.linkerFlags +=" ";
         
         //BuildTarget linux32 = BuildTarget.newDefaultTarget(TargetOs.Linux, false);

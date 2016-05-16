@@ -127,10 +127,10 @@ public class Lesson02 {
     }
     
     public static List<VkPhysicalDevice> enumeratePhysicalDevices(VkInstance instance){
-        List<VkPhysicalDevice> physicalDevicesList = new ArrayList<VkPhysicalDevice>();
-        VkResult resEnumerateDevices = Vk10.vkEnumeratePhysicalDevices(instance, physicalDevicesList );
+        VkResult[] result = new VkResult[1];
+        List<VkPhysicalDevice> physicalDevicesList = Vk10.vkEnumeratePhysicalDevices(instance, result);
         
-        System.out.println("VkResult for Enumerate Physical Devices " + resEnumerateDevices);       
+        System.out.println("VkResult for Enumerate Physical Devices " + result[0]);       
         System.out.println("PhysicalDevices count: " + physicalDevicesList.size());
         
         return physicalDevicesList;

@@ -37,6 +37,8 @@ public class VkExtensionProperties extends VkStruct {
     //@formatter:off
     /*JNI
     #include <BorVulkan.hpp>
+        
+    
     */  
 
 	/** TAG of this structure [17]  */
@@ -145,8 +147,9 @@ public class VkExtensionProperties extends VkStruct {
 	 * Set method for field extensionName	[string]<br>
 	 * Prototype: char[]  extensionName
 	 */ 
-	 public void extensionName(String extensionName){
-		 this.extensionName = extensionName;
+	 public void extensionName(String extensionName){	          
+		 this.extensionName = extensionName==null ? " " 
+		         : extensionName.substring(0, Vulkan.VK_MAX_EXTENSION_NAME_SIZE-1);
 		 setExtensionName0(this.ptr,  extensionName);
 	 }
 
@@ -180,7 +183,22 @@ public class VkExtensionProperties extends VkStruct {
 	 }
 
 
-	 //////////////////////////////////
+	 /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("VkExtensionProperties [extensionName: ")
+                .append(extensionName())
+                .append(", specVersion: ").append(specVersion())
+                .append(" (")
+                .append( Vulkan.getAPIVersionString(specVersion()))
+                .append(") ]");
+        return builder.toString();
+    }
+
+    //////////////////////////////////
 	 // native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
@@ -189,7 +207,10 @@ public class VkExtensionProperties extends VkStruct {
 	 */ 
 	 private static native void setExtensionName0(Buffer ptr, String _extensionName);/*
 		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
-		  vkObj->extensionName = (char[]) (_extensionName);
+		  strncpy(vkObj->extensionName, 
+		          _extensionName, 
+		          MIN(VK_MAX_EXTENSION_NAME_SIZE - 1, strlen(_extensionName)));
+		 
 	  */
 
 	/**
@@ -198,7 +219,8 @@ public class VkExtensionProperties extends VkStruct {
 	 */ 
 	 private static native String getExtensionName0(Buffer ptr);/*
 		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->extensionName));	 */
+		  return (jstring)(env->NewStringUTF(vkObj->extensionName));	
+             */
 
 	/**
 	 * native SET method for field specVersion	[int]<br>

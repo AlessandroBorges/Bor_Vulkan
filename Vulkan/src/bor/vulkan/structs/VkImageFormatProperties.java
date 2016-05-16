@@ -265,7 +265,27 @@ public class VkImageFormatProperties extends VkStruct {
 	 }
 
 
-	 //////////////////////////////////
+	 /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("VkImageFormatProperties [maxExtent: ")
+                .append(maxExtent())
+                .append(", maxMipLevels: ")
+                .append(maxMipLevels())
+                .append(", maxArrayLayers: ")
+                .append(maxArrayLayers())
+                .append(", sampleCounts: ")
+                .append(sampleCounts())
+                .append(", maxResourceSize: ")
+                .append(maxResourceSize())
+                .append("]");
+        return builder.toString();
+    }
+
+    //////////////////////////////////
 	 // native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**

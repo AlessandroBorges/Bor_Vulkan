@@ -8,6 +8,9 @@ import bor.vulkan.enumerations.VkResult;
 import bor.vulkan.enumerations.VkStructureType;
 import bor.vulkan.structs.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.badlogic.gdx.jnigen.JniGenSharedLibraryLoader;
 
 /**
@@ -29,7 +32,17 @@ public class Lesson01 {
      */
     public static void main(String[] args) {
         
+        List<VkExtensionProperties> pProperties = new ArrayList<VkExtensionProperties>();
+        List<String> extensionsNames = new ArrayList<String>();
         
+        
+        
+        Vk10.vkEnumerateInstanceExtensionProperties(null, pProperties);
+        System.out.println("Extension Properties: ");
+        for (VkExtensionProperties vkExtensionProperties : pProperties) {
+            System.out.println(vkExtensionProperties);
+            extensionsNames.add(vkExtensionProperties.extensionName());
+        }
         
         VkInstanceCreateInfo pCreateInfo = new VkInstanceCreateInfo();        
         VkAllocationCallbacks pAllocator = null;
@@ -40,20 +53,28 @@ public class Lesson01 {
         appInfo.pApplicationName("BorVulkan - Lesson 01");
         appInfo.pEngineName("BorVulkan");
         appInfo.applicationVersion(1);
-        appInfo.apiVersion(0);
+        appInfo.apiVersion(Vulkan.VK_MAKE_VERSION(1, 0, 5));
+        
+        String[] names = extensionsNames.toArray(new String[extensionsNames.size()]);
         
         pCreateInfo.sType(VkStructureType.VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO);
         pCreateInfo.pNext(null);
         pCreateInfo.flags(0);
         pCreateInfo.pApplicationInfo(appInfo);
-        pCreateInfo.enabledExtensionCount(0);
+        pCreateInfo.enabledExtensionCount(names.length);
+        pCreateInfo.ppEnabledExtensionNames(names);
         
         VkResult res =  Vk10.vkCreateInstance(pCreateInfo, pAllocator, pInstance); 
         
         System.out.println("VkResult : " + res);
         
-        VkInstance instance = pInstance[0];        
+        System.out.println("Create info: " + pCreateInfo.toString() );
+        
+        VkInstance instance = pInstance[0];    
+        
+        
         Vk10.vkDestroyInstance(instance, pAllocator);
+        System.out.println("Instance Destroyed ! ");
     }
 
 }

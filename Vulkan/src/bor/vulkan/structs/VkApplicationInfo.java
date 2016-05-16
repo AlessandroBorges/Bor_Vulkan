@@ -335,7 +335,7 @@ public class VkApplicationInfo extends VkStruct {
                 .append(",\n\t\t engineVersion : ")
                 .append(engineVersion())
                 .append(",\n\t\t apiVersion : ")
-                .append(apiVersion())
+                .append(apiVersion()).append(" (").append(Vulkan.getAPIVersionString(apiVersion)).append(") ") 
                 .append(" ]");
         return builder.toString();
     }

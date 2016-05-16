@@ -44,6 +44,7 @@ public class VkDeviceCreateInfo extends VkStruct {
 
     //@formatter:off
     /*JNI
+     
     #include <BorVulkan.hpp>
     #include <vector>
     #include <string>
@@ -391,8 +392,13 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * Prototype: const char* const*  ppEnabledLayerNames
 	 */ 
 	 public String[] ppEnabledLayerNames(){
-		 String[] var = getPpEnabledLayerNames0(super.ptr);
-		 this.ppEnabledLayerNames = var;
+	         int count = getEnabledLayerCount0(ptr);
+	         if(count==0) 
+	             return null;
+	         if(ppEnabledLayerNames==null || ppEnabledLayerNames.length != count){
+	             ppEnabledLayerNames = new String[count];
+	         }
+	         this.ppEnabledLayerNames = getPpEnabledLayerNames0(super.ptr, ppEnabledLayerNames);
 		 return this.ppEnabledLayerNames;
 	 }
 
@@ -638,42 +644,37 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 private static native void setPpEnabledLayerNames0(Buffer ptr, String[] ppEnabledLayerNames);/*
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  int stringCount = ppEnabledLayerNames ? env->GetArrayLength(ppEnabledLayerNames) : 0;
-                  std::vector<const char*> enabledLayers;
+		  if(stringCount==0)
+		      return;
+		      
+                  const char** enabledLayers = CALLOC(stringCount,const char*) ;
                   
                   for (int i=0; i<stringCount; i++) {
                           jstring string = (jstring) env->GetObjectArrayElement(ppEnabledLayerNames, i);
                           const char *rawString = env->GetStringUTFChars(string, 0);
-                          enabledLayers.push_back(rawString);
-                        // MUST keep strings and don't `ReleaseStringUTFChars` when you're done.
-                        //  env->ReleaseStringUTFChars(string, rawString);
+                          enabledLayers[i] = cloneStr(rawString);
+                          env->ReleaseStringUTFChars(string, rawString);
                    }
                   vkObj->enabledLayerCount = stringCount;
-                  vkObj->ppEnabledLayerNames = (const char* const*) enabledLayers.data();
+                  vkObj->ppEnabledLayerNames = enabledLayers;
 	  */
 
 	/**
 	 * native GET method for field ppEnabledLayerNames	[string_arr]<br>
 	 * Prototype: const char* const*  ppEnabledLayerNames
-	 */ 
-	 private static native String[] getPpEnabledLayerNames0(Buffer ptr);/*
+	 */
+	 private static native String[] getPpEnabledLayerNames0(Buffer ptr, String[] names);/*
+	          if(names == NULL) return NULL;
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  int count = (int) vkObj->enabledLayerCount;
-                  printf("vkObj->enabledLayerCount %d \n ", count);
-                  
-                  jobjectArray ret = NULL;                  
                   if(count > 0){
-                   ret= (jobjectArray)env->NewObjectArray(count,
-                                                          env->FindClass("java/lang/String"),
-                                                          env->NewStringUTF(""));   
-                   printf("created jobjectArray ");                                                        
                     for(int i = 0; i<count; i++){
-                         env->SetObjectArrayElement(ret, 
+                         env->SetObjectArrayElement(names, 
                                                     i,
                                                     env->NewStringUTF(vkObj->ppEnabledLayerNames[i]));
                       }//for                      
-                  }//if count
-                  
-		 return ret;
+                  }//if count                  
+		 return names;
 	 */
 
 	/**
@@ -699,19 +700,19 @@ public class VkDeviceCreateInfo extends VkStruct {
 	 * Prototype: const char* const*  ppEnabledExtensionNames
 	 */ 
 	 private static native void setPpEnabledExtensionNames0(Buffer ptr, String[] _ppEnabledExtensionNames);/*
-		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
-		  //vkObj->ppEnabledExtensionNames = (const char* const*) (_ppEnabledExtensionNames);
+		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);		  
 		  int stringCount = _ppEnabledExtensionNames ? env->GetArrayLength(_ppEnabledExtensionNames) : 0;
-                  std::vector<const char*> vecNames;  
+		  
+                  const char** names = CALLOC(stringCount,const char*);  
                                   
                   for (int i=0; i<stringCount; i++) {
                           jstring string = (jstring) env->GetObjectArrayElement(_ppEnabledExtensionNames, i);
                           const char *rawString = env->GetStringUTFChars(string, 0);
-                          vecNames.push_back(rawString);
-                        //  env->ReleaseStringUTFChars(string, rawString);
+                          names[i] = cloneStr(rawString);                          
+                          env->ReleaseStringUTFChars(string, rawString);
                    }                   
                   vkObj->enabledExtensionCount = stringCount;
-                  vkObj->ppEnabledExtensionNames = (const char* const*) vecNames.data(); 
+                  vkObj->ppEnabledExtensionNames = names; 
 		    
 	  */
 
@@ -723,15 +724,13 @@ public class VkDeviceCreateInfo extends VkStruct {
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  int count = (int) vkObj->enabledExtensionCount;
 		  
-		                    
-		                    
                   jobjectArray ret = NULL;                  
                   if(count>0){                   
                    // thanks to code ranch 
                    // http://www.coderanch.com/t/326467/java/java/Returning-String-array-program-Java
                    ret = (jobjectArray)env->NewObjectArray(count,
                                                            env->FindClass("java/lang/String"),
-                                                           env->NewStringUTF(""));                  
+                                                           NULL);//env->NewStringUTF(""));                  
                     for(int i = 0; i<count; i++){
                          env->SetObjectArrayElement(ret, 
                                                     i,
