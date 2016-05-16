@@ -4,7 +4,7 @@
 
     #include <BorVulkan.hpp>
     JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_setMemoryTypeCount0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _memoryTypeCount) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:291
@@ -26,7 +26,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceMemoryPropert
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_getMemoryTypeCount0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_getMemoryTypeCount0(env, clazz, obj_ptr, ptr);
 
@@ -35,8 +35,8 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_setMemoryTypes0(JNIEnv* env, jclass clazz, jobject obj_ptr, jlongArray obj__memoryTypes) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	long long* _memoryTypes = (long long*)env->GetPrimitiveArrayCritical(obj__memoryTypes, 0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	long long* _memoryTypes = (long long*)(obj__memoryTypes ? env->GetLongArrayElements(obj__memoryTypes, 0) : NULL);
 
 
 //@line:309
@@ -50,7 +50,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_
                   }
 		  //vkObj->memoryTypes = (VkMemoryType[]) (_memoryTypes);
 	  
-	env->ReleasePrimitiveArrayCritical(obj__memoryTypes, _memoryTypes, 0);
+	if(obj__memoryTypes != NULL){
+		 env->ReleaseLongArrayElements(obj__memoryTypes, (jlong*)_memoryTypes, 0);
+	}
 
 }
 
@@ -69,18 +71,20 @@ static inline void wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceMemoryPropert
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_getMemoryTypes0(JNIEnv* env, jclass clazz, jobject obj_ptr, jlongArray obj_types) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	long long* types = (long long*)env->GetPrimitiveArrayCritical(obj_types, 0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	long long* types = (long long*)(obj_types ? env->GetLongArrayElements(obj_types, 0) : NULL);
 
 	wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_getMemoryTypes0(env, clazz, obj_ptr, obj_types, ptr, types);
 
-	env->ReleasePrimitiveArrayCritical(obj_types, types, 0);
+	if(obj_types != NULL){
+		 env->ReleaseLongArrayElements(obj_types, (jlong*)types, 0);
+	}
 
 	return;
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_setMemoryHeapCount0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _memoryHeapCount) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:337
@@ -102,7 +106,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceMemoryPropert
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_getMemoryHeapCount0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_getMemoryHeapCount0(env, clazz, obj_ptr, ptr);
 
@@ -111,8 +115,8 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_setMemoryHeaps0(JNIEnv* env, jclass clazz, jobject obj_ptr, jlongArray obj__memoryHeaps, jint len) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	long long* _memoryHeaps = (long long*)env->GetPrimitiveArrayCritical(obj__memoryHeaps, 0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	long long* _memoryHeaps = (long long*)(obj__memoryHeaps ? env->GetLongArrayElements(obj__memoryHeaps, 0) : NULL);
 
 
 //@line:355
@@ -126,13 +130,15 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_
 		  }
 		  
 	  
-	env->ReleasePrimitiveArrayCritical(obj__memoryHeaps, _memoryHeaps, 0);
+	if(obj__memoryHeaps != NULL){
+		 env->ReleaseLongArrayElements(obj__memoryHeaps, (jlong*)_memoryHeaps, 0);
+	}
 
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_getMemoryHeaps0(JNIEnv* env, jclass clazz, jobject obj_ptr, jlongArray obj_heaps) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	long long* heaps = (long long*)env->GetPrimitiveArrayCritical(obj_heaps, 0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	long long* heaps = (long long*)(obj_heaps ? env->GetLongArrayElements(obj_heaps, 0) : NULL);
 
 
 //@line:370
@@ -144,7 +150,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_
                     heaps[i] = reinterpret_cast<jlong>(pHeap);
                   }
 	 
-	env->ReleasePrimitiveArrayCritical(obj_heaps, heaps, 0);
+	if(obj_heaps != NULL){
+		 env->ReleaseLongArrayElements(obj_heaps, (jlong*)heaps, 0);
+	}
 
 }
 

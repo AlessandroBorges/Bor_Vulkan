@@ -16,22 +16,38 @@
 #ifndef VULKAN_WRAPPER_H
 #define VULKAN_WRAPPER_H
 
+//#pragma once
+     
+ #if defined(_WIN32)
+        #define VK_USE_PLATFORM_WIN32_KHR 1
+        #define WIN32_LEAN_AND_MEAN 1
+        #define VC_EXTRALEAN 1
+ #elif defined(__ANDROID__) 
+       #define VK_USE_PLATFORM_ANDROID_KHR 1
+ #else      
+       #define VK_USE_PLATFORM_XCB_KHR 1
+       #define VK_USE_PLATFORM_XLIB_KHR 1
+ #endif   
+       
 #define VK_NO_PROTOTYPES 1
 #include <vulkan/vulkan.h>
 
 // enable all extensions
-#ifndef VULKAN_WRAPPER_ENABLE_ALL_EXTENSIONS_DEFAULT
+#if (VULKAN_WRAPPER_ENABLE_ALL_EXTENSIONS_DEFAULT != 0)
  #define VULKAN_WRAPPER_ENABLE_ALL_EXTENSIONS_DEFAULT 1
 #endif
 
-
-/** 
+#ifdef __cplusplus
+extern "C" {
+#endif
+using namespace std;
+/**
  * Initialize Vulkan function pointer variables declared in this header.
  * After call, following functions will be available:
  *  vkEnumerateInstanceExtensionProperties
  *  vkEnumerateInstanceLayerProperties
  *  vkCreateInstance
- *  
+ *
  * Note: core functions will be available after vkCreateInstance() call.
  *
  * @returns 0 if vulkan is not available, non-zero otherwise.
@@ -248,4 +264,7 @@ extern PFN_vkDebugReportMessageEXT vkDebugReportMessageEXT;
 #endif
 
 
+#ifdef __cplusplus
+}
+#endif
 #endif // VULKAN_WRAPPER_H

@@ -4,7 +4,7 @@
 
     #include <BorVulkan.hpp>
     JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setSType0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _sType) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:350
@@ -26,7 +26,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getSType0
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkApplicationInfo_getSType0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getSType0(env, clazz, obj_ptr, ptr);
 
@@ -35,8 +35,8 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkApplicationInfo_getSType0(JNIEn
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setPNext0(JNIEnv* env, jclass clazz, jobject obj_ptr, jobject obj__pNext) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
 //@line:368
@@ -57,7 +57,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getPNext0
 }
 
 JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkApplicationInfo_getPNext0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jlong JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getPNext0(env, clazz, obj_ptr, ptr);
 
@@ -87,7 +87,7 @@ static inline jstring wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getPAppl
 }
 
 JNIEXPORT jstring JNICALL Java_bor_vulkan_structs_VkApplicationInfo_getPApplicationName0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jstring JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getPApplicationName0(env, clazz, obj_ptr, ptr);
 
@@ -96,7 +96,7 @@ JNIEXPORT jstring JNICALL Java_bor_vulkan_structs_VkApplicationInfo_getPApplicat
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setApplicationVersion0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _applicationVersion) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:405
@@ -118,7 +118,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getApplicat
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkApplicationInfo_getApplicationVersion0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getApplicationVersion0(env, clazz, obj_ptr, ptr);
 
@@ -148,7 +148,7 @@ static inline jstring wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getPEngi
 }
 
 JNIEXPORT jstring JNICALL Java_bor_vulkan_structs_VkApplicationInfo_getPEngineName0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jstring JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getPEngineName0(env, clazz, obj_ptr, ptr);
 
@@ -157,7 +157,7 @@ JNIEXPORT jstring JNICALL Java_bor_vulkan_structs_VkApplicationInfo_getPEngineNa
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setEngineVersion0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _engineVersion) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:443
@@ -179,7 +179,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getEngineVe
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkApplicationInfo_getEngineVersion0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getEngineVersion0(env, clazz, obj_ptr, ptr);
 
@@ -188,7 +188,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkApplicationInfo_getEngineVersio
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setApiVersion0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _apiVersion) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:461
@@ -210,7 +210,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getApiVersi
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkApplicationInfo_getApiVersion0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getApiVersion0(env, clazz, obj_ptr, ptr);
 

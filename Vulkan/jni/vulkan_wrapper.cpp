@@ -12,13 +12,24 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-
+     
+      
+ #if defined(_WIN32)
+        #define VK_USE_PLATFORM_WIN32_KHR 1
+        #define WIN32_LEAN_AND_MEAN 1
+        #define VC_EXTRALEAN 1
+ #elif defined(__ANDROID__) 
+       #define VK_USE_PLATFORM_ANDROID_KHR 1
+ #else      
+       #define VK_USE_PLATFORM_XCB_KHR 1
+       #define VK_USE_PLATFORM_XLIB_KHR 1
+ #endif   
+ 
 #include <string.h>
 #include <vector>
 #include <stdio.h>
 
 #define VK_NO_PROTOTYPES 1
-#include <vulkan/vulkan.h>
 #include "vulkan_wrapper.h"
 
 #ifdef _WIN32
@@ -27,16 +38,17 @@
    #include <dlfcn.h>
 #endif
 
+using namespace std;
 
 // flag
 static bool isInstanceLoaded = false;
 
 // Available extensions and layers names
 const char* const* _ppExtensionNames;
-const char* const* _ppLayerNames; 
+const char* const* _ppLayerNames;
 
 static uint32_t _extensionCount;
-static uint32_t _LayersCount; 
+static uint32_t _LayersCount;
 
 //hook
 static PFN_vkCreateInstance vkCreateInstance_HOOK;
@@ -46,7 +58,7 @@ static PFN_vkCreateInstance vkCreateInstance_HOOK;
  * @param pCreateInfo
  * @param pAllocator
  * @param pInstance
- * @return 
+ * @return
  */
 VkResult vkCreateInstanceDelegate( const VkInstanceCreateInfo* pCreateInfo,
                                    const VkAllocationCallbacks* pAllocator,
@@ -59,22 +71,22 @@ VkResult vkCreateInstanceDelegate( const VkInstanceCreateInfo* pCreateInfo,
 int InitInstanceProcs(VkInstance instance);
 
 
-int InitVulkan(void) {
+int InitVulkan() {
 #ifdef _WIN32
     #define LoadProcAddress GetProcAddress
-    HINSTANCE  libvulkan = NULL;    
-    libvulkan = LoadLibrary("vulkan-1.dll");   
+    HINSTANCE  libvulkan = NULL;
+    libvulkan = LoadLibrary("vulkan-1.dll");
 #else  // all *nix
     #define LoadProcAddress dlsym
-    void* libvulkan = nullptr;    
-    libvulkan = dlopen("libvulkan.so", RTLD_NOW | RTLD_LOCAL);	
-#endif    
-    
+    void* libvulkan = nullptr;
+    libvulkan = dlopen("libvulkan.so", RTLD_NOW | RTLD_LOCAL);
+#endif
+
     if (!libvulkan)
         return 0;
-    // the only one function to be loaded using dlsym	
-    vkGetInstanceProcAddr = reinterpret_cast<PFN_vkGetInstanceProcAddr>(LoadProcAddress(libvulkan, "vkGetInstanceProcAddr"));	
-	
+    // the only one function to be loaded using dlsym
+    vkGetInstanceProcAddr = reinterpret_cast<PFN_vkGetInstanceProcAddr>(LoadProcAddress(libvulkan, "vkGetInstanceProcAddr"));
+
     if(!vkGetInstanceProcAddr)
 	   return 0;
 
@@ -85,7 +97,7 @@ int InitVulkan(void) {
     vkCreateInstance_HOOK = (PFN_vkCreateInstance) (vkGetInstanceProcAddr(nullptr, "vkCreateInstance"));
     vkCreateInstance = &vkCreateInstanceDelegate;
 
-    // get extension names 
+    // get extension names
     _extensionCount = 0;
     vkEnumerateInstanceExtensionProperties(NULL, &_extensionCount, NULL);
     std::vector<const char *> extNames;
@@ -95,8 +107,8 @@ int InitVulkan(void) {
         extNames.push_back(extProps[i].extensionName);
     }
     _ppExtensionNames = extNames.data();
-    
-    
+
+
     // get layers names
     _LayersCount = 0;
     vkEnumerateInstanceLayerProperties(&_LayersCount, NULL);
@@ -108,46 +120,52 @@ int InitVulkan(void) {
         if (prop.layerName != NULL) {
             layerNames.push_back(prop.layerName);
         }
-    }	  
-   
+    }
+
 }
 
 /**
- * This functions intercepts vkCreateInstance, and optionally enable all available 
- * extensions. 
+ * This functions intercepts vkCreateInstance, and optionally enable all available
+ * extensions.
  * This procedure also loads all Vulkan functions.
  */
 VkResult vkCreateInstanceDelegate( const VkInstanceCreateInfo* pCreateInfo,
                                    const VkAllocationCallbacks* pAllocator,
-			           VkInstance* pInstance){	
-    
+			           VkInstance* pInstance){
+
+	VkResult res;
 #ifdef VULKAN_WRAPPER_ENABLE_ALL_EXTENSIONS_DEFAULT
     // enable all extensions if there is not extensions enabled
-    if(pCreateInfo != NULL && (pCreateInfo->ppEnabledExtensionNames == NULL || pCreateInfo->enabledExtensionCount==0) ){
+    if(pCreateInfo != NULL && (pCreateInfo->ppEnabledExtensionNames == NULL || pCreateInfo->enabledExtensionCount==0) )
+    {
         VkInstanceCreateInfo createInfo = *pCreateInfo;
         createInfo.enabledExtensionCount = _extensionCount;
         createInfo.ppEnabledExtensionNames = _ppExtensionNames;
-       // printf("VULKAN_WRAPPER_ENABLE_ALL_EXTENSIONS_DEFAULT 0x%p count: %d \n", _ppExtensionNames, _extensionCount );
+		res = vkCreateInstance_HOOK(&createInfo, pAllocator, pInstance);
+        printf("VULKAN_WRAPPER_ENABLE_ALL_EXTENSIONS_DEFAULT 0x%p count: %d \n", _ppExtensionNames, _extensionCount );
+    }else
+#endif
+    {
+      // call Hook
+      res = vkCreateInstance_HOOK(pCreateInfo, pAllocator, pInstance);
     }
-#endif	    
-    // call Hook
-    VkResult res = vkCreateInstance_HOOK(pCreateInfo, pAllocator, pInstance);	
+	
     if(res < 0){
 	  return res;
-    }	
+    }
     // load VkInstance related functions
     VkInstance instance = *pInstance;
     if(!isInstanceLoaded){
-            InitInstanceProcs(instance);	
+            InitInstanceProcs(instance);
 	    isInstanceLoaded = true;
-    }	
+    }
     return res;
 }
 
 
 /**
  * This function loads all related VKInstance functions
- * @param instance - non null VkInstance to load 
+ * @param instance - non null VkInstance to load
  */
 int InitInstanceProcs(VkInstance instance){
     if(!instance)

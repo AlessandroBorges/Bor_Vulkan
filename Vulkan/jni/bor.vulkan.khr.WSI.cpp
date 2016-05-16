@@ -41,8 +41,8 @@
 }
 
 JNIEXPORT jobject JNICALL Java_bor_vulkan_khr_WSI_createWSI(JNIEnv* env, jclass clazz, jobject obj_instance, jobject obj_device) {
-	char* instance = (char*)(obj_instance?env->GetDirectBufferAddress(obj_instance):0);
-	char* device = (char*)(obj_device?env->GetDirectBufferAddress(obj_device):0);
+	char* instance = (char*)(obj_instance?env->GetDirectBufferAddress(obj_instance) : NULL);
+	char* device = (char*)(obj_device?env->GetDirectBufferAddress(obj_device) : NULL);
 
 	jobject JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_createWSI(env, clazz, obj_instance, obj_device, instance, device);
 
@@ -51,7 +51,7 @@ JNIEXPORT jobject JNICALL Java_bor_vulkan_khr_WSI_createWSI(JNIEnv* env, jclass 
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_khr_WSI_destroyWSI0(JNIEnv* env, jclass clazz, jobject obj__wsi) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
 
 
 //@line:124
@@ -94,14 +94,16 @@ static inline jobject wrapped_Java_bor_vulkan_khr_WSI_vkCreateAndroidSurfaceKHR0
 }
 
 JNIEXPORT jobject JNICALL Java_bor_vulkan_khr_WSI_vkCreateAndroidSurfaceKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_pCreateInfo, jobject obj_pAllocator, jintArray obj_result) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* pCreateInfo = (char*)(obj_pCreateInfo?env->GetDirectBufferAddress(obj_pCreateInfo):0);
-	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator):0);
-	int* result = (int*)env->GetPrimitiveArrayCritical(obj_result, 0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* pCreateInfo = (char*)(obj_pCreateInfo?env->GetDirectBufferAddress(obj_pCreateInfo) : NULL);
+	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
+	int* result = (int*)(obj_result ? env->GetIntArrayElements(obj_result, 0) : NULL);
 
 	jobject JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkCreateAndroidSurfaceKHR0(env, clazz, obj__wsi, obj_pCreateInfo, obj_pAllocator, obj_result, _wsi, pCreateInfo, pAllocator, result);
 
-	env->ReleasePrimitiveArrayCritical(obj_result, result, 0);
+	if(obj_result != NULL){
+		 env->ReleaseIntArrayElements(obj_result, (jint*)result, 0);
+	}
 
 	return JNI_returnValue;
 }
@@ -134,14 +136,16 @@ static inline jobject wrapped_Java_bor_vulkan_khr_WSI_vkCreateWin32SurfaceKHR0
 }
 
 JNIEXPORT jobject JNICALL Java_bor_vulkan_khr_WSI_vkCreateWin32SurfaceKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_pCreateInfo, jobject obj_pAllocator, jintArray obj_result) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* pCreateInfo = (char*)(obj_pCreateInfo?env->GetDirectBufferAddress(obj_pCreateInfo):0);
-	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator):0);
-	int* result = (int*)env->GetPrimitiveArrayCritical(obj_result, 0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* pCreateInfo = (char*)(obj_pCreateInfo?env->GetDirectBufferAddress(obj_pCreateInfo) : NULL);
+	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
+	int* result = (int*)(obj_result ? env->GetIntArrayElements(obj_result, 0) : NULL);
 
 	jobject JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkCreateWin32SurfaceKHR0(env, clazz, obj__wsi, obj_pCreateInfo, obj_pAllocator, obj_result, _wsi, pCreateInfo, pAllocator, result);
 
-	env->ReleasePrimitiveArrayCritical(obj_result, result, 0);
+	if(obj_result != NULL){
+		 env->ReleaseIntArrayElements(obj_result, (jint*)result, 0);
+	}
 
 	return JNI_returnValue;
 }
@@ -167,8 +171,8 @@ static inline jboolean wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceWin32P
 }
 
 JNIEXPORT jboolean JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceWin32PresentationSupportKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_physicalDevice, jint queueFamilyIndex) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice):0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice) : NULL);
 
 	jboolean JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceWin32PresentationSupportKHR0(env, clazz, obj__wsi, obj_physicalDevice, queueFamilyIndex, _wsi, physicalDevice);
 
@@ -231,17 +235,23 @@ static inline jobject wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceDisplay
 }
 
 JNIEXPORT jobject JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceDisplayPropertiesKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_physicalDevice, jintArray obj_pPropertyCount, jint arrayLen, jintArray obj_result, jintArray obj_structSize) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice):0);
-	int* pPropertyCount = (int*)env->GetPrimitiveArrayCritical(obj_pPropertyCount, 0);
-	int* result = (int*)env->GetPrimitiveArrayCritical(obj_result, 0);
-	int* structSize = (int*)env->GetPrimitiveArrayCritical(obj_structSize, 0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice) : NULL);
+	int* pPropertyCount = (int*)(obj_pPropertyCount ? env->GetIntArrayElements(obj_pPropertyCount, 0) : NULL);
+	int* result = (int*)(obj_result ? env->GetIntArrayElements(obj_result, 0) : NULL);
+	int* structSize = (int*)(obj_structSize ? env->GetIntArrayElements(obj_structSize, 0) : NULL);
 
 	jobject JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceDisplayPropertiesKHR0(env, clazz, obj__wsi, obj_physicalDevice, obj_pPropertyCount, arrayLen, obj_result, obj_structSize, _wsi, physicalDevice, pPropertyCount, result, structSize);
 
-	env->ReleasePrimitiveArrayCritical(obj_pPropertyCount, pPropertyCount, 0);
-	env->ReleasePrimitiveArrayCritical(obj_result, result, 0);
-	env->ReleasePrimitiveArrayCritical(obj_structSize, structSize, 0);
+	if(obj_pPropertyCount != NULL){
+		 env->ReleaseIntArrayElements(obj_pPropertyCount, (jint*)pPropertyCount, 0);
+	}
+	if(obj_result != NULL){
+		 env->ReleaseIntArrayElements(obj_result, (jint*)result, 0);
+	}
+	if(obj_structSize != NULL){
+		 env->ReleaseIntArrayElements(obj_structSize, (jint*)structSize, 0);
+	}
 
 	return JNI_returnValue;
 }
@@ -300,17 +310,23 @@ static inline jobject wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceDisplay
 }
 
 JNIEXPORT jobject JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceDisplayPlanePropertiesKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_physicalDevice, jintArray obj_pPropertyCount, jboolean justCount, jintArray obj_structSize, jintArray obj_result) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice):0);
-	int* pPropertyCount = (int*)env->GetPrimitiveArrayCritical(obj_pPropertyCount, 0);
-	int* structSize = (int*)env->GetPrimitiveArrayCritical(obj_structSize, 0);
-	int* result = (int*)env->GetPrimitiveArrayCritical(obj_result, 0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice) : NULL);
+	int* pPropertyCount = (int*)(obj_pPropertyCount ? env->GetIntArrayElements(obj_pPropertyCount, 0) : NULL);
+	int* structSize = (int*)(obj_structSize ? env->GetIntArrayElements(obj_structSize, 0) : NULL);
+	int* result = (int*)(obj_result ? env->GetIntArrayElements(obj_result, 0) : NULL);
 
 	jobject JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceDisplayPlanePropertiesKHR0(env, clazz, obj__wsi, obj_physicalDevice, obj_pPropertyCount, justCount, obj_structSize, obj_result, _wsi, physicalDevice, pPropertyCount, structSize, result);
 
-	env->ReleasePrimitiveArrayCritical(obj_pPropertyCount, pPropertyCount, 0);
-	env->ReleasePrimitiveArrayCritical(obj_structSize, structSize, 0);
-	env->ReleasePrimitiveArrayCritical(obj_result, result, 0);
+	if(obj_pPropertyCount != NULL){
+		 env->ReleaseIntArrayElements(obj_pPropertyCount, (jint*)pPropertyCount, 0);
+	}
+	if(obj_structSize != NULL){
+		 env->ReleaseIntArrayElements(obj_structSize, (jint*)structSize, 0);
+	}
+	if(obj_result != NULL){
+		 env->ReleaseIntArrayElements(obj_result, (jint*)result, 0);
+	}
 
 	return JNI_returnValue;
 }
@@ -370,18 +386,24 @@ static inline jobject wrapped_Java_bor_vulkan_khr_WSI_vkGetDisplayModeProperties
 }
 
 JNIEXPORT jobject JNICALL Java_bor_vulkan_khr_WSI_vkGetDisplayModePropertiesKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_physicalDevice, jobject obj_display, jintArray obj_pPropertyCount, jboolean justCount, jintArray obj_structSize, jintArray obj_result) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice):0);
-	char* display = (char*)(obj_display?env->GetDirectBufferAddress(obj_display):0);
-	int* pPropertyCount = (int*)env->GetPrimitiveArrayCritical(obj_pPropertyCount, 0);
-	int* structSize = (int*)env->GetPrimitiveArrayCritical(obj_structSize, 0);
-	int* result = (int*)env->GetPrimitiveArrayCritical(obj_result, 0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice) : NULL);
+	char* display = (char*)(obj_display?env->GetDirectBufferAddress(obj_display) : NULL);
+	int* pPropertyCount = (int*)(obj_pPropertyCount ? env->GetIntArrayElements(obj_pPropertyCount, 0) : NULL);
+	int* structSize = (int*)(obj_structSize ? env->GetIntArrayElements(obj_structSize, 0) : NULL);
+	int* result = (int*)(obj_result ? env->GetIntArrayElements(obj_result, 0) : NULL);
 
 	jobject JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkGetDisplayModePropertiesKHR0(env, clazz, obj__wsi, obj_physicalDevice, obj_display, obj_pPropertyCount, justCount, obj_structSize, obj_result, _wsi, physicalDevice, display, pPropertyCount, structSize, result);
 
-	env->ReleasePrimitiveArrayCritical(obj_pPropertyCount, pPropertyCount, 0);
-	env->ReleasePrimitiveArrayCritical(obj_structSize, structSize, 0);
-	env->ReleasePrimitiveArrayCritical(obj_result, result, 0);
+	if(obj_pPropertyCount != NULL){
+		 env->ReleaseIntArrayElements(obj_pPropertyCount, (jint*)pPropertyCount, 0);
+	}
+	if(obj_structSize != NULL){
+		 env->ReleaseIntArrayElements(obj_structSize, (jint*)structSize, 0);
+	}
+	if(obj_result != NULL){
+		 env->ReleaseIntArrayElements(obj_result, (jint*)result, 0);
+	}
 
 	return JNI_returnValue;
 }
@@ -419,11 +441,11 @@ static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkCreateDisplayModeKHR0
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkCreateDisplayModeKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_physicalDevice, jobject obj_display, jobject obj_pCreateInfo, jobject obj_pAllocator, jobjectArray _pMode) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice):0);
-	char* display = (char*)(obj_display?env->GetDirectBufferAddress(obj_display):0);
-	char* pCreateInfo = (char*)(obj_pCreateInfo?env->GetDirectBufferAddress(obj_pCreateInfo):0);
-	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator):0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice) : NULL);
+	char* display = (char*)(obj_display?env->GetDirectBufferAddress(obj_display) : NULL);
+	char* pCreateInfo = (char*)(obj_pCreateInfo?env->GetDirectBufferAddress(obj_pCreateInfo) : NULL);
+	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkCreateDisplayModeKHR0(env, clazz, obj__wsi, obj_physicalDevice, obj_display, obj_pCreateInfo, obj_pAllocator, _pMode, _wsi, physicalDevice, display, pCreateInfo, pAllocator);
 
@@ -458,9 +480,9 @@ static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkCreateDisplayPlaneSurfaceKH
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkCreateDisplayPlaneSurfaceKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_pCreateInfo, jobject obj_pAllocator, jobjectArray buffer) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* pCreateInfo = (char*)(obj_pCreateInfo?env->GetDirectBufferAddress(obj_pCreateInfo):0);
-	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator):0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* pCreateInfo = (char*)(obj_pCreateInfo?env->GetDirectBufferAddress(obj_pCreateInfo) : NULL);
+	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkCreateDisplayPlaneSurfaceKHR0(env, clazz, obj__wsi, obj_pCreateInfo, obj_pAllocator, buffer, _wsi, pCreateInfo, pAllocator);
 
@@ -501,14 +523,16 @@ static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkCreateSharedSwapchainsKHR0
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkCreateSharedSwapchainsKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jint swapchainCount, jobject obj_pCreateInfos, jobject obj_pAllocator, jintArray obj_sizeofPTR, jobjectArray bufferArr) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* pCreateInfos = (char*)(obj_pCreateInfos?env->GetDirectBufferAddress(obj_pCreateInfos):0);
-	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator):0);
-	int* sizeofPTR = (int*)env->GetPrimitiveArrayCritical(obj_sizeofPTR, 0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* pCreateInfos = (char*)(obj_pCreateInfos?env->GetDirectBufferAddress(obj_pCreateInfos) : NULL);
+	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
+	int* sizeofPTR = (int*)(obj_sizeofPTR ? env->GetIntArrayElements(obj_sizeofPTR, 0) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkCreateSharedSwapchainsKHR0(env, clazz, obj__wsi, swapchainCount, obj_pCreateInfos, obj_pAllocator, obj_sizeofPTR, bufferArr, _wsi, pCreateInfos, pAllocator, sizeofPTR);
 
-	env->ReleasePrimitiveArrayCritical(obj_sizeofPTR, sizeofPTR, 0);
+	if(obj_sizeofPTR != NULL){
+		 env->ReleaseIntArrayElements(obj_sizeofPTR, (jint*)sizeofPTR, 0);
+	}
 
 	return JNI_returnValue;
 }
@@ -542,9 +566,9 @@ static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkCreateXlibSurfaceKHR0
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkCreateXlibSurfaceKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_pCreateInfo, jobject obj_pAllocator, jobjectArray buffer) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* pCreateInfo = (char*)(obj_pCreateInfo?env->GetDirectBufferAddress(obj_pCreateInfo):0);
-	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator):0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* pCreateInfo = (char*)(obj_pCreateInfo?env->GetDirectBufferAddress(obj_pCreateInfo) : NULL);
+	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkCreateXlibSurfaceKHR0(env, clazz, obj__wsi, obj_pCreateInfo, obj_pAllocator, buffer, _wsi, pCreateInfo, pAllocator);
 
@@ -575,10 +599,10 @@ static inline jboolean wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceXlibPr
 }
 
 JNIEXPORT jboolean JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceXlibPresentationSupportKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_physicalDevice, jint queueFamilyIndex, jobject obj_dpy, jobject obj_visualID) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice):0);
-	char* dpy = (char*)(obj_dpy?env->GetDirectBufferAddress(obj_dpy):0);
-	char* visualID = (char*)(obj_visualID?env->GetDirectBufferAddress(obj_visualID):0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice) : NULL);
+	char* dpy = (char*)(obj_dpy?env->GetDirectBufferAddress(obj_dpy) : NULL);
+	char* visualID = (char*)(obj_visualID?env->GetDirectBufferAddress(obj_visualID) : NULL);
 
 	jboolean JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceXlibPresentationSupportKHR0(env, clazz, obj__wsi, obj_physicalDevice, queueFamilyIndex, obj_dpy, obj_visualID, _wsi, physicalDevice, dpy, visualID);
 
@@ -612,9 +636,9 @@ static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkCreateXcbSurfaceKHR0
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkCreateXcbSurfaceKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_pCreateInfo, jobject obj_pAllocator, jobjectArray buffer) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* pCreateInfo = (char*)(obj_pCreateInfo?env->GetDirectBufferAddress(obj_pCreateInfo):0);
-	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator):0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* pCreateInfo = (char*)(obj_pCreateInfo?env->GetDirectBufferAddress(obj_pCreateInfo) : NULL);
+	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkCreateXcbSurfaceKHR0(env, clazz, obj__wsi, obj_pCreateInfo, obj_pAllocator, buffer, _wsi, pCreateInfo, pAllocator);
 
@@ -642,8 +666,8 @@ static inline jboolean wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceXcbPre
 }
 
 JNIEXPORT jboolean JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceXcbPresentationSupportKHR0(JNIEnv* env, jclass clazz, jobject obj_physicalDevice, jint queueFamilyIndex, jobject obj_connection, jobject visual_id) {
-	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice):0);
-	char* connection = (char*)(obj_connection?env->GetDirectBufferAddress(obj_connection):0);
+	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice) : NULL);
+	char* connection = (char*)(obj_connection?env->GetDirectBufferAddress(obj_connection) : NULL);
 
 	jboolean JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceXcbPresentationSupportKHR0(env, clazz, obj_physicalDevice, queueFamilyIndex, obj_connection, visual_id, physicalDevice, connection);
 
@@ -677,9 +701,9 @@ static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkCreateWaylandSurfaceKHR0
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkCreateWaylandSurfaceKHR0(JNIEnv* env, jclass clazz, jobject obj_instance, jobject obj_pCreateInfo, jobject obj_pAllocator, jobjectArray buffer) {
-	char* instance = (char*)(obj_instance?env->GetDirectBufferAddress(obj_instance):0);
-	char* pCreateInfo = (char*)(obj_pCreateInfo?env->GetDirectBufferAddress(obj_pCreateInfo):0);
-	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator):0);
+	char* instance = (char*)(obj_instance?env->GetDirectBufferAddress(obj_instance) : NULL);
+	char* pCreateInfo = (char*)(obj_pCreateInfo?env->GetDirectBufferAddress(obj_pCreateInfo) : NULL);
+	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkCreateWaylandSurfaceKHR0(env, clazz, obj_instance, obj_pCreateInfo, obj_pAllocator, buffer, instance, pCreateInfo, pAllocator);
 
@@ -707,8 +731,8 @@ static inline jboolean wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceWaylan
 }
 
 JNIEXPORT jboolean JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceWaylandPresentationSupportKHR0(JNIEnv* env, jclass clazz, jobject obj_physicalDevice, jint queueFamilyIndex, jobject obj_display) {
-	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice):0);
-	char* display = (char*)(obj_display?env->GetDirectBufferAddress(obj_display):0);
+	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice) : NULL);
+	char* display = (char*)(obj_display?env->GetDirectBufferAddress(obj_display) : NULL);
 
 	jboolean JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceWaylandPresentationSupportKHR0(env, clazz, obj_physicalDevice, queueFamilyIndex, obj_display, physicalDevice, display);
 
@@ -743,9 +767,9 @@ static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkCreateMirSurfaceKHR0
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkCreateMirSurfaceKHR0(JNIEnv* env, jclass clazz, jobject obj_instance, jobject obj_pCreateInfo, jobject obj_pAllocator, jobjectArray buff) {
-	char* instance = (char*)(obj_instance?env->GetDirectBufferAddress(obj_instance):0);
-	char* pCreateInfo = (char*)(obj_pCreateInfo?env->GetDirectBufferAddress(obj_pCreateInfo):0);
-	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator):0);
+	char* instance = (char*)(obj_instance?env->GetDirectBufferAddress(obj_instance) : NULL);
+	char* pCreateInfo = (char*)(obj_pCreateInfo?env->GetDirectBufferAddress(obj_pCreateInfo) : NULL);
+	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkCreateMirSurfaceKHR0(env, clazz, obj_instance, obj_pCreateInfo, obj_pAllocator, buff, instance, pCreateInfo, pAllocator);
 
@@ -773,8 +797,8 @@ static inline jboolean wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceMirPre
 }
 
 JNIEXPORT jboolean JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceMirPresentationSupportKHR0(JNIEnv* env, jclass clazz, jobject obj_physicalDevice, jint queueFamilyIndex, jobject obj_connection) {
-	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice):0);
-	char* connection = (char*)(obj_connection?env->GetDirectBufferAddress(obj_connection):0);
+	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice) : NULL);
+	char* connection = (char*)(obj_connection?env->GetDirectBufferAddress(obj_connection) : NULL);
 
 	jboolean JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceMirPresentationSupportKHR0(env, clazz, obj_physicalDevice, queueFamilyIndex, obj_connection, physicalDevice, connection);
 
@@ -807,10 +831,10 @@ static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkGetDisplayPlaneCapabilities
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkGetDisplayPlaneCapabilitiesKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_physicalDevice, jobject obj_mode, jint planeIndex, jobject obj_pCapabilities) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice):0);
-	char* mode = (char*)(obj_mode?env->GetDirectBufferAddress(obj_mode):0);
-	char* pCapabilities = (char*)(obj_pCapabilities?env->GetDirectBufferAddress(obj_pCapabilities):0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice) : NULL);
+	char* mode = (char*)(obj_mode?env->GetDirectBufferAddress(obj_mode) : NULL);
+	char* pCapabilities = (char*)(obj_pCapabilities?env->GetDirectBufferAddress(obj_pCapabilities) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkGetDisplayPlaneCapabilitiesKHR0(env, clazz, obj__wsi, obj_physicalDevice, obj_mode, planeIndex, obj_pCapabilities, _wsi, physicalDevice, mode, pCapabilities);
 
@@ -856,21 +880,23 @@ static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkGetDisplayPlaneSupportedDis
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkGetDisplayPlaneSupportedDisplaysKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_physicalDevice, jint planeIndex, jintArray obj_pDisplayCount, jobjectArray buffers) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice):0);
-	int* pDisplayCount = (int*)env->GetPrimitiveArrayCritical(obj_pDisplayCount, 0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice) : NULL);
+	int* pDisplayCount = (int*)(obj_pDisplayCount ? env->GetIntArrayElements(obj_pDisplayCount, 0) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkGetDisplayPlaneSupportedDisplaysKHR0(env, clazz, obj__wsi, obj_physicalDevice, planeIndex, obj_pDisplayCount, buffers, _wsi, physicalDevice, pDisplayCount);
 
-	env->ReleasePrimitiveArrayCritical(obj_pDisplayCount, pDisplayCount, 0);
+	if(obj_pDisplayCount != NULL){
+		 env->ReleaseIntArrayElements(obj_pDisplayCount, (jint*)pDisplayCount, 0);
+	}
 
 	return JNI_returnValue;
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_khr_WSI_vkDestroySurfaceKHR0(JNIEnv* env, jclass clazz, jobject obj_instance, jobject obj_surface, jobject obj_pAllocator) {
-	char* instance = (char*)(obj_instance?env->GetDirectBufferAddress(obj_instance):0);
-	char* surface = (char*)(obj_surface?env->GetDirectBufferAddress(obj_surface):0);
-	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator):0);
+	char* instance = (char*)(obj_instance?env->GetDirectBufferAddress(obj_instance) : NULL);
+	char* surface = (char*)(obj_surface?env->GetDirectBufferAddress(obj_surface) : NULL);
+	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
 //@line:1725
@@ -907,13 +933,15 @@ static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfaceSup
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfaceSupportKHR0(JNIEnv* env, jclass clazz, jobject obj_physicalDevice, jint queueFamilyIndex, jobject obj_surface, jbooleanArray obj_pSupported) {
-	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice):0);
-	char* surface = (char*)(obj_surface?env->GetDirectBufferAddress(obj_surface):0);
-	bool* pSupported = (bool*)env->GetPrimitiveArrayCritical(obj_pSupported, 0);
+	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice) : NULL);
+	char* surface = (char*)(obj_surface?env->GetDirectBufferAddress(obj_surface) : NULL);
+	bool* pSupported = (bool*)(obj_pSupported ? env->GetBooleanArrayElements(obj_pSupported, 0) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfaceSupportKHR0(env, clazz, obj_physicalDevice, queueFamilyIndex, obj_surface, obj_pSupported, physicalDevice, surface, pSupported);
 
-	env->ReleasePrimitiveArrayCritical(obj_pSupported, pSupported, 0);
+	if(obj_pSupported != NULL){
+		 env->ReleaseBooleanArrayElements(obj_pSupported, (jboolean*)pSupported, 0);
+	}
 
 	return JNI_returnValue;
 }
@@ -935,9 +963,9 @@ static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfaceCap
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfaceCapabilitiesKHR0(JNIEnv* env, jclass clazz, jobject obj_physicalDevice, jobject obj_surface, jobject obj_pSurfaceCapabilities) {
-	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice):0);
-	char* surface = (char*)(obj_surface?env->GetDirectBufferAddress(obj_surface):0);
-	char* pSurfaceCapabilities = (char*)(obj_pSurfaceCapabilities?env->GetDirectBufferAddress(obj_pSurfaceCapabilities):0);
+	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice) : NULL);
+	char* surface = (char*)(obj_surface?env->GetDirectBufferAddress(obj_surface) : NULL);
+	char* pSurfaceCapabilities = (char*)(obj_pSurfaceCapabilities?env->GetDirectBufferAddress(obj_pSurfaceCapabilities) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfaceCapabilitiesKHR0(env, clazz, obj_physicalDevice, obj_surface, obj_pSurfaceCapabilities, physicalDevice, surface, pSurfaceCapabilities);
 
@@ -993,16 +1021,20 @@ static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfaceFor
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfaceFormatsKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_physicalDevice, jobject obj_surface, jintArray obj_pSurfaceFormatCount, jintArray obj_sizeofStr, jobjectArray buffers) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice):0);
-	char* surface = (char*)(obj_surface?env->GetDirectBufferAddress(obj_surface):0);
-	int* pSurfaceFormatCount = (int*)env->GetPrimitiveArrayCritical(obj_pSurfaceFormatCount, 0);
-	int* sizeofStr = (int*)env->GetPrimitiveArrayCritical(obj_sizeofStr, 0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice) : NULL);
+	char* surface = (char*)(obj_surface?env->GetDirectBufferAddress(obj_surface) : NULL);
+	int* pSurfaceFormatCount = (int*)(obj_pSurfaceFormatCount ? env->GetIntArrayElements(obj_pSurfaceFormatCount, 0) : NULL);
+	int* sizeofStr = (int*)(obj_sizeofStr ? env->GetIntArrayElements(obj_sizeofStr, 0) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfaceFormatsKHR0(env, clazz, obj__wsi, obj_physicalDevice, obj_surface, obj_pSurfaceFormatCount, obj_sizeofStr, buffers, _wsi, physicalDevice, surface, pSurfaceFormatCount, sizeofStr);
 
-	env->ReleasePrimitiveArrayCritical(obj_pSurfaceFormatCount, pSurfaceFormatCount, 0);
-	env->ReleasePrimitiveArrayCritical(obj_sizeofStr, sizeofStr, 0);
+	if(obj_pSurfaceFormatCount != NULL){
+		 env->ReleaseIntArrayElements(obj_pSurfaceFormatCount, (jint*)pSurfaceFormatCount, 0);
+	}
+	if(obj_sizeofStr != NULL){
+		 env->ReleaseIntArrayElements(obj_sizeofStr, (jint*)sizeofStr, 0);
+	}
 
 	return JNI_returnValue;
 }
@@ -1025,15 +1057,19 @@ static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfacePre
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfacePresentModesKHR0(JNIEnv* env, jclass clazz, jobject obj_physicalDevice, jobject obj_surface, jintArray obj_pPresentModeCount, jintArray obj_pPresentModes) {
-	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice):0);
-	char* surface = (char*)(obj_surface?env->GetDirectBufferAddress(obj_surface):0);
-	int* pPresentModeCount = (int*)env->GetPrimitiveArrayCritical(obj_pPresentModeCount, 0);
-	int* pPresentModes = (int*)env->GetPrimitiveArrayCritical(obj_pPresentModes, 0);
+	char* physicalDevice = (char*)(obj_physicalDevice?env->GetDirectBufferAddress(obj_physicalDevice) : NULL);
+	char* surface = (char*)(obj_surface?env->GetDirectBufferAddress(obj_surface) : NULL);
+	int* pPresentModeCount = (int*)(obj_pPresentModeCount ? env->GetIntArrayElements(obj_pPresentModeCount, 0) : NULL);
+	int* pPresentModes = (int*)(obj_pPresentModes ? env->GetIntArrayElements(obj_pPresentModes, 0) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkGetPhysicalDeviceSurfacePresentModesKHR0(env, clazz, obj_physicalDevice, obj_surface, obj_pPresentModeCount, obj_pPresentModes, physicalDevice, surface, pPresentModeCount, pPresentModes);
 
-	env->ReleasePrimitiveArrayCritical(obj_pPresentModeCount, pPresentModeCount, 0);
-	env->ReleasePrimitiveArrayCritical(obj_pPresentModes, pPresentModes, 0);
+	if(obj_pPresentModeCount != NULL){
+		 env->ReleaseIntArrayElements(obj_pPresentModeCount, (jint*)pPresentModeCount, 0);
+	}
+	if(obj_pPresentModes != NULL){
+		 env->ReleaseIntArrayElements(obj_pPresentModes, (jint*)pPresentModes, 0);
+	}
 
 	return JNI_returnValue;
 }
@@ -1062,9 +1098,9 @@ static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkCreateSwapchainKHR0
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkCreateSwapchainKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_pCreateInfo, jobject obj_pAllocator, jobjectArray buffer) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* pCreateInfo = (char*)(obj_pCreateInfo?env->GetDirectBufferAddress(obj_pCreateInfo):0);
-	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator):0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* pCreateInfo = (char*)(obj_pCreateInfo?env->GetDirectBufferAddress(obj_pCreateInfo) : NULL);
+	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkCreateSwapchainKHR0(env, clazz, obj__wsi, obj_pCreateInfo, obj_pAllocator, buffer, _wsi, pCreateInfo, pAllocator);
 
@@ -1073,9 +1109,9 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkCreateSwapchainKHR0(JNIEnv* env
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_khr_WSI_vkDestroySwapchainKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_swapchain, jobject obj_pAllocator) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* swapchain = (char*)(obj_swapchain?env->GetDirectBufferAddress(obj_swapchain):0);
-	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator):0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* swapchain = (char*)(obj_swapchain?env->GetDirectBufferAddress(obj_swapchain) : NULL);
+	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
 //@line:2165
@@ -1131,13 +1167,15 @@ static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkGetSwapchainImagesKHR0
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkGetSwapchainImagesKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_swapchain, jintArray obj_pSwapchainImageCount, jobjectArray bigBuffer) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* swapchain = (char*)(obj_swapchain?env->GetDirectBufferAddress(obj_swapchain):0);
-	int* pSwapchainImageCount = (int*)env->GetPrimitiveArrayCritical(obj_pSwapchainImageCount, 0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* swapchain = (char*)(obj_swapchain?env->GetDirectBufferAddress(obj_swapchain) : NULL);
+	int* pSwapchainImageCount = (int*)(obj_pSwapchainImageCount ? env->GetIntArrayElements(obj_pSwapchainImageCount, 0) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkGetSwapchainImagesKHR0(env, clazz, obj__wsi, obj_swapchain, obj_pSwapchainImageCount, bigBuffer, _wsi, swapchain, pSwapchainImageCount);
 
-	env->ReleasePrimitiveArrayCritical(obj_pSwapchainImageCount, pSwapchainImageCount, 0);
+	if(obj_pSwapchainImageCount != NULL){
+		 env->ReleaseIntArrayElements(obj_pSwapchainImageCount, (jint*)pSwapchainImageCount, 0);
+	}
 
 	return JNI_returnValue;
 }
@@ -1165,15 +1203,17 @@ static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkAcquireNextImageKHR0
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkAcquireNextImageKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_swapchain, jlong timeout, jobject obj_semaphore, jobject obj_fence, jintArray obj_pImageIndex) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* swapchain = (char*)(obj_swapchain?env->GetDirectBufferAddress(obj_swapchain):0);
-	char* semaphore = (char*)(obj_semaphore?env->GetDirectBufferAddress(obj_semaphore):0);
-	char* fence = (char*)(obj_fence?env->GetDirectBufferAddress(obj_fence):0);
-	int* pImageIndex = (int*)env->GetPrimitiveArrayCritical(obj_pImageIndex, 0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* swapchain = (char*)(obj_swapchain?env->GetDirectBufferAddress(obj_swapchain) : NULL);
+	char* semaphore = (char*)(obj_semaphore?env->GetDirectBufferAddress(obj_semaphore) : NULL);
+	char* fence = (char*)(obj_fence?env->GetDirectBufferAddress(obj_fence) : NULL);
+	int* pImageIndex = (int*)(obj_pImageIndex ? env->GetIntArrayElements(obj_pImageIndex, 0) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkAcquireNextImageKHR0(env, clazz, obj__wsi, obj_swapchain, timeout, obj_semaphore, obj_fence, obj_pImageIndex, _wsi, swapchain, semaphore, fence, pImageIndex);
 
-	env->ReleasePrimitiveArrayCritical(obj_pImageIndex, pImageIndex, 0);
+	if(obj_pImageIndex != NULL){
+		 env->ReleaseIntArrayElements(obj_pImageIndex, (jint*)pImageIndex, 0);
+	}
 
 	return JNI_returnValue;
 }
@@ -1193,9 +1233,9 @@ static inline jint wrapped_Java_bor_vulkan_khr_WSI_vkQueuePresentKHR0
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_khr_WSI_vkQueuePresentKHR0(JNIEnv* env, jclass clazz, jobject obj__wsi, jobject obj_queue, jobject obj_pPresentInfo) {
-	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi):0);
-	char* queue = (char*)(obj_queue?env->GetDirectBufferAddress(obj_queue):0);
-	char* pPresentInfo = (char*)(obj_pPresentInfo?env->GetDirectBufferAddress(obj_pPresentInfo):0);
+	char* _wsi = (char*)(obj__wsi?env->GetDirectBufferAddress(obj__wsi) : NULL);
+	char* queue = (char*)(obj_queue?env->GetDirectBufferAddress(obj_queue) : NULL);
+	char* pPresentInfo = (char*)(obj_pPresentInfo?env->GetDirectBufferAddress(obj_pPresentInfo) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_khr_WSI_vkQueuePresentKHR0(env, clazz, obj__wsi, obj_queue, obj_pPresentInfo, _wsi, queue, pPresentInfo);
 

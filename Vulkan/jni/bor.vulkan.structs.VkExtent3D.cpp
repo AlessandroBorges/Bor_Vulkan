@@ -4,7 +4,7 @@
 
     #include <BorVulkan.hpp>
     JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkExtent3D_setWidth0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _width) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:231
@@ -26,7 +26,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkExtent3D_getWidth0
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkExtent3D_getWidth0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkExtent3D_getWidth0(env, clazz, obj_ptr, ptr);
 
@@ -35,7 +35,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkExtent3D_getWidth0(JNIEnv* env,
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkExtent3D_setHeight0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _height) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:249
@@ -57,7 +57,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkExtent3D_getHeight0
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkExtent3D_getHeight0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkExtent3D_getHeight0(env, clazz, obj_ptr, ptr);
 
@@ -66,7 +66,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkExtent3D_getHeight0(JNIEnv* env
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkExtent3D_setDepth0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _depth) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:267
@@ -88,7 +88,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkExtent3D_getDepth0
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkExtent3D_getDepth0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkExtent3D_getDepth0(env, clazz, obj_ptr, ptr);
 

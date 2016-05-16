@@ -4,7 +4,7 @@
 
     #include <BorVulkan.hpp>
     JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_setResidencyStandard2DBlockShape0(JNIEnv* env, jclass clazz, jobject obj_ptr, jboolean _residencyStandard2DBlockShape) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:277
@@ -26,7 +26,7 @@ static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceSparsePro
 }
 
 JNIEXPORT jboolean JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_getResidencyStandard2DBlockShape0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jboolean JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_getResidencyStandard2DBlockShape0(env, clazz, obj_ptr, ptr);
 
@@ -35,7 +35,7 @@ JNIEXPORT jboolean JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparsePropert
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_setResidencyStandard2DMultisampleBlockShape0(JNIEnv* env, jclass clazz, jobject obj_ptr, jboolean _residencyStandard2DMultisampleBlockShape) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:295
@@ -57,7 +57,7 @@ static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceSparsePro
 }
 
 JNIEXPORT jboolean JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_getResidencyStandard2DMultisampleBlockShape0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jboolean JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_getResidencyStandard2DMultisampleBlockShape0(env, clazz, obj_ptr, ptr);
 
@@ -66,7 +66,7 @@ JNIEXPORT jboolean JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparsePropert
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_setResidencyStandard3DBlockShape0(JNIEnv* env, jclass clazz, jobject obj_ptr, jboolean _residencyStandard3DBlockShape) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:313
@@ -88,7 +88,7 @@ static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceSparsePro
 }
 
 JNIEXPORT jboolean JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_getResidencyStandard3DBlockShape0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jboolean JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_getResidencyStandard3DBlockShape0(env, clazz, obj_ptr, ptr);
 
@@ -97,7 +97,7 @@ JNIEXPORT jboolean JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparsePropert
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_setResidencyAlignedMipSize0(JNIEnv* env, jclass clazz, jobject obj_ptr, jboolean _residencyAlignedMipSize) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:331
@@ -119,7 +119,7 @@ static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceSparsePro
 }
 
 JNIEXPORT jboolean JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_getResidencyAlignedMipSize0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jboolean JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_getResidencyAlignedMipSize0(env, clazz, obj_ptr, ptr);
 
@@ -128,7 +128,7 @@ JNIEXPORT jboolean JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparsePropert
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_setResidencyNonResidentStrict0(JNIEnv* env, jclass clazz, jobject obj_ptr, jboolean _residencyNonResidentStrict) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:349
@@ -150,7 +150,7 @@ static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceSparsePro
 }
 
 JNIEXPORT jboolean JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_getResidencyNonResidentStrict0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jboolean JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_getResidencyNonResidentStrict0(env, clazz, obj_ptr, ptr);
 

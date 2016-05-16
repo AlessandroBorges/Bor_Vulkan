@@ -4,7 +4,7 @@
 
     #include <BorVulkan.hpp>
     JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_setSType0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _sType) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:326
@@ -26,7 +26,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getST
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getSType0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getSType0(env, clazz, obj_ptr, ptr);
 
@@ -35,8 +35,8 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getSType0
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_setPNext0(JNIEnv* env, jclass clazz, jobject obj_ptr, jobject obj__pNext) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
 //@line:344
@@ -57,7 +57,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getP
 }
 
 JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getPNext0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jlong JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getPNext0(env, clazz, obj_ptr, ptr);
 
@@ -66,7 +66,7 @@ JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getPNext
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_setFlags0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _flags) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:361
@@ -88,7 +88,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getFl
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getFlags0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getFlags0(env, clazz, obj_ptr, ptr);
 
@@ -97,7 +97,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getFlags0
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_setQueueFamilyIndex0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _queueFamilyIndex) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:379
@@ -119,7 +119,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getQu
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getQueueFamilyIndex0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getQueueFamilyIndex0(env, clazz, obj_ptr, ptr);
 
@@ -128,7 +128,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getQueueF
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_setQueueCount0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _queueCount) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:397
@@ -150,7 +150,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getQu
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getQueueCount0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getQueueCount0(env, clazz, obj_ptr, ptr);
 
@@ -159,8 +159,8 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getQueueC
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_setPQueuePriorities0(JNIEnv* env, jclass clazz, jobject obj_ptr, jfloatArray obj__pQueuePriorities, jint len) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	float* _pQueuePriorities = (float*)env->GetPrimitiveArrayCritical(obj__pQueuePriorities, 0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	float* _pQueuePriorities = (float*)(obj__pQueuePriorities ? env->GetFloatArrayElements(obj__pQueuePriorities, 0) : NULL);
 
 
 //@line:415
@@ -177,13 +177,15 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_setPQueue
 		  vkObj->pQueuePriorities = fArray;
 		  vkObj->queueCount = (uint32_t)len;
 	  
-	env->ReleasePrimitiveArrayCritical(obj__pQueuePriorities, _pQueuePriorities, 0);
+	if(obj__pQueuePriorities != NULL){
+		 env->ReleaseFloatArrayElements(obj__pQueuePriorities, (jfloat*)_pQueuePriorities, 0);
+	}
 
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getPQueuePriorities0(JNIEnv* env, jclass clazz, jobject obj_ptr, jfloatArray obj_array) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	float* array = (float*)env->GetPrimitiveArrayCritical(obj_array, 0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	float* array = (float*)(obj_array ? env->GetFloatArrayElements(obj_array, 0) : NULL);
 
 
 //@line:433
@@ -194,7 +196,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getPQueue
 		      array[i] = (jfloat)(vkObj->pQueuePriorities[i]);
 		  }
 	 
-	env->ReleasePrimitiveArrayCritical(obj_array, array, 0);
+	if(obj_array != NULL){
+		 env->ReleaseFloatArrayElements(obj_array, (jfloat*)array, 0);
+	}
 
 }
 

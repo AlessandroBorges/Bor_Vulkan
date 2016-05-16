@@ -38,7 +38,7 @@
 	<!-- define linker and options -->
 	<property name="linker" value="${compilerPrefix}g++${compilerSuffix}"/>
 	<property name="linker-opts" value="-Wl,--kill-at -shared -static -static-libgcc -static-libstdc++ -m64 "/>
-	<property name="libraries" value="-LD:/VulkanSDK/1.0.5.0/Bin -lvulkan-1 "/>
+	<property name="libraries" value=""/>
 	
 	<!-- cleans the build directory, removes all object files and shared libs -->
 	<target name="clean">

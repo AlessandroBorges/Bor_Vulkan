@@ -4,7 +4,7 @@
 
     #include <BorVulkan.hpp>
     JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxImageDimension1D0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxImageDimension1D) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:2916
@@ -26,7 +26,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxImageDimension1D0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxImageDimension1D0(env, clazz, obj_ptr, ptr);
 
@@ -35,7 +35,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxImag
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxImageDimension2D0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxImageDimension2D) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:2934
@@ -57,7 +57,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxImageDimension2D0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxImageDimension2D0(env, clazz, obj_ptr, ptr);
 
@@ -66,7 +66,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxImag
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxImageDimension3D0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxImageDimension3D) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:2952
@@ -88,7 +88,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxImageDimension3D0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxImageDimension3D0(env, clazz, obj_ptr, ptr);
 
@@ -97,7 +97,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxImag
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxImageDimensionCube0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxImageDimensionCube) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:2970
@@ -119,7 +119,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxImageDimensionCube0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxImageDimensionCube0(env, clazz, obj_ptr, ptr);
 
@@ -128,7 +128,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxImag
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxImageArrayLayers0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxImageArrayLayers) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:2988
@@ -150,7 +150,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxImageArrayLayers0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxImageArrayLayers0(env, clazz, obj_ptr, ptr);
 
@@ -159,7 +159,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxImag
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxTexelBufferElements0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxTexelBufferElements) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3006
@@ -181,7 +181,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTexelBufferElements0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTexelBufferElements0(env, clazz, obj_ptr, ptr);
 
@@ -190,7 +190,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTexe
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxUniformBufferRange0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxUniformBufferRange) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3024
@@ -212,7 +212,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxUniformBufferRange0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxUniformBufferRange0(env, clazz, obj_ptr, ptr);
 
@@ -221,7 +221,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxUnif
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxStorageBufferRange0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxStorageBufferRange) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3042
@@ -243,7 +243,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxStorageBufferRange0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxStorageBufferRange0(env, clazz, obj_ptr, ptr);
 
@@ -252,7 +252,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxStor
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxPushConstantsSize0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxPushConstantsSize) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3060
@@ -274,7 +274,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPushConstantsSize0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPushConstantsSize0(env, clazz, obj_ptr, ptr);
 
@@ -283,7 +283,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPush
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxMemoryAllocationCount0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxMemoryAllocationCount) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3078
@@ -305,7 +305,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxMemoryAllocationCount0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxMemoryAllocationCount0(env, clazz, obj_ptr, ptr);
 
@@ -314,7 +314,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxMemo
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxSamplerAllocationCount0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxSamplerAllocationCount) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3096
@@ -336,7 +336,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxSamplerAllocationCount0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxSamplerAllocationCount0(env, clazz, obj_ptr, ptr);
 
@@ -345,7 +345,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxSamp
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setBufferImageGranularity0(JNIEnv* env, jclass clazz, jobject obj_ptr, jlong _bufferImageGranularity) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3114
@@ -367,7 +367,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getBu
 }
 
 JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getBufferImageGranularity0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jlong JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getBufferImageGranularity0(env, clazz, obj_ptr, ptr);
 
@@ -376,7 +376,7 @@ JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getBuffer
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setSparseAddressSpaceSize0(JNIEnv* env, jclass clazz, jobject obj_ptr, jlong _sparseAddressSpaceSize) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3132
@@ -398,7 +398,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSp
 }
 
 JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSparseAddressSpaceSize0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jlong JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSparseAddressSpaceSize0(env, clazz, obj_ptr, ptr);
 
@@ -407,7 +407,7 @@ JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSparse
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxBoundDescriptorSets0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxBoundDescriptorSets) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3150
@@ -429,7 +429,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxBoundDescriptorSets0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxBoundDescriptorSets0(env, clazz, obj_ptr, ptr);
 
@@ -438,7 +438,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxBoun
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxPerStageDescriptorSamplers0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxPerStageDescriptorSamplers) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3168
@@ -460,7 +460,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerStageDescriptorSamplers0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerStageDescriptorSamplers0(env, clazz, obj_ptr, ptr);
 
@@ -469,7 +469,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerS
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxPerStageDescriptorUniformBuffers0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxPerStageDescriptorUniformBuffers) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3186
@@ -491,7 +491,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerStageDescriptorUniformBuffers0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerStageDescriptorUniformBuffers0(env, clazz, obj_ptr, ptr);
 
@@ -500,7 +500,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerS
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxPerStageDescriptorStorageBuffers0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxPerStageDescriptorStorageBuffers) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3204
@@ -522,7 +522,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerStageDescriptorStorageBuffers0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerStageDescriptorStorageBuffers0(env, clazz, obj_ptr, ptr);
 
@@ -531,7 +531,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerS
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxPerStageDescriptorSampledImages0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxPerStageDescriptorSampledImages) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3222
@@ -553,7 +553,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerStageDescriptorSampledImages0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerStageDescriptorSampledImages0(env, clazz, obj_ptr, ptr);
 
@@ -562,7 +562,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerS
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxPerStageDescriptorStorageImages0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxPerStageDescriptorStorageImages) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3240
@@ -584,7 +584,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerStageDescriptorStorageImages0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerStageDescriptorStorageImages0(env, clazz, obj_ptr, ptr);
 
@@ -593,7 +593,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerS
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxPerStageDescriptorInputAttachments0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxPerStageDescriptorInputAttachments) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3258
@@ -615,7 +615,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerStageDescriptorInputAttachments0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerStageDescriptorInputAttachments0(env, clazz, obj_ptr, ptr);
 
@@ -624,7 +624,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerS
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxPerStageResources0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxPerStageResources) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3276
@@ -646,7 +646,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerStageResources0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerStageResources0(env, clazz, obj_ptr, ptr);
 
@@ -655,7 +655,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxPerS
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxDescriptorSetSamplers0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxDescriptorSetSamplers) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3294
@@ -677,7 +677,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDescriptorSetSamplers0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDescriptorSetSamplers0(env, clazz, obj_ptr, ptr);
 
@@ -686,7 +686,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDesc
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxDescriptorSetUniformBuffers0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxDescriptorSetUniformBuffers) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3312
@@ -708,7 +708,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDescriptorSetUniformBuffers0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDescriptorSetUniformBuffers0(env, clazz, obj_ptr, ptr);
 
@@ -717,7 +717,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDesc
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxDescriptorSetUniformBuffersDynamic0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxDescriptorSetUniformBuffersDynamic) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3330
@@ -739,7 +739,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDescriptorSetUniformBuffersDynamic0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDescriptorSetUniformBuffersDynamic0(env, clazz, obj_ptr, ptr);
 
@@ -748,7 +748,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDesc
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxDescriptorSetStorageBuffers0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxDescriptorSetStorageBuffers) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3348
@@ -770,7 +770,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDescriptorSetStorageBuffers0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDescriptorSetStorageBuffers0(env, clazz, obj_ptr, ptr);
 
@@ -779,7 +779,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDesc
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxDescriptorSetStorageBuffersDynamic0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxDescriptorSetStorageBuffersDynamic) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3366
@@ -801,7 +801,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDescriptorSetStorageBuffersDynamic0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDescriptorSetStorageBuffersDynamic0(env, clazz, obj_ptr, ptr);
 
@@ -810,7 +810,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDesc
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxDescriptorSetSampledImages0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxDescriptorSetSampledImages) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3384
@@ -832,7 +832,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDescriptorSetSampledImages0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDescriptorSetSampledImages0(env, clazz, obj_ptr, ptr);
 
@@ -841,7 +841,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDesc
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxDescriptorSetStorageImages0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxDescriptorSetStorageImages) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3402
@@ -863,7 +863,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDescriptorSetStorageImages0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDescriptorSetStorageImages0(env, clazz, obj_ptr, ptr);
 
@@ -872,7 +872,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDesc
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxDescriptorSetInputAttachments0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxDescriptorSetInputAttachments) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3420
@@ -894,7 +894,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDescriptorSetInputAttachments0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDescriptorSetInputAttachments0(env, clazz, obj_ptr, ptr);
 
@@ -903,7 +903,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDesc
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxVertexInputAttributes0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxVertexInputAttributes) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3438
@@ -925,7 +925,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxVertexInputAttributes0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxVertexInputAttributes0(env, clazz, obj_ptr, ptr);
 
@@ -934,7 +934,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxVert
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxVertexInputBindings0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxVertexInputBindings) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3456
@@ -956,7 +956,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxVertexInputBindings0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxVertexInputBindings0(env, clazz, obj_ptr, ptr);
 
@@ -965,7 +965,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxVert
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxVertexInputAttributeOffset0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxVertexInputAttributeOffset) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3474
@@ -987,7 +987,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxVertexInputAttributeOffset0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxVertexInputAttributeOffset0(env, clazz, obj_ptr, ptr);
 
@@ -996,7 +996,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxVert
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxVertexInputBindingStride0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxVertexInputBindingStride) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3492
@@ -1018,7 +1018,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxVertexInputBindingStride0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxVertexInputBindingStride0(env, clazz, obj_ptr, ptr);
 
@@ -1027,7 +1027,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxVert
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxVertexOutputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxVertexOutputComponents) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3510
@@ -1049,7 +1049,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxVertexOutputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxVertexOutputComponents0(env, clazz, obj_ptr, ptr);
 
@@ -1058,7 +1058,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxVert
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxTessellationGenerationLevel0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxTessellationGenerationLevel) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3528
@@ -1080,7 +1080,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTessellationGenerationLevel0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTessellationGenerationLevel0(env, clazz, obj_ptr, ptr);
 
@@ -1089,7 +1089,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTess
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxTessellationPatchSize0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxTessellationPatchSize) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3546
@@ -1111,7 +1111,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTessellationPatchSize0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTessellationPatchSize0(env, clazz, obj_ptr, ptr);
 
@@ -1120,7 +1120,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTess
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxTessellationControlPerVertexInputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxTessellationControlPerVertexInputComponents) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3564
@@ -1142,7 +1142,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTessellationControlPerVertexInputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTessellationControlPerVertexInputComponents0(env, clazz, obj_ptr, ptr);
 
@@ -1151,7 +1151,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTess
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxTessellationControlPerVertexOutputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxTessellationControlPerVertexOutputComponents) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3582
@@ -1173,7 +1173,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTessellationControlPerVertexOutputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTessellationControlPerVertexOutputComponents0(env, clazz, obj_ptr, ptr);
 
@@ -1182,7 +1182,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTess
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxTessellationControlPerPatchOutputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxTessellationControlPerPatchOutputComponents) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3600
@@ -1204,7 +1204,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTessellationControlPerPatchOutputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTessellationControlPerPatchOutputComponents0(env, clazz, obj_ptr, ptr);
 
@@ -1213,7 +1213,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTess
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxTessellationControlTotalOutputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxTessellationControlTotalOutputComponents) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3618
@@ -1235,7 +1235,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTessellationControlTotalOutputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTessellationControlTotalOutputComponents0(env, clazz, obj_ptr, ptr);
 
@@ -1244,7 +1244,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTess
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxTessellationEvaluationInputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxTessellationEvaluationInputComponents) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3636
@@ -1266,7 +1266,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTessellationEvaluationInputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTessellationEvaluationInputComponents0(env, clazz, obj_ptr, ptr);
 
@@ -1275,7 +1275,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTess
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxTessellationEvaluationOutputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxTessellationEvaluationOutputComponents) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3654
@@ -1297,7 +1297,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTessellationEvaluationOutputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTessellationEvaluationOutputComponents0(env, clazz, obj_ptr, ptr);
 
@@ -1306,7 +1306,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTess
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxGeometryShaderInvocations0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxGeometryShaderInvocations) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3672
@@ -1328,7 +1328,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxGeometryShaderInvocations0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxGeometryShaderInvocations0(env, clazz, obj_ptr, ptr);
 
@@ -1337,7 +1337,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxGeom
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxGeometryInputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxGeometryInputComponents) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3690
@@ -1359,7 +1359,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxGeometryInputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxGeometryInputComponents0(env, clazz, obj_ptr, ptr);
 
@@ -1368,7 +1368,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxGeom
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxGeometryOutputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxGeometryOutputComponents) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3708
@@ -1390,7 +1390,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxGeometryOutputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxGeometryOutputComponents0(env, clazz, obj_ptr, ptr);
 
@@ -1399,7 +1399,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxGeom
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxGeometryOutputVertices0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxGeometryOutputVertices) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3726
@@ -1421,7 +1421,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxGeometryOutputVertices0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxGeometryOutputVertices0(env, clazz, obj_ptr, ptr);
 
@@ -1430,7 +1430,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxGeom
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxGeometryTotalOutputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxGeometryTotalOutputComponents) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3744
@@ -1452,7 +1452,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxGeometryTotalOutputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxGeometryTotalOutputComponents0(env, clazz, obj_ptr, ptr);
 
@@ -1461,7 +1461,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxGeom
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxFragmentInputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxFragmentInputComponents) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3762
@@ -1483,7 +1483,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFragmentInputComponents0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFragmentInputComponents0(env, clazz, obj_ptr, ptr);
 
@@ -1492,7 +1492,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFrag
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxFragmentOutputAttachments0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxFragmentOutputAttachments) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3780
@@ -1514,7 +1514,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFragmentOutputAttachments0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFragmentOutputAttachments0(env, clazz, obj_ptr, ptr);
 
@@ -1523,7 +1523,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFrag
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxFragmentDualSrcAttachments0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxFragmentDualSrcAttachments) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3798
@@ -1545,7 +1545,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFragmentDualSrcAttachments0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFragmentDualSrcAttachments0(env, clazz, obj_ptr, ptr);
 
@@ -1554,7 +1554,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFrag
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxFragmentCombinedOutputResources0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxFragmentCombinedOutputResources) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3816
@@ -1576,7 +1576,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFragmentCombinedOutputResources0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFragmentCombinedOutputResources0(env, clazz, obj_ptr, ptr);
 
@@ -1585,7 +1585,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFrag
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxComputeSharedMemorySize0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxComputeSharedMemorySize) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3834
@@ -1607,7 +1607,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxComputeSharedMemorySize0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxComputeSharedMemorySize0(env, clazz, obj_ptr, ptr);
 
@@ -1616,8 +1616,8 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxComp
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxComputeWorkGroupCount0(JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__maxComputeWorkGroupCount) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	int* _maxComputeWorkGroupCount = (int*)env->GetPrimitiveArrayCritical(obj__maxComputeWorkGroupCount, 0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	int* _maxComputeWorkGroupCount = (int*)(obj__maxComputeWorkGroupCount ? env->GetIntArrayElements(obj__maxComputeWorkGroupCount, 0) : NULL);
 
 
 //@line:3853
@@ -1627,13 +1627,15 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxComp
 		  vkObj->maxComputeWorkGroupCount[1] = (uint32_t) _maxComputeWorkGroupCount[1];
 		  vkObj->maxComputeWorkGroupCount[2] = (uint32_t) _maxComputeWorkGroupCount[2];
 	  
-	env->ReleasePrimitiveArrayCritical(obj__maxComputeWorkGroupCount, _maxComputeWorkGroupCount, 0);
+	if(obj__maxComputeWorkGroupCount != NULL){
+		 env->ReleaseIntArrayElements(obj__maxComputeWorkGroupCount, (jint*)_maxComputeWorkGroupCount, 0);
+	}
 
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxComputeWorkGroupCount0(JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj_input) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	int* input = (int*)env->GetPrimitiveArrayCritical(obj_input, 0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	int* input = (int*)(obj_input ? env->GetIntArrayElements(obj_input, 0) : NULL);
 
 
 //@line:3864
@@ -1643,12 +1645,14 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxComp
 		     input[i] = (jint) vkObj->maxComputeWorkGroupCount[i];
 		  }
 	 
-	env->ReleasePrimitiveArrayCritical(obj_input, input, 0);
+	if(obj_input != NULL){
+		 env->ReleaseIntArrayElements(obj_input, (jint*)input, 0);
+	}
 
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxComputeWorkGroupInvocations0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxComputeWorkGroupInvocations) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3875
@@ -1670,7 +1674,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxComputeWorkGroupInvocations0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxComputeWorkGroupInvocations0(env, clazz, obj_ptr, ptr);
 
@@ -1679,8 +1683,8 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxComp
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxComputeWorkGroupSize0(JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__maxComputeWorkGroupSize) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	int* _maxComputeWorkGroupSize = (int*)env->GetPrimitiveArrayCritical(obj__maxComputeWorkGroupSize, 0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	int* _maxComputeWorkGroupSize = (int*)(obj__maxComputeWorkGroupSize ? env->GetIntArrayElements(obj__maxComputeWorkGroupSize, 0) : NULL);
 
 
 //@line:3893
@@ -1690,7 +1694,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxComp
 		  vkObj->maxComputeWorkGroupSize[1] = (uint32_t) (_maxComputeWorkGroupSize[1]);
 		  vkObj->maxComputeWorkGroupSize[2] = (uint32_t) (_maxComputeWorkGroupSize[2]);
 	  
-	env->ReleasePrimitiveArrayCritical(obj__maxComputeWorkGroupSize, _maxComputeWorkGroupSize, 0);
+	if(obj__maxComputeWorkGroupSize != NULL){
+		 env->ReleaseIntArrayElements(obj__maxComputeWorkGroupSize, (jint*)_maxComputeWorkGroupSize, 0);
+	}
 
 }
 
@@ -1708,18 +1714,20 @@ static inline void wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxComputeWorkGroupSize0(JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj_input) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	int* input = (int*)env->GetPrimitiveArrayCritical(obj_input, 0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	int* input = (int*)(obj_input ? env->GetIntArrayElements(obj_input, 0) : NULL);
 
 	wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxComputeWorkGroupSize0(env, clazz, obj_ptr, obj_input, ptr, input);
 
-	env->ReleasePrimitiveArrayCritical(obj_input, input, 0);
+	if(obj_input != NULL){
+		 env->ReleaseIntArrayElements(obj_input, (jint*)input, 0);
+	}
 
 	return;
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setSubPixelPrecisionBits0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _subPixelPrecisionBits) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3916
@@ -1741,7 +1749,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSub
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSubPixelPrecisionBits0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSubPixelPrecisionBits0(env, clazz, obj_ptr, ptr);
 
@@ -1750,7 +1758,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSubPixe
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setSubTexelPrecisionBits0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _subTexelPrecisionBits) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3934
@@ -1772,7 +1780,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSub
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSubTexelPrecisionBits0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSubTexelPrecisionBits0(env, clazz, obj_ptr, ptr);
 
@@ -1781,7 +1789,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSubTexe
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMipmapPrecisionBits0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _mipmapPrecisionBits) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3952
@@ -1803,7 +1811,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMip
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMipmapPrecisionBits0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMipmapPrecisionBits0(env, clazz, obj_ptr, ptr);
 
@@ -1812,7 +1820,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMipmapP
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxDrawIndexedIndexValue0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxDrawIndexedIndexValue) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3970
@@ -1834,7 +1842,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDrawIndexedIndexValue0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDrawIndexedIndexValue0(env, clazz, obj_ptr, ptr);
 
@@ -1843,7 +1851,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDraw
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxDrawIndirectCount0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxDrawIndirectCount) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:3988
@@ -1865,7 +1873,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDrawIndirectCount0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDrawIndirectCount0(env, clazz, obj_ptr, ptr);
 
@@ -1874,7 +1882,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxDraw
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxSamplerLodBias0(JNIEnv* env, jclass clazz, jobject obj_ptr, jfloat _maxSamplerLodBias) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4006
@@ -1896,7 +1904,7 @@ static inline jfloat wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getM
 }
 
 JNIEXPORT jfloat JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxSamplerLodBias0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jfloat JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxSamplerLodBias0(env, clazz, obj_ptr, ptr);
 
@@ -1905,7 +1913,7 @@ JNIEXPORT jfloat JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxSa
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxSamplerAnisotropy0(JNIEnv* env, jclass clazz, jobject obj_ptr, jfloat _maxSamplerAnisotropy) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4024
@@ -1927,7 +1935,7 @@ static inline jfloat wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getM
 }
 
 JNIEXPORT jfloat JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxSamplerAnisotropy0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jfloat JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxSamplerAnisotropy0(env, clazz, obj_ptr, ptr);
 
@@ -1936,7 +1944,7 @@ JNIEXPORT jfloat JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxSa
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxViewports0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxViewports) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4042
@@ -1958,7 +1966,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxViewports0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxViewports0(env, clazz, obj_ptr, ptr);
 
@@ -1967,8 +1975,8 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxView
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxViewportDimensions0(JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__maxViewportDimensions) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	int* _maxViewportDimensions = (int*)env->GetPrimitiveArrayCritical(obj__maxViewportDimensions, 0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	int* _maxViewportDimensions = (int*)(obj__maxViewportDimensions ? env->GetIntArrayElements(obj__maxViewportDimensions, 0) : NULL);
 
 
 //@line:4060
@@ -1977,13 +1985,15 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxView
 		  vkObj->maxViewportDimensions[0] = (uint32_t) (_maxViewportDimensions[0]);
 		  vkObj->maxViewportDimensions[1] = (uint32_t) (_maxViewportDimensions[1]);
 	  
-	env->ReleasePrimitiveArrayCritical(obj__maxViewportDimensions, _maxViewportDimensions, 0);
+	if(obj__maxViewportDimensions != NULL){
+		 env->ReleaseIntArrayElements(obj__maxViewportDimensions, (jint*)_maxViewportDimensions, 0);
+	}
 
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxViewportDimensions0(JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj_input) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	int* input = (int*)env->GetPrimitiveArrayCritical(obj_input, 0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	int* input = (int*)(obj_input ? env->GetIntArrayElements(obj_input, 0) : NULL);
 
 
 //@line:4070
@@ -1992,13 +2002,15 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxView
 		  input[0] = (jint) (vkObj->maxViewportDimensions[0]);
 		  input[1] = (jint) (vkObj->maxViewportDimensions[1]);
 	 
-	env->ReleasePrimitiveArrayCritical(obj_input, input, 0);
+	if(obj_input != NULL){
+		 env->ReleaseIntArrayElements(obj_input, (jint*)input, 0);
+	}
 
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setViewportBoundsRange0(JNIEnv* env, jclass clazz, jobject obj_ptr, jfloatArray obj__viewportBoundsRange) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	float* _viewportBoundsRange = (float*)env->GetPrimitiveArrayCritical(obj__viewportBoundsRange, 0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	float* _viewportBoundsRange = (float*)(obj__viewportBoundsRange ? env->GetFloatArrayElements(obj__viewportBoundsRange, 0) : NULL);
 
 
 //@line:4080
@@ -2007,13 +2019,15 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setViewpor
 		  vkObj->viewportBoundsRange[0] = (float) (_viewportBoundsRange[0]);
 		  vkObj->viewportBoundsRange[1] = (float) (_viewportBoundsRange[1]);
 	  
-	env->ReleasePrimitiveArrayCritical(obj__viewportBoundsRange, _viewportBoundsRange, 0);
+	if(obj__viewportBoundsRange != NULL){
+		 env->ReleaseFloatArrayElements(obj__viewportBoundsRange, (jfloat*)_viewportBoundsRange, 0);
+	}
 
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getViewportBoundsRange0(JNIEnv* env, jclass clazz, jobject obj_ptr, jfloatArray obj_input) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	float* input = (float*)env->GetPrimitiveArrayCritical(obj_input, 0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	float* input = (float*)(obj_input ? env->GetFloatArrayElements(obj_input, 0) : NULL);
 
 
 //@line:4090
@@ -2022,12 +2036,14 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getViewpor
 		  input[0] = (jfloat) (vkObj->viewportBoundsRange[0]);
 		  input[1] = (jfloat) (vkObj->viewportBoundsRange[1]);
 	 
-	env->ReleasePrimitiveArrayCritical(obj_input, input, 0);
+	if(obj_input != NULL){
+		 env->ReleaseFloatArrayElements(obj_input, (jfloat*)input, 0);
+	}
 
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setViewportSubPixelBits0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _viewportSubPixelBits) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4100
@@ -2049,7 +2065,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getVie
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getViewportSubPixelBits0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getViewportSubPixelBits0(env, clazz, obj_ptr, ptr);
 
@@ -2058,7 +2074,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getViewpor
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMinMemoryMapAlignment0(JNIEnv* env, jclass clazz, jobject obj_ptr, jlong _minMemoryMapAlignment) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4118
@@ -2080,7 +2096,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMi
 }
 
 JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinMemoryMapAlignment0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jlong JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinMemoryMapAlignment0(env, clazz, obj_ptr, ptr);
 
@@ -2089,7 +2105,7 @@ JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinMem
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMinTexelBufferOffsetAlignment0(JNIEnv* env, jclass clazz, jobject obj_ptr, jlong _minTexelBufferOffsetAlignment) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4136
@@ -2111,7 +2127,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMi
 }
 
 JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinTexelBufferOffsetAlignment0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jlong JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinTexelBufferOffsetAlignment0(env, clazz, obj_ptr, ptr);
 
@@ -2120,7 +2136,7 @@ JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinTex
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMinUniformBufferOffsetAlignment0(JNIEnv* env, jclass clazz, jobject obj_ptr, jlong _minUniformBufferOffsetAlignment) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4154
@@ -2142,7 +2158,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMi
 }
 
 JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinUniformBufferOffsetAlignment0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jlong JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinUniformBufferOffsetAlignment0(env, clazz, obj_ptr, ptr);
 
@@ -2151,7 +2167,7 @@ JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinUni
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMinStorageBufferOffsetAlignment0(JNIEnv* env, jclass clazz, jobject obj_ptr, jlong _minStorageBufferOffsetAlignment) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4172
@@ -2173,7 +2189,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMi
 }
 
 JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinStorageBufferOffsetAlignment0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jlong JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinStorageBufferOffsetAlignment0(env, clazz, obj_ptr, ptr);
 
@@ -2182,7 +2198,7 @@ JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinSto
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMinTexelOffset0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _minTexelOffset) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4190
@@ -2204,7 +2220,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMin
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinTexelOffset0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinTexelOffset0(env, clazz, obj_ptr, ptr);
 
@@ -2213,7 +2229,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinTexe
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxTexelOffset0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxTexelOffset) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4208
@@ -2235,7 +2251,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTexelOffset0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTexelOffset0(env, clazz, obj_ptr, ptr);
 
@@ -2244,7 +2260,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTexe
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMinTexelGatherOffset0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _minTexelGatherOffset) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4226
@@ -2266,7 +2282,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMin
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinTexelGatherOffset0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinTexelGatherOffset0(env, clazz, obj_ptr, ptr);
 
@@ -2275,7 +2291,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinTexe
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxTexelGatherOffset0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxTexelGatherOffset) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4244
@@ -2297,7 +2313,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTexelGatherOffset0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTexelGatherOffset0(env, clazz, obj_ptr, ptr);
 
@@ -2306,7 +2322,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxTexe
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMinInterpolationOffset0(JNIEnv* env, jclass clazz, jobject obj_ptr, jfloat _minInterpolationOffset) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4262
@@ -2328,7 +2344,7 @@ static inline jfloat wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getM
 }
 
 JNIEXPORT jfloat JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinInterpolationOffset0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jfloat JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinInterpolationOffset0(env, clazz, obj_ptr, ptr);
 
@@ -2337,7 +2353,7 @@ JNIEXPORT jfloat JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMinIn
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxInterpolationOffset0(JNIEnv* env, jclass clazz, jobject obj_ptr, jfloat _maxInterpolationOffset) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4280
@@ -2359,7 +2375,7 @@ static inline jfloat wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getM
 }
 
 JNIEXPORT jfloat JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxInterpolationOffset0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jfloat JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxInterpolationOffset0(env, clazz, obj_ptr, ptr);
 
@@ -2368,7 +2384,7 @@ JNIEXPORT jfloat JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxIn
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setSubPixelInterpolationOffsetBits0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _subPixelInterpolationOffsetBits) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4298
@@ -2390,7 +2406,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSub
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSubPixelInterpolationOffsetBits0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSubPixelInterpolationOffsetBits0(env, clazz, obj_ptr, ptr);
 
@@ -2399,7 +2415,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSubPixe
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxFramebufferWidth0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxFramebufferWidth) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4316
@@ -2421,7 +2437,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFramebufferWidth0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFramebufferWidth0(env, clazz, obj_ptr, ptr);
 
@@ -2430,7 +2446,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFram
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxFramebufferHeight0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxFramebufferHeight) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4334
@@ -2452,7 +2468,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFramebufferHeight0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFramebufferHeight0(env, clazz, obj_ptr, ptr);
 
@@ -2461,7 +2477,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFram
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxFramebufferLayers0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxFramebufferLayers) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4352
@@ -2483,7 +2499,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFramebufferLayers0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFramebufferLayers0(env, clazz, obj_ptr, ptr);
 
@@ -2492,7 +2508,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxFram
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setFramebufferColorSampleCounts0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _framebufferColorSampleCounts) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4370
@@ -2514,7 +2530,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getFra
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getFramebufferColorSampleCounts0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getFramebufferColorSampleCounts0(env, clazz, obj_ptr, ptr);
 
@@ -2523,7 +2539,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getFramebu
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setFramebufferDepthSampleCounts0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _framebufferDepthSampleCounts) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4388
@@ -2545,7 +2561,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getFra
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getFramebufferDepthSampleCounts0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getFramebufferDepthSampleCounts0(env, clazz, obj_ptr, ptr);
 
@@ -2554,7 +2570,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getFramebu
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setFramebufferStencilSampleCounts0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _framebufferStencilSampleCounts) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4406
@@ -2576,7 +2592,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getFra
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getFramebufferStencilSampleCounts0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getFramebufferStencilSampleCounts0(env, clazz, obj_ptr, ptr);
 
@@ -2585,7 +2601,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getFramebu
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setFramebufferNoAttachmentsSampleCounts0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _framebufferNoAttachmentsSampleCounts) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4424
@@ -2607,7 +2623,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getFra
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getFramebufferNoAttachmentsSampleCounts0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getFramebufferNoAttachmentsSampleCounts0(env, clazz, obj_ptr, ptr);
 
@@ -2616,7 +2632,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getFramebu
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxColorAttachments0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxColorAttachments) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4442
@@ -2638,7 +2654,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxColorAttachments0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxColorAttachments0(env, clazz, obj_ptr, ptr);
 
@@ -2647,7 +2663,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxColo
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setSampledImageColorSampleCounts0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _sampledImageColorSampleCounts) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4460
@@ -2669,7 +2685,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSam
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSampledImageColorSampleCounts0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSampledImageColorSampleCounts0(env, clazz, obj_ptr, ptr);
 
@@ -2678,7 +2694,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSampled
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setSampledImageIntegerSampleCounts0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _sampledImageIntegerSampleCounts) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4478
@@ -2700,7 +2716,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSam
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSampledImageIntegerSampleCounts0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSampledImageIntegerSampleCounts0(env, clazz, obj_ptr, ptr);
 
@@ -2709,7 +2725,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSampled
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setSampledImageDepthSampleCounts0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _sampledImageDepthSampleCounts) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4496
@@ -2731,7 +2747,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSam
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSampledImageDepthSampleCounts0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSampledImageDepthSampleCounts0(env, clazz, obj_ptr, ptr);
 
@@ -2740,7 +2756,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSampled
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setSampledImageStencilSampleCounts0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _sampledImageStencilSampleCounts) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4514
@@ -2762,7 +2778,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSam
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSampledImageStencilSampleCounts0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSampledImageStencilSampleCounts0(env, clazz, obj_ptr, ptr);
 
@@ -2771,7 +2787,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSampled
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setStorageImageSampleCounts0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _storageImageSampleCounts) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4532
@@ -2793,7 +2809,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSto
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getStorageImageSampleCounts0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getStorageImageSampleCounts0(env, clazz, obj_ptr, ptr);
 
@@ -2802,7 +2818,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getStorage
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxSampleMaskWords0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxSampleMaskWords) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4550
@@ -2824,7 +2840,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxSampleMaskWords0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxSampleMaskWords0(env, clazz, obj_ptr, ptr);
 
@@ -2833,7 +2849,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxSamp
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setTimestampComputeAndGraphics0(JNIEnv* env, jclass clazz, jobject obj_ptr, jboolean _timestampComputeAndGraphics) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4568
@@ -2855,7 +2871,7 @@ static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_ge
 }
 
 JNIEXPORT jboolean JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getTimestampComputeAndGraphics0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jboolean JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getTimestampComputeAndGraphics0(env, clazz, obj_ptr, ptr);
 
@@ -2864,7 +2880,7 @@ JNIEXPORT jboolean JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getTim
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setTimestampPeriod0(JNIEnv* env, jclass clazz, jobject obj_ptr, jfloat _timestampPeriod) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4586
@@ -2886,7 +2902,7 @@ static inline jfloat wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getT
 }
 
 JNIEXPORT jfloat JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getTimestampPeriod0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jfloat JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getTimestampPeriod0(env, clazz, obj_ptr, ptr);
 
@@ -2895,7 +2911,7 @@ JNIEXPORT jfloat JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getTimes
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxClipDistances0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxClipDistances) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4604
@@ -2917,7 +2933,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxClipDistances0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxClipDistances0(env, clazz, obj_ptr, ptr);
 
@@ -2926,7 +2942,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxClip
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxCullDistances0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxCullDistances) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4622
@@ -2948,7 +2964,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxCullDistances0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxCullDistances0(env, clazz, obj_ptr, ptr);
 
@@ -2957,7 +2973,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxCull
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxCombinedClipAndCullDistances0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _maxCombinedClipAndCullDistances) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4640
@@ -2979,7 +2995,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMax
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxCombinedClipAndCullDistances0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxCombinedClipAndCullDistances0(env, clazz, obj_ptr, ptr);
 
@@ -2988,7 +3004,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxComb
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setDiscreteQueuePriorities0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _discreteQueuePriorities) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4658
@@ -3010,7 +3026,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getDis
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getDiscreteQueuePriorities0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getDiscreteQueuePriorities0(env, clazz, obj_ptr, ptr);
 
@@ -3019,8 +3035,8 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getDiscret
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setPointSizeRange0(JNIEnv* env, jclass clazz, jobject obj_ptr, jfloatArray obj__pointSizeRange) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	float* _pointSizeRange = (float*)env->GetPrimitiveArrayCritical(obj__pointSizeRange, 0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	float* _pointSizeRange = (float*)(obj__pointSizeRange ? env->GetFloatArrayElements(obj__pointSizeRange, 0) : NULL);
 
 
 //@line:4676
@@ -3029,13 +3045,15 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setPointSi
 		  vkObj->pointSizeRange[0] = (float) (_pointSizeRange[0]);
 		  vkObj->pointSizeRange[1] = (float) (_pointSizeRange[1]);		  
 	  
-	env->ReleasePrimitiveArrayCritical(obj__pointSizeRange, _pointSizeRange, 0);
+	if(obj__pointSizeRange != NULL){
+		 env->ReleaseFloatArrayElements(obj__pointSizeRange, (jfloat*)_pointSizeRange, 0);
+	}
 
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getPointSizeRange0(JNIEnv* env, jclass clazz, jobject obj_ptr, jfloatArray obj_input) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	float* input = (float*)env->GetPrimitiveArrayCritical(obj_input, 0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	float* input = (float*)(obj_input ? env->GetFloatArrayElements(obj_input, 0) : NULL);
 
 
 //@line:4686
@@ -3044,13 +3062,15 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getPointSi
 		  input[0] = (jfloat) (vkObj->pointSizeRange[0]);
 		  input[1] = (jfloat) (vkObj->pointSizeRange[1]);
 	 
-	env->ReleasePrimitiveArrayCritical(obj_input, input, 0);
+	if(obj_input != NULL){
+		 env->ReleaseFloatArrayElements(obj_input, (jfloat*)input, 0);
+	}
 
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setLineWidthRange0(JNIEnv* env, jclass clazz, jobject obj_ptr, jfloatArray obj__lineWidthRange) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	float* _lineWidthRange = (float*)env->GetPrimitiveArrayCritical(obj__lineWidthRange, 0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	float* _lineWidthRange = (float*)(obj__lineWidthRange ? env->GetFloatArrayElements(obj__lineWidthRange, 0) : NULL);
 
 
 //@line:4696
@@ -3059,13 +3079,15 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setLineWid
 		  vkObj->lineWidthRange[0] = (float) (_lineWidthRange[0]);
 		  vkObj->lineWidthRange[1] = (float) (_lineWidthRange[1]);
 	  
-	env->ReleasePrimitiveArrayCritical(obj__lineWidthRange, _lineWidthRange, 0);
+	if(obj__lineWidthRange != NULL){
+		 env->ReleaseFloatArrayElements(obj__lineWidthRange, (jfloat*)_lineWidthRange, 0);
+	}
 
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getLineWidthRange0(JNIEnv* env, jclass clazz, jobject obj_ptr, jfloatArray obj_input) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	float* input = (float*)env->GetPrimitiveArrayCritical(obj_input, 0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	float* input = (float*)(obj_input ? env->GetFloatArrayElements(obj_input, 0) : NULL);
 
 
 //@line:4706
@@ -3074,12 +3096,14 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getLineWid
 		  input[0] = (jfloat) (vkObj->lineWidthRange[0]);
 		  input[1] = (jfloat) (vkObj->lineWidthRange[1]);
 	 
-	env->ReleasePrimitiveArrayCritical(obj_input, input, 0);
+	if(obj_input != NULL){
+		 env->ReleaseFloatArrayElements(obj_input, (jfloat*)input, 0);
+	}
 
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setPointSizeGranularity0(JNIEnv* env, jclass clazz, jobject obj_ptr, jfloat _pointSizeGranularity) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4716
@@ -3101,7 +3125,7 @@ static inline jfloat wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getP
 }
 
 JNIEXPORT jfloat JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getPointSizeGranularity0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jfloat JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getPointSizeGranularity0(env, clazz, obj_ptr, ptr);
 
@@ -3110,7 +3134,7 @@ JNIEXPORT jfloat JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getPoint
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setLineWidthGranularity0(JNIEnv* env, jclass clazz, jobject obj_ptr, jfloat _lineWidthGranularity) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4734
@@ -3132,7 +3156,7 @@ static inline jfloat wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getL
 }
 
 JNIEXPORT jfloat JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getLineWidthGranularity0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jfloat JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getLineWidthGranularity0(env, clazz, obj_ptr, ptr);
 
@@ -3141,7 +3165,7 @@ JNIEXPORT jfloat JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getLineW
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setStrictLines0(JNIEnv* env, jclass clazz, jobject obj_ptr, jboolean _strictLines) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4752
@@ -3163,7 +3187,7 @@ static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_ge
 }
 
 JNIEXPORT jboolean JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getStrictLines0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jboolean JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getStrictLines0(env, clazz, obj_ptr, ptr);
 
@@ -3172,7 +3196,7 @@ JNIEXPORT jboolean JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getStr
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setStandardSampleLocations0(JNIEnv* env, jclass clazz, jobject obj_ptr, jboolean _standardSampleLocations) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4770
@@ -3194,7 +3218,7 @@ static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_ge
 }
 
 JNIEXPORT jboolean JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getStandardSampleLocations0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jboolean JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getStandardSampleLocations0(env, clazz, obj_ptr, ptr);
 
@@ -3203,7 +3227,7 @@ JNIEXPORT jboolean JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getSta
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setOptimalBufferCopyOffsetAlignment0(JNIEnv* env, jclass clazz, jobject obj_ptr, jlong _optimalBufferCopyOffsetAlignment) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4788
@@ -3225,7 +3249,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getOp
 }
 
 JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getOptimalBufferCopyOffsetAlignment0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jlong JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getOptimalBufferCopyOffsetAlignment0(env, clazz, obj_ptr, ptr);
 
@@ -3234,7 +3258,7 @@ JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getOptima
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setOptimalBufferCopyRowPitchAlignment0(JNIEnv* env, jclass clazz, jobject obj_ptr, jlong _optimalBufferCopyRowPitchAlignment) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4806
@@ -3256,7 +3280,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getOp
 }
 
 JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getOptimalBufferCopyRowPitchAlignment0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jlong JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getOptimalBufferCopyRowPitchAlignment0(env, clazz, obj_ptr, ptr);
 
@@ -3265,7 +3289,7 @@ JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getOptima
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setNonCoherentAtomSize0(JNIEnv* env, jclass clazz, jobject obj_ptr, jlong _nonCoherentAtomSize) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:4824
@@ -3287,7 +3311,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getNo
 }
 
 JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getNonCoherentAtomSize0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jlong JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getNonCoherentAtomSize0(env, clazz, obj_ptr, ptr);
 

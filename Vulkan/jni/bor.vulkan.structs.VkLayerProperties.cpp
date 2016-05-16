@@ -4,8 +4,8 @@
 
     #include <BorVulkan.hpp>
     JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkLayerProperties_setLayerName0(JNIEnv* env, jclass clazz, jobject obj_ptr, jstring obj_layerName) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	char* layerName = (char*)env->GetStringUTFChars(obj_layerName, 0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	char* layerName = (char*)(obj_layerName ? env->GetStringUTFChars(obj_layerName, 0) : NULL);
 
 
 //@line:272
@@ -14,7 +14,9 @@
 		  memcpy ( vkObj->layerName, layerName, strlen(layerName)+1 );
 		  //vkObj->layerName = (char[]) (_layerName);
 	  
-	env->ReleaseStringUTFChars(obj_layerName, layerName);
+	 if(obj_layerName != NULL){
+		 env->ReleaseStringUTFChars(obj_layerName, layerName);
+	 }
 
 }
 
@@ -28,7 +30,7 @@ static inline jstring wrapped_Java_bor_vulkan_structs_VkLayerProperties_getLayer
 }
 
 JNIEXPORT jstring JNICALL Java_bor_vulkan_structs_VkLayerProperties_getLayerName0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jstring JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkLayerProperties_getLayerName0(env, clazz, obj_ptr, ptr);
 
@@ -37,7 +39,7 @@ JNIEXPORT jstring JNICALL Java_bor_vulkan_structs_VkLayerProperties_getLayerName
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkLayerProperties_setSpecVersion0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _specVersion) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:290
@@ -59,7 +61,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkLayerProperties_getSpecVers
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkLayerProperties_getSpecVersion0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkLayerProperties_getSpecVersion0(env, clazz, obj_ptr, ptr);
 
@@ -68,7 +70,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkLayerProperties_getSpecVersion0
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkLayerProperties_setImplementationVersion0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _implementationVersion) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:308
@@ -90,7 +92,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkLayerProperties_getImplemen
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkLayerProperties_getImplementationVersion0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkLayerProperties_getImplementationVersion0(env, clazz, obj_ptr, ptr);
 
@@ -123,7 +125,7 @@ static inline jstring wrapped_Java_bor_vulkan_structs_VkLayerProperties_getDescr
 }
 
 JNIEXPORT jstring JNICALL Java_bor_vulkan_structs_VkLayerProperties_getDescription0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jstring JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkLayerProperties_getDescription0(env, clazz, obj_ptr, ptr);
 

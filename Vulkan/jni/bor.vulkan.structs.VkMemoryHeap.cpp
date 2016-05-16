@@ -4,7 +4,7 @@
 
     #include <BorVulkan.hpp>
     JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMemoryHeap_setSize0(JNIEnv* env, jclass clazz, jobject obj_ptr, jlong _size) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:202
@@ -26,7 +26,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkMemoryHeap_getSize0
 }
 
 JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkMemoryHeap_getSize0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jlong JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkMemoryHeap_getSize0(env, clazz, obj_ptr, ptr);
 
@@ -35,7 +35,7 @@ JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkMemoryHeap_getSize0(JNIEnv* en
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMemoryHeap_setFlags0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _flags) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:220
@@ -57,7 +57,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkMemoryHeap_getFlags0
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkMemoryHeap_getFlags0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkMemoryHeap_getFlags0(env, clazz, obj_ptr, ptr);
 

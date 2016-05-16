@@ -360,10 +360,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setPpEnabled
 /*
  * Class:     bor_vulkan_structs_VkInstanceCreateInfo
  * Method:    getPpEnabledLayerNames0
- * Signature: (Ljava/nio/Buffer;)[Ljava/lang/String;
+ * Signature: (Ljava/nio/Buffer;[Ljava/lang/String;)V
  */
-JNIEXPORT jobjectArray JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_getPpEnabledLayerNames0
-  (JNIEnv *, jclass, jobject);
+JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_getPpEnabledLayerNames0
+  (JNIEnv *, jclass, jobject, jobjectArray);
 
 /*
  * Class:     bor_vulkan_structs_VkInstanceCreateInfo
@@ -392,10 +392,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_setPpEnabled
 /*
  * Class:     bor_vulkan_structs_VkInstanceCreateInfo
  * Method:    getPpEnabledExtensionNames0
- * Signature: (Ljava/nio/Buffer;)[Ljava/lang/String;
+ * Signature: (Ljava/nio/Buffer;[Ljava/lang/String;)V
  */
-JNIEXPORT jobjectArray JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_getPpEnabledExtensionNames0
-  (JNIEnv *, jclass, jobject);
+JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkInstanceCreateInfo_getPpEnabledExtensionNames0
+  (JNIEnv *, jclass, jobject, jobjectArray);
 
 #ifdef __cplusplus
 }

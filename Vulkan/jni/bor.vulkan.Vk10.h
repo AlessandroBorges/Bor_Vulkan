@@ -103,6 +103,14 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_init
 
 /*
  * Class:     bor_vulkan_Vk10
+ * Method:    isVulkanAvailable
+ * Signature: ()Z
+ */
+JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_isVulkanAvailable
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     bor_vulkan_Vk10
  * Method:    vkCreateInstance1
  * Signature: (Ljava/nio/Buffer;Ljava/nio/Buffer;[I)Ljava/nio/ByteBuffer;
  */
@@ -207,10 +215,18 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyDevice0
 
 /*
  * Class:     bor_vulkan_Vk10
- * Method:    vkEnumerateInstanceExtensionProperties0
- * Signature: (Ljava/lang/String;[I[I)[Ljava/nio/ByteBuffer;
+ * Method:    vkEnumerateInstanceExtensionPropertiesCount0
+ * Signature: (Ljava/lang/String;[I)I
  */
-JNIEXPORT jobjectArray JNICALL Java_bor_vulkan_Vk10_vkEnumerateInstanceExtensionProperties0
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkEnumerateInstanceExtensionPropertiesCount0
+  (JNIEnv *, jclass, jstring, jintArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkEnumerateInstanceExtensionProperties1
+ * Signature: (Ljava/lang/String;[I[I)Ljava/nio/ByteBuffer;
+ */
+JNIEXPORT jobject JNICALL Java_bor_vulkan_Vk10_vkEnumerateInstanceExtensionProperties1
   (JNIEnv *, jclass, jstring, jintArray, jintArray);
 
 /*
@@ -232,10 +248,10 @@ JNIEXPORT jobjectArray JNICALL Java_bor_vulkan_Vk10_vkEnumerateInstanceLayerProp
 /*
  * Class:     bor_vulkan_Vk10
  * Method:    vkEnumerateDeviceLayerProperties0
- * Signature: (Ljava/nio/Buffer;[I)[Ljava/nio/ByteBuffer;
+ * Signature: (Ljava/nio/Buffer;[I[I)Ljava/nio/ByteBuffer;
  */
-JNIEXPORT jobjectArray JNICALL Java_bor_vulkan_Vk10_vkEnumerateDeviceLayerProperties0
-  (JNIEnv *, jclass, jobject, jintArray);
+JNIEXPORT jobject JNICALL Java_bor_vulkan_Vk10_vkEnumerateDeviceLayerProperties0
+  (JNIEnv *, jclass, jobject, jintArray, jintArray);
 
 /*
  * Class:     bor_vulkan_Vk10
@@ -1261,6 +1277,17 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroySurfaceKHR0
 JNIEXPORT jobject JNICALL Java_bor_vulkan_Vk10_vkCreateDisplayPlaneSurfaceKHR0
   (JNIEnv *, jclass, jobject, jobject, jobject, jintArray);
 
+#ifdef __cplusplus
+}
+#endif
+#endif
+/* Header for class bor_vulkan_Vk10_PLATFORMS */
+
+#ifndef _Included_bor_vulkan_Vk10_PLATFORMS
+#define _Included_bor_vulkan_Vk10_PLATFORMS
+#ifdef __cplusplus
+extern "C" {
+#endif
 #ifdef __cplusplus
 }
 #endif

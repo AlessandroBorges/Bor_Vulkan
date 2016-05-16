@@ -376,10 +376,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setPpEnabledLa
 /*
  * Class:     bor_vulkan_structs_VkDeviceCreateInfo
  * Method:    getPpEnabledLayerNames0
- * Signature: (Ljava/nio/Buffer;)[Ljava/lang/String;
+ * Signature: (Ljava/nio/Buffer;[Ljava/lang/String;)[Ljava/lang/String;
  */
 JNIEXPORT jobjectArray JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_getPpEnabledLayerNames0
-  (JNIEnv *, jclass, jobject);
+  (JNIEnv *, jclass, jobject, jobjectArray);
 
 /*
  * Class:     bor_vulkan_structs_VkDeviceCreateInfo

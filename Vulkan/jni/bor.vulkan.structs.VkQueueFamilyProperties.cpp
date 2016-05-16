@@ -4,7 +4,7 @@
 
     #include <BorVulkan.hpp>
     JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_setQueueFlags0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _queueFlags) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:269
@@ -26,7 +26,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkQueueFamilyProperties_getQu
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_getQueueFlags0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkQueueFamilyProperties_getQueueFlags0(env, clazz, obj_ptr, ptr);
 
@@ -35,7 +35,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_getQueueF
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_setQueueCount0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _queueCount) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:287
@@ -57,7 +57,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkQueueFamilyProperties_getQu
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_getQueueCount0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkQueueFamilyProperties_getQueueCount0(env, clazz, obj_ptr, ptr);
 
@@ -66,7 +66,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_getQueueC
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_setTimestampValidBits0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _timestampValidBits) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
 //@line:305
@@ -88,7 +88,7 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkQueueFamilyProperties_getTi
 }
 
 JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_getTimestampValidBits0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jint JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkQueueFamilyProperties_getTimestampValidBits0(env, clazz, obj_ptr, ptr);
 
@@ -97,8 +97,8 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_getTimest
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_setMinImageTransferGranularity0(JNIEnv* env, jclass clazz, jobject obj_ptr, jobject obj__minImageTransferGranularity) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-	char* _minImageTransferGranularity = (char*)(obj__minImageTransferGranularity?env->GetDirectBufferAddress(obj__minImageTransferGranularity):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	char* _minImageTransferGranularity = (char*)(obj__minImageTransferGranularity?env->GetDirectBufferAddress(obj__minImageTransferGranularity) : NULL);
 
 
 //@line:323
@@ -122,7 +122,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkQueueFamilyProperties_getM
 }
 
 JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_getMinImageTransferGranularity0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jlong JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkQueueFamilyProperties_getMinImageTransferGranularity0(env, clazz, obj_ptr, ptr);
 

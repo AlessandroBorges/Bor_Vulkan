@@ -31,7 +31,7 @@ static inline jboolean wrapped_Java_bor_util_Utils_equals
 }
 
 JNIEXPORT jboolean JNICALL Java_bor_util_Utils_equals(JNIEnv* env, jclass clazz, jobject obj_buffer, jlong address) {
-	unsigned char* buffer = (unsigned char*)(obj_buffer?env->GetDirectBufferAddress(obj_buffer):0);
+	unsigned char* buffer = (unsigned char*)(obj_buffer?env->GetDirectBufferAddress(obj_buffer) : NULL);
 
 	jboolean JNI_returnValue = wrapped_Java_bor_util_Utils_equals(env, clazz, obj_buffer, address, buffer);
 
@@ -49,7 +49,7 @@ static inline jlong wrapped_Java_bor_util_Utils_getNativeAddress
 }
 
 JNIEXPORT jlong JNICALL Java_bor_util_Utils_getNativeAddress(JNIEnv* env, jclass clazz, jobject obj_buffer) {
-	unsigned char* buffer = (unsigned char*)(obj_buffer?env->GetDirectBufferAddress(obj_buffer):0);
+	unsigned char* buffer = (unsigned char*)(obj_buffer?env->GetDirectBufferAddress(obj_buffer) : NULL);
 
 	jlong JNI_returnValue = wrapped_Java_bor_util_Utils_getNativeAddress(env, clazz, obj_buffer, buffer);
 
@@ -94,7 +94,7 @@ static inline jboolean wrapped_Java_bor_util_Utils_deleteDirectBuffer
 }
 
 JNIEXPORT jboolean JNICALL Java_bor_util_Utils_deleteDirectBuffer(JNIEnv* env, jclass clazz, jobject obj_ptr) {
-	char* ptr = (char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
+	char* ptr = (char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 	jboolean JNI_returnValue = wrapped_Java_bor_util_Utils_deleteDirectBuffer(env, clazz, obj_ptr, ptr);
 
