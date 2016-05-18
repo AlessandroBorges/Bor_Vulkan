@@ -261,7 +261,6 @@ public class Vk10 extends Vulkan {
    public static VkResult vkCreateInstance(VkInstanceCreateInfo pCreateInfo,
                                     VkAllocationCallbacks pAllocator,
                                     VkInstance[] pInstance) {
-
        int[] res = {0};
        ByteBuffer buff = vkCreateInstance1(
              pCreateInfo.getPointer(), 
@@ -4712,11 +4711,16 @@ private static native int vkQueueSubmit0(
               VkDescriptorSetAllocateInfo  pAllocateInfo,
               VkDescriptorSet[]  pDescriptorSets){
                   // implement bigBuffer
+     ByteBuffer[] bigBuffer = new ByteBuffer[1];   
      int  _val = vkAllocateDescriptorSets0(
                      (device==null ? null : device.getPointer()) /* ByteBuffer */ ,
                      (pAllocateInfo==null ? null : pAllocateInfo.getPointer()) /* ByteBuffer */ ,
-                     (pDescriptorSets==null ? null : pDescriptorSets.getPointer()) /* ByteBuffer */  );
-      return VkResult.fromValue(_val);
+                     bigBuffer);
+     
+     int count = pAllocateInfo.descriptorSetCount();
+     VkDescriptorSet set = new VkHandle(bigBuffer[0], count);
+     pDescriptorSets[0] = set;
+     return VkResult.fromValue(_val);
 } 
 
 /**
@@ -4732,8 +4736,8 @@ private static native int vkQueueSubmit0(
  private static native int  vkAllocateDescriptorSets0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   pAllocateInfo,
-             java.nio.ByteBuffer[]   pDescriptorSetsBuff,
-             int count);/* 
+             java.nio.ByteBuffer[]   pDescriptorSetsBuff
+             );/* 
      VkDescriptorSet*  pDescriptorSets = CALLOC(count,VkDescriptorSet);
      VkResult res = vkAllocateDescriptorSets(
                      (VkDevice) (device),

@@ -6,6 +6,7 @@ package bor.vulkan;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Hashtable;
+import java.util.Iterator;
 import java.util.Map;
 
 import static bor.util.Utils.*;
@@ -109,6 +110,8 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
     private ByteBuffer ptr=null;
     private long nativeHandle = 0;
     
+    protected BigBuffer<VkHandle> bigBuffer = null;
+    
     private static int sizeOfPtr = 8;
     
     static{
@@ -146,12 +149,25 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
        prepareHandler(nativePtr);
      }
      
-     
+     /**
+      * Create a VkHandle from a native address
+      * @param nativeHandle
+      */
      public VkHandle(long nativeHandle) {        
          prepareHandler(nativeHandle);
        }
      
      /**
+      * Create a VkHandle supporting multiple 
+      * @param nativeBufferArray - native array of VkHandlers
+      * @param count - number of elements in nativeBufferArray
+      */
+     public VkHandle(ByteBuffer nativeBufferArray, int count) {
+         bigBuffer = new BigBuffer<VkHandle>(nativeBufferArray, count, (Class<VkHandle>) this.getClass(), true); 
+         prepareHandler(nativeBufferArray);          
+     }
+
+    /**
       * Prepare handler from native address
       * @param address - native address
       */
@@ -384,6 +400,47 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
         return p;
     }
 
-    
+    @Override
+    public BigBuffer getBigBuffer() {        
+        return this.bigBuffer;
+    }
+
+    @Override
+    public Iterator<VkHandle> iterator() {
+        if(bigBuffer != null){
+            return bigBuffer.getList().iterator();
+        }else{
+           return new VkHandleIterator(this);
+        }
+    }
+
+    /**
+     * Simple Iterator
+     * @author Alessandro Borges
+     *
+     */
+    class VkHandleIterator implements Iterator<VkHandle>{
+        private VkHandle owner;
+        int count = 0;
+        
+        VkHandleIterator(VkHandle handle){
+            owner = handle;
+        }
+        
+        @Override
+        public boolean hasNext() {
+            count++;
+            return count < 2;
+        }
+
+        @Override
+        public VkHandle next() {
+            if(count<2){
+                count++;                
+                return owner;
+            }
+            return null;
+        }        
+    }// VkHandleIterator
     
 }

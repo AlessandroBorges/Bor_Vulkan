@@ -96,6 +96,14 @@ public class P<T extends VkObject>
     }
     
     /**
+     * 
+     * @param clazz
+     */
+    public P(Class<T> clazz){
+            classofT = clazz;
+     }
+    
+    /**
      * return the class of contained type T
      * @return class of contained T
      */

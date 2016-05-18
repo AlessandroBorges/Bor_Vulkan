@@ -15,7 +15,7 @@ import java.util.*;
  * @author Alessandro Borges
  *
  */
-public interface VkObject {
+public interface VkObject<T> extends Iterable<T>{
     
     /**
      * Default size of Pointer.
@@ -98,5 +98,23 @@ public interface VkObject {
       * @return true if it was successful released. False if it was already released.
       */
       public boolean free();
+      
+      
+      /**
+       * BigBuffer is a object to hold multiple instances of a VkObject, as a 
+       * native array.
+       * 
+       * @return bigBuffer for this object
+       */
+      public  BigBuffer<T> getBigBuffer(); 
+      
+      /**
+       * Create a internal BigBuffer
+       * @param bigBuffer - Direct buffer pointer for a native array
+       * @param elementsCount - elements in array
+       * 
+       */
+     // public  void createBigBuffer(ByteBuffer bigBuffer, int elementsCount);
+      
  
 }

@@ -7,7 +7,9 @@ import java.lang.reflect.Field;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 import bor.util.Utils;
@@ -32,7 +34,7 @@ import sun.nio.ch.DirectBuffer;
  * @author Alessandro Borges
  *
  */
-public abstract class VkStruct implements VkObject{
+public abstract class VkStruct<T> implements VkObject<VkStruct>{
    
     //@formatter:off
     /*JNI
@@ -200,6 +202,11 @@ public abstract class VkStruct implements VkObject{
     private boolean isJni = true;
     
     /**
+     * Object to store a list of native array of VkStructs
+     */
+    protected BigBuffer<VkStruct> bigBuffer;
+    
+    /**
      * Define policy for this
      */
     protected int type;
@@ -298,6 +305,24 @@ public abstract class VkStruct implements VkObject{
             new IllegalArgumentException("ByteBuffer nativePtr must "
                     + "be Direct and not null.");
         }
+        preparePtr(nativeBuffer);
+    }
+    
+    /**
+     * Creates a 
+     * @param nativeBuffer
+     * @param elementCount
+     */
+    @SuppressWarnings("unchecked")
+    protected VkStruct(ByteBuffer nativeBuffer, int elementCount){
+        if(null==nativeBuffer || !nativeBuffer.isDirect()){
+            throw 
+            new IllegalArgumentException("ByteBuffer nativePtr must "
+                    + "be Direct and not null.");
+        }
+        this.count = elementCount;
+        bigBuffer = new BigBuffer(nativeBuffer, elementCount, this.getClass(), true);
+        bigBuffer.setOwner(this);
         preparePtr(nativeBuffer);
     }
     
@@ -528,9 +553,34 @@ public abstract class VkStruct implements VkObject{
             System.out.println(hex);
         }
         System.out.println("end of dump");
-        
-        
+
     }
+    
+    /**
+     * BigBuffer is a object to hold multiple instances of a VkObject, as a 
+     * native array.
+     * 
+     * @return bigBuffer for this object
+     */
+    @Override
+    public  BigBuffer<VkStruct> getBigBuffer(){
+        return bigBuffer;
+    }
+    
+    /**
+     * Iterator for this VkStruct
+     */
+    public Iterator<VkStruct>  iterator(){
+        if(bigBuffer!=null)
+            return (Iterator<VkStruct>)bigBuffer.getList().iterator();
+        else{
+            ArrayList<VkStruct> l = new  ArrayList<VkStruct>(1);
+            l.add(this);
+            return l.iterator(); 
+            }
+        }   
+    
+    
     
     /**
      * Native method to retrieve any Vulkan struct size, in bytes
