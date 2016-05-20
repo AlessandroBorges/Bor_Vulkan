@@ -305,7 +305,7 @@ public class Vk10 extends Vulkan {
      * Create a Direct ByteBuffer as container for VkStructs.
      * @param count - user requested amount of VkStructs
      * @param array - array to hold returning structs
-     * @param sizeOf - size of VkStruct
+     * @param sizeOf - size of this VkStruct
      * 
      * @return a direct ByteBuffer large enough to hold all structures 
      */
@@ -321,8 +321,8 @@ public class Vk10 extends Vulkan {
     
     /**
      * Create a Direct ByteBuffer as container for VkHandlers.
-     * @param count - user requested amount of VkStructs
-     * @param array - array to hold returning structs
+     * @param count - user requested amount of VkHandles, at count[0]. 
+     * @param array - array to hold returning handlers
      * @param isDispatchable - if VkHandle is a VkInstance, VkPhysicalDevice,
      * VkDevice,VkQueue or VkCommandBuffer
      * 
@@ -338,6 +338,8 @@ public class Vk10 extends Vulkan {
         bigBuffer.order(ByteOrder.nativeOrder());
         return bigBuffer;
      }
+     
+    
     
    /**
     * <h2>Prototype</h2>
@@ -373,6 +375,23 @@ public class Vk10 extends Vulkan {
      return VkResult.fromValue(res[0]);
    }
 
+   /**
+    * 
+    * @param pCreateInfo
+    * @param pAllocator
+    * @param result
+    * @return
+    */
+   private static native int vkCreateInstance0(
+                                               Buffer  pCreateInfo,
+                                               Buffer  pAllocator,
+                                               Buffer  pInstance_);/*
+      VkResult res =  vkCreateInstance(
+                       (const VkInstanceCreateInfo*)                 pCreateInfo,
+                       (const VkAllocationCallbacks*)                pAllocator,
+                       (VkInstance*)                                 pInstance_);
+      result[0] = (jint) res;
+    */
   
    /**
     * 
