@@ -103,6 +103,22 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_init
 
 /*
  * Class:     bor_vulkan_Vk10
+ * Method:    sizeOfDispatchableHandle
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_sizeOfDispatchableHandle
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    sizeOfNonDispatchableHandle
+ * Signature: ()I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_sizeOfNonDispatchableHandle
+  (JNIEnv *, jclass);
+
+/*
+ * Class:     bor_vulkan_Vk10
  * Method:    isVulkanAvailable
  * Signature: ()Z
  */
@@ -136,7 +152,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkEnumeratePhysicalDevices0
 /*
  * Class:     bor_vulkan_Vk10
  * Method:    vkGetPhysicalDeviceFeatures0
- * Signature: (Ljava/nio/Buffer;Ljava/nio/Buffer;)V
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
  */
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceFeatures0
   (JNIEnv *, jclass, jobject, jobject);
@@ -167,11 +183,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceProperties0
 
 /*
  * Class:     bor_vulkan_Vk10
- * Method:    vkGetPhysicalDeviceQueueFamilyProperties0
- * Signature: (Ljava/nio/Buffer;[I)[Ljava/nio/ByteBuffer;
+ * Method:    vkGetPhysicalDeviceQueueFamilyProperties1
+ * Signature: (Ljava/nio/ByteBuffer;[ILjava/nio/ByteBuffer;)V
  */
-JNIEXPORT jobjectArray JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceQueueFamilyProperties0
-  (JNIEnv *, jclass, jobject, jintArray);
+JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceQueueFamilyProperties1
+  (JNIEnv *, jclass, jobject, jintArray, jobject);
 
 /*
  * Class:     bor_vulkan_Vk10
@@ -736,10 +752,10 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkResetDescriptorPool0
 /*
  * Class:     bor_vulkan_Vk10
  * Method:    vkAllocateDescriptorSets0
- * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[Ljava/nio/ByteBuffer;)I
  */
 JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkAllocateDescriptorSets0
-  (JNIEnv *, jclass, jobject, jobject, jobject);
+  (JNIEnv *, jclass, jobject, jobject, jobjectArray);
 
 /*
  * Class:     bor_vulkan_Vk10

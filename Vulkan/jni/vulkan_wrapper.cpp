@@ -121,7 +121,7 @@ int InitVulkan() {
             layerNames.push_back(prop.layerName);
         }
     }
-
+	return 1;
 }
 
 /**
