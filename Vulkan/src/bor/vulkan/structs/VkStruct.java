@@ -14,6 +14,7 @@ import java.util.Map;
 
 import bor.util.Utils;
 import bor.vulkan.*;
+import bor.vulkan.khr.structs.*;
 import sun.nio.ch.DirectBuffer;
 
 /**
@@ -737,4 +738,149 @@ public abstract class VkStruct<T> implements VkObject<VkStruct>{
          
     */
 
-}
+    
+    /**
+     * Creates a new Instance of a VkStruct
+     * @param id - VkStruct ID
+     * @param buff - Buffer pointer
+     * @return live instance of VkStruct 
+     */
+    public static VkStruct createInstance(int id, ByteBuffer buff){        
+        switch (id) {
+            case VKAPPLICATIONINFO_ID :  return   new VkApplicationInfo(buff);
+            case VKINSTANCECREATEINFO_ID :  return   new VkInstanceCreateInfo(buff);
+            case VKALLOCATIONCALLBACKS_ID :  return   new VkAllocationCallbacks(buff);
+            case VKPHYSICALDEVICEFEATURES_ID :  return   new VkPhysicalDeviceFeatures(buff);
+            case VKFORMATPROPERTIES_ID :  return   new VkFormatProperties(buff);
+            case VKEXTENT3D_ID :  return   new VkExtent3D(buff);
+            case VKIMAGEFORMATPROPERTIES_ID :  return   new VkImageFormatProperties(buff);
+            case VKPHYSICALDEVICELIMITS_ID :  return   new VkPhysicalDeviceLimits(buff);
+            case VKPHYSICALDEVICESPARSEPROPERTIES_ID :  return   new VkPhysicalDeviceSparseProperties(buff);
+            case VKPHYSICALDEVICEPROPERTIES_ID :  return   new VkPhysicalDeviceProperties(buff);
+            case VKQUEUEFAMILYPROPERTIES_ID :  return   new VkQueueFamilyProperties(buff);
+            case VKMEMORYTYPE_ID :  return   new VkMemoryType(buff);
+            case VKMEMORYHEAP_ID :  return   new VkMemoryHeap(buff);
+            case VKPHYSICALDEVICEMEMORYPROPERTIES_ID :  return   new VkPhysicalDeviceMemoryProperties(buff);
+            case VKDEVICEQUEUECREATEINFO_ID :  return   new VkDeviceQueueCreateInfo(buff);
+            case VKDEVICECREATEINFO_ID :  return   new VkDeviceCreateInfo(buff);
+            case VKEXTENSIONPROPERTIES_ID :  return   new VkExtensionProperties(buff);
+            case VKLAYERPROPERTIES_ID :  return   new VkLayerProperties(buff);
+            case VKSUBMITINFO_ID :  return   new VkSubmitInfo(buff);
+            case VKMEMORYALLOCATEINFO_ID :  return   new VkMemoryAllocateInfo(buff);
+            case VKMAPPEDMEMORYRANGE_ID :  return   new VkMappedMemoryRange(buff);
+            case VKMEMORYREQUIREMENTS_ID :  return   new VkMemoryRequirements(buff);
+            case VKSPARSEIMAGEFORMATPROPERTIES_ID :  return   new VkSparseImageFormatProperties(buff);
+            case VKSPARSEIMAGEMEMORYREQUIREMENTS_ID :  return   new VkSparseImageMemoryRequirements(buff);
+            case VKSPARSEMEMORYBIND_ID :  return   new VkSparseMemoryBind(buff);
+            case VKSPARSEBUFFERMEMORYBINDINFO_ID :  return   new VkSparseBufferMemoryBindInfo(buff);
+            case VKSPARSEIMAGEOPAQUEMEMORYBINDINFO_ID :  return   new VkSparseImageOpaqueMemoryBindInfo(buff);
+            case VKIMAGESUBRESOURCE_ID :  return   new VkImageSubresource(buff);
+            case VKOFFSET3D_ID :  return   new VkOffset3D(buff);
+            case VKSPARSEIMAGEMEMORYBIND_ID :  return   new VkSparseImageMemoryBind(buff);
+            case VKSPARSEIMAGEMEMORYBINDINFO_ID :  return   new VkSparseImageMemoryBindInfo(buff);
+            case VKBINDSPARSEINFO_ID :  return   new VkBindSparseInfo(buff);
+            case VKFENCECREATEINFO_ID :  return   new VkFenceCreateInfo(buff);
+            case VKSEMAPHORECREATEINFO_ID :  return   new VkSemaphoreCreateInfo(buff);
+            case VKEVENTCREATEINFO_ID :  return   new VkEventCreateInfo(buff);
+            case VKQUERYPOOLCREATEINFO_ID :  return   new VkQueryPoolCreateInfo(buff);
+            case VKBUFFERCREATEINFO_ID :  return   new VkBufferCreateInfo(buff);
+            case VKBUFFERVIEWCREATEINFO_ID :  return   new VkBufferViewCreateInfo(buff);
+            case VKIMAGECREATEINFO_ID :  return   new VkImageCreateInfo(buff);
+            case VKSUBRESOURCELAYOUT_ID :  return   new VkSubresourceLayout(buff);
+            case VKCOMPONENTMAPPING_ID :  return   new VkComponentMapping(buff);
+            case VKIMAGESUBRESOURCERANGE_ID :  return   new VkImageSubresourceRange(buff);
+            case VKIMAGEVIEWCREATEINFO_ID :  return   new VkImageViewCreateInfo(buff);
+            case VKSHADERMODULECREATEINFO_ID :  return   new VkShaderModuleCreateInfo(buff);
+            case VKPIPELINECACHECREATEINFO_ID :  return   new VkPipelineCacheCreateInfo(buff);
+            case VKSPECIALIZATIONMAPENTRY_ID :  return   new VkSpecializationMapEntry(buff);
+            case VKSPECIALIZATIONINFO_ID :  return   new VkSpecializationInfo(buff);
+            case VKPIPELINESHADERSTAGECREATEINFO_ID :  return   new VkPipelineShaderStageCreateInfo(buff);
+            case VKVERTEXINPUTBINDINGDESCRIPTION_ID :  return   new VkVertexInputBindingDescription(buff);
+            case VKVERTEXINPUTATTRIBUTEDESCRIPTION_ID :  return   new VkVertexInputAttributeDescription(buff);
+            case VKPIPELINEVERTEXINPUTSTATECREATEINFO_ID :  return   new VkPipelineVertexInputStateCreateInfo(buff);
+            case VKPIPELINEINPUTASSEMBLYSTATECREATEINFO_ID :  return   new VkPipelineInputAssemblyStateCreateInfo(buff);
+            case VKPIPELINETESSELLATIONSTATECREATEINFO_ID :  return   new VkPipelineTessellationStateCreateInfo(buff);
+            case VKVIEWPORT_ID :  return   new VkViewport(buff);
+            case VKOFFSET2D_ID :  return   new VkOffset2D(buff);
+            case VKEXTENT2D_ID :  return   new VkExtent2D(buff);
+            case VKRECT2D_ID :  return   new VkRect2D(buff);
+            case VKPIPELINEVIEWPORTSTATECREATEINFO_ID :  return   new VkPipelineViewportStateCreateInfo(buff);
+            case VKPIPELINERASTERIZATIONSTATECREATEINFO_ID :  return   new VkPipelineRasterizationStateCreateInfo(buff);
+            case VKPIPELINEMULTISAMPLESTATECREATEINFO_ID :  return   new VkPipelineMultisampleStateCreateInfo(buff);
+            case VKSTENCILOPSTATE_ID :  return   new VkStencilOpState(buff);
+            case VKPIPELINEDEPTHSTENCILSTATECREATEINFO_ID :  return   new VkPipelineDepthStencilStateCreateInfo(buff);
+            case VKPIPELINECOLORBLENDATTACHMENTSTATE_ID :  return   new VkPipelineColorBlendAttachmentState(buff);
+            case VKPIPELINECOLORBLENDSTATECREATEINFO_ID :  return   new VkPipelineColorBlendStateCreateInfo(buff);
+            case VKPIPELINEDYNAMICSTATECREATEINFO_ID :  return   new VkPipelineDynamicStateCreateInfo(buff);
+            case VKGRAPHICSPIPELINECREATEINFO_ID :  return   new VkGraphicsPipelineCreateInfo(buff);
+            case VKCOMPUTEPIPELINECREATEINFO_ID :  return   new VkComputePipelineCreateInfo(buff);
+            case VKPUSHCONSTANTRANGE_ID :  return   new VkPushConstantRange(buff);
+            case VKPIPELINELAYOUTCREATEINFO_ID :  return   new VkPipelineLayoutCreateInfo(buff);
+            case VKSAMPLERCREATEINFO_ID :  return   new VkSamplerCreateInfo(buff);
+            case VKDESCRIPTORSETLAYOUTBINDING_ID :  return   new VkDescriptorSetLayoutBinding(buff);
+            case VKDESCRIPTORSETLAYOUTCREATEINFO_ID :  return   new VkDescriptorSetLayoutCreateInfo(buff);
+            case VKDESCRIPTORPOOLSIZE_ID :  return   new VkDescriptorPoolSize(buff);
+            case VKDESCRIPTORPOOLCREATEINFO_ID :  return   new VkDescriptorPoolCreateInfo(buff);
+            case VKDESCRIPTORSETALLOCATEINFO_ID :  return   new VkDescriptorSetAllocateInfo(buff);
+            case VKDESCRIPTORIMAGEINFO_ID :  return   new VkDescriptorImageInfo(buff);
+            case VKDESCRIPTORBUFFERINFO_ID :  return   new VkDescriptorBufferInfo(buff);
+            case VKWRITEDESCRIPTORSET_ID :  return   new VkWriteDescriptorSet(buff);
+            case VKCOPYDESCRIPTORSET_ID :  return   new VkCopyDescriptorSet(buff);
+            case VKFRAMEBUFFERCREATEINFO_ID :  return   new VkFramebufferCreateInfo(buff);
+            case VKATTACHMENTDESCRIPTION_ID :  return   new VkAttachmentDescription(buff);
+            case VKATTACHMENTREFERENCE_ID :  return   new VkAttachmentReference(buff);
+            case VKSUBPASSDESCRIPTION_ID :  return   new VkSubpassDescription(buff);
+            case VKSUBPASSDEPENDENCY_ID :  return   new VkSubpassDependency(buff);
+            case VKRENDERPASSCREATEINFO_ID :  return   new VkRenderPassCreateInfo(buff);
+            case VKCOMMANDPOOLCREATEINFO_ID :  return   new VkCommandPoolCreateInfo(buff);
+            case VKCOMMANDBUFFERALLOCATEINFO_ID :  return   new VkCommandBufferAllocateInfo(buff);
+            case VKCOMMANDBUFFERINHERITANCEINFO_ID :  return   new VkCommandBufferInheritanceInfo(buff);
+            case VKCOMMANDBUFFERBEGININFO_ID :  return   new VkCommandBufferBeginInfo(buff);
+            case VKBUFFERCOPY_ID :  return   new VkBufferCopy(buff);
+            case VKIMAGESUBRESOURCELAYERS_ID :  return   new VkImageSubresourceLayers(buff);
+            case VKIMAGECOPY_ID :  return   new VkImageCopy(buff);
+            case VKIMAGEBLIT_ID :  return   new VkImageBlit(buff);
+            case VKBUFFERIMAGECOPY_ID :  return   new VkBufferImageCopy(buff);
+            case VKCLEARDEPTHSTENCILVALUE_ID :  return   new VkClearDepthStencilValue(buff);
+            case VKCLEARATTACHMENT_ID :  return   new VkClearAttachment(buff);
+            case VKCLEARRECT_ID :  return   new VkClearRect(buff);
+            case VKIMAGERESOLVE_ID :  return   new VkImageResolve(buff);
+            case VKMEMORYBARRIER_ID :  return   new VkMemoryBarrier(buff);
+            case VKBUFFERMEMORYBARRIER_ID :  return   new VkBufferMemoryBarrier(buff);
+            case VKIMAGEMEMORYBARRIER_ID :  return   new VkImageMemoryBarrier(buff);
+            case VKRENDERPASSBEGININFO_ID :  return   new VkRenderPassBeginInfo(buff);
+            case VKDISPATCHINDIRECTCOMMAND_ID :  return   new VkDispatchIndirectCommand(buff);
+            case VKDRAWINDEXEDINDIRECTCOMMAND_ID :  return   new VkDrawIndexedIndirectCommand(buff);
+            case VKDRAWINDIRECTCOMMAND_ID :  return   new VkDrawIndirectCommand(buff);
+            case VKSURFACECAPABILITIESKHR_ID :  return   new VkSurfaceCapabilitiesKHR(buff);
+            case VKSURFACEFORMATKHR_ID :  return   new VkSurfaceFormatKHR(buff);
+            case VKSWAPCHAINCREATEINFOKHR_ID :  return   new VkSwapchainCreateInfoKHR(buff);
+            case VKPRESENTINFOKHR_ID :  return   new VkPresentInfoKHR(buff);
+            case VKDISPLAYPROPERTIESKHR_ID :  return   new VkDisplayPropertiesKHR(buff);
+            case VKDISPLAYMODEPARAMETERSKHR_ID :  return   new VkDisplayModeParametersKHR(buff);
+            case VKDISPLAYMODEPROPERTIESKHR_ID :  return   new VkDisplayModePropertiesKHR(buff);
+            case VKDISPLAYMODECREATEINFOKHR_ID :  return   new VkDisplayModeCreateInfoKHR(buff);
+            case VKDISPLAYPLANECAPABILITIESKHR_ID :  return   new VkDisplayPlaneCapabilitiesKHR(buff);
+            case VKDISPLAYPLANEPROPERTIESKHR_ID :  return   new VkDisplayPlanePropertiesKHR(buff);
+            case VKDISPLAYSURFACECREATEINFOKHR_ID :  return   new VkDisplaySurfaceCreateInfoKHR(buff);
+            case VKDISPLAYPRESENTINFOKHR_ID :  return   new VkDisplayPresentInfoKHR(buff);
+         
+            case VKXLIBSURFACECREATEINFOKHR_ID :  return   new VkXlibSurfaceCreateInfoKHR(buff);
+          
+            case VKXCBSURFACECREATEINFOKHR_ID :  return   new VkXcbSurfaceCreateInfoKHR(buff);
+         
+            case VKWAYLANDSURFACECREATEINFOKHR_ID :  return   new VkWaylandSurfaceCreateInfoKHR(buff);
+         
+            case VKMIRSURFACECREATEINFOKHR_ID :  return   new VkMirSurfaceCreateInfoKHR(buff);
+          
+            case VKANDROIDSURFACECREATEINFOKHR_ID :  return   new VkAndroidSurfaceCreateInfoKHR(buff);
+           
+            case VKWIN32SURFACECREATEINFOKHR_ID :  return   new VkWin32SurfaceCreateInfoKHR(buff);
+           
+            case VKDEBUGREPORTCALLBACKCREATEINFOEXT_ID :  return   new VkDebugReportCallbackCreateInfoEXT(buff);
+            default: return  null;        
+        } //switch
+    }//create instance
+    
+
+}//class

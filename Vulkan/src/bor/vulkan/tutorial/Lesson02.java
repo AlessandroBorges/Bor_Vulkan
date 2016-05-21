@@ -126,6 +126,11 @@ public class Lesson02 {
         return pProperties;
     }
     
+    /**
+     * 
+     * @param instance
+     * @return
+     */
     public static List<VkPhysicalDevice> enumeratePhysicalDevices(VkInstance instance){
         VkResult[] result = new VkResult[1];
         List<VkPhysicalDevice> physicalDevicesList = Vk10.vkEnumeratePhysicalDevices(instance, result);
@@ -187,11 +192,12 @@ public class Lesson02 {
         
         
         int[] pQueueFamilyPropertyCount = {1};
-        List<VkQueueFamilyProperties> pQueueFamilyProperties = new ArrayList<VkQueueFamilyProperties>();
+        VkQueueFamilyProperties[] pQueueFamilyProperties = new VkQueueFamilyProperties[1];
         Vk10.vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties);
         
-        for (int i = 0; i < pQueueFamilyProperties.size(); i++) {
-            VkQueueFamilyProperties queueFamily = pQueueFamilyProperties.get(i);
+        int i = 0;
+        for (VkQueueFamilyProperties queueFamily : pQueueFamilyProperties) {
+            
             System.out.println("VkQueueFamilyProperties #" + i);
             System.out.println(queueFamily);
             
@@ -214,7 +220,7 @@ public class Lesson02 {
         pQueueCreateInfos[0] = queueCreateInfo;
         
         VkDeviceCreateInfo pCreateDeviceInfo = new VkDeviceCreateInfo();
-        pCreateDeviceInfo.dump();
+       // pCreateDeviceInfo.dump();
         pCreateDeviceInfo.sType(VkStructureType.VK_STRUCTURE_TYPE_DEVICE_CREATE_INFO);
         pCreateDeviceInfo.pNext(null);
         pCreateDeviceInfo.flags(0);
@@ -223,7 +229,7 @@ public class Lesson02 {
         
         //VkDeviceQueueCreateInfo*
         pCreateDeviceInfo.pQueueCreateInfos(pQueueCreateInfos);
-        pCreateDeviceInfo.dump();
+        //pCreateDeviceInfo.dump();
         
         System.err.println("VkDeviceCreateInfo: " +  pCreateDeviceInfo);
         

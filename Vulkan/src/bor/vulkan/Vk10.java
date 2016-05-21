@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import bor.util.Utils;
 import bor.vulkan.enumerations.VkFilter;
 import bor.vulkan.enumerations.VkFormat;
 import bor.vulkan.enumerations.VkImageCreateFlags;
@@ -90,6 +91,8 @@ import bor.vulkan.structs.VkSubmitInfo;
 import bor.vulkan.structs.VkSubresourceLayout;
 import bor.vulkan.structs.VkViewport;
 import bor.vulkan.structs.VkWriteDescriptorSet;
+
+import static bor.util.Utils.splitBuffer;
 
 public class Vk10 extends Vulkan {
 
@@ -245,31 +248,7 @@ public class Vk10 extends Vulkan {
     
     */
     
-    /**
-     * Used on VkStructs, only
-     * Slice a buffer into small buffers of same size
-     * @param bigBuffer - large buffer with many elements
-     * @param count - elements count
-     * @return array of Bytebuffers
-     */
-    private static ByteBuffer[] splitBuffer(ByteBuffer bigBuffer, int count){
-        if(bigBuffer==null || count == 0)
-            return null;
-        
-        bigBuffer.rewind();
-        int size = bigBuffer.capacity() / count;
-        ByteBuffer[] buff = new ByteBuffer[count];
-        if(count==1)
-            return buff;
-        
-        for (int i = 0; i < buff.length; i++) {
-            bigBuffer.position(size*i);
-            ByteBuffer bb = bigBuffer.slice();
-            bb.limit(size);
-            buff[i] = bb;
-        }
-        return buff;
-    }
+   
     
     /**
      * Wrap a buffer as VkHandle
@@ -302,6 +281,19 @@ public class Vk10 extends Vulkan {
     }
     
     /**
+     * Store a Buffer in VkHandle and put it in a VkHandle array
+     * @param dstArray - VkHandle Array
+     * @param buff - ByteBuffer to wrap as VkHandler
+     */
+    private static final void wrapVkHandle(VkHandleInterface[] dstArray, ByteBuffer buff){
+        if(dstArray[0] == null){         
+            dstArray [0] = new VkHandle(buff);
+         }  else{
+             ((VkHandle)dstArray[0]).setPointer(buff);
+         }
+    }
+    
+    /**
      * Create a Direct ByteBuffer as container for VkStructs.
      * @param count - user requested amount of VkStructs
      * @param array - array to hold returning structs
@@ -324,7 +316,7 @@ public class Vk10 extends Vulkan {
      * @param count - user requested amount of VkHandles, at count[0]. 
      * @param array - array to hold returning handlers
      * @param isDispatchable - if VkHandle is a VkInstance, VkPhysicalDevice,
-     * VkDevice,VkQueue or VkCommandBuffer
+     * VkDevice, VkQueue or VkCommandBuffer
      * 
      * @return  a direct ByteBuffer large enough to hold all Handles 
      */
@@ -357,8 +349,8 @@ public class Vk10 extends Vulkan {
     * 
     */
    public static VkResult vkCreateInstance(VkInstanceCreateInfo pCreateInfo,
-                                    VkAllocationCallbacks pAllocator,
-                                    VkInstance[] pInstance) {
+                                           VkAllocationCallbacks pAllocator,
+                                           VkInstance[] pInstance) {
        int[] res = {0};
        ByteBuffer buff = vkCreateInstance1(
              pCreateInfo.getPointer(), 
@@ -366,32 +358,11 @@ public class Vk10 extends Vulkan {
              res);
     
        if(res[0]>=0){
-           if(pInstance[0] == null){         
-             pInstance[0] = new VkHandle(buff);
-          }  else{
-              pInstance[0].setPointer(buff);
-          }
+           wrapVkHandle(pInstance, buff);
        }       
      return VkResult.fromValue(res[0]);
    }
-
-   /**
-    * 
-    * @param pCreateInfo
-    * @param pAllocator
-    * @param result
-    * @return
-    */
-   private static native int vkCreateInstance0(
-                                               Buffer  pCreateInfo,
-                                               Buffer  pAllocator,
-                                               Buffer  pInstance_);/*
-      VkResult res =  vkCreateInstance(
-                       (const VkInstanceCreateInfo*)                 pCreateInfo,
-                       (const VkAllocationCallbacks*)                pAllocator,
-                       (VkInstance*)                                 pInstance_);
-      result[0] = (jint) res;
-    */
+    
   
    /**
     * 
@@ -413,12 +384,11 @@ public class Vk10 extends Vulkan {
       result[0] = (jint) res;
   
       jobject buff = NULL; 
-      if(pInstance){
+      if(res >= 0){
         VkInstance instance = (*pInstance);
-        buff = (jobject)(env->NewDirectByteBuffer((void*)(instance), sizeof(VkInstance)));
-        free(pInstance_);
+        buff = (jobject)(env->NewDirectByteBuffer((void*)(instance), sizeof(VkInstance)));       
       }    
-      
+      free(pInstance);
       return buff; 
       */
    
@@ -518,15 +488,14 @@ public class Vk10 extends Vulkan {
                                        ByteBuffer instance,
                                        int[]      pPhysicalDeviceCount,
                                        Buffer[]   pPhysicalDevicesRet,
-                                       int        maxSize);/*
-      
+                                       int        maxSize);/*      
        VkPhysicalDevice* array = NULL;
        uint32_t count=0;        
        if(maxSize > 0){
           array = new VkPhysicalDevice[maxSize]; 
           count = (uint32_t)maxSize;        
         }     
-              
+             
        VkResult res = vkEnumeratePhysicalDevices(
                                   (VkInstance) (instance),
                                   (uint32_t*)  &count,
@@ -534,7 +503,7 @@ public class Vk10 extends Vulkan {
        pPhysicalDeviceCount[0] = count;       
        
        if(res >= 0 && array){
-           for(int i=0; i < maxSize && i < count ; i++){
+           for(int i=0; i < maxSize && i < (int)count ; i++){
                VkPhysicalDevice step = array[i];
                if(step){
                   jobject buff =  env->NewDirectByteBuffer((void*) (step), 
@@ -567,14 +536,14 @@ public class Vk10 extends Vulkan {
            res[0] = VkResult.VK_ERROR_INITIALIZATION_FAILED;
            return physicalDevicesList;
        }                    
-               
-       int[] pPhysicalDeviceCount = {0};      
-       // get count      
+       
+       // get Count
+       int[] count = {0};
        int res0 = vkEnumeratePhysicalDevices0(instance.getPointer(),
-                                              pPhysicalDeviceCount,
+                                              count,
                                               null,
                                               0);        
-       int size = pPhysicalDeviceCount[0];
+       int size = count[0];
        if(size <= 0 || res0 < 0){
            res[0] = VkResult.fromValue(res0);
            return physicalDevicesList;
@@ -582,7 +551,7 @@ public class Vk10 extends Vulkan {
        
        ByteBuffer[]  pPhysicalDevicesArray = new ByteBuffer[size];        
        res0 = vkEnumeratePhysicalDevices0(instance.getPointer(),
-                                         pPhysicalDeviceCount,
+                                         count,
                                          pPhysicalDevicesArray,
                                          size);
        res[0] = VkResult.fromValue(res0);
@@ -591,7 +560,8 @@ public class Vk10 extends Vulkan {
                if (handle != null) {
                    physicalDevicesList.add(new VkHandle(handle));
                }
-      }     
+      } 
+      clean(pPhysicalDevicesArray);
       return physicalDevicesList;
    }// method
 
@@ -604,7 +574,7 @@ public class Vk10 extends Vulkan {
         * </pre>
         */
   public static  void vkGetPhysicalDeviceFeatures(VkPhysicalDevice  physicalDevice,
-                                           VkPhysicalDeviceFeatures  pFeatures){
+                                                  VkPhysicalDeviceFeatures  pFeatures){
       vkGetPhysicalDeviceFeatures0( physicalDevice.getPointer(),
                                     pFeatures.getPointer());      
   }
@@ -798,14 +768,14 @@ public class Vk10 extends Vulkan {
    }
    
    private static native void vkGetPhysicalDeviceQueueFamilyProperties1(ByteBuffer pointer,
-                                                                  int[] pQueueFamilyPropertyCount,
-                                                                  ByteBuffer _array ); /*
+                                                                        int[] pQueueFamilyPropertyCount,
+                                                                        ByteBuffer _array ); /*
        VkQueueFamilyProperties* array = (VkQueueFamilyProperties*) _array;
-       uint32_t count=0; 
+       uint32_t count=0;
        vkGetPhysicalDeviceQueueFamilyProperties(
-                                  (VkInstance) (instance),
+                                  (VkPhysicalDevice) (pointer),
                                   (uint32_t*)  &count,
-                                  (VkPhysicalDevice*) array);
+                                  (VkQueueFamilyProperties*) array);
        pQueueFamilyPropertyCount[0] = count; 
    */
 
@@ -951,14 +921,13 @@ public class Vk10 extends Vulkan {
       
          result[0] = res;   
          jobject pObj = NULL;
-         if(device){     
+         if(res >= 0){     
            pObj = env->NewDirectByteBuffer((void*) pDevice[0], 
                                            (jlong) sizeof(VkDevice));
          }else{
            printf("No Device available !\n");
          }
-         if(pDevice)
-           delete[] pDevice;
+         //if(pDevice) delete pDevice;
                  
          return pObj;      
        */
@@ -1011,6 +980,7 @@ public class Vk10 extends Vulkan {
      *        structures.
      * 
      */
+   @Deprecated
   public static VkResult vkEnumerateInstanceExtensionProperties(
                String pLayerName,
                //int[]  pPropertyCount,
@@ -1038,11 +1008,52 @@ public class Vk10 extends Vulkan {
       return VkResult.fromValue(result[0]);
   }
   
+   /**
+    * <h2>Prototype</h2>
+    * 
+    * <pre>
+    * VKAPI_ATTR VkResult VKAPI_CALL vkEnumerateInstanceExtensionProperties(
+    *     const char*                                 pLayerName,
+    *     uint32_t*                                   pPropertyCount,
+    *     VkExtensionProperties*                      pProperties);
+    * </pre>
+    * 
+    * @param pLayerName - is either NULL or a pointer to a null-terminated UTF-8 string
+    *        naming the instance layer to retrieve extensions from.
+    * @param pPropertyCount - is a pointer to an integer related to the number of extension
+    *        properties available or queried, as described below.
+    * @param pProperties -  is either NULL or a pointer to an array of VkExtensionProperties
+    *        structures.
+    * 
+    */
+    public static VkResult vkEnumerateInstanceExtensionProperties(String pLayerName,
+                                                                  int[] pPropertyCount,
+                                                                  VkExtensionProperties[] pProperties) {       
+        ByteBuffer bigBuffer = createBigBuffer(pPropertyCount, pProperties, VkExtensionProperties.sizeOf());
+        int res = vkEnumerateInstanceExtensionProperties0(pLayerName, pPropertyCount, bigBuffer);
+        if (pProperties != null) {
+            clean(pProperties);
+            if (bigBuffer != null) {
+                int count = pPropertyCount[0];
+                ByteBuffer[] buffs = splitBuffer(bigBuffer, count);
+                if (buffs != null) {
+                    for (int i = 0; i < count; i++) {
+                        VkExtensionProperties ep = new VkExtensionProperties(buffs[i]);
+                        pProperties[i] = ep;
+                    }
+                }
+                clean(buffs);
+            }
+        }        
+        return VkResult.fromValue(res);
+    }
+  
   /**
    * 
    * @param pLayerName
    * @return
    */
+    @Deprecated
   public static int vkEnumerateInstanceExtensionPropertiesCount(String  pLayerName){
       int[] res = {0};
       return vkEnumerateInstanceExtensionPropertiesCount0(pLayerName, res);
@@ -1064,6 +1075,27 @@ public class Vk10 extends Vulkan {
       result[0] = (jint)res;  
       return (jint) res;
       */
+  
+  /**
+   * get all 
+   * 
+   * @param pLayerName
+   * @param pPropertyCount
+   * @param result
+   * @return
+   */
+   private static native int vkEnumerateInstanceExtensionProperties0(
+               String  pLayerName,
+               int[]  pPropertyCount,
+               ByteBuffer array);/*     
+     uint32_t count = 0;          
+     VkResult res = vkEnumerateInstanceExtensionProperties(
+                        (const char*)  pLayerName,
+                        (uint32_t*)    &count,
+                        (VkExtensionProperties*) array);                        
+      pPropertyCount[0] = (jint)count;
+      return res; 
+     */
   
   /**
    * get all 
@@ -1126,88 +1158,32 @@ public class Vk10 extends Vulkan {
   public static  VkResult vkEnumerateDeviceExtensionProperties(
                VkPhysicalDevice  physicalDevice,
                String  pLayerName,
-              // int[]  pPropertyCount,
-               List<VkExtensionProperties>  pProperties){
-      
-      int[] result = {0};
-     // int[]  pPropertyCount = {0};      
-      ByteBuffer[] handles = vkEnumerateDeviceExtensionProperties0(
-              physicalDevice.getPointer(),
-              pLayerName,
-            //  pPropertyCount,
-              result);
-       
-      if(pProperties != null) {
-          pProperties.clear();
-      }
-      if (result[0] >= 0 && pProperties != null) {           
-            for (ByteBuffer nativeHand : handles) {
-                if (nativeHand != null) {
-                    VkExtensionProperties prop = new VkExtensionProperties(nativeHand);
-                    pProperties.add(prop);
-                }
-            }
-        }
-      
-      int res = result[0];
-      return VkResult.fromValue(res);
-  }
+               int[]  pPropertyCount,
+               VkExtensionProperties[]  pProperties){      
+        ByteBuffer bigBuffer = createBigBuffer(pPropertyCount, pProperties, VkExtensionProperties.sizeOf());
+        int res = vkEnumerateDeviceExtensionProperties0( physicalDevice.getPointer(), 
+                                                         pLayerName, 
+                                                         pPropertyCount,
+                                                         bigBuffer);
+        Utils.populate(pProperties, bigBuffer, pPropertyCount, VkExtensionProperties.TAG_ID);        
+        return VkResult.fromValue(res);
+    }
 
-  /**
-   * get All
-   * @param physicalDevice
-   * @param pLayerName
-   * @param pPropertyCount
-   * @param result
-   * @return
-   */
-   private static native ByteBuffer[] vkEnumerateDeviceExtensionProperties0(
-               Buffer  physicalDevice,
-               String  pLayerName,
-             //  int[]  pPropertyCount,
-               int[] result);/*
-      
+   
+   private static native int vkEnumerateDeviceExtensionProperties0( Buffer  physicalDevice,
+                                                                    String  pLayerName,
+                                                                    int[]  pPropertyCount,
+                                                                    ByteBuffer array);/*
      uint32_t count = 0;          
      VkResult res =  vkEnumerateDeviceExtensionProperties(
-                  (VkPhysicalDevice)  physicalDevice,
-                  (const char*)    pLayerName,
-                  (uint32_t*)     &count,
-                  (VkExtensionProperties*)  NULL);                   
-     result[0] = res; 
-     
-     if(res < 0 || count < 1) return NULL;
-     
-     VkExtensionProperties*  pProperties = NULL;
-     
-     if(res >= 0 && count > 0){
-         pProperties = new VkExtensionProperties[count];
-     }          
-     
-     if(pProperties){
-       res =  vkEnumerateDeviceExtensionProperties(
-                  (VkPhysicalDevice)  physicalDevice,
-                  (const char*)       pLayerName,
-                  (uint32_t*)         &count,
-                  (VkExtensionProperties*)  pProperties);      
-        jobjectArray bufArray = (jobjectArray) env->NewObjectArray( count, 
-                                                                    byteBufferClass, 
-                                                                    NULL);                                               
-        for(uint32_t i=0; i<count; i++){
-            VkExtensionProperties* prop = pProperties + i;
-            if(prop){
-               jobject pObj = env->NewDirectByteBuffer((void*) prop, 
-                                                       (jlong) sizeof(VkExtensionProperties));                   
-               env->SetObjectArrayElement( bufArray,(jsize)i, pObj);
-            } //if 
-         }//for
-         delete[] pProperties;
-         return bufArray;
-      }
-      else
-       return NULL;
-               
-       */
-
+               (VkPhysicalDevice)  physicalDevice,
+               (const char*)    pLayerName,
+               (uint32_t*)     &count,
+               (VkExtensionProperties*)  array);                   
+     pPropertyCount[0] = (jint)count; 
+     return (jint)res;     
+    */                                                         
+                                                                
        /////////////////////////////////////
 
        /**
@@ -1224,56 +1200,24 @@ public class Vk10 extends Vulkan {
         * @return VkResult
         */
   public static VkResult vkEnumerateInstanceLayerProperties(
-               //int[]  pPropertyCount,
-               List<VkLayerProperties>  pProperties){
-      
-      int[] result = {0};
-      ByteBuffer[] nativeHandlers = vkEnumerateInstanceLayerProperties0(result);
-      if(pProperties != null){
-          pProperties.clear();
-          for (ByteBuffer buff : nativeHandlers) {
-              if(buff !=null ){
-                  VkLayerProperties prop = new VkLayerProperties(buff);
-                  pProperties.add(prop);
-              }
-        } 
-      }// if
-      
-      return VkResult.fromValue(result[0]);
+               int[]  pPropertyCount,
+               VkLayerProperties[]  pProperties){
+      ByteBuffer bigBuffer = createBigBuffer(pPropertyCount, pProperties, VkLayerProperties.sizeOf());      
+      int res = vkEnumerateInstanceLayerProperties0(pPropertyCount, bigBuffer);      
+      Utils.populate(pProperties, bigBuffer, pPropertyCount,VkLayerProperties.TAG_ID);      
+      return VkResult.fromValue(res);
   }
 
-   private static native ByteBuffer[] vkEnumerateInstanceLayerProperties0(int[] result);/*
-               
-               
-               uint32_t count = 0;
-               VkResult res =  vkEnumerateInstanceLayerProperties(
-                                 (uint32_t*) &count,
-                                 (VkLayerProperties*)  NULL);
-               
-               result[0] = res;
-               
-               if(res>=0 && count > 0){
-                 VkLayerProperties*  pProperties = new VkLayerProperties[count];  
-                 res =  vkEnumerateInstanceLayerProperties(
-                                 (uint32_t*) &count,
-                                 (VkLayerProperties*)  pProperties);
-                                 
-                 result[0] = res;
-                 jobjectArray bufArray = (jobjectArray) env->NewObjectArray(count, byteBufferClass, NULL);
-                 
-                 for(uint32_t i = 0; i < count; i++){
-                   VkLayerProperties* prop = pProperties + i;
-                   if(prop){
-                       jobject pObj = env->NewDirectByteBuffer((void*) prop, 
-                                                               (jlong) sizeof(VkLayerProperties));
-                       env->SetObjectArrayElement(bufArray, i, pObj);
-                   }                     
-                }
-                return bufArray;
-               }else
-               return NULL;
-        */
-
+  private static native int vkEnumerateInstanceLayerProperties0(int[]  pPropertyCount,
+                                                                ByteBuffer array);/*    
+      uint32_t count = 0;
+      VkResult res =  vkEnumerateInstanceLayerProperties(
+                    (uint32_t*) &count,
+                    (VkLayerProperties*)  array);  
+      pPropertyCount[0] = count;
+      return res;
+  */
+  
        /////////////////////////////////////
 
        /**
@@ -4641,6 +4585,7 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
              java.nio.ByteBuffer[]   pDescriptorPool);/*
+             
      VkDescriptorPool* array = new  VkDescriptorPool;
      VkResult res = vkCreateDescriptorPool(
                      (VkDevice) (device),
@@ -4649,8 +4594,8 @@ private static native int vkQueueSubmit0(
                      (VkDescriptorPool*) array);
                      
       if(res>=0){
-          VkDescriptorPool obj = array;
-          jobject buff = (jobject)(env->NewDirectByteBuffer((void*)obj, sizeof(VkDescriptorPool)));
+          //VkDescriptorPool obj = &array[0];
+          jobject buff = (jobject)(env->NewDirectByteBuffer((void*)array, sizeof(VkDescriptorPool)));
           env->SetObjectArrayElement(pDescriptorPool ,0, buff);
        }
       return (jint) res;
@@ -4793,10 +4738,12 @@ private static native int vkQueueSubmit0(
  */
  private static native int  vkAllocateDescriptorSets0(
              java.nio.ByteBuffer   device,
-             java.nio.ByteBuffer   pAllocateInfo,
+             java.nio.ByteBuffer   pAllocateInfo0,
              java.nio.ByteBuffer[]   pDescriptorSetsBuff
              );/* 
-     VkDescriptorSet*  pDescriptorSets = CALLOC(count,VkDescriptorSet);
+     const VkDescriptorSetAllocateInfo* pAllocateInfo = (VkDescriptorSetAllocateInfo*)pAllocateInfo0;  
+     uint32_t count = pAllocateInfo->descriptorSetCount;   
+     VkDescriptorSet*  pDescriptorSets = CALLOC(count, VkDescriptorSet);
      VkResult res = vkAllocateDescriptorSets(
                      (VkDevice) (device),
                      (const VkDescriptorSetAllocateInfo*) pAllocateInfo,
@@ -4979,9 +4926,8 @@ private static native int vkQueueSubmit0(
                      (const VkFramebufferCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkFramebuffer*) array);
-       if(res>=0){
-          VkFramebuffer obj = array;
-          jobject buff = (jobject)(env->NewDirectByteBuffer((void*)obj, sizeof(VkFramebuffer)));
+       if(res>=0){          
+          jobject buff = (jobject)(env->NewDirectByteBuffer((void*)array, sizeof(VkFramebuffer)));
           env->SetObjectArrayElement(pFramebuffer, 0, buff);
        }             
       return (jint) res;
@@ -5083,9 +5029,8 @@ private static native int vkQueueSubmit0(
                      (const VkRenderPassCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkRenderPass*) array);
-     if(res>=0 && retBuff != NULL){
-          VkRenderPass obj = array;
-          jobject buff = (jobject)(env->NewDirectByteBuffer((void*)obj, sizeof(VkRenderPass)));
+     if(res>=0 && retBuff != NULL){         
+          jobject buff = (jobject)(env->NewDirectByteBuffer((void*)array, sizeof(VkRenderPass)));
           env->SetObjectArrayElement(retBuff,0, buff);
        }             
       return (jint) res;
