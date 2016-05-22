@@ -449,30 +449,21 @@ public class Vk10 extends Vulkan {
        int size = 0;
        ByteBuffer[]  pPhysicalDevicesArray = null;
        
-       if (pPhysicalDevices != null) {
-           size = pPhysicalDevices.length;
+       if (pPhysicalDevices != null && pPhysicalDeviceCount[0] >  0) {
+           size = Math.min(pPhysicalDevices.length,pPhysicalDeviceCount[0]) ;
            pPhysicalDevicesArray = new ByteBuffer[size];           
            clean(pPhysicalDevices);           
-       }
-       //sanity check
-       if(pPhysicalDeviceCount==null || pPhysicalDeviceCount.length < 1){
-           pPhysicalDeviceCount = new int[1];
-           pPhysicalDeviceCount[0] = pPhysicalDevices == null ? 0 : pPhysicalDevices.length;
-       }
-             
+       }           
        int res = vkEnumeratePhysicalDevices0(instance.getPointer(),
                                               pPhysicalDeviceCount,
                                               pPhysicalDevicesArray,
                                               size);
+
+       if(pPhysicalDevices==null){
+           return  VkResult.fromValue(res);
+       }                                              
        // prepare to return
-       if (pPhysicalDevices != null && res>=0 && pPhysicalDevicesArray!= null) {
-           for (int i = 0; i < pPhysicalDevicesArray.length; i++) {
-               ByteBuffer handle = pPhysicalDevicesArray[i];
-               if (handle != null) {
-                   pPhysicalDevices[i] = new VkHandle(handle);
-               } // if
-           }
-       }
+       Utils.populateHandlers(pPhysicalDevices, pPhysicalDevicesArray, pPhysicalDeviceCount);       
        return VkResult.fromValue(res);
    }// method
 
@@ -602,7 +593,7 @@ public class Vk10 extends Vulkan {
         * @param  physicalDevice - A handle to the physical device to query. 
         * @param format -  The format whose properties to query. 
         * @param pFormatProperties- A pointer to the structure to
-        *  receive the result of the query. . 
+        *  receive the result of the query. 
         * 
         */
    public static void vkGetPhysicalDeviceFormatProperties(VkPhysicalDevice physicalDevice,
@@ -755,16 +746,7 @@ public class Vk10 extends Vulkan {
        vkGetPhysicalDeviceQueueFamilyProperties1( physicalDevice.getPointer(),
                                                   pQueueFamilyPropertyCount,
                                                   bigBuffer);
-       if(pQueueFamilyProperties == null) return;       
-       int count = pQueueFamilyPropertyCount[0];
-       if(count > 0){
-           ByteBuffer[] split =  splitBuffer(bigBuffer, count);           
-           int max = Math.min(count, pQueueFamilyProperties.length);
-           for (int i = 0; i < max; i++) {
-               pQueueFamilyProperties[i] = new VkQueueFamilyProperties(split[i]);
-           }
-           clean(split);
-       }
+       Utils.populate(pQueueFamilyProperties, bigBuffer,pQueueFamilyPropertyCount, VkQueueFamilyProperties.getID());       
    }
    
    private static native void vkGetPhysicalDeviceQueueFamilyProperties1(ByteBuffer pointer,
@@ -878,10 +860,10 @@ public class Vk10 extends Vulkan {
         * </pre>
         */
   public static VkResult vkCreateDevice(
-               VkPhysicalDevice  physicalDevice,
-               VkDeviceCreateInfo  pCreateDeviceInfo,
-               VkAllocationCallbacks  pAllocator,
-               VkDevice[]  pDevice){
+                        VkPhysicalDevice  physicalDevice,
+                        VkDeviceCreateInfo  pCreateDeviceInfo,
+                        VkAllocationCallbacks  pAllocator,
+                        VkDevice[]  pDevice){
       
    if(pDevice==null || pDevice.length<1){
        throw new IllegalArgumentException("pDevice[] must be not null and length >=1");
@@ -927,7 +909,8 @@ public class Vk10 extends Vulkan {
          }else{
            printf("No Device available !\n");
          }
-         //if(pDevice) delete pDevice;
+         if(pDevice != NULL) 
+            delete pDevice;
                  
          return pObj;      
        */
@@ -941,9 +924,8 @@ public class Vk10 extends Vulkan {
         *     const VkAllocationCallbacks*                pAllocator);
         * </pre>
         */
-  public static void vkDestroyDevice(
-               VkDevice  device,
-               VkAllocationCallbacks  pAllocator){
+  public static void vkDestroyDevice( VkDevice  device,
+                                      VkAllocationCallbacks  pAllocator){
       vkDestroyDevice0( device.getPointer(),
                         ( pAllocator==null ? null : pAllocator.getPointer()));
       
@@ -1031,20 +1013,7 @@ public class Vk10 extends Vulkan {
                                                                   VkExtensionProperties[] pProperties) {       
         ByteBuffer bigBuffer = createBigBuffer(pPropertyCount, pProperties, VkExtensionProperties.sizeOf());
         int res = vkEnumerateInstanceExtensionProperties0(pLayerName, pPropertyCount, bigBuffer);
-        if (pProperties != null) {
-            clean(pProperties);
-            if (bigBuffer != null) {
-                int count = pPropertyCount[0];
-                ByteBuffer[] buffs = splitBuffer(bigBuffer, count);
-                if (buffs != null) {
-                    for (int i = 0; i < count; i++) {
-                        VkExtensionProperties ep = new VkExtensionProperties(buffs[i]);
-                        pProperties[i] = ep;
-                    }
-                }
-                clean(buffs);
-            }
-        }        
+        Utils.populate(pProperties, bigBuffer, pPropertyCount, VkExtensionProperties.getID() );                
         return VkResult.fromValue(res);
     }
   

@@ -156,5 +156,24 @@ public class Utils {
         }        
     }
     
+    /**
+     * Populate a VkStruct array with count[0] instances. 
+     * @param pArray - array to be populated
+     * @param buffers - array of ByteBuffer with native handle
+     * @param count - array with number of handles, at [0];
+     * 
+     */
+   public static void populateHandlers(VkHandle[] pArray,
+                                       ByteBuffer[] buffers,
+                                       int[] count) {
+        if( pArray == null || buffer == null || count==null || count[0]==0){
+            return;
+        }           
+        int max = Math.min(count[0], buffets.length);
+        for (int i = 0; i < max; i++) {
+            pArray[i] = new VkHandle(buffers[i]);
+            buffers[i] = null;
+        }        
+    }
 
 }
