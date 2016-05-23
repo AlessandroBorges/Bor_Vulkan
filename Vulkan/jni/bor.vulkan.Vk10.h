@@ -231,43 +231,35 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyDevice0
 
 /*
  * Class:     bor_vulkan_Vk10
- * Method:    vkEnumerateInstanceExtensionPropertiesCount0
- * Signature: (Ljava/lang/String;[I)I
+ * Method:    vkEnumerateInstanceExtensionProperties0
+ * Signature: (Ljava/lang/String;[ILjava/nio/ByteBuffer;)I
  */
-JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkEnumerateInstanceExtensionPropertiesCount0
-  (JNIEnv *, jclass, jstring, jintArray);
-
-/*
- * Class:     bor_vulkan_Vk10
- * Method:    vkEnumerateInstanceExtensionProperties1
- * Signature: (Ljava/lang/String;[I[I)Ljava/nio/ByteBuffer;
- */
-JNIEXPORT jobject JNICALL Java_bor_vulkan_Vk10_vkEnumerateInstanceExtensionProperties1
-  (JNIEnv *, jclass, jstring, jintArray, jintArray);
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkEnumerateInstanceExtensionProperties0
+  (JNIEnv *, jclass, jstring, jintArray, jobject);
 
 /*
  * Class:     bor_vulkan_Vk10
  * Method:    vkEnumerateDeviceExtensionProperties0
- * Signature: (Ljava/nio/Buffer;Ljava/lang/String;[I)[Ljava/nio/ByteBuffer;
+ * Signature: (Ljava/nio/Buffer;Ljava/lang/String;[ILjava/nio/ByteBuffer;)I
  */
-JNIEXPORT jobjectArray JNICALL Java_bor_vulkan_Vk10_vkEnumerateDeviceExtensionProperties0
-  (JNIEnv *, jclass, jobject, jstring, jintArray);
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkEnumerateDeviceExtensionProperties0
+  (JNIEnv *, jclass, jobject, jstring, jintArray, jobject);
 
 /*
  * Class:     bor_vulkan_Vk10
  * Method:    vkEnumerateInstanceLayerProperties0
- * Signature: ([I)[Ljava/nio/ByteBuffer;
+ * Signature: ([ILjava/nio/ByteBuffer;)I
  */
-JNIEXPORT jobjectArray JNICALL Java_bor_vulkan_Vk10_vkEnumerateInstanceLayerProperties0
-  (JNIEnv *, jclass, jintArray);
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkEnumerateInstanceLayerProperties0
+  (JNIEnv *, jclass, jintArray, jobject);
 
 /*
  * Class:     bor_vulkan_Vk10
  * Method:    vkEnumerateDeviceLayerProperties0
- * Signature: (Ljava/nio/Buffer;[I[I)Ljava/nio/ByteBuffer;
+ * Signature: (Ljava/nio/Buffer;[ILjava/nio/ByteBuffer;)I
  */
-JNIEXPORT jobject JNICALL Java_bor_vulkan_Vk10_vkEnumerateDeviceLayerProperties0
-  (JNIEnv *, jclass, jobject, jintArray, jintArray);
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkEnumerateDeviceLayerProperties0
+  (JNIEnv *, jclass, jobject, jintArray, jobject);
 
 /*
  * Class:     bor_vulkan_Vk10

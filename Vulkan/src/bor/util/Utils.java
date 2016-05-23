@@ -6,6 +6,7 @@ package bor.util;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 
+import bor.vulkan.VkHandle;
 import bor.vulkan.structs.VkStruct;
 
 /**
@@ -163,13 +164,13 @@ public class Utils {
      * @param count - array with number of handles, at [0];
      * 
      */
-   public static void populateHandlers(VkHandle[] pArray,
+   public static void populateHandlers(Object[] pArray,
                                        ByteBuffer[] buffers,
                                        int[] count) {
-        if( pArray == null || buffer == null || count==null || count[0]==0){
+        if( pArray == null || buffers == null || count==null || count[0]==0){
             return;
         }           
-        int max = Math.min(count[0], buffets.length);
+        int max = Math.min(count[0], buffers.length);
         for (int i = 0; i < max; i++) {
             pArray[i] = new VkHandle(buffers[i]);
             buffers[i] = null;
