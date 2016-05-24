@@ -70,12 +70,21 @@ class JBufferArray
          * If you forgot, destructor does it for you.
          */
         void commit();
+		
+		/**
+         * Set default size of Handle.
+		 * @param sizeOf_ - size of Handle
+         **/ 		 
+		void setSizeOfHandle(size_t sizeOf_){
+			g_sizeOfHandle = (jsize)sizeOf_;
+		}
 
     protected:
     private:
         JNIEnv* env;
         jobjectArray bufferArr;
         int size;
+		jsize g_sizeOfHandle;
         PointerToAnythingArray pointers;
         PointerToAnythingArray pinnedPointers;
 };

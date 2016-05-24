@@ -28,13 +28,17 @@ void JBufferArray::setPointer(PointerToAnything ptr,jsize length, int index){
         return;
        }
        if(length==0){
-        length = sizeof(void*);
+		  length = g_sizeOfHandle;
+        //length = sizeof(void*);
        }
       //easy path
       if(pinnedPointers[index]==NULL || pinnedPointers[index] != ptr ){
          jobject buffer = (jobject)(env->NewDirectByteBuffer(ptr, length));
          pinnedPointers[index] = ptr;
          env->SetObjectArrayElement(bufferArr, index, buffer);
+		  #ifdef DEBUG
+          cout<< "setPointer at index[ "<<ptr << "] = "<< ptr <<endl;
+         #endif // DEBUG
       }
        pointers[index] = pinnedPointers[index];
 }
