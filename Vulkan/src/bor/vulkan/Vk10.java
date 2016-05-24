@@ -1385,15 +1385,13 @@ private static native int vkQueueSubmit0(
              long size,
              int flags,
              ByteBuffer[] ppData){
-     
      int result = vkMapMemory0(
                      device.getPointer() ,
                      memory.getPointer() ,
                      offset ,
                      size ,
                      flags ,
-                     ppData);   
-      
+                     ppData);
       return VkResult.fromValue(result);
 } 
 
@@ -1484,13 +1482,11 @@ private static native int vkQueueSubmit0(
              VkDevice device,
              int memoryRangeCount,
              VkMappedMemoryRange[]  pMemoryRanges){        
-     ByteBuffer[] pMemoryRangesBuffers = getBuffers(pMemoryRanges, memoryRangeCount);
-     int  _val = vkFlushMappedMemoryRanges0(
-                     device.getPointer(),
-                     pMemoryRangesBuffers.length,
-                     pMemoryRangesBuffers);
-     
-     setBuffers(pMemoryRanges, pMemoryRangesBuffers);
+     ByteBuffer[] buffers= getBuffers(pMemoryRanges, memoryRangeCount);
+     int  _val = vkFlushMappedMemoryRanges0(  device.getPointer(),
+                                              memoryRangeCount,
+                                              buffers);     
+     setBuffers(pMemoryRanges, buffers);
      return VkResult.fromValue(_val);
 } 
 
@@ -1509,14 +1505,11 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              int  memoryRangeCount,
              java.nio.ByteBuffer[]   pMemoryRangesArray);/* 
-     JBufferArray buffers (env, pMemoryRangesArray);          
-     const VkMappedMemoryRange* pMemoryRanges = (const VkMappedMemoryRange*) buffers.getPointers();
+     JBufferArray array(env,  pMemoryRangesArray);
      VkResult res = vkFlushMappedMemoryRanges(
                      (VkDevice) (device),
                      (uint32_t) memoryRangeCount,
-                     (const VkMappedMemoryRange*) pMemoryRanges);
-                     
-                     
+                     (const VkMappedMemoryRange*) array.getPointers());
       return (jint) res;
 */ 
 
@@ -1568,6 +1561,7 @@ private static native int vkQueueSubmit0(
              int  memoryRangeCount,
              java.nio.ByteBuffer[]   pMemoryRanges);/*
      JBufferArray bufferArray (env, pMemoryRanges);
+	 bufferArray.setSizeOfHandle(sizeof(VkMappedMemoryRange));
      PointerToAnything* buffers = bufferArray.getPointers();
      VkResult res = vkInvalidateMappedMemoryRanges(
                      (VkDevice) (device),
@@ -1854,13 +1848,13 @@ private static native int vkQueueSubmit0(
              VkImage image,
              int[] pSparseMemoryRequirementCount,
              VkSparseImageMemoryRequirements[]  pSparseMemoryRequirements){    
-     ByteBuffer[] buffers = getBuffers(pSparseMemoryRequirements, pSparseMemoryRequirementCount[0]);     
+     ByteBuffer bigBuffer = createBigBuffer(pSparseMemoryRequirementCount, pSparseMemoryRequirements, VkSparseImageMemoryRequirements.sizeOf());	 
      vkGetImageSparseMemoryRequirements0(
              device.getPointer() ,
              image.getPointer(),
              pSparseMemoryRequirementCount ,
-             buffers);     
-     setBuffers(pSparseMemoryRequirements, buffers);
+             bigBuffer);     
+     Utils.populate(pSparseMemoryRequirements, bigBuffer, pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements.TAG_ID);
 } 
 
 /**
@@ -1876,14 +1870,12 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   image,
              int[]  pSparseMemoryRequirementCount,
-             java.nio.ByteBuffer[]   pSparseMemoryRequirements);/* 
-
-     JBufferArray buffers(env,pSparseMemoryRequirements);
+             java.nio.ByteBuffer   pSparseMemoryRequirements);/* 
      vkGetImageSparseMemoryRequirements(
                      (VkDevice) (device),
                      (VkImage) image,
                      (uint32_t*) pSparseMemoryRequirementCount,
-                     (VkSparseImageMemoryRequirements*) buffers.getPointers());
+                     (VkSparseImageMemoryRequirements*) pSparseMemoryRequirements);
 
 */ 
 
@@ -2004,7 +1996,7 @@ private static native int vkQueueSubmit0(
                      queue.getPointer(),
                      bindInfoCount ,
                      (pBindInfo==null ? null : pBindInfo.getPointer()),
-                     (fence==null ? null : fence.getPointer())   );
+                     fence.getPointer()   );
       return VkResult.fromValue(_val);
 } 
 
@@ -2060,7 +2052,7 @@ private static native int vkQueueSubmit0(
               VkFence  pFence){
      int  _val = vkCreateFence0(
                      device.getPointer() ,
-                     (pCreateInfo==null ? null : pCreateInfo.getPointer()),
+                     pCreateInfo.getPointer(),
                      (pAllocator==null ? null : pAllocator.getPointer()),
                      (pFence==null ? null : pFence.getPointer())   );
       return VkResult.fromValue(_val);
@@ -2113,7 +2105,7 @@ private static native int vkQueueSubmit0(
              VkAllocationCallbacks  pAllocator){
      vkDestroyFence0(
              device.getPointer() ,
-             (fence==null ? null : fence.getPointer()),
+             fence.getPointer(),
              (pAllocator==null ? null : pAllocator.getPointer())   );
 
 } 
@@ -2215,7 +2207,7 @@ private static native int vkQueueSubmit0(
              VkFence fence){
      int  _val = vkGetFenceStatus0(
                      device.getPointer() ,
-                     (fence==null ? null : fence.getPointer())   );
+                     fence.getPointer());
       return VkResult.fromValue(_val);
 } 
 
@@ -2334,7 +2326,7 @@ private static native int vkQueueSubmit0(
               VkSemaphore  pSemaphore){
      int  _val = vkCreateSemaphore0(
                      device.getPointer() ,
-                     (pCreateInfo==null ? null : pCreateInfo.getPointer()),
+                     pCreateInfo.getPointer(),
                      (pAllocator==null ? null : pAllocator.getPointer()),
                      (pSemaphore==null ? null : pSemaphore.getPointer())   );
       return VkResult.fromValue(_val);
@@ -2439,7 +2431,7 @@ private static native int vkQueueSubmit0(
              VkEvent  pEvent){
      int  _val = vkCreateEvent0(
                      device.getPointer() ,
-                     (pCreateInfo==null ? null : pCreateInfo.getPointer()),
+                     pCreateInfo.getPointer(),
                      (pAllocator==null ? null : pAllocator.getPointer()),
                      (pEvent==null ? null : pEvent.getPointer())   );
       return VkResult.fromValue(_val);
@@ -2679,7 +2671,7 @@ private static native int vkQueueSubmit0(
      ByteBuffer[] buff = new ByteBuffer[1];
      int  _val = vkCreateQueryPool0(
                      device.getPointer() ,
-                     (pCreateInfo==null ? null : pCreateInfo.getPointer()),
+                     pCreateInfo.getPointer(),
                      (pAllocator==null ? null : pAllocator.getPointer()),
                      buff   );
 
@@ -2908,7 +2900,7 @@ private static native int vkQueueSubmit0(
      int[] result = {0};     
      ByteBuffer handle = vkCreateBuffer0(
                      device.getPointer() ,
-                     (pCreateInfo==null ? null : pCreateInfo.getPointer()),
+                     pCreateInfo.getPointer(),
                      (pAllocator==null ? null : pAllocator.getPointer()),
                      result);   
      pBuffer[0] = new VkHandle(handle);    
@@ -3024,7 +3016,7 @@ private static native int vkQueueSubmit0(
      ByteBuffer[] buffer = new ByteBuffer[1];
      int  _val = vkCreateBufferView0(
                      device.getPointer() ,
-                     (pCreateInfo==null ? null : pCreateInfo.getPointer()),
+                     pCreateInfo.getPointer(),
                      (pAllocator==null ? null : pAllocator.getPointer()),
                      buffer);
      
@@ -3146,7 +3138,7 @@ private static native int vkQueueSubmit0(
      ByteBuffer[] buff = new ByteBuffer[1];
      int  _val = vkCreateImage0(
                      device.getPointer() ,
-                     (pCreateInfo==null ? null : pCreateInfo.getPointer()),
+                     pCreateInfo.getPointer(),
                      (pAllocator==null ? null : pAllocator.getPointer()),
                       buff);
       return VkResult.fromValue(_val);
@@ -3317,7 +3309,7 @@ private static native int vkQueueSubmit0(
               VkImageView  pView){
      int  _val = vkCreateImageView0(
                      device.getPointer() ,
-                     (pCreateInfo==null ? null : pCreateInfo.getPointer()),
+                     pCreateInfo.getPointer(),
                      (pAllocator==null ? null : pAllocator.getPointer()),
                      (pView==null ? null : pView.getPointer())   );
       return VkResult.fromValue(_val);
@@ -3422,7 +3414,7 @@ private static native int vkQueueSubmit0(
               VkShaderModule  pShaderModule){
      int  _val = vkCreateShaderModule0(
                      device.getPointer() ,
-                     (pCreateInfo==null ? null : pCreateInfo.getPointer()),
+                     pCreateInfo.getPointer(),
                      (pAllocator==null ? null : pAllocator.getPointer()),
                      (pShaderModule==null ? null : pShaderModule.getPointer())   );
       return VkResult.fromValue(_val);
@@ -3527,7 +3519,7 @@ private static native int vkQueueSubmit0(
               VkPipelineCache  pPipelineCache){
      int  _val = vkCreatePipelineCache0(
                      device.getPointer() ,
-                     (pCreateInfo==null ? null : pCreateInfo.getPointer()),
+                     pCreateInfo.getPointer(),
                      (pAllocator==null ? null : pAllocator.getPointer()),
                      (pPipelineCache==null ? null : pPipelineCache.getPointer())   );
       return VkResult.fromValue(_val);
@@ -3943,7 +3935,7 @@ private static native int vkQueueSubmit0(
               VkPipelineLayout  pPipelineLayout){
      int  _val = vkCreatePipelineLayout0(
                      device.getPointer() ,
-                     (pCreateInfo==null ? null : pCreateInfo.getPointer()),
+                     pCreateInfo.getPointer(),
                      (pAllocator==null ? null : pAllocator.getPointer()),
                      (pPipelineLayout==null ? null : pPipelineLayout.getPointer())   );
       return VkResult.fromValue(_val);
@@ -4049,7 +4041,7 @@ private static native int vkQueueSubmit0(
      ByteBuffer[] buff = new ByteBuffer[1];
      int  _val = vkCreateSampler0(
                      device.getPointer() ,
-                     (pCreateInfo==null ? null : pCreateInfo.getPointer()),
+                     pCreateInfo.getPointer(),
                      (pAllocator==null ? null : pAllocator.getPointer()),
                      buff);
      
@@ -4164,7 +4156,7 @@ private static native int vkQueueSubmit0(
      ByteBuffer[] buff = new ByteBuffer[1];
      int  _val = vkCreateDescriptorSetLayout0(
                      device.getPointer() ,
-                     (pCreateInfo==null ? null : pCreateInfo.getPointer()),
+                     pCreateInfo.getPointer(),
                      (pAllocator==null ? null : pAllocator.getPointer()),
                      buff);
      
@@ -4274,7 +4266,7 @@ private static native int vkQueueSubmit0(
      ByteBuffer[] buff = new ByteBuffer[1];
      int  _val = vkCreateDescriptorPool0(
                      device.getPointer() ,
-                     (pCreateInfo==null ? null : pCreateInfo.getPointer()),
+                     pCreateInfo.getPointer(),
                      (pAllocator==null ? null : pAllocator.getPointer()),
                      buff);
      
@@ -4610,7 +4602,7 @@ private static native int vkQueueSubmit0(
      ByteBuffer[] buff = new ByteBuffer[1];
      int  _val = vkCreateFramebuffer0(
                      device.getPointer() ,
-                     (pCreateInfo==null ? null : pCreateInfo.getPointer()),
+                     pCreateInfo.getPointer(),
                      (pAllocator==null ? null : pAllocator.getPointer()),
                      buff );
       pFramebuffer[0] = wrapClean(buff);
@@ -4713,7 +4705,7 @@ private static native int vkQueueSubmit0(
      ByteBuffer[] buff = new ByteBuffer[1];
      int  _val = vkCreateRenderPass0(
                      device.getPointer() ,
-                     (pCreateInfo==null ? null : pCreateInfo.getPointer()),
+                     pCreateInfo.getPointer(),
                      (pAllocator==null ? null : pAllocator.getPointer()),
                       buff);
       pRenderPass[0] = wrapClean(buff); 
@@ -4858,9 +4850,10 @@ private static native int vkQueueSubmit0(
      int[] result = {0};
      ByteBuffer handle = vkCreateCommandPool0(
                      device.getPointer() ,
-                     (pCreateInfo==null ? null : pCreateInfo.getPointer()),
+                     pCreateInfo.getPointer(),
                      (pAllocator==null ? null : pAllocator.getPointer()),
                      result );
+      pCommandPool[0] = new VkHandle(handle);
       return VkResult.fromValue(result[0]);
 } 
 
@@ -4887,11 +4880,12 @@ private static native int vkQueueSubmit0(
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkCommandPool*) pCommandPool);
       result[0] = res;
-      if(pCommandPool){
-       jobject buffer = (jobject)(env->NewDirectByteBuffer(pCommandPool, sizeof(void*)));
-       return buffer;
-      }   
-      return NULL;
+      jobject buffer = NULL;
+      if(res >= 0){
+       buffer = (jobject)(env->NewDirectByteBuffer(pCommandPool[0], sizeof(void*)));       
+      }  
+      delete pCommandPool;
+      return buffer;
 */ 
 
 
@@ -4914,9 +4908,9 @@ private static native int vkQueueSubmit0(
               VkAllocationCallbacks  pAllocator){
      vkDestroyCommandPool0(
              device.getPointer() ,
-              commandPool.getPointer(),
-             (pAllocator==null ? null : pAllocator.getPointer())   );
-} 
+             commandPool.getPointer(),
+             (pAllocator==null ? null : pAllocator.getPointer()));
+  } 
 
 /**
  *  Native interface for Vulkan method #87
@@ -4956,11 +4950,10 @@ private static native int vkQueueSubmit0(
              VkDevice device,
              VkCommandPool commandPool,
              int flags){
-     int  _val = vkResetCommandPool0(
-                     device.getPointer() ,
-                      commandPool.getPointer(),
-                     flags  );
-      return VkResult.fromValue(_val);
+     int  res = vkResetCommandPool0( device.getPointer() ,
+                                      commandPool.getPointer(),
+                                      flags  );
+      return VkResult.fromValue(res);
 } 
 
 /**
@@ -5002,12 +4995,14 @@ private static native int vkQueueSubmit0(
     public static VkResult vkAllocateCommandBuffers(
              VkDevice device,
               VkCommandBufferAllocateInfo  pAllocateInfo,
-              VkCommandBuffer  pCommandBuffers){
+              VkCommandBuffer[]  pCommandBuffers){        
+     ByteBuffer[] buffers = getBuffers(pCommandBuffers, pAllocateInfo.commandBufferCount());   
      int  _val = vkAllocateCommandBuffers0(
                      device.getPointer() ,
                      (pAllocateInfo==null ? null : pAllocateInfo.getPointer()),
-                     pCommandBuffers.getPointer()  );
-      return VkResult.fromValue(_val);
+                     buffers);
+     setBuffers(pCommandBuffers, buffers);
+     return VkResult.fromValue(_val);
 } 
 
 /**
@@ -5023,11 +5018,12 @@ private static native int vkQueueSubmit0(
  private static native int  vkAllocateCommandBuffers0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   pAllocateInfo,
-             java.nio.ByteBuffer   pCommandBuffers);/* 
+             java.nio.ByteBuffer[]   pCommandBuffers);/*
+     JBufferArray array(env,pCommandBuffers);         
      VkResult res = vkAllocateCommandBuffers(
                      (VkDevice) (device),
                      (const VkCommandBufferAllocateInfo*) pAllocateInfo,
-                     (VkCommandBuffer*) pCommandBuffers);
+                     (VkCommandBuffer*) array.getPointers());
       return (jint) res;
 */ 
 
@@ -5048,16 +5044,14 @@ private static native int vkQueueSubmit0(
  * @param commandBufferCount - 
  * @param pCommandBuffers - 
  */
-    public static void  vkFreeCommandBuffers(
-             VkDevice device,
-             VkCommandPool commandPool,
-             int commandBufferCount,
-              VkCommandBuffer  pCommandBuffers){
-     vkFreeCommandBuffers0(
-             device.getPointer() ,
-              commandPool.getPointer(),
-             commandBufferCount ,
-             pCommandBuffers.getPointer()  );
+    public static void  vkFreeCommandBuffers( VkDevice device,
+                                              VkCommandPool commandPool,
+                                              int commandBufferCount,
+                                              VkCommandBuffer[]  pCommandBuffers){
+     ByteBuffer[] buffers = getBuffers(pCommandBuffers, commandBufferCount);   
+     vkFreeCommandBuffers0( device.getPointer(), commandPool.getPointer(), 
+                            commandBufferCount , buffers);
+     setBuffers(pCommandBuffers, buffers);
 } 
 
 /**
@@ -5073,12 +5067,15 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   commandPool,
              int  commandBufferCount,
-             java.nio.ByteBuffer   pCommandBuffers);/* 
+             java.nio.ByteBuffer[]   pCommandBuffers);/* 
+     JBufferArray array (env,pCommandBuffers); 
+     array.setSizeOfHandle(sizeof(VkCommandBuffer));
+            
      vkFreeCommandBuffers(
                      (VkDevice) (device),
                      (VkCommandPool) commandPool,
                      (uint32_t) commandBufferCount,
-                     (const VkCommandBuffer*) pCommandBuffers);
+                     (const VkCommandBuffer*) array.getPointers());
 */ 
 
 /**
@@ -8052,7 +8049,7 @@ private static native int vkQueueSubmit0(
   * @param buffer - native buffer to wrap
   * @return VkHandle instance
   */
- private static VkHandle wrap(ByteBuffer buffer) {
+  static final VkHandle wrap(ByteBuffer buffer) {
      return buffer == null ? null : new VkHandle(buffer);
  }
  
@@ -8061,7 +8058,7 @@ private static native int vkQueueSubmit0(
   * @param dstArray - VkHandle Array
   * @param buff - ByteBuffer to wrap as VkHandler
   */
- private static final void wrapVkHandle(VkHandleInterface[] dstArray, ByteBuffer buff){
+  static final void wrapVkHandle(VkHandleInterface[] dstArray, ByteBuffer buff){
      if(dstArray[0] == null){         
          dstArray [0] = new VkHandle(buff);
       }  else{
@@ -8077,7 +8074,7 @@ private static native int vkQueueSubmit0(
   * 
   * @return a direct ByteBuffer large enough to hold all structures 
   */
- private static ByteBuffer createBigBuffer(int[] count, VkStruct[] array, int sizeOf){
+  static final ByteBuffer createBigBuffer(int[] count, VkStruct[] array, int sizeOf){
      if(array ==null || count==null || count[0] ==0){
        return null;
      }
@@ -8088,6 +8085,28 @@ private static native int vkQueueSubmit0(
   }
  
  /**
+  * Populate a VkStruct array with count[0] instances. 
+  * @param pArray - array to be populated
+  * @param bigBuffer - ByteBuffer with native data, it will be splited internally
+  * @param count - array with number of objects to handle, at [0];
+  * @param tagId - VkStruct tag ID - a internal number for VkStructs
+  */
+  static final void populate(VkStruct[] pArray,
+                             ByteBuffer bigBuffer,
+                             int[] count,
+                             int tagId) {
+     if( pArray == null || bigBuffer == null || count==null || count[0]==0){
+         return;
+     }
+     ByteBuffer[] split = Utils.splitBuffer(bigBuffer, count[0]);   
+     int max = Math.min(pArray.length, count[0]);
+     for (int i = 0; i < max; i++) {
+         pArray[i] = VkStruct.createInstance(tagId, split[i]);
+         split[i] = null;
+     }        
+ }
+ 
+ /**
   * Create a Direct ByteBuffer as container for VkHandlers.
   * @param count - user requested amount of VkHandles, at count[0]. 
   * @param array - array to hold returning handlers
@@ -8096,16 +8115,16 @@ private static native int vkQueueSubmit0(
   * 
   * @return  a direct ByteBuffer large enough to hold all Handles 
   */
- private static ByteBuffer createBigBuffer(int[] count, VkHandle[] array,  boolean isDispatchable){
-     if(array ==null || count==null || count[0] ==0){
-       return null;
-     }
-     int size = Math.min(count[0], array.length) ;
-     size *= isDispatchable ? SIZE_OF_HANDLE : SIZE_OF_NON__DISPATCHABLE_HANDLE;
-     ByteBuffer bigBuffer = ByteBuffer.allocateDirect(size * VkHandle.SIZEOF_PTR);
-     bigBuffer.order(ByteOrder.nativeOrder());
-     return bigBuffer;
-  }
+// private static ByteBuffer createBigBufferH(int[] count, VkHandle[] array,  boolean isDispatchable){
+//     if(array ==null || count==null || count[0] ==0){
+//       return null;
+//     }
+//     int size = Math.min(count[0], array.length) ;
+//     size *= isDispatchable ? SIZE_OF_HANDLE : SIZE_OF_NON__DISPATCHABLE_HANDLE;
+//     ByteBuffer bigBuffer = ByteBuffer.allocateDirect(size * VkHandle.SIZEOF_PTR);
+//     bigBuffer.order(ByteOrder.nativeOrder());
+//     return bigBuffer;
+//  }
  
  /**
   * Analize a set of parameters and create a ByteBuffer array for VkHandle
@@ -8113,7 +8132,7 @@ private static native int vkQueueSubmit0(
   * @param count - array with count
   * @return a array of ByteBuffer to filled in native side
   */
- private static ByteBuffer[] createBufferArray2Handles(Object[] pHandles, int[] count){
+  static final ByteBuffer[] createBufferArray2Handles(Object[] pHandles, int[] count){
      if(pHandles==null || count==null || count[0] == 0){
          return null;
      }
@@ -8127,7 +8146,7 @@ private static native int vkQueueSubmit0(
   * @param vkObjArray - array of Structs
   * @param buffers - array of buffers to set
   */
-  private static void setBuffers(VkObject[] vkObjArray, ByteBuffer[] buffers){
+  static final void setBuffers(VkObject[] vkObjArray, ByteBuffer[] buffers){
       if(vkObjArray==null){
           return;
       }
@@ -8148,7 +8167,7 @@ private static native int vkQueueSubmit0(
    * @param max - max number of buffers to read.
    * @return null, if vkObjArray is null. Orarray of ByteBuffers from  vkObjArray structs
    */
-  private static ByteBuffer[] getBuffers(VkObject[] vkObjArray, int max){
+    static final ByteBuffer[] getBuffers(VkObject[] vkObjArray, int max){
       if(vkObjArray==null){
           return null;
       }
