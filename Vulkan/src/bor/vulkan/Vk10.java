@@ -659,7 +659,7 @@ public class Vk10 extends Vulkan {
        vkGetPhysicalDeviceQueueFamilyProperties1( physicalDevice.getPointer(),
                                                   pQueueFamilyPropertyCount,
                                                   bigBuffer);
-       Utils.populate(pQueueFamilyProperties, bigBuffer,pQueueFamilyPropertyCount, VkQueueFamilyProperties.TAG_ID);       
+       splitBigBuffer(pQueueFamilyProperties, bigBuffer,pQueueFamilyPropertyCount, VkQueueFamilyProperties.TAG_ID);       
    }
    
    private static native void vkGetPhysicalDeviceQueueFamilyProperties1(ByteBuffer pointer,
@@ -917,7 +917,7 @@ public class Vk10 extends Vulkan {
                                                                   VkExtensionProperties[] pProperties) {       
         ByteBuffer bigBuffer = createBigBuffer(pPropertyCount, pProperties, VkExtensionProperties.sizeOf());
         int res = vkEnumerateInstanceExtensionProperties0(pLayerName, pPropertyCount, bigBuffer);
-        Utils.populate(pProperties, bigBuffer, pPropertyCount, VkExtensionProperties.TAG_ID);                
+        splitBigBuffer(pProperties, bigBuffer, pPropertyCount, VkExtensionProperties.TAG_ID);                
         return VkResult.fromValue(res);
     }
   
@@ -969,7 +969,7 @@ public class Vk10 extends Vulkan {
                VkExtensionProperties[]  pProperties){      
         ByteBuffer bigBuffer = createBigBuffer(pPropertyCount, pProperties, VkExtensionProperties.sizeOf());
         int res = vkEnumerateDeviceExtensionProperties0( physicalDevice.getPointer(), pLayerName,  pPropertyCount, bigBuffer);
-        Utils.populate(pProperties, bigBuffer, pPropertyCount, VkExtensionProperties.TAG_ID);        
+        splitBigBuffer(pProperties, bigBuffer, pPropertyCount, VkExtensionProperties.TAG_ID);        
         return VkResult.fromValue(res);
     }
 
@@ -1008,7 +1008,7 @@ public class Vk10 extends Vulkan {
                VkLayerProperties[]  pProperties){
       ByteBuffer bigBuffer = createBigBuffer(pPropertyCount, pProperties, VkLayerProperties.sizeOf());      
       int res = vkEnumerateInstanceLayerProperties0(pPropertyCount, bigBuffer);      
-      Utils.populate(pProperties, bigBuffer, pPropertyCount,VkLayerProperties.TAG_ID);      
+      splitBigBuffer(pProperties, bigBuffer, pPropertyCount,VkLayerProperties.TAG_ID);      
       return VkResult.fromValue(res);
   }
 
@@ -1047,7 +1047,7 @@ public class Vk10 extends Vulkan {
                                                           VkLayerProperties[]  pProperties){
        ByteBuffer bigBuffer = createBigBuffer(pPropertyCount, pProperties, VkLayerProperties.sizeOf());
        int res = vkEnumerateDeviceLayerProperties0(physicalDevice.getPointer(), pPropertyCount, bigBuffer);
-       Utils.populate(pProperties, bigBuffer, pPropertyCount, VkLayerProperties.TAG_ID);                
+       splitBigBuffer(pProperties, bigBuffer, pPropertyCount, VkLayerProperties.TAG_ID);                
        return VkResult.fromValue(res);
    }
    
@@ -1424,13 +1424,12 @@ private static native int vkQueueSubmit0(
                      (VkDeviceSize) size,
                      (VkMemoryMapFlags) flags,
                      (void**) &pData);                     
-     
+      
       if(res >= 0){
-         buffer = env->NewDirectByteBuffer((void*) pData, 
-                                           (jlong) size); 
+         jobject buffer = env->NewDirectByteBuffer((void*) pData, (jlong) size); 
          env->SetObjectArrayElement(ppData, 0, buffer);
       }           
-      return buff;
+      return (jint) res;
 */ 
 
 
@@ -1641,7 +1640,7 @@ private static native int vkQueueSubmit0(
              long memoryOffset){
      int  _val = vkBindBufferMemory0(
                      device.getPointer() ,
-                     (buffer==null ? null : buffer.getPointer()),
+                     buffer.getPointer(),
                      (memory==null ? null : memory.getPointer()),
                      memoryOffset  );
       return VkResult.fromValue(_val);
@@ -1753,7 +1752,7 @@ private static native int vkQueueSubmit0(
              VkMemoryRequirements  pMemoryRequirements){
      vkGetBufferMemoryRequirements0(
              device.getPointer() ,
-             (buffer==null ? null : buffer.getPointer()),
+             buffer.getPointer(),
              (pMemoryRequirements==null ? null : pMemoryRequirements.getPointer())   );
 
 } 
@@ -1828,34 +1827,39 @@ private static native int vkQueueSubmit0(
 
      /////////////////////////////////////
 
-/**
- *  Vulkan procedure ID: 33
- * <h2>Prototype</h2><pre>
- *  void  vkGetImageSparseMemoryRequirements(
- *     VkDevice                                    device,
- *     VkImage                                     image,
- *     uint32_t*                                   pSparseMemoryRequirementCount,
- *     VkSparseImageMemoryRequirements*            pSparseMemoryRequirements);
- * </pre>
- * 
- * @param device - 
- * @param image - 
- * @param pSparseMemoryRequirementCount - 
- * @param pSparseMemoryRequirements - 
- */
-    public static void  vkGetImageSparseMemoryRequirements(
-             VkDevice device,
-             VkImage image,
-             int[] pSparseMemoryRequirementCount,
-             VkSparseImageMemoryRequirements[]  pSparseMemoryRequirements){    
-     ByteBuffer bigBuffer = createBigBuffer(pSparseMemoryRequirementCount, pSparseMemoryRequirements, VkSparseImageMemoryRequirements.sizeOf());	 
-     vkGetImageSparseMemoryRequirements0(
-             device.getPointer() ,
-             image.getPointer(),
-             pSparseMemoryRequirementCount ,
-             bigBuffer);     
-     Utils.populate(pSparseMemoryRequirements, bigBuffer, pSparseMemoryRequirementCount, VkSparseImageMemoryRequirements.TAG_ID);
-} 
+    /**
+     * Vulkan procedure ID: 33
+     * <h2>Prototype</h2>
+     * 
+     * <pre>
+     *  void  vkGetImageSparseMemoryRequirements(
+     *     VkDevice                                    device,
+     *     VkImage                                     image,
+     *     uint32_t*                                   pSparseMemoryRequirementCount,
+     *     VkSparseImageMemoryRequirements*            pSparseMemoryRequirements);
+     * </pre>
+     * 
+     * @param device -
+     * @param image -
+     * @param pSparseMemoryRequirementCount -
+     * @param pSparseMemoryRequirements -
+     */
+    public static void vkGetImageSparseMemoryRequirements(VkDevice device,
+                                                          VkImage image,
+                                                          int[] pSparseMemoryRequirementCount,
+                                                          VkSparseImageMemoryRequirements[] pSparseMemoryRequirements) {
+        ByteBuffer bigBuffer = createBigBuffer( pSparseMemoryRequirementCount, 
+                                                pSparseMemoryRequirements,
+                                                VkSparseImageMemoryRequirements.sizeOf());
+        vkGetImageSparseMemoryRequirements0(device.getPointer(), 
+                image.getPointer(), 
+                pSparseMemoryRequirementCount,
+                bigBuffer);
+        splitBigBuffer( pSparseMemoryRequirements, 
+                        bigBuffer, 
+                        pSparseMemoryRequirementCount,
+                        VkSparseImageMemoryRequirements.TAG_ID);
+    }
 
 /**
  *  Native interface for Vulkan method #33
@@ -1882,53 +1886,51 @@ private static native int vkQueueSubmit0(
 
      /////////////////////////////////////
 
-/**
- *  Vulkan procedure ID: 34
- * <h2>Prototype</h2><pre>
- *  void  vkGetPhysicalDeviceSparseImageFormatProperties(
- *     VkPhysicalDevice                            physicalDevice,
- *     VkFormat                                    format,
- *     VkImageType                                 type,
- *     VkSampleCountFlagBits                       samples,
- *     VkImageUsageFlags                           usage,
- *     VkImageTiling                               tiling,
- *     uint32_t*                                   pPropertyCount,
- *     VkSparseImageFormatProperties*              pProperties);
- * </pre>
- * 
- * @param physicalDevice - 
- * @param format - 
- * @param type - 
- * @param samples - 
- * @param usage - 
- * @param tiling - 
- * @param pPropertyCount - 
- * @param pProperties - 
- */
-    public static void  vkGetPhysicalDeviceSparseImageFormatProperties(
-             VkPhysicalDevice physicalDevice,
-             VkFormat format,
-             VkImageType type,
-             VkSampleCountFlagBits samples,
-             int usage,
-             VkImageTiling tiling,
-             int[] pPropertyCount,
-             VkSparseImageFormatProperties[]  pProperties){
-    
-     ByteBuffer[] buffers = getBuffers(pProperties, pPropertyCount[0]);
-     vkGetPhysicalDeviceSparseImageFormatProperties0(
-             physicalDevice.getPointer() ,
-             format.getValue() ,
-             type.getValue() ,
-             samples.getValue() ,
-             usage ,
-             tiling.getValue() ,
-             pPropertyCount ,
-             buffers );
-     
-     setBuffers(pProperties, buffers);
-
-} 
+    /**
+     * Vulkan procedure ID: 34
+     * <h2>Prototype</h2>
+     * 
+     * <pre>
+     *  void  vkGetPhysicalDeviceSparseImageFormatProperties(
+     *     VkPhysicalDevice                            physicalDevice,
+     *     VkFormat                                    format,
+     *     VkImageType                                 type,
+     *     VkSampleCountFlagBits                       samples,
+     *     VkImageUsageFlags                           usage,
+     *     VkImageTiling                               tiling,
+     *     uint32_t*                                   pPropertyCount,
+     *     VkSparseImageFormatProperties*              pProperties);
+     * </pre>
+     * 
+     * @param physicalDevice -
+     * @param format -
+     * @param type -
+     * @param samples -
+     * @param usage -
+     * @param tiling -
+     * @param pPropertyCount -
+     * @param pProperties -
+     */
+    public static void vkGetPhysicalDeviceSparseImageFormatProperties(VkPhysicalDevice physicalDevice,
+                                                                      VkFormat format,
+                                                                      VkImageType type,
+                                                                      VkSampleCountFlagBits samples,
+                                                                      int usage,
+                                                                      VkImageTiling tiling,
+                                                                      int[] pPropertyCount,
+                                                                      VkSparseImageFormatProperties[] pProperties) {
+        clean(pProperties);
+        ByteBuffer buffers = createBigBuffer( pPropertyCount, 
+                                              pProperties, 
+                                              VkSparseImageFormatProperties.sizeOf());
+        vkGetPhysicalDeviceSparseImageFormatProperties0( physicalDevice.getPointer(), 
+                                                         format.getValue(), 
+                                                         type.getValue(),
+                                                         samples.getValue(), usage, 
+                                                         tiling.getValue(), 
+                                                         pPropertyCount, buffers);
+        splitBigBuffer(pProperties, buffers, pPropertyCount, VkSparseImageFormatProperties.TAG_ID);
+    }
 
 /**
  *  Native interface for Vulkan method #34
@@ -1951,10 +1953,7 @@ private static native int vkQueueSubmit0(
              int  usage,
              int   tiling,
              int[]  pPropertyCount,
-             java.nio.ByteBuffer[]   pProperties);/* 
-     
-     JBufferArray buffers (env, pProperties);
-     
+             java.nio.ByteBuffer bigBuffer);/*
      vkGetPhysicalDeviceSparseImageFormatProperties(
                      (VkPhysicalDevice) physicalDevice,
                      (VkFormat) format,
@@ -1963,8 +1962,7 @@ private static native int vkQueueSubmit0(
                      (VkImageUsageFlags) usage,
                      (VkImageTiling) tiling,
                      (uint32_t*) pPropertyCount,
-                     (VkSparseImageFormatProperties*) buffers.getPointers());
-
+                     (VkSparseImageFormatProperties*) bigBuffer);
 */ 
 
 
@@ -2963,9 +2961,8 @@ private static native int vkQueueSubmit0(
              VkAllocationCallbacks  pAllocator){
      vkDestroyBuffer0(
              device.getPointer() ,
-             (buffer==null ? null : buffer.getPointer()),
-             (pAllocator==null ? null : pAllocator.getPointer())   );
-
+             buffer.getPointer(),
+             (pAllocator==null ? null : pAllocator.getPointer()));
 } 
 
 /**
@@ -2976,19 +2973,15 @@ private static native int vkQueueSubmit0(
  * @param buffer - 
  * @param pAllocator - 
  */
- private static native void vkDestroyBuffer0(
-             java.nio.ByteBuffer   device,
-             java.nio.ByteBuffer   buffer,
-             java.nio.ByteBuffer   pAllocator);/*
-     vkDestroyBuffer(
-                     (VkDevice) (device),
+ private static native void vkDestroyBuffer0( java.nio.ByteBuffer   device,
+                                              java.nio.ByteBuffer   buffer,
+                                              java.nio.ByteBuffer   pAllocator);/*
+     vkDestroyBuffer((VkDevice) (device),
                      (VkBuffer) (buffer),
                      (const VkAllocationCallbacks*) pAllocator);
 
 */ 
 
-
-     /////////////////////////////////////
 
 /**
  *  Vulkan procedure ID: 53
@@ -3007,22 +3000,16 @@ private static native int vkQueueSubmit0(
  * 
  * @return VkResult
  */
-    public static VkResult vkCreateBufferView(
-              VkDevice device,
-              VkBufferViewCreateInfo  pCreateInfo,
-              VkAllocationCallbacks  pAllocator,
-              VkBufferView[]  pView){
-    
+    public static VkResult vkCreateBufferView( VkDevice device,
+                                               VkBufferViewCreateInfo  pCreateInfo,
+                                               VkAllocationCallbacks  pAllocator,
+                                               VkBufferView[]  pView){    
      ByteBuffer[] buffer = new ByteBuffer[1];
-     int  _val = vkCreateBufferView0(
-                     device.getPointer() ,
-                     pCreateInfo.getPointer(),
-                     (pAllocator==null ? null : pAllocator.getPointer()),
-                     buffer);
-     
-     ByteBuffer handle = buffer[0]; 
-     buffer[0] = null;
-     pView[0] = new VkHandle(handle);        
+     int  _val = vkCreateBufferView0( device.getPointer() ,
+                                      pCreateInfo.getPointer(),
+                                      (pAllocator==null ? null : pAllocator.getPointer()),
+                                      buffer);
+     pView[0] = wrapClean(buffer);        
      return VkResult.fromValue(_val);
 } 
 
@@ -3037,33 +3024,28 @@ private static native int vkQueueSubmit0(
  * 
  * @return VkResult as int  
  */
- private static native int  vkCreateBufferView0(
-             java.nio.ByteBuffer   device,
-             java.nio.ByteBuffer   pCreateInfo,
-             java.nio.ByteBuffer   pAllocator,
-             java.nio.ByteBuffer[]   retView);/* 
-        
-     VkBufferView* pView = new VkBufferView[1] ;
-     
+ private static native int  vkCreateBufferView0( ByteBuffer   device,
+                                                 ByteBuffer   pCreateInfo,
+                                                 ByteBuffer   pAllocator,
+                                                 ByteBuffer[]   retView);/*         
+     VkBufferView* pView = new VkBufferView[1] ;     
      VkResult res = vkCreateBufferView(
                      (VkDevice) (device),
                      (const VkBufferViewCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
                      (VkBufferView*) pView);
                      
-      if(res>= 0 && pView){
+      if(res>= 0){
          VkBufferView obj = pView[0];
          jobject buffer = env->NewDirectByteBuffer((void *)obj, sizeof(VkBufferView));        
          env->SetObjectArrayElement(retView, 0, buffer);
        }
        if(pView)
-          delete[] pView; 
-                     
+          delete[] pView;                      
       return (jint) res;
 */ 
 
 
-     /////////////////////////////////////
 
 /**
  *  Vulkan procedure ID: 54
@@ -3078,15 +3060,13 @@ private static native int vkQueueSubmit0(
  * @param bufferView - 
  * @param pAllocator - 
  */
-    public static void  vkDestroyBufferView(
-             VkDevice device,
-             VkBufferView bufferView,
-              VkAllocationCallbacks  pAllocator){
+    public static void  vkDestroyBufferView( VkDevice device, 
+                                             VkBufferView bufferView,
+                                             VkAllocationCallbacks  pAllocator){
      vkDestroyBufferView0(
              device.getPointer() ,
-             (bufferView==null ? null : bufferView.getPointer()),
-             (pAllocator==null ? null : pAllocator.getPointer())   );
-
+             bufferView.getPointer(),
+             (pAllocator==null ? null : pAllocator.getPointer()));
 } 
 
 /**
@@ -3097,20 +3077,15 @@ private static native int vkQueueSubmit0(
  * @param bufferView - 
  * @param pAllocator - 
  */
- private static native void vkDestroyBufferView0(
-             java.nio.ByteBuffer   device,
-             java.nio.ByteBuffer   bufferView,
-             java.nio.ByteBuffer   pAllocator);/* 
-
-     vkDestroyBufferView(
-                     (VkDevice) (device),
-                     (VkBufferView) bufferView,
-                     (const VkAllocationCallbacks*) pAllocator);
-
+ private static native void vkDestroyBufferView0( java.nio.ByteBuffer   device,
+                                                  java.nio.ByteBuffer   bufferView,
+                                                  java.nio.ByteBuffer   pAllocator);/*
+     vkDestroyBufferView( (VkDevice) (device),
+                          (VkBufferView) bufferView,
+                          (const VkAllocationCallbacks*) pAllocator);
 */ 
 
 
-     /////////////////////////////////////
 
 /**
  *  Vulkan procedure ID: 55
@@ -3133,14 +3108,14 @@ private static native int vkQueueSubmit0(
              VkDevice device,
               VkImageCreateInfo  pCreateInfo,
               VkAllocationCallbacks  pAllocator,
-              VkImage[]  pImage){
-    
+              VkImage[]  pImage){    
      ByteBuffer[] buff = new ByteBuffer[1];
      int  _val = vkCreateImage0(
                      device.getPointer() ,
                      pCreateInfo.getPointer(),
                      (pAllocator==null ? null : pAllocator.getPointer()),
-                      buff);
+                     buff);      
+      pImage[0] = wrapClean(buff);
       return VkResult.fromValue(_val);
 } 
 
@@ -3159,29 +3134,24 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   pCreateInfo,
              java.nio.ByteBuffer   pAllocator,
-             java.nio.ByteBuffer[]   pImage);/* 
-     
+             java.nio.ByteBuffer[]   pImage);/*      
      VkImage* array = new VkImage[1];     
      VkResult res = vkCreateImage(
                      (VkDevice) (device),
                      (const VkImageCreateInfo*) pCreateInfo,
                      (const VkAllocationCallbacks*) pAllocator,
-                     (VkImage*) array);
-                     
-       if(res>=0 && pImage){
-          VkImage obj = array[0];
-          jobject buffer = env->NewDirectByteBuffer((void*)obj, sizeof(VkImage));
+                     (VkImage*) array);                     
+       if(res >= 0){
+          VkImage image = array[0];
+          jobject buffer = env->NewDirectByteBuffer((void*)image, sizeof(VkImage));
           env->SetObjectArrayElement(pImage, 0 , buffer);
-       } 
-                    
+       }                     
        if(array)
-         delete[] array;
-         
+         delete[] array;         
       return (jint) res;
 */ 
 
-
-     /////////////////////////////////////
+   
 
 /**
  *  Vulkan procedure ID: 56
@@ -3196,15 +3166,12 @@ private static native int vkQueueSubmit0(
  * @param image - 
  * @param pAllocator - 
  */
-    public static void  vkDestroyImage(
-             VkDevice device,
-             VkImage image,
-              VkAllocationCallbacks  pAllocator){
-     vkDestroyImage0(
-             device.getPointer() ,
-             image.getPointer(),
-             (pAllocator==null ? null : pAllocator.getPointer())   );
-
+    public static void  vkDestroyImage(  VkDevice device,
+                                         VkImage image,
+                                         VkAllocationCallbacks  pAllocator){
+     vkDestroyImage0( device.getPointer(),
+                      image.getPointer(),
+                      (pAllocator==null ? null : pAllocator.getPointer()));
 } 
 
 /**
@@ -3219,16 +3186,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   image,
              java.nio.ByteBuffer   pAllocator);/* 
-
-     vkDestroyImage(
-                     (VkDevice) (device),
+     vkDestroyImage( (VkDevice) (device),
                      (VkImage) image,
                      (const VkAllocationCallbacks*) pAllocator);
-
 */ 
-
-
-     /////////////////////////////////////
 
 /**
  *  Vulkan procedure ID: 57
@@ -3253,9 +3214,8 @@ private static native int vkQueueSubmit0(
      vkGetImageSubresourceLayout0(
              device.getPointer() ,
              image.getPointer(),
-             (pSubresource==null ? null : pSubresource.getPointer()),
-             (pLayout==null ? null : pLayout.getPointer())   );
-
+             pSubresource.getPointer(),
+             pLayout.getPointer());
 } 
 
 /**
@@ -3272,14 +3232,10 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   image,
              java.nio.ByteBuffer   pSubresource,
              java.nio.ByteBuffer   pLayout);/* 
-     
-     
-     vkGetImageSubresourceLayout(
-                     (VkDevice) (device),
-                     (VkImage) image,
-                     (const VkImageSubresource*) pSubresource,
-                     (VkSubresourceLayout*) pLayout);
-
+     vkGetImageSubresourceLayout( (VkDevice) (device),
+                          (VkImage) image,
+                          (const VkImageSubresource*) pSubresource,
+                          (VkSubresourceLayout*) pLayout);
 */ 
 
 
@@ -3883,7 +3839,7 @@ private static native int vkQueueSubmit0(
               VkAllocationCallbacks  pAllocator){
      vkDestroyPipeline0(
              device.getPointer() ,
-             (pipeline==null ? null : pipeline.getPointer()),
+             pipeline.getPointer(),
              (pAllocator==null ? null : pAllocator.getPointer())   );
 
 } 
@@ -4490,7 +4446,7 @@ private static native int vkQueueSubmit0(
                      device.getPointer() ,
                      (descriptorPool==null ? null : descriptorPool.getPointer()),
                      descriptorSetCount ,
-                     (pDescriptorSets==null ? null : pDescriptorSets.getPointer())   );
+                     pDescriptorSets.getPointer()   );
       return VkResult.fromValue(_val);
 } 
 
@@ -4992,18 +4948,16 @@ private static native int vkQueueSubmit0(
  * 
  * @return VkResult
  */
-    public static VkResult vkAllocateCommandBuffers(
-             VkDevice device,
-              VkCommandBufferAllocateInfo  pAllocateInfo,
-              VkCommandBuffer[]  pCommandBuffers){        
-     ByteBuffer[] buffers = getBuffers(pCommandBuffers, pAllocateInfo.commandBufferCount());   
-     int  _val = vkAllocateCommandBuffers0(
-                     device.getPointer() ,
-                     (pAllocateInfo==null ? null : pAllocateInfo.getPointer()),
-                     buffers);
-     setBuffers(pCommandBuffers, buffers);
-     return VkResult.fromValue(_val);
-} 
+    public static VkResult vkAllocateCommandBuffers(VkDevice device,
+                                                    VkCommandBufferAllocateInfo pAllocateInfo,
+                                                    VkCommandBuffer[] pCommandBuffers) {
+        ByteBuffer[] buffers = getBuffers(pCommandBuffers, pAllocateInfo.commandBufferCount());
+        int _val = vkAllocateCommandBuffers0( device.getPointer(),
+                                              pAllocateInfo.getPointer(),
+                                              buffers);
+        setBuffers(pCommandBuffers, buffers);
+        return VkResult.fromValue(_val);
+    }
 
 /**
  *  Native interface for Vulkan method #89
@@ -5019,7 +4973,7 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   pAllocateInfo,
              java.nio.ByteBuffer[]   pCommandBuffers);/*
-     JBufferArray array(env,pCommandBuffers);         
+     JBufferArray array(env, pCommandBuffers,sizeof(VkCommandBuffer));         
      VkResult res = vkAllocateCommandBuffers(
                      (VkDevice) (device),
                      (const VkCommandBufferAllocateInfo*) pAllocateInfo,
@@ -5049,69 +5003,64 @@ private static native int vkQueueSubmit0(
                                               int commandBufferCount,
                                               VkCommandBuffer[]  pCommandBuffers){
      ByteBuffer[] buffers = getBuffers(pCommandBuffers, commandBufferCount);   
-     vkFreeCommandBuffers0( device.getPointer(), commandPool.getPointer(), 
-                            commandBufferCount , buffers);
-     setBuffers(pCommandBuffers, buffers);
-} 
+     vkFreeCommandBuffers0( device.getPointer(), 
+                            commandPool.getPointer(), 
+                            commandBufferCount, 
+                            buffers);    
+    } 
 
-/**
- *  Native interface for Vulkan method #90
- *  vkFreeCommandBuffers 
- * 
- * @param device - 
- * @param commandPool - 
- * @param commandBufferCount - 
- * @param pCommandBuffers - 
- */
- private static native void vkFreeCommandBuffers0(
-             java.nio.ByteBuffer   device,
-             java.nio.ByteBuffer   commandPool,
-             int  commandBufferCount,
-             java.nio.ByteBuffer[]   pCommandBuffers);/* 
-     JBufferArray array (env,pCommandBuffers); 
-     array.setSizeOfHandle(sizeof(VkCommandBuffer));
-            
-     vkFreeCommandBuffers(
-                     (VkDevice) (device),
+    /**
+     * Native interface for Vulkan method #90
+     * vkFreeCommandBuffers
+     * 
+     * @param device -
+     * @param commandPool -
+     * @param commandBufferCount -
+     * @param pCommandBuffers -
+     */
+    private static native void vkFreeCommandBuffers0(java.nio.ByteBuffer device,
+                                                     java.nio.ByteBuffer commandPool,
+                                                     int commandBufferCount,
+                                                     java.nio.ByteBuffer[] pCommandBuffers);/* 
+     JBufferArray array (env, pCommandBuffers, sizeof(VkCommandBuffer));
+     vkFreeCommandBuffers( (VkDevice) (device),
                      (VkCommandPool) commandPool,
                      (uint32_t) commandBufferCount,
                      (const VkCommandBuffer*) array.getPointers());
 */ 
 
-/**
- *  Vulkan procedure ID: 91
- * <h2>Prototype</h2><pre>
- *  VkResult  vkBeginCommandBuffer(
- *     VkCommandBuffer                             commandBuffer,
- *     const VkCommandBufferBeginInfo*             pBeginInfo);
- * </pre>
- * 
- * @param commandBuffer - 
- * @param pBeginInfo - 
- * 
- * @return VkResult
- */
-    public static VkResult vkBeginCommandBuffer(
-             VkCommandBuffer commandBuffer,
-              VkCommandBufferBeginInfo  pBeginInfo){
-     int  _val = vkBeginCommandBuffer0(
-                      commandBuffer.getPointer(),
-                     (pBeginInfo==null ? null : pBeginInfo.getPointer())   );
-      return VkResult.fromValue(_val);
-} 
+    /**
+     * Vulkan procedure ID: 91
+     * <h2>Prototype</h2>
+     * 
+     * <pre>
+     *  VkResult  vkBeginCommandBuffer(
+     *     VkCommandBuffer                             commandBuffer,
+     *     const VkCommandBufferBeginInfo*             pBeginInfo);
+     * </pre>
+     * 
+     * @param commandBuffer -
+     * @param pBeginInfo -
+     * 
+     * @return VkResult
+     */
+    public static VkResult vkBeginCommandBuffer( VkCommandBuffer commandBuffer, 
+                                                 VkCommandBufferBeginInfo pBeginInfo) {
+        int _val = vkBeginCommandBuffer0(commandBuffer.getPointer(), pBeginInfo.getPointer());
+        return VkResult.fromValue(_val);
+    }
 
-/**
- *  Native interface for Vulkan method #91
- *  vkBeginCommandBuffer 
- * 
- * @param commandBuffer - 
- * @param pBeginInfo - 
- * 
- * @return VkResult as int  
- */
- private static native int  vkBeginCommandBuffer0(
-             java.nio.ByteBuffer   commandBuffer,
-             java.nio.ByteBuffer   pBeginInfo);/* 
+    /**
+     * Native interface for Vulkan method #91
+     * vkBeginCommandBuffer
+     * 
+     * @param commandBuffer -
+     * @param pBeginInfo -
+     * 
+     * @return VkResult as int
+     */
+    private static native int vkBeginCommandBuffer0(java.nio.ByteBuffer commandBuffer,
+                                                    java.nio.ByteBuffer pBeginInfo);/* 
      VkResult res = vkBeginCommandBuffer(
                      (VkCommandBuffer) commandBuffer,
                      (const VkCommandBufferBeginInfo*) pBeginInfo);
@@ -5119,170 +5068,149 @@ private static native int vkQueueSubmit0(
 */ 
 
 
-     /////////////////////////////////////
+    /**
+     * Vulkan procedure ID: 92
+     * <h2>Prototype</h2>
+     * 
+     * <pre>
+     *  VkResult vkEndCommandBuffer(VkCommandBuffer commandBuffer);
+     * </pre>
+     * 
+     * @param commandBuffer -
+     * 
+     * @return VkResult
+     */
+    public static VkResult vkEndCommandBuffer(VkCommandBuffer commandBuffer) {
+        int _val = vkEndCommandBuffer0(commandBuffer.getPointer());
+        return VkResult.fromValue(_val);
+    }
 
-/**
- *  Vulkan procedure ID: 92
- * <h2>Prototype</h2><pre>
- *  VkResult  vkEndCommandBuffer(
- *     VkCommandBuffer                             commandBuffer);
- * </pre>
- * 
- * @param commandBuffer - 
- * 
- * @return VkResult
- */
-    public static VkResult vkEndCommandBuffer(
-             VkCommandBuffer commandBuffer){
-     int  _val = vkEndCommandBuffer0(
-                      commandBuffer.getPointer()   );
-      return VkResult.fromValue(_val);
-} 
-
-/**
- *  Native interface for Vulkan method #92
- *  vkEndCommandBuffer 
- * 
- * @param commandBuffer - 
- * 
- * @return VkResult as int  
- */
- private static native int  vkEndCommandBuffer0( java.nio.ByteBuffer   commandBuffer);/* 
+    /**
+     * Native interface for Vulkan method #92
+     * vkEndCommandBuffer
+     * 
+     * @param commandBuffer -
+     * 
+     * @return VkResult as int
+     */
+    private static native int vkEndCommandBuffer0(java.nio.ByteBuffer commandBuffer);/* 
      VkResult res = vkEndCommandBuffer((VkCommandBuffer) commandBuffer);
       return (jint) res;
 */ 
 
 
-     /////////////////////////////////////
 
-/**
- *  Vulkan procedure ID: 93
- * <h2>Prototype</h2><pre>
- *  VkResult  vkResetCommandBuffer(
- *     VkCommandBuffer                             commandBuffer,
- *     VkCommandBufferResetFlags                   flags);
- * </pre>
- * 
- * @param commandBuffer - 
- * @param flags - 
- * 
- * @return VkResult
- */
-    public static VkResult vkResetCommandBuffer(
-             VkCommandBuffer commandBuffer,
-             int flags){
-     int  _val = vkResetCommandBuffer0(
-                      commandBuffer.getPointer(),
-                     flags  );
-      return VkResult.fromValue(_val);
-} 
 
-/**
- *  Native interface for Vulkan method #93
- *  vkResetCommandBuffer 
- * 
- * @param commandBuffer - 
- * @param flags - 
- * 
- * @return VkResult as int  
- */
- private static native int  vkResetCommandBuffer0(
-             java.nio.ByteBuffer   commandBuffer,
-             int  flags);/*
-     VkResult res = vkResetCommandBuffer(
-                     (VkCommandBuffer) commandBuffer,
-                     (VkCommandBufferResetFlags) flags);
+    /**
+     * Vulkan procedure ID: 93
+     * <h2>Prototype</h2>
+     * 
+     * <pre>
+     * VkResult vkResetCommandBuffer(VkCommandBuffer commandBuffer, 
+     *                               VkCommandBufferResetFlags flags);
+     * </pre>
+     * 
+     * @param commandBuffer -
+     * @param flags -
+     * 
+     * @return VkResult
+     */
+    public static VkResult vkResetCommandBuffer(VkCommandBuffer commandBuffer, int flags) {
+        int _val = vkResetCommandBuffer0(commandBuffer.getPointer(), flags);
+        return VkResult.fromValue(_val);
+    }
+
+    /**
+     * Native interface for Vulkan method #93
+     * vkResetCommandBuffer
+     * 
+     * @param commandBuffer -
+     * @param flags -
+     * 
+     * @return VkResult as int
+     */
+    private static native int vkResetCommandBuffer0(java.nio.ByteBuffer commandBuffer,
+                                                    int flags);/*
+     VkResult res = vkResetCommandBuffer( (VkCommandBuffer) commandBuffer,
+                                          (VkCommandBufferResetFlags) flags);
       return (jint) res;
 */ 
 
 
-     /////////////////////////////////////
+    /**
+     * Vulkan procedure ID: 94
+     * <h2>Prototype</h2>
+     * 
+     * <pre>
+     * void vkCmdBindPipeline(VkCommandBuffer commandBuffer,
+     *                        VkPipelineBindPoint pipelineBindPoint,
+     *                        VkPipeline pipeline);
+     * </pre>
+     * 
+     * @param commandBuffer -
+     * @param pipelineBindPoint -
+     * @param pipeline -
+     */
+    public static void vkCmdBindPipeline(VkCommandBuffer commandBuffer,
+                                         VkPipelineBindPoint pipelineBindPoint,
+                                         VkPipeline pipeline) {
+        vkCmdBindPipeline0(commandBuffer.getPointer(), pipelineBindPoint.getValue(), pipeline.getPointer());
+    }
 
-/**
- *  Vulkan procedure ID: 94
- * <h2>Prototype</h2><pre>
- *  void  vkCmdBindPipeline(
- *     VkCommandBuffer                             commandBuffer,
- *     VkPipelineBindPoint                         pipelineBindPoint,
- *     VkPipeline                                  pipeline);
- * </pre>
- * 
- * @param commandBuffer - 
- * @param pipelineBindPoint - 
- * @param pipeline - 
- */
-    public static void  vkCmdBindPipeline(
-             VkCommandBuffer commandBuffer,
-             VkPipelineBindPoint pipelineBindPoint,
-             VkPipeline pipeline){
-     vkCmdBindPipeline0(
-              commandBuffer.getPointer(),
-             pipelineBindPoint.getValue() ,
-             (pipeline==null ? null : pipeline.getPointer())   );
-} 
-
-/**
- *  Native interface for Vulkan method #94
- *  vkCmdBindPipeline 
- * 
- * @param commandBuffer - 
- * @param pipelineBindPoint - 
- * @param pipeline - 
- */
- private static native void vkCmdBindPipeline0(
-             java.nio.ByteBuffer   commandBuffer,
-             int   pipelineBindPoint,
-             java.nio.ByteBuffer   pipeline);/* 
-     vkCmdBindPipeline(
-                     (VkCommandBuffer) commandBuffer,
+    /**
+     * Native interface for Vulkan method #94
+     * vkCmdBindPipeline
+     * 
+     * @param commandBuffer -
+     * @param pipelineBindPoint -
+     * @param pipeline -
+     */
+    private static native void vkCmdBindPipeline0(java.nio.ByteBuffer commandBuffer,
+                                                  int pipelineBindPoint,
+                                                  java.nio.ByteBuffer pipeline);/* 
+     vkCmdBindPipeline((VkCommandBuffer) commandBuffer,
                      (VkPipelineBindPoint) pipelineBindPoint,
                      (VkPipeline) pipeline);
 */ 
 
+    /**
+     * Vulkan procedure ID: 95
+     * <h2>Prototype</h2>
+     * 
+     * <pre>
+     *  void  vkCmdSetViewport(
+     *     VkCommandBuffer                             commandBuffer,
+     *     uint32_t                                    firstViewport,
+     *     uint32_t                                    viewportCount,
+     *     const VkViewport*                           pViewports);
+     * </pre>
+     * 
+     * @param commandBuffer -
+     * @param firstViewport -
+     * @param viewportCount -
+     * @param pViewports -
+     */
+    public static void vkCmdSetViewport(VkCommandBuffer commandBuffer,
+                                        int firstViewport,
+                                        int viewportCount,
+                                        VkViewport pViewports) {
+        vkCmdSetViewport0(commandBuffer.getPointer(), firstViewport, viewportCount, pViewports.getPointer());
+    }
 
-/**
- *  Vulkan procedure ID: 95
- * <h2>Prototype</h2><pre>
- *  void  vkCmdSetViewport(
- *     VkCommandBuffer                             commandBuffer,
- *     uint32_t                                    firstViewport,
- *     uint32_t                                    viewportCount,
- *     const VkViewport*                           pViewports);
- * </pre>
- * 
- * @param commandBuffer - 
- * @param firstViewport - 
- * @param viewportCount - 
- * @param pViewports - 
- */
-    public static void  vkCmdSetViewport(
-             VkCommandBuffer commandBuffer,
-             int firstViewport,
-             int viewportCount,
-              VkViewport  pViewports){
-     vkCmdSetViewport0(
-              commandBuffer.getPointer(),
-             firstViewport ,
-             viewportCount ,
-             (pViewports==null ? null : pViewports.getPointer())   );
-} 
-
-/**
- *  Native interface for Vulkan method #95
- *  vkCmdSetViewport 
- * 
- * @param commandBuffer - 
- * @param firstViewport - 
- * @param viewportCount - 
- * @param pViewports - 
- */
- private static native void vkCmdSetViewport0(
-             java.nio.ByteBuffer   commandBuffer,
-             int  firstViewport,
-             int  viewportCount,
-             java.nio.ByteBuffer   pViewports);/* 
-     vkCmdSetViewport(
-                     (VkCommandBuffer) commandBuffer,
+    /**
+     * Native interface for Vulkan method #95
+     * vkCmdSetViewport
+     * 
+     * @param commandBuffer -
+     * @param firstViewport -
+     * @param viewportCount -
+     * @param pViewports -
+     */
+    private static native void vkCmdSetViewport0(java.nio.ByteBuffer commandBuffer,
+                                                 int firstViewport,
+                                                 int viewportCount,
+                                                 java.nio.ByteBuffer pViewports);/* 
+     vkCmdSetViewport((VkCommandBuffer) commandBuffer,
                      (uint32_t) firstViewport,
                      (uint32_t) viewportCount,
                      (const VkViewport*) pViewports);
@@ -5305,17 +5233,12 @@ private static native int vkQueueSubmit0(
  * @param scissorCount - 
  * @param pScissors - 
  */
-    public static void  vkCmdSetScissor(
-             VkCommandBuffer commandBuffer,
-             int firstScissor,
-             int scissorCount,
-              VkRect2D  pScissors){
-     vkCmdSetScissor0(
-              commandBuffer.getPointer(),
-             firstScissor ,
-             scissorCount ,
-             (pScissors==null ? null : pScissors.getPointer())   );
-} 
+    public static void vkCmdSetScissor(VkCommandBuffer commandBuffer,
+                                       int firstScissor,
+                                       int scissorCount,
+                                       VkRect2D pScissors) {
+        vkCmdSetScissor0(commandBuffer.getPointer(), firstScissor, scissorCount, pScissors.getPointer());
+    }
 
 /**
  *  Native interface for Vulkan method #96
@@ -5326,13 +5249,11 @@ private static native int vkQueueSubmit0(
  * @param scissorCount - 
  * @param pScissors - 
  */
- private static native void vkCmdSetScissor0(
-             java.nio.ByteBuffer   commandBuffer,
-             int  firstScissor,
-             int  scissorCount,
-             java.nio.ByteBuffer   pScissors);/* 
-     vkCmdSetScissor(
-                     (VkCommandBuffer) commandBuffer,
+    private static native void vkCmdSetScissor0(java.nio.ByteBuffer commandBuffer,
+                                                int firstScissor,
+                                                int scissorCount,
+                                                java.nio.ByteBuffer pScissors);/* 
+     vkCmdSetScissor((VkCommandBuffer) commandBuffer,
                      (uint32_t) firstScissor,
                      (uint32_t) scissorCount,
                      (const VkRect2D*) pScissors);
@@ -5352,14 +5273,9 @@ private static native int vkQueueSubmit0(
  * @param commandBuffer - 
  * @param lineWidth - 
  */
-    public static void  vkCmdSetLineWidth(
-             VkCommandBuffer commandBuffer,
-             float lineWidth){
-     vkCmdSetLineWidth0(
-              commandBuffer.getPointer(),
-             lineWidth  );
-
-} 
+    public static void vkCmdSetLineWidth(VkCommandBuffer commandBuffer, float lineWidth) {
+        vkCmdSetLineWidth0(commandBuffer.getPointer(), lineWidth);
+    }
 
 /**
  *  Native interface for Vulkan method #97
@@ -5368,11 +5284,9 @@ private static native int vkQueueSubmit0(
  * @param commandBuffer - 
  * @param lineWidth - 
  */
- private static native void vkCmdSetLineWidth0(
-             java.nio.ByteBuffer   commandBuffer,
-             float  lineWidth);/* 
-     vkCmdSetLineWidth(
-                     (VkCommandBuffer) commandBuffer,
+    private static native void vkCmdSetLineWidth0(java.nio.ByteBuffer commandBuffer,
+                                                  float lineWidth);/* 
+     vkCmdSetLineWidth((VkCommandBuffer) commandBuffer,
                      (float) lineWidth);
 */ 
 
@@ -5392,16 +5306,11 @@ private static native int vkQueueSubmit0(
  * @param depthBiasClamp - 
  * @param depthBiasSlopeFactor - 
  */
-    public static void  vkCmdSetDepthBias(
-             VkCommandBuffer commandBuffer,
-             float depthBiasConstantFactor,
-             float depthBiasClamp,
-             float depthBiasSlopeFactor){
-     vkCmdSetDepthBias0(
-              commandBuffer.getPointer(),
-             depthBiasConstantFactor ,
-             depthBiasClamp ,
-             depthBiasSlopeFactor  );
+    public static void  vkCmdSetDepthBias( VkCommandBuffer commandBuffer,
+                                           float depthBiasConstantFactor,
+                                           float depthBiasClamp,
+                                           float depthBiasSlopeFactor){
+        vkCmdSetDepthBias0(commandBuffer.getPointer(), depthBiasConstantFactor, depthBiasClamp, depthBiasSlopeFactor);
 } 
 
 /**
@@ -5413,13 +5322,11 @@ private static native int vkQueueSubmit0(
  * @param depthBiasClamp - 
  * @param depthBiasSlopeFactor - 
  */
- private static native void vkCmdSetDepthBias0(
-             java.nio.ByteBuffer   commandBuffer,
-             float  depthBiasConstantFactor,
-             float  depthBiasClamp,
-             float  depthBiasSlopeFactor);/* 
-     vkCmdSetDepthBias(
-                     (VkCommandBuffer) commandBuffer,
+ private static native void vkCmdSetDepthBias0( java.nio.ByteBuffer   commandBuffer,
+                                                float  depthBiasConstantFactor,
+                                                float  depthBiasClamp,
+                                                float  depthBiasSlopeFactor);/* 
+     vkCmdSetDepthBias((VkCommandBuffer) commandBuffer,
                      (float) depthBiasConstantFactor,
                      (float) depthBiasClamp,
                      (float) depthBiasSlopeFactor);
@@ -5439,9 +5346,10 @@ private static native int vkQueueSubmit0(
     public static void  vkCmdSetBlendConstants(
              VkCommandBuffer commandBuffer,
              float[] blendConstants){
-     vkCmdSetBlendConstants0(
-              commandBuffer.getPointer(),
-             blendConstants  );
+     if(blendConstants.length < 4){
+         throw new IllegalArgumentException("float[] blendConstants.length must be >= 4.");
+     }     
+     vkCmdSetBlendConstants0( commandBuffer.getPointer(), blendConstants);
 
 } 
 
@@ -5452,12 +5360,13 @@ private static native int vkQueueSubmit0(
  * @param commandBuffer - 
  * @param blendConstants - 
  */
- private static native void vkCmdSetBlendConstants0(
-             java.nio.ByteBuffer   commandBuffer,
-             float[]  blendConstants);/* 
-     vkCmdSetBlendConstants(
-                     (VkCommandBuffer) commandBuffer,
-                     blendConstants);
+ private static native void vkCmdSetBlendConstants0( java.nio.ByteBuffer   commandBuffer, float[]  blendConstants0);/* 
+     //float* blendConstants = new float[4];
+     float blendConstants[4]; 
+     for(int i=0; i<4; i++){
+       blendConstants[i] = (float) blendConstants0[i];
+     }     
+     vkCmdSetBlendConstants((VkCommandBuffer) commandBuffer, blendConstants);
 */ 
 
 
@@ -5518,14 +5427,12 @@ private static native int vkQueueSubmit0(
  * @param faceMask - 
  * @param compareMask - 
  */
-    public static void  vkCmdSetStencilCompareMask(
-             VkCommandBuffer commandBuffer,
-             int faceMask,
-             int compareMask){
-     vkCmdSetStencilCompareMask0(
-              commandBuffer.getPointer(),
-             faceMask ,
-             compareMask  );
+    public static void  vkCmdSetStencilCompareMask( VkCommandBuffer commandBuffer,
+                                                    int faceMask,
+                                                    int compareMask){
+     vkCmdSetStencilCompareMask0( commandBuffer.getPointer(),
+                                  faceMask ,
+                                  compareMask  );
 } 
 
 /**
@@ -5536,18 +5443,14 @@ private static native int vkQueueSubmit0(
  * @param faceMask - 
  * @param compareMask - 
  */
- private static native void vkCmdSetStencilCompareMask0(
-             java.nio.ByteBuffer   commandBuffer,
-             int  faceMask,
-             int  compareMask);/* 
-     vkCmdSetStencilCompareMask(
-                     (VkCommandBuffer) commandBuffer,
+ private static native void vkCmdSetStencilCompareMask0( java.nio.ByteBuffer   commandBuffer,
+                                                         int  faceMask,
+                                                         int  compareMask);/*
+     vkCmdSetStencilCompareMask((VkCommandBuffer) commandBuffer,
                      (VkStencilFaceFlags) faceMask,
                      (uint32_t) compareMask);
 */ 
 
-
-     /////////////////////////////////////
 
 /**
  *  Vulkan procedure ID: 102
@@ -5562,12 +5465,10 @@ private static native int vkQueueSubmit0(
  * @param faceMask - 
  * @param writeMask - 
  */
-    public static void  vkCmdSetStencilWriteMask(
-             VkCommandBuffer commandBuffer,
-             int faceMask,
-             int writeMask){
-     vkCmdSetStencilWriteMask0(
-              commandBuffer.getPointer(),
+    public static void  vkCmdSetStencilWriteMask( VkCommandBuffer commandBuffer,
+                                                  int faceMask,
+                                                  int writeMask){
+     vkCmdSetStencilWriteMask0( commandBuffer.getPointer(),
              faceMask ,
              writeMask  );
 } 
@@ -5580,12 +5481,10 @@ private static native int vkQueueSubmit0(
  * @param faceMask - 
  * @param writeMask - 
  */
- private static native void vkCmdSetStencilWriteMask0(
-             java.nio.ByteBuffer   commandBuffer,
-             int  faceMask,
-             int  writeMask);/* 
-     vkCmdSetStencilWriteMask(
-                     (VkCommandBuffer) commandBuffer,
+ private static native void vkCmdSetStencilWriteMask0( java.nio.ByteBuffer   commandBuffer,
+                                                       int  faceMask,
+                                                       int  writeMask);/* 
+     vkCmdSetStencilWriteMask( (VkCommandBuffer) commandBuffer,
                      (VkStencilFaceFlags) faceMask,
                      (uint32_t) writeMask);
 */ 
@@ -5604,14 +5503,12 @@ private static native int vkQueueSubmit0(
  * @param faceMask - 
  * @param reference - 
  */
-    public static void  vkCmdSetStencilReference(
-             VkCommandBuffer commandBuffer,
-             int faceMask,
-             int reference){
-     vkCmdSetStencilReference0(
-              commandBuffer.getPointer(),
-             faceMask ,
-             reference  );
+    public static void  vkCmdSetStencilReference( VkCommandBuffer commandBuffer,
+                                                  int faceMask,
+                                                  int reference){
+     vkCmdSetStencilReference0( commandBuffer.getPointer(),
+                                faceMask,
+                                reference);
 } 
 
 /**
@@ -5622,12 +5519,10 @@ private static native int vkQueueSubmit0(
  * @param faceMask - 
  * @param reference - 
  */
- private static native void vkCmdSetStencilReference0(
-             java.nio.ByteBuffer   commandBuffer,
-             int  faceMask,
-             int  reference);/* 
-     vkCmdSetStencilReference(
-                     (VkCommandBuffer) commandBuffer,
+ private static native void vkCmdSetStencilReference0( java.nio.ByteBuffer   commandBuffer,
+                                                       int  faceMask,
+                                                       int  reference);/* 
+     vkCmdSetStencilReference( (VkCommandBuffer) commandBuffer,
                      (VkStencilFaceFlags) faceMask,
                      (uint32_t) reference);
 */ 
@@ -5656,24 +5551,24 @@ private static native int vkQueueSubmit0(
  * @param dynamicOffsetCount - 
  * @param pDynamicOffsets - 
  */
-    public static void  vkCmdBindDescriptorSets(
-             VkCommandBuffer commandBuffer,
-             VkPipelineBindPoint pipelineBindPoint,
-             VkPipelineLayout layout,
-             int firstSet,
-             int descriptorSetCount,
-              VkDescriptorSet  pDescriptorSets,
-             int dynamicOffsetCount,
-             int[] pDynamicOffsets){
-     vkCmdBindDescriptorSets0(
-              commandBuffer.getPointer(),
-             pipelineBindPoint.getValue() ,
-             layout.getPointer(),
-             firstSet ,
-             descriptorSetCount ,
-             (pDescriptorSets==null ? null : pDescriptorSets.getPointer()),
-             dynamicOffsetCount ,
-             pDynamicOffsets  );
+    public static void  vkCmdBindDescriptorSets( VkCommandBuffer commandBuffer,
+                                                 VkPipelineBindPoint pipelineBindPoint,
+                                                 VkPipelineLayout layout,
+                                                 int firstSet,
+                                                 int descriptorSetCount,
+                                                 VkDescriptorSet[]  pDescriptorSets,
+                                                 int dynamicOffsetCount,
+                                                 int[] pDynamicOffsets){
+     ByteBuffer[] buffers = getBuffers(pDescriptorSets, descriptorSetCount);   
+     vkCmdBindDescriptorSets0( commandBuffer.getPointer(),
+                               pipelineBindPoint.getValue(),
+                               layout.getPointer(),
+                               firstSet ,
+                               descriptorSetCount ,
+                               buffers,
+                               dynamicOffsetCount ,
+                               pDynamicOffsets  );     
+     populateHandlers(pDescriptorSets, buffers, descriptorSetCount);
 } 
 
 /**
@@ -5689,22 +5584,22 @@ private static native int vkQueueSubmit0(
  * @param dynamicOffsetCount - 
  * @param pDynamicOffsets - 
  */
- private static native void vkCmdBindDescriptorSets0(
-             java.nio.ByteBuffer   commandBuffer,
-             int   pipelineBindPoint,
-             java.nio.ByteBuffer   layout,
-             int  firstSet,
-             int  descriptorSetCount,
-             java.nio.ByteBuffer   pDescriptorSets,
-             int  dynamicOffsetCount,
-             int[]  pDynamicOffsets);/* 
+ private static native void vkCmdBindDescriptorSets0( java.nio.ByteBuffer   commandBuffer,
+                                                      int   pipelineBindPoint,
+                                                      java.nio.ByteBuffer   layout,
+                                                      int  firstSet,
+                                                      int  descriptorSetCount,
+                                                      java.nio.ByteBuffer[]   pDescriptorSets,
+                                                      int  dynamicOffsetCount,
+                                                      int[]  pDynamicOffsets);/* 
+     JBufferArray array (env, pDescriptorSets);                                                     
      vkCmdBindDescriptorSets(
                      (VkCommandBuffer) commandBuffer,
                      (VkPipelineBindPoint) pipelineBindPoint,
                      (VkPipelineLayout) layout,
                      (uint32_t) firstSet,
                      (uint32_t) descriptorSetCount,
-                     (const VkDescriptorSet*) pDescriptorSets,
+                     (const VkDescriptorSet*) array.getPointers(),
                      (uint32_t) dynamicOffsetCount,
                      (const uint32_t*) pDynamicOffsets);
 */ 
@@ -5725,14 +5620,12 @@ private static native int vkQueueSubmit0(
  * @param offset - 
  * @param indexType - 
  */
-    public static void  vkCmdBindIndexBuffer(
-             VkCommandBuffer commandBuffer,
-             VkBuffer buffer,
-             long offset,
-             VkIndexType indexType){
-     vkCmdBindIndexBuffer0(
-              commandBuffer.getPointer(),
-             (buffer==null ? null : buffer.getPointer()),
+    public static void  vkCmdBindIndexBuffer( VkCommandBuffer commandBuffer,
+                                              VkBuffer buffer,
+                                              long offset,
+                                              VkIndexType indexType){
+     vkCmdBindIndexBuffer0( commandBuffer.getPointer(),
+             buffer.getPointer(),
              offset ,
              indexType.getValue()  );
 
@@ -5747,20 +5640,16 @@ private static native int vkQueueSubmit0(
  * @param offset - 
  * @param indexType - 
  */
- private static native void vkCmdBindIndexBuffer0(
-             java.nio.ByteBuffer   commandBuffer,
-             java.nio.ByteBuffer   buffer,
-             long  offset,
-             int   indexType);/* 
-     vkCmdBindIndexBuffer(
-                     (VkCommandBuffer) commandBuffer,
+ private static native void vkCmdBindIndexBuffer0( java.nio.ByteBuffer   commandBuffer,
+                                                   java.nio.ByteBuffer   buffer,
+                                                   long  offset,
+                                                   int   indexType);/* 
+     vkCmdBindIndexBuffer((VkCommandBuffer) commandBuffer,
                      (VkBuffer) buffer,
                      (VkDeviceSize) offset,
                      (VkIndexType) indexType);
 */ 
 
-
-     /////////////////////////////////////
 
 /**
  *  Vulkan procedure ID: 106
@@ -5779,18 +5668,19 @@ private static native int vkQueueSubmit0(
  * @param pBuffers - 
  * @param pOffsets - 
  */
-    public static void  vkCmdBindVertexBuffers(
-             VkCommandBuffer commandBuffer,
-             int firstBinding,
-             int bindingCount,
-              VkBuffer  pBuffers,
-             long[] pOffsets){
-     vkCmdBindVertexBuffers0(
-              commandBuffer.getPointer(),
-             firstBinding ,
-             bindingCount ,
-             (pBuffers==null ? null : pBuffers.getPointer()),
-             pOffsets  );
+    public static void  vkCmdBindVertexBuffers( VkCommandBuffer commandBuffer,
+                                                int firstBinding,
+                                                int bindingCount,
+                                                VkBuffer[]  pBuffers,
+                                                long[] pOffsets){
+     int[] count = {bindingCount};   
+     ByteBuffer[] buffers = createBufferArray2Handles(pBuffers, count);   
+     vkCmdBindVertexBuffers0( commandBuffer.getPointer(),
+                              firstBinding ,
+                              bindingCount ,
+                              buffers,
+                              pOffsets);
+     populateHandlers(pBuffers, buffers, count);
 } 
 
 /**
@@ -5803,22 +5693,20 @@ private static native int vkQueueSubmit0(
  * @param pBuffers - 
  * @param pOffsets - 
  */
- private static native void vkCmdBindVertexBuffers0(
-             java.nio.ByteBuffer   commandBuffer,
-             int  firstBinding,
-             int  bindingCount,
-             java.nio.ByteBuffer   pBuffers,
-             long[]  pOffsets);/* 
-     vkCmdBindVertexBuffers(
-                     (VkCommandBuffer) commandBuffer,
+ private static native void vkCmdBindVertexBuffers0( java.nio.ByteBuffer   commandBuffer,
+                                                     int  firstBinding,
+                                                     int  bindingCount,
+                                                     java.nio.ByteBuffer[]   pBuffers,
+                                                     long[]  pOffsets);/* 
+     JBufferArray array (env, pBuffers);
+     array.setSizeOfHandle(sizeof(VkBuffer));        
+     vkCmdBindVertexBuffers((VkCommandBuffer) commandBuffer,
                      (uint32_t) firstBinding,
                      (uint32_t) bindingCount,
                      (const VkBuffer*) pBuffers,
                      (const VkDeviceSize*) pOffsets);
 */ 
 
-
-     /////////////////////////////////////
 
 /**
  *  Vulkan procedure ID: 107
@@ -5895,20 +5783,18 @@ private static native int vkQueueSubmit0(
  * @param vertexOffset - 
  * @param firstInstance - 
  */
-    public static void  vkCmdDrawIndexed(
-             VkCommandBuffer commandBuffer,
-             int indexCount,
-             int instanceCount,
-             int firstIndex,
-             int vertexOffset,
-             int firstInstance){
-     vkCmdDrawIndexed0(
-              commandBuffer.getPointer(),
-             indexCount ,
-             instanceCount ,
-             firstIndex ,
-             vertexOffset ,
-             firstInstance  );
+    public static void  vkCmdDrawIndexed( VkCommandBuffer commandBuffer,
+                                          int indexCount,
+                                          int instanceCount,
+                                          int firstIndex,
+                                          int vertexOffset,
+                                          int firstInstance){
+     vkCmdDrawIndexed0( commandBuffer.getPointer(),
+             indexCount,
+             instanceCount,
+             firstIndex,
+             vertexOffset,
+             firstInstance);
 } 
 
 /**
@@ -5922,15 +5808,13 @@ private static native int vkQueueSubmit0(
  * @param vertexOffset - 
  * @param firstInstance - 
  */
- private static native void vkCmdDrawIndexed0(
-             java.nio.ByteBuffer   commandBuffer,
-             int  indexCount,
-             int  instanceCount,
-             int  firstIndex,
-             int  vertexOffset,
-             int  firstInstance);/* 
-     vkCmdDrawIndexed(
-                     (VkCommandBuffer) commandBuffer,
+ private static native void vkCmdDrawIndexed0( java.nio.ByteBuffer   commandBuffer,
+                                               int  indexCount,
+                                               int  instanceCount,
+                                               int  firstIndex,
+                                               int  vertexOffset,
+                                               int  firstInstance);/* 
+     vkCmdDrawIndexed((VkCommandBuffer) commandBuffer,
                      (uint32_t) indexCount,
                      (uint32_t) instanceCount,
                      (uint32_t) firstIndex,
@@ -5958,15 +5842,13 @@ private static native int vkQueueSubmit0(
  * @param drawCount - 
  * @param stride - 
  */
-    public static void  vkCmdDrawIndirect(
-             VkCommandBuffer commandBuffer,
-             VkBuffer buffer,
-             long offset,
-             int drawCount,
-             int stride){
-     vkCmdDrawIndirect0(
-              commandBuffer.getPointer(),
-             (buffer==null ? null : buffer.getPointer()),
+    public static void  vkCmdDrawIndirect( VkCommandBuffer commandBuffer,
+                                           VkBuffer buffer,
+                                           long offset,
+                                           int drawCount,
+                                           int stride){
+     vkCmdDrawIndirect0(commandBuffer.getPointer(),
+             buffer.getPointer(),
              offset ,
              drawCount ,
              stride  );
@@ -5982,14 +5864,12 @@ private static native int vkQueueSubmit0(
  * @param drawCount - 
  * @param stride - 
  */
- private static native void vkCmdDrawIndirect0(
-             java.nio.ByteBuffer   commandBuffer,
-             java.nio.ByteBuffer   buffer,
-             long  offset,
-             int  drawCount,
-             int  stride);/* 
-     vkCmdDrawIndirect(
-                     (VkCommandBuffer) commandBuffer,
+ private static native void vkCmdDrawIndirect0( java.nio.ByteBuffer   commandBuffer,
+                                                java.nio.ByteBuffer   buffer,
+                                                long  offset,
+                                                int  drawCount,
+                                                int  stride);/* 
+     vkCmdDrawIndirect((VkCommandBuffer) commandBuffer,
                      (VkBuffer) buffer,
                      (VkDeviceSize) offset,
                      (uint32_t) drawCount,
@@ -6014,18 +5894,16 @@ private static native int vkQueueSubmit0(
  * @param drawCount - 
  * @param stride - 
  */
-    public static void  vkCmdDrawIndexedIndirect(
-             VkCommandBuffer commandBuffer,
-             VkBuffer buffer,
-             long offset,
-             int drawCount,
-             int stride){
-     vkCmdDrawIndexedIndirect0(
-              commandBuffer.getPointer(),
-             (buffer==null ? null : buffer.getPointer()),
-             offset ,
-             drawCount ,
-             stride  );
+    public static void  vkCmdDrawIndexedIndirect( VkCommandBuffer commandBuffer,
+                                                  VkBuffer buffer,
+                                                  long offset,
+                                                  int drawCount,
+                                                  int stride){
+     vkCmdDrawIndexedIndirect0( commandBuffer.getPointer(),
+                                buffer.getPointer(),
+                                offset ,
+                                drawCount ,
+                                stride  );
 } 
 
 /**
@@ -6038,18 +5916,16 @@ private static native int vkQueueSubmit0(
  * @param drawCount - 
  * @param stride - 
  */
- private static native void vkCmdDrawIndexedIndirect0(
-             java.nio.ByteBuffer   commandBuffer,
-             java.nio.ByteBuffer   buffer,
-             long  offset,
-             int  drawCount,
-             int  stride);/* 
-     vkCmdDrawIndexedIndirect(
-                     (VkCommandBuffer) commandBuffer,
-                     (VkBuffer) buffer,
-                     (VkDeviceSize) offset,
-                     (uint32_t) drawCount,
-                     (uint32_t) stride);
+ private static native void vkCmdDrawIndexedIndirect0( java.nio.ByteBuffer   commandBuffer,
+                                                       java.nio.ByteBuffer   buffer,
+                                                       long  offset,
+                                                       int  drawCount,
+                                                       int  stride);/* 
+     vkCmdDrawIndexedIndirect( (VkCommandBuffer) commandBuffer,
+                               (VkBuffer) buffer,
+                               (VkDeviceSize) offset,
+                               (uint32_t) drawCount,
+                               (uint32_t) stride);
 */ 
 
 
@@ -6069,16 +5945,8 @@ private static native int vkQueueSubmit0(
  * @param y - 
  * @param z - 
  */
-    public static void  vkCmdDispatch(
-             VkCommandBuffer commandBuffer,
-             int x,
-             int y,
-             int z){
-     vkCmdDispatch0(
-              commandBuffer.getPointer(),
-             x ,
-             y ,
-             z  );
+    public static void  vkCmdDispatch( VkCommandBuffer commandBuffer,  int x, int y, int z){
+     vkCmdDispatch0( commandBuffer.getPointer(), x,  y, z);
 } 
 
 /**
@@ -6090,13 +5958,8 @@ private static native int vkQueueSubmit0(
  * @param y - 
  * @param z - 
  */
- private static native void vkCmdDispatch0(
-             java.nio.ByteBuffer   commandBuffer,
-             int  x,
-             int  y,
-             int  z);/* 
-     vkCmdDispatch(
-                     (VkCommandBuffer) commandBuffer,
+ private static native void vkCmdDispatch0( java.nio.ByteBuffer   commandBuffer, int x, int y, int z);/* 
+     vkCmdDispatch((VkCommandBuffer) commandBuffer,
                      (uint32_t) x,
                      (uint32_t) y,
                      (uint32_t) z);
@@ -6117,15 +5980,12 @@ private static native int vkQueueSubmit0(
  * @param buffer - 
  * @param offset - 
  */
-    public static void  vkCmdDispatchIndirect(
-             VkCommandBuffer commandBuffer,
-             VkBuffer buffer,
-             long offset){
-     vkCmdDispatchIndirect0(
-              commandBuffer.getPointer(),
-             (buffer==null ? null : buffer.getPointer()),
-             offset  );
-
+    public static void  vkCmdDispatchIndirect( VkCommandBuffer commandBuffer,
+                                               VkBuffer buffer,
+                                               long offset){
+     vkCmdDispatchIndirect0( commandBuffer.getPointer(),
+                             buffer.getPointer(),
+                             offset  );
 } 
 
 /**
@@ -6623,7 +6483,7 @@ private static native int vkQueueSubmit0(
              VkImageLayout imageLayout,
              VkClearColorValue  pColor,
              int rangeCount,
-              VkImageSubresourceRange[]  pRanges){
+             final VkImageSubresourceRange[]  pRanges){
         
      vkCmdClearColorImage0(
               commandBuffer.getPointer(),
@@ -6651,19 +6511,16 @@ private static native int vkQueueSubmit0(
              int   imageLayout,
              java.nio.ByteBuffer   pColor,
              int  rangeCount,
-             java.nio.ByteBuffer[]   pRanges);/*
-     JBufferArray ranges(env, pRanges);         
+             java.nio.ByteBuffer   pRanges);/*
+            
      vkCmdClearColorImage(
                      (VkCommandBuffer) commandBuffer,
                      (VkImage) image,
                      (VkImageLayout) imageLayout,
                      (const VkClearColorValue*) pColor,
                      (uint32_t) rangeCount,
-                     (const VkImageSubresourceRange*) ranges);
+                     (const VkImageSubresourceRange*) pRanges);
 */ 
-
-
-     /////////////////////////////////////
 
 /**
  *  Vulkan procedure ID: 121
@@ -8040,6 +7897,8 @@ private static native int vkQueueSubmit0(
   * @param array
   */
  private static void clean(Object[] array){
+     if(array==null)
+         return;
      Arrays.fill(array, null);
  }
 
@@ -8091,7 +7950,7 @@ private static native int vkQueueSubmit0(
   * @param count - array with number of objects to handle, at [0];
   * @param tagId - VkStruct tag ID - a internal number for VkStructs
   */
-  static final void populate(VkStruct[] pArray,
+  static final void splitBigBuffer(VkStruct[] pArray,
                              ByteBuffer bigBuffer,
                              int[] count,
                              int tagId) {
@@ -8141,6 +8000,46 @@ private static native int vkQueueSubmit0(
      return new ByteBuffer[size];
  }
   
+  /**
+   * Populate a VkStruct array with count[0] instances. 
+   * @param pArray - array to be populated
+   * @param buffers - array of ByteBuffer with native handle
+   * @param count - array with number of handles, at [0];
+   * 
+   */
+   private static void populateHandlers( Object[] pArray,
+                                         ByteBuffer[] buffers,
+                                         int[] count) {
+      if( pArray == null || buffers == null || count==null || count[0]==0){
+          return;
+      }           
+      int max = Math.min(count[0], buffers.length);
+      for (int i = 0; i < max; i++) {
+          pArray[i] = new VkHandle(buffers[i]);
+          buffers[i] = null;
+      }        
+  }
+  
+   /**
+    * Populate a VkStruct array with count[0] instances. 
+    * @param pArray - array to be populated
+    * @param buffers - array of ByteBuffer with native handle
+    * @param count - number of handles;
+    * 
+    */
+    private static void populateHandlers( Object[] pArray,
+                                          ByteBuffer[] buffers,
+                                          int count) {
+       if( pArray == null || buffers == null || count == 0){
+           return;
+       }           
+       int max = Math.min(count, buffers.length);
+       for (int i = 0; i < max; i++) {
+           pArray[i] = new VkHandle(buffers[i]);
+           buffers[i] = null;
+       }        
+   }
+    
  /**
   * Set new buffer to VkStruct or VkHandkers.
   * @param vkObjArray - array of Structs
