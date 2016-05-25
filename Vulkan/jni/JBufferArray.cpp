@@ -1,13 +1,24 @@
 #include "JBufferArray.h"
 
+JBufferArray::JBufferArray(JNIEnv* _env, jobjectArray _buffers, size_t size){
+	init(_env, _buffers);	
+	setSizeOfHandle(size);
+}
 
-JBufferArray::JBufferArray(JNIEnv* _env, jobjectArray _buffers)
+JBufferArray::JBufferArray(JNIEnv* _env, jobjectArray _buffers){
+  init(_env, _buffers);	
+}
+/**
+ * initilize this buffer
+ */ 
+void JBufferArray::init(JNIEnv* _env, jobjectArray _buffers)
 {
     env = _env;
     bufferArr = _buffers;
     size = bufferArr ? (int) env->GetArrayLength(bufferArr):0;
     pointers = bufferArr ? new PointerToAnything[size] : NULL;
     pinnedPointers = bufferArr ? new PointerToAnything[size] : NULL;
+	g_sizeOfHandle = sizeof(void*);
      #ifdef DEBUG
        cout<< "instancing pointers" <<endl;
      #endif // DEBUG
@@ -22,6 +33,7 @@ JBufferArray::JBufferArray(JNIEnv* _env, jobjectArray _buffers)
          pinnedPointers[i] = pointers[i];
       }
 }
+
 
 void JBufferArray::setPointer(PointerToAnything ptr,jsize length, int index){
        if(bufferArr==NULL || pinnedPointers==NULL){

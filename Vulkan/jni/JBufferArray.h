@@ -21,6 +21,7 @@ class JBufferArray
 {
     public:
         JBufferArray(JNIEnv* env, jobjectArray _buffers);
+		JBufferArray(JNIEnv* env, jobjectArray _buffers, size_t size);
         virtual ~JBufferArray();
 
         /**
@@ -81,6 +82,7 @@ class JBufferArray
 
     protected:
     private:
+	    void init(JNIEnv* _env, jobjectArray _buffers); 
         JNIEnv* env;
         jobjectArray bufferArr;
         int size;
