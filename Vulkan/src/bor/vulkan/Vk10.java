@@ -118,7 +118,6 @@ public class Vk10 extends Vulkan {
            
       #include <stdio.h>
       #include <stdlib.h>
-      #include "JBufferArray.h"  
       
       using namespace std;
       
@@ -168,6 +167,27 @@ public class Vk10 extends Vulkan {
    #endif    
       
  }//
+ 
+  
+#define BUFFERARRAY_SET(TYPE, BUFFERS, COUNT, P_VK)\
+     TYPE* P_VK = (TYPE*) calloc(COUNT,sizeof(TYPE));\
+     for(int i = 0; i < (int) COUNT; i++){\
+       jobject obj = (BUFFERS) ? (jobject) env->GetObjectArrayElement(BUFFERS, i) : NULL;\
+       if(obj != NULL){\
+          TYPE* elem = (TYPE*)(env->GetDirectBufferAddress(obj));\
+          P_VK[i] = (*elem);\
+       }\
+     }\
+ 
+ #define BUFFERARRAY_COMMIT(TYPE, BUFFERS, COUNT, P_VK) \
+  for(int i = 0; i < (int) COUNT; i++){\       
+           TYPE* obj = (TYPE*)calloc(1, sizeof(TYPE));\
+           *obj = P_VK[i];\
+           jobject bb_ = (jobject)(env->NewDirectByteBuffer(obj, sizeof(TYPE)));\
+           env->SetObjectArrayElement(BUFFERS, i, bb_);\
+      }\
+  if (P_VK != NULL) free(P_VK);\
+ 
  // Vk10 header end
   */
     /**
@@ -1480,7 +1500,7 @@ private static native int vkQueueSubmit0(
     public static VkResult vkFlushMappedMemoryRanges(
              VkDevice device,
              int memoryRangeCount,
-             VkMappedMemoryRange[]  pMemoryRanges){        
+             final VkMappedMemoryRange[]  pMemoryRanges){        
      ByteBuffer[] buffers= getBuffers(pMemoryRanges, memoryRangeCount);
      int  _val = vkFlushMappedMemoryRanges0(  device.getPointer(),
                                               memoryRangeCount,
@@ -1503,12 +1523,14 @@ private static native int vkQueueSubmit0(
  private static native int  vkFlushMappedMemoryRanges0(
              java.nio.ByteBuffer   device,
              int  memoryRangeCount,
-             java.nio.ByteBuffer[]   pMemoryRangesArray);/* 
-     JBufferArray array(env,  pMemoryRangesArray);
+             final java.nio.ByteBuffer[]   buffers);/* 
+	
+     BUFFERARRAY_SET(VkMappedMemoryRange, buffers, memoryRangeCount, pMemoryRangesArray);
+	     
      VkResult res = vkFlushMappedMemoryRanges(
                      (VkDevice) (device),
                      (uint32_t) memoryRangeCount,
-                     (const VkMappedMemoryRange*) array.getPointers());
+                     (const VkMappedMemoryRange*) pMemoryRangesArray);
       return (jint) res;
 */ 
 
@@ -1531,9 +1553,7 @@ private static native int vkQueueSubmit0(
     public static VkResult vkInvalidateMappedMemoryRanges(
              VkDevice device,
              int memoryRangeCount,
-             VkMappedMemoryRange[]  pMemoryRanges){
-    
-    
+             final VkMappedMemoryRange[]  pMemoryRanges){
     ByteBuffer[] pMemoryRangesBuffers = getBuffers(pMemoryRanges, memoryRangeCount);
        
      int  _val = vkInvalidateMappedMemoryRanges0(
@@ -1558,14 +1578,17 @@ private static native int vkQueueSubmit0(
  private static native int  vkInvalidateMappedMemoryRanges0(
              java.nio.ByteBuffer   device,
              int  memoryRangeCount,
-             java.nio.ByteBuffer[]   pMemoryRanges);/*
-     JBufferArray bufferArray (env, pMemoryRanges);
-	 bufferArray.setSizeOfHandle(sizeof(VkMappedMemoryRange));
-     PointerToAnything* buffers = bufferArray.getPointers();
+             final java.nio.ByteBuffer[]   buffers);/*     
+     BUFFERARRAY_SET(VkMappedMemoryRange, buffers, memoryRangeCount, pMemoryRanges);     
      VkResult res = vkInvalidateMappedMemoryRanges(
                      (VkDevice) (device),
                      (uint32_t) memoryRangeCount,
-                     (const VkMappedMemoryRange*) buffers);                     
+                     (const VkMappedMemoryRange*) pMemoryRanges);
+                      
+      if(pMemoryRanges != NULL){ 
+            free(pMemoryRanges);
+             pMemoryRanges = NULL;
+      }                                  
       return (jint) res;
 */ 
 
@@ -2173,14 +2196,16 @@ private static native int vkQueueSubmit0(
  private static native int  vkResetFences0(
              java.nio.ByteBuffer   device,
              int  fenceCount,
-             java.nio.ByteBuffer[]   pFences);/* 
-     
-     JBufferArray buffers (env, pFences);
-     
+             java.nio.ByteBuffer[]   buffers);/* 
+             
+     BUFFERARRAY_SET(VkFence, buffers, fenceCount, pFences);
      VkResult res = vkResetFences(
                      (VkDevice) (device),
                      (uint32_t) fenceCount,
-                     (const VkFence*) buffers.getPointers());
+                     (const VkFence*) pFences);
+      if( pFences != NULL){
+          free(pFences);
+      }                
       return (jint) res;
 */ 
 
@@ -2253,7 +2278,7 @@ private static native int vkQueueSubmit0(
     public static VkResult vkWaitForFences(
              VkDevice device,
              int fenceCount,
-             VkFence[]  pFences,
+             final VkFence[]  pFences,
              boolean waitAll,
              long timeout){
      ByteBuffer[] buffers = getBuffers(pFences, fenceCount); 
@@ -2282,18 +2307,21 @@ private static native int vkQueueSubmit0(
  private static native int  vkWaitForFences0(
              java.nio.ByteBuffer   device,
              int  fenceCount,
-             java.nio.ByteBuffer[]   pFences,
+             final java.nio.ByteBuffer[]   buffers,
              boolean  waitAll,
              long  timeout);/* 
      
-     JBufferArray buffers (env, pFences);
+     BUFFERARRAY_SET(VkFence, buffers, fenceCount, pFences);
      
      VkResult res = vkWaitForFences(
                      (VkDevice) (device),
                      (uint32_t) fenceCount,
-                     (const VkFence*) buffers.getPointers(),
+                     (const VkFence*) pFences,
                      (VkBool32) waitAll,
                      (uint64_t) timeout);
+      if(pFences != NULL){
+         free(pFences);
+       }
       return (jint) res;
 */ 
 
@@ -4951,9 +4979,11 @@ private static native int vkQueueSubmit0(
     public static VkResult vkAllocateCommandBuffers(VkDevice device,
                                                     VkCommandBufferAllocateInfo pAllocateInfo,
                                                     VkCommandBuffer[] pCommandBuffers) {
-        ByteBuffer[] buffers = getBuffers(pCommandBuffers, pAllocateInfo.commandBufferCount());
+        int count =  pAllocateInfo.commandBufferCount();													
+        ByteBuffer[] buffers = getBuffers(pCommandBuffers, count);
         int _val = vkAllocateCommandBuffers0( device.getPointer(),
                                               pAllocateInfo.getPointer(),
+											  count,
                                               buffers);
         setBuffers(pCommandBuffers, buffers);
         return VkResult.fromValue(_val);
@@ -4972,13 +5002,18 @@ private static native int vkQueueSubmit0(
  private static native int  vkAllocateCommandBuffers0(
              java.nio.ByteBuffer   device,
              java.nio.ByteBuffer   pAllocateInfo,
-             java.nio.ByteBuffer[]   pCommandBuffers);/*
-     JBufferArray array(env, pCommandBuffers,sizeof(VkCommandBuffer));         
+			 int count,
+             java.nio.ByteBuffer[]   buffers);/*
+     BUFFERARRAY_SET(VkCommandBuffer, buffers, count, pCommandBuffers);
+
      VkResult res = vkAllocateCommandBuffers(
                      (VkDevice) (device),
                      (const VkCommandBufferAllocateInfo*) pAllocateInfo,
-                     (VkCommandBuffer*) array.getPointers());
-      return (jint) res;
+                     (VkCommandBuffer*) pCommandBuffers);
+                     
+     BUFFERARRAY_COMMIT(VkCommandBuffer, buffers, count, pCommandBuffers); 
+     
+     return (jint) res;
 */ 
 
 
@@ -5001,7 +5036,7 @@ private static native int vkQueueSubmit0(
     public static void  vkFreeCommandBuffers( VkDevice device,
                                               VkCommandPool commandPool,
                                               int commandBufferCount,
-                                              VkCommandBuffer[]  pCommandBuffers){
+                                              final VkCommandBuffer[]  pCommandBuffers){
      ByteBuffer[] buffers = getBuffers(pCommandBuffers, commandBufferCount);   
      vkFreeCommandBuffers0( device.getPointer(), 
                             commandPool.getPointer(), 
@@ -5021,12 +5056,16 @@ private static native int vkQueueSubmit0(
     private static native void vkFreeCommandBuffers0(java.nio.ByteBuffer device,
                                                      java.nio.ByteBuffer commandPool,
                                                      int commandBufferCount,
-                                                     java.nio.ByteBuffer[] pCommandBuffers);/* 
-     JBufferArray array (env, pCommandBuffers, sizeof(VkCommandBuffer));
+                                                     final java.nio.ByteBuffer[] buffers);/* 
+													 
+     BUFFERARRAY_SET(VkCommandBuffer, buffers,commandBufferCount,pCommandBuffers);   	     
      vkFreeCommandBuffers( (VkDevice) (device),
                      (VkCommandPool) commandPool,
                      (uint32_t) commandBufferCount,
-                     (const VkCommandBuffer*) array.getPointers());
+                     (const VkCommandBuffer*) pCommandBuffers);
+     if(pCommandBuffers != NULL){
+       free(pCommandBuffers);
+     }
 */ 
 
     /**
@@ -5556,9 +5595,13 @@ private static native int vkQueueSubmit0(
                                                  VkPipelineLayout layout,
                                                  int firstSet,
                                                  int descriptorSetCount,
-                                                 VkDescriptorSet[]  pDescriptorSets,
+                                                 final VkDescriptorSet[]  pDescriptorSets,
                                                  int dynamicOffsetCount,
                                                  int[] pDynamicOffsets){
+     if(descriptorSetCount < 1 || pDescriptorSets.length<1 || pDynamicOffsets.length <1){
+		 throw new IllegalArgumentException("descriptorSetCount and length of pDescriptorSets "+
+		 "and pDynamicOffsets must be > 0");
+	 }													 
      ByteBuffer[] buffers = getBuffers(pDescriptorSets, descriptorSetCount);   
      vkCmdBindDescriptorSets0( commandBuffer.getPointer(),
                                pipelineBindPoint.getValue(),
@@ -5589,17 +5632,18 @@ private static native int vkQueueSubmit0(
                                                       java.nio.ByteBuffer   layout,
                                                       int  firstSet,
                                                       int  descriptorSetCount,
-                                                      java.nio.ByteBuffer[]   pDescriptorSets,
+                                                      java.nio.ByteBuffer[]   buffers,
                                                       int  dynamicOffsetCount,
                                                       int[]  pDynamicOffsets);/* 
-     JBufferArray array (env, pDescriptorSets);                                                     
+      
+     BUFFERARRAY_SET(VkDescriptorSet, buffers, descriptorSetCount, pDescriptorSets);                                                      
      vkCmdBindDescriptorSets(
                      (VkCommandBuffer) commandBuffer,
                      (VkPipelineBindPoint) pipelineBindPoint,
                      (VkPipelineLayout) layout,
                      (uint32_t) firstSet,
                      (uint32_t) descriptorSetCount,
-                     (const VkDescriptorSet*) array.getPointers(),
+                     (const VkDescriptorSet*) pDescriptorSets,
                      (uint32_t) dynamicOffsetCount,
                      (const uint32_t*) pDynamicOffsets);
 */ 
@@ -5696,15 +5740,17 @@ private static native int vkQueueSubmit0(
  private static native void vkCmdBindVertexBuffers0( java.nio.ByteBuffer   commandBuffer,
                                                      int  firstBinding,
                                                      int  bindingCount,
-                                                     java.nio.ByteBuffer[]   pBuffers,
+                                                     final java.nio.ByteBuffer[]   buffers,
                                                      long[]  pOffsets);/* 
-     JBufferArray array (env, pBuffers);
-     array.setSizeOfHandle(sizeof(VkBuffer));        
+     BUFFERARRAY_SET(VkBuffer, buffers,bindingCount,pBuffers);   	     
      vkCmdBindVertexBuffers((VkCommandBuffer) commandBuffer,
                      (uint32_t) firstBinding,
                      (uint32_t) bindingCount,
                      (const VkBuffer*) pBuffers,
                      (const VkDeviceSize*) pOffsets);
+	if(pBuffers != NULL)
+		free(pBuffers);
+					 
 */ 
 
 
@@ -6484,7 +6530,9 @@ private static native int vkQueueSubmit0(
              VkClearColorValue  pColor,
              int rangeCount,
              final VkImageSubresourceRange[]  pRanges){
-        
+     if(rangeCount < 1 || pRanges.length <1){
+         throw new IllegalArgumentException("pRanges.length and rangeCount must be >= 1 ");
+     }
      vkCmdClearColorImage0(
               commandBuffer.getPointer(),
              image.getPointer(),
@@ -6509,10 +6557,11 @@ private static native int vkQueueSubmit0(
              java.nio.ByteBuffer   commandBuffer,
              java.nio.ByteBuffer   image,
              int   imageLayout,
-             java.nio.ByteBuffer   pColor,
+             java.nio.ByteBuffer   pColor, 
              int  rangeCount,
-             java.nio.ByteBuffer   pRanges);/*
+             final java.nio.ByteBuffer[]   buffers);/*
             
+     BUFFERARRAY_SET(VkImageSubresourceRange, buffers,rangeCount,pRanges);            
      vkCmdClearColorImage(
                      (VkCommandBuffer) commandBuffer,
                      (VkImage) image,
@@ -6520,6 +6569,9 @@ private static native int vkQueueSubmit0(
                      (const VkClearColorValue*) pColor,
                      (uint32_t) rangeCount,
                      (const VkImageSubresourceRange*) pRanges);
+      if(pRanges != NULL)
+          free(pRanges);               
+                     
 */ 
 
 /**
