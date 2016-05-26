@@ -44,7 +44,11 @@ void JBufferArray::setPointer(PointerToAnything ptr,jsize length, int index){
         //length = sizeof(void*);
        }
       //easy path
-      if(pinnedPointers[index]==NULL || pinnedPointers[index] != ptr ){
+      if(pinnedPointers[index] == NULL || pinnedPointers[index] != ptr ){
+		  if(pinnedPointers[index]!= NULL ) {
+			  PointerToAnything obj = pinnedPointers[index];
+			  delete obj;
+		  }
          jobject buffer = (jobject)(env->NewDirectByteBuffer(ptr, length));
          pinnedPointers[index] = ptr;
          env->SetObjectArrayElement(bufferArr, index, buffer);

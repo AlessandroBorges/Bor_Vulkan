@@ -1,7 +1,7 @@
 #ifndef BORVULKAN_H
 #define BORVULKAN_H
 
-//#pragma once
+#pragma once
 
 #ifdef __cplusplus
 extern "C" {

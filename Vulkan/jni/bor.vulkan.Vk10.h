@@ -832,10 +832,10 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkResetCommandPool0
 /*
  * Class:     bor_vulkan_Vk10
  * Method:    vkAllocateCommandBuffers0
- * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;[Ljava/nio/ByteBuffer;)I
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;I[Ljava/nio/ByteBuffer;)I
  */
 JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkAllocateCommandBuffers0
-  (JNIEnv *, jclass, jobject, jobject, jobjectArray);
+  (JNIEnv *, jclass, jobject, jobject, jint, jobjectArray);
 
 /*
  * Class:     bor_vulkan_Vk10
@@ -1080,10 +1080,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdFillBuffer0
 /*
  * Class:     bor_vulkan_Vk10
  * Method:    vkCmdClearColorImage0
- * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;ILjava/nio/ByteBuffer;)V
+ * Signature: (Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;ILjava/nio/ByteBuffer;I[Ljava/nio/ByteBuffer;)V
  */
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdClearColorImage0
-  (JNIEnv *, jclass, jobject, jobject, jint, jobject, jint, jobject);
+  (JNIEnv *, jclass, jobject, jobject, jint, jobject, jint, jobjectArray);
 
 /*
  * Class:     bor_vulkan_Vk10
