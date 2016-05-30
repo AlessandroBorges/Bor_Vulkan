@@ -14,7 +14,7 @@ import bor.vulkan.enumerations.*;
 import bor.vulkan.structs.*;
 import bor.vulkan.khr.*;
 import java.nio.ByteBuffer;
-
+import java.util.Arrays;
 import java.nio.Buffer;
 
 
@@ -76,8 +76,8 @@ public class VkPresentInfoKHR extends VkStruct {
 	/**
 	 *  const VkSemaphore* 	pWaitSemaphores	[vkhandle]
 	 */ 
-	  VkSemaphore  	pWaitSemaphores;
-
+	  VkSemaphore[]	pWaitSemaphores;
+	 
 	/**
 	 *  uint32_t 	swapchainCount	[int]
 	 */ 
@@ -249,30 +249,42 @@ public class VkPresentInfoKHR extends VkStruct {
 	 * Set method for field pWaitSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
-	 public void pWaitSemaphores( VkSemaphore  pWaitSemaphores){
-		 this.pWaitSemaphores = pWaitSemaphores;
-		 ByteBuffer buff = (pWaitSemaphores==null) ? null : pWaitSemaphores.getPointer();
-		 setPWaitSemaphores0(this.ptr, buff);
+	 public void pWaitSemaphores(VkSemaphore[]  pWaitSemaphores0){
+	        if(this.pWaitSemaphores != null){
+	            VkHandle.remove(this.pWaitSemaphores);
+	            Arrays.fill(this.pWaitSemaphores, null);
+	        }  
+		 this.pWaitSemaphores = pWaitSemaphores0;
+		 if(pWaitSemaphores0 == null){
+                     setPWaitSemaphores0(this.ptr, null, 0); 
+                     return;
+                 }		 
+		 int count = pWaitSemaphores0.length;
+		 long[] semaphoresHandles =  new long[count];		 
+		 for (int i = 0; i < count; i++) {
+		    if(pWaitSemaphores0[i]!= null)
+		         semaphoresHandles[i] = pWaitSemaphores0[i].getNativeHandle();
+                  }		 
+		 setPWaitSemaphores0(this.ptr, semaphoresHandles, count);
 	 }
 
 	/**
 	 * Get method for field pWaitSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
-	 public  VkSemaphore  pWaitSemaphores(){
-
-		 long handle = getPWaitSemaphores0(super.ptr);
-		 if(handle == 0){
-		    this.pWaitSemaphores = null;
-		    return null;
-		  }  
-
-		 if(this.pWaitSemaphores == null){
-		    this.pWaitSemaphores = new VkHandle(handle);
-		 }else{
-		    ((VkHandle)this.pWaitSemaphores).setPointer(handle);
-		  }
-		 return this.pWaitSemaphores;
+	 public  VkSemaphore[]  pWaitSemaphores(){
+                 return this.pWaitSemaphores; 
+//		 getPWaitSemaphores0(super.ptr, this.semaphoresHandles);
+//		 if(handles == 0){
+//		    this.pWaitSemaphores = null;
+//		    return null;
+//		  }  
+//		 if(this.pWaitSemaphores == null){
+//		    this.pWaitSemaphores = new VkHandle(handle);
+//		 }else{
+//		    ((VkHandle)this.pWaitSemaphores).setNativeHandle(handle);
+//		  }
+//		 return this.pWaitSemaphores;
 	 }
 
 	/**
@@ -423,18 +435,36 @@ public class VkPresentInfoKHR extends VkStruct {
 	 * native SET method for field pWaitSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
-	 private static native void setPWaitSemaphores0(Buffer ptr, java.nio.ByteBuffer  _pWaitSemaphores);/*
-		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		  vkObj->pWaitSemaphores = (const VkSemaphore*) (_pWaitSemaphores);
+	 private static native void setPWaitSemaphores0(Buffer ptr, long[]  _pWaitSemaphores, int count_);/*
+	        
+	         uint32_t count = (uint32_t)count_;
+	         VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
+	         if(vkObj->pWaitSemaphores != NULL){
+                    free(vkObj->pWaitSemaphores);                   
+                  }
+                  vkObj->pWaitSemaphores  = NULL;
+                  vkObj->waitSemaphoreCount = 0;
+                   
+	         if(count == 0){
+	            return;
+	         }
+	         
+	         VkSemaphore* array = CALLOC(count, VkSemaphore);
+	         for(uint32_t i=0; i< count; i++){
+                   array[i] = reinterpret_cast<VkSemaphore>(_pWaitSemaphores[i]);
+                 }   
+                 
+                 vkObj->pWaitSemaphores  = array;
+                 vkObj->waitSemaphoreCount = count;
 	  */
 
-	/**
-	 * native GET method for field pWaitSemaphores	[vkhandle]<br>
-	 * Prototype: const VkSemaphore*  pWaitSemaphores
-	 */ 
-	 private static native long getPWaitSemaphores0(Buffer ptr);/*
-		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pWaitSemaphores);	 */
+//	/**
+//	 * native GET method for field pWaitSemaphores	[vkhandle]<br>
+//	 * Prototype: const VkSemaphore*  pWaitSemaphores
+//	 */ 
+//	 private static native long getPWaitSemaphores0(Buffer ptr);/*
+//		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
+//		  return (jlong) reinterpret_cast<jlong>(vkObj->pWaitSemaphores);	 */
 
 	/**
 	 * native SET method for field swapchainCount	[int]<br>

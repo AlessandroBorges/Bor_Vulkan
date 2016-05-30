@@ -35,7 +35,7 @@ import sun.nio.ch.DirectBuffer;
  * @author Alessandro Borges
  *
  */
-public abstract class VkStruct<T> implements VkObject<VkStruct>{
+public abstract class VkStruct implements VkObject{
    
     //@formatter:off
     /*JNI
@@ -309,23 +309,23 @@ public abstract class VkStruct<T> implements VkObject<VkStruct>{
         preparePtr(nativeBuffer);
     }
     
-    /**
-     * Creates a 
-     * @param nativeBuffer
-     * @param elementCount
-     */
-    @SuppressWarnings("unchecked")
-    protected VkStruct(ByteBuffer nativeBuffer, int elementCount){
-        if(null==nativeBuffer || !nativeBuffer.isDirect()){
-            throw 
-            new IllegalArgumentException("ByteBuffer nativePtr must "
-                    + "be Direct and not null.");
-        }
-        this.count = elementCount;
-        bigBuffer = new BigBuffer(nativeBuffer, elementCount, this.getClass(), true);
-        bigBuffer.setOwner(this);
-        preparePtr(nativeBuffer);
-    }
+//    /**
+//     * Creates a 
+//     * @param nativeBuffer
+//     * @param elementCount
+//     */
+//    @SuppressWarnings("unchecked")
+//    protected VkStruct(ByteBuffer nativeBuffer, int elementCount){
+//        if(null==nativeBuffer || !nativeBuffer.isDirect()){
+//            throw 
+//            new IllegalArgumentException("ByteBuffer nativePtr must "
+//                    + "be Direct and not null.");
+//        }
+//        this.count = elementCount;
+//        bigBuffer = new BigBuffer(nativeBuffer, elementCount, this.getClass(), true);
+//        bigBuffer.setOwner(this);
+//        preparePtr(nativeBuffer);
+//    }
     
     /**
      * Implements {@link VkObject#getType()}.     
@@ -338,19 +338,6 @@ public abstract class VkStruct<T> implements VkObject<VkStruct>{
         return TYPE_STRUCT;
     }
     
-    /**
-     * Return the native pointer for this object.<br>
-     * Same as {@link VkObject#getPointer()}
-     * 
-     * @see #getPointer()
-     * @see VkObject#getPointer()
-     * 
-     * @return the structs's native pointer, wrapped by a ByteBuffer
-     */
-    @Deprecated
-    public ByteBuffer getPointerStruct(){
-        return this.ptr;
-    }
     
     /**
      * Implements {@link VkObject#getPointer()}<br>
@@ -361,7 +348,7 @@ public abstract class VkStruct<T> implements VkObject<VkStruct>{
      * @return the structs's native pointer, wrapped by a ByteBuffer 
      */
     @Override
-    public ByteBuffer getPointer(){
+    public final ByteBuffer getPointer(){
         return this.ptr;
     }
     
@@ -557,16 +544,16 @@ public abstract class VkStruct<T> implements VkObject<VkStruct>{
 
     }
     
-    /**
-     * BigBuffer is a object to hold multiple instances of a VkObject, as a 
-     * native array.
-     * 
-     * @return bigBuffer for this object
-     */
-    @Override
-    public  BigBuffer<VkStruct> getBigBuffer(){
-        return bigBuffer;
-    }
+//    /**
+//     * BigBuffer is a object to hold multiple instances of a VkObject, as a 
+//     * native array.
+//     * 
+//     * @return bigBuffer for this object
+//     */
+//    @Override
+//    public  BigBuffer<VkStruct> getBigBuffer(){
+//        return bigBuffer;
+//    }
     
     /**
      * Iterator for this VkStruct

@@ -56,13 +56,7 @@ public class VkClearColorValue extends VkStruct {
         super(buff);     
     }
 
-    @Override
-    public P<VkClearColorValue> getP() {
-       if(p==null){
-           p = new P<VkClearColorValue>(this);
-       }
-        return p;
-    }
+   
     
     /**
      * 

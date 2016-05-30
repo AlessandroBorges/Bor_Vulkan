@@ -76,12 +76,12 @@ public class VkSubmitInfo extends VkStruct {
 	/**
 	 *  const VkSemaphore* 	pWaitSemaphores	[vkhandle]
 	 */ 
-	  VkSemaphore  	pWaitSemaphores;
+	  VkSemaphore[] 	pWaitSemaphores;
 
 	/**
 	 *  const VkPipelineStageFlags* 	pWaitDstStageMask	[pinteger]
 	 */ 
-	 PInteger 	pWaitDstStageMask;
+	 Integer pWaitDstStageMask;
 
 	/**
 	 *  uint32_t 	commandBufferCount	[int]
@@ -91,7 +91,7 @@ public class VkSubmitInfo extends VkStruct {
 	/**
 	 *  const VkCommandBuffer* 	pCommandBuffers	[vkhandle]
 	 */ 
-	  VkCommandBuffer  	pCommandBuffers;
+	  VkCommandBuffer[]  	pCommandBuffers;
 
 	/**
 	 *  uint32_t 	signalSemaphoreCount	[int]
@@ -101,7 +101,7 @@ public class VkSubmitInfo extends VkStruct {
 	/**
 	 *  const VkSemaphore* 	pSignalSemaphores	[vkhandle]
 	 */ 
-	  VkSemaphore  	pSignalSemaphores;
+	  VkSemaphore[] 	pSignalSemaphores;
 
 	/**
 	 * Ctor
@@ -149,34 +149,6 @@ public class VkSubmitInfo extends VkStruct {
 	 public int getSizeBytes(){ 
 		 return sizeOf(); 
 	}
-
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkSubmitInfo> createNullPointer(){
-	        P<VkSubmitInfo> p = new  P<VkSubmitInfo>(new VkSubmitInfo());
-	        return p;
-	    }
-
-
-	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
-	 */
-	 public P<VkSubmitInfo> getP() {
-	       if(p == null ){
-	           p = new P<VkSubmitInfo> (this);
-	       }
-	        return p;
-	    }
 
 
 	 ////////////////////////
@@ -254,29 +226,32 @@ public class VkSubmitInfo extends VkStruct {
 	 * Set method for field pWaitSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
-	 public void pWaitSemaphores( VkSemaphore  pWaitSemaphores){
+	 public void pWaitSemaphores( VkSemaphore[]  pWaitSemaphores){
 		 this.pWaitSemaphores = pWaitSemaphores;
-		 ByteBuffer buff = (pWaitSemaphores==null) ? null : pWaitSemaphores.getPointer();
-		 setPWaitSemaphores0(this.ptr, buff);
+		 if(pWaitSemaphores==null){
+		     setPWaitSemaphores0(this.ptr, null,0);
+		 }
+		 long[] handles = VkHandle.getNativeHandlers(null, pWaitSemaphores);
+		 setPWaitSemaphores0(this.ptr, handles, handles.length);
 	 }
 
 	/**
 	 * Get method for field pWaitSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
-	 public  VkSemaphore  pWaitSemaphores(){
-
-		 long handle = getPWaitSemaphores0(super.ptr);
-		 if(handle == 0){
-		    this.pWaitSemaphores = null;
-		    return null;
-		  }  
-
-		 if(this.pWaitSemaphores == null){
-		    this.pWaitSemaphores = new VkHandle(handle);
-		 }else{
-		    ((VkHandle)this.pWaitSemaphores).setPointer(handle);
-		  }
+	 public  VkSemaphore[]  pWaitSemaphores(){
+//
+//		 long handle = getPWaitSemaphores0(super.ptr);
+//		 if(handle == 0){
+//		    this.pWaitSemaphores = null;
+//		    return null;
+//		  }  
+//
+//		 if(this.pWaitSemaphores == null){
+//		    this.pWaitSemaphores = new VkHandle(handle);
+//		 }else{
+//		    ((VkHandle)this.pWaitSemaphores).setPointer(handle);
+//		  }
 		 return this.pWaitSemaphores;
 	 }
 
@@ -284,7 +259,7 @@ public class VkSubmitInfo extends VkStruct {
 	 * Set method for field pWaitDstStageMask	[pinteger]<br>
 	 * Prototype: const VkPipelineStageFlags*  pWaitDstStageMask
 	 */ 
-	 public void pWaitDstStageMask(PInteger pWaitDstStageMask){
+	 public void pWaitDstStageMask(int pWaitDstStageMask){
 		 this.pWaitDstStageMask = pWaitDstStageMask;
 		 setPWaitDstStageMask0(this.ptr,  pWaitDstStageMask);
 	 }
@@ -293,8 +268,8 @@ public class VkSubmitInfo extends VkStruct {
 	 * Get method for field pWaitDstStageMask	[pinteger]<br>
 	 * Prototype: const VkPipelineStageFlags*  pWaitDstStageMask
 	 */ 
-	 public PInteger pWaitDstStageMask(){
-		 PInteger var = getPWaitDstStageMask0(super.ptr);
+	 public int pWaitDstStageMask(){
+		 int var = getPWaitDstStageMask0(super.ptr);
 		 this.pWaitDstStageMask = var;
 		 return this.pWaitDstStageMask;
 	 }
@@ -322,29 +297,34 @@ public class VkSubmitInfo extends VkStruct {
 	 * Set method for field pCommandBuffers	[vkhandle]<br>
 	 * Prototype: const VkCommandBuffer*  pCommandBuffers
 	 */ 
-	 public void pCommandBuffers( VkCommandBuffer  pCommandBuffers){
+	 public void pCommandBuffers( VkCommandBuffer[]  pCommandBuffers){
+	         VkHandle.remove(this.pCommandBuffers);
 		 this.pCommandBuffers = pCommandBuffers;
-		 ByteBuffer buff = (pCommandBuffers==null) ? null : pCommandBuffers.getPointer();
-		 setPCommandBuffers0(this.ptr, buff);
+		 if(pCommandBuffers==null){
+		     setPCommandBuffers0(this.ptr, null,0);
+		     return;
+		 }
+		 long[] handles = VkHandle.getNativeHandlers(null, pCommandBuffers);		 
+		 setPCommandBuffers0(this.ptr, handles,0);
 	 }
 
 	/**
 	 * Get method for field pCommandBuffers	[vkhandle]<br>
 	 * Prototype: const VkCommandBuffer*  pCommandBuffers
 	 */ 
-	 public  VkCommandBuffer  pCommandBuffers(){
+	 public  VkCommandBuffer[]  pCommandBuffers(){
 
-		 long handle = getPCommandBuffers0(super.ptr);
-		 if(handle == 0){
-		    this.pCommandBuffers = null;
-		    return null;
-		  }  
-
-		 if(this.pCommandBuffers == null){
-		    this.pCommandBuffers = new VkHandle(handle);
-		 }else{
-		    ((VkHandle)this.pCommandBuffers).setPointer(handle);
-		  }
+//		 long handle = getPCommandBuffers0(super.ptr);
+//		 if(handle == 0){
+//		    this.pCommandBuffers = null;
+//		    return null;
+//		  }  
+//
+//		 if(this.pCommandBuffers == null){
+//		    this.pCommandBuffers = new VkHandle(handle);
+//		 }else{
+//		    ((VkHandle)this.pCommandBuffers).setPointer(handle);
+//		  }
 		 return this.pCommandBuffers;
 	 }
 
@@ -371,30 +351,35 @@ public class VkSubmitInfo extends VkStruct {
 	 * Set method for field pSignalSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pSignalSemaphores
 	 */ 
-	 public void pSignalSemaphores( VkSemaphore  pSignalSemaphores){
+	 public void pSignalSemaphores( VkSemaphore[]  pSignalSemaphores){
 		 this.pSignalSemaphores = pSignalSemaphores;
-		 ByteBuffer buff = (pSignalSemaphores==null) ? null : pSignalSemaphores.getPointer();
-		 setPSignalSemaphores0(this.ptr, buff);
+		 if(pSignalSemaphores==null){
+		     setPSignalSemaphores0(this.ptr, null, 0);
+		     return;
+		 }
+		 long[] handles = VkHandle.getNativeHandlers(null, pSignalSemaphores);		 
+		 setPSignalSemaphores0(this.ptr, handles, handles.length);
 	 }
 
 	/**
 	 * Get method for field pSignalSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pSignalSemaphores
 	 */ 
-	 public  VkSemaphore  pSignalSemaphores(){
+	 public  VkSemaphore[]  pSignalSemaphores(){
+	     return this.pSignalSemaphores;
 
-		 long handle = getPSignalSemaphores0(super.ptr);
-		 if(handle == 0){
-		    this.pSignalSemaphores = null;
-		    return null;
-		  }  
-
-		 if(this.pSignalSemaphores == null){
-		    this.pSignalSemaphores = new VkHandle(handle);
-		 }else{
-		    ((VkHandle)this.pSignalSemaphores).setPointer(handle);
-		  }
-		 return this.pSignalSemaphores;
+//		 long handle = getPSignalSemaphores0(super.ptr);
+//		 if(handle == 0){
+//		    this.pSignalSemaphores = null;
+//		    return null;
+//		  }  
+//
+//		 if(this.pSignalSemaphores == null){
+//		    this.pSignalSemaphores = new VkHandle(handle);
+//		 }else{
+//		    ((VkHandle)this.pSignalSemaphores).setPointer(handle);
+//		  }
+//		 return this.pSignalSemaphores;
 	 }
 
 
@@ -458,9 +443,22 @@ public class VkSubmitInfo extends VkStruct {
 	 * native SET method for field pWaitSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
-	 private static native void setPWaitSemaphores0(Buffer ptr, java.nio.ByteBuffer  _pWaitSemaphores);/*
+	 private static native void setPWaitSemaphores0(Buffer ptr, long[]  _pWaitSemaphores, int count);/*	          
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		  vkObj->pWaitSemaphores = (const VkSemaphore*) (_pWaitSemaphores);
+		  if(vkObj->pWaitSemaphores != null){
+		   free(vkObj->pWaitSemaphores);
+		  }
+		  vkObj->pWaitSemaphores = NULL;
+		  vkObj->waitSemaphoreCount = 0;
+		  if(count==0) 
+		      return;
+		      
+		  VkSemaphore* array = CALLOC(count, VkSemaphore);
+		  for(int i=0; i<count; i++){
+		     VkSemaphore s = reinterpret_cast<VkSemaphore>(_pWaitSemaphores[i]);
+		     array[i] = s;
+		  }
+		  vkObj->pWaitSemaphores = (const VkSemaphore*) (array);
 	  */
 
 	/**
@@ -475,7 +473,7 @@ public class VkSubmitInfo extends VkStruct {
 	 * native SET method for field pWaitDstStageMask	[pinteger]<br>
 	 * Prototype: const VkPipelineStageFlags*  pWaitDstStageMask
 	 */ 
-	 private static native void setPWaitDstStageMask0(Buffer ptr, PInteger _pWaitDstStageMask);/*
+	 private static native void setPWaitDstStageMask0(Buffer ptr, int _pWaitDstStageMask);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  vkObj->pWaitDstStageMask = (const VkPipelineStageFlags*) (_pWaitDstStageMask);
 	  */
@@ -484,9 +482,9 @@ public class VkSubmitInfo extends VkStruct {
 	 * native GET method for field pWaitDstStageMask	[pinteger]<br>
 	 * Prototype: const VkPipelineStageFlags*  pWaitDstStageMask
 	 */ 
-	 private static native PInteger getPWaitDstStageMask0(Buffer ptr);/*
+	 private static native int getPWaitDstStageMask0(Buffer ptr);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		  return (PInteger) (vkObj->pWaitDstStageMask);
+		  return (jint) (vkObj->pWaitDstStageMask);
 	 */
 
 	/**
@@ -511,18 +509,21 @@ public class VkSubmitInfo extends VkStruct {
 	 * native SET method for field pCommandBuffers	[vkhandle]<br>
 	 * Prototype: const VkCommandBuffer*  pCommandBuffers
 	 */ 
-	 private static native void setPCommandBuffers0(Buffer ptr, java.nio.ByteBuffer  _pCommandBuffers);/*
+	 private static native void setPCommandBuffers0(Buffer ptr, long[]  handles, int count);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		  vkObj->pCommandBuffers = (const VkCommandBuffer*) (_pCommandBuffers);
+		  FREE_IT(vkObj->pCommandBuffers);
+		  JLONG2HANDLE(count, VkCommandBuffer, handles, array);
+		  vkObj->pCommandBuffers = (const VkCommandBuffer*) (array);
+		  vkObj->commandBuffersCount = count;
 	  */
 
 	/**
 	 * native GET method for field pCommandBuffers	[vkhandle]<br>
 	 * Prototype: const VkCommandBuffer*  pCommandBuffers
 	 */ 
-	 private static native long getPCommandBuffers0(Buffer ptr);/*
-		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pCommandBuffers);	 */
+//	 private static native long getPCommandBuffers0(Buffer ptr);/*
+//		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
+//		  return (jlong) reinterpret_cast<jlong>(vkObj->pCommandBuffers);	 */
 
 	/**
 	 * native SET method for field signalSemaphoreCount	[int]<br>
@@ -546,9 +547,24 @@ public class VkSubmitInfo extends VkStruct {
 	 * native SET method for field pSignalSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pSignalSemaphores
 	 */ 
-	 private static native void setPSignalSemaphores0(Buffer ptr, java.nio.ByteBuffer  _pSignalSemaphores);/*
-		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		  vkObj->pSignalSemaphores = (const VkSemaphore*) (_pSignalSemaphores);
+	 private static native void setPSignalSemaphores0(Buffer ptr, long[]  _pSignalSemaphores, int count);/*
+		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);		  
+		  if(vkObj->pSignalSemaphores != NULL){
+		    free(vkObj->pSignalSemaphores);
+		  }		  
+		  vkObj->pSignalSemaphores = (const VkSemaphore*) (NULL);
+		  vkObj->signalSemaphoresCount = 0;
+		  if(count==0){
+		    return;
+		  }		 
+		  VkSemaphore* array = CALLOC(count, VkSemaphore);
+                  for(int i=0; i<count; i++){
+                     VkSemaphore s = reinterpret_cast<VkSemaphore>(_pWaitSemaphores[i]);
+                     array[i] = s;
+                  }
+		  vkObj->pSignalSemaphores = (const VkSemaphore*) (array);
+		  vkObj->signalSemaphoresCount = count;
+		  
 	  */
 
 	/**

@@ -79,7 +79,7 @@ public class VkBindSparseInfo extends VkStruct {
 	/**
 	 *  const VkSemaphore* 	pWaitSemaphores	[vkhandle]
 	 */ 
-	  VkSemaphore  	pWaitSemaphores;
+	  VkSemaphore[]  	pWaitSemaphores;
 
 	/**
 	 *  uint32_t 	bufferBindCount	[int]
@@ -272,30 +272,44 @@ public class VkBindSparseInfo extends VkStruct {
 	 * Set method for field pWaitSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
-	 public void pWaitSemaphores( VkSemaphore  pWaitSemaphores){
+	 public void pWaitSemaphores( VkSemaphore[]  pWaitSemaphores){
+	         VkHandle.remove(this.pWaitSemaphores); 
 		 this.pWaitSemaphores = pWaitSemaphores;
-		 ByteBuffer buff = (pWaitSemaphores==null) ? null : pWaitSemaphores.getPointer();
-		 setPWaitSemaphores0(this.ptr, buff);
+		 int count  = pWaitSemaphores == null ? 0 : pWaitSemaphores.length;
+		 if(count == 0){
+		     setPWaitSemaphores0(this.ptr, null, 0);
+		     return;
+		 }
+		 
+		 long[] handles = new long[count];
+		 for (int i = 0; i < count; i++) {
+		     VkSemaphore s = pWaitSemaphores[i];
+		     if(s != null){
+		         handles[i] = s.getNativeHandle();
+		     }
+                }
+		 
+		 setPWaitSemaphores0(this.ptr, handles, count);
 	 }
 
 	/**
 	 * Get method for field pWaitSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
-	 public  VkSemaphore  pWaitSemaphores(){
-
-		 long handle = getPWaitSemaphores0(super.ptr);
-		 if(handle == 0){
-		    this.pWaitSemaphores = null;
-		    return null;
-		  }  
-
-		 if(this.pWaitSemaphores == null){
-		    this.pWaitSemaphores = new VkHandle(handle);
-		 }else{
-		    ((VkHandle)this.pWaitSemaphores).setPointer(handle);
-		  }
-		 return this.pWaitSemaphores;
+	 public  VkSemaphore[]  pWaitSemaphores(){
+                 return this.pWaitSemaphores;
+//		 long handle = getPWaitSemaphores0(super.ptr);
+//		 if(handle == 0){
+//		    this.pWaitSemaphores = null;
+//		    return null;
+//		  }  
+//
+//		 if(this.pWaitSemaphores == null){
+//		    this.pWaitSemaphores = new VkHandle(handle);
+//		 }else{
+//		    ((VkHandle)this.pWaitSemaphores).setPointer(handle);
+//		  }
+//		 return this.pWaitSemaphores;
 	 }
 
 	/**
@@ -552,18 +566,27 @@ public class VkBindSparseInfo extends VkStruct {
 	 * native SET method for field pWaitSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
-	 private static native void setPWaitSemaphores0(Buffer ptr, java.nio.ByteBuffer  _pWaitSemaphores);/*
-		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
-		  vkObj->pWaitSemaphores = (const VkSemaphore*) (_pWaitSemaphores);
+	 private static native void setPWaitSemaphores0(Buffer ptr, long[]  pWaitSemaphores, int count);/*	 
+		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);		  
+		  if(vkObj->pWaitSemaphores != NULL){
+		     free(vkObj->pWaitSemaphores);
+		  }
+		  VkSemaphore* array = CALLOC((int)count,VkSemaphore);		  
+		  array = CALLOC(count,VkSemaphore);
+		  for(int i=0; i< (int)count; i++){
+		     array[i] = reinterpret_cast<jlong>(pWaitSemaphores[i]);
+		  }
+		  vkObj->waitSemaphoreCount = (uint32_t) count;
+		  vkObj->pWaitSemaphores = (const VkSemaphore*) array;		
 	  */
 
 	/**
 	 * native GET method for field pWaitSemaphores	[vkhandle]<br>
 	 * Prototype: const VkSemaphore*  pWaitSemaphores
 	 */ 
-	 private static native long getPWaitSemaphores0(Buffer ptr);/*
-		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pWaitSemaphores);	 */
+//	 private static native long getPWaitSemaphores0(Buffer ptr);/*
+//		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+//		  return (jlong) reinterpret_cast<jlong>(vkObj->pWaitSemaphores);	 */
 
 	/**
 	 * native SET method for field bufferBindCount	[int]<br>

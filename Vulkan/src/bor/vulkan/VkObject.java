@@ -15,7 +15,7 @@ import java.util.*;
  * @author Alessandro Borges
  *
  */
-public interface VkObject<T> extends Iterable<T>{
+public interface VkObject{
     
     /**
      * Default size of Pointer.
@@ -64,15 +64,7 @@ public interface VkObject<T> extends Iterable<T>{
      */
     public boolean isNull();
     
-    /**
-     * Return this VkObject instance wrapped in pointer P<br>
-     *  
-     *  P&lt;? extends VkObject &gt; 
-     * 
-     * @return  a P container wrapping this object.
-     */
-    public P<? extends VkObject> getP();
-    
+       
     /**
      * Used to set a new pointer after a native [in][out] operation.
      * @param nativePtr - native pointer to set
@@ -88,6 +80,8 @@ public interface VkObject<T> extends Iterable<T>{
       */
      void setPointer(long nativeHandler);
      
+     
+     
      /**
       * Free this handle on native side.<br>
       * After calling this, any use of this handle will throw a NullPointerException.<br>
@@ -99,22 +93,7 @@ public interface VkObject<T> extends Iterable<T>{
       */
       public boolean free();
       
-      
-      /**
-       * BigBuffer is a object to hold multiple instances of a VkObject, as a 
-       * native array.
-       * 
-       * @return bigBuffer for this object
-       */
-      public  BigBuffer<T> getBigBuffer(); 
-      
-      /**
-       * Create a internal BigBuffer
-       * @param bigBuffer - Direct buffer pointer for a native array
-       * @param elementsCount - elements in array
-       * 
-       */
-     // public  void createBigBuffer(ByteBuffer bigBuffer, int elementsCount);
-      
+     
+           
  
 }

@@ -4,6 +4,7 @@
 package bor.vulkan.tutorial;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -114,15 +115,22 @@ public class Lesson02 {
      * @return list of Instance Layers
      */
     public static List<VkLayerProperties> enumerateInstaceLayers(){
-        List<VkLayerProperties> pProperties = new ArrayList<VkLayerProperties>();
-        VkResult res =  Vk10.vkEnumerateInstanceLayerProperties(pProperties );
+       
+        int[] count = {0};
+        VkLayerProperties[] array = null;
+        
+        
+        VkResult res =  Vk10.vkEnumerateInstanceLayerProperties(count, array);
+        array = new VkLayerProperties[count[0]];
+        res =  Vk10.vkEnumerateInstanceLayerProperties(count, array);
         System.out.println("VkResult for Enumerate Instance Layer Properties " + res);
-        System.out.println("VkLayerProperties count: " + pProperties.size());
-        int count=0;
-        for (VkLayerProperties prop : pProperties) {
-            System.out.println("VkLayerProperties #" + count++);
+        System.out.println("VkLayerProperties count: " + array.length);
+        int ii=0;
+        for (VkLayerProperties prop : array) {
+            System.out.println("VkLayerProperties #" + ii++);
             System.out.println(prop);
         }
+        List<VkLayerProperties> pProperties = Arrays.asList(array);
         return pProperties;
     }
     

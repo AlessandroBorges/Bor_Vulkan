@@ -6,8 +6,11 @@ package bor.vulkan.sweet;
 import bor.vulkan.Vk10;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.VkResult;
@@ -68,10 +71,11 @@ public class Instance {
         if(physicalDeviceList.size() > 0){
             return physicalDeviceList;
         }        
-        List<VkPhysicalDevice> vkList = new ArrayList<VkPhysicalDevice>(4);
-        VkResult res = Vk10.vkEnumeratePhysicalDevices(vkInstance, vkList); 
+        int[] count = {0};        
+        VkResult res = Vk10.vkEnumeratePhysicalDevices(vkInstance, count, null);
+        VkPhysicalDevice[] vkList = new VkPhysicalDevice[count[0]];
+        res = Vk10.vkEnumeratePhysicalDevices(vkInstance, count, vkList);
         rh.check("enumeratePhysicalDevices", res);
-        
         for (VkPhysicalDevice vkPhysicalDevice : vkList) {
             PhysicalDevice phy = new PhysicalDevice(this, vkPhysicalDevice);
             physicalDeviceList.add(phy);
@@ -85,10 +89,21 @@ public class Instance {
      * @return List of available VkLayerProperties 
      */
     public List<VkLayerProperties> enumerateInstanceLayersProperties(){        
-        List<VkLayerProperties> pProperties = new ArrayList<VkLayerProperties>();
-        VkResult res = Vk10.vkEnumerateInstanceLayerProperties(pProperties);
+        List<VkLayerProperties> list = new ArrayList<VkLayerProperties>();
+        
+        int[] pPropertyCount = {0};
+        VkLayerProperties[] pProperties = null;
+        VkResult res = Vk10.vkEnumerateInstanceLayerProperties(pPropertyCount, pProperties);
         rh.check("enumerateInstanceLayersProperties", res);
-        return pProperties;
+        
+        pProperties = new VkLayerProperties[pPropertyCount[0]];
+        res = Vk10.vkEnumerateInstanceLayerProperties(pPropertyCount, pProperties);
+        rh.check("enumerateInstanceLayersProperties", res);
+        
+        for (VkLayerProperties props : pProperties) {
+            list.add(props);
+        }
+        return list;
     }
     
     /**

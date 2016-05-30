@@ -63,14 +63,7 @@ public class VkClearValue extends VkStruct {
         super(buff);       
     }
     
-    @Override
-    public P<VkClearValue> getP() {
-       if(p==null){
-           p = new P<VkClearValue>(this);
-       }
-        return p;
-    }
-
+   
     /**
      * 
      */

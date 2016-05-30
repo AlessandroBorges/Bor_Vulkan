@@ -17,7 +17,7 @@ public class TestGen {
                 System.err.println(nm);
             }
             
-        } catch (ClassNotFoundException | IOException e) {
+        } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         } 

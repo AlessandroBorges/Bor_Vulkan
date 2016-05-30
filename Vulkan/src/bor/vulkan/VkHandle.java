@@ -5,6 +5,7 @@ package bor.vulkan;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
+import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Map;
@@ -122,11 +123,7 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
       }    
     }//static
     
-    /**
-     * Wrapping P instance, for this object
-     */
-    private P<VkHandle> p;
-    
+        
     /**
      * Creates a empty VkHandle.
      * The pointer to native side will be created later.
@@ -134,7 +131,7 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
      */
     protected VkHandle(){ 
         //TODO - get correct ptr size at runtime
-        this(ByteBuffer.allocateDirect(8));
+        this(0);
     }
 
     /**
@@ -155,18 +152,41 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
       */
      public VkHandle(long nativeHandle) {        
          prepareHandler(nativeHandle);
-       }
+       }   
      
      /**
-      * Create a VkHandle supporting multiple 
-      * @param nativeBufferArray - native array of VkHandlers
-      * @param count - number of elements in nativeBufferArray
+      * Remove static references of handles 
+      * @param handles - instances to be free'd
       */
-     public VkHandle(ByteBuffer nativeBufferArray, int count) {
-         bigBuffer = new BigBuffer<VkHandle>(nativeBufferArray, count, (Class<VkHandle>) this.getClass(), true); 
-         prepareHandler(nativeBufferArray);          
+     public static void remove(VkObject ...handles){
+         if(handles == null) return;
+         for (VkObject vkHandle : handles) {
+             if(vkHandle != null)
+                 vkHandle.free();
+        }
      }
-
+     
+     /**
+      * Get native pointers
+      * @param dst - optional destination, if null a new array is created
+      * @param handles - array of VkObjects to query native address
+      * @return dst - array to hold native addresses
+      */
+     public static long[] getNativeHandlers(long[] dst, VkObject ...handles){
+         int count = handles.length;
+         if(dst == null || dst.length < count){
+             dst = new long[count];
+         }
+         Arrays.fill(dst, 0);
+         
+         for (int i=0; i<count; i++) {
+             if(handles[i] != null)
+              dst[i] =  handles[i].getNativeHandle();
+        }
+         return dst;         
+     }
+     
+    
     /**
       * Prepare handler from native address
       * @param address - native address
@@ -177,7 +197,9 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
              return;
          }         
          this.nativeHandle = address;
-         prepareHandler(wrapPointer(address, sizeOfPtr));
+         if(address != 0L){
+             prepareHandler(wrapPointer(address, sizeOfPtr));
+         }
      }
      
      /**
@@ -193,8 +215,7 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
         this.ptr = nativePtr.isReadOnly() ? nativePtr : nativePtr.asReadOnlyBuffer();
         this.ptr.order(ByteOrder.nativeOrder());
         this.ptr.rewind();
-        this.nativeHandle = getNativeAddress(ptr);
-        
+        this.nativeHandle = getNativeAddress(ptr);        
         mapHandlers.put(this, ptr);
     }
      
@@ -222,14 +243,15 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
     }
     
     /**
-     * set 
+     * set native handle
      * @param address
      */
-    public void setHandle(long address){  
+    public void setNativeHandle(long address){  
         if(address==nativeHandle){
             return;
         }
-        prepareHandler(nativeHandle);        
+        this.ptr = null;
+       // prepareHandler(nativeHandle);        
     }
     
     /**
@@ -241,6 +263,7 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
      * @return native pointer wrapped by a ByteBuffer. 
      */
     @Override
+    @Deprecated
     public ByteBuffer getPointer(){              
         return this.ptr;
     }
@@ -327,9 +350,7 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
         builder.append("VkHandle [ptr=")
                 .append(ptr)
                 .append(", nativeHandle=")
-                .append(nativeHandle)
-                .append(", p=")
-                .append(p)
+                .append(nativeHandle)                
                 .append(", getType: ")
                 .append(getType())
                 .append(", getPointer: ")
@@ -388,59 +409,59 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
         prepareHandler(nativeHand); 
      }
 
-     /*
-      * (non-Javadoc)
-      * @see bor.vulkan.VkObject#getP()
-      */
-    @Override
-    public P<VkHandle> getP() {
-       if(p == null ){
-           p = new P<VkHandle>(this);
-       }
-        return p;
-    }
+//     /*
+//      * (non-Javadoc)
+//      * @see bor.vulkan.VkObject#getP()
+//      */
+//    @Override
+//    public P<VkHandle> getP() {
+//       if(p == null ){
+//           p = new P<VkHandle>(this);
+//       }
+//        return p;
+//    }
+//
+//    @Override
+//    public BigBuffer getBigBuffer() {        
+//        return this.bigBuffer;
+//    }
 
-    @Override
-    public BigBuffer getBigBuffer() {        
-        return this.bigBuffer;
-    }
-
-    @Override
-    public Iterator<VkHandle> iterator() {
-        if(bigBuffer != null){
-            return bigBuffer.getList().iterator();
-        }else{
-           return new VkHandleIterator(this);
-        }
-    }
-
-    /**
-     * Simple Iterator
-     * @author Alessandro Borges
-     *
-     */
-    class VkHandleIterator implements Iterator<VkHandle>{
-        private VkHandle owner;
-        int count = 0;
-        
-        VkHandleIterator(VkHandle handle){
-            owner = handle;
-        }
-        
-        @Override
-        public boolean hasNext() {
-            count++;
-            return count < 2;
-        }
-
-        @Override
-        public VkHandle next() {
-            if(count<2){
-                count++;                
-                return owner;
-            }
-            return null;
-        }        
-    }// VkHandleIterator
+//    @Override
+//    public Iterator<VkHandle> iterator() {
+//        if(bigBuffer != null){
+//            return bigBuffer.getList().iterator();
+//        }else{
+//           return new VkHandleIterator(this);
+//        }
+//    }
+//
+//    /**
+//     * Simple Iterator
+//     * @author Alessandro Borges
+//     *
+//     */
+//    class VkHandleIterator implements Iterator<VkHandle>{
+//        private VkHandle owner;
+//        int count = 0;
+//        
+//        VkHandleIterator(VkHandle handle){
+//            owner = handle;
+//        }
+//        
+//        @Override
+//        public boolean hasNext() {
+//            count++;
+//            return count < 2;
+//        }
+//
+//        @Override
+//        public VkHandle next() {
+//            if(count<2){
+//                count++;                
+//                return owner;
+//            }
+//            return null;
+//        }        
+//    }// VkHandleIterator
     
 }
