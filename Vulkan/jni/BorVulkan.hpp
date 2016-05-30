@@ -31,6 +31,14 @@ extern "C" {
  #define MIN(a,b) (((a)<(b))?(a):(b))
  #define MAX(a,b) (((a)>(b))?(a):(b))
  #define CALLOC(COUNT,TYPE) ((TYPE*)(calloc(COUNT,sizeof(TYPE))));
+ #define JLONG2HANDLE(COUNT, TYPE, JAVA_ARRAY, C_ARRAY) \
+       TYPE* C_ARRAY =  (COUNT == 0) ? NULL : (TYPE*)(calloc(COUNT,(sizeof(TYPE)* COUNT)));\
+	   for(int i=0; i < COUNT ; i++){\
+	      TYPE s = reinterpret_cast<TYPE>(JAVA_ARRAY[i]);\
+		  C_ARRAY[i] = s; \
+	   }\
+#define FREE_IT (OBJ) \
+    { if(obj != NULL) free(obj);\	   
  
 inline char* cloneStr(const char* src){
 	 if(src==NULL) return NULL;
