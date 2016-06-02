@@ -202,12 +202,12 @@ public class Vk10 extends Vulkan {
      *   VK_DEFINE_HANDLE(VkCommandBuffer)
      * </pre>
      */
-    private static int SIZE_OF_HANDLE = 8;
+    protected static int SIZE_OF_HANDLE = 8;
     /**
      * Default size in bytes of Non Dispatchable VkHandler.
      * Expected to be always 8 bytes in both 32/64bits environments.
      */
-    private static int SIZE_OF_NON__DISPATCHABLE_HANDLE = 8;
+    protected static int SIZE_OF_NON__DISPATCHABLE_HANDLE = 8;
     
     /**
      * Vulkan Supported Plaforms
@@ -298,7 +298,7 @@ public class Vk10 extends Vulkan {
              res);
     
        if(res[0]>=0){
-           wrapVkHandle(pInstance, buff);
+           pInstance[0] = new VkHandleDispatchable(buff);          
        }       
      return VkResult.fromValue(res[0]);
    }
@@ -482,7 +482,7 @@ public class Vk10 extends Vulkan {
        for (int i = 0; i < pPhysicalDevicesArray.length; i++) {
                ByteBuffer handle = pPhysicalDevicesArray[i];
                if (handle != null) {
-                   physicalDevicesList.add(new VkHandle(handle));
+                   physicalDevicesList.add(new VkHandleDispatchable(handle));
                }
       } 
       clean(pPhysicalDevicesArray);
@@ -805,7 +805,7 @@ public class Vk10 extends Vulkan {
                pCreateDeviceInfo.getPointer(),
                (pAllocator==null? null: pAllocator.getPointer()),
                result);
-   VkDevice device = new VkHandle(nativeHandle);
+   VkDevice device = new VkHandleDispatchable(nativeHandle);
    pDevice[0] = device;
    VkResult res = VkResult.fromValue(result[0]);   
    return res;   
@@ -1116,7 +1116,7 @@ public class Vk10 extends Vulkan {
       ByteBuffer nativeHandle = vkGetDeviceQueue0( device.getPointer(),
                                                    queueFamilyIndex,
                                                    queueIndex);
-      VkQueue q = new VkHandle(nativeHandle);
+      VkQueue q = new VkHandleDispatchable(nativeHandle);
       return q;
   }
 

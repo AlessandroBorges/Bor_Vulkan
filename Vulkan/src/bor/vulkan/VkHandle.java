@@ -32,16 +32,16 @@ import bor.vulkan.khr.XlibWindow;
 
 /**
  * Non public class implementing Vulkan handlers.<br>
- * It implements VkHandle super interface and all sub interfaces listed below.<br>
+ * It implements VkHandleInterface for NON_DISPATCHABLE_HANDLEs, and all sub interfaces listed below.<br>
  * In a typical use of this class, it will be created from a native pointer and then <B>(cast)</B>
  * to proper type.<br>
  * 
  * Example use case:
  * <pre>  
- *  private VkInstance vkCreateInstance(...){
- *     ByteBuffer ptr = nativeCreateInstance(...);
+ *  private VkFence vkCreateFence(...){
+ *     ByteBuffer ptr = nativeCreateFence(...);
  *     VkHandle handler = new VkHandle(ptr);
- *     return (VkInstance) handler;
+ *     return (VkFence) handler;
  *  }  
  * </pre>
  * 
@@ -50,15 +50,22 @@ import bor.vulkan.khr.XlibWindow;
  * Keep in mind that after calling free() 
  * it will release native pointer and be ready to be garbage collected any time. 
  * 
+ * <h2>Note</h2>
+ * <p> The following handles belongs to a different type of VkHandles: <b>the dispatchable handles.<b>
+ *  <li>  {@link VkInstance},
+ *  <li>  {@link VkPhysicalDevice}, 
+ *  <li>  {@link VkDevice},
+ *  <li>  {@link VkCommandBuffer},
+ *  <li>  {@link VkQueue}
+ * 
  *
  * @author Alessandro Borges
  * 
- * @see VkHandle
- * @see VkInstance
- * @see VkPhysicalDevice
- * @see VkDevice
- * @see VkQueue
- * @see VkCommandBuffer
+ * @see #free()
+ * 
+ * @see VkHandleDispatchable
+ * 
+ * @see VkHandle 
  * @see VkSemaphore
  * @see VkFence
  * @see VkDeviceMemory
@@ -88,18 +95,17 @@ import bor.vulkan.khr.XlibWindow;
  * 
  *
  */
-public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCommandBuffer, VkCommandPool,
-        VkDebugReportCallbackEXT, VkDescriptorPool, VkDescriptorSet, VkDescriptorSetLayout, VkDevice, VkDeviceMemory,
-        VkDisplayKHR, VkDisplayModeKHR, VkEvent, VkFence, VkFramebuffer, VkImage, VkImageView, VkInstance,
-        VkPhysicalDevice, VkPipeline, VkPipelineCache, VkPipelineLayout, VkQueryPool, VkQueue, VkRenderPass, VkSampler,
+public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCommandPool,
+        VkDebugReportCallbackEXT, VkDescriptorPool, VkDescriptorSet, VkDescriptorSetLayout, VkDeviceMemory,
+        VkDisplayKHR, VkDisplayModeKHR, VkEvent, VkFence, VkFramebuffer, VkImage, VkImageView, 
+        VkPipeline, VkPipelineCache, VkPipelineLayout, VkQueryPool,  VkRenderPass, VkSampler,
         VkSemaphore, VkShaderModule, VkSurfaceKHR, VkSwapchainKHR, ANativeWindow, MirConnection, MirSurface, Win32HINSTANCE, 
-        Win32HWND, WlDisplay, WlSurface, XCBconnection, XCBwindow, XCBVisualID, XlibDisplay,XlibWindow {
+        Win32HWND, WlDisplay, WlSurface, XCBconnection, XCBwindow, XCBVisualID, XlibDisplay,XlibWindow      
+        {
 
-  
-    
     /**
      * This static map holds handlers and avoid GC on handlers and pointers.
-     * It is a synchornized Hashtable
+     * It is a synchronized Hashtable
      */
     private static 
     Map<VkHandleInterface,ByteBuffer> mapHandlers =  
@@ -110,17 +116,15 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
      */
     private ByteBuffer ptr=null;
     private long nativeHandle = 0;
-    
-    protected BigBuffer<VkHandle> bigBuffer = null;
-    
+         
     private static int sizeOfPtr = 8;
     
-    static{
-      try {
-          sizeOfPtr = sizeOfPtr();
-      } catch (Exception e) {
-           e.printStackTrace();
-      }    
+    static {
+        try {
+            sizeOfPtr = sizeOfPtr();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }//static
     
         
@@ -129,8 +133,7 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
      * The pointer to native side will be created later.
      * @see VkHandle#getNullHandler()
      */
-    protected VkHandle(){ 
-        //TODO - get correct ptr size at runtime
+    protected VkHandle(){      
         this(0);
     }
 
@@ -167,7 +170,7 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
      }
      
      /**
-      * Get native pointers
+      * Get native pointers from a collection of VkObjects
       * @param dst - optional destination, if null a new array is created
       * @param handles - array of VkObjects to query native address
       * @return dst - array to hold native addresses
@@ -177,8 +180,7 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
          if(dst == null || dst.length < count){
              dst = new long[count];
          }
-         Arrays.fill(dst, 0);
-         
+         Arrays.fill(dst, 0L);         
          for (int i=0; i<count; i++) {
              if(handles[i] != null)
               dst[i] =  handles[i].getNativeHandle();
@@ -198,7 +200,7 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
          }         
          this.nativeHandle = address;
          if(address != 0L){
-             prepareHandler(wrapPointer(address, sizeOfPtr));
+           //  prepareHandler(wrapPointer(address, sizeOfPtr));
          }
      }
      
@@ -272,6 +274,7 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
      * Get native address.
      * @return long value holding native address.
      */
+    @Override
     public long getNativeHandle(){
         return nativeHandle;
     }
@@ -409,59 +412,11 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
         prepareHandler(nativeHand); 
      }
 
-//     /*
-//      * (non-Javadoc)
-//      * @see bor.vulkan.VkObject#getP()
-//      */
-//    @Override
-//    public P<VkHandle> getP() {
-//       if(p == null ){
-//           p = new P<VkHandle>(this);
-//       }
-//        return p;
-//    }
-//
-//    @Override
-//    public BigBuffer getBigBuffer() {        
-//        return this.bigBuffer;
-//    }
+    
 
-//    @Override
-//    public Iterator<VkHandle> iterator() {
-//        if(bigBuffer != null){
-//            return bigBuffer.getList().iterator();
-//        }else{
-//           return new VkHandleIterator(this);
-//        }
-//    }
-//
-//    /**
-//     * Simple Iterator
-//     * @author Alessandro Borges
-//     *
-//     */
-//    class VkHandleIterator implements Iterator<VkHandle>{
-//        private VkHandle owner;
-//        int count = 0;
-//        
-//        VkHandleIterator(VkHandle handle){
-//            owner = handle;
-//        }
-//        
-//        @Override
-//        public boolean hasNext() {
-//            count++;
-//            return count < 2;
-//        }
-//
-//        @Override
-//        public VkHandle next() {
-//            if(count<2){
-//                count++;                
-//                return owner;
-//            }
-//            return null;
-//        }        
-//    }// VkHandleIterator
+    @Override
+    public int sizeof() {        
+        return Vk10.SIZE_OF_NON__DISPATCHABLE_HANDLE;
+    }
     
 }

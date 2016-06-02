@@ -544,29 +544,6 @@ public abstract class VkStruct implements VkObject{
 
     }
     
-//    /**
-//     * BigBuffer is a object to hold multiple instances of a VkObject, as a 
-//     * native array.
-//     * 
-//     * @return bigBuffer for this object
-//     */
-//    @Override
-//    public  BigBuffer<VkStruct> getBigBuffer(){
-//        return bigBuffer;
-//    }
-    
-    /**
-     * Iterator for this VkStruct
-     */
-    public Iterator<VkStruct>  iterator(){
-        if(bigBuffer!=null)
-            return (Iterator<VkStruct>)bigBuffer.getList().iterator();
-        else{
-            ArrayList<VkStruct> l = new  ArrayList<VkStruct>(1);
-            l.add(this);
-            return l.iterator(); 
-            }
-        }   
     
     
     

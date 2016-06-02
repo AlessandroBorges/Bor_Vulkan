@@ -79,9 +79,11 @@ public class Utils {
     
     
     /**
-     * Alocate a Byte Buffer on native side 
-     * @param size
-     * @return
+     * Alocate a Byte Buffer on native side.
+     * This Buffer is not Garbage Collected. You must free it using {@link #deleteDirectBuffer(ByteBuffer)}
+     *  
+     * @param size - size in bytes
+     * @return native byteBuffer
      */
     public static final native ByteBuffer createDirectBuffer(int size);/*
      void* pbuffer = calloc((size_t) 1, (size_t)size);

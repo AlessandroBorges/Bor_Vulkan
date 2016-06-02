@@ -4,6 +4,7 @@
 package bor.vulkan;
 
 /**
+ * VkQueue handle interface.
  * @author Alessandro Borges
  *
  */
