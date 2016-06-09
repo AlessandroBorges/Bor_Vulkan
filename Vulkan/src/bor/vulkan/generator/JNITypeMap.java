@@ -134,6 +134,7 @@ public class JNITypeMap {
      */
     private static String check(String s){
         s = s.trim();
+        s = s.replace("[]","").replace("final","");
         s = s.replace("const","").trim();
         s = s.replace("*","").trim();
        // s = s.replace("void","").trim();
@@ -149,7 +150,7 @@ public class JNITypeMap {
      * @param name - object name
      * @return true if name is a struct type
      */
-    public static boolean isVkStruct(String name){
+    public static boolean isVkStruct(String name){       
         name = check(name);
         return structNames.contains(name);
     }
@@ -265,28 +266,28 @@ public class JNITypeMap {
      */
     public static Util.CLASS_TYPE getType(String name){
         name = name.trim();
-       
+        boolean isArray = name.contains("[]");
         if(name.contains("Xlib")){
            // System.err.println("erro");
         }
                
         if(isVkEnum(name)){
-            return CLASS_TYPE.VKENUM;
+            return isArray ? CLASS_TYPE.VKENUM_ARRAY : CLASS_TYPE.VKENUM;
         }
         
         if(isVkStruct(name)){
-            return CLASS_TYPE.VKSTRUCT;
+            return isArray ? CLASS_TYPE.VKSTRUCT_ARRAY :CLASS_TYPE.VKSTRUCT;
         }
         
         if(isVkHandler(name)){
             if(name.contains("PFN"))
                 return CLASS_TYPE.VKPFN;
             else
-                return CLASS_TYPE.VKHANDLE;
+                return isArray ? CLASS_TYPE.VKHANDLE_ARRAY : CLASS_TYPE.VKHANDLE;
         }
         
         if(isVkObject(name)){
-            return CLASS_TYPE.VKOBJECT;
+            return isArray ? CLASS_TYPE.VKOBJECT_ARRAY : CLASS_TYPE.VKOBJECT;
         }
         
         if(name.contains("void") && !name.contains("*")){
@@ -350,10 +351,7 @@ public class JNITypeMap {
             return CLASS_TYPE.P;
         }
         
-        if(isPInteger(name)){
-            return CLASS_TYPE.PINTEGER;
-        }
-        
+       
         System.err.println("\t\t GetType OTHER " + name);
         return CLASS_TYPE.OTHER;
         

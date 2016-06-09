@@ -58,7 +58,11 @@ public class Util {
         STRING, STRING_ARR,
         BUFFER, BYTEBUFFER,
         P,
-        OTHER, PINTEGER, PENUM, VKPFN, VOID, BOOLEAN_ARRAY  
+        OTHER, VKPFN, VOID, 
+        BOOLEAN_ARRAY, 
+        VKENUM_ARRAY, 
+        VKSTRUCT_ARRAY, 
+        VKHANDLE_ARRAY, VKOBJECT_ARRAY  
     }
     
     /**
@@ -111,7 +115,8 @@ public class Util {
      * @throws IOException
      */
     public static List<String> readVKH() throws IOException{
-        Path path = FileSystems.getDefault().getPath("vk.h", "");
+        Path path = FileSystems.getDefault().getPath("./jni/jni-headers/vulkan/vulkan.h", "");
+                //"D:/Users/Livia/Documents/GitHub/Bor_Vulkan/Vulkan/jni/jni-headers/vulkan/vulkan.h", "");
         List<String> lines = Files.readAllLines(path, Charset.defaultCharset());
         return lines;
     }
@@ -446,6 +451,10 @@ public class Util {
     public static void save(String folder, String name, String text2Save) {
         BufferedWriter output = null;
         try {
+            File ffolder = new File(folder);
+            if(!ffolder.exists()){
+                ffolder.mkdirs();
+            }
             File file = new File(folder + "//" + name);
             output = new BufferedWriter(new FileWriter(file));
             output.write(text2Save);

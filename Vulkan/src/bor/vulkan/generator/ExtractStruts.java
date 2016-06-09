@@ -15,8 +15,10 @@ import static bor.vulkan.generator.Util.*;
 public class ExtractStruts {
     
     private static final boolean saveFile = true;
-    private static final boolean printID = false;
-    private static final boolean printStruct = true;
+    private static final boolean printID = true;
+    private static final boolean printStruct = false;
+    private static boolean exportStructs = true;
+    private static boolean showAtConsole = true;
     
    
     /**
@@ -29,8 +31,7 @@ public class ExtractStruts {
     public static int processStructs(List<String> vkh) {
         System.out.println("Processing Structs.");
         //boolean printStructs = true;
-        boolean exportStructs = true;
-        boolean showAtConsole = false;
+       
 
         int[] positions = { 0, 0 };
         int ID = 0;
@@ -68,11 +69,12 @@ public class ExtractStruts {
             for (StructInfo info : allStructs) {
                 String nameFile = info.name + ".java";
                 boolean isKHR = info.name.endsWith("KHR");
-                String pkg = isKHR ? "bor.vulkan.khr.structs" 
-                                   : "bor.vulkan.structs";
+                String pkg = "bor.vulkan.structs";
+                        //isKHR ? "bor.vulkan.khr.structs" : "bor.vulkan.structs";
                 
-                String basePath = isKHR ? "D:/Users/Livia/workspace/Vulkan/src/bor/vulkan/khr/structs"
-                                        : "D:/Users/Livia/workspace/Vulkan/src/bor/vulkan/structs";
+                String basePath = "D:/Users/Livia/workspace/Vulkan/src_gen/bor/vulkan/structs";
+                        //isKHR ? "D:/Users/Livia/workspace/Vulkan/src_gen/bor/vulkan/khr/structs"
+                        //      : "D:/Users/Livia/workspace/Vulkan/src_gen/bor/vulkan/structs";
 
                 
                 String txt = info.toJavaSrc(pkg);
@@ -100,8 +102,8 @@ public class ExtractStruts {
     public static int processUnions(List<String> vkh, int ID) {
         System.out.println("Processing Structs.");
         //boolean printStructs = true;
-        boolean exportStructs = false;
-        boolean showAtConsole = true;
+       // boolean exportStructs = false;
+       // boolean showAtConsole = true;
 
         int[] positions = { 0, 0 };
         //int ID = 0;
@@ -133,10 +135,12 @@ public class ExtractStruts {
         if (exportStructs) {
             for (StructInfo info : allStructs) {
                 String nameFile = info.name + ".java";
-                boolean isKHR = info.name.endsWith("KHR");
-                String pkg = isKHR ? "bor.vulkan.khr.structs" : "bor.vulkan.structs";
-                String basePath = isKHR ? "D:/Users/Livia/workspace/Vulkan/src/bor/vulkan/khr/structs"
-                        : "D:/Users/Livia/workspace/Vulkan/src/bor/vulkan/structs";
+    //            boolean isKHR = info.name.endsWith("KHR");                
+                String pkg = "bor.vulkan.structs";
+                //isKHR ? "bor.vulkan.khr.structs" : "bor.vulkan.structs";
+                String basePath = "D:/Users/Livia/workspace/Vulkan/src_gen/bor/vulkan/structs";
+//                String basePath = isKHR ? "D:/Users/Livia/workspace/Vulkan/src/bor/vulkan/khr/structs"
+//                        : "D:/Users/Livia/workspace/Vulkan/src/bor/vulkan/structs";
 
                 
                 String txt = info.toJavaSrc(pkg);
@@ -204,9 +208,9 @@ public class ExtractStruts {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        if(true == (1<9)){
-            throw new RuntimeException("DO Not run it anymore");
-        }
+//        if(true == (1<9)){
+//            throw new RuntimeException("DO Not run it anymore");
+//        }
         List<String> vkh = readVKH();
         // String vk = toString(vkh);       
         boolean processStructs = true;

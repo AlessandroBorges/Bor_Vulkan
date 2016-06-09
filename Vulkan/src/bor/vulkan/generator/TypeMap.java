@@ -41,7 +41,7 @@ public class TypeMap {
     public static String findMethod2Bridging(String jType){
         
         if(isVkHandler(jType)){
-            return ".getHandle()";
+            return ".getNativeHandle()";
         }
         
         if(isVkStruct(jType)){
@@ -51,14 +51,10 @@ public class TypeMap {
         Util.CLASS_TYPE classType = getType(jType);
         
         switch (classType) {
-            case VKHANDLE: return ".getHandler()";
+            case VKHANDLE: return ".getNativeHandle()";
             case VKSTRUCT: return ".getPointer()";    
             case VKOBJECT: return ".getPointer()";
             case VKENUM:   return ".getValue()";
-            case PENUM:    return ".getValues()";
-            case PINTEGER: return ".getValues()";
-            case P       : return ".getValues()";
-
             default:
                 break;
         }
