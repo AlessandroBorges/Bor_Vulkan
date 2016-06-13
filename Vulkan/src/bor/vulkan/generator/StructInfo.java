@@ -132,7 +132,8 @@ public class StructInfo {
         String disclaimer = DISCLAIMER.replace(MARK, extra);
         disclaimer = disclaimer.replace(PROTO, proto);
         String output = new String();
-       
+        boolean[] isTypeArray = new boolean[this.fields.length];
+        
         boolean isKHR = name.contains("KHR");
         
         if(pkg==null)
@@ -202,7 +203,10 @@ public class StructInfo {
            else
               output += tab +" ";
            
-           output += jType + " \t" + field + ";\n\n";      
+           output += jType + " \t" + field + ";\n\n"; 
+           
+           isTypeArray[i] = jType.contains("[]");
+           
            }
          //////////////////////////////////////////////
         //// Ctor
@@ -379,13 +383,38 @@ public class StructInfo {
         output += outputSG;
         
         /////////////////////////////////////////////////
+        // toString()
+        ////////////////////////////////////////////////
+        output += "\n"
+                + "   /* (non-Javadoc)\n"
+                + "    * @see java.lang.Object#toString()\n"
+                + "    */\n"
+                + "    @Override\n"
+                + "    public String toString() {\n"
+                + "         StringBuilder builder = new StringBuilder();\n"
+                + "         builder.append(\""+ name+" [ \")\n";
+        output +="\t\t\t\t.append(\"" + fields[0] +": \").append("+fields[0]+"() )\n" ;
         
+        for(int i=1; i<this.fields.length; i++){
+             String field = fields[i]; 
+             if(isTypeArray[i]){
+                 output +="\t\t\t\t.append(\",\\n " + field +": \")\n"
+                        + "\t\t\t\t.append(Arrays.toString("+field+"()) )\n" ;
+             }else{
+                 output +="\t\t\t\t.append(\",\\n " + field +": \")\n"
+                        + "\t\t\t\t.append("+field+"() )\n" ; 
+             }
+        }
+        
+        output +="\t\t\t\t.append(\"]\");\n";
+        output +="\t\t return builder.toString();\n";
+        output += "    }\n\n";
         
         ////////////////////////////////////////////////
         /// SET/GET native side
         ////////////////////////////////////////////////
         output += "\n\t //////////////////////////////////\n";
-        output +=   "\t // native SETTERS & GETTERS    //\n";
+        output +=   "\t // Native SETTERS & GETTERS    //\n";
         output +=   "\t /////////////////////////////////\n";
         String outputNat = "";
         for(int i=0; i<this.fields.length; i++){
