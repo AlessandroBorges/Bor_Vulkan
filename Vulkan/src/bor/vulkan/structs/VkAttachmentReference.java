@@ -1,7 +1,7 @@
 /**
  * Class wrapping Vulkan's VkAttachmentReference struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.06 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -45,8 +45,6 @@ public class VkAttachmentReference extends VkStruct {
 	/** ID of this structure [82]  */
 	 public static final int TAG_ID = VKATTACHMENTREFERENCE_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkAttachmentReference> p;
 
 	 ///////////////////
 	 // Struct fields //
@@ -77,15 +75,6 @@ public class VkAttachmentReference extends VkStruct {
 	 }
 
 	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkAttachmentReference(long address , int memSize){ 
-		 super(address, memSize); 
-	 }
-
-	/**
 	 * Ctor with Address only. Size guessed by #sizeof()
 	 * @param address - native address 
 	 */
@@ -109,32 +98,6 @@ public class VkAttachmentReference extends VkStruct {
 	}
 
 
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkAttachmentReference> createNullPointer(){
-	        P<VkAttachmentReference> p = new  P<VkAttachmentReference>(new VkAttachmentReference());
-	        return p;
-	    }
-
-
-	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
-	 */
-	 public P<VkAttachmentReference> getP() {
-	       if(p == null ){
-	           p = new P<VkAttachmentReference> (this);
-	       }
-	        return p;
-	    }
 
 
 	 ////////////////////////
@@ -181,8 +144,23 @@ public class VkAttachmentReference extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkAttachmentReference [ ")
+				.append("attachment: ").append(attachment() )
+				.append(",\n layout: ")
+				.append(layout() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
 	 * native SET method for field attachment	[int]<br>

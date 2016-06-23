@@ -1,7 +1,7 @@
 /**
  * Class wrapping Vulkan's VkBufferMemoryBarrier struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.06 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -52,8 +52,6 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	/** ID of this structure [100]  */
 	 public static final int TAG_ID = VKBUFFERMEMORYBARRIER_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkBufferMemoryBarrier> p;
 
 	 ///////////////////
 	 // Struct fields //
@@ -119,15 +117,6 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkBufferMemoryBarrier(long address , int memSize){ 
-		 super(address, memSize); 
-	 }
-
-	/**
 	 * Ctor with Address only. Size guessed by #sizeof()
 	 * @param address - native address 
 	 */
@@ -151,32 +140,6 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	}
 
 
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkBufferMemoryBarrier> createNullPointer(){
-	        P<VkBufferMemoryBarrier> p = new  P<VkBufferMemoryBarrier>(new VkBufferMemoryBarrier());
-	        return p;
-	    }
-
-
-	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
-	 */
-	 public P<VkBufferMemoryBarrier> getP() {
-	       if(p == null ){
-	           p = new P<VkBufferMemoryBarrier> (this);
-	       }
-	        return p;
-	    }
 
 
 	 ////////////////////////
@@ -313,8 +276,8 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 */ 
 	 public void buffer(VkBuffer buffer){
 		 this.buffer = buffer;
-		 ByteBuffer buff = (buffer==null) ? null : buffer.getPointer();
-		 setBuffer0(this.ptr, buff);
+		 long handle = (buffer==null) ? 0L : buffer.getNativeHandle();
+		 setBuffer0(this.ptr, handle);
 	 }
 
 	/**
@@ -332,7 +295,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 		 if(this.buffer == null){
 		    this.buffer = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.buffer).setPointer(handle);
+		    ((VkHandle)this.buffer).setNativeHandle(handle);
 		  }
 		 return this.buffer;
 	 }
@@ -376,8 +339,37 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkBufferMemoryBarrier [ ")
+				.append("sType: ").append(sType() )
+				.append(",\n pNext: ")
+				.append(pNext() )
+				.append(",\n srcAccessMask: ")
+				.append(srcAccessMask() )
+				.append(",\n dstAccessMask: ")
+				.append(dstAccessMask() )
+				.append(",\n srcQueueFamilyIndex: ")
+				.append(srcQueueFamilyIndex() )
+				.append(",\n dstQueueFamilyIndex: ")
+				.append(dstQueueFamilyIndex() )
+				.append(",\n buffer: ")
+				.append(buffer() )
+				.append(",\n offset: ")
+				.append(offset() )
+				.append(",\n size: ")
+				.append(size() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
 	 * native SET method for field sType	[vkenum]<br>
@@ -490,7 +482,7 @@ public class VkBufferMemoryBarrier extends VkStruct {
 	 * native SET method for field buffer	[vkhandle]<br>
 	 * Prototype: VkBuffer  buffer
 	 */ 
-	 private static native void setBuffer0(Buffer ptr, java.nio.ByteBuffer  _buffer);/*
+	 private static native void setBuffer0(Buffer ptr, long  _buffer);/*
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
 		  vkObj->buffer = (VkBuffer) (_buffer);
 	  */

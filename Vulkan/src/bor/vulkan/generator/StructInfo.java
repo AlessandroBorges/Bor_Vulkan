@@ -21,7 +21,7 @@ import bor.vulkan.generator.Util.CLASS_TYPE;
  * <h3>Note h3</h3>
  * Notes
  * @author Alessandro Borges
- * @version 0.8.01
+ * @version 0.8.05
  */
 public class StructInfo {  
    
@@ -246,7 +246,8 @@ public class StructInfo {
         output += "\t @Override\n"
                 + "\t public int getSizeBytes(){ \n\t\t return sizeOf(); \n\t}\n\n"; 
 
-      
+        output += "\t/** \n\t * Get ID of this structure \n\t */\n";
+        output += "\t public static int getID(){ \n\t\t return TAG_ID; \n\t}\n";
         ////////////////////////////////////////////////
         /// SET/GET java side
         ////////////////////////////////////////////////
@@ -267,9 +268,13 @@ public class StructInfo {
             // Comment 
             outputSG += "\t/**\n\t * Set method for field " + field + "\t" + typeOut + "<br>" +
                           "\n\t * Prototype: " + cType + "  " + field + 
+                          "\n\t * "+ 
+                          "\n\t * @param " + field + " - a instance of " + jType +"."+
+                          "\n\t * @return this VkStruct instance." +
                           "\n\t */ \n";
-           
-           // SET
+           ///////////////////////////////////////////////////////////////
+           // SET  ///////////////////////////////////////////////////////
+           /////////////////////////////////////////////////////////////// 
            String setName = field;//"set" + upperCaseField(field);
            String setName0 = "set" + upperCaseField(field);
            // default bridge for VkStruct / VkHandle
@@ -290,13 +295,15 @@ public class StructInfo {
            }
            
            
-           outputSG += "\t public void " + setName + "(" +jType + " " + field + "){\n"
+           outputSG += "\t public " + name + " " + setName + "(" +jType + " " + field + "){\n"
                   +  "\t\t this." + field + " = " + field + ";\n"
                   +  bridge              
-                 // +  "\t\t " + setName + "0(this.ptr, val );\n"
+                  +  "\t\t return this;\n"
                   +  "\t }\n\n";
            
-           // GET
+           /////////////////////////////////////////////////////
+           // GET /////////////////////////////////////////////
+           ////////////////////////////////////////////////////
            String getName = field;// "get" + upperCaseField(field);
            String getName0 = "get" + upperCaseField(field);
            //comment

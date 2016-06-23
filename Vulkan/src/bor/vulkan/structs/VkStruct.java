@@ -4,6 +4,7 @@
 package bor.vulkan.structs;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -12,6 +13,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
+import bor.util.BigBuffer;
 import bor.util.Utils;
 import bor.vulkan.*;
 import bor.vulkan.khr.structs.*;
@@ -427,7 +429,8 @@ public abstract class VkStruct implements VkObject{
       * @return
       */
      public abstract int getSizeBytes(); 
-    
+     
+         
     /**
      * Make sure buffer is filled with null or zero values
      * @TODO - 
@@ -502,13 +505,11 @@ public abstract class VkStruct implements VkObject{
     /**
      * 
      * @param bb - buffer to check
-     * @return true if it native allocated
+     * @return true if it is native allocated
      */
+    @Deprecated
     public boolean isJNIBuffer(Buffer bb){
         if(!bb.isDirect()) return false;
-        
-        
-        
         return false;
     }
     
@@ -525,6 +526,9 @@ public abstract class VkStruct implements VkObject{
         return null==ptr;
     }
     
+    /**
+     * Dump content of this struct, as binary 
+     */
     public void dump(){
          ByteBuffer bb = ptr;
          if(ptr==null){
@@ -702,6 +706,7 @@ public abstract class VkStruct implements VkObject{
          
     */
 
+   
     
     /**
      * Creates a new Instance of a VkStruct

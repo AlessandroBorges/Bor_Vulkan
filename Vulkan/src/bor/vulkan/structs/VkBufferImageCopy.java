@@ -1,7 +1,7 @@
 /**
  * Class wrapping Vulkan's VkBufferImageCopy struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.06 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -32,7 +32,7 @@ import bor.vulkan.P;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.06 (beta) 
  */
 public class VkBufferImageCopy extends VkStruct {
 
@@ -47,8 +47,6 @@ public class VkBufferImageCopy extends VkStruct {
 	/** ID of this structure [94]  */
 	 public static final int TAG_ID = VKBUFFERIMAGECOPY_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkBufferImageCopy> p;
 
 	 ///////////////////
 	 // Struct fields //
@@ -99,15 +97,6 @@ public class VkBufferImageCopy extends VkStruct {
 	 }
 
 	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkBufferImageCopy(long address , int memSize){ 
-		 super(address, memSize); 
-	 }
-
-	/**
 	 * Ctor with Address only. Size guessed by #sizeof()
 	 * @param address - native address 
 	 */
@@ -131,32 +120,6 @@ public class VkBufferImageCopy extends VkStruct {
 	}
 
 
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkBufferImageCopy> createNullPointer(){
-	        P<VkBufferImageCopy> p = new  P<VkBufferImageCopy>(new VkBufferImageCopy());
-	        return p;
-	    }
-
-
-	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
-	 */
-	 public P<VkBufferImageCopy> getP() {
-	       if(p == null ){
-	           p = new P<VkBufferImageCopy> (this);
-	       }
-	        return p;
-	    }
 
 
 	 ////////////////////////
@@ -308,8 +271,31 @@ public class VkBufferImageCopy extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkBufferImageCopy [ ")
+				.append("bufferOffset: ").append(bufferOffset() )
+				.append(",\n bufferRowLength: ")
+				.append(bufferRowLength() )
+				.append(",\n bufferImageHeight: ")
+				.append(bufferImageHeight() )
+				.append(",\n imageSubresource: ")
+				.append(imageSubresource() )
+				.append(",\n imageOffset: ")
+				.append(imageOffset() )
+				.append(",\n imageExtent: ")
+				.append(imageExtent() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
 	 * native SET method for field bufferOffset	[long]<br>

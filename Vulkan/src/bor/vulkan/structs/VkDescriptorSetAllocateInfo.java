@@ -1,7 +1,7 @@
 /**
  * Class wrapping Vulkan's VkDescriptorSetAllocateInfo struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.06 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -33,7 +33,7 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.06 (beta) 
  */
 public class VkDescriptorSetAllocateInfo extends VkStruct {
 
@@ -75,9 +75,9 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 int 	descriptorSetCount;
 
 	/**
-	 *  const VkDescriptorSetLayout* 	pSetLayouts	[vkhandle]
+	 *  const VkDescriptorSetLayout* 	pSetLayouts	[vkhandle_array]
 	 */ 
-	  VkDescriptorSetLayout  	pSetLayouts;
+	   VkDescriptorSetLayout[]  	pSetLayouts;
 
 	/**
 	 * Ctor
@@ -92,15 +92,6 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 */
 	public VkDescriptorSetAllocateInfo(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkDescriptorSetAllocateInfo(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -127,32 +118,6 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	}
 
 
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkDescriptorSetAllocateInfo> createNullPointer(){
-	        P<VkDescriptorSetAllocateInfo> p = new  P<VkDescriptorSetAllocateInfo>(new VkDescriptorSetAllocateInfo());
-	        return p;
-	    }
-
-
-	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
-	 */
-	 public P<VkDescriptorSetAllocateInfo> getP() {
-	       if(p == null ){
-	           p = new P<VkDescriptorSetAllocateInfo> (this);
-	       }
-	        return p;
-	    }
 
 
 	 ////////////////////////
@@ -213,8 +178,8 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 */ 
 	 public void descriptorPool(VkDescriptorPool descriptorPool){
 		 this.descriptorPool = descriptorPool;
-		 ByteBuffer buff = (descriptorPool==null) ? null : descriptorPool.getPointer();
-		 setDescriptorPool0(this.ptr, buff);
+		 long handle = (descriptorPool==null) ? 0L : descriptorPool.getNativeHandle();
+		 setDescriptorPool0(this.ptr, handle);
 	 }
 
 	/**
@@ -232,7 +197,7 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 		 if(this.descriptorPool == null){
 		    this.descriptorPool = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.descriptorPool).setPointer(handle);
+		    ((VkHandle)this.descriptorPool).setNativeHandle(handle);
 		  }
 		 return this.descriptorPool;
 	 }
@@ -257,17 +222,16 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pSetLayouts	[vkhandle]<br>
+	 * Set method for field pSetLayouts	[vkhandle_array]<br>
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
-	 public void pSetLayouts( VkDescriptorSetLayout  pSetLayouts){
+	 public void pSetLayouts(  VkDescriptorSetLayout[]  pSetLayouts){
 		 this.pSetLayouts = pSetLayouts;
-		 ByteBuffer buff = (pSetLayouts==null) ? null : pSetLayouts.getPointer();
-		 setPSetLayouts0(this.ptr, buff);
+		 setPSetLayouts0(this.ptr,  pSetLayouts);
 	 }
 
 	/**
-	 * Get method for field pSetLayouts	[vkhandle]<br>
+	 * Get method for field pSetLayouts	[vkhandle_array]<br>
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
 	 public  VkDescriptorSetLayout  pSetLayouts(){
@@ -278,17 +242,32 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 		    return null;
 		  }  
 
-		 if(this.pSetLayouts == null){
-		    this.pSetLayouts = new VkHandle(handle);
-		 }else{
-		    ((VkHandle)this.pSetLayouts).setPointer(handle);
+
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkDescriptorSetAllocateInfo [ ")
+				.append("sType: ").append(sType() )
+				.append(",\n pNext: ")
+				.append(pNext() )
+				.append(",\n descriptorPool: ")
+				.append(descriptorPool() )
+				.append(",\n descriptorSetCount: ")
+				.append(descriptorSetCount() )
+				.append(",\n pSetLayouts: ")
+				.append(Arrays.toString(pSetLayouts()) )
+				.append("]");
+		 return builder.toString();
 		  }
 		 return this.pSetLayouts;
 	 }
 
 
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
 	 * native SET method for field sType	[vkenum]<br>
@@ -361,21 +340,22 @@ public class VkDescriptorSetAllocateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pSetLayouts	[vkhandle]<br>
+	 * native SET method for field pSetLayouts	[vkhandle_array]<br>
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
-	 private static native void setPSetLayouts0(Buffer ptr, java.nio.ByteBuffer  _pSetLayouts);/*
+	 private static native void setPSetLayouts0(Buffer ptr, long[]  _pSetLayouts);/*
 		  VkDescriptorSetAllocateInfo* vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
 		  vkObj->pSetLayouts = (const VkDescriptorSetLayout*) (_pSetLayouts);
 	  */
 
 	/**
-	 * native GET method for field pSetLayouts	[vkhandle]<br>
+	 * native GET method for field pSetLayouts	[vkhandle_array]<br>
 	 * Prototype: const VkDescriptorSetLayout*  pSetLayouts
 	 */ 
-	 private static native long getPSetLayouts0(Buffer ptr);/*
+	 private static native long[]  getPSetLayouts0(Buffer ptr);/*
 		  VkDescriptorSetAllocateInfo* vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pSetLayouts);	 */
+		  return (  VkDescriptorSetLayout[] ) (vkObj->pSetLayouts);
+	 */
 
 
 

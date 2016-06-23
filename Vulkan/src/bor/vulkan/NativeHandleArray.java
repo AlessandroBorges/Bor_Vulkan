@@ -14,7 +14,7 @@ import java.nio.ByteOrder;
  * @author Alessandro Borges
  *
  */
-public class NativeArray<T extends VkHandleInterface>{
+public class NativeHandleArray<T extends VkHandleInterface>{
     private ByteBuffer array;
     private int count;
     private final int sizeof;
@@ -26,7 +26,7 @@ public class NativeArray<T extends VkHandleInterface>{
      * @param handles - one or more vkHandles.
      */
     @SafeVarargs
-    public NativeArray(Class<T> type, T...handles){
+    public NativeHandleArray(Class<T> type, T...handles){
         sizeof = sizeof(type);
         this.count = handles.length;
         capacity = count * sizeof;
@@ -34,7 +34,7 @@ public class NativeArray<T extends VkHandleInterface>{
     }
     
     /**
-     * get the number of handles contained in this NativeArray
+     * get the number of handles contained in this NativeHandleArray
      * @return
      */
     public int getCount(){

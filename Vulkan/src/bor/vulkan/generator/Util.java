@@ -30,7 +30,7 @@ public class Util {
      */
     public static final String[] SPECIAL_ENUMS  = {"VkDynamicState","VkSampleMask","VkPipelineStageFlags"};
     
-    public static final String VERSION = "Ver. 0.8.01 (beta)";
+    public static final String VERSION = "Ver. 0.8.06 (beta)";
     
     public static String LICENSE = 
             " * Bor_Vulkan Project "+ VERSION + "\n" + 
