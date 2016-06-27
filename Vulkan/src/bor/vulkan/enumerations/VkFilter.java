@@ -16,6 +16,7 @@ import bor.enumerable.*;
  * typedef enum VkFilter {
  *     VK_FILTER_NEAREST = 0,
  *     VK_FILTER_LINEAR = 1,
+ *     VK_FILTER_CUBIC_IMG = 1000015000,
  *     VK_FILTER_BEGIN_RANGE = VK_FILTER_NEAREST,
  *     VK_FILTER_END_RANGE = VK_FILTER_LINEAR,
  *     VK_FILTER_RANGE_SIZE = (VK_FILTER_LINEAR - VK_FILTER_NEAREST + 1),
@@ -31,10 +32,11 @@ public class VkFilter extends IntEnum<VkFilter> {
    private static final Class<VkFilter> myClass = VkFilter.class;
 
    /** values */
-   private static VkFilter[] values = new VkFilter[2];
+   private static VkFilter[] values = new VkFilter[3];
 
    public static final VkFilter VK_FILTER_NEAREST = new VkFilter("VK_FILTER_NEAREST", 0, 0);
    public static final VkFilter VK_FILTER_LINEAR = new VkFilter("VK_FILTER_LINEAR", 1, 1);
+   public static final VkFilter VK_FILTER_CUBIC_IMG = new VkFilter("VK_FILTER_CUBIC_IMG", 2, 1000015000);
    
    /**
     * Return all values available in this enumeration

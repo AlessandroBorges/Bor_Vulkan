@@ -23,6 +23,7 @@ import bor.enumerable.*;
  *     VK_BUFFER_USAGE_INDEX_BUFFER_BIT = 0x00000040,
  *     VK_BUFFER_USAGE_VERTEX_BUFFER_BIT = 0x00000080,
  *     VK_BUFFER_USAGE_INDIRECT_BUFFER_BIT = 0x00000100,
+ *     VK_BUFFER_USAGE_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF
  * } VkBufferUsageFlagBits;
  * </pre>
  * @author Alessandro Borges

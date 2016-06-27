@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import bor.vulkan.VkHandleDispatchable;
 import bor.vulkan.generator.Util.CLASS_TYPE;
 
 
@@ -32,12 +33,15 @@ public class StructInfo {
     public String[] types;
     
     public static String LICENSE = Util.LICENSE;
+    public static final String[] DISPACHABLE_HANDLE_NAMES = { "VkInstance", "VkPhysicalDevice", 
+            "VkDevice", "VkCommandBuffer", "VkQueue"} ;
     
     /**
      * cpp Source code
      */
     public String[] cppSource;
     
+    private static String BIG_BUFFER_SUFIX = "BUFFER";
     private static String MARK = "#MARK#";
     private static String PROTO = "#PROTO#";
     private static String DISCLAIMER = "\n"
@@ -133,6 +137,7 @@ public class StructInfo {
         disclaimer = disclaimer.replace(PROTO, proto);
         String output = new String();
         boolean[] isTypeArray = new boolean[this.fields.length];
+        boolean[] hasBigBuffer = new boolean[this.fields.length];
         
         boolean isKHR = name.contains("KHR");
         
@@ -194,7 +199,7 @@ public class StructInfo {
             CLASS_TYPE type = getType(jType);
             String typeOut = type==CLASS_TYPE.OTHER ? "" : "[" + type.name().toLowerCase() + "]";
             // Comment 
-           output += tab + "/**\n"
+           output += tab + "\n/**\n"
                          + "\t *  " + cType + " \t" + field + "\t"+ typeOut
                          + "\n\t */ \n";
            
@@ -203,9 +208,15 @@ public class StructInfo {
            else
               output += tab +" ";
            
-           output += jType + " \t" + field + ";\n\n"; 
+           output += jType + " \t" + field + ";\n"; 
            
            isTypeArray[i] = jType.contains("[]");
+           
+           if(type == CLASS_TYPE.VKSTRUCT_ARRAY || type == CLASS_TYPE.VKHANDLE_ARRAY ){
+               System.err.println("\n VK Struct Class: " + name + " has VkStruct[] : " + jType + " \t" + field + ";");
+               hasBigBuffer[i] = true;
+               output += tab +"   private BigBuffer \t "  + field + BIG_BUFFER_SUFIX +";\n";                
+           }
            
            }
          //////////////////////////////////////////////
@@ -279,6 +290,7 @@ public class StructInfo {
            String setName0 = "set" + upperCaseField(field);
            // default bridge for VkStruct / VkHandle
            String bridge = "";
+           String vkType = jType.replace("[]","");
            
            if(type == CLASS_TYPE.VKSTRUCT ||type==CLASS_TYPE.VKOBJECT ){
                bridge =  "\t\t ByteBuffer buff = ("+field+"==null) ? null : " +field+method +";\n"
@@ -286,11 +298,21 @@ public class StructInfo {
            } else if(type == CLASS_TYPE.VKHANDLE || type==CLASS_TYPE.VKPFN){
                bridge =  "\t\t long handle = ("+field+"==null) ? 0L : " +field+method +";\n"
                        + "\t\t " + setName0 + "0(this.ptr, handle);\n";
-           }
-           else if(type == CLASS_TYPE.VKENUM ){
+           } else if(type == CLASS_TYPE.VKENUM ){
                bridge = "\t\t int enumVal = "+field+method+";\n" 
                       + "\t\t " + setName0 + "0(this.ptr, enumVal );\n";
-           }else {
+           }else if (type == CLASS_TYPE.VKSTRUCT_ARRAY){
+               String fieldBBuffer = field+BIG_BUFFER_SUFIX;
+               bridge =  "\t\t this."+ fieldBBuffer +" = new BigBuffer("+field +","+ vkType +".getID());\n"
+                       + "\t\t  ;"
+                       + "\t\t " + setName0 + "0(this.ptr,"+fieldBBuffer+ ");\n";
+           }else if (type == CLASS_TYPE.VKHANDLE_ARRAY){
+               String fieldBBuffer = field+BIG_BUFFER_SUFIX;
+               boolean isDispachable = isDispatchable(vkType);
+               bridge =  "\t\t this."+ fieldBBuffer +" = new BigBuffer("+field +", "+ isDispachable +");\n"                    
+                       + "\t\t " + setName0 + "0(this.ptr, "+fieldBBuffer+ ".getBuffer());\n";
+           }
+           else  {
                bridge = "\t\t " + setName0 + "0(this.ptr,  "+ field+");\n";               
            }
            
@@ -364,6 +386,20 @@ public class StructInfo {
                         + "\t\t    this."+field+".setPointer(pointer);\n"
                          + "\t\t  }\n"
                         ;
+             }else if (type == CLASS_TYPE.VKSTRUCT_ARRAY){
+                 String fieldBBuffer = field+BIG_BUFFER_SUFIX;                 
+                 stmt = "\t\t if(null == " + fieldBBuffer +"){\n"+
+                          "\t\t\t this."+ fieldBBuffer +" = new BigBuffer("+field +","+ vkType +".getID());\n"
+                         +"\t\t }\n"
+                         +"\t\t " + setName0 + "0(this.ptr,"+fieldBBuffer+ ");\n";
+                 
+             }else if (type == CLASS_TYPE.VKHANDLE_ARRAY){
+                 String fieldBBuffer = field+BIG_BUFFER_SUFIX;
+                 boolean isDispachable = isDispatchable(vkType);
+                 stmt =   "\t\t if( null == " + fieldBBuffer +"){\n"+
+                            "\t\t\t this."+ fieldBBuffer +" = new BigBuffer("+field +", "+ isDispachable +");\n"
+                          + "\t\t  }\n"                    
+                         + "\t\t " + setName0 + "0(this.ptr, "+fieldBBuffer+ ".getBuffer());\n";
              }else{
                    if(jType.contains("Buffer")){
                        stmt +="\t\t long address = "+ getName0 + "0(super.ptr);\n"
@@ -712,6 +748,24 @@ public class StructInfo {
         
         return  null;
     }
+    
+    /**
+     * Check if a given name is name of a Dispachable Handler
+     * @param typeName - name of Handler Class
+     * @return true if class is one of VkHandleDispatchable.DISPACHABLE_HANDLE_NAMES
+     * 
+     * 
+     */
+    public static boolean isDispatchable(String typeName){
+        typeName = typeName.trim();
+        for(String test : DISPACHABLE_HANDLE_NAMES){
+            if(typeName.equalsIgnoreCase(test)){
+                return true;
+            }
+        }        
+        return false;
+    }
+    
     
     /**
      * <pre>

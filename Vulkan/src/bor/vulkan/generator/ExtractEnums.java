@@ -155,7 +155,7 @@ public class ExtractEnums {
                 String enumSource = generateEnumSource(info);
                // String foundEnum = toString(nextEnum);
                 System.out.println("\n Saving..."+info.name);
-                String basePath = "D:/Users/Livia/workspace/Vulkan/src/bor/vulkan/enumerations";
+                String basePath = "D:/Users/Livia/workspace/Vulkan/src_gen/bor/vulkan/enumerations";
                 save(basePath,info.name+".java", enumSource);
                 System.out.println(enumSource);
                 System.out.println("\n//************************");

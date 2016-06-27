@@ -23,6 +23,7 @@ import bor.enumerable.*;
  *     VK_MEMORY_PROPERTY_HOST_COHERENT_BIT = 0x00000004,
  *     VK_MEMORY_PROPERTY_HOST_CACHED_BIT = 0x00000008,
  *     VK_MEMORY_PROPERTY_LAZILY_ALLOCATED_BIT = 0x00000010,
+ *     VK_MEMORY_PROPERTY_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF
  * } VkMemoryPropertyFlagBits;
  * </pre>
  * @author Alessandro Borges

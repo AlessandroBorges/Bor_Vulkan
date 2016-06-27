@@ -19,6 +19,7 @@ import bor.enumerable.*;
  *     VK_IMAGE_CREATE_SPARSE_ALIASED_BIT = 0x00000004,
  *     VK_IMAGE_CREATE_MUTABLE_FORMAT_BIT = 0x00000008,
  *     VK_IMAGE_CREATE_CUBE_COMPATIBLE_BIT = 0x00000010,
+ *     VK_IMAGE_CREATE_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF
  * } VkImageCreateFlagBits;
  * </pre>
  * @author Alessandro Borges

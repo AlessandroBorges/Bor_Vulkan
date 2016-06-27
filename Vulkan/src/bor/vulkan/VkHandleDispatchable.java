@@ -7,12 +7,11 @@ import java.nio.ByteBuffer;
 
 /**
  * Dispatchable are Vulkan handle objects.<br>
- * In contrast with NON-Dispatchable, which are always 8 bytes long,
- * the VkHandleDispatchable has same size in bytes as (void*).<br>
- * In 32bit JVM it is 4bytes long and on 64bit JVM it is 8 bytes long.<br>
+ * In contrast with NON-Dispatchable handles, which are <b>always</b> 8 bytes long,
+ * the VkHandleDispatchable has same size in bytes as native C <code><b> (void*)</b> type</code>.<br>
+ * In 32bit JVM it is 4 bytes long and on 64bit JVM it is 8 bytes long.<br>
  *    
- * Current Dispatchable Handlers are the following:  
- * <li>VkInstance 
+ * Current Dispatchable Handlers are the following: 
  * <li>VkInstance
  * <li>VkPhysicalDevice 
  * <li>VkDevice 
@@ -22,14 +21,15 @@ import java.nio.ByteBuffer;
  * @author Alessandro Borges
  *
  */
-//public interface VkHandleDispatchable {
-//
-//}
-
 public class VkHandleDispatchable 
  extends VkHandle
  implements  VkInstance, VkPhysicalDevice, VkDevice, VkCommandBuffer, VkQueue
  {
+    /**
+     * Dispatchable class names.
+     */
+    public static final String[] DISPACHABLE_HANDLE_NAMES = { "VkInstance", "VkPhysicalDevice", 
+                                                              "VkDevice", "VkCommandBuffer", "VkQueue"} ;
 
     /**
      * 

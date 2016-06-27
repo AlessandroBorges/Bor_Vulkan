@@ -18,6 +18,7 @@ import bor.enumerable.*;
  *     VK_IMAGE_ASPECT_DEPTH_BIT = 0x00000002,
  *     VK_IMAGE_ASPECT_STENCIL_BIT = 0x00000004,
  *     VK_IMAGE_ASPECT_METADATA_BIT = 0x00000008,
+ *     VK_IMAGE_ASPECT_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF
  * } VkImageAspectFlagBits;
  * </pre>
  * @author Alessandro Borges

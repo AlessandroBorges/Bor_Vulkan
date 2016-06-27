@@ -18,6 +18,7 @@ import bor.enumerable.*;
  *     VK_QUERY_RESULT_WAIT_BIT = 0x00000002,
  *     VK_QUERY_RESULT_WITH_AVAILABILITY_BIT = 0x00000004,
  *     VK_QUERY_RESULT_PARTIAL_BIT = 0x00000008,
+ *     VK_QUERY_RESULT_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF
  * } VkQueryResultFlagBits;
  * </pre>
  * @author Alessandro Borges

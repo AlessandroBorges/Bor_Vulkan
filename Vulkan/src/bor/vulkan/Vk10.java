@@ -207,7 +207,7 @@ public class Vk10 extends Vulkan {
      * Default size in bytes of Non Dispatchable VkHandler.
      * Expected to be always 8 bytes in both 32/64bits environments.
      */
-    protected static int SIZE_OF_NON__DISPATCHABLE_HANDLE = 8;
+    public static int SIZE_OF_NON__DISPATCHABLE_HANDLE = 8;
     
     /**
      * Vulkan Supported Plaforms
@@ -254,7 +254,7 @@ public class Vk10 extends Vulkan {
      * </pre>
      * @return size in bytes of native pointer
      */
-    private static native int sizeOfDispatchableHandle();/*
+    public static native int sizeOfDispatchableHandle();/*
         return(jint) sizeof(VkInstance);
     */
     
@@ -262,7 +262,7 @@ public class Vk10 extends Vulkan {
      * Get Size of native pointer (void*);
      * @return size in bytes of native pointer
      */
-    private static native int sizeOfNonDispatchableHandle();/*
+    public  static native int sizeOfNonDispatchableHandle();/*
         return(jint) sizeof(VkSemaphore);
     */
     

@@ -27,6 +27,8 @@ import bor.enumerable.*;
  *     VK_FORMAT_FEATURE_BLIT_SRC_BIT = 0x00000400,
  *     VK_FORMAT_FEATURE_BLIT_DST_BIT = 0x00000800,
  *     VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT = 0x00001000,
+ *     VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_IMG = 0x00002000,
+ *     VK_FORMAT_FEATURE_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF
  * } VkFormatFeatureFlagBits;
  * </pre>
  * @author Alessandro Borges
@@ -38,7 +40,7 @@ public class VkFormatFeatureFlagBits extends IntEnum<VkFormatFeatureFlagBits> {
    private static final Class<VkFormatFeatureFlagBits> myClass = VkFormatFeatureFlagBits.class;
 
    /** values */
-   private static VkFormatFeatureFlagBits[] values = new VkFormatFeatureFlagBits[13];
+   private static VkFormatFeatureFlagBits[] values = new VkFormatFeatureFlagBits[14];
 
    public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT", 0, 0x00000001);
    public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_STORAGE_IMAGE_BIT", 1, 0x00000002);
@@ -53,6 +55,7 @@ public class VkFormatFeatureFlagBits extends IntEnum<VkFormatFeatureFlagBits> {
    public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_BLIT_SRC_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_BLIT_SRC_BIT", 10, 0x00000400);
    public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_BLIT_DST_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_BLIT_DST_BIT", 11, 0x00000800);
    public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_LINEAR_BIT", 12, 0x00001000);
+   public static final VkFormatFeatureFlagBits VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_IMG = new VkFormatFeatureFlagBits("VK_FORMAT_FEATURE_SAMPLED_IMAGE_FILTER_CUBIC_BIT_IMG", 13, 0x00002000);
    
    /**
     * Return all values available in this enumeration

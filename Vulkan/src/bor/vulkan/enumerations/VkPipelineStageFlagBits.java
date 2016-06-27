@@ -31,6 +31,7 @@ import bor.enumerable.*;
  *     VK_PIPELINE_STAGE_HOST_BIT = 0x00004000,
  *     VK_PIPELINE_STAGE_ALL_GRAPHICS_BIT = 0x00008000,
  *     VK_PIPELINE_STAGE_ALL_COMMANDS_BIT = 0x00010000,
+ *     VK_PIPELINE_STAGE_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF
  * } VkPipelineStageFlagBits;
  * </pre>
  * @author Alessandro Borges

@@ -56,6 +56,21 @@ public class Utils {
     */
     
     /**
+     * Get native Address of Buffer and its offset, using buffer.position().
+     * @param buffer - Bytebuffer to query
+     * @return long value with native address + offset.
+     */
+    public static long getNativeAddressAndOffset(ByteBuffer buffer){
+           long address = getNativeAddress(buffer);
+           int pos = buffer.position();
+           return address + pos;
+    }
+    
+    
+    
+    
+    
+    /**
      * get Native address of Buffer
      * @param buffer - 
      * @return

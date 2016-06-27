@@ -17,6 +17,7 @@ import bor.enumerable.*;
  *     VK_BUFFER_CREATE_SPARSE_BINDING_BIT = 0x00000001,
  *     VK_BUFFER_CREATE_SPARSE_RESIDENCY_BIT = 0x00000002,
  *     VK_BUFFER_CREATE_SPARSE_ALIASED_BIT = 0x00000004,
+ *     VK_BUFFER_CREATE_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF
  * } VkBufferCreateFlagBits;
  * </pre>
  * @author Alessandro Borges

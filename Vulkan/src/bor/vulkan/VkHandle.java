@@ -413,7 +413,9 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
      }
 
     
-
+    /**
+     * Size of this handle, in bytes.
+     */
     @Override
     public int sizeof() {        
         return Vk10.SIZE_OF_NON__DISPATCHABLE_HANDLE;

@@ -22,6 +22,7 @@ import bor.enumerable.*;
  *     VK_SHADER_STAGE_COMPUTE_BIT = 0x00000020,
  *     VK_SHADER_STAGE_ALL_GRAPHICS = 0x0000001F,
  *     VK_SHADER_STAGE_ALL = 0x7FFFFFFF,
+ *     VK_SHADER_STAGE_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF
  * } VkShaderStageFlagBits;
  * </pre>
  * @author Alessandro Borges

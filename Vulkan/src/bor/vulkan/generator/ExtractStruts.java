@@ -13,7 +13,10 @@ import static bor.vulkan.generator.Util.*;
 import static bor.vulkan.generator.Util.*;
 
 public class ExtractStruts {
-    
+    /**
+     * Dispatchable class names.
+     */
+   
     private static final boolean saveFile = true;
     private static final boolean printID = true;
     private static final boolean printStruct = false;

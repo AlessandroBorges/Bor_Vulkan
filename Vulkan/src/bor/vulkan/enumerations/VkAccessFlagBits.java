@@ -31,6 +31,7 @@ import bor.enumerable.*;
  *     VK_ACCESS_HOST_WRITE_BIT = 0x00004000,
  *     VK_ACCESS_MEMORY_READ_BIT = 0x00008000,
  *     VK_ACCESS_MEMORY_WRITE_BIT = 0x00010000,
+ *     VK_ACCESS_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF
  * } VkAccessFlagBits;
  * </pre>
  * @author Alessandro Borges

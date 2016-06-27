@@ -15,6 +15,7 @@ import bor.enumerable.*;
  * <h3>Prototype</h3> <pre>
  * typedef enum VkQueryControlFlagBits {
  *     VK_QUERY_CONTROL_PRECISE_BIT = 0x00000001,
+ *     VK_QUERY_CONTROL_FLAG_BITS_MAX_ENUM = 0x7FFFFFFF
  * } VkQueryControlFlagBits;
  * </pre>
  * @author Alessandro Borges

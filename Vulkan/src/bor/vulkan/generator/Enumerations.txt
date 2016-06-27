@@ -41,6 +41,7 @@ VkImageViewType
 VkIndexType
 VkInternalAllocationType
 VkLogicOp
+VkRasterizationOrderAMD
 VkMemoryHeapFlagBits
 VkMemoryPropertyFlagBits
 VkPhysicalDeviceType

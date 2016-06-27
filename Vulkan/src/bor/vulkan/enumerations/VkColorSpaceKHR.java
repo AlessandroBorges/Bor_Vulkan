@@ -14,11 +14,11 @@ import bor.enumerable.*;
  *
  * <h3>Prototype</h3> <pre>
  * typedef enum VkColorSpaceKHR {
- *     VK_COLORSPACE_SRGB_NONLINEAR_KHR = 0,
- *     VK_COLORSPACE_BEGIN_RANGE = VK_COLORSPACE_SRGB_NONLINEAR_KHR,
- *     VK_COLORSPACE_END_RANGE = VK_COLORSPACE_SRGB_NONLINEAR_KHR,
- *     VK_COLORSPACE_RANGE_SIZE = (VK_COLORSPACE_SRGB_NONLINEAR_KHR - VK_COLORSPACE_SRGB_NONLINEAR_KHR + 1),
- *     VK_COLORSPACE_MAX_ENUM = 0x7FFFFFFF
+ *     VK_COLOR_SPACE_SRGB_NONLINEAR_KHR = 0,
+ *     VK_COLOR_SPACE_BEGIN_RANGE_KHR = VK_COLOR_SPACE_SRGB_NONLINEAR_KHR,
+ *     VK_COLOR_SPACE_END_RANGE_KHR = VK_COLOR_SPACE_SRGB_NONLINEAR_KHR,
+ *     VK_COLOR_SPACE_RANGE_SIZE_KHR = (VK_COLOR_SPACE_SRGB_NONLINEAR_KHR - VK_COLOR_SPACE_SRGB_NONLINEAR_KHR + 1),
+ *     VK_COLOR_SPACE_MAX_ENUM_KHR = 0x7FFFFFFF
  * } VkColorSpaceKHR;
  * </pre>
  * @author Alessandro Borges
@@ -32,7 +32,7 @@ public class VkColorSpaceKHR extends IntEnum<VkColorSpaceKHR> {
    /** values */
    private static VkColorSpaceKHR[] values = new VkColorSpaceKHR[1];
 
-   public static final VkColorSpaceKHR VK_COLORSPACE_SRGB_NONLINEAR_KHR = new VkColorSpaceKHR("VK_COLORSPACE_SRGB_NONLINEAR_KHR", 0, 0);
+   public static final VkColorSpaceKHR VK_COLOR_SPACE_SRGB_NONLINEAR_KHR = new VkColorSpaceKHR("VK_COLOR_SPACE_SRGB_NONLINEAR_KHR", 0, 0);
    
    /**
     * Return all values available in this enumeration
