@@ -9,7 +9,8 @@ package bor.vulkan;
 public class Vulkan {
 
     public static final int     VK_API_VERSION                          = VK_MAKE_VERSION(1, 0, 0);
-
+    public static final int     VK_HEADER_VERSION = 21;
+    
     public static final float   VK_LOD_CLAMP_NONE                       = 1000.0f;
     public static final int     VK_REMAINING_MIP_LEVELS                 = Integer.MAX_VALUE;         // (~0);
     public static final int     VK_REMAINING_ARRAY_LAYERS               = Integer.MAX_VALUE;         // (~0);
@@ -56,7 +57,7 @@ public class Vulkan {
     public static final int     VK_KHR_WIN32_SURFACE_SPEC_VERSION       = 5;
     public static final String  VK_KHR_WIN32_SURFACE_EXTENSION_NAME     = "VK_KHR_win32_surface";
     public static final int     VK_EXT_debug_report                     = 1;
-    public static final int     VK_EXT_DEBUG_REPORT_SPEC_VERSION        = 2;
+    public static final int     VK_EXT_DEBUG_REPORT_SPEC_VERSION        = 3;
     public static final String  VK_EXT_DEBUG_REPORT_EXTENSION_NAME      = "VK_EXT_debug_report";
     
     public static final int VK_KHR_sampler_mirror_clamp_to_edge = 1;
@@ -70,37 +71,76 @@ public class Vulkan {
     public static final int VK_IMG_filter_cubic = 1;
     public static final int VK_IMG_FILTER_CUBIC_SPEC_VERSION =  1;
     public static final String VK_IMG_FILTER_CUBIC_EXTENSION_NAME = "VK_IMG_filter_cubic";
+
+    public static final int VK_AMD_shader_trinary_minmax = 1;
+    public static final int VK_AMD_SHADER_TRINARY_MINMAX_SPEC_VERSION =1;
+    public static final String VK_AMD_SHADER_TRINARY_MINMAX_EXTENSION_NAME = "VK_AMD_shader_trinary_minmax";
+
+    public static final int VK_AMD_shader_explicit_vertex_parameter = 1;
+    public static final int VK_AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_SPEC_VERSION = 1;
+    public static final String VK_AMD_SHADER_EXPLICIT_VERTEX_PARAMETER_EXTENSION_NAME = "VK_AMD_shader_explicit_vertex_parameter";
+
+    public static final int VK_AMD_gcn_shader = 1;
+    public static final int VK_AMD_GCN_SHADER_SPEC_VERSION   =  1;
+    public static final String VK_AMD_GCN_SHADER_EXTENSION_NAME = "VK_AMD_gcn_shader";
+
+    public static final int VK_NV_dedicated_allocation  = 1;
+    public static final int VK_NV_DEDICATED_ALLOCATION_SPEC_VERSION = 1;
+    public static final String VK_NV_DEDICATED_ALLOCATION_EXTENSION_NAME = "VK_NV_dedicated_allocation";    
     
-    public static VkHandle  VK_NULL_HANDLE = new VkHandle(0);
+    public static VkHandle  VK_NULL_HANDLE = new VkHandle(0);    
     
-    
-    
-    
-    public static int VK_MAKE_VERSION(int major, int minor, int patch) {
+    /**
+     * Calculates a packed integer value for major-minor-patch Vulkan version.
+     * 
+     * 
+     * @param major - major release version value
+     * @param minor - minor release version value
+     * @param patch - patch release versions value
+     * @return  packed integer value with coded major, minar and patch value
+     */
+    public static final int VK_MAKE_VERSION(int major, int minor, int patch) {
         return (((major) << 22) | ((minor) << 12) | (patch));
     }
 
-    public static final int VK_VERSION_MAJOR(int version) {
-        return version >> 22;
+    /**
+     * Get the major version value from a packed API version.
+     * @param packedAPIversion - packed API value.
+     * @return major value, as coded in packedAPIversion.
+     */
+    public static final int VK_VERSION_MAJOR(int packedAPIversion) {
+        return packedAPIversion >> 22;
     }
 
-    public static final int VK_VERSION_MINOR(int version) {
-        return (version >> 12) & 0x3ff;
+    /**
+     * Get the minor version value from a packed API version.
+     * @param packedAPIversion - packed API value.
+     * @return minor value, as coded in packedAPIversion. 
+     */
+    public static final int VK_VERSION_MINOR(int packedAPIversion) {
+        return (packedAPIversion >> 12) & 0x3ff;
     }
 
-    public static final int VK_VERSION_PATCH(int version) {
-        return ((int) (version) & 0xfff);
+    /**
+     * Get the patch version value from a packed API version.
+     * @param packedAPIversion - packed API value.
+     * @return patch value, as coded in packedAPIversion.
+     */
+    public static final int VK_VERSION_PATCH(int packedAPIversion) {
+        return ((int) (packedAPIversion) & 0xfff);
     }
     
     /**
-     * Get string of version
-     * @param apiVersion
-     * @return
+     * Get string version of Vulkan, as packed in packedAPIversion parameter.
+     * @see #VK_MAKE_VERSION(int, int, int)
+     * 
+     * @param packedAPIversion - packed Vulkan versions, as given by {@link #VK_MAKE_VERSION(int, int, int)} 
+     * @return string value of packedAPIversion as "1.0.3"
      */
-    public static final String getAPIVersionString(int apiVersion){
-        int major = VK_VERSION_MAJOR(apiVersion);
-        int minor = VK_VERSION_MINOR(apiVersion);
-        int patch = VK_VERSION_PATCH(apiVersion);
+    public static final String getAPIVersionString(int packedAPIversion){
+        int major = VK_VERSION_MAJOR(packedAPIversion);
+        int minor = VK_VERSION_MINOR(packedAPIversion);
+        int patch = VK_VERSION_PATCH(packedAPIversion);
         return "" + major+"."+minor+"."+patch;
     }
 
