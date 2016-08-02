@@ -6367,6 +6367,39 @@ private static native int vkQueueSubmit0(
              dataSize ,
              pData  );
 } 
+    
+    
+    /**
+     *  Vulkan procedure ID: 118-B
+     *  
+     * <h2>Prototype</h2><pre>
+     *  void  vkCmdUpdateBuffer(
+     *     VkCommandBuffer                             commandBuffer,
+     *     VkBuffer                                    dstBuffer,
+     *     VkDeviceSize                                dstOffset,
+     *     VkDeviceSize                                dataSize,
+     *     const uint32_t*                             pData);
+     * </pre>
+     * 
+     * @param commandBuffer - 
+     * @param dstBuffer - 
+     * @param dstOffset - 
+     * @param dataSize - 
+     * @param pData - 
+     */
+        public static void  vkCmdUpdateBuffer(
+                 VkCommandBuffer commandBuffer,
+                 VkBuffer dstBuffer,
+                 long dstOffset,
+                 long dataSize,
+                 ByteBuffer pData){
+         vkCmdUpdateBuffer1(
+                 commandBuffer.getPointer(),
+                 dstBuffer.getPointer(),
+                 dstOffset ,
+                 dataSize ,
+                 pData  );
+    } 
 
 /**
  *  Native interface for Vulkan method #118
@@ -6393,6 +6426,30 @@ private static native int vkQueueSubmit0(
 */ 
 
 
+ /**
+  *  Native interface for Vulkan method #118
+  *  vkCmdUpdateBuffer 
+  * 
+  * @param commandBuffer - 
+  * @param dstBuffer - 
+  * @param dstOffset - 
+  * @param dataSize - 
+  * @param pData - 
+  */
+  private static native void vkCmdUpdateBuffer1(
+              java.nio.ByteBuffer   commandBuffer,
+              java.nio.ByteBuffer   dstBuffer,
+              long  dstOffset,
+              long  dataSize,
+              ByteBuffer  pData);/* 
+      vkCmdUpdateBuffer(
+                      (VkCommandBuffer) commandBuffer,
+                      (VkBuffer) dstBuffer,
+                      (VkDeviceSize) dstOffset,
+                      (VkDeviceSize) dataSize,
+                      (void *) pData);
+ */ 
+ 
 /**
  *  Vulkan procedure ID: 119
  * <h2>Prototype</h2><pre>
