@@ -31,7 +31,7 @@ public class StructInfo {
     public String name;
     public String[] fields;
     public String[] types;
-    
+    public String[] fixedArraySize;
     public static String LICENSE = Util.LICENSE;
     public static final String[] DISPACHABLE_HANDLE_NAMES = { "VkInstance", "VkPhysicalDevice", 
             "VkDevice", "VkCommandBuffer", "VkQueue"} ;
@@ -128,16 +128,19 @@ public class StructInfo {
      * @param pkg
      * @return
      */
-    public String toJavaSrc(String pkg){
- 
+    public String toJavaSrc(String pkg){ 
         
         String proto = prototype(true);
         String extra = "This class is a Java front end for struct " + name +".";
         String disclaimer = DISCLAIMER.replace(MARK, extra);
         disclaimer = disclaimer.replace(PROTO, proto);
+        
         String output = new String();
-        boolean[] isTypeArray = new boolean[this.fields.length];
-        boolean[] hasBigBuffer = new boolean[this.fields.length];
+        int sz = this.fields.length;
+        boolean[] isTypeArray  = new boolean[sz];
+        boolean[] isFixedArray = new boolean[sz];
+        boolean[] hasBigBuffer = new boolean[sz];
+        //int[] fixedArraySize_ = new int[sz];
         
         boolean isKHR = name.contains("KHR");
         
@@ -152,6 +155,7 @@ public class StructInfo {
         output += " package " + pkg + ";\n\n";
         
         output += " import bor.vulkan.*;\n";
+        output += " import static bor.vulkan.Vulkan.*; \n";
         output += " import bor.vulkan.enumerations.*;\n";
         output += " import bor.vulkan.structs.*;\n";
         
@@ -194,23 +198,33 @@ public class StructInfo {
         for(int i=0; i<this.fields.length; i++){
             String field = fields[i];
             String cType = types[i];
-            String jType = getJavaType(cType, field, name);
+            String arraySize = this.fixedArraySize[i];
+            String jType = getJavaType(cType, field, name);           
+            isTypeArray[i] = jType.contains("[]") && !cType.contains("char"); 
+            
+            if(arraySize.length()>0){
+                isFixedArray[i] = true;
+            }
+            
+            boolean regularArray = isFixedArray[i] && isTypeArray[i];
             
             CLASS_TYPE type = getType(jType);
-            String typeOut = type==CLASS_TYPE.OTHER ? "" : "[" + type.name().toLowerCase() + "]";
+            String arrayCmt = isTypeArray[i] ? "_array" : "";
+            arrayCmt += regularArray ? " ["+arraySize+"] " : "";
+            String typeOut = type==CLASS_TYPE.OTHER ? "" : "[" + type.name().toLowerCase() + arrayCmt+ "]";
             // Comment 
-           output += tab + "\n/**\n"
-                         + "\t *  " + cType + " \t" + field + "\t"+ typeOut
+           output += tab + "\n\t/**"
+                         + "\n\t *  " + cType + " \t" + field + "\t"+ typeOut
                          + "\n\t */ \n";
            
            if(commentOut)
                output += "   // ";
            else
-              output += tab +" ";
+              output += tab +" protected ";
+           String initCode = regularArray ? " = new " + jType.replace("[]","")+"["+arraySize+"]":"";
+           output += jType + " \t" + field + initCode + ";\n"; 
            
-           output += jType + " \t" + field + ";\n"; 
-           
-           isTypeArray[i] = jType.contains("[]");
+                   
            
            if(type == CLASS_TYPE.VKSTRUCT_ARRAY || type == CLASS_TYPE.VKHANDLE_ARRAY ){
                System.err.println("\n VK Struct Class: " + name + " has VkStruct[] : " + jType + " \t" + field + ";");
@@ -275,6 +289,8 @@ public class StructInfo {
             CLASS_TYPE type = getType(jType);
             String typeOut = type==CLASS_TYPE.OTHER ? "" : "[" + type.name().toLowerCase() + "]";
             String method = getMethodTypeBridge(type, "");
+            //boolean isFixedArr = isFixedArray[i];
+            boolean regularArray = isFixedArray[i] && isTypeArray[i];
             
             // Comment 
             outputSG += "\t/**\n\t * Set method for field " + field + "\t" + typeOut + "<br>" +
@@ -313,12 +329,18 @@ public class StructInfo {
                        + "\t\t " + setName0 + "0(this.ptr, "+fieldBBuffer+ ".getBuffer());\n";
            }
            else  {
-               bridge = "\t\t " + setName0 + "0(this.ptr,  "+ field+");\n";               
+               if(regularArray){ 
+                   bridge =  "\t\t System.arraycopy("+field+", 0, " +
+                                                    "this."+ field+", 0, this."+field +".length)\n";
+                   bridge += "\t\t " + setName0 + "0(this.ptr,  this."+ field+");\n";
+               }else{
+                   bridge = "\t\t " + setName0 + "0(this.ptr,  "+ field+");\n";               
+               }
            }
            
            
            outputSG += "\t public " + name + " " + setName + "(" +jType + " " + field + "){\n"
-                  +  "\t\t this." + field + " = " + field + ";\n"
+                  +  (regularArray ? "" : "\t\t this." + field + " = " + field + ";\n")
                   +  bridge              
                   +  "\t\t return this;\n"
                   +  "\t }\n\n";
@@ -464,6 +486,7 @@ public class StructInfo {
             String field = fields[i];
             String cType = types[i];
             boolean isArray = false;
+            
             if(cType.endsWith("*") && field.endsWith("s")){
                 isArray = true;
             }
@@ -473,8 +496,8 @@ public class StructInfo {
             CLASS_TYPE type = getType(jType);
             String typeOut = type==CLASS_TYPE.OTHER ? "" : "[" + type.name().toLowerCase() + "]";
             String typeMod = getParamBridge(type, jType);
-            
-            
+            String size = fixedArraySize[i];
+            boolean regularArray = isFixedArray[i] && isTypeArray[i];
             
             // Comment 
             outputNat += "\t/**\n\t * native SET method for field " + field +  "\t" + typeOut +  "<br>" +
@@ -483,10 +506,14 @@ public class StructInfo {
            
            // native SET
            String setName = "set" + upperCaseField(field);
+           
+           
            outputNat += "\t private static native void " + setName 
                    + "0(Buffer ptr, "+typeMod + " _" + field + ");/*\n"
                    + "\t\t  " + this.name + "* vkObj = ("+ this.name+"*)(ptr);\n"
-                   + "\t\t  vkObj->" + field + " = ("+ cType +") (_" + field + ");\n"            
+                   + (regularArray ?    "\t\t  memcpy(&(vkObj->" + field + "), &_" + field + ", " + size +" * sizeof("+cType.replace("[]", "")+"));\n"
+                                      : "\t\t  vkObj->" + field + " = ("+ cType +") (_" + field + ");\n")
+                   
                    + "\t  */\n\n";
            
            // GET
@@ -499,15 +526,15 @@ public class StructInfo {
            String nativeRes = "\t\t  return (" + jniType + ") (vkObj->"+ field + ");\n";
            if(type == CLASS_TYPE.VKHANDLE || type == CLASS_TYPE.VKPFN){
                typeMod = "long";
-               nativeRes = "\t\t  return (jlong) reinterpret_cast<jlong>(vkObj->"+field +");";
+               nativeRes = "\t\t  return (jlong) reinterpret_cast<jlong>(vkObj->"+field +");\n";
            }
            if(jType.equalsIgnoreCase("string")){
                // Strings must be converted
-               nativeRes = "\t\t  return (jstring)(env->NewStringUTF(vkObj->"+field +"));";
+               nativeRes = "\t\t  return (jstring)(env->NewStringUTF(vkObj->"+field +"));\n";
            } 
            if(typeMod.contains("Buffer")){
                typeMod = "long";
-               nativeRes = "\t\t  return (jlong) reinterpret_cast<jlong>(vkObj->"+field +");";
+               nativeRes = "\t\t  return (jlong) reinterpret_cast<jlong>(vkObj->"+field +");\n";
            }
            
            outputNat += "\t private static native " + typeMod + " " + getName + "0(Buffer ptr);/*\n" 
@@ -570,6 +597,8 @@ public class StructInfo {
     public static StructInfo parse(List<String> source, int structID){
         List<String> fieldNames = new ArrayList<String>();
         List<String> fieldTypes = new ArrayList<String>();
+        List<String> arraySize = new ArrayList<String>();
+        
         int lineCount = source.size();
         String[] cppSource = new String[lineCount];
         // get struct name
@@ -616,11 +645,19 @@ public class StructInfo {
                
                //check array
                if(isArray(fieldName)){
-                   String len = getArrayLength(fieldName);
+                    String len = getArrayLength(fieldName);                    
+                    try {
+                       int size = Integer.parseInt(len.trim());
+                    } catch (Exception e) {
+                        System.err.println("Struct "+ name +" - Array size is constant: " + len);                        
+                    }
+                    arraySize.add(len);
                    int pos = fieldName.indexOf('[');                   
                    fieldName = fieldName.substring(0, pos);
                    //fieldName += " /* length="+len + " */"; 
                    type =type.trim() +"[]";
+               }else{
+                   arraySize.add("");
                }
                fieldNames.add(fieldName.trim());
                fieldTypes.add(type.trim());
@@ -634,11 +671,18 @@ public class StructInfo {
         int size = fieldNames.size();
         String[] names = new String[size];
         String[] types = new String[size];
+        String[] varArraySize = new String[size];
+        
         names = fieldNames.toArray(names);
         types = fieldTypes.toArray(types);
+        
+        for (int i = 0; i < varArraySize.length; i++) {
+            varArraySize[i] = arraySize.get(i);
+        }
+        
         info.fields = names;
         info.types = types;
-        
+        info.fixedArraySize = varArraySize;
         return info;
     }
     

@@ -171,12 +171,7 @@ public class Include {
                     String code = incl.getMethod(mtd);
                     System.out.println("Method:\n" + code);
                 }
-                
             }
-            
-            
         }
-
     }
-
 }
