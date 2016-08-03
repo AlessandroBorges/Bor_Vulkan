@@ -1,7 +1,7 @@
 /**
  * Class wrapping Vulkan's VkAttachmentDescription struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -37,7 +37,7 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
 public class VkAttachmentDescription extends VkStruct {
 
@@ -152,31 +152,13 @@ public class VkAttachmentDescription extends VkStruct {
 
 
 	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
+	 * Get ID of this structure 
 	 */
-	 public static P<VkAttachmentDescription> createNullPointer(){
-	        P<VkAttachmentDescription> p = new  P<VkAttachmentDescription>(new VkAttachmentDescription());
-	        return p;
+	 public static int getID(){ 
+		 return TAG_ID; 
 	    }
 
 
-	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
-	 */
-	 public P<VkAttachmentDescription> getP() {
-	       if(p == null ){
-	           p = new P<VkAttachmentDescription> (this);
-	       }
-	        return p;
-	    }
 
 
 	 ////////////////////////
@@ -186,10 +168,14 @@ public class VkAttachmentDescription extends VkStruct {
 	/**
 	 * Set method for field flags	[int]<br>
 	 * Prototype: VkAttachmentDescriptionFlags  flags
+	 * 
+	 * @param flags - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void flags(int flags){
+	 public VkAttachmentDescription flags(int flags){
 		 this.flags = flags;
 		 setFlags0(this.ptr,  flags);
+		 return this;
 	 }
 
 	/**
@@ -205,11 +191,15 @@ public class VkAttachmentDescription extends VkStruct {
 	/**
 	 * Set method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
+	 * 
+	 * @param format - a instance of VkFormat.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void format(VkFormat format){
+	 public VkAttachmentDescription format(VkFormat format){
 		 this.format = format;
 		 int enumVal = format.getValue();
 		 setFormat0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -225,11 +215,15 @@ public class VkAttachmentDescription extends VkStruct {
 	/**
 	 * Set method for field samples	[vkenum]<br>
 	 * Prototype: VkSampleCountFlagBits  samples
+	 * 
+	 * @param samples - a instance of VkSampleCountFlagBits.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void samples(VkSampleCountFlagBits samples){
+	 public VkAttachmentDescription samples(VkSampleCountFlagBits samples){
 		 this.samples = samples;
 		 int enumVal = samples.getValue();
 		 setSamples0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -245,11 +239,15 @@ public class VkAttachmentDescription extends VkStruct {
 	/**
 	 * Set method for field loadOp	[vkenum]<br>
 	 * Prototype: VkAttachmentLoadOp  loadOp
+	 * 
+	 * @param loadOp - a instance of VkAttachmentLoadOp.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void loadOp(VkAttachmentLoadOp loadOp){
+	 public VkAttachmentDescription loadOp(VkAttachmentLoadOp loadOp){
 		 this.loadOp = loadOp;
 		 int enumVal = loadOp.getValue();
 		 setLoadOp0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -265,11 +263,15 @@ public class VkAttachmentDescription extends VkStruct {
 	/**
 	 * Set method for field storeOp	[vkenum]<br>
 	 * Prototype: VkAttachmentStoreOp  storeOp
+	 * 
+	 * @param storeOp - a instance of VkAttachmentStoreOp.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void storeOp(VkAttachmentStoreOp storeOp){
+	 public VkAttachmentDescription storeOp(VkAttachmentStoreOp storeOp){
 		 this.storeOp = storeOp;
 		 int enumVal = storeOp.getValue();
 		 setStoreOp0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -285,11 +287,15 @@ public class VkAttachmentDescription extends VkStruct {
 	/**
 	 * Set method for field stencilLoadOp	[vkenum]<br>
 	 * Prototype: VkAttachmentLoadOp  stencilLoadOp
+	 * 
+	 * @param stencilLoadOp - a instance of VkAttachmentLoadOp.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void stencilLoadOp(VkAttachmentLoadOp stencilLoadOp){
+	 public VkAttachmentDescription stencilLoadOp(VkAttachmentLoadOp stencilLoadOp){
 		 this.stencilLoadOp = stencilLoadOp;
 		 int enumVal = stencilLoadOp.getValue();
 		 setStencilLoadOp0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -305,11 +311,15 @@ public class VkAttachmentDescription extends VkStruct {
 	/**
 	 * Set method for field stencilStoreOp	[vkenum]<br>
 	 * Prototype: VkAttachmentStoreOp  stencilStoreOp
+	 * 
+	 * @param stencilStoreOp - a instance of VkAttachmentStoreOp.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void stencilStoreOp(VkAttachmentStoreOp stencilStoreOp){
+	 public VkAttachmentDescription stencilStoreOp(VkAttachmentStoreOp stencilStoreOp){
 		 this.stencilStoreOp = stencilStoreOp;
 		 int enumVal = stencilStoreOp.getValue();
 		 setStencilStoreOp0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -325,11 +335,15 @@ public class VkAttachmentDescription extends VkStruct {
 	/**
 	 * Set method for field initialLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  initialLayout
+	 * 
+	 * @param initialLayout - a instance of VkImageLayout.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void initialLayout(VkImageLayout initialLayout){
+	 public VkAttachmentDescription initialLayout(VkImageLayout initialLayout){
 		 this.initialLayout = initialLayout;
 		 int enumVal = initialLayout.getValue();
 		 setInitialLayout0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -345,11 +359,15 @@ public class VkAttachmentDescription extends VkStruct {
 	/**
 	 * Set method for field finalLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  finalLayout
+	 * 
+	 * @param finalLayout - a instance of VkImageLayout.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void finalLayout(VkImageLayout finalLayout){
+	 public VkAttachmentDescription finalLayout(VkImageLayout finalLayout){
 		 this.finalLayout = finalLayout;
 		 int enumVal = finalLayout.getValue();
 		 setFinalLayout0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -363,8 +381,37 @@ public class VkAttachmentDescription extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkAttachmentDescription [ ")
+				.append("flags: ").append(flags() )
+				.append(",\n format: ")
+				.append(format() )
+				.append(",\n samples: ")
+				.append(samples() )
+				.append(",\n loadOp: ")
+				.append(loadOp() )
+				.append(",\n storeOp: ")
+				.append(storeOp() )
+				.append(",\n stencilLoadOp: ")
+				.append(stencilLoadOp() )
+				.append(",\n stencilStoreOp: ")
+				.append(stencilStoreOp() )
+				.append(",\n initialLayout: ")
+				.append(initialLayout() )
+				.append(",\n finalLayout: ")
+				.append(finalLayout() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
 	 * native SET method for field flags	[int]<br>

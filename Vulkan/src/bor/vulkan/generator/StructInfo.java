@@ -107,12 +107,12 @@ public class StructInfo {
     public static String getParamBridge(CLASS_TYPE type, String defaultParam){
         switch (type) {
             case VKHANDLE: return "long ";
-            case VKHANDLE_ARRAY: return "long[] ";
+            case VKHANDLE_ARRAY: return "ByteBuffer ";
             case VKPFN:   return "long ";
             case VKSTRUCT:             
             case VKOBJECT: return "java.nio.ByteBuffer "; 
             case VKSTRUCT_ARRAY:             
-            case VKOBJECT_ARRAY: return "java.nio.ByteBuffer[] ";
+            case VKOBJECT_ARRAY: return "java.nio.ByteBuffer ";
             case VKENUM : return "int ";
             case VKENUM_ARRAY : return "int[] ";
             case BOOLEAN: return "boolean ";
@@ -154,19 +154,19 @@ public class StructInfo {
         output += " */\n"; 
         output += " package " + pkg + ";\n\n";
         
+        output += " import bor.util.*;\n";
         output += " import bor.vulkan.*;\n";
         output += " import static bor.vulkan.Vulkan.*; \n";
-        output += " import bor.vulkan.enumerations.*;\n";
-        output += " import bor.vulkan.structs.*;\n";
+        output += " import bor.vulkan.enumerations.*;\n\n";
+      //  output += " import bor.vulkan.structs.*;\n";
         
         if(isKHR){
             output += " import bor.vulkan.khr.*;\n";
         }
             
-        
-        output += " import java.nio.ByteBuffer;\n";
-        output += " import java.nio.Buffer;\n\n";
-        
+        output += " import java.util.*;\n";
+        output += " import java.nio.*;\n\n";
+                
         output += disclaimer;
         output += " public class " + this.name + " extends VkStruct {\n";
         
@@ -229,7 +229,7 @@ public class StructInfo {
            if(type == CLASS_TYPE.VKSTRUCT_ARRAY || type == CLASS_TYPE.VKHANDLE_ARRAY ){
                System.err.println("\n VK Struct Class: " + name + " has VkStruct[] : " + jType + " \t" + field + ";");
                hasBigBuffer[i] = true;
-               output += tab +"   private BigBuffer \t "  + field + BIG_BUFFER_SUFIX +";\n";                
+               output += tab +" private BigBuffer \t "  + field + BIG_BUFFER_SUFIX +";\n";                
            }
            
            }
@@ -331,7 +331,7 @@ public class StructInfo {
            else  {
                if(regularArray){ 
                    bridge =  "\t\t System.arraycopy("+field+", 0, " +
-                                                    "this."+ field+", 0, this."+field +".length)\n";
+                                                    "this."+ field+", 0, this."+field +".length); \n";
                    bridge += "\t\t " + setName0 + "0(this.ptr,  this."+ field+");\n";
                }else{
                    bridge = "\t\t " + setName0 + "0(this.ptr,  "+ field+");\n";               
@@ -401,7 +401,7 @@ public class StructInfo {
                          + "\t\t if(pointer == 0){\n"
                          + "\t\t    this."+field+" = null;\n"
                          + "\t\t    return null;\n"
-                         + "\t\t  } else \n "
+                         + "\t\t  } else \n"
                          + "\t\t if(this."+field+" == null){\n"
                          + "\t\t    this."+field+" = (VkObject)(new VkHandle(pointer));\n"
                          + "\t\t }else{\n"
@@ -410,23 +410,37 @@ public class StructInfo {
                         ;
              }else if (type == CLASS_TYPE.VKSTRUCT_ARRAY){
                  String fieldBBuffer = field+BIG_BUFFER_SUFIX;                 
-                 stmt = "\t\t if(null == " + fieldBBuffer +"){\n"+
-                          "\t\t\t this."+ fieldBBuffer +" = new BigBuffer("+field +","+ vkType +".getID());\n"
-                         +"\t\t }\n"
-                         +"\t\t " + setName0 + "0(this.ptr,"+fieldBBuffer+ ");\n";
+                 stmt =  "\t\t long ptr = " + getName0 + "0(this.ptr);\n" +                         
+                         "\t\t if(ptr == 0L){\n"+
+                         "\t\t    return null;\n"+
+                         "\t\t }\n"+
+                         "\t\t if("+fieldBBuffer+" != null && ptr == "+ fieldBBuffer +".getBufferAddress()){ //same buffer \n"
+                       + "\t\t    "+fieldBBuffer+".update();\n"+
+                         "\t\t    return "+ field +";\n"
+                       + "\t\t  }else{\n"
+                       + "\t\t     (new UnsupportedOperationException(\"There is no VKStruct[] for backup.\")).printStackTrace();\n"                       
+                       + "\t\t   }\n"
+                        ;
                  
              }else if (type == CLASS_TYPE.VKHANDLE_ARRAY){
                  String fieldBBuffer = field+BIG_BUFFER_SUFIX;
                  boolean isDispachable = isDispatchable(vkType);
-                 stmt =   "\t\t if( null == " + fieldBBuffer +"){\n"+
-                            "\t\t\t this."+ fieldBBuffer +" = new BigBuffer("+field +", "+ isDispachable +");\n"
-                          + "\t\t  }\n"                    
-                         + "\t\t " + setName0 + "0(this.ptr, "+fieldBBuffer+ ".getBuffer());\n";
+                 stmt =  "\t\t long ptr = " + getName0 + "0(this.ptr);\n" +                         
+                         "\t\t if(ptr == 0L){\n"+
+                         "\t\t    return null;\n"+
+                         "\t\t }\n"+
+                         "\t\t if("+fieldBBuffer+" != null && ptr == "+ fieldBBuffer +".getBufferAddress()){ //same buffer \n"
+                       + "\t\t    "+fieldBBuffer+".update();\n"+
+                         "\t\t    return "+ field +";\n"
+                       + "\t\t  }else{\n"
+                       + "\t\t     (new UnsupportedOperationException(\"There is no VKHandle[] for backup.\")).printStackTrace();\n"                       
+                       + "\t\t   }\n"
+                        ;
              }else{
                    if(jType.contains("Buffer")){
                        stmt +="\t\t long address = "+ getName0 + "0(super.ptr);\n"
                                + "\t\t if(this."+field+" == null && address != 0L){\n"
-                               + "\t\t\t  ByteBuffer bb = Utils.wrapPointer(address, 8);\n"
+                               + "\t\t\t  ByteBuffer bb = wrapPointer(address, 8);\n"
                                + "\t\t\t  this."+field + " = bb;\n"
                                + "\t\t }\n"                                                    
                                ;
@@ -527,7 +541,12 @@ public class StructInfo {
            if(type == CLASS_TYPE.VKHANDLE || type == CLASS_TYPE.VKPFN){
                typeMod = "long";
                nativeRes = "\t\t  return (jlong) reinterpret_cast<jlong>(vkObj->"+field +");\n";
+           }else 
+                if (type == CLASS_TYPE.VKHANDLE_ARRAY || type == CLASS_TYPE.VKSTRUCT_ARRAY){
+                   typeMod = "long";
+                   nativeRes = "\t\t  return (jlong) reinterpret_cast<jlong>(vkObj->"+field +");\n";
            }
+           
            if(jType.equalsIgnoreCase("string")){
                // Strings must be converted
                nativeRes = "\t\t  return (jstring)(env->NewStringUTF(vkObj->"+field +"));\n";

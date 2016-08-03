@@ -1,20 +1,20 @@
 /**
  * Class wrapping Vulkan's VkBufferCreateInfo struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
-
-import java.nio.Buffer;
+ import bor.vulkan.*;
+ import bor.vulkan.enumerations.*;
+ import bor.vulkan.structs.*;
+ 
+ import java.nio.*;
+ import java.util.*;
 
 
 /**
@@ -36,9 +36,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkBufferCreateInfo extends VkStruct {
+ public class VkBufferCreateInfo extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -51,52 +51,49 @@ public class VkBufferCreateInfo extends VkStruct {
 	/** ID of this structure [37]  */
 	 public static final int TAG_ID = VKBUFFERCREATEINFO_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkBufferCreateInfo> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
-	/**
+	
+/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
 	 VkStructureType 	sType;
-
-	/**
+	
+/**
 	 *  const void* 	pNext	[vkobject]
 	 */ 
 	 VkObject 	pNext;
-
-	/**
+	
+/**
 	 *  VkBufferCreateFlags 	flags	[int]
 	 */ 
 	 int 	flags;
-
-	/**
+	
+/**
 	 *  VkDeviceSize 	size	[long]
 	 */ 
 	 long 	size;
-
-	/**
+	
+/**
 	 *  VkBufferUsageFlags 	usage	[int]
 	 */ 
 	 int 	usage;
-
-	/**
+	
+/**
 	 *  VkSharingMode 	sharingMode	[vkenum]
 	 */ 
 	 VkSharingMode 	sharingMode;
-
-	/**
+	
+/**
 	 *  uint32_t 	queueFamilyIndexCount	[int]
 	 */ 
 	 int 	queueFamilyIndexCount;
-
-	/**
-	 *  const uint32_t* 	pQueueFamilyIndices	[int_array]
+	
+/**
+	 *  const uint32_t* 	pQueueFamilyIndices	[int]
 	 */ 
 	 int[] 	pQueueFamilyIndices;
-
 	/**
 	 * Ctor
 	 */
@@ -110,15 +107,6 @@ public class VkBufferCreateInfo extends VkStruct {
 	 */
 	public VkBufferCreateInfo(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkBufferCreateInfo(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -144,34 +132,12 @@ public class VkBufferCreateInfo extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkBufferCreateInfo> createNullPointer(){
-	        P<VkBufferCreateInfo> p = new  P<VkBufferCreateInfo>(new VkBufferCreateInfo());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkBufferCreateInfo> getP() {
-	       if(p == null ){
-	           p = new P<VkBufferCreateInfo> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -180,11 +146,15 @@ public class VkBufferCreateInfo extends VkStruct {
 	/**
 	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
+	 * 
+	 * @param sType - a instance of VkStructureType.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void sType(VkStructureType sType){
+	 public VkBufferCreateInfo sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
 		 setSType0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -200,11 +170,15 @@ public class VkBufferCreateInfo extends VkStruct {
 	/**
 	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
+	 * 
+	 * @param pNext - a instance of VkObject.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public VkBufferCreateInfo pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
 		 setPNext0(this.ptr, buff);
+		 return this;
 	 }
 
 	/**
@@ -228,10 +202,14 @@ public class VkBufferCreateInfo extends VkStruct {
 	/**
 	 * Set method for field flags	[int]<br>
 	 * Prototype: VkBufferCreateFlags  flags
+	 * 
+	 * @param flags - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void flags(int flags){
+	 public VkBufferCreateInfo flags(int flags){
 		 this.flags = flags;
 		 setFlags0(this.ptr,  flags);
+		 return this;
 	 }
 
 	/**
@@ -247,10 +225,14 @@ public class VkBufferCreateInfo extends VkStruct {
 	/**
 	 * Set method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
+	 * 
+	 * @param size - a instance of long.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void size(long size){
+	 public VkBufferCreateInfo size(long size){
 		 this.size = size;
 		 setSize0(this.ptr,  size);
+		 return this;
 	 }
 
 	/**
@@ -266,10 +248,14 @@ public class VkBufferCreateInfo extends VkStruct {
 	/**
 	 * Set method for field usage	[int]<br>
 	 * Prototype: VkBufferUsageFlags  usage
+	 * 
+	 * @param usage - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void usage(int usage){
+	 public VkBufferCreateInfo usage(int usage){
 		 this.usage = usage;
 		 setUsage0(this.ptr,  usage);
+		 return this;
 	 }
 
 	/**
@@ -285,11 +271,15 @@ public class VkBufferCreateInfo extends VkStruct {
 	/**
 	 * Set method for field sharingMode	[vkenum]<br>
 	 * Prototype: VkSharingMode  sharingMode
+	 * 
+	 * @param sharingMode - a instance of VkSharingMode.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void sharingMode(VkSharingMode sharingMode){
+	 public VkBufferCreateInfo sharingMode(VkSharingMode sharingMode){
 		 this.sharingMode = sharingMode;
 		 int enumVal = sharingMode.getValue();
 		 setSharingMode0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -305,10 +295,14 @@ public class VkBufferCreateInfo extends VkStruct {
 	/**
 	 * Set method for field queueFamilyIndexCount	[int]<br>
 	 * Prototype: uint32_t  queueFamilyIndexCount
+	 * 
+	 * @param queueFamilyIndexCount - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void queueFamilyIndexCount(int queueFamilyIndexCount){
+	 public VkBufferCreateInfo queueFamilyIndexCount(int queueFamilyIndexCount){
 		 this.queueFamilyIndexCount = queueFamilyIndexCount;
 		 setQueueFamilyIndexCount0(this.ptr,  queueFamilyIndexCount);
+		 return this;
 	 }
 
 	/**
@@ -322,16 +316,20 @@ public class VkBufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pQueueFamilyIndices	[int_array]<br>
+	 * Set method for field pQueueFamilyIndices	[int]<br>
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
+	 * 
+	 * @param pQueueFamilyIndices - a instance of int[].
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pQueueFamilyIndices(int[] pQueueFamilyIndices){
+	 public VkBufferCreateInfo pQueueFamilyIndices(int[] pQueueFamilyIndices){
 		 this.pQueueFamilyIndices = pQueueFamilyIndices;
 		 setPQueueFamilyIndices0(this.ptr,  pQueueFamilyIndices);
+		 return this;
 	 }
 
 	/**
-	 * Get method for field pQueueFamilyIndices	[int_array]<br>
+	 * Get method for field pQueueFamilyIndices	[int]<br>
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 public int[] pQueueFamilyIndices(){
@@ -341,8 +339,35 @@ public class VkBufferCreateInfo extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkBufferCreateInfo [ ")
+				.append("sType: ").append(sType() )
+				.append(",\n pNext: ")
+				.append(pNext() )
+				.append(",\n flags: ")
+				.append(flags() )
+				.append(",\n size: ")
+				.append(size() )
+				.append(",\n usage: ")
+				.append(usage() )
+				.append(",\n sharingMode: ")
+				.append(sharingMode() )
+				.append(",\n queueFamilyIndexCount: ")
+				.append(queueFamilyIndexCount() )
+				.append(",\n pQueueFamilyIndices: ")
+				.append(Arrays.toString(pQueueFamilyIndices()) )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
 	 * native SET method for field sType	[vkenum]<br>
@@ -470,7 +495,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pQueueFamilyIndices	[int_array]<br>
+	 * native SET method for field pQueueFamilyIndices	[int]<br>
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 private static native void setPQueueFamilyIndices0(Buffer ptr, int[] _pQueueFamilyIndices);/*
@@ -479,7 +504,7 @@ public class VkBufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pQueueFamilyIndices	[int_array]<br>
+	 * native GET method for field pQueueFamilyIndices	[int]<br>
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 private static native int[] getPQueueFamilyIndices0(Buffer ptr);/*

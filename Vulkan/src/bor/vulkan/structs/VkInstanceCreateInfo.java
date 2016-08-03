@@ -1,7 +1,7 @@
 /**
  * Class wrapping Vulkan's VkInstanceCreateInfo struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -62,8 +62,6 @@ public class VkInstanceCreateInfo extends VkStruct {
 	/** ID of this structure [2]  */
 	 public static final int TAG_ID = VKINSTANCECREATEINFO_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkInstanceCreateInfo> p;
 
 	 ///////////////////
 	 // Struct fields //
@@ -86,7 +84,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	/**
 	 *  const VkApplicationInfo* 	pApplicationInfo	[vkstruct]
 	 */ 
-	  VkApplicationInfo  	pApplicationInfo;
+	  final VkApplicationInfo  	pApplicationInfo;
 
 	/**
 	 *  uint32_t 	enabledLayerCount	[int]
@@ -94,7 +92,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 int 	enabledLayerCount;
 
 	/**
-	 *  const char* const* 	ppEnabledLayerNames	[string_arr]
+	 *  const char* const* 	ppEnabledLayerNames	[string]
 	 */ 
 	 String[] 	ppEnabledLayerNames;
 
@@ -104,19 +102,10 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 int 	enabledExtensionCount;
 
 	/**
-	 *  const char* const* 	ppEnabledExtensionNames	[string_arr]
+	 *  const char* const* 	ppEnabledExtensionNames	[string]
 	 */ 
 	 String[] 	ppEnabledExtensionNames;
 
-	 static{
-	     initNative();
-	 }
-
-	 
-	 private static native void initNative();/*
-	       jclass stringClassLocal = env->FindClass("java/lang/String");
-	       stringClass = (jclass) env->NewGlobalRef(stringClassLocal);
-	    */
 	    
 	 
 	 
@@ -133,15 +122,6 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 */
 	public VkInstanceCreateInfo(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkInstanceCreateInfo(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -169,31 +149,13 @@ public class VkInstanceCreateInfo extends VkStruct {
 
 
 	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
+	 * Get ID of this structure 
 	 */
-	 public static P<VkInstanceCreateInfo> createNullPointer(){
-	        P<VkInstanceCreateInfo> p = new  P<VkInstanceCreateInfo>(new VkInstanceCreateInfo());
-	        return p;
+	 public static int getID(){ 
+		 return TAG_ID; 
 	    }
 
 
-	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
-	 */
-	 public P<VkInstanceCreateInfo> getP() {
-	       if(p == null ){
-	           p = new P<VkInstanceCreateInfo> (this);
-	       }
-	        return p;
-	    }
 
 
 	 ////////////////////////
@@ -203,11 +165,15 @@ public class VkInstanceCreateInfo extends VkStruct {
 	/**
 	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
+	 * 
+	 * @param sType - a instance of VkStructureType.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void sType(VkStructureType sType){
+	 public VkInstanceCreateInfo sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
 		 setSType0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -223,11 +189,15 @@ public class VkInstanceCreateInfo extends VkStruct {
 	/**
 	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
+	 * 
+	 * @param pNext - a instance of VkObject.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public VkInstanceCreateInfo pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
 		 setPNext0(this.ptr, buff);
+		 return this;
 	 }
 
 	/**
@@ -251,10 +221,14 @@ public class VkInstanceCreateInfo extends VkStruct {
 	/**
 	 * Set method for field flags	[int]<br>
 	 * Prototype: VkInstanceCreateFlags  flags
+	 * 
+	 * @param flags - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void flags(int flags){
+	 public VkInstanceCreateInfo flags(int flags){
 		 this.flags = flags;
 		 setFlags0(this.ptr,  flags);
+		 return this;
 	 }
 
 	/**
@@ -270,11 +244,15 @@ public class VkInstanceCreateInfo extends VkStruct {
 	/**
 	 * Set method for field pApplicationInfo	[vkstruct]<br>
 	 * Prototype: const VkApplicationInfo*  pApplicationInfo
+	 * 
+	 * @param pApplicationInfo - a instance of  final VkApplicationInfo .
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pApplicationInfo( VkApplicationInfo  pApplicationInfo){
+	 public VkInstanceCreateInfo pApplicationInfo( final VkApplicationInfo  pApplicationInfo){
 		 this.pApplicationInfo = pApplicationInfo;
 		 ByteBuffer buff = (pApplicationInfo==null) ? null : pApplicationInfo.getPointer();
 		 setPApplicationInfo0(this.ptr, buff);
+		 return this;
 	 }
 
 	/**
@@ -299,10 +277,14 @@ public class VkInstanceCreateInfo extends VkStruct {
 	/**
 	 * Set method for field enabledLayerCount	[int]<br>
 	 * Prototype: uint32_t  enabledLayerCount
+	 * 
+	 * @param enabledLayerCount - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void enabledLayerCount(int enabledLayerCount){
+	 public VkInstanceCreateInfo enabledLayerCount(int enabledLayerCount){
 		 this.enabledLayerCount = enabledLayerCount;
 		 setEnabledLayerCount0(this.ptr,  enabledLayerCount);
+		 return this;
 	 }
 
 	/**
@@ -316,16 +298,20 @@ public class VkInstanceCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field ppEnabledLayerNames	[string_arr]<br>
+	 * Set method for field ppEnabledLayerNames	[string]<br>
 	 * Prototype: const char* const*  ppEnabledLayerNames
+	 * 
+	 * @param ppEnabledLayerNames - a instance of String[].
+	 * @return this VkStruct instance.
 	 */ 
-	 public void ppEnabledLayerNames(String[] ppEnabledLayerNames){
+	 public VkInstanceCreateInfo ppEnabledLayerNames(String[] ppEnabledLayerNames){
 		 this.ppEnabledLayerNames = ppEnabledLayerNames;
 		 setPpEnabledLayerNames0(this.ptr,  ppEnabledLayerNames);
+		 return this;
 	 }
 
 	/**
-	 * Get method for field ppEnabledLayerNames	[string_arr]<br>
+	 * Get method for field ppEnabledLayerNames	[string]<br>
 	 * Prototype: const char* const*  ppEnabledLayerNames
 	 */ 
 	 public String[] ppEnabledLayerNames(){
@@ -340,10 +326,14 @@ public class VkInstanceCreateInfo extends VkStruct {
 	/**
 	 * Set method for field enabledExtensionCount	[int]<br>
 	 * Prototype: uint32_t  enabledExtensionCount
+	 * 
+	 * @param enabledExtensionCount - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void enabledExtensionCount(int enabledExtensionCount){
+	 public VkInstanceCreateInfo enabledExtensionCount(int enabledExtensionCount){
 		 this.enabledExtensionCount = enabledExtensionCount;
 		 setEnabledExtensionCount0(this.ptr,  enabledExtensionCount);
+		 return this;
 	 }
 
 	/**
@@ -391,19 +381,19 @@ public class VkInstanceCreateInfo extends VkStruct {
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("VkInstanceCreateInfo [sType()=")
-                .append(sType())
-                .append(", pNext: ")
+         builder.append("VkInstanceCreateInfo [ ")
+				.append("sType: ").append(sType() )
+				.append(",\n pNext: ")
                 .append(pNext())
-                .append(", flags: ")
+				.append(",\n flags: ")
                 .append(flags())
                 .append(",\n pApplicationInfo: ")
                 .append(pApplicationInfo())
                 .append(",\n enabledLayerCount: ")
                 .append(enabledLayerCount())
-                .append(", ppEnabledLayerNames: ")
+				.append(",\n ppEnabledLayerNames: ")
                 .append(Arrays.toString(ppEnabledLayerNames()))
-                .append(", enabledExtensionCount: ")
+				.append(",\n enabledExtensionCount: ")
                 .append(enabledExtensionCount())
                 .append(",\n ppEnabledExtensionNames: ")
                 .append(Arrays.toString(ppEnabledExtensionNames()))
@@ -414,7 +404,7 @@ public class VkInstanceCreateInfo extends VkStruct {
 
 
     //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
 	 * native SET method for field sType	[vkenum]<br>

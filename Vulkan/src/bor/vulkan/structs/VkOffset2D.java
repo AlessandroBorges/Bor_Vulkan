@@ -1,20 +1,19 @@
 /**
  * Class wrapping Vulkan's VkOffset2D struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
-
-import java.nio.Buffer;
+ import bor.vulkan.*;
+ import bor.vulkan.enumerations.*;
+ import bor.vulkan.structs.*;
+ import java.nio.ByteBuffer;
+ import java.nio.Buffer;
 
 
 /**
@@ -30,9 +29,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkOffset2D extends VkStruct {
+ public class VkOffset2D extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -45,22 +44,19 @@ public class VkOffset2D extends VkStruct {
 	/** ID of this structure [55]  */
 	 public static final int TAG_ID = VKOFFSET2D_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkOffset2D> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
-	/**
+	
+/**
 	 *  int32_t 	x	[int]
 	 */ 
 	 int 	x;
-
-	/**
+	
+/**
 	 *  int32_t 	y	[int]
 	 */ 
 	 int 	y;
-
 	/**
 	 * Ctor
 	 */
@@ -74,15 +70,6 @@ public class VkOffset2D extends VkStruct {
 	 */
 	public VkOffset2D(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkOffset2D(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -108,34 +95,12 @@ public class VkOffset2D extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkOffset2D> createNullPointer(){
-	        P<VkOffset2D> p = new  P<VkOffset2D>(new VkOffset2D());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkOffset2D> getP() {
-	       if(p == null ){
-	           p = new P<VkOffset2D> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -144,10 +109,14 @@ public class VkOffset2D extends VkStruct {
 	/**
 	 * Set method for field x	[int]<br>
 	 * Prototype: int32_t  x
+	 * 
+	 * @param x - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void x(int x){
+	 public VkOffset2D x(int x){
 		 this.x = x;
 		 setX0(this.ptr,  x);
+		 return this;
 	 }
 
 	/**
@@ -163,10 +132,14 @@ public class VkOffset2D extends VkStruct {
 	/**
 	 * Set method for field y	[int]<br>
 	 * Prototype: int32_t  y
+	 * 
+	 * @param y - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void y(int y){
+	 public VkOffset2D y(int y){
 		 this.y = y;
 		 setY0(this.ptr,  y);
+		 return this;
 	 }
 
 	/**
@@ -180,8 +153,23 @@ public class VkOffset2D extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkOffset2D [ ")
+				.append("x: ").append(x() )
+				.append(",\n y: ")
+				.append(y() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
 	 * native SET method for field x	[int]<br>

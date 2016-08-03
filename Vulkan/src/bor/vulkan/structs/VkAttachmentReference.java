@@ -1,7 +1,7 @@
 /**
  * Class wrapping Vulkan's VkAttachmentReference struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.06 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -30,7 +30,7 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
 public class VkAttachmentReference extends VkStruct {
 
@@ -97,6 +97,13 @@ public class VkAttachmentReference extends VkStruct {
 		 return sizeOf(); 
 	}
 
+	/** 
+	 * Get ID of this structure 
+	 */
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
+
 
 
 
@@ -107,10 +114,14 @@ public class VkAttachmentReference extends VkStruct {
 	/**
 	 * Set method for field attachment	[int]<br>
 	 * Prototype: uint32_t  attachment
+	 * 
+	 * @param attachment - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void attachment(int attachment){
+	 public VkAttachmentReference attachment(int attachment){
 		 this.attachment = attachment;
 		 setAttachment0(this.ptr,  attachment);
+		 return this;
 	 }
 
 	/**
@@ -126,11 +137,15 @@ public class VkAttachmentReference extends VkStruct {
 	/**
 	 * Set method for field layout	[vkenum]<br>
 	 * Prototype: VkImageLayout  layout
+	 * 
+	 * @param layout - a instance of VkImageLayout.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void layout(VkImageLayout layout){
+	 public VkAttachmentReference layout(VkImageLayout layout){
 		 this.layout = layout;
 		 int enumVal = layout.getValue();
 		 setLayout0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**

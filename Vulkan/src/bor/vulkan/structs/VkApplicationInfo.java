@@ -382,9 +382,7 @@ public class VkApplicationInfo extends VkStruct {
 	 * native SET method for field pApplicationName	[string]<br>
 	 * Prototype: const char*  pApplicationName
 	 */ 
-	 private static native void setPApplicationName0(Buffer ptr, String _pApplicationName);/*MANUAL
-	 unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-         char* _pApplicationName = (char*)env->GetStringUTFChars(obj__pApplicationName, 0);
+	 private static native void setPApplicationName0(Buffer ptr, String _pApplicationName);/*
          
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  vkObj->pApplicationName = (const char*) (_pApplicationName);
@@ -420,9 +418,7 @@ public class VkApplicationInfo extends VkStruct {
 	 * native SET method for field pEngineName	[string]<br>
 	 * Prototype: const char*  pEngineName
 	 */ 
-	 private static native void setPEngineName0(Buffer ptr, String _pEngineName);/*MANUAL
-                unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-                char* _pEngineName = (char*)env->GetStringUTFChars(obj__pEngineName, 0);
+	 private static native void setPEngineName0(Buffer ptr, String _pEngineName);/*
 		
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  vkObj->pEngineName = (const char*) (_pEngineName);

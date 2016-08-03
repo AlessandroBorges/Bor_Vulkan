@@ -179,8 +179,12 @@ public abstract class VkStruct implements VkObject{
     
     public static final int VKCLEARVALUE_ID = 125;
     public static final int VKCLEARCOLORVALUE_ID = 126;
-
-        
+    // Vulkan 1.0.13 
+    public static final int VKDEBUGMARKEROBJECTNAMEINFOEXT_ID  = 127;
+    public static final int VKDEBUGMARKEROBJECTTAGINFOEXT_ID = 128;
+    public static final int VKDEBUGMARKERMARKERINFOEXT_ID = 129;
+    
+    public static final int VKPIPELINERASTERIZATIONSTATERASTERIZATIONORDERAMD_ID = 130;
     
     /**
      * A Direct Buffer to native
@@ -548,7 +552,17 @@ public abstract class VkStruct implements VkObject{
 
     }
     
-    
+    /**
+     * Delegate method for wrapPointer.
+     * @TODO remove dependency 
+     * 
+     * @param address - native address
+     * @param size - size in bytes
+     * @return Direct ByteBuffer.
+     */
+    protected static ByteBuffer wrapPointer(long address, int size){
+        return Utils.wrapPointer(address, size);
+    }
     
     
     /**
@@ -680,6 +694,7 @@ public abstract class VkStruct implements VkObject{
          case bor_vulkan_structs_VkStruct_VKDISPLAYPLANEPROPERTIESKHR_ID :  _size = sizeof(VkDisplayPlanePropertiesKHR);break;
          case bor_vulkan_structs_VkStruct_VKDISPLAYSURFACECREATEINFOKHR_ID :  _size = sizeof(VkDisplaySurfaceCreateInfoKHR);break;
          case bor_vulkan_structs_VkStruct_VKDISPLAYPRESENTINFOKHR_ID :  _size = sizeof(VkDisplayPresentInfoKHR);break;
+         
        #ifdef VK_USE_PLATFORM_XLIB_KHR
          case bor_vulkan_structs_VkStruct_VKXLIBSURFACECREATEINFOKHR_ID :  _size = sizeof(VkXlibSurfaceCreateInfoKHR);break;
        #endif  
@@ -699,7 +714,19 @@ public abstract class VkStruct implements VkObject{
          case bor_vulkan_structs_VkStruct_VKWIN32SURFACECREATEINFOKHR_ID :  _size = sizeof(VkWin32SurfaceCreateInfoKHR);break;
        #endif  
          case bor_vulkan_structs_VkStruct_VKDEBUGREPORTCALLBACKCREATEINFOEXT_ID :  _size = sizeof(VkDebugReportCallbackCreateInfoEXT);break;
-         default: _size = 0;break;
+         
+       #ifdef  VK_EXT_debug_marker
+         case bor_vulkan_structs_VkStruct_VKDEBUGMARKEROBJECTNAMEINFOEXT_ID :  _size = sizeof(VkDebugMarkerObjectNameInfoEXT);break;
+         case bor_vulkan_structs_VkStruct_VKDEBUGMARKEROBJECTTAGINFOEXT_ID :   _size = sizeof(VkDebugMarkerObjectTagInfoEXT);break;
+         case bor_vulkan_structs_VkStruct_VKDEBUGMARKERMARKERINFOEXT_ID :      _size = sizeof(VkDebugMarkerMarkerInfoEXT);break;
+       #endif
+       
+       #ifdef VK_AMD_rasterization_order
+        case bor_vulkan_structs_VkStruct_VKPIPELINERASTERIZATIONSTATERASTERIZATIONORDERAMD_ID :  
+                                                                 _size = sizeof(VkPipelineRasterizationStateRasterizationOrderAMD);break;
+       #endif
+         
+       default: _size = 0;break;
      }// switch
          
      return (jint)(_size);
@@ -847,6 +874,12 @@ public abstract class VkStruct implements VkObject{
             case VKWIN32SURFACECREATEINFOKHR_ID :  return   new VkWin32SurfaceCreateInfoKHR(buff);
            
             case VKDEBUGREPORTCALLBACKCREATEINFOEXT_ID :  return   new VkDebugReportCallbackCreateInfoEXT(buff);
+            
+            case VKDEBUGMARKEROBJECTNAMEINFOEXT_ID : return   new VkDebugMarkerObjectNameInfoEXT(buff);
+            case VKDEBUGMARKEROBJECTTAGINFOEXT_ID : return   new VkDebugMarkerObjectTagInfoEXT(buff);
+            case VKDEBUGMARKERMARKERINFOEXT_ID : return new VkDebugMarkerMarkerInfoEXT(buff);            
+            case VKPIPELINERASTERIZATIONSTATERASTERIZATIONORDERAMD_ID : return new VkPipelineRasterizationStateRasterizationOrderAMD(buff);
+            
             default: return  null;        
         } //switch
     }//create instance
