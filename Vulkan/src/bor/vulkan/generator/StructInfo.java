@@ -164,7 +164,7 @@ public class StructInfo {
         boolean[] hasBigBuffer = new boolean[sz];
         //int[] fixedArraySize_ = new int[sz];
         
-        boolean isKHR = name.contains("KHR");
+   //     boolean isKHR = name.contains("KHR");
         
         if(pkg==null)
             pkg="bor.vulkan.structs";
@@ -182,9 +182,9 @@ public class StructInfo {
         output += " import bor.vulkan.enumerations.*;\n\n";
       //  output += " import bor.vulkan.structs.*;\n";
         
-        if(isKHR){
-            output += " import bor.vulkan.khr.*;\n";
-        }
+//        if(isKHR){
+//            output += " import bor.vulkan.khr.*;\n";
+//        }
             
         output += " import java.util.*;\n";
         output += " import java.nio.*;\n\n";
@@ -247,7 +247,7 @@ public class StructInfo {
            else
               output += tab;// + ""; // " protected "
            String initCode = regularArray ? " = new " + jType.replace("[]","")+"["+arraySize+"]":"";
-           output += jType + " \t" + field + initCode + ";\n"; 
+           output += jType.replace(" final ", "") + " \t" + field + initCode + ";\n"; 
            
                    
            
@@ -576,22 +576,40 @@ public class StructInfo {
                 // Comment 
                 outputNat += "\t/**\n\t * Native SET method for field " + field +  "\t" + typeOut +  "<br>" +
                               "\n\t * Prototype: " + cType + "  " + field + 
-                              "\n\t */ \n";
-               
+                              "\n\t */ \n";               
               
                String stmt = "";
-               
-               if(regularArray){
+               if(typeMod.contains("Buffer")){
+                   stmt += "\t\t  vkObj->" + field + " = ("+ cType +") (_" + field + ");\n";
+               }else if(regularArray){// fixed size array                  
                    stmt +=  "\t\t  memcpy(&(vkObj->" + field + "), &_" + field + 
                              ", " + size +" * sizeof("+cType.replace("[]", "")+"));\n";                      
-               }else if(jType.contains("String")){
+               }else if(isTypeArray[i]){ // generic C style array
+                   String countField = this.fields[i-1];
+                   String cTypePure = cType.replace("[]", "").replace("const ", " ").replaceFirst("\\*", "").trim();
+                   
+                   stmt += "\t\t  if( NULL == _" + field+" ){\n"
+                         + "\t\t    vkObj->"+countField+" = 0;\n"
+                         + "\t\t    FREE_IT(vkObj->"+countField+");\n"
+                      // + "\t\t    if(vkObj->"+field+")\n"
+                      // + "\t\t        free(vkObj->"+field+");\n"
+                      // + "\t\t        vkObj->"+field+" = NULL;\n"
+                         + "\t\t    return;\n"
+                         + "\t\t   }\n"
+                         + "\t\t  uint32_t count = (uint32_t)env->GetArrayLength("+field+");\n"
+                         + "\t\t  vkObj->"+countField+" = 0; // safe in case of fail to alloc\n"
+                         + "\t\t  vkObj->" + field+" = CALLOC(count, "+cTypePure+");\n"                        
+                         + "\t\t  memcpy(&(vkObj->" + field + "), &_" + field +", count * sizeof("+cTypePure+"));\n"
+                         + "\t\t  vkObj->"+countField+" = count;\n";
+                   
+               } else if(jType.contains("String")){
                    if(isFixedArray[i]){ // just copy
                        stmt +="\t\t  strncpy(vkObj->"+field+", _" + field +", strlen(_"+field+")+1);\n";               
                    }else{// must allocate string
                        stmt +="\t\t  vkObj->"+field+" = cloneStr(_"+field+");\n";
                    }
                }
-               else{
+               else{// simple past value
                    stmt = "\t\t  vkObj->" + field + " = ("+ cType +") (_" + field + ");\n";
                }
                
@@ -616,7 +634,7 @@ public class StructInfo {
                         "\n\t * Prototype: " + cType + "  " + field + 
                         "\n\t */ \n";
            String xtraParams = "";
-           
+           String cTypePure = cType.replace("[]", "").replace("const ", " ").replaceFirst("\\*", "").trim();
            String nativeRes = "\t\t  return (" + jniType + ") (vkObj->"+ field + ");\n";
            if(type == CLASS_TYPE.VKHANDLE || type == CLASS_TYPE.VKPFN){
                typeMod = "long";
@@ -624,11 +642,23 @@ public class StructInfo {
            }else if (type == CLASS_TYPE.VKHANDLE_ARRAY || type == CLASS_TYPE.VKSTRUCT_ARRAY){
                    typeMod = "long";
                    nativeRes = "\t\t  return (jlong) reinterpret_cast<jlong>(vkObj->"+field +");\n";
-           }else if(regularArray){
-               xtraParams += ", " + typeMod + " " + field;
-               nativeRes =  "\t\t  memcpy(&_" + field + ", &(vkObj->" + field +"), "+ 
-                                          size +" * sizeof("+cType.replace("[]", "")+"));\n"+
+           }else if(isTypeArray[i] & !isFixedArray[i]){
+               xtraParams += ", " + typeMod + " _" + field;
+               String countField =  this.fields[i-1];               
+               nativeRes =  "\t\t  if( 0 == vkObj->" + countField+"){ \n"
+                          + "\t\t     return NULL;\n"
+                          + "\t\t   }\n"
+                          + "\t\t  uint32_t count = (uint32_t)env->GetArrayLength(_"+field+");\n"
+                          + "\t\t  if(vkObj->" + field+" == NULL || count != vkObj->" + countField+"){\n"
+                          + "\t\t     FREE_IT(vkObj->" + field+"); \n"
+                          + "\t\t     vkObj->" + field+" = CALLOC(count, "+cTypePure+");\n"
+                          + "\t\t   }\n "
+                          + "\t\t  memcpy(&_" + field + ", &(vkObj->" + field +"), count * sizeof("+cTypePure+"));\n"+
                             "\t\t  return _"+field+";\n";               
+           }else if (isFixedArray[i]){
+               xtraParams += ", " + typeMod + " _" + field;
+               nativeRes =  "\t\t  memcpy(&_" + field + ", &(vkObj->" + field +"), "+ size +" * sizeof("+cTypePure+"));\n"+
+                            "\t\t  return _"+field+";\n";
            }
          
            if(jType.equalsIgnoreCase("string")){
