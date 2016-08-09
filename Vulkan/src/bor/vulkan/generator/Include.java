@@ -24,6 +24,8 @@ public class Include {
     String                      name;
     String[]                    methodNames;
     String[]                    methods;
+    
+    Map<String,String>  mapNameCodes;
 
     /**
      * Creates a include object
@@ -103,6 +105,48 @@ public class Include {
     public String[] getMethodNames() {
         return methodNames;
     }
+    
+    /**
+     * Return a map with method names as key and values as codes
+     * @return
+     */
+    public Map<String, String> getMap(){
+        if(mapNameCodes==null){
+            mapNameCodes  = new HashMap<String, String>();
+            for (int i = 0; i < methodNames.length; i++) {
+                mapNameCodes.put(methodNames[i], methods[i]);
+            }
+        }
+        return mapNameCodes;
+    }
+   
+    /**
+     * Pop a method from name
+     * @param methodName - name of method to pop
+     * @return codes from method
+     */
+    public String popMethod(String methodName){
+        Map<String, String> map = getMap();
+        String codes = map.get(methodName);
+        map.remove(methodName);
+        return codes;
+    }
+    
+    /**
+     * Pop all remaining methods
+     * @return string with remaining methods
+     */
+    public String popAllMethods(){
+        Map<String, String> map = getMap();
+        String codes = "";        
+        Set<String> keys= map.keySet();
+        for (String key : keys) {
+            codes += map.get(key) + "\n\n"; 
+        }
+        map.clear();
+        return codes;
+    }
+    
 
     /*
      * (non-Javadoc)

@@ -486,7 +486,7 @@ public class Util {
             lines = Files.readAllLines(path, Charset.defaultCharset());
         } catch (IOException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
+            //e.printStackTrace();
         }
         return lines;
     }
