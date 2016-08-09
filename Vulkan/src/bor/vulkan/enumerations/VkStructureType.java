@@ -1,5 +1,5 @@
 /**
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
@@ -79,6 +79,9 @@ import bor.enumerable.*;
  *     VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT = 1000022000,
  *     VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_TAG_INFO_EXT = 1000022001,
  *     VK_STRUCTURE_TYPE_DEBUG_MARKER_MARKER_INFO_EXT = 1000022002,
+ *     VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV = 1000026000,
+ *     VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV = 1000026001,
+ *     VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV = 1000026002,
  *     VK_STRUCTURE_TYPE_BEGIN_RANGE = VK_STRUCTURE_TYPE_APPLICATION_INFO,
  *     VK_STRUCTURE_TYPE_END_RANGE = VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO,
  *     VK_STRUCTURE_TYPE_RANGE_SIZE = (VK_STRUCTURE_TYPE_LOADER_DEVICE_CREATE_INFO - VK_STRUCTURE_TYPE_APPLICATION_INFO + 1),
@@ -94,7 +97,7 @@ public class VkStructureType extends IntEnum<VkStructureType> {
    private static final Class<VkStructureType> myClass = VkStructureType.class;
 
    /** values */
-   private static VkStructureType[] values = new VkStructureType[65];
+   private static VkStructureType[] values = new VkStructureType[68];
 
    public static final VkStructureType VK_STRUCTURE_TYPE_APPLICATION_INFO = new VkStructureType("VK_STRUCTURE_TYPE_APPLICATION_INFO", 0, 0);
    public static final VkStructureType VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO = new VkStructureType("VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO", 1, 1);
@@ -161,6 +164,9 @@ public class VkStructureType extends IntEnum<VkStructureType> {
    public static final VkStructureType VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT = new VkStructureType("VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_NAME_INFO_EXT", 62, 1000022000);
    public static final VkStructureType VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_TAG_INFO_EXT = new VkStructureType("VK_STRUCTURE_TYPE_DEBUG_MARKER_OBJECT_TAG_INFO_EXT", 63, 1000022001);
    public static final VkStructureType VK_STRUCTURE_TYPE_DEBUG_MARKER_MARKER_INFO_EXT = new VkStructureType("VK_STRUCTURE_TYPE_DEBUG_MARKER_MARKER_INFO_EXT", 64, 1000022002);
+   public static final VkStructureType VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV = new VkStructureType("VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_IMAGE_CREATE_INFO_NV", 65, 1000026000);
+   public static final VkStructureType VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV = new VkStructureType("VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_BUFFER_CREATE_INFO_NV", 66, 1000026001);
+   public static final VkStructureType VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV = new VkStructureType("VK_STRUCTURE_TYPE_DEDICATED_ALLOCATION_MEMORY_ALLOCATE_INFO_NV", 67, 1000026002);
    
    /**
     * Return all values available in this enumeration

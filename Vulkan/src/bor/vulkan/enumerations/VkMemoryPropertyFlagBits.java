@@ -1,15 +1,11 @@
 /**
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
 package bor.vulkan.enumerations;
-
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
 
 import bor.enumerable.*;
 
@@ -90,29 +86,13 @@ public class VkMemoryPropertyFlagBits extends IntEnum<VkMemoryPropertyFlagBits> 
         }
         //ORed values        
         int test = value;
-        List<Integer> bits = new ArrayList<Integer>();
-        
         for (int i = 0; i < values.length; i++) {
             int v = values[i].getValue();
-            bits.add(v);
             if((test & v) != v){
-                bits.clear();
                 return null;
             }
         }
-                
-        String name = "[";
-        int c = 0;
-        for (Integer i : bits) {
-            if(c!=0)
-                name +=", ";
-            c++;
-            name += VkMemoryPropertyFlagBits.fromValue(i).toString();
-        }
-        
-        name += "]";
-        
-        
+        String name = myGetClass().getSimpleName() + " from value [" + value +"]";
         VkMemoryPropertyFlagBits flag = new VkMemoryPropertyFlagBits(name, -1, value); 
         return flag;
     }
