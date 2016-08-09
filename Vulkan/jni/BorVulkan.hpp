@@ -6,24 +6,24 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-      
+
  #if defined(_WIN32)
         #define VK_USE_PLATFORM_WIN32_KHR 1
         #define WIN32_LEAN_AND_MEAN 1
         #define VC_EXTRALEAN 1
- #elif defined(__ANDROID__) 
+ #elif defined(__ANDROID__)
        #define VK_USE_PLATFORM_ANDROID_KHR 1
- #else      
+ #else
        #define VK_USE_PLATFORM_XCB_KHR 1
        #define VK_USE_PLATFORM_XLIB_KHR 1
- #endif   
-      
+ #endif
+
     // include other platform here
-      
+
  #include <stdio.h>
- #include <stdlib.h>  
+ #include <stdlib.h>
  #include <cstring>
- 
+
  #define VK_NO_PROTOTYPES 1
  #include <vulkan_wrapper.h>
  #include <jni.h>
@@ -37,9 +37,10 @@ extern "C" {
 	      TYPE s = reinterpret_cast<TYPE>(JAVA_ARRAY[i]);\
 		  C_ARRAY[i] = s; \
 	   }\
-#define FREE_IT (OBJ) \
-    { if(obj != NULL) free(obj);\	   
- 
+
+#define FREE_IT(OBJ) \
+    { if(OBJ != NULL) {free(OBJ); OBJ = NULL;}}\
+
 inline char* cloneStr(const char* src){
 	 if(src==NULL) return NULL;
 	 int len = strlen(src)+1;
@@ -48,9 +49,9 @@ inline char* cloneStr(const char* src){
 	 return dst;
  }
 
- 
+
 #ifdef __cplusplus
 }
-#endif 
-	
+#endif
+
  #endif
