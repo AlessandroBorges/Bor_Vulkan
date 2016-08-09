@@ -70,6 +70,14 @@ public class BigBuffer<T> {
     }
     
     /**
+     * Get the address of array.
+     * @return
+     */
+    public long getBufferAddress(){
+        return Utils.getNativeAddress(nativeBufferArray);
+    }
+    
+    /**
      * @return the nativeBufferArray
      */
     public ByteBuffer getBuffer() {
@@ -179,6 +187,7 @@ public class BigBuffer<T> {
     
     /**
      * Read current C/C++ address in current position of buff.  
+     * Used to build HandleArrays
      * @param buff - ByteBuffer containing adresses at current position
      * @param length - address lenght. It can be 4 or 8 bytes long.
      * @return current Address as 64 bits value.
