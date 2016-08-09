@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkDescriptorSetLayoutBinding struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -33,9 +34,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkDescriptorSetLayoutBinding extends VkStruct {
+ public class VkDescriptorSetLayoutBinding extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -48,37 +49,35 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	/** ID of this structure [71]  */
 	 public static final int TAG_ID = VKDESCRIPTORSETLAYOUTBINDING_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkDescriptorSetLayoutBinding> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  uint32_t 	binding	[int]
 	 */ 
-	 int 	binding;
-
+	int 	binding;
+	
 	/**
 	 *  VkDescriptorType 	descriptorType	[vkenum]
 	 */ 
-	 VkDescriptorType 	descriptorType;
-
+	VkDescriptorType 	descriptorType;
+	
 	/**
 	 *  uint32_t 	descriptorCount	[int]
 	 */ 
-	 int 	descriptorCount;
-
+	int 	descriptorCount;
+	
 	/**
 	 *  VkShaderStageFlags 	stageFlags	[int]
 	 */ 
-	 int 	stageFlags;
-
+	int 	stageFlags;
+	
 	/**
-	 *  const VkSampler* 	pImmutableSamplers	[vkhandle]
+	 *  const VkSampler* 	pImmutableSamplers	[vkhandle_array_array]
 	 */ 
-	  VkSampler  	pImmutableSamplers;
-
+	  VkSampler[]  	pImmutableSamplers;
+	 private BigBuffer 	 pImmutableSamplersBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -92,15 +91,6 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	 */
 	public VkDescriptorSetLayoutBinding(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkDescriptorSetLayoutBinding(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -126,34 +116,12 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkDescriptorSetLayoutBinding> createNullPointer(){
-	        P<VkDescriptorSetLayoutBinding> p = new  P<VkDescriptorSetLayoutBinding>(new VkDescriptorSetLayoutBinding());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkDescriptorSetLayoutBinding> getP() {
-	       if(p == null ){
-	           p = new P<VkDescriptorSetLayoutBinding> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -162,10 +130,14 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	/**
 	 * Set method for field binding	[int]<br>
 	 * Prototype: uint32_t  binding
+	 * 
+	 * @param binding - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void binding(int binding){
+	 public VkDescriptorSetLayoutBinding binding(int binding){
 		 this.binding = binding;
 		 setBinding0(this.ptr,  binding);
+		 return this;
 	 }
 
 	/**
@@ -181,11 +153,15 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	/**
 	 * Set method for field descriptorType	[vkenum]<br>
 	 * Prototype: VkDescriptorType  descriptorType
+	 * 
+	 * @param descriptorType - a instance of VkDescriptorType.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void descriptorType(VkDescriptorType descriptorType){
+	 public VkDescriptorSetLayoutBinding descriptorType(VkDescriptorType descriptorType){
 		 this.descriptorType = descriptorType;
 		 int enumVal = descriptorType.getValue();
 		 setDescriptorType0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -201,10 +177,14 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	/**
 	 * Set method for field descriptorCount	[int]<br>
 	 * Prototype: uint32_t  descriptorCount
+	 * 
+	 * @param descriptorCount - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void descriptorCount(int descriptorCount){
+	 public VkDescriptorSetLayoutBinding descriptorCount(int descriptorCount){
 		 this.descriptorCount = descriptorCount;
 		 setDescriptorCount0(this.ptr,  descriptorCount);
+		 return this;
 	 }
 
 	/**
@@ -220,10 +200,14 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	/**
 	 * Set method for field stageFlags	[int]<br>
 	 * Prototype: VkShaderStageFlags  stageFlags
+	 * 
+	 * @param stageFlags - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void stageFlags(int stageFlags){
+	 public VkDescriptorSetLayoutBinding stageFlags(int stageFlags){
 		 this.stageFlags = stageFlags;
 		 setStageFlags0(this.ptr,  stageFlags);
+		 return this;
 	 }
 
 	/**
@@ -237,41 +221,64 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pImmutableSamplers	[vkhandle]<br>
+	 * Set method for field pImmutableSamplers	[vkhandle_array]<br>
 	 * Prototype: const VkSampler*  pImmutableSamplers
+	 * 
+	 * @param pImmutableSamplers - a instance of VkSampler[].
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pImmutableSamplers( VkSampler  pImmutableSamplers){
+	 public VkDescriptorSetLayoutBinding pImmutableSamplers(VkSampler[] pImmutableSamplers){
 		 this.pImmutableSamplers = pImmutableSamplers;
-		 ByteBuffer buff = (pImmutableSamplers==null) ? null : pImmutableSamplers.getPointer();
-		 setPImmutableSamplers0(this.ptr, buff);
+		 this.pImmutableSamplersBUFFER = new BigBuffer(pImmutableSamplers, false);
+		 setPImmutableSamplers0(this.ptr, pImmutableSamplersBUFFER.getBuffer());
+		 return this;
 	 }
 
 	/**
-	 * Get method for field pImmutableSamplers	[vkhandle]<br>
+	 * Get method for field pImmutableSamplers	[vkhandle_array]<br>
 	 * Prototype: const VkSampler*  pImmutableSamplers
 	 */ 
-	 public  VkSampler  pImmutableSamplers(){
-
-		 long handle = getPImmutableSamplers0(super.ptr);
-		 if(handle == 0){
-		    this.pImmutableSamplers = null;
+	 public VkSampler[] pImmutableSamplers(){
+		 long ptr = getPImmutableSamplers0(this.ptr);
+		 if(ptr == 0L){
 		    return null;
-		  }  
-
-		 if(this.pImmutableSamplers == null){
-		    this.pImmutableSamplers = new VkHandle(handle);
-		 }else{
-		    ((VkHandle)this.pImmutableSamplers).setPointer(handle);
-		  }
+		 }
+		 if(pImmutableSamplersBUFFER != null && ptr == pImmutableSamplersBUFFER.getBufferAddress()){ //same buffer 
+		    pImmutableSamplersBUFFER.update();
+		    return pImmutableSamplers;
+		  }else{
+		     (new UnsupportedOperationException("There is no VKHandle[] for backup.")).printStackTrace();
+		   }
 		 return this.pImmutableSamplers;
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkDescriptorSetLayoutBinding [ ")
+				.append("binding: ").append(binding() )
+				.append(",\n descriptorType: ")
+				.append(descriptorType() )
+				.append(",\n descriptorCount: ")
+				.append(descriptorCount() )
+				.append(",\n stageFlags: ")
+				.append(stageFlags() )
+				.append(",\n pImmutableSamplers: ")
+				.append(Arrays.toString(pImmutableSamplers()) )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field binding	[int]<br>
+	 * Native SET method for field binding	[int]<br>
 	 * Prototype: uint32_t  binding
 	 */ 
 	 private static native void setBinding0(Buffer ptr, int _binding);/*
@@ -280,7 +287,7 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field binding	[int]<br>
+	 * Native GET method for field binding	[int]<br>
 	 * Prototype: uint32_t  binding
 	 */ 
 	 private static native int getBinding0(Buffer ptr);/*
@@ -289,7 +296,7 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field descriptorType	[vkenum]<br>
+	 * Native SET method for field descriptorType	[vkenum]<br>
 	 * Prototype: VkDescriptorType  descriptorType
 	 */ 
 	 private static native void setDescriptorType0(Buffer ptr, int  _descriptorType);/*
@@ -298,7 +305,7 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field descriptorType	[vkenum]<br>
+	 * Native GET method for field descriptorType	[vkenum]<br>
 	 * Prototype: VkDescriptorType  descriptorType
 	 */ 
 	 private static native int  getDescriptorType0(Buffer ptr);/*
@@ -307,7 +314,7 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field descriptorCount	[int]<br>
+	 * Native SET method for field descriptorCount	[int]<br>
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 private static native void setDescriptorCount0(Buffer ptr, int _descriptorCount);/*
@@ -316,7 +323,7 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field descriptorCount	[int]<br>
+	 * Native GET method for field descriptorCount	[int]<br>
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 private static native int getDescriptorCount0(Buffer ptr);/*
@@ -325,7 +332,7 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field stageFlags	[int]<br>
+	 * Native SET method for field stageFlags	[int]<br>
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
 	 private static native void setStageFlags0(Buffer ptr, int _stageFlags);/*
@@ -334,7 +341,7 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field stageFlags	[int]<br>
+	 * Native GET method for field stageFlags	[int]<br>
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
 	 private static native int getStageFlags0(Buffer ptr);/*
@@ -343,21 +350,22 @@ public class VkDescriptorSetLayoutBinding extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pImmutableSamplers	[vkhandle]<br>
+	 * Native SET method for field pImmutableSamplers	[vkhandle_array]<br>
 	 * Prototype: const VkSampler*  pImmutableSamplers
 	 */ 
-	 private static native void setPImmutableSamplers0(Buffer ptr, java.nio.ByteBuffer  _pImmutableSamplers);/*
+	 private static native void setPImmutableSamplers0(Buffer ptr, ByteBuffer  _pImmutableSamplers);/*
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
 		  vkObj->pImmutableSamplers = (const VkSampler*) (_pImmutableSamplers);
 	  */
 
 	/**
-	 * native GET method for field pImmutableSamplers	[vkhandle]<br>
+	 * Native GET method for field pImmutableSamplers	[vkhandle_array]<br>
 	 * Prototype: const VkSampler*  pImmutableSamplers
 	 */ 
 	 private static native long getPImmutableSamplers0(Buffer ptr);/*
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pImmutableSamplers);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pImmutableSamplers);
+	 */
 
 
 

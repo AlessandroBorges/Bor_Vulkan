@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkFramebufferCreateInfo struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -37,9 +38,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkFramebufferCreateInfo extends VkStruct {
+ public class VkFramebufferCreateInfo extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -52,57 +53,55 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	/** ID of this structure [80]  */
 	 public static final int TAG_ID = VKFRAMEBUFFERCREATEINFO_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkFramebufferCreateInfo> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	 VkStructureType 	sType;
-
+	VkStructureType 	sType;
+	
 	/**
 	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 VkObject 	pNext;
-
+	VkObject 	pNext;
+	
 	/**
 	 *  VkFramebufferCreateFlags 	flags	[int]
 	 */ 
-	 int 	flags;
-
+	int 	flags;
+	
 	/**
 	 *  VkRenderPass 	renderPass	[vkhandle]
 	 */ 
-	 VkRenderPass 	renderPass;
-
+	VkRenderPass 	renderPass;
+	
 	/**
 	 *  uint32_t 	attachmentCount	[int]
 	 */ 
-	 int 	attachmentCount;
-
+	int 	attachmentCount;
+	
 	/**
-	 *  const VkImageView* 	pAttachments	[vkhandle]
+	 *  const VkImageView* 	pAttachments	[vkhandle_array_array]
 	 */ 
-	  VkImageView  	pAttachments;
-
+	  VkImageView[]  	pAttachments;
+	 private BigBuffer 	 pAttachmentsBUFFER;
+	
 	/**
 	 *  uint32_t 	width	[int]
 	 */ 
-	 int 	width;
-
+	int 	width;
+	
 	/**
 	 *  uint32_t 	height	[int]
 	 */ 
-	 int 	height;
-
+	int 	height;
+	
 	/**
 	 *  uint32_t 	layers	[int]
 	 */ 
-	 int 	layers;
-
+	int 	layers;
 	/**
 	 * Ctor
 	 */
@@ -116,15 +115,6 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 */
 	public VkFramebufferCreateInfo(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkFramebufferCreateInfo(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -150,34 +140,12 @@ public class VkFramebufferCreateInfo extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkFramebufferCreateInfo> createNullPointer(){
-	        P<VkFramebufferCreateInfo> p = new  P<VkFramebufferCreateInfo>(new VkFramebufferCreateInfo());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkFramebufferCreateInfo> getP() {
-	       if(p == null ){
-	           p = new P<VkFramebufferCreateInfo> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -186,11 +154,15 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	/**
 	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
+	 * 
+	 * @param sType - a instance of VkStructureType.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void sType(VkStructureType sType){
+	 public VkFramebufferCreateInfo sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
 		 setSType0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -206,11 +178,15 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	/**
 	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
+	 * 
+	 * @param pNext - a instance of VkObject.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public VkFramebufferCreateInfo pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
 		 setPNext0(this.ptr, buff);
+		 return this;
 	 }
 
 	/**
@@ -223,7 +199,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 		    this.pNext = null;
 		    return null;
 		  } else 
- 		 if(this.pNext == null){
+		 if(this.pNext == null){
 		    this.pNext = (VkObject)(new VkHandle(pointer));
 		 }else{
 		    this.pNext.setPointer(pointer);
@@ -234,10 +210,14 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	/**
 	 * Set method for field flags	[int]<br>
 	 * Prototype: VkFramebufferCreateFlags  flags
+	 * 
+	 * @param flags - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void flags(int flags){
+	 public VkFramebufferCreateInfo flags(int flags){
 		 this.flags = flags;
 		 setFlags0(this.ptr,  flags);
+		 return this;
 	 }
 
 	/**
@@ -253,11 +233,15 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	/**
 	 * Set method for field renderPass	[vkhandle]<br>
 	 * Prototype: VkRenderPass  renderPass
+	 * 
+	 * @param renderPass - a instance of VkRenderPass.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void renderPass(VkRenderPass renderPass){
+	 public VkFramebufferCreateInfo renderPass(VkRenderPass renderPass){
 		 this.renderPass = renderPass;
-		 ByteBuffer buff = (renderPass==null) ? null : renderPass.getPointer();
-		 setRenderPass0(this.ptr, buff);
+		 long handle = (renderPass==null) ? 0L : renderPass.getNativeHandle();
+		 setRenderPass0(this.ptr, handle);
+		 return this;
 	 }
 
 	/**
@@ -275,7 +259,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 		 if(this.renderPass == null){
 		    this.renderPass = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.renderPass).setPointer(handle);
+		    ((VkHandle)this.renderPass).setNativeHandle(handle);
 		  }
 		 return this.renderPass;
 	 }
@@ -283,10 +267,14 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	/**
 	 * Set method for field attachmentCount	[int]<br>
 	 * Prototype: uint32_t  attachmentCount
+	 * 
+	 * @param attachmentCount - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void attachmentCount(int attachmentCount){
+	 public VkFramebufferCreateInfo attachmentCount(int attachmentCount){
 		 this.attachmentCount = attachmentCount;
 		 setAttachmentCount0(this.ptr,  attachmentCount);
+		 return this;
 	 }
 
 	/**
@@ -300,42 +288,48 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pAttachments	[vkhandle]<br>
+	 * Set method for field pAttachments	[vkhandle_array]<br>
 	 * Prototype: const VkImageView*  pAttachments
+	 * 
+	 * @param pAttachments - a instance of VkImageView[].
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pAttachments( VkImageView  pAttachments){
+	 public VkFramebufferCreateInfo pAttachments(VkImageView[] pAttachments){
 		 this.pAttachments = pAttachments;
-		 ByteBuffer buff = (pAttachments==null) ? null : pAttachments.getPointer();
-		 setPAttachments0(this.ptr, buff);
+		 this.pAttachmentsBUFFER = new BigBuffer(pAttachments, false);
+		 setPAttachments0(this.ptr, pAttachmentsBUFFER.getBuffer());
+		 return this;
 	 }
 
 	/**
-	 * Get method for field pAttachments	[vkhandle]<br>
+	 * Get method for field pAttachments	[vkhandle_array]<br>
 	 * Prototype: const VkImageView*  pAttachments
 	 */ 
-	 public  VkImageView  pAttachments(){
-
-		 long handle = getPAttachments0(super.ptr);
-		 if(handle == 0){
-		    this.pAttachments = null;
+	 public VkImageView[] pAttachments(){
+		 long ptr = getPAttachments0(this.ptr);
+		 if(ptr == 0L){
 		    return null;
-		  }  
-
-		 if(this.pAttachments == null){
-		    this.pAttachments = new VkHandle(handle);
-		 }else{
-		    ((VkHandle)this.pAttachments).setPointer(handle);
-		  }
+		 }
+		 if(pAttachmentsBUFFER != null && ptr == pAttachmentsBUFFER.getBufferAddress()){ //same buffer 
+		    pAttachmentsBUFFER.update();
+		    return pAttachments;
+		  }else{
+		     (new UnsupportedOperationException("There is no VKHandle[] for backup.")).printStackTrace();
+		   }
 		 return this.pAttachments;
 	 }
 
 	/**
 	 * Set method for field width	[int]<br>
 	 * Prototype: uint32_t  width
+	 * 
+	 * @param width - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void width(int width){
+	 public VkFramebufferCreateInfo width(int width){
 		 this.width = width;
 		 setWidth0(this.ptr,  width);
+		 return this;
 	 }
 
 	/**
@@ -351,10 +345,14 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	/**
 	 * Set method for field height	[int]<br>
 	 * Prototype: uint32_t  height
+	 * 
+	 * @param height - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void height(int height){
+	 public VkFramebufferCreateInfo height(int height){
 		 this.height = height;
 		 setHeight0(this.ptr,  height);
+		 return this;
 	 }
 
 	/**
@@ -370,10 +368,14 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	/**
 	 * Set method for field layers	[int]<br>
 	 * Prototype: uint32_t  layers
+	 * 
+	 * @param layers - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void layers(int layers){
+	 public VkFramebufferCreateInfo layers(int layers){
 		 this.layers = layers;
 		 setLayers0(this.ptr,  layers);
+		 return this;
 	 }
 
 	/**
@@ -387,11 +389,40 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkFramebufferCreateInfo [ ")
+				.append("sType: ").append(sType() )
+				.append(",\n pNext: ")
+				.append(pNext() )
+				.append(",\n flags: ")
+				.append(flags() )
+				.append(",\n renderPass: ")
+				.append(renderPass() )
+				.append(",\n attachmentCount: ")
+				.append(attachmentCount() )
+				.append(",\n pAttachments: ")
+				.append(Arrays.toString(pAttachments()) )
+				.append(",\n width: ")
+				.append(width() )
+				.append(",\n height: ")
+				.append(height() )
+				.append(",\n layers: ")
+				.append(layers() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field sType	[vkenum]<br>
+	 * Native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
@@ -400,7 +431,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field sType	[vkenum]<br>
+	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
@@ -409,7 +440,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pNext	[vkobject]<br>
+	 * Native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
@@ -418,15 +449,16 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pNext	[vkobject]<br>
+	 * Native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+	 */
 
 	/**
-	 * native SET method for field flags	[int]<br>
+	 * Native SET method for field flags	[int]<br>
 	 * Prototype: VkFramebufferCreateFlags  flags
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
@@ -435,7 +467,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field flags	[int]<br>
+	 * Native GET method for field flags	[int]<br>
 	 * Prototype: VkFramebufferCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
@@ -444,24 +476,25 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field renderPass	[vkhandle]<br>
+	 * Native SET method for field renderPass	[vkhandle]<br>
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
-	 private static native void setRenderPass0(Buffer ptr, java.nio.ByteBuffer  _renderPass);/*
+	 private static native void setRenderPass0(Buffer ptr, long  _renderPass);/*
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  vkObj->renderPass = (VkRenderPass) (_renderPass);
 	  */
 
 	/**
-	 * native GET method for field renderPass	[vkhandle]<br>
+	 * Native GET method for field renderPass	[vkhandle]<br>
 	 * Prototype: VkRenderPass  renderPass
 	 */ 
 	 private static native long getRenderPass0(Buffer ptr);/*
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->renderPass);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->renderPass);
+	 */
 
 	/**
-	 * native SET method for field attachmentCount	[int]<br>
+	 * Native SET method for field attachmentCount	[int]<br>
 	 * Prototype: uint32_t  attachmentCount
 	 */ 
 	 private static native void setAttachmentCount0(Buffer ptr, int _attachmentCount);/*
@@ -470,7 +503,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field attachmentCount	[int]<br>
+	 * Native GET method for field attachmentCount	[int]<br>
 	 * Prototype: uint32_t  attachmentCount
 	 */ 
 	 private static native int getAttachmentCount0(Buffer ptr);/*
@@ -479,24 +512,25 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pAttachments	[vkhandle]<br>
+	 * Native SET method for field pAttachments	[vkhandle_array]<br>
 	 * Prototype: const VkImageView*  pAttachments
 	 */ 
-	 private static native void setPAttachments0(Buffer ptr, java.nio.ByteBuffer  _pAttachments);/*
+	 private static native void setPAttachments0(Buffer ptr, ByteBuffer  _pAttachments);/*
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  vkObj->pAttachments = (const VkImageView*) (_pAttachments);
 	  */
 
 	/**
-	 * native GET method for field pAttachments	[vkhandle]<br>
+	 * Native GET method for field pAttachments	[vkhandle_array]<br>
 	 * Prototype: const VkImageView*  pAttachments
 	 */ 
 	 private static native long getPAttachments0(Buffer ptr);/*
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pAttachments);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pAttachments);
+	 */
 
 	/**
-	 * native SET method for field width	[int]<br>
+	 * Native SET method for field width	[int]<br>
 	 * Prototype: uint32_t  width
 	 */ 
 	 private static native void setWidth0(Buffer ptr, int _width);/*
@@ -505,7 +539,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field width	[int]<br>
+	 * Native GET method for field width	[int]<br>
 	 * Prototype: uint32_t  width
 	 */ 
 	 private static native int getWidth0(Buffer ptr);/*
@@ -514,7 +548,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field height	[int]<br>
+	 * Native SET method for field height	[int]<br>
 	 * Prototype: uint32_t  height
 	 */ 
 	 private static native void setHeight0(Buffer ptr, int _height);/*
@@ -523,7 +557,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field height	[int]<br>
+	 * Native GET method for field height	[int]<br>
 	 * Prototype: uint32_t  height
 	 */ 
 	 private static native int getHeight0(Buffer ptr);/*
@@ -532,7 +566,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field layers	[int]<br>
+	 * Native SET method for field layers	[int]<br>
 	 * Prototype: uint32_t  layers
 	 */ 
 	 private static native void setLayers0(Buffer ptr, int _layers);/*
@@ -541,7 +575,7 @@ public class VkFramebufferCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field layers	[int]<br>
+	 * Native GET method for field layers	[int]<br>
 	 * Prototype: uint32_t  layers
 	 */ 
 	 private static native int getLayers0(Buffer ptr);/*

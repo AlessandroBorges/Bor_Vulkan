@@ -1,18 +1,21 @@
 /**
  * Class wrapping Vulkan's VkClearRect struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import bor.vulkan.P;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -29,9 +32,9 @@ import bor.vulkan.P;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkClearRect extends VkStruct {
+ public class VkClearRect extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -44,27 +47,24 @@ public class VkClearRect extends VkStruct {
 	/** ID of this structure [97]  */
 	 public static final int TAG_ID = VKCLEARRECT_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkClearRect> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkRect2D 	rect	[vkstruct]
 	 */ 
-	 VkRect2D 	rect;
-
+	VkRect2D 	rect;
+	
 	/**
 	 *  uint32_t 	baseArrayLayer	[int]
 	 */ 
-	 int 	baseArrayLayer;
-
+	int 	baseArrayLayer;
+	
 	/**
 	 *  uint32_t 	layerCount	[int]
 	 */ 
-	 int 	layerCount;
-
+	int 	layerCount;
 	/**
 	 * Ctor
 	 */
@@ -78,15 +78,6 @@ public class VkClearRect extends VkStruct {
 	 */
 	public VkClearRect(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkClearRect(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -112,34 +103,12 @@ public class VkClearRect extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkClearRect> createNullPointer(){
-	        P<VkClearRect> p = new  P<VkClearRect>(new VkClearRect());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkClearRect> getP() {
-	       if(p == null ){
-	           p = new P<VkClearRect> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -148,11 +117,15 @@ public class VkClearRect extends VkStruct {
 	/**
 	 * Set method for field rect	[vkstruct]<br>
 	 * Prototype: VkRect2D  rect
+	 * 
+	 * @param rect - a instance of VkRect2D.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void rect(VkRect2D rect){
+	 public VkClearRect rect(VkRect2D rect){
 		 this.rect = rect;
 		 ByteBuffer buff = (rect==null) ? null : rect.getPointer();
 		 setRect0(this.ptr, buff);
+		 return this;
 	 }
 
 	/**
@@ -177,10 +150,14 @@ public class VkClearRect extends VkStruct {
 	/**
 	 * Set method for field baseArrayLayer	[int]<br>
 	 * Prototype: uint32_t  baseArrayLayer
+	 * 
+	 * @param baseArrayLayer - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void baseArrayLayer(int baseArrayLayer){
+	 public VkClearRect baseArrayLayer(int baseArrayLayer){
 		 this.baseArrayLayer = baseArrayLayer;
 		 setBaseArrayLayer0(this.ptr,  baseArrayLayer);
+		 return this;
 	 }
 
 	/**
@@ -196,10 +173,14 @@ public class VkClearRect extends VkStruct {
 	/**
 	 * Set method for field layerCount	[int]<br>
 	 * Prototype: uint32_t  layerCount
+	 * 
+	 * @param layerCount - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void layerCount(int layerCount){
+	 public VkClearRect layerCount(int layerCount){
 		 this.layerCount = layerCount;
 		 setLayerCount0(this.ptr,  layerCount);
+		 return this;
 	 }
 
 	/**
@@ -213,11 +194,28 @@ public class VkClearRect extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkClearRect [ ")
+				.append("rect: ").append(rect() )
+				.append(",\n baseArrayLayer: ")
+				.append(baseArrayLayer() )
+				.append(",\n layerCount: ")
+				.append(layerCount() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field rect	[vkstruct]<br>
+	 * Native SET method for field rect	[vkstruct]<br>
 	 * Prototype: VkRect2D  rect
 	 */ 
 	 private static native void setRect0(Buffer ptr, java.nio.ByteBuffer  _rect);/*
@@ -226,15 +224,16 @@ public class VkClearRect extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field rect	[vkstruct]<br>
+	 * Native GET method for field rect	[vkstruct]<br>
 	 * Prototype: VkRect2D  rect
 	 */ 
 	 private static native long getRect0(Buffer ptr);/*
 		  VkClearRect* vkObj = (VkClearRect*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->rect);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->rect);
+	 */
 
 	/**
-	 * native SET method for field baseArrayLayer	[int]<br>
+	 * Native SET method for field baseArrayLayer	[int]<br>
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
 	 private static native void setBaseArrayLayer0(Buffer ptr, int _baseArrayLayer);/*
@@ -243,7 +242,7 @@ public class VkClearRect extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field baseArrayLayer	[int]<br>
+	 * Native GET method for field baseArrayLayer	[int]<br>
 	 * Prototype: uint32_t  baseArrayLayer
 	 */ 
 	 private static native int getBaseArrayLayer0(Buffer ptr);/*
@@ -252,7 +251,7 @@ public class VkClearRect extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field layerCount	[int]<br>
+	 * Native SET method for field layerCount	[int]<br>
 	 * Prototype: uint32_t  layerCount
 	 */ 
 	 private static native void setLayerCount0(Buffer ptr, int _layerCount);/*
@@ -261,7 +260,7 @@ public class VkClearRect extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field layerCount	[int]<br>
+	 * Native GET method for field layerCount	[int]<br>
 	 * Prototype: uint32_t  layerCount
 	 */ 
 	 private static native int getLayerCount0(Buffer ptr);/*

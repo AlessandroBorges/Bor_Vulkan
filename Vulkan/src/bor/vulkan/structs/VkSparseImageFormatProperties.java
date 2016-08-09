@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkSparseImageFormatProperties struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -31,9 +32,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkSparseImageFormatProperties extends VkStruct {
+ public class VkSparseImageFormatProperties extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -46,27 +47,24 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	/** ID of this structure [23]  */
 	 public static final int TAG_ID = VKSPARSEIMAGEFORMATPROPERTIES_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkSparseImageFormatProperties> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkImageAspectFlags 	aspectMask	[int]
 	 */ 
-	 int 	aspectMask;
-
+	int 	aspectMask;
+	
 	/**
 	 *  VkExtent3D 	imageGranularity	[vkstruct]
 	 */ 
-	 VkExtent3D 	imageGranularity;
-
+	VkExtent3D 	imageGranularity;
+	
 	/**
 	 *  VkSparseImageFormatFlags 	flags	[int]
 	 */ 
-	 int 	flags;
-
+	int 	flags;
 	/**
 	 * Ctor
 	 */
@@ -80,15 +78,6 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 */
 	public VkSparseImageFormatProperties(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkSparseImageFormatProperties(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -114,34 +103,12 @@ public class VkSparseImageFormatProperties extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkSparseImageFormatProperties> createNullPointer(){
-	        P<VkSparseImageFormatProperties> p = new  P<VkSparseImageFormatProperties>(new VkSparseImageFormatProperties());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkSparseImageFormatProperties> getP() {
-	       if(p == null ){
-	           p = new P<VkSparseImageFormatProperties> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -150,10 +117,14 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	/**
 	 * Set method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
+	 * 
+	 * @param aspectMask - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void aspectMask(int aspectMask){
+	 public VkSparseImageFormatProperties aspectMask(int aspectMask){
 		 this.aspectMask = aspectMask;
 		 setAspectMask0(this.ptr,  aspectMask);
+		 return this;
 	 }
 
 	/**
@@ -169,11 +140,15 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	/**
 	 * Set method for field imageGranularity	[vkstruct]<br>
 	 * Prototype: VkExtent3D  imageGranularity
+	 * 
+	 * @param imageGranularity - a instance of VkExtent3D.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void imageGranularity(VkExtent3D imageGranularity){
+	 public VkSparseImageFormatProperties imageGranularity(VkExtent3D imageGranularity){
 		 this.imageGranularity = imageGranularity;
 		 ByteBuffer buff = (imageGranularity==null) ? null : imageGranularity.getPointer();
 		 setImageGranularity0(this.ptr, buff);
+		 return this;
 	 }
 
 	/**
@@ -198,10 +173,14 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	/**
 	 * Set method for field flags	[int]<br>
 	 * Prototype: VkSparseImageFormatFlags  flags
+	 * 
+	 * @param flags - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void flags(int flags){
+	 public VkSparseImageFormatProperties flags(int flags){
 		 this.flags = flags;
 		 setFlags0(this.ptr,  flags);
+		 return this;
 	 }
 
 	/**
@@ -215,11 +194,28 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkSparseImageFormatProperties [ ")
+				.append("aspectMask: ").append(aspectMask() )
+				.append(",\n imageGranularity: ")
+				.append(imageGranularity() )
+				.append(",\n flags: ")
+				.append(flags() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field aspectMask	[int]<br>
+	 * Native SET method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 private static native void setAspectMask0(Buffer ptr, int _aspectMask);/*
@@ -228,7 +224,7 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field aspectMask	[int]<br>
+	 * Native GET method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 private static native int getAspectMask0(Buffer ptr);/*
@@ -237,7 +233,7 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field imageGranularity	[vkstruct]<br>
+	 * Native SET method for field imageGranularity	[vkstruct]<br>
 	 * Prototype: VkExtent3D  imageGranularity
 	 */ 
 	 private static native void setImageGranularity0(Buffer ptr, java.nio.ByteBuffer  _imageGranularity);/*
@@ -246,15 +242,16 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field imageGranularity	[vkstruct]<br>
+	 * Native GET method for field imageGranularity	[vkstruct]<br>
 	 * Prototype: VkExtent3D  imageGranularity
 	 */ 
 	 private static native long getImageGranularity0(Buffer ptr);/*
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->imageGranularity);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->imageGranularity);
+	 */
 
 	/**
-	 * native SET method for field flags	[int]<br>
+	 * Native SET method for field flags	[int]<br>
 	 * Prototype: VkSparseImageFormatFlags  flags
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
@@ -263,7 +260,7 @@ public class VkSparseImageFormatProperties extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field flags	[int]<br>
+	 * Native GET method for field flags	[int]<br>
 	 * Prototype: VkSparseImageFormatFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*

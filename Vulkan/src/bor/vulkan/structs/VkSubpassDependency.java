@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkSubpassDependency struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -35,9 +36,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkSubpassDependency extends VkStruct {
+ public class VkSubpassDependency extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -50,47 +51,44 @@ public class VkSubpassDependency extends VkStruct {
 	/** ID of this structure [84]  */
 	 public static final int TAG_ID = VKSUBPASSDEPENDENCY_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkSubpassDependency> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  uint32_t 	srcSubpass	[int]
 	 */ 
-	 int 	srcSubpass;
-
+	int 	srcSubpass;
+	
 	/**
 	 *  uint32_t 	dstSubpass	[int]
 	 */ 
-	 int 	dstSubpass;
-
+	int 	dstSubpass;
+	
 	/**
 	 *  VkPipelineStageFlags 	srcStageMask	[int]
 	 */ 
-	 int 	srcStageMask;
-
+	int 	srcStageMask;
+	
 	/**
 	 *  VkPipelineStageFlags 	dstStageMask	[int]
 	 */ 
-	 int 	dstStageMask;
-
+	int 	dstStageMask;
+	
 	/**
 	 *  VkAccessFlags 	srcAccessMask	[int]
 	 */ 
-	 int 	srcAccessMask;
-
+	int 	srcAccessMask;
+	
 	/**
 	 *  VkAccessFlags 	dstAccessMask	[int]
 	 */ 
-	 int 	dstAccessMask;
-
+	int 	dstAccessMask;
+	
 	/**
 	 *  VkDependencyFlags 	dependencyFlags	[int]
 	 */ 
-	 int 	dependencyFlags;
-
+	int 	dependencyFlags;
 	/**
 	 * Ctor
 	 */
@@ -104,15 +102,6 @@ public class VkSubpassDependency extends VkStruct {
 	 */
 	public VkSubpassDependency(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkSubpassDependency(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -138,34 +127,12 @@ public class VkSubpassDependency extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkSubpassDependency> createNullPointer(){
-	        P<VkSubpassDependency> p = new  P<VkSubpassDependency>(new VkSubpassDependency());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkSubpassDependency> getP() {
-	       if(p == null ){
-	           p = new P<VkSubpassDependency> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -174,10 +141,14 @@ public class VkSubpassDependency extends VkStruct {
 	/**
 	 * Set method for field srcSubpass	[int]<br>
 	 * Prototype: uint32_t  srcSubpass
+	 * 
+	 * @param srcSubpass - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void srcSubpass(int srcSubpass){
+	 public VkSubpassDependency srcSubpass(int srcSubpass){
 		 this.srcSubpass = srcSubpass;
 		 setSrcSubpass0(this.ptr,  srcSubpass);
+		 return this;
 	 }
 
 	/**
@@ -193,10 +164,14 @@ public class VkSubpassDependency extends VkStruct {
 	/**
 	 * Set method for field dstSubpass	[int]<br>
 	 * Prototype: uint32_t  dstSubpass
+	 * 
+	 * @param dstSubpass - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void dstSubpass(int dstSubpass){
+	 public VkSubpassDependency dstSubpass(int dstSubpass){
 		 this.dstSubpass = dstSubpass;
 		 setDstSubpass0(this.ptr,  dstSubpass);
+		 return this;
 	 }
 
 	/**
@@ -212,10 +187,14 @@ public class VkSubpassDependency extends VkStruct {
 	/**
 	 * Set method for field srcStageMask	[int]<br>
 	 * Prototype: VkPipelineStageFlags  srcStageMask
+	 * 
+	 * @param srcStageMask - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void srcStageMask(int srcStageMask){
+	 public VkSubpassDependency srcStageMask(int srcStageMask){
 		 this.srcStageMask = srcStageMask;
 		 setSrcStageMask0(this.ptr,  srcStageMask);
+		 return this;
 	 }
 
 	/**
@@ -231,10 +210,14 @@ public class VkSubpassDependency extends VkStruct {
 	/**
 	 * Set method for field dstStageMask	[int]<br>
 	 * Prototype: VkPipelineStageFlags  dstStageMask
+	 * 
+	 * @param dstStageMask - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void dstStageMask(int dstStageMask){
+	 public VkSubpassDependency dstStageMask(int dstStageMask){
 		 this.dstStageMask = dstStageMask;
 		 setDstStageMask0(this.ptr,  dstStageMask);
+		 return this;
 	 }
 
 	/**
@@ -250,10 +233,14 @@ public class VkSubpassDependency extends VkStruct {
 	/**
 	 * Set method for field srcAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  srcAccessMask
+	 * 
+	 * @param srcAccessMask - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void srcAccessMask(int srcAccessMask){
+	 public VkSubpassDependency srcAccessMask(int srcAccessMask){
 		 this.srcAccessMask = srcAccessMask;
 		 setSrcAccessMask0(this.ptr,  srcAccessMask);
+		 return this;
 	 }
 
 	/**
@@ -269,10 +256,14 @@ public class VkSubpassDependency extends VkStruct {
 	/**
 	 * Set method for field dstAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  dstAccessMask
+	 * 
+	 * @param dstAccessMask - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void dstAccessMask(int dstAccessMask){
+	 public VkSubpassDependency dstAccessMask(int dstAccessMask){
 		 this.dstAccessMask = dstAccessMask;
 		 setDstAccessMask0(this.ptr,  dstAccessMask);
+		 return this;
 	 }
 
 	/**
@@ -288,10 +279,14 @@ public class VkSubpassDependency extends VkStruct {
 	/**
 	 * Set method for field dependencyFlags	[int]<br>
 	 * Prototype: VkDependencyFlags  dependencyFlags
+	 * 
+	 * @param dependencyFlags - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void dependencyFlags(int dependencyFlags){
+	 public VkSubpassDependency dependencyFlags(int dependencyFlags){
 		 this.dependencyFlags = dependencyFlags;
 		 setDependencyFlags0(this.ptr,  dependencyFlags);
+		 return this;
 	 }
 
 	/**
@@ -305,11 +300,36 @@ public class VkSubpassDependency extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkSubpassDependency [ ")
+				.append("srcSubpass: ").append(srcSubpass() )
+				.append(",\n dstSubpass: ")
+				.append(dstSubpass() )
+				.append(",\n srcStageMask: ")
+				.append(srcStageMask() )
+				.append(",\n dstStageMask: ")
+				.append(dstStageMask() )
+				.append(",\n srcAccessMask: ")
+				.append(srcAccessMask() )
+				.append(",\n dstAccessMask: ")
+				.append(dstAccessMask() )
+				.append(",\n dependencyFlags: ")
+				.append(dependencyFlags() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field srcSubpass	[int]<br>
+	 * Native SET method for field srcSubpass	[int]<br>
 	 * Prototype: uint32_t  srcSubpass
 	 */ 
 	 private static native void setSrcSubpass0(Buffer ptr, int _srcSubpass);/*
@@ -318,7 +338,7 @@ public class VkSubpassDependency extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field srcSubpass	[int]<br>
+	 * Native GET method for field srcSubpass	[int]<br>
 	 * Prototype: uint32_t  srcSubpass
 	 */ 
 	 private static native int getSrcSubpass0(Buffer ptr);/*
@@ -327,7 +347,7 @@ public class VkSubpassDependency extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field dstSubpass	[int]<br>
+	 * Native SET method for field dstSubpass	[int]<br>
 	 * Prototype: uint32_t  dstSubpass
 	 */ 
 	 private static native void setDstSubpass0(Buffer ptr, int _dstSubpass);/*
@@ -336,7 +356,7 @@ public class VkSubpassDependency extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field dstSubpass	[int]<br>
+	 * Native GET method for field dstSubpass	[int]<br>
 	 * Prototype: uint32_t  dstSubpass
 	 */ 
 	 private static native int getDstSubpass0(Buffer ptr);/*
@@ -345,7 +365,7 @@ public class VkSubpassDependency extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field srcStageMask	[int]<br>
+	 * Native SET method for field srcStageMask	[int]<br>
 	 * Prototype: VkPipelineStageFlags  srcStageMask
 	 */ 
 	 private static native void setSrcStageMask0(Buffer ptr, int _srcStageMask);/*
@@ -354,7 +374,7 @@ public class VkSubpassDependency extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field srcStageMask	[int]<br>
+	 * Native GET method for field srcStageMask	[int]<br>
 	 * Prototype: VkPipelineStageFlags  srcStageMask
 	 */ 
 	 private static native int getSrcStageMask0(Buffer ptr);/*
@@ -363,7 +383,7 @@ public class VkSubpassDependency extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field dstStageMask	[int]<br>
+	 * Native SET method for field dstStageMask	[int]<br>
 	 * Prototype: VkPipelineStageFlags  dstStageMask
 	 */ 
 	 private static native void setDstStageMask0(Buffer ptr, int _dstStageMask);/*
@@ -372,7 +392,7 @@ public class VkSubpassDependency extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field dstStageMask	[int]<br>
+	 * Native GET method for field dstStageMask	[int]<br>
 	 * Prototype: VkPipelineStageFlags  dstStageMask
 	 */ 
 	 private static native int getDstStageMask0(Buffer ptr);/*
@@ -381,7 +401,7 @@ public class VkSubpassDependency extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field srcAccessMask	[int]<br>
+	 * Native SET method for field srcAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 private static native void setSrcAccessMask0(Buffer ptr, int _srcAccessMask);/*
@@ -390,7 +410,7 @@ public class VkSubpassDependency extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field srcAccessMask	[int]<br>
+	 * Native GET method for field srcAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 private static native int getSrcAccessMask0(Buffer ptr);/*
@@ -399,7 +419,7 @@ public class VkSubpassDependency extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field dstAccessMask	[int]<br>
+	 * Native SET method for field dstAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 private static native void setDstAccessMask0(Buffer ptr, int _dstAccessMask);/*
@@ -408,7 +428,7 @@ public class VkSubpassDependency extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field dstAccessMask	[int]<br>
+	 * Native GET method for field dstAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 private static native int getDstAccessMask0(Buffer ptr);/*
@@ -417,7 +437,7 @@ public class VkSubpassDependency extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field dependencyFlags	[int]<br>
+	 * Native SET method for field dependencyFlags	[int]<br>
 	 * Prototype: VkDependencyFlags  dependencyFlags
 	 */ 
 	 private static native void setDependencyFlags0(Buffer ptr, int _dependencyFlags);/*
@@ -426,7 +446,7 @@ public class VkSubpassDependency extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field dependencyFlags	[int]<br>
+	 * Native GET method for field dependencyFlags	[int]<br>
 	 * Prototype: VkDependencyFlags  dependencyFlags
 	 */ 
 	 private static native int getDependencyFlags0(Buffer ptr);/*

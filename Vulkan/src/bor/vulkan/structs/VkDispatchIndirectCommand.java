@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkDispatchIndirectCommand struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -31,9 +32,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkDispatchIndirectCommand extends VkStruct {
+ public class VkDispatchIndirectCommand extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -46,27 +47,24 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	/** ID of this structure [103]  */
 	 public static final int TAG_ID = VKDISPATCHINDIRECTCOMMAND_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkDispatchIndirectCommand> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  uint32_t 	x	[int]
 	 */ 
-	 int 	x;
-
+	int 	x;
+	
 	/**
 	 *  uint32_t 	y	[int]
 	 */ 
-	 int 	y;
-
+	int 	y;
+	
 	/**
 	 *  uint32_t 	z	[int]
 	 */ 
-	 int 	z;
-
+	int 	z;
 	/**
 	 * Ctor
 	 */
@@ -80,15 +78,6 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 */
 	public VkDispatchIndirectCommand(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkDispatchIndirectCommand(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -114,34 +103,12 @@ public class VkDispatchIndirectCommand extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkDispatchIndirectCommand> createNullPointer(){
-	        P<VkDispatchIndirectCommand> p = new  P<VkDispatchIndirectCommand>(new VkDispatchIndirectCommand());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkDispatchIndirectCommand> getP() {
-	       if(p == null ){
-	           p = new P<VkDispatchIndirectCommand> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -150,10 +117,14 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	/**
 	 * Set method for field x	[int]<br>
 	 * Prototype: uint32_t  x
+	 * 
+	 * @param x - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void x(int x){
+	 public VkDispatchIndirectCommand x(int x){
 		 this.x = x;
 		 setX0(this.ptr,  x);
+		 return this;
 	 }
 
 	/**
@@ -169,10 +140,14 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	/**
 	 * Set method for field y	[int]<br>
 	 * Prototype: uint32_t  y
+	 * 
+	 * @param y - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void y(int y){
+	 public VkDispatchIndirectCommand y(int y){
 		 this.y = y;
 		 setY0(this.ptr,  y);
+		 return this;
 	 }
 
 	/**
@@ -188,10 +163,14 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	/**
 	 * Set method for field z	[int]<br>
 	 * Prototype: uint32_t  z
+	 * 
+	 * @param z - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void z(int z){
+	 public VkDispatchIndirectCommand z(int z){
 		 this.z = z;
 		 setZ0(this.ptr,  z);
+		 return this;
 	 }
 
 	/**
@@ -205,11 +184,28 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkDispatchIndirectCommand [ ")
+				.append("x: ").append(x() )
+				.append(",\n y: ")
+				.append(y() )
+				.append(",\n z: ")
+				.append(z() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field x	[int]<br>
+	 * Native SET method for field x	[int]<br>
 	 * Prototype: uint32_t  x
 	 */ 
 	 private static native void setX0(Buffer ptr, int _x);/*
@@ -218,7 +214,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field x	[int]<br>
+	 * Native GET method for field x	[int]<br>
 	 * Prototype: uint32_t  x
 	 */ 
 	 private static native int getX0(Buffer ptr);/*
@@ -227,7 +223,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field y	[int]<br>
+	 * Native SET method for field y	[int]<br>
 	 * Prototype: uint32_t  y
 	 */ 
 	 private static native void setY0(Buffer ptr, int _y);/*
@@ -236,7 +232,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field y	[int]<br>
+	 * Native GET method for field y	[int]<br>
 	 * Prototype: uint32_t  y
 	 */ 
 	 private static native int getY0(Buffer ptr);/*
@@ -245,7 +241,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field z	[int]<br>
+	 * Native SET method for field z	[int]<br>
 	 * Prototype: uint32_t  z
 	 */ 
 	 private static native void setZ0(Buffer ptr, int _z);/*
@@ -254,7 +250,7 @@ public class VkDispatchIndirectCommand extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field z	[int]<br>
+	 * Native GET method for field z	[int]<br>
 	 * Prototype: uint32_t  z
 	 */ 
 	 private static native int getZ0(Buffer ptr);/*

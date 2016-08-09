@@ -1,18 +1,21 @@
 /**
  * Class wrapping Vulkan's VkBufferCopy struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import bor.vulkan.P;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -29,9 +32,9 @@ import bor.vulkan.P;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkBufferCopy extends VkStruct {
+ public class VkBufferCopy extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -44,27 +47,24 @@ public class VkBufferCopy extends VkStruct {
 	/** ID of this structure [90]  */
 	 public static final int TAG_ID = VKBUFFERCOPY_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkBufferCopy> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkDeviceSize 	srcOffset	[long]
 	 */ 
-	 long 	srcOffset;
-
+	long 	srcOffset;
+	
 	/**
 	 *  VkDeviceSize 	dstOffset	[long]
 	 */ 
-	 long 	dstOffset;
-
+	long 	dstOffset;
+	
 	/**
 	 *  VkDeviceSize 	size	[long]
 	 */ 
-	 long 	size;
-
+	long 	size;
 	/**
 	 * Ctor
 	 */
@@ -78,15 +78,6 @@ public class VkBufferCopy extends VkStruct {
 	 */
 	public VkBufferCopy(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkBufferCopy(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -112,34 +103,12 @@ public class VkBufferCopy extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkBufferCopy> createNullPointer(){
-	        P<VkBufferCopy> p = new  P<VkBufferCopy>(new VkBufferCopy());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkBufferCopy> getP() {
-	       if(p == null ){
-	           p = new P<VkBufferCopy> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -148,10 +117,14 @@ public class VkBufferCopy extends VkStruct {
 	/**
 	 * Set method for field srcOffset	[long]<br>
 	 * Prototype: VkDeviceSize  srcOffset
+	 * 
+	 * @param srcOffset - a instance of long.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void srcOffset(long srcOffset){
+	 public VkBufferCopy srcOffset(long srcOffset){
 		 this.srcOffset = srcOffset;
 		 setSrcOffset0(this.ptr,  srcOffset);
+		 return this;
 	 }
 
 	/**
@@ -167,10 +140,14 @@ public class VkBufferCopy extends VkStruct {
 	/**
 	 * Set method for field dstOffset	[long]<br>
 	 * Prototype: VkDeviceSize  dstOffset
+	 * 
+	 * @param dstOffset - a instance of long.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void dstOffset(long dstOffset){
+	 public VkBufferCopy dstOffset(long dstOffset){
 		 this.dstOffset = dstOffset;
 		 setDstOffset0(this.ptr,  dstOffset);
+		 return this;
 	 }
 
 	/**
@@ -186,10 +163,14 @@ public class VkBufferCopy extends VkStruct {
 	/**
 	 * Set method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
+	 * 
+	 * @param size - a instance of long.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void size(long size){
+	 public VkBufferCopy size(long size){
 		 this.size = size;
 		 setSize0(this.ptr,  size);
+		 return this;
 	 }
 
 	/**
@@ -203,11 +184,28 @@ public class VkBufferCopy extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkBufferCopy [ ")
+				.append("srcOffset: ").append(srcOffset() )
+				.append(",\n dstOffset: ")
+				.append(dstOffset() )
+				.append(",\n size: ")
+				.append(size() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field srcOffset	[long]<br>
+	 * Native SET method for field srcOffset	[long]<br>
 	 * Prototype: VkDeviceSize  srcOffset
 	 */ 
 	 private static native void setSrcOffset0(Buffer ptr, long _srcOffset);/*
@@ -216,7 +214,7 @@ public class VkBufferCopy extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field srcOffset	[long]<br>
+	 * Native GET method for field srcOffset	[long]<br>
 	 * Prototype: VkDeviceSize  srcOffset
 	 */ 
 	 private static native long getSrcOffset0(Buffer ptr);/*
@@ -225,7 +223,7 @@ public class VkBufferCopy extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field dstOffset	[long]<br>
+	 * Native SET method for field dstOffset	[long]<br>
 	 * Prototype: VkDeviceSize  dstOffset
 	 */ 
 	 private static native void setDstOffset0(Buffer ptr, long _dstOffset);/*
@@ -234,7 +232,7 @@ public class VkBufferCopy extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field dstOffset	[long]<br>
+	 * Native GET method for field dstOffset	[long]<br>
 	 * Prototype: VkDeviceSize  dstOffset
 	 */ 
 	 private static native long getDstOffset0(Buffer ptr);/*
@@ -243,7 +241,7 @@ public class VkBufferCopy extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field size	[long]<br>
+	 * Native SET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native void setSize0(Buffer ptr, long _size);/*
@@ -252,7 +250,7 @@ public class VkBufferCopy extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field size	[long]<br>
+	 * Native GET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long getSize0(Buffer ptr);/*

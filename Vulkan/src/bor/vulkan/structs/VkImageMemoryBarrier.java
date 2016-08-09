@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkImageMemoryBarrier struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -38,9 +39,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkImageMemoryBarrier extends VkStruct {
+ public class VkImageMemoryBarrier extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -53,62 +54,59 @@ public class VkImageMemoryBarrier extends VkStruct {
 	/** ID of this structure [101]  */
 	 public static final int TAG_ID = VKIMAGEMEMORYBARRIER_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkImageMemoryBarrier> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	 VkStructureType 	sType;
-
+	VkStructureType 	sType;
+	
 	/**
 	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 VkObject 	pNext;
-
+	VkObject 	pNext;
+	
 	/**
 	 *  VkAccessFlags 	srcAccessMask	[int]
 	 */ 
-	 int 	srcAccessMask;
-
+	int 	srcAccessMask;
+	
 	/**
 	 *  VkAccessFlags 	dstAccessMask	[int]
 	 */ 
-	 int 	dstAccessMask;
-
+	int 	dstAccessMask;
+	
 	/**
 	 *  VkImageLayout 	oldLayout	[vkenum]
 	 */ 
-	 VkImageLayout 	oldLayout;
-
+	VkImageLayout 	oldLayout;
+	
 	/**
 	 *  VkImageLayout 	newLayout	[vkenum]
 	 */ 
-	 VkImageLayout 	newLayout;
-
+	VkImageLayout 	newLayout;
+	
 	/**
 	 *  uint32_t 	srcQueueFamilyIndex	[int]
 	 */ 
-	 int 	srcQueueFamilyIndex;
-
+	int 	srcQueueFamilyIndex;
+	
 	/**
 	 *  uint32_t 	dstQueueFamilyIndex	[int]
 	 */ 
-	 int 	dstQueueFamilyIndex;
-
+	int 	dstQueueFamilyIndex;
+	
 	/**
 	 *  VkImage 	image	[vkhandle]
 	 */ 
-	 VkImage 	image;
-
+	VkImage 	image;
+	
 	/**
 	 *  VkImageSubresourceRange 	subresourceRange	[vkstruct]
 	 */ 
-	 VkImageSubresourceRange 	subresourceRange;
-
+	VkImageSubresourceRange 	subresourceRange;
 	/**
 	 * Ctor
 	 */
@@ -122,15 +120,6 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 */
 	public VkImageMemoryBarrier(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkImageMemoryBarrier(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -156,34 +145,12 @@ public class VkImageMemoryBarrier extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkImageMemoryBarrier> createNullPointer(){
-	        P<VkImageMemoryBarrier> p = new  P<VkImageMemoryBarrier>(new VkImageMemoryBarrier());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkImageMemoryBarrier> getP() {
-	       if(p == null ){
-	           p = new P<VkImageMemoryBarrier> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -192,11 +159,15 @@ public class VkImageMemoryBarrier extends VkStruct {
 	/**
 	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
+	 * 
+	 * @param sType - a instance of VkStructureType.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void sType(VkStructureType sType){
+	 public VkImageMemoryBarrier sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
 		 setSType0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -212,11 +183,15 @@ public class VkImageMemoryBarrier extends VkStruct {
 	/**
 	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
+	 * 
+	 * @param pNext - a instance of VkObject.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public VkImageMemoryBarrier pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
 		 setPNext0(this.ptr, buff);
+		 return this;
 	 }
 
 	/**
@@ -229,7 +204,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 		    this.pNext = null;
 		    return null;
 		  } else 
- 		 if(this.pNext == null){
+		 if(this.pNext == null){
 		    this.pNext = (VkObject)(new VkHandle(pointer));
 		 }else{
 		    this.pNext.setPointer(pointer);
@@ -240,10 +215,14 @@ public class VkImageMemoryBarrier extends VkStruct {
 	/**
 	 * Set method for field srcAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  srcAccessMask
+	 * 
+	 * @param srcAccessMask - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void srcAccessMask(int srcAccessMask){
+	 public VkImageMemoryBarrier srcAccessMask(int srcAccessMask){
 		 this.srcAccessMask = srcAccessMask;
 		 setSrcAccessMask0(this.ptr,  srcAccessMask);
+		 return this;
 	 }
 
 	/**
@@ -259,10 +238,14 @@ public class VkImageMemoryBarrier extends VkStruct {
 	/**
 	 * Set method for field dstAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  dstAccessMask
+	 * 
+	 * @param dstAccessMask - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void dstAccessMask(int dstAccessMask){
+	 public VkImageMemoryBarrier dstAccessMask(int dstAccessMask){
 		 this.dstAccessMask = dstAccessMask;
 		 setDstAccessMask0(this.ptr,  dstAccessMask);
+		 return this;
 	 }
 
 	/**
@@ -278,11 +261,15 @@ public class VkImageMemoryBarrier extends VkStruct {
 	/**
 	 * Set method for field oldLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  oldLayout
+	 * 
+	 * @param oldLayout - a instance of VkImageLayout.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void oldLayout(VkImageLayout oldLayout){
+	 public VkImageMemoryBarrier oldLayout(VkImageLayout oldLayout){
 		 this.oldLayout = oldLayout;
 		 int enumVal = oldLayout.getValue();
 		 setOldLayout0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -298,11 +285,15 @@ public class VkImageMemoryBarrier extends VkStruct {
 	/**
 	 * Set method for field newLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  newLayout
+	 * 
+	 * @param newLayout - a instance of VkImageLayout.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void newLayout(VkImageLayout newLayout){
+	 public VkImageMemoryBarrier newLayout(VkImageLayout newLayout){
 		 this.newLayout = newLayout;
 		 int enumVal = newLayout.getValue();
 		 setNewLayout0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -318,10 +309,14 @@ public class VkImageMemoryBarrier extends VkStruct {
 	/**
 	 * Set method for field srcQueueFamilyIndex	[int]<br>
 	 * Prototype: uint32_t  srcQueueFamilyIndex
+	 * 
+	 * @param srcQueueFamilyIndex - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void srcQueueFamilyIndex(int srcQueueFamilyIndex){
+	 public VkImageMemoryBarrier srcQueueFamilyIndex(int srcQueueFamilyIndex){
 		 this.srcQueueFamilyIndex = srcQueueFamilyIndex;
 		 setSrcQueueFamilyIndex0(this.ptr,  srcQueueFamilyIndex);
+		 return this;
 	 }
 
 	/**
@@ -337,10 +332,14 @@ public class VkImageMemoryBarrier extends VkStruct {
 	/**
 	 * Set method for field dstQueueFamilyIndex	[int]<br>
 	 * Prototype: uint32_t  dstQueueFamilyIndex
+	 * 
+	 * @param dstQueueFamilyIndex - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void dstQueueFamilyIndex(int dstQueueFamilyIndex){
+	 public VkImageMemoryBarrier dstQueueFamilyIndex(int dstQueueFamilyIndex){
 		 this.dstQueueFamilyIndex = dstQueueFamilyIndex;
 		 setDstQueueFamilyIndex0(this.ptr,  dstQueueFamilyIndex);
+		 return this;
 	 }
 
 	/**
@@ -356,11 +355,15 @@ public class VkImageMemoryBarrier extends VkStruct {
 	/**
 	 * Set method for field image	[vkhandle]<br>
 	 * Prototype: VkImage  image
+	 * 
+	 * @param image - a instance of VkImage.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void image(VkImage image){
+	 public VkImageMemoryBarrier image(VkImage image){
 		 this.image = image;
-		 ByteBuffer buff = (image==null) ? null : image.getPointer();
-		 setImage0(this.ptr, buff);
+		 long handle = (image==null) ? 0L : image.getNativeHandle();
+		 setImage0(this.ptr, handle);
+		 return this;
 	 }
 
 	/**
@@ -378,7 +381,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 		 if(this.image == null){
 		    this.image = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.image).setPointer(handle);
+		    ((VkHandle)this.image).setNativeHandle(handle);
 		  }
 		 return this.image;
 	 }
@@ -386,11 +389,15 @@ public class VkImageMemoryBarrier extends VkStruct {
 	/**
 	 * Set method for field subresourceRange	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceRange  subresourceRange
+	 * 
+	 * @param subresourceRange - a instance of VkImageSubresourceRange.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void subresourceRange(VkImageSubresourceRange subresourceRange){
+	 public VkImageMemoryBarrier subresourceRange(VkImageSubresourceRange subresourceRange){
 		 this.subresourceRange = subresourceRange;
 		 ByteBuffer buff = (subresourceRange==null) ? null : subresourceRange.getPointer();
 		 setSubresourceRange0(this.ptr, buff);
+		 return this;
 	 }
 
 	/**
@@ -413,11 +420,42 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkImageMemoryBarrier [ ")
+				.append("sType: ").append(sType() )
+				.append(",\n pNext: ")
+				.append(pNext() )
+				.append(",\n srcAccessMask: ")
+				.append(srcAccessMask() )
+				.append(",\n dstAccessMask: ")
+				.append(dstAccessMask() )
+				.append(",\n oldLayout: ")
+				.append(oldLayout() )
+				.append(",\n newLayout: ")
+				.append(newLayout() )
+				.append(",\n srcQueueFamilyIndex: ")
+				.append(srcQueueFamilyIndex() )
+				.append(",\n dstQueueFamilyIndex: ")
+				.append(dstQueueFamilyIndex() )
+				.append(",\n image: ")
+				.append(image() )
+				.append(",\n subresourceRange: ")
+				.append(subresourceRange() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field sType	[vkenum]<br>
+	 * Native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
@@ -426,7 +464,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field sType	[vkenum]<br>
+	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
@@ -435,7 +473,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pNext	[vkobject]<br>
+	 * Native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
@@ -444,15 +482,16 @@ public class VkImageMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pNext	[vkobject]<br>
+	 * Native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+	 */
 
 	/**
-	 * native SET method for field srcAccessMask	[int]<br>
+	 * Native SET method for field srcAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 private static native void setSrcAccessMask0(Buffer ptr, int _srcAccessMask);/*
@@ -461,7 +500,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field srcAccessMask	[int]<br>
+	 * Native GET method for field srcAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  srcAccessMask
 	 */ 
 	 private static native int getSrcAccessMask0(Buffer ptr);/*
@@ -470,7 +509,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field dstAccessMask	[int]<br>
+	 * Native SET method for field dstAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 private static native void setDstAccessMask0(Buffer ptr, int _dstAccessMask);/*
@@ -479,7 +518,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field dstAccessMask	[int]<br>
+	 * Native GET method for field dstAccessMask	[int]<br>
 	 * Prototype: VkAccessFlags  dstAccessMask
 	 */ 
 	 private static native int getDstAccessMask0(Buffer ptr);/*
@@ -488,7 +527,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field oldLayout	[vkenum]<br>
+	 * Native SET method for field oldLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  oldLayout
 	 */ 
 	 private static native void setOldLayout0(Buffer ptr, int  _oldLayout);/*
@@ -497,7 +536,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field oldLayout	[vkenum]<br>
+	 * Native GET method for field oldLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  oldLayout
 	 */ 
 	 private static native int  getOldLayout0(Buffer ptr);/*
@@ -506,7 +545,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field newLayout	[vkenum]<br>
+	 * Native SET method for field newLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  newLayout
 	 */ 
 	 private static native void setNewLayout0(Buffer ptr, int  _newLayout);/*
@@ -515,7 +554,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field newLayout	[vkenum]<br>
+	 * Native GET method for field newLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  newLayout
 	 */ 
 	 private static native int  getNewLayout0(Buffer ptr);/*
@@ -524,7 +563,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field srcQueueFamilyIndex	[int]<br>
+	 * Native SET method for field srcQueueFamilyIndex	[int]<br>
 	 * Prototype: uint32_t  srcQueueFamilyIndex
 	 */ 
 	 private static native void setSrcQueueFamilyIndex0(Buffer ptr, int _srcQueueFamilyIndex);/*
@@ -533,7 +572,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field srcQueueFamilyIndex	[int]<br>
+	 * Native GET method for field srcQueueFamilyIndex	[int]<br>
 	 * Prototype: uint32_t  srcQueueFamilyIndex
 	 */ 
 	 private static native int getSrcQueueFamilyIndex0(Buffer ptr);/*
@@ -542,7 +581,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field dstQueueFamilyIndex	[int]<br>
+	 * Native SET method for field dstQueueFamilyIndex	[int]<br>
 	 * Prototype: uint32_t  dstQueueFamilyIndex
 	 */ 
 	 private static native void setDstQueueFamilyIndex0(Buffer ptr, int _dstQueueFamilyIndex);/*
@@ -551,7 +590,7 @@ public class VkImageMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field dstQueueFamilyIndex	[int]<br>
+	 * Native GET method for field dstQueueFamilyIndex	[int]<br>
 	 * Prototype: uint32_t  dstQueueFamilyIndex
 	 */ 
 	 private static native int getDstQueueFamilyIndex0(Buffer ptr);/*
@@ -560,24 +599,25 @@ public class VkImageMemoryBarrier extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field image	[vkhandle]<br>
+	 * Native SET method for field image	[vkhandle]<br>
 	 * Prototype: VkImage  image
 	 */ 
-	 private static native void setImage0(Buffer ptr, java.nio.ByteBuffer  _image);/*
+	 private static native void setImage0(Buffer ptr, long  _image);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  vkObj->image = (VkImage) (_image);
 	  */
 
 	/**
-	 * native GET method for field image	[vkhandle]<br>
+	 * Native GET method for field image	[vkhandle]<br>
 	 * Prototype: VkImage  image
 	 */ 
 	 private static native long getImage0(Buffer ptr);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->image);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->image);
+	 */
 
 	/**
-	 * native SET method for field subresourceRange	[vkstruct]<br>
+	 * Native SET method for field subresourceRange	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceRange  subresourceRange
 	 */ 
 	 private static native void setSubresourceRange0(Buffer ptr, java.nio.ByteBuffer  _subresourceRange);/*
@@ -586,12 +626,13 @@ public class VkImageMemoryBarrier extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field subresourceRange	[vkstruct]<br>
+	 * Native GET method for field subresourceRange	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceRange  subresourceRange
 	 */ 
 	 private static native long getSubresourceRange0(Buffer ptr);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->subresourceRange);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->subresourceRange);
+	 */
 
 
 

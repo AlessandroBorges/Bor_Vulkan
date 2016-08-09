@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkQueueFamilyProperties struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -32,9 +33,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkQueueFamilyProperties extends VkStruct {
+ public class VkQueueFamilyProperties extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -47,32 +48,29 @@ public class VkQueueFamilyProperties extends VkStruct {
 	/** ID of this structure [11]  */
 	 public static final int TAG_ID = VKQUEUEFAMILYPROPERTIES_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkQueueFamilyProperties> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkQueueFlags 	queueFlags	[int]
 	 */ 
-	 int 	queueFlags;
-
+	int 	queueFlags;
+	
 	/**
 	 *  uint32_t 	queueCount	[int]
 	 */ 
-	 int 	queueCount;
-
+	int 	queueCount;
+	
 	/**
 	 *  uint32_t 	timestampValidBits	[int]
 	 */ 
-	 int 	timestampValidBits;
-
+	int 	timestampValidBits;
+	
 	/**
 	 *  VkExtent3D 	minImageTransferGranularity	[vkstruct]
 	 */ 
-	 VkExtent3D 	minImageTransferGranularity;
-
+	VkExtent3D 	minImageTransferGranularity;
 	/**
 	 * Ctor
 	 */
@@ -86,15 +84,6 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 */
 	public VkQueueFamilyProperties(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkQueueFamilyProperties(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -120,34 +109,12 @@ public class VkQueueFamilyProperties extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkQueueFamilyProperties> createNullPointer(){
-	        P<VkQueueFamilyProperties> p = new  P<VkQueueFamilyProperties>(new VkQueueFamilyProperties());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkQueueFamilyProperties> getP() {
-	       if(p == null ){
-	           p = new P<VkQueueFamilyProperties> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -156,10 +123,14 @@ public class VkQueueFamilyProperties extends VkStruct {
 	/**
 	 * Set method for field queueFlags	[int]<br>
 	 * Prototype: VkQueueFlags  queueFlags
+	 * 
+	 * @param queueFlags - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void queueFlags(int queueFlags){
+	 public VkQueueFamilyProperties queueFlags(int queueFlags){
 		 this.queueFlags = queueFlags;
 		 setQueueFlags0(this.ptr,  queueFlags);
+		 return this;
 	 }
 
 	/**
@@ -175,10 +146,14 @@ public class VkQueueFamilyProperties extends VkStruct {
 	/**
 	 * Set method for field queueCount	[int]<br>
 	 * Prototype: uint32_t  queueCount
+	 * 
+	 * @param queueCount - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void queueCount(int queueCount){
+	 public VkQueueFamilyProperties queueCount(int queueCount){
 		 this.queueCount = queueCount;
 		 setQueueCount0(this.ptr,  queueCount);
+		 return this;
 	 }
 
 	/**
@@ -194,10 +169,14 @@ public class VkQueueFamilyProperties extends VkStruct {
 	/**
 	 * Set method for field timestampValidBits	[int]<br>
 	 * Prototype: uint32_t  timestampValidBits
+	 * 
+	 * @param timestampValidBits - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void timestampValidBits(int timestampValidBits){
+	 public VkQueueFamilyProperties timestampValidBits(int timestampValidBits){
 		 this.timestampValidBits = timestampValidBits;
 		 setTimestampValidBits0(this.ptr,  timestampValidBits);
+		 return this;
 	 }
 
 	/**
@@ -213,11 +192,15 @@ public class VkQueueFamilyProperties extends VkStruct {
 	/**
 	 * Set method for field minImageTransferGranularity	[vkstruct]<br>
 	 * Prototype: VkExtent3D  minImageTransferGranularity
+	 * 
+	 * @param minImageTransferGranularity - a instance of VkExtent3D.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void minImageTransferGranularity(VkExtent3D minImageTransferGranularity){
+	 public VkQueueFamilyProperties minImageTransferGranularity(VkExtent3D minImageTransferGranularity){
 		 this.minImageTransferGranularity = minImageTransferGranularity;
 		 ByteBuffer buff = (minImageTransferGranularity==null) ? null : minImageTransferGranularity.getPointer();
 		 setMinImageTransferGranularity0(this.ptr, buff);
+		 return this;
 	 }
 
 	/**
@@ -239,31 +222,31 @@ public class VkQueueFamilyProperties extends VkStruct {
 		 return this.minImageTransferGranularity;
 	 }
 
-	 
 
-	 /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("VkQueueFamilyProperties [queueFlags()=")
-                .append(queueFlags())
-                .append(", queueCount : ")
-                .append(queueCount())
-                .append(", timestampValidBits : ")
-                .append(timestampValidBits())
-                .append(", minImageTransferGranularity : ")
-                .append(minImageTransferGranularity())
-                .append("]");
-        return builder.toString();
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkQueueFamilyProperties [ ")
+				.append("queueFlags: ").append(queueFlags() )
+				.append(",\n queueCount: ")
+				.append(queueCount() )
+				.append(",\n timestampValidBits: ")
+				.append(timestampValidBits() )
+				.append(",\n minImageTransferGranularity: ")
+				.append(minImageTransferGranularity() )
+				.append("]");
+		 return builder.toString();
     }
 
-    //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+
+	 //////////////////////////////////
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field queueFlags	[int]<br>
+	 * Native SET method for field queueFlags	[int]<br>
 	 * Prototype: VkQueueFlags  queueFlags
 	 */ 
 	 private static native void setQueueFlags0(Buffer ptr, int _queueFlags);/*
@@ -272,7 +255,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field queueFlags	[int]<br>
+	 * Native GET method for field queueFlags	[int]<br>
 	 * Prototype: VkQueueFlags  queueFlags
 	 */ 
 	 private static native int getQueueFlags0(Buffer ptr);/*
@@ -281,7 +264,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field queueCount	[int]<br>
+	 * Native SET method for field queueCount	[int]<br>
 	 * Prototype: uint32_t  queueCount
 	 */ 
 	 private static native void setQueueCount0(Buffer ptr, int _queueCount);/*
@@ -290,7 +273,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field queueCount	[int]<br>
+	 * Native GET method for field queueCount	[int]<br>
 	 * Prototype: uint32_t  queueCount
 	 */ 
 	 private static native int getQueueCount0(Buffer ptr);/*
@@ -299,7 +282,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field timestampValidBits	[int]<br>
+	 * Native SET method for field timestampValidBits	[int]<br>
 	 * Prototype: uint32_t  timestampValidBits
 	 */ 
 	 private static native void setTimestampValidBits0(Buffer ptr, int _timestampValidBits);/*
@@ -308,7 +291,7 @@ public class VkQueueFamilyProperties extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field timestampValidBits	[int]<br>
+	 * Native GET method for field timestampValidBits	[int]<br>
 	 * Prototype: uint32_t  timestampValidBits
 	 */ 
 	 private static native int getTimestampValidBits0(Buffer ptr);/*
@@ -317,22 +300,23 @@ public class VkQueueFamilyProperties extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field minImageTransferGranularity	[vkstruct]<br>
+	 * Native SET method for field minImageTransferGranularity	[vkstruct]<br>
 	 * Prototype: VkExtent3D  minImageTransferGranularity
 	 */ 
 	 private static native void setMinImageTransferGranularity0(Buffer ptr, java.nio.ByteBuffer  _minImageTransferGranularity);/*
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
-		  VkExtent3D* pObj  = (VkExtent3D*) _minImageTransferGranularity;
-		  VkExtent3D obj = (VkExtent3D)(*pObj);
-		  vkObj->minImageTransferGranularity = (VkExtent3D) (obj);
+		  vkObj->minImageTransferGranularity = (VkExtent3D) (_minImageTransferGranularity);
 	  */
 
 	/**
-	 * native GET method for field minImageTransferGranularity	[vkstruct]<br>
+	 * Native GET method for field minImageTransferGranularity	[vkstruct]<br>
 	 * Prototype: VkExtent3D  minImageTransferGranularity
 	 */ 
 	 private static native long getMinImageTransferGranularity0(Buffer ptr);/*
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->minImageTransferGranularity);
-		  */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->minImageTransferGranularity);
+	 */
+
+
+
 } // end of class VkQueueFamilyProperties

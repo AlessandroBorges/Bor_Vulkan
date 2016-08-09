@@ -9,11 +9,13 @@
  */
  package bor.vulkan.structs;
 
+ import bor.util.*;
  import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
  import bor.vulkan.enumerations.*;
- import bor.vulkan.structs.*;
- import java.nio.ByteBuffer;
- import java.nio.Buffer;
+
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -101,280 +103,280 @@
 	 // Struct fields //
 	 ///////////////////
 	
-/**
+	/**
 	 *  VkBool32 	robustBufferAccess	[boolean]
 	 */ 
-	 boolean 	robustBufferAccess;
+	boolean 	robustBufferAccess;
 	
-/**
+	/**
 	 *  VkBool32 	fullDrawIndexUint32	[boolean]
 	 */ 
-	 boolean 	fullDrawIndexUint32;
+	boolean 	fullDrawIndexUint32;
 	
-/**
+	/**
 	 *  VkBool32 	imageCubeArray	[boolean]
 	 */ 
-	 boolean 	imageCubeArray;
+	boolean 	imageCubeArray;
 	
-/**
+	/**
 	 *  VkBool32 	independentBlend	[boolean]
 	 */ 
-	 boolean 	independentBlend;
+	boolean 	independentBlend;
 	
-/**
+	/**
 	 *  VkBool32 	geometryShader	[boolean]
 	 */ 
-	 boolean 	geometryShader;
+	boolean 	geometryShader;
 	
-/**
+	/**
 	 *  VkBool32 	tessellationShader	[boolean]
 	 */ 
-	 boolean 	tessellationShader;
+	boolean 	tessellationShader;
 	
-/**
+	/**
 	 *  VkBool32 	sampleRateShading	[boolean]
 	 */ 
-	 boolean 	sampleRateShading;
+	boolean 	sampleRateShading;
 	
-/**
+	/**
 	 *  VkBool32 	dualSrcBlend	[boolean]
 	 */ 
-	 boolean 	dualSrcBlend;
+	boolean 	dualSrcBlend;
 	
-/**
+	/**
 	 *  VkBool32 	logicOp	[boolean]
 	 */ 
-	 boolean 	logicOp;
+	boolean 	logicOp;
 	
-/**
+	/**
 	 *  VkBool32 	multiDrawIndirect	[boolean]
 	 */ 
-	 boolean 	multiDrawIndirect;
+	boolean 	multiDrawIndirect;
 	
-/**
+	/**
 	 *  VkBool32 	drawIndirectFirstInstance	[boolean]
 	 */ 
-	 boolean 	drawIndirectFirstInstance;
+	boolean 	drawIndirectFirstInstance;
 	
-/**
+	/**
 	 *  VkBool32 	depthClamp	[boolean]
 	 */ 
-	 boolean 	depthClamp;
+	boolean 	depthClamp;
 	
-/**
+	/**
 	 *  VkBool32 	depthBiasClamp	[boolean]
 	 */ 
-	 boolean 	depthBiasClamp;
+	boolean 	depthBiasClamp;
 	
-/**
+	/**
 	 *  VkBool32 	fillModeNonSolid	[boolean]
 	 */ 
-	 boolean 	fillModeNonSolid;
+	boolean 	fillModeNonSolid;
 	
-/**
+	/**
 	 *  VkBool32 	depthBounds	[boolean]
 	 */ 
-	 boolean 	depthBounds;
+	boolean 	depthBounds;
 	
-/**
+	/**
 	 *  VkBool32 	wideLines	[boolean]
 	 */ 
-	 boolean 	wideLines;
+	boolean 	wideLines;
 	
-/**
+	/**
 	 *  VkBool32 	largePoints	[boolean]
 	 */ 
-	 boolean 	largePoints;
+	boolean 	largePoints;
 	
-/**
+	/**
 	 *  VkBool32 	alphaToOne	[boolean]
 	 */ 
-	 boolean 	alphaToOne;
+	boolean 	alphaToOne;
 	
-/**
+	/**
 	 *  VkBool32 	multiViewport	[boolean]
 	 */ 
-	 boolean 	multiViewport;
+	boolean 	multiViewport;
 	
-/**
+	/**
 	 *  VkBool32 	samplerAnisotropy	[boolean]
 	 */ 
-	 boolean 	samplerAnisotropy;
+	boolean 	samplerAnisotropy;
 	
-/**
+	/**
 	 *  VkBool32 	textureCompressionETC2	[boolean]
 	 */ 
-	 boolean 	textureCompressionETC2;
+	boolean 	textureCompressionETC2;
 	
-/**
+	/**
 	 *  VkBool32 	textureCompressionASTC_LDR	[boolean]
 	 */ 
-	 boolean 	textureCompressionASTC_LDR;
+	boolean 	textureCompressionASTC_LDR;
 	
-/**
+	/**
 	 *  VkBool32 	textureCompressionBC	[boolean]
 	 */ 
-	 boolean 	textureCompressionBC;
+	boolean 	textureCompressionBC;
 	
-/**
+	/**
 	 *  VkBool32 	occlusionQueryPrecise	[boolean]
 	 */ 
-	 boolean 	occlusionQueryPrecise;
+	boolean 	occlusionQueryPrecise;
 	
-/**
+	/**
 	 *  VkBool32 	pipelineStatisticsQuery	[boolean]
 	 */ 
-	 boolean 	pipelineStatisticsQuery;
+	boolean 	pipelineStatisticsQuery;
 	
-/**
+	/**
 	 *  VkBool32 	vertexPipelineStoresAndAtomics	[boolean]
 	 */ 
-	 boolean 	vertexPipelineStoresAndAtomics;
+	boolean 	vertexPipelineStoresAndAtomics;
 	
-/**
+	/**
 	 *  VkBool32 	fragmentStoresAndAtomics	[boolean]
 	 */ 
-	 boolean 	fragmentStoresAndAtomics;
+	boolean 	fragmentStoresAndAtomics;
 	
-/**
+	/**
 	 *  VkBool32 	shaderTessellationAndGeometryPointSize	[boolean]
 	 */ 
-	 boolean 	shaderTessellationAndGeometryPointSize;
+	boolean 	shaderTessellationAndGeometryPointSize;
 	
-/**
+	/**
 	 *  VkBool32 	shaderImageGatherExtended	[boolean]
 	 */ 
-	 boolean 	shaderImageGatherExtended;
+	boolean 	shaderImageGatherExtended;
 	
-/**
+	/**
 	 *  VkBool32 	shaderStorageImageExtendedFormats	[boolean]
 	 */ 
-	 boolean 	shaderStorageImageExtendedFormats;
+	boolean 	shaderStorageImageExtendedFormats;
 	
-/**
+	/**
 	 *  VkBool32 	shaderStorageImageMultisample	[boolean]
 	 */ 
-	 boolean 	shaderStorageImageMultisample;
+	boolean 	shaderStorageImageMultisample;
 	
-/**
+	/**
 	 *  VkBool32 	shaderStorageImageReadWithoutFormat	[boolean]
 	 */ 
-	 boolean 	shaderStorageImageReadWithoutFormat;
+	boolean 	shaderStorageImageReadWithoutFormat;
 	
-/**
+	/**
 	 *  VkBool32 	shaderStorageImageWriteWithoutFormat	[boolean]
 	 */ 
-	 boolean 	shaderStorageImageWriteWithoutFormat;
+	boolean 	shaderStorageImageWriteWithoutFormat;
 	
-/**
+	/**
 	 *  VkBool32 	shaderUniformBufferArrayDynamicIndexing	[boolean]
 	 */ 
-	 boolean 	shaderUniformBufferArrayDynamicIndexing;
+	boolean 	shaderUniformBufferArrayDynamicIndexing;
 	
-/**
+	/**
 	 *  VkBool32 	shaderSampledImageArrayDynamicIndexing	[boolean]
 	 */ 
-	 boolean 	shaderSampledImageArrayDynamicIndexing;
+	boolean 	shaderSampledImageArrayDynamicIndexing;
 	
-/**
+	/**
 	 *  VkBool32 	shaderStorageBufferArrayDynamicIndexing	[boolean]
 	 */ 
-	 boolean 	shaderStorageBufferArrayDynamicIndexing;
+	boolean 	shaderStorageBufferArrayDynamicIndexing;
 	
-/**
+	/**
 	 *  VkBool32 	shaderStorageImageArrayDynamicIndexing	[boolean]
 	 */ 
-	 boolean 	shaderStorageImageArrayDynamicIndexing;
+	boolean 	shaderStorageImageArrayDynamicIndexing;
 	
-/**
+	/**
 	 *  VkBool32 	shaderClipDistance	[boolean]
 	 */ 
-	 boolean 	shaderClipDistance;
+	boolean 	shaderClipDistance;
 	
-/**
+	/**
 	 *  VkBool32 	shaderCullDistance	[boolean]
 	 */ 
-	 boolean 	shaderCullDistance;
+	boolean 	shaderCullDistance;
 	
-/**
+	/**
 	 *  VkBool32 	shaderFloat64	[boolean]
 	 */ 
-	 boolean 	shaderFloat64;
+	boolean 	shaderFloat64;
 	
-/**
+	/**
 	 *  VkBool32 	shaderInt64	[boolean]
 	 */ 
-	 boolean 	shaderInt64;
+	boolean 	shaderInt64;
 	
-/**
+	/**
 	 *  VkBool32 	shaderInt16	[boolean]
 	 */ 
-	 boolean 	shaderInt16;
+	boolean 	shaderInt16;
 	
-/**
+	/**
 	 *  VkBool32 	shaderResourceResidency	[boolean]
 	 */ 
-	 boolean 	shaderResourceResidency;
+	boolean 	shaderResourceResidency;
 	
-/**
+	/**
 	 *  VkBool32 	shaderResourceMinLod	[boolean]
 	 */ 
-	 boolean 	shaderResourceMinLod;
+	boolean 	shaderResourceMinLod;
 	
-/**
+	/**
 	 *  VkBool32 	sparseBinding	[boolean]
 	 */ 
-	 boolean 	sparseBinding;
+	boolean 	sparseBinding;
 	
-/**
+	/**
 	 *  VkBool32 	sparseResidencyBuffer	[boolean]
 	 */ 
-	 boolean 	sparseResidencyBuffer;
+	boolean 	sparseResidencyBuffer;
 	
-/**
+	/**
 	 *  VkBool32 	sparseResidencyImage2D	[boolean]
 	 */ 
-	 boolean 	sparseResidencyImage2D;
+	boolean 	sparseResidencyImage2D;
 	
-/**
+	/**
 	 *  VkBool32 	sparseResidencyImage3D	[boolean]
 	 */ 
-	 boolean 	sparseResidencyImage3D;
+	boolean 	sparseResidencyImage3D;
 	
-/**
+	/**
 	 *  VkBool32 	sparseResidency2Samples	[boolean]
 	 */ 
-	 boolean 	sparseResidency2Samples;
+	boolean 	sparseResidency2Samples;
 	
-/**
+	/**
 	 *  VkBool32 	sparseResidency4Samples	[boolean]
 	 */ 
-	 boolean 	sparseResidency4Samples;
+	boolean 	sparseResidency4Samples;
 	
-/**
+	/**
 	 *  VkBool32 	sparseResidency8Samples	[boolean]
 	 */ 
-	 boolean 	sparseResidency8Samples;
+	boolean 	sparseResidency8Samples;
 	
-/**
+	/**
 	 *  VkBool32 	sparseResidency16Samples	[boolean]
 	 */ 
-	 boolean 	sparseResidency16Samples;
+	boolean 	sparseResidency16Samples;
 	
-/**
+	/**
 	 *  VkBool32 	sparseResidencyAliased	[boolean]
 	 */ 
-	 boolean 	sparseResidencyAliased;
+	boolean 	sparseResidencyAliased;
 	
-/**
+	/**
 	 *  VkBool32 	variableMultisampleRate	[boolean]
 	 */ 
-	 boolean 	variableMultisampleRate;
+	boolean 	variableMultisampleRate;
 	
-/**
+	/**
 	 *  VkBool32 	inheritedQueries	[boolean]
 	 */ 
-	 boolean 	inheritedQueries;
+	boolean 	inheritedQueries;
 	/**
 	 * Ctor
 	 */
@@ -1815,7 +1817,7 @@
 	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field robustBufferAccess	[boolean]<br>
+	 * Native SET method for field robustBufferAccess	[boolean]<br>
 	 * Prototype: VkBool32  robustBufferAccess
 	 */ 
 	 private static native void setRobustBufferAccess0(Buffer ptr, boolean  _robustBufferAccess);/*
@@ -1824,7 +1826,7 @@
 	  */
 
 	/**
-	 * native GET method for field robustBufferAccess	[boolean]<br>
+	 * Native GET method for field robustBufferAccess	[boolean]<br>
 	 * Prototype: VkBool32  robustBufferAccess
 	 */ 
 	 private static native boolean  getRobustBufferAccess0(Buffer ptr);/*
@@ -1833,7 +1835,7 @@
 	 */
 
 	/**
-	 * native SET method for field fullDrawIndexUint32	[boolean]<br>
+	 * Native SET method for field fullDrawIndexUint32	[boolean]<br>
 	 * Prototype: VkBool32  fullDrawIndexUint32
 	 */ 
 	 private static native void setFullDrawIndexUint320(Buffer ptr, boolean  _fullDrawIndexUint32);/*
@@ -1842,7 +1844,7 @@
 	  */
 
 	/**
-	 * native GET method for field fullDrawIndexUint32	[boolean]<br>
+	 * Native GET method for field fullDrawIndexUint32	[boolean]<br>
 	 * Prototype: VkBool32  fullDrawIndexUint32
 	 */ 
 	 private static native boolean  getFullDrawIndexUint320(Buffer ptr);/*
@@ -1851,7 +1853,7 @@
 	 */
 
 	/**
-	 * native SET method for field imageCubeArray	[boolean]<br>
+	 * Native SET method for field imageCubeArray	[boolean]<br>
 	 * Prototype: VkBool32  imageCubeArray
 	 */ 
 	 private static native void setImageCubeArray0(Buffer ptr, boolean  _imageCubeArray);/*
@@ -1860,7 +1862,7 @@
 	  */
 
 	/**
-	 * native GET method for field imageCubeArray	[boolean]<br>
+	 * Native GET method for field imageCubeArray	[boolean]<br>
 	 * Prototype: VkBool32  imageCubeArray
 	 */ 
 	 private static native boolean  getImageCubeArray0(Buffer ptr);/*
@@ -1869,7 +1871,7 @@
 	 */
 
 	/**
-	 * native SET method for field independentBlend	[boolean]<br>
+	 * Native SET method for field independentBlend	[boolean]<br>
 	 * Prototype: VkBool32  independentBlend
 	 */ 
 	 private static native void setIndependentBlend0(Buffer ptr, boolean  _independentBlend);/*
@@ -1878,7 +1880,7 @@
 	  */
 
 	/**
-	 * native GET method for field independentBlend	[boolean]<br>
+	 * Native GET method for field independentBlend	[boolean]<br>
 	 * Prototype: VkBool32  independentBlend
 	 */ 
 	 private static native boolean  getIndependentBlend0(Buffer ptr);/*
@@ -1887,7 +1889,7 @@
 	 */
 
 	/**
-	 * native SET method for field geometryShader	[boolean]<br>
+	 * Native SET method for field geometryShader	[boolean]<br>
 	 * Prototype: VkBool32  geometryShader
 	 */ 
 	 private static native void setGeometryShader0(Buffer ptr, boolean  _geometryShader);/*
@@ -1896,7 +1898,7 @@
 	  */
 
 	/**
-	 * native GET method for field geometryShader	[boolean]<br>
+	 * Native GET method for field geometryShader	[boolean]<br>
 	 * Prototype: VkBool32  geometryShader
 	 */ 
 	 private static native boolean  getGeometryShader0(Buffer ptr);/*
@@ -1905,7 +1907,7 @@
 	 */
 
 	/**
-	 * native SET method for field tessellationShader	[boolean]<br>
+	 * Native SET method for field tessellationShader	[boolean]<br>
 	 * Prototype: VkBool32  tessellationShader
 	 */ 
 	 private static native void setTessellationShader0(Buffer ptr, boolean  _tessellationShader);/*
@@ -1914,7 +1916,7 @@
 	  */
 
 	/**
-	 * native GET method for field tessellationShader	[boolean]<br>
+	 * Native GET method for field tessellationShader	[boolean]<br>
 	 * Prototype: VkBool32  tessellationShader
 	 */ 
 	 private static native boolean  getTessellationShader0(Buffer ptr);/*
@@ -1923,7 +1925,7 @@
 	 */
 
 	/**
-	 * native SET method for field sampleRateShading	[boolean]<br>
+	 * Native SET method for field sampleRateShading	[boolean]<br>
 	 * Prototype: VkBool32  sampleRateShading
 	 */ 
 	 private static native void setSampleRateShading0(Buffer ptr, boolean  _sampleRateShading);/*
@@ -1932,7 +1934,7 @@
 	  */
 
 	/**
-	 * native GET method for field sampleRateShading	[boolean]<br>
+	 * Native GET method for field sampleRateShading	[boolean]<br>
 	 * Prototype: VkBool32  sampleRateShading
 	 */ 
 	 private static native boolean  getSampleRateShading0(Buffer ptr);/*
@@ -1941,7 +1943,7 @@
 	 */
 
 	/**
-	 * native SET method for field dualSrcBlend	[boolean]<br>
+	 * Native SET method for field dualSrcBlend	[boolean]<br>
 	 * Prototype: VkBool32  dualSrcBlend
 	 */ 
 	 private static native void setDualSrcBlend0(Buffer ptr, boolean  _dualSrcBlend);/*
@@ -1950,7 +1952,7 @@
 	  */
 
 	/**
-	 * native GET method for field dualSrcBlend	[boolean]<br>
+	 * Native GET method for field dualSrcBlend	[boolean]<br>
 	 * Prototype: VkBool32  dualSrcBlend
 	 */ 
 	 private static native boolean  getDualSrcBlend0(Buffer ptr);/*
@@ -1959,7 +1961,7 @@
 	 */
 
 	/**
-	 * native SET method for field logicOp	[boolean]<br>
+	 * Native SET method for field logicOp	[boolean]<br>
 	 * Prototype: VkBool32  logicOp
 	 */ 
 	 private static native void setLogicOp0(Buffer ptr, boolean  _logicOp);/*
@@ -1968,7 +1970,7 @@
 	  */
 
 	/**
-	 * native GET method for field logicOp	[boolean]<br>
+	 * Native GET method for field logicOp	[boolean]<br>
 	 * Prototype: VkBool32  logicOp
 	 */ 
 	 private static native boolean  getLogicOp0(Buffer ptr);/*
@@ -1977,7 +1979,7 @@
 	 */
 
 	/**
-	 * native SET method for field multiDrawIndirect	[boolean]<br>
+	 * Native SET method for field multiDrawIndirect	[boolean]<br>
 	 * Prototype: VkBool32  multiDrawIndirect
 	 */ 
 	 private static native void setMultiDrawIndirect0(Buffer ptr, boolean  _multiDrawIndirect);/*
@@ -1986,7 +1988,7 @@
 	  */
 
 	/**
-	 * native GET method for field multiDrawIndirect	[boolean]<br>
+	 * Native GET method for field multiDrawIndirect	[boolean]<br>
 	 * Prototype: VkBool32  multiDrawIndirect
 	 */ 
 	 private static native boolean  getMultiDrawIndirect0(Buffer ptr);/*
@@ -1995,7 +1997,7 @@
 	 */
 
 	/**
-	 * native SET method for field drawIndirectFirstInstance	[boolean]<br>
+	 * Native SET method for field drawIndirectFirstInstance	[boolean]<br>
 	 * Prototype: VkBool32  drawIndirectFirstInstance
 	 */ 
 	 private static native void setDrawIndirectFirstInstance0(Buffer ptr, boolean  _drawIndirectFirstInstance);/*
@@ -2004,7 +2006,7 @@
 	  */
 
 	/**
-	 * native GET method for field drawIndirectFirstInstance	[boolean]<br>
+	 * Native GET method for field drawIndirectFirstInstance	[boolean]<br>
 	 * Prototype: VkBool32  drawIndirectFirstInstance
 	 */ 
 	 private static native boolean  getDrawIndirectFirstInstance0(Buffer ptr);/*
@@ -2013,7 +2015,7 @@
 	 */
 
 	/**
-	 * native SET method for field depthClamp	[boolean]<br>
+	 * Native SET method for field depthClamp	[boolean]<br>
 	 * Prototype: VkBool32  depthClamp
 	 */ 
 	 private static native void setDepthClamp0(Buffer ptr, boolean  _depthClamp);/*
@@ -2022,7 +2024,7 @@
 	  */
 
 	/**
-	 * native GET method for field depthClamp	[boolean]<br>
+	 * Native GET method for field depthClamp	[boolean]<br>
 	 * Prototype: VkBool32  depthClamp
 	 */ 
 	 private static native boolean  getDepthClamp0(Buffer ptr);/*
@@ -2031,7 +2033,7 @@
 	 */
 
 	/**
-	 * native SET method for field depthBiasClamp	[boolean]<br>
+	 * Native SET method for field depthBiasClamp	[boolean]<br>
 	 * Prototype: VkBool32  depthBiasClamp
 	 */ 
 	 private static native void setDepthBiasClamp0(Buffer ptr, boolean  _depthBiasClamp);/*
@@ -2040,7 +2042,7 @@
 	  */
 
 	/**
-	 * native GET method for field depthBiasClamp	[boolean]<br>
+	 * Native GET method for field depthBiasClamp	[boolean]<br>
 	 * Prototype: VkBool32  depthBiasClamp
 	 */ 
 	 private static native boolean  getDepthBiasClamp0(Buffer ptr);/*
@@ -2049,7 +2051,7 @@
 	 */
 
 	/**
-	 * native SET method for field fillModeNonSolid	[boolean]<br>
+	 * Native SET method for field fillModeNonSolid	[boolean]<br>
 	 * Prototype: VkBool32  fillModeNonSolid
 	 */ 
 	 private static native void setFillModeNonSolid0(Buffer ptr, boolean  _fillModeNonSolid);/*
@@ -2058,7 +2060,7 @@
 	  */
 
 	/**
-	 * native GET method for field fillModeNonSolid	[boolean]<br>
+	 * Native GET method for field fillModeNonSolid	[boolean]<br>
 	 * Prototype: VkBool32  fillModeNonSolid
 	 */ 
 	 private static native boolean  getFillModeNonSolid0(Buffer ptr);/*
@@ -2067,7 +2069,7 @@
 	 */
 
 	/**
-	 * native SET method for field depthBounds	[boolean]<br>
+	 * Native SET method for field depthBounds	[boolean]<br>
 	 * Prototype: VkBool32  depthBounds
 	 */ 
 	 private static native void setDepthBounds0(Buffer ptr, boolean  _depthBounds);/*
@@ -2076,7 +2078,7 @@
 	  */
 
 	/**
-	 * native GET method for field depthBounds	[boolean]<br>
+	 * Native GET method for field depthBounds	[boolean]<br>
 	 * Prototype: VkBool32  depthBounds
 	 */ 
 	 private static native boolean  getDepthBounds0(Buffer ptr);/*
@@ -2085,7 +2087,7 @@
 	 */
 
 	/**
-	 * native SET method for field wideLines	[boolean]<br>
+	 * Native SET method for field wideLines	[boolean]<br>
 	 * Prototype: VkBool32  wideLines
 	 */ 
 	 private static native void setWideLines0(Buffer ptr, boolean  _wideLines);/*
@@ -2094,7 +2096,7 @@
 	  */
 
 	/**
-	 * native GET method for field wideLines	[boolean]<br>
+	 * Native GET method for field wideLines	[boolean]<br>
 	 * Prototype: VkBool32  wideLines
 	 */ 
 	 private static native boolean  getWideLines0(Buffer ptr);/*
@@ -2103,7 +2105,7 @@
 	 */
 
 	/**
-	 * native SET method for field largePoints	[boolean]<br>
+	 * Native SET method for field largePoints	[boolean]<br>
 	 * Prototype: VkBool32  largePoints
 	 */ 
 	 private static native void setLargePoints0(Buffer ptr, boolean  _largePoints);/*
@@ -2112,7 +2114,7 @@
 	  */
 
 	/**
-	 * native GET method for field largePoints	[boolean]<br>
+	 * Native GET method for field largePoints	[boolean]<br>
 	 * Prototype: VkBool32  largePoints
 	 */ 
 	 private static native boolean  getLargePoints0(Buffer ptr);/*
@@ -2121,7 +2123,7 @@
 	 */
 
 	/**
-	 * native SET method for field alphaToOne	[boolean]<br>
+	 * Native SET method for field alphaToOne	[boolean]<br>
 	 * Prototype: VkBool32  alphaToOne
 	 */ 
 	 private static native void setAlphaToOne0(Buffer ptr, boolean  _alphaToOne);/*
@@ -2130,7 +2132,7 @@
 	  */
 
 	/**
-	 * native GET method for field alphaToOne	[boolean]<br>
+	 * Native GET method for field alphaToOne	[boolean]<br>
 	 * Prototype: VkBool32  alphaToOne
 	 */ 
 	 private static native boolean  getAlphaToOne0(Buffer ptr);/*
@@ -2139,7 +2141,7 @@
 	 */
 
 	/**
-	 * native SET method for field multiViewport	[boolean]<br>
+	 * Native SET method for field multiViewport	[boolean]<br>
 	 * Prototype: VkBool32  multiViewport
 	 */ 
 	 private static native void setMultiViewport0(Buffer ptr, boolean  _multiViewport);/*
@@ -2148,7 +2150,7 @@
 	  */
 
 	/**
-	 * native GET method for field multiViewport	[boolean]<br>
+	 * Native GET method for field multiViewport	[boolean]<br>
 	 * Prototype: VkBool32  multiViewport
 	 */ 
 	 private static native boolean  getMultiViewport0(Buffer ptr);/*
@@ -2157,7 +2159,7 @@
 	 */
 
 	/**
-	 * native SET method for field samplerAnisotropy	[boolean]<br>
+	 * Native SET method for field samplerAnisotropy	[boolean]<br>
 	 * Prototype: VkBool32  samplerAnisotropy
 	 */ 
 	 private static native void setSamplerAnisotropy0(Buffer ptr, boolean  _samplerAnisotropy);/*
@@ -2166,7 +2168,7 @@
 	  */
 
 	/**
-	 * native GET method for field samplerAnisotropy	[boolean]<br>
+	 * Native GET method for field samplerAnisotropy	[boolean]<br>
 	 * Prototype: VkBool32  samplerAnisotropy
 	 */ 
 	 private static native boolean  getSamplerAnisotropy0(Buffer ptr);/*
@@ -2175,7 +2177,7 @@
 	 */
 
 	/**
-	 * native SET method for field textureCompressionETC2	[boolean]<br>
+	 * Native SET method for field textureCompressionETC2	[boolean]<br>
 	 * Prototype: VkBool32  textureCompressionETC2
 	 */ 
 	 private static native void setTextureCompressionETC20(Buffer ptr, boolean  _textureCompressionETC2);/*
@@ -2184,7 +2186,7 @@
 	  */
 
 	/**
-	 * native GET method for field textureCompressionETC2	[boolean]<br>
+	 * Native GET method for field textureCompressionETC2	[boolean]<br>
 	 * Prototype: VkBool32  textureCompressionETC2
 	 */ 
 	 private static native boolean  getTextureCompressionETC20(Buffer ptr);/*
@@ -2193,7 +2195,7 @@
 	 */
 
 	/**
-	 * native SET method for field textureCompressionASTC_LDR	[boolean]<br>
+	 * Native SET method for field textureCompressionASTC_LDR	[boolean]<br>
 	 * Prototype: VkBool32  textureCompressionASTC_LDR
 	 */ 
 	 private static native void setTextureCompressionASTC_LDR0(Buffer ptr, boolean  _textureCompressionASTC_LDR);/*
@@ -2202,7 +2204,7 @@
 	  */
 
 	/**
-	 * native GET method for field textureCompressionASTC_LDR	[boolean]<br>
+	 * Native GET method for field textureCompressionASTC_LDR	[boolean]<br>
 	 * Prototype: VkBool32  textureCompressionASTC_LDR
 	 */ 
 	 private static native boolean  getTextureCompressionASTC_LDR0(Buffer ptr);/*
@@ -2211,7 +2213,7 @@
 	 */
 
 	/**
-	 * native SET method for field textureCompressionBC	[boolean]<br>
+	 * Native SET method for field textureCompressionBC	[boolean]<br>
 	 * Prototype: VkBool32  textureCompressionBC
 	 */ 
 	 private static native void setTextureCompressionBC0(Buffer ptr, boolean  _textureCompressionBC);/*
@@ -2220,7 +2222,7 @@
 	  */
 
 	/**
-	 * native GET method for field textureCompressionBC	[boolean]<br>
+	 * Native GET method for field textureCompressionBC	[boolean]<br>
 	 * Prototype: VkBool32  textureCompressionBC
 	 */ 
 	 private static native boolean  getTextureCompressionBC0(Buffer ptr);/*
@@ -2229,7 +2231,7 @@
 	 */
 
 	/**
-	 * native SET method for field occlusionQueryPrecise	[boolean]<br>
+	 * Native SET method for field occlusionQueryPrecise	[boolean]<br>
 	 * Prototype: VkBool32  occlusionQueryPrecise
 	 */ 
 	 private static native void setOcclusionQueryPrecise0(Buffer ptr, boolean  _occlusionQueryPrecise);/*
@@ -2238,7 +2240,7 @@
 	  */
 
 	/**
-	 * native GET method for field occlusionQueryPrecise	[boolean]<br>
+	 * Native GET method for field occlusionQueryPrecise	[boolean]<br>
 	 * Prototype: VkBool32  occlusionQueryPrecise
 	 */ 
 	 private static native boolean  getOcclusionQueryPrecise0(Buffer ptr);/*
@@ -2247,7 +2249,7 @@
 	 */
 
 	/**
-	 * native SET method for field pipelineStatisticsQuery	[boolean]<br>
+	 * Native SET method for field pipelineStatisticsQuery	[boolean]<br>
 	 * Prototype: VkBool32  pipelineStatisticsQuery
 	 */ 
 	 private static native void setPipelineStatisticsQuery0(Buffer ptr, boolean  _pipelineStatisticsQuery);/*
@@ -2256,7 +2258,7 @@
 	  */
 
 	/**
-	 * native GET method for field pipelineStatisticsQuery	[boolean]<br>
+	 * Native GET method for field pipelineStatisticsQuery	[boolean]<br>
 	 * Prototype: VkBool32  pipelineStatisticsQuery
 	 */ 
 	 private static native boolean  getPipelineStatisticsQuery0(Buffer ptr);/*
@@ -2265,7 +2267,7 @@
 	 */
 
 	/**
-	 * native SET method for field vertexPipelineStoresAndAtomics	[boolean]<br>
+	 * Native SET method for field vertexPipelineStoresAndAtomics	[boolean]<br>
 	 * Prototype: VkBool32  vertexPipelineStoresAndAtomics
 	 */ 
 	 private static native void setVertexPipelineStoresAndAtomics0(Buffer ptr, boolean  _vertexPipelineStoresAndAtomics);/*
@@ -2274,7 +2276,7 @@
 	  */
 
 	/**
-	 * native GET method for field vertexPipelineStoresAndAtomics	[boolean]<br>
+	 * Native GET method for field vertexPipelineStoresAndAtomics	[boolean]<br>
 	 * Prototype: VkBool32  vertexPipelineStoresAndAtomics
 	 */ 
 	 private static native boolean  getVertexPipelineStoresAndAtomics0(Buffer ptr);/*
@@ -2283,7 +2285,7 @@
 	 */
 
 	/**
-	 * native SET method for field fragmentStoresAndAtomics	[boolean]<br>
+	 * Native SET method for field fragmentStoresAndAtomics	[boolean]<br>
 	 * Prototype: VkBool32  fragmentStoresAndAtomics
 	 */ 
 	 private static native void setFragmentStoresAndAtomics0(Buffer ptr, boolean  _fragmentStoresAndAtomics);/*
@@ -2292,7 +2294,7 @@
 	  */
 
 	/**
-	 * native GET method for field fragmentStoresAndAtomics	[boolean]<br>
+	 * Native GET method for field fragmentStoresAndAtomics	[boolean]<br>
 	 * Prototype: VkBool32  fragmentStoresAndAtomics
 	 */ 
 	 private static native boolean  getFragmentStoresAndAtomics0(Buffer ptr);/*
@@ -2301,7 +2303,7 @@
 	 */
 
 	/**
-	 * native SET method for field shaderTessellationAndGeometryPointSize	[boolean]<br>
+	 * Native SET method for field shaderTessellationAndGeometryPointSize	[boolean]<br>
 	 * Prototype: VkBool32  shaderTessellationAndGeometryPointSize
 	 */ 
 	 private static native void setShaderTessellationAndGeometryPointSize0(Buffer ptr, boolean  _shaderTessellationAndGeometryPointSize);/*
@@ -2310,7 +2312,7 @@
 	  */
 
 	/**
-	 * native GET method for field shaderTessellationAndGeometryPointSize	[boolean]<br>
+	 * Native GET method for field shaderTessellationAndGeometryPointSize	[boolean]<br>
 	 * Prototype: VkBool32  shaderTessellationAndGeometryPointSize
 	 */ 
 	 private static native boolean  getShaderTessellationAndGeometryPointSize0(Buffer ptr);/*
@@ -2319,7 +2321,7 @@
 	 */
 
 	/**
-	 * native SET method for field shaderImageGatherExtended	[boolean]<br>
+	 * Native SET method for field shaderImageGatherExtended	[boolean]<br>
 	 * Prototype: VkBool32  shaderImageGatherExtended
 	 */ 
 	 private static native void setShaderImageGatherExtended0(Buffer ptr, boolean  _shaderImageGatherExtended);/*
@@ -2328,7 +2330,7 @@
 	  */
 
 	/**
-	 * native GET method for field shaderImageGatherExtended	[boolean]<br>
+	 * Native GET method for field shaderImageGatherExtended	[boolean]<br>
 	 * Prototype: VkBool32  shaderImageGatherExtended
 	 */ 
 	 private static native boolean  getShaderImageGatherExtended0(Buffer ptr);/*
@@ -2337,7 +2339,7 @@
 	 */
 
 	/**
-	 * native SET method for field shaderStorageImageExtendedFormats	[boolean]<br>
+	 * Native SET method for field shaderStorageImageExtendedFormats	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageExtendedFormats
 	 */ 
 	 private static native void setShaderStorageImageExtendedFormats0(Buffer ptr, boolean  _shaderStorageImageExtendedFormats);/*
@@ -2346,7 +2348,7 @@
 	  */
 
 	/**
-	 * native GET method for field shaderStorageImageExtendedFormats	[boolean]<br>
+	 * Native GET method for field shaderStorageImageExtendedFormats	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageExtendedFormats
 	 */ 
 	 private static native boolean  getShaderStorageImageExtendedFormats0(Buffer ptr);/*
@@ -2355,7 +2357,7 @@
 	 */
 
 	/**
-	 * native SET method for field shaderStorageImageMultisample	[boolean]<br>
+	 * Native SET method for field shaderStorageImageMultisample	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageMultisample
 	 */ 
 	 private static native void setShaderStorageImageMultisample0(Buffer ptr, boolean  _shaderStorageImageMultisample);/*
@@ -2364,7 +2366,7 @@
 	  */
 
 	/**
-	 * native GET method for field shaderStorageImageMultisample	[boolean]<br>
+	 * Native GET method for field shaderStorageImageMultisample	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageMultisample
 	 */ 
 	 private static native boolean  getShaderStorageImageMultisample0(Buffer ptr);/*
@@ -2373,7 +2375,7 @@
 	 */
 
 	/**
-	 * native SET method for field shaderStorageImageReadWithoutFormat	[boolean]<br>
+	 * Native SET method for field shaderStorageImageReadWithoutFormat	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageReadWithoutFormat
 	 */ 
 	 private static native void setShaderStorageImageReadWithoutFormat0(Buffer ptr, boolean  _shaderStorageImageReadWithoutFormat);/*
@@ -2382,7 +2384,7 @@
 	  */
 
 	/**
-	 * native GET method for field shaderStorageImageReadWithoutFormat	[boolean]<br>
+	 * Native GET method for field shaderStorageImageReadWithoutFormat	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageReadWithoutFormat
 	 */ 
 	 private static native boolean  getShaderStorageImageReadWithoutFormat0(Buffer ptr);/*
@@ -2391,7 +2393,7 @@
 	 */
 
 	/**
-	 * native SET method for field shaderStorageImageWriteWithoutFormat	[boolean]<br>
+	 * Native SET method for field shaderStorageImageWriteWithoutFormat	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageWriteWithoutFormat
 	 */ 
 	 private static native void setShaderStorageImageWriteWithoutFormat0(Buffer ptr, boolean  _shaderStorageImageWriteWithoutFormat);/*
@@ -2400,7 +2402,7 @@
 	  */
 
 	/**
-	 * native GET method for field shaderStorageImageWriteWithoutFormat	[boolean]<br>
+	 * Native GET method for field shaderStorageImageWriteWithoutFormat	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageWriteWithoutFormat
 	 */ 
 	 private static native boolean  getShaderStorageImageWriteWithoutFormat0(Buffer ptr);/*
@@ -2409,7 +2411,7 @@
 	 */
 
 	/**
-	 * native SET method for field shaderUniformBufferArrayDynamicIndexing	[boolean]<br>
+	 * Native SET method for field shaderUniformBufferArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderUniformBufferArrayDynamicIndexing
 	 */ 
 	 private static native void setShaderUniformBufferArrayDynamicIndexing0(Buffer ptr, boolean  _shaderUniformBufferArrayDynamicIndexing);/*
@@ -2418,7 +2420,7 @@
 	  */
 
 	/**
-	 * native GET method for field shaderUniformBufferArrayDynamicIndexing	[boolean]<br>
+	 * Native GET method for field shaderUniformBufferArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderUniformBufferArrayDynamicIndexing
 	 */ 
 	 private static native boolean  getShaderUniformBufferArrayDynamicIndexing0(Buffer ptr);/*
@@ -2427,7 +2429,7 @@
 	 */
 
 	/**
-	 * native SET method for field shaderSampledImageArrayDynamicIndexing	[boolean]<br>
+	 * Native SET method for field shaderSampledImageArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderSampledImageArrayDynamicIndexing
 	 */ 
 	 private static native void setShaderSampledImageArrayDynamicIndexing0(Buffer ptr, boolean  _shaderSampledImageArrayDynamicIndexing);/*
@@ -2436,7 +2438,7 @@
 	  */
 
 	/**
-	 * native GET method for field shaderSampledImageArrayDynamicIndexing	[boolean]<br>
+	 * Native GET method for field shaderSampledImageArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderSampledImageArrayDynamicIndexing
 	 */ 
 	 private static native boolean  getShaderSampledImageArrayDynamicIndexing0(Buffer ptr);/*
@@ -2445,7 +2447,7 @@
 	 */
 
 	/**
-	 * native SET method for field shaderStorageBufferArrayDynamicIndexing	[boolean]<br>
+	 * Native SET method for field shaderStorageBufferArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageBufferArrayDynamicIndexing
 	 */ 
 	 private static native void setShaderStorageBufferArrayDynamicIndexing0(Buffer ptr, boolean  _shaderStorageBufferArrayDynamicIndexing);/*
@@ -2454,7 +2456,7 @@
 	  */
 
 	/**
-	 * native GET method for field shaderStorageBufferArrayDynamicIndexing	[boolean]<br>
+	 * Native GET method for field shaderStorageBufferArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageBufferArrayDynamicIndexing
 	 */ 
 	 private static native boolean  getShaderStorageBufferArrayDynamicIndexing0(Buffer ptr);/*
@@ -2463,7 +2465,7 @@
 	 */
 
 	/**
-	 * native SET method for field shaderStorageImageArrayDynamicIndexing	[boolean]<br>
+	 * Native SET method for field shaderStorageImageArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageArrayDynamicIndexing
 	 */ 
 	 private static native void setShaderStorageImageArrayDynamicIndexing0(Buffer ptr, boolean  _shaderStorageImageArrayDynamicIndexing);/*
@@ -2472,7 +2474,7 @@
 	  */
 
 	/**
-	 * native GET method for field shaderStorageImageArrayDynamicIndexing	[boolean]<br>
+	 * Native GET method for field shaderStorageImageArrayDynamicIndexing	[boolean]<br>
 	 * Prototype: VkBool32  shaderStorageImageArrayDynamicIndexing
 	 */ 
 	 private static native boolean  getShaderStorageImageArrayDynamicIndexing0(Buffer ptr);/*
@@ -2481,7 +2483,7 @@
 	 */
 
 	/**
-	 * native SET method for field shaderClipDistance	[boolean]<br>
+	 * Native SET method for field shaderClipDistance	[boolean]<br>
 	 * Prototype: VkBool32  shaderClipDistance
 	 */ 
 	 private static native void setShaderClipDistance0(Buffer ptr, boolean  _shaderClipDistance);/*
@@ -2490,7 +2492,7 @@
 	  */
 
 	/**
-	 * native GET method for field shaderClipDistance	[boolean]<br>
+	 * Native GET method for field shaderClipDistance	[boolean]<br>
 	 * Prototype: VkBool32  shaderClipDistance
 	 */ 
 	 private static native boolean  getShaderClipDistance0(Buffer ptr);/*
@@ -2499,7 +2501,7 @@
 	 */
 
 	/**
-	 * native SET method for field shaderCullDistance	[boolean]<br>
+	 * Native SET method for field shaderCullDistance	[boolean]<br>
 	 * Prototype: VkBool32  shaderCullDistance
 	 */ 
 	 private static native void setShaderCullDistance0(Buffer ptr, boolean  _shaderCullDistance);/*
@@ -2508,7 +2510,7 @@
 	  */
 
 	/**
-	 * native GET method for field shaderCullDistance	[boolean]<br>
+	 * Native GET method for field shaderCullDistance	[boolean]<br>
 	 * Prototype: VkBool32  shaderCullDistance
 	 */ 
 	 private static native boolean  getShaderCullDistance0(Buffer ptr);/*
@@ -2517,7 +2519,7 @@
 	 */
 
 	/**
-	 * native SET method for field shaderFloat64	[boolean]<br>
+	 * Native SET method for field shaderFloat64	[boolean]<br>
 	 * Prototype: VkBool32  shaderFloat64
 	 */ 
 	 private static native void setShaderFloat640(Buffer ptr, boolean  _shaderFloat64);/*
@@ -2526,7 +2528,7 @@
 	  */
 
 	/**
-	 * native GET method for field shaderFloat64	[boolean]<br>
+	 * Native GET method for field shaderFloat64	[boolean]<br>
 	 * Prototype: VkBool32  shaderFloat64
 	 */ 
 	 private static native boolean  getShaderFloat640(Buffer ptr);/*
@@ -2535,7 +2537,7 @@
 	 */
 
 	/**
-	 * native SET method for field shaderInt64	[boolean]<br>
+	 * Native SET method for field shaderInt64	[boolean]<br>
 	 * Prototype: VkBool32  shaderInt64
 	 */ 
 	 private static native void setShaderInt640(Buffer ptr, boolean  _shaderInt64);/*
@@ -2544,7 +2546,7 @@
 	  */
 
 	/**
-	 * native GET method for field shaderInt64	[boolean]<br>
+	 * Native GET method for field shaderInt64	[boolean]<br>
 	 * Prototype: VkBool32  shaderInt64
 	 */ 
 	 private static native boolean  getShaderInt640(Buffer ptr);/*
@@ -2553,7 +2555,7 @@
 	 */
 
 	/**
-	 * native SET method for field shaderInt16	[boolean]<br>
+	 * Native SET method for field shaderInt16	[boolean]<br>
 	 * Prototype: VkBool32  shaderInt16
 	 */ 
 	 private static native void setShaderInt160(Buffer ptr, boolean  _shaderInt16);/*
@@ -2562,7 +2564,7 @@
 	  */
 
 	/**
-	 * native GET method for field shaderInt16	[boolean]<br>
+	 * Native GET method for field shaderInt16	[boolean]<br>
 	 * Prototype: VkBool32  shaderInt16
 	 */ 
 	 private static native boolean  getShaderInt160(Buffer ptr);/*
@@ -2571,7 +2573,7 @@
 	 */
 
 	/**
-	 * native SET method for field shaderResourceResidency	[boolean]<br>
+	 * Native SET method for field shaderResourceResidency	[boolean]<br>
 	 * Prototype: VkBool32  shaderResourceResidency
 	 */ 
 	 private static native void setShaderResourceResidency0(Buffer ptr, boolean  _shaderResourceResidency);/*
@@ -2580,7 +2582,7 @@
 	  */
 
 	/**
-	 * native GET method for field shaderResourceResidency	[boolean]<br>
+	 * Native GET method for field shaderResourceResidency	[boolean]<br>
 	 * Prototype: VkBool32  shaderResourceResidency
 	 */ 
 	 private static native boolean  getShaderResourceResidency0(Buffer ptr);/*
@@ -2589,7 +2591,7 @@
 	 */
 
 	/**
-	 * native SET method for field shaderResourceMinLod	[boolean]<br>
+	 * Native SET method for field shaderResourceMinLod	[boolean]<br>
 	 * Prototype: VkBool32  shaderResourceMinLod
 	 */ 
 	 private static native void setShaderResourceMinLod0(Buffer ptr, boolean  _shaderResourceMinLod);/*
@@ -2598,7 +2600,7 @@
 	  */
 
 	/**
-	 * native GET method for field shaderResourceMinLod	[boolean]<br>
+	 * Native GET method for field shaderResourceMinLod	[boolean]<br>
 	 * Prototype: VkBool32  shaderResourceMinLod
 	 */ 
 	 private static native boolean  getShaderResourceMinLod0(Buffer ptr);/*
@@ -2607,7 +2609,7 @@
 	 */
 
 	/**
-	 * native SET method for field sparseBinding	[boolean]<br>
+	 * Native SET method for field sparseBinding	[boolean]<br>
 	 * Prototype: VkBool32  sparseBinding
 	 */ 
 	 private static native void setSparseBinding0(Buffer ptr, boolean  _sparseBinding);/*
@@ -2616,7 +2618,7 @@
 	  */
 
 	/**
-	 * native GET method for field sparseBinding	[boolean]<br>
+	 * Native GET method for field sparseBinding	[boolean]<br>
 	 * Prototype: VkBool32  sparseBinding
 	 */ 
 	 private static native boolean  getSparseBinding0(Buffer ptr);/*
@@ -2625,7 +2627,7 @@
 	 */
 
 	/**
-	 * native SET method for field sparseResidencyBuffer	[boolean]<br>
+	 * Native SET method for field sparseResidencyBuffer	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyBuffer
 	 */ 
 	 private static native void setSparseResidencyBuffer0(Buffer ptr, boolean  _sparseResidencyBuffer);/*
@@ -2634,7 +2636,7 @@
 	  */
 
 	/**
-	 * native GET method for field sparseResidencyBuffer	[boolean]<br>
+	 * Native GET method for field sparseResidencyBuffer	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyBuffer
 	 */ 
 	 private static native boolean  getSparseResidencyBuffer0(Buffer ptr);/*
@@ -2643,7 +2645,7 @@
 	 */
 
 	/**
-	 * native SET method for field sparseResidencyImage2D	[boolean]<br>
+	 * Native SET method for field sparseResidencyImage2D	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyImage2D
 	 */ 
 	 private static native void setSparseResidencyImage2D0(Buffer ptr, boolean  _sparseResidencyImage2D);/*
@@ -2652,7 +2654,7 @@
 	  */
 
 	/**
-	 * native GET method for field sparseResidencyImage2D	[boolean]<br>
+	 * Native GET method for field sparseResidencyImage2D	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyImage2D
 	 */ 
 	 private static native boolean  getSparseResidencyImage2D0(Buffer ptr);/*
@@ -2661,7 +2663,7 @@
 	 */
 
 	/**
-	 * native SET method for field sparseResidencyImage3D	[boolean]<br>
+	 * Native SET method for field sparseResidencyImage3D	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyImage3D
 	 */ 
 	 private static native void setSparseResidencyImage3D0(Buffer ptr, boolean  _sparseResidencyImage3D);/*
@@ -2670,7 +2672,7 @@
 	  */
 
 	/**
-	 * native GET method for field sparseResidencyImage3D	[boolean]<br>
+	 * Native GET method for field sparseResidencyImage3D	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyImage3D
 	 */ 
 	 private static native boolean  getSparseResidencyImage3D0(Buffer ptr);/*
@@ -2679,7 +2681,7 @@
 	 */
 
 	/**
-	 * native SET method for field sparseResidency2Samples	[boolean]<br>
+	 * Native SET method for field sparseResidency2Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency2Samples
 	 */ 
 	 private static native void setSparseResidency2Samples0(Buffer ptr, boolean  _sparseResidency2Samples);/*
@@ -2688,7 +2690,7 @@
 	  */
 
 	/**
-	 * native GET method for field sparseResidency2Samples	[boolean]<br>
+	 * Native GET method for field sparseResidency2Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency2Samples
 	 */ 
 	 private static native boolean  getSparseResidency2Samples0(Buffer ptr);/*
@@ -2697,7 +2699,7 @@
 	 */
 
 	/**
-	 * native SET method for field sparseResidency4Samples	[boolean]<br>
+	 * Native SET method for field sparseResidency4Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency4Samples
 	 */ 
 	 private static native void setSparseResidency4Samples0(Buffer ptr, boolean  _sparseResidency4Samples);/*
@@ -2706,7 +2708,7 @@
 	  */
 
 	/**
-	 * native GET method for field sparseResidency4Samples	[boolean]<br>
+	 * Native GET method for field sparseResidency4Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency4Samples
 	 */ 
 	 private static native boolean  getSparseResidency4Samples0(Buffer ptr);/*
@@ -2715,7 +2717,7 @@
 	 */
 
 	/**
-	 * native SET method for field sparseResidency8Samples	[boolean]<br>
+	 * Native SET method for field sparseResidency8Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency8Samples
 	 */ 
 	 private static native void setSparseResidency8Samples0(Buffer ptr, boolean  _sparseResidency8Samples);/*
@@ -2724,7 +2726,7 @@
 	  */
 
 	/**
-	 * native GET method for field sparseResidency8Samples	[boolean]<br>
+	 * Native GET method for field sparseResidency8Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency8Samples
 	 */ 
 	 private static native boolean  getSparseResidency8Samples0(Buffer ptr);/*
@@ -2733,7 +2735,7 @@
 	 */
 
 	/**
-	 * native SET method for field sparseResidency16Samples	[boolean]<br>
+	 * Native SET method for field sparseResidency16Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency16Samples
 	 */ 
 	 private static native void setSparseResidency16Samples0(Buffer ptr, boolean  _sparseResidency16Samples);/*
@@ -2742,7 +2744,7 @@
 	  */
 
 	/**
-	 * native GET method for field sparseResidency16Samples	[boolean]<br>
+	 * Native GET method for field sparseResidency16Samples	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidency16Samples
 	 */ 
 	 private static native boolean  getSparseResidency16Samples0(Buffer ptr);/*
@@ -2751,7 +2753,7 @@
 	 */
 
 	/**
-	 * native SET method for field sparseResidencyAliased	[boolean]<br>
+	 * Native SET method for field sparseResidencyAliased	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyAliased
 	 */ 
 	 private static native void setSparseResidencyAliased0(Buffer ptr, boolean  _sparseResidencyAliased);/*
@@ -2760,7 +2762,7 @@
 	  */
 
 	/**
-	 * native GET method for field sparseResidencyAliased	[boolean]<br>
+	 * Native GET method for field sparseResidencyAliased	[boolean]<br>
 	 * Prototype: VkBool32  sparseResidencyAliased
 	 */ 
 	 private static native boolean  getSparseResidencyAliased0(Buffer ptr);/*
@@ -2769,7 +2771,7 @@
 	 */
 
 	/**
-	 * native SET method for field variableMultisampleRate	[boolean]<br>
+	 * Native SET method for field variableMultisampleRate	[boolean]<br>
 	 * Prototype: VkBool32  variableMultisampleRate
 	 */ 
 	 private static native void setVariableMultisampleRate0(Buffer ptr, boolean  _variableMultisampleRate);/*
@@ -2778,7 +2780,7 @@
 	  */
 
 	/**
-	 * native GET method for field variableMultisampleRate	[boolean]<br>
+	 * Native GET method for field variableMultisampleRate	[boolean]<br>
 	 * Prototype: VkBool32  variableMultisampleRate
 	 */ 
 	 private static native boolean  getVariableMultisampleRate0(Buffer ptr);/*
@@ -2787,7 +2789,7 @@
 	 */
 
 	/**
-	 * native SET method for field inheritedQueries	[boolean]<br>
+	 * Native SET method for field inheritedQueries	[boolean]<br>
 	 * Prototype: VkBool32  inheritedQueries
 	 */ 
 	 private static native void setInheritedQueries0(Buffer ptr, boolean  _inheritedQueries);/*
@@ -2796,7 +2798,7 @@
 	  */
 
 	/**
-	 * native GET method for field inheritedQueries	[boolean]<br>
+	 * Native GET method for field inheritedQueries	[boolean]<br>
 	 * Prototype: VkBool32  inheritedQueries
 	 */ 
 	 private static native boolean  getInheritedQueries0(Buffer ptr);/*

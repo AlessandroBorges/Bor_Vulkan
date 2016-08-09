@@ -9,9 +9,11 @@
  */
  package bor.vulkan.structs;
 
+ import bor.util.*;
  import bor.vulkan.*;
  import static bor.vulkan.Vulkan.*; 
  import bor.vulkan.enumerations.*;
+
  import java.util.*;
  import java.nio.*;
 
@@ -54,27 +56,27 @@
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	 protected VkStructureType 	sType;
+	VkStructureType 	sType;
 	
 	/**
 	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 protected VkObject 	pNext;
+	VkObject 	pNext;
 	
 	/**
 	 *  VkDebugReportObjectTypeEXT 	objectType	[vkenum]
 	 */ 
-	 protected VkDebugReportObjectTypeEXT 	objectType;
+	VkDebugReportObjectTypeEXT 	objectType;
 	
 	/**
 	 *  uint64_t 	object	[long]
 	 */ 
-	 protected long 	object;
+	long 	object;
 	
 	/**
 	 *  const char* 	pObjectName	[string]
 	 */ 
-	 protected String 	pObjectName;
+	String 	pObjectName;
 	/**
 	 * Ctor
 	 */
@@ -172,7 +174,7 @@
 		    this.pNext = null;
 		    return null;
 		  } else 
- 		 if(this.pNext == null){
+		 if(this.pNext == null){
 		    this.pNext = (VkObject)(new VkHandle(pointer));
 		 }else{
 		    this.pNext.setPointer(pointer);
@@ -276,7 +278,7 @@
 	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field sType	[vkenum]<br>
+	 * Native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
@@ -285,7 +287,7 @@
 	  */
 
 	/**
-	 * native GET method for field sType	[vkenum]<br>
+	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
@@ -294,7 +296,7 @@
 	 */
 
 	/**
-	 * native SET method for field pNext	[vkobject]<br>
+	 * Native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
@@ -303,7 +305,7 @@
 	  */
 
 	/**
-	 * native GET method for field pNext	[vkobject]<br>
+	 * Native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
@@ -312,7 +314,7 @@
 	 */
 
 	/**
-	 * native SET method for field objectType	[vkenum]<br>
+	 * Native SET method for field objectType	[vkenum]<br>
 	 * Prototype: VkDebugReportObjectTypeEXT  objectType
 	 */ 
 	 private static native void setObjectType0(Buffer ptr, int  _objectType);/*
@@ -321,7 +323,7 @@
 	  */
 
 	/**
-	 * native GET method for field objectType	[vkenum]<br>
+	 * Native GET method for field objectType	[vkenum]<br>
 	 * Prototype: VkDebugReportObjectTypeEXT  objectType
 	 */ 
 	 private static native int  getObjectType0(Buffer ptr);/*
@@ -330,7 +332,7 @@
 	 */
 
 	/**
-	 * native SET method for field object	[long]<br>
+	 * Native SET method for field object	[long]<br>
 	 * Prototype: uint64_t  object
 	 */ 
 	 private static native void setObject0(Buffer ptr, long _object);/*
@@ -339,7 +341,7 @@
 	  */
 
 	/**
-	 * native GET method for field object	[long]<br>
+	 * Native GET method for field object	[long]<br>
 	 * Prototype: uint64_t  object
 	 */ 
 	 private static native long getObject0(Buffer ptr);/*
@@ -348,16 +350,16 @@
 	 */
 
 	/**
-	 * native SET method for field pObjectName	[string]<br>
+	 * Native SET method for field pObjectName	[string]<br>
 	 * Prototype: const char*  pObjectName
 	 */ 
 	 private static native void setPObjectName0(Buffer ptr, String _pObjectName);/*
 		  VkDebugMarkerObjectNameInfoEXT* vkObj = (VkDebugMarkerObjectNameInfoEXT*)(ptr);
-		  vkObj->pObjectName = (const char*) (_pObjectName);
+		  vkObj->pObjectName = cloneStr(_pObjectName);
 	  */
 
 	/**
-	 * native GET method for field pObjectName	[string]<br>
+	 * Native GET method for field pObjectName	[string]<br>
 	 * Prototype: const char*  pObjectName
 	 */ 
 	 private static native String getPObjectName0(Buffer ptr);/*

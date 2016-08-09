@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkMemoryRequirements struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -31,9 +32,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkMemoryRequirements extends VkStruct {
+ public class VkMemoryRequirements extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -46,27 +47,24 @@ public class VkMemoryRequirements extends VkStruct {
 	/** ID of this structure [22]  */
 	 public static final int TAG_ID = VKMEMORYREQUIREMENTS_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkMemoryRequirements> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkDeviceSize 	size	[long]
 	 */ 
-	 long 	size;
-
+	long 	size;
+	
 	/**
 	 *  VkDeviceSize 	alignment	[long]
 	 */ 
-	 long 	alignment;
-
+	long 	alignment;
+	
 	/**
 	 *  uint32_t 	memoryTypeBits	[int]
 	 */ 
-	 int 	memoryTypeBits;
-
+	int 	memoryTypeBits;
 	/**
 	 * Ctor
 	 */
@@ -80,15 +78,6 @@ public class VkMemoryRequirements extends VkStruct {
 	 */
 	public VkMemoryRequirements(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkMemoryRequirements(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -114,34 +103,12 @@ public class VkMemoryRequirements extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkMemoryRequirements> createNullPointer(){
-	        P<VkMemoryRequirements> p = new  P<VkMemoryRequirements>(new VkMemoryRequirements());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkMemoryRequirements> getP() {
-	       if(p == null ){
-	           p = new P<VkMemoryRequirements> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -150,10 +117,14 @@ public class VkMemoryRequirements extends VkStruct {
 	/**
 	 * Set method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
+	 * 
+	 * @param size - a instance of long.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void size(long size){
+	 public VkMemoryRequirements size(long size){
 		 this.size = size;
 		 setSize0(this.ptr,  size);
+		 return this;
 	 }
 
 	/**
@@ -169,10 +140,14 @@ public class VkMemoryRequirements extends VkStruct {
 	/**
 	 * Set method for field alignment	[long]<br>
 	 * Prototype: VkDeviceSize  alignment
+	 * 
+	 * @param alignment - a instance of long.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void alignment(long alignment){
+	 public VkMemoryRequirements alignment(long alignment){
 		 this.alignment = alignment;
 		 setAlignment0(this.ptr,  alignment);
+		 return this;
 	 }
 
 	/**
@@ -188,10 +163,14 @@ public class VkMemoryRequirements extends VkStruct {
 	/**
 	 * Set method for field memoryTypeBits	[int]<br>
 	 * Prototype: uint32_t  memoryTypeBits
+	 * 
+	 * @param memoryTypeBits - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void memoryTypeBits(int memoryTypeBits){
+	 public VkMemoryRequirements memoryTypeBits(int memoryTypeBits){
 		 this.memoryTypeBits = memoryTypeBits;
 		 setMemoryTypeBits0(this.ptr,  memoryTypeBits);
+		 return this;
 	 }
 
 	/**
@@ -205,11 +184,28 @@ public class VkMemoryRequirements extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkMemoryRequirements [ ")
+				.append("size: ").append(size() )
+				.append(",\n alignment: ")
+				.append(alignment() )
+				.append(",\n memoryTypeBits: ")
+				.append(memoryTypeBits() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field size	[long]<br>
+	 * Native SET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native void setSize0(Buffer ptr, long _size);/*
@@ -218,7 +214,7 @@ public class VkMemoryRequirements extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field size	[long]<br>
+	 * Native GET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long getSize0(Buffer ptr);/*
@@ -227,7 +223,7 @@ public class VkMemoryRequirements extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field alignment	[long]<br>
+	 * Native SET method for field alignment	[long]<br>
 	 * Prototype: VkDeviceSize  alignment
 	 */ 
 	 private static native void setAlignment0(Buffer ptr, long _alignment);/*
@@ -236,7 +232,7 @@ public class VkMemoryRequirements extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field alignment	[long]<br>
+	 * Native GET method for field alignment	[long]<br>
 	 * Prototype: VkDeviceSize  alignment
 	 */ 
 	 private static native long getAlignment0(Buffer ptr);/*
@@ -245,7 +241,7 @@ public class VkMemoryRequirements extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field memoryTypeBits	[int]<br>
+	 * Native SET method for field memoryTypeBits	[int]<br>
 	 * Prototype: uint32_t  memoryTypeBits
 	 */ 
 	 private static native void setMemoryTypeBits0(Buffer ptr, int _memoryTypeBits);/*
@@ -254,7 +250,7 @@ public class VkMemoryRequirements extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field memoryTypeBits	[int]<br>
+	 * Native GET method for field memoryTypeBits	[int]<br>
 	 * Prototype: uint32_t  memoryTypeBits
 	 */ 
 	 private static native int getMemoryTypeBits0(Buffer ptr);/*

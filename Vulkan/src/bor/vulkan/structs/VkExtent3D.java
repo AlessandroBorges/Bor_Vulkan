@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkExtent3D struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -31,9 +32,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkExtent3D extends VkStruct {
+ public class VkExtent3D extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -46,27 +47,24 @@ public class VkExtent3D extends VkStruct {
 	/** ID of this structure [6]  */
 	 public static final int TAG_ID = VKEXTENT3D_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkExtent3D> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  uint32_t 	width	[int]
 	 */ 
-	 int 	width;
-
+	int 	width;
+	
 	/**
 	 *  uint32_t 	height	[int]
 	 */ 
-	 int 	height;
-
+	int 	height;
+	
 	/**
 	 *  uint32_t 	depth	[int]
 	 */ 
-	 int 	depth;
-
+	int 	depth;
 	/**
 	 * Ctor
 	 */
@@ -80,15 +78,6 @@ public class VkExtent3D extends VkStruct {
 	 */
 	public VkExtent3D(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkExtent3D(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -114,34 +103,12 @@ public class VkExtent3D extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkExtent3D> createNullPointer(){
-	        P<VkExtent3D> p = new  P<VkExtent3D>(new VkExtent3D());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkExtent3D> getP() {
-	       if(p == null ){
-	           p = new P<VkExtent3D> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -150,10 +117,14 @@ public class VkExtent3D extends VkStruct {
 	/**
 	 * Set method for field width	[int]<br>
 	 * Prototype: uint32_t  width
+	 * 
+	 * @param width - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void width(int width){
+	 public VkExtent3D width(int width){
 		 this.width = width;
 		 setWidth0(this.ptr,  width);
+		 return this;
 	 }
 
 	/**
@@ -169,10 +140,14 @@ public class VkExtent3D extends VkStruct {
 	/**
 	 * Set method for field height	[int]<br>
 	 * Prototype: uint32_t  height
+	 * 
+	 * @param height - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void height(int height){
+	 public VkExtent3D height(int height){
 		 this.height = height;
 		 setHeight0(this.ptr,  height);
+		 return this;
 	 }
 
 	/**
@@ -188,10 +163,14 @@ public class VkExtent3D extends VkStruct {
 	/**
 	 * Set method for field depth	[int]<br>
 	 * Prototype: uint32_t  depth
+	 * 
+	 * @param depth - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void depth(int depth){
+	 public VkExtent3D depth(int depth){
 		 this.depth = depth;
 		 setDepth0(this.ptr,  depth);
+		 return this;
 	 }
 
 	/**
@@ -205,27 +184,28 @@ public class VkExtent3D extends VkStruct {
 	 }
 
 
-	 /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("VkExtent3D [width()=")
-                .append(width())
-                .append(", height()=")
-                .append(height())
-                .append(", depth()=")
-                .append(depth())
-                .append("]");
-        return builder.toString();
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkExtent3D [ ")
+				.append("width: ").append(width() )
+				.append(",\n height: ")
+				.append(height() )
+				.append(",\n depth: ")
+				.append(depth() )
+				.append("]");
+		 return builder.toString();
     }
 
-    //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+
+	 //////////////////////////////////
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field width	[int]<br>
+	 * Native SET method for field width	[int]<br>
 	 * Prototype: uint32_t  width
 	 */ 
 	 private static native void setWidth0(Buffer ptr, int _width);/*
@@ -234,7 +214,7 @@ public class VkExtent3D extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field width	[int]<br>
+	 * Native GET method for field width	[int]<br>
 	 * Prototype: uint32_t  width
 	 */ 
 	 private static native int getWidth0(Buffer ptr);/*
@@ -243,7 +223,7 @@ public class VkExtent3D extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field height	[int]<br>
+	 * Native SET method for field height	[int]<br>
 	 * Prototype: uint32_t  height
 	 */ 
 	 private static native void setHeight0(Buffer ptr, int _height);/*
@@ -252,7 +232,7 @@ public class VkExtent3D extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field height	[int]<br>
+	 * Native GET method for field height	[int]<br>
 	 * Prototype: uint32_t  height
 	 */ 
 	 private static native int getHeight0(Buffer ptr);/*
@@ -261,7 +241,7 @@ public class VkExtent3D extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field depth	[int]<br>
+	 * Native SET method for field depth	[int]<br>
 	 * Prototype: uint32_t  depth
 	 */ 
 	 private static native void setDepth0(Buffer ptr, int _depth);/*
@@ -270,7 +250,7 @@ public class VkExtent3D extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field depth	[int]<br>
+	 * Native GET method for field depth	[int]<br>
 	 * Prototype: uint32_t  depth
 	 */ 
 	 private static native int getDepth0(Buffer ptr);/*

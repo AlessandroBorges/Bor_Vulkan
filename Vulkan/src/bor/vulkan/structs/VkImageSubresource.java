@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkImageSubresource struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -31,9 +32,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkImageSubresource extends VkStruct {
+ public class VkImageSubresource extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -46,27 +47,24 @@ public class VkImageSubresource extends VkStruct {
 	/** ID of this structure [28]  */
 	 public static final int TAG_ID = VKIMAGESUBRESOURCE_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkImageSubresource> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkImageAspectFlags 	aspectMask	[int]
 	 */ 
-	 int 	aspectMask;
-
+	int 	aspectMask;
+	
 	/**
 	 *  uint32_t 	mipLevel	[int]
 	 */ 
-	 int 	mipLevel;
-
+	int 	mipLevel;
+	
 	/**
 	 *  uint32_t 	arrayLayer	[int]
 	 */ 
-	 int 	arrayLayer;
-
+	int 	arrayLayer;
 	/**
 	 * Ctor
 	 */
@@ -80,15 +78,6 @@ public class VkImageSubresource extends VkStruct {
 	 */
 	public VkImageSubresource(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkImageSubresource(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -114,34 +103,12 @@ public class VkImageSubresource extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkImageSubresource> createNullPointer(){
-	        P<VkImageSubresource> p = new  P<VkImageSubresource>(new VkImageSubresource());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkImageSubresource> getP() {
-	       if(p == null ){
-	           p = new P<VkImageSubresource> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -150,10 +117,14 @@ public class VkImageSubresource extends VkStruct {
 	/**
 	 * Set method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
+	 * 
+	 * @param aspectMask - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void aspectMask(int aspectMask){
+	 public VkImageSubresource aspectMask(int aspectMask){
 		 this.aspectMask = aspectMask;
 		 setAspectMask0(this.ptr,  aspectMask);
+		 return this;
 	 }
 
 	/**
@@ -169,10 +140,14 @@ public class VkImageSubresource extends VkStruct {
 	/**
 	 * Set method for field mipLevel	[int]<br>
 	 * Prototype: uint32_t  mipLevel
+	 * 
+	 * @param mipLevel - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void mipLevel(int mipLevel){
+	 public VkImageSubresource mipLevel(int mipLevel){
 		 this.mipLevel = mipLevel;
 		 setMipLevel0(this.ptr,  mipLevel);
+		 return this;
 	 }
 
 	/**
@@ -188,10 +163,14 @@ public class VkImageSubresource extends VkStruct {
 	/**
 	 * Set method for field arrayLayer	[int]<br>
 	 * Prototype: uint32_t  arrayLayer
+	 * 
+	 * @param arrayLayer - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void arrayLayer(int arrayLayer){
+	 public VkImageSubresource arrayLayer(int arrayLayer){
 		 this.arrayLayer = arrayLayer;
 		 setArrayLayer0(this.ptr,  arrayLayer);
+		 return this;
 	 }
 
 	/**
@@ -205,11 +184,28 @@ public class VkImageSubresource extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkImageSubresource [ ")
+				.append("aspectMask: ").append(aspectMask() )
+				.append(",\n mipLevel: ")
+				.append(mipLevel() )
+				.append(",\n arrayLayer: ")
+				.append(arrayLayer() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field aspectMask	[int]<br>
+	 * Native SET method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 private static native void setAspectMask0(Buffer ptr, int _aspectMask);/*
@@ -218,7 +214,7 @@ public class VkImageSubresource extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field aspectMask	[int]<br>
+	 * Native GET method for field aspectMask	[int]<br>
 	 * Prototype: VkImageAspectFlags  aspectMask
 	 */ 
 	 private static native int getAspectMask0(Buffer ptr);/*
@@ -227,7 +223,7 @@ public class VkImageSubresource extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field mipLevel	[int]<br>
+	 * Native SET method for field mipLevel	[int]<br>
 	 * Prototype: uint32_t  mipLevel
 	 */ 
 	 private static native void setMipLevel0(Buffer ptr, int _mipLevel);/*
@@ -236,7 +232,7 @@ public class VkImageSubresource extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field mipLevel	[int]<br>
+	 * Native GET method for field mipLevel	[int]<br>
 	 * Prototype: uint32_t  mipLevel
 	 */ 
 	 private static native int getMipLevel0(Buffer ptr);/*
@@ -245,7 +241,7 @@ public class VkImageSubresource extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field arrayLayer	[int]<br>
+	 * Native SET method for field arrayLayer	[int]<br>
 	 * Prototype: uint32_t  arrayLayer
 	 */ 
 	 private static native void setArrayLayer0(Buffer ptr, int _arrayLayer);/*
@@ -254,7 +250,7 @@ public class VkImageSubresource extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field arrayLayer	[int]<br>
+	 * Native GET method for field arrayLayer	[int]<br>
 	 * Prototype: uint32_t  arrayLayer
 	 */ 
 	 private static native int getArrayLayer0(Buffer ptr);/*

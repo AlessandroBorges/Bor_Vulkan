@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkPushConstantRange struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -31,9 +32,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkPushConstantRange extends VkStruct {
+ public class VkPushConstantRange extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -46,27 +47,24 @@ public class VkPushConstantRange extends VkStruct {
 	/** ID of this structure [68]  */
 	 public static final int TAG_ID = VKPUSHCONSTANTRANGE_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkPushConstantRange> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkShaderStageFlags 	stageFlags	[int]
 	 */ 
-	 int 	stageFlags;
-
+	int 	stageFlags;
+	
 	/**
 	 *  uint32_t 	offset	[int]
 	 */ 
-	 int 	offset;
-
+	int 	offset;
+	
 	/**
 	 *  uint32_t 	size	[int]
 	 */ 
-	 int 	size;
-
+	int 	size;
 	/**
 	 * Ctor
 	 */
@@ -80,15 +78,6 @@ public class VkPushConstantRange extends VkStruct {
 	 */
 	public VkPushConstantRange(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkPushConstantRange(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -114,34 +103,12 @@ public class VkPushConstantRange extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkPushConstantRange> createNullPointer(){
-	        P<VkPushConstantRange> p = new  P<VkPushConstantRange>(new VkPushConstantRange());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkPushConstantRange> getP() {
-	       if(p == null ){
-	           p = new P<VkPushConstantRange> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -150,10 +117,14 @@ public class VkPushConstantRange extends VkStruct {
 	/**
 	 * Set method for field stageFlags	[int]<br>
 	 * Prototype: VkShaderStageFlags  stageFlags
+	 * 
+	 * @param stageFlags - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void stageFlags(int stageFlags){
+	 public VkPushConstantRange stageFlags(int stageFlags){
 		 this.stageFlags = stageFlags;
 		 setStageFlags0(this.ptr,  stageFlags);
+		 return this;
 	 }
 
 	/**
@@ -169,10 +140,14 @@ public class VkPushConstantRange extends VkStruct {
 	/**
 	 * Set method for field offset	[int]<br>
 	 * Prototype: uint32_t  offset
+	 * 
+	 * @param offset - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void offset(int offset){
+	 public VkPushConstantRange offset(int offset){
 		 this.offset = offset;
 		 setOffset0(this.ptr,  offset);
+		 return this;
 	 }
 
 	/**
@@ -188,10 +163,14 @@ public class VkPushConstantRange extends VkStruct {
 	/**
 	 * Set method for field size	[int]<br>
 	 * Prototype: uint32_t  size
+	 * 
+	 * @param size - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void size(int size){
+	 public VkPushConstantRange size(int size){
 		 this.size = size;
 		 setSize0(this.ptr,  size);
+		 return this;
 	 }
 
 	/**
@@ -205,11 +184,28 @@ public class VkPushConstantRange extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkPushConstantRange [ ")
+				.append("stageFlags: ").append(stageFlags() )
+				.append(",\n offset: ")
+				.append(offset() )
+				.append(",\n size: ")
+				.append(size() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field stageFlags	[int]<br>
+	 * Native SET method for field stageFlags	[int]<br>
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
 	 private static native void setStageFlags0(Buffer ptr, int _stageFlags);/*
@@ -218,7 +214,7 @@ public class VkPushConstantRange extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field stageFlags	[int]<br>
+	 * Native GET method for field stageFlags	[int]<br>
 	 * Prototype: VkShaderStageFlags  stageFlags
 	 */ 
 	 private static native int getStageFlags0(Buffer ptr);/*
@@ -227,7 +223,7 @@ public class VkPushConstantRange extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field offset	[int]<br>
+	 * Native SET method for field offset	[int]<br>
 	 * Prototype: uint32_t  offset
 	 */ 
 	 private static native void setOffset0(Buffer ptr, int _offset);/*
@@ -236,7 +232,7 @@ public class VkPushConstantRange extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field offset	[int]<br>
+	 * Native GET method for field offset	[int]<br>
 	 * Prototype: uint32_t  offset
 	 */ 
 	 private static native int getOffset0(Buffer ptr);/*
@@ -245,7 +241,7 @@ public class VkPushConstantRange extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field size	[int]<br>
+	 * Native SET method for field size	[int]<br>
 	 * Prototype: uint32_t  size
 	 */ 
 	 private static native void setSize0(Buffer ptr, int _size);/*
@@ -254,7 +250,7 @@ public class VkPushConstantRange extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field size	[int]<br>
+	 * Native GET method for field size	[int]<br>
 	 * Prototype: uint32_t  size
 	 */ 
 	 private static native int getSize0(Buffer ptr);/*

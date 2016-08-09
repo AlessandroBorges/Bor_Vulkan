@@ -9,9 +9,11 @@
  */
  package bor.vulkan.structs;
 
+ import bor.util.*;
  import bor.vulkan.*;
  import static bor.vulkan.Vulkan.*; 
  import bor.vulkan.enumerations.*;
+
  import java.util.*;
  import java.nio.*;
 
@@ -53,22 +55,22 @@
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	 protected VkStructureType 	sType;
+	VkStructureType 	sType;
 	
 	/**
 	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 protected VkObject 	pNext;
+	VkObject 	pNext;
 	
 	/**
 	 *  const char* 	pMarkerName	[string]
 	 */ 
-	 protected String 	pMarkerName;
+	String 	pMarkerName;
 	
 	/**
 	 *  float[] 	color	[float_array [4] ]
 	 */ 
-	 protected float[] 	color = new float[4];
+	float[] 	color = new float[4];
 	/**
 	 * Ctor
 	 */
@@ -166,7 +168,7 @@
 		    this.pNext = null;
 		    return null;
 		  } else 
- 		 if(this.pNext == null){
+		 if(this.pNext == null){
 		    this.pNext = (VkObject)(new VkHandle(pointer));
 		 }else{
 		    this.pNext.setPointer(pointer);
@@ -205,7 +207,11 @@
 	 * @return this VkStruct instance.
 	 */ 
 	 public VkDebugMarkerMarkerInfoEXT color(float[] color){
-		 System.arraycopy(color, 0, this.color, 0, this.color.length); 
+		 if(color == null)
+		     java.util.Arrays.fill(this.color , 0);
+		  else
+		     System.arraycopy(color, 0, this.color, 0, this.color.length); 
+
 		 setColor0(this.ptr,  this.color);
 		 return this;
 	 }
@@ -215,7 +221,7 @@
 	 * Prototype: float[]  color
 	 */ 
 	 public float[] color(){
-		 float[] var = getColor0(super.ptr);
+		 float[] var = getColor0(super.ptr, color);
 		 this.color = var;
 		 return this.color;
 	 }
@@ -244,7 +250,7 @@
 	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field sType	[vkenum]<br>
+	 * Native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
@@ -253,7 +259,7 @@
 	  */
 
 	/**
-	 * native GET method for field sType	[vkenum]<br>
+	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
@@ -262,7 +268,7 @@
 	 */
 
 	/**
-	 * native SET method for field pNext	[vkobject]<br>
+	 * Native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
@@ -271,7 +277,7 @@
 	  */
 
 	/**
-	 * native GET method for field pNext	[vkobject]<br>
+	 * Native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
@@ -280,16 +286,16 @@
 	 */
 
 	/**
-	 * native SET method for field pMarkerName	[string]<br>
+	 * Native SET method for field pMarkerName	[string]<br>
 	 * Prototype: const char*  pMarkerName
 	 */ 
 	 private static native void setPMarkerName0(Buffer ptr, String _pMarkerName);/*
 		  VkDebugMarkerMarkerInfoEXT* vkObj = (VkDebugMarkerMarkerInfoEXT*)(ptr);
-		  vkObj->pMarkerName = (const char*) (_pMarkerName);
+		  vkObj->pMarkerName = cloneStr(_pMarkerName);
 	  */
 
 	/**
-	 * native GET method for field pMarkerName	[string]<br>
+	 * Native GET method for field pMarkerName	[string]<br>
 	 * Prototype: const char*  pMarkerName
 	 */ 
 	 private static native String getPMarkerName0(Buffer ptr);/*
@@ -298,7 +304,7 @@
 	 */
 
 	/**
-	 * native SET method for field color	[float]<br>
+	 * Native SET method for field color	[float]<br>
 	 * Prototype: float[]  color
 	 */ 
 	 private static native void setColor0(Buffer ptr, float[] _color);/*
@@ -307,12 +313,13 @@
 	  */
 
 	/**
-	 * native GET method for field color	[float]<br>
+	 * Native GET method for field color	[float]<br>
 	 * Prototype: float[]  color
 	 */ 
-	 private static native float[] getColor0(Buffer ptr);/*
+	 private static native float[] getColor0(Buffer ptr, float[] color);/*
 		  VkDebugMarkerMarkerInfoEXT* vkObj = (VkDebugMarkerMarkerInfoEXT*)(ptr);
-		  return (float[]) (vkObj->color);
+		  memcpy(&_color, &(vkObj->color), 4 * sizeof(float));
+		  return _color;
 	 */
 
 

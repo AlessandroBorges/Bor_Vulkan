@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkSparseBufferMemoryBindInfo struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -31,9 +32,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkSparseBufferMemoryBindInfo extends VkStruct {
+ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -46,27 +47,25 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	/** ID of this structure [26]  */
 	 public static final int TAG_ID = VKSPARSEBUFFERMEMORYBINDINFO_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkSparseBufferMemoryBindInfo> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkBuffer 	buffer	[vkhandle]
 	 */ 
-	 VkBuffer 	buffer;
-
+	VkBuffer 	buffer;
+	
 	/**
 	 *  uint32_t 	bindCount	[int]
 	 */ 
-	 int 	bindCount;
-
+	int 	bindCount;
+	
 	/**
-	 *  const VkSparseMemoryBind* 	pBinds	[vkstruct]
+	 *  const VkSparseMemoryBind* 	pBinds	[vkstruct_array_array]
 	 */ 
-	  VkSparseMemoryBind  	pBinds;
-
+	  VkSparseMemoryBind[]  	pBinds;
+	 private BigBuffer 	 pBindsBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -80,15 +79,6 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	 */
 	public VkSparseBufferMemoryBindInfo(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkSparseBufferMemoryBindInfo(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -114,34 +104,12 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkSparseBufferMemoryBindInfo> createNullPointer(){
-	        P<VkSparseBufferMemoryBindInfo> p = new  P<VkSparseBufferMemoryBindInfo>(new VkSparseBufferMemoryBindInfo());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkSparseBufferMemoryBindInfo> getP() {
-	       if(p == null ){
-	           p = new P<VkSparseBufferMemoryBindInfo> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -150,11 +118,15 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	/**
 	 * Set method for field buffer	[vkhandle]<br>
 	 * Prototype: VkBuffer  buffer
+	 * 
+	 * @param buffer - a instance of VkBuffer.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void buffer(VkBuffer buffer){
+	 public VkSparseBufferMemoryBindInfo buffer(VkBuffer buffer){
 		 this.buffer = buffer;
-		 ByteBuffer buff = (buffer==null) ? null : buffer.getPointer();
-		 setBuffer0(this.ptr, buff);
+		 long handle = (buffer==null) ? 0L : buffer.getNativeHandle();
+		 setBuffer0(this.ptr, handle);
+		 return this;
 	 }
 
 	/**
@@ -172,7 +144,7 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 		 if(this.buffer == null){
 		    this.buffer = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.buffer).setPointer(handle);
+		    ((VkHandle)this.buffer).setNativeHandle(handle);
 		  }
 		 return this.buffer;
 	 }
@@ -180,10 +152,14 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	/**
 	 * Set method for field bindCount	[int]<br>
 	 * Prototype: uint32_t  bindCount
+	 * 
+	 * @param bindCount - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void bindCount(int bindCount){
+	 public VkSparseBufferMemoryBindInfo bindCount(int bindCount){
 		 this.bindCount = bindCount;
 		 setBindCount0(this.ptr,  bindCount);
+		 return this;
 	 }
 
 	/**
@@ -197,57 +173,78 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pBinds	[vkstruct]<br>
+	 * Set method for field pBinds	[vkstruct_array]<br>
 	 * Prototype: const VkSparseMemoryBind*  pBinds
+	 * 
+	 * @param pBinds - a instance of VkSparseMemoryBind[].
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pBinds( VkSparseMemoryBind  pBinds){
+	 public VkSparseBufferMemoryBindInfo pBinds(VkSparseMemoryBind[] pBinds){
 		 this.pBinds = pBinds;
-		 ByteBuffer buff = (pBinds==null) ? null : pBinds.getPointer();
-		 setPBinds0(this.ptr, buff);
+		 this.pBindsBUFFER = new BigBuffer(pBinds, VkSparseMemoryBind.getID());
+		 setPBinds0(this.ptr, pBindsBUFFER.getBuffer());
+		 return this;
 	 }
 
 	/**
-	 * Get method for field pBinds	[vkstruct]<br>
+	 * Get method for field pBinds	[vkstruct_array]<br>
 	 * Prototype: const VkSparseMemoryBind*  pBinds
 	 */ 
-	 public  VkSparseMemoryBind  pBinds(){
-		 long pointer = getPBinds0(super.ptr);
-		 if(pointer == 0){
-		    this.pBinds = null;
+	 public VkSparseMemoryBind[] pBinds(){
+		 long ptr = getPBinds0(this.ptr);
+		 if(ptr == 0L){
 		    return null;
-		  } 
-
-		 if(this.pBinds == null){
-		    this.pBinds = new  VkSparseMemoryBind (pointer);
-		 }else{
-		    this.pBinds.setPointer(pointer);
-		  }
+		 }
+		 if(pBindsBUFFER != null && ptr == pBindsBUFFER.getBufferAddress()){ //same buffer 
+		    pBindsBUFFER.update();
+		    return pBinds;
+		  }else{
+		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		   }
 		 return this.pBinds;
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkSparseBufferMemoryBindInfo [ ")
+				.append("buffer: ").append(buffer() )
+				.append(",\n bindCount: ")
+				.append(bindCount() )
+				.append(",\n pBinds: ")
+				.append(Arrays.toString(pBinds()) )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field buffer	[vkhandle]<br>
+	 * Native SET method for field buffer	[vkhandle]<br>
 	 * Prototype: VkBuffer  buffer
 	 */ 
-	 private static native void setBuffer0(Buffer ptr, java.nio.ByteBuffer  _buffer);/*
+	 private static native void setBuffer0(Buffer ptr, long  _buffer);/*
 		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
 		  vkObj->buffer = (VkBuffer) (_buffer);
 	  */
 
 	/**
-	 * native GET method for field buffer	[vkhandle]<br>
+	 * Native GET method for field buffer	[vkhandle]<br>
 	 * Prototype: VkBuffer  buffer
 	 */ 
 	 private static native long getBuffer0(Buffer ptr);/*
 		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->buffer);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->buffer);
+	 */
 
 	/**
-	 * native SET method for field bindCount	[int]<br>
+	 * Native SET method for field bindCount	[int]<br>
 	 * Prototype: uint32_t  bindCount
 	 */ 
 	 private static native void setBindCount0(Buffer ptr, int _bindCount);/*
@@ -256,7 +253,7 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field bindCount	[int]<br>
+	 * Native GET method for field bindCount	[int]<br>
 	 * Prototype: uint32_t  bindCount
 	 */ 
 	 private static native int getBindCount0(Buffer ptr);/*
@@ -265,7 +262,7 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pBinds	[vkstruct]<br>
+	 * Native SET method for field pBinds	[vkstruct_array]<br>
 	 * Prototype: const VkSparseMemoryBind*  pBinds
 	 */ 
 	 private static native void setPBinds0(Buffer ptr, java.nio.ByteBuffer  _pBinds);/*
@@ -274,12 +271,13 @@ public class VkSparseBufferMemoryBindInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pBinds	[vkstruct]<br>
+	 * Native GET method for field pBinds	[vkstruct_array]<br>
 	 * Prototype: const VkSparseMemoryBind*  pBinds
 	 */ 
 	 private static native long getPBinds0(Buffer ptr);/*
 		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pBinds);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pBinds);
+	 */
 
 
 

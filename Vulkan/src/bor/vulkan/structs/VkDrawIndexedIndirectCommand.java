@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkDrawIndexedIndirectCommand struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -33,9 +34,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkDrawIndexedIndirectCommand extends VkStruct {
+ public class VkDrawIndexedIndirectCommand extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -48,37 +49,34 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	/** ID of this structure [104]  */
 	 public static final int TAG_ID = VKDRAWINDEXEDINDIRECTCOMMAND_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkDrawIndexedIndirectCommand> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  uint32_t 	indexCount	[int]
 	 */ 
-	 int 	indexCount;
-
+	int 	indexCount;
+	
 	/**
 	 *  uint32_t 	instanceCount	[int]
 	 */ 
-	 int 	instanceCount;
-
+	int 	instanceCount;
+	
 	/**
 	 *  uint32_t 	firstIndex	[int]
 	 */ 
-	 int 	firstIndex;
-
+	int 	firstIndex;
+	
 	/**
 	 *  int32_t 	vertexOffset	[int]
 	 */ 
-	 int 	vertexOffset;
-
+	int 	vertexOffset;
+	
 	/**
 	 *  uint32_t 	firstInstance	[int]
 	 */ 
-	 int 	firstInstance;
-
+	int 	firstInstance;
 	/**
 	 * Ctor
 	 */
@@ -92,15 +90,6 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	 */
 	public VkDrawIndexedIndirectCommand(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkDrawIndexedIndirectCommand(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -126,34 +115,12 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkDrawIndexedIndirectCommand> createNullPointer(){
-	        P<VkDrawIndexedIndirectCommand> p = new  P<VkDrawIndexedIndirectCommand>(new VkDrawIndexedIndirectCommand());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkDrawIndexedIndirectCommand> getP() {
-	       if(p == null ){
-	           p = new P<VkDrawIndexedIndirectCommand> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -162,10 +129,14 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	/**
 	 * Set method for field indexCount	[int]<br>
 	 * Prototype: uint32_t  indexCount
+	 * 
+	 * @param indexCount - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void indexCount(int indexCount){
+	 public VkDrawIndexedIndirectCommand indexCount(int indexCount){
 		 this.indexCount = indexCount;
 		 setIndexCount0(this.ptr,  indexCount);
+		 return this;
 	 }
 
 	/**
@@ -181,10 +152,14 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	/**
 	 * Set method for field instanceCount	[int]<br>
 	 * Prototype: uint32_t  instanceCount
+	 * 
+	 * @param instanceCount - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void instanceCount(int instanceCount){
+	 public VkDrawIndexedIndirectCommand instanceCount(int instanceCount){
 		 this.instanceCount = instanceCount;
 		 setInstanceCount0(this.ptr,  instanceCount);
+		 return this;
 	 }
 
 	/**
@@ -200,10 +175,14 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	/**
 	 * Set method for field firstIndex	[int]<br>
 	 * Prototype: uint32_t  firstIndex
+	 * 
+	 * @param firstIndex - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void firstIndex(int firstIndex){
+	 public VkDrawIndexedIndirectCommand firstIndex(int firstIndex){
 		 this.firstIndex = firstIndex;
 		 setFirstIndex0(this.ptr,  firstIndex);
+		 return this;
 	 }
 
 	/**
@@ -219,10 +198,14 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	/**
 	 * Set method for field vertexOffset	[int]<br>
 	 * Prototype: int32_t  vertexOffset
+	 * 
+	 * @param vertexOffset - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void vertexOffset(int vertexOffset){
+	 public VkDrawIndexedIndirectCommand vertexOffset(int vertexOffset){
 		 this.vertexOffset = vertexOffset;
 		 setVertexOffset0(this.ptr,  vertexOffset);
+		 return this;
 	 }
 
 	/**
@@ -238,10 +221,14 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	/**
 	 * Set method for field firstInstance	[int]<br>
 	 * Prototype: uint32_t  firstInstance
+	 * 
+	 * @param firstInstance - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void firstInstance(int firstInstance){
+	 public VkDrawIndexedIndirectCommand firstInstance(int firstInstance){
 		 this.firstInstance = firstInstance;
 		 setFirstInstance0(this.ptr,  firstInstance);
+		 return this;
 	 }
 
 	/**
@@ -255,11 +242,32 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkDrawIndexedIndirectCommand [ ")
+				.append("indexCount: ").append(indexCount() )
+				.append(",\n instanceCount: ")
+				.append(instanceCount() )
+				.append(",\n firstIndex: ")
+				.append(firstIndex() )
+				.append(",\n vertexOffset: ")
+				.append(vertexOffset() )
+				.append(",\n firstInstance: ")
+				.append(firstInstance() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field indexCount	[int]<br>
+	 * Native SET method for field indexCount	[int]<br>
 	 * Prototype: uint32_t  indexCount
 	 */ 
 	 private static native void setIndexCount0(Buffer ptr, int _indexCount);/*
@@ -268,7 +276,7 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field indexCount	[int]<br>
+	 * Native GET method for field indexCount	[int]<br>
 	 * Prototype: uint32_t  indexCount
 	 */ 
 	 private static native int getIndexCount0(Buffer ptr);/*
@@ -277,7 +285,7 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field instanceCount	[int]<br>
+	 * Native SET method for field instanceCount	[int]<br>
 	 * Prototype: uint32_t  instanceCount
 	 */ 
 	 private static native void setInstanceCount0(Buffer ptr, int _instanceCount);/*
@@ -286,7 +294,7 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field instanceCount	[int]<br>
+	 * Native GET method for field instanceCount	[int]<br>
 	 * Prototype: uint32_t  instanceCount
 	 */ 
 	 private static native int getInstanceCount0(Buffer ptr);/*
@@ -295,7 +303,7 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field firstIndex	[int]<br>
+	 * Native SET method for field firstIndex	[int]<br>
 	 * Prototype: uint32_t  firstIndex
 	 */ 
 	 private static native void setFirstIndex0(Buffer ptr, int _firstIndex);/*
@@ -304,7 +312,7 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field firstIndex	[int]<br>
+	 * Native GET method for field firstIndex	[int]<br>
 	 * Prototype: uint32_t  firstIndex
 	 */ 
 	 private static native int getFirstIndex0(Buffer ptr);/*
@@ -313,7 +321,7 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field vertexOffset	[int]<br>
+	 * Native SET method for field vertexOffset	[int]<br>
 	 * Prototype: int32_t  vertexOffset
 	 */ 
 	 private static native void setVertexOffset0(Buffer ptr, int _vertexOffset);/*
@@ -322,7 +330,7 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field vertexOffset	[int]<br>
+	 * Native GET method for field vertexOffset	[int]<br>
 	 * Prototype: int32_t  vertexOffset
 	 */ 
 	 private static native int getVertexOffset0(Buffer ptr);/*
@@ -331,7 +339,7 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field firstInstance	[int]<br>
+	 * Native SET method for field firstInstance	[int]<br>
 	 * Prototype: uint32_t  firstInstance
 	 */ 
 	 private static native void setFirstInstance0(Buffer ptr, int _firstInstance);/*
@@ -340,7 +348,7 @@ public class VkDrawIndexedIndirectCommand extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field firstInstance	[int]<br>
+	 * Native GET method for field firstInstance	[int]<br>
 	 * Prototype: uint32_t  firstInstance
 	 */ 
 	 private static native int getFirstInstance0(Buffer ptr);/*

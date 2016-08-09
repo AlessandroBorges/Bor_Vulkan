@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkRenderPassCreateInfo struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -37,9 +38,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkRenderPassCreateInfo extends VkStruct {
+ public class VkRenderPassCreateInfo extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -52,57 +53,57 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	/** ID of this structure [85]  */
 	 public static final int TAG_ID = VKRENDERPASSCREATEINFO_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkRenderPassCreateInfo> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	 VkStructureType 	sType;
-
+	VkStructureType 	sType;
+	
 	/**
 	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 VkObject 	pNext;
-
+	VkObject 	pNext;
+	
 	/**
 	 *  VkRenderPassCreateFlags 	flags	[int]
 	 */ 
-	 int 	flags;
-
+	int 	flags;
+	
 	/**
 	 *  uint32_t 	attachmentCount	[int]
 	 */ 
-	 int 	attachmentCount;
-
+	int 	attachmentCount;
+	
 	/**
-	 *  const VkAttachmentDescription* 	pAttachments	[vkstruct]
+	 *  const VkAttachmentDescription* 	pAttachments	[vkstruct_array_array]
 	 */ 
-	  VkAttachmentDescription  	pAttachments;
-
+	  VkAttachmentDescription[]  	pAttachments;
+	 private BigBuffer 	 pAttachmentsBUFFER;
+	
 	/**
 	 *  uint32_t 	subpassCount	[int]
 	 */ 
-	 int 	subpassCount;
-
+	int 	subpassCount;
+	
 	/**
-	 *  const VkSubpassDescription* 	pSubpasses	[vkstruct]
+	 *  const VkSubpassDescription* 	pSubpasses	[vkstruct_array_array]
 	 */ 
-	  VkSubpassDescription  	pSubpasses;
-
+	  VkSubpassDescription[]  	pSubpasses;
+	 private BigBuffer 	 pSubpassesBUFFER;
+	
 	/**
 	 *  uint32_t 	dependencyCount	[int]
 	 */ 
-	 int 	dependencyCount;
-
+	int 	dependencyCount;
+	
 	/**
-	 *  const VkSubpassDependency* 	pDependencies	[vkstruct]
+	 *  const VkSubpassDependency* 	pDependencies	[vkstruct_array_array]
 	 */ 
-	  VkSubpassDependency  	pDependencies;
-
+	  VkSubpassDependency[]  	pDependencies;
+	 private BigBuffer 	 pDependenciesBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -116,15 +117,6 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 */
 	public VkRenderPassCreateInfo(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkRenderPassCreateInfo(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -150,34 +142,12 @@ public class VkRenderPassCreateInfo extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkRenderPassCreateInfo> createNullPointer(){
-	        P<VkRenderPassCreateInfo> p = new  P<VkRenderPassCreateInfo>(new VkRenderPassCreateInfo());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkRenderPassCreateInfo> getP() {
-	       if(p == null ){
-	           p = new P<VkRenderPassCreateInfo> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -186,11 +156,15 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	/**
 	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
+	 * 
+	 * @param sType - a instance of VkStructureType.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void sType(VkStructureType sType){
+	 public VkRenderPassCreateInfo sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
 		 setSType0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -206,11 +180,15 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	/**
 	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
+	 * 
+	 * @param pNext - a instance of VkObject.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public VkRenderPassCreateInfo pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
 		 setPNext0(this.ptr, buff);
+		 return this;
 	 }
 
 	/**
@@ -223,7 +201,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 		    this.pNext = null;
 		    return null;
 		  } else 
- 		 if(this.pNext == null){
+		 if(this.pNext == null){
 		    this.pNext = (VkObject)(new VkHandle(pointer));
 		 }else{
 		    this.pNext.setPointer(pointer);
@@ -234,10 +212,14 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	/**
 	 * Set method for field flags	[int]<br>
 	 * Prototype: VkRenderPassCreateFlags  flags
+	 * 
+	 * @param flags - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void flags(int flags){
+	 public VkRenderPassCreateInfo flags(int flags){
 		 this.flags = flags;
 		 setFlags0(this.ptr,  flags);
+		 return this;
 	 }
 
 	/**
@@ -253,10 +235,14 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	/**
 	 * Set method for field attachmentCount	[int]<br>
 	 * Prototype: uint32_t  attachmentCount
+	 * 
+	 * @param attachmentCount - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void attachmentCount(int attachmentCount){
+	 public VkRenderPassCreateInfo attachmentCount(int attachmentCount){
 		 this.attachmentCount = attachmentCount;
 		 setAttachmentCount0(this.ptr,  attachmentCount);
+		 return this;
 	 }
 
 	/**
@@ -270,41 +256,48 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pAttachments	[vkstruct]<br>
+	 * Set method for field pAttachments	[vkstruct_array]<br>
 	 * Prototype: const VkAttachmentDescription*  pAttachments
+	 * 
+	 * @param pAttachments - a instance of VkAttachmentDescription[].
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pAttachments( VkAttachmentDescription  pAttachments){
+	 public VkRenderPassCreateInfo pAttachments(VkAttachmentDescription[] pAttachments){
 		 this.pAttachments = pAttachments;
-		 ByteBuffer buff = (pAttachments==null) ? null : pAttachments.getPointer();
-		 setPAttachments0(this.ptr, buff);
+		 this.pAttachmentsBUFFER = new BigBuffer(pAttachments, VkAttachmentDescription.getID());
+		 setPAttachments0(this.ptr, pAttachmentsBUFFER.getBuffer());
+		 return this;
 	 }
 
 	/**
-	 * Get method for field pAttachments	[vkstruct]<br>
+	 * Get method for field pAttachments	[vkstruct_array]<br>
 	 * Prototype: const VkAttachmentDescription*  pAttachments
 	 */ 
-	 public  VkAttachmentDescription  pAttachments(){
-		 long pointer = getPAttachments0(super.ptr);
-		 if(pointer == 0){
-		    this.pAttachments = null;
+	 public VkAttachmentDescription[] pAttachments(){
+		 long ptr = getPAttachments0(this.ptr);
+		 if(ptr == 0L){
 		    return null;
-		  } 
-
-		 if(this.pAttachments == null){
-		    this.pAttachments = new  VkAttachmentDescription (pointer);
-		 }else{
-		    this.pAttachments.setPointer(pointer);
-		  }
+		 }
+		 if(pAttachmentsBUFFER != null && ptr == pAttachmentsBUFFER.getBufferAddress()){ //same buffer 
+		    pAttachmentsBUFFER.update();
+		    return pAttachments;
+		  }else{
+		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		   }
 		 return this.pAttachments;
 	 }
 
 	/**
 	 * Set method for field subpassCount	[int]<br>
 	 * Prototype: uint32_t  subpassCount
+	 * 
+	 * @param subpassCount - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void subpassCount(int subpassCount){
+	 public VkRenderPassCreateInfo subpassCount(int subpassCount){
 		 this.subpassCount = subpassCount;
 		 setSubpassCount0(this.ptr,  subpassCount);
+		 return this;
 	 }
 
 	/**
@@ -318,41 +311,48 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pSubpasses	[vkstruct]<br>
+	 * Set method for field pSubpasses	[vkstruct_array]<br>
 	 * Prototype: const VkSubpassDescription*  pSubpasses
+	 * 
+	 * @param pSubpasses - a instance of VkSubpassDescription[].
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pSubpasses( VkSubpassDescription  pSubpasses){
+	 public VkRenderPassCreateInfo pSubpasses(VkSubpassDescription[] pSubpasses){
 		 this.pSubpasses = pSubpasses;
-		 ByteBuffer buff = (pSubpasses==null) ? null : pSubpasses.getPointer();
-		 setPSubpasses0(this.ptr, buff);
+		 this.pSubpassesBUFFER = new BigBuffer(pSubpasses, VkSubpassDescription.getID());
+		 setPSubpasses0(this.ptr, pSubpassesBUFFER.getBuffer());
+		 return this;
 	 }
 
 	/**
-	 * Get method for field pSubpasses	[vkstruct]<br>
+	 * Get method for field pSubpasses	[vkstruct_array]<br>
 	 * Prototype: const VkSubpassDescription*  pSubpasses
 	 */ 
-	 public  VkSubpassDescription  pSubpasses(){
-		 long pointer = getPSubpasses0(super.ptr);
-		 if(pointer == 0){
-		    this.pSubpasses = null;
+	 public VkSubpassDescription[] pSubpasses(){
+		 long ptr = getPSubpasses0(this.ptr);
+		 if(ptr == 0L){
 		    return null;
-		  } 
-
-		 if(this.pSubpasses == null){
-		    this.pSubpasses = new  VkSubpassDescription (pointer);
-		 }else{
-		    this.pSubpasses.setPointer(pointer);
-		  }
+		 }
+		 if(pSubpassesBUFFER != null && ptr == pSubpassesBUFFER.getBufferAddress()){ //same buffer 
+		    pSubpassesBUFFER.update();
+		    return pSubpasses;
+		  }else{
+		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		   }
 		 return this.pSubpasses;
 	 }
 
 	/**
 	 * Set method for field dependencyCount	[int]<br>
 	 * Prototype: uint32_t  dependencyCount
+	 * 
+	 * @param dependencyCount - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void dependencyCount(int dependencyCount){
+	 public VkRenderPassCreateInfo dependencyCount(int dependencyCount){
 		 this.dependencyCount = dependencyCount;
 		 setDependencyCount0(this.ptr,  dependencyCount);
+		 return this;
 	 }
 
 	/**
@@ -366,40 +366,72 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pDependencies	[vkstruct]<br>
+	 * Set method for field pDependencies	[vkstruct_array]<br>
 	 * Prototype: const VkSubpassDependency*  pDependencies
+	 * 
+	 * @param pDependencies - a instance of VkSubpassDependency[].
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pDependencies( VkSubpassDependency  pDependencies){
+	 public VkRenderPassCreateInfo pDependencies(VkSubpassDependency[] pDependencies){
 		 this.pDependencies = pDependencies;
-		 ByteBuffer buff = (pDependencies==null) ? null : pDependencies.getPointer();
-		 setPDependencies0(this.ptr, buff);
+		 this.pDependenciesBUFFER = new BigBuffer(pDependencies, VkSubpassDependency.getID());
+		 setPDependencies0(this.ptr, pDependenciesBUFFER.getBuffer());
+		 return this;
 	 }
 
 	/**
-	 * Get method for field pDependencies	[vkstruct]<br>
+	 * Get method for field pDependencies	[vkstruct_array]<br>
 	 * Prototype: const VkSubpassDependency*  pDependencies
 	 */ 
-	 public  VkSubpassDependency  pDependencies(){
-		 long pointer = getPDependencies0(super.ptr);
-		 if(pointer == 0){
-		    this.pDependencies = null;
+	 public VkSubpassDependency[] pDependencies(){
+		 long ptr = getPDependencies0(this.ptr);
+		 if(ptr == 0L){
 		    return null;
-		  } 
-
-		 if(this.pDependencies == null){
-		    this.pDependencies = new  VkSubpassDependency (pointer);
-		 }else{
-		    this.pDependencies.setPointer(pointer);
-		  }
+		 }
+		 if(pDependenciesBUFFER != null && ptr == pDependenciesBUFFER.getBufferAddress()){ //same buffer 
+		    pDependenciesBUFFER.update();
+		    return pDependencies;
+		  }else{
+		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		   }
 		 return this.pDependencies;
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkRenderPassCreateInfo [ ")
+				.append("sType: ").append(sType() )
+				.append(",\n pNext: ")
+				.append(pNext() )
+				.append(",\n flags: ")
+				.append(flags() )
+				.append(",\n attachmentCount: ")
+				.append(attachmentCount() )
+				.append(",\n pAttachments: ")
+				.append(Arrays.toString(pAttachments()) )
+				.append(",\n subpassCount: ")
+				.append(subpassCount() )
+				.append(",\n pSubpasses: ")
+				.append(Arrays.toString(pSubpasses()) )
+				.append(",\n dependencyCount: ")
+				.append(dependencyCount() )
+				.append(",\n pDependencies: ")
+				.append(Arrays.toString(pDependencies()) )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field sType	[vkenum]<br>
+	 * Native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
@@ -408,7 +440,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field sType	[vkenum]<br>
+	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
@@ -417,7 +449,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pNext	[vkobject]<br>
+	 * Native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
@@ -426,15 +458,16 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pNext	[vkobject]<br>
+	 * Native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+	 */
 
 	/**
-	 * native SET method for field flags	[int]<br>
+	 * Native SET method for field flags	[int]<br>
 	 * Prototype: VkRenderPassCreateFlags  flags
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
@@ -443,7 +476,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field flags	[int]<br>
+	 * Native GET method for field flags	[int]<br>
 	 * Prototype: VkRenderPassCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
@@ -452,7 +485,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field attachmentCount	[int]<br>
+	 * Native SET method for field attachmentCount	[int]<br>
 	 * Prototype: uint32_t  attachmentCount
 	 */ 
 	 private static native void setAttachmentCount0(Buffer ptr, int _attachmentCount);/*
@@ -461,7 +494,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field attachmentCount	[int]<br>
+	 * Native GET method for field attachmentCount	[int]<br>
 	 * Prototype: uint32_t  attachmentCount
 	 */ 
 	 private static native int getAttachmentCount0(Buffer ptr);/*
@@ -470,7 +503,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pAttachments	[vkstruct]<br>
+	 * Native SET method for field pAttachments	[vkstruct_array]<br>
 	 * Prototype: const VkAttachmentDescription*  pAttachments
 	 */ 
 	 private static native void setPAttachments0(Buffer ptr, java.nio.ByteBuffer  _pAttachments);/*
@@ -479,15 +512,16 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pAttachments	[vkstruct]<br>
+	 * Native GET method for field pAttachments	[vkstruct_array]<br>
 	 * Prototype: const VkAttachmentDescription*  pAttachments
 	 */ 
 	 private static native long getPAttachments0(Buffer ptr);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pAttachments);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pAttachments);
+	 */
 
 	/**
-	 * native SET method for field subpassCount	[int]<br>
+	 * Native SET method for field subpassCount	[int]<br>
 	 * Prototype: uint32_t  subpassCount
 	 */ 
 	 private static native void setSubpassCount0(Buffer ptr, int _subpassCount);/*
@@ -496,7 +530,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field subpassCount	[int]<br>
+	 * Native GET method for field subpassCount	[int]<br>
 	 * Prototype: uint32_t  subpassCount
 	 */ 
 	 private static native int getSubpassCount0(Buffer ptr);/*
@@ -505,7 +539,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pSubpasses	[vkstruct]<br>
+	 * Native SET method for field pSubpasses	[vkstruct_array]<br>
 	 * Prototype: const VkSubpassDescription*  pSubpasses
 	 */ 
 	 private static native void setPSubpasses0(Buffer ptr, java.nio.ByteBuffer  _pSubpasses);/*
@@ -514,15 +548,16 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pSubpasses	[vkstruct]<br>
+	 * Native GET method for field pSubpasses	[vkstruct_array]<br>
 	 * Prototype: const VkSubpassDescription*  pSubpasses
 	 */ 
 	 private static native long getPSubpasses0(Buffer ptr);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pSubpasses);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pSubpasses);
+	 */
 
 	/**
-	 * native SET method for field dependencyCount	[int]<br>
+	 * Native SET method for field dependencyCount	[int]<br>
 	 * Prototype: uint32_t  dependencyCount
 	 */ 
 	 private static native void setDependencyCount0(Buffer ptr, int _dependencyCount);/*
@@ -531,7 +566,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field dependencyCount	[int]<br>
+	 * Native GET method for field dependencyCount	[int]<br>
 	 * Prototype: uint32_t  dependencyCount
 	 */ 
 	 private static native int getDependencyCount0(Buffer ptr);/*
@@ -540,7 +575,7 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pDependencies	[vkstruct]<br>
+	 * Native SET method for field pDependencies	[vkstruct_array]<br>
 	 * Prototype: const VkSubpassDependency*  pDependencies
 	 */ 
 	 private static native void setPDependencies0(Buffer ptr, java.nio.ByteBuffer  _pDependencies);/*
@@ -549,12 +584,13 @@ public class VkRenderPassCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pDependencies	[vkstruct]<br>
+	 * Native GET method for field pDependencies	[vkstruct_array]<br>
 	 * Prototype: const VkSubpassDependency*  pDependencies
 	 */ 
 	 private static native long getPDependencies0(Buffer ptr);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pDependencies);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pDependencies);
+	 */
 
 
 

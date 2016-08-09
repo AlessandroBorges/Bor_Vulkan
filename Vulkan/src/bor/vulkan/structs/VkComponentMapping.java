@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkComponentMapping struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -32,9 +33,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkComponentMapping extends VkStruct {
+ public class VkComponentMapping extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -47,32 +48,29 @@ public class VkComponentMapping extends VkStruct {
 	/** ID of this structure [41]  */
 	 public static final int TAG_ID = VKCOMPONENTMAPPING_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkComponentMapping> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkComponentSwizzle 	r	[vkenum]
 	 */ 
-	 VkComponentSwizzle 	r;
-
+	VkComponentSwizzle 	r;
+	
 	/**
 	 *  VkComponentSwizzle 	g	[vkenum]
 	 */ 
-	 VkComponentSwizzle 	g;
-
+	VkComponentSwizzle 	g;
+	
 	/**
 	 *  VkComponentSwizzle 	b	[vkenum]
 	 */ 
-	 VkComponentSwizzle 	b;
-
+	VkComponentSwizzle 	b;
+	
 	/**
 	 *  VkComponentSwizzle 	a	[vkenum]
 	 */ 
-	 VkComponentSwizzle 	a;
-
+	VkComponentSwizzle 	a;
 	/**
 	 * Ctor
 	 */
@@ -86,15 +84,6 @@ public class VkComponentMapping extends VkStruct {
 	 */
 	public VkComponentMapping(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkComponentMapping(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -120,34 +109,12 @@ public class VkComponentMapping extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkComponentMapping> createNullPointer(){
-	        P<VkComponentMapping> p = new  P<VkComponentMapping>(new VkComponentMapping());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkComponentMapping> getP() {
-	       if(p == null ){
-	           p = new P<VkComponentMapping> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -156,11 +123,15 @@ public class VkComponentMapping extends VkStruct {
 	/**
 	 * Set method for field r	[vkenum]<br>
 	 * Prototype: VkComponentSwizzle  r
+	 * 
+	 * @param r - a instance of VkComponentSwizzle.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void r(VkComponentSwizzle r){
+	 public VkComponentMapping r(VkComponentSwizzle r){
 		 this.r = r;
 		 int enumVal = r.getValue();
 		 setR0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -176,11 +147,15 @@ public class VkComponentMapping extends VkStruct {
 	/**
 	 * Set method for field g	[vkenum]<br>
 	 * Prototype: VkComponentSwizzle  g
+	 * 
+	 * @param g - a instance of VkComponentSwizzle.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void g(VkComponentSwizzle g){
+	 public VkComponentMapping g(VkComponentSwizzle g){
 		 this.g = g;
 		 int enumVal = g.getValue();
 		 setG0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -196,11 +171,15 @@ public class VkComponentMapping extends VkStruct {
 	/**
 	 * Set method for field b	[vkenum]<br>
 	 * Prototype: VkComponentSwizzle  b
+	 * 
+	 * @param b - a instance of VkComponentSwizzle.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void b(VkComponentSwizzle b){
+	 public VkComponentMapping b(VkComponentSwizzle b){
 		 this.b = b;
 		 int enumVal = b.getValue();
 		 setB0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -216,11 +195,15 @@ public class VkComponentMapping extends VkStruct {
 	/**
 	 * Set method for field a	[vkenum]<br>
 	 * Prototype: VkComponentSwizzle  a
+	 * 
+	 * @param a - a instance of VkComponentSwizzle.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void a(VkComponentSwizzle a){
+	 public VkComponentMapping a(VkComponentSwizzle a){
 		 this.a = a;
 		 int enumVal = a.getValue();
 		 setA0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -234,11 +217,30 @@ public class VkComponentMapping extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkComponentMapping [ ")
+				.append("r: ").append(r() )
+				.append(",\n g: ")
+				.append(g() )
+				.append(",\n b: ")
+				.append(b() )
+				.append(",\n a: ")
+				.append(a() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field r	[vkenum]<br>
+	 * Native SET method for field r	[vkenum]<br>
 	 * Prototype: VkComponentSwizzle  r
 	 */ 
 	 private static native void setR0(Buffer ptr, int  _r);/*
@@ -247,7 +249,7 @@ public class VkComponentMapping extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field r	[vkenum]<br>
+	 * Native GET method for field r	[vkenum]<br>
 	 * Prototype: VkComponentSwizzle  r
 	 */ 
 	 private static native int  getR0(Buffer ptr);/*
@@ -256,7 +258,7 @@ public class VkComponentMapping extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field g	[vkenum]<br>
+	 * Native SET method for field g	[vkenum]<br>
 	 * Prototype: VkComponentSwizzle  g
 	 */ 
 	 private static native void setG0(Buffer ptr, int  _g);/*
@@ -265,7 +267,7 @@ public class VkComponentMapping extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field g	[vkenum]<br>
+	 * Native GET method for field g	[vkenum]<br>
 	 * Prototype: VkComponentSwizzle  g
 	 */ 
 	 private static native int  getG0(Buffer ptr);/*
@@ -274,7 +276,7 @@ public class VkComponentMapping extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field b	[vkenum]<br>
+	 * Native SET method for field b	[vkenum]<br>
 	 * Prototype: VkComponentSwizzle  b
 	 */ 
 	 private static native void setB0(Buffer ptr, int  _b);/*
@@ -283,7 +285,7 @@ public class VkComponentMapping extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field b	[vkenum]<br>
+	 * Native GET method for field b	[vkenum]<br>
 	 * Prototype: VkComponentSwizzle  b
 	 */ 
 	 private static native int  getB0(Buffer ptr);/*
@@ -292,7 +294,7 @@ public class VkComponentMapping extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field a	[vkenum]<br>
+	 * Native SET method for field a	[vkenum]<br>
 	 * Prototype: VkComponentSwizzle  a
 	 */ 
 	 private static native void setA0(Buffer ptr, int  _a);/*
@@ -301,7 +303,7 @@ public class VkComponentMapping extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field a	[vkenum]<br>
+	 * Native GET method for field a	[vkenum]<br>
 	 * Prototype: VkComponentSwizzle  a
 	 */ 
 	 private static native int  getA0(Buffer ptr);/*

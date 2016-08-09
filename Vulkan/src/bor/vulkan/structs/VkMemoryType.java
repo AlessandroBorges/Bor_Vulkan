@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkMemoryType struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -30,9 +31,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkMemoryType extends VkStruct {
+ public class VkMemoryType extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -45,22 +46,19 @@ public class VkMemoryType extends VkStruct {
 	/** ID of this structure [12]  */
 	 public static final int TAG_ID = VKMEMORYTYPE_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkMemoryType> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkMemoryPropertyFlags 	propertyFlags	[int]
 	 */ 
-	 int 	propertyFlags;
-
+	int 	propertyFlags;
+	
 	/**
 	 *  uint32_t 	heapIndex	[int]
 	 */ 
-	 int 	heapIndex;
-
+	int 	heapIndex;
 	/**
 	 * Ctor
 	 */
@@ -74,15 +72,6 @@ public class VkMemoryType extends VkStruct {
 	 */
 	public VkMemoryType(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkMemoryType(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -108,61 +97,28 @@ public class VkMemoryType extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkMemoryType> createNullPointer(){
-	        P<VkMemoryType> p = new  P<VkMemoryType>(new VkMemoryType());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkMemoryType> getP() {
-	       if(p == null ){
-	           p = new P<VkMemoryType> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
 
-	/* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-        StringBuilder builder = new StringBuilder();        
-        String flag = getPropertyFlagsEnum()==null ? " 0 " : getPropertyFlagsEnum().toString();
-        builder.append("VkMemoryType [propertyFlags : ")
-                .append(flag)
-                .append(",\t heapIndex() :")
-                .append(heapIndex())
-                .append("]\n");
-        return builder.toString();
-    }
-
-    /**
+	/**
 	 * Set method for field propertyFlags	[int]<br>
 	 * Prototype: VkMemoryPropertyFlags  propertyFlags
+	 * 
+	 * @param propertyFlags - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void propertyFlags(int propertyFlags){
+	 public VkMemoryType propertyFlags(int propertyFlags){
 		 this.propertyFlags = propertyFlags;
 		 setPropertyFlags0(this.ptr,  propertyFlags);
+		 return this;
 	 }
 
 	/**
@@ -174,23 +130,18 @@ public class VkMemoryType extends VkStruct {
 		 this.propertyFlags = var;
 		 return this.propertyFlags;
 	 }
-	 
-	 /**
-	  * Get VkMemoryPropertyFlagBits from value
-	  * @return
-	  */
-	 public VkMemoryPropertyFlagBits getPropertyFlagsEnum(){
-	     int flags = propertyFlags();
-	     return VkMemoryPropertyFlagBits.fromValue(flags);	     
-	 }
 
 	/**
 	 * Set method for field heapIndex	[int]<br>
 	 * Prototype: uint32_t  heapIndex
+	 * 
+	 * @param heapIndex - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void heapIndex(int heapIndex){
+	 public VkMemoryType heapIndex(int heapIndex){
 		 this.heapIndex = heapIndex;
 		 setHeapIndex0(this.ptr,  heapIndex);
+		 return this;
 	 }
 
 	/**
@@ -204,11 +155,26 @@ public class VkMemoryType extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkMemoryType [ ")
+				.append("propertyFlags: ").append(propertyFlags() )
+				.append(",\n heapIndex: ")
+				.append(heapIndex() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field propertyFlags	[int]<br>
+	 * Native SET method for field propertyFlags	[int]<br>
 	 * Prototype: VkMemoryPropertyFlags  propertyFlags
 	 */ 
 	 private static native void setPropertyFlags0(Buffer ptr, int _propertyFlags);/*
@@ -217,7 +183,7 @@ public class VkMemoryType extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field propertyFlags	[int]<br>
+	 * Native GET method for field propertyFlags	[int]<br>
 	 * Prototype: VkMemoryPropertyFlags  propertyFlags
 	 */ 
 	 private static native int getPropertyFlags0(Buffer ptr);/*
@@ -226,7 +192,7 @@ public class VkMemoryType extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field heapIndex	[int]<br>
+	 * Native SET method for field heapIndex	[int]<br>
 	 * Prototype: uint32_t  heapIndex
 	 */ 
 	 private static native void setHeapIndex0(Buffer ptr, int _heapIndex);/*
@@ -235,7 +201,7 @@ public class VkMemoryType extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field heapIndex	[int]<br>
+	 * Native GET method for field heapIndex	[int]<br>
 	 * Prototype: uint32_t  heapIndex
 	 */ 
 	 private static native int getHeapIndex0(Buffer ptr);/*

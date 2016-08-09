@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkPipelineViewportStateCreateInfo struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -35,9 +36,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkPipelineViewportStateCreateInfo extends VkStruct {
+ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -50,47 +51,46 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	/** ID of this structure [58]  */
 	 public static final int TAG_ID = VKPIPELINEVIEWPORTSTATECREATEINFO_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkPipelineViewportStateCreateInfo> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	 VkStructureType 	sType;
-
+	VkStructureType 	sType;
+	
 	/**
 	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 VkObject 	pNext;
-
+	VkObject 	pNext;
+	
 	/**
 	 *  VkPipelineViewportStateCreateFlags 	flags	[int]
 	 */ 
-	 int 	flags;
-
+	int 	flags;
+	
 	/**
 	 *  uint32_t 	viewportCount	[int]
 	 */ 
-	 int 	viewportCount;
-
+	int 	viewportCount;
+	
 	/**
-	 *  const VkViewport* 	pViewports	[vkstruct]
+	 *  const VkViewport* 	pViewports	[vkstruct_array_array]
 	 */ 
-	  VkViewport  	pViewports;
-
+	  VkViewport[]  	pViewports;
+	 private BigBuffer 	 pViewportsBUFFER;
+	
 	/**
 	 *  uint32_t 	scissorCount	[int]
 	 */ 
-	 int 	scissorCount;
-
+	int 	scissorCount;
+	
 	/**
-	 *  const VkRect2D* 	pScissors	[vkstruct]
+	 *  const VkRect2D* 	pScissors	[vkstruct_array_array]
 	 */ 
-	  VkRect2D  	pScissors;
-
+	  VkRect2D[]  	pScissors;
+	 private BigBuffer 	 pScissorsBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -104,15 +104,6 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 */
 	public VkPipelineViewportStateCreateInfo(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkPipelineViewportStateCreateInfo(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -138,34 +129,12 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkPipelineViewportStateCreateInfo> createNullPointer(){
-	        P<VkPipelineViewportStateCreateInfo> p = new  P<VkPipelineViewportStateCreateInfo>(new VkPipelineViewportStateCreateInfo());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkPipelineViewportStateCreateInfo> getP() {
-	       if(p == null ){
-	           p = new P<VkPipelineViewportStateCreateInfo> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -174,11 +143,15 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	/**
 	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
+	 * 
+	 * @param sType - a instance of VkStructureType.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void sType(VkStructureType sType){
+	 public VkPipelineViewportStateCreateInfo sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
 		 setSType0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -194,11 +167,15 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	/**
 	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
+	 * 
+	 * @param pNext - a instance of VkObject.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public VkPipelineViewportStateCreateInfo pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
 		 setPNext0(this.ptr, buff);
+		 return this;
 	 }
 
 	/**
@@ -211,7 +188,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 		    this.pNext = null;
 		    return null;
 		  } else 
- 		 if(this.pNext == null){
+		 if(this.pNext == null){
 		    this.pNext = (VkObject)(new VkHandle(pointer));
 		 }else{
 		    this.pNext.setPointer(pointer);
@@ -222,10 +199,14 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	/**
 	 * Set method for field flags	[int]<br>
 	 * Prototype: VkPipelineViewportStateCreateFlags  flags
+	 * 
+	 * @param flags - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void flags(int flags){
+	 public VkPipelineViewportStateCreateInfo flags(int flags){
 		 this.flags = flags;
 		 setFlags0(this.ptr,  flags);
+		 return this;
 	 }
 
 	/**
@@ -241,10 +222,14 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	/**
 	 * Set method for field viewportCount	[int]<br>
 	 * Prototype: uint32_t  viewportCount
+	 * 
+	 * @param viewportCount - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void viewportCount(int viewportCount){
+	 public VkPipelineViewportStateCreateInfo viewportCount(int viewportCount){
 		 this.viewportCount = viewportCount;
 		 setViewportCount0(this.ptr,  viewportCount);
+		 return this;
 	 }
 
 	/**
@@ -258,41 +243,48 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pViewports	[vkstruct]<br>
+	 * Set method for field pViewports	[vkstruct_array]<br>
 	 * Prototype: const VkViewport*  pViewports
+	 * 
+	 * @param pViewports - a instance of VkViewport[].
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pViewports( VkViewport  pViewports){
+	 public VkPipelineViewportStateCreateInfo pViewports(VkViewport[] pViewports){
 		 this.pViewports = pViewports;
-		 ByteBuffer buff = (pViewports==null) ? null : pViewports.getPointer();
-		 setPViewports0(this.ptr, buff);
+		 this.pViewportsBUFFER = new BigBuffer(pViewports, VkViewport.getID());
+		 setPViewports0(this.ptr, pViewportsBUFFER.getBuffer());
+		 return this;
 	 }
 
 	/**
-	 * Get method for field pViewports	[vkstruct]<br>
+	 * Get method for field pViewports	[vkstruct_array]<br>
 	 * Prototype: const VkViewport*  pViewports
 	 */ 
-	 public  VkViewport  pViewports(){
-		 long pointer = getPViewports0(super.ptr);
-		 if(pointer == 0){
-		    this.pViewports = null;
+	 public VkViewport[] pViewports(){
+		 long ptr = getPViewports0(this.ptr);
+		 if(ptr == 0L){
 		    return null;
-		  } 
-
-		 if(this.pViewports == null){
-		    this.pViewports = new  VkViewport (pointer);
-		 }else{
-		    this.pViewports.setPointer(pointer);
-		  }
+		 }
+		 if(pViewportsBUFFER != null && ptr == pViewportsBUFFER.getBufferAddress()){ //same buffer 
+		    pViewportsBUFFER.update();
+		    return pViewports;
+		  }else{
+		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		   }
 		 return this.pViewports;
 	 }
 
 	/**
 	 * Set method for field scissorCount	[int]<br>
 	 * Prototype: uint32_t  scissorCount
+	 * 
+	 * @param scissorCount - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void scissorCount(int scissorCount){
+	 public VkPipelineViewportStateCreateInfo scissorCount(int scissorCount){
 		 this.scissorCount = scissorCount;
 		 setScissorCount0(this.ptr,  scissorCount);
+		 return this;
 	 }
 
 	/**
@@ -306,40 +298,68 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pScissors	[vkstruct]<br>
+	 * Set method for field pScissors	[vkstruct_array]<br>
 	 * Prototype: const VkRect2D*  pScissors
+	 * 
+	 * @param pScissors - a instance of VkRect2D[].
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pScissors( VkRect2D  pScissors){
+	 public VkPipelineViewportStateCreateInfo pScissors(VkRect2D[] pScissors){
 		 this.pScissors = pScissors;
-		 ByteBuffer buff = (pScissors==null) ? null : pScissors.getPointer();
-		 setPScissors0(this.ptr, buff);
+		 this.pScissorsBUFFER = new BigBuffer(pScissors, VkRect2D.getID());
+		 setPScissors0(this.ptr, pScissorsBUFFER.getBuffer());
+		 return this;
 	 }
 
 	/**
-	 * Get method for field pScissors	[vkstruct]<br>
+	 * Get method for field pScissors	[vkstruct_array]<br>
 	 * Prototype: const VkRect2D*  pScissors
 	 */ 
-	 public  VkRect2D  pScissors(){
-		 long pointer = getPScissors0(super.ptr);
-		 if(pointer == 0){
-		    this.pScissors = null;
+	 public VkRect2D[] pScissors(){
+		 long ptr = getPScissors0(this.ptr);
+		 if(ptr == 0L){
 		    return null;
-		  } 
-
-		 if(this.pScissors == null){
-		    this.pScissors = new  VkRect2D (pointer);
-		 }else{
-		    this.pScissors.setPointer(pointer);
-		  }
+		 }
+		 if(pScissorsBUFFER != null && ptr == pScissorsBUFFER.getBufferAddress()){ //same buffer 
+		    pScissorsBUFFER.update();
+		    return pScissors;
+		  }else{
+		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		   }
 		 return this.pScissors;
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkPipelineViewportStateCreateInfo [ ")
+				.append("sType: ").append(sType() )
+				.append(",\n pNext: ")
+				.append(pNext() )
+				.append(",\n flags: ")
+				.append(flags() )
+				.append(",\n viewportCount: ")
+				.append(viewportCount() )
+				.append(",\n pViewports: ")
+				.append(Arrays.toString(pViewports()) )
+				.append(",\n scissorCount: ")
+				.append(scissorCount() )
+				.append(",\n pScissors: ")
+				.append(Arrays.toString(pScissors()) )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field sType	[vkenum]<br>
+	 * Native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
@@ -348,7 +368,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field sType	[vkenum]<br>
+	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
@@ -357,7 +377,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pNext	[vkobject]<br>
+	 * Native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
@@ -366,15 +386,16 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pNext	[vkobject]<br>
+	 * Native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+	 */
 
 	/**
-	 * native SET method for field flags	[int]<br>
+	 * Native SET method for field flags	[int]<br>
 	 * Prototype: VkPipelineViewportStateCreateFlags  flags
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
@@ -383,7 +404,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field flags	[int]<br>
+	 * Native GET method for field flags	[int]<br>
 	 * Prototype: VkPipelineViewportStateCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
@@ -392,7 +413,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field viewportCount	[int]<br>
+	 * Native SET method for field viewportCount	[int]<br>
 	 * Prototype: uint32_t  viewportCount
 	 */ 
 	 private static native void setViewportCount0(Buffer ptr, int _viewportCount);/*
@@ -401,7 +422,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field viewportCount	[int]<br>
+	 * Native GET method for field viewportCount	[int]<br>
 	 * Prototype: uint32_t  viewportCount
 	 */ 
 	 private static native int getViewportCount0(Buffer ptr);/*
@@ -410,7 +431,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pViewports	[vkstruct]<br>
+	 * Native SET method for field pViewports	[vkstruct_array]<br>
 	 * Prototype: const VkViewport*  pViewports
 	 */ 
 	 private static native void setPViewports0(Buffer ptr, java.nio.ByteBuffer  _pViewports);/*
@@ -419,15 +440,16 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pViewports	[vkstruct]<br>
+	 * Native GET method for field pViewports	[vkstruct_array]<br>
 	 * Prototype: const VkViewport*  pViewports
 	 */ 
 	 private static native long getPViewports0(Buffer ptr);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pViewports);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pViewports);
+	 */
 
 	/**
-	 * native SET method for field scissorCount	[int]<br>
+	 * Native SET method for field scissorCount	[int]<br>
 	 * Prototype: uint32_t  scissorCount
 	 */ 
 	 private static native void setScissorCount0(Buffer ptr, int _scissorCount);/*
@@ -436,7 +458,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field scissorCount	[int]<br>
+	 * Native GET method for field scissorCount	[int]<br>
 	 * Prototype: uint32_t  scissorCount
 	 */ 
 	 private static native int getScissorCount0(Buffer ptr);/*
@@ -445,7 +467,7 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pScissors	[vkstruct]<br>
+	 * Native SET method for field pScissors	[vkstruct_array]<br>
 	 * Prototype: const VkRect2D*  pScissors
 	 */ 
 	 private static native void setPScissors0(Buffer ptr, java.nio.ByteBuffer  _pScissors);/*
@@ -454,12 +476,13 @@ public class VkPipelineViewportStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pScissors	[vkstruct]<br>
+	 * Native GET method for field pScissors	[vkstruct_array]<br>
 	 * Prototype: const VkRect2D*  pScissors
 	 */ 
 	 private static native long getPScissors0(Buffer ptr);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pScissors);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pScissors);
+	 */
 
 
 

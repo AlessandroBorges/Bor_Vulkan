@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkSubresourceLayout struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -33,9 +34,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkSubresourceLayout extends VkStruct {
+ public class VkSubresourceLayout extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -48,37 +49,34 @@ public class VkSubresourceLayout extends VkStruct {
 	/** ID of this structure [40]  */
 	 public static final int TAG_ID = VKSUBRESOURCELAYOUT_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkSubresourceLayout> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkDeviceSize 	offset	[long]
 	 */ 
-	 long 	offset;
-
+	long 	offset;
+	
 	/**
 	 *  VkDeviceSize 	size	[long]
 	 */ 
-	 long 	size;
-
+	long 	size;
+	
 	/**
 	 *  VkDeviceSize 	rowPitch	[long]
 	 */ 
-	 long 	rowPitch;
-
+	long 	rowPitch;
+	
 	/**
 	 *  VkDeviceSize 	arrayPitch	[long]
 	 */ 
-	 long 	arrayPitch;
-
+	long 	arrayPitch;
+	
 	/**
 	 *  VkDeviceSize 	depthPitch	[long]
 	 */ 
-	 long 	depthPitch;
-
+	long 	depthPitch;
 	/**
 	 * Ctor
 	 */
@@ -92,15 +90,6 @@ public class VkSubresourceLayout extends VkStruct {
 	 */
 	public VkSubresourceLayout(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkSubresourceLayout(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -126,34 +115,12 @@ public class VkSubresourceLayout extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkSubresourceLayout> createNullPointer(){
-	        P<VkSubresourceLayout> p = new  P<VkSubresourceLayout>(new VkSubresourceLayout());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkSubresourceLayout> getP() {
-	       if(p == null ){
-	           p = new P<VkSubresourceLayout> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -162,10 +129,14 @@ public class VkSubresourceLayout extends VkStruct {
 	/**
 	 * Set method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
+	 * 
+	 * @param offset - a instance of long.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void offset(long offset){
+	 public VkSubresourceLayout offset(long offset){
 		 this.offset = offset;
 		 setOffset0(this.ptr,  offset);
+		 return this;
 	 }
 
 	/**
@@ -181,10 +152,14 @@ public class VkSubresourceLayout extends VkStruct {
 	/**
 	 * Set method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
+	 * 
+	 * @param size - a instance of long.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void size(long size){
+	 public VkSubresourceLayout size(long size){
 		 this.size = size;
 		 setSize0(this.ptr,  size);
+		 return this;
 	 }
 
 	/**
@@ -200,10 +175,14 @@ public class VkSubresourceLayout extends VkStruct {
 	/**
 	 * Set method for field rowPitch	[long]<br>
 	 * Prototype: VkDeviceSize  rowPitch
+	 * 
+	 * @param rowPitch - a instance of long.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void rowPitch(long rowPitch){
+	 public VkSubresourceLayout rowPitch(long rowPitch){
 		 this.rowPitch = rowPitch;
 		 setRowPitch0(this.ptr,  rowPitch);
+		 return this;
 	 }
 
 	/**
@@ -219,10 +198,14 @@ public class VkSubresourceLayout extends VkStruct {
 	/**
 	 * Set method for field arrayPitch	[long]<br>
 	 * Prototype: VkDeviceSize  arrayPitch
+	 * 
+	 * @param arrayPitch - a instance of long.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void arrayPitch(long arrayPitch){
+	 public VkSubresourceLayout arrayPitch(long arrayPitch){
 		 this.arrayPitch = arrayPitch;
 		 setArrayPitch0(this.ptr,  arrayPitch);
+		 return this;
 	 }
 
 	/**
@@ -238,10 +221,14 @@ public class VkSubresourceLayout extends VkStruct {
 	/**
 	 * Set method for field depthPitch	[long]<br>
 	 * Prototype: VkDeviceSize  depthPitch
+	 * 
+	 * @param depthPitch - a instance of long.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void depthPitch(long depthPitch){
+	 public VkSubresourceLayout depthPitch(long depthPitch){
 		 this.depthPitch = depthPitch;
 		 setDepthPitch0(this.ptr,  depthPitch);
+		 return this;
 	 }
 
 	/**
@@ -255,11 +242,32 @@ public class VkSubresourceLayout extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkSubresourceLayout [ ")
+				.append("offset: ").append(offset() )
+				.append(",\n size: ")
+				.append(size() )
+				.append(",\n rowPitch: ")
+				.append(rowPitch() )
+				.append(",\n arrayPitch: ")
+				.append(arrayPitch() )
+				.append(",\n depthPitch: ")
+				.append(depthPitch() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field offset	[long]<br>
+	 * Native SET method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 private static native void setOffset0(Buffer ptr, long _offset);/*
@@ -268,7 +276,7 @@ public class VkSubresourceLayout extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field offset	[long]<br>
+	 * Native GET method for field offset	[long]<br>
 	 * Prototype: VkDeviceSize  offset
 	 */ 
 	 private static native long getOffset0(Buffer ptr);/*
@@ -277,7 +285,7 @@ public class VkSubresourceLayout extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field size	[long]<br>
+	 * Native SET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native void setSize0(Buffer ptr, long _size);/*
@@ -286,7 +294,7 @@ public class VkSubresourceLayout extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field size	[long]<br>
+	 * Native GET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long getSize0(Buffer ptr);/*
@@ -295,7 +303,7 @@ public class VkSubresourceLayout extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field rowPitch	[long]<br>
+	 * Native SET method for field rowPitch	[long]<br>
 	 * Prototype: VkDeviceSize  rowPitch
 	 */ 
 	 private static native void setRowPitch0(Buffer ptr, long _rowPitch);/*
@@ -304,7 +312,7 @@ public class VkSubresourceLayout extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field rowPitch	[long]<br>
+	 * Native GET method for field rowPitch	[long]<br>
 	 * Prototype: VkDeviceSize  rowPitch
 	 */ 
 	 private static native long getRowPitch0(Buffer ptr);/*
@@ -313,7 +321,7 @@ public class VkSubresourceLayout extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field arrayPitch	[long]<br>
+	 * Native SET method for field arrayPitch	[long]<br>
 	 * Prototype: VkDeviceSize  arrayPitch
 	 */ 
 	 private static native void setArrayPitch0(Buffer ptr, long _arrayPitch);/*
@@ -322,7 +330,7 @@ public class VkSubresourceLayout extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field arrayPitch	[long]<br>
+	 * Native GET method for field arrayPitch	[long]<br>
 	 * Prototype: VkDeviceSize  arrayPitch
 	 */ 
 	 private static native long getArrayPitch0(Buffer ptr);/*
@@ -331,7 +339,7 @@ public class VkSubresourceLayout extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field depthPitch	[long]<br>
+	 * Native SET method for field depthPitch	[long]<br>
 	 * Prototype: VkDeviceSize  depthPitch
 	 */ 
 	 private static native void setDepthPitch0(Buffer ptr, long _depthPitch);/*
@@ -340,7 +348,7 @@ public class VkSubresourceLayout extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field depthPitch	[long]<br>
+	 * Native GET method for field depthPitch	[long]<br>
 	 * Prototype: VkDeviceSize  depthPitch
 	 */ 
 	 private static native long getDepthPitch0(Buffer ptr);/*

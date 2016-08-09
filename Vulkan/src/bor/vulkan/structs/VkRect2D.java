@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkRect2D struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -30,9 +31,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkRect2D extends VkStruct {
+ public class VkRect2D extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -45,22 +46,19 @@ public class VkRect2D extends VkStruct {
 	/** ID of this structure [57]  */
 	 public static final int TAG_ID = VKRECT2D_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkRect2D> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkOffset2D 	offset	[vkstruct]
 	 */ 
-	 VkOffset2D 	offset;
-
+	VkOffset2D 	offset;
+	
 	/**
 	 *  VkExtent2D 	extent	[vkstruct]
 	 */ 
-	 VkExtent2D 	extent;
-
+	VkExtent2D 	extent;
 	/**
 	 * Ctor
 	 */
@@ -74,15 +72,6 @@ public class VkRect2D extends VkStruct {
 	 */
 	public VkRect2D(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkRect2D(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -108,34 +97,12 @@ public class VkRect2D extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkRect2D> createNullPointer(){
-	        P<VkRect2D> p = new  P<VkRect2D>(new VkRect2D());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkRect2D> getP() {
-	       if(p == null ){
-	           p = new P<VkRect2D> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -144,11 +111,15 @@ public class VkRect2D extends VkStruct {
 	/**
 	 * Set method for field offset	[vkstruct]<br>
 	 * Prototype: VkOffset2D  offset
+	 * 
+	 * @param offset - a instance of VkOffset2D.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void offset(VkOffset2D offset){
+	 public VkRect2D offset(VkOffset2D offset){
 		 this.offset = offset;
 		 ByteBuffer buff = (offset==null) ? null : offset.getPointer();
 		 setOffset0(this.ptr, buff);
+		 return this;
 	 }
 
 	/**
@@ -173,11 +144,15 @@ public class VkRect2D extends VkStruct {
 	/**
 	 * Set method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  extent
+	 * 
+	 * @param extent - a instance of VkExtent2D.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void extent(VkExtent2D extent){
+	 public VkRect2D extent(VkExtent2D extent){
 		 this.extent = extent;
 		 ByteBuffer buff = (extent==null) ? null : extent.getPointer();
 		 setExtent0(this.ptr, buff);
+		 return this;
 	 }
 
 	/**
@@ -200,11 +175,26 @@ public class VkRect2D extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkRect2D [ ")
+				.append("offset: ").append(offset() )
+				.append(",\n extent: ")
+				.append(extent() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field offset	[vkstruct]<br>
+	 * Native SET method for field offset	[vkstruct]<br>
 	 * Prototype: VkOffset2D  offset
 	 */ 
 	 private static native void setOffset0(Buffer ptr, java.nio.ByteBuffer  _offset);/*
@@ -213,15 +203,16 @@ public class VkRect2D extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field offset	[vkstruct]<br>
+	 * Native GET method for field offset	[vkstruct]<br>
 	 * Prototype: VkOffset2D  offset
 	 */ 
 	 private static native long getOffset0(Buffer ptr);/*
 		  VkRect2D* vkObj = (VkRect2D*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->offset);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->offset);
+	 */
 
 	/**
-	 * native SET method for field extent	[vkstruct]<br>
+	 * Native SET method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  extent
 	 */ 
 	 private static native void setExtent0(Buffer ptr, java.nio.ByteBuffer  _extent);/*
@@ -230,12 +221,13 @@ public class VkRect2D extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field extent	[vkstruct]<br>
+	 * Native GET method for field extent	[vkstruct]<br>
 	 * Prototype: VkExtent2D  extent
 	 */ 
 	 private static native long getExtent0(Buffer ptr);/*
 		  VkRect2D* vkObj = (VkRect2D*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->extent);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->extent);
+	 */
 
 
 

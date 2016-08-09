@@ -9,11 +9,13 @@
  */
  package bor.vulkan.structs;
 
+ import bor.util.*;
  import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
  import bor.vulkan.enumerations.*;
- import bor.vulkan.structs.*;
- import java.nio.ByteBuffer;
- import java.nio.Buffer;
+
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -49,20 +51,20 @@
 	 // Struct fields //
 	 ///////////////////
 	
-/**
+	/**
 	 *  int32_t 	x	[int]
 	 */ 
-	 int 	x;
+	int 	x;
 	
-/**
+	/**
 	 *  int32_t 	y	[int]
 	 */ 
-	 int 	y;
+	int 	y;
 	
-/**
+	/**
 	 *  int32_t 	z	[int]
 	 */ 
-	 int 	z;
+	int 	z;
 	/**
 	 * Ctor
 	 */
@@ -203,7 +205,7 @@
 	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field x	[int]<br>
+	 * Native SET method for field x	[int]<br>
 	 * Prototype: int32_t  x
 	 */ 
 	 private static native void setX0(Buffer ptr, int _x);/*
@@ -212,7 +214,7 @@
 	  */
 
 	/**
-	 * native GET method for field x	[int]<br>
+	 * Native GET method for field x	[int]<br>
 	 * Prototype: int32_t  x
 	 */ 
 	 private static native int getX0(Buffer ptr);/*
@@ -221,7 +223,7 @@
 	 */
 
 	/**
-	 * native SET method for field y	[int]<br>
+	 * Native SET method for field y	[int]<br>
 	 * Prototype: int32_t  y
 	 */ 
 	 private static native void setY0(Buffer ptr, int _y);/*
@@ -230,7 +232,7 @@
 	  */
 
 	/**
-	 * native GET method for field y	[int]<br>
+	 * Native GET method for field y	[int]<br>
 	 * Prototype: int32_t  y
 	 */ 
 	 private static native int getY0(Buffer ptr);/*
@@ -239,7 +241,7 @@
 	 */
 
 	/**
-	 * native SET method for field z	[int]<br>
+	 * Native SET method for field z	[int]<br>
 	 * Prototype: int32_t  z
 	 */ 
 	 private static native void setZ0(Buffer ptr, int _z);/*
@@ -248,7 +250,7 @@
 	  */
 
 	/**
-	 * native GET method for field z	[int]<br>
+	 * Native GET method for field z	[int]<br>
 	 * Prototype: int32_t  z
 	 */ 
 	 private static native int getZ0(Buffer ptr);/*

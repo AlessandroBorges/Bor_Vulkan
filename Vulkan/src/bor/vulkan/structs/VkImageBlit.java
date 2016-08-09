@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkImageBlit struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -32,9 +33,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkImageBlit extends VkStruct {
+ public class VkImageBlit extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -47,32 +48,31 @@ public class VkImageBlit extends VkStruct {
 	/** ID of this structure [93]  */
 	 public static final int TAG_ID = VKIMAGEBLIT_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkImageBlit> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkImageSubresourceLayers 	srcSubresource	[vkstruct]
 	 */ 
-	 VkImageSubresourceLayers 	srcSubresource;
-
+	VkImageSubresourceLayers 	srcSubresource;
+	
 	/**
-	 *  VkOffset3D[] 	srcOffsets	
+	 *  VkOffset3D[] 	srcOffsets	[vkstruct_array_array [2] ]
 	 */ 
-	 VkOffset3D[] 	srcOffsets;
-
+	VkOffset3D[] 	srcOffsets = new VkOffset3D[2];
+	 private BigBuffer 	 srcOffsetsBUFFER;
+	
 	/**
 	 *  VkImageSubresourceLayers 	dstSubresource	[vkstruct]
 	 */ 
-	 VkImageSubresourceLayers 	dstSubresource;
-
+	VkImageSubresourceLayers 	dstSubresource;
+	
 	/**
-	 *  VkOffset3D[] 	dstOffsets	
+	 *  VkOffset3D[] 	dstOffsets	[vkstruct_array_array [2] ]
 	 */ 
-	 VkOffset3D[] 	dstOffsets;
-
+	VkOffset3D[] 	dstOffsets = new VkOffset3D[2];
+	 private BigBuffer 	 dstOffsetsBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -86,15 +86,6 @@ public class VkImageBlit extends VkStruct {
 	 */
 	public VkImageBlit(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkImageBlit(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -120,34 +111,12 @@ public class VkImageBlit extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkImageBlit> createNullPointer(){
-	        P<VkImageBlit> p = new  P<VkImageBlit>(new VkImageBlit());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkImageBlit> getP() {
-	       if(p == null ){
-	           p = new P<VkImageBlit> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -156,11 +125,15 @@ public class VkImageBlit extends VkStruct {
 	/**
 	 * Set method for field srcSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
+	 * 
+	 * @param srcSubresource - a instance of VkImageSubresourceLayers.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void srcSubresource(VkImageSubresourceLayers srcSubresource){
+	 public VkImageBlit srcSubresource(VkImageSubresourceLayers srcSubresource){
 		 this.srcSubresource = srcSubresource;
 		 ByteBuffer buff = (srcSubresource==null) ? null : srcSubresource.getPointer();
 		 setSrcSubresource0(this.ptr, buff);
+		 return this;
 	 }
 
 	/**
@@ -183,32 +156,48 @@ public class VkImageBlit extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field srcOffsets	<br>
+	 * Set method for field srcOffsets	[vkstruct_array]<br>
 	 * Prototype: VkOffset3D[]  srcOffsets
+	 * 
+	 * @param srcOffsets - a instance of VkOffset3D[].
+	 * @return this VkStruct instance.
 	 */ 
-	 public void srcOffsets(VkOffset3D[] srcOffsets){
-		 this.srcOffsets = srcOffsets;
-		 setSrcOffsets0(this.ptr,  srcOffsets);
+	 public VkImageBlit srcOffsets(VkOffset3D[] srcOffsets){
+		 this.srcOffsetsBUFFER = new BigBuffer(srcOffsets, VkOffset3D.getID());
+		 setSrcOffsets0(this.ptr, srcOffsetsBUFFER.getBuffer());
+		 return this;
 	 }
 
 	/**
-	 * Get method for field srcOffsets	<br>
+	 * Get method for field srcOffsets	[vkstruct_array]<br>
 	 * Prototype: VkOffset3D[]  srcOffsets
 	 */ 
 	 public VkOffset3D[] srcOffsets(){
-		 VkOffset3D[] var = getSrcOffsets0(super.ptr);
-		 this.srcOffsets = var;
+		 long ptr = getSrcOffsets0(this.ptr);
+		 if(ptr == 0L){
+		    return null;
+		 }
+		 if(srcOffsetsBUFFER != null && ptr == srcOffsetsBUFFER.getBufferAddress()){ //same buffer 
+		    srcOffsetsBUFFER.update();
+		    return srcOffsets;
+		  }else{
+		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		   }
 		 return this.srcOffsets;
 	 }
 
 	/**
 	 * Set method for field dstSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
+	 * 
+	 * @param dstSubresource - a instance of VkImageSubresourceLayers.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void dstSubresource(VkImageSubresourceLayers dstSubresource){
+	 public VkImageBlit dstSubresource(VkImageSubresourceLayers dstSubresource){
 		 this.dstSubresource = dstSubresource;
 		 ByteBuffer buff = (dstSubresource==null) ? null : dstSubresource.getPointer();
 		 setDstSubresource0(this.ptr, buff);
+		 return this;
 	 }
 
 	/**
@@ -231,30 +220,61 @@ public class VkImageBlit extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field dstOffsets	<br>
+	 * Set method for field dstOffsets	[vkstruct_array]<br>
 	 * Prototype: VkOffset3D[]  dstOffsets
+	 * 
+	 * @param dstOffsets - a instance of VkOffset3D[].
+	 * @return this VkStruct instance.
 	 */ 
-	 public void dstOffsets(VkOffset3D[] dstOffsets){
-		 this.dstOffsets = dstOffsets;
-		 setDstOffsets0(this.ptr,  dstOffsets);
+	 public VkImageBlit dstOffsets(VkOffset3D[] dstOffsets){
+		 this.dstOffsetsBUFFER = new BigBuffer(dstOffsets, VkOffset3D.getID());
+		 setDstOffsets0(this.ptr, dstOffsetsBUFFER.getBuffer());
+		 return this;
 	 }
 
 	/**
-	 * Get method for field dstOffsets	<br>
+	 * Get method for field dstOffsets	[vkstruct_array]<br>
 	 * Prototype: VkOffset3D[]  dstOffsets
 	 */ 
 	 public VkOffset3D[] dstOffsets(){
-		 VkOffset3D[] var = getDstOffsets0(super.ptr);
-		 this.dstOffsets = var;
+		 long ptr = getDstOffsets0(this.ptr);
+		 if(ptr == 0L){
+		    return null;
+		 }
+		 if(dstOffsetsBUFFER != null && ptr == dstOffsetsBUFFER.getBufferAddress()){ //same buffer 
+		    dstOffsetsBUFFER.update();
+		    return dstOffsets;
+		  }else{
+		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		   }
 		 return this.dstOffsets;
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkImageBlit [ ")
+				.append("srcSubresource: ").append(srcSubresource() )
+				.append(",\n srcOffsets: ")
+				.append(Arrays.toString(srcOffsets()) )
+				.append(",\n dstSubresource: ")
+				.append(dstSubresource() )
+				.append(",\n dstOffsets: ")
+				.append(Arrays.toString(dstOffsets()) )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field srcSubresource	[vkstruct]<br>
+	 * Native SET method for field srcSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
 	 */ 
 	 private static native void setSrcSubresource0(Buffer ptr, java.nio.ByteBuffer  _srcSubresource);/*
@@ -263,33 +283,34 @@ public class VkImageBlit extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field srcSubresource	[vkstruct]<br>
+	 * Native GET method for field srcSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  srcSubresource
 	 */ 
 	 private static native long getSrcSubresource0(Buffer ptr);/*
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->srcSubresource);	 */
-
-	/**
-	 * native SET method for field srcOffsets	<br>
-	 * Prototype: VkOffset3D[]  srcOffsets
-	 */ 
-	 private static native void setSrcOffsets0(Buffer ptr, VkOffset3D[] _srcOffsets);/*
-		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		  vkObj->srcOffsets = (VkOffset3D[]) (_srcOffsets);
-	  */
-
-	/**
-	 * native GET method for field srcOffsets	<br>
-	 * Prototype: VkOffset3D[]  srcOffsets
-	 */ 
-	 private static native VkOffset3D[] getSrcOffsets0(Buffer ptr);/*
-		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		  return (VkOffset3D[]) (vkObj->srcOffsets);
+		  return (jlong) reinterpret_cast<jlong>(vkObj->srcSubresource);
 	 */
 
 	/**
-	 * native SET method for field dstSubresource	[vkstruct]<br>
+	 * Native SET method for field srcOffsets	[vkstruct_array]<br>
+	 * Prototype: VkOffset3D[]  srcOffsets
+	 */ 
+	 private static native void setSrcOffsets0(Buffer ptr, java.nio.ByteBuffer  _srcOffsets);/*
+		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
+		  memcpy(&(vkObj->srcOffsets), &_srcOffsets, 2 * sizeof(VkOffset3D));
+	  */
+
+	/**
+	 * Native GET method for field srcOffsets	[vkstruct_array]<br>
+	 * Prototype: VkOffset3D[]  srcOffsets
+	 */ 
+	 private static native long getSrcOffsets0(Buffer ptr);/*
+		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
+		  return (jlong) reinterpret_cast<jlong>(vkObj->srcOffsets);
+	 */
+
+	/**
+	 * Native SET method for field dstSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
 	 */ 
 	 private static native void setDstSubresource0(Buffer ptr, java.nio.ByteBuffer  _dstSubresource);/*
@@ -298,29 +319,30 @@ public class VkImageBlit extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field dstSubresource	[vkstruct]<br>
+	 * Native GET method for field dstSubresource	[vkstruct]<br>
 	 * Prototype: VkImageSubresourceLayers  dstSubresource
 	 */ 
 	 private static native long getDstSubresource0(Buffer ptr);/*
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->dstSubresource);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->dstSubresource);
+	 */
 
 	/**
-	 * native SET method for field dstOffsets	<br>
+	 * Native SET method for field dstOffsets	[vkstruct_array]<br>
 	 * Prototype: VkOffset3D[]  dstOffsets
 	 */ 
-	 private static native void setDstOffsets0(Buffer ptr, VkOffset3D[] _dstOffsets);/*
+	 private static native void setDstOffsets0(Buffer ptr, java.nio.ByteBuffer  _dstOffsets);/*
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		  vkObj->dstOffsets = (VkOffset3D[]) (_dstOffsets);
+		  memcpy(&(vkObj->dstOffsets), &_dstOffsets, 2 * sizeof(VkOffset3D));
 	  */
 
 	/**
-	 * native GET method for field dstOffsets	<br>
+	 * Native GET method for field dstOffsets	[vkstruct_array]<br>
 	 * Prototype: VkOffset3D[]  dstOffsets
 	 */ 
-	 private static native VkOffset3D[] getDstOffsets0(Buffer ptr);/*
+	 private static native long getDstOffsets0(Buffer ptr);/*
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		  return (VkOffset3D[]) (vkObj->dstOffsets);
+		  return (jlong) reinterpret_cast<jlong>(vkObj->dstOffsets);
 	 */
 
 

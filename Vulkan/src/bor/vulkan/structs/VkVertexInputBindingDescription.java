@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkVertexInputBindingDescription struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -31,9 +32,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkVertexInputBindingDescription extends VkStruct {
+ public class VkVertexInputBindingDescription extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -46,27 +47,24 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	/** ID of this structure [49]  */
 	 public static final int TAG_ID = VKVERTEXINPUTBINDINGDESCRIPTION_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkVertexInputBindingDescription> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  uint32_t 	binding	[int]
 	 */ 
-	 int 	binding;
-
+	int 	binding;
+	
 	/**
 	 *  uint32_t 	stride	[int]
 	 */ 
-	 int 	stride;
-
+	int 	stride;
+	
 	/**
 	 *  VkVertexInputRate 	inputRate	[vkenum]
 	 */ 
-	 VkVertexInputRate 	inputRate;
-
+	VkVertexInputRate 	inputRate;
 	/**
 	 * Ctor
 	 */
@@ -80,15 +78,6 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	 */
 	public VkVertexInputBindingDescription(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkVertexInputBindingDescription(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -114,34 +103,12 @@ public class VkVertexInputBindingDescription extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkVertexInputBindingDescription> createNullPointer(){
-	        P<VkVertexInputBindingDescription> p = new  P<VkVertexInputBindingDescription>(new VkVertexInputBindingDescription());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkVertexInputBindingDescription> getP() {
-	       if(p == null ){
-	           p = new P<VkVertexInputBindingDescription> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -150,10 +117,14 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	/**
 	 * Set method for field binding	[int]<br>
 	 * Prototype: uint32_t  binding
+	 * 
+	 * @param binding - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void binding(int binding){
+	 public VkVertexInputBindingDescription binding(int binding){
 		 this.binding = binding;
 		 setBinding0(this.ptr,  binding);
+		 return this;
 	 }
 
 	/**
@@ -169,10 +140,14 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	/**
 	 * Set method for field stride	[int]<br>
 	 * Prototype: uint32_t  stride
+	 * 
+	 * @param stride - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void stride(int stride){
+	 public VkVertexInputBindingDescription stride(int stride){
 		 this.stride = stride;
 		 setStride0(this.ptr,  stride);
+		 return this;
 	 }
 
 	/**
@@ -188,11 +163,15 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	/**
 	 * Set method for field inputRate	[vkenum]<br>
 	 * Prototype: VkVertexInputRate  inputRate
+	 * 
+	 * @param inputRate - a instance of VkVertexInputRate.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void inputRate(VkVertexInputRate inputRate){
+	 public VkVertexInputBindingDescription inputRate(VkVertexInputRate inputRate){
 		 this.inputRate = inputRate;
 		 int enumVal = inputRate.getValue();
 		 setInputRate0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -206,11 +185,28 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkVertexInputBindingDescription [ ")
+				.append("binding: ").append(binding() )
+				.append(",\n stride: ")
+				.append(stride() )
+				.append(",\n inputRate: ")
+				.append(inputRate() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field binding	[int]<br>
+	 * Native SET method for field binding	[int]<br>
 	 * Prototype: uint32_t  binding
 	 */ 
 	 private static native void setBinding0(Buffer ptr, int _binding);/*
@@ -219,7 +215,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field binding	[int]<br>
+	 * Native GET method for field binding	[int]<br>
 	 * Prototype: uint32_t  binding
 	 */ 
 	 private static native int getBinding0(Buffer ptr);/*
@@ -228,7 +224,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field stride	[int]<br>
+	 * Native SET method for field stride	[int]<br>
 	 * Prototype: uint32_t  stride
 	 */ 
 	 private static native void setStride0(Buffer ptr, int _stride);/*
@@ -237,7 +233,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field stride	[int]<br>
+	 * Native GET method for field stride	[int]<br>
 	 * Prototype: uint32_t  stride
 	 */ 
 	 private static native int getStride0(Buffer ptr);/*
@@ -246,7 +242,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field inputRate	[vkenum]<br>
+	 * Native SET method for field inputRate	[vkenum]<br>
 	 * Prototype: VkVertexInputRate  inputRate
 	 */ 
 	 private static native void setInputRate0(Buffer ptr, int  _inputRate);/*
@@ -255,7 +251,7 @@ public class VkVertexInputBindingDescription extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field inputRate	[vkenum]<br>
+	 * Native GET method for field inputRate	[vkenum]<br>
 	 * Prototype: VkVertexInputRate  inputRate
 	 */ 
 	 private static native int  getInputRate0(Buffer ptr);/*

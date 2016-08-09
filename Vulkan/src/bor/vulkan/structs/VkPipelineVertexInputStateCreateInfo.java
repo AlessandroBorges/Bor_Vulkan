@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkPipelineVertexInputStateCreateInfo struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -35,9 +36,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
+ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -50,47 +51,46 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	/** ID of this structure [51]  */
 	 public static final int TAG_ID = VKPIPELINEVERTEXINPUTSTATECREATEINFO_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkPipelineVertexInputStateCreateInfo> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	 VkStructureType 	sType;
-
+	VkStructureType 	sType;
+	
 	/**
 	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 VkObject 	pNext;
-
+	VkObject 	pNext;
+	
 	/**
 	 *  VkPipelineVertexInputStateCreateFlags 	flags	[int]
 	 */ 
-	 int 	flags;
-
+	int 	flags;
+	
 	/**
 	 *  uint32_t 	vertexBindingDescriptionCount	[int]
 	 */ 
-	 int 	vertexBindingDescriptionCount;
-
+	int 	vertexBindingDescriptionCount;
+	
 	/**
-	 *  const VkVertexInputBindingDescription* 	pVertexBindingDescriptions	[vkstruct]
+	 *  const VkVertexInputBindingDescription* 	pVertexBindingDescriptions	[vkstruct_array_array]
 	 */ 
-	  VkVertexInputBindingDescription  	pVertexBindingDescriptions;
-
+	  VkVertexInputBindingDescription[]  	pVertexBindingDescriptions;
+	 private BigBuffer 	 pVertexBindingDescriptionsBUFFER;
+	
 	/**
 	 *  uint32_t 	vertexAttributeDescriptionCount	[int]
 	 */ 
-	 int 	vertexAttributeDescriptionCount;
-
+	int 	vertexAttributeDescriptionCount;
+	
 	/**
-	 *  const VkVertexInputAttributeDescription* 	pVertexAttributeDescriptions	[vkstruct]
+	 *  const VkVertexInputAttributeDescription* 	pVertexAttributeDescriptions	[vkstruct_array_array]
 	 */ 
-	  VkVertexInputAttributeDescription  	pVertexAttributeDescriptions;
-
+	  VkVertexInputAttributeDescription[]  	pVertexAttributeDescriptions;
+	 private BigBuffer 	 pVertexAttributeDescriptionsBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -104,15 +104,6 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 */
 	public VkPipelineVertexInputStateCreateInfo(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkPipelineVertexInputStateCreateInfo(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -138,34 +129,12 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkPipelineVertexInputStateCreateInfo> createNullPointer(){
-	        P<VkPipelineVertexInputStateCreateInfo> p = new  P<VkPipelineVertexInputStateCreateInfo>(new VkPipelineVertexInputStateCreateInfo());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkPipelineVertexInputStateCreateInfo> getP() {
-	       if(p == null ){
-	           p = new P<VkPipelineVertexInputStateCreateInfo> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -174,11 +143,15 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	/**
 	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
+	 * 
+	 * @param sType - a instance of VkStructureType.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void sType(VkStructureType sType){
+	 public VkPipelineVertexInputStateCreateInfo sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
 		 setSType0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -194,11 +167,15 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	/**
 	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
+	 * 
+	 * @param pNext - a instance of VkObject.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public VkPipelineVertexInputStateCreateInfo pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
 		 setPNext0(this.ptr, buff);
+		 return this;
 	 }
 
 	/**
@@ -211,7 +188,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 		    this.pNext = null;
 		    return null;
 		  } else 
- 		 if(this.pNext == null){
+		 if(this.pNext == null){
 		    this.pNext = (VkObject)(new VkHandle(pointer));
 		 }else{
 		    this.pNext.setPointer(pointer);
@@ -222,10 +199,14 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	/**
 	 * Set method for field flags	[int]<br>
 	 * Prototype: VkPipelineVertexInputStateCreateFlags  flags
+	 * 
+	 * @param flags - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void flags(int flags){
+	 public VkPipelineVertexInputStateCreateInfo flags(int flags){
 		 this.flags = flags;
 		 setFlags0(this.ptr,  flags);
+		 return this;
 	 }
 
 	/**
@@ -241,10 +222,14 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	/**
 	 * Set method for field vertexBindingDescriptionCount	[int]<br>
 	 * Prototype: uint32_t  vertexBindingDescriptionCount
+	 * 
+	 * @param vertexBindingDescriptionCount - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void vertexBindingDescriptionCount(int vertexBindingDescriptionCount){
+	 public VkPipelineVertexInputStateCreateInfo vertexBindingDescriptionCount(int vertexBindingDescriptionCount){
 		 this.vertexBindingDescriptionCount = vertexBindingDescriptionCount;
 		 setVertexBindingDescriptionCount0(this.ptr,  vertexBindingDescriptionCount);
+		 return this;
 	 }
 
 	/**
@@ -258,41 +243,48 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pVertexBindingDescriptions	[vkstruct]<br>
+	 * Set method for field pVertexBindingDescriptions	[vkstruct_array]<br>
 	 * Prototype: const VkVertexInputBindingDescription*  pVertexBindingDescriptions
+	 * 
+	 * @param pVertexBindingDescriptions - a instance of VkVertexInputBindingDescription[].
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pVertexBindingDescriptions( VkVertexInputBindingDescription  pVertexBindingDescriptions){
+	 public VkPipelineVertexInputStateCreateInfo pVertexBindingDescriptions(VkVertexInputBindingDescription[] pVertexBindingDescriptions){
 		 this.pVertexBindingDescriptions = pVertexBindingDescriptions;
-		 ByteBuffer buff = (pVertexBindingDescriptions==null) ? null : pVertexBindingDescriptions.getPointer();
-		 setPVertexBindingDescriptions0(this.ptr, buff);
+		 this.pVertexBindingDescriptionsBUFFER = new BigBuffer(pVertexBindingDescriptions, VkVertexInputBindingDescription.getID());
+		 setPVertexBindingDescriptions0(this.ptr, pVertexBindingDescriptionsBUFFER.getBuffer());
+		 return this;
 	 }
 
 	/**
-	 * Get method for field pVertexBindingDescriptions	[vkstruct]<br>
+	 * Get method for field pVertexBindingDescriptions	[vkstruct_array]<br>
 	 * Prototype: const VkVertexInputBindingDescription*  pVertexBindingDescriptions
 	 */ 
-	 public  VkVertexInputBindingDescription  pVertexBindingDescriptions(){
-		 long pointer = getPVertexBindingDescriptions0(super.ptr);
-		 if(pointer == 0){
-		    this.pVertexBindingDescriptions = null;
+	 public VkVertexInputBindingDescription[] pVertexBindingDescriptions(){
+		 long ptr = getPVertexBindingDescriptions0(this.ptr);
+		 if(ptr == 0L){
 		    return null;
-		  } 
-
-		 if(this.pVertexBindingDescriptions == null){
-		    this.pVertexBindingDescriptions = new  VkVertexInputBindingDescription (pointer);
-		 }else{
-		    this.pVertexBindingDescriptions.setPointer(pointer);
-		  }
+		 }
+		 if(pVertexBindingDescriptionsBUFFER != null && ptr == pVertexBindingDescriptionsBUFFER.getBufferAddress()){ //same buffer 
+		    pVertexBindingDescriptionsBUFFER.update();
+		    return pVertexBindingDescriptions;
+		  }else{
+		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		   }
 		 return this.pVertexBindingDescriptions;
 	 }
 
 	/**
 	 * Set method for field vertexAttributeDescriptionCount	[int]<br>
 	 * Prototype: uint32_t  vertexAttributeDescriptionCount
+	 * 
+	 * @param vertexAttributeDescriptionCount - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void vertexAttributeDescriptionCount(int vertexAttributeDescriptionCount){
+	 public VkPipelineVertexInputStateCreateInfo vertexAttributeDescriptionCount(int vertexAttributeDescriptionCount){
 		 this.vertexAttributeDescriptionCount = vertexAttributeDescriptionCount;
 		 setVertexAttributeDescriptionCount0(this.ptr,  vertexAttributeDescriptionCount);
+		 return this;
 	 }
 
 	/**
@@ -306,40 +298,68 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 }
 
 	/**
-	 * Set method for field pVertexAttributeDescriptions	[vkstruct]<br>
+	 * Set method for field pVertexAttributeDescriptions	[vkstruct_array]<br>
 	 * Prototype: const VkVertexInputAttributeDescription*  pVertexAttributeDescriptions
+	 * 
+	 * @param pVertexAttributeDescriptions - a instance of VkVertexInputAttributeDescription[].
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pVertexAttributeDescriptions( VkVertexInputAttributeDescription  pVertexAttributeDescriptions){
+	 public VkPipelineVertexInputStateCreateInfo pVertexAttributeDescriptions(VkVertexInputAttributeDescription[] pVertexAttributeDescriptions){
 		 this.pVertexAttributeDescriptions = pVertexAttributeDescriptions;
-		 ByteBuffer buff = (pVertexAttributeDescriptions==null) ? null : pVertexAttributeDescriptions.getPointer();
-		 setPVertexAttributeDescriptions0(this.ptr, buff);
+		 this.pVertexAttributeDescriptionsBUFFER = new BigBuffer(pVertexAttributeDescriptions, VkVertexInputAttributeDescription.getID());
+		 setPVertexAttributeDescriptions0(this.ptr, pVertexAttributeDescriptionsBUFFER.getBuffer());
+		 return this;
 	 }
 
 	/**
-	 * Get method for field pVertexAttributeDescriptions	[vkstruct]<br>
+	 * Get method for field pVertexAttributeDescriptions	[vkstruct_array]<br>
 	 * Prototype: const VkVertexInputAttributeDescription*  pVertexAttributeDescriptions
 	 */ 
-	 public  VkVertexInputAttributeDescription  pVertexAttributeDescriptions(){
-		 long pointer = getPVertexAttributeDescriptions0(super.ptr);
-		 if(pointer == 0){
-		    this.pVertexAttributeDescriptions = null;
+	 public VkVertexInputAttributeDescription[] pVertexAttributeDescriptions(){
+		 long ptr = getPVertexAttributeDescriptions0(this.ptr);
+		 if(ptr == 0L){
 		    return null;
-		  } 
-
-		 if(this.pVertexAttributeDescriptions == null){
-		    this.pVertexAttributeDescriptions = new  VkVertexInputAttributeDescription (pointer);
-		 }else{
-		    this.pVertexAttributeDescriptions.setPointer(pointer);
-		  }
+		 }
+		 if(pVertexAttributeDescriptionsBUFFER != null && ptr == pVertexAttributeDescriptionsBUFFER.getBufferAddress()){ //same buffer 
+		    pVertexAttributeDescriptionsBUFFER.update();
+		    return pVertexAttributeDescriptions;
+		  }else{
+		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		   }
 		 return this.pVertexAttributeDescriptions;
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkPipelineVertexInputStateCreateInfo [ ")
+				.append("sType: ").append(sType() )
+				.append(",\n pNext: ")
+				.append(pNext() )
+				.append(",\n flags: ")
+				.append(flags() )
+				.append(",\n vertexBindingDescriptionCount: ")
+				.append(vertexBindingDescriptionCount() )
+				.append(",\n pVertexBindingDescriptions: ")
+				.append(Arrays.toString(pVertexBindingDescriptions()) )
+				.append(",\n vertexAttributeDescriptionCount: ")
+				.append(vertexAttributeDescriptionCount() )
+				.append(",\n pVertexAttributeDescriptions: ")
+				.append(Arrays.toString(pVertexAttributeDescriptions()) )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field sType	[vkenum]<br>
+	 * Native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
@@ -348,7 +368,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field sType	[vkenum]<br>
+	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
@@ -357,7 +377,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pNext	[vkobject]<br>
+	 * Native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
@@ -366,15 +386,16 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pNext	[vkobject]<br>
+	 * Native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+	 */
 
 	/**
-	 * native SET method for field flags	[int]<br>
+	 * Native SET method for field flags	[int]<br>
 	 * Prototype: VkPipelineVertexInputStateCreateFlags  flags
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
@@ -383,7 +404,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field flags	[int]<br>
+	 * Native GET method for field flags	[int]<br>
 	 * Prototype: VkPipelineVertexInputStateCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
@@ -392,7 +413,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field vertexBindingDescriptionCount	[int]<br>
+	 * Native SET method for field vertexBindingDescriptionCount	[int]<br>
 	 * Prototype: uint32_t  vertexBindingDescriptionCount
 	 */ 
 	 private static native void setVertexBindingDescriptionCount0(Buffer ptr, int _vertexBindingDescriptionCount);/*
@@ -401,7 +422,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field vertexBindingDescriptionCount	[int]<br>
+	 * Native GET method for field vertexBindingDescriptionCount	[int]<br>
 	 * Prototype: uint32_t  vertexBindingDescriptionCount
 	 */ 
 	 private static native int getVertexBindingDescriptionCount0(Buffer ptr);/*
@@ -410,7 +431,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pVertexBindingDescriptions	[vkstruct]<br>
+	 * Native SET method for field pVertexBindingDescriptions	[vkstruct_array]<br>
 	 * Prototype: const VkVertexInputBindingDescription*  pVertexBindingDescriptions
 	 */ 
 	 private static native void setPVertexBindingDescriptions0(Buffer ptr, java.nio.ByteBuffer  _pVertexBindingDescriptions);/*
@@ -419,15 +440,16 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pVertexBindingDescriptions	[vkstruct]<br>
+	 * Native GET method for field pVertexBindingDescriptions	[vkstruct_array]<br>
 	 * Prototype: const VkVertexInputBindingDescription*  pVertexBindingDescriptions
 	 */ 
 	 private static native long getPVertexBindingDescriptions0(Buffer ptr);/*
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pVertexBindingDescriptions);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pVertexBindingDescriptions);
+	 */
 
 	/**
-	 * native SET method for field vertexAttributeDescriptionCount	[int]<br>
+	 * Native SET method for field vertexAttributeDescriptionCount	[int]<br>
 	 * Prototype: uint32_t  vertexAttributeDescriptionCount
 	 */ 
 	 private static native void setVertexAttributeDescriptionCount0(Buffer ptr, int _vertexAttributeDescriptionCount);/*
@@ -436,7 +458,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field vertexAttributeDescriptionCount	[int]<br>
+	 * Native GET method for field vertexAttributeDescriptionCount	[int]<br>
 	 * Prototype: uint32_t  vertexAttributeDescriptionCount
 	 */ 
 	 private static native int getVertexAttributeDescriptionCount0(Buffer ptr);/*
@@ -445,7 +467,7 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pVertexAttributeDescriptions	[vkstruct]<br>
+	 * Native SET method for field pVertexAttributeDescriptions	[vkstruct_array]<br>
 	 * Prototype: const VkVertexInputAttributeDescription*  pVertexAttributeDescriptions
 	 */ 
 	 private static native void setPVertexAttributeDescriptions0(Buffer ptr, java.nio.ByteBuffer  _pVertexAttributeDescriptions);/*
@@ -454,12 +476,13 @@ public class VkPipelineVertexInputStateCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pVertexAttributeDescriptions	[vkstruct]<br>
+	 * Native GET method for field pVertexAttributeDescriptions	[vkstruct_array]<br>
 	 * Prototype: const VkVertexInputAttributeDescription*  pVertexAttributeDescriptions
 	 */ 
 	 private static native long getPVertexAttributeDescriptions0(Buffer ptr);/*
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pVertexAttributeDescriptions);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pVertexAttributeDescriptions);
+	 */
 
 
 

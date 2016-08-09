@@ -7,14 +7,15 @@
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -32,7 +33,7 @@ import java.nio.Buffer;
  * @author Alessandro Borges 
  * @version Ver. 0.8.65 (beta) 
  */
-public class VkAttachmentReference extends VkStruct {
+ public class VkAttachmentReference extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -45,20 +46,19 @@ public class VkAttachmentReference extends VkStruct {
 	/** ID of this structure [82]  */
 	 public static final int TAG_ID = VKATTACHMENTREFERENCE_ID;
 
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  uint32_t 	attachment	[int]
 	 */ 
-	 int 	attachment;
-
+	int 	attachment;
+	
 	/**
 	 *  VkImageLayout 	layout	[vkenum]
 	 */ 
-	 VkImageLayout 	layout;
-
+	VkImageLayout 	layout;
 	/**
 	 * Ctor
 	 */
@@ -103,9 +103,6 @@ public class VkAttachmentReference extends VkStruct {
 	 public static int getID(){ 
 		 return TAG_ID; 
 	}
-
-
-
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -178,7 +175,7 @@ public class VkAttachmentReference extends VkStruct {
 	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field attachment	[int]<br>
+	 * Native SET method for field attachment	[int]<br>
 	 * Prototype: uint32_t  attachment
 	 */ 
 	 private static native void setAttachment0(Buffer ptr, int _attachment);/*
@@ -187,7 +184,7 @@ public class VkAttachmentReference extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field attachment	[int]<br>
+	 * Native GET method for field attachment	[int]<br>
 	 * Prototype: uint32_t  attachment
 	 */ 
 	 private static native int getAttachment0(Buffer ptr);/*
@@ -196,7 +193,7 @@ public class VkAttachmentReference extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field layout	[vkenum]<br>
+	 * Native SET method for field layout	[vkenum]<br>
 	 * Prototype: VkImageLayout  layout
 	 */ 
 	 private static native void setLayout0(Buffer ptr, int  _layout);/*
@@ -205,7 +202,7 @@ public class VkAttachmentReference extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field layout	[vkenum]<br>
+	 * Native GET method for field layout	[vkenum]<br>
 	 * Prototype: VkImageLayout  layout
 	 */ 
 	 private static native int  getLayout0(Buffer ptr);/*

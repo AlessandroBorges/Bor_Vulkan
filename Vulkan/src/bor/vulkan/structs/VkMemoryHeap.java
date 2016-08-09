@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkMemoryHeap struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -30,9 +31,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkMemoryHeap extends VkStruct {
+ public class VkMemoryHeap extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -45,22 +46,19 @@ public class VkMemoryHeap extends VkStruct {
 	/** ID of this structure [13]  */
 	 public static final int TAG_ID = VKMEMORYHEAP_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkMemoryHeap> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkDeviceSize 	size	[long]
 	 */ 
-	 long 	size;
-
+	long 	size;
+	
 	/**
 	 *  VkMemoryHeapFlags 	flags	[int]
 	 */ 
-	 int 	flags;
-
+	int 	flags;
 	/**
 	 * Ctor
 	 */
@@ -74,15 +72,6 @@ public class VkMemoryHeap extends VkStruct {
 	 */
 	public VkMemoryHeap(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkMemoryHeap(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -108,34 +97,12 @@ public class VkMemoryHeap extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkMemoryHeap> createNullPointer(){
-	        P<VkMemoryHeap> p = new  P<VkMemoryHeap>(new VkMemoryHeap());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkMemoryHeap> getP() {
-	       if(p == null ){
-	           p = new P<VkMemoryHeap> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -144,10 +111,14 @@ public class VkMemoryHeap extends VkStruct {
 	/**
 	 * Set method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
+	 * 
+	 * @param size - a instance of long.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void size(long size){
+	 public VkMemoryHeap size(long size){
 		 this.size = size;
 		 setSize0(this.ptr,  size);
+		 return this;
 	 }
 
 	/**
@@ -163,10 +134,14 @@ public class VkMemoryHeap extends VkStruct {
 	/**
 	 * Set method for field flags	[int]<br>
 	 * Prototype: VkMemoryHeapFlags  flags
+	 * 
+	 * @param flags - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void flags(int flags){
+	 public VkMemoryHeap flags(int flags){
 		 this.flags = flags;
 		 setFlags0(this.ptr,  flags);
+		 return this;
 	 }
 
 	/**
@@ -179,24 +154,27 @@ public class VkMemoryHeap extends VkStruct {
 		 return this.flags;
 	 }
 
-         public   VkMemoryHeapFlagBits getFlagsEnum(){             
-             return VkMemoryHeapFlagBits.fromValue(flags());
-         }
-         
-	 /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
+
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
     @Override
     public String toString() {
-        VkMemoryHeapFlagBits flag = getFlagsEnum();
-        return "VkMemoryHeap [ size:" + size() + ", flags:" + (flag==null? 0 : flag) + "]\n";
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkMemoryHeap [ ")
+				.append("size: ").append(size() )
+				.append(",\n flags: ")
+				.append(flags() )
+				.append("]");
+		 return builder.toString();
     }
 
-    //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+
+	 //////////////////////////////////
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field size	[long]<br>
+	 * Native SET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native void setSize0(Buffer ptr, long _size);/*
@@ -205,7 +183,7 @@ public class VkMemoryHeap extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field size	[long]<br>
+	 * Native GET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long getSize0(Buffer ptr);/*
@@ -214,7 +192,7 @@ public class VkMemoryHeap extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field flags	[int]<br>
+	 * Native SET method for field flags	[int]<br>
 	 * Prototype: VkMemoryHeapFlags  flags
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
@@ -223,7 +201,7 @@ public class VkMemoryHeap extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field flags	[int]<br>
+	 * Native GET method for field flags	[int]<br>
 	 * Prototype: VkMemoryHeapFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*

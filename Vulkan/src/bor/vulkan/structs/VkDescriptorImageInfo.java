@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkDescriptorImageInfo struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -31,9 +32,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkDescriptorImageInfo extends VkStruct {
+ public class VkDescriptorImageInfo extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -46,27 +47,24 @@ public class VkDescriptorImageInfo extends VkStruct {
 	/** ID of this structure [76]  */
 	 public static final int TAG_ID = VKDESCRIPTORIMAGEINFO_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkDescriptorImageInfo> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkSampler 	sampler	[vkhandle]
 	 */ 
-	 VkSampler 	sampler;
-
+	VkSampler 	sampler;
+	
 	/**
 	 *  VkImageView 	imageView	[vkhandle]
 	 */ 
-	 VkImageView 	imageView;
-
+	VkImageView 	imageView;
+	
 	/**
 	 *  VkImageLayout 	imageLayout	[vkenum]
 	 */ 
-	 VkImageLayout 	imageLayout;
-
+	VkImageLayout 	imageLayout;
 	/**
 	 * Ctor
 	 */
@@ -80,15 +78,6 @@ public class VkDescriptorImageInfo extends VkStruct {
 	 */
 	public VkDescriptorImageInfo(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkDescriptorImageInfo(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -114,34 +103,12 @@ public class VkDescriptorImageInfo extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkDescriptorImageInfo> createNullPointer(){
-	        P<VkDescriptorImageInfo> p = new  P<VkDescriptorImageInfo>(new VkDescriptorImageInfo());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkDescriptorImageInfo> getP() {
-	       if(p == null ){
-	           p = new P<VkDescriptorImageInfo> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -150,11 +117,15 @@ public class VkDescriptorImageInfo extends VkStruct {
 	/**
 	 * Set method for field sampler	[vkhandle]<br>
 	 * Prototype: VkSampler  sampler
+	 * 
+	 * @param sampler - a instance of VkSampler.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void sampler(VkSampler sampler){
+	 public VkDescriptorImageInfo sampler(VkSampler sampler){
 		 this.sampler = sampler;
-		 ByteBuffer buff = (sampler==null) ? null : sampler.getPointer();
-		 setSampler0(this.ptr, buff);
+		 long handle = (sampler==null) ? 0L : sampler.getNativeHandle();
+		 setSampler0(this.ptr, handle);
+		 return this;
 	 }
 
 	/**
@@ -172,7 +143,7 @@ public class VkDescriptorImageInfo extends VkStruct {
 		 if(this.sampler == null){
 		    this.sampler = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.sampler).setPointer(handle);
+		    ((VkHandle)this.sampler).setNativeHandle(handle);
 		  }
 		 return this.sampler;
 	 }
@@ -180,11 +151,15 @@ public class VkDescriptorImageInfo extends VkStruct {
 	/**
 	 * Set method for field imageView	[vkhandle]<br>
 	 * Prototype: VkImageView  imageView
+	 * 
+	 * @param imageView - a instance of VkImageView.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void imageView(VkImageView imageView){
+	 public VkDescriptorImageInfo imageView(VkImageView imageView){
 		 this.imageView = imageView;
-		 ByteBuffer buff = (imageView==null) ? null : imageView.getPointer();
-		 setImageView0(this.ptr, buff);
+		 long handle = (imageView==null) ? 0L : imageView.getNativeHandle();
+		 setImageView0(this.ptr, handle);
+		 return this;
 	 }
 
 	/**
@@ -202,7 +177,7 @@ public class VkDescriptorImageInfo extends VkStruct {
 		 if(this.imageView == null){
 		    this.imageView = new VkHandle(handle);
 		 }else{
-		    ((VkHandle)this.imageView).setPointer(handle);
+		    ((VkHandle)this.imageView).setNativeHandle(handle);
 		  }
 		 return this.imageView;
 	 }
@@ -210,11 +185,15 @@ public class VkDescriptorImageInfo extends VkStruct {
 	/**
 	 * Set method for field imageLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  imageLayout
+	 * 
+	 * @param imageLayout - a instance of VkImageLayout.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void imageLayout(VkImageLayout imageLayout){
+	 public VkDescriptorImageInfo imageLayout(VkImageLayout imageLayout){
 		 this.imageLayout = imageLayout;
 		 int enumVal = imageLayout.getValue();
 		 setImageLayout0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -228,45 +207,64 @@ public class VkDescriptorImageInfo extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkDescriptorImageInfo [ ")
+				.append("sampler: ").append(sampler() )
+				.append(",\n imageView: ")
+				.append(imageView() )
+				.append(",\n imageLayout: ")
+				.append(imageLayout() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field sampler	[vkhandle]<br>
+	 * Native SET method for field sampler	[vkhandle]<br>
 	 * Prototype: VkSampler  sampler
 	 */ 
-	 private static native void setSampler0(Buffer ptr, java.nio.ByteBuffer  _sampler);/*
+	 private static native void setSampler0(Buffer ptr, long  _sampler);/*
 		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
 		  vkObj->sampler = (VkSampler) (_sampler);
 	  */
 
 	/**
-	 * native GET method for field sampler	[vkhandle]<br>
+	 * Native GET method for field sampler	[vkhandle]<br>
 	 * Prototype: VkSampler  sampler
 	 */ 
 	 private static native long getSampler0(Buffer ptr);/*
 		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->sampler);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->sampler);
+	 */
 
 	/**
-	 * native SET method for field imageView	[vkhandle]<br>
+	 * Native SET method for field imageView	[vkhandle]<br>
 	 * Prototype: VkImageView  imageView
 	 */ 
-	 private static native void setImageView0(Buffer ptr, java.nio.ByteBuffer  _imageView);/*
+	 private static native void setImageView0(Buffer ptr, long  _imageView);/*
 		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
 		  vkObj->imageView = (VkImageView) (_imageView);
 	  */
 
 	/**
-	 * native GET method for field imageView	[vkhandle]<br>
+	 * Native GET method for field imageView	[vkhandle]<br>
 	 * Prototype: VkImageView  imageView
 	 */ 
 	 private static native long getImageView0(Buffer ptr);/*
 		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->imageView);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->imageView);
+	 */
 
 	/**
-	 * native SET method for field imageLayout	[vkenum]<br>
+	 * Native SET method for field imageLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  imageLayout
 	 */ 
 	 private static native void setImageLayout0(Buffer ptr, int  _imageLayout);/*
@@ -275,7 +273,7 @@ public class VkDescriptorImageInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field imageLayout	[vkenum]<br>
+	 * Native GET method for field imageLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  imageLayout
 	 */ 
 	 private static native int  getImageLayout0(Buffer ptr);/*

@@ -9,9 +9,11 @@
  */
  package bor.vulkan.structs;
 
+ import bor.util.*;
  import bor.vulkan.*;
  import static bor.vulkan.Vulkan.*; 
  import bor.vulkan.enumerations.*;
+
  import java.util.*;
  import java.nio.*;
 
@@ -56,37 +58,37 @@
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	 protected VkStructureType 	sType;
+	VkStructureType 	sType;
 	
 	/**
 	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 protected VkObject 	pNext;
+	VkObject 	pNext;
 	
 	/**
 	 *  VkDebugReportObjectTypeEXT 	objectType	[vkenum]
 	 */ 
-	 protected VkDebugReportObjectTypeEXT 	objectType;
+	VkDebugReportObjectTypeEXT 	objectType;
 	
 	/**
 	 *  uint64_t 	object	[long]
 	 */ 
-	 protected long 	object;
+	long 	object;
 	
 	/**
 	 *  uint64_t 	tagName	[long]
 	 */ 
-	 protected long 	tagName;
+	long 	tagName;
 	
 	/**
 	 *  size_t 	tagSize	[long]
 	 */ 
-	 protected long 	tagSize;
+	long 	tagSize;
 	
 	/**
 	 *  const void* 	pTag	[buffer]
 	 */ 
-	 protected java.nio.Buffer 	pTag;
+	java.nio.Buffer 	pTag;
 	/**
 	 * Ctor
 	 */
@@ -184,7 +186,7 @@
 		    this.pNext = null;
 		    return null;
 		  } else 
- 		 if(this.pNext == null){
+		 if(this.pNext == null){
 		    this.pNext = (VkObject)(new VkHandle(pointer));
 		 }else{
 		    this.pNext.setPointer(pointer);
@@ -341,7 +343,7 @@
 	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field sType	[vkenum]<br>
+	 * Native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
@@ -350,7 +352,7 @@
 	  */
 
 	/**
-	 * native GET method for field sType	[vkenum]<br>
+	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
@@ -359,7 +361,7 @@
 	 */
 
 	/**
-	 * native SET method for field pNext	[vkobject]<br>
+	 * Native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
@@ -368,7 +370,7 @@
 	  */
 
 	/**
-	 * native GET method for field pNext	[vkobject]<br>
+	 * Native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
@@ -377,7 +379,7 @@
 	 */
 
 	/**
-	 * native SET method for field objectType	[vkenum]<br>
+	 * Native SET method for field objectType	[vkenum]<br>
 	 * Prototype: VkDebugReportObjectTypeEXT  objectType
 	 */ 
 	 private static native void setObjectType0(Buffer ptr, int  _objectType);/*
@@ -386,7 +388,7 @@
 	  */
 
 	/**
-	 * native GET method for field objectType	[vkenum]<br>
+	 * Native GET method for field objectType	[vkenum]<br>
 	 * Prototype: VkDebugReportObjectTypeEXT  objectType
 	 */ 
 	 private static native int  getObjectType0(Buffer ptr);/*
@@ -395,7 +397,7 @@
 	 */
 
 	/**
-	 * native SET method for field object	[long]<br>
+	 * Native SET method for field object	[long]<br>
 	 * Prototype: uint64_t  object
 	 */ 
 	 private static native void setObject0(Buffer ptr, long _object);/*
@@ -404,7 +406,7 @@
 	  */
 
 	/**
-	 * native GET method for field object	[long]<br>
+	 * Native GET method for field object	[long]<br>
 	 * Prototype: uint64_t  object
 	 */ 
 	 private static native long getObject0(Buffer ptr);/*
@@ -413,7 +415,7 @@
 	 */
 
 	/**
-	 * native SET method for field tagName	[long]<br>
+	 * Native SET method for field tagName	[long]<br>
 	 * Prototype: uint64_t  tagName
 	 */ 
 	 private static native void setTagName0(Buffer ptr, long _tagName);/*
@@ -422,7 +424,7 @@
 	  */
 
 	/**
-	 * native GET method for field tagName	[long]<br>
+	 * Native GET method for field tagName	[long]<br>
 	 * Prototype: uint64_t  tagName
 	 */ 
 	 private static native long getTagName0(Buffer ptr);/*
@@ -431,7 +433,7 @@
 	 */
 
 	/**
-	 * native SET method for field tagSize	[long]<br>
+	 * Native SET method for field tagSize	[long]<br>
 	 * Prototype: size_t  tagSize
 	 */ 
 	 private static native void setTagSize0(Buffer ptr, long _tagSize);/*
@@ -440,7 +442,7 @@
 	  */
 
 	/**
-	 * native GET method for field tagSize	[long]<br>
+	 * Native GET method for field tagSize	[long]<br>
 	 * Prototype: size_t  tagSize
 	 */ 
 	 private static native long getTagSize0(Buffer ptr);/*
@@ -449,7 +451,7 @@
 	 */
 
 	/**
-	 * native SET method for field pTag	[buffer]<br>
+	 * Native SET method for field pTag	[buffer]<br>
 	 * Prototype: const void*  pTag
 	 */ 
 	 private static native void setPTag0(Buffer ptr, java.nio.Buffer _pTag);/*
@@ -458,7 +460,7 @@
 	  */
 
 	/**
-	 * native GET method for field pTag	[buffer]<br>
+	 * Native GET method for field pTag	[buffer]<br>
 	 * Prototype: const void*  pTag
 	 */ 
 	 private static native long getPTag0(Buffer ptr);/*

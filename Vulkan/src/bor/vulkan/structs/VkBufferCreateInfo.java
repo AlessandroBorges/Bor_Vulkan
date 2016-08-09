@@ -9,12 +9,13 @@
  */
  package bor.vulkan.structs;
 
+ import bor.util.*;
  import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
  import bor.vulkan.enumerations.*;
- import bor.vulkan.structs.*;
- 
- import java.nio.*;
+
  import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -55,45 +56,45 @@
 	 // Struct fields //
 	 ///////////////////
 	
-/**
+	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	 VkStructureType 	sType;
+	VkStructureType 	sType;
 	
-/**
+	/**
 	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 VkObject 	pNext;
+	VkObject 	pNext;
 	
-/**
+	/**
 	 *  VkBufferCreateFlags 	flags	[int]
 	 */ 
-	 int 	flags;
+	int 	flags;
 	
-/**
+	/**
 	 *  VkDeviceSize 	size	[long]
 	 */ 
-	 long 	size;
+	long 	size;
 	
-/**
+	/**
 	 *  VkBufferUsageFlags 	usage	[int]
 	 */ 
-	 int 	usage;
+	int 	usage;
 	
-/**
+	/**
 	 *  VkSharingMode 	sharingMode	[vkenum]
 	 */ 
-	 VkSharingMode 	sharingMode;
+	VkSharingMode 	sharingMode;
 	
-/**
+	/**
 	 *  uint32_t 	queueFamilyIndexCount	[int]
 	 */ 
-	 int 	queueFamilyIndexCount;
+	int 	queueFamilyIndexCount;
 	
-/**
-	 *  const uint32_t* 	pQueueFamilyIndices	[int]
+	/**
+	 *  const uint32_t* 	pQueueFamilyIndices	[int_array]
 	 */ 
-	 int[] 	pQueueFamilyIndices;
+	int[] 	pQueueFamilyIndices;
 	/**
 	 * Ctor
 	 */
@@ -191,7 +192,7 @@
 		    this.pNext = null;
 		    return null;
 		  } else 
- 		 if(this.pNext == null){
+		 if(this.pNext == null){
 		    this.pNext = (VkObject)(new VkHandle(pointer));
 		 }else{
 		    this.pNext.setPointer(pointer);
@@ -333,7 +334,7 @@
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 public int[] pQueueFamilyIndices(){
-		 int[] var = getPQueueFamilyIndices0(super.ptr);
+		 int[] var = getPQueueFamilyIndices0(super.ptr, pQueueFamilyIndices);
 		 this.pQueueFamilyIndices = var;
 		 return this.pQueueFamilyIndices;
 	 }
@@ -370,7 +371,7 @@
 	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field sType	[vkenum]<br>
+	 * Native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
@@ -379,7 +380,7 @@
 	  */
 
 	/**
-	 * native GET method for field sType	[vkenum]<br>
+	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
@@ -388,7 +389,7 @@
 	 */
 
 	/**
-	 * native SET method for field pNext	[vkobject]<br>
+	 * Native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
@@ -397,15 +398,16 @@
 	  */
 
 	/**
-	 * native GET method for field pNext	[vkobject]<br>
+	 * Native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+	 */
 
 	/**
-	 * native SET method for field flags	[int]<br>
+	 * Native SET method for field flags	[int]<br>
 	 * Prototype: VkBufferCreateFlags  flags
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
@@ -414,7 +416,7 @@
 	  */
 
 	/**
-	 * native GET method for field flags	[int]<br>
+	 * Native GET method for field flags	[int]<br>
 	 * Prototype: VkBufferCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
@@ -423,7 +425,7 @@
 	 */
 
 	/**
-	 * native SET method for field size	[long]<br>
+	 * Native SET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native void setSize0(Buffer ptr, long _size);/*
@@ -432,7 +434,7 @@
 	  */
 
 	/**
-	 * native GET method for field size	[long]<br>
+	 * Native GET method for field size	[long]<br>
 	 * Prototype: VkDeviceSize  size
 	 */ 
 	 private static native long getSize0(Buffer ptr);/*
@@ -441,7 +443,7 @@
 	 */
 
 	/**
-	 * native SET method for field usage	[int]<br>
+	 * Native SET method for field usage	[int]<br>
 	 * Prototype: VkBufferUsageFlags  usage
 	 */ 
 	 private static native void setUsage0(Buffer ptr, int _usage);/*
@@ -450,7 +452,7 @@
 	  */
 
 	/**
-	 * native GET method for field usage	[int]<br>
+	 * Native GET method for field usage	[int]<br>
 	 * Prototype: VkBufferUsageFlags  usage
 	 */ 
 	 private static native int getUsage0(Buffer ptr);/*
@@ -459,7 +461,7 @@
 	 */
 
 	/**
-	 * native SET method for field sharingMode	[vkenum]<br>
+	 * Native SET method for field sharingMode	[vkenum]<br>
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
 	 private static native void setSharingMode0(Buffer ptr, int  _sharingMode);/*
@@ -468,7 +470,7 @@
 	  */
 
 	/**
-	 * native GET method for field sharingMode	[vkenum]<br>
+	 * Native GET method for field sharingMode	[vkenum]<br>
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
 	 private static native int  getSharingMode0(Buffer ptr);/*
@@ -477,7 +479,7 @@
 	 */
 
 	/**
-	 * native SET method for field queueFamilyIndexCount	[int]<br>
+	 * Native SET method for field queueFamilyIndexCount	[int]<br>
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
 	 private static native void setQueueFamilyIndexCount0(Buffer ptr, int _queueFamilyIndexCount);/*
@@ -486,7 +488,7 @@
 	  */
 
 	/**
-	 * native GET method for field queueFamilyIndexCount	[int]<br>
+	 * Native GET method for field queueFamilyIndexCount	[int]<br>
 	 * Prototype: uint32_t  queueFamilyIndexCount
 	 */ 
 	 private static native int getQueueFamilyIndexCount0(Buffer ptr);/*
@@ -495,7 +497,7 @@
 	 */
 
 	/**
-	 * native SET method for field pQueueFamilyIndices	[int]<br>
+	 * Native SET method for field pQueueFamilyIndices	[int]<br>
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 private static native void setPQueueFamilyIndices0(Buffer ptr, int[] _pQueueFamilyIndices);/*
@@ -504,7 +506,7 @@
 	  */
 
 	/**
-	 * native GET method for field pQueueFamilyIndices	[int]<br>
+	 * Native GET method for field pQueueFamilyIndices	[int]<br>
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
 	 private static native int[] getPQueueFamilyIndices0(Buffer ptr);/*

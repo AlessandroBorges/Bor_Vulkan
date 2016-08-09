@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkExtensionProperties struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -30,15 +31,13 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkExtensionProperties extends VkStruct {
+ public class VkExtensionProperties extends VkStruct {
 
     //@formatter:off
     /*JNI
     #include <BorVulkan.hpp>
-        
-    
     */  
 
 	/** TAG of this structure [17]  */
@@ -47,22 +46,19 @@ public class VkExtensionProperties extends VkStruct {
 	/** ID of this structure [17]  */
 	 public static final int TAG_ID = VKEXTENSIONPROPERTIES_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkExtensionProperties> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  char[] 	extensionName	[string]
 	 */ 
-	 String 	extensionName;
-
+	String 	extensionName;
+	
 	/**
 	 *  uint32_t 	specVersion	[int]
 	 */ 
-	 int 	specVersion;
-
+	int 	specVersion;
 	/**
 	 * Ctor
 	 */
@@ -76,15 +72,6 @@ public class VkExtensionProperties extends VkStruct {
 	 */
 	public VkExtensionProperties(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkExtensionProperties(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -110,34 +97,12 @@ public class VkExtensionProperties extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkExtensionProperties> createNullPointer(){
-	        P<VkExtensionProperties> p = new  P<VkExtensionProperties>(new VkExtensionProperties());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkExtensionProperties> getP() {
-	       if(p == null ){
-	           p = new P<VkExtensionProperties> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -146,11 +111,17 @@ public class VkExtensionProperties extends VkStruct {
 	/**
 	 * Set method for field extensionName	[string]<br>
 	 * Prototype: char[]  extensionName
+	 * 
+	 * @param extensionName - a instance of String.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void extensionName(String extensionName){	          
-		 this.extensionName = extensionName==null ? " " 
-		         : extensionName.substring(0, Vulkan.VK_MAX_EXTENSION_NAME_SIZE-1);
+	 public VkExtensionProperties extensionName(String extensionName){
+		 this.extensionName = extensionName;
+		  this.extensionName = (extensionName == null) ? null 
+		                     : (extensionName.length() + 1) < VK_MAX_EXTENSION_NAME_SIZE ? extensionName
+		                         : extensionName.substring(0, VK_MAX_EXTENSION_NAME_SIZE - 1).trim();
 		 setExtensionName0(this.ptr,  extensionName);
+		 return this;
 	 }
 
 	/**
@@ -166,10 +137,14 @@ public class VkExtensionProperties extends VkStruct {
 	/**
 	 * Set method for field specVersion	[int]<br>
 	 * Prototype: uint32_t  specVersion
+	 * 
+	 * @param specVersion - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void specVersion(int specVersion){
+	 public VkExtensionProperties specVersion(int specVersion){
 		 this.specVersion = specVersion;
 		 setSpecVersion0(this.ptr,  specVersion);
+		 return this;
 	 }
 
 	/**
@@ -183,47 +158,44 @@ public class VkExtensionProperties extends VkStruct {
 	 }
 
 
-	 /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("VkExtensionProperties [extensionName: ")
-                .append(extensionName())
-                .append(", specVersion: ").append(specVersion())
-                .append(" (")
-                .append( Vulkan.getAPIVersionString(specVersion()))
-                .append(") ]");
-        return builder.toString();
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkExtensionProperties [ ")
+				.append("extensionName: ").append(extensionName() )
+				.append(",\n specVersion: ")
+				.append(specVersion() )
+				.append("]");
+		 return builder.toString();
     }
 
-    //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+
+	 //////////////////////////////////
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field extensionName	[string]<br>
+	 * Native SET method for field extensionName	[string]<br>
 	 * Prototype: char[]  extensionName
 	 */ 
 	 private static native void setExtensionName0(Buffer ptr, String _extensionName);/*
 		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
-		  strncpy(vkObj->extensionName, 
-		          _extensionName, 
-		          MIN(VK_MAX_EXTENSION_NAME_SIZE - 1, strlen(_extensionName)));
-		 
+		  strncpy(vkObj->extensionName, _extensionName, strlen(_extensionName)+1);
 	  */
 
 	/**
-	 * native GET method for field extensionName	[string]<br>
+	 * Native GET method for field extensionName	[string]<br>
 	 * Prototype: char[]  extensionName
 	 */ 
 	 private static native String getExtensionName0(Buffer ptr);/*
 		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->extensionName));	
-             */
+		  return (jstring)(env->NewStringUTF(vkObj->extensionName));
+	 */
 
 	/**
-	 * native SET method for field specVersion	[int]<br>
+	 * Native SET method for field specVersion	[int]<br>
 	 * Prototype: uint32_t  specVersion
 	 */ 
 	 private static native void setSpecVersion0(Buffer ptr, int _specVersion);/*
@@ -232,7 +204,7 @@ public class VkExtensionProperties extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field specVersion	[int]<br>
+	 * Native GET method for field specVersion	[int]<br>
 	 * Prototype: uint32_t  specVersion
 	 */ 
 	 private static native int getSpecVersion0(Buffer ptr);/*

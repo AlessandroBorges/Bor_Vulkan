@@ -7,11 +7,13 @@
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
+ import bor.util.*;
  import bor.vulkan.*;
  import static bor.vulkan.Vulkan.*; 
  import bor.vulkan.enumerations.*;
+
  import java.util.*;
  import java.nio.*;
 
@@ -35,7 +37,7 @@ package bor.vulkan.structs;
  * @author Alessandro Borges 
  * @version Ver. 0.8.65 (beta) 
  */
-public class VkAllocationCallbacks extends VkStruct {
+ public class VkAllocationCallbacks extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -48,40 +50,39 @@ public class VkAllocationCallbacks extends VkStruct {
 	/** ID of this structure [3]  */
 	 public static final int TAG_ID = VKALLOCATIONCALLBACKS_ID;
 
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  void* 	pUserData	[buffer]
 	 */ 
-	 java.nio.Buffer 	pUserData;
-
+	java.nio.Buffer 	pUserData;
+	
 	/**
 	 *  PFN_vkAllocationFunction 	pfnAllocation	[vkpfn]
 	 */ 
-	 PFNvkAllocationFunction 	pfnAllocation;
-
+	PFNvkAllocationFunction 	pfnAllocation;
+	
 	/**
 	 *  PFN_vkReallocationFunction 	pfnReallocation	[vkpfn]
 	 */ 
-	 PFNvkReallocationFunction 	pfnReallocation;
-
+	PFNvkReallocationFunction 	pfnReallocation;
+	
 	/**
 	 *  PFN_vkFreeFunction 	pfnFree	[vkpfn]
 	 */ 
-	 PFNvkFreeFunction 	pfnFree;
-
+	PFNvkFreeFunction 	pfnFree;
+	
 	/**
 	 *  PFN_vkInternalAllocationNotification 	pfnInternalAllocation	[vkpfn]
 	 */ 
-	 PFNvkInternalAllocationNotification 	pfnInternalAllocation;
-
+	PFNvkInternalAllocationNotification 	pfnInternalAllocation;
+	
 	/**
 	 *  PFN_vkInternalFreeNotification 	pfnInternalFree	[vkpfn]
 	 */ 
-	 PFNvkInternalFreeNotification 	pfnInternalFree;
-
+	PFNvkInternalFreeNotification 	pfnInternalFree;
 	/**
 	 * Ctor
 	 */
@@ -120,14 +121,12 @@ public class VkAllocationCallbacks extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
+	/** 
 	 * Get ID of this structure 
 	 */
 	 public static int getID(){ 
 		 return TAG_ID; 
-	       }
-
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -151,13 +150,11 @@ public class VkAllocationCallbacks extends VkStruct {
 	 * Prototype: void*  pUserData
 	 */ 
 	 public java.nio.Buffer pUserData(){
-		  long address = getPUserData0(super.ptr);
+		 long address = getPUserData0(super.ptr);
 		 if(this.pUserData == null && address != 0L){
-		      ByteBuffer bb = wrapPointer(address, 8);
-		      this.pUserData = bb;      
-		  }
-		  
-		 
+			  ByteBuffer bb = wrapPointer(address, 8);
+			  this.pUserData = bb;
+		 }
 		 return this.pUserData;
 	 }
 
@@ -359,7 +356,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field pUserData	[buffer]<br>
+	 * Native SET method for field pUserData	[buffer]<br>
 	 * Prototype: void*  pUserData
 	 */ 
 	 private static native void setPUserData0(Buffer ptr, java.nio.Buffer _pUserData);/*
@@ -368,7 +365,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pUserData	[buffer]<br>
+	 * Native GET method for field pUserData	[buffer]<br>
 	 * Prototype: void*  pUserData
 	 */ 
 	 private static native long getPUserData0(Buffer ptr);/*
@@ -377,7 +374,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pfnAllocation	[vkpfn]<br>
+	 * Native SET method for field pfnAllocation	[vkpfn]<br>
 	 * Prototype: PFN_vkAllocationFunction  pfnAllocation
 	 */ 
 	 private static native void setPfnAllocation0(Buffer ptr, long  _pfnAllocation);/*
@@ -386,7 +383,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pfnAllocation	[vkpfn]<br>
+	 * Native GET method for field pfnAllocation	[vkpfn]<br>
 	 * Prototype: PFN_vkAllocationFunction  pfnAllocation
 	 */ 
 	 private static native long getPfnAllocation0(Buffer ptr);/*
@@ -395,7 +392,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pfnReallocation	[vkpfn]<br>
+	 * Native SET method for field pfnReallocation	[vkpfn]<br>
 	 * Prototype: PFN_vkReallocationFunction  pfnReallocation
 	 */ 
 	 private static native void setPfnReallocation0(Buffer ptr, long  _pfnReallocation);/*
@@ -404,7 +401,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pfnReallocation	[vkpfn]<br>
+	 * Native GET method for field pfnReallocation	[vkpfn]<br>
 	 * Prototype: PFN_vkReallocationFunction  pfnReallocation
 	 */ 
 	 private static native long getPfnReallocation0(Buffer ptr);/*
@@ -413,7 +410,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pfnFree	[vkpfn]<br>
+	 * Native SET method for field pfnFree	[vkpfn]<br>
 	 * Prototype: PFN_vkFreeFunction  pfnFree
 	 */ 
 	 private static native void setPfnFree0(Buffer ptr, long  _pfnFree);/*
@@ -422,7 +419,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pfnFree	[vkpfn]<br>
+	 * Native GET method for field pfnFree	[vkpfn]<br>
 	 * Prototype: PFN_vkFreeFunction  pfnFree
 	 */ 
 	 private static native long getPfnFree0(Buffer ptr);/*
@@ -431,7 +428,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pfnInternalAllocation	[vkpfn]<br>
+	 * Native SET method for field pfnInternalAllocation	[vkpfn]<br>
 	 * Prototype: PFN_vkInternalAllocationNotification  pfnInternalAllocation
 	 */ 
 	 private static native void setPfnInternalAllocation0(Buffer ptr, long  _pfnInternalAllocation);/*
@@ -440,7 +437,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pfnInternalAllocation	[vkpfn]<br>
+	 * Native GET method for field pfnInternalAllocation	[vkpfn]<br>
 	 * Prototype: PFN_vkInternalAllocationNotification  pfnInternalAllocation
 	 */ 
 	 private static native long getPfnInternalAllocation0(Buffer ptr);/*
@@ -449,7 +446,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pfnInternalFree	[vkpfn]<br>
+	 * Native SET method for field pfnInternalFree	[vkpfn]<br>
 	 * Prototype: PFN_vkInternalFreeNotification  pfnInternalFree
 	 */ 
 	 private static native void setPfnInternalFree0(Buffer ptr, long  _pfnInternalFree);/*
@@ -458,7 +455,7 @@ public class VkAllocationCallbacks extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pfnInternalFree	[vkpfn]<br>
+	 * Native GET method for field pfnInternalFree	[vkpfn]<br>
 	 * Prototype: PFN_vkInternalFreeNotification  pfnInternalFree
 	 */ 
 	 private static native long getPfnInternalFree0(Buffer ptr);/*

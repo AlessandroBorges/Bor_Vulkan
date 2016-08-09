@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkDescriptorPoolSize struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -30,9 +31,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkDescriptorPoolSize extends VkStruct {
+ public class VkDescriptorPoolSize extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -45,22 +46,19 @@ public class VkDescriptorPoolSize extends VkStruct {
 	/** ID of this structure [73]  */
 	 public static final int TAG_ID = VKDESCRIPTORPOOLSIZE_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkDescriptorPoolSize> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkDescriptorType 	type	[vkenum]
 	 */ 
-	 VkDescriptorType 	type;
-
+	VkDescriptorType 	type;
+	
 	/**
 	 *  uint32_t 	descriptorCount	[int]
 	 */ 
-	 int 	descriptorCount;
-
+	int 	descriptorCount;
 	/**
 	 * Ctor
 	 */
@@ -74,15 +72,6 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 */
 	public VkDescriptorPoolSize(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkDescriptorPoolSize(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -108,34 +97,12 @@ public class VkDescriptorPoolSize extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkDescriptorPoolSize> createNullPointer(){
-	        P<VkDescriptorPoolSize> p = new  P<VkDescriptorPoolSize>(new VkDescriptorPoolSize());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkDescriptorPoolSize> getP() {
-	       if(p == null ){
-	           p = new P<VkDescriptorPoolSize> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -144,11 +111,15 @@ public class VkDescriptorPoolSize extends VkStruct {
 	/**
 	 * Set method for field type	[vkenum]<br>
 	 * Prototype: VkDescriptorType  type
+	 * 
+	 * @param type - a instance of VkDescriptorType.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void type(VkDescriptorType type){
+	 public VkDescriptorPoolSize type(VkDescriptorType type){
 		 this.type = type;
 		 int enumVal = type.getValue();
 		 setType0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -164,10 +135,14 @@ public class VkDescriptorPoolSize extends VkStruct {
 	/**
 	 * Set method for field descriptorCount	[int]<br>
 	 * Prototype: uint32_t  descriptorCount
+	 * 
+	 * @param descriptorCount - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void descriptorCount(int descriptorCount){
+	 public VkDescriptorPoolSize descriptorCount(int descriptorCount){
 		 this.descriptorCount = descriptorCount;
 		 setDescriptorCount0(this.ptr,  descriptorCount);
+		 return this;
 	 }
 
 	/**
@@ -181,11 +156,26 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkDescriptorPoolSize [ ")
+				.append("type: ").append(type() )
+				.append(",\n descriptorCount: ")
+				.append(descriptorCount() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field type	[vkenum]<br>
+	 * Native SET method for field type	[vkenum]<br>
 	 * Prototype: VkDescriptorType  type
 	 */ 
 	 private static native void setType0(Buffer ptr, int  _type);/*
@@ -194,7 +184,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field type	[vkenum]<br>
+	 * Native GET method for field type	[vkenum]<br>
 	 * Prototype: VkDescriptorType  type
 	 */ 
 	 private static native int  getType0(Buffer ptr);/*
@@ -203,7 +193,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field descriptorCount	[int]<br>
+	 * Native SET method for field descriptorCount	[int]<br>
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 private static native void setDescriptorCount0(Buffer ptr, int _descriptorCount);/*
@@ -212,7 +202,7 @@ public class VkDescriptorPoolSize extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field descriptorCount	[int]<br>
+	 * Native GET method for field descriptorCount	[int]<br>
 	 * Prototype: uint32_t  descriptorCount
 	 */ 
 	 private static native int getDescriptorCount0(Buffer ptr);/*

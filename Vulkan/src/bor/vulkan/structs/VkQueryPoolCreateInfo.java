@@ -1,20 +1,21 @@
 /**
  * Class wrapping Vulkan's VkQueryPoolCreateInfo struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import bor.vulkan.*;
-import bor.vulkan.enumerations.*;
-import bor.vulkan.structs.*;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import java.nio.Buffer;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -34,9 +35,9 @@ import java.nio.Buffer;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkQueryPoolCreateInfo extends VkStruct {
+ public class VkQueryPoolCreateInfo extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -49,42 +50,39 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	/** ID of this structure [36]  */
 	 public static final int TAG_ID = VKQUERYPOOLCREATEINFO_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkQueryPoolCreateInfo> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  VkStructureType 	sType	[vkenum]
 	 */ 
-	 VkStructureType 	sType;
-
+	VkStructureType 	sType;
+	
 	/**
 	 *  const void* 	pNext	[vkobject]
 	 */ 
-	 VkObject 	pNext;
-
+	VkObject 	pNext;
+	
 	/**
 	 *  VkQueryPoolCreateFlags 	flags	[int]
 	 */ 
-	 int 	flags;
-
+	int 	flags;
+	
 	/**
 	 *  VkQueryType 	queryType	[vkenum]
 	 */ 
-	 VkQueryType 	queryType;
-
+	VkQueryType 	queryType;
+	
 	/**
 	 *  uint32_t 	queryCount	[int]
 	 */ 
-	 int 	queryCount;
-
+	int 	queryCount;
+	
 	/**
 	 *  VkQueryPipelineStatisticFlags 	pipelineStatistics	[int]
 	 */ 
-	 int 	pipelineStatistics;
-
+	int 	pipelineStatistics;
 	/**
 	 * Ctor
 	 */
@@ -98,15 +96,6 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 */
 	public VkQueryPoolCreateInfo(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkQueryPoolCreateInfo(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -132,34 +121,12 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkQueryPoolCreateInfo> createNullPointer(){
-	        P<VkQueryPoolCreateInfo> p = new  P<VkQueryPoolCreateInfo>(new VkQueryPoolCreateInfo());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkQueryPoolCreateInfo> getP() {
-	       if(p == null ){
-	           p = new P<VkQueryPoolCreateInfo> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -168,11 +135,15 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	/**
 	 * Set method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
+	 * 
+	 * @param sType - a instance of VkStructureType.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void sType(VkStructureType sType){
+	 public VkQueryPoolCreateInfo sType(VkStructureType sType){
 		 this.sType = sType;
 		 int enumVal = sType.getValue();
 		 setSType0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -188,11 +159,15 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	/**
 	 * Set method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
+	 * 
+	 * @param pNext - a instance of VkObject.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pNext(VkObject pNext){
+	 public VkQueryPoolCreateInfo pNext(VkObject pNext){
 		 this.pNext = pNext;
 		 ByteBuffer buff = (pNext==null) ? null : pNext.getPointer();
 		 setPNext0(this.ptr, buff);
+		 return this;
 	 }
 
 	/**
@@ -205,7 +180,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 		    this.pNext = null;
 		    return null;
 		  } else 
- 		 if(this.pNext == null){
+		 if(this.pNext == null){
 		    this.pNext = (VkObject)(new VkHandle(pointer));
 		 }else{
 		    this.pNext.setPointer(pointer);
@@ -216,10 +191,14 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	/**
 	 * Set method for field flags	[int]<br>
 	 * Prototype: VkQueryPoolCreateFlags  flags
+	 * 
+	 * @param flags - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void flags(int flags){
+	 public VkQueryPoolCreateInfo flags(int flags){
 		 this.flags = flags;
 		 setFlags0(this.ptr,  flags);
+		 return this;
 	 }
 
 	/**
@@ -235,11 +214,15 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	/**
 	 * Set method for field queryType	[vkenum]<br>
 	 * Prototype: VkQueryType  queryType
+	 * 
+	 * @param queryType - a instance of VkQueryType.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void queryType(VkQueryType queryType){
+	 public VkQueryPoolCreateInfo queryType(VkQueryType queryType){
 		 this.queryType = queryType;
 		 int enumVal = queryType.getValue();
 		 setQueryType0(this.ptr, enumVal );
+		 return this;
 	 }
 
 	/**
@@ -255,10 +238,14 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	/**
 	 * Set method for field queryCount	[int]<br>
 	 * Prototype: uint32_t  queryCount
+	 * 
+	 * @param queryCount - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void queryCount(int queryCount){
+	 public VkQueryPoolCreateInfo queryCount(int queryCount){
 		 this.queryCount = queryCount;
 		 setQueryCount0(this.ptr,  queryCount);
+		 return this;
 	 }
 
 	/**
@@ -274,10 +261,14 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	/**
 	 * Set method for field pipelineStatistics	[int]<br>
 	 * Prototype: VkQueryPipelineStatisticFlags  pipelineStatistics
+	 * 
+	 * @param pipelineStatistics - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void pipelineStatistics(int pipelineStatistics){
+	 public VkQueryPoolCreateInfo pipelineStatistics(int pipelineStatistics){
 		 this.pipelineStatistics = pipelineStatistics;
 		 setPipelineStatistics0(this.ptr,  pipelineStatistics);
+		 return this;
 	 }
 
 	/**
@@ -291,11 +282,34 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkQueryPoolCreateInfo [ ")
+				.append("sType: ").append(sType() )
+				.append(",\n pNext: ")
+				.append(pNext() )
+				.append(",\n flags: ")
+				.append(flags() )
+				.append(",\n queryType: ")
+				.append(queryType() )
+				.append(",\n queryCount: ")
+				.append(queryCount() )
+				.append(",\n pipelineStatistics: ")
+				.append(pipelineStatistics() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field sType	[vkenum]<br>
+	 * Native SET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
@@ -304,7 +318,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field sType	[vkenum]<br>
+	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
@@ -313,7 +327,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pNext	[vkobject]<br>
+	 * Native SET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
@@ -322,15 +336,16 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pNext	[vkobject]<br>
+	 * Native GET method for field pNext	[vkobject]<br>
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);	 */
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+	 */
 
 	/**
-	 * native SET method for field flags	[int]<br>
+	 * Native SET method for field flags	[int]<br>
 	 * Prototype: VkQueryPoolCreateFlags  flags
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
@@ -339,7 +354,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field flags	[int]<br>
+	 * Native GET method for field flags	[int]<br>
 	 * Prototype: VkQueryPoolCreateFlags  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
@@ -348,7 +363,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field queryType	[vkenum]<br>
+	 * Native SET method for field queryType	[vkenum]<br>
 	 * Prototype: VkQueryType  queryType
 	 */ 
 	 private static native void setQueryType0(Buffer ptr, int  _queryType);/*
@@ -357,7 +372,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field queryType	[vkenum]<br>
+	 * Native GET method for field queryType	[vkenum]<br>
 	 * Prototype: VkQueryType  queryType
 	 */ 
 	 private static native int  getQueryType0(Buffer ptr);/*
@@ -366,7 +381,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field queryCount	[int]<br>
+	 * Native SET method for field queryCount	[int]<br>
 	 * Prototype: uint32_t  queryCount
 	 */ 
 	 private static native void setQueryCount0(Buffer ptr, int _queryCount);/*
@@ -375,7 +390,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field queryCount	[int]<br>
+	 * Native GET method for field queryCount	[int]<br>
 	 * Prototype: uint32_t  queryCount
 	 */ 
 	 private static native int getQueryCount0(Buffer ptr);/*
@@ -384,7 +399,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field pipelineStatistics	[int]<br>
+	 * Native SET method for field pipelineStatistics	[int]<br>
 	 * Prototype: VkQueryPipelineStatisticFlags  pipelineStatistics
 	 */ 
 	 private static native void setPipelineStatistics0(Buffer ptr, int _pipelineStatistics);/*
@@ -393,7 +408,7 @@ public class VkQueryPoolCreateInfo extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field pipelineStatistics	[int]<br>
+	 * Native GET method for field pipelineStatistics	[int]<br>
 	 * Prototype: VkQueryPipelineStatisticFlags  pipelineStatistics
 	 */ 
 	 private static native int getPipelineStatistics0(Buffer ptr);/*

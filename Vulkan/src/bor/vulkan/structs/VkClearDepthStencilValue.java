@@ -1,18 +1,21 @@
 /**
  * Class wrapping Vulkan's VkClearDepthStencilValue struct.
  * 
- * Bor_Vulkan Project Ver. 0.8.01 (beta)
+ * Bor_Vulkan Project Ver. 0.8.65 (beta)
  * Licence terms: 
  * The MIT License (MIT)
  * Copyright (c) 2016 Alessandro Borges
  * See https://opensource.org/licenses/MIT 
  */
-package bor.vulkan.structs;
+ package bor.vulkan.structs;
 
-import java.nio.Buffer;
-import java.nio.ByteBuffer;
+ import bor.util.*;
+ import bor.vulkan.*;
+ import static bor.vulkan.Vulkan.*; 
+ import bor.vulkan.enumerations.*;
 
-import bor.vulkan.P;
+ import java.util.*;
+ import java.nio.*;
 
 
 /**
@@ -28,9 +31,9 @@ import bor.vulkan.P;
  * </pre>
  * 
  * @author Alessandro Borges 
- * @version Ver. 0.8.01 (beta) 
+ * @version Ver. 0.8.65 (beta) 
  */
-public class VkClearDepthStencilValue extends VkStruct {
+ public class VkClearDepthStencilValue extends VkStruct {
 
     //@formatter:off
     /*JNI
@@ -43,22 +46,19 @@ public class VkClearDepthStencilValue extends VkStruct {
 	/** ID of this structure [95]  */
 	 public static final int TAG_ID = VKCLEARDEPTHSTENCILVALUE_ID;
 
-	/** P wrapper for THIS object */
-	 private  P<VkClearDepthStencilValue> p;
-
 	 ///////////////////
 	 // Struct fields //
 	 ///////////////////
+	
 	/**
 	 *  float 	depth	[float]
 	 */ 
-	 float 	depth;
-
+	float 	depth;
+	
 	/**
 	 *  uint32_t 	stencil	[int]
 	 */ 
-	 int 	stencil;
-
+	int 	stencil;
 	/**
 	 * Ctor
 	 */
@@ -72,15 +72,6 @@ public class VkClearDepthStencilValue extends VkStruct {
 	 */
 	public VkClearDepthStencilValue(ByteBuffer nativeBuffer){ 
 		 super(nativeBuffer); 
-	 }
-
-	/**
-	 * Ctor with Address and memSize
-	 * @param address - native address 
-	 * @param memSize - buffer size 
-	 */
-	 public VkClearDepthStencilValue(long address , int memSize){ 
-		 super(address, memSize); 
 	 }
 
 	/**
@@ -106,34 +97,12 @@ public class VkClearDepthStencilValue extends VkStruct {
 		 return sizeOf(); 
 	}
 
-
-	/**
-	 * Create a pointer P to contain a instance of this,
-	 * with clean native pointer.<br>
-	 * You can use {@link VkStruct#setPointer(ByteBuffer)} to set a new 
-	 * native pointer.
-	 * @return An instance of P for this VkStruct with null pointer
-	 */
-	 public static P<VkClearDepthStencilValue> createNullPointer(){
-	        P<VkClearDepthStencilValue> p = new  P<VkClearDepthStencilValue>(new VkClearDepthStencilValue());
-	        return p;
-	    }
-
-
 	/** 
-	 * Return this VkObject instance wrapped in pointer P<br>
-	 *
-	 *  P&lt;? extends VkObject &gt;
-	 *
-	 * @return  a P container wrapping this object.
+	 * Get ID of this structure 
 	 */
-	 public P<VkClearDepthStencilValue> getP() {
-	       if(p == null ){
-	           p = new P<VkClearDepthStencilValue> (this);
-	       }
-	        return p;
-	    }
-
+	 public static int getID(){ 
+		 return TAG_ID; 
+	}
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -142,10 +111,14 @@ public class VkClearDepthStencilValue extends VkStruct {
 	/**
 	 * Set method for field depth	[float]<br>
 	 * Prototype: float  depth
+	 * 
+	 * @param depth - a instance of float.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void depth(float depth){
+	 public VkClearDepthStencilValue depth(float depth){
 		 this.depth = depth;
 		 setDepth0(this.ptr,  depth);
+		 return this;
 	 }
 
 	/**
@@ -161,10 +134,14 @@ public class VkClearDepthStencilValue extends VkStruct {
 	/**
 	 * Set method for field stencil	[int]<br>
 	 * Prototype: uint32_t  stencil
+	 * 
+	 * @param stencil - a instance of int.
+	 * @return this VkStruct instance.
 	 */ 
-	 public void stencil(int stencil){
+	 public VkClearDepthStencilValue stencil(int stencil){
 		 this.stencil = stencil;
 		 setStencil0(this.ptr,  stencil);
+		 return this;
 	 }
 
 	/**
@@ -178,11 +155,26 @@ public class VkClearDepthStencilValue extends VkStruct {
 	 }
 
 
+   /* (non-Javadoc)
+    * @see java.lang.Object#toString()
+    */
+    @Override
+    public String toString() {
+         StringBuilder builder = new StringBuilder();
+         builder.append("VkClearDepthStencilValue [ ")
+				.append("depth: ").append(depth() )
+				.append(",\n stencil: ")
+				.append(stencil() )
+				.append("]");
+		 return builder.toString();
+    }
+
+
 	 //////////////////////////////////
-	 // native SETTERS & GETTERS    //
+	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
 	/**
-	 * native SET method for field depth	[float]<br>
+	 * Native SET method for field depth	[float]<br>
 	 * Prototype: float  depth
 	 */ 
 	 private static native void setDepth0(Buffer ptr, float _depth);/*
@@ -191,7 +183,7 @@ public class VkClearDepthStencilValue extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field depth	[float]<br>
+	 * Native GET method for field depth	[float]<br>
 	 * Prototype: float  depth
 	 */ 
 	 private static native float getDepth0(Buffer ptr);/*
@@ -200,7 +192,7 @@ public class VkClearDepthStencilValue extends VkStruct {
 	 */
 
 	/**
-	 * native SET method for field stencil	[int]<br>
+	 * Native SET method for field stencil	[int]<br>
 	 * Prototype: uint32_t  stencil
 	 */ 
 	 private static native void setStencil0(Buffer ptr, int _stencil);/*
@@ -209,7 +201,7 @@ public class VkClearDepthStencilValue extends VkStruct {
 	  */
 
 	/**
-	 * native GET method for field stencil	[int]<br>
+	 * Native GET method for field stencil	[int]<br>
 	 * Prototype: uint32_t  stencil
 	 */ 
 	 private static native int getStencil0(Buffer ptr);/*
