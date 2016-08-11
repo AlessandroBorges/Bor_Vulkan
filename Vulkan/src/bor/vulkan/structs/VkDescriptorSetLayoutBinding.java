@@ -283,6 +283,7 @@
 	 */ 
 	 private static native void setBinding0(Buffer ptr, int _binding);/*
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
+		 // code for simple past value 
 		  vkObj->binding = (uint32_t) (_binding);
 	  */
 
@@ -301,6 +302,7 @@
 	 */ 
 	 private static native void setDescriptorType0(Buffer ptr, int  _descriptorType);/*
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
+		 // code for simple past value 
 		  vkObj->descriptorType = (VkDescriptorType) (_descriptorType);
 	  */
 
@@ -319,6 +321,7 @@
 	 */ 
 	 private static native void setDescriptorCount0(Buffer ptr, int _descriptorCount);/*
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
+		 // code for simple past value 
 		  vkObj->descriptorCount = (uint32_t) (_descriptorCount);
 	  */
 
@@ -337,6 +340,7 @@
 	 */ 
 	 private static native void setStageFlags0(Buffer ptr, int _stageFlags);/*
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
+		 // code for simple past value 
 		  vkObj->stageFlags = (VkShaderStageFlags) (_stageFlags);
 	  */
 
@@ -355,6 +359,7 @@
 	 */ 
 	 private static native void setPImmutableSamplers0(Buffer ptr, ByteBuffer  _pImmutableSamplers);/*
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pImmutableSamplers = (const VkSampler*) (_pImmutableSamplers);
 	  */
 
@@ -364,7 +369,8 @@
 	 */ 
 	 private static native long getPImmutableSamplers0(Buffer ptr);/*
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pImmutableSamplers);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pImmutableSamplers );
 	 */
 
 

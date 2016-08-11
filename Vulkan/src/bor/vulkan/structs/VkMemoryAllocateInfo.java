@@ -251,6 +251,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -269,6 +270,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -278,7 +280,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -287,6 +290,7 @@
 	 */ 
 	 private static native void setAllocationSize0(Buffer ptr, long _allocationSize);/*
 		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->allocationSize = (VkDeviceSize) (_allocationSize);
 	  */
 
@@ -305,6 +309,7 @@
 	 */ 
 	 private static native void setMemoryTypeIndex0(Buffer ptr, int _memoryTypeIndex);/*
 		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->memoryTypeIndex = (uint32_t) (_memoryTypeIndex);
 	  */
 

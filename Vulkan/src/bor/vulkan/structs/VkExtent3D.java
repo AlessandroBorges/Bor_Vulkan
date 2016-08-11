@@ -210,6 +210,7 @@
 	 */ 
 	 private static native void setWidth0(Buffer ptr, int _width);/*
 		  VkExtent3D* vkObj = (VkExtent3D*)(ptr);
+		 // code for simple past value 
 		  vkObj->width = (uint32_t) (_width);
 	  */
 
@@ -228,6 +229,7 @@
 	 */ 
 	 private static native void setHeight0(Buffer ptr, int _height);/*
 		  VkExtent3D* vkObj = (VkExtent3D*)(ptr);
+		 // code for simple past value 
 		  vkObj->height = (uint32_t) (_height);
 	  */
 
@@ -246,6 +248,7 @@
 	 */ 
 	 private static native void setDepth0(Buffer ptr, int _depth);/*
 		  VkExtent3D* vkObj = (VkExtent3D*)(ptr);
+		 // code for simple past value 
 		  vkObj->depth = (uint32_t) (_depth);
 	  */
 

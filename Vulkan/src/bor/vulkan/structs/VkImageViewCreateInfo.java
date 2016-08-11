@@ -408,6 +408,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -426,6 +427,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -435,7 +437,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -444,6 +447,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkImageViewCreateFlags) (_flags);
 	  */
 
@@ -462,6 +466,7 @@
 	 */ 
 	 private static native void setImage0(Buffer ptr, long  _image);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->image = (VkImage) (_image);
 	  */
 
@@ -471,7 +476,8 @@
 	 */ 
 	 private static native long getImage0(Buffer ptr);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->image);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->image);
 	 */
 
 	/**
@@ -480,6 +486,7 @@
 	 */ 
 	 private static native void setViewType0(Buffer ptr, int  _viewType);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->viewType = (VkImageViewType) (_viewType);
 	  */
 
@@ -498,6 +505,7 @@
 	 */ 
 	 private static native void setFormat0(Buffer ptr, int  _format);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->format = (VkFormat) (_format);
 	  */
 
@@ -516,6 +524,7 @@
 	 */ 
 	 private static native void setComponents0(Buffer ptr, java.nio.ByteBuffer  _components);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->components = (VkComponentMapping) (_components);
 	  */
 
@@ -525,7 +534,8 @@
 	 */ 
 	 private static native long getComponents0(Buffer ptr);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->components);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->components);
 	 */
 
 	/**
@@ -534,6 +544,7 @@
 	 */ 
 	 private static native void setSubresourceRange0(Buffer ptr, java.nio.ByteBuffer  _subresourceRange);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->subresourceRange = (VkImageSubresourceRange) (_subresourceRange);
 	  */
 
@@ -543,7 +554,8 @@
 	 */ 
 	 private static native long getSubresourceRange0(Buffer ptr);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->subresourceRange);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->subresourceRange);
 	 */
 
 

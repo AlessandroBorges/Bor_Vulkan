@@ -301,7 +301,7 @@
 	 */ 
 	 public VkPhysicalDeviceProperties pipelineCacheUUID(byte[] pipelineCacheUUID){
 		 if(pipelineCacheUUID == null)
-		     java.util.Arrays.fill(this.pipelineCacheUUID , 0);
+		     java.util.Arrays.fill(this.pipelineCacheUUID , (byte) 0);
 		  else
 		     System.arraycopy(pipelineCacheUUID, 0, this.pipelineCacheUUID, 0, this.pipelineCacheUUID.length); 
 
@@ -424,6 +424,7 @@
 	 */ 
 	 private static native void setApiVersion0(Buffer ptr, int _apiVersion);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->apiVersion = (uint32_t) (_apiVersion);
 	  */
 
@@ -442,6 +443,7 @@
 	 */ 
 	 private static native void setDriverVersion0(Buffer ptr, int _driverVersion);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->driverVersion = (uint32_t) (_driverVersion);
 	  */
 
@@ -460,6 +462,7 @@
 	 */ 
 	 private static native void setVendorID0(Buffer ptr, int _vendorID);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->vendorID = (uint32_t) (_vendorID);
 	  */
 
@@ -478,6 +481,7 @@
 	 */ 
 	 private static native void setDeviceID0(Buffer ptr, int _deviceID);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->deviceID = (uint32_t) (_deviceID);
 	  */
 
@@ -496,6 +500,7 @@
 	 */ 
 	 private static native void setDeviceType0(Buffer ptr, int  _deviceType);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->deviceType = (VkPhysicalDeviceType) (_deviceType);
 	  */
 
@@ -532,15 +537,17 @@
 	 */ 
 	 private static native void setPipelineCacheUUID0(Buffer ptr, byte[] _pipelineCacheUUID);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  memcpy(&(vkObj->pipelineCacheUUID), &_pipelineCacheUUID, VK_UUID_SIZE * sizeof(uint8_t));
+		 // code for fixed size array 
+		  memcpy(vkObj->pipelineCacheUUID, _pipelineCacheUUID, VK_UUID_SIZE * sizeof(uint8_t));
 	  */
 
 	/**
 	 * Native GET method for field pipelineCacheUUID	[byte]<br>
 	 * Prototype: uint8_t[]  pipelineCacheUUID
 	 */ 
-	 private static native byte[] getPipelineCacheUUID0(Buffer ptr, byte[] pipelineCacheUUID);/*
+	 private static native byte[] getPipelineCacheUUID0(Buffer ptr, byte[] _pipelineCacheUUID);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		  // fixed length array  
 		  memcpy(&_pipelineCacheUUID, &(vkObj->pipelineCacheUUID), VK_UUID_SIZE * sizeof(uint8_t));
 		  return _pipelineCacheUUID;
 	 */
@@ -551,6 +558,7 @@
 	 */ 
 	 private static native void setLimits0(Buffer ptr, java.nio.ByteBuffer  _limits);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->limits = (VkPhysicalDeviceLimits) (_limits);
 	  */
 
@@ -560,7 +568,8 @@
 	 */ 
 	 private static native long getLimits0(Buffer ptr);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->limits);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->limits);
 	 */
 
 	/**
@@ -569,6 +578,7 @@
 	 */ 
 	 private static native void setSparseProperties0(Buffer ptr, java.nio.ByteBuffer  _sparseProperties);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->sparseProperties = (VkPhysicalDeviceSparseProperties) (_sparseProperties);
 	  */
 
@@ -578,7 +588,8 @@
 	 */ 
 	 private static native long getSparseProperties0(Buffer ptr);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->sparseProperties);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->sparseProperties);
 	 */
 
 

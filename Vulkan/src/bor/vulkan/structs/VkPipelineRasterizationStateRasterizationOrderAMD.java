@@ -221,6 +221,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkPipelineRasterizationStateRasterizationOrderAMD* vkObj = (VkPipelineRasterizationStateRasterizationOrderAMD*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -239,6 +240,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineRasterizationStateRasterizationOrderAMD* vkObj = (VkPipelineRasterizationStateRasterizationOrderAMD*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -248,7 +250,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineRasterizationStateRasterizationOrderAMD* vkObj = (VkPipelineRasterizationStateRasterizationOrderAMD*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -257,6 +260,7 @@
 	 */ 
 	 private static native void setRasterizationOrder0(Buffer ptr, int  _rasterizationOrder);/*
 		  VkPipelineRasterizationStateRasterizationOrderAMD* vkObj = (VkPipelineRasterizationStateRasterizationOrderAMD*)(ptr);
+		 // code for simple past value 
 		  vkObj->rasterizationOrder = (VkRasterizationOrderAMD) (_rasterizationOrder);
 	  */
 

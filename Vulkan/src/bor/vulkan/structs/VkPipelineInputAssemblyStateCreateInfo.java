@@ -283,6 +283,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -301,6 +302,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -310,7 +312,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -319,6 +322,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkPipelineInputAssemblyStateCreateFlags) (_flags);
 	  */
 
@@ -337,6 +341,7 @@
 	 */ 
 	 private static native void setTopology0(Buffer ptr, int  _topology);/*
 		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->topology = (VkPrimitiveTopology) (_topology);
 	  */
 
@@ -355,6 +360,7 @@
 	 */ 
 	 private static native void setPrimitiveRestartEnable0(Buffer ptr, boolean  _primitiveRestartEnable);/*
 		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->primitiveRestartEnable = (VkBool32) (_primitiveRestartEnable);
 	  */
 

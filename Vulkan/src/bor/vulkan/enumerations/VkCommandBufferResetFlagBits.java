@@ -88,6 +88,25 @@ public class VkCommandBufferResetFlagBits extends IntEnum<VkCommandBufferResetFl
         VkCommandBufferResetFlagBits flag = new VkCommandBufferResetFlagBits(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkCommandBufferResetFlagBits from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkCommandBufferResetFlagBits array with matching values
+     */
+    public static VkCommandBufferResetFlagBits[] fromValues(VkCommandBufferResetFlagBits[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkCommandBufferResetFlagBits[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkCommandBufferResetFlagBits.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

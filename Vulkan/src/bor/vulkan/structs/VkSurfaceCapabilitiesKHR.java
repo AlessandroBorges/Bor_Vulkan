@@ -14,7 +14,6 @@
  import static bor.vulkan.Vulkan.*; 
  import bor.vulkan.enumerations.*;
 
- import bor.vulkan.khr.*;
  import java.util.*;
  import java.nio.*;
 
@@ -459,6 +458,7 @@
 	 */ 
 	 private static native void setMinImageCount0(Buffer ptr, int _minImageCount);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->minImageCount = (uint32_t) (_minImageCount);
 	  */
 
@@ -477,6 +477,7 @@
 	 */ 
 	 private static native void setMaxImageCount0(Buffer ptr, int _maxImageCount);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxImageCount = (uint32_t) (_maxImageCount);
 	  */
 
@@ -495,6 +496,7 @@
 	 */ 
 	 private static native void setCurrentExtent0(Buffer ptr, java.nio.ByteBuffer  _currentExtent);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->currentExtent = (VkExtent2D) (_currentExtent);
 	  */
 
@@ -504,7 +506,8 @@
 	 */ 
 	 private static native long getCurrentExtent0(Buffer ptr);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->currentExtent);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->currentExtent);
 	 */
 
 	/**
@@ -513,6 +516,7 @@
 	 */ 
 	 private static native void setMinImageExtent0(Buffer ptr, java.nio.ByteBuffer  _minImageExtent);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->minImageExtent = (VkExtent2D) (_minImageExtent);
 	  */
 
@@ -522,7 +526,8 @@
 	 */ 
 	 private static native long getMinImageExtent0(Buffer ptr);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->minImageExtent);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->minImageExtent);
 	 */
 
 	/**
@@ -531,6 +536,7 @@
 	 */ 
 	 private static native void setMaxImageExtent0(Buffer ptr, java.nio.ByteBuffer  _maxImageExtent);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->maxImageExtent = (VkExtent2D) (_maxImageExtent);
 	  */
 
@@ -540,7 +546,8 @@
 	 */ 
 	 private static native long getMaxImageExtent0(Buffer ptr);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->maxImageExtent);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->maxImageExtent);
 	 */
 
 	/**
@@ -549,6 +556,7 @@
 	 */ 
 	 private static native void setMaxImageArrayLayers0(Buffer ptr, int _maxImageArrayLayers);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxImageArrayLayers = (uint32_t) (_maxImageArrayLayers);
 	  */
 
@@ -567,6 +575,7 @@
 	 */ 
 	 private static native void setSupportedTransforms0(Buffer ptr, int _supportedTransforms);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->supportedTransforms = (VkSurfaceTransformFlagsKHR) (_supportedTransforms);
 	  */
 
@@ -585,6 +594,7 @@
 	 */ 
 	 private static native void setCurrentTransform0(Buffer ptr, int  _currentTransform);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->currentTransform = (VkSurfaceTransformFlagBitsKHR) (_currentTransform);
 	  */
 
@@ -603,6 +613,7 @@
 	 */ 
 	 private static native void setSupportedCompositeAlpha0(Buffer ptr, int _supportedCompositeAlpha);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->supportedCompositeAlpha = (VkCompositeAlphaFlagsKHR) (_supportedCompositeAlpha);
 	  */
 
@@ -621,6 +632,7 @@
 	 */ 
 	 private static native void setSupportedUsageFlags0(Buffer ptr, int _supportedUsageFlags);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->supportedUsageFlags = (VkImageUsageFlags) (_supportedUsageFlags);
 	  */
 

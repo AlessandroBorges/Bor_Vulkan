@@ -88,7 +88,7 @@
 	/**
 	 *  const VkSpecializationInfo* 	pSpecializationInfo	[vkstruct]
 	 */ 
-	 final VkSpecializationInfo  	pSpecializationInfo;
+	VkSpecializationInfo  	pSpecializationInfo;
 	/**
 	 * Ctor
 	 */
@@ -366,6 +366,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -384,6 +385,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -393,7 +395,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -402,6 +405,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkPipelineShaderStageCreateFlags) (_flags);
 	  */
 
@@ -420,6 +424,7 @@
 	 */ 
 	 private static native void setStage0(Buffer ptr, int  _stage);/*
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->stage = (VkShaderStageFlagBits) (_stage);
 	  */
 
@@ -438,6 +443,7 @@
 	 */ 
 	 private static native void setModule0(Buffer ptr, long  _module);/*
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->module = (VkShaderModule) (_module);
 	  */
 
@@ -447,7 +453,8 @@
 	 */ 
 	 private static native long getModule0(Buffer ptr);/*
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->module);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->module);
 	 */
 
 	/**
@@ -474,6 +481,7 @@
 	 */ 
 	 private static native void setPSpecializationInfo0(Buffer ptr, java.nio.ByteBuffer  _pSpecializationInfo);/*
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pSpecializationInfo = (const VkSpecializationInfo*) (_pSpecializationInfo);
 	  */
 
@@ -483,7 +491,8 @@
 	 */ 
 	 private static native long getPSpecializationInfo0(Buffer ptr);/*
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pSpecializationInfo);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pSpecializationInfo);
 	 */
 
 

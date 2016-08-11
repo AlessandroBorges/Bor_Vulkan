@@ -180,6 +180,7 @@
 	 */ 
 	 private static native void setType0(Buffer ptr, int  _type);/*
 		  VkDescriptorPoolSize* vkObj = (VkDescriptorPoolSize*)(ptr);
+		 // code for simple past value 
 		  vkObj->type = (VkDescriptorType) (_type);
 	  */
 
@@ -198,6 +199,7 @@
 	 */ 
 	 private static native void setDescriptorCount0(Buffer ptr, int _descriptorCount);/*
 		  VkDescriptorPoolSize* vkObj = (VkDescriptorPoolSize*)(ptr);
+		 // code for simple past value 
 		  vkObj->descriptorCount = (uint32_t) (_descriptorCount);
 	  */
 

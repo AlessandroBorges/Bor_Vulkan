@@ -14,7 +14,6 @@
  import static bor.vulkan.Vulkan.*; 
  import bor.vulkan.enumerations.*;
 
- import bor.vulkan.khr.*;
  import java.util.*;
  import java.nio.*;
 
@@ -461,6 +460,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -479,6 +479,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -488,7 +489,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -497,6 +499,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkDisplaySurfaceCreateFlagsKHR) (_flags);
 	  */
 
@@ -515,6 +518,7 @@
 	 */ 
 	 private static native void setDisplayMode0(Buffer ptr, long  _displayMode);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->displayMode = (VkDisplayModeKHR) (_displayMode);
 	  */
 
@@ -524,7 +528,8 @@
 	 */ 
 	 private static native long getDisplayMode0(Buffer ptr);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->displayMode);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->displayMode);
 	 */
 
 	/**
@@ -533,6 +538,7 @@
 	 */ 
 	 private static native void setPlaneIndex0(Buffer ptr, int _planeIndex);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->planeIndex = (uint32_t) (_planeIndex);
 	  */
 
@@ -551,6 +557,7 @@
 	 */ 
 	 private static native void setPlaneStackIndex0(Buffer ptr, int _planeStackIndex);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->planeStackIndex = (uint32_t) (_planeStackIndex);
 	  */
 
@@ -569,6 +576,7 @@
 	 */ 
 	 private static native void setTransform0(Buffer ptr, int  _transform);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->transform = (VkSurfaceTransformFlagBitsKHR) (_transform);
 	  */
 
@@ -587,6 +595,7 @@
 	 */ 
 	 private static native void setGlobalAlpha0(Buffer ptr, float _globalAlpha);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->globalAlpha = (float) (_globalAlpha);
 	  */
 
@@ -605,6 +614,7 @@
 	 */ 
 	 private static native void setAlphaMode0(Buffer ptr, int  _alphaMode);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->alphaMode = (VkDisplayPlaneAlphaFlagBitsKHR) (_alphaMode);
 	  */
 
@@ -623,6 +633,7 @@
 	 */ 
 	 private static native void setImageExtent0(Buffer ptr, java.nio.ByteBuffer  _imageExtent);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->imageExtent = (VkExtent2D) (_imageExtent);
 	  */
 
@@ -632,7 +643,8 @@
 	 */ 
 	 private static native long getImageExtent0(Buffer ptr);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->imageExtent);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageExtent);
 	 */
 
 

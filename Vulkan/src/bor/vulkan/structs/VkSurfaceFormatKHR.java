@@ -14,7 +14,6 @@
  import static bor.vulkan.Vulkan.*; 
  import bor.vulkan.enumerations.*;
 
- import bor.vulkan.khr.*;
  import java.util.*;
  import java.nio.*;
 
@@ -182,6 +181,7 @@
 	 */ 
 	 private static native void setFormat0(Buffer ptr, int  _format);/*
 		  VkSurfaceFormatKHR* vkObj = (VkSurfaceFormatKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->format = (VkFormat) (_format);
 	  */
 
@@ -200,6 +200,7 @@
 	 */ 
 	 private static native void setColorSpace0(Buffer ptr, int  _colorSpace);/*
 		  VkSurfaceFormatKHR* vkObj = (VkSurfaceFormatKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->colorSpace = (VkColorSpaceKHR) (_colorSpace);
 	  */
 

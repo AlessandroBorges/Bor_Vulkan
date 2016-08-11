@@ -64,6 +64,46 @@ public class StructInfo {
     }
     
     /**
+     * Fences for C++ code
+     */
+    private String[] fence = new String[2]; 
+    /**
+     * define fence for CPP code
+     * @param className
+     * @param isGet
+     * @return
+     */
+    private String[] cppFence(String className, boolean isGet) {
+        fence[0] = "";
+        fence[1] = "";      
+        if (className.contains("Android")) fence[0] = "\t #ifdef VK_USE_PLATFORM_ANDROID_KHR \n";        
+        if (className.contains("Xlib"))    fence[0] = "\t #ifdef VK_USE_PLATFORM_XLIB_KHR \n";        
+        if (className.contains("Xcb"))     fence[0] = "\t #ifdef VK_USE_PLATFORM_XCB_KHR \n";
+        if (className.contains("Wayland")) fence[0] = "\t #ifdef VK_USE_PLATFORM_WAYLAND_KHR \n";
+        if (className.contains("Mir"))     fence[0] = "\t #ifdef VK_USE_PLATFORM_MIR_KHR \n";
+        if (className.contains("Win32"))   fence[0] = "\t #ifdef VK_USE_PLATFORM_WIN32_KHR \n";        
+        
+        /// fence2
+        if (fence[0].length() > 1){
+            if (isGet) {
+                fence[1] = "\t #else \n" + "\t   return 0; \n" + "\t #endif \n";
+            } else {
+                fence[1] = "\t #endif \n";
+            }
+        }// apply
+        return fence;
+    }
+    
+    /**
+     * fix native name by replacing "_" by "J"
+     * @param oldName
+     * @return
+     */
+    private String fixNativeMethodName(String oldName){
+        return oldName.replace("_", "J");
+    }
+    
+    /**
      * Dump Cpp prototype
      * @param asComments
      * @return
@@ -232,7 +272,7 @@ public class StructInfo {
             
             CLASS_TYPE type = getType(jType);
             if(isTypeArray[i] && !type.name().contains("_array") ){
-                System.err.println("Error! " + name + " - " + type.name() + "  ");
+               // System.err.println("Error! " + name + " - " + type.name() + "  ");
             }
             String arrayCmt = isTypeArray[i] && !type.name().contains("_array") ? "_array" : "";
             arrayCmt += regularArray ? " ["+arraySize+"] " : "";
@@ -252,7 +292,7 @@ public class StructInfo {
                    
            
            if(type == CLASS_TYPE.VKSTRUCT_ARRAY || type == CLASS_TYPE.VKHANDLE_ARRAY ){
-               System.err.println("\n VK Struct Class: " + name + " has VkStruct[] : " + jType + " \t" + field + ";");
+               //System.err.println("\n VK Struct Class: " + name + " has VkStruct[] : " + jType + " \t" + field + ";");
                hasBigBuffer[i] = true;
                output += tab +" private BigBuffer \t "  + field + BIG_BUFFER_SUFIX +";\n";                
            }
@@ -324,12 +364,16 @@ public class StructInfo {
            // SET  ///////////////////////////////////////////////////////
            /////////////////////////////////////////////////////////////// 
            String setName = field;//"set" + upperCaseField(field);
+           if(field.contains("pQueueFamilyIndices")){
+               System.err.println("aqui");
+           }
            String setName0 = "set" + upperCaseField(field);
            String vkType = jType.replace("[]","");
            outputSG = "";
+           
            // from include file
            String includeSetMethod = getMethod(include, setName0);
-           
+           setName0 = fixNativeMethodName(setName0);
            if(includeSetMethod != null){
                outputSG += "// #Included "+ setName0 +"\n" 
                             + includeSetMethod + "//#END Set Included\n\n";
@@ -353,7 +397,11 @@ public class StructInfo {
                    } else if(type == CLASS_TYPE.VKENUM ){
                        bridge = "\t\t int enumVal = "+field+method+";\n" 
                               + "\t\t " + setName0 + "0(this.ptr, enumVal );\n";
-                   }else if (type == CLASS_TYPE.VKSTRUCT_ARRAY){
+                   }else if(type == CLASS_TYPE.VKENUM_ARRAY){
+                       bridge = "\t\t int[] enumArray = readEnumArray("+field+method+");\n" 
+                               + "\t\t " + setName0 + "0(this.ptr, enumArray);\n";
+                   }else                     
+                       if (type == CLASS_TYPE.VKSTRUCT_ARRAY){
                        String fieldBBuffer = field+BIG_BUFFER_SUFIX;
                        bridge =  "\t\t this."+ fieldBBuffer +" = new BigBuffer("+field +", "+ vkType +".getID());\n"                               
                                + "\t\t " + setName0 + "0(this.ptr, "+fieldBBuffer+ ".getBuffer());\n";
@@ -366,7 +414,7 @@ public class StructInfo {
                    else  { // primitive types
                        if(regularArray){ 
                            bridge =  "\t\t if("+field + " == null)\n"
-                                   + "\t\t     java.util.Arrays.fill(this."+field+" , 0);\n"
+                                   + "\t\t     java.util.Arrays.fill(this."+field+" , ("+jType.replace("[]","")+") 0);\n" 
                                    + "\t\t  else\n"
                                    + "\t\t     System.arraycopy("+field+", 0, " +
                                                             "this."+ field+", 0, this."+field +".length); \n\n";
@@ -394,8 +442,12 @@ public class StructInfo {
            ////////////////////////////////////////////////////
            String getName = field;// "get" + upperCaseField(field);
            String getName0 = "get" + upperCaseField(field);
+           
         // from include file
-           String includeGetMethod = getMethod(include, getName0);          
+           String includeGetMethod = getMethod(include, getName0); 
+           
+           getName0 = getName0 + "0";
+           getName0 = fixNativeMethodName(getName0);
            
            if(includeGetMethod != null){
                outputSG += "// #Included " + getName0+"\n" 
@@ -408,10 +460,20 @@ public class StructInfo {
                    // special get cases
                    String stmt = "";
                    if(type==CLASS_TYPE.VKENUM){
-                       stmt += "\t\t int nativeVal = "+ getName0 + "0(super.ptr);\n"
+                       stmt += "\t\t int nativeVal = "+ getName0 + "(super.ptr);\n"
                              + "\t\t this."+field+" = " +jType+".fromValue(nativeVal); \n";       
-                   }else if(type==CLASS_TYPE.VKHANDLE){
-                       stmt +="\n\t\t long handle = "+ getName0 + "0(super.ptr);\n"
+                   }else if(type==CLASS_TYPE.VKENUM_ARRAY){
+                       String countField = lookUpCount(i);
+                       stmt +="\t\t int size = "+ countField +"();\n"
+                            + "\t\t int[] values = (size==0) ? null : new int[size];\n"                       
+                            + "\t\t values = "+ getName0 + "(super.ptr, values);\n"
+                            + "\t\t "+ jType+" var = "+jType.replace("[]","")+".fromValues(this."+field+", values);\n"
+                            + "\t\t this."+field+" = var;\n" ;
+                     }else 
+                       
+                       
+                       if(type==CLASS_TYPE.VKHANDLE){
+                       stmt +="\n\t\t long handle = "+ getName0 + "(super.ptr);\n"
                             + "\t\t if(handle == 0){\n"
                             + "\t\t    this."+field+" = null;\n"
                             + "\t\t    return null;\n"
@@ -423,7 +485,7 @@ public class StructInfo {
                             + "\t\t  }\n"
                            ;
                    }else if(type==CLASS_TYPE.VKPFN){
-                       stmt +="\n\t\t  long handle = "+ getName0 + "0(super.ptr);\n"
+                       stmt +="\n\t\t  long handle = "+ getName0 + "(super.ptr);\n"
                                + "\t\t if(handle == 0){\n"
                                + "\t\t    this."+field+" = null;\n"
                                + "\t\t    return null;\n"
@@ -436,7 +498,7 @@ public class StructInfo {
                               ;
                        
                    }else  if(type==CLASS_TYPE.VKSTRUCT ){
-                           stmt +="\t\t long pointer = "+ getName0 + "0(super.ptr);\n"
+                           stmt +="\t\t long pointer = "+ getName0 + "(super.ptr);\n"
                                    + "\t\t if(pointer == 0){\n"
                                    + "\t\t    this."+field+" = null;\n"
                                    + "\t\t    return null;\n"
@@ -448,7 +510,7 @@ public class StructInfo {
                                    + "\t\t  }\n"
                                   ;
                      }else if(type == CLASS_TYPE.VKOBJECT){
-                         stmt +="\t\t long pointer = "+ getName0 + "0(super.ptr);\n"
+                         stmt +="\t\t long pointer = "+ getName0 + "(super.ptr);\n"
                                  + "\t\t if(pointer == 0){\n"
                                  + "\t\t    this."+field+" = null;\n"
                                  + "\t\t    return null;\n"
@@ -461,7 +523,7 @@ public class StructInfo {
                                 ;
                      }else if (type == CLASS_TYPE.VKSTRUCT_ARRAY){
                          String fieldBBuffer = field+BIG_BUFFER_SUFIX;                 
-                         stmt =  "\t\t long ptr = " + getName0 + "0(this.ptr);\n" +                         
+                         stmt =  "\t\t long ptr = " + getName0 + "(this.ptr);\n" +                         
                                  "\t\t if(ptr == 0L){\n"+
                                  "\t\t    return null;\n"+
                                  "\t\t }\n"+
@@ -476,7 +538,7 @@ public class StructInfo {
                      }else if (type == CLASS_TYPE.VKHANDLE_ARRAY){
                          String fieldBBuffer = field+BIG_BUFFER_SUFIX;
                          boolean isDispachable = isDispatchable(vkType);
-                         stmt =  "\t\t long ptr = " + getName0 + "0(this.ptr);\n" +                         
+                         stmt =  "\t\t long ptr = " + getName0 + "(this.ptr);\n" +                         
                                  "\t\t if(ptr == 0L){\n"+
                                  "\t\t    return null;\n"+
                                  "\t\t }\n"+
@@ -489,23 +551,23 @@ public class StructInfo {
                                 ;
                      }else{ // primitive types & buffer
                            if(jType.contains("Buffer")){
-                               stmt +="\t\t long address = "+ getName0 + "0(super.ptr);\n"
+                               stmt +="\t\t long address = "+ getName0 + "(super.ptr);\n"
                                        + "\t\t if(this."+field+" == null && address != 0L){\n"
                                        + "\t\t\t  ByteBuffer bb = wrapPointer(address, 8);\n"
                                        + "\t\t\t  this."+field + " = bb;\n"
                                        + "\t\t }\n"                                                    
                                        ;
                            }else if(jType.contains("[]")){ // array of primitive                       
-                               stmt +="\t\t "+ jType+" var = "+ getName0 + "0(super.ptr, "+ field +");\n"
+                               stmt +="\t\t "+ jType+" var = "+ getName0 + "(super.ptr, "+ field +");\n"
                                     + "\t\t this."+field+" = var;\n" ;
                             }else{
-                           stmt +="\t\t "+ jType+" var = "+ getName0 + "0(super.ptr);\n"                        
+                           stmt +="\t\t "+ jType+" var = "+ getName0 + "(super.ptr);\n"                        
                                 + "\t\t this."+field+" = var;\n"                        
                                 ;
                            }
                        }                   
                        outputSG += "\t public " + jType + " " + getName + "(){\n" 
-                               // + "\t\t this."+field + " = " + getName + "0(super.ptr);\n"
+                               // + "\t\t this."+field + " = " + getName + "(super.ptr);\n"
                                + stmt
                                + "\t\t return this."+ field +";\n"
                                + "\t }\n\n";
@@ -552,7 +614,10 @@ public class StructInfo {
             String field = fields[i];
             String cType = types[i];
             boolean isArray = false;
-            
+            boolean isCpointer = false;
+            if(cType.contains("*")){
+                isCpointer = true;
+            }
             if(cType.endsWith("*") && field.endsWith("s")){
                 isArray = true;
             }
@@ -564,12 +629,14 @@ public class StructInfo {
             String typeMod = getParamBridge(type, jType);
             String size = fixedArraySize[i];
             boolean regularArray = isFixedArray[i] && isTypeArray[i];
-            // native SET
-            String setName = "set" + upperCaseField(field);
-            
+
+           // native SET
+            String setName = "set" + upperCaseField(field);  
             String setName0 = setName+"0";
             String includeSet0Method = getMethod(include, setName0);
             
+            
+            setName0 = fixNativeMethodName(setName0);
             if(includeSet0Method != null){
                 outputNat += includeSet0Method;
             }else{            
@@ -580,26 +647,32 @@ public class StructInfo {
               
                String stmt = "";
                if(typeMod.contains("Buffer")){
-                   stmt += "\t\t  vkObj->" + field + " = ("+ cType +") (_" + field + ");\n";
+                   String deferred = isCpointer ? "" : "*";
+                   stmt +=   "\t\t // code for Buffer - referenced by ptr\n" 
+                           + "\t\t  vkObj->" + field + " = ("+ cType +") ("+deferred+"_" + field + ");\n";
                }else if(regularArray){// fixed size array                  
-                   stmt +=  "\t\t  memcpy(&(vkObj->" + field + "), &_" + field + 
+                   stmt +=   "\t\t // code for fixed size array \n"
+                           + "\t\t  memcpy(vkObj->" + field + ", _" + field + 
                              ", " + size +" * sizeof("+cType.replace("[]", "")+"));\n";                      
                }else if(isTypeArray[i]){ // generic C style array
-                   String countField = this.fields[i-1];
+                   String countField = lookUpCount(i);
                    String cTypePure = cType.replace("[]", "").replace("const ", " ").replaceFirst("\\*", "").trim();
                    
-                   stmt += "\t\t  if( NULL == _" + field+" ){\n"
+                   stmt += "\t\t // code for generic array \n"
+                         + "\t\t  if( NULL == _" + field+" ){\n"
                          + "\t\t    vkObj->"+countField+" = 0;\n"
-                         + "\t\t    FREE_IT(vkObj->"+countField+");\n"
-                      // + "\t\t    if(vkObj->"+field+")\n"
-                      // + "\t\t        free(vkObj->"+field+");\n"
-                      // + "\t\t        vkObj->"+field+" = NULL;\n"
-                         + "\t\t    return;\n"
+                         + "\t\t    FREE_IT(vkObj->"+field+");\n"
+                      //   + "\t\t    if(vkObj->"+field+") \n"
+                      //   + "\t\t        free(vkObj->"+field+");\n"
+                      //   + "\t\t     vkObj->"+field+" = NULL;\n"
+                         + "\t\t     return;\n"
                          + "\t\t   }\n"
-                         + "\t\t  uint32_t count = (uint32_t)env->GetArrayLength("+field+");\n"
-                         + "\t\t  vkObj->"+countField+" = 0; // safe in case of fail to alloc\n"
-                         + "\t\t  vkObj->" + field+" = CALLOC(count, "+cTypePure+");\n"                        
-                         + "\t\t  memcpy(&(vkObj->" + field + "), &_" + field +", count * sizeof("+cTypePure+"));\n"
+                         + "\t\t  uint32_t count = (uint32_t)env->GetArrayLength( obj__"+field+");\n"
+                         + "\t\t  if( vkObj->"+countField+" != count){ \n"
+                         + "\t\t    FREE_IT(vkObj->" + field+"); \n"
+                         + "\t\t    vkObj->" + field+" = CALLOC(count, "+cTypePure+");\n"
+                         + "\t\t   }\n"                        
+                         + "\t\t  memcpy( vkObj->" + field + ", _" + field +", count * sizeof("+cTypePure+"));\n"
                          + "\t\t  vkObj->"+countField+" = count;\n";
                    
                } else if(jType.contains("String")){
@@ -610,13 +683,16 @@ public class StructInfo {
                    }
                }
                else{// simple past value
-                   stmt = "\t\t  vkObj->" + field + " = ("+ cType +") (_" + field + ");\n";
+                   stmt = "\t\t // code for simple past value \n"
+                           + "\t\t  vkObj->" + field + " = ("+ cType +") (_" + field + ");\n";
                }
-               
-               outputNat += "\t private static native void " + setName 
-                       + "0(Buffer ptr, "+typeMod + " _" + field + ");/*\n"
+               cppFence(name,false);
+               outputNat += "\t private static native void " + setName0 
+                       + "(Buffer ptr, "+typeMod + " _" + field + ");/*\n"
+                       + fence[0]
                        + "\t\t  " + this.name + "* vkObj = ("+ this.name+"*)(ptr);\n"
                        + stmt
+                       + fence[1]
                        + "\t  */\n\n";               
            
             }
@@ -624,8 +700,11 @@ public class StructInfo {
            // native GET
            ///////////////////////////////////
            String getName = "get" + upperCaseField(field);
+           
            String getName0 = getName + "0";
            String includeGet0Method = getMethod(include, getName0);
+           getName0 = fixNativeMethodName(getName0);
+           
            if(includeGet0Method != null){
                outputNat += includeGet0Method;
            }else{
@@ -636,43 +715,55 @@ public class StructInfo {
            String xtraParams = "";
            String cTypePure = cType.replace("[]", "").replace("const ", " ").replaceFirst("\\*", "").trim();
            String nativeRes = "\t\t  return (" + jniType + ") (vkObj->"+ field + ");\n";
+           
            if(type == CLASS_TYPE.VKHANDLE || type == CLASS_TYPE.VKPFN){
                typeMod = "long";
-               nativeRes = "\t\t  return (jlong) reinterpret_cast<jlong>(vkObj->"+field +");\n";
-           }else if (type == CLASS_TYPE.VKHANDLE_ARRAY || type == CLASS_TYPE.VKSTRUCT_ARRAY){
+               nativeRes = "\t\t  // generic get for struct field of type  VkHandle or VkStruct \n" +
+                           "\t\t  return (jlong) reinterpret_cast<jlong>(&vkObj->"+field +");\n";
+           }else ///////////////////////////
+               if (type == CLASS_TYPE.VKHANDLE_ARRAY || type == CLASS_TYPE.VKSTRUCT_ARRAY){
                    typeMod = "long";
-                   nativeRes = "\t\t  return (jlong) reinterpret_cast<jlong>(vkObj->"+field +");\n";
-           }else if(isTypeArray[i] & !isFixedArray[i]){
+                   nativeRes = "\t\t  // generic get for array of VkHandle and VkStruct \n" +
+                               "\t\t  return (jlong) reinterpret_cast<jlong>( &vkObj->"+field +" );\n";                   
+           }else ////////////
+             if(isTypeArray[i] & !isFixedArray[i]){
                xtraParams += ", " + typeMod + " _" + field;
-               String countField =  this.fields[i-1];               
-               nativeRes =  "\t\t  if( 0 == vkObj->" + countField+"){ \n"
+               String countField =  lookUpCount(i);//this.fields[i-1];               
+               nativeRes = "\t\t  // generic get for C type array, with content copy \n" +
+                            "\t\t  if( 0 == vkObj->" + countField+"){ \n"
                           + "\t\t     return NULL;\n"
                           + "\t\t   }\n"
-                          + "\t\t  uint32_t count = (uint32_t)env->GetArrayLength(_"+field+");\n"
-                          + "\t\t  if(vkObj->" + field+" == NULL || count != vkObj->" + countField+"){\n"
-                          + "\t\t     FREE_IT(vkObj->" + field+"); \n"
-                          + "\t\t     vkObj->" + field+" = CALLOC(count, "+cTypePure+");\n"
+                          + "\t\t  uint32_t count = (uint32_t)env->GetArrayLength( obj__"+field+");\n"
+                          + "\t\t  if(vkObj->" + field+" == NULL){\n"
+                          + "\t\t    return NULL;\n"
                           + "\t\t   }\n "
-                          + "\t\t  memcpy(&_" + field + ", &(vkObj->" + field +"), count * sizeof("+cTypePure+"));\n"+
-                            "\t\t  return _"+field+";\n";               
-           }else if (isFixedArray[i]){
+                          + "\t\t  memcpy(_" + field + ", vkObj->" + field +", count * sizeof("+cTypePure+"));\n"+
+                            "\t\t  return obj__"+field+";\n";               
+           }else /////////////////////
+               if (isFixedArray[i]){
                xtraParams += ", " + typeMod + " _" + field;
-               nativeRes =  "\t\t  memcpy(&_" + field + ", &(vkObj->" + field +"), "+ size +" * sizeof("+cTypePure+"));\n"+
+               nativeRes =  "\t\t  // fixed length array  \n" +
+                            "\t\t  memcpy(&_" + field + ", &(vkObj->" + field +"), "+ size +" * sizeof("+cTypePure+"));\n"+
                             "\t\t  return _"+field+";\n";
+           } else if(typeMod.contains("Buffer")){
+               typeMod = "long";
+               nativeRes = "\t\t  // generic get for Buffer \n"
+                         + "\t\t  return (jlong) reinterpret_cast<jlong>(&vkObj->"+field +");\n";
            }
          
            if(jType.equalsIgnoreCase("string")){
                // Strings must be converted
+               xtraParams = ""; // no need of extra params on String getBlahBlah()
                nativeRes = "\t\t  return (jstring)(env->NewStringUTF(vkObj->"+field +"));\n";
            } 
-           if(typeMod.contains("Buffer")){
-               typeMod = "long";
-               nativeRes = "\t\t  return (jlong) reinterpret_cast<jlong>(vkObj->"+field +");\n";
-           }
+           
            // assemble the Native GET
-           outputNat += "\t private static native " + typeMod + " " + getName + "0(Buffer ptr" + xtraParams +");/*\n" 
+           cppFence(name,true);
+           outputNat += "\t private static native " + typeMod + " " + getName0 + "(Buffer ptr" + xtraParams +");/*\n"
+                   + fence[0]
                    + "\t\t  " + this.name + "* vkObj = ("+ this.name+"*)(ptr);\n"                   
                    + nativeRes
+                   + fence[1]
                    +"\t */\n\n";
               
            }//  else include
@@ -688,6 +779,29 @@ public class StructInfo {
         
         return output;        
     } 
+    
+    /**
+     * Look up for array counter field.
+     * @param index - current position of array
+     * @return string with possible name of counter. Null if to available.
+     */
+    private String lookUpCount(int index) {
+        if(this.name.contains("VkPipelineMultisampleStateCreateInfo") 
+           && fields[index].contains("pSampleMask")){
+            return "rasterizationSamples";
+        }
+        
+        String cur = null;
+        try {
+            do{
+                cur = fields[index];
+                index--;
+            }while(!cur.contains("Count") && !cur.contains("codeSize"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cur;
+    }
     
     /**
      * return a String with first letter in uppercase

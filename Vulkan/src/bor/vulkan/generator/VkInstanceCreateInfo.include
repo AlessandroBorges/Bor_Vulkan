@@ -10,7 +10,7 @@
      */ 
      public VkInstanceCreateInfo ppEnabledLayerNames(String[] ppEnabledLayerNames){
          this.ppEnabledLayerNames = ppEnabledLayerNames == null ? null
-                                    : ppEnabledLayerNames.clone;
+                                    : ppEnabledLayerNames.clone();
          setPpEnabledLayerNames0(this.ptr,  ppEnabledLayerNames);
          return this;
      }

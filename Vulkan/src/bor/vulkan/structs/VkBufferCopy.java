@@ -210,6 +210,7 @@
 	 */ 
 	 private static native void setSrcOffset0(Buffer ptr, long _srcOffset);/*
 		  VkBufferCopy* vkObj = (VkBufferCopy*)(ptr);
+		 // code for simple past value 
 		  vkObj->srcOffset = (VkDeviceSize) (_srcOffset);
 	  */
 
@@ -228,6 +229,7 @@
 	 */ 
 	 private static native void setDstOffset0(Buffer ptr, long _dstOffset);/*
 		  VkBufferCopy* vkObj = (VkBufferCopy*)(ptr);
+		 // code for simple past value 
 		  vkObj->dstOffset = (VkDeviceSize) (_dstOffset);
 	  */
 
@@ -246,6 +248,7 @@
 	 */ 
 	 private static native void setSize0(Buffer ptr, long _size);/*
 		  VkBufferCopy* vkObj = (VkBufferCopy*)(ptr);
+		 // code for simple past value 
 		  vkObj->size = (VkDeviceSize) (_size);
 	  */
 

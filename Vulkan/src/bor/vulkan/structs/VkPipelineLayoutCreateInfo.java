@@ -364,6 +364,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -382,6 +383,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -391,7 +393,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -400,6 +403,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkPipelineLayoutCreateFlags) (_flags);
 	  */
 
@@ -418,6 +422,7 @@
 	 */ 
 	 private static native void setSetLayoutCount0(Buffer ptr, int _setLayoutCount);/*
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->setLayoutCount = (uint32_t) (_setLayoutCount);
 	  */
 
@@ -436,6 +441,7 @@
 	 */ 
 	 private static native void setPSetLayouts0(Buffer ptr, ByteBuffer  _pSetLayouts);/*
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pSetLayouts = (const VkDescriptorSetLayout*) (_pSetLayouts);
 	  */
 
@@ -445,7 +451,8 @@
 	 */ 
 	 private static native long getPSetLayouts0(Buffer ptr);/*
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pSetLayouts);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pSetLayouts );
 	 */
 
 	/**
@@ -454,6 +461,7 @@
 	 */ 
 	 private static native void setPushConstantRangeCount0(Buffer ptr, int _pushConstantRangeCount);/*
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->pushConstantRangeCount = (uint32_t) (_pushConstantRangeCount);
 	  */
 
@@ -472,6 +480,7 @@
 	 */ 
 	 private static native void setPPushConstantRanges0(Buffer ptr, java.nio.ByteBuffer  _pPushConstantRanges);/*
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pPushConstantRanges = (const VkPushConstantRange*) (_pPushConstantRanges);
 	  */
 
@@ -481,7 +490,8 @@
 	 */ 
 	 private static native long getPPushConstantRanges0(Buffer ptr);/*
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pPushConstantRanges);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pPushConstantRanges );
 	 */
 
 

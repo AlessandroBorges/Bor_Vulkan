@@ -88,6 +88,25 @@ public class VkFenceCreateFlagBits extends IntEnum<VkFenceCreateFlagBits> {
         VkFenceCreateFlagBits flag = new VkFenceCreateFlagBits(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkFenceCreateFlagBits from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkFenceCreateFlagBits array with matching values
+     */
+    public static VkFenceCreateFlagBits[] fromValues(VkFenceCreateFlagBits[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkFenceCreateFlagBits[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkFenceCreateFlagBits.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

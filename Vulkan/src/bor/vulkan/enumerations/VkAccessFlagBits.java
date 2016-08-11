@@ -120,6 +120,25 @@ public class VkAccessFlagBits extends IntEnum<VkAccessFlagBits> {
         VkAccessFlagBits flag = new VkAccessFlagBits(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkAccessFlagBits from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkAccessFlagBits array with matching values
+     */
+    public static VkAccessFlagBits[] fromValues(VkAccessFlagBits[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkAccessFlagBits[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkAccessFlagBits.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

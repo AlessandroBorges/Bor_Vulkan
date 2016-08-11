@@ -179,6 +179,7 @@
 	 */ 
 	 private static native void setDepth0(Buffer ptr, float _depth);/*
 		  VkClearDepthStencilValue* vkObj = (VkClearDepthStencilValue*)(ptr);
+		 // code for simple past value 
 		  vkObj->depth = (float) (_depth);
 	  */
 
@@ -197,6 +198,7 @@
 	 */ 
 	 private static native void setStencil0(Buffer ptr, int _stencil);/*
 		  VkClearDepthStencilValue* vkObj = (VkClearDepthStencilValue*)(ptr);
+		 // code for simple past value 
 		  vkObj->stencil = (uint32_t) (_stencil);
 	  */
 

@@ -428,6 +428,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -446,6 +447,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -455,7 +457,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -464,6 +467,7 @@
 	 */ 
 	 private static native void setSrcSet0(Buffer ptr, long  _srcSet);/*
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
+		 // code for simple past value 
 		  vkObj->srcSet = (VkDescriptorSet) (_srcSet);
 	  */
 
@@ -473,7 +477,8 @@
 	 */ 
 	 private static native long getSrcSet0(Buffer ptr);/*
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->srcSet);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->srcSet);
 	 */
 
 	/**
@@ -482,6 +487,7 @@
 	 */ 
 	 private static native void setSrcBinding0(Buffer ptr, int _srcBinding);/*
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
+		 // code for simple past value 
 		  vkObj->srcBinding = (uint32_t) (_srcBinding);
 	  */
 
@@ -500,6 +506,7 @@
 	 */ 
 	 private static native void setSrcArrayElement0(Buffer ptr, int _srcArrayElement);/*
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
+		 // code for simple past value 
 		  vkObj->srcArrayElement = (uint32_t) (_srcArrayElement);
 	  */
 
@@ -518,6 +525,7 @@
 	 */ 
 	 private static native void setDstSet0(Buffer ptr, long  _dstSet);/*
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
+		 // code for simple past value 
 		  vkObj->dstSet = (VkDescriptorSet) (_dstSet);
 	  */
 
@@ -527,7 +535,8 @@
 	 */ 
 	 private static native long getDstSet0(Buffer ptr);/*
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->dstSet);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->dstSet);
 	 */
 
 	/**
@@ -536,6 +545,7 @@
 	 */ 
 	 private static native void setDstBinding0(Buffer ptr, int _dstBinding);/*
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
+		 // code for simple past value 
 		  vkObj->dstBinding = (uint32_t) (_dstBinding);
 	  */
 
@@ -554,6 +564,7 @@
 	 */ 
 	 private static native void setDstArrayElement0(Buffer ptr, int _dstArrayElement);/*
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
+		 // code for simple past value 
 		  vkObj->dstArrayElement = (uint32_t) (_dstArrayElement);
 	  */
 
@@ -572,6 +583,7 @@
 	 */ 
 	 private static native void setDescriptorCount0(Buffer ptr, int _descriptorCount);/*
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
+		 // code for simple past value 
 		  vkObj->descriptorCount = (uint32_t) (_descriptorCount);
 	  */
 

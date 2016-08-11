@@ -1937,7 +1937,7 @@
 	 */ 
 	 public VkPhysicalDeviceLimits maxComputeWorkGroupCount(int[] maxComputeWorkGroupCount){
 		 if(maxComputeWorkGroupCount == null)
-		     java.util.Arrays.fill(this.maxComputeWorkGroupCount , 0);
+		     java.util.Arrays.fill(this.maxComputeWorkGroupCount , (int) 0);
 		  else
 		     System.arraycopy(maxComputeWorkGroupCount, 0, this.maxComputeWorkGroupCount, 0, this.maxComputeWorkGroupCount.length); 
 
@@ -1987,7 +1987,7 @@
 	 */ 
 	 public VkPhysicalDeviceLimits maxComputeWorkGroupSize(int[] maxComputeWorkGroupSize){
 		 if(maxComputeWorkGroupSize == null)
-		     java.util.Arrays.fill(this.maxComputeWorkGroupSize , 0);
+		     java.util.Arrays.fill(this.maxComputeWorkGroupSize , (int) 0);
 		  else
 		     System.arraycopy(maxComputeWorkGroupSize, 0, this.maxComputeWorkGroupSize, 0, this.maxComputeWorkGroupSize.length); 
 
@@ -2198,7 +2198,7 @@
 	 */ 
 	 public VkPhysicalDeviceLimits maxViewportDimensions(int[] maxViewportDimensions){
 		 if(maxViewportDimensions == null)
-		     java.util.Arrays.fill(this.maxViewportDimensions , 0);
+		     java.util.Arrays.fill(this.maxViewportDimensions , (int) 0);
 		  else
 		     System.arraycopy(maxViewportDimensions, 0, this.maxViewportDimensions, 0, this.maxViewportDimensions.length); 
 
@@ -2225,7 +2225,7 @@
 	 */ 
 	 public VkPhysicalDeviceLimits viewportBoundsRange(float[] viewportBoundsRange){
 		 if(viewportBoundsRange == null)
-		     java.util.Arrays.fill(this.viewportBoundsRange , 0);
+		     java.util.Arrays.fill(this.viewportBoundsRange , (float) 0);
 		  else
 		     System.arraycopy(viewportBoundsRange, 0, this.viewportBoundsRange, 0, this.viewportBoundsRange.length); 
 
@@ -2988,7 +2988,7 @@
 	 */ 
 	 public VkPhysicalDeviceLimits pointSizeRange(float[] pointSizeRange){
 		 if(pointSizeRange == null)
-		     java.util.Arrays.fill(this.pointSizeRange , 0);
+		     java.util.Arrays.fill(this.pointSizeRange , (float) 0);
 		  else
 		     System.arraycopy(pointSizeRange, 0, this.pointSizeRange, 0, this.pointSizeRange.length); 
 
@@ -3015,7 +3015,7 @@
 	 */ 
 	 public VkPhysicalDeviceLimits lineWidthRange(float[] lineWidthRange){
 		 if(lineWidthRange == null)
-		     java.util.Arrays.fill(this.lineWidthRange , 0);
+		     java.util.Arrays.fill(this.lineWidthRange , (float) 0);
 		  else
 		     System.arraycopy(lineWidthRange, 0, this.lineWidthRange, 0, this.lineWidthRange.length); 
 
@@ -3427,6 +3427,7 @@
 	 */ 
 	 private static native void setMaxImageDimension1D0(Buffer ptr, int _maxImageDimension1D);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxImageDimension1D = (uint32_t) (_maxImageDimension1D);
 	  */
 
@@ -3445,6 +3446,7 @@
 	 */ 
 	 private static native void setMaxImageDimension2D0(Buffer ptr, int _maxImageDimension2D);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxImageDimension2D = (uint32_t) (_maxImageDimension2D);
 	  */
 
@@ -3463,6 +3465,7 @@
 	 */ 
 	 private static native void setMaxImageDimension3D0(Buffer ptr, int _maxImageDimension3D);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxImageDimension3D = (uint32_t) (_maxImageDimension3D);
 	  */
 
@@ -3481,6 +3484,7 @@
 	 */ 
 	 private static native void setMaxImageDimensionCube0(Buffer ptr, int _maxImageDimensionCube);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxImageDimensionCube = (uint32_t) (_maxImageDimensionCube);
 	  */
 
@@ -3499,6 +3503,7 @@
 	 */ 
 	 private static native void setMaxImageArrayLayers0(Buffer ptr, int _maxImageArrayLayers);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxImageArrayLayers = (uint32_t) (_maxImageArrayLayers);
 	  */
 
@@ -3517,6 +3522,7 @@
 	 */ 
 	 private static native void setMaxTexelBufferElements0(Buffer ptr, int _maxTexelBufferElements);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxTexelBufferElements = (uint32_t) (_maxTexelBufferElements);
 	  */
 
@@ -3535,6 +3541,7 @@
 	 */ 
 	 private static native void setMaxUniformBufferRange0(Buffer ptr, int _maxUniformBufferRange);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxUniformBufferRange = (uint32_t) (_maxUniformBufferRange);
 	  */
 
@@ -3553,6 +3560,7 @@
 	 */ 
 	 private static native void setMaxStorageBufferRange0(Buffer ptr, int _maxStorageBufferRange);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxStorageBufferRange = (uint32_t) (_maxStorageBufferRange);
 	  */
 
@@ -3571,6 +3579,7 @@
 	 */ 
 	 private static native void setMaxPushConstantsSize0(Buffer ptr, int _maxPushConstantsSize);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxPushConstantsSize = (uint32_t) (_maxPushConstantsSize);
 	  */
 
@@ -3589,6 +3598,7 @@
 	 */ 
 	 private static native void setMaxMemoryAllocationCount0(Buffer ptr, int _maxMemoryAllocationCount);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxMemoryAllocationCount = (uint32_t) (_maxMemoryAllocationCount);
 	  */
 
@@ -3607,6 +3617,7 @@
 	 */ 
 	 private static native void setMaxSamplerAllocationCount0(Buffer ptr, int _maxSamplerAllocationCount);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxSamplerAllocationCount = (uint32_t) (_maxSamplerAllocationCount);
 	  */
 
@@ -3625,6 +3636,7 @@
 	 */ 
 	 private static native void setBufferImageGranularity0(Buffer ptr, long _bufferImageGranularity);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->bufferImageGranularity = (VkDeviceSize) (_bufferImageGranularity);
 	  */
 
@@ -3643,6 +3655,7 @@
 	 */ 
 	 private static native void setSparseAddressSpaceSize0(Buffer ptr, long _sparseAddressSpaceSize);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->sparseAddressSpaceSize = (VkDeviceSize) (_sparseAddressSpaceSize);
 	  */
 
@@ -3661,6 +3674,7 @@
 	 */ 
 	 private static native void setMaxBoundDescriptorSets0(Buffer ptr, int _maxBoundDescriptorSets);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxBoundDescriptorSets = (uint32_t) (_maxBoundDescriptorSets);
 	  */
 
@@ -3679,6 +3693,7 @@
 	 */ 
 	 private static native void setMaxPerStageDescriptorSamplers0(Buffer ptr, int _maxPerStageDescriptorSamplers);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxPerStageDescriptorSamplers = (uint32_t) (_maxPerStageDescriptorSamplers);
 	  */
 
@@ -3697,6 +3712,7 @@
 	 */ 
 	 private static native void setMaxPerStageDescriptorUniformBuffers0(Buffer ptr, int _maxPerStageDescriptorUniformBuffers);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxPerStageDescriptorUniformBuffers = (uint32_t) (_maxPerStageDescriptorUniformBuffers);
 	  */
 
@@ -3715,6 +3731,7 @@
 	 */ 
 	 private static native void setMaxPerStageDescriptorStorageBuffers0(Buffer ptr, int _maxPerStageDescriptorStorageBuffers);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxPerStageDescriptorStorageBuffers = (uint32_t) (_maxPerStageDescriptorStorageBuffers);
 	  */
 
@@ -3733,6 +3750,7 @@
 	 */ 
 	 private static native void setMaxPerStageDescriptorSampledImages0(Buffer ptr, int _maxPerStageDescriptorSampledImages);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxPerStageDescriptorSampledImages = (uint32_t) (_maxPerStageDescriptorSampledImages);
 	  */
 
@@ -3751,6 +3769,7 @@
 	 */ 
 	 private static native void setMaxPerStageDescriptorStorageImages0(Buffer ptr, int _maxPerStageDescriptorStorageImages);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxPerStageDescriptorStorageImages = (uint32_t) (_maxPerStageDescriptorStorageImages);
 	  */
 
@@ -3769,6 +3788,7 @@
 	 */ 
 	 private static native void setMaxPerStageDescriptorInputAttachments0(Buffer ptr, int _maxPerStageDescriptorInputAttachments);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxPerStageDescriptorInputAttachments = (uint32_t) (_maxPerStageDescriptorInputAttachments);
 	  */
 
@@ -3787,6 +3807,7 @@
 	 */ 
 	 private static native void setMaxPerStageResources0(Buffer ptr, int _maxPerStageResources);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxPerStageResources = (uint32_t) (_maxPerStageResources);
 	  */
 
@@ -3805,6 +3826,7 @@
 	 */ 
 	 private static native void setMaxDescriptorSetSamplers0(Buffer ptr, int _maxDescriptorSetSamplers);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxDescriptorSetSamplers = (uint32_t) (_maxDescriptorSetSamplers);
 	  */
 
@@ -3823,6 +3845,7 @@
 	 */ 
 	 private static native void setMaxDescriptorSetUniformBuffers0(Buffer ptr, int _maxDescriptorSetUniformBuffers);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxDescriptorSetUniformBuffers = (uint32_t) (_maxDescriptorSetUniformBuffers);
 	  */
 
@@ -3841,6 +3864,7 @@
 	 */ 
 	 private static native void setMaxDescriptorSetUniformBuffersDynamic0(Buffer ptr, int _maxDescriptorSetUniformBuffersDynamic);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxDescriptorSetUniformBuffersDynamic = (uint32_t) (_maxDescriptorSetUniformBuffersDynamic);
 	  */
 
@@ -3859,6 +3883,7 @@
 	 */ 
 	 private static native void setMaxDescriptorSetStorageBuffers0(Buffer ptr, int _maxDescriptorSetStorageBuffers);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxDescriptorSetStorageBuffers = (uint32_t) (_maxDescriptorSetStorageBuffers);
 	  */
 
@@ -3877,6 +3902,7 @@
 	 */ 
 	 private static native void setMaxDescriptorSetStorageBuffersDynamic0(Buffer ptr, int _maxDescriptorSetStorageBuffersDynamic);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxDescriptorSetStorageBuffersDynamic = (uint32_t) (_maxDescriptorSetStorageBuffersDynamic);
 	  */
 
@@ -3895,6 +3921,7 @@
 	 */ 
 	 private static native void setMaxDescriptorSetSampledImages0(Buffer ptr, int _maxDescriptorSetSampledImages);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxDescriptorSetSampledImages = (uint32_t) (_maxDescriptorSetSampledImages);
 	  */
 
@@ -3913,6 +3940,7 @@
 	 */ 
 	 private static native void setMaxDescriptorSetStorageImages0(Buffer ptr, int _maxDescriptorSetStorageImages);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxDescriptorSetStorageImages = (uint32_t) (_maxDescriptorSetStorageImages);
 	  */
 
@@ -3931,6 +3959,7 @@
 	 */ 
 	 private static native void setMaxDescriptorSetInputAttachments0(Buffer ptr, int _maxDescriptorSetInputAttachments);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxDescriptorSetInputAttachments = (uint32_t) (_maxDescriptorSetInputAttachments);
 	  */
 
@@ -3949,6 +3978,7 @@
 	 */ 
 	 private static native void setMaxVertexInputAttributes0(Buffer ptr, int _maxVertexInputAttributes);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxVertexInputAttributes = (uint32_t) (_maxVertexInputAttributes);
 	  */
 
@@ -3967,6 +3997,7 @@
 	 */ 
 	 private static native void setMaxVertexInputBindings0(Buffer ptr, int _maxVertexInputBindings);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxVertexInputBindings = (uint32_t) (_maxVertexInputBindings);
 	  */
 
@@ -3985,6 +4016,7 @@
 	 */ 
 	 private static native void setMaxVertexInputAttributeOffset0(Buffer ptr, int _maxVertexInputAttributeOffset);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxVertexInputAttributeOffset = (uint32_t) (_maxVertexInputAttributeOffset);
 	  */
 
@@ -4003,6 +4035,7 @@
 	 */ 
 	 private static native void setMaxVertexInputBindingStride0(Buffer ptr, int _maxVertexInputBindingStride);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxVertexInputBindingStride = (uint32_t) (_maxVertexInputBindingStride);
 	  */
 
@@ -4021,6 +4054,7 @@
 	 */ 
 	 private static native void setMaxVertexOutputComponents0(Buffer ptr, int _maxVertexOutputComponents);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxVertexOutputComponents = (uint32_t) (_maxVertexOutputComponents);
 	  */
 
@@ -4039,6 +4073,7 @@
 	 */ 
 	 private static native void setMaxTessellationGenerationLevel0(Buffer ptr, int _maxTessellationGenerationLevel);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxTessellationGenerationLevel = (uint32_t) (_maxTessellationGenerationLevel);
 	  */
 
@@ -4057,6 +4092,7 @@
 	 */ 
 	 private static native void setMaxTessellationPatchSize0(Buffer ptr, int _maxTessellationPatchSize);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxTessellationPatchSize = (uint32_t) (_maxTessellationPatchSize);
 	  */
 
@@ -4075,6 +4111,7 @@
 	 */ 
 	 private static native void setMaxTessellationControlPerVertexInputComponents0(Buffer ptr, int _maxTessellationControlPerVertexInputComponents);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxTessellationControlPerVertexInputComponents = (uint32_t) (_maxTessellationControlPerVertexInputComponents);
 	  */
 
@@ -4093,6 +4130,7 @@
 	 */ 
 	 private static native void setMaxTessellationControlPerVertexOutputComponents0(Buffer ptr, int _maxTessellationControlPerVertexOutputComponents);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxTessellationControlPerVertexOutputComponents = (uint32_t) (_maxTessellationControlPerVertexOutputComponents);
 	  */
 
@@ -4111,6 +4149,7 @@
 	 */ 
 	 private static native void setMaxTessellationControlPerPatchOutputComponents0(Buffer ptr, int _maxTessellationControlPerPatchOutputComponents);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxTessellationControlPerPatchOutputComponents = (uint32_t) (_maxTessellationControlPerPatchOutputComponents);
 	  */
 
@@ -4129,6 +4168,7 @@
 	 */ 
 	 private static native void setMaxTessellationControlTotalOutputComponents0(Buffer ptr, int _maxTessellationControlTotalOutputComponents);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxTessellationControlTotalOutputComponents = (uint32_t) (_maxTessellationControlTotalOutputComponents);
 	  */
 
@@ -4147,6 +4187,7 @@
 	 */ 
 	 private static native void setMaxTessellationEvaluationInputComponents0(Buffer ptr, int _maxTessellationEvaluationInputComponents);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxTessellationEvaluationInputComponents = (uint32_t) (_maxTessellationEvaluationInputComponents);
 	  */
 
@@ -4165,6 +4206,7 @@
 	 */ 
 	 private static native void setMaxTessellationEvaluationOutputComponents0(Buffer ptr, int _maxTessellationEvaluationOutputComponents);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxTessellationEvaluationOutputComponents = (uint32_t) (_maxTessellationEvaluationOutputComponents);
 	  */
 
@@ -4183,6 +4225,7 @@
 	 */ 
 	 private static native void setMaxGeometryShaderInvocations0(Buffer ptr, int _maxGeometryShaderInvocations);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxGeometryShaderInvocations = (uint32_t) (_maxGeometryShaderInvocations);
 	  */
 
@@ -4201,6 +4244,7 @@
 	 */ 
 	 private static native void setMaxGeometryInputComponents0(Buffer ptr, int _maxGeometryInputComponents);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxGeometryInputComponents = (uint32_t) (_maxGeometryInputComponents);
 	  */
 
@@ -4219,6 +4263,7 @@
 	 */ 
 	 private static native void setMaxGeometryOutputComponents0(Buffer ptr, int _maxGeometryOutputComponents);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxGeometryOutputComponents = (uint32_t) (_maxGeometryOutputComponents);
 	  */
 
@@ -4237,6 +4282,7 @@
 	 */ 
 	 private static native void setMaxGeometryOutputVertices0(Buffer ptr, int _maxGeometryOutputVertices);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxGeometryOutputVertices = (uint32_t) (_maxGeometryOutputVertices);
 	  */
 
@@ -4255,6 +4301,7 @@
 	 */ 
 	 private static native void setMaxGeometryTotalOutputComponents0(Buffer ptr, int _maxGeometryTotalOutputComponents);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxGeometryTotalOutputComponents = (uint32_t) (_maxGeometryTotalOutputComponents);
 	  */
 
@@ -4273,6 +4320,7 @@
 	 */ 
 	 private static native void setMaxFragmentInputComponents0(Buffer ptr, int _maxFragmentInputComponents);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxFragmentInputComponents = (uint32_t) (_maxFragmentInputComponents);
 	  */
 
@@ -4291,6 +4339,7 @@
 	 */ 
 	 private static native void setMaxFragmentOutputAttachments0(Buffer ptr, int _maxFragmentOutputAttachments);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxFragmentOutputAttachments = (uint32_t) (_maxFragmentOutputAttachments);
 	  */
 
@@ -4309,6 +4358,7 @@
 	 */ 
 	 private static native void setMaxFragmentDualSrcAttachments0(Buffer ptr, int _maxFragmentDualSrcAttachments);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxFragmentDualSrcAttachments = (uint32_t) (_maxFragmentDualSrcAttachments);
 	  */
 
@@ -4327,6 +4377,7 @@
 	 */ 
 	 private static native void setMaxFragmentCombinedOutputResources0(Buffer ptr, int _maxFragmentCombinedOutputResources);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxFragmentCombinedOutputResources = (uint32_t) (_maxFragmentCombinedOutputResources);
 	  */
 
@@ -4345,6 +4396,7 @@
 	 */ 
 	 private static native void setMaxComputeSharedMemorySize0(Buffer ptr, int _maxComputeSharedMemorySize);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxComputeSharedMemorySize = (uint32_t) (_maxComputeSharedMemorySize);
 	  */
 
@@ -4363,15 +4415,17 @@
 	 */ 
 	 private static native void setMaxComputeWorkGroupCount0(Buffer ptr, int[] _maxComputeWorkGroupCount);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  memcpy(&(vkObj->maxComputeWorkGroupCount), &_maxComputeWorkGroupCount, 3 * sizeof(uint32_t));
+		 // code for fixed size array 
+		  memcpy(vkObj->maxComputeWorkGroupCount, _maxComputeWorkGroupCount, 3 * sizeof(uint32_t));
 	  */
 
 	/**
 	 * Native GET method for field maxComputeWorkGroupCount	[int]<br>
 	 * Prototype: uint32_t[]  maxComputeWorkGroupCount
 	 */ 
-	 private static native int[] getMaxComputeWorkGroupCount0(Buffer ptr, int[] maxComputeWorkGroupCount);/*
+	 private static native int[] getMaxComputeWorkGroupCount0(Buffer ptr, int[] _maxComputeWorkGroupCount);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  // fixed length array  
 		  memcpy(&_maxComputeWorkGroupCount, &(vkObj->maxComputeWorkGroupCount), 3 * sizeof(uint32_t));
 		  return _maxComputeWorkGroupCount;
 	 */
@@ -4382,6 +4436,7 @@
 	 */ 
 	 private static native void setMaxComputeWorkGroupInvocations0(Buffer ptr, int _maxComputeWorkGroupInvocations);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxComputeWorkGroupInvocations = (uint32_t) (_maxComputeWorkGroupInvocations);
 	  */
 
@@ -4400,15 +4455,17 @@
 	 */ 
 	 private static native void setMaxComputeWorkGroupSize0(Buffer ptr, int[] _maxComputeWorkGroupSize);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  memcpy(&(vkObj->maxComputeWorkGroupSize), &_maxComputeWorkGroupSize, 3 * sizeof(uint32_t));
+		 // code for fixed size array 
+		  memcpy(vkObj->maxComputeWorkGroupSize, _maxComputeWorkGroupSize, 3 * sizeof(uint32_t));
 	  */
 
 	/**
 	 * Native GET method for field maxComputeWorkGroupSize	[int]<br>
 	 * Prototype: uint32_t[]  maxComputeWorkGroupSize
 	 */ 
-	 private static native int[] getMaxComputeWorkGroupSize0(Buffer ptr, int[] maxComputeWorkGroupSize);/*
+	 private static native int[] getMaxComputeWorkGroupSize0(Buffer ptr, int[] _maxComputeWorkGroupSize);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  // fixed length array  
 		  memcpy(&_maxComputeWorkGroupSize, &(vkObj->maxComputeWorkGroupSize), 3 * sizeof(uint32_t));
 		  return _maxComputeWorkGroupSize;
 	 */
@@ -4419,6 +4476,7 @@
 	 */ 
 	 private static native void setSubPixelPrecisionBits0(Buffer ptr, int _subPixelPrecisionBits);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->subPixelPrecisionBits = (uint32_t) (_subPixelPrecisionBits);
 	  */
 
@@ -4437,6 +4495,7 @@
 	 */ 
 	 private static native void setSubTexelPrecisionBits0(Buffer ptr, int _subTexelPrecisionBits);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->subTexelPrecisionBits = (uint32_t) (_subTexelPrecisionBits);
 	  */
 
@@ -4455,6 +4514,7 @@
 	 */ 
 	 private static native void setMipmapPrecisionBits0(Buffer ptr, int _mipmapPrecisionBits);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->mipmapPrecisionBits = (uint32_t) (_mipmapPrecisionBits);
 	  */
 
@@ -4473,6 +4533,7 @@
 	 */ 
 	 private static native void setMaxDrawIndexedIndexValue0(Buffer ptr, int _maxDrawIndexedIndexValue);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxDrawIndexedIndexValue = (uint32_t) (_maxDrawIndexedIndexValue);
 	  */
 
@@ -4491,6 +4552,7 @@
 	 */ 
 	 private static native void setMaxDrawIndirectCount0(Buffer ptr, int _maxDrawIndirectCount);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxDrawIndirectCount = (uint32_t) (_maxDrawIndirectCount);
 	  */
 
@@ -4509,6 +4571,7 @@
 	 */ 
 	 private static native void setMaxSamplerLodBias0(Buffer ptr, float _maxSamplerLodBias);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxSamplerLodBias = (float) (_maxSamplerLodBias);
 	  */
 
@@ -4527,6 +4590,7 @@
 	 */ 
 	 private static native void setMaxSamplerAnisotropy0(Buffer ptr, float _maxSamplerAnisotropy);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxSamplerAnisotropy = (float) (_maxSamplerAnisotropy);
 	  */
 
@@ -4545,6 +4609,7 @@
 	 */ 
 	 private static native void setMaxViewports0(Buffer ptr, int _maxViewports);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxViewports = (uint32_t) (_maxViewports);
 	  */
 
@@ -4563,15 +4628,17 @@
 	 */ 
 	 private static native void setMaxViewportDimensions0(Buffer ptr, int[] _maxViewportDimensions);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  memcpy(&(vkObj->maxViewportDimensions), &_maxViewportDimensions, 2 * sizeof(uint32_t));
+		 // code for fixed size array 
+		  memcpy(vkObj->maxViewportDimensions, _maxViewportDimensions, 2 * sizeof(uint32_t));
 	  */
 
 	/**
 	 * Native GET method for field maxViewportDimensions	[int]<br>
 	 * Prototype: uint32_t[]  maxViewportDimensions
 	 */ 
-	 private static native int[] getMaxViewportDimensions0(Buffer ptr, int[] maxViewportDimensions);/*
+	 private static native int[] getMaxViewportDimensions0(Buffer ptr, int[] _maxViewportDimensions);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  // fixed length array  
 		  memcpy(&_maxViewportDimensions, &(vkObj->maxViewportDimensions), 2 * sizeof(uint32_t));
 		  return _maxViewportDimensions;
 	 */
@@ -4582,15 +4649,17 @@
 	 */ 
 	 private static native void setViewportBoundsRange0(Buffer ptr, float[] _viewportBoundsRange);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  memcpy(&(vkObj->viewportBoundsRange), &_viewportBoundsRange, 2 * sizeof(float));
+		 // code for fixed size array 
+		  memcpy(vkObj->viewportBoundsRange, _viewportBoundsRange, 2 * sizeof(float));
 	  */
 
 	/**
 	 * Native GET method for field viewportBoundsRange	[float]<br>
 	 * Prototype: float[]  viewportBoundsRange
 	 */ 
-	 private static native float[] getViewportBoundsRange0(Buffer ptr, float[] viewportBoundsRange);/*
+	 private static native float[] getViewportBoundsRange0(Buffer ptr, float[] _viewportBoundsRange);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		  // fixed length array  
 		  memcpy(&_viewportBoundsRange, &(vkObj->viewportBoundsRange), 2 * sizeof(float));
 		  return _viewportBoundsRange;
 	 */
@@ -4601,6 +4670,7 @@
 	 */ 
 	 private static native void setViewportSubPixelBits0(Buffer ptr, int _viewportSubPixelBits);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->viewportSubPixelBits = (uint32_t) (_viewportSubPixelBits);
 	  */
 
@@ -4619,6 +4689,7 @@
 	 */ 
 	 private static native void setMinMemoryMapAlignment0(Buffer ptr, long _minMemoryMapAlignment);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->minMemoryMapAlignment = (size_t) (_minMemoryMapAlignment);
 	  */
 
@@ -4637,6 +4708,7 @@
 	 */ 
 	 private static native void setMinTexelBufferOffsetAlignment0(Buffer ptr, long _minTexelBufferOffsetAlignment);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->minTexelBufferOffsetAlignment = (VkDeviceSize) (_minTexelBufferOffsetAlignment);
 	  */
 
@@ -4655,6 +4727,7 @@
 	 */ 
 	 private static native void setMinUniformBufferOffsetAlignment0(Buffer ptr, long _minUniformBufferOffsetAlignment);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->minUniformBufferOffsetAlignment = (VkDeviceSize) (_minUniformBufferOffsetAlignment);
 	  */
 
@@ -4673,6 +4746,7 @@
 	 */ 
 	 private static native void setMinStorageBufferOffsetAlignment0(Buffer ptr, long _minStorageBufferOffsetAlignment);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->minStorageBufferOffsetAlignment = (VkDeviceSize) (_minStorageBufferOffsetAlignment);
 	  */
 
@@ -4691,6 +4765,7 @@
 	 */ 
 	 private static native void setMinTexelOffset0(Buffer ptr, int _minTexelOffset);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->minTexelOffset = (int32_t) (_minTexelOffset);
 	  */
 
@@ -4709,6 +4784,7 @@
 	 */ 
 	 private static native void setMaxTexelOffset0(Buffer ptr, int _maxTexelOffset);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxTexelOffset = (uint32_t) (_maxTexelOffset);
 	  */
 
@@ -4727,6 +4803,7 @@
 	 */ 
 	 private static native void setMinTexelGatherOffset0(Buffer ptr, int _minTexelGatherOffset);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->minTexelGatherOffset = (int32_t) (_minTexelGatherOffset);
 	  */
 
@@ -4745,6 +4822,7 @@
 	 */ 
 	 private static native void setMaxTexelGatherOffset0(Buffer ptr, int _maxTexelGatherOffset);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxTexelGatherOffset = (uint32_t) (_maxTexelGatherOffset);
 	  */
 
@@ -4763,6 +4841,7 @@
 	 */ 
 	 private static native void setMinInterpolationOffset0(Buffer ptr, float _minInterpolationOffset);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->minInterpolationOffset = (float) (_minInterpolationOffset);
 	  */
 
@@ -4781,6 +4860,7 @@
 	 */ 
 	 private static native void setMaxInterpolationOffset0(Buffer ptr, float _maxInterpolationOffset);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxInterpolationOffset = (float) (_maxInterpolationOffset);
 	  */
 
@@ -4799,6 +4879,7 @@
 	 */ 
 	 private static native void setSubPixelInterpolationOffsetBits0(Buffer ptr, int _subPixelInterpolationOffsetBits);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->subPixelInterpolationOffsetBits = (uint32_t) (_subPixelInterpolationOffsetBits);
 	  */
 
@@ -4817,6 +4898,7 @@
 	 */ 
 	 private static native void setMaxFramebufferWidth0(Buffer ptr, int _maxFramebufferWidth);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxFramebufferWidth = (uint32_t) (_maxFramebufferWidth);
 	  */
 
@@ -4835,6 +4917,7 @@
 	 */ 
 	 private static native void setMaxFramebufferHeight0(Buffer ptr, int _maxFramebufferHeight);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxFramebufferHeight = (uint32_t) (_maxFramebufferHeight);
 	  */
 
@@ -4853,6 +4936,7 @@
 	 */ 
 	 private static native void setMaxFramebufferLayers0(Buffer ptr, int _maxFramebufferLayers);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxFramebufferLayers = (uint32_t) (_maxFramebufferLayers);
 	  */
 
@@ -4871,6 +4955,7 @@
 	 */ 
 	 private static native void setFramebufferColorSampleCounts0(Buffer ptr, int _framebufferColorSampleCounts);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->framebufferColorSampleCounts = (VkSampleCountFlags) (_framebufferColorSampleCounts);
 	  */
 
@@ -4889,6 +4974,7 @@
 	 */ 
 	 private static native void setFramebufferDepthSampleCounts0(Buffer ptr, int _framebufferDepthSampleCounts);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->framebufferDepthSampleCounts = (VkSampleCountFlags) (_framebufferDepthSampleCounts);
 	  */
 
@@ -4907,6 +4993,7 @@
 	 */ 
 	 private static native void setFramebufferStencilSampleCounts0(Buffer ptr, int _framebufferStencilSampleCounts);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->framebufferStencilSampleCounts = (VkSampleCountFlags) (_framebufferStencilSampleCounts);
 	  */
 
@@ -4925,6 +5012,7 @@
 	 */ 
 	 private static native void setFramebufferNoAttachmentsSampleCounts0(Buffer ptr, int _framebufferNoAttachmentsSampleCounts);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->framebufferNoAttachmentsSampleCounts = (VkSampleCountFlags) (_framebufferNoAttachmentsSampleCounts);
 	  */
 
@@ -4943,6 +5031,7 @@
 	 */ 
 	 private static native void setMaxColorAttachments0(Buffer ptr, int _maxColorAttachments);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxColorAttachments = (uint32_t) (_maxColorAttachments);
 	  */
 
@@ -4961,6 +5050,7 @@
 	 */ 
 	 private static native void setSampledImageColorSampleCounts0(Buffer ptr, int _sampledImageColorSampleCounts);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->sampledImageColorSampleCounts = (VkSampleCountFlags) (_sampledImageColorSampleCounts);
 	  */
 
@@ -4979,6 +5069,7 @@
 	 */ 
 	 private static native void setSampledImageIntegerSampleCounts0(Buffer ptr, int _sampledImageIntegerSampleCounts);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->sampledImageIntegerSampleCounts = (VkSampleCountFlags) (_sampledImageIntegerSampleCounts);
 	  */
 
@@ -4997,6 +5088,7 @@
 	 */ 
 	 private static native void setSampledImageDepthSampleCounts0(Buffer ptr, int _sampledImageDepthSampleCounts);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->sampledImageDepthSampleCounts = (VkSampleCountFlags) (_sampledImageDepthSampleCounts);
 	  */
 
@@ -5015,6 +5107,7 @@
 	 */ 
 	 private static native void setSampledImageStencilSampleCounts0(Buffer ptr, int _sampledImageStencilSampleCounts);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->sampledImageStencilSampleCounts = (VkSampleCountFlags) (_sampledImageStencilSampleCounts);
 	  */
 
@@ -5033,6 +5126,7 @@
 	 */ 
 	 private static native void setStorageImageSampleCounts0(Buffer ptr, int _storageImageSampleCounts);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->storageImageSampleCounts = (VkSampleCountFlags) (_storageImageSampleCounts);
 	  */
 
@@ -5051,6 +5145,7 @@
 	 */ 
 	 private static native void setMaxSampleMaskWords0(Buffer ptr, int _maxSampleMaskWords);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxSampleMaskWords = (uint32_t) (_maxSampleMaskWords);
 	  */
 
@@ -5069,6 +5164,7 @@
 	 */ 
 	 private static native void setTimestampComputeAndGraphics0(Buffer ptr, boolean  _timestampComputeAndGraphics);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->timestampComputeAndGraphics = (VkBool32) (_timestampComputeAndGraphics);
 	  */
 
@@ -5087,6 +5183,7 @@
 	 */ 
 	 private static native void setTimestampPeriod0(Buffer ptr, float _timestampPeriod);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->timestampPeriod = (float) (_timestampPeriod);
 	  */
 
@@ -5105,6 +5202,7 @@
 	 */ 
 	 private static native void setMaxClipDistances0(Buffer ptr, int _maxClipDistances);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxClipDistances = (uint32_t) (_maxClipDistances);
 	  */
 
@@ -5123,6 +5221,7 @@
 	 */ 
 	 private static native void setMaxCullDistances0(Buffer ptr, int _maxCullDistances);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxCullDistances = (uint32_t) (_maxCullDistances);
 	  */
 
@@ -5141,6 +5240,7 @@
 	 */ 
 	 private static native void setMaxCombinedClipAndCullDistances0(Buffer ptr, int _maxCombinedClipAndCullDistances);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxCombinedClipAndCullDistances = (uint32_t) (_maxCombinedClipAndCullDistances);
 	  */
 
@@ -5159,6 +5259,7 @@
 	 */ 
 	 private static native void setDiscreteQueuePriorities0(Buffer ptr, int _discreteQueuePriorities);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->discreteQueuePriorities = (uint32_t) (_discreteQueuePriorities);
 	  */
 
@@ -5172,43 +5273,45 @@
 	 */
 
 	/**
-	 * native SET method for field pointSizeRange	[float_array]<br>
+	 * Native SET method for field pointSizeRange	[float]<br>
 	 * Prototype: float[]  pointSizeRange
 	 */ 
 	 private static native void setPointSizeRange0(Buffer ptr, float[] _pointSizeRange);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  vkObj->pointSizeRange[0] = (float) (_pointSizeRange[0]);
-		  vkObj->pointSizeRange[1] = (float) (_pointSizeRange[1]);		  
+		 // code for fixed size array 
+		  memcpy(vkObj->pointSizeRange, _pointSizeRange, 2 * sizeof(float));
 	  */
 
 	/**
-	 * native GET method for field pointSizeRange	[float_array]<br>
+	 * Native GET method for field pointSizeRange	[float]<br>
 	 * Prototype: float[]  pointSizeRange
 	 */ 
-	 private static native void getPointSizeRange0(Buffer ptr, float[] input);/*
+	 private static native float[] getPointSizeRange0(Buffer ptr, float[] _pointSizeRange);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  input[0] = (jfloat) (vkObj->pointSizeRange[0]);
-		  input[1] = (jfloat) (vkObj->pointSizeRange[1]);
+		  // fixed length array  
+		  memcpy(&_pointSizeRange, &(vkObj->pointSizeRange), 2 * sizeof(float));
+		  return _pointSizeRange;
 	 */
 
-/**
-	 * native SET method for field lineWidthRange	[float_array]<br>
+	/**
+	 * Native SET method for field lineWidthRange	[float]<br>
 	 * Prototype: float[]  lineWidthRange
 	 */ 
 	 private static native void setLineWidthRange0(Buffer ptr, float[] _lineWidthRange);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  vkObj->lineWidthRange[0] = (float) (_lineWidthRange[0]);
-		  vkObj->lineWidthRange[1] = (float) (_lineWidthRange[1]);
+		 // code for fixed size array 
+		  memcpy(vkObj->lineWidthRange, _lineWidthRange, 2 * sizeof(float));
 	  */
 
 	/**
-	 * native GET method for field lineWidthRange	[float_array]<br>
+	 * Native GET method for field lineWidthRange	[float]<br>
 	 * Prototype: float[]  lineWidthRange
 	 */ 
-	 private static native void getLineWidthRange0(Buffer ptr, float[] input);/*
+	 private static native float[] getLineWidthRange0(Buffer ptr, float[] _lineWidthRange);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
-		  input[0] = (jfloat) (vkObj->lineWidthRange[0]);
-		  input[1] = (jfloat) (vkObj->lineWidthRange[1]);
+		  // fixed length array  
+		  memcpy(&_lineWidthRange, &(vkObj->lineWidthRange), 2 * sizeof(float));
+		  return _lineWidthRange;
 	 */
 
 	/**
@@ -5217,6 +5320,7 @@
 	 */ 
 	 private static native void setPointSizeGranularity0(Buffer ptr, float _pointSizeGranularity);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->pointSizeGranularity = (float) (_pointSizeGranularity);
 	  */
 
@@ -5235,6 +5339,7 @@
 	 */ 
 	 private static native void setLineWidthGranularity0(Buffer ptr, float _lineWidthGranularity);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->lineWidthGranularity = (float) (_lineWidthGranularity);
 	  */
 
@@ -5253,6 +5358,7 @@
 	 */ 
 	 private static native void setStrictLines0(Buffer ptr, boolean  _strictLines);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->strictLines = (VkBool32) (_strictLines);
 	  */
 
@@ -5271,6 +5377,7 @@
 	 */ 
 	 private static native void setStandardSampleLocations0(Buffer ptr, boolean  _standardSampleLocations);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->standardSampleLocations = (VkBool32) (_standardSampleLocations);
 	  */
 
@@ -5289,6 +5396,7 @@
 	 */ 
 	 private static native void setOptimalBufferCopyOffsetAlignment0(Buffer ptr, long _optimalBufferCopyOffsetAlignment);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->optimalBufferCopyOffsetAlignment = (VkDeviceSize) (_optimalBufferCopyOffsetAlignment);
 	  */
 
@@ -5307,6 +5415,7 @@
 	 */ 
 	 private static native void setOptimalBufferCopyRowPitchAlignment0(Buffer ptr, long _optimalBufferCopyRowPitchAlignment);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->optimalBufferCopyRowPitchAlignment = (VkDeviceSize) (_optimalBufferCopyRowPitchAlignment);
 	  */
 
@@ -5325,6 +5434,7 @@
 	 */ 
 	 private static native void setNonCoherentAtomSize0(Buffer ptr, long _nonCoherentAtomSize);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
+		 // code for simple past value 
 		  vkObj->nonCoherentAtomSize = (VkDeviceSize) (_nonCoherentAtomSize);
 	  */
 
@@ -5336,8 +5446,6 @@
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  return (jlong) (vkObj->nonCoherentAtomSize);
 	 */
-
-
 
 
 

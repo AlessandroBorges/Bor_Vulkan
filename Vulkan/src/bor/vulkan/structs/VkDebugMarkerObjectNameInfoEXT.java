@@ -283,6 +283,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkDebugMarkerObjectNameInfoEXT* vkObj = (VkDebugMarkerObjectNameInfoEXT*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -301,6 +302,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkDebugMarkerObjectNameInfoEXT* vkObj = (VkDebugMarkerObjectNameInfoEXT*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -310,7 +312,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDebugMarkerObjectNameInfoEXT* vkObj = (VkDebugMarkerObjectNameInfoEXT*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -319,6 +322,7 @@
 	 */ 
 	 private static native void setObjectType0(Buffer ptr, int  _objectType);/*
 		  VkDebugMarkerObjectNameInfoEXT* vkObj = (VkDebugMarkerObjectNameInfoEXT*)(ptr);
+		 // code for simple past value 
 		  vkObj->objectType = (VkDebugReportObjectTypeEXT) (_objectType);
 	  */
 
@@ -337,6 +341,7 @@
 	 */ 
 	 private static native void setObject0(Buffer ptr, long _object);/*
 		  VkDebugMarkerObjectNameInfoEXT* vkObj = (VkDebugMarkerObjectNameInfoEXT*)(ptr);
+		 // code for simple past value 
 		  vkObj->object = (uint64_t) (_object);
 	  */
 

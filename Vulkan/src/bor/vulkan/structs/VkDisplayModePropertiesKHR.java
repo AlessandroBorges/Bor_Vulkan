@@ -14,7 +14,6 @@
  import static bor.vulkan.Vulkan.*; 
  import bor.vulkan.enumerations.*;
 
- import bor.vulkan.khr.*;
  import java.util.*;
  import java.nio.*;
 
@@ -201,6 +200,7 @@
 	 */ 
 	 private static native void setDisplayMode0(Buffer ptr, long  _displayMode);/*
 		  VkDisplayModePropertiesKHR* vkObj = (VkDisplayModePropertiesKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->displayMode = (VkDisplayModeKHR) (_displayMode);
 	  */
 
@@ -210,7 +210,8 @@
 	 */ 
 	 private static native long getDisplayMode0(Buffer ptr);/*
 		  VkDisplayModePropertiesKHR* vkObj = (VkDisplayModePropertiesKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->displayMode);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->displayMode);
 	 */
 
 	/**
@@ -219,6 +220,7 @@
 	 */ 
 	 private static native void setParameters0(Buffer ptr, java.nio.ByteBuffer  _parameters);/*
 		  VkDisplayModePropertiesKHR* vkObj = (VkDisplayModePropertiesKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->parameters = (VkDisplayModeParametersKHR) (_parameters);
 	  */
 
@@ -228,7 +230,8 @@
 	 */ 
 	 private static native long getParameters0(Buffer ptr);/*
 		  VkDisplayModePropertiesKHR* vkObj = (VkDisplayModePropertiesKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->parameters);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->parameters);
 	 */
 
 

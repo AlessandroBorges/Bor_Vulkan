@@ -283,6 +283,7 @@
 	 */ 
 	 private static native void setResourceOffset0(Buffer ptr, long _resourceOffset);/*
 		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
+		 // code for simple past value 
 		  vkObj->resourceOffset = (VkDeviceSize) (_resourceOffset);
 	  */
 
@@ -301,6 +302,7 @@
 	 */ 
 	 private static native void setSize0(Buffer ptr, long _size);/*
 		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
+		 // code for simple past value 
 		  vkObj->size = (VkDeviceSize) (_size);
 	  */
 
@@ -319,6 +321,7 @@
 	 */ 
 	 private static native void setMemory0(Buffer ptr, long  _memory);/*
 		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
+		 // code for simple past value 
 		  vkObj->memory = (VkDeviceMemory) (_memory);
 	  */
 
@@ -328,7 +331,8 @@
 	 */ 
 	 private static native long getMemory0(Buffer ptr);/*
 		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->memory);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->memory);
 	 */
 
 	/**
@@ -337,6 +341,7 @@
 	 */ 
 	 private static native void setMemoryOffset0(Buffer ptr, long _memoryOffset);/*
 		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
+		 // code for simple past value 
 		  vkObj->memoryOffset = (VkDeviceSize) (_memoryOffset);
 	  */
 
@@ -355,6 +360,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkSparseMemoryBindFlags) (_flags);
 	  */
 

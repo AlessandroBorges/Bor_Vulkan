@@ -338,6 +338,7 @@
 	 */ 
 	 private static native void setFailOp0(Buffer ptr, int  _failOp);/*
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
+		 // code for simple past value 
 		  vkObj->failOp = (VkStencilOp) (_failOp);
 	  */
 
@@ -356,6 +357,7 @@
 	 */ 
 	 private static native void setPassOp0(Buffer ptr, int  _passOp);/*
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
+		 // code for simple past value 
 		  vkObj->passOp = (VkStencilOp) (_passOp);
 	  */
 
@@ -374,6 +376,7 @@
 	 */ 
 	 private static native void setDepthFailOp0(Buffer ptr, int  _depthFailOp);/*
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
+		 // code for simple past value 
 		  vkObj->depthFailOp = (VkStencilOp) (_depthFailOp);
 	  */
 
@@ -392,6 +395,7 @@
 	 */ 
 	 private static native void setCompareOp0(Buffer ptr, int  _compareOp);/*
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
+		 // code for simple past value 
 		  vkObj->compareOp = (VkCompareOp) (_compareOp);
 	  */
 
@@ -410,6 +414,7 @@
 	 */ 
 	 private static native void setCompareMask0(Buffer ptr, int _compareMask);/*
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
+		 // code for simple past value 
 		  vkObj->compareMask = (uint32_t) (_compareMask);
 	  */
 
@@ -428,6 +433,7 @@
 	 */ 
 	 private static native void setWriteMask0(Buffer ptr, int _writeMask);/*
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
+		 // code for simple past value 
 		  vkObj->writeMask = (uint32_t) (_writeMask);
 	  */
 
@@ -446,6 +452,7 @@
 	 */ 
 	 private static native void setReference0(Buffer ptr, int _reference);/*
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
+		 // code for simple past value 
 		  vkObj->reference = (uint32_t) (_reference);
 	  */
 

@@ -237,7 +237,8 @@
 	 */ 
 	 public VkPipelineDynamicStateCreateInfo pDynamicStates(VkDynamicState[] pDynamicStates){
 		 this.pDynamicStates = pDynamicStates;
-		 setPDynamicStates0(this.ptr,  pDynamicStates);
+		 int[] enumArray = readEnumArray(pDynamicStates);
+		 setPDynamicStates0(this.ptr, enumArray);
 		 return this;
 	 }
 
@@ -246,7 +247,10 @@
 	 * Prototype: const VkDynamicState*  pDynamicStates
 	 */ 
 	 public VkDynamicState[] pDynamicStates(){
-		 VkDynamicState[] var = getPDynamicStates0(super.ptr, pDynamicStates);
+		 int size = dynamicStateCount();
+		 int[] values = (size==0) ? null : new int[size];
+		 values = getPDynamicStates0(super.ptr, values);
+		 VkDynamicState[] var = VkDynamicState.fromValues(this.pDynamicStates, values);
 		 this.pDynamicStates = var;
 		 return this.pDynamicStates;
 	 }
@@ -282,6 +286,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -300,6 +305,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -309,7 +315,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -318,6 +325,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkPipelineDynamicStateCreateFlags) (_flags);
 	  */
 
@@ -336,6 +344,7 @@
 	 */ 
 	 private static native void setDynamicStateCount0(Buffer ptr, int _dynamicStateCount);/*
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->dynamicStateCount = (uint32_t) (_dynamicStateCount);
 	  */
 
@@ -354,16 +363,37 @@
 	 */ 
 	 private static native void setPDynamicStates0(Buffer ptr, int[]  _pDynamicStates);/*
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
-		  vkObj->pDynamicStates = (const VkDynamicState*) (_pDynamicStates);
+		 // code for generic array 
+		  if( NULL == _pDynamicStates ){
+		    vkObj->dynamicStateCount = 0;
+		    FREE_IT(vkObj->pDynamicStates);
+		     return;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pDynamicStates);
+		  if( vkObj->dynamicStateCount != count){ 
+		    FREE_IT(vkObj->pDynamicStates); 
+		    vkObj->pDynamicStates = CALLOC(count, VkDynamicState);
+		   }
+		  memcpy( vkObj->pDynamicStates, _pDynamicStates, count * sizeof(VkDynamicState));
+		  vkObj->dynamicStateCount = count;
 	  */
 
 	/**
 	 * Native GET method for field pDynamicStates	[vkenum_array]<br>
 	 * Prototype: const VkDynamicState*  pDynamicStates
 	 */ 
-	 private static native int[]  getPDynamicStates0(Buffer ptr);/*
+	 private static native int[]  getPDynamicStates0(Buffer ptr, int[]  _pDynamicStates);/*
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
-		  return (VkDynamicState[]) (vkObj->pDynamicStates);
+		  // generic get for C type array, with content copy 
+		  if( 0 == vkObj->dynamicStateCount){ 
+		     return NULL;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pDynamicStates);
+		  if(vkObj->pDynamicStates == NULL){
+		    return NULL;
+		   }
+ 		  memcpy(_pDynamicStates, vkObj->pDynamicStates, count * sizeof(VkDynamicState));
+		  return obj__pDynamicStates;
 	 */
 
 

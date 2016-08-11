@@ -1,12 +1,5 @@
 package bor.vulkan;
 
-import java.nio.Buffer;
-
-import bor.vulkan.khr.VkDisplayKHR;
-import bor.vulkan.khr.VkDisplayModeKHR;
-import bor.vulkan.khr.VkSurfaceKHR;
-import bor.vulkan.khr.VkSwapchainKHR;
-
 /**
  * Super interface for Vulkan handlers.<br>
  * An handler wraps pointers created in native side.<br>

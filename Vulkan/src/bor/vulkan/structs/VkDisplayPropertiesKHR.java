@@ -14,7 +14,6 @@
  import static bor.vulkan.Vulkan.*; 
  import bor.vulkan.enumerations.*;
 
- import bor.vulkan.khr.*;
  import java.util.*;
  import java.nio.*;
 
@@ -366,6 +365,7 @@
 	 */ 
 	 private static native void setDisplay0(Buffer ptr, long  _display);/*
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->display = (VkDisplayKHR) (_display);
 	  */
 
@@ -375,7 +375,8 @@
 	 */ 
 	 private static native long getDisplay0(Buffer ptr);/*
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->display);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->display);
 	 */
 
 	/**
@@ -402,6 +403,7 @@
 	 */ 
 	 private static native void setPhysicalDimensions0(Buffer ptr, java.nio.ByteBuffer  _physicalDimensions);/*
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->physicalDimensions = (VkExtent2D) (_physicalDimensions);
 	  */
 
@@ -411,7 +413,8 @@
 	 */ 
 	 private static native long getPhysicalDimensions0(Buffer ptr);/*
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->physicalDimensions);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->physicalDimensions);
 	 */
 
 	/**
@@ -420,6 +423,7 @@
 	 */ 
 	 private static native void setPhysicalResolution0(Buffer ptr, java.nio.ByteBuffer  _physicalResolution);/*
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->physicalResolution = (VkExtent2D) (_physicalResolution);
 	  */
 
@@ -429,7 +433,8 @@
 	 */ 
 	 private static native long getPhysicalResolution0(Buffer ptr);/*
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->physicalResolution);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->physicalResolution);
 	 */
 
 	/**
@@ -438,6 +443,7 @@
 	 */ 
 	 private static native void setSupportedTransforms0(Buffer ptr, int _supportedTransforms);/*
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->supportedTransforms = (VkSurfaceTransformFlagsKHR) (_supportedTransforms);
 	  */
 
@@ -456,6 +462,7 @@
 	 */ 
 	 private static native void setPlaneReorderPossible0(Buffer ptr, boolean  _planeReorderPossible);/*
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->planeReorderPossible = (VkBool32) (_planeReorderPossible);
 	  */
 
@@ -474,6 +481,7 @@
 	 */ 
 	 private static native void setPersistentContent0(Buffer ptr, boolean  _persistentContent);/*
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->persistentContent = (VkBool32) (_persistentContent);
 	  */
 

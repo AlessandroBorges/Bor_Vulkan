@@ -88,6 +88,25 @@ public class VkDependencyFlagBits extends IntEnum<VkDependencyFlagBits> {
         VkDependencyFlagBits flag = new VkDependencyFlagBits(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkDependencyFlagBits from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkDependencyFlagBits array with matching values
+     */
+    public static VkDependencyFlagBits[] fromValues(VkDependencyFlagBits[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkDependencyFlagBits[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkDependencyFlagBits.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

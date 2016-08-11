@@ -220,6 +220,7 @@
 	 */ 
 	 private static native void setAspectMask0(Buffer ptr, int _aspectMask);/*
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->aspectMask = (VkImageAspectFlags) (_aspectMask);
 	  */
 
@@ -238,6 +239,7 @@
 	 */ 
 	 private static native void setImageGranularity0(Buffer ptr, java.nio.ByteBuffer  _imageGranularity);/*
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->imageGranularity = (VkExtent3D) (_imageGranularity);
 	  */
 
@@ -247,7 +249,8 @@
 	 */ 
 	 private static native long getImageGranularity0(Buffer ptr);/*
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->imageGranularity);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageGranularity);
 	 */
 
 	/**
@@ -256,6 +259,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkSparseImageFormatFlags) (_flags);
 	  */
 

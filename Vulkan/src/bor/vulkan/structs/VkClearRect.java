@@ -220,6 +220,7 @@
 	 */ 
 	 private static native void setRect0(Buffer ptr, java.nio.ByteBuffer  _rect);/*
 		  VkClearRect* vkObj = (VkClearRect*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->rect = (VkRect2D) (_rect);
 	  */
 
@@ -229,7 +230,8 @@
 	 */ 
 	 private static native long getRect0(Buffer ptr);/*
 		  VkClearRect* vkObj = (VkClearRect*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->rect);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->rect);
 	 */
 
 	/**
@@ -238,6 +240,7 @@
 	 */ 
 	 private static native void setBaseArrayLayer0(Buffer ptr, int _baseArrayLayer);/*
 		  VkClearRect* vkObj = (VkClearRect*)(ptr);
+		 // code for simple past value 
 		  vkObj->baseArrayLayer = (uint32_t) (_baseArrayLayer);
 	  */
 
@@ -256,6 +259,7 @@
 	 */ 
 	 private static native void setLayerCount0(Buffer ptr, int _layerCount);/*
 		  VkClearRect* vkObj = (VkClearRect*)(ptr);
+		 // code for simple past value 
 		  vkObj->layerCount = (uint32_t) (_layerCount);
 	  */
 

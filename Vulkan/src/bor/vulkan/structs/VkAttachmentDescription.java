@@ -404,6 +404,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkAttachmentDescriptionFlags) (_flags);
 	  */
 
@@ -422,6 +423,7 @@
 	 */ 
 	 private static native void setFormat0(Buffer ptr, int  _format);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->format = (VkFormat) (_format);
 	  */
 
@@ -440,6 +442,7 @@
 	 */ 
 	 private static native void setSamples0(Buffer ptr, int  _samples);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->samples = (VkSampleCountFlagBits) (_samples);
 	  */
 
@@ -458,6 +461,7 @@
 	 */ 
 	 private static native void setLoadOp0(Buffer ptr, int  _loadOp);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->loadOp = (VkAttachmentLoadOp) (_loadOp);
 	  */
 
@@ -476,6 +480,7 @@
 	 */ 
 	 private static native void setStoreOp0(Buffer ptr, int  _storeOp);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->storeOp = (VkAttachmentStoreOp) (_storeOp);
 	  */
 
@@ -494,6 +499,7 @@
 	 */ 
 	 private static native void setStencilLoadOp0(Buffer ptr, int  _stencilLoadOp);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->stencilLoadOp = (VkAttachmentLoadOp) (_stencilLoadOp);
 	  */
 
@@ -512,6 +518,7 @@
 	 */ 
 	 private static native void setStencilStoreOp0(Buffer ptr, int  _stencilStoreOp);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->stencilStoreOp = (VkAttachmentStoreOp) (_stencilStoreOp);
 	  */
 
@@ -530,6 +537,7 @@
 	 */ 
 	 private static native void setInitialLayout0(Buffer ptr, int  _initialLayout);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->initialLayout = (VkImageLayout) (_initialLayout);
 	  */
 
@@ -548,6 +556,7 @@
 	 */ 
 	 private static native void setFinalLayout0(Buffer ptr, int  _finalLayout);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->finalLayout = (VkImageLayout) (_finalLayout);
 	  */
 

@@ -93,6 +93,25 @@ public class VkFrontFace extends IntEnum<VkFrontFace> {
         VkFrontFace flag = new VkFrontFace(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkFrontFace from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkFrontFace array with matching values
+     */
+    public static VkFrontFace[] fromValues(VkFrontFace[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkFrontFace[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkFrontFace.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

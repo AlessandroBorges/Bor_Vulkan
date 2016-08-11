@@ -104,6 +104,25 @@ public class VkSurfaceTransformFlagBitsKHR extends IntEnum<VkSurfaceTransformFla
         VkSurfaceTransformFlagBitsKHR flag = new VkSurfaceTransformFlagBitsKHR(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkSurfaceTransformFlagBitsKHR from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkSurfaceTransformFlagBitsKHR array with matching values
+     */
+    public static VkSurfaceTransformFlagBitsKHR[] fromValues(VkSurfaceTransformFlagBitsKHR[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkSurfaceTransformFlagBitsKHR[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkSurfaceTransformFlagBitsKHR.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

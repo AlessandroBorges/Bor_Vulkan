@@ -105,6 +105,25 @@ public class VkCompareOp extends IntEnum<VkCompareOp> {
         VkCompareOp flag = new VkCompareOp(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkCompareOp from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkCompareOp array with matching values
+     */
+    public static VkCompareOp[] fromValues(VkCompareOp[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkCompareOp[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkCompareOp.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

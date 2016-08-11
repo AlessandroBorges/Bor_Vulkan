@@ -386,6 +386,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -404,6 +405,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -413,7 +415,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -422,6 +425,7 @@
 	 */ 
 	 private static native void setRenderPass0(Buffer ptr, long  _renderPass);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->renderPass = (VkRenderPass) (_renderPass);
 	  */
 
@@ -431,7 +435,8 @@
 	 */ 
 	 private static native long getRenderPass0(Buffer ptr);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->renderPass);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->renderPass);
 	 */
 
 	/**
@@ -440,6 +445,7 @@
 	 */ 
 	 private static native void setFramebuffer0(Buffer ptr, long  _framebuffer);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->framebuffer = (VkFramebuffer) (_framebuffer);
 	  */
 
@@ -449,7 +455,8 @@
 	 */ 
 	 private static native long getFramebuffer0(Buffer ptr);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->framebuffer);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->framebuffer);
 	 */
 
 	/**
@@ -458,6 +465,7 @@
 	 */ 
 	 private static native void setRenderArea0(Buffer ptr, java.nio.ByteBuffer  _renderArea);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->renderArea = (VkRect2D) (_renderArea);
 	  */
 
@@ -467,7 +475,8 @@
 	 */ 
 	 private static native long getRenderArea0(Buffer ptr);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->renderArea);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->renderArea);
 	 */
 
 	/**
@@ -476,6 +485,7 @@
 	 */ 
 	 private static native void setClearValueCount0(Buffer ptr, int _clearValueCount);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->clearValueCount = (uint32_t) (_clearValueCount);
 	  */
 
@@ -494,6 +504,7 @@
 	 */ 
 	 private static native void setPClearValues0(Buffer ptr, java.nio.ByteBuffer  _pClearValues);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pClearValues = (const VkClearValue*) (_pClearValues);
 	  */
 
@@ -503,7 +514,8 @@
 	 */ 
 	 private static native long getPClearValues0(Buffer ptr);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pClearValues);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pClearValues );
 	 */
 
 

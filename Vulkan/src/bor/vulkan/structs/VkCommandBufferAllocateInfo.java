@@ -294,6 +294,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkCommandBufferAllocateInfo* vkObj = (VkCommandBufferAllocateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -312,6 +313,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkCommandBufferAllocateInfo* vkObj = (VkCommandBufferAllocateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -321,7 +323,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkCommandBufferAllocateInfo* vkObj = (VkCommandBufferAllocateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -330,6 +333,7 @@
 	 */ 
 	 private static native void setCommandPool0(Buffer ptr, long  _commandPool);/*
 		  VkCommandBufferAllocateInfo* vkObj = (VkCommandBufferAllocateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->commandPool = (VkCommandPool) (_commandPool);
 	  */
 
@@ -339,7 +343,8 @@
 	 */ 
 	 private static native long getCommandPool0(Buffer ptr);/*
 		  VkCommandBufferAllocateInfo* vkObj = (VkCommandBufferAllocateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->commandPool);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->commandPool);
 	 */
 
 	/**
@@ -348,6 +353,7 @@
 	 */ 
 	 private static native void setLevel0(Buffer ptr, int  _level);/*
 		  VkCommandBufferAllocateInfo* vkObj = (VkCommandBufferAllocateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->level = (VkCommandBufferLevel) (_level);
 	  */
 
@@ -366,6 +372,7 @@
 	 */ 
 	 private static native void setCommandBufferCount0(Buffer ptr, int _commandBufferCount);/*
 		  VkCommandBufferAllocateInfo* vkObj = (VkCommandBufferAllocateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->commandBufferCount = (uint32_t) (_commandBufferCount);
 	  */
 

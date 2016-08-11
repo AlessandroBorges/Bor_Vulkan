@@ -221,6 +221,7 @@
 	 */ 
 	 private static native void setBuffer0(Buffer ptr, long  _buffer);/*
 		  VkDescriptorBufferInfo* vkObj = (VkDescriptorBufferInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->buffer = (VkBuffer) (_buffer);
 	  */
 
@@ -230,7 +231,8 @@
 	 */ 
 	 private static native long getBuffer0(Buffer ptr);/*
 		  VkDescriptorBufferInfo* vkObj = (VkDescriptorBufferInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->buffer);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->buffer);
 	 */
 
 	/**
@@ -239,6 +241,7 @@
 	 */ 
 	 private static native void setOffset0(Buffer ptr, long _offset);/*
 		  VkDescriptorBufferInfo* vkObj = (VkDescriptorBufferInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->offset = (VkDeviceSize) (_offset);
 	  */
 
@@ -257,6 +260,7 @@
 	 */ 
 	 private static native void setRange0(Buffer ptr, long _range);/*
 		  VkDescriptorBufferInfo* vkObj = (VkDescriptorBufferInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->range = (VkDeviceSize) (_range);
 	  */
 

@@ -220,6 +220,7 @@
 	 */ 
 	 private static native void setAspectMask0(Buffer ptr, int _aspectMask);/*
 		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
+		 // code for simple past value 
 		  vkObj->aspectMask = (VkImageAspectFlags) (_aspectMask);
 	  */
 
@@ -238,6 +239,7 @@
 	 */ 
 	 private static native void setColorAttachment0(Buffer ptr, int _colorAttachment);/*
 		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
+		 // code for simple past value 
 		  vkObj->colorAttachment = (uint32_t) (_colorAttachment);
 	  */
 
@@ -256,6 +258,7 @@
 	 */ 
 	 private static native void setClearValue0(Buffer ptr, java.nio.ByteBuffer  _clearValue);/*
 		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->clearValue = (VkClearValue) (_clearValue);
 	  */
 
@@ -265,7 +268,8 @@
 	 */ 
 	 private static native long getClearValue0(Buffer ptr);/*
 		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->clearValue);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->clearValue);
 	 */
 
 

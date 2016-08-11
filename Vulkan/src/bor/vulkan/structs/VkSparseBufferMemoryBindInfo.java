@@ -231,6 +231,7 @@
 	 */ 
 	 private static native void setBuffer0(Buffer ptr, long  _buffer);/*
 		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->buffer = (VkBuffer) (_buffer);
 	  */
 
@@ -240,7 +241,8 @@
 	 */ 
 	 private static native long getBuffer0(Buffer ptr);/*
 		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->buffer);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->buffer);
 	 */
 
 	/**
@@ -249,6 +251,7 @@
 	 */ 
 	 private static native void setBindCount0(Buffer ptr, int _bindCount);/*
 		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->bindCount = (uint32_t) (_bindCount);
 	  */
 
@@ -267,6 +270,7 @@
 	 */ 
 	 private static native void setPBinds0(Buffer ptr, java.nio.ByteBuffer  _pBinds);/*
 		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pBinds = (const VkSparseMemoryBind*) (_pBinds);
 	  */
 
@@ -276,7 +280,8 @@
 	 */ 
 	 private static native long getPBinds0(Buffer ptr);/*
 		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pBinds);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pBinds );
 	 */
 
 

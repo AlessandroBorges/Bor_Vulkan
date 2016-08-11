@@ -436,6 +436,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -454,6 +455,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -463,7 +465,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -472,6 +475,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkRenderPassCreateFlags) (_flags);
 	  */
 
@@ -490,6 +494,7 @@
 	 */ 
 	 private static native void setAttachmentCount0(Buffer ptr, int _attachmentCount);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->attachmentCount = (uint32_t) (_attachmentCount);
 	  */
 
@@ -508,6 +513,7 @@
 	 */ 
 	 private static native void setPAttachments0(Buffer ptr, java.nio.ByteBuffer  _pAttachments);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pAttachments = (const VkAttachmentDescription*) (_pAttachments);
 	  */
 
@@ -517,7 +523,8 @@
 	 */ 
 	 private static native long getPAttachments0(Buffer ptr);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pAttachments);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pAttachments );
 	 */
 
 	/**
@@ -526,6 +533,7 @@
 	 */ 
 	 private static native void setSubpassCount0(Buffer ptr, int _subpassCount);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->subpassCount = (uint32_t) (_subpassCount);
 	  */
 
@@ -544,6 +552,7 @@
 	 */ 
 	 private static native void setPSubpasses0(Buffer ptr, java.nio.ByteBuffer  _pSubpasses);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pSubpasses = (const VkSubpassDescription*) (_pSubpasses);
 	  */
 
@@ -553,7 +562,8 @@
 	 */ 
 	 private static native long getPSubpasses0(Buffer ptr);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pSubpasses);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pSubpasses );
 	 */
 
 	/**
@@ -562,6 +572,7 @@
 	 */ 
 	 private static native void setDependencyCount0(Buffer ptr, int _dependencyCount);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->dependencyCount = (uint32_t) (_dependencyCount);
 	  */
 
@@ -580,6 +591,7 @@
 	 */ 
 	 private static native void setPDependencies0(Buffer ptr, java.nio.ByteBuffer  _pDependencies);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pDependencies = (const VkSubpassDependency*) (_pDependencies);
 	  */
 
@@ -589,7 +601,8 @@
 	 */ 
 	 private static native long getPDependencies0(Buffer ptr);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pDependencies);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pDependencies );
 	 */
 
 

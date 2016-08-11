@@ -105,6 +105,25 @@ public class VkStencilOp extends IntEnum<VkStencilOp> {
         VkStencilOp flag = new VkStencilOp(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkStencilOp from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkStencilOp array with matching values
+     */
+    public static VkStencilOp[] fromValues(VkStencilOp[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkStencilOp[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkStencilOp.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

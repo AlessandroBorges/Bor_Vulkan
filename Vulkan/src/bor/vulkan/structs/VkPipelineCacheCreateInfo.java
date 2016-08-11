@@ -285,6 +285,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkPipelineCacheCreateInfo* vkObj = (VkPipelineCacheCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -303,6 +304,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineCacheCreateInfo* vkObj = (VkPipelineCacheCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -312,7 +314,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineCacheCreateInfo* vkObj = (VkPipelineCacheCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -321,6 +324,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkPipelineCacheCreateInfo* vkObj = (VkPipelineCacheCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkPipelineCacheCreateFlags) (_flags);
 	  */
 
@@ -339,6 +343,7 @@
 	 */ 
 	 private static native void setInitialDataSize0(Buffer ptr, long _initialDataSize);/*
 		  VkPipelineCacheCreateInfo* vkObj = (VkPipelineCacheCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->initialDataSize = (size_t) (_initialDataSize);
 	  */
 
@@ -357,6 +362,7 @@
 	 */ 
 	 private static native void setPInitialData0(Buffer ptr, java.nio.Buffer _pInitialData);/*
 		  VkPipelineCacheCreateInfo* vkObj = (VkPipelineCacheCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pInitialData = (const void*) (_pInitialData);
 	  */
 
@@ -366,7 +372,8 @@
 	 */ 
 	 private static native long getPInitialData0(Buffer ptr);/*
 		  VkPipelineCacheCreateInfo* vkObj = (VkPipelineCacheCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pInitialData);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pInitialData);
 	 */
 
 

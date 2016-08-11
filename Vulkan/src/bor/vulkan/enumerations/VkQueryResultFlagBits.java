@@ -94,6 +94,25 @@ public class VkQueryResultFlagBits extends IntEnum<VkQueryResultFlagBits> {
         VkQueryResultFlagBits flag = new VkQueryResultFlagBits(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkQueryResultFlagBits from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkQueryResultFlagBits array with matching values
+     */
+    public static VkQueryResultFlagBits[] fromValues(VkQueryResultFlagBits[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkQueryResultFlagBits[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkQueryResultFlagBits.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

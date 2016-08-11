@@ -334,6 +334,7 @@
 	 */ 
 	 private static native void setSrcSubpass0(Buffer ptr, int _srcSubpass);/*
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
+		 // code for simple past value 
 		  vkObj->srcSubpass = (uint32_t) (_srcSubpass);
 	  */
 
@@ -352,6 +353,7 @@
 	 */ 
 	 private static native void setDstSubpass0(Buffer ptr, int _dstSubpass);/*
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
+		 // code for simple past value 
 		  vkObj->dstSubpass = (uint32_t) (_dstSubpass);
 	  */
 
@@ -370,6 +372,7 @@
 	 */ 
 	 private static native void setSrcStageMask0(Buffer ptr, int _srcStageMask);/*
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
+		 // code for simple past value 
 		  vkObj->srcStageMask = (VkPipelineStageFlags) (_srcStageMask);
 	  */
 
@@ -388,6 +391,7 @@
 	 */ 
 	 private static native void setDstStageMask0(Buffer ptr, int _dstStageMask);/*
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
+		 // code for simple past value 
 		  vkObj->dstStageMask = (VkPipelineStageFlags) (_dstStageMask);
 	  */
 
@@ -406,6 +410,7 @@
 	 */ 
 	 private static native void setSrcAccessMask0(Buffer ptr, int _srcAccessMask);/*
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
+		 // code for simple past value 
 		  vkObj->srcAccessMask = (VkAccessFlags) (_srcAccessMask);
 	  */
 
@@ -424,6 +429,7 @@
 	 */ 
 	 private static native void setDstAccessMask0(Buffer ptr, int _dstAccessMask);/*
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
+		 // code for simple past value 
 		  vkObj->dstAccessMask = (VkAccessFlags) (_dstAccessMask);
 	  */
 
@@ -442,6 +448,7 @@
 	 */ 
 	 private static native void setDependencyFlags0(Buffer ptr, int _dependencyFlags);/*
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
+		 // code for simple past value 
 		  vkObj->dependencyFlags = (VkDependencyFlags) (_dependencyFlags);
 	  */
 

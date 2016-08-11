@@ -254,6 +254,7 @@
 	 */ 
 	 private static native void setMapEntryCount0(Buffer ptr, int _mapEntryCount);/*
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->mapEntryCount = (uint32_t) (_mapEntryCount);
 	  */
 
@@ -272,6 +273,7 @@
 	 */ 
 	 private static native void setPMapEntries0(Buffer ptr, java.nio.ByteBuffer  _pMapEntries);/*
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pMapEntries = (const VkSpecializationMapEntry*) (_pMapEntries);
 	  */
 
@@ -281,7 +283,8 @@
 	 */ 
 	 private static native long getPMapEntries0(Buffer ptr);/*
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pMapEntries);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pMapEntries );
 	 */
 
 	/**
@@ -290,6 +293,7 @@
 	 */ 
 	 private static native void setDataSize0(Buffer ptr, long _dataSize);/*
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->dataSize = (size_t) (_dataSize);
 	  */
 
@@ -308,6 +312,7 @@
 	 */ 
 	 private static native void setPData0(Buffer ptr, java.nio.Buffer _pData);/*
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pData = (const void*) (_pData);
 	  */
 
@@ -317,7 +322,8 @@
 	 */ 
 	 private static native long getPData0(Buffer ptr);/*
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pData);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pData);
 	 */
 
 

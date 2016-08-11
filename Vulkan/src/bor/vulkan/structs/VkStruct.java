@@ -3,21 +3,19 @@
  */
 package bor.vulkan.structs;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
-import java.util.ArrayList;
+import java.nio.FloatBuffer;
+import java.nio.IntBuffer;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
+import bor.enumerable.IntEnum;
 import bor.util.BigBuffer;
 import bor.util.Utils;
-import bor.vulkan.*;
-import bor.vulkan.khr.structs.*;
-import sun.nio.ch.DirectBuffer;
+import bor.vulkan.VkHandleInterface;
+import bor.vulkan.VkObject;
 
 /**
  *
@@ -508,6 +506,24 @@ public abstract class VkStruct implements VkObject{
     }
     
     /**
+     * Read a enumeration array and convert it to int array
+     * @param array - Enumeration array to read int values
+     * @return int[] with enumeration values
+     */
+    /* package */ int[] readEnumArray(IntEnum<?>[] array){
+        if(array == null)
+            return null;
+        
+        int[] res = new int[array.length];
+        for (int i = 0; i < res.length; i++) {
+            res[i] = array[i].getValue();
+        }
+        return res;
+    }
+    
+       
+    
+    /**
      * 
      * @param bb - buffer to check
      * @return true if it is native allocated
@@ -740,6 +756,47 @@ public abstract class VkStruct implements VkObject{
     */
 
    
+    /**
+     * Create and populate direct, garbage collectable, IntBuffer 
+     * @param data - data to put it
+     * @return a IntBuffer with data[] content, with postion 0
+     */
+    protected IntBuffer allocateBuffer(int[] data){
+        if(data == null) 
+            return null;        
+       ByteBuffer bb = createBuffer(4*data.length);
+       IntBuffer buffer =  bb.asIntBuffer();
+       buffer.put(data);
+       buffer.rewind();
+       buffer.capacity();
+       return buffer;
+    }
+    
+    /**
+     * Create and populate direct, garbage collectable, FloatBuffer 
+     * @param data - data to put it
+     * @return a IntBuffer with data[] content, with postion 0
+     */
+    protected FloatBuffer allocateBuffer(float[] data){
+        if(data == null) 
+            return null;        
+       ByteBuffer bb = createBuffer(4*data.length);
+       FloatBuffer buffer =  bb.asFloatBuffer();
+       buffer.put(data);
+       buffer.rewind();
+       return buffer;
+    }
+    
+    /**
+     * Create a direct ByteBuffer. 
+     * @param sizeBytes - size in bytes
+     * @return Direct buffer, garbage collectable 
+     */
+    protected static ByteBuffer createBuffer(int sizeBytes){
+        ByteBuffer bb = ByteBuffer.allocateDirect(sizeBytes);
+        bb.order(ByteOrder.nativeOrder());
+        return bb;
+    }
     
     /**
      * Creates a new Instance of a VkStruct

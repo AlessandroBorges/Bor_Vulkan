@@ -364,6 +364,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -382,6 +383,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -391,7 +393,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -400,6 +403,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkPipelineVertexInputStateCreateFlags) (_flags);
 	  */
 
@@ -418,6 +422,7 @@
 	 */ 
 	 private static native void setVertexBindingDescriptionCount0(Buffer ptr, int _vertexBindingDescriptionCount);/*
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->vertexBindingDescriptionCount = (uint32_t) (_vertexBindingDescriptionCount);
 	  */
 
@@ -436,6 +441,7 @@
 	 */ 
 	 private static native void setPVertexBindingDescriptions0(Buffer ptr, java.nio.ByteBuffer  _pVertexBindingDescriptions);/*
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pVertexBindingDescriptions = (const VkVertexInputBindingDescription*) (_pVertexBindingDescriptions);
 	  */
 
@@ -445,7 +451,8 @@
 	 */ 
 	 private static native long getPVertexBindingDescriptions0(Buffer ptr);/*
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pVertexBindingDescriptions);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pVertexBindingDescriptions );
 	 */
 
 	/**
@@ -454,6 +461,7 @@
 	 */ 
 	 private static native void setVertexAttributeDescriptionCount0(Buffer ptr, int _vertexAttributeDescriptionCount);/*
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->vertexAttributeDescriptionCount = (uint32_t) (_vertexAttributeDescriptionCount);
 	  */
 
@@ -472,6 +480,7 @@
 	 */ 
 	 private static native void setPVertexAttributeDescriptions0(Buffer ptr, java.nio.ByteBuffer  _pVertexAttributeDescriptions);/*
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pVertexAttributeDescriptions = (const VkVertexInputAttributeDescription*) (_pVertexAttributeDescriptions);
 	  */
 
@@ -481,7 +490,8 @@
 	 */ 
 	 private static native long getPVertexAttributeDescriptions0(Buffer ptr);/*
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pVertexAttributeDescriptions);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pVertexAttributeDescriptions );
 	 */
 
 

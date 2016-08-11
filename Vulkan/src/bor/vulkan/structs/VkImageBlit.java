@@ -279,6 +279,7 @@
 	 */ 
 	 private static native void setSrcSubresource0(Buffer ptr, java.nio.ByteBuffer  _srcSubresource);/*
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->srcSubresource = (VkImageSubresourceLayers) (_srcSubresource);
 	  */
 
@@ -288,7 +289,8 @@
 	 */ 
 	 private static native long getSrcSubresource0(Buffer ptr);/*
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->srcSubresource);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->srcSubresource);
 	 */
 
 	/**
@@ -297,7 +299,8 @@
 	 */ 
 	 private static native void setSrcOffsets0(Buffer ptr, java.nio.ByteBuffer  _srcOffsets);/*
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		  memcpy(&(vkObj->srcOffsets), &_srcOffsets, 2 * sizeof(VkOffset3D));
+		 // code for Buffer - referenced by ptr
+		  vkObj->srcOffsets = (VkOffset3D[]) (_srcOffsets);
 	  */
 
 	/**
@@ -306,7 +309,8 @@
 	 */ 
 	 private static native long getSrcOffsets0(Buffer ptr);/*
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->srcOffsets);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->srcOffsets );
 	 */
 
 	/**
@@ -315,6 +319,7 @@
 	 */ 
 	 private static native void setDstSubresource0(Buffer ptr, java.nio.ByteBuffer  _dstSubresource);/*
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->dstSubresource = (VkImageSubresourceLayers) (_dstSubresource);
 	  */
 
@@ -324,7 +329,8 @@
 	 */ 
 	 private static native long getDstSubresource0(Buffer ptr);/*
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->dstSubresource);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->dstSubresource);
 	 */
 
 	/**
@@ -333,7 +339,8 @@
 	 */ 
 	 private static native void setDstOffsets0(Buffer ptr, java.nio.ByteBuffer  _dstOffsets);/*
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		  memcpy(&(vkObj->dstOffsets), &_dstOffsets, 2 * sizeof(VkOffset3D));
+		 // code for Buffer - referenced by ptr
+		  vkObj->dstOffsets = (VkOffset3D[]) (_dstOffsets);
 	  */
 
 	/**
@@ -342,7 +349,8 @@
 	 */ 
 	 private static native long getDstOffsets0(Buffer ptr);/*
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->dstOffsets);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->dstOffsets );
 	 */
 
 

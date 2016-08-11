@@ -344,6 +344,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -362,6 +363,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -371,7 +373,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -398,6 +401,7 @@
 	 */ 
 	 private static native void setApplicationVersion0(Buffer ptr, int _applicationVersion);/*
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->applicationVersion = (uint32_t) (_applicationVersion);
 	  */
 
@@ -434,6 +438,7 @@
 	 */ 
 	 private static native void setEngineVersion0(Buffer ptr, int _engineVersion);/*
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->engineVersion = (uint32_t) (_engineVersion);
 	  */
 
@@ -452,6 +457,7 @@
 	 */ 
 	 private static native void setApiVersion0(Buffer ptr, int _apiVersion);/*
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->apiVersion = (uint32_t) (_apiVersion);
 	  */
 

@@ -251,6 +251,7 @@
 	 */ 
 	 private static native void setQueueFlags0(Buffer ptr, int _queueFlags);/*
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->queueFlags = (VkQueueFlags) (_queueFlags);
 	  */
 
@@ -269,6 +270,7 @@
 	 */ 
 	 private static native void setQueueCount0(Buffer ptr, int _queueCount);/*
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->queueCount = (uint32_t) (_queueCount);
 	  */
 
@@ -287,6 +289,7 @@
 	 */ 
 	 private static native void setTimestampValidBits0(Buffer ptr, int _timestampValidBits);/*
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->timestampValidBits = (uint32_t) (_timestampValidBits);
 	  */
 
@@ -305,6 +308,7 @@
 	 */ 
 	 private static native void setMinImageTransferGranularity0(Buffer ptr, java.nio.ByteBuffer  _minImageTransferGranularity);/*
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->minImageTransferGranularity = (VkExtent3D) (_minImageTransferGranularity);
 	  */
 
@@ -314,7 +318,8 @@
 	 */ 
 	 private static native long getMinImageTransferGranularity0(Buffer ptr);/*
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->minImageTransferGranularity);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->minImageTransferGranularity);
 	 */
 
 

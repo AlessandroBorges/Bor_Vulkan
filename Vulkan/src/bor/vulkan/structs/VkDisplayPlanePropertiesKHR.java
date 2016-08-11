@@ -14,7 +14,6 @@
  import static bor.vulkan.Vulkan.*; 
  import bor.vulkan.enumerations.*;
 
- import bor.vulkan.khr.*;
  import java.util.*;
  import java.nio.*;
 
@@ -191,6 +190,7 @@
 	 */ 
 	 private static native void setCurrentDisplay0(Buffer ptr, long  _currentDisplay);/*
 		  VkDisplayPlanePropertiesKHR* vkObj = (VkDisplayPlanePropertiesKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->currentDisplay = (VkDisplayKHR) (_currentDisplay);
 	  */
 
@@ -200,7 +200,8 @@
 	 */ 
 	 private static native long getCurrentDisplay0(Buffer ptr);/*
 		  VkDisplayPlanePropertiesKHR* vkObj = (VkDisplayPlanePropertiesKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->currentDisplay);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->currentDisplay);
 	 */
 
 	/**
@@ -209,6 +210,7 @@
 	 */ 
 	 private static native void setCurrentStackIndex0(Buffer ptr, int _currentStackIndex);/*
 		  VkDisplayPlanePropertiesKHR* vkObj = (VkDisplayPlanePropertiesKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->currentStackIndex = (uint32_t) (_currentStackIndex);
 	  */
 

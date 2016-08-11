@@ -5,9 +5,10 @@
      * Set method for field ppEnabledLayerNames [string_arr]<br>
      * Prototype: const char* const*  ppEnabledLayerNames
      */ 
-     public void ppEnabledLayerNames(String[] ppEnabledLayerNames){
+     public VkDeviceCreateInfo ppEnabledLayerNames(String[] ppEnabledLayerNames){
          this.ppEnabledLayerNames = ppEnabledLayerNames;
          setPpEnabledLayerNames0(this.ptr,  ppEnabledLayerNames);
+		 return this;
      }
 //#END
 
@@ -34,9 +35,10 @@
      * Set method for field ppEnabledExtensionNames [string_arr]<br>
      * Prototype: const char* const*  ppEnabledExtensionNames
      */ 
-     public void ppEnabledExtensionNames(String[] ppEnabledExtensionNames){
+     public VkDeviceCreateInfo ppEnabledExtensionNames(String[] ppEnabledExtensionNames){
          this.ppEnabledExtensionNames = ppEnabledExtensionNames;
          setPpEnabledExtensionNames0(this.ptr,  ppEnabledExtensionNames);
+		 return this;
      }
      
 //#END

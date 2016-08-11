@@ -693,6 +693,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -711,6 +712,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -720,7 +722,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -729,6 +732,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkSamplerCreateFlags) (_flags);
 	  */
 
@@ -747,6 +751,7 @@
 	 */ 
 	 private static native void setMagFilter0(Buffer ptr, int  _magFilter);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->magFilter = (VkFilter) (_magFilter);
 	  */
 
@@ -765,6 +770,7 @@
 	 */ 
 	 private static native void setMinFilter0(Buffer ptr, int  _minFilter);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->minFilter = (VkFilter) (_minFilter);
 	  */
 
@@ -783,6 +789,7 @@
 	 */ 
 	 private static native void setMipmapMode0(Buffer ptr, int  _mipmapMode);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->mipmapMode = (VkSamplerMipmapMode) (_mipmapMode);
 	  */
 
@@ -801,6 +808,7 @@
 	 */ 
 	 private static native void setAddressModeU0(Buffer ptr, int  _addressModeU);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->addressModeU = (VkSamplerAddressMode) (_addressModeU);
 	  */
 
@@ -819,6 +827,7 @@
 	 */ 
 	 private static native void setAddressModeV0(Buffer ptr, int  _addressModeV);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->addressModeV = (VkSamplerAddressMode) (_addressModeV);
 	  */
 
@@ -837,6 +846,7 @@
 	 */ 
 	 private static native void setAddressModeW0(Buffer ptr, int  _addressModeW);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->addressModeW = (VkSamplerAddressMode) (_addressModeW);
 	  */
 
@@ -855,6 +865,7 @@
 	 */ 
 	 private static native void setMipLodBias0(Buffer ptr, float _mipLodBias);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->mipLodBias = (float) (_mipLodBias);
 	  */
 
@@ -873,6 +884,7 @@
 	 */ 
 	 private static native void setAnisotropyEnable0(Buffer ptr, boolean  _anisotropyEnable);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->anisotropyEnable = (VkBool32) (_anisotropyEnable);
 	  */
 
@@ -891,6 +903,7 @@
 	 */ 
 	 private static native void setMaxAnisotropy0(Buffer ptr, float _maxAnisotropy);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxAnisotropy = (float) (_maxAnisotropy);
 	  */
 
@@ -909,6 +922,7 @@
 	 */ 
 	 private static native void setCompareEnable0(Buffer ptr, boolean  _compareEnable);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->compareEnable = (VkBool32) (_compareEnable);
 	  */
 
@@ -927,6 +941,7 @@
 	 */ 
 	 private static native void setCompareOp0(Buffer ptr, int  _compareOp);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->compareOp = (VkCompareOp) (_compareOp);
 	  */
 
@@ -945,6 +960,7 @@
 	 */ 
 	 private static native void setMinLod0(Buffer ptr, float _minLod);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->minLod = (float) (_minLod);
 	  */
 
@@ -963,6 +979,7 @@
 	 */ 
 	 private static native void setMaxLod0(Buffer ptr, float _maxLod);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxLod = (float) (_maxLod);
 	  */
 
@@ -981,6 +998,7 @@
 	 */ 
 	 private static native void setBorderColor0(Buffer ptr, int  _borderColor);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->borderColor = (VkBorderColor) (_borderColor);
 	  */
 
@@ -999,6 +1017,7 @@
 	 */ 
 	 private static native void setUnnormalizedCoordinates0(Buffer ptr, boolean  _unnormalizedCoordinates);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->unnormalizedCoordinates = (VkBool32) (_unnormalizedCoordinates);
 	  */
 

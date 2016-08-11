@@ -95,6 +95,25 @@ public class VkAttachmentLoadOp extends IntEnum<VkAttachmentLoadOp> {
         VkAttachmentLoadOp flag = new VkAttachmentLoadOp(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkAttachmentLoadOp from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkAttachmentLoadOp array with matching values
+     */
+    public static VkAttachmentLoadOp[] fromValues(VkAttachmentLoadOp[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkAttachmentLoadOp[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkAttachmentLoadOp.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

@@ -316,6 +316,9 @@
 		 return this.queueFamilyIndexCount;
 	 }
 
+// #Included setPQueueFamilyIndices
+   private IntBuffer pQueueFamilyIndicesBuff;
+
 	/**
 	 * Set method for field pQueueFamilyIndices	[int]<br>
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
@@ -325,9 +328,23 @@
 	 */ 
 	 public VkBufferCreateInfo pQueueFamilyIndices(int[] pQueueFamilyIndices){
 		 this.pQueueFamilyIndices = pQueueFamilyIndices;
-		 setPQueueFamilyIndices0(this.ptr,  pQueueFamilyIndices);
+		 if(pQueueFamilyIndices == null){
+		   setPQueueFamilyIndices0(this.ptr, null, 0);
+                   return this;			
+		 }
+		 int len = pQueueFamilyIndices.length;
+		 if(pQueueFamilyIndicesBuff == null || 
+		    pQueueFamilyIndicesBuff.capacity() < len){
+		   pQueueFamilyIndicesBuff = allocateBuffer(pQueueFamilyIndices);
+           setPQueueFamilyIndices0(this.ptr,  this.pQueueFamilyIndicesBuff, len);		   
+		 }else{ // just update data in buffer
+			 pQueueFamilyIndicesBuff.rewind();
+			 pQueueFamilyIndicesBuff.put(pQueueFamilyIndices);
+		 }
 		 return this;
 	 }
+
+//#END Set Included
 
 	/**
 	 * Get method for field pQueueFamilyIndices	[int]<br>
@@ -376,6 +393,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -394,6 +412,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -403,7 +422,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -412,6 +432,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkBufferCreateFlags) (_flags);
 	  */
 
@@ -430,6 +451,7 @@
 	 */ 
 	 private static native void setSize0(Buffer ptr, long _size);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->size = (VkDeviceSize) (_size);
 	  */
 
@@ -448,6 +470,7 @@
 	 */ 
 	 private static native void setUsage0(Buffer ptr, int _usage);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->usage = (VkBufferUsageFlags) (_usage);
 	  */
 
@@ -466,6 +489,7 @@
 	 */ 
 	 private static native void setSharingMode0(Buffer ptr, int  _sharingMode);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sharingMode = (VkSharingMode) (_sharingMode);
 	  */
 
@@ -484,6 +508,7 @@
 	 */ 
 	 private static native void setQueueFamilyIndexCount0(Buffer ptr, int _queueFamilyIndexCount);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->queueFamilyIndexCount = (uint32_t) (_queueFamilyIndexCount);
 	  */
 
@@ -500,19 +525,35 @@
 	 * Native SET method for field pQueueFamilyIndices	[int]<br>
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
-	 private static native void setPQueueFamilyIndices0(Buffer ptr, int[] _pQueueFamilyIndices);/*
+	 private static native void setPQueueFamilyIndices0(Buffer ptr, 
+	                                                    IntBuffer _pQueueFamilyIndices, 
+														int len);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
-		  vkObj->pQueueFamilyIndices = (const uint32_t*) (_pQueueFamilyIndices);
+		 // code for generic array 
+		  uint32_t count = (uint32_t) len;		  
+		  vkObj->queueFamilyIndexCount = count;
+		  vkObj->pQueueFamilyIndices = (uint32_t*)_pQueueFamilyIndices ;		  
 	  */
 
 	/**
 	 * Native GET method for field pQueueFamilyIndices	[int]<br>
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
-	 private static native int[] getPQueueFamilyIndices0(Buffer ptr);/*
+	 private static native int[] getPQueueFamilyIndices0(Buffer ptr, int[] _pQueueFamilyIndices);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
-		  return (int[]) (vkObj->pQueueFamilyIndices);
+		  // generic get for C type array, with content copy 
+		  if( 0 == vkObj->queueFamilyIndexCount){ 
+		     return NULL;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pQueueFamilyIndices);
+		  if(vkObj->pQueueFamilyIndices == NULL){
+		    return NULL;
+		   }
+ 		  memcpy(_pQueueFamilyIndices, vkObj->pQueueFamilyIndices, count * sizeof(uint32_t));
+		  return obj__pQueueFamilyIndices;
 	 */
+
+
 
 
 

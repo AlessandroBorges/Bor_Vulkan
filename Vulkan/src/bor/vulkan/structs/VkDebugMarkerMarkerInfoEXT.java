@@ -208,7 +208,7 @@
 	 */ 
 	 public VkDebugMarkerMarkerInfoEXT color(float[] color){
 		 if(color == null)
-		     java.util.Arrays.fill(this.color , 0);
+		     java.util.Arrays.fill(this.color , (float) 0);
 		  else
 		     System.arraycopy(color, 0, this.color, 0, this.color.length); 
 
@@ -255,6 +255,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkDebugMarkerMarkerInfoEXT* vkObj = (VkDebugMarkerMarkerInfoEXT*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -273,6 +274,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkDebugMarkerMarkerInfoEXT* vkObj = (VkDebugMarkerMarkerInfoEXT*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -282,7 +284,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDebugMarkerMarkerInfoEXT* vkObj = (VkDebugMarkerMarkerInfoEXT*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -309,15 +312,17 @@
 	 */ 
 	 private static native void setColor0(Buffer ptr, float[] _color);/*
 		  VkDebugMarkerMarkerInfoEXT* vkObj = (VkDebugMarkerMarkerInfoEXT*)(ptr);
-		  memcpy(&(vkObj->color), &_color, 4 * sizeof(float));
+		 // code for fixed size array 
+		  memcpy(vkObj->color, _color, 4 * sizeof(float));
 	  */
 
 	/**
 	 * Native GET method for field color	[float]<br>
 	 * Prototype: float[]  color
 	 */ 
-	 private static native float[] getColor0(Buffer ptr, float[] color);/*
+	 private static native float[] getColor0(Buffer ptr, float[] _color);/*
 		  VkDebugMarkerMarkerInfoEXT* vkObj = (VkDebugMarkerMarkerInfoEXT*)(ptr);
+		  // fixed length array  
 		  memcpy(&_color, &(vkObj->color), 4 * sizeof(float));
 		  return _color;
 	 */

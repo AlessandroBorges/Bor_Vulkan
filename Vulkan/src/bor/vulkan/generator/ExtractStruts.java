@@ -18,7 +18,7 @@ public class ExtractStruts {
      */
    
     private static final boolean saveFile = true;
-    private static final boolean printID = true;
+    private static final boolean printID = false;
     private static final boolean printStruct = false;
     private static boolean exportStructs = true;
     private static boolean showAtConsole = false;
@@ -78,7 +78,7 @@ public class ExtractStruts {
              
                 String txt = info.toJavaSrc(pkg, includeFolder);
                 if(saveFile){
-                    System.out.println("Saving struct " + nameFile);
+                    //System.out.println("Saving struct " + nameFile);
                     save(basePath, nameFile, txt);
                 }
                 if(printStruct){

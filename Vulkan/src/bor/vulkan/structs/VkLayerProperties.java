@@ -265,6 +265,7 @@
 	 */ 
 	 private static native void setSpecVersion0(Buffer ptr, int _specVersion);/*
 		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->specVersion = (uint32_t) (_specVersion);
 	  */
 
@@ -283,6 +284,7 @@
 	 */ 
 	 private static native void setImplementationVersion0(Buffer ptr, int _implementationVersion);/*
 		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->implementationVersion = (uint32_t) (_implementationVersion);
 	  */
 

@@ -292,6 +292,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkDescriptorSetLayoutCreateInfo* vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -310,6 +311,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkDescriptorSetLayoutCreateInfo* vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -319,7 +321,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDescriptorSetLayoutCreateInfo* vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -328,6 +331,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkDescriptorSetLayoutCreateInfo* vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkDescriptorSetLayoutCreateFlags) (_flags);
 	  */
 
@@ -346,6 +350,7 @@
 	 */ 
 	 private static native void setBindingCount0(Buffer ptr, int _bindingCount);/*
 		  VkDescriptorSetLayoutCreateInfo* vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->bindingCount = (uint32_t) (_bindingCount);
 	  */
 
@@ -364,6 +369,7 @@
 	 */ 
 	 private static native void setPBindings0(Buffer ptr, java.nio.ByteBuffer  _pBindings);/*
 		  VkDescriptorSetLayoutCreateInfo* vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pBindings = (const VkDescriptorSetLayoutBinding*) (_pBindings);
 	  */
 
@@ -373,7 +379,8 @@
 	 */ 
 	 private static native long getPBindings0(Buffer ptr);/*
 		  VkDescriptorSetLayoutCreateInfo* vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pBindings);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pBindings );
 	 */
 
 

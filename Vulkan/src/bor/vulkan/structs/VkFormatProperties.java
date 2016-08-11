@@ -210,6 +210,7 @@
 	 */ 
 	 private static native void setLinearTilingFeatures0(Buffer ptr, int _linearTilingFeatures);/*
 		  VkFormatProperties* vkObj = (VkFormatProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->linearTilingFeatures = (VkFormatFeatureFlags) (_linearTilingFeatures);
 	  */
 
@@ -228,6 +229,7 @@
 	 */ 
 	 private static native void setOptimalTilingFeatures0(Buffer ptr, int _optimalTilingFeatures);/*
 		  VkFormatProperties* vkObj = (VkFormatProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->optimalTilingFeatures = (VkFormatFeatureFlags) (_optimalTilingFeatures);
 	  */
 
@@ -246,6 +248,7 @@
 	 */ 
 	 private static native void setBufferFeatures0(Buffer ptr, int _bufferFeatures);/*
 		  VkFormatProperties* vkObj = (VkFormatProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->bufferFeatures = (VkFormatFeatureFlags) (_bufferFeatures);
 	  */
 

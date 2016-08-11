@@ -313,6 +313,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -331,6 +332,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -340,7 +342,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -349,6 +352,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkDeviceQueueCreateFlags) (_flags);
 	  */
 
@@ -367,6 +371,7 @@
 	 */ 
 	 private static native void setQueueFamilyIndex0(Buffer ptr, int _queueFamilyIndex);/*
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->queueFamilyIndex = (uint32_t) (_queueFamilyIndex);
 	  */
 
@@ -385,6 +390,7 @@
 	 */ 
 	 private static native void setQueueCount0(Buffer ptr, int _queueCount);/*
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->queueCount = (uint32_t) (_queueCount);
 	  */
 
@@ -403,16 +409,37 @@
 	 */ 
 	 private static native void setPQueuePriorities0(Buffer ptr, float[] _pQueuePriorities);/*
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
-		  vkObj->pQueuePriorities = (const float*) (_pQueuePriorities);
+		 // code for generic array 
+		  if( NULL == _pQueuePriorities ){
+		    vkObj->queueCount = 0;
+		    FREE_IT(vkObj->pQueuePriorities);
+		     return;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pQueuePriorities);
+		  if( vkObj->queueCount != count){ 
+		    FREE_IT(vkObj->pQueuePriorities); 
+		    vkObj->pQueuePriorities = CALLOC(count, float);
+		   }
+		  memcpy( vkObj->pQueuePriorities, _pQueuePriorities, count * sizeof(float));
+		  vkObj->queueCount = count;
 	  */
 
 	/**
 	 * Native GET method for field pQueuePriorities	[float]<br>
 	 * Prototype: const float*  pQueuePriorities
 	 */ 
-	 private static native float[] getPQueuePriorities0(Buffer ptr);/*
+	 private static native float[] getPQueuePriorities0(Buffer ptr, float[] _pQueuePriorities);/*
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
-		  return (float[]) (vkObj->pQueuePriorities);
+		  // generic get for C type array, with content copy 
+		  if( 0 == vkObj->queueCount){ 
+		     return NULL;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pQueuePriorities);
+		  if(vkObj->pQueuePriorities == NULL){
+		    return NULL;
+		   }
+ 		  memcpy(_pQueuePriorities, vkObj->pQueuePriorities, count * sizeof(float));
+		  return obj__pQueuePriorities;
 	 */
 
 

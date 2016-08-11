@@ -14,7 +14,6 @@
  import static bor.vulkan.Vulkan.*; 
  import bor.vulkan.enumerations.*;
 
- import bor.vulkan.khr.*;
  import java.util.*;
  import java.nio.*;
 
@@ -345,7 +344,8 @@
 	 */ 
 	 public VkPresentInfoKHR pResults(VkResult[] pResults){
 		 this.pResults = pResults;
-		 setPResults0(this.ptr,  pResults);
+		 int[] enumArray = readEnumArray(pResults);
+		 setPResults0(this.ptr, enumArray);
 		 return this;
 	 }
 
@@ -354,7 +354,10 @@
 	 * Prototype: VkResult*  pResults
 	 */ 
 	 public VkResult[] pResults(){
-		 VkResult[] var = getPResults0(super.ptr, pResults);
+		 int size = swapchainCount();
+		 int[] values = (size==0) ? null : new int[size];
+		 values = getPResults0(super.ptr, values);
+		 VkResult[] var = VkResult.fromValues(this.pResults, values);
 		 this.pResults = var;
 		 return this.pResults;
 	 }
@@ -396,6 +399,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -414,6 +418,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -423,7 +428,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -432,6 +438,7 @@
 	 */ 
 	 private static native void setWaitSemaphoreCount0(Buffer ptr, int _waitSemaphoreCount);/*
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->waitSemaphoreCount = (uint32_t) (_waitSemaphoreCount);
 	  */
 
@@ -450,6 +457,7 @@
 	 */ 
 	 private static native void setPWaitSemaphores0(Buffer ptr, ByteBuffer  _pWaitSemaphores);/*
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pWaitSemaphores = (const VkSemaphore*) (_pWaitSemaphores);
 	  */
 
@@ -459,7 +467,8 @@
 	 */ 
 	 private static native long getPWaitSemaphores0(Buffer ptr);/*
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pWaitSemaphores);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pWaitSemaphores );
 	 */
 
 	/**
@@ -468,6 +477,7 @@
 	 */ 
 	 private static native void setSwapchainCount0(Buffer ptr, int _swapchainCount);/*
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->swapchainCount = (uint32_t) (_swapchainCount);
 	  */
 
@@ -486,6 +496,7 @@
 	 */ 
 	 private static native void setPSwapchains0(Buffer ptr, ByteBuffer  _pSwapchains);/*
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pSwapchains = (const VkSwapchainKHR*) (_pSwapchains);
 	  */
 
@@ -495,7 +506,8 @@
 	 */ 
 	 private static native long getPSwapchains0(Buffer ptr);/*
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pSwapchains);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pSwapchains );
 	 */
 
 	/**
@@ -504,16 +516,37 @@
 	 */ 
 	 private static native void setPImageIndices0(Buffer ptr, int[] _pImageIndices);/*
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		  vkObj->pImageIndices = (const uint32_t*) (_pImageIndices);
+		 // code for generic array 
+		  if( NULL == _pImageIndices ){
+		    vkObj->swapchainCount = 0;
+		    FREE_IT(vkObj->pImageIndices);
+		     return;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pImageIndices);
+		  if( vkObj->swapchainCount != count){ 
+		    FREE_IT(vkObj->pImageIndices); 
+		    vkObj->pImageIndices = CALLOC(count, uint32_t);
+		   }
+		  memcpy( vkObj->pImageIndices, _pImageIndices, count * sizeof(uint32_t));
+		  vkObj->swapchainCount = count;
 	  */
 
 	/**
 	 * Native GET method for field pImageIndices	[int]<br>
 	 * Prototype: const uint32_t*  pImageIndices
 	 */ 
-	 private static native int[] getPImageIndices0(Buffer ptr);/*
+	 private static native int[] getPImageIndices0(Buffer ptr, int[] _pImageIndices);/*
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		  return (int[]) (vkObj->pImageIndices);
+		  // generic get for C type array, with content copy 
+		  if( 0 == vkObj->swapchainCount){ 
+		     return NULL;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pImageIndices);
+		  if(vkObj->pImageIndices == NULL){
+		    return NULL;
+		   }
+ 		  memcpy(_pImageIndices, vkObj->pImageIndices, count * sizeof(uint32_t));
+		  return obj__pImageIndices;
 	 */
 
 	/**
@@ -522,16 +555,37 @@
 	 */ 
 	 private static native void setPResults0(Buffer ptr, int[]  _pResults);/*
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		  vkObj->pResults = (VkResult*) (_pResults);
+		 // code for generic array 
+		  if( NULL == _pResults ){
+		    vkObj->swapchainCount = 0;
+		    FREE_IT(vkObj->pResults);
+		     return;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pResults);
+		  if( vkObj->swapchainCount != count){ 
+		    FREE_IT(vkObj->pResults); 
+		    vkObj->pResults = CALLOC(count, VkResult);
+		   }
+		  memcpy( vkObj->pResults, _pResults, count * sizeof(VkResult));
+		  vkObj->swapchainCount = count;
 	  */
 
 	/**
 	 * Native GET method for field pResults	[vkenum_array]<br>
 	 * Prototype: VkResult*  pResults
 	 */ 
-	 private static native int[]  getPResults0(Buffer ptr);/*
+	 private static native int[]  getPResults0(Buffer ptr, int[]  _pResults);/*
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		  return (VkResult[]) (vkObj->pResults);
+		  // generic get for C type array, with content copy 
+		  if( 0 == vkObj->swapchainCount){ 
+		     return NULL;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pResults);
+		  if(vkObj->pResults == NULL){
+		    return NULL;
+		   }
+ 		  memcpy(_pResults, vkObj->pResults, count * sizeof(VkResult));
+		  return obj__pResults;
 	 */
 
 

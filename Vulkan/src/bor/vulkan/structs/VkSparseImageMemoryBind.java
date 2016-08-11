@@ -344,6 +344,7 @@
 	 */ 
 	 private static native void setSubresource0(Buffer ptr, java.nio.ByteBuffer  _subresource);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->subresource = (VkImageSubresource) (_subresource);
 	  */
 
@@ -353,7 +354,8 @@
 	 */ 
 	 private static native long getSubresource0(Buffer ptr);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->subresource);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->subresource);
 	 */
 
 	/**
@@ -362,6 +364,7 @@
 	 */ 
 	 private static native void setOffset0(Buffer ptr, java.nio.ByteBuffer  _offset);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->offset = (VkOffset3D) (_offset);
 	  */
 
@@ -371,7 +374,8 @@
 	 */ 
 	 private static native long getOffset0(Buffer ptr);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->offset);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->offset);
 	 */
 
 	/**
@@ -380,6 +384,7 @@
 	 */ 
 	 private static native void setExtent0(Buffer ptr, java.nio.ByteBuffer  _extent);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->extent = (VkExtent3D) (_extent);
 	  */
 
@@ -389,7 +394,8 @@
 	 */ 
 	 private static native long getExtent0(Buffer ptr);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->extent);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->extent);
 	 */
 
 	/**
@@ -398,6 +404,7 @@
 	 */ 
 	 private static native void setMemory0(Buffer ptr, long  _memory);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
+		 // code for simple past value 
 		  vkObj->memory = (VkDeviceMemory) (_memory);
 	  */
 
@@ -407,7 +414,8 @@
 	 */ 
 	 private static native long getMemory0(Buffer ptr);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->memory);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->memory);
 	 */
 
 	/**
@@ -416,6 +424,7 @@
 	 */ 
 	 private static native void setMemoryOffset0(Buffer ptr, long _memoryOffset);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
+		 // code for simple past value 
 		  vkObj->memoryOffset = (VkDeviceSize) (_memoryOffset);
 	  */
 
@@ -434,6 +443,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkSparseMemoryBindFlags) (_flags);
 	  */
 

@@ -120,6 +120,25 @@ public class VkPipelineStageFlagBits extends IntEnum<VkPipelineStageFlagBits> {
         VkPipelineStageFlagBits flag = new VkPipelineStageFlagBits(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkPipelineStageFlagBits from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkPipelineStageFlagBits array with matching values
+     */
+    public static VkPipelineStageFlagBits[] fromValues(VkPipelineStageFlagBits[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkPipelineStageFlagBits[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkPipelineStageFlagBits.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

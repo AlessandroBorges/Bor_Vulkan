@@ -200,6 +200,7 @@
 	 */ 
 	 private static native void setSpecVersion0(Buffer ptr, int _specVersion);/*
 		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->specVersion = (uint32_t) (_specVersion);
 	  */
 

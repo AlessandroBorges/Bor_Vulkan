@@ -436,6 +436,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -454,6 +455,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -463,7 +465,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -472,6 +475,7 @@
 	 */ 
 	 private static native void setWaitSemaphoreCount0(Buffer ptr, int _waitSemaphoreCount);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->waitSemaphoreCount = (uint32_t) (_waitSemaphoreCount);
 	  */
 
@@ -490,6 +494,7 @@
 	 */ 
 	 private static native void setPWaitSemaphores0(Buffer ptr, ByteBuffer  _pWaitSemaphores);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pWaitSemaphores = (const VkSemaphore*) (_pWaitSemaphores);
 	  */
 
@@ -499,7 +504,8 @@
 	 */ 
 	 private static native long getPWaitSemaphores0(Buffer ptr);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pWaitSemaphores);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pWaitSemaphores );
 	 */
 
 	/**
@@ -508,16 +514,37 @@
 	 */ 
 	 private static native void setPWaitDstStageMask0(Buffer ptr, int[] _pWaitDstStageMask);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		  vkObj->pWaitDstStageMask = (const VkPipelineStageFlags*) (_pWaitDstStageMask);
+		 // code for generic array 
+		  if( NULL == _pWaitDstStageMask ){
+		    vkObj->waitSemaphoreCount = 0;
+		    FREE_IT(vkObj->pWaitDstStageMask);
+		     return;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pWaitDstStageMask);
+		  if( vkObj->waitSemaphoreCount != count){ 
+		    FREE_IT(vkObj->pWaitDstStageMask); 
+		    vkObj->pWaitDstStageMask = CALLOC(count, VkPipelineStageFlags);
+		   }
+		  memcpy( vkObj->pWaitDstStageMask, _pWaitDstStageMask, count * sizeof(VkPipelineStageFlags));
+		  vkObj->waitSemaphoreCount = count;
 	  */
 
 	/**
 	 * Native GET method for field pWaitDstStageMask	[int]<br>
 	 * Prototype: const VkPipelineStageFlags*  pWaitDstStageMask
 	 */ 
-	 private static native int[] getPWaitDstStageMask0(Buffer ptr);/*
+	 private static native int[] getPWaitDstStageMask0(Buffer ptr, int[] _pWaitDstStageMask);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		  return (int[]) (vkObj->pWaitDstStageMask);
+		  // generic get for C type array, with content copy 
+		  if( 0 == vkObj->waitSemaphoreCount){ 
+		     return NULL;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pWaitDstStageMask);
+		  if(vkObj->pWaitDstStageMask == NULL){
+		    return NULL;
+		   }
+ 		  memcpy(_pWaitDstStageMask, vkObj->pWaitDstStageMask, count * sizeof(VkPipelineStageFlags));
+		  return obj__pWaitDstStageMask;
 	 */
 
 	/**
@@ -526,6 +553,7 @@
 	 */ 
 	 private static native void setCommandBufferCount0(Buffer ptr, int _commandBufferCount);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->commandBufferCount = (uint32_t) (_commandBufferCount);
 	  */
 
@@ -544,6 +572,7 @@
 	 */ 
 	 private static native void setPCommandBuffers0(Buffer ptr, ByteBuffer  _pCommandBuffers);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pCommandBuffers = (const VkCommandBuffer*) (_pCommandBuffers);
 	  */
 
@@ -553,7 +582,8 @@
 	 */ 
 	 private static native long getPCommandBuffers0(Buffer ptr);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pCommandBuffers);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pCommandBuffers );
 	 */
 
 	/**
@@ -562,6 +592,7 @@
 	 */ 
 	 private static native void setSignalSemaphoreCount0(Buffer ptr, int _signalSemaphoreCount);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->signalSemaphoreCount = (uint32_t) (_signalSemaphoreCount);
 	  */
 
@@ -580,6 +611,7 @@
 	 */ 
 	 private static native void setPSignalSemaphores0(Buffer ptr, ByteBuffer  _pSignalSemaphores);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pSignalSemaphores = (const VkSemaphore*) (_pSignalSemaphores);
 	  */
 
@@ -589,7 +621,8 @@
 	 */ 
 	 private static native long getPSignalSemaphores0(Buffer ptr);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pSignalSemaphores);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pSignalSemaphores );
 	 */
 
 

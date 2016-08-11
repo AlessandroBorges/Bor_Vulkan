@@ -95,6 +95,25 @@ public class VkQueryType extends IntEnum<VkQueryType> {
         VkQueryType flag = new VkQueryType(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkQueryType from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkQueryType array with matching values
+     */
+    public static VkQueryType[] fromValues(VkQueryType[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkQueryType[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkQueryType.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

@@ -93,6 +93,25 @@ public class VkSamplerMipmapMode extends IntEnum<VkSamplerMipmapMode> {
         VkSamplerMipmapMode flag = new VkSamplerMipmapMode(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkSamplerMipmapMode from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkSamplerMipmapMode array with matching values
+     */
+    public static VkSamplerMipmapMode[] fromValues(VkSamplerMipmapMode[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkSamplerMipmapMode[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkSamplerMipmapMode.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

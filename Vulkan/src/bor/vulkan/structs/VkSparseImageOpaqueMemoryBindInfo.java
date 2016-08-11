@@ -231,6 +231,7 @@
 	 */ 
 	 private static native void setImage0(Buffer ptr, long  _image);/*
 		  VkSparseImageOpaqueMemoryBindInfo* vkObj = (VkSparseImageOpaqueMemoryBindInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->image = (VkImage) (_image);
 	  */
 
@@ -240,7 +241,8 @@
 	 */ 
 	 private static native long getImage0(Buffer ptr);/*
 		  VkSparseImageOpaqueMemoryBindInfo* vkObj = (VkSparseImageOpaqueMemoryBindInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->image);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->image);
 	 */
 
 	/**
@@ -249,6 +251,7 @@
 	 */ 
 	 private static native void setBindCount0(Buffer ptr, int _bindCount);/*
 		  VkSparseImageOpaqueMemoryBindInfo* vkObj = (VkSparseImageOpaqueMemoryBindInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->bindCount = (uint32_t) (_bindCount);
 	  */
 
@@ -267,6 +270,7 @@
 	 */ 
 	 private static native void setPBinds0(Buffer ptr, java.nio.ByteBuffer  _pBinds);/*
 		  VkSparseImageOpaqueMemoryBindInfo* vkObj = (VkSparseImageOpaqueMemoryBindInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pBinds = (const VkSparseMemoryBind*) (_pBinds);
 	  */
 
@@ -276,7 +280,8 @@
 	 */ 
 	 private static native long getPBinds0(Buffer ptr);/*
 		  VkSparseImageOpaqueMemoryBindInfo* vkObj = (VkSparseImageOpaqueMemoryBindInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pBinds);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pBinds );
 	 */
 
 

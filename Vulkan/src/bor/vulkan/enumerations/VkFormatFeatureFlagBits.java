@@ -114,6 +114,25 @@ public class VkFormatFeatureFlagBits extends IntEnum<VkFormatFeatureFlagBits> {
         VkFormatFeatureFlagBits flag = new VkFormatFeatureFlagBits(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkFormatFeatureFlagBits from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkFormatFeatureFlagBits array with matching values
+     */
+    public static VkFormatFeatureFlagBits[] fromValues(VkFormatFeatureFlagBits[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkFormatFeatureFlagBits[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkFormatFeatureFlagBits.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

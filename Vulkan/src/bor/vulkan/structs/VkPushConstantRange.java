@@ -210,6 +210,7 @@
 	 */ 
 	 private static native void setStageFlags0(Buffer ptr, int _stageFlags);/*
 		  VkPushConstantRange* vkObj = (VkPushConstantRange*)(ptr);
+		 // code for simple past value 
 		  vkObj->stageFlags = (VkShaderStageFlags) (_stageFlags);
 	  */
 
@@ -228,6 +229,7 @@
 	 */ 
 	 private static native void setOffset0(Buffer ptr, int _offset);/*
 		  VkPushConstantRange* vkObj = (VkPushConstantRange*)(ptr);
+		 // code for simple past value 
 		  vkObj->offset = (uint32_t) (_offset);
 	  */
 
@@ -246,6 +248,7 @@
 	 */ 
 	 private static native void setSize0(Buffer ptr, int _size);/*
 		  VkPushConstantRange* vkObj = (VkPushConstantRange*)(ptr);
+		 // code for simple past value 
 		  vkObj->size = (uint32_t) (_size);
 	  */
 

@@ -918,7 +918,7 @@
 	 */ 
 	 public VkPhysicalDeviceFeatures textureCompressionASTC_LDR(boolean textureCompressionASTC_LDR){
 		 this.textureCompressionASTC_LDR = textureCompressionASTC_LDR;
-		 setTextureCompressionASTC_LDR0(this.ptr,  textureCompressionASTC_LDR);
+		 setTextureCompressionASTCJLDR0(this.ptr,  textureCompressionASTC_LDR);
 		 return this;
 	 }
 
@@ -927,7 +927,7 @@
 	 * Prototype: VkBool32  textureCompressionASTC_LDR
 	 */ 
 	 public boolean textureCompressionASTC_LDR(){
-		 boolean var = getTextureCompressionASTC_LDR0(super.ptr);
+		 boolean var = getTextureCompressionASTCJLDR0(super.ptr);
 		 this.textureCompressionASTC_LDR = var;
 		 return this.textureCompressionASTC_LDR;
 	 }
@@ -1822,6 +1822,7 @@
 	 */ 
 	 private static native void setRobustBufferAccess0(Buffer ptr, boolean  _robustBufferAccess);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->robustBufferAccess = (VkBool32) (_robustBufferAccess);
 	  */
 
@@ -1840,6 +1841,7 @@
 	 */ 
 	 private static native void setFullDrawIndexUint320(Buffer ptr, boolean  _fullDrawIndexUint32);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->fullDrawIndexUint32 = (VkBool32) (_fullDrawIndexUint32);
 	  */
 
@@ -1858,6 +1860,7 @@
 	 */ 
 	 private static native void setImageCubeArray0(Buffer ptr, boolean  _imageCubeArray);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->imageCubeArray = (VkBool32) (_imageCubeArray);
 	  */
 
@@ -1876,6 +1879,7 @@
 	 */ 
 	 private static native void setIndependentBlend0(Buffer ptr, boolean  _independentBlend);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->independentBlend = (VkBool32) (_independentBlend);
 	  */
 
@@ -1894,6 +1898,7 @@
 	 */ 
 	 private static native void setGeometryShader0(Buffer ptr, boolean  _geometryShader);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->geometryShader = (VkBool32) (_geometryShader);
 	  */
 
@@ -1912,6 +1917,7 @@
 	 */ 
 	 private static native void setTessellationShader0(Buffer ptr, boolean  _tessellationShader);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->tessellationShader = (VkBool32) (_tessellationShader);
 	  */
 
@@ -1930,6 +1936,7 @@
 	 */ 
 	 private static native void setSampleRateShading0(Buffer ptr, boolean  _sampleRateShading);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->sampleRateShading = (VkBool32) (_sampleRateShading);
 	  */
 
@@ -1948,6 +1955,7 @@
 	 */ 
 	 private static native void setDualSrcBlend0(Buffer ptr, boolean  _dualSrcBlend);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->dualSrcBlend = (VkBool32) (_dualSrcBlend);
 	  */
 
@@ -1966,6 +1974,7 @@
 	 */ 
 	 private static native void setLogicOp0(Buffer ptr, boolean  _logicOp);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->logicOp = (VkBool32) (_logicOp);
 	  */
 
@@ -1984,6 +1993,7 @@
 	 */ 
 	 private static native void setMultiDrawIndirect0(Buffer ptr, boolean  _multiDrawIndirect);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->multiDrawIndirect = (VkBool32) (_multiDrawIndirect);
 	  */
 
@@ -2002,6 +2012,7 @@
 	 */ 
 	 private static native void setDrawIndirectFirstInstance0(Buffer ptr, boolean  _drawIndirectFirstInstance);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->drawIndirectFirstInstance = (VkBool32) (_drawIndirectFirstInstance);
 	  */
 
@@ -2020,6 +2031,7 @@
 	 */ 
 	 private static native void setDepthClamp0(Buffer ptr, boolean  _depthClamp);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->depthClamp = (VkBool32) (_depthClamp);
 	  */
 
@@ -2038,6 +2050,7 @@
 	 */ 
 	 private static native void setDepthBiasClamp0(Buffer ptr, boolean  _depthBiasClamp);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->depthBiasClamp = (VkBool32) (_depthBiasClamp);
 	  */
 
@@ -2056,6 +2069,7 @@
 	 */ 
 	 private static native void setFillModeNonSolid0(Buffer ptr, boolean  _fillModeNonSolid);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->fillModeNonSolid = (VkBool32) (_fillModeNonSolid);
 	  */
 
@@ -2074,6 +2088,7 @@
 	 */ 
 	 private static native void setDepthBounds0(Buffer ptr, boolean  _depthBounds);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->depthBounds = (VkBool32) (_depthBounds);
 	  */
 
@@ -2092,6 +2107,7 @@
 	 */ 
 	 private static native void setWideLines0(Buffer ptr, boolean  _wideLines);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->wideLines = (VkBool32) (_wideLines);
 	  */
 
@@ -2110,6 +2126,7 @@
 	 */ 
 	 private static native void setLargePoints0(Buffer ptr, boolean  _largePoints);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->largePoints = (VkBool32) (_largePoints);
 	  */
 
@@ -2128,6 +2145,7 @@
 	 */ 
 	 private static native void setAlphaToOne0(Buffer ptr, boolean  _alphaToOne);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->alphaToOne = (VkBool32) (_alphaToOne);
 	  */
 
@@ -2146,6 +2164,7 @@
 	 */ 
 	 private static native void setMultiViewport0(Buffer ptr, boolean  _multiViewport);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->multiViewport = (VkBool32) (_multiViewport);
 	  */
 
@@ -2164,6 +2183,7 @@
 	 */ 
 	 private static native void setSamplerAnisotropy0(Buffer ptr, boolean  _samplerAnisotropy);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->samplerAnisotropy = (VkBool32) (_samplerAnisotropy);
 	  */
 
@@ -2182,6 +2202,7 @@
 	 */ 
 	 private static native void setTextureCompressionETC20(Buffer ptr, boolean  _textureCompressionETC2);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->textureCompressionETC2 = (VkBool32) (_textureCompressionETC2);
 	  */
 
@@ -2198,8 +2219,9 @@
 	 * Native SET method for field textureCompressionASTC_LDR	[boolean]<br>
 	 * Prototype: VkBool32  textureCompressionASTC_LDR
 	 */ 
-	 private static native void setTextureCompressionASTC_LDR0(Buffer ptr, boolean  _textureCompressionASTC_LDR);/*
+	 private static native void setTextureCompressionASTCJLDR0(Buffer ptr, boolean  _textureCompressionASTC_LDR);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->textureCompressionASTC_LDR = (VkBool32) (_textureCompressionASTC_LDR);
 	  */
 
@@ -2207,7 +2229,7 @@
 	 * Native GET method for field textureCompressionASTC_LDR	[boolean]<br>
 	 * Prototype: VkBool32  textureCompressionASTC_LDR
 	 */ 
-	 private static native boolean  getTextureCompressionASTC_LDR0(Buffer ptr);/*
+	 private static native boolean  getTextureCompressionASTCJLDR0(Buffer ptr);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->textureCompressionASTC_LDR);
 	 */
@@ -2218,6 +2240,7 @@
 	 */ 
 	 private static native void setTextureCompressionBC0(Buffer ptr, boolean  _textureCompressionBC);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->textureCompressionBC = (VkBool32) (_textureCompressionBC);
 	  */
 
@@ -2236,6 +2259,7 @@
 	 */ 
 	 private static native void setOcclusionQueryPrecise0(Buffer ptr, boolean  _occlusionQueryPrecise);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->occlusionQueryPrecise = (VkBool32) (_occlusionQueryPrecise);
 	  */
 
@@ -2254,6 +2278,7 @@
 	 */ 
 	 private static native void setPipelineStatisticsQuery0(Buffer ptr, boolean  _pipelineStatisticsQuery);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->pipelineStatisticsQuery = (VkBool32) (_pipelineStatisticsQuery);
 	  */
 
@@ -2272,6 +2297,7 @@
 	 */ 
 	 private static native void setVertexPipelineStoresAndAtomics0(Buffer ptr, boolean  _vertexPipelineStoresAndAtomics);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->vertexPipelineStoresAndAtomics = (VkBool32) (_vertexPipelineStoresAndAtomics);
 	  */
 
@@ -2290,6 +2316,7 @@
 	 */ 
 	 private static native void setFragmentStoresAndAtomics0(Buffer ptr, boolean  _fragmentStoresAndAtomics);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->fragmentStoresAndAtomics = (VkBool32) (_fragmentStoresAndAtomics);
 	  */
 
@@ -2308,6 +2335,7 @@
 	 */ 
 	 private static native void setShaderTessellationAndGeometryPointSize0(Buffer ptr, boolean  _shaderTessellationAndGeometryPointSize);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->shaderTessellationAndGeometryPointSize = (VkBool32) (_shaderTessellationAndGeometryPointSize);
 	  */
 
@@ -2326,6 +2354,7 @@
 	 */ 
 	 private static native void setShaderImageGatherExtended0(Buffer ptr, boolean  _shaderImageGatherExtended);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->shaderImageGatherExtended = (VkBool32) (_shaderImageGatherExtended);
 	  */
 
@@ -2344,6 +2373,7 @@
 	 */ 
 	 private static native void setShaderStorageImageExtendedFormats0(Buffer ptr, boolean  _shaderStorageImageExtendedFormats);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->shaderStorageImageExtendedFormats = (VkBool32) (_shaderStorageImageExtendedFormats);
 	  */
 
@@ -2362,6 +2392,7 @@
 	 */ 
 	 private static native void setShaderStorageImageMultisample0(Buffer ptr, boolean  _shaderStorageImageMultisample);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->shaderStorageImageMultisample = (VkBool32) (_shaderStorageImageMultisample);
 	  */
 
@@ -2380,6 +2411,7 @@
 	 */ 
 	 private static native void setShaderStorageImageReadWithoutFormat0(Buffer ptr, boolean  _shaderStorageImageReadWithoutFormat);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->shaderStorageImageReadWithoutFormat = (VkBool32) (_shaderStorageImageReadWithoutFormat);
 	  */
 
@@ -2398,6 +2430,7 @@
 	 */ 
 	 private static native void setShaderStorageImageWriteWithoutFormat0(Buffer ptr, boolean  _shaderStorageImageWriteWithoutFormat);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->shaderStorageImageWriteWithoutFormat = (VkBool32) (_shaderStorageImageWriteWithoutFormat);
 	  */
 
@@ -2416,6 +2449,7 @@
 	 */ 
 	 private static native void setShaderUniformBufferArrayDynamicIndexing0(Buffer ptr, boolean  _shaderUniformBufferArrayDynamicIndexing);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->shaderUniformBufferArrayDynamicIndexing = (VkBool32) (_shaderUniformBufferArrayDynamicIndexing);
 	  */
 
@@ -2434,6 +2468,7 @@
 	 */ 
 	 private static native void setShaderSampledImageArrayDynamicIndexing0(Buffer ptr, boolean  _shaderSampledImageArrayDynamicIndexing);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->shaderSampledImageArrayDynamicIndexing = (VkBool32) (_shaderSampledImageArrayDynamicIndexing);
 	  */
 
@@ -2452,6 +2487,7 @@
 	 */ 
 	 private static native void setShaderStorageBufferArrayDynamicIndexing0(Buffer ptr, boolean  _shaderStorageBufferArrayDynamicIndexing);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->shaderStorageBufferArrayDynamicIndexing = (VkBool32) (_shaderStorageBufferArrayDynamicIndexing);
 	  */
 
@@ -2470,6 +2506,7 @@
 	 */ 
 	 private static native void setShaderStorageImageArrayDynamicIndexing0(Buffer ptr, boolean  _shaderStorageImageArrayDynamicIndexing);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->shaderStorageImageArrayDynamicIndexing = (VkBool32) (_shaderStorageImageArrayDynamicIndexing);
 	  */
 
@@ -2488,6 +2525,7 @@
 	 */ 
 	 private static native void setShaderClipDistance0(Buffer ptr, boolean  _shaderClipDistance);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->shaderClipDistance = (VkBool32) (_shaderClipDistance);
 	  */
 
@@ -2506,6 +2544,7 @@
 	 */ 
 	 private static native void setShaderCullDistance0(Buffer ptr, boolean  _shaderCullDistance);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->shaderCullDistance = (VkBool32) (_shaderCullDistance);
 	  */
 
@@ -2524,6 +2563,7 @@
 	 */ 
 	 private static native void setShaderFloat640(Buffer ptr, boolean  _shaderFloat64);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->shaderFloat64 = (VkBool32) (_shaderFloat64);
 	  */
 
@@ -2542,6 +2582,7 @@
 	 */ 
 	 private static native void setShaderInt640(Buffer ptr, boolean  _shaderInt64);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->shaderInt64 = (VkBool32) (_shaderInt64);
 	  */
 
@@ -2560,6 +2601,7 @@
 	 */ 
 	 private static native void setShaderInt160(Buffer ptr, boolean  _shaderInt16);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->shaderInt16 = (VkBool32) (_shaderInt16);
 	  */
 
@@ -2578,6 +2620,7 @@
 	 */ 
 	 private static native void setShaderResourceResidency0(Buffer ptr, boolean  _shaderResourceResidency);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->shaderResourceResidency = (VkBool32) (_shaderResourceResidency);
 	  */
 
@@ -2596,6 +2639,7 @@
 	 */ 
 	 private static native void setShaderResourceMinLod0(Buffer ptr, boolean  _shaderResourceMinLod);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->shaderResourceMinLod = (VkBool32) (_shaderResourceMinLod);
 	  */
 
@@ -2614,6 +2658,7 @@
 	 */ 
 	 private static native void setSparseBinding0(Buffer ptr, boolean  _sparseBinding);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->sparseBinding = (VkBool32) (_sparseBinding);
 	  */
 
@@ -2632,6 +2677,7 @@
 	 */ 
 	 private static native void setSparseResidencyBuffer0(Buffer ptr, boolean  _sparseResidencyBuffer);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->sparseResidencyBuffer = (VkBool32) (_sparseResidencyBuffer);
 	  */
 
@@ -2650,6 +2696,7 @@
 	 */ 
 	 private static native void setSparseResidencyImage2D0(Buffer ptr, boolean  _sparseResidencyImage2D);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->sparseResidencyImage2D = (VkBool32) (_sparseResidencyImage2D);
 	  */
 
@@ -2668,6 +2715,7 @@
 	 */ 
 	 private static native void setSparseResidencyImage3D0(Buffer ptr, boolean  _sparseResidencyImage3D);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->sparseResidencyImage3D = (VkBool32) (_sparseResidencyImage3D);
 	  */
 
@@ -2686,6 +2734,7 @@
 	 */ 
 	 private static native void setSparseResidency2Samples0(Buffer ptr, boolean  _sparseResidency2Samples);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->sparseResidency2Samples = (VkBool32) (_sparseResidency2Samples);
 	  */
 
@@ -2704,6 +2753,7 @@
 	 */ 
 	 private static native void setSparseResidency4Samples0(Buffer ptr, boolean  _sparseResidency4Samples);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->sparseResidency4Samples = (VkBool32) (_sparseResidency4Samples);
 	  */
 
@@ -2722,6 +2772,7 @@
 	 */ 
 	 private static native void setSparseResidency8Samples0(Buffer ptr, boolean  _sparseResidency8Samples);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->sparseResidency8Samples = (VkBool32) (_sparseResidency8Samples);
 	  */
 
@@ -2740,6 +2791,7 @@
 	 */ 
 	 private static native void setSparseResidency16Samples0(Buffer ptr, boolean  _sparseResidency16Samples);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->sparseResidency16Samples = (VkBool32) (_sparseResidency16Samples);
 	  */
 
@@ -2758,6 +2810,7 @@
 	 */ 
 	 private static native void setSparseResidencyAliased0(Buffer ptr, boolean  _sparseResidencyAliased);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->sparseResidencyAliased = (VkBool32) (_sparseResidencyAliased);
 	  */
 
@@ -2776,6 +2829,7 @@
 	 */ 
 	 private static native void setVariableMultisampleRate0(Buffer ptr, boolean  _variableMultisampleRate);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->variableMultisampleRate = (VkBool32) (_variableMultisampleRate);
 	  */
 
@@ -2794,6 +2848,7 @@
 	 */ 
 	 private static native void setInheritedQueries0(Buffer ptr, boolean  _inheritedQueries);/*
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
+		 // code for simple past value 
 		  vkObj->inheritedQueries = (VkBool32) (_inheritedQueries);
 	  */
 

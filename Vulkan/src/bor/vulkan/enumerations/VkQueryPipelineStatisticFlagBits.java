@@ -108,6 +108,25 @@ public class VkQueryPipelineStatisticFlagBits extends IntEnum<VkQueryPipelineSta
         VkQueryPipelineStatisticFlagBits flag = new VkQueryPipelineStatisticFlagBits(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkQueryPipelineStatisticFlagBits from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkQueryPipelineStatisticFlagBits array with matching values
+     */
+    public static VkQueryPipelineStatisticFlagBits[] fromValues(VkQueryPipelineStatisticFlagBits[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkQueryPipelineStatisticFlagBits[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkQueryPipelineStatisticFlagBits.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

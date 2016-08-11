@@ -348,6 +348,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -366,6 +367,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -375,7 +377,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -384,6 +387,7 @@
 	 */ 
 	 private static native void setObjectType0(Buffer ptr, int  _objectType);/*
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
+		 // code for simple past value 
 		  vkObj->objectType = (VkDebugReportObjectTypeEXT) (_objectType);
 	  */
 
@@ -402,6 +406,7 @@
 	 */ 
 	 private static native void setObject0(Buffer ptr, long _object);/*
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
+		 // code for simple past value 
 		  vkObj->object = (uint64_t) (_object);
 	  */
 
@@ -420,6 +425,7 @@
 	 */ 
 	 private static native void setTagName0(Buffer ptr, long _tagName);/*
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
+		 // code for simple past value 
 		  vkObj->tagName = (uint64_t) (_tagName);
 	  */
 
@@ -438,6 +444,7 @@
 	 */ 
 	 private static native void setTagSize0(Buffer ptr, long _tagSize);/*
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
+		 // code for simple past value 
 		  vkObj->tagSize = (size_t) (_tagSize);
 	  */
 
@@ -456,6 +463,7 @@
 	 */ 
 	 private static native void setPTag0(Buffer ptr, java.nio.Buffer _pTag);/*
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pTag = (const void*) (_pTag);
 	  */
 
@@ -465,7 +473,8 @@
 	 */ 
 	 private static native long getPTag0(Buffer ptr);/*
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pTag);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pTag);
 	 */
 
 

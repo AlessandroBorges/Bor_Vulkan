@@ -96,17 +96,17 @@
 	/**
 	 *  const VkDescriptorImageInfo* 	pImageInfo	[vkstruct]
 	 */ 
-	 final VkDescriptorImageInfo  	pImageInfo;
+	VkDescriptorImageInfo  	pImageInfo;
 	
 	/**
 	 *  const VkDescriptorBufferInfo* 	pBufferInfo	[vkstruct]
 	 */ 
-	 final VkDescriptorBufferInfo  	pBufferInfo;
+	VkDescriptorBufferInfo  	pBufferInfo;
 	
 	/**
 	 *  const VkBufferView* 	pTexelBufferView	[vkhandle]
 	 */ 
-	 final VkBufferView  	pTexelBufferView;
+	VkBufferView  	pTexelBufferView;
 	/**
 	 * Ctor
 	 */
@@ -480,6 +480,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -498,6 +499,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -507,7 +509,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -516,6 +519,7 @@
 	 */ 
 	 private static native void setDstSet0(Buffer ptr, long  _dstSet);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
+		 // code for simple past value 
 		  vkObj->dstSet = (VkDescriptorSet) (_dstSet);
 	  */
 
@@ -525,7 +529,8 @@
 	 */ 
 	 private static native long getDstSet0(Buffer ptr);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->dstSet);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->dstSet);
 	 */
 
 	/**
@@ -534,6 +539,7 @@
 	 */ 
 	 private static native void setDstBinding0(Buffer ptr, int _dstBinding);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
+		 // code for simple past value 
 		  vkObj->dstBinding = (uint32_t) (_dstBinding);
 	  */
 
@@ -552,6 +558,7 @@
 	 */ 
 	 private static native void setDstArrayElement0(Buffer ptr, int _dstArrayElement);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
+		 // code for simple past value 
 		  vkObj->dstArrayElement = (uint32_t) (_dstArrayElement);
 	  */
 
@@ -570,6 +577,7 @@
 	 */ 
 	 private static native void setDescriptorCount0(Buffer ptr, int _descriptorCount);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
+		 // code for simple past value 
 		  vkObj->descriptorCount = (uint32_t) (_descriptorCount);
 	  */
 
@@ -588,6 +596,7 @@
 	 */ 
 	 private static native void setDescriptorType0(Buffer ptr, int  _descriptorType);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
+		 // code for simple past value 
 		  vkObj->descriptorType = (VkDescriptorType) (_descriptorType);
 	  */
 
@@ -606,6 +615,7 @@
 	 */ 
 	 private static native void setPImageInfo0(Buffer ptr, java.nio.ByteBuffer  _pImageInfo);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pImageInfo = (const VkDescriptorImageInfo*) (_pImageInfo);
 	  */
 
@@ -615,7 +625,8 @@
 	 */ 
 	 private static native long getPImageInfo0(Buffer ptr);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pImageInfo);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pImageInfo);
 	 */
 
 	/**
@@ -624,6 +635,7 @@
 	 */ 
 	 private static native void setPBufferInfo0(Buffer ptr, java.nio.ByteBuffer  _pBufferInfo);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pBufferInfo = (const VkDescriptorBufferInfo*) (_pBufferInfo);
 	  */
 
@@ -633,7 +645,8 @@
 	 */ 
 	 private static native long getPBufferInfo0(Buffer ptr);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pBufferInfo);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pBufferInfo);
 	 */
 
 	/**
@@ -642,6 +655,7 @@
 	 */ 
 	 private static native void setPTexelBufferView0(Buffer ptr, long  _pTexelBufferView);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
+		 // code for simple past value 
 		  vkObj->pTexelBufferView = (const VkBufferView*) (_pTexelBufferView);
 	  */
 
@@ -651,7 +665,8 @@
 	 */ 
 	 private static native long getPTexelBufferView0(Buffer ptr);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pTexelBufferView);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pTexelBufferView);
 	 */
 
 

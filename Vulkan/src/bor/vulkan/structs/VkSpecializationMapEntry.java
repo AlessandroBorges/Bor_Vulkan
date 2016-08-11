@@ -210,6 +210,7 @@
 	 */ 
 	 private static native void setConstantID0(Buffer ptr, int _constantID);/*
 		  VkSpecializationMapEntry* vkObj = (VkSpecializationMapEntry*)(ptr);
+		 // code for simple past value 
 		  vkObj->constantID = (uint32_t) (_constantID);
 	  */
 
@@ -228,6 +229,7 @@
 	 */ 
 	 private static native void setOffset0(Buffer ptr, int _offset);/*
 		  VkSpecializationMapEntry* vkObj = (VkSpecializationMapEntry*)(ptr);
+		 // code for simple past value 
 		  vkObj->offset = (uint32_t) (_offset);
 	  */
 
@@ -246,6 +248,7 @@
 	 */ 
 	 private static native void setSize0(Buffer ptr, long _size);/*
 		  VkSpecializationMapEntry* vkObj = (VkSpecializationMapEntry*)(ptr);
+		 // code for simple past value 
 		  vkObj->size = (size_t) (_size);
 	  */
 

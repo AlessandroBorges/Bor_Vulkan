@@ -14,7 +14,6 @@
  import static bor.vulkan.Vulkan.*; 
  import bor.vulkan.enumerations.*;
 
- import bor.vulkan.khr.*;
  import java.util.*;
  import java.nio.*;
 
@@ -190,6 +189,7 @@
 	 */ 
 	 private static native void setVisibleRegion0(Buffer ptr, java.nio.ByteBuffer  _visibleRegion);/*
 		  VkDisplayModeParametersKHR* vkObj = (VkDisplayModeParametersKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->visibleRegion = (VkExtent2D) (_visibleRegion);
 	  */
 
@@ -199,7 +199,8 @@
 	 */ 
 	 private static native long getVisibleRegion0(Buffer ptr);/*
 		  VkDisplayModeParametersKHR* vkObj = (VkDisplayModeParametersKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->visibleRegion);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->visibleRegion);
 	 */
 
 	/**
@@ -208,6 +209,7 @@
 	 */ 
 	 private static native void setRefreshRate0(Buffer ptr, int _refreshRate);/*
 		  VkDisplayModeParametersKHR* vkObj = (VkDisplayModeParametersKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->refreshRate = (uint32_t) (_refreshRate);
 	  */
 

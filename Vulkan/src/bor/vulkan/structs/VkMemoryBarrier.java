@@ -251,6 +251,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkMemoryBarrier* vkObj = (VkMemoryBarrier*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -269,6 +270,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkMemoryBarrier* vkObj = (VkMemoryBarrier*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -278,7 +280,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkMemoryBarrier* vkObj = (VkMemoryBarrier*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -287,6 +290,7 @@
 	 */ 
 	 private static native void setSrcAccessMask0(Buffer ptr, int _srcAccessMask);/*
 		  VkMemoryBarrier* vkObj = (VkMemoryBarrier*)(ptr);
+		 // code for simple past value 
 		  vkObj->srcAccessMask = (VkAccessFlags) (_srcAccessMask);
 	  */
 
@@ -305,6 +309,7 @@
 	 */ 
 	 private static native void setDstAccessMask0(Buffer ptr, int _dstAccessMask);/*
 		  VkMemoryBarrier* vkObj = (VkMemoryBarrier*)(ptr);
+		 // code for simple past value 
 		  vkObj->dstAccessMask = (VkAccessFlags) (_dstAccessMask);
 	  */
 

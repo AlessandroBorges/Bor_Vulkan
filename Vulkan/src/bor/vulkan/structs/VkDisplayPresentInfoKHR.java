@@ -14,7 +14,6 @@
  import static bor.vulkan.Vulkan.*; 
  import bor.vulkan.enumerations.*;
 
- import bor.vulkan.khr.*;
  import java.util.*;
  import java.nio.*;
 
@@ -303,6 +302,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -321,6 +321,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -330,7 +331,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -339,6 +341,7 @@
 	 */ 
 	 private static native void setSrcRect0(Buffer ptr, java.nio.ByteBuffer  _srcRect);/*
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->srcRect = (VkRect2D) (_srcRect);
 	  */
 
@@ -348,7 +351,8 @@
 	 */ 
 	 private static native long getSrcRect0(Buffer ptr);/*
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->srcRect);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->srcRect);
 	 */
 
 	/**
@@ -357,6 +361,7 @@
 	 */ 
 	 private static native void setDstRect0(Buffer ptr, java.nio.ByteBuffer  _dstRect);/*
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->dstRect = (VkRect2D) (_dstRect);
 	  */
 
@@ -366,7 +371,8 @@
 	 */ 
 	 private static native long getDstRect0(Buffer ptr);/*
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->dstRect);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->dstRect);
 	 */
 
 	/**
@@ -375,6 +381,7 @@
 	 */ 
 	 private static native void setPersistent0(Buffer ptr, boolean  _persistent);/*
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->persistent = (VkBool32) (_persistent);
 	  */
 

@@ -376,6 +376,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -394,6 +395,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -403,7 +405,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -412,6 +415,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkPipelineCreateFlags) (_flags);
 	  */
 
@@ -430,6 +434,7 @@
 	 */ 
 	 private static native void setStage0(Buffer ptr, java.nio.ByteBuffer  _stage);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->stage = (VkPipelineShaderStageCreateInfo) (_stage);
 	  */
 
@@ -439,7 +444,8 @@
 	 */ 
 	 private static native long getStage0(Buffer ptr);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->stage);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->stage);
 	 */
 
 	/**
@@ -448,6 +454,7 @@
 	 */ 
 	 private static native void setLayout0(Buffer ptr, long  _layout);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->layout = (VkPipelineLayout) (_layout);
 	  */
 
@@ -457,7 +464,8 @@
 	 */ 
 	 private static native long getLayout0(Buffer ptr);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->layout);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->layout);
 	 */
 
 	/**
@@ -466,6 +474,7 @@
 	 */ 
 	 private static native void setBasePipelineHandle0(Buffer ptr, long  _basePipelineHandle);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->basePipelineHandle = (VkPipeline) (_basePipelineHandle);
 	  */
 
@@ -475,7 +484,8 @@
 	 */ 
 	 private static native long getBasePipelineHandle0(Buffer ptr);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->basePipelineHandle);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->basePipelineHandle);
 	 */
 
 	/**
@@ -484,6 +494,7 @@
 	 */ 
 	 private static native void setBasePipelineIndex0(Buffer ptr, int _basePipelineIndex);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->basePipelineIndex = (int32_t) (_basePipelineIndex);
 	  */
 

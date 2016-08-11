@@ -361,6 +361,7 @@
 	 */ 
 	 private static native void setPUserData0(Buffer ptr, java.nio.Buffer _pUserData);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pUserData = (void*) (_pUserData);
 	  */
 
@@ -370,7 +371,8 @@
 	 */ 
 	 private static native long getPUserData0(Buffer ptr);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pUserData);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pUserData);
 	 */
 
 	/**
@@ -379,6 +381,7 @@
 	 */ 
 	 private static native void setPfnAllocation0(Buffer ptr, long  _pfnAllocation);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
+		 // code for simple past value 
 		  vkObj->pfnAllocation = (PFN_vkAllocationFunction) (_pfnAllocation);
 	  */
 
@@ -388,7 +391,8 @@
 	 */ 
 	 private static native long getPfnAllocation0(Buffer ptr);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pfnAllocation);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pfnAllocation);
 	 */
 
 	/**
@@ -397,6 +401,7 @@
 	 */ 
 	 private static native void setPfnReallocation0(Buffer ptr, long  _pfnReallocation);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
+		 // code for simple past value 
 		  vkObj->pfnReallocation = (PFN_vkReallocationFunction) (_pfnReallocation);
 	  */
 
@@ -406,7 +411,8 @@
 	 */ 
 	 private static native long getPfnReallocation0(Buffer ptr);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pfnReallocation);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pfnReallocation);
 	 */
 
 	/**
@@ -415,6 +421,7 @@
 	 */ 
 	 private static native void setPfnFree0(Buffer ptr, long  _pfnFree);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
+		 // code for simple past value 
 		  vkObj->pfnFree = (PFN_vkFreeFunction) (_pfnFree);
 	  */
 
@@ -424,7 +431,8 @@
 	 */ 
 	 private static native long getPfnFree0(Buffer ptr);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pfnFree);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pfnFree);
 	 */
 
 	/**
@@ -433,6 +441,7 @@
 	 */ 
 	 private static native void setPfnInternalAllocation0(Buffer ptr, long  _pfnInternalAllocation);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
+		 // code for simple past value 
 		  vkObj->pfnInternalAllocation = (PFN_vkInternalAllocationNotification) (_pfnInternalAllocation);
 	  */
 
@@ -442,7 +451,8 @@
 	 */ 
 	 private static native long getPfnInternalAllocation0(Buffer ptr);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pfnInternalAllocation);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pfnInternalAllocation);
 	 */
 
 	/**
@@ -451,6 +461,7 @@
 	 */ 
 	 private static native void setPfnInternalFree0(Buffer ptr, long  _pfnInternalFree);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
+		 // code for simple past value 
 		  vkObj->pfnInternalFree = (PFN_vkInternalFreeNotification) (_pfnInternalFree);
 	  */
 
@@ -460,7 +471,8 @@
 	 */ 
 	 private static native long getPfnInternalFree0(Buffer ptr);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pfnInternalFree);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pfnInternalFree);
 	 */
 
 

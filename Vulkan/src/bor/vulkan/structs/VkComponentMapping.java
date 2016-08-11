@@ -245,6 +245,7 @@
 	 */ 
 	 private static native void setR0(Buffer ptr, int  _r);/*
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
+		 // code for simple past value 
 		  vkObj->r = (VkComponentSwizzle) (_r);
 	  */
 
@@ -263,6 +264,7 @@
 	 */ 
 	 private static native void setG0(Buffer ptr, int  _g);/*
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
+		 // code for simple past value 
 		  vkObj->g = (VkComponentSwizzle) (_g);
 	  */
 
@@ -281,6 +283,7 @@
 	 */ 
 	 private static native void setB0(Buffer ptr, int  _b);/*
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
+		 // code for simple past value 
 		  vkObj->b = (VkComponentSwizzle) (_b);
 	  */
 
@@ -299,6 +302,7 @@
 	 */ 
 	 private static native void setA0(Buffer ptr, int  _a);/*
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
+		 // code for simple past value 
 		  vkObj->a = (VkComponentSwizzle) (_a);
 	  */
 

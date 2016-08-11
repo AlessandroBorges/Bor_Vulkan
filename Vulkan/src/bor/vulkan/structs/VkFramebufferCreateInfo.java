@@ -427,6 +427,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -445,6 +446,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -454,7 +456,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -463,6 +466,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkFramebufferCreateFlags) (_flags);
 	  */
 
@@ -481,6 +485,7 @@
 	 */ 
 	 private static native void setRenderPass0(Buffer ptr, long  _renderPass);/*
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->renderPass = (VkRenderPass) (_renderPass);
 	  */
 
@@ -490,7 +495,8 @@
 	 */ 
 	 private static native long getRenderPass0(Buffer ptr);/*
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->renderPass);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->renderPass);
 	 */
 
 	/**
@@ -499,6 +505,7 @@
 	 */ 
 	 private static native void setAttachmentCount0(Buffer ptr, int _attachmentCount);/*
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->attachmentCount = (uint32_t) (_attachmentCount);
 	  */
 
@@ -517,6 +524,7 @@
 	 */ 
 	 private static native void setPAttachments0(Buffer ptr, ByteBuffer  _pAttachments);/*
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pAttachments = (const VkImageView*) (_pAttachments);
 	  */
 
@@ -526,7 +534,8 @@
 	 */ 
 	 private static native long getPAttachments0(Buffer ptr);/*
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pAttachments);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pAttachments );
 	 */
 
 	/**
@@ -535,6 +544,7 @@
 	 */ 
 	 private static native void setWidth0(Buffer ptr, int _width);/*
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->width = (uint32_t) (_width);
 	  */
 
@@ -553,6 +563,7 @@
 	 */ 
 	 private static native void setHeight0(Buffer ptr, int _height);/*
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->height = (uint32_t) (_height);
 	  */
 
@@ -571,6 +582,7 @@
 	 */ 
 	 private static native void setLayers0(Buffer ptr, int _layers);/*
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->layers = (uint32_t) (_layers);
 	  */
 

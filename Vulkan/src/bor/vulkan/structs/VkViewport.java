@@ -303,6 +303,7 @@
 	 */ 
 	 private static native void setX0(Buffer ptr, float _x);/*
 		  VkViewport* vkObj = (VkViewport*)(ptr);
+		 // code for simple past value 
 		  vkObj->x = (float) (_x);
 	  */
 
@@ -321,6 +322,7 @@
 	 */ 
 	 private static native void setY0(Buffer ptr, float _y);/*
 		  VkViewport* vkObj = (VkViewport*)(ptr);
+		 // code for simple past value 
 		  vkObj->y = (float) (_y);
 	  */
 
@@ -339,6 +341,7 @@
 	 */ 
 	 private static native void setWidth0(Buffer ptr, float _width);/*
 		  VkViewport* vkObj = (VkViewport*)(ptr);
+		 // code for simple past value 
 		  vkObj->width = (float) (_width);
 	  */
 
@@ -357,6 +360,7 @@
 	 */ 
 	 private static native void setHeight0(Buffer ptr, float _height);/*
 		  VkViewport* vkObj = (VkViewport*)(ptr);
+		 // code for simple past value 
 		  vkObj->height = (float) (_height);
 	  */
 
@@ -375,6 +379,7 @@
 	 */ 
 	 private static native void setMinDepth0(Buffer ptr, float _minDepth);/*
 		  VkViewport* vkObj = (VkViewport*)(ptr);
+		 // code for simple past value 
 		  vkObj->minDepth = (float) (_minDepth);
 	  */
 
@@ -393,6 +398,7 @@
 	 */ 
 	 private static native void setMaxDepth0(Buffer ptr, float _maxDepth);/*
 		  VkViewport* vkObj = (VkViewport*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxDepth = (float) (_maxDepth);
 	  */
 

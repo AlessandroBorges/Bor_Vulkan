@@ -242,6 +242,7 @@
 	 */ 
 	 private static native void setLocation0(Buffer ptr, int _location);/*
 		  VkVertexInputAttributeDescription* vkObj = (VkVertexInputAttributeDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->location = (uint32_t) (_location);
 	  */
 
@@ -260,6 +261,7 @@
 	 */ 
 	 private static native void setBinding0(Buffer ptr, int _binding);/*
 		  VkVertexInputAttributeDescription* vkObj = (VkVertexInputAttributeDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->binding = (uint32_t) (_binding);
 	  */
 
@@ -278,6 +280,7 @@
 	 */ 
 	 private static native void setFormat0(Buffer ptr, int  _format);/*
 		  VkVertexInputAttributeDescription* vkObj = (VkVertexInputAttributeDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->format = (VkFormat) (_format);
 	  */
 
@@ -296,6 +299,7 @@
 	 */ 
 	 private static native void setOffset0(Buffer ptr, int _offset);/*
 		  VkVertexInputAttributeDescription* vkObj = (VkVertexInputAttributeDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->offset = (uint32_t) (_offset);
 	  */
 

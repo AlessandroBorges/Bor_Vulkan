@@ -93,6 +93,25 @@ public class VkCommandBufferLevel extends IntEnum<VkCommandBufferLevel> {
         VkCommandBufferLevel flag = new VkCommandBufferLevel(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkCommandBufferLevel from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkCommandBufferLevel array with matching values
+     */
+    public static VkCommandBufferLevel[] fromValues(VkCommandBufferLevel[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkCommandBufferLevel[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkCommandBufferLevel.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

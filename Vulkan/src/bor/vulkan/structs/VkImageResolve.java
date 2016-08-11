@@ -322,6 +322,7 @@
 	 */ 
 	 private static native void setSrcSubresource0(Buffer ptr, java.nio.ByteBuffer  _srcSubresource);/*
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->srcSubresource = (VkImageSubresourceLayers) (_srcSubresource);
 	  */
 
@@ -331,7 +332,8 @@
 	 */ 
 	 private static native long getSrcSubresource0(Buffer ptr);/*
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->srcSubresource);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->srcSubresource);
 	 */
 
 	/**
@@ -340,6 +342,7 @@
 	 */ 
 	 private static native void setSrcOffset0(Buffer ptr, java.nio.ByteBuffer  _srcOffset);/*
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->srcOffset = (VkOffset3D) (_srcOffset);
 	  */
 
@@ -349,7 +352,8 @@
 	 */ 
 	 private static native long getSrcOffset0(Buffer ptr);/*
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->srcOffset);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->srcOffset);
 	 */
 
 	/**
@@ -358,6 +362,7 @@
 	 */ 
 	 private static native void setDstSubresource0(Buffer ptr, java.nio.ByteBuffer  _dstSubresource);/*
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->dstSubresource = (VkImageSubresourceLayers) (_dstSubresource);
 	  */
 
@@ -367,7 +372,8 @@
 	 */ 
 	 private static native long getDstSubresource0(Buffer ptr);/*
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->dstSubresource);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->dstSubresource);
 	 */
 
 	/**
@@ -376,6 +382,7 @@
 	 */ 
 	 private static native void setDstOffset0(Buffer ptr, java.nio.ByteBuffer  _dstOffset);/*
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->dstOffset = (VkOffset3D) (_dstOffset);
 	  */
 
@@ -385,7 +392,8 @@
 	 */ 
 	 private static native long getDstOffset0(Buffer ptr);/*
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->dstOffset);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->dstOffset);
 	 */
 
 	/**
@@ -394,6 +402,7 @@
 	 */ 
 	 private static native void setExtent0(Buffer ptr, java.nio.ByteBuffer  _extent);/*
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->extent = (VkExtent3D) (_extent);
 	  */
 
@@ -403,7 +412,8 @@
 	 */ 
 	 private static native long getExtent0(Buffer ptr);/*
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->extent);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->extent);
 	 */
 
 

@@ -102,21 +102,23 @@ public abstract class IntEnum<T> implements IntEnumInterface<T> {
     
     /**
      * Return all itens in this enumeration in an Array
+     * This method will be overridden by subclasses
      * @return
      */
     @SuppressWarnings("unchecked")
-    public static <E> E[] values(){        
-        IntEnum<?>[] values = values();//staticMap.get(myGetClass());
-        int length = values.length;
-        IntEnum one = values[0];
-        Class myType = one.getClass();
-        
-        E[] r = ((Object)myType == (Object)Object[].class)
-                ? (E[]) new Object[length]
-                : (E[]) Array.newInstance(myType.getComponentType(), length);
-       
-        System.arraycopy(values, 0, r, 0, values.length);        
-        return r;
+    public static <E> E[] values(){
+        return null;
+//        IntEnum<?>[] wals = values();//staticMap.get(myGetClass());
+//        int length = wals.length;
+//        IntEnum one = wals[0];
+//        Class myType = one.getClass();
+//        
+//        E[] r = ((Object)myType == (Object)Object[].class)
+//                ? (E[]) new Object[length]
+//                : (E[]) Array.newInstance(myType.getComponentType(), length);
+//       
+//        System.arraycopy(wals, 0, r, 0, wals.length);        
+//        return r;
     }
     
     protected static Class myGetClass(){

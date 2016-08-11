@@ -93,6 +93,25 @@ public class VkRasterizationOrderAMD extends IntEnum<VkRasterizationOrderAMD> {
         VkRasterizationOrderAMD flag = new VkRasterizationOrderAMD(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkRasterizationOrderAMD from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkRasterizationOrderAMD array with matching values
+     */
+    public static VkRasterizationOrderAMD[] fromValues(VkRasterizationOrderAMD[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkRasterizationOrderAMD[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkRasterizationOrderAMD.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

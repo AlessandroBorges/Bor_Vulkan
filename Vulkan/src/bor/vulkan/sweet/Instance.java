@@ -14,15 +14,15 @@ import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import bor.vulkan.*;
 import bor.vulkan.enumerations.VkResult;
-import bor.vulkan.khr.VkSurfaceKHR;
-import bor.vulkan.khr.WSI;
-import bor.vulkan.khr.structs.VkAndroidSurfaceCreateInfoKHR;
-import bor.vulkan.khr.structs.VkDisplaySurfaceCreateInfoKHR;
-import bor.vulkan.khr.structs.VkMirSurfaceCreateInfoKHR;
-import bor.vulkan.khr.structs.VkWaylandSurfaceCreateInfoKHR;
-import bor.vulkan.khr.structs.VkWin32SurfaceCreateInfoKHR;
-import bor.vulkan.khr.structs.VkXcbSurfaceCreateInfoKHR;
-import bor.vulkan.khr.structs.VkXlibSurfaceCreateInfoKHR;
+import bor.vulkan.VkSurfaceKHR;
+
+import bor.vulkan.structs.VkAndroidSurfaceCreateInfoKHR;
+import bor.vulkan.structs.VkDisplaySurfaceCreateInfoKHR;
+import bor.vulkan.structs.VkMirSurfaceCreateInfoKHR;
+import bor.vulkan.structs.VkWaylandSurfaceCreateInfoKHR;
+import bor.vulkan.structs.VkWin32SurfaceCreateInfoKHR;
+import bor.vulkan.structs.VkXcbSurfaceCreateInfoKHR;
+import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
 import bor.vulkan.structs.*;
 
 /**

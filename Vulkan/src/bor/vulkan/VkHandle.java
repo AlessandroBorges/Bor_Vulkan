@@ -3,32 +3,17 @@
  */
 package bor.vulkan;
 
+import static bor.util.Utils.getNativeAddress;
+import static bor.util.Utils.sizeOfPtr;
+
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.Arrays;
 import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.Map;
 
-import static bor.util.Utils.*;
-
 import bor.util.Utils;
-import bor.vulkan.khr.ANativeWindow;
-import bor.vulkan.khr.MirConnection;
-import bor.vulkan.khr.MirSurface;
-import bor.vulkan.khr.VkDisplayKHR;
-import bor.vulkan.khr.VkDisplayModeKHR;
-import bor.vulkan.khr.VkSurfaceKHR;
-import bor.vulkan.khr.VkSwapchainKHR;
-import bor.vulkan.khr.Win32HINSTANCE;
-import bor.vulkan.khr.Win32HWND;
-import bor.vulkan.khr.WlDisplay;
-import bor.vulkan.khr.WlSurface;
-import bor.vulkan.khr.XCBVisualID;
-import bor.vulkan.khr.XCBconnection;
-import bor.vulkan.khr.XCBwindow;
-import bor.vulkan.khr.XlibDisplay;
-import bor.vulkan.khr.XlibWindow;
+
 
 /**
  * Non public class implementing Vulkan handlers.<br>

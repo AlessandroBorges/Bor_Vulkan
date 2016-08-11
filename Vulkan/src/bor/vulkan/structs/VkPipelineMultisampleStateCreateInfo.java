@@ -407,6 +407,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -425,6 +426,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -434,7 +436,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -443,6 +446,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkPipelineMultisampleStateCreateFlags) (_flags);
 	  */
 
@@ -461,6 +465,7 @@
 	 */ 
 	 private static native void setRasterizationSamples0(Buffer ptr, int  _rasterizationSamples);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->rasterizationSamples = (VkSampleCountFlagBits) (_rasterizationSamples);
 	  */
 
@@ -479,6 +484,7 @@
 	 */ 
 	 private static native void setSampleShadingEnable0(Buffer ptr, boolean  _sampleShadingEnable);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sampleShadingEnable = (VkBool32) (_sampleShadingEnable);
 	  */
 
@@ -497,6 +503,7 @@
 	 */ 
 	 private static native void setMinSampleShading0(Buffer ptr, float _minSampleShading);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->minSampleShading = (float) (_minSampleShading);
 	  */
 
@@ -515,16 +522,30 @@
 	 */ 
 	 private static native void setPSampleMask0(Buffer ptr, int[] _pSampleMask);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
-		  vkObj->pSampleMask = (const VkSampleMask*) (_pSampleMask);
+		  // included code
+		  if( NULL == _pSampleMask ){		   
+		    FREE_IT(vkObj->pSampleMask);
+			return;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength(obj__pSampleMask);		  
+		  vkObj->pSampleMask = CALLOC(count, VkSampleMask);
+		  memcpy( vkObj->pSampleMask, _pSampleMask, count * sizeof(VkSampleMask));
 	  */
 
 	/**
 	 * Native GET method for field pSampleMask	[int]<br>
 	 * Prototype: const VkSampleMask*  pSampleMask
 	 */ 
-	 private static native int[] getPSampleMask0(Buffer ptr);/*
+	 private static native int[] getPSampleMask0(Buffer ptr, int[] _pSampleMask);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
-		  return (int[]) (vkObj->pSampleMask);
+		  // included code
+          if(_pSampleMask == NULL){
+			  FREE_IT(vkObj->pSampleMask);
+			  return;
+		  }		  
+		  uint32_t count = (uint32_t)env->GetArrayLength(obj__pSampleMask);		 
+ 		  memcpy( _pSampleMask, vkObj->pSampleMask, count * sizeof(VkSampleMask));
+		  return _pSampleMask;
 	 */
 
 	/**
@@ -533,6 +554,7 @@
 	 */ 
 	 private static native void setAlphaToCoverageEnable0(Buffer ptr, boolean  _alphaToCoverageEnable);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->alphaToCoverageEnable = (VkBool32) (_alphaToCoverageEnable);
 	  */
 
@@ -551,6 +573,7 @@
 	 */ 
 	 private static native void setAlphaToOneEnable0(Buffer ptr, boolean  _alphaToOneEnable);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->alphaToOneEnable = (VkBool32) (_alphaToOneEnable);
 	  */
 
@@ -562,6 +585,8 @@
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->alphaToOneEnable);
 	 */
+
+
 
 
 

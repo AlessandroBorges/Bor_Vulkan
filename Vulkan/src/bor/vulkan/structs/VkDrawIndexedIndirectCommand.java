@@ -272,6 +272,7 @@
 	 */ 
 	 private static native void setIndexCount0(Buffer ptr, int _indexCount);/*
 		  VkDrawIndexedIndirectCommand* vkObj = (VkDrawIndexedIndirectCommand*)(ptr);
+		 // code for simple past value 
 		  vkObj->indexCount = (uint32_t) (_indexCount);
 	  */
 
@@ -290,6 +291,7 @@
 	 */ 
 	 private static native void setInstanceCount0(Buffer ptr, int _instanceCount);/*
 		  VkDrawIndexedIndirectCommand* vkObj = (VkDrawIndexedIndirectCommand*)(ptr);
+		 // code for simple past value 
 		  vkObj->instanceCount = (uint32_t) (_instanceCount);
 	  */
 
@@ -308,6 +310,7 @@
 	 */ 
 	 private static native void setFirstIndex0(Buffer ptr, int _firstIndex);/*
 		  VkDrawIndexedIndirectCommand* vkObj = (VkDrawIndexedIndirectCommand*)(ptr);
+		 // code for simple past value 
 		  vkObj->firstIndex = (uint32_t) (_firstIndex);
 	  */
 
@@ -326,6 +329,7 @@
 	 */ 
 	 private static native void setVertexOffset0(Buffer ptr, int _vertexOffset);/*
 		  VkDrawIndexedIndirectCommand* vkObj = (VkDrawIndexedIndirectCommand*)(ptr);
+		 // code for simple past value 
 		  vkObj->vertexOffset = (int32_t) (_vertexOffset);
 	  */
 
@@ -344,6 +348,7 @@
 	 */ 
 	 private static native void setFirstInstance0(Buffer ptr, int _firstInstance);/*
 		  VkDrawIndexedIndirectCommand* vkObj = (VkDrawIndexedIndirectCommand*)(ptr);
+		 // code for simple past value 
 		  vkObj->firstInstance = (uint32_t) (_firstInstance);
 	  */
 

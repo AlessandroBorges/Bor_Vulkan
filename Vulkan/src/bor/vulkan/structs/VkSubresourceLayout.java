@@ -272,6 +272,7 @@
 	 */ 
 	 private static native void setOffset0(Buffer ptr, long _offset);/*
 		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
+		 // code for simple past value 
 		  vkObj->offset = (VkDeviceSize) (_offset);
 	  */
 
@@ -290,6 +291,7 @@
 	 */ 
 	 private static native void setSize0(Buffer ptr, long _size);/*
 		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
+		 // code for simple past value 
 		  vkObj->size = (VkDeviceSize) (_size);
 	  */
 
@@ -308,6 +310,7 @@
 	 */ 
 	 private static native void setRowPitch0(Buffer ptr, long _rowPitch);/*
 		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
+		 // code for simple past value 
 		  vkObj->rowPitch = (VkDeviceSize) (_rowPitch);
 	  */
 
@@ -326,6 +329,7 @@
 	 */ 
 	 private static native void setArrayPitch0(Buffer ptr, long _arrayPitch);/*
 		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
+		 // code for simple past value 
 		  vkObj->arrayPitch = (VkDeviceSize) (_arrayPitch);
 	  */
 
@@ -344,6 +348,7 @@
 	 */ 
 	 private static native void setDepthPitch0(Buffer ptr, long _depthPitch);/*
 		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
+		 // code for simple past value 
 		  vkObj->depthPitch = (VkDeviceSize) (_depthPitch);
 	  */
 

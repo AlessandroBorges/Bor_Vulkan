@@ -356,6 +356,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -374,6 +375,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -383,7 +385,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -392,6 +395,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkBufferViewCreateFlags) (_flags);
 	  */
 
@@ -410,6 +414,7 @@
 	 */ 
 	 private static native void setBuffer0(Buffer ptr, long  _buffer);/*
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->buffer = (VkBuffer) (_buffer);
 	  */
 
@@ -419,7 +424,8 @@
 	 */ 
 	 private static native long getBuffer0(Buffer ptr);/*
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->buffer);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->buffer);
 	 */
 
 	/**
@@ -428,6 +434,7 @@
 	 */ 
 	 private static native void setFormat0(Buffer ptr, int  _format);/*
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->format = (VkFormat) (_format);
 	  */
 
@@ -446,6 +453,7 @@
 	 */ 
 	 private static native void setOffset0(Buffer ptr, long _offset);/*
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->offset = (VkDeviceSize) (_offset);
 	  */
 
@@ -464,6 +472,7 @@
 	 */ 
 	 private static native void setRange0(Buffer ptr, long _range);/*
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->range = (VkDeviceSize) (_range);
 	  */
 

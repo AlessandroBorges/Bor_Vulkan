@@ -371,6 +371,7 @@
 	 */ 
 	 private static native void setBlendEnable0(Buffer ptr, boolean  _blendEnable);/*
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		 // code for simple past value 
 		  vkObj->blendEnable = (VkBool32) (_blendEnable);
 	  */
 
@@ -389,6 +390,7 @@
 	 */ 
 	 private static native void setSrcColorBlendFactor0(Buffer ptr, int  _srcColorBlendFactor);/*
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		 // code for simple past value 
 		  vkObj->srcColorBlendFactor = (VkBlendFactor) (_srcColorBlendFactor);
 	  */
 
@@ -407,6 +409,7 @@
 	 */ 
 	 private static native void setDstColorBlendFactor0(Buffer ptr, int  _dstColorBlendFactor);/*
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		 // code for simple past value 
 		  vkObj->dstColorBlendFactor = (VkBlendFactor) (_dstColorBlendFactor);
 	  */
 
@@ -425,6 +428,7 @@
 	 */ 
 	 private static native void setColorBlendOp0(Buffer ptr, int  _colorBlendOp);/*
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		 // code for simple past value 
 		  vkObj->colorBlendOp = (VkBlendOp) (_colorBlendOp);
 	  */
 
@@ -443,6 +447,7 @@
 	 */ 
 	 private static native void setSrcAlphaBlendFactor0(Buffer ptr, int  _srcAlphaBlendFactor);/*
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		 // code for simple past value 
 		  vkObj->srcAlphaBlendFactor = (VkBlendFactor) (_srcAlphaBlendFactor);
 	  */
 
@@ -461,6 +466,7 @@
 	 */ 
 	 private static native void setDstAlphaBlendFactor0(Buffer ptr, int  _dstAlphaBlendFactor);/*
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		 // code for simple past value 
 		  vkObj->dstAlphaBlendFactor = (VkBlendFactor) (_dstAlphaBlendFactor);
 	  */
 
@@ -479,6 +485,7 @@
 	 */ 
 	 private static native void setAlphaBlendOp0(Buffer ptr, int  _alphaBlendOp);/*
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		 // code for simple past value 
 		  vkObj->alphaBlendOp = (VkBlendOp) (_alphaBlendOp);
 	  */
 
@@ -497,6 +504,7 @@
 	 */ 
 	 private static native void setColorWriteMask0(Buffer ptr, int _colorWriteMask);/*
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
+		 // code for simple past value 
 		  vkObj->colorWriteMask = (VkColorComponentFlags) (_colorWriteMask);
 	  */
 

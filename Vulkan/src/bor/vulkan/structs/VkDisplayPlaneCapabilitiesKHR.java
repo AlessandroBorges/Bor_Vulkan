@@ -14,7 +14,6 @@
  import static bor.vulkan.Vulkan.*; 
  import bor.vulkan.enumerations.*;
 
- import bor.vulkan.khr.*;
  import java.util.*;
  import java.nio.*;
 
@@ -477,6 +476,7 @@
 	 */ 
 	 private static native void setSupportedAlpha0(Buffer ptr, int _supportedAlpha);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->supportedAlpha = (VkDisplayPlaneAlphaFlagsKHR) (_supportedAlpha);
 	  */
 
@@ -495,6 +495,7 @@
 	 */ 
 	 private static native void setMinSrcPosition0(Buffer ptr, java.nio.ByteBuffer  _minSrcPosition);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->minSrcPosition = (VkOffset2D) (_minSrcPosition);
 	  */
 
@@ -504,7 +505,8 @@
 	 */ 
 	 private static native long getMinSrcPosition0(Buffer ptr);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->minSrcPosition);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->minSrcPosition);
 	 */
 
 	/**
@@ -513,6 +515,7 @@
 	 */ 
 	 private static native void setMaxSrcPosition0(Buffer ptr, java.nio.ByteBuffer  _maxSrcPosition);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->maxSrcPosition = (VkOffset2D) (_maxSrcPosition);
 	  */
 
@@ -522,7 +525,8 @@
 	 */ 
 	 private static native long getMaxSrcPosition0(Buffer ptr);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->maxSrcPosition);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->maxSrcPosition);
 	 */
 
 	/**
@@ -531,6 +535,7 @@
 	 */ 
 	 private static native void setMinSrcExtent0(Buffer ptr, java.nio.ByteBuffer  _minSrcExtent);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->minSrcExtent = (VkExtent2D) (_minSrcExtent);
 	  */
 
@@ -540,7 +545,8 @@
 	 */ 
 	 private static native long getMinSrcExtent0(Buffer ptr);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->minSrcExtent);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->minSrcExtent);
 	 */
 
 	/**
@@ -549,6 +555,7 @@
 	 */ 
 	 private static native void setMaxSrcExtent0(Buffer ptr, java.nio.ByteBuffer  _maxSrcExtent);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->maxSrcExtent = (VkExtent2D) (_maxSrcExtent);
 	  */
 
@@ -558,7 +565,8 @@
 	 */ 
 	 private static native long getMaxSrcExtent0(Buffer ptr);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->maxSrcExtent);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->maxSrcExtent);
 	 */
 
 	/**
@@ -567,6 +575,7 @@
 	 */ 
 	 private static native void setMinDstPosition0(Buffer ptr, java.nio.ByteBuffer  _minDstPosition);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->minDstPosition = (VkOffset2D) (_minDstPosition);
 	  */
 
@@ -576,7 +585,8 @@
 	 */ 
 	 private static native long getMinDstPosition0(Buffer ptr);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->minDstPosition);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->minDstPosition);
 	 */
 
 	/**
@@ -585,6 +595,7 @@
 	 */ 
 	 private static native void setMaxDstPosition0(Buffer ptr, java.nio.ByteBuffer  _maxDstPosition);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->maxDstPosition = (VkOffset2D) (_maxDstPosition);
 	  */
 
@@ -594,7 +605,8 @@
 	 */ 
 	 private static native long getMaxDstPosition0(Buffer ptr);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->maxDstPosition);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->maxDstPosition);
 	 */
 
 	/**
@@ -603,6 +615,7 @@
 	 */ 
 	 private static native void setMinDstExtent0(Buffer ptr, java.nio.ByteBuffer  _minDstExtent);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->minDstExtent = (VkExtent2D) (_minDstExtent);
 	  */
 
@@ -612,7 +625,8 @@
 	 */ 
 	 private static native long getMinDstExtent0(Buffer ptr);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->minDstExtent);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->minDstExtent);
 	 */
 
 	/**
@@ -621,6 +635,7 @@
 	 */ 
 	 private static native void setMaxDstExtent0(Buffer ptr, java.nio.ByteBuffer  _maxDstExtent);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->maxDstExtent = (VkExtent2D) (_maxDstExtent);
 	  */
 
@@ -630,7 +645,8 @@
 	 */ 
 	 private static native long getMaxDstExtent0(Buffer ptr);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->maxDstExtent);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->maxDstExtent);
 	 */
 
 

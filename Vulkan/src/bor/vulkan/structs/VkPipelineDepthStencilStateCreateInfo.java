@@ -520,6 +520,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -538,6 +539,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -547,7 +549,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -556,6 +559,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkPipelineDepthStencilStateCreateFlags) (_flags);
 	  */
 
@@ -574,6 +578,7 @@
 	 */ 
 	 private static native void setDepthTestEnable0(Buffer ptr, boolean  _depthTestEnable);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->depthTestEnable = (VkBool32) (_depthTestEnable);
 	  */
 
@@ -592,6 +597,7 @@
 	 */ 
 	 private static native void setDepthWriteEnable0(Buffer ptr, boolean  _depthWriteEnable);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->depthWriteEnable = (VkBool32) (_depthWriteEnable);
 	  */
 
@@ -610,6 +616,7 @@
 	 */ 
 	 private static native void setDepthCompareOp0(Buffer ptr, int  _depthCompareOp);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->depthCompareOp = (VkCompareOp) (_depthCompareOp);
 	  */
 
@@ -628,6 +635,7 @@
 	 */ 
 	 private static native void setDepthBoundsTestEnable0(Buffer ptr, boolean  _depthBoundsTestEnable);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->depthBoundsTestEnable = (VkBool32) (_depthBoundsTestEnable);
 	  */
 
@@ -646,6 +654,7 @@
 	 */ 
 	 private static native void setStencilTestEnable0(Buffer ptr, boolean  _stencilTestEnable);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->stencilTestEnable = (VkBool32) (_stencilTestEnable);
 	  */
 
@@ -664,6 +673,7 @@
 	 */ 
 	 private static native void setFront0(Buffer ptr, java.nio.ByteBuffer  _front);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->front = (VkStencilOpState) (_front);
 	  */
 
@@ -673,7 +683,8 @@
 	 */ 
 	 private static native long getFront0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->front);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->front);
 	 */
 
 	/**
@@ -682,6 +693,7 @@
 	 */ 
 	 private static native void setBack0(Buffer ptr, java.nio.ByteBuffer  _back);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->back = (VkStencilOpState) (_back);
 	  */
 
@@ -691,7 +703,8 @@
 	 */ 
 	 private static native long getBack0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->back);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->back);
 	 */
 
 	/**
@@ -700,6 +713,7 @@
 	 */ 
 	 private static native void setMinDepthBounds0(Buffer ptr, float _minDepthBounds);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->minDepthBounds = (float) (_minDepthBounds);
 	  */
 
@@ -718,6 +732,7 @@
 	 */ 
 	 private static native void setMaxDepthBounds0(Buffer ptr, float _maxDepthBounds);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxDepthBounds = (float) (_maxDepthBounds);
 	  */
 

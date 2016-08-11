@@ -364,6 +364,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -382,6 +383,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -391,7 +393,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -400,6 +403,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkPipelineViewportStateCreateFlags) (_flags);
 	  */
 
@@ -418,6 +422,7 @@
 	 */ 
 	 private static native void setViewportCount0(Buffer ptr, int _viewportCount);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->viewportCount = (uint32_t) (_viewportCount);
 	  */
 
@@ -436,6 +441,7 @@
 	 */ 
 	 private static native void setPViewports0(Buffer ptr, java.nio.ByteBuffer  _pViewports);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pViewports = (const VkViewport*) (_pViewports);
 	  */
 
@@ -445,7 +451,8 @@
 	 */ 
 	 private static native long getPViewports0(Buffer ptr);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pViewports);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pViewports );
 	 */
 
 	/**
@@ -454,6 +461,7 @@
 	 */ 
 	 private static native void setScissorCount0(Buffer ptr, int _scissorCount);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->scissorCount = (uint32_t) (_scissorCount);
 	  */
 
@@ -472,6 +480,7 @@
 	 */ 
 	 private static native void setPScissors0(Buffer ptr, java.nio.ByteBuffer  _pScissors);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pScissors = (const VkRect2D*) (_pScissors);
 	  */
 
@@ -481,7 +490,8 @@
 	 */ 
 	 private static native long getPScissors0(Buffer ptr);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pScissors);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pScissors );
 	 */
 
 

@@ -273,6 +273,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkDedicatedAllocationMemoryAllocateInfoNV* vkObj = (VkDedicatedAllocationMemoryAllocateInfoNV*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -291,6 +292,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkDedicatedAllocationMemoryAllocateInfoNV* vkObj = (VkDedicatedAllocationMemoryAllocateInfoNV*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -300,7 +302,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDedicatedAllocationMemoryAllocateInfoNV* vkObj = (VkDedicatedAllocationMemoryAllocateInfoNV*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -309,6 +312,7 @@
 	 */ 
 	 private static native void setImage0(Buffer ptr, long  _image);/*
 		  VkDedicatedAllocationMemoryAllocateInfoNV* vkObj = (VkDedicatedAllocationMemoryAllocateInfoNV*)(ptr);
+		 // code for simple past value 
 		  vkObj->image = (VkImage) (_image);
 	  */
 
@@ -318,7 +322,8 @@
 	 */ 
 	 private static native long getImage0(Buffer ptr);/*
 		  VkDedicatedAllocationMemoryAllocateInfoNV* vkObj = (VkDedicatedAllocationMemoryAllocateInfoNV*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->image);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->image);
 	 */
 
 	/**
@@ -327,6 +332,7 @@
 	 */ 
 	 private static native void setBuffer0(Buffer ptr, long  _buffer);/*
 		  VkDedicatedAllocationMemoryAllocateInfoNV* vkObj = (VkDedicatedAllocationMemoryAllocateInfoNV*)(ptr);
+		 // code for simple past value 
 		  vkObj->buffer = (VkBuffer) (_buffer);
 	  */
 
@@ -336,7 +342,8 @@
 	 */ 
 	 private static native long getBuffer0(Buffer ptr);/*
 		  VkDedicatedAllocationMemoryAllocateInfoNV* vkObj = (VkDedicatedAllocationMemoryAllocateInfoNV*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->buffer);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->buffer);
 	 */
 
 

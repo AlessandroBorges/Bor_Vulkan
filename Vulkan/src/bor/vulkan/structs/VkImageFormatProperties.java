@@ -282,6 +282,7 @@
 	 */ 
 	 private static native void setMaxExtent0(Buffer ptr, java.nio.ByteBuffer  _maxExtent);/*
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->maxExtent = (VkExtent3D) (_maxExtent);
 	  */
 
@@ -291,7 +292,8 @@
 	 */ 
 	 private static native long getMaxExtent0(Buffer ptr);/*
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->maxExtent);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->maxExtent);
 	 */
 
 	/**
@@ -300,6 +302,7 @@
 	 */ 
 	 private static native void setMaxMipLevels0(Buffer ptr, int _maxMipLevels);/*
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxMipLevels = (uint32_t) (_maxMipLevels);
 	  */
 
@@ -318,6 +321,7 @@
 	 */ 
 	 private static native void setMaxArrayLayers0(Buffer ptr, int _maxArrayLayers);/*
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxArrayLayers = (uint32_t) (_maxArrayLayers);
 	  */
 
@@ -336,6 +340,7 @@
 	 */ 
 	 private static native void setSampleCounts0(Buffer ptr, int _sampleCounts);/*
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->sampleCounts = (VkSampleCountFlags) (_sampleCounts);
 	  */
 
@@ -354,6 +359,7 @@
 	 */ 
 	 private static native void setMaxResourceSize0(Buffer ptr, long _maxResourceSize);/*
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxResourceSize = (VkDeviceSize) (_maxResourceSize);
 	  */
 

@@ -282,6 +282,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -300,6 +301,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -309,7 +311,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -318,6 +321,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkShaderModuleCreateFlags) (_flags);
 	  */
 
@@ -336,6 +340,7 @@
 	 */ 
 	 private static native void setCodeSize0(Buffer ptr, long _codeSize);/*
 		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->codeSize = (size_t) (_codeSize);
 	  */
 
@@ -354,16 +359,37 @@
 	 */ 
 	 private static native void setPCode0(Buffer ptr, int[] _pCode);/*
 		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
-		  vkObj->pCode = (const uint32_t*) (_pCode);
+		 // code for generic array 
+		  if( NULL == _pCode ){
+		    vkObj->codeSize = 0;
+		    FREE_IT(vkObj->pCode);
+		     return;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pCode);
+		  if( vkObj->codeSize != count){ 
+		    FREE_IT(vkObj->pCode); 
+		    vkObj->pCode = CALLOC(count, uint32_t);
+		   }
+		  memcpy( vkObj->pCode, _pCode, count * sizeof(uint32_t));
+		  vkObj->codeSize = count;
 	  */
 
 	/**
 	 * Native GET method for field pCode	[int]<br>
 	 * Prototype: const uint32_t*  pCode
 	 */ 
-	 private static native int[] getPCode0(Buffer ptr);/*
+	 private static native int[] getPCode0(Buffer ptr, int[] _pCode);/*
 		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
-		  return (int[]) (vkObj->pCode);
+		  // generic get for C type array, with content copy 
+		  if( 0 == vkObj->codeSize){ 
+		     return NULL;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pCode);
+		  if(vkObj->pCode == NULL){
+		    return NULL;
+		   }
+ 		  memcpy(_pCode, vkObj->pCode, count * sizeof(uint32_t));
+		  return obj__pCode;
 	 */
 
 

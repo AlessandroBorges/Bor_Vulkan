@@ -99,6 +99,25 @@ public class VkSystemAllocationScope extends IntEnum<VkSystemAllocationScope> {
         VkSystemAllocationScope flag = new VkSystemAllocationScope(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkSystemAllocationScope from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkSystemAllocationScope array with matching values
+     */
+    public static VkSystemAllocationScope[] fromValues(VkSystemAllocationScope[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkSystemAllocationScope[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkSystemAllocationScope.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

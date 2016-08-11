@@ -608,6 +608,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -626,6 +627,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -635,7 +637,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -644,6 +647,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkImageCreateFlags) (_flags);
 	  */
 
@@ -662,6 +666,7 @@
 	 */ 
 	 private static native void setImageType0(Buffer ptr, int  _imageType);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->imageType = (VkImageType) (_imageType);
 	  */
 
@@ -680,6 +685,7 @@
 	 */ 
 	 private static native void setFormat0(Buffer ptr, int  _format);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->format = (VkFormat) (_format);
 	  */
 
@@ -698,6 +704,7 @@
 	 */ 
 	 private static native void setExtent0(Buffer ptr, java.nio.ByteBuffer  _extent);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->extent = (VkExtent3D) (_extent);
 	  */
 
@@ -707,7 +714,8 @@
 	 */ 
 	 private static native long getExtent0(Buffer ptr);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->extent);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->extent);
 	 */
 
 	/**
@@ -716,6 +724,7 @@
 	 */ 
 	 private static native void setMipLevels0(Buffer ptr, int _mipLevels);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->mipLevels = (uint32_t) (_mipLevels);
 	  */
 
@@ -734,6 +743,7 @@
 	 */ 
 	 private static native void setArrayLayers0(Buffer ptr, int _arrayLayers);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->arrayLayers = (uint32_t) (_arrayLayers);
 	  */
 
@@ -752,6 +762,7 @@
 	 */ 
 	 private static native void setSamples0(Buffer ptr, int  _samples);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->samples = (VkSampleCountFlagBits) (_samples);
 	  */
 
@@ -770,6 +781,7 @@
 	 */ 
 	 private static native void setTiling0(Buffer ptr, int  _tiling);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->tiling = (VkImageTiling) (_tiling);
 	  */
 
@@ -788,6 +800,7 @@
 	 */ 
 	 private static native void setUsage0(Buffer ptr, int _usage);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->usage = (VkImageUsageFlags) (_usage);
 	  */
 
@@ -806,6 +819,7 @@
 	 */ 
 	 private static native void setSharingMode0(Buffer ptr, int  _sharingMode);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sharingMode = (VkSharingMode) (_sharingMode);
 	  */
 
@@ -824,6 +838,7 @@
 	 */ 
 	 private static native void setQueueFamilyIndexCount0(Buffer ptr, int _queueFamilyIndexCount);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->queueFamilyIndexCount = (uint32_t) (_queueFamilyIndexCount);
 	  */
 
@@ -842,16 +857,37 @@
 	 */ 
 	 private static native void setPQueueFamilyIndices0(Buffer ptr, int[] _pQueueFamilyIndices);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
-		  vkObj->pQueueFamilyIndices = (const uint32_t*) (_pQueueFamilyIndices);
+		 // code for generic array 
+		  if( NULL == _pQueueFamilyIndices ){
+		    vkObj->queueFamilyIndexCount = 0;
+		    FREE_IT(vkObj->pQueueFamilyIndices);
+		     return;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pQueueFamilyIndices);
+		  if( vkObj->queueFamilyIndexCount != count){ 
+		    FREE_IT(vkObj->pQueueFamilyIndices); 
+		    vkObj->pQueueFamilyIndices = CALLOC(count, uint32_t);
+		   }
+		  memcpy( vkObj->pQueueFamilyIndices, _pQueueFamilyIndices, count * sizeof(uint32_t));
+		  vkObj->queueFamilyIndexCount = count;
 	  */
 
 	/**
 	 * Native GET method for field pQueueFamilyIndices	[int]<br>
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
-	 private static native int[] getPQueueFamilyIndices0(Buffer ptr);/*
+	 private static native int[] getPQueueFamilyIndices0(Buffer ptr, int[] _pQueueFamilyIndices);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
-		  return (int[]) (vkObj->pQueueFamilyIndices);
+		  // generic get for C type array, with content copy 
+		  if( 0 == vkObj->queueFamilyIndexCount){ 
+		     return NULL;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pQueueFamilyIndices);
+		  if(vkObj->pQueueFamilyIndices == NULL){
+		    return NULL;
+		   }
+ 		  memcpy(_pQueueFamilyIndices, vkObj->pQueueFamilyIndices, count * sizeof(uint32_t));
+		  return obj__pQueueFamilyIndices;
 	 */
 
 	/**
@@ -860,6 +896,7 @@
 	 */ 
 	 private static native void setInitialLayout0(Buffer ptr, int  _initialLayout);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->initialLayout = (VkImageLayout) (_initialLayout);
 	  */
 

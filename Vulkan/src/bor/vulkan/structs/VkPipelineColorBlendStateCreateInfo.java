@@ -335,7 +335,7 @@
 	 */ 
 	 public VkPipelineColorBlendStateCreateInfo blendConstants(float[] blendConstants){
 		 if(blendConstants == null)
-		     java.util.Arrays.fill(this.blendConstants , 0);
+		     java.util.Arrays.fill(this.blendConstants , (float) 0);
 		  else
 		     System.arraycopy(blendConstants, 0, this.blendConstants, 0, this.blendConstants.length); 
 
@@ -390,6 +390,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -408,6 +409,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -417,7 +419,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -426,6 +429,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkPipelineColorBlendStateCreateFlags) (_flags);
 	  */
 
@@ -444,6 +448,7 @@
 	 */ 
 	 private static native void setLogicOpEnable0(Buffer ptr, boolean  _logicOpEnable);/*
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->logicOpEnable = (VkBool32) (_logicOpEnable);
 	  */
 
@@ -462,6 +467,7 @@
 	 */ 
 	 private static native void setLogicOp0(Buffer ptr, int  _logicOp);/*
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->logicOp = (VkLogicOp) (_logicOp);
 	  */
 
@@ -480,6 +486,7 @@
 	 */ 
 	 private static native void setAttachmentCount0(Buffer ptr, int _attachmentCount);/*
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->attachmentCount = (uint32_t) (_attachmentCount);
 	  */
 
@@ -498,6 +505,7 @@
 	 */ 
 	 private static native void setPAttachments0(Buffer ptr, java.nio.ByteBuffer  _pAttachments);/*
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pAttachments = (const VkPipelineColorBlendAttachmentState*) (_pAttachments);
 	  */
 
@@ -507,7 +515,8 @@
 	 */ 
 	 private static native long getPAttachments0(Buffer ptr);/*
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pAttachments);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pAttachments );
 	 */
 
 	/**
@@ -516,15 +525,17 @@
 	 */ 
 	 private static native void setBlendConstants0(Buffer ptr, float[] _blendConstants);/*
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
-		  memcpy(&(vkObj->blendConstants), &_blendConstants, 4 * sizeof(float));
+		 // code for fixed size array 
+		  memcpy(vkObj->blendConstants, _blendConstants, 4 * sizeof(float));
 	  */
 
 	/**
 	 * Native GET method for field blendConstants	[float]<br>
 	 * Prototype: float[]  blendConstants
 	 */ 
-	 private static native float[] getBlendConstants0(Buffer ptr, float[] blendConstants);/*
+	 private static native float[] getBlendConstants0(Buffer ptr, float[] _blendConstants);/*
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
+		  // fixed length array  
 		  memcpy(&_blendConstants, &(vkObj->blendConstants), 4 * sizeof(float));
 		  return _blendConstants;
 	 */

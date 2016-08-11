@@ -14,7 +14,6 @@
  import static bor.vulkan.Vulkan.*; 
  import bor.vulkan.enumerations.*;
 
- import bor.vulkan.khr.*;
  import java.util.*;
  import java.nio.*;
 
@@ -304,8 +303,11 @@
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
+	 #ifdef VK_USE_PLATFORM_WAYLAND_KHR 
 		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
+	 #endif 
 	  */
 
 	/**
@@ -313,8 +315,12 @@
 	 * Prototype: VkStructureType  sType
 	 */ 
 	 private static native int  getSType0(Buffer ptr);/*
+	 #ifdef VK_USE_PLATFORM_WAYLAND_KHR 
 		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
 		  return (VkStructureType) (vkObj->sType);
+	 #else 
+	   return 0; 
+	 #endif 
 	 */
 
 	/**
@@ -322,8 +328,11 @@
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
+	 #ifdef VK_USE_PLATFORM_WAYLAND_KHR 
 		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
+	 #endif 
 	  */
 
 	/**
@@ -331,8 +340,13 @@
 	 * Prototype: const void*  pNext
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
+	 #ifdef VK_USE_PLATFORM_WAYLAND_KHR 
 		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+	 #else 
+	   return 0; 
+	 #endif 
 	 */
 
 	/**
@@ -340,8 +354,11 @@
 	 * Prototype: VkWaylandSurfaceCreateFlagsKHR  flags
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
+	 #ifdef VK_USE_PLATFORM_WAYLAND_KHR 
 		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkWaylandSurfaceCreateFlagsKHR) (_flags);
+	 #endif 
 	  */
 
 	/**
@@ -349,8 +366,12 @@
 	 * Prototype: VkWaylandSurfaceCreateFlagsKHR  flags
 	 */ 
 	 private static native int getFlags0(Buffer ptr);/*
+	 #ifdef VK_USE_PLATFORM_WAYLAND_KHR 
 		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->flags);
+	 #else 
+	   return 0; 
+	 #endif 
 	 */
 
 	/**
@@ -358,8 +379,11 @@
 	 * Prototype: struct wl_display*  display
 	 */ 
 	 private static native void setDisplay0(Buffer ptr, long  _display);/*
+	 #ifdef VK_USE_PLATFORM_WAYLAND_KHR 
 		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->display = (struct wl_display*) (_display);
+	 #endif 
 	  */
 
 	/**
@@ -367,8 +391,13 @@
 	 * Prototype: struct wl_display*  display
 	 */ 
 	 private static native long getDisplay0(Buffer ptr);/*
+	 #ifdef VK_USE_PLATFORM_WAYLAND_KHR 
 		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->display);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->display);
+	 #else 
+	   return 0; 
+	 #endif 
 	 */
 
 	/**
@@ -376,8 +405,11 @@
 	 * Prototype: struct wl_surface*  surface
 	 */ 
 	 private static native void setSurface0(Buffer ptr, long  _surface);/*
+	 #ifdef VK_USE_PLATFORM_WAYLAND_KHR 
 		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->surface = (struct wl_surface*) (_surface);
+	 #endif 
 	  */
 
 	/**
@@ -385,8 +417,13 @@
 	 * Prototype: struct wl_surface*  surface
 	 */ 
 	 private static native long getSurface0(Buffer ptr);/*
+	 #ifdef VK_USE_PLATFORM_WAYLAND_KHR 
 		  VkWaylandSurfaceCreateInfoKHR* vkObj = (VkWaylandSurfaceCreateInfoKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->surface);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->surface);
+	 #else 
+	   return 0; 
+	 #endif 
 	 */
 
 

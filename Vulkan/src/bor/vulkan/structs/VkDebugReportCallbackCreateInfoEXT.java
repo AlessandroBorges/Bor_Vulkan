@@ -296,6 +296,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -314,6 +315,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -323,7 +325,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -332,6 +335,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkDebugReportFlagsEXT) (_flags);
 	  */
 
@@ -350,6 +354,7 @@
 	 */ 
 	 private static native void setPfnCallback0(Buffer ptr, long  _pfnCallback);/*
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
+		 // code for simple past value 
 		  vkObj->pfnCallback = (PFN_vkDebugReportCallbackEXT) (_pfnCallback);
 	  */
 
@@ -359,7 +364,8 @@
 	 */ 
 	 private static native long getPfnCallback0(Buffer ptr);/*
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pfnCallback);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pfnCallback);
 	 */
 
 	/**
@@ -368,6 +374,7 @@
 	 */ 
 	 private static native void setPUserData0(Buffer ptr, java.nio.Buffer _pUserData);/*
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pUserData = (void*) (_pUserData);
 	  */
 
@@ -377,7 +384,8 @@
 	 */ 
 	 private static native long getPUserData0(Buffer ptr);/*
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pUserData);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pUserData);
 	 */
 
 

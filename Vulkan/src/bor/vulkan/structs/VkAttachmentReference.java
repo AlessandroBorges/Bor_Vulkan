@@ -180,6 +180,7 @@
 	 */ 
 	 private static native void setAttachment0(Buffer ptr, int _attachment);/*
 		  VkAttachmentReference* vkObj = (VkAttachmentReference*)(ptr);
+		 // code for simple past value 
 		  vkObj->attachment = (uint32_t) (_attachment);
 	  */
 
@@ -198,6 +199,7 @@
 	 */ 
 	 private static native void setLayout0(Buffer ptr, int  _layout);/*
 		  VkAttachmentReference* vkObj = (VkAttachmentReference*)(ptr);
+		 // code for simple past value 
 		  vkObj->layout = (VkImageLayout) (_layout);
 	  */
 

@@ -210,6 +210,7 @@
 	 */ 
 	 private static native void setX0(Buffer ptr, int _x);/*
 		  VkDispatchIndirectCommand* vkObj = (VkDispatchIndirectCommand*)(ptr);
+		 // code for simple past value 
 		  vkObj->x = (uint32_t) (_x);
 	  */
 
@@ -228,6 +229,7 @@
 	 */ 
 	 private static native void setY0(Buffer ptr, int _y);/*
 		  VkDispatchIndirectCommand* vkObj = (VkDispatchIndirectCommand*)(ptr);
+		 // code for simple past value 
 		  vkObj->y = (uint32_t) (_y);
 	  */
 
@@ -246,6 +248,7 @@
 	 */ 
 	 private static native void setZ0(Buffer ptr, int _z);/*
 		  VkDispatchIndirectCommand* vkObj = (VkDispatchIndirectCommand*)(ptr);
+		 // code for simple past value 
 		  vkObj->z = (uint32_t) (_z);
 	  */
 

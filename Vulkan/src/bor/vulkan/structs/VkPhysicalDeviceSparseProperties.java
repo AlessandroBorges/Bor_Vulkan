@@ -272,6 +272,7 @@
 	 */ 
 	 private static native void setResidencyStandard2DBlockShape0(Buffer ptr, boolean  _residencyStandard2DBlockShape);/*
 		  VkPhysicalDeviceSparseProperties* vkObj = (VkPhysicalDeviceSparseProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->residencyStandard2DBlockShape = (VkBool32) (_residencyStandard2DBlockShape);
 	  */
 
@@ -290,6 +291,7 @@
 	 */ 
 	 private static native void setResidencyStandard2DMultisampleBlockShape0(Buffer ptr, boolean  _residencyStandard2DMultisampleBlockShape);/*
 		  VkPhysicalDeviceSparseProperties* vkObj = (VkPhysicalDeviceSparseProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->residencyStandard2DMultisampleBlockShape = (VkBool32) (_residencyStandard2DMultisampleBlockShape);
 	  */
 
@@ -308,6 +310,7 @@
 	 */ 
 	 private static native void setResidencyStandard3DBlockShape0(Buffer ptr, boolean  _residencyStandard3DBlockShape);/*
 		  VkPhysicalDeviceSparseProperties* vkObj = (VkPhysicalDeviceSparseProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->residencyStandard3DBlockShape = (VkBool32) (_residencyStandard3DBlockShape);
 	  */
 
@@ -326,6 +329,7 @@
 	 */ 
 	 private static native void setResidencyAlignedMipSize0(Buffer ptr, boolean  _residencyAlignedMipSize);/*
 		  VkPhysicalDeviceSparseProperties* vkObj = (VkPhysicalDeviceSparseProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->residencyAlignedMipSize = (VkBool32) (_residencyAlignedMipSize);
 	  */
 
@@ -344,6 +348,7 @@
 	 */ 
 	 private static native void setResidencyNonResidentStrict0(Buffer ptr, boolean  _residencyNonResidentStrict);/*
 		  VkPhysicalDeviceSparseProperties* vkObj = (VkPhysicalDeviceSparseProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->residencyNonResidentStrict = (VkBool32) (_residencyNonResidentStrict);
 	  */
 

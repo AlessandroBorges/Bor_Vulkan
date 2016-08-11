@@ -179,6 +179,7 @@
 	 */ 
 	 private static native void setWidth0(Buffer ptr, int _width);/*
 		  VkExtent2D* vkObj = (VkExtent2D*)(ptr);
+		 // code for simple past value 
 		  vkObj->width = (uint32_t) (_width);
 	  */
 
@@ -197,6 +198,7 @@
 	 */ 
 	 private static native void setHeight0(Buffer ptr, int _height);/*
 		  VkExtent2D* vkObj = (VkExtent2D*)(ptr);
+		 // code for simple past value 
 		  vkObj->height = (uint32_t) (_height);
 	  */
 

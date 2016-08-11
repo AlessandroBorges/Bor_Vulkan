@@ -210,6 +210,7 @@
 	 */ 
 	 private static native void setSize0(Buffer ptr, long _size);/*
 		  VkMemoryRequirements* vkObj = (VkMemoryRequirements*)(ptr);
+		 // code for simple past value 
 		  vkObj->size = (VkDeviceSize) (_size);
 	  */
 
@@ -228,6 +229,7 @@
 	 */ 
 	 private static native void setAlignment0(Buffer ptr, long _alignment);/*
 		  VkMemoryRequirements* vkObj = (VkMemoryRequirements*)(ptr);
+		 // code for simple past value 
 		  vkObj->alignment = (VkDeviceSize) (_alignment);
 	  */
 
@@ -246,6 +248,7 @@
 	 */ 
 	 private static native void setMemoryTypeBits0(Buffer ptr, int _memoryTypeBits);/*
 		  VkMemoryRequirements* vkObj = (VkMemoryRequirements*)(ptr);
+		 // code for simple past value 
 		  vkObj->memoryTypeBits = (uint32_t) (_memoryTypeBits);
 	  */
 

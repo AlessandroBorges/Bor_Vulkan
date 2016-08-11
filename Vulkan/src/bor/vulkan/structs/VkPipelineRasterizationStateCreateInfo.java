@@ -532,6 +532,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -550,6 +551,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -559,7 +561,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -568,6 +571,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkPipelineRasterizationStateCreateFlags) (_flags);
 	  */
 
@@ -586,6 +590,7 @@
 	 */ 
 	 private static native void setDepthClampEnable0(Buffer ptr, boolean  _depthClampEnable);/*
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->depthClampEnable = (VkBool32) (_depthClampEnable);
 	  */
 
@@ -604,6 +609,7 @@
 	 */ 
 	 private static native void setRasterizerDiscardEnable0(Buffer ptr, boolean  _rasterizerDiscardEnable);/*
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->rasterizerDiscardEnable = (VkBool32) (_rasterizerDiscardEnable);
 	  */
 
@@ -622,6 +628,7 @@
 	 */ 
 	 private static native void setPolygonMode0(Buffer ptr, int  _polygonMode);/*
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->polygonMode = (VkPolygonMode) (_polygonMode);
 	  */
 
@@ -640,6 +647,7 @@
 	 */ 
 	 private static native void setCullMode0(Buffer ptr, int _cullMode);/*
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->cullMode = (VkCullModeFlags) (_cullMode);
 	  */
 
@@ -658,6 +666,7 @@
 	 */ 
 	 private static native void setFrontFace0(Buffer ptr, int  _frontFace);/*
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->frontFace = (VkFrontFace) (_frontFace);
 	  */
 
@@ -676,6 +685,7 @@
 	 */ 
 	 private static native void setDepthBiasEnable0(Buffer ptr, boolean  _depthBiasEnable);/*
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->depthBiasEnable = (VkBool32) (_depthBiasEnable);
 	  */
 
@@ -694,6 +704,7 @@
 	 */ 
 	 private static native void setDepthBiasConstantFactor0(Buffer ptr, float _depthBiasConstantFactor);/*
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->depthBiasConstantFactor = (float) (_depthBiasConstantFactor);
 	  */
 
@@ -712,6 +723,7 @@
 	 */ 
 	 private static native void setDepthBiasClamp0(Buffer ptr, float _depthBiasClamp);/*
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->depthBiasClamp = (float) (_depthBiasClamp);
 	  */
 
@@ -730,6 +742,7 @@
 	 */ 
 	 private static native void setDepthBiasSlopeFactor0(Buffer ptr, float _depthBiasSlopeFactor);/*
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->depthBiasSlopeFactor = (float) (_depthBiasSlopeFactor);
 	  */
 
@@ -748,6 +761,7 @@
 	 */ 
 	 private static native void setLineWidth0(Buffer ptr, float _lineWidth);/*
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->lineWidth = (float) (_lineWidth);
 	  */
 

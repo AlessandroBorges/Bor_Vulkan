@@ -95,6 +95,25 @@ public class VkImageType extends IntEnum<VkImageType> {
         VkImageType flag = new VkImageType(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkImageType from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkImageType array with matching values
+     */
+    public static VkImageType[] fromValues(VkImageType[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkImageType[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkImageType.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

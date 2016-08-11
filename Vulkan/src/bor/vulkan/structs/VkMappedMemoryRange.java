@@ -293,6 +293,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -311,6 +312,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -320,7 +322,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -329,6 +332,7 @@
 	 */ 
 	 private static native void setMemory0(Buffer ptr, long  _memory);/*
 		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
+		 // code for simple past value 
 		  vkObj->memory = (VkDeviceMemory) (_memory);
 	  */
 
@@ -338,7 +342,8 @@
 	 */ 
 	 private static native long getMemory0(Buffer ptr);/*
 		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->memory);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->memory);
 	 */
 
 	/**
@@ -347,6 +352,7 @@
 	 */ 
 	 private static native void setOffset0(Buffer ptr, long _offset);/*
 		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
+		 // code for simple past value 
 		  vkObj->offset = (VkDeviceSize) (_offset);
 	  */
 
@@ -365,6 +371,7 @@
 	 */ 
 	 private static native void setSize0(Buffer ptr, long _size);/*
 		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
+		 // code for simple past value 
 		  vkObj->size = (VkDeviceSize) (_size);
 	  */
 

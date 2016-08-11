@@ -549,6 +549,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -567,6 +568,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -576,7 +578,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -585,6 +588,7 @@
 	 */ 
 	 private static native void setWaitSemaphoreCount0(Buffer ptr, int _waitSemaphoreCount);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->waitSemaphoreCount = (uint32_t) (_waitSemaphoreCount);
 	  */
 
@@ -603,6 +607,7 @@
 	 */ 
 	 private static native void setPWaitSemaphores0(Buffer ptr, ByteBuffer  _pWaitSemaphores);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pWaitSemaphores = (const VkSemaphore*) (_pWaitSemaphores);
 	  */
 
@@ -612,7 +617,8 @@
 	 */ 
 	 private static native long getPWaitSemaphores0(Buffer ptr);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pWaitSemaphores);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pWaitSemaphores );
 	 */
 
 	/**
@@ -621,6 +627,7 @@
 	 */ 
 	 private static native void setBufferBindCount0(Buffer ptr, int _bufferBindCount);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->bufferBindCount = (uint32_t) (_bufferBindCount);
 	  */
 
@@ -639,6 +646,7 @@
 	 */ 
 	 private static native void setPBufferBinds0(Buffer ptr, java.nio.ByteBuffer  _pBufferBinds);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pBufferBinds = (const VkSparseBufferMemoryBindInfo*) (_pBufferBinds);
 	  */
 
@@ -648,7 +656,8 @@
 	 */ 
 	 private static native long getPBufferBinds0(Buffer ptr);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pBufferBinds);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pBufferBinds );
 	 */
 
 	/**
@@ -657,6 +666,7 @@
 	 */ 
 	 private static native void setImageOpaqueBindCount0(Buffer ptr, int _imageOpaqueBindCount);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->imageOpaqueBindCount = (uint32_t) (_imageOpaqueBindCount);
 	  */
 
@@ -675,6 +685,7 @@
 	 */ 
 	 private static native void setPImageOpaqueBinds0(Buffer ptr, java.nio.ByteBuffer  _pImageOpaqueBinds);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pImageOpaqueBinds = (const VkSparseImageOpaqueMemoryBindInfo*) (_pImageOpaqueBinds);
 	  */
 
@@ -684,7 +695,8 @@
 	 */ 
 	 private static native long getPImageOpaqueBinds0(Buffer ptr);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pImageOpaqueBinds);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pImageOpaqueBinds );
 	 */
 
 	/**
@@ -693,6 +705,7 @@
 	 */ 
 	 private static native void setImageBindCount0(Buffer ptr, int _imageBindCount);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->imageBindCount = (uint32_t) (_imageBindCount);
 	  */
 
@@ -711,6 +724,7 @@
 	 */ 
 	 private static native void setPImageBinds0(Buffer ptr, java.nio.ByteBuffer  _pImageBinds);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pImageBinds = (const VkSparseImageMemoryBindInfo*) (_pImageBinds);
 	  */
 
@@ -720,7 +734,8 @@
 	 */ 
 	 private static native long getPImageBinds0(Buffer ptr);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pImageBinds);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pImageBinds );
 	 */
 
 	/**
@@ -729,6 +744,7 @@
 	 */ 
 	 private static native void setSignalSemaphoreCount0(Buffer ptr, int _signalSemaphoreCount);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->signalSemaphoreCount = (uint32_t) (_signalSemaphoreCount);
 	  */
 
@@ -747,6 +763,7 @@
 	 */ 
 	 private static native void setPSignalSemaphores0(Buffer ptr, ByteBuffer  _pSignalSemaphores);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pSignalSemaphores = (const VkSemaphore*) (_pSignalSemaphores);
 	  */
 
@@ -756,7 +773,8 @@
 	 */ 
 	 private static native long getPSignalSemaphores0(Buffer ptr);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pSignalSemaphores);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pSignalSemaphores );
 	 */
 
 

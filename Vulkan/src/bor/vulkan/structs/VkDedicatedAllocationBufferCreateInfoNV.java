@@ -220,6 +220,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkDedicatedAllocationBufferCreateInfoNV* vkObj = (VkDedicatedAllocationBufferCreateInfoNV*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -238,6 +239,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkDedicatedAllocationBufferCreateInfoNV* vkObj = (VkDedicatedAllocationBufferCreateInfoNV*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -247,7 +249,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDedicatedAllocationBufferCreateInfoNV* vkObj = (VkDedicatedAllocationBufferCreateInfoNV*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -256,6 +259,7 @@
 	 */ 
 	 private static native void setDedicatedAllocation0(Buffer ptr, boolean  _dedicatedAllocation);/*
 		  VkDedicatedAllocationBufferCreateInfoNV* vkObj = (VkDedicatedAllocationBufferCreateInfoNV*)(ptr);
+		 // code for simple past value 
 		  vkObj->dedicatedAllocation = (VkBool32) (_dedicatedAllocation);
 	  */
 

@@ -1,14 +1,16 @@
 /**
  * 
  */
-package bor.vulkan.khr;
+package bor.vulkan.sweet;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.List;
 
-import bor.vulkan.VkDebugReportCallbackEXT;
+import bor.vulkan.MirConnection;
 import bor.vulkan.VkDevice;
+import bor.vulkan.VkDisplayKHR;
+import bor.vulkan.VkDisplayModeKHR;
 import bor.vulkan.VkFence;
 import bor.vulkan.VkHandle;
 import bor.vulkan.VkImage;
@@ -16,27 +18,32 @@ import bor.vulkan.VkInstance;
 import bor.vulkan.VkPhysicalDevice;
 import bor.vulkan.VkQueue;
 import bor.vulkan.VkSemaphore;
-import bor.vulkan.enumerations.VkDebugReportObjectTypeEXT;
+import bor.vulkan.VkSurfaceKHR;
+import bor.vulkan.VkSwapchainKHR;
+import bor.vulkan.WlDisplay;
+import bor.vulkan.XCBVisualID;
+import bor.vulkan.XCBconnection;
+import bor.vulkan.XlibDisplay;
+import bor.vulkan.XlibVisualID;
 import bor.vulkan.enumerations.VkPresentModeKHR;
 import bor.vulkan.enumerations.VkResult;
-import bor.vulkan.khr.structs.VkAndroidSurfaceCreateInfoKHR;
-import bor.vulkan.khr.structs.VkDisplayModeCreateInfoKHR;
-import bor.vulkan.khr.structs.VkDisplayModePropertiesKHR;
-import bor.vulkan.khr.structs.VkDisplayPlaneCapabilitiesKHR;
-import bor.vulkan.khr.structs.VkDisplayPlanePropertiesKHR;
-import bor.vulkan.khr.structs.VkDisplayPropertiesKHR;
-import bor.vulkan.khr.structs.VkDisplaySurfaceCreateInfoKHR;
-import bor.vulkan.khr.structs.VkMirSurfaceCreateInfoKHR;
-import bor.vulkan.khr.structs.VkPresentInfoKHR;
-import bor.vulkan.khr.structs.VkSurfaceCapabilitiesKHR;
-import bor.vulkan.khr.structs.VkSurfaceFormatKHR;
-import bor.vulkan.khr.structs.VkSwapchainCreateInfoKHR;
-import bor.vulkan.khr.structs.VkWaylandSurfaceCreateInfoKHR;
-import bor.vulkan.khr.structs.VkWin32SurfaceCreateInfoKHR;
-import bor.vulkan.khr.structs.VkXcbSurfaceCreateInfoKHR;
-import bor.vulkan.khr.structs.VkXlibSurfaceCreateInfoKHR;
 import bor.vulkan.structs.VkAllocationCallbacks;
-import bor.vulkan.structs.VkDebugReportCallbackCreateInfoEXT;
+import bor.vulkan.structs.VkAndroidSurfaceCreateInfoKHR;
+import bor.vulkan.structs.VkDisplayModeCreateInfoKHR;
+import bor.vulkan.structs.VkDisplayModePropertiesKHR;
+import bor.vulkan.structs.VkDisplayPlaneCapabilitiesKHR;
+import bor.vulkan.structs.VkDisplayPlanePropertiesKHR;
+import bor.vulkan.structs.VkDisplayPropertiesKHR;
+import bor.vulkan.structs.VkDisplaySurfaceCreateInfoKHR;
+import bor.vulkan.structs.VkMirSurfaceCreateInfoKHR;
+import bor.vulkan.structs.VkPresentInfoKHR;
+import bor.vulkan.structs.VkSurfaceCapabilitiesKHR;
+import bor.vulkan.structs.VkSurfaceFormatKHR;
+import bor.vulkan.structs.VkSwapchainCreateInfoKHR;
+import bor.vulkan.structs.VkWaylandSurfaceCreateInfoKHR;
+import bor.vulkan.structs.VkWin32SurfaceCreateInfoKHR;
+import bor.vulkan.structs.VkXcbSurfaceCreateInfoKHR;
+import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
 
 /**
  * Class to hold functions related to Vulkan's<br>

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package bor.vulkan.khr;
+package bor.vulkan;
 
 import java.nio.ByteBuffer;
 

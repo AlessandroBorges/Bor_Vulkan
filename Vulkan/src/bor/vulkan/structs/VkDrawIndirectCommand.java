@@ -241,6 +241,7 @@
 	 */ 
 	 private static native void setVertexCount0(Buffer ptr, int _vertexCount);/*
 		  VkDrawIndirectCommand* vkObj = (VkDrawIndirectCommand*)(ptr);
+		 // code for simple past value 
 		  vkObj->vertexCount = (uint32_t) (_vertexCount);
 	  */
 
@@ -259,6 +260,7 @@
 	 */ 
 	 private static native void setInstanceCount0(Buffer ptr, int _instanceCount);/*
 		  VkDrawIndirectCommand* vkObj = (VkDrawIndirectCommand*)(ptr);
+		 // code for simple past value 
 		  vkObj->instanceCount = (uint32_t) (_instanceCount);
 	  */
 
@@ -277,6 +279,7 @@
 	 */ 
 	 private static native void setFirstVertex0(Buffer ptr, int _firstVertex);/*
 		  VkDrawIndirectCommand* vkObj = (VkDrawIndirectCommand*)(ptr);
+		 // code for simple past value 
 		  vkObj->firstVertex = (uint32_t) (_firstVertex);
 	  */
 
@@ -295,6 +298,7 @@
 	 */ 
 	 private static native void setFirstInstance0(Buffer ptr, int _firstInstance);/*
 		  VkDrawIndirectCommand* vkObj = (VkDrawIndirectCommand*)(ptr);
+		 // code for simple past value 
 		  vkObj->firstInstance = (uint32_t) (_firstInstance);
 	  */
 

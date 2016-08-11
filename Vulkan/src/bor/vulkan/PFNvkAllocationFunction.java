@@ -5,9 +5,6 @@ package bor.vulkan;
 
 import java.nio.ByteBuffer;
 
-import bor.vulkan.khr.MirSurface;
-
-
 /**
  * Class to wrap PFNvkAllocationFunction pointers.<br>
  * 

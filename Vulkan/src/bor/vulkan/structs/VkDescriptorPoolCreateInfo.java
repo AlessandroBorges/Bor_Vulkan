@@ -323,6 +323,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -341,6 +342,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -350,7 +352,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -359,6 +362,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkDescriptorPoolCreateFlags) (_flags);
 	  */
 
@@ -377,6 +381,7 @@
 	 */ 
 	 private static native void setMaxSets0(Buffer ptr, int _maxSets);/*
 		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->maxSets = (uint32_t) (_maxSets);
 	  */
 
@@ -395,6 +400,7 @@
 	 */ 
 	 private static native void setPoolSizeCount0(Buffer ptr, int _poolSizeCount);/*
 		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->poolSizeCount = (uint32_t) (_poolSizeCount);
 	  */
 
@@ -413,6 +419,7 @@
 	 */ 
 	 private static native void setPPoolSizes0(Buffer ptr, java.nio.ByteBuffer  _pPoolSizes);/*
 		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pPoolSizes = (const VkDescriptorPoolSize*) (_pPoolSizes);
 	  */
 
@@ -422,7 +429,8 @@
 	 */ 
 	 private static native long getPPoolSizes0(Buffer ptr);/*
 		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pPoolSizes);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pPoolSizes );
 	 */
 
 

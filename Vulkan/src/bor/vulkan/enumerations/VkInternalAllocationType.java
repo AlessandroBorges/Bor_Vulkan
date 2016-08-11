@@ -91,6 +91,25 @@ public class VkInternalAllocationType extends IntEnum<VkInternalAllocationType> 
         VkInternalAllocationType flag = new VkInternalAllocationType(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkInternalAllocationType from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkInternalAllocationType array with matching values
+     */
+    public static VkInternalAllocationType[] fromValues(VkInternalAllocationType[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkInternalAllocationType[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkInternalAllocationType.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

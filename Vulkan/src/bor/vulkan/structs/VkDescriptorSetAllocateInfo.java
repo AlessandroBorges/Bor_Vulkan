@@ -303,6 +303,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkDescriptorSetAllocateInfo* vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -321,6 +322,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkDescriptorSetAllocateInfo* vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -330,7 +332,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDescriptorSetAllocateInfo* vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -339,6 +342,7 @@
 	 */ 
 	 private static native void setDescriptorPool0(Buffer ptr, long  _descriptorPool);/*
 		  VkDescriptorSetAllocateInfo* vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->descriptorPool = (VkDescriptorPool) (_descriptorPool);
 	  */
 
@@ -348,7 +352,8 @@
 	 */ 
 	 private static native long getDescriptorPool0(Buffer ptr);/*
 		  VkDescriptorSetAllocateInfo* vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->descriptorPool);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->descriptorPool);
 	 */
 
 	/**
@@ -357,6 +362,7 @@
 	 */ 
 	 private static native void setDescriptorSetCount0(Buffer ptr, int _descriptorSetCount);/*
 		  VkDescriptorSetAllocateInfo* vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->descriptorSetCount = (uint32_t) (_descriptorSetCount);
 	  */
 
@@ -375,6 +381,7 @@
 	 */ 
 	 private static native void setPSetLayouts0(Buffer ptr, ByteBuffer  _pSetLayouts);/*
 		  VkDescriptorSetAllocateInfo* vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pSetLayouts = (const VkDescriptorSetLayout*) (_pSetLayouts);
 	  */
 
@@ -384,7 +391,8 @@
 	 */ 
 	 private static native long getPSetLayouts0(Buffer ptr);/*
 		  VkDescriptorSetAllocateInfo* vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pSetLayouts);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pSetLayouts );
 	 */
 
 

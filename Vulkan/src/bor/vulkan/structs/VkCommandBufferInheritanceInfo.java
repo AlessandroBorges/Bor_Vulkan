@@ -397,6 +397,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -415,6 +416,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -424,7 +426,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -433,6 +436,7 @@
 	 */ 
 	 private static native void setRenderPass0(Buffer ptr, long  _renderPass);/*
 		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->renderPass = (VkRenderPass) (_renderPass);
 	  */
 
@@ -442,7 +446,8 @@
 	 */ 
 	 private static native long getRenderPass0(Buffer ptr);/*
 		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->renderPass);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->renderPass);
 	 */
 
 	/**
@@ -451,6 +456,7 @@
 	 */ 
 	 private static native void setSubpass0(Buffer ptr, int _subpass);/*
 		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->subpass = (uint32_t) (_subpass);
 	  */
 
@@ -469,6 +475,7 @@
 	 */ 
 	 private static native void setFramebuffer0(Buffer ptr, long  _framebuffer);/*
 		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->framebuffer = (VkFramebuffer) (_framebuffer);
 	  */
 
@@ -478,7 +485,8 @@
 	 */ 
 	 private static native long getFramebuffer0(Buffer ptr);/*
 		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->framebuffer);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->framebuffer);
 	 */
 
 	/**
@@ -487,6 +495,7 @@
 	 */ 
 	 private static native void setOcclusionQueryEnable0(Buffer ptr, boolean  _occlusionQueryEnable);/*
 		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->occlusionQueryEnable = (VkBool32) (_occlusionQueryEnable);
 	  */
 
@@ -505,6 +514,7 @@
 	 */ 
 	 private static native void setQueryFlags0(Buffer ptr, int _queryFlags);/*
 		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->queryFlags = (VkQueryControlFlags) (_queryFlags);
 	  */
 
@@ -523,6 +533,7 @@
 	 */ 
 	 private static native void setPipelineStatistics0(Buffer ptr, int _pipelineStatistics);/*
 		  VkCommandBufferInheritanceInfo* vkObj = (VkCommandBufferInheritanceInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->pipelineStatistics = (VkQueryPipelineStatisticFlags) (_pipelineStatistics);
 	  */
 

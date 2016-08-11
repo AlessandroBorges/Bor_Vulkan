@@ -199,6 +199,7 @@
 	 */ 
 	 private static native void setOffset0(Buffer ptr, java.nio.ByteBuffer  _offset);/*
 		  VkRect2D* vkObj = (VkRect2D*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->offset = (VkOffset2D) (_offset);
 	  */
 
@@ -208,7 +209,8 @@
 	 */ 
 	 private static native long getOffset0(Buffer ptr);/*
 		  VkRect2D* vkObj = (VkRect2D*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->offset);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->offset);
 	 */
 
 	/**
@@ -217,6 +219,7 @@
 	 */ 
 	 private static native void setExtent0(Buffer ptr, java.nio.ByteBuffer  _extent);/*
 		  VkRect2D* vkObj = (VkRect2D*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->extent = (VkExtent2D) (_extent);
 	  */
 
@@ -226,7 +229,8 @@
 	 */ 
 	 private static native long getExtent0(Buffer ptr);/*
 		  VkRect2D* vkObj = (VkRect2D*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->extent);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->extent);
 	 */
 
 

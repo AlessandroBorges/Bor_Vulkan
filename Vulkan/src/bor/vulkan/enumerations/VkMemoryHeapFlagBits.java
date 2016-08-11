@@ -88,6 +88,25 @@ public class VkMemoryHeapFlagBits extends IntEnum<VkMemoryHeapFlagBits> {
         VkMemoryHeapFlagBits flag = new VkMemoryHeapFlagBits(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkMemoryHeapFlagBits from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkMemoryHeapFlagBits array with matching values
+     */
+    public static VkMemoryHeapFlagBits[] fromValues(VkMemoryHeapFlagBits[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkMemoryHeapFlagBits[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkMemoryHeapFlagBits.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

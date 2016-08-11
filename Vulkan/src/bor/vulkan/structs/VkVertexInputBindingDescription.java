@@ -211,6 +211,7 @@
 	 */ 
 	 private static native void setBinding0(Buffer ptr, int _binding);/*
 		  VkVertexInputBindingDescription* vkObj = (VkVertexInputBindingDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->binding = (uint32_t) (_binding);
 	  */
 
@@ -229,6 +230,7 @@
 	 */ 
 	 private static native void setStride0(Buffer ptr, int _stride);/*
 		  VkVertexInputBindingDescription* vkObj = (VkVertexInputBindingDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->stride = (uint32_t) (_stride);
 	  */
 
@@ -247,6 +249,7 @@
 	 */ 
 	 private static native void setInputRate0(Buffer ptr, int  _inputRate);/*
 		  VkVertexInputBindingDescription* vkObj = (VkVertexInputBindingDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->inputRate = (VkVertexInputRate) (_inputRate);
 	  */
 

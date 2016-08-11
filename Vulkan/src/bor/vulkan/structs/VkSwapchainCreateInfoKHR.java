@@ -14,7 +14,6 @@
  import static bor.vulkan.Vulkan.*; 
  import bor.vulkan.enumerations.*;
 
- import bor.vulkan.khr.*;
  import java.util.*;
  import java.nio.*;
 
@@ -724,6 +723,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -742,6 +742,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -751,7 +752,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -760,6 +762,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkSwapchainCreateFlagsKHR) (_flags);
 	  */
 
@@ -778,6 +781,7 @@
 	 */ 
 	 private static native void setSurface0(Buffer ptr, long  _surface);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->surface = (VkSurfaceKHR) (_surface);
 	  */
 
@@ -787,7 +791,8 @@
 	 */ 
 	 private static native long getSurface0(Buffer ptr);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->surface);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->surface);
 	 */
 
 	/**
@@ -796,6 +801,7 @@
 	 */ 
 	 private static native void setMinImageCount0(Buffer ptr, int _minImageCount);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->minImageCount = (uint32_t) (_minImageCount);
 	  */
 
@@ -814,6 +820,7 @@
 	 */ 
 	 private static native void setImageFormat0(Buffer ptr, int  _imageFormat);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->imageFormat = (VkFormat) (_imageFormat);
 	  */
 
@@ -832,6 +839,7 @@
 	 */ 
 	 private static native void setImageColorSpace0(Buffer ptr, int  _imageColorSpace);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->imageColorSpace = (VkColorSpaceKHR) (_imageColorSpace);
 	  */
 
@@ -850,6 +858,7 @@
 	 */ 
 	 private static native void setImageExtent0(Buffer ptr, java.nio.ByteBuffer  _imageExtent);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->imageExtent = (VkExtent2D) (_imageExtent);
 	  */
 
@@ -859,7 +868,8 @@
 	 */ 
 	 private static native long getImageExtent0(Buffer ptr);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->imageExtent);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageExtent);
 	 */
 
 	/**
@@ -868,6 +878,7 @@
 	 */ 
 	 private static native void setImageArrayLayers0(Buffer ptr, int _imageArrayLayers);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->imageArrayLayers = (uint32_t) (_imageArrayLayers);
 	  */
 
@@ -886,6 +897,7 @@
 	 */ 
 	 private static native void setImageUsage0(Buffer ptr, int _imageUsage);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->imageUsage = (VkImageUsageFlags) (_imageUsage);
 	  */
 
@@ -904,6 +916,7 @@
 	 */ 
 	 private static native void setImageSharingMode0(Buffer ptr, int  _imageSharingMode);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->imageSharingMode = (VkSharingMode) (_imageSharingMode);
 	  */
 
@@ -922,6 +935,7 @@
 	 */ 
 	 private static native void setQueueFamilyIndexCount0(Buffer ptr, int _queueFamilyIndexCount);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->queueFamilyIndexCount = (uint32_t) (_queueFamilyIndexCount);
 	  */
 
@@ -940,16 +954,37 @@
 	 */ 
 	 private static native void setPQueueFamilyIndices0(Buffer ptr, int[] _pQueueFamilyIndices);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
-		  vkObj->pQueueFamilyIndices = (const uint32_t*) (_pQueueFamilyIndices);
+		 // code for generic array 
+		  if( NULL == _pQueueFamilyIndices ){
+		    vkObj->queueFamilyIndexCount = 0;
+		    FREE_IT(vkObj->pQueueFamilyIndices);
+		     return;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pQueueFamilyIndices);
+		  if( vkObj->queueFamilyIndexCount != count){ 
+		    FREE_IT(vkObj->pQueueFamilyIndices); 
+		    vkObj->pQueueFamilyIndices = CALLOC(count, uint32_t);
+		   }
+		  memcpy( vkObj->pQueueFamilyIndices, _pQueueFamilyIndices, count * sizeof(uint32_t));
+		  vkObj->queueFamilyIndexCount = count;
 	  */
 
 	/**
 	 * Native GET method for field pQueueFamilyIndices	[int]<br>
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 
-	 private static native int[] getPQueueFamilyIndices0(Buffer ptr);/*
+	 private static native int[] getPQueueFamilyIndices0(Buffer ptr, int[] _pQueueFamilyIndices);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
-		  return (int[]) (vkObj->pQueueFamilyIndices);
+		  // generic get for C type array, with content copy 
+		  if( 0 == vkObj->queueFamilyIndexCount){ 
+		     return NULL;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pQueueFamilyIndices);
+		  if(vkObj->pQueueFamilyIndices == NULL){
+		    return NULL;
+		   }
+ 		  memcpy(_pQueueFamilyIndices, vkObj->pQueueFamilyIndices, count * sizeof(uint32_t));
+		  return obj__pQueueFamilyIndices;
 	 */
 
 	/**
@@ -958,6 +993,7 @@
 	 */ 
 	 private static native void setPreTransform0(Buffer ptr, int  _preTransform);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->preTransform = (VkSurfaceTransformFlagBitsKHR) (_preTransform);
 	  */
 
@@ -976,6 +1012,7 @@
 	 */ 
 	 private static native void setCompositeAlpha0(Buffer ptr, int  _compositeAlpha);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->compositeAlpha = (VkCompositeAlphaFlagBitsKHR) (_compositeAlpha);
 	  */
 
@@ -994,6 +1031,7 @@
 	 */ 
 	 private static native void setPresentMode0(Buffer ptr, int  _presentMode);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->presentMode = (VkPresentModeKHR) (_presentMode);
 	  */
 
@@ -1012,6 +1050,7 @@
 	 */ 
 	 private static native void setClipped0(Buffer ptr, boolean  _clipped);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->clipped = (VkBool32) (_clipped);
 	  */
 
@@ -1030,6 +1069,7 @@
 	 */ 
 	 private static native void setOldSwapchain0(Buffer ptr, long  _oldSwapchain);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
+		 // code for simple past value 
 		  vkObj->oldSwapchain = (VkSwapchainKHR) (_oldSwapchain);
 	  */
 
@@ -1039,7 +1079,8 @@
 	 */ 
 	 private static native long getOldSwapchain0(Buffer ptr);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->oldSwapchain);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->oldSwapchain);
 	 */
 
 

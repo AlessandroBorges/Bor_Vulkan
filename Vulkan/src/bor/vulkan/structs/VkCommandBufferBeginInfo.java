@@ -70,7 +70,7 @@
 	/**
 	 *  const VkCommandBufferInheritanceInfo* 	pInheritanceInfo	[vkstruct]
 	 */ 
-	 final VkCommandBufferInheritanceInfo  	pInheritanceInfo;
+	VkCommandBufferInheritanceInfo  	pInheritanceInfo;
 	/**
 	 * Ctor
 	 */
@@ -261,6 +261,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -279,6 +280,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -288,7 +290,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -297,6 +300,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkCommandBufferUsageFlags) (_flags);
 	  */
 
@@ -315,6 +319,7 @@
 	 */ 
 	 private static native void setPInheritanceInfo0(Buffer ptr, java.nio.ByteBuffer  _pInheritanceInfo);/*
 		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pInheritanceInfo = (const VkCommandBufferInheritanceInfo*) (_pInheritanceInfo);
 	  */
 
@@ -324,7 +329,8 @@
 	 */ 
 	 private static native long getPInheritanceInfo0(Buffer ptr);/*
 		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pInheritanceInfo);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pInheritanceInfo);
 	 */
 
 

@@ -179,6 +179,7 @@
 	 */ 
 	 private static native void setPropertyFlags0(Buffer ptr, int _propertyFlags);/*
 		  VkMemoryType* vkObj = (VkMemoryType*)(ptr);
+		 // code for simple past value 
 		  vkObj->propertyFlags = (VkMemoryPropertyFlags) (_propertyFlags);
 	  */
 
@@ -197,6 +198,7 @@
 	 */ 
 	 private static native void setHeapIndex0(Buffer ptr, int _heapIndex);/*
 		  VkMemoryType* vkObj = (VkMemoryType*)(ptr);
+		 // code for simple past value 
 		  vkObj->heapIndex = (uint32_t) (_heapIndex);
 	  */
 

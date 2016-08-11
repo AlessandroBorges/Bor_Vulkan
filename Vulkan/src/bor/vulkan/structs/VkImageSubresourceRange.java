@@ -272,6 +272,7 @@
 	 */ 
 	 private static native void setAspectMask0(Buffer ptr, int _aspectMask);/*
 		  VkImageSubresourceRange* vkObj = (VkImageSubresourceRange*)(ptr);
+		 // code for simple past value 
 		  vkObj->aspectMask = (VkImageAspectFlags) (_aspectMask);
 	  */
 
@@ -290,6 +291,7 @@
 	 */ 
 	 private static native void setBaseMipLevel0(Buffer ptr, int _baseMipLevel);/*
 		  VkImageSubresourceRange* vkObj = (VkImageSubresourceRange*)(ptr);
+		 // code for simple past value 
 		  vkObj->baseMipLevel = (uint32_t) (_baseMipLevel);
 	  */
 
@@ -308,6 +310,7 @@
 	 */ 
 	 private static native void setLevelCount0(Buffer ptr, int _levelCount);/*
 		  VkImageSubresourceRange* vkObj = (VkImageSubresourceRange*)(ptr);
+		 // code for simple past value 
 		  vkObj->levelCount = (uint32_t) (_levelCount);
 	  */
 
@@ -326,6 +329,7 @@
 	 */ 
 	 private static native void setBaseArrayLayer0(Buffer ptr, int _baseArrayLayer);/*
 		  VkImageSubresourceRange* vkObj = (VkImageSubresourceRange*)(ptr);
+		 // code for simple past value 
 		  vkObj->baseArrayLayer = (uint32_t) (_baseArrayLayer);
 	  */
 
@@ -344,6 +348,7 @@
 	 */ 
 	 private static native void setLayerCount0(Buffer ptr, int _layerCount);/*
 		  VkImageSubresourceRange* vkObj = (VkImageSubresourceRange*)(ptr);
+		 // code for simple past value 
 		  vkObj->layerCount = (uint32_t) (_layerCount);
 	  */
 

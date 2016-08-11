@@ -74,7 +74,7 @@
 	/**
 	 *  const VkApplicationInfo* 	pApplicationInfo	[vkstruct]
 	 */ 
-	 final VkApplicationInfo  	pApplicationInfo;
+	VkApplicationInfo  	pApplicationInfo;
 	
 	/**
 	 *  uint32_t 	enabledLayerCount	[int]
@@ -289,7 +289,7 @@
      */ 
      public VkInstanceCreateInfo ppEnabledLayerNames(String[] ppEnabledLayerNames){
          this.ppEnabledLayerNames = ppEnabledLayerNames == null ? null
-                                    : ppEnabledLayerNames.clone;
+                                    : ppEnabledLayerNames.clone();
          setPpEnabledLayerNames0(this.ptr,  ppEnabledLayerNames);
          return this;
      }
@@ -297,7 +297,7 @@
 
 //#END Set Included
 
-// #Included getPpEnabledLayerNames
+// #Included getPpEnabledLayerNames0
     /**
      * Get method for field ppEnabledLayerNames [string]<br>
      * Prototype: const char* const*  ppEnabledLayerNames
@@ -352,7 +352,7 @@
 
 //#END Set Included
 
-// #Included getPpEnabledExtensionNames
+// #Included getPpEnabledExtensionNames0
   /**
    * Get method for field ppEnabledExtensionNames [string_arr]<br>
    * Prototype: const char* const*  ppEnabledExtensionNames
@@ -410,6 +410,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -428,6 +429,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -437,7 +439,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -446,6 +449,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkInstanceCreateFlags) (_flags);
 	  */
 
@@ -464,6 +468,7 @@
 	 */ 
 	 private static native void setPApplicationInfo0(Buffer ptr, java.nio.ByteBuffer  _pApplicationInfo);/*
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pApplicationInfo = (const VkApplicationInfo*) (_pApplicationInfo);
 	  */
 
@@ -473,7 +478,8 @@
 	 */ 
 	 private static native long getPApplicationInfo0(Buffer ptr);/*
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pApplicationInfo);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pApplicationInfo);
 	 */
 
 	/**
@@ -482,6 +488,7 @@
 	 */ 
 	 private static native void setEnabledLayerCount0(Buffer ptr, int _enabledLayerCount);/*
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->enabledLayerCount = (uint32_t) (_enabledLayerCount);
 	  */
 
@@ -544,6 +551,7 @@
 	 */ 
 	 private static native void setEnabledExtensionCount0(Buffer ptr, int _enabledExtensionCount);/*
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->enabledExtensionCount = (uint32_t) (_enabledExtensionCount);
 	  */
 

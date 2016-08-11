@@ -460,6 +460,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -478,6 +479,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -487,7 +489,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -496,6 +499,7 @@
 	 */ 
 	 private static native void setSrcAccessMask0(Buffer ptr, int _srcAccessMask);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
+		 // code for simple past value 
 		  vkObj->srcAccessMask = (VkAccessFlags) (_srcAccessMask);
 	  */
 
@@ -514,6 +518,7 @@
 	 */ 
 	 private static native void setDstAccessMask0(Buffer ptr, int _dstAccessMask);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
+		 // code for simple past value 
 		  vkObj->dstAccessMask = (VkAccessFlags) (_dstAccessMask);
 	  */
 
@@ -532,6 +537,7 @@
 	 */ 
 	 private static native void setOldLayout0(Buffer ptr, int  _oldLayout);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
+		 // code for simple past value 
 		  vkObj->oldLayout = (VkImageLayout) (_oldLayout);
 	  */
 
@@ -550,6 +556,7 @@
 	 */ 
 	 private static native void setNewLayout0(Buffer ptr, int  _newLayout);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
+		 // code for simple past value 
 		  vkObj->newLayout = (VkImageLayout) (_newLayout);
 	  */
 
@@ -568,6 +575,7 @@
 	 */ 
 	 private static native void setSrcQueueFamilyIndex0(Buffer ptr, int _srcQueueFamilyIndex);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
+		 // code for simple past value 
 		  vkObj->srcQueueFamilyIndex = (uint32_t) (_srcQueueFamilyIndex);
 	  */
 
@@ -586,6 +594,7 @@
 	 */ 
 	 private static native void setDstQueueFamilyIndex0(Buffer ptr, int _dstQueueFamilyIndex);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
+		 // code for simple past value 
 		  vkObj->dstQueueFamilyIndex = (uint32_t) (_dstQueueFamilyIndex);
 	  */
 
@@ -604,6 +613,7 @@
 	 */ 
 	 private static native void setImage0(Buffer ptr, long  _image);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
+		 // code for simple past value 
 		  vkObj->image = (VkImage) (_image);
 	  */
 
@@ -613,7 +623,8 @@
 	 */ 
 	 private static native long getImage0(Buffer ptr);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->image);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->image);
 	 */
 
 	/**
@@ -622,6 +633,7 @@
 	 */ 
 	 private static native void setSubresourceRange0(Buffer ptr, java.nio.ByteBuffer  _subresourceRange);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->subresourceRange = (VkImageSubresourceRange) (_subresourceRange);
 	  */
 
@@ -631,7 +643,8 @@
 	 */ 
 	 private static native long getSubresourceRange0(Buffer ptr);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->subresourceRange);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->subresourceRange);
 	 */
 
 

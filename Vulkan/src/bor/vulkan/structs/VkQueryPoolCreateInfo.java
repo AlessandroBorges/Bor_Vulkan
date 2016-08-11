@@ -314,6 +314,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -332,6 +333,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -341,7 +343,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -350,6 +353,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkQueryPoolCreateFlags) (_flags);
 	  */
 
@@ -368,6 +372,7 @@
 	 */ 
 	 private static native void setQueryType0(Buffer ptr, int  _queryType);/*
 		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->queryType = (VkQueryType) (_queryType);
 	  */
 
@@ -386,6 +391,7 @@
 	 */ 
 	 private static native void setQueryCount0(Buffer ptr, int _queryCount);/*
 		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->queryCount = (uint32_t) (_queryCount);
 	  */
 
@@ -404,6 +410,7 @@
 	 */ 
 	 private static native void setPipelineStatistics0(Buffer ptr, int _pipelineStatistics);/*
 		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->pipelineStatistics = (VkQueryPipelineStatisticFlags) (_pipelineStatistics);
 	  */
 

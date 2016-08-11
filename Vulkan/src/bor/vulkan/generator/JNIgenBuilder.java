@@ -2,7 +2,7 @@ package bor.vulkan.generator;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.*;
 
 import com.badlogic.gdx.jnigen.*;
 import com.badlogic.gdx.jnigen.BuildTarget.TargetOs;
@@ -10,50 +10,71 @@ import com.badlogic.gdx.jnigen.parsing.*;
 
 public class JNIgenBuilder {
 
+    private static final String PREFIX_STRUCT = "**/bor/vulkan/structs/";
+    private static final String SUFIX_JAVA = ".java";
+    
+    /**
+     * Append values in String array
+     **/
+    public static String[] append(String[] base, List<String> newValues){
+        int size = base.length + newValues.size();
+        String[] res = new String[size];
+        System.arraycopy(base, 0, res, 0, base.length);
+        
+        String[] list = new String[newValues.size()];
+        list = newValues.toArray(list);
+        System.arraycopy(list, 0, res, base.length, newValues.size());
+        
+        return res;
+    }
+    
+    /**
+     * 
+     */
+    private static String[] fixPrefixSufix(String[] names, String prefix, String sufix) {
+        
+        for (int i = 0; i < names.length; i++) {
+            String name = names[i].trim();
+            
+            if (!name.startsWith(prefix)) {
+                String nm = prefix + name;
+                names[i] = nm;
+            }
+
+            if (!name.endsWith(sufix)) {
+                String nm = names[i] + sufix;
+                names[i] = nm.trim();
+            }
+        }
+        return names;
+    }
+    
     private JNIgenBuilder() {}
 
     public static void main(String[] args) throws Exception {
+        //java.net.URL url = JNIgenBuilder.class.getResource("Struct.txt");
+        //System.out.println("URL " +url);
+        List<String> structNames = Util.readFile("D:/Users/Livia/workspace/Vulkan/src/bor/vulkan/generator/", "Structs.txt");
         
+        structNames.remove("VkClearColor");
+        structNames.remove("VkClearColorValue");
+        structNames.remove("VkClearDepthStencilValue");
         String[] src = {
                 "**/bor/util/Utils.java",
-                "**/bor/vulkan/khr/WSI.java",
+              //  "**/bor/vulkan/khr/WSI.java",
                 "**/bor/vulkan/Vk10.java",
                 "**/bor/vulkan/structs/VkStruct.java",
-                "**/bor/vulkan/structs/VkApplicationInfo.java",
-                "**/bor/vulkan/structs/VkDeviceQueueCreateInfo.java",               
-                "**/bor/vulkan/structs/VkPhysicalDeviceProperties.java",
-                "**/bor/vulkan/structs/VkPhysicalDeviceType.java",
-                "**/bor/vulkan/structs/VkPhysicalDeviceLimits.java",
-                "**/bor/vulkan/structs/VkPhysicalDeviceSparseProperties.java",
-                "**/bor/vulkan/structs/VkPhysicalDeviceFeatures.java",
-                "**/bor/vulkan/structs/VkPhysicalDeviceMemoryProperties.java",
-                "**/bor/vulkan/structs/VkLayerProperties.java",
-                "**/bor/vulkan/structs/VkWin32SurfaceCreateInfoKHR",
-                "**/bor/vulkan/structs/VkExtent2D.java",
-                "**/bor/vulkan/structs/VkExtent3D.java",
-                "**/bor/vulkan/structs/VkQueueFamilyProperties.java",
-                "**/bor/vulkan/structs/VkMemoryType.java",
-                
-                "**/bor/vulkan/structs/VkDisplaySurfaceCreateInfoKHR.java",
-                "**/bor/vulkan/structs/VkXcbSurfaceCreateInfoKHR.java",
-                "**/bor/vulkan/structs/VkAndroidSurfaceCreateInfoKHR.java",
-                "**/bor/vulkan/structs/VkMirSurfaceCreateInfoKHR.java",
-                "**/bor/vulkan/structs/VkWaylandSurfaceCreateInfoKHR.java",
-                "**/bor/vulkan/structs/VkExtensionProperties.java",
-                
-                
-                "**/bor/vulkan/structs/VkMemoryHeap.java",
-               // "**/bor/vulkan/structs/VkMemoryHeap.java",
-                //VkMemoryHeap
-                
-                "**/bor/vulkan/structs/VkDeviceCreateInfo.java",
-                "**/bor/vulkan/structs/vkGetPhysicalDeviceFeatures.java",
-                //vkGetPhysicalDeviceFeatures(
-                "**/bor/vulkan/structs/VkInstanceCreateInfo.java",
-                "**/bor/vulkan/structs/VkInstanceCreateInfo.java",//VkAllocationCallbacks
-                //VkPhysicalDeviceProperties
-          
         };
+        
+        src = append(src, structNames);
+        src = fixPrefixSufix(src, PREFIX_STRUCT, SUFIX_JAVA);
+        for (int i = 0; i < src.length; i++) {
+            String string = src[i];
+            System.out.println(string);
+        }
+        
+        
+        //System.exit(0);
         long t1 = System.currentTimeMillis();
         
         NativeCodeGenerator jnigen = new NativeCodeGenerator();

@@ -111,6 +111,25 @@ public class VkDescriptorType extends IntEnum<VkDescriptorType> {
         VkDescriptorType flag = new VkDescriptorType(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkDescriptorType from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkDescriptorType array with matching values
+     */
+    public static VkDescriptorType[] fromValues(VkDescriptorType[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkDescriptorType[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkDescriptorType.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

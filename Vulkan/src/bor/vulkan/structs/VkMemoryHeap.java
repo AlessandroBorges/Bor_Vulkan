@@ -179,6 +179,7 @@
 	 */ 
 	 private static native void setSize0(Buffer ptr, long _size);/*
 		  VkMemoryHeap* vkObj = (VkMemoryHeap*)(ptr);
+		 // code for simple past value 
 		  vkObj->size = (VkDeviceSize) (_size);
 	  */
 
@@ -197,6 +198,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkMemoryHeap* vkObj = (VkMemoryHeap*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkMemoryHeapFlags) (_flags);
 	  */
 

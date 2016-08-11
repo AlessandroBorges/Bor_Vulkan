@@ -99,7 +99,7 @@
 	/**
 	 *  const VkAttachmentReference* 	pDepthStencilAttachment	[vkstruct]
 	 */ 
-	 final VkAttachmentReference  	pDepthStencilAttachment;
+	VkAttachmentReference  	pDepthStencilAttachment;
 	
 	/**
 	 *  uint32_t 	preserveAttachmentCount	[int]
@@ -468,6 +468,7 @@
 	 */ 
 	 private static native void setFlags0(Buffer ptr, int _flags);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->flags = (VkSubpassDescriptionFlags) (_flags);
 	  */
 
@@ -486,6 +487,7 @@
 	 */ 
 	 private static native void setPipelineBindPoint0(Buffer ptr, int  _pipelineBindPoint);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->pipelineBindPoint = (VkPipelineBindPoint) (_pipelineBindPoint);
 	  */
 
@@ -504,6 +506,7 @@
 	 */ 
 	 private static native void setInputAttachmentCount0(Buffer ptr, int _inputAttachmentCount);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->inputAttachmentCount = (uint32_t) (_inputAttachmentCount);
 	  */
 
@@ -522,6 +525,7 @@
 	 */ 
 	 private static native void setPInputAttachments0(Buffer ptr, java.nio.ByteBuffer  _pInputAttachments);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pInputAttachments = (const VkAttachmentReference*) (_pInputAttachments);
 	  */
 
@@ -531,7 +535,8 @@
 	 */ 
 	 private static native long getPInputAttachments0(Buffer ptr);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pInputAttachments);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pInputAttachments );
 	 */
 
 	/**
@@ -540,6 +545,7 @@
 	 */ 
 	 private static native void setColorAttachmentCount0(Buffer ptr, int _colorAttachmentCount);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->colorAttachmentCount = (uint32_t) (_colorAttachmentCount);
 	  */
 
@@ -558,6 +564,7 @@
 	 */ 
 	 private static native void setPColorAttachments0(Buffer ptr, java.nio.ByteBuffer  _pColorAttachments);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pColorAttachments = (const VkAttachmentReference*) (_pColorAttachments);
 	  */
 
@@ -567,7 +574,8 @@
 	 */ 
 	 private static native long getPColorAttachments0(Buffer ptr);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pColorAttachments);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pColorAttachments );
 	 */
 
 	/**
@@ -576,6 +584,7 @@
 	 */ 
 	 private static native void setPResolveAttachments0(Buffer ptr, java.nio.ByteBuffer  _pResolveAttachments);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pResolveAttachments = (const VkAttachmentReference*) (_pResolveAttachments);
 	  */
 
@@ -585,7 +594,8 @@
 	 */ 
 	 private static native long getPResolveAttachments0(Buffer ptr);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pResolveAttachments);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->pResolveAttachments );
 	 */
 
 	/**
@@ -594,6 +604,7 @@
 	 */ 
 	 private static native void setPDepthStencilAttachment0(Buffer ptr, java.nio.ByteBuffer  _pDepthStencilAttachment);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pDepthStencilAttachment = (const VkAttachmentReference*) (_pDepthStencilAttachment);
 	  */
 
@@ -603,7 +614,8 @@
 	 */ 
 	 private static native long getPDepthStencilAttachment0(Buffer ptr);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pDepthStencilAttachment);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pDepthStencilAttachment);
 	 */
 
 	/**
@@ -612,6 +624,7 @@
 	 */ 
 	 private static native void setPreserveAttachmentCount0(Buffer ptr, int _preserveAttachmentCount);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
+		 // code for simple past value 
 		  vkObj->preserveAttachmentCount = (uint32_t) (_preserveAttachmentCount);
 	  */
 
@@ -630,16 +643,37 @@
 	 */ 
 	 private static native void setPPreserveAttachments0(Buffer ptr, int[] _pPreserveAttachments);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
-		  vkObj->pPreserveAttachments = (const uint32_t*) (_pPreserveAttachments);
+		 // code for generic array 
+		  if( NULL == _pPreserveAttachments ){
+		    vkObj->preserveAttachmentCount = 0;
+		    FREE_IT(vkObj->pPreserveAttachments);
+		     return;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pPreserveAttachments);
+		  if( vkObj->preserveAttachmentCount != count){ 
+		    FREE_IT(vkObj->pPreserveAttachments); 
+		    vkObj->pPreserveAttachments = CALLOC(count, uint32_t);
+		   }
+		  memcpy( vkObj->pPreserveAttachments, _pPreserveAttachments, count * sizeof(uint32_t));
+		  vkObj->preserveAttachmentCount = count;
 	  */
 
 	/**
 	 * Native GET method for field pPreserveAttachments	[int]<br>
 	 * Prototype: const uint32_t*  pPreserveAttachments
 	 */ 
-	 private static native int[] getPPreserveAttachments0(Buffer ptr);/*
+	 private static native int[] getPPreserveAttachments0(Buffer ptr, int[] _pPreserveAttachments);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
-		  return (int[]) (vkObj->pPreserveAttachments);
+		  // generic get for C type array, with content copy 
+		  if( 0 == vkObj->preserveAttachmentCount){ 
+		     return NULL;
+		   }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pPreserveAttachments);
+		  if(vkObj->pPreserveAttachments == NULL){
+		    return NULL;
+		   }
+ 		  memcpy(_pPreserveAttachments, vkObj->pPreserveAttachments, count * sizeof(uint32_t));
+		  return obj__pPreserveAttachments;
 	 */
 
 

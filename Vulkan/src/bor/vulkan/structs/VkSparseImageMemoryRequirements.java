@@ -282,6 +282,7 @@
 	 */ 
 	 private static native void setFormatProperties0(Buffer ptr, java.nio.ByteBuffer  _formatProperties);/*
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->formatProperties = (VkSparseImageFormatProperties) (_formatProperties);
 	  */
 
@@ -291,7 +292,8 @@
 	 */ 
 	 private static native long getFormatProperties0(Buffer ptr);/*
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->formatProperties);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->formatProperties);
 	 */
 
 	/**
@@ -300,6 +302,7 @@
 	 */ 
 	 private static native void setImageMipTailFirstLod0(Buffer ptr, int _imageMipTailFirstLod);/*
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
+		 // code for simple past value 
 		  vkObj->imageMipTailFirstLod = (uint32_t) (_imageMipTailFirstLod);
 	  */
 
@@ -318,6 +321,7 @@
 	 */ 
 	 private static native void setImageMipTailSize0(Buffer ptr, long _imageMipTailSize);/*
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
+		 // code for simple past value 
 		  vkObj->imageMipTailSize = (VkDeviceSize) (_imageMipTailSize);
 	  */
 
@@ -336,6 +340,7 @@
 	 */ 
 	 private static native void setImageMipTailOffset0(Buffer ptr, long _imageMipTailOffset);/*
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
+		 // code for simple past value 
 		  vkObj->imageMipTailOffset = (VkDeviceSize) (_imageMipTailOffset);
 	  */
 
@@ -354,6 +359,7 @@
 	 */ 
 	 private static native void setImageMipTailStride0(Buffer ptr, long _imageMipTailStride);/*
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
+		 // code for simple past value 
 		  vkObj->imageMipTailStride = (VkDeviceSize) (_imageMipTailStride);
 	  */
 

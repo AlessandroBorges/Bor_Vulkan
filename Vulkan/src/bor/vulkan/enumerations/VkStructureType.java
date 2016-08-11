@@ -225,6 +225,25 @@ public class VkStructureType extends IntEnum<VkStructureType> {
         VkStructureType flag = new VkStructureType(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkStructureType from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkStructureType array with matching values
+     */
+    public static VkStructureType[] fromValues(VkStructureType[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkStructureType[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkStructureType.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

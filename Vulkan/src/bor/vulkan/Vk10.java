@@ -10,25 +10,25 @@ import java.util.List;
 import bor.util.Utils;
 import bor.vulkan.enumerations.VkFilter;
 import bor.vulkan.enumerations.VkFormat;
-import bor.vulkan.enumerations.VkImageCreateFlags;
+//import bor.vulkan.enumerations.VkImageCreateFlags;
 import bor.vulkan.enumerations.VkImageLayout;
 import bor.vulkan.enumerations.VkImageTiling;
 import bor.vulkan.enumerations.VkImageType;
-import bor.vulkan.enumerations.VkImageUsageFlags;
+//import bor.vulkan.enumerations.VkImageUsageFlags;
 import bor.vulkan.enumerations.VkIndexType;
 import bor.vulkan.enumerations.VkPipelineBindPoint;
 import bor.vulkan.enumerations.VkPipelineStageFlagBits;
 import bor.vulkan.enumerations.VkResult;
 import bor.vulkan.enumerations.VkSampleCountFlagBits;
 import bor.vulkan.enumerations.VkSubpassContents;
-import bor.vulkan.khr.VkSurfaceKHR;
-import bor.vulkan.khr.structs.VkAndroidSurfaceCreateInfoKHR;
-import bor.vulkan.khr.structs.VkDisplaySurfaceCreateInfoKHR;
-import bor.vulkan.khr.structs.VkMirSurfaceCreateInfoKHR;
-import bor.vulkan.khr.structs.VkWaylandSurfaceCreateInfoKHR;
-import bor.vulkan.khr.structs.VkWin32SurfaceCreateInfoKHR;
-import bor.vulkan.khr.structs.VkXcbSurfaceCreateInfoKHR;
-import bor.vulkan.khr.structs.VkXlibSurfaceCreateInfoKHR;
+import bor.vulkan.VkSurfaceKHR;
+import bor.vulkan.structs.VkAndroidSurfaceCreateInfoKHR;
+import bor.vulkan.structs.VkDisplaySurfaceCreateInfoKHR;
+import bor.vulkan.structs.VkMirSurfaceCreateInfoKHR;
+import bor.vulkan.structs.VkWaylandSurfaceCreateInfoKHR;
+import bor.vulkan.structs.VkWin32SurfaceCreateInfoKHR;
+import bor.vulkan.structs.VkXcbSurfaceCreateInfoKHR;
+import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
 import bor.vulkan.structs.VkAllocationCallbacks;
 import bor.vulkan.structs.VkBindSparseInfo;
 import bor.vulkan.structs.VkBufferCopy;
@@ -566,8 +566,8 @@ public class Vk10 extends Vulkan {
                VkFormat  format,
                VkImageType  type,
                VkImageTiling  tiling,
-               VkImageUsageFlags  usage,
-               VkImageCreateFlags  flags,
+               int /*VkImageUsageFlags*/  usage,
+               int /*VkImageCreateFlags*/  flags,
                VkImageFormatProperties  pImageFormatProperties){
       
     int res =  vkGetPhysicalDeviceImageFormatProperties0(
@@ -575,8 +575,8 @@ public class Vk10 extends Vulkan {
              /* VkFormat*/     format.getValue(),
              /* VkImageType*/  type.getValue(),
              /* VkImageTiling*/  tiling.getValue(),
-             /* VkImageUsageFlags*/  usage.getValue(),
-             /* VkImageCreateFlags*/  flags.getValue(),
+             /* VkImageUsageFlags*/  usage,
+             /* VkImageCreateFlags*/  flags,
              /* VkImageFormatProperties*/  pImageFormatProperties.getPointer()
               );    
     return VkResult.fromValue(res);       

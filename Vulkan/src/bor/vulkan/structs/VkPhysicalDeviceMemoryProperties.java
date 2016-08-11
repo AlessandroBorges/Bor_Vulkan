@@ -259,6 +259,7 @@
 	 */ 
 	 private static native void setMemoryTypeCount0(Buffer ptr, int _memoryTypeCount);/*
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->memoryTypeCount = (uint32_t) (_memoryTypeCount);
 	  */
 
@@ -277,7 +278,8 @@
 	 */ 
 	 private static native void setMemoryTypes0(Buffer ptr, java.nio.ByteBuffer  _memoryTypes);/*
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
-		  memcpy(&(vkObj->memoryTypes), &_memoryTypes, VK_MAX_MEMORY_TYPES * sizeof(VkMemoryType));
+		 // code for Buffer - referenced by ptr
+		  vkObj->memoryTypes = (VkMemoryType[]) (_memoryTypes);
 	  */
 
 	/**
@@ -286,7 +288,8 @@
 	 */ 
 	 private static native long getMemoryTypes0(Buffer ptr);/*
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->memoryTypes);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->memoryTypes );
 	 */
 
 	/**
@@ -295,6 +298,7 @@
 	 */ 
 	 private static native void setMemoryHeapCount0(Buffer ptr, int _memoryHeapCount);/*
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->memoryHeapCount = (uint32_t) (_memoryHeapCount);
 	  */
 
@@ -313,7 +317,8 @@
 	 */ 
 	 private static native void setMemoryHeaps0(Buffer ptr, java.nio.ByteBuffer  _memoryHeaps);/*
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
-		  memcpy(&(vkObj->memoryHeaps), &_memoryHeaps, VK_MAX_MEMORY_HEAPS * sizeof(VkMemoryHeap));
+		 // code for Buffer - referenced by ptr
+		  vkObj->memoryHeaps = (VkMemoryHeap[]) (_memoryHeaps);
 	  */
 
 	/**
@@ -322,7 +327,8 @@
 	 */ 
 	 private static native long getMemoryHeaps0(Buffer ptr);/*
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->memoryHeaps);
+		  // generic get for array of VkHandle and VkStruct 
+		  return (jlong) reinterpret_cast<jlong>( &vkObj->memoryHeaps );
 	 */
 
 

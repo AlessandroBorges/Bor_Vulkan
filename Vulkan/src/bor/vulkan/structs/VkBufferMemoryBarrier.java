@@ -417,6 +417,7 @@
 	 */ 
 	 private static native void setSType0(Buffer ptr, int  _sType);/*
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
+		 // code for simple past value 
 		  vkObj->sType = (VkStructureType) (_sType);
 	  */
 
@@ -435,6 +436,7 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
+		 // code for Buffer - referenced by ptr
 		  vkObj->pNext = (const void*) (_pNext);
 	  */
 
@@ -444,7 +446,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
 	 */
 
 	/**
@@ -453,6 +456,7 @@
 	 */ 
 	 private static native void setSrcAccessMask0(Buffer ptr, int _srcAccessMask);/*
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
+		 // code for simple past value 
 		  vkObj->srcAccessMask = (VkAccessFlags) (_srcAccessMask);
 	  */
 
@@ -471,6 +475,7 @@
 	 */ 
 	 private static native void setDstAccessMask0(Buffer ptr, int _dstAccessMask);/*
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
+		 // code for simple past value 
 		  vkObj->dstAccessMask = (VkAccessFlags) (_dstAccessMask);
 	  */
 
@@ -489,6 +494,7 @@
 	 */ 
 	 private static native void setSrcQueueFamilyIndex0(Buffer ptr, int _srcQueueFamilyIndex);/*
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
+		 // code for simple past value 
 		  vkObj->srcQueueFamilyIndex = (uint32_t) (_srcQueueFamilyIndex);
 	  */
 
@@ -507,6 +513,7 @@
 	 */ 
 	 private static native void setDstQueueFamilyIndex0(Buffer ptr, int _dstQueueFamilyIndex);/*
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
+		 // code for simple past value 
 		  vkObj->dstQueueFamilyIndex = (uint32_t) (_dstQueueFamilyIndex);
 	  */
 
@@ -525,6 +532,7 @@
 	 */ 
 	 private static native void setBuffer0(Buffer ptr, long  _buffer);/*
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
+		 // code for simple past value 
 		  vkObj->buffer = (VkBuffer) (_buffer);
 	  */
 
@@ -534,7 +542,8 @@
 	 */ 
 	 private static native long getBuffer0(Buffer ptr);/*
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->buffer);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->buffer);
 	 */
 
 	/**
@@ -543,6 +552,7 @@
 	 */ 
 	 private static native void setOffset0(Buffer ptr, long _offset);/*
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
+		 // code for simple past value 
 		  vkObj->offset = (VkDeviceSize) (_offset);
 	  */
 
@@ -561,6 +571,7 @@
 	 */ 
 	 private static native void setSize0(Buffer ptr, long _size);/*
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
+		 // code for simple past value 
 		  vkObj->size = (VkDeviceSize) (_size);
 	  */
 

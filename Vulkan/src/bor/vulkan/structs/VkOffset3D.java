@@ -210,6 +210,7 @@
 	 */ 
 	 private static native void setX0(Buffer ptr, int _x);/*
 		  VkOffset3D* vkObj = (VkOffset3D*)(ptr);
+		 // code for simple past value 
 		  vkObj->x = (int32_t) (_x);
 	  */
 
@@ -228,6 +229,7 @@
 	 */ 
 	 private static native void setY0(Buffer ptr, int _y);/*
 		  VkOffset3D* vkObj = (VkOffset3D*)(ptr);
+		 // code for simple past value 
 		  vkObj->y = (int32_t) (_y);
 	  */
 
@@ -246,6 +248,7 @@
 	 */ 
 	 private static native void setZ0(Buffer ptr, int _z);/*
 		  VkOffset3D* vkObj = (VkOffset3D*)(ptr);
+		 // code for simple past value 
 		  vkObj->z = (int32_t) (_z);
 	  */
 

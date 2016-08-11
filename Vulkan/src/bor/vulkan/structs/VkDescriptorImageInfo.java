@@ -233,6 +233,7 @@
 	 */ 
 	 private static native void setSampler0(Buffer ptr, long  _sampler);/*
 		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->sampler = (VkSampler) (_sampler);
 	  */
 
@@ -242,7 +243,8 @@
 	 */ 
 	 private static native long getSampler0(Buffer ptr);/*
 		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->sampler);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->sampler);
 	 */
 
 	/**
@@ -251,6 +253,7 @@
 	 */ 
 	 private static native void setImageView0(Buffer ptr, long  _imageView);/*
 		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->imageView = (VkImageView) (_imageView);
 	  */
 
@@ -260,7 +263,8 @@
 	 */ 
 	 private static native long getImageView0(Buffer ptr);/*
 		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->imageView);
+		  // generic get for struct field of type  VkHandle or VkStruct 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageView);
 	 */
 
 	/**
@@ -269,6 +273,7 @@
 	 */ 
 	 private static native void setImageLayout0(Buffer ptr, int  _imageLayout);/*
 		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
+		 // code for simple past value 
 		  vkObj->imageLayout = (VkImageLayout) (_imageLayout);
 	  */
 

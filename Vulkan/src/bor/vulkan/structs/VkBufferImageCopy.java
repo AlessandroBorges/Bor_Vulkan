@@ -333,6 +333,7 @@
 	 */ 
 	 private static native void setBufferOffset0(Buffer ptr, long _bufferOffset);/*
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
+		 // code for simple past value 
 		  vkObj->bufferOffset = (VkDeviceSize) (_bufferOffset);
 	  */
 
@@ -351,6 +352,7 @@
 	 */ 
 	 private static native void setBufferRowLength0(Buffer ptr, int _bufferRowLength);/*
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
+		 // code for simple past value 
 		  vkObj->bufferRowLength = (uint32_t) (_bufferRowLength);
 	  */
 
@@ -369,6 +371,7 @@
 	 */ 
 	 private static native void setBufferImageHeight0(Buffer ptr, int _bufferImageHeight);/*
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
+		 // code for simple past value 
 		  vkObj->bufferImageHeight = (uint32_t) (_bufferImageHeight);
 	  */
 
@@ -387,7 +390,8 @@
 	 */ 
 	 private static native void setImageSubresource0(Buffer ptr, java.nio.ByteBuffer  _imageSubresource);/*
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
-		  vkObj->imageSubresource = (VkImageSubresourceLayers) (_imageSubresource);
+		 // code for Buffer - referenced by ptr
+		  vkObj->imageSubresource = (VkImageSubresourceLayers) (*_imageSubresource);
 	  */
 
 	/**
@@ -396,7 +400,8 @@
 	 */ 
 	 private static native long getImageSubresource0(Buffer ptr);/*
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->imageSubresource);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageSubresource);
 	 */
 
 	/**
@@ -405,7 +410,8 @@
 	 */ 
 	 private static native void setImageOffset0(Buffer ptr, java.nio.ByteBuffer  _imageOffset);/*
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
-		  vkObj->imageOffset = (VkOffset3D) (_imageOffset);
+		 // code for Buffer - referenced by ptr
+		  vkObj->imageOffset = (VkOffset3D) (*_imageOffset);
 	  */
 
 	/**
@@ -414,7 +420,8 @@
 	 */ 
 	 private static native long getImageOffset0(Buffer ptr);/*
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->imageOffset);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageOffset);
 	 */
 
 	/**
@@ -423,7 +430,8 @@
 	 */ 
 	 private static native void setImageExtent0(Buffer ptr, java.nio.ByteBuffer  _imageExtent);/*
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
-		  vkObj->imageExtent = (VkExtent3D) (_imageExtent);
+		 // code for Buffer - referenced by ptr
+		  vkObj->imageExtent = (VkExtent3D) (*_imageExtent);
 	  */
 
 	/**
@@ -432,7 +440,8 @@
 	 */ 
 	 private static native long getImageExtent0(Buffer ptr);/*
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
-		  return (jlong) reinterpret_cast<jlong>(vkObj->imageExtent);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageExtent);
 	 */
 
 

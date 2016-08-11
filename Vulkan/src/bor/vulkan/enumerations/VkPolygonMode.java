@@ -95,6 +95,25 @@ public class VkPolygonMode extends IntEnum<VkPolygonMode> {
         VkPolygonMode flag = new VkPolygonMode(name, -1, value); 
         return flag;
     }
+	
+	/**
+     * Creates/populates a array of VkPolygonMode from a set of values.
+     * @param dst - destination array. Can be null.
+     * @param values - int[] with valid values of this enumeration.
+     * @return VkPolygonMode array with matching values
+     */
+    public static VkPolygonMode[] fromValues(VkPolygonMode[] dst, int[] values){
+        if(values == null) 
+               return null;
+        if(dst == null || dst.length != values.length){
+            dst = new VkPolygonMode[values.length];
+        }        
+        for (int i = 0; i < values.length; i++) {
+            int val = values[i];
+            dst[i] = VkPolygonMode.fromValue(val);
+        }        
+        return dst;
+    }
     
     /**
      * Check is a given flagA is bitwise ORed with flagB

@@ -100,7 +100,7 @@ public class Utils {
      * @param size - size in bytes
      * @return native byteBuffer
      */
-    public static final native ByteBuffer createDirectBuffer(int size);/*
+    public static final native ByteBuffer createNativeDirectBuffer(int size);/*
      void* pbuffer = calloc((size_t) 1, (size_t)size);
      jobject directBuffer = env->NewDirectByteBuffer(pbuffer, size);
      return directBuffer;
