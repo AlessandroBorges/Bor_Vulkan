@@ -255,10 +255,24 @@ extern "C" {
 #define bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKWIN32SURFACECREATEINFOKHR_ID 123L
 #undef bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKDEBUGREPORTCALLBACKCREATEINFOEXT_ID
 #define bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKDEBUGREPORTCALLBACKCREATEINFOEXT_ID 124L
+#undef bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKPIPELINERASTERIZATIONSTATERASTERIZATIONORDERAMD_ID
+#define bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKPIPELINERASTERIZATIONSTATERASTERIZATIONORDERAMD_ID 125L
+#undef bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKDEBUGMARKEROBJECTNAMEINFOEXT_ID
+#define bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKDEBUGMARKEROBJECTNAMEINFOEXT_ID 126L
+#undef bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKDEBUGMARKEROBJECTTAGINFOEXT_ID
+#define bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKDEBUGMARKEROBJECTTAGINFOEXT_ID 127L
+#undef bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKDEBUGMARKERMARKERINFOEXT_ID
+#define bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKDEBUGMARKERMARKERINFOEXT_ID 128L
+#undef bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKDEDICATEDALLOCATIONIMAGECREATEINFONV_ID
+#define bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKDEDICATEDALLOCATIONIMAGECREATEINFONV_ID 129L
+#undef bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKDEDICATEDALLOCATIONBUFFERCREATEINFONV_ID
+#define bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKDEDICATEDALLOCATIONBUFFERCREATEINFONV_ID 130L
+#undef bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKDEDICATEDALLOCATIONMEMORYALLOCATEINFONV_ID
+#define bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKDEDICATEDALLOCATIONMEMORYALLOCATEINFONV_ID 131L
 #undef bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKCLEARVALUE_ID
-#define bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKCLEARVALUE_ID 125L
+#define bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKCLEARVALUE_ID 200L
 #undef bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKCLEARCOLORVALUE_ID
-#define bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKCLEARCOLORVALUE_ID 126L
+#define bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_VKCLEARCOLORVALUE_ID 201L
 #undef bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_TAG_ID
 #define bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_TAG_ID 14L
 /*
@@ -280,18 +294,18 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_
 /*
  * Class:     bor_vulkan_structs_VkPhysicalDeviceMemoryProperties
  * Method:    setMemoryTypes0
- * Signature: (Ljava/nio/Buffer;[J)V
+ * Signature: (Ljava/nio/Buffer;Ljava/nio/ByteBuffer;)V
  */
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_setMemoryTypes0
-  (JNIEnv *, jclass, jobject, jlongArray);
+  (JNIEnv *, jclass, jobject, jobject);
 
 /*
  * Class:     bor_vulkan_structs_VkPhysicalDeviceMemoryProperties
  * Method:    getMemoryTypes0
- * Signature: (Ljava/nio/Buffer;[J)V
+ * Signature: (Ljava/nio/Buffer;)J
  */
-JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_getMemoryTypes0
-  (JNIEnv *, jclass, jobject, jlongArray);
+JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_getMemoryTypes0
+  (JNIEnv *, jclass, jobject);
 
 /*
  * Class:     bor_vulkan_structs_VkPhysicalDeviceMemoryProperties
@@ -312,18 +326,18 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_
 /*
  * Class:     bor_vulkan_structs_VkPhysicalDeviceMemoryProperties
  * Method:    setMemoryHeaps0
- * Signature: (Ljava/nio/Buffer;[JI)V
+ * Signature: (Ljava/nio/Buffer;Ljava/nio/ByteBuffer;)V
  */
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_setMemoryHeaps0
-  (JNIEnv *, jclass, jobject, jlongArray, jint);
+  (JNIEnv *, jclass, jobject, jobject);
 
 /*
  * Class:     bor_vulkan_structs_VkPhysicalDeviceMemoryProperties
  * Method:    getMemoryHeaps0
- * Signature: (Ljava/nio/Buffer;[J)V
+ * Signature: (Ljava/nio/Buffer;)J
  */
-JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_getMemoryHeaps0
-  (JNIEnv *, jclass, jobject, jlongArray);
+JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_getMemoryHeaps0
+  (JNIEnv *, jclass, jobject);
 
 #ifdef __cplusplus
 }

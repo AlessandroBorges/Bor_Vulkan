@@ -1,0 +1,31 @@
+ private static native void vkGetPhysicalDeviceQueueFamilyProperties0(
+               Buffer  physicalDevice,
+               int[]  pQueueFamilyPropertyCount,
+               ByteBuffer[] pQFP);/*   
+     
+     JBufferArray buffs(env, pQFP);                                     
+     VkQueueFamilyProperties*  pQueueFamilyProperties = nullptr;
+     
+     uint32_t count = pQueueFamilyPropertyCount[0];                           
+     vkGetPhysicalDeviceQueueFamilyProperties(
+             (VkPhysicalDevice) (physicalDevice),
+             (uint32_t*)  c,
+             (VkQueueFamilyProperties*)  buffs.getPointers());
+             
+         if(pQFP)
+         {           
+           int length = pQueueFamilyPropertyCount[0];
+           jobjectArray bufArray = 
+                        (jobjectArray) env->NewObjectArray(length, byteBufferClass, NULL);
+                        
+           for(int i=0; i<length; i++){
+              VkQueueFamilyProperties* qfp = pQueueFamilyProperties+i;
+              jobject pObj = env->NewDirectByteBuffer((void*) qfp, 
+                                  (jlong) sizeof(VkQueueFamilyProperties));
+              env->SetObjectArrayElement(bufArray,(jsize)i, pObj);                                          
+            }
+            return bufArray;
+         }   
+         else
+          return NULL;               
+      */

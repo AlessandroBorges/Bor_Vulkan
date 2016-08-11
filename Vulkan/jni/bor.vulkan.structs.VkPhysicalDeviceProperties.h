@@ -255,10 +255,24 @@ extern "C" {
 #define bor_vulkan_structs_VkPhysicalDeviceProperties_VKWIN32SURFACECREATEINFOKHR_ID 123L
 #undef bor_vulkan_structs_VkPhysicalDeviceProperties_VKDEBUGREPORTCALLBACKCREATEINFOEXT_ID
 #define bor_vulkan_structs_VkPhysicalDeviceProperties_VKDEBUGREPORTCALLBACKCREATEINFOEXT_ID 124L
+#undef bor_vulkan_structs_VkPhysicalDeviceProperties_VKPIPELINERASTERIZATIONSTATERASTERIZATIONORDERAMD_ID
+#define bor_vulkan_structs_VkPhysicalDeviceProperties_VKPIPELINERASTERIZATIONSTATERASTERIZATIONORDERAMD_ID 125L
+#undef bor_vulkan_structs_VkPhysicalDeviceProperties_VKDEBUGMARKEROBJECTNAMEINFOEXT_ID
+#define bor_vulkan_structs_VkPhysicalDeviceProperties_VKDEBUGMARKEROBJECTNAMEINFOEXT_ID 126L
+#undef bor_vulkan_structs_VkPhysicalDeviceProperties_VKDEBUGMARKEROBJECTTAGINFOEXT_ID
+#define bor_vulkan_structs_VkPhysicalDeviceProperties_VKDEBUGMARKEROBJECTTAGINFOEXT_ID 127L
+#undef bor_vulkan_structs_VkPhysicalDeviceProperties_VKDEBUGMARKERMARKERINFOEXT_ID
+#define bor_vulkan_structs_VkPhysicalDeviceProperties_VKDEBUGMARKERMARKERINFOEXT_ID 128L
+#undef bor_vulkan_structs_VkPhysicalDeviceProperties_VKDEDICATEDALLOCATIONIMAGECREATEINFONV_ID
+#define bor_vulkan_structs_VkPhysicalDeviceProperties_VKDEDICATEDALLOCATIONIMAGECREATEINFONV_ID 129L
+#undef bor_vulkan_structs_VkPhysicalDeviceProperties_VKDEDICATEDALLOCATIONBUFFERCREATEINFONV_ID
+#define bor_vulkan_structs_VkPhysicalDeviceProperties_VKDEDICATEDALLOCATIONBUFFERCREATEINFONV_ID 130L
+#undef bor_vulkan_structs_VkPhysicalDeviceProperties_VKDEDICATEDALLOCATIONMEMORYALLOCATEINFONV_ID
+#define bor_vulkan_structs_VkPhysicalDeviceProperties_VKDEDICATEDALLOCATIONMEMORYALLOCATEINFONV_ID 131L
 #undef bor_vulkan_structs_VkPhysicalDeviceProperties_VKCLEARVALUE_ID
-#define bor_vulkan_structs_VkPhysicalDeviceProperties_VKCLEARVALUE_ID 125L
+#define bor_vulkan_structs_VkPhysicalDeviceProperties_VKCLEARVALUE_ID 200L
 #undef bor_vulkan_structs_VkPhysicalDeviceProperties_VKCLEARCOLORVALUE_ID
-#define bor_vulkan_structs_VkPhysicalDeviceProperties_VKCLEARCOLORVALUE_ID 126L
+#define bor_vulkan_structs_VkPhysicalDeviceProperties_VKCLEARCOLORVALUE_ID 201L
 #undef bor_vulkan_structs_VkPhysicalDeviceProperties_TAG_ID
 #define bor_vulkan_structs_VkPhysicalDeviceProperties_TAG_ID 10L
 /*
@@ -344,10 +358,10 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getDev
 /*
  * Class:     bor_vulkan_structs_VkPhysicalDeviceProperties
  * Method:    setDeviceName0
- * Signature: (Ljava/nio/Buffer;Ljava/lang/String;I)V
+ * Signature: (Ljava/nio/Buffer;Ljava/lang/String;)V
  */
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setDeviceName0
-  (JNIEnv *, jclass, jobject, jstring, jint);
+  (JNIEnv *, jclass, jobject, jstring);
 
 /*
  * Class:     bor_vulkan_structs_VkPhysicalDeviceProperties
@@ -368,9 +382,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setPip
 /*
  * Class:     bor_vulkan_structs_VkPhysicalDeviceProperties
  * Method:    getPipelineCacheUUID0
- * Signature: (Ljava/nio/Buffer;[B)V
+ * Signature: (Ljava/nio/Buffer;[B)[B
  */
-JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getPipelineCacheUUID0
+JNIEXPORT jbyteArray JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getPipelineCacheUUID0
   (JNIEnv *, jclass, jobject, jbyteArray);
 
 /*

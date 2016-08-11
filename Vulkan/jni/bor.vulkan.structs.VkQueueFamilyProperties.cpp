@@ -1,15 +1,16 @@
 #include <bor.vulkan.structs.VkQueueFamilyProperties.h>
 
-//@line:40
+//@line:41
 
     #include <BorVulkan.hpp>
     JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_setQueueFlags0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _queueFlags) {
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:269
+//@line:252
 
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->queueFlags = (VkQueueFlags) (_queueFlags);
 	  
 
@@ -18,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkQueueFamilyProperties_getQueueFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:278
+//@line:262
 
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
 		  return (jint) (vkObj->queueFlags);
@@ -38,9 +39,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_setQueueC
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:287
+//@line:271
 
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->queueCount = (uint32_t) (_queueCount);
 	  
 
@@ -49,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_setQueueC
 static inline jint wrapped_Java_bor_vulkan_structs_VkQueueFamilyProperties_getQueueCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:296
+//@line:281
 
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
 		  return (jint) (vkObj->queueCount);
@@ -69,9 +71,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_setTimest
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:305
+//@line:290
 
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->timestampValidBits = (uint32_t) (_timestampValidBits);
 	  
 
@@ -80,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_setTimest
 static inline jint wrapped_Java_bor_vulkan_structs_VkQueueFamilyProperties_getTimestampValidBits0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:314
+//@line:300
 
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
 		  return (jint) (vkObj->timestampValidBits);
@@ -101,12 +104,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_setMinIma
 	char* _minImageTransferGranularity = (char*)(obj__minImageTransferGranularity?env->GetDirectBufferAddress(obj__minImageTransferGranularity) : NULL);
 
 
-//@line:323
+//@line:309
 
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
-		  VkExtent3D* pObj  = (VkExtent3D*) _minImageTransferGranularity;
-		  VkExtent3D obj = (VkExtent3D)(*pObj);
-		  vkObj->minImageTransferGranularity = (VkExtent3D) (obj);
+		 // code for Buffer - referenced by ptr
+		  vkObj->minImageTransferGranularity = (VkExtent3D) (_minImageTransferGranularity);
 	  
 
 }
@@ -114,11 +116,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_setMinIma
 static inline jlong wrapped_Java_bor_vulkan_structs_VkQueueFamilyProperties_getMinImageTransferGranularity0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:334
+//@line:319
 
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
+		  // generic get for Buffer 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->minImageTransferGranularity);
-		  
+	 
 }
 
 JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_getMinImageTransferGranularity0(JNIEnv* env, jclass clazz, jobject obj_ptr) {

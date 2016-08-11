@@ -1,15 +1,16 @@
 #include <bor.vulkan.structs.VkExtent3D.h>
 
-//@line:39
+//@line:40
 
     #include <BorVulkan.hpp>
     JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkExtent3D_setWidth0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _width) {
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:231
+//@line:211
 
 		  VkExtent3D* vkObj = (VkExtent3D*)(ptr);
+		 // code for simple past value 
 		  vkObj->width = (uint32_t) (_width);
 	  
 
@@ -18,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkExtent3D_getWidth0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:240
+//@line:221
 
 		  VkExtent3D* vkObj = (VkExtent3D*)(ptr);
 		  return (jint) (vkObj->width);
@@ -38,9 +39,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkExtent3D_setHeight0(JNIEnv* env
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:249
+//@line:230
 
 		  VkExtent3D* vkObj = (VkExtent3D*)(ptr);
+		 // code for simple past value 
 		  vkObj->height = (uint32_t) (_height);
 	  
 
@@ -49,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkExtent3D_setHeight0(JNIEnv* env
 static inline jint wrapped_Java_bor_vulkan_structs_VkExtent3D_getHeight0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:258
+//@line:240
 
 		  VkExtent3D* vkObj = (VkExtent3D*)(ptr);
 		  return (jint) (vkObj->height);
@@ -69,9 +71,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkExtent3D_setDepth0(JNIEnv* env,
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:267
+//@line:249
 
 		  VkExtent3D* vkObj = (VkExtent3D*)(ptr);
+		 // code for simple past value 
 		  vkObj->depth = (uint32_t) (_depth);
 	  
 
@@ -80,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkExtent3D_setDepth0(JNIEnv* env,
 static inline jint wrapped_Java_bor_vulkan_structs_VkExtent3D_getDepth0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:276
+//@line:259
 
 		  VkExtent3D* vkObj = (VkExtent3D*)(ptr);
 		  return (jint) (vkObj->depth);

@@ -255,10 +255,24 @@ extern "C" {
 #define bor_vulkan_structs_VkDeviceQueueCreateInfo_VKWIN32SURFACECREATEINFOKHR_ID 123L
 #undef bor_vulkan_structs_VkDeviceQueueCreateInfo_VKDEBUGREPORTCALLBACKCREATEINFOEXT_ID
 #define bor_vulkan_structs_VkDeviceQueueCreateInfo_VKDEBUGREPORTCALLBACKCREATEINFOEXT_ID 124L
+#undef bor_vulkan_structs_VkDeviceQueueCreateInfo_VKPIPELINERASTERIZATIONSTATERASTERIZATIONORDERAMD_ID
+#define bor_vulkan_structs_VkDeviceQueueCreateInfo_VKPIPELINERASTERIZATIONSTATERASTERIZATIONORDERAMD_ID 125L
+#undef bor_vulkan_structs_VkDeviceQueueCreateInfo_VKDEBUGMARKEROBJECTNAMEINFOEXT_ID
+#define bor_vulkan_structs_VkDeviceQueueCreateInfo_VKDEBUGMARKEROBJECTNAMEINFOEXT_ID 126L
+#undef bor_vulkan_structs_VkDeviceQueueCreateInfo_VKDEBUGMARKEROBJECTTAGINFOEXT_ID
+#define bor_vulkan_structs_VkDeviceQueueCreateInfo_VKDEBUGMARKEROBJECTTAGINFOEXT_ID 127L
+#undef bor_vulkan_structs_VkDeviceQueueCreateInfo_VKDEBUGMARKERMARKERINFOEXT_ID
+#define bor_vulkan_structs_VkDeviceQueueCreateInfo_VKDEBUGMARKERMARKERINFOEXT_ID 128L
+#undef bor_vulkan_structs_VkDeviceQueueCreateInfo_VKDEDICATEDALLOCATIONIMAGECREATEINFONV_ID
+#define bor_vulkan_structs_VkDeviceQueueCreateInfo_VKDEDICATEDALLOCATIONIMAGECREATEINFONV_ID 129L
+#undef bor_vulkan_structs_VkDeviceQueueCreateInfo_VKDEDICATEDALLOCATIONBUFFERCREATEINFONV_ID
+#define bor_vulkan_structs_VkDeviceQueueCreateInfo_VKDEDICATEDALLOCATIONBUFFERCREATEINFONV_ID 130L
+#undef bor_vulkan_structs_VkDeviceQueueCreateInfo_VKDEDICATEDALLOCATIONMEMORYALLOCATEINFONV_ID
+#define bor_vulkan_structs_VkDeviceQueueCreateInfo_VKDEDICATEDALLOCATIONMEMORYALLOCATEINFONV_ID 131L
 #undef bor_vulkan_structs_VkDeviceQueueCreateInfo_VKCLEARVALUE_ID
-#define bor_vulkan_structs_VkDeviceQueueCreateInfo_VKCLEARVALUE_ID 125L
+#define bor_vulkan_structs_VkDeviceQueueCreateInfo_VKCLEARVALUE_ID 200L
 #undef bor_vulkan_structs_VkDeviceQueueCreateInfo_VKCLEARCOLORVALUE_ID
-#define bor_vulkan_structs_VkDeviceQueueCreateInfo_VKCLEARCOLORVALUE_ID 126L
+#define bor_vulkan_structs_VkDeviceQueueCreateInfo_VKCLEARCOLORVALUE_ID 201L
 #undef bor_vulkan_structs_VkDeviceQueueCreateInfo_TAG_ID
 #define bor_vulkan_structs_VkDeviceQueueCreateInfo_TAG_ID 15L
 /*
@@ -344,17 +358,17 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getQueueC
 /*
  * Class:     bor_vulkan_structs_VkDeviceQueueCreateInfo
  * Method:    setPQueuePriorities0
- * Signature: (Ljava/nio/Buffer;[FI)V
+ * Signature: (Ljava/nio/Buffer;[F)V
  */
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_setPQueuePriorities0
-  (JNIEnv *, jclass, jobject, jfloatArray, jint);
+  (JNIEnv *, jclass, jobject, jfloatArray);
 
 /*
  * Class:     bor_vulkan_structs_VkDeviceQueueCreateInfo
  * Method:    getPQueuePriorities0
- * Signature: (Ljava/nio/Buffer;[F)V
+ * Signature: (Ljava/nio/Buffer;[F)[F
  */
-JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getPQueuePriorities0
+JNIEXPORT jfloatArray JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getPQueuePriorities0
   (JNIEnv *, jclass, jobject, jfloatArray);
 
 #ifdef __cplusplus

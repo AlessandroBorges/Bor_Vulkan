@@ -1,15 +1,16 @@
 #include <bor.vulkan.structs.VkPhysicalDeviceSparseProperties.h>
 
-//@line:41
+//@line:42
 
     #include <BorVulkan.hpp>
     JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_setResidencyStandard2DBlockShape0(JNIEnv* env, jclass clazz, jobject obj_ptr, jboolean _residencyStandard2DBlockShape) {
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:277
+//@line:273
 
 		  VkPhysicalDeviceSparseProperties* vkObj = (VkPhysicalDeviceSparseProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->residencyStandard2DBlockShape = (VkBool32) (_residencyStandard2DBlockShape);
 	  
 
@@ -18,7 +19,7 @@
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_getResidencyStandard2DBlockShape0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:286
+//@line:283
 
 		  VkPhysicalDeviceSparseProperties* vkObj = (VkPhysicalDeviceSparseProperties*)(ptr);
 		  return (jboolean) (vkObj->residencyStandard2DBlockShape);
@@ -38,9 +39,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:295
+//@line:292
 
 		  VkPhysicalDeviceSparseProperties* vkObj = (VkPhysicalDeviceSparseProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->residencyStandard2DMultisampleBlockShape = (VkBool32) (_residencyStandard2DMultisampleBlockShape);
 	  
 
@@ -49,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_getResidencyStandard2DMultisampleBlockShape0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:304
+//@line:302
 
 		  VkPhysicalDeviceSparseProperties* vkObj = (VkPhysicalDeviceSparseProperties*)(ptr);
 		  return (jboolean) (vkObj->residencyStandard2DMultisampleBlockShape);
@@ -69,9 +71,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:313
+//@line:311
 
 		  VkPhysicalDeviceSparseProperties* vkObj = (VkPhysicalDeviceSparseProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->residencyStandard3DBlockShape = (VkBool32) (_residencyStandard3DBlockShape);
 	  
 
@@ -80,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_getResidencyStandard3DBlockShape0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:322
+//@line:321
 
 		  VkPhysicalDeviceSparseProperties* vkObj = (VkPhysicalDeviceSparseProperties*)(ptr);
 		  return (jboolean) (vkObj->residencyStandard3DBlockShape);
@@ -100,9 +103,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:331
+//@line:330
 
 		  VkPhysicalDeviceSparseProperties* vkObj = (VkPhysicalDeviceSparseProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->residencyAlignedMipSize = (VkBool32) (_residencyAlignedMipSize);
 	  
 
@@ -134,6 +138,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_
 //@line:349
 
 		  VkPhysicalDeviceSparseProperties* vkObj = (VkPhysicalDeviceSparseProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->residencyNonResidentStrict = (VkBool32) (_residencyNonResidentStrict);
 	  
 
@@ -142,7 +147,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceSparseProperties_getResidencyNonResidentStrict0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:358
+//@line:359
 
 		  VkPhysicalDeviceSparseProperties* vkObj = (VkPhysicalDeviceSparseProperties*)(ptr);
 		  return (jboolean) (vkObj->residencyNonResidentStrict);

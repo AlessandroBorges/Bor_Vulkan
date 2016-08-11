@@ -1,15 +1,16 @@
 #include <bor.vulkan.structs.VkPhysicalDeviceProperties.h>
 
-//@line:45
+//@line:46
 
     #include <BorVulkan.hpp>
     JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setApiVersion0(JNIEnv* env, jclass clazz, jobject obj_ptr, jint _apiVersion) {
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:434
+//@line:425
 
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->apiVersion = (uint32_t) (_apiVersion);
 	  
 
@@ -18,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getApiVersion0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:443
+//@line:435
 
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
 		  return (jint) (vkObj->apiVersion);
@@ -38,9 +39,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setDri
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:452
+//@line:444
 
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->driverVersion = (uint32_t) (_driverVersion);
 	  
 
@@ -49,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setDri
 static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getDriverVersion0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:461
+//@line:454
 
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
 		  return (jint) (vkObj->driverVersion);
@@ -69,9 +71,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setVen
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:470
+//@line:463
 
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->vendorID = (uint32_t) (_vendorID);
 	  
 
@@ -80,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setVen
 static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getVendorID0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:479
+//@line:473
 
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
 		  return (jint) (vkObj->vendorID);
@@ -100,9 +103,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setDev
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:488
+//@line:482
 
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->deviceID = (uint32_t) (_deviceID);
 	  
 
@@ -111,7 +115,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setDev
 static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getDeviceID0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:497
+//@line:492
 
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
 		  return (jint) (vkObj->deviceID);
@@ -131,9 +135,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setDev
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:506
+//@line:501
 
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->deviceType = (VkPhysicalDeviceType) (_deviceType);
 	  
 
@@ -142,7 +147,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setDev
 static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getDeviceType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:515
+//@line:511
 
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
 		  return (VkPhysicalDeviceType) (vkObj->deviceType);
@@ -158,21 +163,15 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getDev
 	return JNI_returnValue;
 }
 
-JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setDeviceName0(JNIEnv* env, jclass clazz, jobject obj_ptr, jstring obj__deviceName, jint len) {
+JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setDeviceName0(JNIEnv* env, jclass clazz, jobject obj_ptr, jstring obj__deviceName) {
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 	char* _deviceName = (char*)(obj__deviceName ? env->GetStringUTFChars(obj__deviceName, 0) : NULL);
 
 
-//@line:525
+//@line:520
 
-	        ///MANUAL
-	 
-                //  unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr):0);
-                //  char* _deviceName = (char*)env->GetStringUTFChars(obj__deviceName, 0);
-	
-		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);		  
-		  strncpy(vkObj->deviceName, _deviceName, len);		  
-		  vkObj->deviceName[len] = '\0';
+		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		  strncpy(vkObj->deviceName, _deviceName, strlen(_deviceName)+1);
 	  
 	 if(obj__deviceName != NULL){
 		 env->ReleaseStringUTFChars(obj__deviceName, _deviceName);
@@ -183,12 +182,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setDev
 static inline jstring wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getDeviceName0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:540
+//@line:529
 
-        
-	         VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		 return (jstring)(env->NewStringUTF(vkObj->deviceName));	 
-        
+		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		  return (jstring)(env->NewStringUTF(vkObj->deviceName));
+	 
 }
 
 JNIEXPORT jstring JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getDeviceName0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
@@ -205,12 +203,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setPip
 	char* _pipelineCacheUUID = (char*)(obj__pipelineCacheUUID ? env->GetByteArrayElements(obj__pipelineCacheUUID, 0) : NULL);
 
 
-//@line:551
+//@line:538
 
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  for(int i = 0; i< VK_UUID_SIZE; i++){
-		     vkObj->pipelineCacheUUID[i] = (uint8_t) (_pipelineCacheUUID[i]);
-		  }
+		 // code for fixed size array 
+		  memcpy(vkObj->pipelineCacheUUID, _pipelineCacheUUID, VK_UUID_SIZE * sizeof(uint8_t));
 	  
 	if(obj__pipelineCacheUUID != NULL){
 		 env->ReleaseByteArrayElements(obj__pipelineCacheUUID, (jbyte*)_pipelineCacheUUID, 0);
@@ -218,23 +215,29 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setPip
 
 }
 
-JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getPipelineCacheUUID0(JNIEnv* env, jclass clazz, jobject obj_ptr, jbyteArray obj_retByte) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
-	char* retByte = (char*)(obj_retByte ? env->GetByteArrayElements(obj_retByte, 0) : NULL);
+static inline jbyteArray wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getPipelineCacheUUID0
+(JNIEnv* env, jclass clazz, jobject obj_ptr, jbyteArray obj__pipelineCacheUUID, unsigned char* ptr, char* _pipelineCacheUUID) {
 
-
-//@line:562
+//@line:548
 
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  //copy it
-		  for(int i=0; i<VK_UUID_SIZE; i++){
-		   retByte[i] = (jbyte) vkObj->pipelineCacheUUID[i];
-		  }
+		  // fixed length array  
+		  memcpy(&_pipelineCacheUUID, &(vkObj->pipelineCacheUUID), VK_UUID_SIZE * sizeof(uint8_t));
+		  return _pipelineCacheUUID;
 	 
-	if(obj_retByte != NULL){
-		 env->ReleaseByteArrayElements(obj_retByte, (jbyte*)retByte, 0);
+}
+
+JNIEXPORT jbyteArray JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getPipelineCacheUUID0(JNIEnv* env, jclass clazz, jobject obj_ptr, jbyteArray obj__pipelineCacheUUID) {
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	char* _pipelineCacheUUID = (char*)(obj__pipelineCacheUUID ? env->GetByteArrayElements(obj__pipelineCacheUUID, 0) : NULL);
+
+	jbyteArray JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getPipelineCacheUUID0(env, clazz, obj_ptr, obj__pipelineCacheUUID, ptr, _pipelineCacheUUID);
+
+	if(obj__pipelineCacheUUID != NULL){
+		 env->ReleaseByteArrayElements(obj__pipelineCacheUUID, (jbyte*)_pipelineCacheUUID, 0);
 	}
 
+	return JNI_returnValue;
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setLimits0(JNIEnv* env, jclass clazz, jobject obj_ptr, jobject obj__limits) {
@@ -242,11 +245,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setLim
 	char* _limits = (char*)(obj__limits?env->GetDirectBufferAddress(obj__limits) : NULL);
 
 
-//@line:574
+//@line:559
 
-		 VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		 VkPhysicalDeviceLimits*   pLimits = (VkPhysicalDeviceLimits*)_limits;
-		 vkObj->limits = (VkPhysicalDeviceLimits) (*pLimits);
+		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		 // code for Buffer - referenced by ptr
+		  vkObj->limits = (VkPhysicalDeviceLimits) (_limits);
 	  
 
 }
@@ -254,12 +257,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setLim
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getLimits0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:584
+//@line:569
 
-		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);		  
-		  VkPhysicalDeviceLimits* pLimits = &(vkObj->limits);
-		  return (jlong) reinterpret_cast<jlong>(pLimits);
-        
+		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->limits);
+	 
 }
 
 JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getLimits0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
@@ -276,12 +279,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setSpa
 	char* _sparseProperties = (char*)(obj__sparseProperties?env->GetDirectBufferAddress(obj__sparseProperties) : NULL);
 
 
-//@line:594
+//@line:579
 
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  VkPhysicalDeviceSparseProperties* sparseProperties = (VkPhysicalDeviceSparseProperties*)_sparseProperties;
-		  vkObj->sparseProperties = (VkPhysicalDeviceSparseProperties) (*sparseProperties);
-		  
+		 // code for Buffer - referenced by ptr
+		  vkObj->sparseProperties = (VkPhysicalDeviceSparseProperties) (_sparseProperties);
 	  
 
 }
@@ -289,11 +291,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceProperties_setSpa
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceProperties_getSparseProperties0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:605
+//@line:589
 
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  VkPhysicalDeviceSparseProperties* pSparse = &(vkObj->sparseProperties);		  
-		  return (jlong) reinterpret_cast<jlong>(pSparse);
+		  // generic get for Buffer 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->sparseProperties);
 	 
 }
 

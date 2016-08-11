@@ -1,22 +1,17 @@
 #include <bor.vulkan.structs.VkExtensionProperties.h>
 
-//@line:38
+//@line:39
 
     #include <BorVulkan.hpp>
-        
-    
     JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkExtensionProperties_setExtensionName0(JNIEnv* env, jclass clazz, jobject obj_ptr, jstring obj__extensionName) {
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 	char* _extensionName = (char*)(obj__extensionName ? env->GetStringUTFChars(obj__extensionName, 0) : NULL);
 
 
-//@line:208
+//@line:183
 
 		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
-		  strncpy(vkObj->extensionName, 
-		          _extensionName, 
-		          MIN(VK_MAX_EXTENSION_NAME_SIZE - 1, strlen(_extensionName)));
-		 
+		  strncpy(vkObj->extensionName, _extensionName, strlen(_extensionName)+1);
 	  
 	 if(obj__extensionName != NULL){
 		 env->ReleaseStringUTFChars(obj__extensionName, _extensionName);
@@ -27,11 +22,11 @@
 static inline jstring wrapped_Java_bor_vulkan_structs_VkExtensionProperties_getExtensionName0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:220
+//@line:192
 
 		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->extensionName));	
-             
+		  return (jstring)(env->NewStringUTF(vkObj->extensionName));
+	 
 }
 
 JNIEXPORT jstring JNICALL Java_bor_vulkan_structs_VkExtensionProperties_getExtensionName0(JNIEnv* env, jclass clazz, jobject obj_ptr) {
@@ -47,9 +42,10 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkExtensionProperties_setSpecVers
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:229
+//@line:201
 
 		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
+		 // code for simple past value 
 		  vkObj->specVersion = (uint32_t) (_specVersion);
 	  
 
@@ -58,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkExtensionProperties_setSpecVers
 static inline jint wrapped_Java_bor_vulkan_structs_VkExtensionProperties_getSpecVersion0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:238
+//@line:211
 
 		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
 		  return (jint) (vkObj->specVersion);

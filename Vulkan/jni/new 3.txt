@@ -1,0 +1,30 @@
+Hi, 
+
+On Vulkan docs we have the following regarding WSI Platform:
+
+> The Vulkan API does not define any type of platform object. Platform-specific WSI extensions are defined, which contain platform-specific functions for using WSI. Use of these extensions is guarded by preprocessor symbols.
+
+>• VK_USE_PLATFORM_ANDROID_KHR - Android
+
+>• VK_USE_PLATFORM_MIR_KHR - Mir
+
+>• VK_USE_PLATFORM_WAYLAND_KHR - Wayland
+
+>• VK_USE_PLATFORM_WIN32_KHR - Microsoft Windows
+
+>• VK_USE_PLATFORM_XCB_KHR - X Window System, using the XCB library
+
+>• VK_USE_PLATFORM_XLIB_KHR - X Window System, using the Xlib library
+
+I understand that I should pick a platform or a Window System, and then define the correct symbol prior to compile. When compiling against Android or Windows, I can just write something like below:
+
+    #if defined(ANDROID) || defined (__ANDROID__)
+      #define VK_USE_PLATFORM_ANDROID_KHR 1
+    #elif defined(_WIN32)
+      #define VK_USE_PLATFORM_WIN32_KHR 1
+    #endif
+
+So far, OK. Android and Windows has their own unique window system, which is good enough. But Linux has several windowing systems - Xlib, XCB, Wayland and MIR, afaik. 
+
+I'd like to know if there is a C/C++ **preprocessor symbol** which may help to know which Window System is the one used by that environment, so can write generic code able to deal with each API, without messing then.
+  

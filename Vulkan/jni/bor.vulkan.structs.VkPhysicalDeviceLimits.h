@@ -255,10 +255,24 @@ extern "C" {
 #define bor_vulkan_structs_VkPhysicalDeviceLimits_VKWIN32SURFACECREATEINFOKHR_ID 123L
 #undef bor_vulkan_structs_VkPhysicalDeviceLimits_VKDEBUGREPORTCALLBACKCREATEINFOEXT_ID
 #define bor_vulkan_structs_VkPhysicalDeviceLimits_VKDEBUGREPORTCALLBACKCREATEINFOEXT_ID 124L
+#undef bor_vulkan_structs_VkPhysicalDeviceLimits_VKPIPELINERASTERIZATIONSTATERASTERIZATIONORDERAMD_ID
+#define bor_vulkan_structs_VkPhysicalDeviceLimits_VKPIPELINERASTERIZATIONSTATERASTERIZATIONORDERAMD_ID 125L
+#undef bor_vulkan_structs_VkPhysicalDeviceLimits_VKDEBUGMARKEROBJECTNAMEINFOEXT_ID
+#define bor_vulkan_structs_VkPhysicalDeviceLimits_VKDEBUGMARKEROBJECTNAMEINFOEXT_ID 126L
+#undef bor_vulkan_structs_VkPhysicalDeviceLimits_VKDEBUGMARKEROBJECTTAGINFOEXT_ID
+#define bor_vulkan_structs_VkPhysicalDeviceLimits_VKDEBUGMARKEROBJECTTAGINFOEXT_ID 127L
+#undef bor_vulkan_structs_VkPhysicalDeviceLimits_VKDEBUGMARKERMARKERINFOEXT_ID
+#define bor_vulkan_structs_VkPhysicalDeviceLimits_VKDEBUGMARKERMARKERINFOEXT_ID 128L
+#undef bor_vulkan_structs_VkPhysicalDeviceLimits_VKDEDICATEDALLOCATIONIMAGECREATEINFONV_ID
+#define bor_vulkan_structs_VkPhysicalDeviceLimits_VKDEDICATEDALLOCATIONIMAGECREATEINFONV_ID 129L
+#undef bor_vulkan_structs_VkPhysicalDeviceLimits_VKDEDICATEDALLOCATIONBUFFERCREATEINFONV_ID
+#define bor_vulkan_structs_VkPhysicalDeviceLimits_VKDEDICATEDALLOCATIONBUFFERCREATEINFONV_ID 130L
+#undef bor_vulkan_structs_VkPhysicalDeviceLimits_VKDEDICATEDALLOCATIONMEMORYALLOCATEINFONV_ID
+#define bor_vulkan_structs_VkPhysicalDeviceLimits_VKDEDICATEDALLOCATIONMEMORYALLOCATEINFONV_ID 131L
 #undef bor_vulkan_structs_VkPhysicalDeviceLimits_VKCLEARVALUE_ID
-#define bor_vulkan_structs_VkPhysicalDeviceLimits_VKCLEARVALUE_ID 125L
+#define bor_vulkan_structs_VkPhysicalDeviceLimits_VKCLEARVALUE_ID 200L
 #undef bor_vulkan_structs_VkPhysicalDeviceLimits_VKCLEARCOLORVALUE_ID
-#define bor_vulkan_structs_VkPhysicalDeviceLimits_VKCLEARCOLORVALUE_ID 126L
+#define bor_vulkan_structs_VkPhysicalDeviceLimits_VKCLEARCOLORVALUE_ID 201L
 #undef bor_vulkan_structs_VkPhysicalDeviceLimits_TAG_ID
 #define bor_vulkan_structs_VkPhysicalDeviceLimits_TAG_ID 8L
 /*
@@ -1104,9 +1118,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxComp
 /*
  * Class:     bor_vulkan_structs_VkPhysicalDeviceLimits
  * Method:    getMaxComputeWorkGroupCount0
- * Signature: (Ljava/nio/Buffer;[I)V
+ * Signature: (Ljava/nio/Buffer;[I)[I
  */
-JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxComputeWorkGroupCount0
+JNIEXPORT jintArray JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxComputeWorkGroupCount0
   (JNIEnv *, jclass, jobject, jintArray);
 
 /*
@@ -1136,9 +1150,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxComp
 /*
  * Class:     bor_vulkan_structs_VkPhysicalDeviceLimits
  * Method:    getMaxComputeWorkGroupSize0
- * Signature: (Ljava/nio/Buffer;[I)V
+ * Signature: (Ljava/nio/Buffer;[I)[I
  */
-JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxComputeWorkGroupSize0
+JNIEXPORT jintArray JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxComputeWorkGroupSize0
   (JNIEnv *, jclass, jobject, jintArray);
 
 /*
@@ -1280,9 +1294,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setMaxView
 /*
  * Class:     bor_vulkan_structs_VkPhysicalDeviceLimits
  * Method:    getMaxViewportDimensions0
- * Signature: (Ljava/nio/Buffer;[I)V
+ * Signature: (Ljava/nio/Buffer;[I)[I
  */
-JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxViewportDimensions0
+JNIEXPORT jintArray JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getMaxViewportDimensions0
   (JNIEnv *, jclass, jobject, jintArray);
 
 /*
@@ -1296,9 +1310,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setViewpor
 /*
  * Class:     bor_vulkan_structs_VkPhysicalDeviceLimits
  * Method:    getViewportBoundsRange0
- * Signature: (Ljava/nio/Buffer;[F)V
+ * Signature: (Ljava/nio/Buffer;[F)[F
  */
-JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getViewportBoundsRange0
+JNIEXPORT jfloatArray JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getViewportBoundsRange0
   (JNIEnv *, jclass, jobject, jfloatArray);
 
 /*
@@ -1824,9 +1838,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setPointSi
 /*
  * Class:     bor_vulkan_structs_VkPhysicalDeviceLimits
  * Method:    getPointSizeRange0
- * Signature: (Ljava/nio/Buffer;[F)V
+ * Signature: (Ljava/nio/Buffer;[F)[F
  */
-JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getPointSizeRange0
+JNIEXPORT jfloatArray JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getPointSizeRange0
   (JNIEnv *, jclass, jobject, jfloatArray);
 
 /*
@@ -1840,9 +1854,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_setLineWid
 /*
  * Class:     bor_vulkan_structs_VkPhysicalDeviceLimits
  * Method:    getLineWidthRange0
- * Signature: (Ljava/nio/Buffer;[F)V
+ * Signature: (Ljava/nio/Buffer;[F)[F
  */
-JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getLineWidthRange0
+JNIEXPORT jfloatArray JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceLimits_getLineWidthRange0
   (JNIEnv *, jclass, jobject, jfloatArray);
 
 /*
