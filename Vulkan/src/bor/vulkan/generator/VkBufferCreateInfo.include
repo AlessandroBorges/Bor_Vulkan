@@ -1,0 +1,45 @@
+// VkBufferCreateInfo.include
+
+//#setPQueueFamilyIndices
+   private IntBuffer pQueueFamilyIndicesBuff;
+   /**
+	 * Set method for field pQueueFamilyIndices	[int]<br>
+	 * Prototype: const uint32_t*  pQueueFamilyIndices
+	 * 
+	 * @param pQueueFamilyIndices - a instance of int[].
+	 * @return this VkStruct instance.
+	 */ 
+	 public VkBufferCreateInfo pQueueFamilyIndices(int[] pQueueFamilyIndices){
+		 this.pQueueFamilyIndices = pQueueFamilyIndices;
+		 if(pQueueFamilyIndices == null){
+			setPQueueFamilyIndices0(this.ptr, null, 0);
+            return this;			
+		 }
+		 int len = pQueueFamilyIndices.length;
+		 if(pQueueFamilyIndicesBuff == null || 
+		    pQueueFamilyIndicesBuff.capacity() < len){
+		   pQueueFamilyIndicesBuff = allocateBuffer(pQueueFamilyIndices);
+           setPQueueFamilyIndices0(this.ptr,  this.pQueueFamilyIndicesBuff, len);		   
+		 }else{ // just update data in buffer
+			 pQueueFamilyIndicesBuff.rewind();
+			 pQueueFamilyIndicesBuff.put(pQueueFamilyIndices);
+		 }
+		 return this;
+	 }
+//#END 
+	 
+//#setPQueueFamilyIndices0
+/**
+	 * Native SET method for field pQueueFamilyIndices	[int]<br>
+	 * Prototype: const uint32_t*  pQueueFamilyIndices
+	 */ 
+	 private static native void setPQueueFamilyIndices0(Buffer ptr, 
+	                                                    IntBuffer _pQueueFamilyIndices, 
+														int len);/*
+		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
+		 // code for generic array 
+		  uint32_t count = (uint32_t) len;		  
+		  vkObj->queueFamilyIndexCount = count;
+		  vkObj->pQueueFamilyIndices = (uint32_t*)_pQueueFamilyIndices ;		  
+	  */
+//#END	  

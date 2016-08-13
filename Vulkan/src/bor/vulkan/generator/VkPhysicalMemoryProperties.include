@@ -1,0 +1,123 @@
+//VkPhysicalDeviceMemoryProperties.include
+//#setMemoryTypes
+
+	/**
+	 * Set method for field memoryTypes	[vkstruct_array]<br>
+	 * Prototype: VkMemoryType[]  memoryTypes
+	 * 
+	 * @param _memoryTypes - a instance of VkMemoryType[].
+	 * @return this VkStruct instance.
+	 */ 
+	 public VkPhysicalDeviceMemoryProperties memoryTypes(VkMemoryType[] _memoryTypes){
+	     if(_memoryTypes == null ){
+                 throw new IllegalArgumentException("VkMemoryType[] _memoryTypes must be"
+                         + " not null");
+             }
+             if(memoryTypesBUFFER==null){
+                 memoryTypes();
+             }
+              memoryHeapCount(_memoryTypes.length); 
+              
+              BigBuffer<VkMemoryType> temp = new BigBuffer<VkMemoryType>(_memoryTypes, VkMemoryType.getID());
+              setMemoryTypes0(this.ptr, temp.getBuffer());
+              temp.update();
+              memoryTypesBUFFER.update();
+              return this;
+	 }
+
+//#END
+
+//#getMemoryTypes
+	/**
+	 * Get method for field memoryTypes	[vkstruct_array]<br>
+	 * Prototype: VkMemoryType[]  memoryTypes
+	 */ 
+	 public VkMemoryType[] memoryTypes(){
+		 long ptr = getMemoryTypes0(this.ptr);
+		 if(ptr == 0L){
+		    return null;
+		 }
+                 if(memoryTypesBUFFER == null){
+                     ByteBuffer bb = Utils.wrapPointer(ptr, VK_MAX_MEMORY_TYPES * VkMemoryType.sizeOf());
+                     memoryTypesBUFFER = new BigBuffer(bb, memoryHeaps, VkMemoryType.getID());
+                 }
+                 memoryHeapsBUFFER.update();  
+		 return this.memoryTypes;
+	 }
+//#END
+//#setMemoryHeaps
+
+	/**
+	 * Set method for field memoryHeaps	[vkstruct_array]<br>
+	 * Prototype: VkMemoryHeap[]  memoryHeaps
+	 * 
+	 * @param _memoryHeaps - a instance of VkMemoryHeap[].
+	 * @return this VkStruct instance.
+	 */ 
+	 public VkPhysicalDeviceMemoryProperties memoryHeaps(VkMemoryHeap[] _memoryHeaps){
+	        if(_memoryHeaps == null ){
+	            throw new IllegalArgumentException("VkMemoryHeap[] _memoryHeaps must be"
+	                    + " not null");
+	        }
+	        if(memoryHeapsBUFFER==null){
+	             memoryHeaps();
+	        }
+	     memoryHeapCount(_memoryHeaps.length); 
+		 BigBuffer<VkMemoryHeap> temp = new BigBuffer<VkMemoryHeap>(_memoryHeaps, VkMemoryHeap.getID());
+		 setMemoryHeaps0(this.ptr, temp.getBuffer());
+		 temp.update();
+         memoryHeapsBUFFER.update();
+		 return this;
+	 }
+
+//#END
+
+//#getMemoryHeaps
+/**
+	 * Get method for field memoryHeaps	[vkstruct_array]<br>
+	 * Prototype: VkMemoryHeap[]  memoryHeaps
+	 */ 
+	 public VkMemoryHeap[] memoryHeaps(){
+		 long ptr = getMemoryHeaps0(this.ptr);
+		 if(ptr == 0L){
+		    return null;
+		 }
+		 if(memoryHeapsBUFFER == null){
+		     ByteBuffer bb = Utils.wrapPointer(ptr, VK_MAX_MEMORY_HEAPS * VkMemoryHeap.sizeOf());
+		     memoryHeapsBUFFER = new BigBuffer(bb, memoryHeaps, VkMemoryHeap.getID());
+		 }
+		 memoryHeapsBUFFER.update();		
+		 return this.memoryHeaps;
+	 }
+//#END     
+
+
+//#setMemoryTypes0
+/**
+	 * Native SET method for field memoryTypes	[vkstruct_array]<br>
+	 * Prototype: VkMemoryType[]  memoryTypes
+	 */ 
+	 private static native void setMemoryTypes0(Buffer ptr, java.nio.ByteBuffer  _memoryTypes);/*
+		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
+		 // code for Buffer - ptr to struct 
+		 VkMemoryType* p_memoryTypes = (VkMemoryType*) _memoryTypes; 
+		 for(uint32_t i = 0; (i < VK_MAX_MEMORY_TYPES && i < vkObj->memoryTypeCount) ; i++){
+		    vkObj->memoryTypes[i] = p_memoryTypes[i];
+		 } 
+	  */
+//#END
+
+//#setMemoryHeaps0
+    /**
+	 * Native SET method for field memoryHeaps	[vkstruct_array]<br>
+	 * Prototype: VkMemoryHeap[]  memoryHeaps
+	 */
+	 private static native void setMemoryHeaps0(Buffer ptr, java.nio.ByteBuffer  _memoryHeaps);/*
+		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
+		 // code for Buffer - ptr to struct 
+		 VkMemoryHeap* p_memoryHeaps = (VkMemoryHeap*) _memoryHeaps; 
+		 for(uint32_t i=0; (i < VK_MAX_MEMORY_HEAPS && i < vkObj->memoryHeapCount) ; i++){
+		   vkObj->memoryHeaps[i] = p_memoryHeaps[i];
+		 } 
+	  */
+//#END

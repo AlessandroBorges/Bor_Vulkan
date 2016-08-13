@@ -643,49 +643,54 @@ public class StructInfo {
                 // Comment 
                 outputNat += "\t/**\n\t * Native SET method for field " + field +  "\t" + typeOut +  "<br>" +
                               "\n\t * Prototype: " + cType + "  " + field + 
-                              "\n\t */ \n";               
-              
+                              "\n\t */ \n";   
                String stmt = "";
+               
                if(typeMod.contains("Buffer")){
-                   String deferred = isCpointer ? "" : "*";
-                   stmt +=   "\t\t // code for Buffer - referenced by ptr\n" 
-                           + "\t\t  vkObj->" + field + " = ("+ cType +") ("+deferred+"_" + field + ");\n";
-               }else if(regularArray){// fixed size array                  
+                   if(isCpointer){
+                       stmt +=   "\t\t // code for Buffer - ptr to ptr \n";
+                       stmt += "\t\t "+cType+" p_"+field +" = ("+cType.replace("const", "")+") _"+field+"; \n" 
+                             + "\t\t vkObj->" + field + " = p_"+field+"; \n";
+                   }else{
+                       stmt +=   "\t\t // code for Buffer - ptr to struct \n";
+                       stmt += "\t\t "+cType+"* p_"+field +" = ("+cType.replace("const", "")+"*) _"+field+"; \n" 
+                             + "\t\t vkObj->" + field + " = (*p_"+field+"); \n";
+                   }                          
+               }else 
+                 if(jType.contains("String")){
+                       if(isFixedArray[i]){ // just copy
+                           stmt +="\t\t  strncpy(vkObj->"+field+", _" + field +", strlen(_"+field+")+1);\n";               
+                       }else{// must allocate string
+                           stmt +="\t\t  vkObj->"+field+" = cloneStr(_"+field+");\n";
+                       }
+                }else
+                  if(isFixedArray[i]){// fixed size array                  
                    stmt +=   "\t\t // code for fixed size array \n"
                            + "\t\t  memcpy(vkObj->" + field + ", _" + field + 
                              ", " + size +" * sizeof("+cType.replace("[]", "")+"));\n";                      
-               }else if(isTypeArray[i]){ // generic C style array
+                 }else 
+                 if(isTypeArray[i]){ // generic C style array
                    String countField = lookUpCount(i);
                    String cTypePure = cType.replace("[]", "").replace("const ", " ").replaceFirst("\\*", "").trim();
-                   
-                   stmt += "\t\t // code for generic array \n"
-                         + "\t\t  if( NULL == _" + field+" ){\n"
-                         + "\t\t    vkObj->"+countField+" = 0;\n"
-                         + "\t\t    FREE_IT(vkObj->"+field+");\n"
-                      //   + "\t\t    if(vkObj->"+field+") \n"
-                      //   + "\t\t        free(vkObj->"+field+");\n"
-                      //   + "\t\t     vkObj->"+field+" = NULL;\n"
+                   String cTypeNoConst = cType.replace("const","").trim();
+                   stmt += "\t\t // code for generic array assignment \n"
+                         + "\t\t "+ cTypeNoConst +" temp = const_cast<"+cTypeNoConst+">(vkObj->" + field+");\n"
+                         + "\t\t if(temp) { free(temp); } \n"
+                         + "\t\t vkObj->"+field+" = NULL; \n"                         
+                         + "\t\t if( _" + field+" == NULL){ \n"
+                         + "\t\t    vkObj->"+countField+" = 0; \n"
                          + "\t\t     return;\n"
-                         + "\t\t   }\n"
-                         + "\t\t  uint32_t count = (uint32_t)env->GetArrayLength( obj__"+field+");\n"
-                         + "\t\t  if( vkObj->"+countField+" != count){ \n"
-                         + "\t\t    FREE_IT(vkObj->" + field+"); \n"
-                         + "\t\t    vkObj->" + field+" = CALLOC(count, "+cTypePure+");\n"
-                         + "\t\t   }\n"                        
-                         + "\t\t  memcpy( vkObj->" + field + ", _" + field +", count * sizeof("+cTypePure+"));\n"
+                         + "\t\t  }\n"
+                         + "\t\t  uint32_t count = (uint32_t)env->GetArrayLength( obj__"+field+"); \n"                         
+                         + "\t\t  temp = CALLOC(count, "+cTypePure+"); \n"
+                         + "\t\t  memcpy( temp, _" + field +", count * sizeof("+cTypePure+")); \n"
+                         + "\t\t  vkObj->" + field + " = temp; \n"
                          + "\t\t  vkObj->"+countField+" = count;\n";
-                   
-               } else if(jType.contains("String")){
-                   if(isFixedArray[i]){ // just copy
-                       stmt +="\t\t  strncpy(vkObj->"+field+", _" + field +", strlen(_"+field+")+1);\n";               
-                   }else{// must allocate string
-                       stmt +="\t\t  vkObj->"+field+" = cloneStr(_"+field+");\n";
-                   }
-               }
-               else{// simple past value
+               }else{// simple past value
                    stmt = "\t\t // code for simple past value \n"
                            + "\t\t  vkObj->" + field + " = ("+ cType +") (_" + field + ");\n";
                }
+                 
                cppFence(name,false);
                outputNat += "\t private static native void " + setName0 
                        + "(Buffer ptr, "+typeMod + " _" + field + ");/*\n"
@@ -716,6 +721,17 @@ public class StructInfo {
            String cTypePure = cType.replace("[]", "").replace("const ", " ").replaceFirst("\\*", "").trim();
            String nativeRes = "\t\t  return (" + jniType + ") (vkObj->"+ field + ");\n";
            
+           if(type == CLASS_TYPE.VKENUM){
+               typeMod = "int";
+               nativeRes = "\t\t  // generic get for Vk enums\n" +
+                           "\t\t  return (jint) (vkObj->"+field +");\n";
+           }else
+//           if(type == CLASS_TYPE.VKENUM_ARRAY){
+//                   typeMod = "int";
+//                   nativeRes = "\t\t  // generic get for Vk enums\n" +
+//                               "\t\t  return (jint) (vkObj->"+field +");\n";
+//           }
+//           else
            if(type == CLASS_TYPE.VKHANDLE || type == CLASS_TYPE.VKPFN){
                typeMod = "long";
                nativeRes = "\t\t  // generic get for struct field of type  VkHandle or VkStruct \n" +
@@ -744,7 +760,7 @@ public class StructInfo {
                xtraParams += ", " + typeMod + " _" + field;
                nativeRes =  "\t\t  // fixed length array  \n" +
                             "\t\t  memcpy(&_" + field + ", &(vkObj->" + field +"), "+ size +" * sizeof("+cTypePure+"));\n"+
-                            "\t\t  return _"+field+";\n";
+                            "\t\t  return obj__"+field+";\n";
            } else if(typeMod.contains("Buffer")){
                typeMod = "long";
                nativeRes = "\t\t  // generic get for Buffer \n"

@@ -91,9 +91,10 @@ public class JNIgenBuilder {
         String[] includes = {"-I/D/VulkanSDK/1.0.11.1/Include"};
         
         BuildTarget win64 = BuildTarget.newDefaultTarget(TargetOs.Windows, true);
+        
        // win64.cFlags += " -std=gnu++11";
        // System.err.println("cppFlags : " + win64.cppFlags ); -c -Wall -O2 -mfpmath=sse -msse2 -fmessage-length=0 -m64
-        win64.cppFlags = " -c -Wall -mfpmath=sse -msse2 -fmessage-length=80 -m64 -std=gnu++11 -O0 -pipe ";
+        win64.cppFlags = " -c -Wall -mfpmath=sse -msse2 -fmessage-length=300 -m64 -std=gnu++11 -O0 -pipe ";
        // win64.cppFlags += "-MMD -MP -MF \"jni/target\" ";
         System.err.println(win64.cppIncludes);
        // win64.cppIncludes = includes;    

@@ -1,0 +1,67 @@
+//VkPipelineMultisampleStateCreateInfo.include
+
+//#setPSampleMask
+	/**
+	 * Set method for field pSampleMask	[int]<br>
+	 * Prototype: const VkSampleMask*  pSampleMask
+	 * 
+	 * @param pSampleMask - a instance of int[].
+	 * @return this VkStruct instance.
+	 */ 
+	 public VkPipelineMultisampleStateCreateInfo pSampleMask(int[] _pSampleMask){
+	     int rsamples = rasterizationSamples().getValue();          
+             int len = rsamples <= 32 ? 1 : 2;
+             if(pSampleMask==null || pSampleMask.length != len)
+                 pSampleMask = new int[len];
+             System.arraycopy(_pSampleMask,0, this.pSampleMask, 0, len);
+	     setPSampleMask0(this.ptr,  this.pSampleMask, len );
+             return this;
+	 }
+//#END
+
+//#getPSampleMask     
+	/**
+	 * Get method for field pSampleMask	[int]<br>
+	 * Prototype: const VkSampleMask*  pSampleMask
+	 */ 
+	 public int[] pSampleMask(){
+	        int rsamples = rasterizationSamples().getValue();	       
+	        int len = rsamples <= 32 ? 1 : 2;
+	        if(pSampleMask==null || pSampleMask.length != len)
+                 pSampleMask = new int[len];
+		 getPSampleMask0(super.ptr, pSampleMask, len);		 
+		 return this.pSampleMask;
+	 }
+//#END
+//#setPSampleMask0     
+     
+     /**
+	 * Native SET method for field pSampleMask	[int]<br>
+	 * Prototype: const VkSampleMask*  pSampleMask
+	 */ 
+	 private static native void setPSampleMask0(Buffer ptr, int[] _pSampleMask, int count);/*
+		VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);  
+		VkSampleMask* temp = const_cast<VkSampleMask*>(vkObj->pSampleMask); 
+        // I must free it to avoid leaks
+        if(temp) 
+            free(temp);
+        temp = CALLOC(count, VkSampleMask);
+		memcpy( temp, _pSampleMask, count * sizeof(VkSampleMask));
+        vkObj->pSampleMask = temp;
+	  */
+      
+      
+      
+//#END
+//#getPSampleMask0
+	 /**
+	  * Native GET method for field pSampleMask      [int]<br>
+	  * Prototype: const VkSampleMask*  pSampleMask
+	  */ 
+	  private static native void getPSampleMask0(Buffer ptr, int[] _pSampleMask, int count);/*
+	          VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
+	           // included code
+	           memcpy( _pSampleMask, vkObj->pSampleMask, count * sizeof(VkSampleMask));
+	   */
+//#END
+       
