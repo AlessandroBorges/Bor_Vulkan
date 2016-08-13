@@ -43,8 +43,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_set
 //@line:496
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->minSrcPosition = (VkOffset2D) (_minSrcPosition);
+		 // code for Buffer - ptr to struct 
+		 VkOffset2D* p_minSrcPosition = (VkOffset2D*) _minSrcPosition; 
+		 vkObj->minSrcPosition = (*p_minSrcPosition); 
 	  
 
 }
@@ -52,7 +53,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_getMinSrcPosition0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:506
+//@line:507
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  // generic get for Buffer 
@@ -74,11 +75,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_set
 	char* _maxSrcPosition = (char*)(obj__maxSrcPosition?env->GetDirectBufferAddress(obj__maxSrcPosition) : NULL);
 
 
-//@line:516
+//@line:517
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->maxSrcPosition = (VkOffset2D) (_maxSrcPosition);
+		 // code for Buffer - ptr to struct 
+		 VkOffset2D* p_maxSrcPosition = (VkOffset2D*) _maxSrcPosition; 
+		 vkObj->maxSrcPosition = (*p_maxSrcPosition); 
 	  
 
 }
@@ -86,7 +88,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_getMaxSrcPosition0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:526
+//@line:528
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  // generic get for Buffer 
@@ -108,11 +110,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_set
 	char* _minSrcExtent = (char*)(obj__minSrcExtent?env->GetDirectBufferAddress(obj__minSrcExtent) : NULL);
 
 
-//@line:536
+//@line:538
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->minSrcExtent = (VkExtent2D) (_minSrcExtent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent2D* p_minSrcExtent = (VkExtent2D*) _minSrcExtent; 
+		 vkObj->minSrcExtent = (*p_minSrcExtent); 
 	  
 
 }
@@ -120,7 +123,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_getMinSrcExtent0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:546
+//@line:549
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  // generic get for Buffer 
@@ -142,11 +145,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_set
 	char* _maxSrcExtent = (char*)(obj__maxSrcExtent?env->GetDirectBufferAddress(obj__maxSrcExtent) : NULL);
 
 
-//@line:556
+//@line:559
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->maxSrcExtent = (VkExtent2D) (_maxSrcExtent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent2D* p_maxSrcExtent = (VkExtent2D*) _maxSrcExtent; 
+		 vkObj->maxSrcExtent = (*p_maxSrcExtent); 
 	  
 
 }
@@ -154,7 +158,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_getMaxSrcExtent0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:566
+//@line:570
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  // generic get for Buffer 
@@ -176,11 +180,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_set
 	char* _minDstPosition = (char*)(obj__minDstPosition?env->GetDirectBufferAddress(obj__minDstPosition) : NULL);
 
 
-//@line:576
+//@line:580
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->minDstPosition = (VkOffset2D) (_minDstPosition);
+		 // code for Buffer - ptr to struct 
+		 VkOffset2D* p_minDstPosition = (VkOffset2D*) _minDstPosition; 
+		 vkObj->minDstPosition = (*p_minDstPosition); 
 	  
 
 }
@@ -188,7 +193,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_getMinDstPosition0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:586
+//@line:591
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  // generic get for Buffer 
@@ -210,11 +215,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_set
 	char* _maxDstPosition = (char*)(obj__maxDstPosition?env->GetDirectBufferAddress(obj__maxDstPosition) : NULL);
 
 
-//@line:596
+//@line:601
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->maxDstPosition = (VkOffset2D) (_maxDstPosition);
+		 // code for Buffer - ptr to struct 
+		 VkOffset2D* p_maxDstPosition = (VkOffset2D*) _maxDstPosition; 
+		 vkObj->maxDstPosition = (*p_maxDstPosition); 
 	  
 
 }
@@ -222,7 +228,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_getMaxDstPosition0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:606
+//@line:612
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  // generic get for Buffer 
@@ -244,11 +250,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_set
 	char* _minDstExtent = (char*)(obj__minDstExtent?env->GetDirectBufferAddress(obj__minDstExtent) : NULL);
 
 
-//@line:616
+//@line:622
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->minDstExtent = (VkExtent2D) (_minDstExtent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent2D* p_minDstExtent = (VkExtent2D*) _minDstExtent; 
+		 vkObj->minDstExtent = (*p_minDstExtent); 
 	  
 
 }
@@ -256,7 +263,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_getMinDstExtent0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:626
+//@line:633
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  // generic get for Buffer 
@@ -278,11 +285,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_set
 	char* _maxDstExtent = (char*)(obj__maxDstExtent?env->GetDirectBufferAddress(obj__maxDstExtent) : NULL);
 
 
-//@line:636
+//@line:643
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->maxDstExtent = (VkExtent2D) (_maxDstExtent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent2D* p_maxDstExtent = (VkExtent2D*) _maxDstExtent; 
+		 vkObj->maxDstExtent = (*p_maxDstExtent); 
 	  
 
 }
@@ -290,7 +298,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKHR_getMaxDstExtent0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:646
+//@line:654
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  // generic get for Buffer 

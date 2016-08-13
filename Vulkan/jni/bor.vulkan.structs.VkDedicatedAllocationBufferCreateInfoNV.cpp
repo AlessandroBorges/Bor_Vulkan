@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkDedicatedAllocationBufferCr
 //@line:231
 
 		  VkDedicatedAllocationBufferCreateInfoNV* vkObj = (VkDedicatedAllocationBufferCreateInfoNV*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDedicatedAllocationBufferCreate
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:240
+//@line:241
 
 		  VkDedicatedAllocationBufferCreateInfoNV* vkObj = (VkDedicatedAllocationBufferCreateInfoNV*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDedicatedAllocationBufferCreate
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDedicatedAllocationBufferCreateInfoNV_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:250
+//@line:252
 
 		  VkDedicatedAllocationBufferCreateInfoNV* vkObj = (VkDedicatedAllocationBufferCreateInfoNV*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDedicatedAllocationBufferCreate
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:260
+//@line:262
 
 		  VkDedicatedAllocationBufferCreateInfoNV* vkObj = (VkDedicatedAllocationBufferCreateInfoNV*)(ptr);
 		 // code for simple past value 
@@ -85,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDedicatedAllocationBufferCreate
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkDedicatedAllocationBufferCreateInfoNV_getDedicatedAllocation0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:270
+//@line:272
 
 		  VkDedicatedAllocationBufferCreateInfoNV* vkObj = (VkDedicatedAllocationBufferCreateInfoNV*)(ptr);
 		  return (jboolean) (vkObj->dedicatedAllocation);

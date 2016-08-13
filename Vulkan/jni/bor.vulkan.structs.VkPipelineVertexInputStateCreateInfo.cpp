@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineVertexInputStateCre
 //@line:375
 
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineVertexInputStateCreateI
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:384
+//@line:385
 
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineVertexInputStateCreateI
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineVertexInputStateCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:394
+//@line:396
 
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineVertexInputStateCreateI
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:404
+//@line:406
 
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -85,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineVertexInputStateCreateI
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineVertexInputStateCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:414
+//@line:416
 
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -105,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineVertexInputStateCreateI
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:423
+//@line:425
 
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -117,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineVertexInputStateCreateI
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineVertexInputStateCreateInfo_getVertexBindingDescriptionCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:433
+//@line:435
 
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->vertexBindingDescriptionCount);
@@ -138,11 +140,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineVertexInputStateCreateI
 	char* _pVertexBindingDescriptions = (char*)(obj__pVertexBindingDescriptions?env->GetDirectBufferAddress(obj__pVertexBindingDescriptions) : NULL);
 
 
-//@line:442
+//@line:444
 
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pVertexBindingDescriptions = (const VkVertexInputBindingDescription*) (_pVertexBindingDescriptions);
+		 // code for Buffer - ptr to ptr 
+		 const VkVertexInputBindingDescription* p_pVertexBindingDescriptions = ( VkVertexInputBindingDescription*) _pVertexBindingDescriptions; 
+		 vkObj->pVertexBindingDescriptions = p_pVertexBindingDescriptions; 
 	  
 
 }
@@ -150,7 +153,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineVertexInputStateCreateI
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineVertexInputStateCreateInfo_getPVertexBindingDescriptions0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:452
+//@line:455
 
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -171,7 +174,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineVertexInputStateCreateI
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:462
+//@line:465
 
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -183,7 +186,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineVertexInputStateCreateI
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineVertexInputStateCreateInfo_getVertexAttributeDescriptionCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:472
+//@line:475
 
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->vertexAttributeDescriptionCount);
@@ -204,11 +207,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineVertexInputStateCreateI
 	char* _pVertexAttributeDescriptions = (char*)(obj__pVertexAttributeDescriptions?env->GetDirectBufferAddress(obj__pVertexAttributeDescriptions) : NULL);
 
 
-//@line:481
+//@line:484
 
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pVertexAttributeDescriptions = (const VkVertexInputAttributeDescription*) (_pVertexAttributeDescriptions);
+		 // code for Buffer - ptr to ptr 
+		 const VkVertexInputAttributeDescription* p_pVertexAttributeDescriptions = ( VkVertexInputAttributeDescription*) _pVertexAttributeDescriptions; 
+		 vkObj->pVertexAttributeDescriptions = p_pVertexAttributeDescriptions; 
 	  
 
 }
@@ -216,7 +220,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineVertexInputStateCreateI
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineVertexInputStateCreateInfo_getPVertexAttributeDescriptions0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:491
+//@line:495
 
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 

@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR
 //@line:471
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_set
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:480
+//@line:481
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:490
+//@line:492
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_set
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:500
+//@line:502
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		 // code for simple past value 
@@ -85,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_set
 static inline jint wrapped_Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:510
+//@line:512
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -105,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_set
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:519
+//@line:521
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		 // code for simple past value 
@@ -117,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_getDisplayMode0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:529
+//@line:531
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -138,7 +140,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_set
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:539
+//@line:541
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		 // code for simple past value 
@@ -150,7 +152,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_set
 static inline jint wrapped_Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_getPlaneIndex0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:549
+//@line:551
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->planeIndex);
@@ -170,7 +172,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_set
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:558
+//@line:560
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		 // code for simple past value 
@@ -182,7 +184,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_set
 static inline jint wrapped_Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_getPlaneStackIndex0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:568
+//@line:570
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->planeStackIndex);
@@ -202,7 +204,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_set
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:577
+//@line:579
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		 // code for simple past value 
@@ -214,10 +216,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_set
 static inline jint wrapped_Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_getTransform0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:587
+//@line:589
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		  return (VkSurfaceTransformFlagBitsKHR) (vkObj->transform);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->transform);
 	 
 }
 
@@ -234,7 +237,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_set
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:596
+//@line:599
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		 // code for simple past value 
@@ -246,7 +249,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_set
 static inline jfloat wrapped_Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_getGlobalAlpha0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:606
+//@line:609
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  return (jfloat) (vkObj->globalAlpha);
@@ -266,7 +269,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_set
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:615
+//@line:618
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		 // code for simple past value 
@@ -278,10 +281,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_set
 static inline jint wrapped_Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_getAlphaMode0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:625
+//@line:628
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		  return (VkDisplayPlaneAlphaFlagBitsKHR) (vkObj->alphaMode);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->alphaMode);
 	 
 }
 
@@ -299,11 +303,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_set
 	char* _imageExtent = (char*)(obj__imageExtent?env->GetDirectBufferAddress(obj__imageExtent) : NULL);
 
 
-//@line:634
+//@line:638
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->imageExtent = (VkExtent2D) (_imageExtent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent2D* p_imageExtent = (VkExtent2D*) _imageExtent; 
+		 vkObj->imageExtent = (*p_imageExtent); 
 	  
 
 }
@@ -311,7 +316,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKHR_getImageExtent0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:644
+//@line:649
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
 		  // generic get for Buffer 

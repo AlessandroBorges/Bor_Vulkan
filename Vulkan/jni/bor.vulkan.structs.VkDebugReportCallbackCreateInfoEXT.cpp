@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkDebugReportCallbackCreateIn
 //@line:307
 
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugReportCallbackCreateInfoEX
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:316
+//@line:317
 
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugReportCallbackCreateInfoEX
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDebugReportCallbackCreateInfoEXT_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:326
+//@line:328
 
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugReportCallbackCreateInfoEX
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:336
+//@line:338
 
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
 		 // code for simple past value 
@@ -85,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugReportCallbackCreateInfoEX
 static inline jint wrapped_Java_bor_vulkan_structs_VkDebugReportCallbackCreateInfoEXT_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:346
+//@line:348
 
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -105,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugReportCallbackCreateInfoEX
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:355
+//@line:357
 
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
 		 // code for simple past value 
@@ -117,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugReportCallbackCreateInfoEX
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDebugReportCallbackCreateInfoEXT_getPfnCallback0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:365
+//@line:367
 
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -139,11 +141,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugReportCallbackCreateInfoEX
 	unsigned char* _pUserData = (unsigned char*)(obj__pUserData?env->GetDirectBufferAddress(obj__pUserData) : NULL);
 
 
-//@line:375
+//@line:377
 
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pUserData = (void*) (_pUserData);
+		 // code for Buffer - ptr to ptr 
+		 void* p_pUserData = (void*) _pUserData; 
+		 vkObj->pUserData = p_pUserData; 
 	  
 
 }
@@ -151,7 +154,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugReportCallbackCreateInfoEX
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDebugReportCallbackCreateInfoEXT_getPUserData0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:385
+//@line:388
 
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
 		  // generic get for Buffer 

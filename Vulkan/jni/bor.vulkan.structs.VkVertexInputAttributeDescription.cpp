@@ -86,7 +86,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkVertexInputAttributeDescrip
 //@line:291
 
 		  VkVertexInputAttributeDescription* vkObj = (VkVertexInputAttributeDescription*)(ptr);
-		  return (VkFormat) (vkObj->format);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->format);
 	 
 }
 
@@ -103,7 +104,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkVertexInputAttributeDescription
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:300
+//@line:301
 
 		  VkVertexInputAttributeDescription* vkObj = (VkVertexInputAttributeDescription*)(ptr);
 		 // code for simple past value 
@@ -115,7 +116,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkVertexInputAttributeDescription
 static inline jint wrapped_Java_bor_vulkan_structs_VkVertexInputAttributeDescription_getOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:310
+//@line:311
 
 		  VkVertexInputAttributeDescription* vkObj = (VkVertexInputAttributeDescription*)(ptr);
 		  return (jint) (vkObj->offset);

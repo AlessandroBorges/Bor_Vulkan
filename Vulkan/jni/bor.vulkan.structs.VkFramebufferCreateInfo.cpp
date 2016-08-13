@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkFramebufferCreateInfo_getST
 //@line:438
 
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFramebufferCreateInfo_setPNext0
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:447
+//@line:448
 
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFramebufferCreateInfo_setPNext0
 static inline jlong wrapped_Java_bor_vulkan_structs_VkFramebufferCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:457
+//@line:459
 
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFramebufferCreateInfo_setFlags0
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:467
+//@line:469
 
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -85,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFramebufferCreateInfo_setFlags0
 static inline jint wrapped_Java_bor_vulkan_structs_VkFramebufferCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:477
+//@line:479
 
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -105,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFramebufferCreateInfo_setRender
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:486
+//@line:488
 
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -117,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFramebufferCreateInfo_setRender
 static inline jlong wrapped_Java_bor_vulkan_structs_VkFramebufferCreateInfo_getRenderPass0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:496
+//@line:498
 
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -138,7 +140,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFramebufferCreateInfo_setAttach
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:506
+//@line:508
 
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -150,7 +152,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFramebufferCreateInfo_setAttach
 static inline jint wrapped_Java_bor_vulkan_structs_VkFramebufferCreateInfo_getAttachmentCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:516
+//@line:518
 
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  return (jint) (vkObj->attachmentCount);
@@ -171,11 +173,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFramebufferCreateInfo_setPAttac
 	char* _pAttachments = (char*)(obj__pAttachments?env->GetDirectBufferAddress(obj__pAttachments) : NULL);
 
 
-//@line:525
+//@line:527
 
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pAttachments = (const VkImageView*) (_pAttachments);
+		 // code for Buffer - ptr to ptr 
+		 const VkImageView* p_pAttachments = ( VkImageView*) _pAttachments; 
+		 vkObj->pAttachments = p_pAttachments; 
 	  
 
 }
@@ -183,7 +186,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFramebufferCreateInfo_setPAttac
 static inline jlong wrapped_Java_bor_vulkan_structs_VkFramebufferCreateInfo_getPAttachments0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:535
+//@line:538
 
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -204,7 +207,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFramebufferCreateInfo_setWidth0
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:545
+//@line:548
 
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -216,7 +219,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFramebufferCreateInfo_setWidth0
 static inline jint wrapped_Java_bor_vulkan_structs_VkFramebufferCreateInfo_getWidth0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:555
+//@line:558
 
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  return (jint) (vkObj->width);
@@ -236,7 +239,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFramebufferCreateInfo_setHeight
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:564
+//@line:567
 
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -248,7 +251,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFramebufferCreateInfo_setHeight
 static inline jint wrapped_Java_bor_vulkan_structs_VkFramebufferCreateInfo_getHeight0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:574
+//@line:577
 
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  return (jint) (vkObj->height);
@@ -268,7 +271,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFramebufferCreateInfo_setLayers
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:583
+//@line:586
 
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -280,7 +283,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFramebufferCreateInfo_setLayers
 static inline jint wrapped_Java_bor_vulkan_structs_VkFramebufferCreateInfo_getLayers0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:593
+//@line:596
 
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  return (jint) (vkObj->layers);

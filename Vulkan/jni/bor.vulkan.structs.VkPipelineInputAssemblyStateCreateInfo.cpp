@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineInputAssemblyStateC
 //@line:294
 
 		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineInputAssemblyStateCreat
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:303
+//@line:304
 
 		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineInputAssemblyStateCreat
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineInputAssemblyStateCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:313
+//@line:315
 
 		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineInputAssemblyStateCreat
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:323
+//@line:325
 
 		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -85,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineInputAssemblyStateCreat
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineInputAssemblyStateCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:333
+//@line:335
 
 		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -105,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineInputAssemblyStateCreat
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:342
+//@line:344
 
 		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -117,10 +119,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineInputAssemblyStateCreat
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineInputAssemblyStateCreateInfo_getTopology0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:352
+//@line:354
 
 		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
-		  return (VkPrimitiveTopology) (vkObj->topology);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->topology);
 	 
 }
 
@@ -137,7 +140,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineInputAssemblyStateCreat
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:361
+//@line:364
 
 		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -149,7 +152,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineInputAssemblyStateCreat
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPipelineInputAssemblyStateCreateInfo_getPrimitiveRestartEnable0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:371
+//@line:374
 
 		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->primitiveRestartEnable);

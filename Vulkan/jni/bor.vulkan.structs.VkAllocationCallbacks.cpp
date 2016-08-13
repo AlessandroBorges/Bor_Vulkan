@@ -11,8 +11,9 @@
 //@line:362
 
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pUserData = (void*) (_pUserData);
+		 // code for Buffer - ptr to ptr 
+		 void* p_pUserData = (void*) _pUserData; 
+		 vkObj->pUserData = p_pUserData; 
 	  
 
 }
@@ -20,7 +21,7 @@
 static inline jlong wrapped_Java_bor_vulkan_structs_VkAllocationCallbacks_getPUserData0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:372
+//@line:373
 
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		  // generic get for Buffer 
@@ -41,7 +42,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAllocationCallbacks_setPfnAlloc
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:382
+//@line:383
 
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		 // code for simple past value 
@@ -53,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAllocationCallbacks_setPfnAlloc
 static inline jlong wrapped_Java_bor_vulkan_structs_VkAllocationCallbacks_getPfnAllocation0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:392
+//@line:393
 
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -74,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAllocationCallbacks_setPfnReall
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:402
+//@line:403
 
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		 // code for simple past value 
@@ -86,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAllocationCallbacks_setPfnReall
 static inline jlong wrapped_Java_bor_vulkan_structs_VkAllocationCallbacks_getPfnReallocation0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:412
+//@line:413
 
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -107,7 +108,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAllocationCallbacks_setPfnFree0
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:422
+//@line:423
 
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		 // code for simple past value 
@@ -119,7 +120,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAllocationCallbacks_setPfnFree0
 static inline jlong wrapped_Java_bor_vulkan_structs_VkAllocationCallbacks_getPfnFree0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:432
+//@line:433
 
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -140,7 +141,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAllocationCallbacks_setPfnInter
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:442
+//@line:443
 
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		 // code for simple past value 
@@ -152,7 +153,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAllocationCallbacks_setPfnInter
 static inline jlong wrapped_Java_bor_vulkan_structs_VkAllocationCallbacks_getPfnInternalAllocation0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:452
+//@line:453
 
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -173,7 +174,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAllocationCallbacks_setPfnInter
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:462
+//@line:463
 
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		 // code for simple past value 
@@ -185,7 +186,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAllocationCallbacks_setPfnInter
 static inline jlong wrapped_Java_bor_vulkan_structs_VkAllocationCallbacks_getPfnInternalFree0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:472
+//@line:473
 
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 

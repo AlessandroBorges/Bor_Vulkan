@@ -374,18 +374,18 @@ JNIEXPORT jfloat JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreat
 /*
  * Class:     bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo
  * Method:    setPSampleMask0
- * Signature: (Ljava/nio/Buffer;[I)V
+ * Signature: (Ljava/nio/Buffer;[II)V
  */
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_setPSampleMask0
-  (JNIEnv *, jclass, jobject, jintArray);
+  (JNIEnv *, jclass, jobject, jintArray, jint);
 
 /*
  * Class:     bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo
  * Method:    getPSampleMask0
- * Signature: (Ljava/nio/Buffer;[I)[I
+ * Signature: (Ljava/nio/Buffer;[II)V
  */
-JNIEXPORT jintArray JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_getPSampleMask0
-  (JNIEnv *, jclass, jobject, jintArray);
+JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_getPSampleMask0
+  (JNIEnv *, jclass, jobject, jintArray, jint);
 
 /*
  * Class:     bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo

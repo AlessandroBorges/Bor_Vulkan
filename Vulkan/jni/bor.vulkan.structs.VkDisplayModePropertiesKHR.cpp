@@ -44,8 +44,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayModePropertiesKHR_setPar
 //@line:221
 
 		  VkDisplayModePropertiesKHR* vkObj = (VkDisplayModePropertiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->parameters = (VkDisplayModeParametersKHR) (_parameters);
+		 // code for Buffer - ptr to struct 
+		 VkDisplayModeParametersKHR* p_parameters = (VkDisplayModeParametersKHR*) _parameters; 
+		 vkObj->parameters = (*p_parameters); 
 	  
 
 }
@@ -53,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayModePropertiesKHR_setPar
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayModePropertiesKHR_getParameters0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:231
+//@line:232
 
 		  VkDisplayModePropertiesKHR* vkObj = (VkDisplayModePropertiesKHR*)(ptr);
 		  // generic get for Buffer 

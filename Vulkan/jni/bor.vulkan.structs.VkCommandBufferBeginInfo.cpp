@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkCommandBufferBeginInfo_getS
 //@line:272
 
 		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCommandBufferBeginInfo_setPNext
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:281
+//@line:282
 
 		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCommandBufferBeginInfo_setPNext
 static inline jlong wrapped_Java_bor_vulkan_structs_VkCommandBufferBeginInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:291
+//@line:293
 
 		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCommandBufferBeginInfo_setFlags
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:301
+//@line:303
 
 		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
 		 // code for simple past value 
@@ -85,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCommandBufferBeginInfo_setFlags
 static inline jint wrapped_Java_bor_vulkan_structs_VkCommandBufferBeginInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:311
+//@line:313
 
 		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -106,11 +108,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCommandBufferBeginInfo_setPInhe
 	char* _pInheritanceInfo = (char*)(obj__pInheritanceInfo?env->GetDirectBufferAddress(obj__pInheritanceInfo) : NULL);
 
 
-//@line:320
+//@line:322
 
 		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pInheritanceInfo = (const VkCommandBufferInheritanceInfo*) (_pInheritanceInfo);
+		 // code for Buffer - ptr to ptr 
+		 const VkCommandBufferInheritanceInfo* p_pInheritanceInfo = ( VkCommandBufferInheritanceInfo*) _pInheritanceInfo; 
+		 vkObj->pInheritanceInfo = p_pInheritanceInfo; 
 	  
 
 }
@@ -118,7 +121,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCommandBufferBeginInfo_setPInhe
 static inline jlong wrapped_Java_bor_vulkan_structs_VkCommandBufferBeginInfo_getPInheritanceInfo0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:330
+//@line:333
 
 		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
 		  // generic get for Buffer 

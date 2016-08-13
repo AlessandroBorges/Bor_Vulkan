@@ -11,8 +11,9 @@
 //@line:200
 
 		  VkRect2D* vkObj = (VkRect2D*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->offset = (VkOffset2D) (_offset);
+		 // code for Buffer - ptr to struct 
+		 VkOffset2D* p_offset = (VkOffset2D*) _offset; 
+		 vkObj->offset = (*p_offset); 
 	  
 
 }
@@ -20,7 +21,7 @@
 static inline jlong wrapped_Java_bor_vulkan_structs_VkRect2D_getOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:210
+//@line:211
 
 		  VkRect2D* vkObj = (VkRect2D*)(ptr);
 		  // generic get for Buffer 
@@ -42,11 +43,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkRect2D_setExtent0(JNIEnv* env, 
 	char* _extent = (char*)(obj__extent?env->GetDirectBufferAddress(obj__extent) : NULL);
 
 
-//@line:220
+//@line:221
 
 		  VkRect2D* vkObj = (VkRect2D*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->extent = (VkExtent2D) (_extent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent2D* p_extent = (VkExtent2D*) _extent; 
+		 vkObj->extent = (*p_extent); 
 	  
 
 }
@@ -54,7 +56,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkRect2D_setExtent0(JNIEnv* env, 
 static inline jlong wrapped_Java_bor_vulkan_structs_VkRect2D_getExtent0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:230
+//@line:232
 
 		  VkRect2D* vkObj = (VkRect2D*)(ptr);
 		  // generic get for Buffer 

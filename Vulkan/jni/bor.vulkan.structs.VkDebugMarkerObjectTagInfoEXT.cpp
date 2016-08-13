@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkDebugMarkerObjectTagInfoEXT
 //@line:359
 
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugMarkerObjectTagInfoEXT_set
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:368
+//@line:369
 
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugMarkerObjectTagInfoEXT_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDebugMarkerObjectTagInfoEXT_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:378
+//@line:380
 
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugMarkerObjectTagInfoEXT_set
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:388
+//@line:390
 
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
 		 // code for simple past value 
@@ -85,10 +87,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugMarkerObjectTagInfoEXT_set
 static inline jint wrapped_Java_bor_vulkan_structs_VkDebugMarkerObjectTagInfoEXT_getObjectType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:398
+//@line:400
 
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
-		  return (VkDebugReportObjectTypeEXT) (vkObj->objectType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->objectType);
 	 
 }
 
@@ -105,7 +108,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugMarkerObjectTagInfoEXT_set
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:407
+//@line:410
 
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
 		 // code for simple past value 
@@ -117,7 +120,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugMarkerObjectTagInfoEXT_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDebugMarkerObjectTagInfoEXT_getObject0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:417
+//@line:420
 
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
 		  return (jlong) (vkObj->object);
@@ -137,7 +140,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugMarkerObjectTagInfoEXT_set
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:426
+//@line:429
 
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
 		 // code for simple past value 
@@ -149,7 +152,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugMarkerObjectTagInfoEXT_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDebugMarkerObjectTagInfoEXT_getTagName0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:436
+//@line:439
 
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
 		  return (jlong) (vkObj->tagName);
@@ -169,7 +172,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugMarkerObjectTagInfoEXT_set
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:445
+//@line:448
 
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
 		 // code for simple past value 
@@ -181,7 +184,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugMarkerObjectTagInfoEXT_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDebugMarkerObjectTagInfoEXT_getTagSize0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:455
+//@line:458
 
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
 		  return (jlong) (vkObj->tagSize);
@@ -202,11 +205,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugMarkerObjectTagInfoEXT_set
 	unsigned char* _pTag = (unsigned char*)(obj__pTag?env->GetDirectBufferAddress(obj__pTag) : NULL);
 
 
-//@line:464
+//@line:467
 
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pTag = (const void*) (_pTag);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pTag = ( void*) _pTag; 
+		 vkObj->pTag = p_pTag; 
 	  
 
 }
@@ -214,7 +218,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugMarkerObjectTagInfoEXT_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDebugMarkerObjectTagInfoEXT_getPTag0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:474
+//@line:478
 
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
 		  // generic get for Buffer 

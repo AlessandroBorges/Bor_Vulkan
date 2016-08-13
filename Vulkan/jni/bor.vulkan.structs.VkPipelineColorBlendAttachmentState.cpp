@@ -54,7 +54,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineColorBlendAttachmen
 //@line:401
 
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
-		  return (VkBlendFactor) (vkObj->srcColorBlendFactor);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->srcColorBlendFactor);
 	 
 }
 
@@ -71,7 +72,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendAttachmentSta
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:410
+//@line:411
 
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
 		 // code for simple past value 
@@ -83,10 +84,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendAttachmentSta
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineColorBlendAttachmentState_getDstColorBlendFactor0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:420
+//@line:421
 
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
-		  return (VkBlendFactor) (vkObj->dstColorBlendFactor);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->dstColorBlendFactor);
 	 
 }
 
@@ -103,7 +105,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendAttachmentSta
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:429
+//@line:431
 
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
 		 // code for simple past value 
@@ -115,10 +117,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendAttachmentSta
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineColorBlendAttachmentState_getColorBlendOp0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:439
+//@line:441
 
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
-		  return (VkBlendOp) (vkObj->colorBlendOp);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->colorBlendOp);
 	 
 }
 
@@ -135,7 +138,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendAttachmentSta
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:448
+//@line:451
 
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
 		 // code for simple past value 
@@ -147,10 +150,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendAttachmentSta
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineColorBlendAttachmentState_getSrcAlphaBlendFactor0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:458
+//@line:461
 
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
-		  return (VkBlendFactor) (vkObj->srcAlphaBlendFactor);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->srcAlphaBlendFactor);
 	 
 }
 
@@ -167,7 +171,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendAttachmentSta
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:467
+//@line:471
 
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
 		 // code for simple past value 
@@ -179,10 +183,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendAttachmentSta
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineColorBlendAttachmentState_getDstAlphaBlendFactor0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:477
+//@line:481
 
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
-		  return (VkBlendFactor) (vkObj->dstAlphaBlendFactor);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->dstAlphaBlendFactor);
 	 
 }
 
@@ -199,7 +204,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendAttachmentSta
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:486
+//@line:491
 
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
 		 // code for simple past value 
@@ -211,10 +216,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendAttachmentSta
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineColorBlendAttachmentState_getAlphaBlendOp0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:496
+//@line:501
 
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
-		  return (VkBlendOp) (vkObj->alphaBlendOp);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->alphaBlendOp);
 	 
 }
 
@@ -231,7 +237,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendAttachmentSta
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:505
+//@line:511
 
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
 		 // code for simple past value 
@@ -243,7 +249,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendAttachmentSta
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineColorBlendAttachmentState_getColorWriteMask0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:515
+//@line:521
 
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
 		  return (jint) (vkObj->colorWriteMask);

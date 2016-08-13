@@ -43,8 +43,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageFormatProperties_set
 //@line:240
 
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->imageGranularity = (VkExtent3D) (_imageGranularity);
+		 // code for Buffer - ptr to struct 
+		 VkExtent3D* p_imageGranularity = (VkExtent3D*) _imageGranularity; 
+		 vkObj->imageGranularity = (*p_imageGranularity); 
 	  
 
 }
@@ -52,7 +53,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageFormatProperties_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseImageFormatProperties_getImageGranularity0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:250
+//@line:251
 
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +74,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageFormatProperties_set
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:260
+//@line:261
 
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
 		 // code for simple past value 
@@ -85,7 +86,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageFormatProperties_set
 static inline jint wrapped_Java_bor_vulkan_structs_VkSparseImageFormatProperties_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:270
+//@line:271
 
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
 		  return (jint) (vkObj->flags);

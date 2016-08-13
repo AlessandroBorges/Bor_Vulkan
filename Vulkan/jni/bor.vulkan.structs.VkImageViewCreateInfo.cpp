@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkImageViewCreateInfo_getSTyp
 //@line:419
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setPNext0(J
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:428
+//@line:429
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setPNext0(J
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageViewCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:438
+//@line:440
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setFlags0(J
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:448
+//@line:450
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -85,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setFlags0(J
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageViewCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:458
+//@line:460
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -105,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setImage0(J
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:467
+//@line:469
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -117,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setImage0(J
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageViewCreateInfo_getImage0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:477
+//@line:479
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -138,7 +140,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setViewType
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:487
+//@line:489
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -150,10 +152,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setViewType
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageViewCreateInfo_getViewType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:497
+//@line:499
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
-		  return (VkImageViewType) (vkObj->viewType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->viewType);
 	 
 }
 
@@ -170,7 +173,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setFormat0(
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:506
+//@line:509
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -182,10 +185,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setFormat0(
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageViewCreateInfo_getFormat0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:516
+//@line:519
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
-		  return (VkFormat) (vkObj->format);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->format);
 	 
 }
 
@@ -203,11 +207,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setComponen
 	char* _components = (char*)(obj__components?env->GetDirectBufferAddress(obj__components) : NULL);
 
 
-//@line:525
+//@line:529
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->components = (VkComponentMapping) (_components);
+		 // code for Buffer - ptr to struct 
+		 VkComponentMapping* p_components = (VkComponentMapping*) _components; 
+		 vkObj->components = (*p_components); 
 	  
 
 }
@@ -215,7 +220,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setComponen
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageViewCreateInfo_getComponents0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:535
+//@line:540
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -237,11 +242,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setSubresou
 	char* _subresourceRange = (char*)(obj__subresourceRange?env->GetDirectBufferAddress(obj__subresourceRange) : NULL);
 
 
-//@line:545
+//@line:550
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->subresourceRange = (VkImageSubresourceRange) (_subresourceRange);
+		 // code for Buffer - ptr to struct 
+		 VkImageSubresourceRange* p_subresourceRange = (VkImageSubresourceRange*) _subresourceRange; 
+		 vkObj->subresourceRange = (*p_subresourceRange); 
 	  
 
 }
@@ -249,7 +255,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setSubresou
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageViewCreateInfo_getSubresourceRange0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:555
+//@line:561
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  // generic get for Buffer 

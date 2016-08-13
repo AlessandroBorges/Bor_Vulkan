@@ -11,8 +11,9 @@
 //@line:283
 
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->formatProperties = (VkSparseImageFormatProperties) (_formatProperties);
+		 // code for Buffer - ptr to struct 
+		 VkSparseImageFormatProperties* p_formatProperties = (VkSparseImageFormatProperties*) _formatProperties; 
+		 vkObj->formatProperties = (*p_formatProperties); 
 	  
 
 }
@@ -20,7 +21,7 @@
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseImageMemoryRequirements_getFormatProperties0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:293
+//@line:294
 
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  // generic get for Buffer 
@@ -41,7 +42,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageMemoryRequirements_s
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:303
+//@line:304
 
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		 // code for simple past value 
@@ -53,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageMemoryRequirements_s
 static inline jint wrapped_Java_bor_vulkan_structs_VkSparseImageMemoryRequirements_getImageMipTailFirstLod0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:313
+//@line:314
 
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  return (jint) (vkObj->imageMipTailFirstLod);
@@ -73,7 +74,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageMemoryRequirements_s
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:322
+//@line:323
 
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		 // code for simple past value 
@@ -85,7 +86,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageMemoryRequirements_s
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseImageMemoryRequirements_getImageMipTailSize0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:332
+//@line:333
 
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  return (jlong) (vkObj->imageMipTailSize);
@@ -105,7 +106,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageMemoryRequirements_s
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:341
+//@line:342
 
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		 // code for simple past value 
@@ -117,7 +118,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageMemoryRequirements_s
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseImageMemoryRequirements_getImageMipTailOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:351
+//@line:352
 
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  return (jlong) (vkObj->imageMipTailOffset);
@@ -137,7 +138,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageMemoryRequirements_s
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:360
+//@line:361
 
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		 // code for simple past value 
@@ -149,7 +150,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageMemoryRequirements_s
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseImageMemoryRequirements_getImageMipTailStride0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:370
+//@line:371
 
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  return (jlong) (vkObj->imageMipTailStride);

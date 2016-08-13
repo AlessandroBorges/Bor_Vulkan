@@ -54,7 +54,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkAttachmentReference_getLayo
 //@line:210
 
 		  VkAttachmentReference* vkObj = (VkAttachmentReference*)(ptr);
-		  return (VkImageLayout) (vkObj->layout);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->layout);
 	 
 }
 

@@ -294,18 +294,18 @@ JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkImageBlit_getSrcSubresource0
 /*
  * Class:     bor_vulkan_structs_VkImageBlit
  * Method:    setSrcOffsets0
- * Signature: (Ljava/nio/Buffer;Ljava/nio/ByteBuffer;)V
+ * Signature: (Ljava/nio/Buffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
  */
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageBlit_setSrcOffsets0
-  (JNIEnv *, jclass, jobject, jobject);
+  (JNIEnv *, jclass, jobject, jobject, jobject);
 
 /*
  * Class:     bor_vulkan_structs_VkImageBlit
  * Method:    getSrcOffsets0
- * Signature: (Ljava/nio/Buffer;)J
+ * Signature: (Ljava/nio/Buffer;[J)V
  */
-JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkImageBlit_getSrcOffsets0
-  (JNIEnv *, jclass, jobject);
+JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageBlit_getSrcOffsets0
+  (JNIEnv *, jclass, jobject, jlongArray);
 
 /*
  * Class:     bor_vulkan_structs_VkImageBlit
@@ -326,18 +326,18 @@ JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkImageBlit_getDstSubresource0
 /*
  * Class:     bor_vulkan_structs_VkImageBlit
  * Method:    setDstOffsets0
- * Signature: (Ljava/nio/Buffer;Ljava/nio/ByteBuffer;)V
+ * Signature: (Ljava/nio/Buffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)V
  */
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageBlit_setDstOffsets0
-  (JNIEnv *, jclass, jobject, jobject);
+  (JNIEnv *, jclass, jobject, jobject, jobject);
 
 /*
  * Class:     bor_vulkan_structs_VkImageBlit
  * Method:    getDstOffsets0
- * Signature: (Ljava/nio/Buffer;)J
+ * Signature: (Ljava/nio/Buffer;[J)J
  */
 JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkImageBlit_getDstOffsets0
-  (JNIEnv *, jclass, jobject);
+  (JNIEnv *, jclass, jobject, jlongArray);
 
 #ifdef __cplusplus
 }

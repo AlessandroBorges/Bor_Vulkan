@@ -11,8 +11,9 @@
 //@line:323
 
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->srcSubresource = (VkImageSubresourceLayers) (_srcSubresource);
+		 // code for Buffer - ptr to struct 
+		 VkImageSubresourceLayers* p_srcSubresource = (VkImageSubresourceLayers*) _srcSubresource; 
+		 vkObj->srcSubresource = (*p_srcSubresource); 
 	  
 
 }
@@ -20,7 +21,7 @@
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageCopy_getSrcSubresource0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:333
+//@line:334
 
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
 		  // generic get for Buffer 
@@ -42,11 +43,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageCopy_setSrcOffset0(JNIEnv*
 	char* _srcOffset = (char*)(obj__srcOffset?env->GetDirectBufferAddress(obj__srcOffset) : NULL);
 
 
-//@line:343
+//@line:344
 
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->srcOffset = (VkOffset3D) (_srcOffset);
+		 // code for Buffer - ptr to struct 
+		 VkOffset3D* p_srcOffset = (VkOffset3D*) _srcOffset; 
+		 vkObj->srcOffset = (*p_srcOffset); 
 	  
 
 }
@@ -54,7 +56,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageCopy_setSrcOffset0(JNIEnv*
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageCopy_getSrcOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:353
+//@line:355
 
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
 		  // generic get for Buffer 
@@ -76,11 +78,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageCopy_setDstSubresource0(JN
 	char* _dstSubresource = (char*)(obj__dstSubresource?env->GetDirectBufferAddress(obj__dstSubresource) : NULL);
 
 
-//@line:363
+//@line:365
 
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->dstSubresource = (VkImageSubresourceLayers) (_dstSubresource);
+		 // code for Buffer - ptr to struct 
+		 VkImageSubresourceLayers* p_dstSubresource = (VkImageSubresourceLayers*) _dstSubresource; 
+		 vkObj->dstSubresource = (*p_dstSubresource); 
 	  
 
 }
@@ -88,7 +91,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageCopy_setDstSubresource0(JN
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageCopy_getDstSubresource0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:373
+//@line:376
 
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
 		  // generic get for Buffer 
@@ -110,11 +113,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageCopy_setDstOffset0(JNIEnv*
 	char* _dstOffset = (char*)(obj__dstOffset?env->GetDirectBufferAddress(obj__dstOffset) : NULL);
 
 
-//@line:383
+//@line:386
 
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->dstOffset = (VkOffset3D) (_dstOffset);
+		 // code for Buffer - ptr to struct 
+		 VkOffset3D* p_dstOffset = (VkOffset3D*) _dstOffset; 
+		 vkObj->dstOffset = (*p_dstOffset); 
 	  
 
 }
@@ -122,7 +126,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageCopy_setDstOffset0(JNIEnv*
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageCopy_getDstOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:393
+//@line:397
 
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
 		  // generic get for Buffer 
@@ -144,11 +148,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageCopy_setExtent0(JNIEnv* en
 	char* _extent = (char*)(obj__extent?env->GetDirectBufferAddress(obj__extent) : NULL);
 
 
-//@line:403
+//@line:407
 
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->extent = (VkExtent3D) (_extent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent3D* p_extent = (VkExtent3D*) _extent; 
+		 vkObj->extent = (*p_extent); 
 	  
 
 }
@@ -156,7 +161,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageCopy_setExtent0(JNIEnv* en
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageCopy_getExtent0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:413
+//@line:418
 
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
 		  // generic get for Buffer 

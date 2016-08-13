@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineRasterizationStateR
 //@line:232
 
 		  VkPipelineRasterizationStateRasterizationOrderAMD* vkObj = (VkPipelineRasterizationStateRasterizationOrderAMD*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateRaste
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:241
+//@line:242
 
 		  VkPipelineRasterizationStateRasterizationOrderAMD* vkObj = (VkPipelineRasterizationStateRasterizationOrderAMD*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateRaste
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineRasterizationStateRasterizationOrderAMD_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:251
+//@line:253
 
 		  VkPipelineRasterizationStateRasterizationOrderAMD* vkObj = (VkPipelineRasterizationStateRasterizationOrderAMD*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateRaste
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:261
+//@line:263
 
 		  VkPipelineRasterizationStateRasterizationOrderAMD* vkObj = (VkPipelineRasterizationStateRasterizationOrderAMD*)(ptr);
 		 // code for simple past value 
@@ -85,10 +87,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateRaste
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineRasterizationStateRasterizationOrderAMD_getRasterizationOrder0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:271
+//@line:273
 
 		  VkPipelineRasterizationStateRasterizationOrderAMD* vkObj = (VkPipelineRasterizationStateRasterizationOrderAMD*)(ptr);
-		  return (VkRasterizationOrderAMD) (vkObj->rasterizationOrder);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->rasterizationOrder);
 	 
 }
 

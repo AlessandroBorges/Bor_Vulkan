@@ -88,7 +88,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkDescriptorImageInfo_getImag
 //@line:284
 
 		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
-		  return (VkImageLayout) (vkObj->imageLayout);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->imageLayout);
 	 
 }
 

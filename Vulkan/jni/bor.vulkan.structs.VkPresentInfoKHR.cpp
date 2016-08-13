@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_getSType0
 //@line:410
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setPNext0(JNIEnv
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:419
+//@line:420
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setPNext0(JNIEnv
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:429
+//@line:431
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setWaitSemaphore
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:439
+//@line:441
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		 // code for simple past value 
@@ -85,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setWaitSemaphore
 static inline jint wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_getWaitSemaphoreCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:449
+//@line:451
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  return (jint) (vkObj->waitSemaphoreCount);
@@ -106,11 +108,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setPWaitSemaphor
 	char* _pWaitSemaphores = (char*)(obj__pWaitSemaphores?env->GetDirectBufferAddress(obj__pWaitSemaphores) : NULL);
 
 
-//@line:458
+//@line:460
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pWaitSemaphores = (const VkSemaphore*) (_pWaitSemaphores);
+		 // code for Buffer - ptr to ptr 
+		 const VkSemaphore* p_pWaitSemaphores = ( VkSemaphore*) _pWaitSemaphores; 
+		 vkObj->pWaitSemaphores = p_pWaitSemaphores; 
 	  
 
 }
@@ -118,7 +121,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setPWaitSemaphor
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_getPWaitSemaphores0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:468
+//@line:471
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -139,7 +142,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setSwapchainCoun
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:478
+//@line:481
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		 // code for simple past value 
@@ -151,7 +154,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setSwapchainCoun
 static inline jint wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_getSwapchainCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:488
+//@line:491
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  return (jint) (vkObj->swapchainCount);
@@ -172,11 +175,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setPSwapchains0(
 	char* _pSwapchains = (char*)(obj__pSwapchains?env->GetDirectBufferAddress(obj__pSwapchains) : NULL);
 
 
-//@line:497
+//@line:500
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pSwapchains = (const VkSwapchainKHR*) (_pSwapchains);
+		 // code for Buffer - ptr to ptr 
+		 const VkSwapchainKHR* p_pSwapchains = ( VkSwapchainKHR*) _pSwapchains; 
+		 vkObj->pSwapchains = p_pSwapchains; 
 	  
 
 }
@@ -184,7 +188,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setPSwapchains0(
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_getPSwapchains0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:507
+//@line:511
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -204,21 +208,21 @@ JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_getPSwapchains0
 static inline void wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_setPImageIndices0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pImageIndices, unsigned char* ptr, int* _pImageIndices) {
 
-//@line:517
+//@line:521
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		 // code for generic array 
-		  if( NULL == _pImageIndices ){
-		    vkObj->swapchainCount = 0;
-		    FREE_IT(vkObj->pImageIndices);
+		 // code for generic array assignment 
+		 uint32_t* temp = const_cast<uint32_t*>(vkObj->pImageIndices);
+		 if(temp) { free(temp); } 
+		 vkObj->pImageIndices = NULL; 
+		 if( _pImageIndices == NULL){ 
+		    vkObj->swapchainCount = 0; 
 		     return;
-		   }
-		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pImageIndices);
-		  if( vkObj->swapchainCount != count){ 
-		    FREE_IT(vkObj->pImageIndices); 
-		    vkObj->pImageIndices = CALLOC(count, uint32_t);
-		   }
-		  memcpy( vkObj->pImageIndices, _pImageIndices, count * sizeof(uint32_t));
+		  }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pImageIndices); 
+		  temp = CALLOC(count, uint32_t); 
+		  memcpy( temp, _pImageIndices, count * sizeof(uint32_t)); 
+		  vkObj->pImageIndices = temp; 
 		  vkObj->swapchainCount = count;
 	  
 }
@@ -239,7 +243,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setPImageIndices
 static inline jintArray wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_getPImageIndices0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pImageIndices, unsigned char* ptr, int* _pImageIndices) {
 
-//@line:538
+//@line:542
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  // generic get for C type array, with content copy 
@@ -271,21 +275,21 @@ JNIEXPORT jintArray JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_getPImageIn
 static inline void wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_setPResults0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pResults, unsigned char* ptr, int* _pResults) {
 
-//@line:556
+//@line:560
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		 // code for generic array 
-		  if( NULL == _pResults ){
-		    vkObj->swapchainCount = 0;
-		    FREE_IT(vkObj->pResults);
+		 // code for generic array assignment 
+		 VkResult* temp = const_cast<VkResult*>(vkObj->pResults);
+		 if(temp) { free(temp); } 
+		 vkObj->pResults = NULL; 
+		 if( _pResults == NULL){ 
+		    vkObj->swapchainCount = 0; 
 		     return;
-		   }
-		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pResults);
-		  if( vkObj->swapchainCount != count){ 
-		    FREE_IT(vkObj->pResults); 
-		    vkObj->pResults = CALLOC(count, VkResult);
-		   }
-		  memcpy( vkObj->pResults, _pResults, count * sizeof(VkResult));
+		  }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pResults); 
+		  temp = CALLOC(count, VkResult); 
+		  memcpy( temp, _pResults, count * sizeof(VkResult)); 
+		  vkObj->pResults = temp; 
 		  vkObj->swapchainCount = count;
 	  
 }
@@ -306,7 +310,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setPResults0(JNI
 static inline jintArray wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_getPResults0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pResults, unsigned char* ptr, int* _pResults) {
 
-//@line:577
+//@line:581
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  // generic get for C type array, with content copy 

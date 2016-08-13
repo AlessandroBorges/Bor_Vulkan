@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:260
+//@line:295
 
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_getMemoryTypeCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:270
+//@line:305
 
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  return (jint) (vkObj->memoryTypeCount);
@@ -40,11 +40,14 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_
 	char* _memoryTypes = (char*)(obj__memoryTypes?env->GetDirectBufferAddress(obj__memoryTypes) : NULL);
 
 
-//@line:279
+//@line:314
 
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->memoryTypes = (VkMemoryType[]) (_memoryTypes);
+		 // code for Buffer - ptr to struct 
+		 VkMemoryType* p_memoryTypes = (VkMemoryType*) _memoryTypes; 
+		 for(uint32_t i = 0; (i < VK_MAX_MEMORY_TYPES && i < vkObj->memoryTypeCount) ; i++){
+		    vkObj->memoryTypes[i] = p_memoryTypes[i];
+		 } 
 	  
 
 }
@@ -52,7 +55,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_getMemoryTypes0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:289
+//@line:327
 
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -73,7 +76,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:299
+//@line:337
 
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		 // code for simple past value 
@@ -85,7 +88,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_
 static inline jint wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_getMemoryHeapCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:309
+//@line:347
 
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  return (jint) (vkObj->memoryHeapCount);
@@ -106,11 +109,14 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_
 	char* _memoryHeaps = (char*)(obj__memoryHeaps?env->GetDirectBufferAddress(obj__memoryHeaps) : NULL);
 
 
-//@line:318
+//@line:356
 
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->memoryHeaps = (VkMemoryHeap[]) (_memoryHeaps);
+		 // code for Buffer - ptr to struct 
+		 VkMemoryHeap* p_memoryHeaps = (VkMemoryHeap*) _memoryHeaps; 
+		 for(uint32_t i=0; (i < VK_MAX_MEMORY_HEAPS && i < vkObj->memoryHeapCount) ; i++){
+		   vkObj->memoryHeaps[i] = p_memoryHeaps[i];
+		 } 
 	  
 
 }
@@ -118,7 +124,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProperties_getMemoryHeaps0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:328
+//@line:369
 
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 

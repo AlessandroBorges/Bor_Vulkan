@@ -86,7 +86,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkVertexInputBindingDescripti
 //@line:260
 
 		  VkVertexInputBindingDescription* vkObj = (VkVertexInputBindingDescription*)(ptr);
-		  return (VkVertexInputRate) (vkObj->inputRate);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->inputRate);
 	 
 }
 

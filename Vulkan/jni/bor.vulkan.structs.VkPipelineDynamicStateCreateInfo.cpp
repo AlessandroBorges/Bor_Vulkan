@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineDynamicStateCreateI
 //@line:297
 
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDynamicStateCreateInfo_
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:306
+//@line:307
 
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDynamicStateCreateInfo_
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineDynamicStateCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:316
+//@line:318
 
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDynamicStateCreateInfo_
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:326
+//@line:328
 
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -85,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDynamicStateCreateInfo_
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineDynamicStateCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:336
+//@line:338
 
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -105,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDynamicStateCreateInfo_
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:345
+//@line:347
 
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -117,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDynamicStateCreateInfo_
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineDynamicStateCreateInfo_getDynamicStateCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:355
+//@line:357
 
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->dynamicStateCount);
@@ -136,21 +138,21 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkPipelineDynamicStateCreateInfo_
 static inline void wrapped_Java_bor_vulkan_structs_VkPipelineDynamicStateCreateInfo_setPDynamicStates0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pDynamicStates, unsigned char* ptr, int* _pDynamicStates) {
 
-//@line:364
+//@line:366
 
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
-		 // code for generic array 
-		  if( NULL == _pDynamicStates ){
-		    vkObj->dynamicStateCount = 0;
-		    FREE_IT(vkObj->pDynamicStates);
+		 // code for generic array assignment 
+		 VkDynamicState* temp = const_cast<VkDynamicState*>(vkObj->pDynamicStates);
+		 if(temp) { free(temp); } 
+		 vkObj->pDynamicStates = NULL; 
+		 if( _pDynamicStates == NULL){ 
+		    vkObj->dynamicStateCount = 0; 
 		     return;
-		   }
-		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pDynamicStates);
-		  if( vkObj->dynamicStateCount != count){ 
-		    FREE_IT(vkObj->pDynamicStates); 
-		    vkObj->pDynamicStates = CALLOC(count, VkDynamicState);
-		   }
-		  memcpy( vkObj->pDynamicStates, _pDynamicStates, count * sizeof(VkDynamicState));
+		  }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pDynamicStates); 
+		  temp = CALLOC(count, VkDynamicState); 
+		  memcpy( temp, _pDynamicStates, count * sizeof(VkDynamicState)); 
+		  vkObj->pDynamicStates = temp; 
 		  vkObj->dynamicStateCount = count;
 	  
 }
@@ -171,7 +173,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDynamicStateCreateInfo_
 static inline jintArray wrapped_Java_bor_vulkan_structs_VkPipelineDynamicStateCreateInfo_getPDynamicStates0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pDynamicStates, unsigned char* ptr, int* _pDynamicStates) {
 
-//@line:385
+//@line:387
 
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
 		  // generic get for C type array, with content copy 

@@ -79,8 +79,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setPhysica
 //@line:404
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->physicalDimensions = (VkExtent2D) (_physicalDimensions);
+		 // code for Buffer - ptr to struct 
+		 VkExtent2D* p_physicalDimensions = (VkExtent2D*) _physicalDimensions; 
+		 vkObj->physicalDimensions = (*p_physicalDimensions); 
 	  
 
 }
@@ -88,7 +89,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setPhysica
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPropertiesKHR_getPhysicalDimensions0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:414
+//@line:415
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  // generic get for Buffer 
@@ -110,11 +111,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setPhysica
 	char* _physicalResolution = (char*)(obj__physicalResolution?env->GetDirectBufferAddress(obj__physicalResolution) : NULL);
 
 
-//@line:424
+//@line:425
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->physicalResolution = (VkExtent2D) (_physicalResolution);
+		 // code for Buffer - ptr to struct 
+		 VkExtent2D* p_physicalResolution = (VkExtent2D*) _physicalResolution; 
+		 vkObj->physicalResolution = (*p_physicalResolution); 
 	  
 
 }
@@ -122,7 +124,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setPhysica
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPropertiesKHR_getPhysicalResolution0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:434
+//@line:436
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  // generic get for Buffer 
@@ -143,7 +145,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setSupport
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:444
+//@line:446
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		 // code for simple past value 
@@ -155,7 +157,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setSupport
 static inline jint wrapped_Java_bor_vulkan_structs_VkDisplayPropertiesKHR_getSupportedTransforms0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:454
+//@line:456
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  return (jint) (vkObj->supportedTransforms);
@@ -175,7 +177,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setPlaneRe
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:463
+//@line:465
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		 // code for simple past value 
@@ -187,7 +189,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setPlaneRe
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkDisplayPropertiesKHR_getPlaneReorderPossible0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:473
+//@line:475
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  return (jboolean) (vkObj->planeReorderPossible);
@@ -207,7 +209,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setPersist
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:482
+//@line:484
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		 // code for simple past value 
@@ -219,7 +221,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setPersist
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkDisplayPropertiesKHR_getPersistentContent0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:492
+//@line:494
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  return (jboolean) (vkObj->persistentContent);

@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkComponentMapping_getR0
 //@line:256
 
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
-		  return (VkComponentSwizzle) (vkObj->r);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->r);
 	 
 }
 
@@ -39,7 +40,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComponentMapping_setG0(JNIEnv* 
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:265
+//@line:266
 
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
 		 // code for simple past value 
@@ -51,10 +52,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComponentMapping_setG0(JNIEnv* 
 static inline jint wrapped_Java_bor_vulkan_structs_VkComponentMapping_getG0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:275
+//@line:276
 
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
-		  return (VkComponentSwizzle) (vkObj->g);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->g);
 	 
 }
 
@@ -71,7 +73,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComponentMapping_setB0(JNIEnv* 
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:284
+//@line:286
 
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
 		 // code for simple past value 
@@ -83,10 +85,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComponentMapping_setB0(JNIEnv* 
 static inline jint wrapped_Java_bor_vulkan_structs_VkComponentMapping_getB0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:294
+//@line:296
 
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
-		  return (VkComponentSwizzle) (vkObj->b);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->b);
 	 
 }
 
@@ -103,7 +106,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComponentMapping_setA0(JNIEnv* 
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:303
+//@line:306
 
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
 		 // code for simple past value 
@@ -115,10 +118,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComponentMapping_setA0(JNIEnv* 
 static inline jint wrapped_Java_bor_vulkan_structs_VkComponentMapping_getA0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:313
+//@line:316
 
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
-		  return (VkComponentSwizzle) (vkObj->a);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->a);
 	 
 }
 

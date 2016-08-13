@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkMemoryAllocateInfo_getSType
 //@line:262
 
 		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMemoryAllocateInfo_setPNext0(JN
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:271
+//@line:272
 
 		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMemoryAllocateInfo_setPNext0(JN
 static inline jlong wrapped_Java_bor_vulkan_structs_VkMemoryAllocateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:281
+//@line:283
 
 		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMemoryAllocateInfo_setAllocatio
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:291
+//@line:293
 
 		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
 		 // code for simple past value 
@@ -85,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMemoryAllocateInfo_setAllocatio
 static inline jlong wrapped_Java_bor_vulkan_structs_VkMemoryAllocateInfo_getAllocationSize0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:301
+//@line:303
 
 		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
 		  return (jlong) (vkObj->allocationSize);
@@ -105,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMemoryAllocateInfo_setMemoryTyp
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:310
+//@line:312
 
 		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
 		 // code for simple past value 
@@ -117,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMemoryAllocateInfo_setMemoryTyp
 static inline jint wrapped_Java_bor_vulkan_structs_VkMemoryAllocateInfo_getMemoryTypeIndex0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:320
+//@line:322
 
 		  VkMemoryAllocateInfo* vkObj = (VkMemoryAllocateInfo*)(ptr);
 		  return (jint) (vkObj->memoryTypeIndex);

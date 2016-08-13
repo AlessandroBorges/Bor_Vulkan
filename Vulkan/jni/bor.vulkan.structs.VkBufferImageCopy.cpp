@@ -107,8 +107,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferImageCopy_setImageSubreso
 //@line:391
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->imageSubresource = (VkImageSubresourceLayers) (*_imageSubresource);
+		 // code for Buffer - ptr to struct 
+		 VkImageSubresourceLayers* p_imageSubresource = (VkImageSubresourceLayers*) _imageSubresource; 
+		 vkObj->imageSubresource = (*p_imageSubresource); 
 	  
 
 }
@@ -116,7 +117,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferImageCopy_setImageSubreso
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferImageCopy_getImageSubresource0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:401
+//@line:402
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		  // generic get for Buffer 
@@ -138,11 +139,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferImageCopy_setImageOffset0
 	char* _imageOffset = (char*)(obj__imageOffset?env->GetDirectBufferAddress(obj__imageOffset) : NULL);
 
 
-//@line:411
+//@line:412
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->imageOffset = (VkOffset3D) (*_imageOffset);
+		 // code for Buffer - ptr to struct 
+		 VkOffset3D* p_imageOffset = (VkOffset3D*) _imageOffset; 
+		 vkObj->imageOffset = (*p_imageOffset); 
 	  
 
 }
@@ -150,7 +152,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferImageCopy_setImageOffset0
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferImageCopy_getImageOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:421
+//@line:423
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		  // generic get for Buffer 
@@ -172,11 +174,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferImageCopy_setImageExtent0
 	char* _imageExtent = (char*)(obj__imageExtent?env->GetDirectBufferAddress(obj__imageExtent) : NULL);
 
 
-//@line:431
+//@line:433
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->imageExtent = (VkExtent3D) (*_imageExtent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent3D* p_imageExtent = (VkExtent3D*) _imageExtent; 
+		 vkObj->imageExtent = (*p_imageExtent); 
 	  
 
 }
@@ -184,7 +187,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferImageCopy_setImageExtent0
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferImageCopy_getImageExtent0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:441
+//@line:444
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		  // generic get for Buffer 

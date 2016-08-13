@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkSamplerCreateInfo_getSType0
 //@line:704
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setPNext0(JNI
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:713
+//@line:714
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setPNext0(JNI
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSamplerCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:723
+//@line:725
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setFlags0(JNI
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:733
+//@line:735
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -85,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setFlags0(JNI
 static inline jint wrapped_Java_bor_vulkan_structs_VkSamplerCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:743
+//@line:745
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -105,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setMagFilter0
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:752
+//@line:754
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -117,10 +119,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setMagFilter0
 static inline jint wrapped_Java_bor_vulkan_structs_VkSamplerCreateInfo_getMagFilter0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:762
+//@line:764
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  return (VkFilter) (vkObj->magFilter);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->magFilter);
 	 
 }
 
@@ -137,7 +140,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setMinFilter0
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:771
+//@line:774
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -149,10 +152,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setMinFilter0
 static inline jint wrapped_Java_bor_vulkan_structs_VkSamplerCreateInfo_getMinFilter0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:781
+//@line:784
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  return (VkFilter) (vkObj->minFilter);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->minFilter);
 	 
 }
 
@@ -169,7 +173,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setMipmapMode
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:790
+//@line:794
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -181,10 +185,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setMipmapMode
 static inline jint wrapped_Java_bor_vulkan_structs_VkSamplerCreateInfo_getMipmapMode0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:800
+//@line:804
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  return (VkSamplerMipmapMode) (vkObj->mipmapMode);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->mipmapMode);
 	 
 }
 
@@ -201,7 +206,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setAddressMod
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:809
+//@line:814
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -213,10 +218,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setAddressMod
 static inline jint wrapped_Java_bor_vulkan_structs_VkSamplerCreateInfo_getAddressModeU0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:819
+//@line:824
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  return (VkSamplerAddressMode) (vkObj->addressModeU);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->addressModeU);
 	 
 }
 
@@ -233,7 +239,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setAddressMod
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:828
+//@line:834
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -245,10 +251,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setAddressMod
 static inline jint wrapped_Java_bor_vulkan_structs_VkSamplerCreateInfo_getAddressModeV0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:838
+//@line:844
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  return (VkSamplerAddressMode) (vkObj->addressModeV);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->addressModeV);
 	 
 }
 
@@ -265,7 +272,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setAddressMod
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:847
+//@line:854
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -277,10 +284,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setAddressMod
 static inline jint wrapped_Java_bor_vulkan_structs_VkSamplerCreateInfo_getAddressModeW0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:857
+//@line:864
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  return (VkSamplerAddressMode) (vkObj->addressModeW);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->addressModeW);
 	 
 }
 
@@ -297,7 +305,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setMipLodBias
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:866
+//@line:874
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -309,7 +317,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setMipLodBias
 static inline jfloat wrapped_Java_bor_vulkan_structs_VkSamplerCreateInfo_getMipLodBias0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:876
+//@line:884
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->mipLodBias);
@@ -329,7 +337,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setAnisotropy
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:885
+//@line:893
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -341,7 +349,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setAnisotropy
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkSamplerCreateInfo_getAnisotropyEnable0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:895
+//@line:903
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->anisotropyEnable);
@@ -361,7 +369,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setMaxAnisotr
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:904
+//@line:912
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -373,7 +381,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setMaxAnisotr
 static inline jfloat wrapped_Java_bor_vulkan_structs_VkSamplerCreateInfo_getMaxAnisotropy0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:914
+//@line:922
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->maxAnisotropy);
@@ -393,7 +401,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setCompareEna
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:923
+//@line:931
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -405,7 +413,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setCompareEna
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkSamplerCreateInfo_getCompareEnable0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:933
+//@line:941
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->compareEnable);
@@ -425,7 +433,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setCompareOp0
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:942
+//@line:950
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -437,10 +445,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setCompareOp0
 static inline jint wrapped_Java_bor_vulkan_structs_VkSamplerCreateInfo_getCompareOp0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:952
+//@line:960
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  return (VkCompareOp) (vkObj->compareOp);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->compareOp);
 	 
 }
 
@@ -457,7 +466,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setMinLod0(JN
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:961
+//@line:970
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -469,7 +478,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setMinLod0(JN
 static inline jfloat wrapped_Java_bor_vulkan_structs_VkSamplerCreateInfo_getMinLod0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:971
+//@line:980
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->minLod);
@@ -489,7 +498,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setMaxLod0(JN
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:980
+//@line:989
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -501,7 +510,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setMaxLod0(JN
 static inline jfloat wrapped_Java_bor_vulkan_structs_VkSamplerCreateInfo_getMaxLod0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:990
+//@line:999
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->maxLod);
@@ -521,7 +530,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setBorderColo
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:999
+//@line:1008
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -533,10 +542,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setBorderColo
 static inline jint wrapped_Java_bor_vulkan_structs_VkSamplerCreateInfo_getBorderColor0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1009
+//@line:1018
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  return (VkBorderColor) (vkObj->borderColor);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->borderColor);
 	 
 }
 
@@ -553,7 +563,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setUnnormaliz
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:1018
+//@line:1028
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -565,7 +575,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSamplerCreateInfo_setUnnormaliz
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkSamplerCreateInfo_getUnnormalizedCoordinates0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1028
+//@line:1038
 
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->unnormalizedCoordinates);

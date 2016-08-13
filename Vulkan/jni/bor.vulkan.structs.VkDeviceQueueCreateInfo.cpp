@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getST
 //@line:324
 
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_setPNext0
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:333
+//@line:334
 
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_setPNext0
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:343
+//@line:345
 
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_setFlags0
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:353
+//@line:355
 
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -85,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_setFlags0
 static inline jint wrapped_Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:363
+//@line:365
 
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -105,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_setQueueF
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:372
+//@line:374
 
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -117,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_setQueueF
 static inline jint wrapped_Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getQueueFamilyIndex0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:382
+//@line:384
 
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
 		  return (jint) (vkObj->queueFamilyIndex);
@@ -137,7 +139,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_setQueueC
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:391
+//@line:393
 
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -149,7 +151,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_setQueueC
 static inline jint wrapped_Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getQueueCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:401
+//@line:403
 
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
 		  return (jint) (vkObj->queueCount);
@@ -168,21 +170,21 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getQueueC
 static inline void wrapped_Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_setPQueuePriorities0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jfloatArray obj__pQueuePriorities, unsigned char* ptr, float* _pQueuePriorities) {
 
-//@line:410
+//@line:412
 
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
-		 // code for generic array 
-		  if( NULL == _pQueuePriorities ){
-		    vkObj->queueCount = 0;
-		    FREE_IT(vkObj->pQueuePriorities);
+		 // code for generic array assignment 
+		 float* temp = const_cast<float*>(vkObj->pQueuePriorities);
+		 if(temp) { free(temp); } 
+		 vkObj->pQueuePriorities = NULL; 
+		 if( _pQueuePriorities == NULL){ 
+		    vkObj->queueCount = 0; 
 		     return;
-		   }
-		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pQueuePriorities);
-		  if( vkObj->queueCount != count){ 
-		    FREE_IT(vkObj->pQueuePriorities); 
-		    vkObj->pQueuePriorities = CALLOC(count, float);
-		   }
-		  memcpy( vkObj->pQueuePriorities, _pQueuePriorities, count * sizeof(float));
+		  }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pQueuePriorities); 
+		  temp = CALLOC(count, float); 
+		  memcpy( temp, _pQueuePriorities, count * sizeof(float)); 
+		  vkObj->pQueuePriorities = temp; 
 		  vkObj->queueCount = count;
 	  
 }
@@ -203,7 +205,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_setPQueue
 static inline jfloatArray wrapped_Java_bor_vulkan_structs_VkDeviceQueueCreateInfo_getPQueuePriorities0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jfloatArray obj__pQueuePriorities, unsigned char* ptr, float* _pQueuePriorities) {
 
-//@line:431
+//@line:433
 
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
 		  // generic get for C type array, with content copy 

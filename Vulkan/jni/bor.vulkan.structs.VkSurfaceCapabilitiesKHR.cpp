@@ -75,8 +75,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_setCurre
 //@line:497
 
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->currentExtent = (VkExtent2D) (_currentExtent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent2D* p_currentExtent = (VkExtent2D*) _currentExtent; 
+		 vkObj->currentExtent = (*p_currentExtent); 
 	  
 
 }
@@ -84,7 +85,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_setCurre
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_getCurrentExtent0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:507
+//@line:508
 
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		  // generic get for Buffer 
@@ -106,11 +107,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_setMinIm
 	char* _minImageExtent = (char*)(obj__minImageExtent?env->GetDirectBufferAddress(obj__minImageExtent) : NULL);
 
 
-//@line:517
+//@line:518
 
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->minImageExtent = (VkExtent2D) (_minImageExtent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent2D* p_minImageExtent = (VkExtent2D*) _minImageExtent; 
+		 vkObj->minImageExtent = (*p_minImageExtent); 
 	  
 
 }
@@ -118,7 +120,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_setMinIm
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_getMinImageExtent0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:527
+//@line:529
 
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		  // generic get for Buffer 
@@ -140,11 +142,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_setMaxIm
 	char* _maxImageExtent = (char*)(obj__maxImageExtent?env->GetDirectBufferAddress(obj__maxImageExtent) : NULL);
 
 
-//@line:537
+//@line:539
 
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->maxImageExtent = (VkExtent2D) (_maxImageExtent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent2D* p_maxImageExtent = (VkExtent2D*) _maxImageExtent; 
+		 vkObj->maxImageExtent = (*p_maxImageExtent); 
 	  
 
 }
@@ -152,7 +155,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_setMaxIm
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_getMaxImageExtent0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:547
+//@line:550
 
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		  // generic get for Buffer 
@@ -173,7 +176,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_setMaxIm
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:557
+//@line:560
 
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		 // code for simple past value 
@@ -185,7 +188,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_setMaxIm
 static inline jint wrapped_Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_getMaxImageArrayLayers0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:567
+//@line:570
 
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		  return (jint) (vkObj->maxImageArrayLayers);
@@ -205,7 +208,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_setSuppo
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:576
+//@line:579
 
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		 // code for simple past value 
@@ -217,7 +220,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_setSuppo
 static inline jint wrapped_Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_getSupportedTransforms0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:586
+//@line:589
 
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		  return (jint) (vkObj->supportedTransforms);
@@ -237,7 +240,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_setCurre
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:595
+//@line:598
 
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		 // code for simple past value 
@@ -249,10 +252,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_setCurre
 static inline jint wrapped_Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_getCurrentTransform0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:605
+//@line:608
 
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
-		  return (VkSurfaceTransformFlagBitsKHR) (vkObj->currentTransform);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->currentTransform);
 	 
 }
 
@@ -269,7 +273,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_setSuppo
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:614
+//@line:618
 
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		 // code for simple past value 
@@ -281,7 +285,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_setSuppo
 static inline jint wrapped_Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_getSupportedCompositeAlpha0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:624
+//@line:628
 
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		  return (jint) (vkObj->supportedCompositeAlpha);
@@ -301,7 +305,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_setSuppo
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:633
+//@line:637
 
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		 // code for simple past value 
@@ -313,7 +317,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_setSuppo
 static inline jint wrapped_Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_getSupportedUsageFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:643
+//@line:647
 
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
 		  return (jint) (vkObj->supportedUsageFlags);

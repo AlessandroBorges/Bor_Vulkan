@@ -27,7 +27,7 @@
 	
 	<!-- define g++ compiler, options and files to compile -->
 	<property name="g++" value="${compilerPrefix}g++${compilerSuffix}"/>
-	<property name="g++-opts" value=" -c -Wall -mfpmath=sse -msse2 -fmessage-length=80 -m64 -std=gnu++11 -O0 -pipe "/>
+	<property name="g++-opts" value=" -c -Wall -mfpmath=sse -msse2 -fmessage-length=300 -m64 -std=gnu++11 -O0 -pipe "/>
 	<fileset id="g++-files" dir="./">
 		<exclude name="target/"/>
 				<include name="**/*.cpp"/>

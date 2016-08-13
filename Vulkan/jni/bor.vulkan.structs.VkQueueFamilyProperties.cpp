@@ -107,8 +107,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_setMinIma
 //@line:309
 
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->minImageTransferGranularity = (VkExtent3D) (_minImageTransferGranularity);
+		 // code for Buffer - ptr to struct 
+		 VkExtent3D* p_minImageTransferGranularity = (VkExtent3D*) _minImageTransferGranularity; 
+		 vkObj->minImageTransferGranularity = (*p_minImageTransferGranularity); 
 	  
 
 }
@@ -116,7 +117,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueueFamilyProperties_setMinIma
 static inline jlong wrapped_Java_bor_vulkan_structs_VkQueueFamilyProperties_getMinImageTransferGranularity0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:319
+//@line:320
 
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
 		  // generic get for Buffer 

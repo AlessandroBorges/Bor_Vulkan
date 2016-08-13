@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:408
+//@line:421
 
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -19,10 +19,11 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:418
+//@line:431
 
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateI
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:427
+//@line:441
 
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateI
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:437
+//@line:452
 
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateI
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:447
+//@line:462
 
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -85,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateI
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:457
+//@line:472
 
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -105,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateI
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:466
+//@line:481
 
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -117,10 +119,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateI
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_getRasterizationSamples0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:476
+//@line:491
 
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
-		  return (VkSampleCountFlagBits) (vkObj->rasterizationSamples);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->rasterizationSamples);
 	 
 }
 
@@ -137,7 +140,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateI
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:485
+//@line:501
 
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -149,7 +152,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateI
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_getSampleShadingEnable0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:495
+//@line:511
 
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->sampleShadingEnable);
@@ -169,7 +172,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateI
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:504
+//@line:520
 
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -181,7 +184,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateI
 static inline jfloat wrapped_Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_getMinSampleShading0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:514
+//@line:530
 
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->minSampleShading);
@@ -197,71 +200,50 @@ JNIEXPORT jfloat JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreat
 	return JNI_returnValue;
 }
 
-static inline void wrapped_Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_setPSampleMask0
-(JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pSampleMask, unsigned char* ptr, int* _pSampleMask) {
+JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_setPSampleMask0(JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pSampleMask, jint count) {
+	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
+	int* _pSampleMask = (int*)(obj__pSampleMask ? env->GetIntArrayElements(obj__pSampleMask, 0) : NULL);
 
-//@line:523
 
-		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
-		  // included code
-		  if( NULL == _pSampleMask ){		   
-		    FREE_IT(vkObj->pSampleMask);
-			return;
-		   }
-		  uint32_t count = (uint32_t)env->GetArrayLength(obj__pSampleMask);		  
-		  vkObj->pSampleMask = CALLOC(count, VkSampleMask);
-		  memcpy( vkObj->pSampleMask, _pSampleMask, count * sizeof(VkSampleMask));
+//@line:540
+
+		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);		  		  
+		VkSampleMask* temp = const_cast<VkSampleMask*>(vkObj->pSampleMask); 
+        // I must free it to avoid leaks
+        if(temp) 
+            free(temp);
+        temp = CALLOC(count, VkSampleMask);
+		memcpy( temp, _pSampleMask, count * sizeof(VkSampleMask));
+        vkObj->pSampleMask = temp;
 	  
-}
-
-JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_setPSampleMask0(JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pSampleMask) {
-	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
-	int* _pSampleMask = (int*)(obj__pSampleMask ? env->GetIntArrayElements(obj__pSampleMask, 0) : NULL);
-
-	wrapped_Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_setPSampleMask0(env, clazz, obj_ptr, obj__pSampleMask, ptr, _pSampleMask);
-
 	if(obj__pSampleMask != NULL){
 		 env->ReleaseIntArrayElements(obj__pSampleMask, (jint*)_pSampleMask, 0);
 	}
 
-	return;
 }
 
-static inline jintArray wrapped_Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_getPSampleMask0
-(JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pSampleMask, unsigned char* ptr, int* _pSampleMask) {
-
-//@line:539
-
-		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
-		  // included code
-          if(_pSampleMask == NULL){
-			  FREE_IT(vkObj->pSampleMask);
-			  return;
-		  }		  
-		  uint32_t count = (uint32_t)env->GetArrayLength(obj__pSampleMask);		 
- 		  memcpy( _pSampleMask, vkObj->pSampleMask, count * sizeof(VkSampleMask));
-		  return _pSampleMask;
-	 
-}
-
-JNIEXPORT jintArray JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_getPSampleMask0(JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pSampleMask) {
+JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_getPSampleMask0(JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pSampleMask, jint count) {
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 	int* _pSampleMask = (int*)(obj__pSampleMask ? env->GetIntArrayElements(obj__pSampleMask, 0) : NULL);
 
-	jintArray JNI_returnValue = wrapped_Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_getPSampleMask0(env, clazz, obj_ptr, obj__pSampleMask, ptr, _pSampleMask);
 
+//@line:555
+
+	          VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
+	           // included code
+	           memcpy( _pSampleMask, vkObj->pSampleMask, count * sizeof(VkSampleMask));
+	   
 	if(obj__pSampleMask != NULL){
 		 env->ReleaseIntArrayElements(obj__pSampleMask, (jint*)_pSampleMask, 0);
 	}
 
-	return JNI_returnValue;
 }
 
 JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_setAlphaToCoverageEnable0(JNIEnv* env, jclass clazz, jobject obj_ptr, jboolean _alphaToCoverageEnable) {
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:555
+//@line:565
 
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -273,7 +255,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateI
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_getAlphaToCoverageEnable0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:565
+//@line:575
 
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->alphaToCoverageEnable);
@@ -293,7 +275,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateI
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:574
+//@line:584
 
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -305,7 +287,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateI
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPipelineMultisampleStateCreateInfo_getAlphaToOneEnable0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:584
+//@line:594
 
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->alphaToOneEnable);

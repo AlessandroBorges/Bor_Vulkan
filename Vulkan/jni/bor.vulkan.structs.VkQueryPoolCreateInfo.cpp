@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkQueryPoolCreateInfo_getSTyp
 //@line:325
 
 		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueryPoolCreateInfo_setPNext0(J
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:334
+//@line:335
 
 		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueryPoolCreateInfo_setPNext0(J
 static inline jlong wrapped_Java_bor_vulkan_structs_VkQueryPoolCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:344
+//@line:346
 
 		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueryPoolCreateInfo_setFlags0(J
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:354
+//@line:356
 
 		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -85,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueryPoolCreateInfo_setFlags0(J
 static inline jint wrapped_Java_bor_vulkan_structs_VkQueryPoolCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:364
+//@line:366
 
 		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -105,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueryPoolCreateInfo_setQueryTyp
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:373
+//@line:375
 
 		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -117,10 +119,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueryPoolCreateInfo_setQueryTyp
 static inline jint wrapped_Java_bor_vulkan_structs_VkQueryPoolCreateInfo_getQueryType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:383
+//@line:385
 
 		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
-		  return (VkQueryType) (vkObj->queryType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->queryType);
 	 
 }
 
@@ -137,7 +140,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueryPoolCreateInfo_setQueryCou
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:392
+//@line:395
 
 		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -149,7 +152,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueryPoolCreateInfo_setQueryCou
 static inline jint wrapped_Java_bor_vulkan_structs_VkQueryPoolCreateInfo_getQueryCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:402
+//@line:405
 
 		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
 		  return (jint) (vkObj->queryCount);
@@ -169,7 +172,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueryPoolCreateInfo_setPipeline
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:411
+//@line:414
 
 		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -181,7 +184,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkQueryPoolCreateInfo_setPipeline
 static inline jint wrapped_Java_bor_vulkan_structs_VkQueryPoolCreateInfo_getPipelineStatistics0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:421
+//@line:424
 
 		  VkQueryPoolCreateInfo* vkObj = (VkQueryPoolCreateInfo*)(ptr);
 		  return (jint) (vkObj->pipelineStatistics);

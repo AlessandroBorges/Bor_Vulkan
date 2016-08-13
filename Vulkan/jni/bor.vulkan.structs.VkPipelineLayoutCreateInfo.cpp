@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineLayoutCreateInfo_ge
 //@line:375
 
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineLayoutCreateInfo_setPNe
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:384
+//@line:385
 
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineLayoutCreateInfo_setPNe
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineLayoutCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:394
+//@line:396
 
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineLayoutCreateInfo_setFla
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:404
+//@line:406
 
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -85,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineLayoutCreateInfo_setFla
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineLayoutCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:414
+//@line:416
 
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -105,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineLayoutCreateInfo_setSet
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:423
+//@line:425
 
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -117,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineLayoutCreateInfo_setSet
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineLayoutCreateInfo_getSetLayoutCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:433
+//@line:435
 
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
 		  return (jint) (vkObj->setLayoutCount);
@@ -138,11 +140,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineLayoutCreateInfo_setPSe
 	char* _pSetLayouts = (char*)(obj__pSetLayouts?env->GetDirectBufferAddress(obj__pSetLayouts) : NULL);
 
 
-//@line:442
+//@line:444
 
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pSetLayouts = (const VkDescriptorSetLayout*) (_pSetLayouts);
+		 // code for Buffer - ptr to ptr 
+		 const VkDescriptorSetLayout* p_pSetLayouts = ( VkDescriptorSetLayout*) _pSetLayouts; 
+		 vkObj->pSetLayouts = p_pSetLayouts; 
 	  
 
 }
@@ -150,7 +153,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineLayoutCreateInfo_setPSe
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineLayoutCreateInfo_getPSetLayouts0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:452
+//@line:455
 
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -171,7 +174,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineLayoutCreateInfo_setPus
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:462
+//@line:465
 
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -183,7 +186,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineLayoutCreateInfo_setPus
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineLayoutCreateInfo_getPushConstantRangeCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:472
+//@line:475
 
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
 		  return (jint) (vkObj->pushConstantRangeCount);
@@ -204,11 +207,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineLayoutCreateInfo_setPPu
 	char* _pPushConstantRanges = (char*)(obj__pPushConstantRanges?env->GetDirectBufferAddress(obj__pPushConstantRanges) : NULL);
 
 
-//@line:481
+//@line:484
 
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pPushConstantRanges = (const VkPushConstantRange*) (_pPushConstantRanges);
+		 // code for Buffer - ptr to ptr 
+		 const VkPushConstantRange* p_pPushConstantRanges = ( VkPushConstantRange*) _pPushConstantRanges; 
+		 vkObj->pPushConstantRanges = p_pPushConstantRanges; 
 	  
 
 }
@@ -216,7 +220,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineLayoutCreateInfo_setPPu
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineLayoutCreateInfo_getPPushConstantRanges0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:491
+//@line:495
 
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 

@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkDebugMarkerMarkerInfoEXT_ge
 //@line:266
 
 		  VkDebugMarkerMarkerInfoEXT* vkObj = (VkDebugMarkerMarkerInfoEXT*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugMarkerMarkerInfoEXT_setPNe
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:275
+//@line:276
 
 		  VkDebugMarkerMarkerInfoEXT* vkObj = (VkDebugMarkerMarkerInfoEXT*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugMarkerMarkerInfoEXT_setPNe
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDebugMarkerMarkerInfoEXT_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:285
+//@line:287
 
 		  VkDebugMarkerMarkerInfoEXT* vkObj = (VkDebugMarkerMarkerInfoEXT*)(ptr);
 		  // generic get for Buffer 
@@ -74,7 +76,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugMarkerMarkerInfoEXT_setPMa
 	char* _pMarkerName = (char*)(obj__pMarkerName ? env->GetStringUTFChars(obj__pMarkerName, 0) : NULL);
 
 
-//@line:295
+//@line:297
 
 		  VkDebugMarkerMarkerInfoEXT* vkObj = (VkDebugMarkerMarkerInfoEXT*)(ptr);
 		  vkObj->pMarkerName = cloneStr(_pMarkerName);
@@ -88,7 +90,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugMarkerMarkerInfoEXT_setPMa
 static inline jstring wrapped_Java_bor_vulkan_structs_VkDebugMarkerMarkerInfoEXT_getPMarkerName0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:304
+//@line:306
 
 		  VkDebugMarkerMarkerInfoEXT* vkObj = (VkDebugMarkerMarkerInfoEXT*)(ptr);
 		  return (jstring)(env->NewStringUTF(vkObj->pMarkerName));
@@ -109,7 +111,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugMarkerMarkerInfoEXT_setCol
 	float* _color = (float*)(obj__color ? env->GetFloatArrayElements(obj__color, 0) : NULL);
 
 
-//@line:313
+//@line:315
 
 		  VkDebugMarkerMarkerInfoEXT* vkObj = (VkDebugMarkerMarkerInfoEXT*)(ptr);
 		 // code for fixed size array 
@@ -124,12 +126,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDebugMarkerMarkerInfoEXT_setCol
 static inline jfloatArray wrapped_Java_bor_vulkan_structs_VkDebugMarkerMarkerInfoEXT_getColor0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jfloatArray obj__color, unsigned char* ptr, float* _color) {
 
-//@line:323
+//@line:325
 
 		  VkDebugMarkerMarkerInfoEXT* vkObj = (VkDebugMarkerMarkerInfoEXT*)(ptr);
 		  // fixed length array  
 		  memcpy(&_color, &(vkObj->color), 4 * sizeof(float));
-		  return _color;
+		  return obj__color;
 	 
 }
 

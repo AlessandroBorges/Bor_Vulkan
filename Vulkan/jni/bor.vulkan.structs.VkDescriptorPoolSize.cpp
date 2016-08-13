@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkDescriptorPoolSize_getType0
 //@line:191
 
 		  VkDescriptorPoolSize* vkObj = (VkDescriptorPoolSize*)(ptr);
-		  return (VkDescriptorType) (vkObj->type);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->type);
 	 
 }
 
@@ -39,7 +40,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDescriptorPoolSize_setDescripto
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:200
+//@line:201
 
 		  VkDescriptorPoolSize* vkObj = (VkDescriptorPoolSize*)(ptr);
 		 // code for simple past value 
@@ -51,7 +52,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDescriptorPoolSize_setDescripto
 static inline jint wrapped_Java_bor_vulkan_structs_VkDescriptorPoolSize_getDescriptorCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:210
+//@line:211
 
 		  VkDescriptorPoolSize* vkObj = (VkDescriptorPoolSize*)(ptr);
 		  return (jint) (vkObj->descriptorCount);

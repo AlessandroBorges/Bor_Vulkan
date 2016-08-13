@@ -76,8 +76,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseBufferMemoryBindInfo_setP
 //@line:271
 
 		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pBinds = (const VkSparseMemoryBind*) (_pBinds);
+		 // code for Buffer - ptr to ptr 
+		 const VkSparseMemoryBind* p_pBinds = ( VkSparseMemoryBind*) _pBinds; 
+		 vkObj->pBinds = p_pBinds; 
 	  
 
 }
@@ -85,7 +86,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseBufferMemoryBindInfo_setP
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseBufferMemoryBindInfo_getPBinds0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:281
+//@line:282
 
 		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 

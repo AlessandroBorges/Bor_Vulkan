@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkMappedMemoryRange_getSType0
 //@line:304
 
 		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMappedMemoryRange_setPNext0(JNI
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:313
+//@line:314
 
 		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMappedMemoryRange_setPNext0(JNI
 static inline jlong wrapped_Java_bor_vulkan_structs_VkMappedMemoryRange_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:323
+//@line:325
 
 		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMappedMemoryRange_setMemory0(JN
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:333
+//@line:335
 
 		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
 		 // code for simple past value 
@@ -85,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMappedMemoryRange_setMemory0(JN
 static inline jlong wrapped_Java_bor_vulkan_structs_VkMappedMemoryRange_getMemory0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:343
+//@line:345
 
 		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -106,7 +108,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMappedMemoryRange_setOffset0(JN
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:353
+//@line:355
 
 		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
 		 // code for simple past value 
@@ -118,7 +120,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMappedMemoryRange_setOffset0(JN
 static inline jlong wrapped_Java_bor_vulkan_structs_VkMappedMemoryRange_getOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:363
+//@line:365
 
 		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
 		  return (jlong) (vkObj->offset);
@@ -138,7 +140,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMappedMemoryRange_setSize0(JNIE
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:372
+//@line:374
 
 		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
 		 // code for simple past value 
@@ -150,7 +152,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMappedMemoryRange_setSize0(JNIE
 static inline jlong wrapped_Java_bor_vulkan_structs_VkMappedMemoryRange_getSize0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:382
+//@line:384
 
 		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
 		  return (jlong) (vkObj->size);

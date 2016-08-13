@@ -75,8 +75,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkClearAttachment_setClearValue0(
 //@line:259
 
 		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->clearValue = (VkClearValue) (_clearValue);
+		 // code for Buffer - ptr to struct 
+		 VkClearValue* p_clearValue = (VkClearValue*) _clearValue; 
+		 vkObj->clearValue = (*p_clearValue); 
 	  
 
 }
@@ -84,7 +85,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkClearAttachment_setClearValue0(
 static inline jlong wrapped_Java_bor_vulkan_structs_VkClearAttachment_getClearValue0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:269
+//@line:270
 
 		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
 		  // generic get for Buffer 

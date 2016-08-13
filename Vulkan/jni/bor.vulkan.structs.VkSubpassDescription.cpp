@@ -54,7 +54,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkSubpassDescription_getPipel
 //@line:498
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
-		  return (VkPipelineBindPoint) (vkObj->pipelineBindPoint);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->pipelineBindPoint);
 	 
 }
 
@@ -71,7 +72,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setInputAtta
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:507
+//@line:508
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		 // code for simple past value 
@@ -83,7 +84,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setInputAtta
 static inline jint wrapped_Java_bor_vulkan_structs_VkSubpassDescription_getInputAttachmentCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:517
+//@line:518
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  return (jint) (vkObj->inputAttachmentCount);
@@ -104,11 +105,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPInputAtt
 	char* _pInputAttachments = (char*)(obj__pInputAttachments?env->GetDirectBufferAddress(obj__pInputAttachments) : NULL);
 
 
-//@line:526
+//@line:527
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pInputAttachments = (const VkAttachmentReference*) (_pInputAttachments);
+		 // code for Buffer - ptr to ptr 
+		 const VkAttachmentReference* p_pInputAttachments = ( VkAttachmentReference*) _pInputAttachments; 
+		 vkObj->pInputAttachments = p_pInputAttachments; 
 	  
 
 }
@@ -116,7 +118,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPInputAtt
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSubpassDescription_getPInputAttachments0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:536
+//@line:538
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -137,7 +139,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setColorAtta
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:546
+//@line:548
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		 // code for simple past value 
@@ -149,7 +151,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setColorAtta
 static inline jint wrapped_Java_bor_vulkan_structs_VkSubpassDescription_getColorAttachmentCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:556
+//@line:558
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  return (jint) (vkObj->colorAttachmentCount);
@@ -170,11 +172,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPColorAtt
 	char* _pColorAttachments = (char*)(obj__pColorAttachments?env->GetDirectBufferAddress(obj__pColorAttachments) : NULL);
 
 
-//@line:565
+//@line:567
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pColorAttachments = (const VkAttachmentReference*) (_pColorAttachments);
+		 // code for Buffer - ptr to ptr 
+		 const VkAttachmentReference* p_pColorAttachments = ( VkAttachmentReference*) _pColorAttachments; 
+		 vkObj->pColorAttachments = p_pColorAttachments; 
 	  
 
 }
@@ -182,7 +185,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPColorAtt
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSubpassDescription_getPColorAttachments0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:575
+//@line:578
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -204,11 +207,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPResolveA
 	char* _pResolveAttachments = (char*)(obj__pResolveAttachments?env->GetDirectBufferAddress(obj__pResolveAttachments) : NULL);
 
 
-//@line:585
+//@line:588
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pResolveAttachments = (const VkAttachmentReference*) (_pResolveAttachments);
+		 // code for Buffer - ptr to ptr 
+		 const VkAttachmentReference* p_pResolveAttachments = ( VkAttachmentReference*) _pResolveAttachments; 
+		 vkObj->pResolveAttachments = p_pResolveAttachments; 
 	  
 
 }
@@ -216,7 +220,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPResolveA
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSubpassDescription_getPResolveAttachments0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:595
+//@line:599
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -238,11 +242,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPDepthSte
 	char* _pDepthStencilAttachment = (char*)(obj__pDepthStencilAttachment?env->GetDirectBufferAddress(obj__pDepthStencilAttachment) : NULL);
 
 
-//@line:605
+//@line:609
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pDepthStencilAttachment = (const VkAttachmentReference*) (_pDepthStencilAttachment);
+		 // code for Buffer - ptr to ptr 
+		 const VkAttachmentReference* p_pDepthStencilAttachment = ( VkAttachmentReference*) _pDepthStencilAttachment; 
+		 vkObj->pDepthStencilAttachment = p_pDepthStencilAttachment; 
 	  
 
 }
@@ -250,7 +255,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPDepthSte
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSubpassDescription_getPDepthStencilAttachment0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:615
+//@line:620
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  // generic get for Buffer 
@@ -271,7 +276,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPreserveA
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:625
+//@line:630
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		 // code for simple past value 
@@ -283,7 +288,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPreserveA
 static inline jint wrapped_Java_bor_vulkan_structs_VkSubpassDescription_getPreserveAttachmentCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:635
+//@line:640
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  return (jint) (vkObj->preserveAttachmentCount);
@@ -302,21 +307,21 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkSubpassDescription_getPreserveA
 static inline void wrapped_Java_bor_vulkan_structs_VkSubpassDescription_setPPreserveAttachments0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pPreserveAttachments, unsigned char* ptr, int* _pPreserveAttachments) {
 
-//@line:644
+//@line:649
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
-		 // code for generic array 
-		  if( NULL == _pPreserveAttachments ){
-		    vkObj->preserveAttachmentCount = 0;
-		    FREE_IT(vkObj->pPreserveAttachments);
+		 // code for generic array assignment 
+		 uint32_t* temp = const_cast<uint32_t*>(vkObj->pPreserveAttachments);
+		 if(temp) { free(temp); } 
+		 vkObj->pPreserveAttachments = NULL; 
+		 if( _pPreserveAttachments == NULL){ 
+		    vkObj->preserveAttachmentCount = 0; 
 		     return;
-		   }
-		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pPreserveAttachments);
-		  if( vkObj->preserveAttachmentCount != count){ 
-		    FREE_IT(vkObj->pPreserveAttachments); 
-		    vkObj->pPreserveAttachments = CALLOC(count, uint32_t);
-		   }
-		  memcpy( vkObj->pPreserveAttachments, _pPreserveAttachments, count * sizeof(uint32_t));
+		  }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pPreserveAttachments); 
+		  temp = CALLOC(count, uint32_t); 
+		  memcpy( temp, _pPreserveAttachments, count * sizeof(uint32_t)); 
+		  vkObj->pPreserveAttachments = temp; 
 		  vkObj->preserveAttachmentCount = count;
 	  
 }
@@ -337,7 +342,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPPreserve
 static inline jintArray wrapped_Java_bor_vulkan_structs_VkSubpassDescription_getPPreserveAttachments0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pPreserveAttachments, unsigned char* ptr, int* _pPreserveAttachments) {
 
-//@line:665
+//@line:670
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  // generic get for C type array, with content copy 

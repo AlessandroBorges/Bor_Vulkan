@@ -1692,7 +1692,7 @@ static inline jintArray wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_g
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  // fixed length array  
 		  memcpy(&_maxComputeWorkGroupCount, &(vkObj->maxComputeWorkGroupCount), 3 * sizeof(uint32_t));
-		  return _maxComputeWorkGroupCount;
+		  return obj__maxComputeWorkGroupCount;
 	 
 }
 
@@ -1766,7 +1766,7 @@ static inline jintArray wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_g
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  // fixed length array  
 		  memcpy(&_maxComputeWorkGroupSize, &(vkObj->maxComputeWorkGroupSize), 3 * sizeof(uint32_t));
-		  return _maxComputeWorkGroupSize;
+		  return obj__maxComputeWorkGroupSize;
 	 
 }
 
@@ -2064,7 +2064,7 @@ static inline jintArray wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits_g
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  // fixed length array  
 		  memcpy(&_maxViewportDimensions, &(vkObj->maxViewportDimensions), 2 * sizeof(uint32_t));
-		  return _maxViewportDimensions;
+		  return obj__maxViewportDimensions;
 	 
 }
 
@@ -2106,7 +2106,7 @@ static inline jfloatArray wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  // fixed length array  
 		  memcpy(&_viewportBoundsRange, &(vkObj->viewportBoundsRange), 2 * sizeof(float));
-		  return _viewportBoundsRange;
+		  return obj__viewportBoundsRange;
 	 
 }
 
@@ -3172,7 +3172,7 @@ static inline jfloatArray wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  // fixed length array  
 		  memcpy(&_pointSizeRange, &(vkObj->pointSizeRange), 2 * sizeof(float));
-		  return _pointSizeRange;
+		  return obj__pointSizeRange;
 	 
 }
 
@@ -3214,7 +3214,7 @@ static inline jfloatArray wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceLimits
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  // fixed length array  
 		  memcpy(&_lineWidthRange, &(vkObj->lineWidthRange), 2 * sizeof(float));
-		  return _lineWidthRange;
+		  return obj__lineWidthRange;
 	 
 }
 

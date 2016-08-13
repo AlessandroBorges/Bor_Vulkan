@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkSurfaceFormatKHR_getFormat0
 //@line:192
 
 		  VkSurfaceFormatKHR* vkObj = (VkSurfaceFormatKHR*)(ptr);
-		  return (VkFormat) (vkObj->format);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->format);
 	 
 }
 
@@ -39,7 +40,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSurfaceFormatKHR_setColorSpace0
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:201
+//@line:202
 
 		  VkSurfaceFormatKHR* vkObj = (VkSurfaceFormatKHR*)(ptr);
 		 // code for simple past value 
@@ -51,10 +52,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSurfaceFormatKHR_setColorSpace0
 static inline jint wrapped_Java_bor_vulkan_structs_VkSurfaceFormatKHR_getColorSpace0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:211
+//@line:212
 
 		  VkSurfaceFormatKHR* vkObj = (VkSurfaceFormatKHR*)(ptr);
-		  return (VkColorSpaceKHR) (vkObj->colorSpace);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->colorSpace);
 	 
 }
 

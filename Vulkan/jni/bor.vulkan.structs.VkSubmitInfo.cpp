@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkSubmitInfo_getSType0
 //@line:447
 
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubmitInfo_setPNext0(JNIEnv* en
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:456
+//@line:457
 
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubmitInfo_setPNext0(JNIEnv* en
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSubmitInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:466
+//@line:468
 
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubmitInfo_setWaitSemaphoreCoun
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:476
+//@line:478
 
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		 // code for simple past value 
@@ -85,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubmitInfo_setWaitSemaphoreCoun
 static inline jint wrapped_Java_bor_vulkan_structs_VkSubmitInfo_getWaitSemaphoreCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:486
+//@line:488
 
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  return (jint) (vkObj->waitSemaphoreCount);
@@ -106,11 +108,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubmitInfo_setPWaitSemaphores0(
 	char* _pWaitSemaphores = (char*)(obj__pWaitSemaphores?env->GetDirectBufferAddress(obj__pWaitSemaphores) : NULL);
 
 
-//@line:495
+//@line:497
 
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pWaitSemaphores = (const VkSemaphore*) (_pWaitSemaphores);
+		 // code for Buffer - ptr to ptr 
+		 const VkSemaphore* p_pWaitSemaphores = ( VkSemaphore*) _pWaitSemaphores; 
+		 vkObj->pWaitSemaphores = p_pWaitSemaphores; 
 	  
 
 }
@@ -118,7 +121,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubmitInfo_setPWaitSemaphores0(
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSubmitInfo_getPWaitSemaphores0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:505
+//@line:508
 
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -138,21 +141,21 @@ JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkSubmitInfo_getPWaitSemaphores0
 static inline void wrapped_Java_bor_vulkan_structs_VkSubmitInfo_setPWaitDstStageMask0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pWaitDstStageMask, unsigned char* ptr, int* _pWaitDstStageMask) {
 
-//@line:515
+//@line:518
 
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		 // code for generic array 
-		  if( NULL == _pWaitDstStageMask ){
-		    vkObj->waitSemaphoreCount = 0;
-		    FREE_IT(vkObj->pWaitDstStageMask);
+		 // code for generic array assignment 
+		 VkPipelineStageFlags* temp = const_cast<VkPipelineStageFlags*>(vkObj->pWaitDstStageMask);
+		 if(temp) { free(temp); } 
+		 vkObj->pWaitDstStageMask = NULL; 
+		 if( _pWaitDstStageMask == NULL){ 
+		    vkObj->waitSemaphoreCount = 0; 
 		     return;
-		   }
-		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pWaitDstStageMask);
-		  if( vkObj->waitSemaphoreCount != count){ 
-		    FREE_IT(vkObj->pWaitDstStageMask); 
-		    vkObj->pWaitDstStageMask = CALLOC(count, VkPipelineStageFlags);
-		   }
-		  memcpy( vkObj->pWaitDstStageMask, _pWaitDstStageMask, count * sizeof(VkPipelineStageFlags));
+		  }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pWaitDstStageMask); 
+		  temp = CALLOC(count, VkPipelineStageFlags); 
+		  memcpy( temp, _pWaitDstStageMask, count * sizeof(VkPipelineStageFlags)); 
+		  vkObj->pWaitDstStageMask = temp; 
 		  vkObj->waitSemaphoreCount = count;
 	  
 }
@@ -173,7 +176,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubmitInfo_setPWaitDstStageMask
 static inline jintArray wrapped_Java_bor_vulkan_structs_VkSubmitInfo_getPWaitDstStageMask0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pWaitDstStageMask, unsigned char* ptr, int* _pWaitDstStageMask) {
 
-//@line:536
+//@line:539
 
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  // generic get for C type array, with content copy 
@@ -206,7 +209,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubmitInfo_setCommandBufferCoun
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:554
+//@line:557
 
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		 // code for simple past value 
@@ -218,7 +221,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubmitInfo_setCommandBufferCoun
 static inline jint wrapped_Java_bor_vulkan_structs_VkSubmitInfo_getCommandBufferCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:564
+//@line:567
 
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  return (jint) (vkObj->commandBufferCount);
@@ -239,11 +242,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubmitInfo_setPCommandBuffers0(
 	char* _pCommandBuffers = (char*)(obj__pCommandBuffers?env->GetDirectBufferAddress(obj__pCommandBuffers) : NULL);
 
 
-//@line:573
+//@line:576
 
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pCommandBuffers = (const VkCommandBuffer*) (_pCommandBuffers);
+		 // code for Buffer - ptr to ptr 
+		 const VkCommandBuffer* p_pCommandBuffers = ( VkCommandBuffer*) _pCommandBuffers; 
+		 vkObj->pCommandBuffers = p_pCommandBuffers; 
 	  
 
 }
@@ -251,7 +255,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubmitInfo_setPCommandBuffers0(
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSubmitInfo_getPCommandBuffers0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:583
+//@line:587
 
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -272,7 +276,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubmitInfo_setSignalSemaphoreCo
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:593
+//@line:597
 
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		 // code for simple past value 
@@ -284,7 +288,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubmitInfo_setSignalSemaphoreCo
 static inline jint wrapped_Java_bor_vulkan_structs_VkSubmitInfo_getSignalSemaphoreCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:603
+//@line:607
 
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  return (jint) (vkObj->signalSemaphoreCount);
@@ -305,11 +309,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubmitInfo_setPSignalSemaphores
 	char* _pSignalSemaphores = (char*)(obj__pSignalSemaphores?env->GetDirectBufferAddress(obj__pSignalSemaphores) : NULL);
 
 
-//@line:612
+//@line:616
 
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pSignalSemaphores = (const VkSemaphore*) (_pSignalSemaphores);
+		 // code for Buffer - ptr to ptr 
+		 const VkSemaphore* p_pSignalSemaphores = ( VkSemaphore*) _pSignalSemaphores; 
+		 vkObj->pSignalSemaphores = p_pSignalSemaphores; 
 	  
 
 }
@@ -317,7 +322,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubmitInfo_setPSignalSemaphores
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSubmitInfo_getPSignalSemaphores0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:622
+//@line:627
 
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 

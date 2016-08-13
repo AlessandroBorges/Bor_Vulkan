@@ -22,7 +22,8 @@ static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineRasterizationStateC
 //@line:543
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 
 }
 
@@ -40,11 +41,12 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:552
+//@line:553
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  
 
 }
@@ -52,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineRasterizationStateCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:562
+//@line:564
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -73,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:572
+//@line:574
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -85,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineRasterizationStateCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:582
+//@line:584
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -105,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:591
+//@line:593
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -117,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPipelineRasterizationStateCreateInfo_getDepthClampEnable0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:601
+//@line:603
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->depthClampEnable);
@@ -137,7 +139,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:610
+//@line:612
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -149,7 +151,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPipelineRasterizationStateCreateInfo_getRasterizerDiscardEnable0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:620
+//@line:622
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->rasterizerDiscardEnable);
@@ -169,7 +171,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:629
+//@line:631
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -181,10 +183,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineRasterizationStateCreateInfo_getPolygonMode0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:639
+//@line:641
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
-		  return (VkPolygonMode) (vkObj->polygonMode);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->polygonMode);
 	 
 }
 
@@ -201,7 +204,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:648
+//@line:651
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -213,7 +216,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineRasterizationStateCreateInfo_getCullMode0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:658
+//@line:661
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->cullMode);
@@ -233,7 +236,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:667
+//@line:670
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -245,10 +248,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineRasterizationStateCreateInfo_getFrontFace0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:677
+//@line:680
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
-		  return (VkFrontFace) (vkObj->frontFace);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->frontFace);
 	 
 }
 
@@ -265,7 +269,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:686
+//@line:690
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -277,7 +281,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPipelineRasterizationStateCreateInfo_getDepthBiasEnable0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:696
+//@line:700
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->depthBiasEnable);
@@ -297,7 +301,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:705
+//@line:709
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -309,7 +313,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 static inline jfloat wrapped_Java_bor_vulkan_structs_VkPipelineRasterizationStateCreateInfo_getDepthBiasConstantFactor0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:715
+//@line:719
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->depthBiasConstantFactor);
@@ -329,7 +333,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:724
+//@line:728
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -341,7 +345,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 static inline jfloat wrapped_Java_bor_vulkan_structs_VkPipelineRasterizationStateCreateInfo_getDepthBiasClamp0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:734
+//@line:738
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->depthBiasClamp);
@@ -361,7 +365,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:743
+//@line:747
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -373,7 +377,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 static inline jfloat wrapped_Java_bor_vulkan_structs_VkPipelineRasterizationStateCreateInfo_getDepthBiasSlopeFactor0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:753
+//@line:757
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->depthBiasSlopeFactor);
@@ -393,7 +397,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:762
+//@line:766
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -405,7 +409,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineRasterizationStateCreat
 static inline jfloat wrapped_Java_bor_vulkan_structs_VkPipelineRasterizationStateCreateInfo_getLineWidth0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:772
+//@line:776
 
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->lineWidth);
