@@ -273,8 +273,9 @@
 	 */ 
 	 private static native void setPMapEntries0(Buffer ptr, java.nio.ByteBuffer  _pMapEntries);/*
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pMapEntries = (const VkSpecializationMapEntry*) (_pMapEntries);
+		 // code for Buffer - ptr to ptr 
+		 const VkSpecializationMapEntry* p_pMapEntries = ( VkSpecializationMapEntry*) _pMapEntries; 
+		 vkObj->pMapEntries = p_pMapEntries; 
 	  */
 
 	/**
@@ -312,8 +313,9 @@
 	 */ 
 	 private static native void setPData0(Buffer ptr, java.nio.Buffer _pData);/*
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pData = (const void*) (_pData);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pData = ( void*) _pData; 
+		 vkObj->pData = p_pData; 
 	  */
 
 	/**

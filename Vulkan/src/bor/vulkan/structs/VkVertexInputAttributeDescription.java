@@ -288,9 +288,10 @@
 	 * Native GET method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
-	 private static native int  getFormat0(Buffer ptr);/*
+	 private static native int getFormat0(Buffer ptr);/*
 		  VkVertexInputAttributeDescription* vkObj = (VkVertexInputAttributeDescription*)(ptr);
-		  return (VkFormat) (vkObj->format);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->format);
 	 */
 
 	/**

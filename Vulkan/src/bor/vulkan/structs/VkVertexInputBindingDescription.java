@@ -257,9 +257,10 @@
 	 * Native GET method for field inputRate	[vkenum]<br>
 	 * Prototype: VkVertexInputRate  inputRate
 	 */ 
-	 private static native int  getInputRate0(Buffer ptr);/*
+	 private static native int getInputRate0(Buffer ptr);/*
 		  VkVertexInputBindingDescription* vkObj = (VkVertexInputBindingDescription*)(ptr);
-		  return (VkVertexInputRate) (vkObj->inputRate);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->inputRate);
 	 */
 
 

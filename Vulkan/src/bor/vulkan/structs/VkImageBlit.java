@@ -155,6 +155,25 @@
 		 return this.srcSubresource;
 	 }
 
+// #Included setSrcOffsets
+
+   /**
+    * pointers to srcOffsets
+    */
+    private long[] srcOffsetsPtr = new long[2];
+
+
+    /**
+     * Copy VkOffset3D
+     * @param dst destination
+     * @param src source
+     */
+    private void copy(VkOffset3D dst, VkOffset3D src) {
+         dst.x(src.x);
+         dst.y(src.y);
+         dst.z(src.z);
+    }
+     
 	/**
 	 * Set method for field srcOffsets	[vkstruct_array]<br>
 	 * Prototype: VkOffset3D[]  srcOffsets
@@ -162,29 +181,39 @@
 	 * @param srcOffsets - a instance of VkOffset3D[].
 	 * @return this VkStruct instance.
 	 */ 
-	 public VkImageBlit srcOffsets(VkOffset3D[] srcOffsets){
-		 this.srcOffsetsBUFFER = new BigBuffer(srcOffsets, VkOffset3D.getID());
-		 setSrcOffsets0(this.ptr, srcOffsetsBUFFER.getBuffer());
-		 return this;
+	 public VkImageBlit srcOffsets(VkOffset3D[] srcOffsetsNew){
+	     if(this.srcOffsets[0] == null){
+                 getSrcOffsets0(ptr, srcOffsetsPtr);
+             }
+             if(srcOffsets[0] != srcOffsetsNew[0]){
+                 copy(srcOffsets[0] , srcOffsetsNew[0]);
+             }
+             
+             if(srcOffsets[1] != srcOffsetsNew[1]){
+                 copy(srcOffsets[1] , srcOffsetsNew[1]);
+             }
+       return this;
 	 }
+	
 
+//#END Set Included
+
+// #Included getSrcOffsets0
+    
 	/**
-	 * Get method for field srcOffsets	[vkstruct_array]<br>
-	 * Prototype: VkOffset3D[]  srcOffsets
-	 */ 
-	 public VkOffset3D[] srcOffsets(){
-		 long ptr = getSrcOffsets0(this.ptr);
-		 if(ptr == 0L){
-		    return null;
-		 }
-		 if(srcOffsetsBUFFER != null && ptr == srcOffsetsBUFFER.getBufferAddress()){ //same buffer 
-		    srcOffsetsBUFFER.update();
-		    return srcOffsets;
-		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
-		   }
-		 return this.srcOffsets;
-	 }
+     * Get method for field dstOffsets      [vkstruct_array]<br>
+     * Prototype: VkOffset3D[]  dstOffsets
+     */ 
+     public VkOffset3D[] srcOffsets(){
+            getDstOffsets0(ptr, srcOffsetsPtr);             
+            if(this.srcOffsets[0] == null)
+                    srcOffsets[0] = new VkOffset3D(srcOffsetsPtr[0]);           
+            if(this.srcOffsets[1] == null)
+                    srcOffsets[1] = new VkOffset3D(srcOffsetsPtr[1]);
+            return this.srcOffsets;
+    }
+
+//#END get
 
 	/**
 	 * Set method for field dstSubresource	[vkstruct]<br>
@@ -219,36 +248,51 @@
 		 return this.dstSubresource;
 	 }
 
-	/**
+// #Included setDstOffsets
+    /**
 	 * Set method for field dstOffsets	[vkstruct_array]<br>
 	 * Prototype: VkOffset3D[]  dstOffsets
 	 * 
 	 * @param dstOffsets - a instance of VkOffset3D[].
 	 * @return this VkStruct instance.
 	 */ 
-	 public VkImageBlit dstOffsets(VkOffset3D[] dstOffsets){
-		 this.dstOffsetsBUFFER = new BigBuffer(dstOffsets, VkOffset3D.getID());
-		 setDstOffsets0(this.ptr, dstOffsetsBUFFER.getBuffer());
-		 return this;
+	 public VkImageBlit dstOffsets(VkOffset3D[] dstOffsetsNew){
+        	 if(this.dstOffsets[0] == null){
+		     getDstOffsets0(ptr, dstOffsetsPtr);
+		 }
+		 if(dstOffsets[0] != dstOffsetsNew[0]){
+		     copy(dstOffsets[0] , dstOffsetsNew[0]);
+		 }
+		 
+		 if(dstOffsets[1] != dstOffsetsNew[1]){
+                     copy(dstOffsets[1] , dstOffsetsNew[1]);
+                 }
+	      return this;
 	 }
 
+
+//#END Set Included
+
+// #Included getDstOffsets0
+    /**
+	 * pointers to native dstOffset structs 
+	 */
+     private long[] dstOffsetsPtr = new long[2]; 
 	/**
 	 * Get method for field dstOffsets	[vkstruct_array]<br>
 	 * Prototype: VkOffset3D[]  dstOffsets
 	 */ 
 	 public VkOffset3D[] dstOffsets(){
-		 long ptr = getDstOffsets0(this.ptr);
-		 if(ptr == 0L){
-		    return null;
-		 }
-		 if(dstOffsetsBUFFER != null && ptr == dstOffsetsBUFFER.getBufferAddress()){ //same buffer 
-		    dstOffsetsBUFFER.update();
-		    return dstOffsets;
-		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
-		   }
-		 return this.dstOffsets;
-	 }
+	    getDstOffsets0(ptr, dstOffsetsPtr);		 
+	    if(this.dstOffsets[0] == null)
+		     dstOffsets[0] = new VkOffset3D(dstOffsetsPtr[0]);		 
+		if(this.dstOffsets[1] == null)
+             dstOffsets[1] = new VkOffset3D(dstOffsetsPtr[1]);
+		return this.dstOffsets;
+	 }    
+     
+
+//#END get
 
 
    /* (non-Javadoc)
@@ -279,8 +323,9 @@
 	 */ 
 	 private static native void setSrcSubresource0(Buffer ptr, java.nio.ByteBuffer  _srcSubresource);/*
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->srcSubresource = (VkImageSubresourceLayers) (_srcSubresource);
+		 // code for Buffer - ptr to struct 
+		 VkImageSubresourceLayers* p_srcSubresource = (VkImageSubresourceLayers*) _srcSubresource; 
+		 vkObj->srcSubresource = (*p_srcSubresource); 
 	  */
 
 	/**
@@ -293,25 +338,28 @@
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->srcSubresource);
 	 */
 
-	/**
+   /**
 	 * Native SET method for field srcOffsets	[vkstruct_array]<br>
 	 * Prototype: VkOffset3D[]  srcOffsets
 	 */ 
-	 private static native void setSrcOffsets0(Buffer ptr, java.nio.ByteBuffer  _srcOffsets);/*
-		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->srcOffsets = (VkOffset3D[]) (_srcOffsets);
+	 private static native void setSrcOffsets0(Buffer ptr, java.nio.ByteBuffer  _off0, java.nio.ByteBuffer _off1);/*
+		 VkImageBlit* vkObj = (VkImageBlit*)(ptr);		 
+		 VkOffset3D* off0 = (VkOffset3D*) _off0;
+		 VkOffset3D* off1 = (VkOffset3D*) _off1;		  
+		 vkObj->srcOffsets[0] = (*off0);
+		 vkObj->srcOffsets[1] = (*off1); 
 	  */
+
 
 	/**
 	 * Native GET method for field srcOffsets	[vkstruct_array]<br>
 	 * Prototype: VkOffset3D[]  srcOffsets
 	 */ 
-	 private static native long getSrcOffsets0(Buffer ptr);/*
-		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->srcOffsets );
-	 */
+	 private static native void getSrcOffsets0(Buffer ptr, long[] offs);/*
+             VkImageBlit* vkObj = (VkImageBlit*)(ptr);               
+             offs[0] = reinterpret_cast<jlong>(&vkObj->srcOffsets[0]);
+             offs[1] = reinterpret_cast<jlong>(&vkObj->srcOffsets[1]);
+         */
 
 	/**
 	 * Native SET method for field dstSubresource	[vkstruct]<br>
@@ -319,8 +367,9 @@
 	 */ 
 	 private static native void setDstSubresource0(Buffer ptr, java.nio.ByteBuffer  _dstSubresource);/*
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->dstSubresource = (VkImageSubresourceLayers) (_dstSubresource);
+		 // code for Buffer - ptr to struct 
+		 VkImageSubresourceLayers* p_dstSubresource = (VkImageSubresourceLayers*) _dstSubresource; 
+		 vkObj->dstSubresource = (*p_dstSubresource); 
 	  */
 
 	/**
@@ -333,25 +382,30 @@
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->dstSubresource);
 	 */
 
-	/**
+    /**
 	 * Native SET method for field dstOffsets	[vkstruct_array]<br>
 	 * Prototype: VkOffset3D[]  dstOffsets
 	 */ 
-	 private static native void setDstOffsets0(Buffer ptr, java.nio.ByteBuffer  _dstOffsets);/*
-		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->dstOffsets = (VkOffset3D[]) (_dstOffsets);
-	  */
+	 private static native void setDstOffsets0(Buffer ptr, java.nio.ByteBuffer  _off0, java.nio.ByteBuffer _off1);/*
+             VkImageBlit* vkObj = (VkImageBlit*)(ptr);               
+             VkOffset3D* off0 = (VkOffset3D*) _off0;
+             VkOffset3D* off1 = (VkOffset3D*) _off1;                  
+             vkObj->dstOffsets[0] = (*off0);
+             vkObj->dstOffsets[1] = (*off1); 
+         */
+         
 
 	/**
 	 * Native GET method for field dstOffsets	[vkstruct_array]<br>
 	 * Prototype: VkOffset3D[]  dstOffsets
 	 */ 
-	 private static native long getDstOffsets0(Buffer ptr);/*
-		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->dstOffsets );
-	 */
+	 private static native long getDstOffsets0(Buffer ptr, long[] offs);/*
+             VkImageBlit* vkObj = (VkImageBlit*)(ptr);               
+             offs[0] = reinterpret_cast<jlong>(&vkObj->dstOffsets[0]);
+             offs[1] = reinterpret_cast<jlong>(&vkObj->dstOffsets[1]);
+         */  
+
+
 
 
 

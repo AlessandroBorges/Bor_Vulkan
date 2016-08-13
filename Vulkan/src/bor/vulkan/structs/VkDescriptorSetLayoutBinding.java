@@ -310,9 +310,10 @@
 	 * Native GET method for field descriptorType	[vkenum]<br>
 	 * Prototype: VkDescriptorType  descriptorType
 	 */ 
-	 private static native int  getDescriptorType0(Buffer ptr);/*
+	 private static native int getDescriptorType0(Buffer ptr);/*
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
-		  return (VkDescriptorType) (vkObj->descriptorType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->descriptorType);
 	 */
 
 	/**
@@ -359,8 +360,9 @@
 	 */ 
 	 private static native void setPImmutableSamplers0(Buffer ptr, ByteBuffer  _pImmutableSamplers);/*
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pImmutableSamplers = (const VkSampler*) (_pImmutableSamplers);
+		 // code for Buffer - ptr to ptr 
+		 const VkSampler* p_pImmutableSamplers = ( VkSampler*) _pImmutableSamplers; 
+		 vkObj->pImmutableSamplers = p_pImmutableSamplers; 
 	  */
 
 	/**

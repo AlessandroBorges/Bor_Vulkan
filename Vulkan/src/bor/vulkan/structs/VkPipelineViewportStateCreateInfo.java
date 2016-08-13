@@ -372,9 +372,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -383,8 +384,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -441,8 +443,9 @@
 	 */ 
 	 private static native void setPViewports0(Buffer ptr, java.nio.ByteBuffer  _pViewports);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pViewports = (const VkViewport*) (_pViewports);
+		 // code for Buffer - ptr to ptr 
+		 const VkViewport* p_pViewports = ( VkViewport*) _pViewports; 
+		 vkObj->pViewports = p_pViewports; 
 	  */
 
 	/**
@@ -480,8 +483,9 @@
 	 */ 
 	 private static native void setPScissors0(Buffer ptr, java.nio.ByteBuffer  _pScissors);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pScissors = (const VkRect2D*) (_pScissors);
+		 // code for Buffer - ptr to ptr 
+		 const VkRect2D* p_pScissors = ( VkRect2D*) _pScissors; 
+		 vkObj->pScissors = p_pScissors; 
 	  */
 
 	/**

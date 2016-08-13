@@ -346,9 +346,10 @@
 	 * Native GET method for field failOp	[vkenum]<br>
 	 * Prototype: VkStencilOp  failOp
 	 */ 
-	 private static native int  getFailOp0(Buffer ptr);/*
+	 private static native int getFailOp0(Buffer ptr);/*
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
-		  return (VkStencilOp) (vkObj->failOp);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->failOp);
 	 */
 
 	/**
@@ -365,9 +366,10 @@
 	 * Native GET method for field passOp	[vkenum]<br>
 	 * Prototype: VkStencilOp  passOp
 	 */ 
-	 private static native int  getPassOp0(Buffer ptr);/*
+	 private static native int getPassOp0(Buffer ptr);/*
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
-		  return (VkStencilOp) (vkObj->passOp);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->passOp);
 	 */
 
 	/**
@@ -384,9 +386,10 @@
 	 * Native GET method for field depthFailOp	[vkenum]<br>
 	 * Prototype: VkStencilOp  depthFailOp
 	 */ 
-	 private static native int  getDepthFailOp0(Buffer ptr);/*
+	 private static native int getDepthFailOp0(Buffer ptr);/*
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
-		  return (VkStencilOp) (vkObj->depthFailOp);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->depthFailOp);
 	 */
 
 	/**
@@ -403,9 +406,10 @@
 	 * Native GET method for field compareOp	[vkenum]<br>
 	 * Prototype: VkCompareOp  compareOp
 	 */ 
-	 private static native int  getCompareOp0(Buffer ptr);/*
+	 private static native int getCompareOp0(Buffer ptr);/*
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
-		  return (VkCompareOp) (vkObj->compareOp);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->compareOp);
 	 */
 
 	/**

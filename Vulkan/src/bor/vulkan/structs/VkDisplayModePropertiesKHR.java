@@ -220,8 +220,9 @@
 	 */ 
 	 private static native void setParameters0(Buffer ptr, java.nio.ByteBuffer  _parameters);/*
 		  VkDisplayModePropertiesKHR* vkObj = (VkDisplayModePropertiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->parameters = (VkDisplayModeParametersKHR) (_parameters);
+		 // code for Buffer - ptr to struct 
+		 VkDisplayModeParametersKHR* p_parameters = (VkDisplayModeParametersKHR*) _parameters; 
+		 vkObj->parameters = (*p_parameters); 
 	  */
 
 	/**

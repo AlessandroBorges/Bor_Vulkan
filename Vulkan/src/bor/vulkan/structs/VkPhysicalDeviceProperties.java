@@ -508,9 +508,10 @@
 	 * Native GET method for field deviceType	[vkenum]<br>
 	 * Prototype: VkPhysicalDeviceType  deviceType
 	 */ 
-	 private static native int  getDeviceType0(Buffer ptr);/*
+	 private static native int getDeviceType0(Buffer ptr);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  return (VkPhysicalDeviceType) (vkObj->deviceType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->deviceType);
 	 */
 
 	/**
@@ -549,7 +550,7 @@
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
 		  // fixed length array  
 		  memcpy(&_pipelineCacheUUID, &(vkObj->pipelineCacheUUID), VK_UUID_SIZE * sizeof(uint8_t));
-		  return _pipelineCacheUUID;
+		  return obj__pipelineCacheUUID;
 	 */
 
 	/**
@@ -558,8 +559,9 @@
 	 */ 
 	 private static native void setLimits0(Buffer ptr, java.nio.ByteBuffer  _limits);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->limits = (VkPhysicalDeviceLimits) (_limits);
+		 // code for Buffer - ptr to struct 
+		 VkPhysicalDeviceLimits* p_limits = (VkPhysicalDeviceLimits*) _limits; 
+		 vkObj->limits = (*p_limits); 
 	  */
 
 	/**
@@ -578,8 +580,9 @@
 	 */ 
 	 private static native void setSparseProperties0(Buffer ptr, java.nio.ByteBuffer  _sparseProperties);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->sparseProperties = (VkPhysicalDeviceSparseProperties) (_sparseProperties);
+		 // code for Buffer - ptr to struct 
+		 VkPhysicalDeviceSparseProperties* p_sparseProperties = (VkPhysicalDeviceSparseProperties*) _sparseProperties; 
+		 vkObj->sparseProperties = (*p_sparseProperties); 
 	  */
 
 	/**

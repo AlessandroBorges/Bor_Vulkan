@@ -496,8 +496,9 @@
 	 */ 
 	 private static native void setCurrentExtent0(Buffer ptr, java.nio.ByteBuffer  _currentExtent);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->currentExtent = (VkExtent2D) (_currentExtent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent2D* p_currentExtent = (VkExtent2D*) _currentExtent; 
+		 vkObj->currentExtent = (*p_currentExtent); 
 	  */
 
 	/**
@@ -516,8 +517,9 @@
 	 */ 
 	 private static native void setMinImageExtent0(Buffer ptr, java.nio.ByteBuffer  _minImageExtent);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->minImageExtent = (VkExtent2D) (_minImageExtent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent2D* p_minImageExtent = (VkExtent2D*) _minImageExtent; 
+		 vkObj->minImageExtent = (*p_minImageExtent); 
 	  */
 
 	/**
@@ -536,8 +538,9 @@
 	 */ 
 	 private static native void setMaxImageExtent0(Buffer ptr, java.nio.ByteBuffer  _maxImageExtent);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->maxImageExtent = (VkExtent2D) (_maxImageExtent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent2D* p_maxImageExtent = (VkExtent2D*) _maxImageExtent; 
+		 vkObj->maxImageExtent = (*p_maxImageExtent); 
 	  */
 
 	/**
@@ -602,9 +605,10 @@
 	 * Native GET method for field currentTransform	[vkenum]<br>
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  currentTransform
 	 */ 
-	 private static native int  getCurrentTransform0(Buffer ptr);/*
+	 private static native int getCurrentTransform0(Buffer ptr);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
-		  return (VkSurfaceTransformFlagBitsKHR) (vkObj->currentTransform);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->currentTransform);
 	 */
 
 	/**

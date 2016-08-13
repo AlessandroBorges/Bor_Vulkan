@@ -731,9 +731,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -742,8 +743,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -828,9 +830,10 @@
 	 * Native GET method for field imageFormat	[vkenum]<br>
 	 * Prototype: VkFormat  imageFormat
 	 */ 
-	 private static native int  getImageFormat0(Buffer ptr);/*
+	 private static native int getImageFormat0(Buffer ptr);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
-		  return (VkFormat) (vkObj->imageFormat);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->imageFormat);
 	 */
 
 	/**
@@ -847,9 +850,10 @@
 	 * Native GET method for field imageColorSpace	[vkenum]<br>
 	 * Prototype: VkColorSpaceKHR  imageColorSpace
 	 */ 
-	 private static native int  getImageColorSpace0(Buffer ptr);/*
+	 private static native int getImageColorSpace0(Buffer ptr);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
-		  return (VkColorSpaceKHR) (vkObj->imageColorSpace);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->imageColorSpace);
 	 */
 
 	/**
@@ -858,8 +862,9 @@
 	 */ 
 	 private static native void setImageExtent0(Buffer ptr, java.nio.ByteBuffer  _imageExtent);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->imageExtent = (VkExtent2D) (_imageExtent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent2D* p_imageExtent = (VkExtent2D*) _imageExtent; 
+		 vkObj->imageExtent = (*p_imageExtent); 
 	  */
 
 	/**
@@ -924,9 +929,10 @@
 	 * Native GET method for field imageSharingMode	[vkenum]<br>
 	 * Prototype: VkSharingMode  imageSharingMode
 	 */ 
-	 private static native int  getImageSharingMode0(Buffer ptr);/*
+	 private static native int getImageSharingMode0(Buffer ptr);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
-		  return (VkSharingMode) (vkObj->imageSharingMode);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->imageSharingMode);
 	 */
 
 	/**
@@ -954,18 +960,18 @@
 	 */ 
 	 private static native void setPQueueFamilyIndices0(Buffer ptr, int[] _pQueueFamilyIndices);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
-		 // code for generic array 
-		  if( NULL == _pQueueFamilyIndices ){
-		    vkObj->queueFamilyIndexCount = 0;
-		    FREE_IT(vkObj->pQueueFamilyIndices);
+		 // code for generic array assignment 
+		 uint32_t* temp = const_cast<uint32_t*>(vkObj->pQueueFamilyIndices);
+		 if(temp) { free(temp); } 
+		 vkObj->pQueueFamilyIndices = NULL; 
+		 if( _pQueueFamilyIndices == NULL){ 
+		    vkObj->queueFamilyIndexCount = 0; 
 		     return;
-		   }
-		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pQueueFamilyIndices);
-		  if( vkObj->queueFamilyIndexCount != count){ 
-		    FREE_IT(vkObj->pQueueFamilyIndices); 
-		    vkObj->pQueueFamilyIndices = CALLOC(count, uint32_t);
-		   }
-		  memcpy( vkObj->pQueueFamilyIndices, _pQueueFamilyIndices, count * sizeof(uint32_t));
+		  }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pQueueFamilyIndices); 
+		  temp = CALLOC(count, uint32_t); 
+		  memcpy( temp, _pQueueFamilyIndices, count * sizeof(uint32_t)); 
+		  vkObj->pQueueFamilyIndices = temp; 
 		  vkObj->queueFamilyIndexCount = count;
 	  */
 
@@ -1001,9 +1007,10 @@
 	 * Native GET method for field preTransform	[vkenum]<br>
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  preTransform
 	 */ 
-	 private static native int  getPreTransform0(Buffer ptr);/*
+	 private static native int getPreTransform0(Buffer ptr);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
-		  return (VkSurfaceTransformFlagBitsKHR) (vkObj->preTransform);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->preTransform);
 	 */
 
 	/**
@@ -1020,9 +1027,10 @@
 	 * Native GET method for field compositeAlpha	[vkenum]<br>
 	 * Prototype: VkCompositeAlphaFlagBitsKHR  compositeAlpha
 	 */ 
-	 private static native int  getCompositeAlpha0(Buffer ptr);/*
+	 private static native int getCompositeAlpha0(Buffer ptr);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
-		  return (VkCompositeAlphaFlagBitsKHR) (vkObj->compositeAlpha);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->compositeAlpha);
 	 */
 
 	/**
@@ -1039,9 +1047,10 @@
 	 * Native GET method for field presentMode	[vkenum]<br>
 	 * Prototype: VkPresentModeKHR  presentMode
 	 */ 
-	 private static native int  getPresentMode0(Buffer ptr);/*
+	 private static native int getPresentMode0(Buffer ptr);/*
 		  VkSwapchainCreateInfoKHR* vkObj = (VkSwapchainCreateInfoKHR*)(ptr);
-		  return (VkPresentModeKHR) (vkObj->presentMode);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->presentMode);
 	 */
 
 	/**

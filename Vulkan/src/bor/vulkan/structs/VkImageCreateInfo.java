@@ -616,9 +616,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -627,8 +628,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -674,9 +676,10 @@
 	 * Native GET method for field imageType	[vkenum]<br>
 	 * Prototype: VkImageType  imageType
 	 */ 
-	 private static native int  getImageType0(Buffer ptr);/*
+	 private static native int getImageType0(Buffer ptr);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
-		  return (VkImageType) (vkObj->imageType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->imageType);
 	 */
 
 	/**
@@ -693,9 +696,10 @@
 	 * Native GET method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
-	 private static native int  getFormat0(Buffer ptr);/*
+	 private static native int getFormat0(Buffer ptr);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
-		  return (VkFormat) (vkObj->format);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->format);
 	 */
 
 	/**
@@ -704,8 +708,9 @@
 	 */ 
 	 private static native void setExtent0(Buffer ptr, java.nio.ByteBuffer  _extent);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->extent = (VkExtent3D) (_extent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent3D* p_extent = (VkExtent3D*) _extent; 
+		 vkObj->extent = (*p_extent); 
 	  */
 
 	/**
@@ -770,9 +775,10 @@
 	 * Native GET method for field samples	[vkenum]<br>
 	 * Prototype: VkSampleCountFlagBits  samples
 	 */ 
-	 private static native int  getSamples0(Buffer ptr);/*
+	 private static native int getSamples0(Buffer ptr);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
-		  return (VkSampleCountFlagBits) (vkObj->samples);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->samples);
 	 */
 
 	/**
@@ -789,9 +795,10 @@
 	 * Native GET method for field tiling	[vkenum]<br>
 	 * Prototype: VkImageTiling  tiling
 	 */ 
-	 private static native int  getTiling0(Buffer ptr);/*
+	 private static native int getTiling0(Buffer ptr);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
-		  return (VkImageTiling) (vkObj->tiling);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->tiling);
 	 */
 
 	/**
@@ -827,9 +834,10 @@
 	 * Native GET method for field sharingMode	[vkenum]<br>
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
-	 private static native int  getSharingMode0(Buffer ptr);/*
+	 private static native int getSharingMode0(Buffer ptr);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
-		  return (VkSharingMode) (vkObj->sharingMode);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sharingMode);
 	 */
 
 	/**
@@ -857,18 +865,18 @@
 	 */ 
 	 private static native void setPQueueFamilyIndices0(Buffer ptr, int[] _pQueueFamilyIndices);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
-		 // code for generic array 
-		  if( NULL == _pQueueFamilyIndices ){
-		    vkObj->queueFamilyIndexCount = 0;
-		    FREE_IT(vkObj->pQueueFamilyIndices);
+		 // code for generic array assignment 
+		 uint32_t* temp = const_cast<uint32_t*>(vkObj->pQueueFamilyIndices);
+		 if(temp) { free(temp); } 
+		 vkObj->pQueueFamilyIndices = NULL; 
+		 if( _pQueueFamilyIndices == NULL){ 
+		    vkObj->queueFamilyIndexCount = 0; 
 		     return;
-		   }
-		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pQueueFamilyIndices);
-		  if( vkObj->queueFamilyIndexCount != count){ 
-		    FREE_IT(vkObj->pQueueFamilyIndices); 
-		    vkObj->pQueueFamilyIndices = CALLOC(count, uint32_t);
-		   }
-		  memcpy( vkObj->pQueueFamilyIndices, _pQueueFamilyIndices, count * sizeof(uint32_t));
+		  }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pQueueFamilyIndices); 
+		  temp = CALLOC(count, uint32_t); 
+		  memcpy( temp, _pQueueFamilyIndices, count * sizeof(uint32_t)); 
+		  vkObj->pQueueFamilyIndices = temp; 
 		  vkObj->queueFamilyIndexCount = count;
 	  */
 
@@ -904,9 +912,10 @@
 	 * Native GET method for field initialLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  initialLayout
 	 */ 
-	 private static native int  getInitialLayout0(Buffer ptr);/*
+	 private static native int getInitialLayout0(Buffer ptr);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
-		  return (VkImageLayout) (vkObj->initialLayout);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->initialLayout);
 	 */
 
 

@@ -291,9 +291,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -302,8 +303,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -349,9 +351,10 @@
 	 * Native GET method for field topology	[vkenum]<br>
 	 * Prototype: VkPrimitiveTopology  topology
 	 */ 
-	 private static native int  getTopology0(Buffer ptr);/*
+	 private static native int getTopology0(Buffer ptr);/*
 		  VkPipelineInputAssemblyStateCreateInfo* vkObj = (VkPipelineInputAssemblyStateCreateInfo*)(ptr);
-		  return (VkPrimitiveTopology) (vkObj->topology);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->topology);
 	 */
 
 	/**

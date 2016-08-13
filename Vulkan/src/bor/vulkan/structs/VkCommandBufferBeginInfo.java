@@ -269,9 +269,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -280,8 +281,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -319,8 +321,9 @@
 	 */ 
 	 private static native void setPInheritanceInfo0(Buffer ptr, java.nio.ByteBuffer  _pInheritanceInfo);/*
 		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pInheritanceInfo = (const VkCommandBufferInheritanceInfo*) (_pInheritanceInfo);
+		 // code for Buffer - ptr to ptr 
+		 const VkCommandBufferInheritanceInfo* p_pInheritanceInfo = ( VkCommandBufferInheritanceInfo*) _pInheritanceInfo; 
+		 vkObj->pInheritanceInfo = p_pInheritanceInfo; 
 	  */
 
 	/**

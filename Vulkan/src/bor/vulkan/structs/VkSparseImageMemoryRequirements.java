@@ -282,8 +282,9 @@
 	 */ 
 	 private static native void setFormatProperties0(Buffer ptr, java.nio.ByteBuffer  _formatProperties);/*
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->formatProperties = (VkSparseImageFormatProperties) (_formatProperties);
+		 // code for Buffer - ptr to struct 
+		 VkSparseImageFormatProperties* p_formatProperties = (VkSparseImageFormatProperties*) _formatProperties; 
+		 vkObj->formatProperties = (*p_formatProperties); 
 	  */
 
 	/**

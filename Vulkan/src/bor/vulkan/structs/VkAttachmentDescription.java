@@ -431,9 +431,10 @@
 	 * Native GET method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
-	 private static native int  getFormat0(Buffer ptr);/*
+	 private static native int getFormat0(Buffer ptr);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
-		  return (VkFormat) (vkObj->format);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->format);
 	 */
 
 	/**
@@ -450,9 +451,10 @@
 	 * Native GET method for field samples	[vkenum]<br>
 	 * Prototype: VkSampleCountFlagBits  samples
 	 */ 
-	 private static native int  getSamples0(Buffer ptr);/*
+	 private static native int getSamples0(Buffer ptr);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
-		  return (VkSampleCountFlagBits) (vkObj->samples);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->samples);
 	 */
 
 	/**
@@ -469,9 +471,10 @@
 	 * Native GET method for field loadOp	[vkenum]<br>
 	 * Prototype: VkAttachmentLoadOp  loadOp
 	 */ 
-	 private static native int  getLoadOp0(Buffer ptr);/*
+	 private static native int getLoadOp0(Buffer ptr);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
-		  return (VkAttachmentLoadOp) (vkObj->loadOp);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->loadOp);
 	 */
 
 	/**
@@ -488,9 +491,10 @@
 	 * Native GET method for field storeOp	[vkenum]<br>
 	 * Prototype: VkAttachmentStoreOp  storeOp
 	 */ 
-	 private static native int  getStoreOp0(Buffer ptr);/*
+	 private static native int getStoreOp0(Buffer ptr);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
-		  return (VkAttachmentStoreOp) (vkObj->storeOp);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->storeOp);
 	 */
 
 	/**
@@ -507,9 +511,10 @@
 	 * Native GET method for field stencilLoadOp	[vkenum]<br>
 	 * Prototype: VkAttachmentLoadOp  stencilLoadOp
 	 */ 
-	 private static native int  getStencilLoadOp0(Buffer ptr);/*
+	 private static native int getStencilLoadOp0(Buffer ptr);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
-		  return (VkAttachmentLoadOp) (vkObj->stencilLoadOp);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->stencilLoadOp);
 	 */
 
 	/**
@@ -526,9 +531,10 @@
 	 * Native GET method for field stencilStoreOp	[vkenum]<br>
 	 * Prototype: VkAttachmentStoreOp  stencilStoreOp
 	 */ 
-	 private static native int  getStencilStoreOp0(Buffer ptr);/*
+	 private static native int getStencilStoreOp0(Buffer ptr);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
-		  return (VkAttachmentStoreOp) (vkObj->stencilStoreOp);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->stencilStoreOp);
 	 */
 
 	/**
@@ -545,9 +551,10 @@
 	 * Native GET method for field initialLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  initialLayout
 	 */ 
-	 private static native int  getInitialLayout0(Buffer ptr);/*
+	 private static native int getInitialLayout0(Buffer ptr);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
-		  return (VkImageLayout) (vkObj->initialLayout);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->initialLayout);
 	 */
 
 	/**
@@ -564,9 +571,10 @@
 	 * Native GET method for field finalLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  finalLayout
 	 */ 
-	 private static native int  getFinalLayout0(Buffer ptr);/*
+	 private static native int getFinalLayout0(Buffer ptr);/*
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
-		  return (VkImageLayout) (vkObj->finalLayout);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->finalLayout);
 	 */
 
 

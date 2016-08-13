@@ -374,9 +374,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -385,8 +386,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -432,9 +434,10 @@
 	 * Native GET method for field stage	[vkenum]<br>
 	 * Prototype: VkShaderStageFlagBits  stage
 	 */ 
-	 private static native int  getStage0(Buffer ptr);/*
+	 private static native int getStage0(Buffer ptr);/*
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
-		  return (VkShaderStageFlagBits) (vkObj->stage);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->stage);
 	 */
 
 	/**
@@ -481,8 +484,9 @@
 	 */ 
 	 private static native void setPSpecializationInfo0(Buffer ptr, java.nio.ByteBuffer  _pSpecializationInfo);/*
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pSpecializationInfo = (const VkSpecializationInfo*) (_pSpecializationInfo);
+		 // code for Buffer - ptr to ptr 
+		 const VkSpecializationInfo* p_pSpecializationInfo = ( VkSpecializationInfo*) _pSpecializationInfo; 
+		 vkObj->pSpecializationInfo = p_pSpecializationInfo; 
 	  */
 
 	/**

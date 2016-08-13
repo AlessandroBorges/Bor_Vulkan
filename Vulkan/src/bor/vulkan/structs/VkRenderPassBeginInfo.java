@@ -394,9 +394,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -405,8 +406,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -465,8 +467,9 @@
 	 */ 
 	 private static native void setRenderArea0(Buffer ptr, java.nio.ByteBuffer  _renderArea);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->renderArea = (VkRect2D) (_renderArea);
+		 // code for Buffer - ptr to struct 
+		 VkRect2D* p_renderArea = (VkRect2D*) _renderArea; 
+		 vkObj->renderArea = (*p_renderArea); 
 	  */
 
 	/**
@@ -504,8 +507,9 @@
 	 */ 
 	 private static native void setPClearValues0(Buffer ptr, java.nio.ByteBuffer  _pClearValues);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pClearValues = (const VkClearValue*) (_pClearValues);
+		 // code for Buffer - ptr to ptr 
+		 const VkClearValue* p_pClearValues = ( VkClearValue*) _pClearValues; 
+		 vkObj->pClearValues = p_pClearValues; 
 	  */
 
 	/**

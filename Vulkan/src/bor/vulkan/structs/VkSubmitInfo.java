@@ -444,9 +444,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -455,8 +456,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -494,8 +496,9 @@
 	 */ 
 	 private static native void setPWaitSemaphores0(Buffer ptr, ByteBuffer  _pWaitSemaphores);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pWaitSemaphores = (const VkSemaphore*) (_pWaitSemaphores);
+		 // code for Buffer - ptr to ptr 
+		 const VkSemaphore* p_pWaitSemaphores = ( VkSemaphore*) _pWaitSemaphores; 
+		 vkObj->pWaitSemaphores = p_pWaitSemaphores; 
 	  */
 
 	/**
@@ -514,18 +517,18 @@
 	 */ 
 	 private static native void setPWaitDstStageMask0(Buffer ptr, int[] _pWaitDstStageMask);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		 // code for generic array 
-		  if( NULL == _pWaitDstStageMask ){
-		    vkObj->waitSemaphoreCount = 0;
-		    FREE_IT(vkObj->pWaitDstStageMask);
+		 // code for generic array assignment 
+		 VkPipelineStageFlags* temp = const_cast<VkPipelineStageFlags*>(vkObj->pWaitDstStageMask);
+		 if(temp) { free(temp); } 
+		 vkObj->pWaitDstStageMask = NULL; 
+		 if( _pWaitDstStageMask == NULL){ 
+		    vkObj->waitSemaphoreCount = 0; 
 		     return;
-		   }
-		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pWaitDstStageMask);
-		  if( vkObj->waitSemaphoreCount != count){ 
-		    FREE_IT(vkObj->pWaitDstStageMask); 
-		    vkObj->pWaitDstStageMask = CALLOC(count, VkPipelineStageFlags);
-		   }
-		  memcpy( vkObj->pWaitDstStageMask, _pWaitDstStageMask, count * sizeof(VkPipelineStageFlags));
+		  }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pWaitDstStageMask); 
+		  temp = CALLOC(count, VkPipelineStageFlags); 
+		  memcpy( temp, _pWaitDstStageMask, count * sizeof(VkPipelineStageFlags)); 
+		  vkObj->pWaitDstStageMask = temp; 
 		  vkObj->waitSemaphoreCount = count;
 	  */
 
@@ -572,8 +575,9 @@
 	 */ 
 	 private static native void setPCommandBuffers0(Buffer ptr, ByteBuffer  _pCommandBuffers);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pCommandBuffers = (const VkCommandBuffer*) (_pCommandBuffers);
+		 // code for Buffer - ptr to ptr 
+		 const VkCommandBuffer* p_pCommandBuffers = ( VkCommandBuffer*) _pCommandBuffers; 
+		 vkObj->pCommandBuffers = p_pCommandBuffers; 
 	  */
 
 	/**
@@ -611,8 +615,9 @@
 	 */ 
 	 private static native void setPSignalSemaphores0(Buffer ptr, ByteBuffer  _pSignalSemaphores);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pSignalSemaphores = (const VkSemaphore*) (_pSignalSemaphores);
+		 // code for Buffer - ptr to ptr 
+		 const VkSemaphore* p_pSignalSemaphores = ( VkSemaphore*) _pSignalSemaphores; 
+		 vkObj->pSignalSemaphores = p_pSignalSemaphores; 
 	  */
 
 	/**

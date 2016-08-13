@@ -857,9 +857,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -868,8 +869,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -926,8 +928,9 @@
 	 */ 
 	 private static native void setPStages0(Buffer ptr, java.nio.ByteBuffer  _pStages);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pStages = (const VkPipelineShaderStageCreateInfo*) (_pStages);
+		 // code for Buffer - ptr to ptr 
+		 const VkPipelineShaderStageCreateInfo* p_pStages = ( VkPipelineShaderStageCreateInfo*) _pStages; 
+		 vkObj->pStages = p_pStages; 
 	  */
 
 	/**
@@ -946,8 +949,9 @@
 	 */ 
 	 private static native void setPVertexInputState0(Buffer ptr, java.nio.ByteBuffer  _pVertexInputState);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pVertexInputState = (const VkPipelineVertexInputStateCreateInfo*) (_pVertexInputState);
+		 // code for Buffer - ptr to ptr 
+		 const VkPipelineVertexInputStateCreateInfo* p_pVertexInputState = ( VkPipelineVertexInputStateCreateInfo*) _pVertexInputState; 
+		 vkObj->pVertexInputState = p_pVertexInputState; 
 	  */
 
 	/**
@@ -966,8 +970,9 @@
 	 */ 
 	 private static native void setPInputAssemblyState0(Buffer ptr, java.nio.ByteBuffer  _pInputAssemblyState);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pInputAssemblyState = (const VkPipelineInputAssemblyStateCreateInfo*) (_pInputAssemblyState);
+		 // code for Buffer - ptr to ptr 
+		 const VkPipelineInputAssemblyStateCreateInfo* p_pInputAssemblyState = ( VkPipelineInputAssemblyStateCreateInfo*) _pInputAssemblyState; 
+		 vkObj->pInputAssemblyState = p_pInputAssemblyState; 
 	  */
 
 	/**
@@ -986,8 +991,9 @@
 	 */ 
 	 private static native void setPTessellationState0(Buffer ptr, java.nio.ByteBuffer  _pTessellationState);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pTessellationState = (const VkPipelineTessellationStateCreateInfo*) (_pTessellationState);
+		 // code for Buffer - ptr to ptr 
+		 const VkPipelineTessellationStateCreateInfo* p_pTessellationState = ( VkPipelineTessellationStateCreateInfo*) _pTessellationState; 
+		 vkObj->pTessellationState = p_pTessellationState; 
 	  */
 
 	/**
@@ -1006,8 +1012,9 @@
 	 */ 
 	 private static native void setPViewportState0(Buffer ptr, java.nio.ByteBuffer  _pViewportState);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pViewportState = (const VkPipelineViewportStateCreateInfo*) (_pViewportState);
+		 // code for Buffer - ptr to ptr 
+		 const VkPipelineViewportStateCreateInfo* p_pViewportState = ( VkPipelineViewportStateCreateInfo*) _pViewportState; 
+		 vkObj->pViewportState = p_pViewportState; 
 	  */
 
 	/**
@@ -1026,8 +1033,9 @@
 	 */ 
 	 private static native void setPRasterizationState0(Buffer ptr, java.nio.ByteBuffer  _pRasterizationState);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pRasterizationState = (const VkPipelineRasterizationStateCreateInfo*) (_pRasterizationState);
+		 // code for Buffer - ptr to ptr 
+		 const VkPipelineRasterizationStateCreateInfo* p_pRasterizationState = ( VkPipelineRasterizationStateCreateInfo*) _pRasterizationState; 
+		 vkObj->pRasterizationState = p_pRasterizationState; 
 	  */
 
 	/**
@@ -1046,8 +1054,9 @@
 	 */ 
 	 private static native void setPMultisampleState0(Buffer ptr, java.nio.ByteBuffer  _pMultisampleState);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pMultisampleState = (const VkPipelineMultisampleStateCreateInfo*) (_pMultisampleState);
+		 // code for Buffer - ptr to ptr 
+		 const VkPipelineMultisampleStateCreateInfo* p_pMultisampleState = ( VkPipelineMultisampleStateCreateInfo*) _pMultisampleState; 
+		 vkObj->pMultisampleState = p_pMultisampleState; 
 	  */
 
 	/**
@@ -1066,8 +1075,9 @@
 	 */ 
 	 private static native void setPDepthStencilState0(Buffer ptr, java.nio.ByteBuffer  _pDepthStencilState);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pDepthStencilState = (const VkPipelineDepthStencilStateCreateInfo*) (_pDepthStencilState);
+		 // code for Buffer - ptr to ptr 
+		 const VkPipelineDepthStencilStateCreateInfo* p_pDepthStencilState = ( VkPipelineDepthStencilStateCreateInfo*) _pDepthStencilState; 
+		 vkObj->pDepthStencilState = p_pDepthStencilState; 
 	  */
 
 	/**
@@ -1086,8 +1096,9 @@
 	 */ 
 	 private static native void setPColorBlendState0(Buffer ptr, java.nio.ByteBuffer  _pColorBlendState);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pColorBlendState = (const VkPipelineColorBlendStateCreateInfo*) (_pColorBlendState);
+		 // code for Buffer - ptr to ptr 
+		 const VkPipelineColorBlendStateCreateInfo* p_pColorBlendState = ( VkPipelineColorBlendStateCreateInfo*) _pColorBlendState; 
+		 vkObj->pColorBlendState = p_pColorBlendState; 
 	  */
 
 	/**
@@ -1106,8 +1117,9 @@
 	 */ 
 	 private static native void setPDynamicState0(Buffer ptr, java.nio.ByteBuffer  _pDynamicState);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pDynamicState = (const VkPipelineDynamicStateCreateInfo*) (_pDynamicState);
+		 // code for Buffer - ptr to ptr 
+		 const VkPipelineDynamicStateCreateInfo* p_pDynamicState = ( VkPipelineDynamicStateCreateInfo*) _pDynamicState; 
+		 vkObj->pDynamicState = p_pDynamicState; 
 	  */
 
 	/**

@@ -145,19 +145,36 @@
 		 return this.memoryTypeCount;
 	 }
 
+// #Included setMemoryTypes
+
 	/**
 	 * Set method for field memoryTypes	[vkstruct_array]<br>
 	 * Prototype: VkMemoryType[]  memoryTypes
 	 * 
-	 * @param memoryTypes - a instance of VkMemoryType[].
+	 * @param _memoryTypes - a instance of VkMemoryType[].
 	 * @return this VkStruct instance.
 	 */ 
-	 public VkPhysicalDeviceMemoryProperties memoryTypes(VkMemoryType[] memoryTypes){
-		 this.memoryTypesBUFFER = new BigBuffer(memoryTypes, VkMemoryType.getID());
-		 setMemoryTypes0(this.ptr, memoryTypesBUFFER.getBuffer());
-		 return this;
+	 public VkPhysicalDeviceMemoryProperties memoryTypes(VkMemoryType[] _memoryTypes){
+	     if(_memoryTypes == null ){
+                 throw new IllegalArgumentException("VkMemoryType[] _memoryTypes must be"
+                         + " not null");
+             }
+             if(memoryTypesBUFFER==null){
+                 memoryTypes();
+             }
+              memoryHeapCount(_memoryTypes.length); 
+              
+              BigBuffer<VkMemoryType> temp = new BigBuffer<VkMemoryType>(_memoryTypes, VkMemoryType.getID());
+              setMemoryTypes0(this.ptr, temp.getBuffer());
+              temp.update();
+              memoryTypesBUFFER.update();
+              return this;
 	 }
 
+
+//#END Set Included
+
+// #Included getMemoryTypes0
 	/**
 	 * Get method for field memoryTypes	[vkstruct_array]<br>
 	 * Prototype: VkMemoryType[]  memoryTypes
@@ -167,14 +184,15 @@
 		 if(ptr == 0L){
 		    return null;
 		 }
-		 if(memoryTypesBUFFER != null && ptr == memoryTypesBUFFER.getBufferAddress()){ //same buffer 
-		    memoryTypesBUFFER.update();
-		    return memoryTypes;
-		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
-		   }
+                 if(memoryTypesBUFFER == null){
+                     ByteBuffer bb = Utils.wrapPointer(ptr, VK_MAX_MEMORY_TYPES * VkMemoryType.sizeOf());
+                     memoryTypesBUFFER = new BigBuffer(bb, memoryHeaps, VkMemoryType.getID());
+                 }
+                 memoryHeapsBUFFER.update();  
 		 return this.memoryTypes;
 	 }
+
+//#END get
 
 	/**
 	 * Set method for field memoryHeapCount	[int]<br>
@@ -199,20 +217,36 @@
 		 return this.memoryHeapCount;
 	 }
 
+// #Included setMemoryHeaps
+
 	/**
 	 * Set method for field memoryHeaps	[vkstruct_array]<br>
 	 * Prototype: VkMemoryHeap[]  memoryHeaps
 	 * 
-	 * @param memoryHeaps - a instance of VkMemoryHeap[].
+	 * @param _memoryHeaps - a instance of VkMemoryHeap[].
 	 * @return this VkStruct instance.
 	 */ 
-	 public VkPhysicalDeviceMemoryProperties memoryHeaps(VkMemoryHeap[] memoryHeaps){
-		 this.memoryHeapsBUFFER = new BigBuffer(memoryHeaps, VkMemoryHeap.getID());
-		 setMemoryHeaps0(this.ptr, memoryHeapsBUFFER.getBuffer());
+	 public VkPhysicalDeviceMemoryProperties memoryHeaps(VkMemoryHeap[] _memoryHeaps){
+	        if(_memoryHeaps == null ){
+	            throw new IllegalArgumentException("VkMemoryHeap[] _memoryHeaps must be"
+	                    + " not null");
+	        }
+	        if(memoryHeapsBUFFER==null){
+	             memoryHeaps();
+	        }
+	     memoryHeapCount(_memoryHeaps.length); 
+		 BigBuffer<VkMemoryHeap> temp = new BigBuffer<VkMemoryHeap>(_memoryHeaps, VkMemoryHeap.getID());
+		 setMemoryHeaps0(this.ptr, temp.getBuffer());
+		 temp.update();
+         memoryHeapsBUFFER.update();
 		 return this;
 	 }
 
-	/**
+
+//#END Set Included
+
+// #Included getMemoryHeaps0
+/**
 	 * Get method for field memoryHeaps	[vkstruct_array]<br>
 	 * Prototype: VkMemoryHeap[]  memoryHeaps
 	 */ 
@@ -221,14 +255,15 @@
 		 if(ptr == 0L){
 		    return null;
 		 }
-		 if(memoryHeapsBUFFER != null && ptr == memoryHeapsBUFFER.getBufferAddress()){ //same buffer 
-		    memoryHeapsBUFFER.update();
-		    return memoryHeaps;
-		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
-		   }
+		 if(memoryHeapsBUFFER == null){
+		     ByteBuffer bb = Utils.wrapPointer(ptr, VK_MAX_MEMORY_HEAPS * VkMemoryHeap.sizeOf());
+		     memoryHeapsBUFFER = new BigBuffer(bb, memoryHeaps, VkMemoryHeap.getID());
+		 }
+		 memoryHeapsBUFFER.update();		
 		 return this.memoryHeaps;
 	 }
+
+//#END get
 
 
    /* (non-Javadoc)
@@ -272,14 +307,17 @@
 		  return (jint) (vkObj->memoryTypeCount);
 	 */
 
-	/**
+/**
 	 * Native SET method for field memoryTypes	[vkstruct_array]<br>
 	 * Prototype: VkMemoryType[]  memoryTypes
 	 */ 
 	 private static native void setMemoryTypes0(Buffer ptr, java.nio.ByteBuffer  _memoryTypes);/*
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->memoryTypes = (VkMemoryType[]) (_memoryTypes);
+		 // code for Buffer - ptr to struct 
+		 VkMemoryType* p_memoryTypes = (VkMemoryType*) _memoryTypes; 
+		 for(uint32_t i = 0; (i < VK_MAX_MEMORY_TYPES && i < vkObj->memoryTypeCount) ; i++){
+		    vkObj->memoryTypes[i] = p_memoryTypes[i];
+		 } 
 	  */
 
 	/**
@@ -311,14 +349,17 @@
 		  return (jint) (vkObj->memoryHeapCount);
 	 */
 
-	/**
+    /**
 	 * Native SET method for field memoryHeaps	[vkstruct_array]<br>
 	 * Prototype: VkMemoryHeap[]  memoryHeaps
-	 */ 
+	 */
 	 private static native void setMemoryHeaps0(Buffer ptr, java.nio.ByteBuffer  _memoryHeaps);/*
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->memoryHeaps = (VkMemoryHeap[]) (_memoryHeaps);
+		 // code for Buffer - ptr to struct 
+		 VkMemoryHeap* p_memoryHeaps = (VkMemoryHeap*) _memoryHeaps; 
+		 for(uint32_t i=0; (i < VK_MAX_MEMORY_HEAPS && i < vkObj->memoryHeapCount) ; i++){
+		   vkObj->memoryHeaps[i] = p_memoryHeaps[i];
+		 } 
 	  */
 
 	/**
@@ -330,6 +371,8 @@
 		  // generic get for array of VkHandle and VkStruct 
 		  return (jlong) reinterpret_cast<jlong>( &vkObj->memoryHeaps );
 	 */
+
+
 
 
 

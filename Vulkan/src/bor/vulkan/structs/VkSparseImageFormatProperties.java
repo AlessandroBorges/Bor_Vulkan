@@ -239,8 +239,9 @@
 	 */ 
 	 private static native void setImageGranularity0(Buffer ptr, java.nio.ByteBuffer  _imageGranularity);/*
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->imageGranularity = (VkExtent3D) (_imageGranularity);
+		 // code for Buffer - ptr to struct 
+		 VkExtent3D* p_imageGranularity = (VkExtent3D*) _imageGranularity; 
+		 vkObj->imageGranularity = (*p_imageGranularity); 
 	  */
 
 	/**

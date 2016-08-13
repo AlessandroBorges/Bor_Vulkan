@@ -488,9 +488,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -499,8 +500,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -604,9 +606,10 @@
 	 * Native GET method for field descriptorType	[vkenum]<br>
 	 * Prototype: VkDescriptorType  descriptorType
 	 */ 
-	 private static native int  getDescriptorType0(Buffer ptr);/*
+	 private static native int getDescriptorType0(Buffer ptr);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
-		  return (VkDescriptorType) (vkObj->descriptorType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->descriptorType);
 	 */
 
 	/**
@@ -615,8 +618,9 @@
 	 */ 
 	 private static native void setPImageInfo0(Buffer ptr, java.nio.ByteBuffer  _pImageInfo);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pImageInfo = (const VkDescriptorImageInfo*) (_pImageInfo);
+		 // code for Buffer - ptr to ptr 
+		 const VkDescriptorImageInfo* p_pImageInfo = ( VkDescriptorImageInfo*) _pImageInfo; 
+		 vkObj->pImageInfo = p_pImageInfo; 
 	  */
 
 	/**
@@ -635,8 +639,9 @@
 	 */ 
 	 private static native void setPBufferInfo0(Buffer ptr, java.nio.ByteBuffer  _pBufferInfo);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pBufferInfo = (const VkDescriptorBufferInfo*) (_pBufferInfo);
+		 // code for Buffer - ptr to ptr 
+		 const VkDescriptorBufferInfo* p_pBufferInfo = ( VkDescriptorBufferInfo*) _pBufferInfo; 
+		 vkObj->pBufferInfo = p_pBufferInfo; 
 	  */
 
 	/**

@@ -189,9 +189,10 @@
 	 * Native GET method for field format	[vkenum]<br>
 	 * Prototype: VkFormat  format
 	 */ 
-	 private static native int  getFormat0(Buffer ptr);/*
+	 private static native int getFormat0(Buffer ptr);/*
 		  VkSurfaceFormatKHR* vkObj = (VkSurfaceFormatKHR*)(ptr);
-		  return (VkFormat) (vkObj->format);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->format);
 	 */
 
 	/**
@@ -208,9 +209,10 @@
 	 * Native GET method for field colorSpace	[vkenum]<br>
 	 * Prototype: VkColorSpaceKHR  colorSpace
 	 */ 
-	 private static native int  getColorSpace0(Buffer ptr);/*
+	 private static native int getColorSpace0(Buffer ptr);/*
 		  VkSurfaceFormatKHR* vkObj = (VkSurfaceFormatKHR*)(ptr);
-		  return (VkColorSpaceKHR) (vkObj->colorSpace);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->colorSpace);
 	 */
 
 

@@ -468,9 +468,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -479,8 +480,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -584,9 +586,10 @@
 	 * Native GET method for field transform	[vkenum]<br>
 	 * Prototype: VkSurfaceTransformFlagBitsKHR  transform
 	 */ 
-	 private static native int  getTransform0(Buffer ptr);/*
+	 private static native int getTransform0(Buffer ptr);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		  return (VkSurfaceTransformFlagBitsKHR) (vkObj->transform);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->transform);
 	 */
 
 	/**
@@ -622,9 +625,10 @@
 	 * Native GET method for field alphaMode	[vkenum]<br>
 	 * Prototype: VkDisplayPlaneAlphaFlagBitsKHR  alphaMode
 	 */ 
-	 private static native int  getAlphaMode0(Buffer ptr);/*
+	 private static native int getAlphaMode0(Buffer ptr);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		  return (VkDisplayPlaneAlphaFlagBitsKHR) (vkObj->alphaMode);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->alphaMode);
 	 */
 
 	/**
@@ -633,8 +637,9 @@
 	 */ 
 	 private static native void setImageExtent0(Buffer ptr, java.nio.ByteBuffer  _imageExtent);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->imageExtent = (VkExtent2D) (_imageExtent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent2D* p_imageExtent = (VkExtent2D*) _imageExtent; 
+		 vkObj->imageExtent = (*p_imageExtent); 
 	  */
 
 	/**

@@ -294,9 +294,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -305,8 +306,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -363,18 +365,18 @@
 	 */ 
 	 private static native void setPDynamicStates0(Buffer ptr, int[]  _pDynamicStates);/*
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
-		 // code for generic array 
-		  if( NULL == _pDynamicStates ){
-		    vkObj->dynamicStateCount = 0;
-		    FREE_IT(vkObj->pDynamicStates);
+		 // code for generic array assignment 
+		 VkDynamicState* temp = const_cast<VkDynamicState*>(vkObj->pDynamicStates);
+		 if(temp) { free(temp); } 
+		 vkObj->pDynamicStates = NULL; 
+		 if( _pDynamicStates == NULL){ 
+		    vkObj->dynamicStateCount = 0; 
 		     return;
-		   }
-		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pDynamicStates);
-		  if( vkObj->dynamicStateCount != count){ 
-		    FREE_IT(vkObj->pDynamicStates); 
-		    vkObj->pDynamicStates = CALLOC(count, VkDynamicState);
-		   }
-		  memcpy( vkObj->pDynamicStates, _pDynamicStates, count * sizeof(VkDynamicState));
+		  }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pDynamicStates); 
+		  temp = CALLOC(count, VkDynamicState); 
+		  memcpy( temp, _pDynamicStates, count * sizeof(VkDynamicState)); 
+		  vkObj->pDynamicStates = temp; 
 		  vkObj->dynamicStateCount = count;
 	  */
 

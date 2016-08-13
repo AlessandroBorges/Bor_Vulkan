@@ -331,9 +331,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -342,8 +343,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -419,8 +421,9 @@
 	 */ 
 	 private static native void setPPoolSizes0(Buffer ptr, java.nio.ByteBuffer  _pPoolSizes);/*
 		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pPoolSizes = (const VkDescriptorPoolSize*) (_pPoolSizes);
+		 // code for Buffer - ptr to ptr 
+		 const VkDescriptorPoolSize* p_pPoolSizes = ( VkDescriptorPoolSize*) _pPoolSizes; 
+		 vkObj->pPoolSizes = p_pPoolSizes; 
 	  */
 
 	/**

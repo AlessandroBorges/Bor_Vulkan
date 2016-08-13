@@ -403,8 +403,9 @@
 	 */ 
 	 private static native void setPhysicalDimensions0(Buffer ptr, java.nio.ByteBuffer  _physicalDimensions);/*
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->physicalDimensions = (VkExtent2D) (_physicalDimensions);
+		 // code for Buffer - ptr to struct 
+		 VkExtent2D* p_physicalDimensions = (VkExtent2D*) _physicalDimensions; 
+		 vkObj->physicalDimensions = (*p_physicalDimensions); 
 	  */
 
 	/**
@@ -423,8 +424,9 @@
 	 */ 
 	 private static native void setPhysicalResolution0(Buffer ptr, java.nio.ByteBuffer  _physicalResolution);/*
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->physicalResolution = (VkExtent2D) (_physicalResolution);
+		 // code for Buffer - ptr to struct 
+		 VkExtent2D* p_physicalResolution = (VkExtent2D*) _physicalResolution; 
+		 vkObj->physicalResolution = (*p_physicalResolution); 
 	  */
 
 	/**

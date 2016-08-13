@@ -308,8 +308,9 @@
 	 */ 
 	 private static native void setMinImageTransferGranularity0(Buffer ptr, java.nio.ByteBuffer  _minImageTransferGranularity);/*
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->minImageTransferGranularity = (VkExtent3D) (_minImageTransferGranularity);
+		 // code for Buffer - ptr to struct 
+		 VkExtent3D* p_minImageTransferGranularity = (VkExtent3D*) _minImageTransferGranularity; 
+		 vkObj->minImageTransferGranularity = (*p_minImageTransferGranularity); 
 	  */
 
 	/**

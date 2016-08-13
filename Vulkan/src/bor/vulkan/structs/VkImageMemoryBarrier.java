@@ -468,9 +468,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -479,8 +480,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -545,9 +547,10 @@
 	 * Native GET method for field oldLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  oldLayout
 	 */ 
-	 private static native int  getOldLayout0(Buffer ptr);/*
+	 private static native int getOldLayout0(Buffer ptr);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
-		  return (VkImageLayout) (vkObj->oldLayout);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->oldLayout);
 	 */
 
 	/**
@@ -564,9 +567,10 @@
 	 * Native GET method for field newLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  newLayout
 	 */ 
-	 private static native int  getNewLayout0(Buffer ptr);/*
+	 private static native int getNewLayout0(Buffer ptr);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
-		  return (VkImageLayout) (vkObj->newLayout);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->newLayout);
 	 */
 
 	/**
@@ -633,8 +637,9 @@
 	 */ 
 	 private static native void setSubresourceRange0(Buffer ptr, java.nio.ByteBuffer  _subresourceRange);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->subresourceRange = (VkImageSubresourceRange) (_subresourceRange);
+		 // code for Buffer - ptr to struct 
+		 VkImageSubresourceRange* p_subresourceRange = (VkImageSubresourceRange*) _subresourceRange; 
+		 vkObj->subresourceRange = (*p_subresourceRange); 
 	  */
 
 	/**

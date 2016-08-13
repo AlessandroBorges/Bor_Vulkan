@@ -701,9 +701,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -712,8 +713,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -759,9 +761,10 @@
 	 * Native GET method for field magFilter	[vkenum]<br>
 	 * Prototype: VkFilter  magFilter
 	 */ 
-	 private static native int  getMagFilter0(Buffer ptr);/*
+	 private static native int getMagFilter0(Buffer ptr);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  return (VkFilter) (vkObj->magFilter);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->magFilter);
 	 */
 
 	/**
@@ -778,9 +781,10 @@
 	 * Native GET method for field minFilter	[vkenum]<br>
 	 * Prototype: VkFilter  minFilter
 	 */ 
-	 private static native int  getMinFilter0(Buffer ptr);/*
+	 private static native int getMinFilter0(Buffer ptr);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  return (VkFilter) (vkObj->minFilter);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->minFilter);
 	 */
 
 	/**
@@ -797,9 +801,10 @@
 	 * Native GET method for field mipmapMode	[vkenum]<br>
 	 * Prototype: VkSamplerMipmapMode  mipmapMode
 	 */ 
-	 private static native int  getMipmapMode0(Buffer ptr);/*
+	 private static native int getMipmapMode0(Buffer ptr);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  return (VkSamplerMipmapMode) (vkObj->mipmapMode);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->mipmapMode);
 	 */
 
 	/**
@@ -816,9 +821,10 @@
 	 * Native GET method for field addressModeU	[vkenum]<br>
 	 * Prototype: VkSamplerAddressMode  addressModeU
 	 */ 
-	 private static native int  getAddressModeU0(Buffer ptr);/*
+	 private static native int getAddressModeU0(Buffer ptr);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  return (VkSamplerAddressMode) (vkObj->addressModeU);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->addressModeU);
 	 */
 
 	/**
@@ -835,9 +841,10 @@
 	 * Native GET method for field addressModeV	[vkenum]<br>
 	 * Prototype: VkSamplerAddressMode  addressModeV
 	 */ 
-	 private static native int  getAddressModeV0(Buffer ptr);/*
+	 private static native int getAddressModeV0(Buffer ptr);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  return (VkSamplerAddressMode) (vkObj->addressModeV);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->addressModeV);
 	 */
 
 	/**
@@ -854,9 +861,10 @@
 	 * Native GET method for field addressModeW	[vkenum]<br>
 	 * Prototype: VkSamplerAddressMode  addressModeW
 	 */ 
-	 private static native int  getAddressModeW0(Buffer ptr);/*
+	 private static native int getAddressModeW0(Buffer ptr);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  return (VkSamplerAddressMode) (vkObj->addressModeW);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->addressModeW);
 	 */
 
 	/**
@@ -949,9 +957,10 @@
 	 * Native GET method for field compareOp	[vkenum]<br>
 	 * Prototype: VkCompareOp  compareOp
 	 */ 
-	 private static native int  getCompareOp0(Buffer ptr);/*
+	 private static native int getCompareOp0(Buffer ptr);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  return (VkCompareOp) (vkObj->compareOp);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->compareOp);
 	 */
 
 	/**
@@ -1006,9 +1015,10 @@
 	 * Native GET method for field borderColor	[vkenum]<br>
 	 * Prototype: VkBorderColor  borderColor
 	 */ 
-	 private static native int  getBorderColor0(Buffer ptr);/*
+	 private static native int getBorderColor0(Buffer ptr);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  return (VkBorderColor) (vkObj->borderColor);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->borderColor);
 	 */
 
 	/**

@@ -318,8 +318,7 @@
 
 // #Included setPQueueFamilyIndices
    private IntBuffer pQueueFamilyIndicesBuff;
-
-	/**
+   /**
 	 * Set method for field pQueueFamilyIndices	[int]<br>
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 * 
@@ -329,8 +328,8 @@
 	 public VkBufferCreateInfo pQueueFamilyIndices(int[] pQueueFamilyIndices){
 		 this.pQueueFamilyIndices = pQueueFamilyIndices;
 		 if(pQueueFamilyIndices == null){
-		   setPQueueFamilyIndices0(this.ptr, null, 0);
-                   return this;			
+			setPQueueFamilyIndices0(this.ptr, null, 0);
+            return this;			
 		 }
 		 int len = pQueueFamilyIndices.length;
 		 if(pQueueFamilyIndicesBuff == null || 
@@ -401,9 +400,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -412,8 +412,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -497,9 +498,10 @@
 	 * Native GET method for field sharingMode	[vkenum]<br>
 	 * Prototype: VkSharingMode  sharingMode
 	 */ 
-	 private static native int  getSharingMode0(Buffer ptr);/*
+	 private static native int getSharingMode0(Buffer ptr);/*
 		  VkBufferCreateInfo* vkObj = (VkBufferCreateInfo*)(ptr);
-		  return (VkSharingMode) (vkObj->sharingMode);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sharingMode);
 	 */
 
 	/**
@@ -521,7 +523,7 @@
 		  return (jint) (vkObj->queueFamilyIndexCount);
 	 */
 
-	/**
+/**
 	 * Native SET method for field pQueueFamilyIndices	[int]<br>
 	 * Prototype: const uint32_t*  pQueueFamilyIndices
 	 */ 

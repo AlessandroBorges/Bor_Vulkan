@@ -253,9 +253,10 @@
 	 * Native GET method for field r	[vkenum]<br>
 	 * Prototype: VkComponentSwizzle  r
 	 */ 
-	 private static native int  getR0(Buffer ptr);/*
+	 private static native int getR0(Buffer ptr);/*
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
-		  return (VkComponentSwizzle) (vkObj->r);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->r);
 	 */
 
 	/**
@@ -272,9 +273,10 @@
 	 * Native GET method for field g	[vkenum]<br>
 	 * Prototype: VkComponentSwizzle  g
 	 */ 
-	 private static native int  getG0(Buffer ptr);/*
+	 private static native int getG0(Buffer ptr);/*
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
-		  return (VkComponentSwizzle) (vkObj->g);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->g);
 	 */
 
 	/**
@@ -291,9 +293,10 @@
 	 * Native GET method for field b	[vkenum]<br>
 	 * Prototype: VkComponentSwizzle  b
 	 */ 
-	 private static native int  getB0(Buffer ptr);/*
+	 private static native int getB0(Buffer ptr);/*
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
-		  return (VkComponentSwizzle) (vkObj->b);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->b);
 	 */
 
 	/**
@@ -310,9 +313,10 @@
 	 * Native GET method for field a	[vkenum]<br>
 	 * Prototype: VkComponentSwizzle  a
 	 */ 
-	 private static native int  getA0(Buffer ptr);/*
+	 private static native int getA0(Buffer ptr);/*
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
-		  return (VkComponentSwizzle) (vkObj->a);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->a);
 	 */
 
 

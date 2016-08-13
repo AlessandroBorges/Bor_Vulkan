@@ -528,9 +528,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -539,8 +540,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -624,9 +626,10 @@
 	 * Native GET method for field depthCompareOp	[vkenum]<br>
 	 * Prototype: VkCompareOp  depthCompareOp
 	 */ 
-	 private static native int  getDepthCompareOp0(Buffer ptr);/*
+	 private static native int getDepthCompareOp0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
-		  return (VkCompareOp) (vkObj->depthCompareOp);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->depthCompareOp);
 	 */
 
 	/**
@@ -673,8 +676,9 @@
 	 */ 
 	 private static native void setFront0(Buffer ptr, java.nio.ByteBuffer  _front);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->front = (VkStencilOpState) (_front);
+		 // code for Buffer - ptr to struct 
+		 VkStencilOpState* p_front = (VkStencilOpState*) _front; 
+		 vkObj->front = (*p_front); 
 	  */
 
 	/**
@@ -693,8 +697,9 @@
 	 */ 
 	 private static native void setBack0(Buffer ptr, java.nio.ByteBuffer  _back);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->back = (VkStencilOpState) (_back);
+		 // code for Buffer - ptr to struct 
+		 VkStencilOpState* p_back = (VkStencilOpState*) _back; 
+		 vkObj->back = (*p_back); 
 	  */
 
 	/**

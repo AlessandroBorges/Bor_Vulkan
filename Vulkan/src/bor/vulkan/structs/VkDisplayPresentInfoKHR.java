@@ -310,9 +310,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -321,8 +322,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -341,8 +343,9 @@
 	 */ 
 	 private static native void setSrcRect0(Buffer ptr, java.nio.ByteBuffer  _srcRect);/*
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->srcRect = (VkRect2D) (_srcRect);
+		 // code for Buffer - ptr to struct 
+		 VkRect2D* p_srcRect = (VkRect2D*) _srcRect; 
+		 vkObj->srcRect = (*p_srcRect); 
 	  */
 
 	/**
@@ -361,8 +364,9 @@
 	 */ 
 	 private static native void setDstRect0(Buffer ptr, java.nio.ByteBuffer  _dstRect);/*
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->dstRect = (VkRect2D) (_dstRect);
+		 // code for Buffer - ptr to struct 
+		 VkRect2D* p_dstRect = (VkRect2D*) _dstRect; 
+		 vkObj->dstRect = (*p_dstRect); 
 	  */
 
 	/**

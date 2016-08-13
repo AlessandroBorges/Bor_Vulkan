@@ -321,9 +321,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -332,8 +333,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -409,18 +411,18 @@
 	 */ 
 	 private static native void setPQueuePriorities0(Buffer ptr, float[] _pQueuePriorities);/*
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
-		 // code for generic array 
-		  if( NULL == _pQueuePriorities ){
-		    vkObj->queueCount = 0;
-		    FREE_IT(vkObj->pQueuePriorities);
+		 // code for generic array assignment 
+		 float* temp = const_cast<float*>(vkObj->pQueuePriorities);
+		 if(temp) { free(temp); } 
+		 vkObj->pQueuePriorities = NULL; 
+		 if( _pQueuePriorities == NULL){ 
+		    vkObj->queueCount = 0; 
 		     return;
-		   }
-		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pQueuePriorities);
-		  if( vkObj->queueCount != count){ 
-		    FREE_IT(vkObj->pQueuePriorities); 
-		    vkObj->pQueuePriorities = CALLOC(count, float);
-		   }
-		  memcpy( vkObj->pQueuePriorities, _pQueuePriorities, count * sizeof(float));
+		  }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pQueuePriorities); 
+		  temp = CALLOC(count, float); 
+		  memcpy( temp, _pQueuePriorities, count * sizeof(float)); 
+		  vkObj->pQueuePriorities = temp; 
 		  vkObj->queueCount = count;
 	  */
 

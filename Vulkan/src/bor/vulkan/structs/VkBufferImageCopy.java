@@ -390,8 +390,9 @@
 	 */ 
 	 private static native void setImageSubresource0(Buffer ptr, java.nio.ByteBuffer  _imageSubresource);/*
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->imageSubresource = (VkImageSubresourceLayers) (*_imageSubresource);
+		 // code for Buffer - ptr to struct 
+		 VkImageSubresourceLayers* p_imageSubresource = (VkImageSubresourceLayers*) _imageSubresource; 
+		 vkObj->imageSubresource = (*p_imageSubresource); 
 	  */
 
 	/**
@@ -410,8 +411,9 @@
 	 */ 
 	 private static native void setImageOffset0(Buffer ptr, java.nio.ByteBuffer  _imageOffset);/*
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->imageOffset = (VkOffset3D) (*_imageOffset);
+		 // code for Buffer - ptr to struct 
+		 VkOffset3D* p_imageOffset = (VkOffset3D*) _imageOffset; 
+		 vkObj->imageOffset = (*p_imageOffset); 
 	  */
 
 	/**
@@ -430,8 +432,9 @@
 	 */ 
 	 private static native void setImageExtent0(Buffer ptr, java.nio.ByteBuffer  _imageExtent);/*
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->imageExtent = (VkExtent3D) (*_imageExtent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent3D* p_imageExtent = (VkExtent3D*) _imageExtent; 
+		 vkObj->imageExtent = (*p_imageExtent); 
 	  */
 
 	/**

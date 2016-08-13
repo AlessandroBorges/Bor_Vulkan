@@ -188,9 +188,10 @@
 	 * Native GET method for field type	[vkenum]<br>
 	 * Prototype: VkDescriptorType  type
 	 */ 
-	 private static native int  getType0(Buffer ptr);/*
+	 private static native int getType0(Buffer ptr);/*
 		  VkDescriptorPoolSize* vkObj = (VkDescriptorPoolSize*)(ptr);
-		  return (VkDescriptorType) (vkObj->type);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->type);
 	 */
 
 	/**

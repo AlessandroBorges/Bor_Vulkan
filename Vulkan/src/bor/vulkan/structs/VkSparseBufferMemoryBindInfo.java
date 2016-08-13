@@ -270,8 +270,9 @@
 	 */ 
 	 private static native void setPBinds0(Buffer ptr, java.nio.ByteBuffer  _pBinds);/*
 		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pBinds = (const VkSparseMemoryBind*) (_pBinds);
+		 // code for Buffer - ptr to ptr 
+		 const VkSparseMemoryBind* p_pBinds = ( VkSparseMemoryBind*) _pBinds; 
+		 vkObj->pBinds = p_pBinds; 
 	  */
 
 	/**

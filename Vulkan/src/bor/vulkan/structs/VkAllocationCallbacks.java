@@ -361,8 +361,9 @@
 	 */ 
 	 private static native void setPUserData0(Buffer ptr, java.nio.Buffer _pUserData);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pUserData = (void*) (_pUserData);
+		 // code for Buffer - ptr to ptr 
+		 void* p_pUserData = (void*) _pUserData; 
+		 vkObj->pUserData = p_pUserData; 
 	  */
 
 	/**

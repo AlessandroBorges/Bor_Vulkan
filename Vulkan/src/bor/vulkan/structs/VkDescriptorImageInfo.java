@@ -281,9 +281,10 @@
 	 * Native GET method for field imageLayout	[vkenum]<br>
 	 * Prototype: VkImageLayout  imageLayout
 	 */ 
-	 private static native int  getImageLayout0(Buffer ptr);/*
+	 private static native int getImageLayout0(Buffer ptr);/*
 		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
-		  return (VkImageLayout) (vkObj->imageLayout);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->imageLayout);
 	 */
 
 

@@ -398,9 +398,10 @@
 	 * Native GET method for field srcColorBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  srcColorBlendFactor
 	 */ 
-	 private static native int  getSrcColorBlendFactor0(Buffer ptr);/*
+	 private static native int getSrcColorBlendFactor0(Buffer ptr);/*
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
-		  return (VkBlendFactor) (vkObj->srcColorBlendFactor);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->srcColorBlendFactor);
 	 */
 
 	/**
@@ -417,9 +418,10 @@
 	 * Native GET method for field dstColorBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  dstColorBlendFactor
 	 */ 
-	 private static native int  getDstColorBlendFactor0(Buffer ptr);/*
+	 private static native int getDstColorBlendFactor0(Buffer ptr);/*
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
-		  return (VkBlendFactor) (vkObj->dstColorBlendFactor);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->dstColorBlendFactor);
 	 */
 
 	/**
@@ -436,9 +438,10 @@
 	 * Native GET method for field colorBlendOp	[vkenum]<br>
 	 * Prototype: VkBlendOp  colorBlendOp
 	 */ 
-	 private static native int  getColorBlendOp0(Buffer ptr);/*
+	 private static native int getColorBlendOp0(Buffer ptr);/*
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
-		  return (VkBlendOp) (vkObj->colorBlendOp);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->colorBlendOp);
 	 */
 
 	/**
@@ -455,9 +458,10 @@
 	 * Native GET method for field srcAlphaBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  srcAlphaBlendFactor
 	 */ 
-	 private static native int  getSrcAlphaBlendFactor0(Buffer ptr);/*
+	 private static native int getSrcAlphaBlendFactor0(Buffer ptr);/*
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
-		  return (VkBlendFactor) (vkObj->srcAlphaBlendFactor);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->srcAlphaBlendFactor);
 	 */
 
 	/**
@@ -474,9 +478,10 @@
 	 * Native GET method for field dstAlphaBlendFactor	[vkenum]<br>
 	 * Prototype: VkBlendFactor  dstAlphaBlendFactor
 	 */ 
-	 private static native int  getDstAlphaBlendFactor0(Buffer ptr);/*
+	 private static native int getDstAlphaBlendFactor0(Buffer ptr);/*
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
-		  return (VkBlendFactor) (vkObj->dstAlphaBlendFactor);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->dstAlphaBlendFactor);
 	 */
 
 	/**
@@ -493,9 +498,10 @@
 	 * Native GET method for field alphaBlendOp	[vkenum]<br>
 	 * Prototype: VkBlendOp  alphaBlendOp
 	 */ 
-	 private static native int  getAlphaBlendOp0(Buffer ptr);/*
+	 private static native int getAlphaBlendOp0(Buffer ptr);/*
 		  VkPipelineColorBlendAttachmentState* vkObj = (VkPipelineColorBlendAttachmentState*)(ptr);
-		  return (VkBlendOp) (vkObj->alphaBlendOp);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->alphaBlendOp);
 	 */
 
 	/**

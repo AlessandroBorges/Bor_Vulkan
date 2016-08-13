@@ -495,9 +495,10 @@
 	 * Native GET method for field pipelineBindPoint	[vkenum]<br>
 	 * Prototype: VkPipelineBindPoint  pipelineBindPoint
 	 */ 
-	 private static native int  getPipelineBindPoint0(Buffer ptr);/*
+	 private static native int getPipelineBindPoint0(Buffer ptr);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
-		  return (VkPipelineBindPoint) (vkObj->pipelineBindPoint);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->pipelineBindPoint);
 	 */
 
 	/**
@@ -525,8 +526,9 @@
 	 */ 
 	 private static native void setPInputAttachments0(Buffer ptr, java.nio.ByteBuffer  _pInputAttachments);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pInputAttachments = (const VkAttachmentReference*) (_pInputAttachments);
+		 // code for Buffer - ptr to ptr 
+		 const VkAttachmentReference* p_pInputAttachments = ( VkAttachmentReference*) _pInputAttachments; 
+		 vkObj->pInputAttachments = p_pInputAttachments; 
 	  */
 
 	/**
@@ -564,8 +566,9 @@
 	 */ 
 	 private static native void setPColorAttachments0(Buffer ptr, java.nio.ByteBuffer  _pColorAttachments);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pColorAttachments = (const VkAttachmentReference*) (_pColorAttachments);
+		 // code for Buffer - ptr to ptr 
+		 const VkAttachmentReference* p_pColorAttachments = ( VkAttachmentReference*) _pColorAttachments; 
+		 vkObj->pColorAttachments = p_pColorAttachments; 
 	  */
 
 	/**
@@ -584,8 +587,9 @@
 	 */ 
 	 private static native void setPResolveAttachments0(Buffer ptr, java.nio.ByteBuffer  _pResolveAttachments);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pResolveAttachments = (const VkAttachmentReference*) (_pResolveAttachments);
+		 // code for Buffer - ptr to ptr 
+		 const VkAttachmentReference* p_pResolveAttachments = ( VkAttachmentReference*) _pResolveAttachments; 
+		 vkObj->pResolveAttachments = p_pResolveAttachments; 
 	  */
 
 	/**
@@ -604,8 +608,9 @@
 	 */ 
 	 private static native void setPDepthStencilAttachment0(Buffer ptr, java.nio.ByteBuffer  _pDepthStencilAttachment);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pDepthStencilAttachment = (const VkAttachmentReference*) (_pDepthStencilAttachment);
+		 // code for Buffer - ptr to ptr 
+		 const VkAttachmentReference* p_pDepthStencilAttachment = ( VkAttachmentReference*) _pDepthStencilAttachment; 
+		 vkObj->pDepthStencilAttachment = p_pDepthStencilAttachment; 
 	  */
 
 	/**
@@ -643,18 +648,18 @@
 	 */ 
 	 private static native void setPPreserveAttachments0(Buffer ptr, int[] _pPreserveAttachments);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
-		 // code for generic array 
-		  if( NULL == _pPreserveAttachments ){
-		    vkObj->preserveAttachmentCount = 0;
-		    FREE_IT(vkObj->pPreserveAttachments);
+		 // code for generic array assignment 
+		 uint32_t* temp = const_cast<uint32_t*>(vkObj->pPreserveAttachments);
+		 if(temp) { free(temp); } 
+		 vkObj->pPreserveAttachments = NULL; 
+		 if( _pPreserveAttachments == NULL){ 
+		    vkObj->preserveAttachmentCount = 0; 
 		     return;
-		   }
-		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pPreserveAttachments);
-		  if( vkObj->preserveAttachmentCount != count){ 
-		    FREE_IT(vkObj->pPreserveAttachments); 
-		    vkObj->pPreserveAttachments = CALLOC(count, uint32_t);
-		   }
-		  memcpy( vkObj->pPreserveAttachments, _pPreserveAttachments, count * sizeof(uint32_t));
+		  }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pPreserveAttachments); 
+		  temp = CALLOC(count, uint32_t); 
+		  memcpy( temp, _pPreserveAttachments, count * sizeof(uint32_t)); 
+		  vkObj->pPreserveAttachments = temp; 
 		  vkObj->preserveAttachmentCount = count;
 	  */
 

@@ -344,8 +344,9 @@
 	 */ 
 	 private static native void setSubresource0(Buffer ptr, java.nio.ByteBuffer  _subresource);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->subresource = (VkImageSubresource) (_subresource);
+		 // code for Buffer - ptr to struct 
+		 VkImageSubresource* p_subresource = (VkImageSubresource*) _subresource; 
+		 vkObj->subresource = (*p_subresource); 
 	  */
 
 	/**
@@ -364,8 +365,9 @@
 	 */ 
 	 private static native void setOffset0(Buffer ptr, java.nio.ByteBuffer  _offset);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->offset = (VkOffset3D) (_offset);
+		 // code for Buffer - ptr to struct 
+		 VkOffset3D* p_offset = (VkOffset3D*) _offset; 
+		 vkObj->offset = (*p_offset); 
 	  */
 
 	/**
@@ -384,8 +386,9 @@
 	 */ 
 	 private static native void setExtent0(Buffer ptr, java.nio.ByteBuffer  _extent);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->extent = (VkExtent3D) (_extent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent3D* p_extent = (VkExtent3D*) _extent; 
+		 vkObj->extent = (*p_extent); 
 	  */
 
 	/**

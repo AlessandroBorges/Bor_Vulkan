@@ -189,8 +189,9 @@
 	 */ 
 	 private static native void setVisibleRegion0(Buffer ptr, java.nio.ByteBuffer  _visibleRegion);/*
 		  VkDisplayModeParametersKHR* vkObj = (VkDisplayModeParametersKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->visibleRegion = (VkExtent2D) (_visibleRegion);
+		 // code for Buffer - ptr to struct 
+		 VkExtent2D* p_visibleRegion = (VkExtent2D*) _visibleRegion; 
+		 vkObj->visibleRegion = (*p_visibleRegion); 
 	  */
 
 	/**

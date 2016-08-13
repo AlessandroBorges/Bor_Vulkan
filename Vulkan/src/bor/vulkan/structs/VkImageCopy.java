@@ -322,8 +322,9 @@
 	 */ 
 	 private static native void setSrcSubresource0(Buffer ptr, java.nio.ByteBuffer  _srcSubresource);/*
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->srcSubresource = (VkImageSubresourceLayers) (_srcSubresource);
+		 // code for Buffer - ptr to struct 
+		 VkImageSubresourceLayers* p_srcSubresource = (VkImageSubresourceLayers*) _srcSubresource; 
+		 vkObj->srcSubresource = (*p_srcSubresource); 
 	  */
 
 	/**
@@ -342,8 +343,9 @@
 	 */ 
 	 private static native void setSrcOffset0(Buffer ptr, java.nio.ByteBuffer  _srcOffset);/*
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->srcOffset = (VkOffset3D) (_srcOffset);
+		 // code for Buffer - ptr to struct 
+		 VkOffset3D* p_srcOffset = (VkOffset3D*) _srcOffset; 
+		 vkObj->srcOffset = (*p_srcOffset); 
 	  */
 
 	/**
@@ -362,8 +364,9 @@
 	 */ 
 	 private static native void setDstSubresource0(Buffer ptr, java.nio.ByteBuffer  _dstSubresource);/*
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->dstSubresource = (VkImageSubresourceLayers) (_dstSubresource);
+		 // code for Buffer - ptr to struct 
+		 VkImageSubresourceLayers* p_dstSubresource = (VkImageSubresourceLayers*) _dstSubresource; 
+		 vkObj->dstSubresource = (*p_dstSubresource); 
 	  */
 
 	/**
@@ -382,8 +385,9 @@
 	 */ 
 	 private static native void setDstOffset0(Buffer ptr, java.nio.ByteBuffer  _dstOffset);/*
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->dstOffset = (VkOffset3D) (_dstOffset);
+		 // code for Buffer - ptr to struct 
+		 VkOffset3D* p_dstOffset = (VkOffset3D*) _dstOffset; 
+		 vkObj->dstOffset = (*p_dstOffset); 
 	  */
 
 	/**
@@ -402,8 +406,9 @@
 	 */ 
 	 private static native void setExtent0(Buffer ptr, java.nio.ByteBuffer  _extent);/*
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->extent = (VkExtent3D) (_extent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent3D* p_extent = (VkExtent3D*) _extent; 
+		 vkObj->extent = (*p_extent); 
 	  */
 
 	/**

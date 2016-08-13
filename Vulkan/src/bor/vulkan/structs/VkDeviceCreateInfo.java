@@ -479,9 +479,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -490,8 +491,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -548,8 +550,9 @@
 	 */ 
 	 private static native void setPQueueCreateInfos0(Buffer ptr, java.nio.ByteBuffer  _pQueueCreateInfos);/*
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pQueueCreateInfos = (const VkDeviceQueueCreateInfo*) (_pQueueCreateInfos);
+		 // code for Buffer - ptr to ptr 
+		 const VkDeviceQueueCreateInfo* p_pQueueCreateInfos = ( VkDeviceQueueCreateInfo*) _pQueueCreateInfos; 
+		 vkObj->pQueueCreateInfos = p_pQueueCreateInfos; 
 	  */
 
 	/**
@@ -694,8 +697,9 @@
 	 */ 
 	 private static native void setPEnabledFeatures0(Buffer ptr, java.nio.ByteBuffer  _pEnabledFeatures);/*
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pEnabledFeatures = (const VkPhysicalDeviceFeatures*) (_pEnabledFeatures);
+		 // code for Buffer - ptr to ptr 
+		 const VkPhysicalDeviceFeatures* p_pEnabledFeatures = ( VkPhysicalDeviceFeatures*) _pEnabledFeatures; 
+		 vkObj->pEnabledFeatures = p_pEnabledFeatures; 
 	  */
 
 	/**

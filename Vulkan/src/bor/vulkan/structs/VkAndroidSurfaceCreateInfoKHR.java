@@ -272,10 +272,11 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 	 #ifdef VK_USE_PLATFORM_ANDROID_KHR 
 		  VkAndroidSurfaceCreateInfoKHR* vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 #else 
 	   return 0; 
 	 #endif 
@@ -288,8 +289,9 @@
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 	 #ifdef VK_USE_PLATFORM_ANDROID_KHR 
 		  VkAndroidSurfaceCreateInfoKHR* vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	 #endif 
 	  */
 

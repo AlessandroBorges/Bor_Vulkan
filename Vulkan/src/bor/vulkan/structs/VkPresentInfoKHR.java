@@ -407,9 +407,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -418,8 +419,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -457,8 +459,9 @@
 	 */ 
 	 private static native void setPWaitSemaphores0(Buffer ptr, ByteBuffer  _pWaitSemaphores);/*
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pWaitSemaphores = (const VkSemaphore*) (_pWaitSemaphores);
+		 // code for Buffer - ptr to ptr 
+		 const VkSemaphore* p_pWaitSemaphores = ( VkSemaphore*) _pWaitSemaphores; 
+		 vkObj->pWaitSemaphores = p_pWaitSemaphores; 
 	  */
 
 	/**
@@ -496,8 +499,9 @@
 	 */ 
 	 private static native void setPSwapchains0(Buffer ptr, ByteBuffer  _pSwapchains);/*
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pSwapchains = (const VkSwapchainKHR*) (_pSwapchains);
+		 // code for Buffer - ptr to ptr 
+		 const VkSwapchainKHR* p_pSwapchains = ( VkSwapchainKHR*) _pSwapchains; 
+		 vkObj->pSwapchains = p_pSwapchains; 
 	  */
 
 	/**
@@ -516,18 +520,18 @@
 	 */ 
 	 private static native void setPImageIndices0(Buffer ptr, int[] _pImageIndices);/*
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		 // code for generic array 
-		  if( NULL == _pImageIndices ){
-		    vkObj->swapchainCount = 0;
-		    FREE_IT(vkObj->pImageIndices);
+		 // code for generic array assignment 
+		 uint32_t* temp = const_cast<uint32_t*>(vkObj->pImageIndices);
+		 if(temp) { free(temp); } 
+		 vkObj->pImageIndices = NULL; 
+		 if( _pImageIndices == NULL){ 
+		    vkObj->swapchainCount = 0; 
 		     return;
-		   }
-		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pImageIndices);
-		  if( vkObj->swapchainCount != count){ 
-		    FREE_IT(vkObj->pImageIndices); 
-		    vkObj->pImageIndices = CALLOC(count, uint32_t);
-		   }
-		  memcpy( vkObj->pImageIndices, _pImageIndices, count * sizeof(uint32_t));
+		  }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pImageIndices); 
+		  temp = CALLOC(count, uint32_t); 
+		  memcpy( temp, _pImageIndices, count * sizeof(uint32_t)); 
+		  vkObj->pImageIndices = temp; 
 		  vkObj->swapchainCount = count;
 	  */
 
@@ -555,18 +559,18 @@
 	 */ 
 	 private static native void setPResults0(Buffer ptr, int[]  _pResults);/*
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		 // code for generic array 
-		  if( NULL == _pResults ){
-		    vkObj->swapchainCount = 0;
-		    FREE_IT(vkObj->pResults);
+		 // code for generic array assignment 
+		 VkResult* temp = const_cast<VkResult*>(vkObj->pResults);
+		 if(temp) { free(temp); } 
+		 vkObj->pResults = NULL; 
+		 if( _pResults == NULL){ 
+		    vkObj->swapchainCount = 0; 
 		     return;
-		   }
-		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pResults);
-		  if( vkObj->swapchainCount != count){ 
-		    FREE_IT(vkObj->pResults); 
-		    vkObj->pResults = CALLOC(count, VkResult);
-		   }
-		  memcpy( vkObj->pResults, _pResults, count * sizeof(VkResult));
+		  }
+		  uint32_t count = (uint32_t)env->GetArrayLength( obj__pResults); 
+		  temp = CALLOC(count, VkResult); 
+		  memcpy( temp, _pResults, count * sizeof(VkResult)); 
+		  vkObj->pResults = temp; 
 		  vkObj->swapchainCount = count;
 	  */
 

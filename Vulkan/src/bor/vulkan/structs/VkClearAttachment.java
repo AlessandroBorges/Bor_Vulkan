@@ -258,8 +258,9 @@
 	 */ 
 	 private static native void setClearValue0(Buffer ptr, java.nio.ByteBuffer  _clearValue);/*
 		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->clearValue = (VkClearValue) (_clearValue);
+		 // code for Buffer - ptr to struct 
+		 VkClearValue* p_clearValue = (VkClearValue*) _clearValue; 
+		 vkObj->clearValue = (*p_clearValue); 
 	  */
 
 	/**

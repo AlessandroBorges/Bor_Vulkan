@@ -444,9 +444,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -455,8 +456,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -513,8 +515,9 @@
 	 */ 
 	 private static native void setPAttachments0(Buffer ptr, java.nio.ByteBuffer  _pAttachments);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pAttachments = (const VkAttachmentDescription*) (_pAttachments);
+		 // code for Buffer - ptr to ptr 
+		 const VkAttachmentDescription* p_pAttachments = ( VkAttachmentDescription*) _pAttachments; 
+		 vkObj->pAttachments = p_pAttachments; 
 	  */
 
 	/**
@@ -552,8 +555,9 @@
 	 */ 
 	 private static native void setPSubpasses0(Buffer ptr, java.nio.ByteBuffer  _pSubpasses);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pSubpasses = (const VkSubpassDescription*) (_pSubpasses);
+		 // code for Buffer - ptr to ptr 
+		 const VkSubpassDescription* p_pSubpasses = ( VkSubpassDescription*) _pSubpasses; 
+		 vkObj->pSubpasses = p_pSubpasses; 
 	  */
 
 	/**
@@ -591,8 +595,9 @@
 	 */ 
 	 private static native void setPDependencies0(Buffer ptr, java.nio.ByteBuffer  _pDependencies);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pDependencies = (const VkSubpassDependency*) (_pDependencies);
+		 // code for Buffer - ptr to ptr 
+		 const VkSubpassDependency* p_pDependencies = ( VkSubpassDependency*) _pDependencies; 
+		 vkObj->pDependencies = p_pDependencies; 
 	  */
 
 	/**

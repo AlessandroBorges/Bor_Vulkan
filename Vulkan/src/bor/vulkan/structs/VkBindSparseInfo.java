@@ -557,9 +557,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -568,8 +569,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -607,8 +609,9 @@
 	 */ 
 	 private static native void setPWaitSemaphores0(Buffer ptr, ByteBuffer  _pWaitSemaphores);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pWaitSemaphores = (const VkSemaphore*) (_pWaitSemaphores);
+		 // code for Buffer - ptr to ptr 
+		 const VkSemaphore* p_pWaitSemaphores = ( VkSemaphore*) _pWaitSemaphores; 
+		 vkObj->pWaitSemaphores = p_pWaitSemaphores; 
 	  */
 
 	/**
@@ -646,8 +649,9 @@
 	 */ 
 	 private static native void setPBufferBinds0(Buffer ptr, java.nio.ByteBuffer  _pBufferBinds);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pBufferBinds = (const VkSparseBufferMemoryBindInfo*) (_pBufferBinds);
+		 // code for Buffer - ptr to ptr 
+		 const VkSparseBufferMemoryBindInfo* p_pBufferBinds = ( VkSparseBufferMemoryBindInfo*) _pBufferBinds; 
+		 vkObj->pBufferBinds = p_pBufferBinds; 
 	  */
 
 	/**
@@ -685,8 +689,9 @@
 	 */ 
 	 private static native void setPImageOpaqueBinds0(Buffer ptr, java.nio.ByteBuffer  _pImageOpaqueBinds);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pImageOpaqueBinds = (const VkSparseImageOpaqueMemoryBindInfo*) (_pImageOpaqueBinds);
+		 // code for Buffer - ptr to ptr 
+		 const VkSparseImageOpaqueMemoryBindInfo* p_pImageOpaqueBinds = ( VkSparseImageOpaqueMemoryBindInfo*) _pImageOpaqueBinds; 
+		 vkObj->pImageOpaqueBinds = p_pImageOpaqueBinds; 
 	  */
 
 	/**
@@ -724,8 +729,9 @@
 	 */ 
 	 private static native void setPImageBinds0(Buffer ptr, java.nio.ByteBuffer  _pImageBinds);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pImageBinds = (const VkSparseImageMemoryBindInfo*) (_pImageBinds);
+		 // code for Buffer - ptr to ptr 
+		 const VkSparseImageMemoryBindInfo* p_pImageBinds = ( VkSparseImageMemoryBindInfo*) _pImageBinds; 
+		 vkObj->pImageBinds = p_pImageBinds; 
 	  */
 
 	/**
@@ -763,8 +769,9 @@
 	 */ 
 	 private static native void setPSignalSemaphores0(Buffer ptr, ByteBuffer  _pSignalSemaphores);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pSignalSemaphores = (const VkSemaphore*) (_pSignalSemaphores);
+		 // code for Buffer - ptr to ptr 
+		 const VkSemaphore* p_pSignalSemaphores = ( VkSemaphore*) _pSignalSemaphores; 
+		 vkObj->pSignalSemaphores = p_pSignalSemaphores; 
 	  */
 
 	/**

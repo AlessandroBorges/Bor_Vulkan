@@ -220,8 +220,9 @@
 	 */ 
 	 private static native void setRect0(Buffer ptr, java.nio.ByteBuffer  _rect);/*
 		  VkClearRect* vkObj = (VkClearRect*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->rect = (VkRect2D) (_rect);
+		 // code for Buffer - ptr to struct 
+		 VkRect2D* p_rect = (VkRect2D*) _rect; 
+		 vkObj->rect = (*p_rect); 
 	  */
 
 	/**

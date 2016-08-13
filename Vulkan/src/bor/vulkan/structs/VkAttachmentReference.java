@@ -207,9 +207,10 @@
 	 * Native GET method for field layout	[vkenum]<br>
 	 * Prototype: VkImageLayout  layout
 	 */ 
-	 private static native int  getLayout0(Buffer ptr);/*
+	 private static native int getLayout0(Buffer ptr);/*
 		  VkAttachmentReference* vkObj = (VkAttachmentReference*)(ptr);
-		  return (VkImageLayout) (vkObj->layout);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->layout);
 	 */
 
 

@@ -282,8 +282,9 @@
 	 */ 
 	 private static native void setMaxExtent0(Buffer ptr, java.nio.ByteBuffer  _maxExtent);/*
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->maxExtent = (VkExtent3D) (_maxExtent);
+		 // code for Buffer - ptr to struct 
+		 VkExtent3D* p_maxExtent = (VkExtent3D*) _maxExtent; 
+		 vkObj->maxExtent = (*p_maxExtent); 
 	  */
 
 	/**

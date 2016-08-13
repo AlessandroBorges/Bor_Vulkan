@@ -299,6 +299,7 @@
 		 return this.minSampleShading;
 	 }
 
+// #Included setPSampleMask
 	/**
 	 * Set method for field pSampleMask	[int]<br>
 	 * Prototype: const VkSampleMask*  pSampleMask
@@ -306,21 +307,33 @@
 	 * @param pSampleMask - a instance of int[].
 	 * @return this VkStruct instance.
 	 */ 
-	 public VkPipelineMultisampleStateCreateInfo pSampleMask(int[] pSampleMask){
-		 this.pSampleMask = pSampleMask;
-		 setPSampleMask0(this.ptr,  pSampleMask);
-		 return this;
+	 public VkPipelineMultisampleStateCreateInfo pSampleMask(int[] _pSampleMask){
+	     int rsamples = rasterizationSamples().getValue();          
+             int len = rsamples <= 32 ? 1 : 2;
+             if(pSampleMask==null || pSampleMask.length != len)
+                 pSampleMask = new int[len];
+             System.arraycopy(_pSampleMask,0, this.pSampleMask, 0, len);
+	     setPSampleMask0(this.ptr,  this.pSampleMask, len );
+             return this;
 	 }
 
+//#END Set Included
+
+// #Included getPSampleMask0
 	/**
 	 * Get method for field pSampleMask	[int]<br>
 	 * Prototype: const VkSampleMask*  pSampleMask
 	 */ 
 	 public int[] pSampleMask(){
-		 int[] var = getPSampleMask0(super.ptr, pSampleMask);
-		 this.pSampleMask = var;
+	        int rsamples = rasterizationSamples().getValue();	       
+	        int len = rsamples <= 32 ? 1 : 2;
+	        if(pSampleMask==null || pSampleMask.length != len)
+                 pSampleMask = new int[len];
+		 getPSampleMask0(super.ptr, pSampleMask, len);		 
 		 return this.pSampleMask;
 	 }
+
+//#END get
 
 	/**
 	 * Set method for field alphaToCoverageEnable	[boolean]<br>
@@ -415,9 +428,10 @@
 	 * Native GET method for field sType	[vkenum]<br>
 	 * Prototype: VkStructureType  sType
 	 */ 
-	 private static native int  getSType0(Buffer ptr);/*
+	 private static native int getSType0(Buffer ptr);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
-		  return (VkStructureType) (vkObj->sType);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->sType);
 	 */
 
 	/**
@@ -426,8 +440,9 @@
 	 */ 
 	 private static native void setPNext0(Buffer ptr, java.nio.ByteBuffer  _pNext);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
-		 // code for Buffer - referenced by ptr
-		  vkObj->pNext = (const void*) (_pNext);
+		 // code for Buffer - ptr to ptr 
+		 const void* p_pNext = ( void*) _pNext; 
+		 vkObj->pNext = p_pNext; 
 	  */
 
 	/**
@@ -473,9 +488,10 @@
 	 * Native GET method for field rasterizationSamples	[vkenum]<br>
 	 * Prototype: VkSampleCountFlagBits  rasterizationSamples
 	 */ 
-	 private static native int  getRasterizationSamples0(Buffer ptr);/*
+	 private static native int getRasterizationSamples0(Buffer ptr);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
-		  return (VkSampleCountFlagBits) (vkObj->rasterizationSamples);
+		  // generic get for Vk enums
+		  return (jint) (vkObj->rasterizationSamples);
 	 */
 
 	/**
@@ -516,37 +532,31 @@
 		  return (jfloat) (vkObj->minSampleShading);
 	 */
 
-	/**
+     
+     /**
 	 * Native SET method for field pSampleMask	[int]<br>
 	 * Prototype: const VkSampleMask*  pSampleMask
 	 */ 
-	 private static native void setPSampleMask0(Buffer ptr, int[] _pSampleMask);/*
-		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
-		  // included code
-		  if( NULL == _pSampleMask ){		   
-		    FREE_IT(vkObj->pSampleMask);
-			return;
-		   }
-		  uint32_t count = (uint32_t)env->GetArrayLength(obj__pSampleMask);		  
-		  vkObj->pSampleMask = CALLOC(count, VkSampleMask);
-		  memcpy( vkObj->pSampleMask, _pSampleMask, count * sizeof(VkSampleMask));
+	 private static native void setPSampleMask0(Buffer ptr, int[] _pSampleMask, int count);/*
+		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);		  		  
+		VkSampleMask* temp = const_cast<VkSampleMask*>(vkObj->pSampleMask); 
+        // I must free it to avoid leaks
+        if(temp) 
+            free(temp);
+        temp = CALLOC(count, VkSampleMask);
+		memcpy( temp, _pSampleMask, count * sizeof(VkSampleMask));
+        vkObj->pSampleMask = temp;
 	  */
 
-	/**
-	 * Native GET method for field pSampleMask	[int]<br>
-	 * Prototype: const VkSampleMask*  pSampleMask
-	 */ 
-	 private static native int[] getPSampleMask0(Buffer ptr, int[] _pSampleMask);/*
-		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
-		  // included code
-          if(_pSampleMask == NULL){
-			  FREE_IT(vkObj->pSampleMask);
-			  return;
-		  }		  
-		  uint32_t count = (uint32_t)env->GetArrayLength(obj__pSampleMask);		 
- 		  memcpy( _pSampleMask, vkObj->pSampleMask, count * sizeof(VkSampleMask));
-		  return _pSampleMask;
-	 */
+	 /**
+	  * Native GET method for field pSampleMask      [int]<br>
+	  * Prototype: const VkSampleMask*  pSampleMask
+	  */ 
+	  private static native void getPSampleMask0(Buffer ptr, int[] _pSampleMask, int count);/*
+	          VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
+	           // included code
+	           memcpy( _pSampleMask, vkObj->pSampleMask, count * sizeof(VkSampleMask));
+	   */
 
 	/**
 	 * Native SET method for field alphaToCoverageEnable	[boolean]<br>
