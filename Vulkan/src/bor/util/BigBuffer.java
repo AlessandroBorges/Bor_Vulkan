@@ -54,6 +54,39 @@ public class BigBuffer<T> {
     }
     
     /**
+     * Ctor for a native allocated buffer
+     * @param nativeBuffer - Buffer allocated in native side
+     * @param array - Java array to hold on VkStruct
+     * @param structID - ID of Structs
+     */
+    public BigBuffer(ByteBuffer nativeBuffer, VkStruct[] array, int structID) {
+        this.array = array;            
+        this.structID = structID;        
+        singleSize = VkStruct.sizeOf(structID) ;
+        this.elementCount = array == null ? 0 : array.length;
+        this.nativeBufferArray = nativeBuffer;        
+        nativeBufferArray.order(ByteOrder.nativeOrder());       
+        nativeBufferArray.rewind(); 
+        initStruct();
+    }
+    
+    /**
+     * Ctor of BigBuffer for native allocated VkHandles
+     * @param handleArray - array of VkHandles 
+     * @param isDispatchableHandle - true if handleArray is a array of dispatchable handles.     
+     */
+    public BigBuffer(ByteBuffer nativeBuffer, VkHandleInterface[] handleArray, boolean isDispatchableHandle) {
+        this.isHandle = true;
+        this.array = handleArray;
+        this.elementCount = (handleArray == null) ? 0 : handleArray.length;
+        singleSize = isDispatchableHandle ?  Vk10.sizeOfDispatchableHandle() 
+                                           : Vk10.sizeOfNonDispatchableHandle();                               
+        this.nativeBufferArray = nativeBuffer;
+        nativeBufferArray.order(ByteOrder.nativeOrder());
+        initHandlers();
+    }
+    
+    /**
      * Ctor of BigBuffer for VkHandles
      * @param handleArray - array of VkHandles 
      * @param isDispatchableHandle - true if handleArray is a array of dispatchable handles.     
@@ -68,6 +101,8 @@ public class BigBuffer<T> {
         nativeBufferArray.order(ByteOrder.nativeOrder());
         initHandlers();
     }
+    
+    
     
     /**
      * Get the address of array.
