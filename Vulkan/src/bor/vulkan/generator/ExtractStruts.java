@@ -3,7 +3,17 @@
  */
 package bor.vulkan.generator;
 
+import java.beans.XMLEncoder;
+import java.io.ByteArrayOutputStream;
+import java.io.StringWriter;
 import java.util.*;
+
+
+import com.google.gson.Gson;
+
+import bor.vulkan.structs.CStructInfo;
+import jdk.nashorn.internal.ir.debug.JSONWriter;
+
 import static bor.vulkan.generator.Util.*;
 
 /**
@@ -20,14 +30,26 @@ public class ExtractStruts {
     private static final boolean saveFile = true;
     private static final boolean printID = false;
     private static final boolean printStruct = false;
-    private static boolean exportStructs = true;
+    private static boolean exportStructs = false;
+    private static boolean exportInspectors = true;
     private static boolean showAtConsole = false;
     
     public static final String includeFolder = "D:/Users/Livia/Documents/GitHub/Bor_Vulkan/Vulkan/src/bor/vulkan/generator";
     public static final String basePath = "D:/Users/Livia/workspace/Vulkan/src_gen/bor/vulkan/structs";
     public static final String pkg = "bor.vulkan.structs";
     
-    
+    /**
+     * Write a object to XML
+     * @param bean - serializable object
+     * @return
+     */
+    public static String toXML(Object bean){
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        XMLEncoder e = new XMLEncoder(out);
+        e.writeObject(bean);
+        e.close();
+        return out.toString();
+    }
     /**
      * Process Vulkan Structs
      * 
@@ -69,7 +91,33 @@ public class ExtractStruts {
                 // info.getID_NAME()+";");
             }
         }
-        
+        ///////////////////////////////////////////////
+        if(exportInspectors){
+            
+            List<CStructInfo> list = new ArrayList<CStructInfo>(200);
+            
+            StringBuilder sb = new StringBuilder(20*1024);
+            for (StructInfo info : allStructs) {
+                CStructInfo csi  = info.cStructInfo();
+                list.add(csi);
+                String ic =  info.instrospectionC();
+                sb.append(ic).append("\n\n");    
+            }
+            
+            System.out.println("Inspector");
+            System.out.println(sb.toString());
+            
+                        
+            StringWriter out = new StringWriter(10*1024);
+            
+            Gson gson = new Gson();
+            String json =  gson.toJson(list);
+            
+            System.out.println("XML");
+            System.out.println(json);
+            
+        }
+        ////////////////////////////////////////////////////////////
         // export
         if (exportStructs) {
             for (StructInfo info : allStructs) {
@@ -90,7 +138,9 @@ public class ExtractStruts {
         return ID;
     }// process struct
     
-    
+    public void buildIntrospector(){
+        
+    }
     
     /**
      * Process Vulkan Structs
@@ -200,9 +250,6 @@ public class ExtractStruts {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-//        if(true == (1<9)){
-//            throw new RuntimeException("DO Not run it anymore");
-//        }
         List<String> vkh = readVKH();
         // String vk = toString(vkh);       
         boolean processStructs = true;

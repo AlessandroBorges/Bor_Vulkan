@@ -11,6 +11,7 @@ import java.util.StringTokenizer;
 
 import bor.vulkan.VkHandleDispatchable;
 import bor.vulkan.generator.Util.CLASS_TYPE;
+import bor.vulkan.structs.CStructInfo;
 
 
 
@@ -61,6 +62,56 @@ public class StructInfo {
     
     public String getID_NAME(){
         return name.toUpperCase() + "_ID = "+this.id;
+    }
+    
+    /**
+     * Create a cStructInfo from this 
+     * @return 
+     */
+    public CStructInfo cStructInfo(){
+        CStructInfo info = new CStructInfo();
+        info.structID = this.id;
+        info.structName = this.name;
+        info.fieldName = this.fields;
+        info.ctype = this.types;
+        
+        return info;
+    }
+    
+    /**
+     * CStruct info as XML
+     * @return
+     */
+    public String CStructInfo2XML(){
+        CStructInfo info = cStructInfo();
+         return info.toXML();
+    }
+    
+    /**
+     * Generates codes for introspection in C structs
+     *  uses offsetof(struct, member) and sizeof
+     *  #define offsetof(TYPE, MEMBER) ((size_t) &((TYPE *)0)->MEMBER) 
+     * @return
+     */
+    public String instrospectionC(){        
+        String code = "";
+        String struct = name;
+        code += " public static final int MEMBERS_OF_"+struct+" = "+fields.length+";\n\n" ;
+        
+        code += " public CStructInfo introspect"+struct+"(){ \n"
+              + "   CStructInfo cInfo = new CtructInfo(); \n"
+              + "   cInfo.structID = " + this.id +"; \n"
+              + "   cInfo.structName = " + this.name+"; \n";
+                
+        code += " private static native int introspect"+struct+"0(int[] offset, int[] size);/* \n";
+        for (int i = 0; i < fields.length; i++) {
+            String member = fields[i];
+            code += "\t offset["+i+"] = offsetof("+struct+", "+member+"); \n";
+            code += "\t size  ["+i+"] = sizeof  ("+struct+"::"+member+"); \n\n";
+        }
+        code +="\t return sizeof("+struct+")\n"
+             + "  */ \n\n" ;
+       return code; 
     }
     
     /**
