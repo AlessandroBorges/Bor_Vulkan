@@ -325,6 +325,8 @@ int InitInstanceProcs(VkInstance instance){
     vkGetDisplayPlaneCapabilitiesKHR = (PFN_vkGetDisplayPlaneCapabilitiesKHR)(vkGetInstanceProcAddr(instance, "vkGetDisplayPlaneCapabilitiesKHR"));
     vkCreateDisplayPlaneSurfaceKHR = (PFN_vkCreateDisplayPlaneSurfaceKHR)(vkGetInstanceProcAddr(instance, "vkCreateDisplayPlaneSurfaceKHR"));
     vkCreateSharedSwapchainsKHR = (PFN_vkCreateSharedSwapchainsKHR)(vkGetInstanceProcAddr(instance, "vkCreateSharedSwapchainsKHR"));
+    
+    
 
 #ifdef VK_USE_PLATFORM_XLIB_KHR
     vkCreateXlibSurfaceKHR = (PFN_vkCreateXlibSurfaceKHR)(vkGetInstanceProcAddr(instance, "vkCreateXlibSurfaceKHR"));

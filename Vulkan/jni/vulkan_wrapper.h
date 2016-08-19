@@ -193,6 +193,16 @@ extern PFN_vkCmdBeginRenderPass vkCmdBeginRenderPass;
 extern PFN_vkCmdNextSubpass vkCmdNextSubpass;
 extern PFN_vkCmdEndRenderPass vkCmdEndRenderPass;
 extern PFN_vkCmdExecuteCommands vkCmdExecuteCommands;
+//Vulkan 1.0.21
+extern PFN_vkDebugReportCallbackEXT vkDebugReportCallbackEXT;
+extern PFN_vkCreateDebugReportCallbackEXT vkCreateDebugReportCallbackEXT;
+extern PFN_vkDestroyDebugReportCallbackEXT vkDestroyDebugReportCallbackEXT;
+extern PFN_vkDebugReportMessageEXT vkDebugReportMessageEXT;
+extern PFN_vkDebugMarkerSetObjectTagEXT vkDebugMarkerSetObjectTagEXT;
+extern PFN_vkDebugMarkerSetObjectNameEXT vkDebugMarkerSetObjectNameEXT;
+extern PFN_vkCmdDebugMarkerBeginEXT vkCmdDebugMarkerBeginEXT;
+extern PFN_vkCmdDebugMarkerEndEXT vkCmdDebugMarkerEndEXT;
+extern PFN_vkCmdDebugMarkerInsertEXT vkCmdDebugMarkerInsertEXT;
 
 // VK_KHR_surface
 extern PFN_vkDestroySurfaceKHR vkDestroySurfaceKHR;
