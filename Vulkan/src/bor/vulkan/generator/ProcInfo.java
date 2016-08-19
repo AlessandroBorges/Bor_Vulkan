@@ -168,12 +168,15 @@ public class ProcInfo {
          // Java code calling native method
          src +="{\n";
          String paramTab = "\n\t\t";
+         String callNative = "";
          if(isVoid){
-             src +=  "\t" + this.procName+"0(";            
+             callNative +=  "\t" + this.procName+"0(";            
          }else{
-             src +=  "\t" + returnJava + " _val = " +this.procName+"0(";
+             callNative +=  "\t" + returnJava + " _val = " +this.procName+"0(";
              paramTab = "\n\t\t\t";
          }
+         String prepare = "";
+         String params = "";
          //parameters for native call
          for (int i = 0; i < len; i++) {
              CLASS_TYPE type = this.type[i]; 
@@ -182,17 +185,34 @@ public class ProcInfo {
              String jType = StructInfo.getJavaType(cType, field, procName); 
              String method = StructInfo.getMethodTypeBridge(type, "");
              String bridge = "";
+             boolean isPtr = cType.contains("*");
+             boolean isConst = cType.contains("const");
              
-             if(type == CLASS_TYPE.VKSTRUCT || type==CLASS_TYPE.VKHANDLE || type==CLASS_TYPE.VKOBJECT || type==CLASS_TYPE.VKPFN){
-                 bridge =  "("+field+"==null ? null : " +field+method +") /* ByteBuffer */ ";                        
+             if(type==CLASS_TYPE.VKHANDLE || type==CLASS_TYPE.VKPFN)
+             {                
+                 if(isPtr){
+                   prepare = "\tlong[] " + field+"Array = prepare("+ field +");";
+                   bridge = field+"Array "; 
+                 }else
+                   bridge =  field+method +" /* VkHandle */ ";                        
+             } else
+             if(type == CLASS_TYPE.VKSTRUCT)
+             {
+                 if(cType.contains("VkAllocationCallbacks"))
+                     bridge =  "("+field+"==null ? null : " +field+method +") /* VkStruct */ ";
+                 else
+                     bridge =  field+method +"" ;   
              } else if(type == CLASS_TYPE.VKENUM ){
                  bridge = field+method+" /* enum */"; 
              }else {
                  bridge = field+" ";
              }
-             
-             src += paramTab + bridge + (i+1<len ? "," : "") ;
-         }
+            
+             params += paramTab + bridge + (i+1<len ? "," : "") ;
+         }// for
+         src += prepare +"\n";
+         src +=callNative;
+         src += params;
          src += " );\n";
          
          if(!isVoid){
