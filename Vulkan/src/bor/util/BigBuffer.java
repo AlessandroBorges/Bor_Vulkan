@@ -23,6 +23,8 @@ import bor.vulkan.structs.VkStruct;
 public class BigBuffer<T> {
    
   
+    private static final int MASK_32BIT_PTR = 0xFFffFFff;
+
     private int structID;
     
     private ByteBuffer nativeBufferArray;    
@@ -33,6 +35,7 @@ public class BigBuffer<T> {
     private boolean isHandle = false;
     private boolean isDispatchHandle = false;
   
+    private boolean dirty = true;
     
     /**
      * Constructor
@@ -45,7 +48,7 @@ public class BigBuffer<T> {
     public BigBuffer(VkStruct[] array, int structID) {
         this.array = array;            
         this.structID = structID;        
-        singleSize = VkStruct.sizeOf(structID) ;
+        singleSize = VkStruct.sizeOf(structID);
         this.elementCount = array == null ? 0 : array.length;
         this.nativeBufferArray = (array == null) ? null : ByteBuffer.allocateDirect(singleSize * elementCount);        
         nativeBufferArray.order(ByteOrder.nativeOrder());       
@@ -116,6 +119,7 @@ public class BigBuffer<T> {
      * @return the nativeBufferArray
      */
     public ByteBuffer getBuffer() {
+        dirty = true;
         return nativeBufferArray;
     }
 
@@ -127,10 +131,24 @@ public class BigBuffer<T> {
     }
     
     /**
+     * Get the i-th element in this Buffer
+     * @param index - index of VkStruct or VkHandle element
+     * @return a instance of type T
+     * 
+     * @exception ArrayIndexOutOfBoundsException - if index is out of bounds
+     */
+    public T get(int index){
+        if(dirty)
+            update();
+        return (T) array[index];
+    }
+    
+    /**
      * Synchronizes Java side with native side.
      */
     public void update(){
         splitBufferToArray();
+        dirty = false;
     }
     
     /**
@@ -149,7 +167,7 @@ public class BigBuffer<T> {
                 nativeBufferArray.position(pos);
                 long addr = (array[i] == null) ? 0L : handleAddress[i];
                 if (sizeBytes == 4) 
-                    nativeBufferArray.putInt((int)(addr & 0xFFffFFff));
+                    nativeBufferArray.putInt((int)(addr & MASK_32BIT_PTR));
                 else 
                     nativeBufferArray.putLong(addr);
             }
@@ -173,6 +191,8 @@ public class BigBuffer<T> {
                 ByteBuffer src = struct.getPointer();
                 // copy content of src to nativeBufferArray
                 copyBuffers(src, 0, nativeBufferArray, pos, sizeBytes);
+            }else{
+                dirty = true;
             }
         }// for
     }
@@ -185,30 +205,31 @@ public class BigBuffer<T> {
      * @return the list of updated objects
      */
     private VkObject[] splitBufferToArray() {
-        if (array == null) return array;
+        if (array == null) 
+            return array;
         int sizeBytes = singleSize;
         nativeBufferArray.rewind();
         for (int i = 0; i < elementCount; i++) {
             int pos = i * sizeBytes;
             nativeBufferArray.limit(pos + sizeBytes);
             nativeBufferArray.position(pos);
-            if (isHandle) {
-                // As VkHandle
+            
+            if (isHandle) { // As VkHandle ////////////////////////////////////////////
                 long addr = readCurrentAddress(nativeBufferArray, sizeBytes);
                 if (array[i] == null) {
                     array[i] = isDispatchHandle ? new VkHandleDispatchable(addr) : new VkHandle(addr);
                 } else {
                    ((VkHandle)array[i]).setPointer(addr);
                 }
-            } else {
-                // as VkStruct                
+            } else { // as VkStruct ////////////////////////////////////////////                
                 if (array[i] == null) {
                     ByteBuffer bb = nativeBufferArray.slice();
                     bb.order(ByteOrder.nativeOrder());
                     array[i] = wrapStruct(bb);
                 } else {
-                    // clone buffer to current pointer
-                    ByteBuffer dst = array[i].getPointer();   
+                    // copy iff it is != buffers
+                    ByteBuffer dst = array[i].getPointer();
+                    // use flags[] to map remote buffer.
                     long dstAddr = bor.util.Utils.getNativeAddressAndOffset(dst);
                     long srcAddr = bor.util.Utils.getNativeAddressAndOffset(nativeBufferArray);
                     if(dstAddr != srcAddr){
@@ -266,6 +287,17 @@ public class BigBuffer<T> {
         if(tt == null)
             throw new UnsupportedOperationException("Failed to create instance of VkStruct with ID: " + structID);
         return tt;
+    }
+
+    /**
+     * Release this structure for garbage collection.<br>
+     * This bigBuffer is useless after calling this method.
+     */
+    public void free() {
+        for (int i = 0; i < array.length; i++) {
+            array[i] = null;
+        }
+        nativeBufferArray = null;
     }
     
 }
