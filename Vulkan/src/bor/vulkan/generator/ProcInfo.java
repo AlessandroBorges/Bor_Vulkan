@@ -389,8 +389,8 @@ public class ProcInfo {
         final int maxLen = 20;
         String params = "";
         for (int i = 0; i < pnames.length; i++) {
-            String s = (i==0 ?"":",  ")+ paramTypes[i] + " " + pnames[i];
-            s = s.replace("const", "").replace("*","");
+            String s = (i==0 ? "" : ",  " ) + paramTypes[i] + " " + pnames[i];
+            //s = s.replace("const", "").replace("*","");
             params +=s;            
         }
         

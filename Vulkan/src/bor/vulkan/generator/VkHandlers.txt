@@ -48,6 +48,7 @@ WlDisplay
 WlSurface
 XCBconnection
 XCBwindow
+XCBVisualID
 XlibDisplay
 XlibVisualID
 XlibWindow

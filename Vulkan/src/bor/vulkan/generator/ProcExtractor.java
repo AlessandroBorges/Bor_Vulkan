@@ -72,12 +72,9 @@ public class ProcExtractor {
             }
         }
         
-        if(showHeader){
-        for (ProcInfo info : allProcs) {
-            System.out.println(info.toString());
-           
-            // System.out.println("public static final int " + info.getID_NAME()+";");
-        }
+        if (showHeader) {
+            for (ProcInfo info : allProcs) {
+                System.out.println(info.toString());            }
         }
 
         if (exportProc) {

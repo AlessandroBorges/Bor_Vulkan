@@ -388,7 +388,19 @@ public class StructInfo {
                 + "\t public int getSizeBytes(){ \n\t\t return sizeOf(); \n\t}\n\n"; 
 
         output += "\t/** \n\t * Get ID of this structure \n\t */\n";
-        output += "\t public static int getID(){ \n\t\t return TAG_ID; \n\t}\n";
+        output += "\t public static int getID(){ \n\t\t return TAG_ID; \n\t}\n\n";
+        
+        //////////////////////////////////////////////
+        //// VkArray<name>
+        /////////////////////////////////////////////
+        output += "\t/** \n\t * Static method to create a VkArray for this VkStruct subclass.\n"
+                + "\t * @param size - number of elements"
+                + "\n\t */\n";
+        output += "\t public static VkArray<"+ name+"> createVkArray(int size){ \n"
+                + "\t\t "+ name+"[] array = new "+name+"[size]; \n"               
+                + "\t\t VkArrayStruct<"+name+"> vkArray = new VkArrayStruct<"+name+">(array, TAG_ID);\n"
+                + "\t\t return vkArray; \n"
+                + "\t } \n\n";
         
         ////////////////////////////////////////////////
         /// SET/GET java side
@@ -1050,6 +1062,7 @@ public class StructInfo {
             case "float": return "jfloat";
             case "double": return "jdouble";  
             case "String" : return "jstring";
+            case "void" :return "void";
          }
         if(jType.contains("Buffer")){
             return "jobject";            

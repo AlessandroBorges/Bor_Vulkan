@@ -28,10 +28,10 @@ public class ExtractStruts {
      */
    
     private static final boolean saveFile = true;
-    private static final boolean printID = false;
+    private static final boolean printID = true;
     private static final boolean printStruct = false;
-    private static boolean exportStructs = false;
-    private static boolean exportInspectors = true;
+    private static boolean exportStructs = true;
+    private static boolean exportInspectors = false;
     private static boolean showAtConsole = false;
     
     public static final String includeFolder = "D:/Users/Livia/Documents/GitHub/Bor_Vulkan/Vulkan/src/bor/vulkan/generator";
