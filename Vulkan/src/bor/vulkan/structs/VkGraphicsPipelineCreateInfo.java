@@ -207,6 +207,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkGraphicsPipelineCreateInfo> createVkArray(int size){ 
+		 VkGraphicsPipelineCreateInfo[] array = new VkGraphicsPipelineCreateInfo[size]; 
+		 VkArrayStruct<VkGraphicsPipelineCreateInfo> vkArray = new VkArrayStruct<VkGraphicsPipelineCreateInfo> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

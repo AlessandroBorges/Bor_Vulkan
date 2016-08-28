@@ -122,6 +122,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkDebugMarkerObjectNameInfoEXT> createVkArray(int size){ 
+		 VkDebugMarkerObjectNameInfoEXT[] array = new VkDebugMarkerObjectNameInfoEXT[size]; 
+		 VkArrayStruct<VkDebugMarkerObjectNameInfoEXT> vkArray = new VkArrayStruct<VkDebugMarkerObjectNameInfoEXT> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

@@ -122,6 +122,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkPipelineInputAssemblyStateCreateInfo> createVkArray(int size){ 
+		 VkPipelineInputAssemblyStateCreateInfo[] array = new VkPipelineInputAssemblyStateCreateInfo[size]; 
+		 VkArrayStruct<VkPipelineInputAssemblyStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineInputAssemblyStateCreateInfo> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

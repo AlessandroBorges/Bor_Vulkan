@@ -116,6 +116,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkComponentMapping> createVkArray(int size){ 
+		 VkComponentMapping[] array = new VkComponentMapping[size]; 
+		 VkArrayStruct<VkComponentMapping> vkArray = new VkArrayStruct<VkComponentMapping> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

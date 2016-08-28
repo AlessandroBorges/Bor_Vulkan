@@ -146,6 +146,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkBufferMemoryBarrier> createVkArray(int size){ 
+		 VkBufferMemoryBarrier[] array = new VkBufferMemoryBarrier[size]; 
+		 VkArrayStruct<VkBufferMemoryBarrier> vkArray = new VkArrayStruct<VkBufferMemoryBarrier> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

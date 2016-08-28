@@ -134,6 +134,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkSubpassDependency> createVkArray(int size){ 
+		 VkSubpassDependency[] array = new VkSubpassDependency[size]; 
+		 VkArrayStruct<VkSubpassDependency> vkArray = new VkArrayStruct<VkSubpassDependency> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

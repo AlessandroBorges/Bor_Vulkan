@@ -128,6 +128,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkBufferImageCopy> createVkArray(int size){ 
+		 VkBufferImageCopy[] array = new VkBufferImageCopy[size]; 
+		 VkArrayStruct<VkBufferImageCopy> vkArray = new VkArrayStruct<VkBufferImageCopy> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

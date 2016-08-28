@@ -152,6 +152,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkWriteDescriptorSet> createVkArray(int size){ 
+		 VkWriteDescriptorSet[] array = new VkWriteDescriptorSet[size]; 
+		 VkArrayStruct<VkWriteDescriptorSet> vkArray = new VkArrayStruct<VkWriteDescriptorSet> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

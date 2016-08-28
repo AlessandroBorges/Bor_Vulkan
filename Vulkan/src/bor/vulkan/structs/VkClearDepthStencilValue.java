@@ -104,6 +104,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkClearDepthStencilValue> createVkArray(int size){ 
+		 VkClearDepthStencilValue[] array = new VkClearDepthStencilValue[size]; 
+		 VkArrayStruct<VkClearDepthStencilValue> vkArray = new VkArrayStruct<VkClearDepthStencilValue> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

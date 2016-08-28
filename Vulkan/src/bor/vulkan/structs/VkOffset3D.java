@@ -110,6 +110,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkOffset3D> createVkArray(int size){ 
+		 VkOffset3D[] array = new VkOffset3D[size]; 
+		 VkArrayStruct<VkOffset3D> vkArray = new VkArrayStruct<VkOffset3D> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

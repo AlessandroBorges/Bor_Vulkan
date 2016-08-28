@@ -149,6 +149,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkSubmitInfo> createVkArray(int size){ 
+		 VkSubmitInfo[] array = new VkSubmitInfo[size]; 
+		 VkArrayStruct<VkSubmitInfo> vkArray = new VkArrayStruct<VkSubmitInfo> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

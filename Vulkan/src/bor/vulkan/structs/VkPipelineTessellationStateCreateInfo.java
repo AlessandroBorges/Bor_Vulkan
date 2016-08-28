@@ -116,6 +116,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkPipelineTessellationStateCreateInfo> createVkArray(int size){ 
+		 VkPipelineTessellationStateCreateInfo[] array = new VkPipelineTessellationStateCreateInfo[size]; 
+		 VkArrayStruct<VkPipelineTessellationStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineTessellationStateCreateInfo> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

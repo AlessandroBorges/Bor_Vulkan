@@ -116,6 +116,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkQueueFamilyProperties> createVkArray(int size){ 
+		 VkQueueFamilyProperties[] array = new VkQueueFamilyProperties[size]; 
+		 VkArrayStruct<VkQueueFamilyProperties> vkArray = new VkArrayStruct<VkQueueFamilyProperties> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

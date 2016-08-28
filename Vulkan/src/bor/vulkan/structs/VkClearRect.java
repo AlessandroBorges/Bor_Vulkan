@@ -110,6 +110,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkClearRect> createVkArray(int size){ 
+		 VkClearRect[] array = new VkClearRect[size]; 
+		 VkArrayStruct<VkClearRect> vkArray = new VkArrayStruct<VkClearRect> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

@@ -116,6 +116,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkCommandBufferBeginInfo> createVkArray(int size){ 
+		 VkCommandBufferBeginInfo[] array = new VkCommandBufferBeginInfo[size]; 
+		 VkArrayStruct<VkCommandBufferBeginInfo> vkArray = new VkArrayStruct<VkCommandBufferBeginInfo> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

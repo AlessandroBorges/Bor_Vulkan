@@ -110,6 +110,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkPushConstantRange> createVkArray(int size){ 
+		 VkPushConstantRange[] array = new VkPushConstantRange[size]; 
+		 VkArrayStruct<VkPushConstantRange> vkArray = new VkArrayStruct<VkPushConstantRange> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

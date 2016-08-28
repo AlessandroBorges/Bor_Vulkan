@@ -110,6 +110,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkExtent3D> createVkArray(int size){ 
+		 VkExtent3D[] array = new VkExtent3D[size]; 
+		 VkArrayStruct<VkExtent3D> vkArray = new VkArrayStruct<VkExtent3D> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

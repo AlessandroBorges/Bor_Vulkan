@@ -110,6 +110,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkPipelineRasterizationStateRasterizationOrderAMD> createVkArray(int size){ 
+		 VkPipelineRasterizationStateRasterizationOrderAMD[] array = new VkPipelineRasterizationStateRasterizationOrderAMD[size]; 
+		 VkArrayStruct<VkPipelineRasterizationStateRasterizationOrderAMD> vkArray = new VkArrayStruct<VkPipelineRasterizationStateRasterizationOrderAMD> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

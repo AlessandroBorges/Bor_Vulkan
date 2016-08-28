@@ -116,6 +116,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkAndroidSurfaceCreateInfoKHR> createVkArray(int size){ 
+		 VkAndroidSurfaceCreateInfoKHR[] array = new VkAndroidSurfaceCreateInfoKHR[size]; 
+		 VkArrayStruct<VkAndroidSurfaceCreateInfoKHR> vkArray = new VkArrayStruct<VkAndroidSurfaceCreateInfoKHR> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

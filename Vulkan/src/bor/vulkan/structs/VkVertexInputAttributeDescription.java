@@ -116,6 +116,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkVertexInputAttributeDescription> createVkArray(int size){ 
+		 VkVertexInputAttributeDescription[] array = new VkVertexInputAttributeDescription[size]; 
+		 VkArrayStruct<VkVertexInputAttributeDescription> vkArray = new VkArrayStruct<VkVertexInputAttributeDescription> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

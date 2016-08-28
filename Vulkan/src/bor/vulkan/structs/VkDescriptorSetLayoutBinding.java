@@ -123,6 +123,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkDescriptorSetLayoutBinding> createVkArray(int size){ 
+		 VkDescriptorSetLayoutBinding[] array = new VkDescriptorSetLayoutBinding[size]; 
+		 VkArrayStruct<VkDescriptorSetLayoutBinding> vkArray = new VkArrayStruct<VkDescriptorSetLayoutBinding> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

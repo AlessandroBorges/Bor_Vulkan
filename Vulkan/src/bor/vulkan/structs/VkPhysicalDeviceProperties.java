@@ -146,6 +146,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkPhysicalDeviceProperties> createVkArray(int size){ 
+		 VkPhysicalDeviceProperties[] array = new VkPhysicalDeviceProperties[size]; 
+		 VkArrayStruct<VkPhysicalDeviceProperties> vkArray = new VkArrayStruct<VkPhysicalDeviceProperties> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

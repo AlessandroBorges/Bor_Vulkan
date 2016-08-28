@@ -104,6 +104,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkDescriptorPoolSize> createVkArray(int size){ 
+		 VkDescriptorPoolSize[] array = new VkDescriptorPoolSize[size]; 
+		 VkArrayStruct<VkDescriptorPoolSize> vkArray = new VkArrayStruct<VkDescriptorPoolSize> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

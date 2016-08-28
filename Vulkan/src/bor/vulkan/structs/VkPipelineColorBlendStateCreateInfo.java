@@ -141,6 +141,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkPipelineColorBlendStateCreateInfo> createVkArray(int size){ 
+		 VkPipelineColorBlendStateCreateInfo[] array = new VkPipelineColorBlendStateCreateInfo[size]; 
+		 VkArrayStruct<VkPipelineColorBlendStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineColorBlendStateCreateInfo> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

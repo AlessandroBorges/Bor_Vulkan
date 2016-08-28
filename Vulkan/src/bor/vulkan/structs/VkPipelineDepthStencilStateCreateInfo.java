@@ -164,6 +164,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkPipelineDepthStencilStateCreateInfo> createVkArray(int size){ 
+		 VkPipelineDepthStencilStateCreateInfo[] array = new VkPipelineDepthStencilStateCreateInfo[size]; 
+		 VkArrayStruct<VkPipelineDepthStencilStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineDepthStencilStateCreateInfo> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

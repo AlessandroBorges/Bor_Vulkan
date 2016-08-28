@@ -110,6 +110,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkDispatchIndirectCommand> createVkArray(int size){ 
+		 VkDispatchIndirectCommand[] array = new VkDispatchIndirectCommand[size]; 
+		 VkArrayStruct<VkDispatchIndirectCommand> vkArray = new VkArrayStruct<VkDispatchIndirectCommand> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

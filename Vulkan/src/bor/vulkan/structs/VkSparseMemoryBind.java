@@ -122,6 +122,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkSparseMemoryBind> createVkArray(int size){ 
+		 VkSparseMemoryBind[] array = new VkSparseMemoryBind[size]; 
+		 VkArrayStruct<VkSparseMemoryBind> vkArray = new VkArrayStruct<VkSparseMemoryBind> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

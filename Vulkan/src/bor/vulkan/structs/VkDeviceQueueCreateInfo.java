@@ -128,6 +128,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkDeviceQueueCreateInfo> createVkArray(int size){ 
+		 VkDeviceQueueCreateInfo[] array = new VkDeviceQueueCreateInfo[size]; 
+		 VkArrayStruct<VkDeviceQueueCreateInfo> vkArray = new VkArrayStruct<VkDeviceQueueCreateInfo> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

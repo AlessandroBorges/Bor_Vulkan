@@ -200,6 +200,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkSwapchainCreateInfoKHR> createVkArray(int size){ 
+		 VkSwapchainCreateInfoKHR[] array = new VkSwapchainCreateInfoKHR[size]; 
+		 VkArrayStruct<VkSwapchainCreateInfoKHR> vkArray = new VkArrayStruct<VkSwapchainCreateInfoKHR> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

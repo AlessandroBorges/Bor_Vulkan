@@ -110,6 +110,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkEventCreateInfo> createVkArray(int size){ 
+		 VkEventCreateInfo[] array = new VkEventCreateInfo[size]; 
+		 VkArrayStruct<VkEventCreateInfo> vkArray = new VkArrayStruct<VkEventCreateInfo> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

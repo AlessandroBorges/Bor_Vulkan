@@ -122,6 +122,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkWin32SurfaceCreateInfoKHR> createVkArray(int size){ 
+		 VkWin32SurfaceCreateInfoKHR[] array = new VkWin32SurfaceCreateInfoKHR[size]; 
+		 VkArrayStruct<VkWin32SurfaceCreateInfoKHR> vkArray = new VkArrayStruct<VkWin32SurfaceCreateInfoKHR> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

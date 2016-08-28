@@ -110,6 +110,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkDedicatedAllocationImageCreateInfoNV> createVkArray(int size){ 
+		 VkDedicatedAllocationImageCreateInfoNV[] array = new VkDedicatedAllocationImageCreateInfoNV[size]; 
+		 VkArrayStruct<VkDedicatedAllocationImageCreateInfoNV> vkArray = new VkArrayStruct<VkDedicatedAllocationImageCreateInfoNV> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

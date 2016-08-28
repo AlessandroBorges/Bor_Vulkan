@@ -146,6 +146,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkPipelineMultisampleStateCreateInfo> createVkArray(int size){ 
+		 VkPipelineMultisampleStateCreateInfo[] array = new VkPipelineMultisampleStateCreateInfo[size]; 
+		 VkArrayStruct<VkPipelineMultisampleStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineMultisampleStateCreateInfo> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
@@ -538,7 +549,7 @@
 	 * Prototype: const VkSampleMask*  pSampleMask
 	 */ 
 	 private static native void setPSampleMask0(Buffer ptr, int[] _pSampleMask, int count);/*
-		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);		  		  
+		VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);  
 		VkSampleMask* temp = const_cast<VkSampleMask*>(vkObj->pSampleMask); 
         // I must free it to avoid leaks
         if(temp) 
@@ -547,6 +558,9 @@
 		memcpy( temp, _pSampleMask, count * sizeof(VkSampleMask));
         vkObj->pSampleMask = temp;
 	  */
+      
+      
+      
 
 	 /**
 	  * Native GET method for field pSampleMask      [int]<br>

@@ -116,6 +116,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkDrawIndirectCommand> createVkArray(int size){ 
+		 VkDrawIndirectCommand[] array = new VkDrawIndirectCommand[size]; 
+		 VkArrayStruct<VkDrawIndirectCommand> vkArray = new VkArrayStruct<VkDrawIndirectCommand> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

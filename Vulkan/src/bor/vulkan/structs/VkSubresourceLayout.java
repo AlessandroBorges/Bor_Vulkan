@@ -122,6 +122,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkSubresourceLayout> createVkArray(int size){ 
+		 VkSubresourceLayout[] array = new VkSubresourceLayout[size]; 
+		 VkArrayStruct<VkSubresourceLayout> vkArray = new VkArrayStruct<VkSubresourceLayout> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

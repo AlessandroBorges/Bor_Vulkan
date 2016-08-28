@@ -110,6 +110,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkSemaphoreCreateInfo> createVkArray(int size){ 
+		 VkSemaphoreCreateInfo[] array = new VkSemaphoreCreateInfo[size]; 
+		 VkArrayStruct<VkSemaphoreCreateInfo> vkArray = new VkArrayStruct<VkSemaphoreCreateInfo> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

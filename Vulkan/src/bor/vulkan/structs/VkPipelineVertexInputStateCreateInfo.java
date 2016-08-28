@@ -136,6 +136,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkPipelineVertexInputStateCreateInfo> createVkArray(int size){ 
+		 VkPipelineVertexInputStateCreateInfo[] array = new VkPipelineVertexInputStateCreateInfo[size]; 
+		 VkArrayStruct<VkPipelineVertexInputStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineVertexInputStateCreateInfo> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

@@ -134,6 +134,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkPipelineShaderStageCreateInfo> createVkArray(int size){ 
+		 VkPipelineShaderStageCreateInfo[] array = new VkPipelineShaderStageCreateInfo[size]; 
+		 VkArrayStruct<VkPipelineShaderStageCreateInfo> vkArray = new VkArrayStruct<VkPipelineShaderStageCreateInfo> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

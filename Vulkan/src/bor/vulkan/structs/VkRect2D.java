@@ -104,6 +104,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkRect2D> createVkArray(int size){ 
+		 VkRect2D[] array = new VkRect2D[size]; 
+		 VkArrayStruct<VkRect2D> vkArray = new VkArrayStruct<VkRect2D> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

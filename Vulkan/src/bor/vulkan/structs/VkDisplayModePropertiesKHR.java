@@ -104,6 +104,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkDisplayModePropertiesKHR> createVkArray(int size){ 
+		 VkDisplayModePropertiesKHR[] array = new VkDisplayModePropertiesKHR[size]; 
+		 VkArrayStruct<VkDisplayModePropertiesKHR> vkArray = new VkArrayStruct<VkDisplayModePropertiesKHR> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

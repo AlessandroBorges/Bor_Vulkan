@@ -110,6 +110,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkFenceCreateInfo> createVkArray(int size){ 
+		 VkFenceCreateInfo[] array = new VkFenceCreateInfo[size]; 
+		 VkArrayStruct<VkFenceCreateInfo> vkArray = new VkArrayStruct<VkFenceCreateInfo> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

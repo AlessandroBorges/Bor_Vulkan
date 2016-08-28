@@ -104,6 +104,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkSurfaceFormatKHR> createVkArray(int size){ 
+		 VkSurfaceFormatKHR[] array = new VkSurfaceFormatKHR[size]; 
+		 VkArrayStruct<VkSurfaceFormatKHR> vkArray = new VkArrayStruct<VkSurfaceFormatKHR> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////

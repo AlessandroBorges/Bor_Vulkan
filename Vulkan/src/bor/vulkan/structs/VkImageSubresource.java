@@ -110,6 +110,17 @@
 		 return TAG_ID; 
 	}
 
+	/** 
+	 * Static method to create a VkArray for this VkStruct subclass.
+	 * @param size - number of elements
+	 */
+	 public static VkArray<VkImageSubresource> createVkArray(int size){ 
+		 VkImageSubresource[] array = new VkImageSubresource[size]; 
+		 VkArrayStruct<VkImageSubresource> vkArray = new VkArrayStruct<VkImageSubresource> (array, TAG_ID);
+		 return vkArray; 
+	 } 
+
+
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
 	 ////////////////////////
