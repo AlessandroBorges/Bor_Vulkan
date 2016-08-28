@@ -431,10 +431,10 @@ public class Vk10 extends Vulkan {
                VkPhysicalDevice step = array[i];
                if(step){
                   jobject buff =  env->NewDirectByteBuffer((void*) (step), 
-                                                           (jlong) sizeof(VkPhysicalDevice));              
+                                                           sizeof(VkPhysicalDevice));              
                   if(buff)
                       env->SetObjectArrayElement(pPhysicalDevicesRet, i, buff);
-              }
+                }
            }//for            
          }//if
          
@@ -686,7 +686,7 @@ public class Vk10 extends Vulkan {
                                                                         int[] pQueueFamilyPropertyCount,
                                                                         ByteBuffer _array ); /*
        VkQueueFamilyProperties* array = (VkQueueFamilyProperties*) _array;
-       uint32_t count=0;
+       uint32_t count = pQueueFamilyPropertyCount[0];
        vkGetPhysicalDeviceQueueFamilyProperties(
                                   (VkPhysicalDevice) (pointer),
                                   (uint32_t*)  &count,
@@ -748,7 +748,7 @@ public class Vk10 extends Vulkan {
                             (VkInstance)   instance,
                             (const char*)     pName);                            
               jobject pFunc = env->NewDirectByteBuffer((void*) func, 
-                                                      (jlong) sizeof(PFN_vkVoidFunction));                                                       
+                                                       (jlong)sizeof(PFN_vkVoidFunction));                                                       
               return pFunc;                                                                               
        */
 
@@ -776,7 +776,7 @@ public class Vk10 extends Vulkan {
                                      (VkDevice) device,
                                      (const char*) pName);                               
        jobject pFunc = env->NewDirectByteBuffer((void*) func, 
-                                                (jlong) sizeof(PFN_vkVoidFunction));                                                       
+                                                 (jlong)sizeof(PFN_vkVoidFunction));                                                       
         return pFunc;
       */
 
