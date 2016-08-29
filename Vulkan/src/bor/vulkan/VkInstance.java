@@ -7,5 +7,11 @@ package bor.vulkan;
  */
 public interface VkInstance extends VkHandleInterface {
     
-    
+  /**
+   * 
+   * @param size
+   * @return
+   */
+    public VkArrayHandleDispatchable<VkInstance> createArray(int size);
+  
 }

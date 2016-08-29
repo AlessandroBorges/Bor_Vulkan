@@ -5,6 +5,8 @@ package bor.vulkan;
 
 import java.nio.ByteBuffer;
 
+import bor.util.BigBuffer;
+
 /**
  * Dispatchable are Vulkan handle objects.<br>
  * In contrast with NON-Dispatchable handles, which are <b>always</b> 8 bytes long,
@@ -58,5 +60,38 @@ public class VkHandleDispatchable
     public int sizeof(){
         return Vk10.SIZE_OF_HANDLE;
     }
+
+   /**
+    * 
+    * @param size
+    * @return
+    */
+    public VkArray<VkHandleDispatchable> createVkArrayDispatchable(int size) {
+        VkHandleDispatchable[] array = new VkHandleDispatchable[size];
+        VkArray<VkHandleDispatchable> vkArray = new VkArrayHandle(array);
+        return vkArray;
+    }
+    
+    
+    /**
+     * Creates a immutable list of VkArrayHandle.
+     * 
+     * @param size - size of list
+     * @return immutable list of VkArray handles
+     */
+    public static VkArrayHandle createVkArrayDispatchableStatic(int size){
+        VkHandleDispatchable[] array = new VkHandleDispatchable[size];        
+        VkArrayHandle<VkHandleDispatchable> vkArray = new VkArrayHandle<VkHandleDispatchable>(array);
+        return vkArray;
+    }
+
+    @Override
+    public VkArrayHandleDispatchable<VkInstance> createArray(int size) {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+      
+    
 
 }

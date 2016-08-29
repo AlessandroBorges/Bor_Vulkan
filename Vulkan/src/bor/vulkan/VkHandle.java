@@ -12,7 +12,9 @@ import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.Map;
 
+import bor.util.BigBuffer;
 import bor.util.Utils;
+
 
 
 /**
@@ -32,7 +34,7 @@ import bor.util.Utils;
  * 
  * After proper usage, you can dispose this handler 
  * by calling {@link #free()} method.<br>
- * Keep in mind that after calling free() 
+ * Keep in mind that after calling #free() 
  * it will release native pointer and be ready to be garbage collected any time. 
  * 
  * <h2>Note</h2>
@@ -87,7 +89,9 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
         VkSemaphore, VkShaderModule, VkSurfaceKHR, VkSwapchainKHR, ANativeWindow, MirConnection, MirSurface, Win32HINSTANCE, 
         Win32HWND, WlDisplay, WlSurface, XCBconnection, XCBwindow, XCBVisualID, XlibDisplay,XlibWindow      
         {
-
+    
+    
+    
     /**
      * This static map holds handlers and avoid GC on handlers and pointers.
      * It is a synchronized Hashtable
@@ -404,6 +408,18 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
     @Override
     public int sizeof() {        
         return Vk10.SIZE_OF_NON__DISPATCHABLE_HANDLE;
+    }
+    
+    /**
+     * Creates a immutable list of VkArrayHandle.
+     * 
+     * @param size - size of list
+     * @return immutable list of VkArray handles
+     */
+    public static VkArrayHandle<VkHandle> createVkArray(int size){
+        VkHandle[] array = new VkHandle[size];        
+        VkArrayHandle<VkHandle> vkArray = new VkArrayHandle<VkHandle>(array);
+        return vkArray;
     }
     
 }
