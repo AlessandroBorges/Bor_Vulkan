@@ -38,7 +38,13 @@ public interface VkObject{
     /**
      * Flag. This VkObject is a pointer for a PFNFunction
      */
-    public static final int TYPE_PFN_FUNCTION = 0x04;
+    public static final int TYPE_PFN_FUNCTION = 0x08;
+
+
+    /**
+     * Flag. This marks Dispatchable Haandle
+     */
+    public static final int TYPE_DISPATCHABLE_HANDLER = 0x04;
     
     /**
      * Inform if this VkObject is a Struct or a Handler 

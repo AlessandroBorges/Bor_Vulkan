@@ -102,7 +102,7 @@ public class NativeHandleArray<T extends VkHandleInterface>{
      */
     private  int sizeof(Class<T> type){
         if(isDispatchableHandler(type)){
-            return Vk10.SIZE_OF_HANDLE;
+            return Vk10.SIZE_OF_DISPATCHABLE_HANDLE;
         }
         return Vk10.SIZE_OF_NON__DISPATCHABLE_HANDLE;
     }

@@ -105,17 +105,7 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
      */
     private ByteBuffer ptr=null;
     private long nativeHandle = 0;
-         
-    private static int sizeOfPtr = 8;
-    
-    static {
-        try {
-            sizeOfPtr = sizeOfPtr();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }//static
-    
+      
         
     /**
      * Creates a empty VkHandle.

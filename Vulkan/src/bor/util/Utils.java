@@ -6,7 +6,9 @@ package bor.util;
 import java.nio.Buffer;
 import java.nio.ByteBuffer;
 
+import bor.vulkan.Vk10;
 import bor.vulkan.VkHandle;
+import bor.vulkan.VkHandleDispatchable;
 import bor.vulkan.structs.VkStruct;
 
 /**
@@ -193,5 +195,48 @@ public class Utils {
             buffers[i] = null;
         }        
     }
+   
+   /**
+    * Populate a VkStruct array with count[0] instances. 
+    * @param pArray - array to be populated
+    * @param buffers - ByteBuffer with native handle
+    * @param count - array with number of handles, at [0];
+    * 
+    */
+  public static void populateDHandlers(Object[] pArray,
+                                      ByteBuffer buffer,
+                                      int[] count) {
+       if( pArray == null || buffer == null || count==null || count[0]==0){
+           return;
+       }   
+       int sizePtr = Vk10.sizeOfDispatchableHandle();
+       buffer.rewind();
+       int max = Math.min(count[0], buffer.capacity() / sizePtr);
+       for (int i = 0; i < max; i++) {
+           long ptr = readDispatchableHandlerPTR(buffer);
+           if(pArray[i] == null){
+               pArray[i] = new VkHandleDispatchable(ptr);    
+           }else{
+               VkHandleDispatchable h = (VkHandleDispatchable)pArray[i];
+               h.setPointer(ptr);   
+           }
+       }        
+   }
+  
+  /**
+   * Read a pointer castED to long
+   * @param buffer = buffer to read at current position.
+   * @return
+   */
+  public static long readDispatchableHandlerPTR(ByteBuffer buffer){
+      int sz = Vk10.sizeOfDispatchableHandle();
+      if(sz==8){
+          return buffer.getLong();
+      }else{
+          int ptr32 = buffer.getInt();
+          long ptr64 = ptr32 & 0xFFffFFffL;
+          return ptr64;
+      }
+  }
 
 }

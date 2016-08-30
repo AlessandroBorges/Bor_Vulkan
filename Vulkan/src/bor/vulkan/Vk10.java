@@ -202,7 +202,7 @@ public class Vk10 extends Vulkan {
      *   VK_DEFINE_HANDLE(VkCommandBuffer)
      * </pre>
      */
-    protected static int SIZE_OF_HANDLE = 8;
+    protected static int SIZE_OF_DISPATCHABLE_HANDLE = 8;
     /**
      * Default size in bytes of Non Dispatchable VkHandler.
      * Expected to be always 8 bytes in both 32/64bits environments.
@@ -226,7 +226,7 @@ public class Vk10 extends Vulkan {
     
     static{
         init();        
-        SIZE_OF_HANDLE = sizeOfDispatchableHandle();
+        SIZE_OF_DISPATCHABLE_HANDLE = sizeOfDispatchableHandle();
         SIZE_OF_NON__DISPATCHABLE_HANDLE = sizeOfNonDispatchableHandle();
     }
     
@@ -292,7 +292,7 @@ public class Vk10 extends Vulkan {
                                            VkAllocationCallbacks pAllocator,
                                            VkInstance[] pInstance) {
        int[] res = {0};
-       ByteBuffer buff = vkCreateInstance1(
+       long buff = vkCreateInstance1(
              pCreateInfo.getPointer(), 
              (pAllocator ==null? null :pAllocator.getPointer()),
              res);
@@ -311,7 +311,7 @@ public class Vk10 extends Vulkan {
     * @param result
     * @return
     */
-   private static native ByteBuffer vkCreateInstance1(
+   private static native long vkCreateInstance1(
                                                Buffer  pCreateInfo,
                                                Buffer  pAllocator,
                                                int[] result);/*
@@ -322,14 +322,16 @@ public class Vk10 extends Vulkan {
                        (const VkAllocationCallbacks*)                pAllocator,
                        (VkInstance*)                                 pInstance);
       result[0] = (jint) res;
-  
-      jobject buff = NULL; 
+      jlong ptr = 0; 
+      //jobject buff = NULL; 
       if(res >= 0){
         VkInstance instance = (*pInstance);
-        buff = (jobject)(env->NewDirectByteBuffer((void*)(instance), sizeof(VkInstance)));       
+        ptr = reinterpret_cast<jlong>(instance); 
+        // buff = (jobject)(env->NewDirectByteBuffer((void*)(instance), sizeof(VkInstance)));       
       }    
       free(pInstance);
-      return buff; 
+      //return buff;
+      return ptr; 
       */
    
        /////////////////////////////////////
@@ -385,8 +387,9 @@ public class Vk10 extends Vulkan {
    public static VkResult vkEnumeratePhysicalDevices(VkInstance instance,
                                                      int[] pPhysicalDeviceCount,
                                                      VkPhysicalDevice[] pPhysicalDevices){      
-       ByteBuffer[]  array = createBufferArray2Handles(pPhysicalDevices, pPhysicalDeviceCount);
-       int size =  array == null ? 0 : array.length;       
+       //ByteBuffer[]  array = createBufferArray2Handles(pPhysicalDevices, pPhysicalDeviceCount);
+       int size =  pPhysicalDevices == null ? 0 : pPhysicalDevices.length;  
+       ByteBuffer array = (size < 1) ? null : ByteBuffer.allocateDirect(size * Vk10.SIZE_OF_DISPATCHABLE_HANDLE);
        int res = vkEnumeratePhysicalDevices0(instance.getPointer(),
                                               pPhysicalDeviceCount,
                                               array,
@@ -394,7 +397,7 @@ public class Vk10 extends Vulkan {
        if(pPhysicalDevices==null){
            return  VkResult.fromValue(res);
        }
-       Utils.populateHandlers(pPhysicalDevices, array, pPhysicalDeviceCount);       
+       Utils.populateDHandlers(pPhysicalDevices, array, pPhysicalDeviceCount);       
        return VkResult.fromValue(res);
    }// method
    
@@ -411,7 +414,7 @@ public class Vk10 extends Vulkan {
    private static native int vkEnumeratePhysicalDevices0(
                                        ByteBuffer instance,
                                        int[]      pPhysicalDeviceCount,
-                                       Buffer[]   pPhysicalDevicesRet,
+                                       ByteBuffer pPhysicalDevicesRet,
                                        int        maxSize);/*      
        VkPhysicalDevice* array = NULL;
        uint32_t count=0;        
@@ -424,19 +427,22 @@ public class Vk10 extends Vulkan {
                                   (VkInstance) (instance),
                                   (uint32_t*)  &count,
                                   (VkPhysicalDevice*) array);
-       pPhysicalDeviceCount[0] = count;       
+       pPhysicalDeviceCount[0] = (jint)count;       
        
-       if(res >= 0 && array){
-           for(int i=0; i < maxSize && i < (int)count ; i++){
-               VkPhysicalDevice step = array[i];
-               if(step){
-                  jobject buff =  env->NewDirectByteBuffer((void*) (step), 
-                                                           sizeof(VkPhysicalDevice));              
-                  if(buff)
-                      env->SetObjectArrayElement(pPhysicalDevicesRet, i, buff);
-                }
-           }//for            
-         }//if
+       if(res >= 0 && array != NULL && pPhysicalDevicesRet != NULL){
+         memcpy(pPhysicalDevicesRet, array, count * sizeof(VkPhysicalDevice));
+       
+       }
+//           for(int i=0; i < maxSize && i < (int)count ; i++){
+//               VkPhysicalDevice step = array[i];
+//               if(step){
+//                  jobject buff =  env->NewDirectByteBuffer((void*) (step), 
+//                                                           sizeof(VkPhysicalDevice));              
+//                  if(buff)
+//                      env->SetObjectArrayElement(pPhysicalDevicesRet, i, buff);
+//                }
+//           }//for            
+//         }//if
          
          if(array)
               delete[]  array; 
@@ -473,19 +479,20 @@ public class Vk10 extends Vulkan {
            return physicalDevicesList;
        }
        
-       ByteBuffer[]  pPhysicalDevicesArray = new ByteBuffer[size];        
+      // long[]  pPhysicalDevicesArray = new long[size]; 
+       ByteBuffer pPhysicalDevicesArray = ByteBuffer.allocateDirect(size * sizeOfDispatchableHandle());
        res0 = vkEnumeratePhysicalDevices0(instance.getPointer(),
                                          count,
                                          pPhysicalDevicesArray,
                                          size);
        res[0] = VkResult.fromValue(res0);
-       for (int i = 0; i < pPhysicalDevicesArray.length; i++) {
-               ByteBuffer handle = pPhysicalDevicesArray[i];
-               if (handle != null) {
+       for (int i = 0; i < size; i++) {
+               long handle = Utils.readDispatchableHandlerPTR(pPhysicalDevicesArray);
+               if (handle != 0) {
                    physicalDevicesList.add(new VkHandleDispatchable(handle));
                }
       } 
-      clean(pPhysicalDevicesArray);
+      //clean(pPhysicalDevicesArray);
       return physicalDevicesList;
    }// method
 
@@ -800,7 +807,7 @@ public class Vk10 extends Vulkan {
        throw new IllegalArgumentException("pDevice[] must be not null and length >=1");
    }  
    int[] result = {0};   
-   ByteBuffer nativeHandle =   vkCreateDevice0(
+   long nativeHandle =   vkCreateDevice0(
                physicalDevice.getPointer(),
                pCreateDeviceInfo.getPointer(),
                (pAllocator==null? null: pAllocator.getPointer()),
@@ -819,7 +826,7 @@ public class Vk10 extends Vulkan {
    * @param pDevice
    * @return
    */
-   private static native ByteBuffer vkCreateDevice0(
+   private static native long vkCreateDevice0(
                Buffer  physicalDevice,
                Buffer  pCreateInfo,
                Buffer  pAllocator,
@@ -833,17 +840,20 @@ public class Vk10 extends Vulkan {
                                       (VkDevice*)                     pDevice);
       
          result[0] = res;   
-         jobject pObj = NULL;
+        // jobject pObj = NULL;
+         jlong ptr = 0;
          if(res >= 0){     
-           pObj = env->NewDirectByteBuffer((void*) pDevice[0], 
-                                           (jlong) sizeof(VkDevice));
+           ptr = reinterpret_cast<jlong>((void*) pDevice[0]);
+          // pObj = env->NewDirectByteBuffer((void*) pDevice[0], 
+          //                                 (jlong) sizeof(VkDevice));          
          }else{
            printf("No Device available !\n");
          }
          if(pDevice != NULL) 
             delete pDevice;
                  
-         return pObj;      
+         //return pObj;
+         return ptr;      
        */
 
        /////////////////////////////////////
@@ -1113,7 +1123,7 @@ public class Vk10 extends Vulkan {
                                            int  queueFamilyIndex,
                                            int  queueIndex){
       
-      ByteBuffer nativeHandle = vkGetDeviceQueue0( device.getPointer(),
+      long nativeHandle = vkGetDeviceQueue0( device.getPointer(),
                                                    queueFamilyIndex,
                                                    queueIndex);
       VkQueue q = new VkHandleDispatchable(nativeHandle);
@@ -1127,7 +1137,7 @@ public class Vk10 extends Vulkan {
    * @param queueIndex
    * @return native handle to 
    */
-   private static native ByteBuffer vkGetDeviceQueue0(
+   private static native long vkGetDeviceQueue0(
                Buffer  device,
                int  queueFamilyIndex,
                int  queueIndex);/*
@@ -1138,10 +1148,11 @@ public class Vk10 extends Vulkan {
                   (uint32_t)   queueFamilyIndex,
                   (uint32_t)   queueIndex,
                   (VkQueue*)   pQueue);        
-        jobject bb =  env->NewDirectByteBuffer((void*) pQueue[0], 
-                                               (jlong) sizeof(VkQueue));
+        //jobject bb =  env->NewDirectByteBuffer((void*) pQueue[0], 
+        //                                       (jlong) sizeof(VkQueue));
+        jlong ptr = reinterpret_cast<jlong>(((void*)pQueue[0]));
         delete pQueue;                                
-        return bb;         
+        return ptr;         
                   
       */
 
@@ -8060,7 +8071,7 @@ private static native int vkQueueSubmit0(
 //       return null;
 //     }
 //     int size = Math.min(count[0], array.length) ;
-//     size *= isDispatchable ? SIZE_OF_HANDLE : SIZE_OF_NON__DISPATCHABLE_HANDLE;
+//     size *= isDispatchable ? SIZE_OF_DISPATCHABLE_HANDLE : SIZE_OF_NON__DISPATCHABLE_HANDLE;
 //     ByteBuffer bigBuffer = ByteBuffer.allocateDirect(size * VkHandle.SIZEOF_PTR);
 //     bigBuffer.order(ByteOrder.nativeOrder());
 //     return bigBuffer;
