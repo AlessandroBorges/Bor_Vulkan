@@ -5,13 +5,6 @@ package bor.vulkan;
  * @author Alessandro Borges
  *
  */
-public interface VkInstance extends VkHandleInterface {
-    
-  /**
-   * 
-   * @param size
-   * @return
-   */
-    public VkArrayHandleDispatchable<VkInstance> createArray(int size);
+public interface VkInstance extends VkHandleDispatchableInterface {
   
 }

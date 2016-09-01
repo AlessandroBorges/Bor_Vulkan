@@ -6,11 +6,11 @@ package bor.vulkan;
 import bor.util.BigBuffer;
 
 /**
- * 
+ * Immutable list of <b>Non Dispatchable Handles</b>.<br>
  * @author Alessandro Borges
  *
  */
-class VkArrayHandle<E> extends VkArray<VkHandle> {
+public class VkArrayHandle<E extends VkHandle> extends VkArray<VkHandle> {
 
     /**
      * Private constructor    
@@ -25,20 +25,3 @@ class VkArrayHandle<E> extends VkArray<VkHandle> {
    
 }
 
-/**
- * Immutable list of <b>Dispatchable Handlers</b>
- * @author Alessandro Borges
- *
- * @param <E>
- */
-class VkArrayHandleDispatchable<E> extends VkArray<VkHandleDispatchable>{
-    /**
-    * 
-    * @param array
-    */
-   protected VkArrayHandleDispatchable(VkHandleDispatchable[] array){
-       this.array = array;
-       this.bigBuffer = new BigBuffer<VkHandleDispatchable>(array, true);
-       this.bigBuffer.update();
-   }
-}

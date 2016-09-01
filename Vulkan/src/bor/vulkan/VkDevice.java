@@ -1,10 +1,10 @@
 package bor.vulkan;
 
 /**
- * VkDevice handler interface
+ * VkDevice handler interface.
  * @author Alessandro Borges
  *
  */
-public interface VkDevice extends VkHandleInterface {
+public interface VkDevice extends VkHandleDispatchableInterface {
 
 }

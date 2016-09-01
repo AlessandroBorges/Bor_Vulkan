@@ -51,10 +51,11 @@ public interface VkHandleInterface extends VkObject{
     public static final int   TYPE_HANDLER_VKDEVICE = 102;
     public static final int   TYPE_HANDLER_VKQUEUE = 103;
     public static final int   TYPE_HANDLER_VKCOMMANDBUFFER = 104;
-    public static final int   TYPE_HANDLER_VKSEMAPHORE = 107;
+
     /**
      * Non-Dispatchable handlers
      */
+    public static final int   TYPE_HANDLER_VKSEMAPHORE = 107;
     public static final int   TYPE_HANDLER_VKFENCE = 108;
     public static final int   TYPE_HANDLER_VKDEVICEMEMORY = 109;
     public static final int   TYPE_HANDLER_VKBUFFER = 110;

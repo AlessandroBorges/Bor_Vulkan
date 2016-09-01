@@ -8,6 +8,6 @@ package bor.vulkan;
  * @author Alessandro Borges
  *
  */
-public interface VkQueue extends VkHandleInterface {
+public interface VkQueue extends VkHandleDispatchableInterface {
 
 }

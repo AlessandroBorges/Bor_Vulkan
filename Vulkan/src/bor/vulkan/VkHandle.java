@@ -18,7 +18,7 @@ import bor.util.Utils;
 
 
 /**
- * Non public class implementing Vulkan handlers.<br>
+ * Class implementing Vulkan NON_DISPATCHABLE_HANDLEs.<br>
  * It implements VkHandleInterface for NON_DISPATCHABLE_HANDLEs, and all sub interfaces listed below.<br>
  * In a typical use of this class, it will be created from a native pointer and then <B>(cast)</B>
  * to proper type.<br>
@@ -82,7 +82,8 @@ import bor.util.Utils;
  * 
  *
  */
-public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCommandPool,
+public class VkHandle implements VkHandleInterface, 
+        VkBuffer, VkBufferView, VkCommandPool,
         VkDebugReportCallbackEXT, VkDescriptorPool, VkDescriptorSet, VkDescriptorSetLayout, VkDeviceMemory,
         VkDisplayKHR, VkDisplayModeKHR, VkEvent, VkFence, VkFramebuffer, VkImage, VkImageView, 
         VkPipeline, VkPipelineCache, VkPipelineLayout, VkQueryPool,  VkRenderPass, VkSampler,
@@ -96,14 +97,14 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
      * This static map holds handlers and avoid GC on handlers and pointers.
      * It is a synchronized Hashtable
      */
-    private static 
-    Map<VkHandleInterface,ByteBuffer> mapHandlers =  
-                                  new Hashtable<VkHandleInterface, ByteBuffer>(); 
-    
+//    private static 
+//    Map<VkHandleInterface,ByteBuffer> mapHandlers =  
+//                                  new Hashtable<VkHandleInterface, ByteBuffer>(); 
+//    
     /**
      * The handler itself
      */
-    private ByteBuffer ptr=null;
+ //   private ByteBuffer ptr=null;
     private long nativeHandle = 0;
       
         
@@ -124,8 +125,8 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
      * 
      * @throws IllegalArgumentException if nativePtr is null or non direct.
      */
-     public VkHandle(ByteBuffer nativePtr) {
-       prepareHandler(nativePtr);
+     public VkHandle(ByteBuffer nativePtr) throws UnsupportedOperationException {
+       setHandle(nativePtr);
      }
      
      /**
@@ -133,7 +134,7 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
       * @param nativeHandle
       */
      public VkHandle(long nativeHandle) {        
-         prepareHandler(nativeHandle);
+        this.nativeHandle = nativeHandle;
        }   
      
      /**
@@ -167,39 +168,8 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
          return dst;         
      }
      
+      
     
-    /**
-      * Prepare handler from native address
-      * @param address - native address
-      */
-     private void prepareHandler(long address){
-         if(this.nativeHandle==address){
-             // same object
-             return;
-         }         
-         this.nativeHandle = address;
-         if(address != 0L){
-           //  prepareHandler(wrapPointer(address, sizeOfPtr));
-         }
-     }
-     
-     /**
-      * Prepare handler to be used 
-      * @param nativePtr
-      */
-    private void prepareHandler(ByteBuffer nativePtr) {
-        if(null==nativePtr || !nativePtr.isDirect()){
-            throw 
-            new IllegalArgumentException("ByteBuffer nativePtr must "
-                                       + "be Direct and not null.");
-        }
-        this.ptr = nativePtr.isReadOnly() ? nativePtr : nativePtr.asReadOnlyBuffer();
-        this.ptr.order(ByteOrder.nativeOrder());
-        this.ptr.rewind();
-        this.nativeHandle = getNativeAddress(ptr);        
-        mapHandlers.put(this, ptr);
-    }
-     
      /**
       * Implements {@link VkObject#getType()}
       * Always return {@link VkObject#TYPE_HANDLER}
@@ -215,12 +185,12 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
      * Set a native ptr.
      * @param hnd - native created ptr
      */
-    public void setHandle(ByteBuffer nativeHandle){
-        long handleAddr = getNativeAddress(nativeHandle);
+    public void setHandle(ByteBuffer nativeBuffer){
+        long handleAddr = getNativeAddress(nativeBuffer);
         if(handleAddr == this.nativeHandle){
             return;
         }
-        prepareHandler(nativeHandle);        
+        nativeHandle = handleAddr;
     }
     
     /**
@@ -230,9 +200,7 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
     public void setNativeHandle(long address){  
         if(address==nativeHandle){
             return;
-        }
-        this.ptr = null;
-       // prepareHandler(nativeHandle);        
+        }          
     }
     
     /**
@@ -245,8 +213,8 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
      */
     @Override
     @Deprecated
-    public ByteBuffer getPointer(){              
-        return this.ptr;
+    public ByteBuffer getPointer() throws UnsupportedOperationException{
+        return null;
     }
     
     /**
@@ -277,11 +245,6 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
      */
      @Override
     public boolean free(){
-        if(null==ptr) 
-            return false;
-        mapHandlers.remove(this);        
-        Utils.deleteDirectBuffer(this.ptr);
-        ptr = null;
         nativeHandle = 0;
         return true;
     }
@@ -293,7 +256,7 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
       */
      @Override
     public boolean isNull(){
-       return (null==this.ptr);       
+       return (this.nativeHandle == 0L);       
     }
 
     
@@ -302,24 +265,13 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
      */
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (!(obj instanceof VkHandle)) {
-            return false;
-        }
+        if (this == obj)  return true;        
+        if (obj == null)  return false;        
+        if (!(obj instanceof VkHandle))  return false;        
         VkHandle other = (VkHandle) obj;
-        if (ptr == null) {
-            if (other.ptr != null) {
-                return false;
-            }
-        } else if (!ptr.equals(other.ptr)) {
-            return false;
-        }
-        return true;
+        if(this.nativeHandle == other.nativeHandle)  return true;
+        
+        return false;
     }
 
         
@@ -329,14 +281,7 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("VkHandle [ptr=")
-                .append(ptr)
-                .append(", nativeHandle=")
-                .append(nativeHandle)                
-                .append(", getType: ")
-                .append(getType())
-                .append(", getPointer: ")
-                .append(getPointer())
+        builder.append("VkHandle [")                
                 .append(", getNativeHandle: 0x")            
                 .append( Long.toHexString(getNativeHandle()))
                 .append(", isNull: ")
@@ -376,19 +321,15 @@ public class VkHandle implements VkHandleInterface, VkBuffer, VkBufferView, VkCo
          long handleAddr = getNativeAddress(directBuff);
          if(handleAddr == this.nativeHandle){
              return;
-         }
-         prepareHandler(directBuff);        
+         }      
     }
      
      /*
       * (non-Javadoc)
       * @see bor.vulkan.VkObject#setPointer(long)
       */
-     public void setPointer(long nativeHand){
-         if(nativeHand==nativeHandle){
-             return;
-         }
-        prepareHandler(nativeHand); 
+     public void setPointer(long nativeHandle){
+        this.nativeHandle = nativeHandle;
      }
 
     

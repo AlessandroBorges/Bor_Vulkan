@@ -5,6 +5,6 @@ package bor.vulkan;
  * @author Alessandro Borges
  *
  */
-public interface VkCommandBuffer extends VkHandleInterface {
+public interface VkCommandBuffer extends VkHandleDispatchableInterface{
 
 }

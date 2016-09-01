@@ -244,7 +244,7 @@ public class Vk10 extends Vulkan {
     
     /**
      * <pre>
-     * Get Size of Dispatchable VkHandle;
+     * Get size of Dispatchable VkHandle;
      *   VK_DEFINE_HANDLE(VkInstance)
      *   VK_DEFINE_HANDLE(VkPhysicalDevice)
      *   VK_DEFINE_HANDLE(VkDevice)
@@ -252,20 +252,24 @@ public class Vk10 extends Vulkan {
      *   VK_DEFINE_HANDLE(VkCommandBuffer)
      *  
      * </pre>
-     * @return size in bytes of native pointer
+     * @return size in bytes of native Dispatchable VkHandle.
      */
     public static native int sizeOfDispatchableHandle();/*
         return(jint) sizeof(VkInstance);
     */
     
     /**
-     * Get Size of native pointer (void*);
+     * Get size of Non Dispatchable Handle.
      * @return size in bytes of native pointer
      */
     public  static native int sizeOfNonDispatchableHandle();/*
         return(jint) sizeof(VkSemaphore);
     */
     
+    /**
+     * @TODO implement it wisely.
+     * @return
+     */
     public static native boolean  isVulkanAvailable();/*
        return (jboolean) isVulkanAvailable;
     

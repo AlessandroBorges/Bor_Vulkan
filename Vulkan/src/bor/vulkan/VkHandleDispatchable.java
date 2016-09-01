@@ -8,38 +8,39 @@ import java.nio.ByteBuffer;
 import bor.util.BigBuffer;
 
 /**
- * Dispatchable are Vulkan handle objects.<br>
+ * Concrete class for Vulkan Dispatchable Handle.<br>
  * In contrast with NON-Dispatchable handles, which are <b>always</b> 8 bytes long,
  * the VkHandleDispatchable has same size in bytes as native C <code><b> (void*)</b> type</code>.<br>
  * In 32bit JVM it is 4 bytes long and on 64bit JVM it is 8 bytes long.<br>
  *    
  * Current Dispatchable Handlers are the following: 
- * <li>VkInstance
- * <li>VkPhysicalDevice 
- * <li>VkDevice 
- * <li>VkQueue 
- * <li>VkCommandBuffer 
+ * <li> {@link VkInstance}
+ * <li> {@link VkPhysicalDevice} 
+ * <li> {@link VkDevice }
+ * <li> {@link VkQueue }
+ * <li> {@link VkCommandBuffer} 
  * 
  * @author Alessandro Borges
  *
  */
 public class VkHandleDispatchable 
  //extends VkHandle
- implements  VkInstance, VkPhysicalDevice, VkDevice, VkCommandBuffer, VkQueue, VkHandleInterface
+ implements  VkInstance, VkPhysicalDevice, VkDevice, VkCommandBuffer, VkQueue, VkHandleDispatchableInterface
  {
     /**
      * Dispatchable class names.
      */
     public static final String[] DISPACHABLE_HANDLE_NAMES = { "VkInstance", "VkPhysicalDevice", 
                                                               "VkDevice", "VkCommandBuffer", "VkQueue"} ;
-    
+    /**
+     * Native handle value.
+     */
     private long nativeHandle = 0;
 
     /**
-     * 
+     * Ctor for Null value.
      */
     public VkHandleDispatchable() {
-        this(0L);       
     }
 
    
@@ -78,24 +79,62 @@ public class VkHandleDispatchable
         VkArrayHandleDispatchable<VkHandleDispatchable> vkArray = new VkArrayHandleDispatchable(array);
         return vkArray;
     }
+        
+   
+    /**
+     * Create a immutable VkArray list for <em>VkInstance</em> dispatchable handle.<br>
+     * @param size - - size of list
+     * @return immutable list of VkInstance handles, with initial zero value.
+     */
+    public static VkArrayHandleDispatchable<VkInstance> createArrayVkInstance(int size) {
+        VkInstance[] array = new VkInstance[size];        
+        VkArrayHandleDispatchable<VkInstance> vkArray = new VkArrayHandleDispatchable<VkInstance>(array);
+        return vkArray;
+    }
+    
+    /**
+     * Create a immutable VkArray list for <em>VkPhysicalDevice</em> dispatchable handle.<br>
+     * @param size - - size of list
+     * @return immutable list of VkPhysicalDevice handles, with initial zero value.
+     */
+    public static VkArrayHandleDispatchable<VkPhysicalDevice> createArrayVkPhysicalDevice(int size) {
+        VkPhysicalDevice[] array = new VkPhysicalDevice[size];        
+        VkArrayHandleDispatchable<VkPhysicalDevice> vkArray = new VkArrayHandleDispatchable<VkPhysicalDevice>(array);
+        return vkArray;
+    }
     
     
     /**
-     * Creates a immutable list of VkArrayHandle.
-     * 
-     * @param size - size of list
-     * @return immutable list of VkArray handles
+     * Create a immutable VkArray list for <em>VkDevice</em> dispatchable handle.<br>
+     * @param size - - size of list
+     * @return immutable list of VkDevice handles, with initial zero value.
      */
-    public static VkArrayHandleDispatchable createVkArrayDispatchableStatic(int size){
-        VkHandleDispatchable[] array = new VkHandleDispatchable[size];        
-        VkArrayHandleDispatchable<VkHandleDispatchable> vkArray = new VkArrayHandleDispatchable<VkHandleDispatchable>(array);
+    public static VkArrayHandleDispatchable<VkDevice> createArrayVkDevice(int size) {
+        VkDevice[] array = new VkDevice[size];        
+        VkArrayHandleDispatchable<VkDevice> vkArray = new VkArrayHandleDispatchable<VkDevice>(array);
         return vkArray;
     }
-
-    @Override
-    public VkArrayHandleDispatchable<VkInstance> createArray(int size) {
-        // TODO Auto-generated method stub
-        return null;
+    
+    /**
+     * Create a immutable VkArray list for <em>VkQueue</em> dispatchable handle.<br>
+     * @param size - size of list
+     * @return immutable list of VkQueue handles, with initial zero value.
+     */
+    public static VkArrayHandleDispatchable<VkQueue> createArrayVkQueue(int size) {
+        VkQueue[] array = new VkQueue[size];        
+        VkArrayHandleDispatchable<VkQueue> vkArray = new VkArrayHandleDispatchable<VkQueue>(array);
+        return vkArray;
+    }
+    
+    /**
+     * Create a immutable VkArray list for <em>VkCommandBuffer</em> dispatchable handle.<br>
+     * @param size - size of list
+     * @return immutable list of VkCommandBuffer handles, with initial zero value.
+     */
+    public static VkArrayHandleDispatchable<VkCommandBuffer> createArrayVkCommandBuffer(int size) {
+        VkCommandBuffer[] array = new VkCommandBuffer[size];        
+        VkArrayHandleDispatchable<VkCommandBuffer> vkArray = new VkArrayHandleDispatchable<VkCommandBuffer>(array);
+        return vkArray;
     }
 
 
