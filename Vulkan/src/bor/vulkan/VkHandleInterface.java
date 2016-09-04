@@ -46,14 +46,14 @@ public interface VkHandleInterface extends VkObject{
     /**
      * Internal ID of Vulkan handlers
      */
-    public static final int   TYPE_HANDLER_VKINSTANCE = 100;
-    public static final int   TYPE_HANDLER_VKPHYSICALDEVICE = 101;
-    public static final int   TYPE_HANDLER_VKDEVICE = 102;
-    public static final int   TYPE_HANDLER_VKQUEUE = 103;
-    public static final int   TYPE_HANDLER_VKCOMMANDBUFFER = 104;
+    public static final int   TYPE_HANDLER_VKINSTANCE = 1;
+    public static final int   TYPE_HANDLER_VKPHYSICALDEVICE = 2;
+    public static final int   TYPE_HANDLER_VKDEVICE = 3;
+    public static final int   TYPE_HANDLER_VKQUEUE = 4;
+    public static final int   TYPE_HANDLER_VKCOMMANDBUFFER = 5;
 
     /**
-     * Non-Dispatchable handlers
+     * Non-Dispatchable handles
      */
     public static final int   TYPE_HANDLER_VKSEMAPHORE = 107;
     public static final int   TYPE_HANDLER_VKFENCE = 108;
@@ -75,11 +75,15 @@ public interface VkHandleInterface extends VkObject{
     public static final int   TYPE_HANDLER_VKDESCRIPTORSET = 124;
     public static final int   TYPE_HANDLER_VKFRAMEBUFFER = 125;
     public static final int   TYPE_HANDLER_VKCOMMANDPOOL = 126;
-    public static final int   TYPE_HANDLER_VKSURFACEKHR = 127;
-    public static final int   TYPE_HANDLER_VKSWAPCHAINKHR = 128;
-    public static final int   TYPE_HANDLER_VKDISPLAYKHR = 129;
-    public static final int   TYPE_HANDLER_VKDISPLAYMODEKHR = 130;
-    public static final int   TYPE_HANDLER_VKDEBUGREPORTCALLBACKEXT = 131;
+    
+    /**
+     * KHR Non-Dispatchable handles
+     */
+    public static final int   TYPE_HANDLER_VKSURFACEKHR = 200;
+    public static final int   TYPE_HANDLER_VKSWAPCHAINKHR = 201;
+    public static final int   TYPE_HANDLER_VKDISPLAYKHR = 202;
+    public static final int   TYPE_HANDLER_VKDISPLAYMODEKHR = 203;
+    public static final int   TYPE_HANDLER_VKDEBUGREPORTCALLBACKEXT = 204;
 
             
   

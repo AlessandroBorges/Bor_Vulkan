@@ -192,9 +192,9 @@ public class Vk10 extends Vulkan {
   */
     /**
      * <pre>
-     * Default size in bytes of Dispatchable VkHandler.
+     * Default size in bytes of Dispatchable VkHandle.
      * It can be 4bytes in 32bits OS or 8bytes in 64bits OS. 
-     * Dispatchable VkHandlers are the following: 
+     * Current Dispatchable VkHandles are the following: 
      *   VK_DEFINE_HANDLE(VkInstance)
      *   VK_DEFINE_HANDLE(VkPhysicalDevice)
      *   VK_DEFINE_HANDLE(VkDevice)
@@ -204,10 +204,10 @@ public class Vk10 extends Vulkan {
      */
     protected static int SIZE_OF_DISPATCHABLE_HANDLE = 8;
     /**
-     * Default size in bytes of Non Dispatchable VkHandler.
+     * Default size in bytes of Non Dispatchable VkHandle.
      * Expected to be always 8 bytes in both 32/64bits environments.
      */
-    public static int SIZE_OF_NON__DISPATCHABLE_HANDLE = 8;
+    protected static int SIZE_OF_NON__DISPATCHABLE_HANDLE = 8;
     
     /**
      * Vulkan Supported Plaforms

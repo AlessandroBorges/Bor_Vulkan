@@ -1,5 +1,7 @@
 package bor.vulkan;
 
+import bor.enumerable.IntEnum;
+
 /**
  * Wrapper for Vulkan api
  * 
@@ -142,6 +144,127 @@ public class Vulkan {
         int minor = VK_VERSION_MINOR(packedAPIversion);
         int patch = VK_VERSION_PATCH(packedAPIversion);
         return "" + major+"."+minor+"."+patch;
+    }
+    
+    /**
+     * Prepare enumeration for Native side
+     * @param vkEnum
+     * @return
+     */
+    protected static int[] prepare(IntEnum<?>[] vkEnum){
+        if(vkEnum == null)
+            return null;
+        int size = vkEnum.length;
+        int[] array = new int[size];
+        for (int i = 0; i < size; i++) {
+            IntEnum<?> e = vkEnum[i];
+            array[i] = e==null ? 0 : e.getValue();
+        }
+        return array;
+    }
+    
+    /**
+     * Restore enumerations from 
+     * @param vkEnum
+     * @param values
+     * @param enume
+     */
+    protected static void restore(IntEnum<?>[] vkEnum, int[] values, IntEnum enume){ 
+        int size = vkEnum.length;
+        for (int i = 0; i < size; i++) {
+            int val = values[i]; 
+            vkEnum[i] = (IntEnum<?>) enume.getEnumByValue(val);
+        }
+    }
+    
+    /////////////////////////////////////////////////////
+    /**
+     * <b>Internal use only.<b><br>
+     * Prepares a single VKHandle to read/write from native side.
+     *   
+     * @param aHandle - a instance of VkHandleInterface
+     * @return a long array with aHandle's nativeHandle
+     */
+    protected long[] prepare(VkHandleInterface aHandle){
+        long[] array = new long[1];
+        array[0] = (aHandle==null) ? 0L : aHandle.getNativeHandle();
+        return array;
+    }
+    
+    /**
+     * <b>Internal use only.<b><br>
+     * Prepares a array of VKHandle to read/write from native side.
+     *   
+     * @param aHandle - an array or multiple instances of VkHandleInterface
+     * @return a long array with handles' nativeHandle values. Returns null if
+     * handles are null. 
+     */
+    protected long[] prepare(VkHandleInterface... handles){
+        if(handles==null) 
+            return null;
+        long[] array = new long[handles.length];
+        for (int i = 0; i < array.length; i++) {
+            VkHandleInterface item = handles[i];
+            array[i]  = (item==null) ? 0L : item.getNativeHandle();
+        }
+        return array;
+    }
+    
+    /**
+     * Copy native ptrValue to VkHandle
+     * @param ptrValue - native value of pointer
+     * @param theHandle - VkHandle instance to update
+     * @return theHandle value.
+     */
+    protected VkHandleInterface restoreHandles(long[] ptrValue, VkHandleInterface theHandle){
+        if(ptrValue!=null && theHandle!=null){
+            theHandle.setPointer(ptrValue[0]); 
+        }
+       return theHandle;
+    }
+    
+    /**
+     * Copy native ptrValue to VkHandle
+     * @param ptrValue - native value of pointer
+     * @param handles - VkHandle instance to update
+     * @return handles array.
+     */
+    protected VkHandleInterface[] restoreHandles(long[] ptrValue, VkHandle[] handles){
+        if(ptrValue!=null && handles!=null){
+            int length = Math.min(ptrValue.length, handles.length); 
+            for (int i = 0; i < length; i++) {
+                VkHandle hand = handles[i];
+                hand.setPointer(ptrValue[i]);
+            }
+            // nullify extra handles
+            for (int i = length; i < handles.length; i++) {
+                VkHandle hand = handles[i];
+                hand.setPointer(0L);
+            }             
+        }
+       return handles;
+    }
+    
+    /**
+     * Copy native ptrValue to VkHandleDispatchable
+     * @param ptrValue - native value of pointer
+     * @param handles - VkHandleDispatchable instance to update
+     * @return handles array.
+     */
+    protected VkHandleInterface[] restoreHandles(long[] ptrValue, VkHandleDispatchable[] handles){
+        if(ptrValue!=null && handles!=null){
+            int length = Math.min(ptrValue.length, handles.length); 
+            for (int i = 0; i < length; i++) {
+                VkHandleDispatchable hand = handles[i];
+                hand.setPointer(ptrValue[i]);
+            }
+            // nullify extra handles
+            for (int i = length; i < handles.length; i++) {
+                VkHandleDispatchable hand = handles[i];
+                hand.setPointer(0L);
+            }             
+        }
+       return handles;
     }
 
 }

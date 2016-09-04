@@ -20,6 +20,12 @@ public class PFNvkVoidFunction extends VkHandle implements PFNFunction, VkHandle
     /**
      * @param nativePtr
      */
+    public PFNvkVoidFunction(long nativePtr) {
+        super(nativePtr);      
+    }
+    /**
+     * @param nativePtr
+     */
     public PFNvkVoidFunction(ByteBuffer nativePtr) {
         super(nativePtr);      
     }

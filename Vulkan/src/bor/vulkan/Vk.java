@@ -2,6 +2,7 @@
 
  import java.nio.ByteBuffer;
 
+import bor.util.BigBuffer;
 import bor.vulkan.enumerations.VkDebugReportObjectTypeEXT;
 import bor.vulkan.enumerations.VkFilter;
 import bor.vulkan.enumerations.VkFormat;
@@ -32,6 +33,9 @@ import bor.vulkan.structs.VkCommandBufferBeginInfo;
 import bor.vulkan.structs.VkCommandPoolCreateInfo;
 import bor.vulkan.structs.VkComputePipelineCreateInfo;
 import bor.vulkan.structs.VkCopyDescriptorSet;
+import bor.vulkan.structs.VkDebugMarkerMarkerInfoEXT;
+import bor.vulkan.structs.VkDebugMarkerObjectNameInfoEXT;
+import bor.vulkan.structs.VkDebugMarkerObjectTagInfoEXT;
 import bor.vulkan.structs.VkDebugReportCallbackCreateInfoEXT;
 import bor.vulkan.structs.VkDescriptorPoolCreateInfo;
 import bor.vulkan.structs.VkDescriptorSetAllocateInfo;
@@ -96,6 +100,189 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
 
  public class Vk extends Vulkan
  {
+     /** Includes **/
+    //@off
+    /*JNI
+     
+      
+ #if defined(_WIN32)
+        #define VK_USE_PLATFORM_WIN32_KHR 1
+        #define WIN32_LEAN_AND_MEAN 1
+        #define VC_EXTRALEAN 1
+ #elif defined(__ANDROID__) 
+       #define VK_USE_PLATFORM_ANDROID_KHR 1
+ #else      
+       #define VK_USE_PLATFORM_XCB_KHR 1
+       #define VK_USE_PLATFORM_XLIB_KHR 1
+ #endif   
+  
+      #define VULKAN_WRAPPER_ENABLE_ALL_EXTENSIONS_DEFAULT 1
+      #include "BorVulkan.hpp"
+      #include "vulkan_wrapper.h" 
+           
+      #include <stdio.h>
+      #include <stdlib.h>
+      
+      using namespace std;
+      
+      typedef void* PointerToAnything;
+      typedef PointerToAnything* PointerToAnythingArray;
+      
+      static  jclass byteBufferClass;      
+      static  bool isWin32;
+      static  bool isAndroid;
+      static  bool isMIR;
+      static  bool isWayland;
+      static  bool isXCB;
+      static  bool isXLIB;
+      static  bool isVulkanAvailable;
+  
+    static void init(){
+         // platforms support 
+        isWin32 = false;
+        isAndroid = false;
+        isMIR = false;
+        isWayland = false;
+        isXCB = false;
+        isXLIB = false;
+   
+   #ifdef VK_USE_PLATFORM_ANDROID_KHR
+         isAndroid = true;
+   #endif
+   
+    #ifdef VK_USE_PLATFORM_WIN32_KHR    
+        isWin32 = true;
+   #endif 
+
+   #ifdef VK_USE_PLATFORM_MIR_KHR        
+        isMIR = true;
+   #endif
+   
+   #ifdef VK_USE_PLATFORM_WAYLAND_KHR       
+       isWayland = true;
+   #endif
+        
+   #ifdef VK_USE_PLATFORM_XCB_KHR        
+        isXCB = true;
+   #endif   
+        
+   #ifdef VK_USE_PLATFORM_XLIB_KHR          
+    isXLIB = true;
+   #endif    
+      
+ }//
+ 
+  
+#define BUFFERARRAY_SET(TYPE, BUFFERS, COUNT, P_VK)\
+     TYPE* P_VK = (TYPE*) calloc(COUNT,sizeof(TYPE));\
+     for(int i = 0; i < (int) COUNT; i++){\
+       jobject obj = (BUFFERS) ? (jobject) env->GetObjectArrayElement(BUFFERS, i) : NULL;\
+       if(obj != NULL){\
+          TYPE* elem = (TYPE*)(env->GetDirectBufferAddress(obj));\
+          P_VK[i] = (*elem);\
+       }\
+     }\
+ 
+ #define BUFFERARRAY_COMMIT(TYPE, BUFFERS, COUNT, P_VK) \
+  for(int i = 0; i < (int) COUNT; i++){\       
+           TYPE* obj = (TYPE*)calloc(1, sizeof(TYPE));\
+           *obj = P_VK[i];\
+           jobject bb_ = (jobject)(env->NewDirectByteBuffer(obj, sizeof(TYPE)));\
+           env->SetObjectArrayElement(BUFFERS, i, bb_);\
+      }\
+  if (P_VK != NULL) free(P_VK);\
+ 
+ // Vk10 header end
+  */
+    /**
+     * <pre>
+     * Default size in bytes of Dispatchable VkHandle.
+     * It can be 4bytes in 32bits OS or 8bytes in 64bits OS. 
+     * Current Dispatchable VkHandles are the following: 
+     *   VK_DEFINE_HANDLE(VkInstance)
+     *   VK_DEFINE_HANDLE(VkPhysicalDevice)
+     *   VK_DEFINE_HANDLE(VkDevice)
+     *   VK_DEFINE_HANDLE(VkQueue)
+     *   VK_DEFINE_HANDLE(VkCommandBuffer)
+     * </pre>
+     */
+    protected static int SIZE_OF_DISPATCHABLE_HANDLE = 8;
+    /**
+     * Default size in bytes of Non Dispatchable VkHandle.
+     * Expected to be always 8 bytes in both 32/64bits environments.
+     */
+    protected static int SIZE_OF_NON__DISPATCHABLE_HANDLE = 8;
+    
+    /**
+     * Vulkan Supported Plaforms
+     * TODO - move to Vulkan.Java
+     * @author Alessandro Borges
+     *
+     */
+    public enum PLATFORMS{
+        WIN32,
+        ANDROID,
+        XLIB,
+        XCB,
+        WAYLAND,
+        MIR
+    }
+    
+    static{
+        init();        
+        SIZE_OF_DISPATCHABLE_HANDLE = sizeOfDispatchableHandle();
+        SIZE_OF_NON__DISPATCHABLE_HANDLE = sizeOfNonDispatchableHandle();
+    }
+    
+    /**
+     * initilize native codes
+     */
+    private static native void init();/*
+       jclass bufferClassLocal = env->FindClass("java/nio/ByteBuffer");
+       byteBufferClass = reinterpret_cast<jclass>(env->NewGlobalRef(bufferClassLocal));
+       
+       init();
+       isVulkanAvailable =  (InitVulkan() != 0);
+       
+    */
+    
+    /**
+     * <pre>
+     * Get size of Dispatchable VkHandle;
+     *   VK_DEFINE_HANDLE(VkInstance)
+     *   VK_DEFINE_HANDLE(VkPhysicalDevice)
+     *   VK_DEFINE_HANDLE(VkDevice)
+     *   VK_DEFINE_HANDLE(VkQueue)
+     *   VK_DEFINE_HANDLE(VkCommandBuffer)
+     *  
+     * </pre>
+     * @return size in bytes of native Dispatchable VkHandle.
+     */
+    public static native int sizeOfDispatchableHandle();/*
+        return(jint) sizeof(VkInstance);
+    */
+    
+    /**
+     * Get size of Non Dispatchable Handle.
+     * @return size in bytes of native pointer
+     */
+    public  static native int sizeOfNonDispatchableHandle();/*
+        return(jint) sizeof(VkSemaphore);
+    */
+    
+    /**
+     * @TODO implement it wisely.
+     * @return
+     */
+    public static native boolean  isVulkanAvailable();/*
+       return (jboolean) isVulkanAvailable;
+    
+    */
+    
+
+     
+     
+     
    /**
     *  Vulkan procedure ID: 1
     * <h2>Prototype</h2><pre>
@@ -105,20 +292,24 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkInstance*                                 pInstance);
     * </pre>
     * 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pInstance - 
+    * @param pCreateInfo - Vulkan Struct of type  final VkInstanceCreateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pInstance - An array of  VkInstance . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateInstance(
-		 VkInstanceCreateInfo  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkInstance  pInstance){
-	int  _val = vkCreateInstance0(
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pInstance==null ? null : pInstance.getPointer()) /* ByteBuffer */  );
+   public static VkResult vkCreateInstance(
+		final VkInstanceCreateInfo pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkInstance[] pInstance) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkInstance> pInstanceBuffer =
+			 new BigBuffer<VkInstance>(pInstance, true);
+	 int  _val = vkCreateInstance0(
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pInstanceBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pInstanceBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -133,9 +324,9 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateInstance0(
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pInstance);/* 
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pInstance);/* 
 	VkResult res = vkCreateInstance(
 			(const VkInstanceCreateInfo*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
@@ -154,15 +345,16 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param instance - 
-    * @param pAllocator - 
+    * @param instance - Vulkan handle of type VkInstance 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroyInstance(
+   public static void vkDestroyInstance(
 		VkInstance instance,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroyInstance0(
-		(instance==null ? null : instance.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroyInstance0(
+		instance.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -174,11 +366,10 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroyInstance0(
-		java.nio.ByteBuffer   instance,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkInstance* ptr_instance = (VkInstance*) instance;
+		long   instance,
+		ByteBuffer   pAllocator);/* 
 	vkDestroyInstance(
-			(VkInstance) (*ptr_instance),
+			(VkInstance) reinterpret_cast<VkInstance>(instance),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -195,20 +386,24 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkPhysicalDevice*                           pPhysicalDevices);
     * </pre>
     * 
-    * @param instance - 
-    * @param pPhysicalDeviceCount - 
-    * @param pPhysicalDevices - 
+    * @param instance - Vulkan handle of type VkInstance 
+    * @param pPhysicalDeviceCount - The length of array pPhysicalDevices. 
+    * @param pPhysicalDevices - An array of  VkPhysicalDevice . 
     * 
     * @return VkResult
     */
-   public VkResult vkEnumeratePhysicalDevices(
+   public static VkResult vkEnumeratePhysicalDevices(
 		VkInstance instance,
 		int[] pPhysicalDeviceCount,
-		 VkPhysicalDevice  pPhysicalDevices){
-	int  _val = vkEnumeratePhysicalDevices0(
-			(instance==null ? null : instance.getPointer()) /* ByteBuffer */ ,
+		VkPhysicalDevice[] pPhysicalDevices) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkPhysicalDevice> pPhysicalDevicesBuffer =
+			 new BigBuffer<VkPhysicalDevice>(pPhysicalDevices, true);
+	 int  _val = vkEnumeratePhysicalDevices0(
+			instance.getNativeHandle() /* VkHandle */ ,
 			pPhysicalDeviceCount ,
-			(pPhysicalDevices==null ? null : pPhysicalDevices.getPointer()) /* ByteBuffer */  );
+			pPhysicalDevicesBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pPhysicalDevicesBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -223,12 +418,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkEnumeratePhysicalDevices0(
-		java.nio.ByteBuffer   instance,
+		long   instance,
 		int[]  pPhysicalDeviceCount,
-		java.nio.ByteBuffer   pPhysicalDevices);/* 
-	VkInstance* ptr_instance = (VkInstance*) instance;
+		ByteBuffer   pPhysicalDevices);/* 
 	VkResult res = vkEnumeratePhysicalDevices(
-			(VkInstance) (*ptr_instance),
+			(VkInstance) reinterpret_cast<VkInstance>(instance),
 			(uint32_t*) pPhysicalDeviceCount,
 			(VkPhysicalDevice*) pPhysicalDevices);
 	 return (jint) res;
@@ -245,15 +439,16 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkPhysicalDeviceFeatures*                   pFeatures);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param pFeatures - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param pFeatures - Vulkan Struct of type  VkPhysicalDeviceFeatures  
     */
-   public void vkGetPhysicalDeviceFeatures(
+   public static void vkGetPhysicalDeviceFeatures(
 		VkPhysicalDevice physicalDevice,
-		 VkPhysicalDeviceFeatures  pFeatures){
-	vkGetPhysicalDeviceFeatures0(
-		(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
-		(pFeatures==null ? null : pFeatures.getPointer()) /* ByteBuffer */  );
+		VkPhysicalDeviceFeatures pFeatures) {
+
+	 vkGetPhysicalDeviceFeatures0(
+		physicalDevice.getNativeHandle() /* VkHandle */ ,
+		pFeatures.getPointer() /* Struct */ );
 
    } 
 
@@ -265,11 +460,10 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pFeatures - 
     */
     private static native void vkGetPhysicalDeviceFeatures0(
-		java.nio.ByteBuffer   physicalDevice,
-		java.nio.ByteBuffer   pFeatures);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
+		long   physicalDevice,
+		ByteBuffer   pFeatures);/* 
 	vkGetPhysicalDeviceFeatures(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
 			(VkPhysicalDeviceFeatures*) pFeatures);
 
   */ 
@@ -286,18 +480,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkFormatProperties*                         pFormatProperties);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param format - 
-    * @param pFormatProperties - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param format - Vulkan enumeration of type VkFormat 
+    * @param pFormatProperties - Vulkan Struct of type  VkFormatProperties  
     */
-   public void vkGetPhysicalDeviceFormatProperties(
+   public static void vkGetPhysicalDeviceFormatProperties(
 		VkPhysicalDevice physicalDevice,
 		VkFormat format,
-		 VkFormatProperties  pFormatProperties){
-	vkGetPhysicalDeviceFormatProperties0(
-		(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
-		format.getValue() /* enum */,
-		(pFormatProperties==null ? null : pFormatProperties.getPointer()) /* ByteBuffer */  );
+		VkFormatProperties pFormatProperties) {
+
+	 vkGetPhysicalDeviceFormatProperties0(
+		physicalDevice.getNativeHandle() /* VkHandle */ ,
+		format.getValue() /* VkEnum */,
+		pFormatProperties.getPointer() /* Struct */ );
 
    } 
 
@@ -310,12 +505,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pFormatProperties - 
     */
     private static native void vkGetPhysicalDeviceFormatProperties0(
-		java.nio.ByteBuffer   physicalDevice,
+		long   physicalDevice,
 		int   format,
-		java.nio.ByteBuffer   pFormatProperties);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
+		ByteBuffer   pFormatProperties);/* 
 	vkGetPhysicalDeviceFormatProperties(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
 			(VkFormat) format,
 			(VkFormatProperties*) pFormatProperties);
 
@@ -337,32 +531,33 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkImageFormatProperties*                    pImageFormatProperties);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param format - 
-    * @param type - 
-    * @param tiling - 
-    * @param usage - 
-    * @param flags - 
-    * @param pImageFormatProperties - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param format - Vulkan enumeration of type VkFormat 
+    * @param type - Vulkan enumeration of type VkImageType 
+    * @param tiling - Vulkan enumeration of type VkImageTiling 
+    * @param usage int 
+    * @param flags int 
+    * @param pImageFormatProperties - Vulkan Struct of type  VkImageFormatProperties  
     * 
     * @return VkResult
     */
-   public VkResult vkGetPhysicalDeviceImageFormatProperties(
+   public static VkResult vkGetPhysicalDeviceImageFormatProperties(
 		VkPhysicalDevice physicalDevice,
 		VkFormat format,
 		VkImageType type,
 		VkImageTiling tiling,
 		int usage,
 		int flags,
-		 VkImageFormatProperties  pImageFormatProperties){
-	int  _val = vkGetPhysicalDeviceImageFormatProperties0(
-			(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
-			format.getValue() /* enum */,
-			type.getValue() /* enum */,
-			tiling.getValue() /* enum */,
+		VkImageFormatProperties pImageFormatProperties) {
+
+	 int  _val = vkGetPhysicalDeviceImageFormatProperties0(
+			physicalDevice.getNativeHandle() /* VkHandle */ ,
+			format.getValue() /* VkEnum */,
+			type.getValue() /* VkEnum */,
+			tiling.getValue() /* VkEnum */,
 			usage ,
 			flags ,
-			(pImageFormatProperties==null ? null : pImageFormatProperties.getPointer()) /* ByteBuffer */  );
+			pImageFormatProperties.getPointer() /* Struct */ );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -381,16 +576,15 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkGetPhysicalDeviceImageFormatProperties0(
-		java.nio.ByteBuffer   physicalDevice,
+		long   physicalDevice,
 		int   format,
 		int   type,
 		int   tiling,
 		int  usage,
 		int  flags,
-		java.nio.ByteBuffer   pImageFormatProperties);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
+		ByteBuffer   pImageFormatProperties);/* 
 	VkResult res = vkGetPhysicalDeviceImageFormatProperties(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
 			(VkFormat) format,
 			(VkImageType) type,
 			(VkImageTiling) tiling,
@@ -411,15 +605,16 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkPhysicalDeviceProperties*                 pProperties);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param pProperties - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param pProperties - Vulkan Struct of type  VkPhysicalDeviceProperties  
     */
-   public void vkGetPhysicalDeviceProperties(
+   public static void vkGetPhysicalDeviceProperties(
 		VkPhysicalDevice physicalDevice,
-		 VkPhysicalDeviceProperties  pProperties){
-	vkGetPhysicalDeviceProperties0(
-		(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
-		(pProperties==null ? null : pProperties.getPointer()) /* ByteBuffer */  );
+		VkPhysicalDeviceProperties pProperties) {
+
+	 vkGetPhysicalDeviceProperties0(
+		physicalDevice.getNativeHandle() /* VkHandle */ ,
+		pProperties.getPointer() /* Struct */ );
 
    } 
 
@@ -431,11 +626,10 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pProperties - 
     */
     private static native void vkGetPhysicalDeviceProperties0(
-		java.nio.ByteBuffer   physicalDevice,
-		java.nio.ByteBuffer   pProperties);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
+		long   physicalDevice,
+		ByteBuffer   pProperties);/* 
 	vkGetPhysicalDeviceProperties(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
 			(VkPhysicalDeviceProperties*) pProperties);
 
   */ 
@@ -452,18 +646,22 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkQueueFamilyProperties*                    pQueueFamilyProperties);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param pQueueFamilyPropertyCount - 
-    * @param pQueueFamilyProperties - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param pQueueFamilyPropertyCount - The length of array pQueueFamilyProperties. 
+    * @param pQueueFamilyProperties - An array of  VkQueueFamilyProperties . 
     */
-   public void vkGetPhysicalDeviceQueueFamilyProperties(
+   public static void vkGetPhysicalDeviceQueueFamilyProperties(
 		VkPhysicalDevice physicalDevice,
 		int[] pQueueFamilyPropertyCount,
-		 VkQueueFamilyProperties  pQueueFamilyProperties){
-	vkGetPhysicalDeviceQueueFamilyProperties0(
-		(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
+		VkQueueFamilyProperties[] pQueueFamilyProperties) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkQueueFamilyProperties> pQueueFamilyPropertiesBuff =
+			 new BigBuffer<VkQueueFamilyProperties>(pQueueFamilyProperties, VkQueueFamilyProperties.getID());
+
+	 vkGetPhysicalDeviceQueueFamilyProperties0(
+		physicalDevice.getNativeHandle() /* VkHandle */ ,
 		pQueueFamilyPropertyCount ,
-		(pQueueFamilyProperties==null ? null : pQueueFamilyProperties.getPointer()) /* ByteBuffer */  );
+		pQueueFamilyPropertiesBuff.getPointer() /*Buffer for Struct[]*/ );
 
    } 
 
@@ -476,12 +674,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pQueueFamilyProperties - 
     */
     private static native void vkGetPhysicalDeviceQueueFamilyProperties0(
-		java.nio.ByteBuffer   physicalDevice,
+		long   physicalDevice,
 		int[]  pQueueFamilyPropertyCount,
-		java.nio.ByteBuffer   pQueueFamilyProperties);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
+		ByteBuffer   pQueueFamilyProperties);/* 
 	vkGetPhysicalDeviceQueueFamilyProperties(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
 			(uint32_t*) pQueueFamilyPropertyCount,
 			(VkQueueFamilyProperties*) pQueueFamilyProperties);
 
@@ -498,15 +695,16 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkPhysicalDeviceMemoryProperties*           pMemoryProperties);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param pMemoryProperties - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param pMemoryProperties - Vulkan Struct of type  VkPhysicalDeviceMemoryProperties  
     */
-   public void vkGetPhysicalDeviceMemoryProperties(
+   public static void vkGetPhysicalDeviceMemoryProperties(
 		VkPhysicalDevice physicalDevice,
-		 VkPhysicalDeviceMemoryProperties  pMemoryProperties){
-	vkGetPhysicalDeviceMemoryProperties0(
-		(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
-		(pMemoryProperties==null ? null : pMemoryProperties.getPointer()) /* ByteBuffer */  );
+		VkPhysicalDeviceMemoryProperties pMemoryProperties) {
+
+	 vkGetPhysicalDeviceMemoryProperties0(
+		physicalDevice.getNativeHandle() /* VkHandle */ ,
+		pMemoryProperties.getPointer() /* Struct */ );
 
    } 
 
@@ -518,11 +716,10 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pMemoryProperties - 
     */
     private static native void vkGetPhysicalDeviceMemoryProperties0(
-		java.nio.ByteBuffer   physicalDevice,
-		java.nio.ByteBuffer   pMemoryProperties);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
+		long   physicalDevice,
+		ByteBuffer   pMemoryProperties);/* 
 	vkGetPhysicalDeviceMemoryProperties(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
 			(VkPhysicalDeviceMemoryProperties*) pMemoryProperties);
 
   */ 
@@ -538,16 +735,17 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const char*                                 pName);
     * </pre>
     * 
-    * @param instance - 
-    * @param pName - 
+    * @param instance - Vulkan handle of type VkInstance 
+    * @param pName String 
     * 
     * @return PFNvkVoidFunction
     */
-   public PFNvkVoidFunction vkGetInstanceProcAddr(
+   public static PFNvkVoidFunction vkGetInstanceProcAddr(
 		VkInstance instance,
-		String pName){
-	java.nio.ByteBuffer  _val = vkGetInstanceProcAddr0(
-			(instance==null ? null : instance.getPointer()) /* ByteBuffer */ ,
+		String pName) {
+
+	 long  _val = vkGetInstanceProcAddr0(
+			instance.getNativeHandle() /* VkHandle */ ,
 			pName  );
 	 return new PFNvkVoidFunction(_val);
    } 
@@ -559,16 +757,15 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param instance - 
     * @param pName - 
     * 
-    * @return PFNvkVoidFunction as java.nio.ByteBuffer  
+    * @return PFNvkVoidFunction as long  
     */
-    private static native java.nio.ByteBuffer  vkGetInstanceProcAddr0(
-		java.nio.ByteBuffer   instance,
+    private static native long  vkGetInstanceProcAddr0(
+		long   instance,
 		String  pName);/* 
-	VkInstance* ptr_instance = (VkInstance*) instance;
 	PFNvkVoidFunction res = vkGetInstanceProcAddr(
-			(VkInstance) (*ptr_instance),
+			(VkInstance) reinterpret_cast<VkInstance>(instance),
 			(const char*) pName);
-	 return (jobject) res;
+	 return (jlong) res;
   */ 
 
 
@@ -582,16 +779,17 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const char*                                 pName);
     * </pre>
     * 
-    * @param device - 
-    * @param pName - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pName String 
     * 
     * @return PFNvkVoidFunction
     */
-   public PFNvkVoidFunction vkGetDeviceProcAddr(
+   public static PFNvkVoidFunction vkGetDeviceProcAddr(
 		VkDevice device,
-		String pName){
-	java.nio.ByteBuffer  _val = vkGetDeviceProcAddr0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
+		String pName) {
+
+	 long  _val = vkGetDeviceProcAddr0(
+			device.getNativeHandle() /* VkHandle */ ,
 			pName  );
 	 return new PFNvkVoidFunction(_val);
    } 
@@ -603,16 +801,15 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param device - 
     * @param pName - 
     * 
-    * @return PFNvkVoidFunction as java.nio.ByteBuffer  
+    * @return PFNvkVoidFunction as long  
     */
-    private static native java.nio.ByteBuffer  vkGetDeviceProcAddr0(
-		java.nio.ByteBuffer   device,
+    private static native long  vkGetDeviceProcAddr0(
+		long   device,
 		String  pName);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
 	PFNvkVoidFunction res = vkGetDeviceProcAddr(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const char*) pName);
-	 return (jobject) res;
+	 return (jlong) res;
   */ 
 
 
@@ -628,23 +825,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkDevice*                                   pDevice);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pDevice - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param pCreateInfo - Vulkan Struct of type  final VkDeviceCreateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pDevice - An array of  VkDevice . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateDevice(
+   public static VkResult vkCreateDevice(
 		VkPhysicalDevice physicalDevice,
-		 VkDeviceCreateInfo  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkDevice  pDevice){
-	int  _val = vkCreateDevice0(
-			(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pDevice==null ? null : pDevice.getPointer()) /* ByteBuffer */  );
+		final VkDeviceCreateInfo pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkDevice[] pDevice) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkDevice> pDeviceBuffer =
+			 new BigBuffer<VkDevice>(pDevice, true);
+	 int  _val = vkCreateDevice0(
+			physicalDevice.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pDeviceBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pDeviceBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -660,13 +861,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateDevice0(
-		java.nio.ByteBuffer   physicalDevice,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pDevice);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
+		long   physicalDevice,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pDevice);/* 
 	VkResult res = vkCreateDevice(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
 			(const VkDeviceCreateInfo*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkDevice*) pDevice);
@@ -684,15 +884,16 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroyDevice(
+   public static void vkDestroyDevice(
 		VkDevice device,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroyDevice0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroyDevice0(
+		device.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -704,11 +905,10 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroyDevice0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pAllocator);/* 
 	vkDestroyDevice(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -725,20 +925,24 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkExtensionProperties*                      pProperties);
     * </pre>
     * 
-    * @param pLayerName - 
-    * @param pPropertyCount - 
-    * @param pProperties - 
+    * @param pLayerName String 
+    * @param pPropertyCount - The length of array pProperties. 
+    * @param pProperties - An array of  VkExtensionProperties . 
     * 
     * @return VkResult
     */
-   public VkResult vkEnumerateInstanceExtensionProperties(
+   public static VkResult vkEnumerateInstanceExtensionProperties(
 		String pLayerName,
 		int[] pPropertyCount,
-		 VkExtensionProperties  pProperties){
-	int  _val = vkEnumerateInstanceExtensionProperties0(
+		VkExtensionProperties[] pProperties) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkExtensionProperties> pPropertiesBuff =
+			 new BigBuffer<VkExtensionProperties>(pProperties, VkExtensionProperties.getID());
+
+	 int  _val = vkEnumerateInstanceExtensionProperties0(
 			pLayerName ,
 			pPropertyCount ,
-			(pProperties==null ? null : pProperties.getPointer()) /* ByteBuffer */  );
+			pPropertiesBuff.getPointer() /*Buffer for Struct[]*/ );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -755,7 +959,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     private static native int  vkEnumerateInstanceExtensionProperties0(
 		String  pLayerName,
 		int[]  pPropertyCount,
-		java.nio.ByteBuffer   pProperties);/* 
+		ByteBuffer   pProperties);/* 
 	VkResult res = vkEnumerateInstanceExtensionProperties(
 			(const char*) pLayerName,
 			(uint32_t*) pPropertyCount,
@@ -776,23 +980,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkExtensionProperties*                      pProperties);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param pLayerName - 
-    * @param pPropertyCount - 
-    * @param pProperties - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param pLayerName String 
+    * @param pPropertyCount - The length of array pProperties. 
+    * @param pProperties - An array of  VkExtensionProperties . 
     * 
     * @return VkResult
     */
-   public VkResult vkEnumerateDeviceExtensionProperties(
+   public static VkResult vkEnumerateDeviceExtensionProperties(
 		VkPhysicalDevice physicalDevice,
 		String pLayerName,
 		int[] pPropertyCount,
-		 VkExtensionProperties  pProperties){
-	int  _val = vkEnumerateDeviceExtensionProperties0(
-			(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
+		VkExtensionProperties[] pProperties) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkExtensionProperties> pPropertiesBuff =
+			 new BigBuffer<VkExtensionProperties>(pProperties, VkExtensionProperties.getID());
+
+	 int  _val = vkEnumerateDeviceExtensionProperties0(
+			physicalDevice.getNativeHandle() /* VkHandle */ ,
 			pLayerName ,
 			pPropertyCount ,
-			(pProperties==null ? null : pProperties.getPointer()) /* ByteBuffer */  );
+			pPropertiesBuff.getPointer() /*Buffer for Struct[]*/ );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -808,13 +1016,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkEnumerateDeviceExtensionProperties0(
-		java.nio.ByteBuffer   physicalDevice,
+		long   physicalDevice,
 		String  pLayerName,
 		int[]  pPropertyCount,
-		java.nio.ByteBuffer   pProperties);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
+		ByteBuffer   pProperties);/* 
 	VkResult res = vkEnumerateDeviceExtensionProperties(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
 			(const char*) pLayerName,
 			(uint32_t*) pPropertyCount,
 			(VkExtensionProperties*) pProperties);
@@ -832,17 +1039,21 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkLayerProperties*                          pProperties);
     * </pre>
     * 
-    * @param pPropertyCount - 
-    * @param pProperties - 
+    * @param pPropertyCount - The length of array pProperties. 
+    * @param pProperties - An array of  VkLayerProperties . 
     * 
     * @return VkResult
     */
-   public VkResult vkEnumerateInstanceLayerProperties(
+   public static VkResult vkEnumerateInstanceLayerProperties(
 		int[] pPropertyCount,
-		 VkLayerProperties  pProperties){
-	int  _val = vkEnumerateInstanceLayerProperties0(
+		VkLayerProperties[] pProperties) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkLayerProperties> pPropertiesBuff =
+			 new BigBuffer<VkLayerProperties>(pProperties, VkLayerProperties.getID());
+
+	 int  _val = vkEnumerateInstanceLayerProperties0(
 			pPropertyCount ,
-			(pProperties==null ? null : pProperties.getPointer()) /* ByteBuffer */  );
+			pPropertiesBuff.getPointer() /*Buffer for Struct[]*/ );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -857,7 +1068,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     */
     private static native int  vkEnumerateInstanceLayerProperties0(
 		int[]  pPropertyCount,
-		java.nio.ByteBuffer   pProperties);/* 
+		ByteBuffer   pProperties);/* 
 	VkResult res = vkEnumerateInstanceLayerProperties(
 			(uint32_t*) pPropertyCount,
 			(VkLayerProperties*) pProperties);
@@ -876,20 +1087,24 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkLayerProperties*                          pProperties);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param pPropertyCount - 
-    * @param pProperties - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param pPropertyCount - The length of array pProperties. 
+    * @param pProperties - An array of  VkLayerProperties . 
     * 
     * @return VkResult
     */
-   public VkResult vkEnumerateDeviceLayerProperties(
+   public static VkResult vkEnumerateDeviceLayerProperties(
 		VkPhysicalDevice physicalDevice,
 		int[] pPropertyCount,
-		 VkLayerProperties  pProperties){
-	int  _val = vkEnumerateDeviceLayerProperties0(
-			(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
+		VkLayerProperties[] pProperties) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkLayerProperties> pPropertiesBuff =
+			 new BigBuffer<VkLayerProperties>(pProperties, VkLayerProperties.getID());
+
+	 int  _val = vkEnumerateDeviceLayerProperties0(
+			physicalDevice.getNativeHandle() /* VkHandle */ ,
 			pPropertyCount ,
-			(pProperties==null ? null : pProperties.getPointer()) /* ByteBuffer */  );
+			pPropertiesBuff.getPointer() /*Buffer for Struct[]*/ );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -904,12 +1119,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkEnumerateDeviceLayerProperties0(
-		java.nio.ByteBuffer   physicalDevice,
+		long   physicalDevice,
 		int[]  pPropertyCount,
-		java.nio.ByteBuffer   pProperties);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
+		ByteBuffer   pProperties);/* 
 	VkResult res = vkEnumerateDeviceLayerProperties(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
 			(uint32_t*) pPropertyCount,
 			(VkLayerProperties*) pProperties);
 	 return (jint) res;
@@ -928,21 +1142,22 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkQueue*                                    pQueue);
     * </pre>
     * 
-    * @param device - 
-    * @param queueFamilyIndex - 
-    * @param queueIndex - 
-    * @param pQueue - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param queueFamilyIndex int 
+    * @param queueIndex int 
+    * @param pQueue - Vulkan handle of type  VkQueue  
     */
-   public void vkGetDeviceQueue(
+   public static void vkGetDeviceQueue(
 		VkDevice device,
 		int queueFamilyIndex,
 		int queueIndex,
-		 VkQueue  pQueue){
-	vkGetDeviceQueue0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
+		VkQueue pQueue) {
+
+	 vkGetDeviceQueue0(
+		device.getNativeHandle() /* VkHandle */ ,
 		queueFamilyIndex ,
 		queueIndex ,
-		(pQueue==null ? null : pQueue.getPointer()) /* ByteBuffer */  );
+		pQueue.getNativeHandle() /* VkHandle */  );
 
    } 
 
@@ -956,13 +1171,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pQueue - 
     */
     private static native void vkGetDeviceQueue0(
-		java.nio.ByteBuffer   device,
+		long   device,
 		int  queueFamilyIndex,
 		int  queueIndex,
-		java.nio.ByteBuffer   pQueue);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   pQueue);/* 
 	vkGetDeviceQueue(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(uint32_t) queueFamilyIndex,
 			(uint32_t) queueIndex,
 			(VkQueue*) pQueue);
@@ -982,23 +1196,28 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkFence                                     fence);
     * </pre>
     * 
-    * @param queue - 
-    * @param submitCount - 
-    * @param pSubmits - 
-    * @param fence - 
+    * @param queue - Vulkan handle of type VkQueue 
+    * @param submitCount - The length of array pSubmits. 
+    * @param pSubmits - An array of  final VkSubmitInfo . 
+    * @param fence - Vulkan handle of type VkFence 
     * 
     * @return VkResult
     */
-   public VkResult vkQueueSubmit(
+   public static VkResult vkQueueSubmit(
 		VkQueue queue,
 		int submitCount,
-		 VkSubmitInfo  pSubmits,
-		VkFence fence){
-	int  _val = vkQueueSubmit0(
-			(queue==null ? null : queue.getPointer()) /* ByteBuffer */ ,
+		final VkSubmitInfo[] pSubmits,
+		VkFence fence) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkSubmitInfo> pSubmitsBuff =
+			 new BigBuffer<VkSubmitInfo>(pSubmits, VkSubmitInfo.getID());
+
+	 int  _val = vkQueueSubmit0(
+			queue.getNativeHandle() /* VkHandle */ ,
 			submitCount ,
-			(pSubmits==null ? null : pSubmits.getPointer()) /* ByteBuffer */ ,
-			(fence==null ? null : fence.getPointer()) /* ByteBuffer */  );
+			pSubmitsBuff.getPointer() /*Buffer for Struct[]*/,
+			fence.getNativeHandle() /* VkHandle */  );
+
 	 return VkResult.fromValue(_val);
    } 
 
@@ -1014,17 +1233,15 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkQueueSubmit0(
-		java.nio.ByteBuffer   queue,
+		long   queue,
 		int  submitCount,
-		java.nio.ByteBuffer   pSubmits,
-		java.nio.ByteBuffer   fence);/* 
-	VkQueue* ptr_queue = (VkQueue*) queue;
-	VkFence* ptr_fence = (VkFence*) fence;
+		ByteBuffer   pSubmits,
+		long   fence);/* 
 	VkResult res = vkQueueSubmit(
-			(VkQueue) (*ptr_queue),
+			(VkQueue) reinterpret_cast<VkQueue>(queue),
 			(uint32_t) submitCount,
 			(const VkSubmitInfo*) pSubmits,
-			(VkFence) (*ptr_fence));
+			(VkFence) reinterpret_cast<VkFence>(fence));
 	 return (jint) res;
   */ 
 
@@ -1038,14 +1255,15 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkQueue                                     queue);
     * </pre>
     * 
-    * @param queue - 
+    * @param queue - Vulkan handle of type VkQueue 
     * 
     * @return VkResult
     */
-   public VkResult vkQueueWaitIdle(
-		VkQueue queue){
-	int  _val = vkQueueWaitIdle0(
-			(queue==null ? null : queue.getPointer()) /* ByteBuffer */  );
+   public static VkResult vkQueueWaitIdle(
+		VkQueue queue) {
+
+	 int  _val = vkQueueWaitIdle0(
+			queue.getNativeHandle() /* VkHandle */  );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -1058,10 +1276,9 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkQueueWaitIdle0(
-		java.nio.ByteBuffer   queue);/* 
-	VkQueue* ptr_queue = (VkQueue*) queue;
+		long   queue);/* 
 	VkResult res = vkQueueWaitIdle(
-			(VkQueue) (*ptr_queue));
+			(VkQueue) reinterpret_cast<VkQueue>(queue));
 	 return (jint) res;
   */ 
 
@@ -1075,14 +1292,15 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkDevice                                    device);
     * </pre>
     * 
-    * @param device - 
+    * @param device - Vulkan handle of type VkDevice 
     * 
     * @return VkResult
     */
-   public VkResult vkDeviceWaitIdle(
-		VkDevice device){
-	int  _val = vkDeviceWaitIdle0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */  );
+   public static VkResult vkDeviceWaitIdle(
+		VkDevice device) {
+
+	 int  _val = vkDeviceWaitIdle0(
+			device.getNativeHandle() /* VkHandle */  );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -1095,10 +1313,9 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkDeviceWaitIdle0(
-		java.nio.ByteBuffer   device);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device);/* 
 	VkResult res = vkDeviceWaitIdle(
-			(VkDevice) (*ptr_device));
+			(VkDevice) reinterpret_cast<VkDevice>(device));
 	 return (jint) res;
   */ 
 
@@ -1115,23 +1332,24 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkDeviceMemory*                             pMemory);
     * </pre>
     * 
-    * @param device - 
-    * @param pAllocateInfo - 
-    * @param pAllocator - 
-    * @param pMemory - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pAllocateInfo - Vulkan Struct of type  final VkMemoryAllocateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pMemory - Vulkan handle of type  VkDeviceMemory  
     * 
     * @return VkResult
     */
-   public VkResult vkAllocateMemory(
+   public static VkResult vkAllocateMemory(
 		VkDevice device,
-		 VkMemoryAllocateInfo  pAllocateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkDeviceMemory  pMemory){
-	int  _val = vkAllocateMemory0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pAllocateInfo==null ? null : pAllocateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pMemory==null ? null : pMemory.getPointer()) /* ByteBuffer */  );
+		final VkMemoryAllocateInfo pAllocateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkDeviceMemory pMemory) {
+
+	 int  _val = vkAllocateMemory0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pAllocateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pMemory.getNativeHandle() /* VkHandle */  );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -1147,13 +1365,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkAllocateMemory0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pAllocateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pMemory);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pAllocateInfo,
+		ByteBuffer   pAllocator,
+		long   pMemory);/* 
 	VkResult res = vkAllocateMemory(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkMemoryAllocateInfo*) pAllocateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkDeviceMemory*) pMemory);
@@ -1172,18 +1389,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param memory - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param memory - Vulkan handle of type VkDeviceMemory 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkFreeMemory(
+   public static void vkFreeMemory(
 		VkDevice device,
 		VkDeviceMemory memory,
-		 VkAllocationCallbacks  pAllocator){
-	vkFreeMemory0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(memory==null ? null : memory.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkFreeMemory0(
+		device.getNativeHandle() /* VkHandle */ ,
+		memory.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -1196,14 +1414,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkFreeMemory0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   memory,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
+		long   device,
+		long   memory,
+		ByteBuffer   pAllocator);/* 
 	vkFreeMemory(
-			(VkDevice) (*ptr_device),
-			(VkDeviceMemory) (*ptr_memory),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkDeviceMemory) reinterpret_cast<VkDeviceMemory>(memory),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -1223,25 +1439,26 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     void**                                      ppData);
     * </pre>
     * 
-    * @param device - 
-    * @param memory - 
-    * @param offset - 
-    * @param size - 
-    * @param flags - 
-    * @param ppData - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param memory - Vulkan handle of type VkDeviceMemory 
+    * @param offset long 
+    * @param size long 
+    * @param flags int 
+    * @param ppData ByteBuffer 
     * 
     * @return VkResult
     */
-   public VkResult vkMapMemory(
+   public static VkResult vkMapMemory(
 		VkDevice device,
 		VkDeviceMemory memory,
 		long offset,
 		long size,
 		int flags,
-		ByteBuffer ppData){
-	int  _val = vkMapMemory0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(memory==null ? null : memory.getPointer()) /* ByteBuffer */ ,
+		ByteBuffer ppData) {
+
+	 int  _val = vkMapMemory0(
+			device.getNativeHandle() /* VkHandle */ ,
+			memory.getNativeHandle() /* VkHandle */ ,
 			offset ,
 			size ,
 			flags ,
@@ -1263,17 +1480,15 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkMapMemory0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   memory,
+		long   device,
+		long   memory,
 		long  offset,
 		long  size,
 		int  flags,
 		ByteBuffer  ppData);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
 	VkResult res = vkMapMemory(
-			(VkDevice) (*ptr_device),
-			(VkDeviceMemory) (*ptr_memory),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkDeviceMemory) reinterpret_cast<VkDeviceMemory>(memory),
 			(VkDeviceSize) offset,
 			(VkDeviceSize) size,
 			(VkMemoryMapFlags) flags,
@@ -1292,15 +1507,16 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkDeviceMemory                              memory);
     * </pre>
     * 
-    * @param device - 
-    * @param memory - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param memory - Vulkan handle of type VkDeviceMemory 
     */
-   public void vkUnmapMemory(
+   public static void vkUnmapMemory(
 		VkDevice device,
-		VkDeviceMemory memory){
-	vkUnmapMemory0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(memory==null ? null : memory.getPointer()) /* ByteBuffer */  );
+		VkDeviceMemory memory) {
+
+	 vkUnmapMemory0(
+		device.getNativeHandle() /* VkHandle */ ,
+		memory.getNativeHandle() /* VkHandle */  );
 
    } 
 
@@ -1312,13 +1528,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param memory - 
     */
     private static native void vkUnmapMemory0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   memory);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
+		long   device,
+		long   memory);/* 
 	vkUnmapMemory(
-			(VkDevice) (*ptr_device),
-			(VkDeviceMemory) (*ptr_memory));
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkDeviceMemory) reinterpret_cast<VkDeviceMemory>(memory));
 
   */ 
 
@@ -1334,20 +1548,24 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkMappedMemoryRange*                  pMemoryRanges);
     * </pre>
     * 
-    * @param device - 
-    * @param memoryRangeCount - 
-    * @param pMemoryRanges - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param memoryRangeCount - The length of array pMemoryRanges. 
+    * @param pMemoryRanges - An array of  final VkMappedMemoryRange . 
     * 
     * @return VkResult
     */
-   public VkResult vkFlushMappedMemoryRanges(
+   public static VkResult vkFlushMappedMemoryRanges(
 		VkDevice device,
 		int memoryRangeCount,
-		 VkMappedMemoryRange  pMemoryRanges){
-	int  _val = vkFlushMappedMemoryRanges0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
+		final VkMappedMemoryRange[] pMemoryRanges) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkMappedMemoryRange> pMemoryRangesBuff =
+			 new BigBuffer<VkMappedMemoryRange>(pMemoryRanges, VkMappedMemoryRange.getID());
+
+	 int  _val = vkFlushMappedMemoryRanges0(
+			device.getNativeHandle() /* VkHandle */ ,
 			memoryRangeCount ,
-			(pMemoryRanges==null ? null : pMemoryRanges.getPointer()) /* ByteBuffer */  );
+			pMemoryRangesBuff.getPointer() /*Buffer for Struct[]*/ );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -1362,12 +1580,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkFlushMappedMemoryRanges0(
-		java.nio.ByteBuffer   device,
+		long   device,
 		int  memoryRangeCount,
-		java.nio.ByteBuffer   pMemoryRanges);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		ByteBuffer   pMemoryRanges);/* 
 	VkResult res = vkFlushMappedMemoryRanges(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(uint32_t) memoryRangeCount,
 			(const VkMappedMemoryRange*) pMemoryRanges);
 	 return (jint) res;
@@ -1385,20 +1602,24 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkMappedMemoryRange*                  pMemoryRanges);
     * </pre>
     * 
-    * @param device - 
-    * @param memoryRangeCount - 
-    * @param pMemoryRanges - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param memoryRangeCount - The length of array pMemoryRanges. 
+    * @param pMemoryRanges - An array of  final VkMappedMemoryRange . 
     * 
     * @return VkResult
     */
-   public VkResult vkInvalidateMappedMemoryRanges(
+   public static VkResult vkInvalidateMappedMemoryRanges(
 		VkDevice device,
 		int memoryRangeCount,
-		 VkMappedMemoryRange  pMemoryRanges){
-	int  _val = vkInvalidateMappedMemoryRanges0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
+		final VkMappedMemoryRange[] pMemoryRanges) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkMappedMemoryRange> pMemoryRangesBuff =
+			 new BigBuffer<VkMappedMemoryRange>(pMemoryRanges, VkMappedMemoryRange.getID());
+
+	 int  _val = vkInvalidateMappedMemoryRanges0(
+			device.getNativeHandle() /* VkHandle */ ,
 			memoryRangeCount ,
-			(pMemoryRanges==null ? null : pMemoryRanges.getPointer()) /* ByteBuffer */  );
+			pMemoryRangesBuff.getPointer() /*Buffer for Struct[]*/ );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -1413,12 +1634,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkInvalidateMappedMemoryRanges0(
-		java.nio.ByteBuffer   device,
+		long   device,
 		int  memoryRangeCount,
-		java.nio.ByteBuffer   pMemoryRanges);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		ByteBuffer   pMemoryRanges);/* 
 	VkResult res = vkInvalidateMappedMemoryRanges(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(uint32_t) memoryRangeCount,
 			(const VkMappedMemoryRange*) pMemoryRanges);
 	 return (jint) res;
@@ -1436,17 +1656,18 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkDeviceSize*                               pCommittedMemoryInBytes);
     * </pre>
     * 
-    * @param device - 
-    * @param memory - 
-    * @param pCommittedMemoryInBytes - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param memory - Vulkan handle of type VkDeviceMemory 
+    * @param pCommittedMemoryInBytes - An array of long. 
     */
-   public void vkGetDeviceMemoryCommitment(
+   public static void vkGetDeviceMemoryCommitment(
 		VkDevice device,
 		VkDeviceMemory memory,
-		long[] pCommittedMemoryInBytes){
-	vkGetDeviceMemoryCommitment0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(memory==null ? null : memory.getPointer()) /* ByteBuffer */ ,
+		long[] pCommittedMemoryInBytes) {
+
+	 vkGetDeviceMemoryCommitment0(
+		device.getNativeHandle() /* VkHandle */ ,
+		memory.getNativeHandle() /* VkHandle */ ,
 		pCommittedMemoryInBytes  );
 
    } 
@@ -1460,14 +1681,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pCommittedMemoryInBytes - 
     */
     private static native void vkGetDeviceMemoryCommitment0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   memory,
+		long   device,
+		long   memory,
 		long[]  pCommittedMemoryInBytes);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
 	vkGetDeviceMemoryCommitment(
-			(VkDevice) (*ptr_device),
-			(VkDeviceMemory) (*ptr_memory),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkDeviceMemory) reinterpret_cast<VkDeviceMemory>(memory),
 			(VkDeviceSize*) pCommittedMemoryInBytes);
 
   */ 
@@ -1485,22 +1704,23 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkDeviceSize                                memoryOffset);
     * </pre>
     * 
-    * @param device - 
-    * @param buffer - 
-    * @param memory - 
-    * @param memoryOffset - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param buffer - Vulkan handle of type VkBuffer 
+    * @param memory - Vulkan handle of type VkDeviceMemory 
+    * @param memoryOffset long 
     * 
     * @return VkResult
     */
-   public VkResult vkBindBufferMemory(
+   public static VkResult vkBindBufferMemory(
 		VkDevice device,
 		VkBuffer buffer,
 		VkDeviceMemory memory,
-		long memoryOffset){
-	int  _val = vkBindBufferMemory0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(buffer==null ? null : buffer.getPointer()) /* ByteBuffer */ ,
-			(memory==null ? null : memory.getPointer()) /* ByteBuffer */ ,
+		long memoryOffset) {
+
+	 int  _val = vkBindBufferMemory0(
+			device.getNativeHandle() /* VkHandle */ ,
+			buffer.getNativeHandle() /* VkHandle */ ,
+			memory.getNativeHandle() /* VkHandle */ ,
 			memoryOffset  );
 	 return VkResult.fromValue(_val);
    } 
@@ -1517,17 +1737,14 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkBindBufferMemory0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   buffer,
-		java.nio.ByteBuffer   memory,
+		long   device,
+		long   buffer,
+		long   memory,
 		long  memoryOffset);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkBuffer* ptr_buffer = (VkBuffer*) buffer;
-	VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
 	VkResult res = vkBindBufferMemory(
-			(VkDevice) (*ptr_device),
-			(VkBuffer) (*ptr_buffer),
-			(VkDeviceMemory) (*ptr_memory),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkBuffer) reinterpret_cast<VkBuffer>(buffer),
+			(VkDeviceMemory) reinterpret_cast<VkDeviceMemory>(memory),
 			(VkDeviceSize) memoryOffset);
 	 return (jint) res;
   */ 
@@ -1545,22 +1762,23 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkDeviceSize                                memoryOffset);
     * </pre>
     * 
-    * @param device - 
-    * @param image - 
-    * @param memory - 
-    * @param memoryOffset - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param image - Vulkan handle of type VkImage 
+    * @param memory - Vulkan handle of type VkDeviceMemory 
+    * @param memoryOffset long 
     * 
     * @return VkResult
     */
-   public VkResult vkBindImageMemory(
+   public static VkResult vkBindImageMemory(
 		VkDevice device,
 		VkImage image,
 		VkDeviceMemory memory,
-		long memoryOffset){
-	int  _val = vkBindImageMemory0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(image==null ? null : image.getPointer()) /* ByteBuffer */ ,
-			(memory==null ? null : memory.getPointer()) /* ByteBuffer */ ,
+		long memoryOffset) {
+
+	 int  _val = vkBindImageMemory0(
+			device.getNativeHandle() /* VkHandle */ ,
+			image.getNativeHandle() /* VkHandle */ ,
+			memory.getNativeHandle() /* VkHandle */ ,
 			memoryOffset  );
 	 return VkResult.fromValue(_val);
    } 
@@ -1577,17 +1795,14 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkBindImageMemory0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   image,
-		java.nio.ByteBuffer   memory,
+		long   device,
+		long   image,
+		long   memory,
 		long  memoryOffset);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkImage* ptr_image = (VkImage*) image;
-	VkDeviceMemory* ptr_memory = (VkDeviceMemory*) memory;
 	VkResult res = vkBindImageMemory(
-			(VkDevice) (*ptr_device),
-			(VkImage) (*ptr_image),
-			(VkDeviceMemory) (*ptr_memory),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkImage) reinterpret_cast<VkImage>(image),
+			(VkDeviceMemory) reinterpret_cast<VkDeviceMemory>(memory),
 			(VkDeviceSize) memoryOffset);
 	 return (jint) res;
   */ 
@@ -1604,18 +1819,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkMemoryRequirements*                       pMemoryRequirements);
     * </pre>
     * 
-    * @param device - 
-    * @param buffer - 
-    * @param pMemoryRequirements - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param buffer - Vulkan handle of type VkBuffer 
+    * @param pMemoryRequirements - Vulkan Struct of type  VkMemoryRequirements  
     */
-   public void vkGetBufferMemoryRequirements(
+   public static void vkGetBufferMemoryRequirements(
 		VkDevice device,
 		VkBuffer buffer,
-		 VkMemoryRequirements  pMemoryRequirements){
-	vkGetBufferMemoryRequirements0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(buffer==null ? null : buffer.getPointer()) /* ByteBuffer */ ,
-		(pMemoryRequirements==null ? null : pMemoryRequirements.getPointer()) /* ByteBuffer */  );
+		VkMemoryRequirements pMemoryRequirements) {
+
+	 vkGetBufferMemoryRequirements0(
+		device.getNativeHandle() /* VkHandle */ ,
+		buffer.getNativeHandle() /* VkHandle */ ,
+		pMemoryRequirements.getPointer() /* Struct */ );
 
    } 
 
@@ -1628,14 +1844,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pMemoryRequirements - 
     */
     private static native void vkGetBufferMemoryRequirements0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   buffer,
-		java.nio.ByteBuffer   pMemoryRequirements);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkBuffer* ptr_buffer = (VkBuffer*) buffer;
+		long   device,
+		long   buffer,
+		ByteBuffer   pMemoryRequirements);/* 
 	vkGetBufferMemoryRequirements(
-			(VkDevice) (*ptr_device),
-			(VkBuffer) (*ptr_buffer),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkBuffer) reinterpret_cast<VkBuffer>(buffer),
 			(VkMemoryRequirements*) pMemoryRequirements);
 
   */ 
@@ -1652,18 +1866,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkMemoryRequirements*                       pMemoryRequirements);
     * </pre>
     * 
-    * @param device - 
-    * @param image - 
-    * @param pMemoryRequirements - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param image - Vulkan handle of type VkImage 
+    * @param pMemoryRequirements - Vulkan Struct of type  VkMemoryRequirements  
     */
-   public void vkGetImageMemoryRequirements(
+   public static void vkGetImageMemoryRequirements(
 		VkDevice device,
 		VkImage image,
-		 VkMemoryRequirements  pMemoryRequirements){
-	vkGetImageMemoryRequirements0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(image==null ? null : image.getPointer()) /* ByteBuffer */ ,
-		(pMemoryRequirements==null ? null : pMemoryRequirements.getPointer()) /* ByteBuffer */  );
+		VkMemoryRequirements pMemoryRequirements) {
+
+	 vkGetImageMemoryRequirements0(
+		device.getNativeHandle() /* VkHandle */ ,
+		image.getNativeHandle() /* VkHandle */ ,
+		pMemoryRequirements.getPointer() /* Struct */ );
 
    } 
 
@@ -1676,14 +1891,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pMemoryRequirements - 
     */
     private static native void vkGetImageMemoryRequirements0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   image,
-		java.nio.ByteBuffer   pMemoryRequirements);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkImage* ptr_image = (VkImage*) image;
+		long   device,
+		long   image,
+		ByteBuffer   pMemoryRequirements);/* 
 	vkGetImageMemoryRequirements(
-			(VkDevice) (*ptr_device),
-			(VkImage) (*ptr_image),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkImage) reinterpret_cast<VkImage>(image),
 			(VkMemoryRequirements*) pMemoryRequirements);
 
   */ 
@@ -1701,21 +1914,25 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkSparseImageMemoryRequirements*            pSparseMemoryRequirements);
     * </pre>
     * 
-    * @param device - 
-    * @param image - 
-    * @param pSparseMemoryRequirementCount - 
-    * @param pSparseMemoryRequirements - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param image - Vulkan handle of type VkImage 
+    * @param pSparseMemoryRequirementCount - The length of array pSparseMemoryRequirements. 
+    * @param pSparseMemoryRequirements - An array of  VkSparseImageMemoryRequirements . 
     */
-   public void vkGetImageSparseMemoryRequirements(
+   public static void vkGetImageSparseMemoryRequirements(
 		VkDevice device,
 		VkImage image,
 		int[] pSparseMemoryRequirementCount,
-		 VkSparseImageMemoryRequirements  pSparseMemoryRequirements){
-	vkGetImageSparseMemoryRequirements0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(image==null ? null : image.getPointer()) /* ByteBuffer */ ,
+		VkSparseImageMemoryRequirements[] pSparseMemoryRequirements) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkSparseImageMemoryRequirements> pSparseMemoryRequirementsBuff =
+			 new BigBuffer<VkSparseImageMemoryRequirements>(pSparseMemoryRequirements, VkSparseImageMemoryRequirements.getID());
+
+	 vkGetImageSparseMemoryRequirements0(
+		device.getNativeHandle() /* VkHandle */ ,
+		image.getNativeHandle() /* VkHandle */ ,
 		pSparseMemoryRequirementCount ,
-		(pSparseMemoryRequirements==null ? null : pSparseMemoryRequirements.getPointer()) /* ByteBuffer */  );
+		pSparseMemoryRequirementsBuff.getPointer() /*Buffer for Struct[]*/ );
 
    } 
 
@@ -1729,15 +1946,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pSparseMemoryRequirements - 
     */
     private static native void vkGetImageSparseMemoryRequirements0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   image,
+		long   device,
+		long   image,
 		int[]  pSparseMemoryRequirementCount,
-		java.nio.ByteBuffer   pSparseMemoryRequirements);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkImage* ptr_image = (VkImage*) image;
+		ByteBuffer   pSparseMemoryRequirements);/* 
 	vkGetImageSparseMemoryRequirements(
-			(VkDevice) (*ptr_device),
-			(VkImage) (*ptr_image),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkImage) reinterpret_cast<VkImage>(image),
 			(uint32_t*) pSparseMemoryRequirementCount,
 			(VkSparseImageMemoryRequirements*) pSparseMemoryRequirements);
 
@@ -1760,16 +1975,16 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkSparseImageFormatProperties*              pProperties);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param format - 
-    * @param type - 
-    * @param samples - 
-    * @param usage - 
-    * @param tiling - 
-    * @param pPropertyCount - 
-    * @param pProperties - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param format - Vulkan enumeration of type VkFormat 
+    * @param type - Vulkan enumeration of type VkImageType 
+    * @param samples - Vulkan enumeration of type VkSampleCountFlagBits 
+    * @param usage int 
+    * @param tiling - Vulkan enumeration of type VkImageTiling 
+    * @param pPropertyCount - The length of array pProperties. 
+    * @param pProperties - An array of  VkSparseImageFormatProperties . 
     */
-   public void vkGetPhysicalDeviceSparseImageFormatProperties(
+   public static void vkGetPhysicalDeviceSparseImageFormatProperties(
 		VkPhysicalDevice physicalDevice,
 		VkFormat format,
 		VkImageType type,
@@ -1777,16 +1992,20 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
 		int usage,
 		VkImageTiling tiling,
 		int[] pPropertyCount,
-		 VkSparseImageFormatProperties  pProperties){
-	vkGetPhysicalDeviceSparseImageFormatProperties0(
-		(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
-		format.getValue() /* enum */,
-		type.getValue() /* enum */,
-		samples.getValue() /* enum */,
+		VkSparseImageFormatProperties[] pProperties) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkSparseImageFormatProperties> pPropertiesBuff =
+			 new BigBuffer<VkSparseImageFormatProperties>(pProperties, VkSparseImageFormatProperties.getID());
+
+	 vkGetPhysicalDeviceSparseImageFormatProperties0(
+		physicalDevice.getNativeHandle() /* VkHandle */ ,
+		format.getValue() /* VkEnum */,
+		type.getValue() /* VkEnum */,
+		samples.getValue() /* VkEnum */,
 		usage ,
-		tiling.getValue() /* enum */,
+		tiling.getValue() /* VkEnum */,
 		pPropertyCount ,
-		(pProperties==null ? null : pProperties.getPointer()) /* ByteBuffer */  );
+		pPropertiesBuff.getPointer() /*Buffer for Struct[]*/ );
 
    } 
 
@@ -1804,17 +2023,16 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pProperties - 
     */
     private static native void vkGetPhysicalDeviceSparseImageFormatProperties0(
-		java.nio.ByteBuffer   physicalDevice,
+		long   physicalDevice,
 		int   format,
 		int   type,
 		int   samples,
 		int  usage,
 		int   tiling,
 		int[]  pPropertyCount,
-		java.nio.ByteBuffer   pProperties);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
+		ByteBuffer   pProperties);/* 
 	vkGetPhysicalDeviceSparseImageFormatProperties(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
 			(VkFormat) format,
 			(VkImageType) type,
 			(VkSampleCountFlagBits) samples,
@@ -1838,23 +2056,28 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkFence                                     fence);
     * </pre>
     * 
-    * @param queue - 
-    * @param bindInfoCount - 
-    * @param pBindInfo - 
-    * @param fence - 
+    * @param queue - Vulkan handle of type VkQueue 
+    * @param bindInfoCount - The length of array pBindInfo. 
+    * @param pBindInfo - An array of  final VkBindSparseInfo . 
+    * @param fence - Vulkan handle of type VkFence 
     * 
     * @return VkResult
     */
-   public VkResult vkQueueBindSparse(
+   public static VkResult vkQueueBindSparse(
 		VkQueue queue,
 		int bindInfoCount,
-		 VkBindSparseInfo  pBindInfo,
-		VkFence fence){
-	int  _val = vkQueueBindSparse0(
-			(queue==null ? null : queue.getPointer()) /* ByteBuffer */ ,
+		final VkBindSparseInfo[] pBindInfo,
+		VkFence fence) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkBindSparseInfo> pBindInfoBuff =
+			 new BigBuffer<VkBindSparseInfo>(pBindInfo, VkBindSparseInfo.getID());
+
+	 int  _val = vkQueueBindSparse0(
+			queue.getNativeHandle() /* VkHandle */ ,
 			bindInfoCount ,
-			(pBindInfo==null ? null : pBindInfo.getPointer()) /* ByteBuffer */ ,
-			(fence==null ? null : fence.getPointer()) /* ByteBuffer */  );
+			pBindInfoBuff.getPointer() /*Buffer for Struct[]*/,
+			fence.getNativeHandle() /* VkHandle */  );
+
 	 return VkResult.fromValue(_val);
    } 
 
@@ -1870,17 +2093,15 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkQueueBindSparse0(
-		java.nio.ByteBuffer   queue,
+		long   queue,
 		int  bindInfoCount,
-		java.nio.ByteBuffer   pBindInfo,
-		java.nio.ByteBuffer   fence);/* 
-	VkQueue* ptr_queue = (VkQueue*) queue;
-	VkFence* ptr_fence = (VkFence*) fence;
+		ByteBuffer   pBindInfo,
+		long   fence);/* 
 	VkResult res = vkQueueBindSparse(
-			(VkQueue) (*ptr_queue),
+			(VkQueue) reinterpret_cast<VkQueue>(queue),
 			(uint32_t) bindInfoCount,
 			(const VkBindSparseInfo*) pBindInfo,
-			(VkFence) (*ptr_fence));
+			(VkFence) reinterpret_cast<VkFence>(fence));
 	 return (jint) res;
   */ 
 
@@ -1897,23 +2118,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkFence*                                    pFence);
     * </pre>
     * 
-    * @param device - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pFence - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pCreateInfo - Vulkan Struct of type  final VkFenceCreateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pFence - An array of  VkFence . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateFence(
+   public static VkResult vkCreateFence(
 		VkDevice device,
-		 VkFenceCreateInfo  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkFence  pFence){
-	int  _val = vkCreateFence0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pFence==null ? null : pFence.getPointer()) /* ByteBuffer */  );
+		final VkFenceCreateInfo pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkFence[] pFence) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkFence> pFenceBuffer =
+			 new BigBuffer<VkFence>(pFence, false);
+	 int  _val = vkCreateFence0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pFenceBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pFenceBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -1929,13 +2154,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateFence0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pFence);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pFence);/* 
 	VkResult res = vkCreateFence(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkFenceCreateInfo*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkFence*) pFence);
@@ -1954,18 +2178,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param fence - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param fence - Vulkan handle of type VkFence 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroyFence(
+   public static void vkDestroyFence(
 		VkDevice device,
 		VkFence fence,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroyFence0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(fence==null ? null : fence.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroyFence0(
+		device.getNativeHandle() /* VkHandle */ ,
+		fence.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -1978,14 +2203,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroyFence0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   fence,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkFence* ptr_fence = (VkFence*) fence;
+		long   device,
+		long   fence,
+		ByteBuffer   pAllocator);/* 
 	vkDestroyFence(
-			(VkDevice) (*ptr_device),
-			(VkFence) (*ptr_fence),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkFence) reinterpret_cast<VkFence>(fence),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -2002,20 +2225,24 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkFence*                              pFences);
     * </pre>
     * 
-    * @param device - 
-    * @param fenceCount - 
-    * @param pFences - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param fenceCount - The length of array pFences. 
+    * @param pFences - An array of  final VkFence . 
     * 
     * @return VkResult
     */
-   public VkResult vkResetFences(
+   public static VkResult vkResetFences(
 		VkDevice device,
 		int fenceCount,
-		 VkFence  pFences){
-	int  _val = vkResetFences0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
+		final VkFence[] pFences) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkFence> pFencesBuffer =
+			 new BigBuffer<VkFence>(pFences, false);
+	 int  _val = vkResetFences0(
+			device.getNativeHandle() /* VkHandle */ ,
 			fenceCount ,
-			(pFences==null ? null : pFences.getPointer()) /* ByteBuffer */  );
+			pFencesBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pFencesBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -2030,12 +2257,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkResetFences0(
-		java.nio.ByteBuffer   device,
+		long   device,
 		int  fenceCount,
-		java.nio.ByteBuffer   pFences);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		ByteBuffer   pFences);/* 
 	VkResult res = vkResetFences(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(uint32_t) fenceCount,
 			(const VkFence*) pFences);
 	 return (jint) res;
@@ -2052,17 +2278,18 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkFence                                     fence);
     * </pre>
     * 
-    * @param device - 
-    * @param fence - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param fence - Vulkan handle of type VkFence 
     * 
     * @return VkResult
     */
-   public VkResult vkGetFenceStatus(
+   public static VkResult vkGetFenceStatus(
 		VkDevice device,
-		VkFence fence){
-	int  _val = vkGetFenceStatus0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(fence==null ? null : fence.getPointer()) /* ByteBuffer */  );
+		VkFence fence) {
+
+	 int  _val = vkGetFenceStatus0(
+			device.getNativeHandle() /* VkHandle */ ,
+			fence.getNativeHandle() /* VkHandle */  );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -2076,13 +2303,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkGetFenceStatus0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   fence);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkFence* ptr_fence = (VkFence*) fence;
+		long   device,
+		long   fence);/* 
 	VkResult res = vkGetFenceStatus(
-			(VkDevice) (*ptr_device),
-			(VkFence) (*ptr_fence));
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkFence) reinterpret_cast<VkFence>(fence));
 	 return (jint) res;
   */ 
 
@@ -2100,26 +2325,30 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     uint64_t                                    timeout);
     * </pre>
     * 
-    * @param device - 
-    * @param fenceCount - 
-    * @param pFences - 
-    * @param waitAll - 
-    * @param timeout - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param fenceCount - The length of array pFences. 
+    * @param pFences - An array of  final VkFence . 
+    * @param waitAll boolean 
+    * @param timeout long 
     * 
     * @return VkResult
     */
-   public VkResult vkWaitForFences(
+   public static VkResult vkWaitForFences(
 		VkDevice device,
 		int fenceCount,
-		 VkFence  pFences,
+		final VkFence[] pFences,
 		boolean waitAll,
-		long timeout){
-	int  _val = vkWaitForFences0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
+		long timeout) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkFence> pFencesBuffer =
+			 new BigBuffer<VkFence>(pFences, false);
+	 int  _val = vkWaitForFences0(
+			device.getNativeHandle() /* VkHandle */ ,
 			fenceCount ,
-			(pFences==null ? null : pFences.getPointer()) /* ByteBuffer */ ,
+			pFencesBuffer.getPointer() /*BigBuffer of VkHandle*/,
 			waitAll ,
 			timeout  );
+	 pFencesBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -2136,14 +2365,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkWaitForFences0(
-		java.nio.ByteBuffer   device,
+		long   device,
 		int  fenceCount,
-		java.nio.ByteBuffer   pFences,
-		boolean  waitAll,
+		ByteBuffer   pFences,
+		boolean   waitAll,
 		long  timeout);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
 	VkResult res = vkWaitForFences(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(uint32_t) fenceCount,
 			(const VkFence*) pFences,
 			(VkBool32) waitAll,
@@ -2164,23 +2392,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkSemaphore*                                pSemaphore);
     * </pre>
     * 
-    * @param device - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pSemaphore - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pCreateInfo - Vulkan Struct of type  final VkSemaphoreCreateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pSemaphore - An array of  VkSemaphore . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateSemaphore(
+   public static VkResult vkCreateSemaphore(
 		VkDevice device,
-		 VkSemaphoreCreateInfo  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkSemaphore  pSemaphore){
-	int  _val = vkCreateSemaphore0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pSemaphore==null ? null : pSemaphore.getPointer()) /* ByteBuffer */  );
+		final VkSemaphoreCreateInfo pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkSemaphore[] pSemaphore) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkSemaphore> pSemaphoreBuffer =
+			 new BigBuffer<VkSemaphore>(pSemaphore, false);
+	 int  _val = vkCreateSemaphore0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pSemaphoreBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pSemaphoreBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -2196,13 +2428,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateSemaphore0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pSemaphore);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pSemaphore);/* 
 	VkResult res = vkCreateSemaphore(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkSemaphoreCreateInfo*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkSemaphore*) pSemaphore);
@@ -2221,18 +2452,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param semaphore - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param semaphore - Vulkan handle of type VkSemaphore 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroySemaphore(
+   public static void vkDestroySemaphore(
 		VkDevice device,
 		VkSemaphore semaphore,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroySemaphore0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(semaphore==null ? null : semaphore.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroySemaphore0(
+		device.getNativeHandle() /* VkHandle */ ,
+		semaphore.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -2245,14 +2477,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroySemaphore0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   semaphore,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkSemaphore* ptr_semaphore = (VkSemaphore*) semaphore;
+		long   device,
+		long   semaphore,
+		ByteBuffer   pAllocator);/* 
 	vkDestroySemaphore(
-			(VkDevice) (*ptr_device),
-			(VkSemaphore) (*ptr_semaphore),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkSemaphore) reinterpret_cast<VkSemaphore>(semaphore),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -2270,23 +2500,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkEvent*                                    pEvent);
     * </pre>
     * 
-    * @param device - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pEvent - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pCreateInfo - Vulkan Struct of type  final VkEventCreateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pEvent - An array of  VkEvent . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateEvent(
+   public static VkResult vkCreateEvent(
 		VkDevice device,
-		 VkEventCreateInfo  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkEvent  pEvent){
-	int  _val = vkCreateEvent0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pEvent==null ? null : pEvent.getPointer()) /* ByteBuffer */  );
+		final VkEventCreateInfo pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkEvent[] pEvent) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkEvent> pEventBuffer =
+			 new BigBuffer<VkEvent>(pEvent, false);
+	 int  _val = vkCreateEvent0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pEventBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pEventBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -2302,13 +2536,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateEvent0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pEvent);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pEvent);/* 
 	VkResult res = vkCreateEvent(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkEventCreateInfo*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkEvent*) pEvent);
@@ -2327,18 +2560,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param event - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param event - Vulkan handle of type VkEvent 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroyEvent(
+   public static void vkDestroyEvent(
 		VkDevice device,
 		VkEvent event,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroyEvent0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(event==null ? null : event.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroyEvent0(
+		device.getNativeHandle() /* VkHandle */ ,
+		event.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -2351,14 +2585,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroyEvent0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   event,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkEvent* ptr_event = (VkEvent*) event;
+		long   device,
+		long   event,
+		ByteBuffer   pAllocator);/* 
 	vkDestroyEvent(
-			(VkDevice) (*ptr_device),
-			(VkEvent) (*ptr_event),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkEvent) reinterpret_cast<VkEvent>(event),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -2374,17 +2606,18 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkEvent                                     event);
     * </pre>
     * 
-    * @param device - 
-    * @param event - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param event - Vulkan handle of type VkEvent 
     * 
     * @return VkResult
     */
-   public VkResult vkGetEventStatus(
+   public static VkResult vkGetEventStatus(
 		VkDevice device,
-		VkEvent event){
-	int  _val = vkGetEventStatus0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(event==null ? null : event.getPointer()) /* ByteBuffer */  );
+		VkEvent event) {
+
+	 int  _val = vkGetEventStatus0(
+			device.getNativeHandle() /* VkHandle */ ,
+			event.getNativeHandle() /* VkHandle */  );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -2398,13 +2631,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkGetEventStatus0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   event);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkEvent* ptr_event = (VkEvent*) event;
+		long   device,
+		long   event);/* 
 	VkResult res = vkGetEventStatus(
-			(VkDevice) (*ptr_device),
-			(VkEvent) (*ptr_event));
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkEvent) reinterpret_cast<VkEvent>(event));
 	 return (jint) res;
   */ 
 
@@ -2419,17 +2650,18 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkEvent                                     event);
     * </pre>
     * 
-    * @param device - 
-    * @param event - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param event - Vulkan handle of type VkEvent 
     * 
     * @return VkResult
     */
-   public VkResult vkSetEvent(
+   public static VkResult vkSetEvent(
 		VkDevice device,
-		VkEvent event){
-	int  _val = vkSetEvent0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(event==null ? null : event.getPointer()) /* ByteBuffer */  );
+		VkEvent event) {
+
+	 int  _val = vkSetEvent0(
+			device.getNativeHandle() /* VkHandle */ ,
+			event.getNativeHandle() /* VkHandle */  );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -2443,13 +2675,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkSetEvent0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   event);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkEvent* ptr_event = (VkEvent*) event;
+		long   device,
+		long   event);/* 
 	VkResult res = vkSetEvent(
-			(VkDevice) (*ptr_device),
-			(VkEvent) (*ptr_event));
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkEvent) reinterpret_cast<VkEvent>(event));
 	 return (jint) res;
   */ 
 
@@ -2464,17 +2694,18 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkEvent                                     event);
     * </pre>
     * 
-    * @param device - 
-    * @param event - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param event - Vulkan handle of type VkEvent 
     * 
     * @return VkResult
     */
-   public VkResult vkResetEvent(
+   public static VkResult vkResetEvent(
 		VkDevice device,
-		VkEvent event){
-	int  _val = vkResetEvent0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(event==null ? null : event.getPointer()) /* ByteBuffer */  );
+		VkEvent event) {
+
+	 int  _val = vkResetEvent0(
+			device.getNativeHandle() /* VkHandle */ ,
+			event.getNativeHandle() /* VkHandle */  );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -2488,13 +2719,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkResetEvent0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   event);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkEvent* ptr_event = (VkEvent*) event;
+		long   device,
+		long   event);/* 
 	VkResult res = vkResetEvent(
-			(VkDevice) (*ptr_device),
-			(VkEvent) (*ptr_event));
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkEvent) reinterpret_cast<VkEvent>(event));
 	 return (jint) res;
   */ 
 
@@ -2511,23 +2740,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkQueryPool*                                pQueryPool);
     * </pre>
     * 
-    * @param device - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pQueryPool - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pCreateInfo - Vulkan Struct of type  final VkQueryPoolCreateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pQueryPool - An array of  VkQueryPool . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateQueryPool(
+   public static VkResult vkCreateQueryPool(
 		VkDevice device,
-		 VkQueryPoolCreateInfo  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkQueryPool  pQueryPool){
-	int  _val = vkCreateQueryPool0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pQueryPool==null ? null : pQueryPool.getPointer()) /* ByteBuffer */  );
+		final VkQueryPoolCreateInfo pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkQueryPool[] pQueryPool) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkQueryPool> pQueryPoolBuffer =
+			 new BigBuffer<VkQueryPool>(pQueryPool, false);
+	 int  _val = vkCreateQueryPool0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pQueryPoolBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pQueryPoolBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -2543,13 +2776,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateQueryPool0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pQueryPool);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pQueryPool);/* 
 	VkResult res = vkCreateQueryPool(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkQueryPoolCreateInfo*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkQueryPool*) pQueryPool);
@@ -2568,18 +2800,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param queryPool - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param queryPool - Vulkan handle of type VkQueryPool 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroyQueryPool(
+   public static void vkDestroyQueryPool(
 		VkDevice device,
 		VkQueryPool queryPool,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroyQueryPool0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(queryPool==null ? null : queryPool.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroyQueryPool0(
+		device.getNativeHandle() /* VkHandle */ ,
+		queryPool.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -2592,14 +2825,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroyQueryPool0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   queryPool,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkQueryPool* ptr_queryPool = (VkQueryPool*) queryPool;
+		long   device,
+		long   queryPool,
+		ByteBuffer   pAllocator);/* 
 	vkDestroyQueryPool(
-			(VkDevice) (*ptr_device),
-			(VkQueryPool) (*ptr_queryPool),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkQueryPool) reinterpret_cast<VkQueryPool>(queryPool),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -2621,18 +2852,18 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkQueryResultFlags                          flags);
     * </pre>
     * 
-    * @param device - 
-    * @param queryPool - 
-    * @param firstQuery - 
-    * @param queryCount - 
-    * @param dataSize - 
-    * @param pData - 
-    * @param stride - 
-    * @param flags - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param queryPool - Vulkan handle of type VkQueryPool 
+    * @param firstQuery int 
+    * @param queryCount - The length of array dataSize. 
+    * @param dataSize long 
+    * @param pData java.nio.Buffer 
+    * @param stride long 
+    * @param flags int 
     * 
     * @return VkResult
     */
-   public VkResult vkGetQueryPoolResults(
+   public static VkResult vkGetQueryPoolResults(
 		VkDevice device,
 		VkQueryPool queryPool,
 		int firstQuery,
@@ -2640,10 +2871,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
 		long dataSize,
 		java.nio.Buffer pData,
 		long stride,
-		int flags){
-	int  _val = vkGetQueryPoolResults0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(queryPool==null ? null : queryPool.getPointer()) /* ByteBuffer */ ,
+		int flags) {
+
+	 int  _val = vkGetQueryPoolResults0(
+			device.getNativeHandle() /* VkHandle */ ,
+			queryPool.getNativeHandle() /* VkHandle */ ,
 			firstQuery ,
 			queryCount ,
 			dataSize ,
@@ -2669,19 +2901,17 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkGetQueryPoolResults0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   queryPool,
+		long   device,
+		long   queryPool,
 		int  firstQuery,
 		int  queryCount,
 		long  dataSize,
 		java.nio.Buffer  pData,
 		long  stride,
 		int  flags);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkQueryPool* ptr_queryPool = (VkQueryPool*) queryPool;
 	VkResult res = vkGetQueryPoolResults(
-			(VkDevice) (*ptr_device),
-			(VkQueryPool) (*ptr_queryPool),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkQueryPool) reinterpret_cast<VkQueryPool>(queryPool),
 			(uint32_t) firstQuery,
 			(uint32_t) queryCount,
 			(size_t) dataSize,
@@ -2704,23 +2934,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkBuffer*                                   pBuffer);
     * </pre>
     * 
-    * @param device - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pBuffer - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pCreateInfo - Vulkan Struct of type  final VkBufferCreateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pBuffer - An array of  VkBuffer . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateBuffer(
+   public static VkResult vkCreateBuffer(
 		VkDevice device,
-		 VkBufferCreateInfo  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkBuffer  pBuffer){
-	int  _val = vkCreateBuffer0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pBuffer==null ? null : pBuffer.getPointer()) /* ByteBuffer */  );
+		final VkBufferCreateInfo pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkBuffer[] pBuffer) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkBuffer> pBufferBuffer =
+			 new BigBuffer<VkBuffer>(pBuffer, false);
+	 int  _val = vkCreateBuffer0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pBufferBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pBufferBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -2736,13 +2970,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateBuffer0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pBuffer);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pBuffer);/* 
 	VkResult res = vkCreateBuffer(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkBufferCreateInfo*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkBuffer*) pBuffer);
@@ -2761,18 +2994,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param buffer - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param buffer - Vulkan handle of type VkBuffer 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroyBuffer(
+   public static void vkDestroyBuffer(
 		VkDevice device,
 		VkBuffer buffer,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroyBuffer0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(buffer==null ? null : buffer.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroyBuffer0(
+		device.getNativeHandle() /* VkHandle */ ,
+		buffer.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -2785,14 +3019,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroyBuffer0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   buffer,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkBuffer* ptr_buffer = (VkBuffer*) buffer;
+		long   device,
+		long   buffer,
+		ByteBuffer   pAllocator);/* 
 	vkDestroyBuffer(
-			(VkDevice) (*ptr_device),
-			(VkBuffer) (*ptr_buffer),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkBuffer) reinterpret_cast<VkBuffer>(buffer),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -2810,23 +3042,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkBufferView*                               pView);
     * </pre>
     * 
-    * @param device - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pView - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pCreateInfo - Vulkan Struct of type  final VkBufferViewCreateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pView - An array of  VkBufferView . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateBufferView(
+   public static VkResult vkCreateBufferView(
 		VkDevice device,
-		 VkBufferViewCreateInfo  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkBufferView  pView){
-	int  _val = vkCreateBufferView0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pView==null ? null : pView.getPointer()) /* ByteBuffer */  );
+		final VkBufferViewCreateInfo pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkBufferView[] pView) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkBufferView> pViewBuffer =
+			 new BigBuffer<VkBufferView>(pView, false);
+	 int  _val = vkCreateBufferView0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pViewBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pViewBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -2842,13 +3078,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateBufferView0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pView);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pView);/* 
 	VkResult res = vkCreateBufferView(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkBufferViewCreateInfo*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkBufferView*) pView);
@@ -2867,18 +3102,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param bufferView - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param bufferView - Vulkan handle of type VkBufferView 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroyBufferView(
+   public static void vkDestroyBufferView(
 		VkDevice device,
 		VkBufferView bufferView,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroyBufferView0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(bufferView==null ? null : bufferView.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroyBufferView0(
+		device.getNativeHandle() /* VkHandle */ ,
+		bufferView.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -2891,14 +3127,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroyBufferView0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   bufferView,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkBufferView* ptr_bufferView = (VkBufferView*) bufferView;
+		long   device,
+		long   bufferView,
+		ByteBuffer   pAllocator);/* 
 	vkDestroyBufferView(
-			(VkDevice) (*ptr_device),
-			(VkBufferView) (*ptr_bufferView),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkBufferView) reinterpret_cast<VkBufferView>(bufferView),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -2916,23 +3150,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkImage*                                    pImage);
     * </pre>
     * 
-    * @param device - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pImage - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pCreateInfo - Vulkan Struct of type  final VkImageCreateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pImage - An array of  VkImage . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateImage(
+   public static VkResult vkCreateImage(
 		VkDevice device,
-		 VkImageCreateInfo  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkImage  pImage){
-	int  _val = vkCreateImage0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pImage==null ? null : pImage.getPointer()) /* ByteBuffer */  );
+		final VkImageCreateInfo pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkImage[] pImage) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkImage> pImageBuffer =
+			 new BigBuffer<VkImage>(pImage, false);
+	 int  _val = vkCreateImage0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pImageBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pImageBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -2948,13 +3186,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateImage0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pImage);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pImage);/* 
 	VkResult res = vkCreateImage(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkImageCreateInfo*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkImage*) pImage);
@@ -2973,18 +3210,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param image - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param image - Vulkan handle of type VkImage 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroyImage(
+   public static void vkDestroyImage(
 		VkDevice device,
 		VkImage image,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroyImage0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(image==null ? null : image.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroyImage0(
+		device.getNativeHandle() /* VkHandle */ ,
+		image.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -2997,14 +3235,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroyImage0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   image,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkImage* ptr_image = (VkImage*) image;
+		long   device,
+		long   image,
+		ByteBuffer   pAllocator);/* 
 	vkDestroyImage(
-			(VkDevice) (*ptr_device),
-			(VkImage) (*ptr_image),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkImage) reinterpret_cast<VkImage>(image),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -3022,21 +3258,22 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkSubresourceLayout*                        pLayout);
     * </pre>
     * 
-    * @param device - 
-    * @param image - 
-    * @param pSubresource - 
-    * @param pLayout - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param image - Vulkan handle of type VkImage 
+    * @param pSubresource - Vulkan Struct of type  final VkImageSubresource 
+    * @param pLayout - Vulkan Struct of type  VkSubresourceLayout  
     */
-   public void vkGetImageSubresourceLayout(
+   public static void vkGetImageSubresourceLayout(
 		VkDevice device,
 		VkImage image,
-		 VkImageSubresource  pSubresource,
-		 VkSubresourceLayout  pLayout){
-	vkGetImageSubresourceLayout0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(image==null ? null : image.getPointer()) /* ByteBuffer */ ,
-		(pSubresource==null ? null : pSubresource.getPointer()) /* ByteBuffer */ ,
-		(pLayout==null ? null : pLayout.getPointer()) /* ByteBuffer */  );
+		final VkImageSubresource pSubresource,
+		VkSubresourceLayout pLayout) {
+
+	 vkGetImageSubresourceLayout0(
+		device.getNativeHandle() /* VkHandle */ ,
+		image.getNativeHandle() /* VkHandle */ ,
+		pSubresource.getPointer() /* Struct */,
+		pLayout.getPointer() /* Struct */ );
 
    } 
 
@@ -3050,15 +3287,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pLayout - 
     */
     private static native void vkGetImageSubresourceLayout0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   image,
-		java.nio.ByteBuffer   pSubresource,
-		java.nio.ByteBuffer   pLayout);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkImage* ptr_image = (VkImage*) image;
+		long   device,
+		long   image,
+		ByteBuffer   pSubresource,
+		ByteBuffer   pLayout);/* 
 	vkGetImageSubresourceLayout(
-			(VkDevice) (*ptr_device),
-			(VkImage) (*ptr_image),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkImage) reinterpret_cast<VkImage>(image),
 			(const VkImageSubresource*) pSubresource,
 			(VkSubresourceLayout*) pLayout);
 
@@ -3077,23 +3312,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkImageView*                                pView);
     * </pre>
     * 
-    * @param device - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pView - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pCreateInfo - Vulkan Struct of type  final VkImageViewCreateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pView - An array of  VkImageView . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateImageView(
+   public static VkResult vkCreateImageView(
 		VkDevice device,
-		 VkImageViewCreateInfo  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkImageView  pView){
-	int  _val = vkCreateImageView0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pView==null ? null : pView.getPointer()) /* ByteBuffer */  );
+		final VkImageViewCreateInfo pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkImageView[] pView) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkImageView> pViewBuffer =
+			 new BigBuffer<VkImageView>(pView, false);
+	 int  _val = vkCreateImageView0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pViewBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pViewBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -3109,13 +3348,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateImageView0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pView);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pView);/* 
 	VkResult res = vkCreateImageView(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkImageViewCreateInfo*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkImageView*) pView);
@@ -3134,18 +3372,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param imageView - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param imageView - Vulkan handle of type VkImageView 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroyImageView(
+   public static void vkDestroyImageView(
 		VkDevice device,
 		VkImageView imageView,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroyImageView0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(imageView==null ? null : imageView.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroyImageView0(
+		device.getNativeHandle() /* VkHandle */ ,
+		imageView.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -3158,14 +3397,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroyImageView0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   imageView,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkImageView* ptr_imageView = (VkImageView*) imageView;
+		long   device,
+		long   imageView,
+		ByteBuffer   pAllocator);/* 
 	vkDestroyImageView(
-			(VkDevice) (*ptr_device),
-			(VkImageView) (*ptr_imageView),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkImageView) reinterpret_cast<VkImageView>(imageView),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -3183,23 +3420,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkShaderModule*                             pShaderModule);
     * </pre>
     * 
-    * @param device - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pShaderModule - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pCreateInfo - Vulkan Struct of type  final VkShaderModuleCreateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pShaderModule - An array of  VkShaderModule . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateShaderModule(
+   public static VkResult vkCreateShaderModule(
 		VkDevice device,
-		 VkShaderModuleCreateInfo  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkShaderModule  pShaderModule){
-	int  _val = vkCreateShaderModule0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pShaderModule==null ? null : pShaderModule.getPointer()) /* ByteBuffer */  );
+		final VkShaderModuleCreateInfo pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkShaderModule[] pShaderModule) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkShaderModule> pShaderModuleBuffer =
+			 new BigBuffer<VkShaderModule>(pShaderModule, false);
+	 int  _val = vkCreateShaderModule0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pShaderModuleBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pShaderModuleBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -3215,13 +3456,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateShaderModule0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pShaderModule);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pShaderModule);/* 
 	VkResult res = vkCreateShaderModule(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkShaderModuleCreateInfo*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkShaderModule*) pShaderModule);
@@ -3240,18 +3480,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param shaderModule - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param shaderModule - Vulkan handle of type VkShaderModule 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroyShaderModule(
+   public static void vkDestroyShaderModule(
 		VkDevice device,
 		VkShaderModule shaderModule,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroyShaderModule0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(shaderModule==null ? null : shaderModule.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroyShaderModule0(
+		device.getNativeHandle() /* VkHandle */ ,
+		shaderModule.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -3264,14 +3505,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroyShaderModule0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   shaderModule,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkShaderModule* ptr_shaderModule = (VkShaderModule*) shaderModule;
+		long   device,
+		long   shaderModule,
+		ByteBuffer   pAllocator);/* 
 	vkDestroyShaderModule(
-			(VkDevice) (*ptr_device),
-			(VkShaderModule) (*ptr_shaderModule),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkShaderModule) reinterpret_cast<VkShaderModule>(shaderModule),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -3289,23 +3528,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkPipelineCache*                            pPipelineCache);
     * </pre>
     * 
-    * @param device - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pPipelineCache - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pCreateInfo - Vulkan Struct of type  final VkPipelineCacheCreateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pPipelineCache - An array of  VkPipelineCache . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreatePipelineCache(
+   public static VkResult vkCreatePipelineCache(
 		VkDevice device,
-		 VkPipelineCacheCreateInfo  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkPipelineCache  pPipelineCache){
-	int  _val = vkCreatePipelineCache0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pPipelineCache==null ? null : pPipelineCache.getPointer()) /* ByteBuffer */  );
+		final VkPipelineCacheCreateInfo pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkPipelineCache[] pPipelineCache) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkPipelineCache> pPipelineCacheBuffer =
+			 new BigBuffer<VkPipelineCache>(pPipelineCache, false);
+	 int  _val = vkCreatePipelineCache0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pPipelineCacheBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pPipelineCacheBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -3321,13 +3564,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreatePipelineCache0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pPipelineCache);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pPipelineCache);/* 
 	VkResult res = vkCreatePipelineCache(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkPipelineCacheCreateInfo*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkPipelineCache*) pPipelineCache);
@@ -3346,18 +3588,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param pipelineCache - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pipelineCache - Vulkan handle of type VkPipelineCache 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroyPipelineCache(
+   public static void vkDestroyPipelineCache(
 		VkDevice device,
 		VkPipelineCache pipelineCache,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroyPipelineCache0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(pipelineCache==null ? null : pipelineCache.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroyPipelineCache0(
+		device.getNativeHandle() /* VkHandle */ ,
+		pipelineCache.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -3370,14 +3613,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroyPipelineCache0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pipelineCache,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkPipelineCache* ptr_pipelineCache = (VkPipelineCache*) pipelineCache;
+		long   device,
+		long   pipelineCache,
+		ByteBuffer   pAllocator);/* 
 	vkDestroyPipelineCache(
-			(VkDevice) (*ptr_device),
-			(VkPipelineCache) (*ptr_pipelineCache),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkPipelineCache) reinterpret_cast<VkPipelineCache>(pipelineCache),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -3395,21 +3636,22 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     void*                                       pData);
     * </pre>
     * 
-    * @param device - 
-    * @param pipelineCache - 
-    * @param pDataSize - 
-    * @param pData - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pipelineCache - Vulkan handle of type VkPipelineCache 
+    * @param pDataSize - An array of long. 
+    * @param pData java.nio.Buffer 
     * 
     * @return VkResult
     */
-   public VkResult vkGetPipelineCacheData(
+   public static VkResult vkGetPipelineCacheData(
 		VkDevice device,
 		VkPipelineCache pipelineCache,
 		long[] pDataSize,
-		java.nio.Buffer pData){
-	int  _val = vkGetPipelineCacheData0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pipelineCache==null ? null : pipelineCache.getPointer()) /* ByteBuffer */ ,
+		java.nio.Buffer pData) {
+
+	 int  _val = vkGetPipelineCacheData0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pipelineCache.getNativeHandle() /* VkHandle */ ,
 			pDataSize ,
 			pData  );
 	 return VkResult.fromValue(_val);
@@ -3427,15 +3669,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkGetPipelineCacheData0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pipelineCache,
+		long   device,
+		long   pipelineCache,
 		long[]  pDataSize,
 		java.nio.Buffer  pData);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkPipelineCache* ptr_pipelineCache = (VkPipelineCache*) pipelineCache;
 	VkResult res = vkGetPipelineCacheData(
-			(VkDevice) (*ptr_device),
-			(VkPipelineCache) (*ptr_pipelineCache),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkPipelineCache) reinterpret_cast<VkPipelineCache>(pipelineCache),
 			(size_t*) pDataSize,
 			(void*) pData);
 	 return (jint) res;
@@ -3454,23 +3694,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkPipelineCache*                      pSrcCaches);
     * </pre>
     * 
-    * @param device - 
-    * @param dstCache - 
-    * @param srcCacheCount - 
-    * @param pSrcCaches - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param dstCache - Vulkan handle of type VkPipelineCache 
+    * @param srcCacheCount - The length of array pSrcCaches. 
+    * @param pSrcCaches - An array of  final VkPipelineCache . 
     * 
     * @return VkResult
     */
-   public VkResult vkMergePipelineCaches(
+   public static VkResult vkMergePipelineCaches(
 		VkDevice device,
 		VkPipelineCache dstCache,
 		int srcCacheCount,
-		 VkPipelineCache  pSrcCaches){
-	int  _val = vkMergePipelineCaches0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(dstCache==null ? null : dstCache.getPointer()) /* ByteBuffer */ ,
+		final VkPipelineCache[] pSrcCaches) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkPipelineCache> pSrcCachesBuffer =
+			 new BigBuffer<VkPipelineCache>(pSrcCaches, false);
+	 int  _val = vkMergePipelineCaches0(
+			device.getNativeHandle() /* VkHandle */ ,
+			dstCache.getNativeHandle() /* VkHandle */ ,
 			srcCacheCount ,
-			(pSrcCaches==null ? null : pSrcCaches.getPointer()) /* ByteBuffer */  );
+			pSrcCachesBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pSrcCachesBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -3486,15 +3730,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkMergePipelineCaches0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   dstCache,
+		long   device,
+		long   dstCache,
 		int  srcCacheCount,
-		java.nio.ByteBuffer   pSrcCaches);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkPipelineCache* ptr_dstCache = (VkPipelineCache*) dstCache;
+		ByteBuffer   pSrcCaches);/* 
 	VkResult res = vkMergePipelineCaches(
-			(VkDevice) (*ptr_device),
-			(VkPipelineCache) (*ptr_dstCache),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkPipelineCache) reinterpret_cast<VkPipelineCache>(dstCache),
 			(uint32_t) srcCacheCount,
 			(const VkPipelineCache*) pSrcCaches);
 	 return (jint) res;
@@ -3515,29 +3757,36 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkPipeline*                                 pPipelines);
     * </pre>
     * 
-    * @param device - 
-    * @param pipelineCache - 
-    * @param createInfoCount - 
-    * @param pCreateInfos - 
-    * @param pAllocator - 
-    * @param pPipelines - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pipelineCache - Vulkan handle of type VkPipelineCache 
+    * @param createInfoCount - The length of array pCreateInfos. 
+    * @param pCreateInfos - An array of  final VkGraphicsPipelineCreateInfo . 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pPipelines - An array of  VkPipeline . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateGraphicsPipelines(
+   public static VkResult vkCreateGraphicsPipelines(
 		VkDevice device,
 		VkPipelineCache pipelineCache,
 		int createInfoCount,
-		 VkGraphicsPipelineCreateInfo  pCreateInfos,
-		 VkAllocationCallbacks  pAllocator,
-		 VkPipeline  pPipelines){
-	int  _val = vkCreateGraphicsPipelines0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pipelineCache==null ? null : pipelineCache.getPointer()) /* ByteBuffer */ ,
+		final VkGraphicsPipelineCreateInfo[] pCreateInfos,
+		final VkAllocationCallbacks pAllocator,
+		VkPipeline[] pPipelines) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkGraphicsPipelineCreateInfo> pCreateInfosBuff =
+			 new BigBuffer<VkGraphicsPipelineCreateInfo>(pCreateInfos, VkGraphicsPipelineCreateInfo.getID());
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkPipeline> pPipelinesBuffer =
+			 new BigBuffer<VkPipeline>(pPipelines, false);
+	 int  _val = vkCreateGraphicsPipelines0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pipelineCache.getNativeHandle() /* VkHandle */ ,
 			createInfoCount ,
-			(pCreateInfos==null ? null : pCreateInfos.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pPipelines==null ? null : pPipelines.getPointer()) /* ByteBuffer */  );
+			pCreateInfosBuff.getPointer() /*Buffer for Struct[]*/,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pPipelinesBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pPipelinesBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -3555,17 +3804,15 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateGraphicsPipelines0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pipelineCache,
+		long   device,
+		long   pipelineCache,
 		int  createInfoCount,
-		java.nio.ByteBuffer   pCreateInfos,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pPipelines);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkPipelineCache* ptr_pipelineCache = (VkPipelineCache*) pipelineCache;
+		ByteBuffer   pCreateInfos,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pPipelines);/* 
 	VkResult res = vkCreateGraphicsPipelines(
-			(VkDevice) (*ptr_device),
-			(VkPipelineCache) (*ptr_pipelineCache),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkPipelineCache) reinterpret_cast<VkPipelineCache>(pipelineCache),
 			(uint32_t) createInfoCount,
 			(const VkGraphicsPipelineCreateInfo*) pCreateInfos,
 			(const VkAllocationCallbacks*) pAllocator,
@@ -3588,29 +3835,36 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkPipeline*                                 pPipelines);
     * </pre>
     * 
-    * @param device - 
-    * @param pipelineCache - 
-    * @param createInfoCount - 
-    * @param pCreateInfos - 
-    * @param pAllocator - 
-    * @param pPipelines - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pipelineCache - Vulkan handle of type VkPipelineCache 
+    * @param createInfoCount - The length of array pCreateInfos. 
+    * @param pCreateInfos - An array of  final VkComputePipelineCreateInfo . 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pPipelines - An array of  VkPipeline . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateComputePipelines(
+   public static VkResult vkCreateComputePipelines(
 		VkDevice device,
 		VkPipelineCache pipelineCache,
 		int createInfoCount,
-		 VkComputePipelineCreateInfo  pCreateInfos,
-		 VkAllocationCallbacks  pAllocator,
-		 VkPipeline  pPipelines){
-	int  _val = vkCreateComputePipelines0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pipelineCache==null ? null : pipelineCache.getPointer()) /* ByteBuffer */ ,
+		final VkComputePipelineCreateInfo[] pCreateInfos,
+		final VkAllocationCallbacks pAllocator,
+		VkPipeline[] pPipelines) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkComputePipelineCreateInfo> pCreateInfosBuff =
+			 new BigBuffer<VkComputePipelineCreateInfo>(pCreateInfos, VkComputePipelineCreateInfo.getID());
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkPipeline> pPipelinesBuffer =
+			 new BigBuffer<VkPipeline>(pPipelines, false);
+	 int  _val = vkCreateComputePipelines0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pipelineCache.getNativeHandle() /* VkHandle */ ,
 			createInfoCount ,
-			(pCreateInfos==null ? null : pCreateInfos.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pPipelines==null ? null : pPipelines.getPointer()) /* ByteBuffer */  );
+			pCreateInfosBuff.getPointer() /*Buffer for Struct[]*/,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pPipelinesBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pPipelinesBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -3628,17 +3882,15 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateComputePipelines0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pipelineCache,
+		long   device,
+		long   pipelineCache,
 		int  createInfoCount,
-		java.nio.ByteBuffer   pCreateInfos,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pPipelines);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkPipelineCache* ptr_pipelineCache = (VkPipelineCache*) pipelineCache;
+		ByteBuffer   pCreateInfos,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pPipelines);/* 
 	VkResult res = vkCreateComputePipelines(
-			(VkDevice) (*ptr_device),
-			(VkPipelineCache) (*ptr_pipelineCache),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkPipelineCache) reinterpret_cast<VkPipelineCache>(pipelineCache),
 			(uint32_t) createInfoCount,
 			(const VkComputePipelineCreateInfo*) pCreateInfos,
 			(const VkAllocationCallbacks*) pAllocator,
@@ -3658,18 +3910,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param pipeline - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pipeline - Vulkan handle of type VkPipeline 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroyPipeline(
+   public static void vkDestroyPipeline(
 		VkDevice device,
 		VkPipeline pipeline,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroyPipeline0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(pipeline==null ? null : pipeline.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroyPipeline0(
+		device.getNativeHandle() /* VkHandle */ ,
+		pipeline.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -3682,14 +3935,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroyPipeline0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pipeline,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkPipeline* ptr_pipeline = (VkPipeline*) pipeline;
+		long   device,
+		long   pipeline,
+		ByteBuffer   pAllocator);/* 
 	vkDestroyPipeline(
-			(VkDevice) (*ptr_device),
-			(VkPipeline) (*ptr_pipeline),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkPipeline) reinterpret_cast<VkPipeline>(pipeline),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -3707,23 +3958,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkPipelineLayout*                           pPipelineLayout);
     * </pre>
     * 
-    * @param device - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pPipelineLayout - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pCreateInfo - Vulkan Struct of type  final VkPipelineLayoutCreateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pPipelineLayout - An array of  VkPipelineLayout . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreatePipelineLayout(
+   public static VkResult vkCreatePipelineLayout(
 		VkDevice device,
-		 VkPipelineLayoutCreateInfo  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkPipelineLayout  pPipelineLayout){
-	int  _val = vkCreatePipelineLayout0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pPipelineLayout==null ? null : pPipelineLayout.getPointer()) /* ByteBuffer */  );
+		final VkPipelineLayoutCreateInfo pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkPipelineLayout[] pPipelineLayout) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkPipelineLayout> pPipelineLayoutBuffer =
+			 new BigBuffer<VkPipelineLayout>(pPipelineLayout, false);
+	 int  _val = vkCreatePipelineLayout0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pPipelineLayoutBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pPipelineLayoutBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -3739,13 +3994,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreatePipelineLayout0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pPipelineLayout);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pPipelineLayout);/* 
 	VkResult res = vkCreatePipelineLayout(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkPipelineLayoutCreateInfo*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkPipelineLayout*) pPipelineLayout);
@@ -3764,18 +4018,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param pipelineLayout - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pipelineLayout - Vulkan handle of type VkPipelineLayout 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroyPipelineLayout(
+   public static void vkDestroyPipelineLayout(
 		VkDevice device,
 		VkPipelineLayout pipelineLayout,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroyPipelineLayout0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(pipelineLayout==null ? null : pipelineLayout.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroyPipelineLayout0(
+		device.getNativeHandle() /* VkHandle */ ,
+		pipelineLayout.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -3788,14 +4043,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroyPipelineLayout0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pipelineLayout,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkPipelineLayout* ptr_pipelineLayout = (VkPipelineLayout*) pipelineLayout;
+		long   device,
+		long   pipelineLayout,
+		ByteBuffer   pAllocator);/* 
 	vkDestroyPipelineLayout(
-			(VkDevice) (*ptr_device),
-			(VkPipelineLayout) (*ptr_pipelineLayout),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkPipelineLayout) reinterpret_cast<VkPipelineLayout>(pipelineLayout),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -3813,23 +4066,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkSampler*                                  pSampler);
     * </pre>
     * 
-    * @param device - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pSampler - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pCreateInfo - Vulkan Struct of type  final VkSamplerCreateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pSampler - An array of  VkSampler . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateSampler(
+   public static VkResult vkCreateSampler(
 		VkDevice device,
-		 VkSamplerCreateInfo  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkSampler  pSampler){
-	int  _val = vkCreateSampler0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pSampler==null ? null : pSampler.getPointer()) /* ByteBuffer */  );
+		final VkSamplerCreateInfo pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkSampler[] pSampler) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkSampler> pSamplerBuffer =
+			 new BigBuffer<VkSampler>(pSampler, false);
+	 int  _val = vkCreateSampler0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pSamplerBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pSamplerBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -3845,13 +4102,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateSampler0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pSampler);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pSampler);/* 
 	VkResult res = vkCreateSampler(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkSamplerCreateInfo*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkSampler*) pSampler);
@@ -3870,18 +4126,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param sampler - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param sampler - Vulkan handle of type VkSampler 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroySampler(
+   public static void vkDestroySampler(
 		VkDevice device,
 		VkSampler sampler,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroySampler0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(sampler==null ? null : sampler.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroySampler0(
+		device.getNativeHandle() /* VkHandle */ ,
+		sampler.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -3894,14 +4151,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroySampler0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   sampler,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkSampler* ptr_sampler = (VkSampler*) sampler;
+		long   device,
+		long   sampler,
+		ByteBuffer   pAllocator);/* 
 	vkDestroySampler(
-			(VkDevice) (*ptr_device),
-			(VkSampler) (*ptr_sampler),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkSampler) reinterpret_cast<VkSampler>(sampler),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -3919,23 +4174,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkDescriptorSetLayout*                      pSetLayout);
     * </pre>
     * 
-    * @param device - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pSetLayout - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pCreateInfo - Vulkan Struct of type  final VkDescriptorSetLayoutCreateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pSetLayout - An array of  VkDescriptorSetLayout . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateDescriptorSetLayout(
+   public static VkResult vkCreateDescriptorSetLayout(
 		VkDevice device,
-		 VkDescriptorSetLayoutCreateInfo  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkDescriptorSetLayout  pSetLayout){
-	int  _val = vkCreateDescriptorSetLayout0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pSetLayout==null ? null : pSetLayout.getPointer()) /* ByteBuffer */  );
+		final VkDescriptorSetLayoutCreateInfo pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkDescriptorSetLayout[] pSetLayout) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkDescriptorSetLayout> pSetLayoutBuffer =
+			 new BigBuffer<VkDescriptorSetLayout>(pSetLayout, false);
+	 int  _val = vkCreateDescriptorSetLayout0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pSetLayoutBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pSetLayoutBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -3951,13 +4210,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateDescriptorSetLayout0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pSetLayout);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pSetLayout);/* 
 	VkResult res = vkCreateDescriptorSetLayout(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkDescriptorSetLayoutCreateInfo*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkDescriptorSetLayout*) pSetLayout);
@@ -3976,18 +4234,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param descriptorSetLayout - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param descriptorSetLayout - Vulkan handle of type VkDescriptorSetLayout 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroyDescriptorSetLayout(
+   public static void vkDestroyDescriptorSetLayout(
 		VkDevice device,
 		VkDescriptorSetLayout descriptorSetLayout,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroyDescriptorSetLayout0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(descriptorSetLayout==null ? null : descriptorSetLayout.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroyDescriptorSetLayout0(
+		device.getNativeHandle() /* VkHandle */ ,
+		descriptorSetLayout.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -4000,14 +4259,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroyDescriptorSetLayout0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   descriptorSetLayout,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkDescriptorSetLayout* ptr_descriptorSetLayout = (VkDescriptorSetLayout*) descriptorSetLayout;
+		long   device,
+		long   descriptorSetLayout,
+		ByteBuffer   pAllocator);/* 
 	vkDestroyDescriptorSetLayout(
-			(VkDevice) (*ptr_device),
-			(VkDescriptorSetLayout) (*ptr_descriptorSetLayout),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkDescriptorSetLayout) reinterpret_cast<VkDescriptorSetLayout>(descriptorSetLayout),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -4025,23 +4282,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkDescriptorPool*                           pDescriptorPool);
     * </pre>
     * 
-    * @param device - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pDescriptorPool - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pCreateInfo - Vulkan Struct of type  final VkDescriptorPoolCreateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pDescriptorPool - An array of  VkDescriptorPool . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateDescriptorPool(
+   public static VkResult vkCreateDescriptorPool(
 		VkDevice device,
-		 VkDescriptorPoolCreateInfo  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkDescriptorPool  pDescriptorPool){
-	int  _val = vkCreateDescriptorPool0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pDescriptorPool==null ? null : pDescriptorPool.getPointer()) /* ByteBuffer */  );
+		final VkDescriptorPoolCreateInfo pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkDescriptorPool[] pDescriptorPool) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkDescriptorPool> pDescriptorPoolBuffer =
+			 new BigBuffer<VkDescriptorPool>(pDescriptorPool, false);
+	 int  _val = vkCreateDescriptorPool0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pDescriptorPoolBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pDescriptorPoolBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -4057,13 +4318,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateDescriptorPool0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pDescriptorPool);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pDescriptorPool);/* 
 	VkResult res = vkCreateDescriptorPool(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkDescriptorPoolCreateInfo*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkDescriptorPool*) pDescriptorPool);
@@ -4082,18 +4342,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param descriptorPool - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param descriptorPool - Vulkan handle of type VkDescriptorPool 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroyDescriptorPool(
+   public static void vkDestroyDescriptorPool(
 		VkDevice device,
 		VkDescriptorPool descriptorPool,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroyDescriptorPool0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(descriptorPool==null ? null : descriptorPool.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroyDescriptorPool0(
+		device.getNativeHandle() /* VkHandle */ ,
+		descriptorPool.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -4106,14 +4367,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroyDescriptorPool0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   descriptorPool,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkDescriptorPool* ptr_descriptorPool = (VkDescriptorPool*) descriptorPool;
+		long   device,
+		long   descriptorPool,
+		ByteBuffer   pAllocator);/* 
 	vkDestroyDescriptorPool(
-			(VkDevice) (*ptr_device),
-			(VkDescriptorPool) (*ptr_descriptorPool),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkDescriptorPool) reinterpret_cast<VkDescriptorPool>(descriptorPool),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -4130,19 +4389,20 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkDescriptorPoolResetFlags                  flags);
     * </pre>
     * 
-    * @param device - 
-    * @param descriptorPool - 
-    * @param flags - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param descriptorPool - Vulkan handle of type VkDescriptorPool 
+    * @param flags int 
     * 
     * @return VkResult
     */
-   public VkResult vkResetDescriptorPool(
+   public static VkResult vkResetDescriptorPool(
 		VkDevice device,
 		VkDescriptorPool descriptorPool,
-		int flags){
-	int  _val = vkResetDescriptorPool0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(descriptorPool==null ? null : descriptorPool.getPointer()) /* ByteBuffer */ ,
+		int flags) {
+
+	 int  _val = vkResetDescriptorPool0(
+			device.getNativeHandle() /* VkHandle */ ,
+			descriptorPool.getNativeHandle() /* VkHandle */ ,
 			flags  );
 	 return VkResult.fromValue(_val);
    } 
@@ -4158,14 +4418,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkResetDescriptorPool0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   descriptorPool,
+		long   device,
+		long   descriptorPool,
 		int  flags);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkDescriptorPool* ptr_descriptorPool = (VkDescriptorPool*) descriptorPool;
 	VkResult res = vkResetDescriptorPool(
-			(VkDevice) (*ptr_device),
-			(VkDescriptorPool) (*ptr_descriptorPool),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkDescriptorPool) reinterpret_cast<VkDescriptorPool>(descriptorPool),
 			(VkDescriptorPoolResetFlags) flags);
 	 return (jint) res;
   */ 
@@ -4182,20 +4440,21 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkDescriptorSet*                            pDescriptorSets);
     * </pre>
     * 
-    * @param device - 
-    * @param pAllocateInfo - 
-    * @param pDescriptorSets - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pAllocateInfo - Vulkan Struct of type  final VkDescriptorSetAllocateInfo 
+    * @param pDescriptorSets - Vulkan handle of type  VkDescriptorSet  
     * 
     * @return VkResult
     */
-   public VkResult vkAllocateDescriptorSets(
+   public static VkResult vkAllocateDescriptorSets(
 		VkDevice device,
-		 VkDescriptorSetAllocateInfo  pAllocateInfo,
-		 VkDescriptorSet  pDescriptorSets){
-	int  _val = vkAllocateDescriptorSets0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pAllocateInfo==null ? null : pAllocateInfo.getPointer()) /* ByteBuffer */ ,
-			(pDescriptorSets==null ? null : pDescriptorSets.getPointer()) /* ByteBuffer */  );
+		final VkDescriptorSetAllocateInfo pAllocateInfo,
+		VkDescriptorSet pDescriptorSets) {
+
+	 int  _val = vkAllocateDescriptorSets0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pAllocateInfo.getPointer() /* Struct */,
+			pDescriptorSets.getNativeHandle() /* VkHandle */  );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -4210,12 +4469,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkAllocateDescriptorSets0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pAllocateInfo,
-		java.nio.ByteBuffer   pDescriptorSets);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pAllocateInfo,
+		long   pDescriptorSets);/* 
 	VkResult res = vkAllocateDescriptorSets(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkDescriptorSetAllocateInfo*) pAllocateInfo,
 			(VkDescriptorSet*) pDescriptorSets);
 	 return (jint) res;
@@ -4234,23 +4492,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkDescriptorSet*                      pDescriptorSets);
     * </pre>
     * 
-    * @param device - 
-    * @param descriptorPool - 
-    * @param descriptorSetCount - 
-    * @param pDescriptorSets - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param descriptorPool - Vulkan handle of type VkDescriptorPool 
+    * @param descriptorSetCount - The length of array pDescriptorSets. 
+    * @param pDescriptorSets - An array of  final VkDescriptorSet . 
     * 
     * @return VkResult
     */
-   public VkResult vkFreeDescriptorSets(
+   public static VkResult vkFreeDescriptorSets(
 		VkDevice device,
 		VkDescriptorPool descriptorPool,
 		int descriptorSetCount,
-		 VkDescriptorSet  pDescriptorSets){
-	int  _val = vkFreeDescriptorSets0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(descriptorPool==null ? null : descriptorPool.getPointer()) /* ByteBuffer */ ,
+		final VkDescriptorSet[] pDescriptorSets) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkDescriptorSet> pDescriptorSetsBuffer =
+			 new BigBuffer<VkDescriptorSet>(pDescriptorSets, false);
+	 int  _val = vkFreeDescriptorSets0(
+			device.getNativeHandle() /* VkHandle */ ,
+			descriptorPool.getNativeHandle() /* VkHandle */ ,
 			descriptorSetCount ,
-			(pDescriptorSets==null ? null : pDescriptorSets.getPointer()) /* ByteBuffer */  );
+			pDescriptorSetsBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pDescriptorSetsBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -4266,15 +4528,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkFreeDescriptorSets0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   descriptorPool,
+		long   device,
+		long   descriptorPool,
 		int  descriptorSetCount,
-		java.nio.ByteBuffer   pDescriptorSets);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkDescriptorPool* ptr_descriptorPool = (VkDescriptorPool*) descriptorPool;
+		ByteBuffer   pDescriptorSets);/* 
 	VkResult res = vkFreeDescriptorSets(
-			(VkDevice) (*ptr_device),
-			(VkDescriptorPool) (*ptr_descriptorPool),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkDescriptorPool) reinterpret_cast<VkDescriptorPool>(descriptorPool),
 			(uint32_t) descriptorSetCount,
 			(const VkDescriptorSet*) pDescriptorSets);
 	 return (jint) res;
@@ -4294,24 +4554,31 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkCopyDescriptorSet*                  pDescriptorCopies);
     * </pre>
     * 
-    * @param device - 
-    * @param descriptorWriteCount - 
-    * @param pDescriptorWrites - 
-    * @param descriptorCopyCount - 
-    * @param pDescriptorCopies - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param descriptorWriteCount - The length of array pDescriptorWrites. 
+    * @param pDescriptorWrites - An array of  final VkWriteDescriptorSet . 
+    * @param descriptorCopyCount - The length of array pDescriptorCopies. 
+    * @param pDescriptorCopies - An array of  final VkCopyDescriptorSet . 
     */
-   public void vkUpdateDescriptorSets(
+   public static void vkUpdateDescriptorSets(
 		VkDevice device,
 		int descriptorWriteCount,
-		 VkWriteDescriptorSet  pDescriptorWrites,
+		final VkWriteDescriptorSet[] pDescriptorWrites,
 		int descriptorCopyCount,
-		 VkCopyDescriptorSet  pDescriptorCopies){
-	vkUpdateDescriptorSets0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
+		final VkCopyDescriptorSet[] pDescriptorCopies) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkWriteDescriptorSet> pDescriptorWritesBuff =
+			 new BigBuffer<VkWriteDescriptorSet>(pDescriptorWrites, VkWriteDescriptorSet.getID());
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkCopyDescriptorSet> pDescriptorCopiesBuff =
+			 new BigBuffer<VkCopyDescriptorSet>(pDescriptorCopies, VkCopyDescriptorSet.getID());
+
+	 vkUpdateDescriptorSets0(
+		device.getNativeHandle() /* VkHandle */ ,
 		descriptorWriteCount ,
-		(pDescriptorWrites==null ? null : pDescriptorWrites.getPointer()) /* ByteBuffer */ ,
+		pDescriptorWritesBuff.getPointer() /*Buffer for Struct[]*/,
 		descriptorCopyCount ,
-		(pDescriptorCopies==null ? null : pDescriptorCopies.getPointer()) /* ByteBuffer */  );
+		pDescriptorCopiesBuff.getPointer() /*Buffer for Struct[]*/ );
 
    } 
 
@@ -4326,14 +4593,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pDescriptorCopies - 
     */
     private static native void vkUpdateDescriptorSets0(
-		java.nio.ByteBuffer   device,
+		long   device,
 		int  descriptorWriteCount,
-		java.nio.ByteBuffer   pDescriptorWrites,
+		ByteBuffer   pDescriptorWrites,
 		int  descriptorCopyCount,
-		java.nio.ByteBuffer   pDescriptorCopies);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		ByteBuffer   pDescriptorCopies);/* 
 	vkUpdateDescriptorSets(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(uint32_t) descriptorWriteCount,
 			(const VkWriteDescriptorSet*) pDescriptorWrites,
 			(uint32_t) descriptorCopyCount,
@@ -4354,23 +4620,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkFramebuffer*                              pFramebuffer);
     * </pre>
     * 
-    * @param device - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pFramebuffer - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pCreateInfo - Vulkan Struct of type  final VkFramebufferCreateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pFramebuffer - An array of  VkFramebuffer . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateFramebuffer(
+   public static VkResult vkCreateFramebuffer(
 		VkDevice device,
-		 VkFramebufferCreateInfo  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkFramebuffer  pFramebuffer){
-	int  _val = vkCreateFramebuffer0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pFramebuffer==null ? null : pFramebuffer.getPointer()) /* ByteBuffer */  );
+		final VkFramebufferCreateInfo pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkFramebuffer[] pFramebuffer) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkFramebuffer> pFramebufferBuffer =
+			 new BigBuffer<VkFramebuffer>(pFramebuffer, false);
+	 int  _val = vkCreateFramebuffer0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pFramebufferBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pFramebufferBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -4386,13 +4656,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateFramebuffer0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pFramebuffer);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pFramebuffer);/* 
 	VkResult res = vkCreateFramebuffer(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkFramebufferCreateInfo*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkFramebuffer*) pFramebuffer);
@@ -4411,18 +4680,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param framebuffer - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param framebuffer - Vulkan handle of type VkFramebuffer 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroyFramebuffer(
+   public static void vkDestroyFramebuffer(
 		VkDevice device,
 		VkFramebuffer framebuffer,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroyFramebuffer0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(framebuffer==null ? null : framebuffer.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroyFramebuffer0(
+		device.getNativeHandle() /* VkHandle */ ,
+		framebuffer.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -4435,14 +4705,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroyFramebuffer0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   framebuffer,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkFramebuffer* ptr_framebuffer = (VkFramebuffer*) framebuffer;
+		long   device,
+		long   framebuffer,
+		ByteBuffer   pAllocator);/* 
 	vkDestroyFramebuffer(
-			(VkDevice) (*ptr_device),
-			(VkFramebuffer) (*ptr_framebuffer),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkFramebuffer) reinterpret_cast<VkFramebuffer>(framebuffer),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -4460,23 +4728,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkRenderPass*                               pRenderPass);
     * </pre>
     * 
-    * @param device - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pRenderPass - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pCreateInfo - Vulkan Struct of type  final VkRenderPassCreateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pRenderPass - An array of  VkRenderPass . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateRenderPass(
+   public static VkResult vkCreateRenderPass(
 		VkDevice device,
-		 VkRenderPassCreateInfo  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkRenderPass  pRenderPass){
-	int  _val = vkCreateRenderPass0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pRenderPass==null ? null : pRenderPass.getPointer()) /* ByteBuffer */  );
+		final VkRenderPassCreateInfo pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkRenderPass[] pRenderPass) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkRenderPass> pRenderPassBuffer =
+			 new BigBuffer<VkRenderPass>(pRenderPass, false);
+	 int  _val = vkCreateRenderPass0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pRenderPassBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pRenderPassBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -4492,13 +4764,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateRenderPass0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pRenderPass);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pRenderPass);/* 
 	VkResult res = vkCreateRenderPass(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkRenderPassCreateInfo*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkRenderPass*) pRenderPass);
@@ -4517,18 +4788,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param renderPass - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param renderPass - Vulkan handle of type VkRenderPass 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroyRenderPass(
+   public static void vkDestroyRenderPass(
 		VkDevice device,
 		VkRenderPass renderPass,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroyRenderPass0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(renderPass==null ? null : renderPass.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroyRenderPass0(
+		device.getNativeHandle() /* VkHandle */ ,
+		renderPass.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -4541,14 +4813,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroyRenderPass0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   renderPass,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkRenderPass* ptr_renderPass = (VkRenderPass*) renderPass;
+		long   device,
+		long   renderPass,
+		ByteBuffer   pAllocator);/* 
 	vkDestroyRenderPass(
-			(VkDevice) (*ptr_device),
-			(VkRenderPass) (*ptr_renderPass),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkRenderPass) reinterpret_cast<VkRenderPass>(renderPass),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -4565,18 +4835,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkExtent2D*                                 pGranularity);
     * </pre>
     * 
-    * @param device - 
-    * @param renderPass - 
-    * @param pGranularity - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param renderPass - Vulkan handle of type VkRenderPass 
+    * @param pGranularity - Vulkan Struct of type  VkExtent2D  
     */
-   public void vkGetRenderAreaGranularity(
+   public static void vkGetRenderAreaGranularity(
 		VkDevice device,
 		VkRenderPass renderPass,
-		 VkExtent2D  pGranularity){
-	vkGetRenderAreaGranularity0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(renderPass==null ? null : renderPass.getPointer()) /* ByteBuffer */ ,
-		(pGranularity==null ? null : pGranularity.getPointer()) /* ByteBuffer */  );
+		VkExtent2D pGranularity) {
+
+	 vkGetRenderAreaGranularity0(
+		device.getNativeHandle() /* VkHandle */ ,
+		renderPass.getNativeHandle() /* VkHandle */ ,
+		pGranularity.getPointer() /* Struct */ );
 
    } 
 
@@ -4589,14 +4860,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pGranularity - 
     */
     private static native void vkGetRenderAreaGranularity0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   renderPass,
-		java.nio.ByteBuffer   pGranularity);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkRenderPass* ptr_renderPass = (VkRenderPass*) renderPass;
+		long   device,
+		long   renderPass,
+		ByteBuffer   pGranularity);/* 
 	vkGetRenderAreaGranularity(
-			(VkDevice) (*ptr_device),
-			(VkRenderPass) (*ptr_renderPass),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkRenderPass) reinterpret_cast<VkRenderPass>(renderPass),
 			(VkExtent2D*) pGranularity);
 
   */ 
@@ -4614,23 +4883,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkCommandPool*                              pCommandPool);
     * </pre>
     * 
-    * @param device - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pCommandPool - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pCreateInfo - Vulkan Struct of type  final VkCommandPoolCreateInfo 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pCommandPool - An array of  VkCommandPool . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateCommandPool(
+   public static VkResult vkCreateCommandPool(
 		VkDevice device,
-		 VkCommandPoolCreateInfo  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkCommandPool  pCommandPool){
-	int  _val = vkCreateCommandPool0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pCommandPool==null ? null : pCommandPool.getPointer()) /* ByteBuffer */  );
+		final VkCommandPoolCreateInfo pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkCommandPool[] pCommandPool) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkCommandPool> pCommandPoolBuffer =
+			 new BigBuffer<VkCommandPool>(pCommandPool, false);
+	 int  _val = vkCreateCommandPool0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pCommandPoolBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pCommandPoolBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -4646,13 +4919,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateCommandPool0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pCommandPool);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pCommandPool);/* 
 	VkResult res = vkCreateCommandPool(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkCommandPoolCreateInfo*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkCommandPool*) pCommandPool);
@@ -4671,18 +4943,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param commandPool - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param commandPool - Vulkan handle of type VkCommandPool 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroyCommandPool(
+   public static void vkDestroyCommandPool(
 		VkDevice device,
 		VkCommandPool commandPool,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroyCommandPool0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(commandPool==null ? null : commandPool.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroyCommandPool0(
+		device.getNativeHandle() /* VkHandle */ ,
+		commandPool.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -4695,14 +4968,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroyCommandPool0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   commandPool,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkCommandPool* ptr_commandPool = (VkCommandPool*) commandPool;
+		long   device,
+		long   commandPool,
+		ByteBuffer   pAllocator);/* 
 	vkDestroyCommandPool(
-			(VkDevice) (*ptr_device),
-			(VkCommandPool) (*ptr_commandPool),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkCommandPool) reinterpret_cast<VkCommandPool>(commandPool),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -4719,19 +4990,20 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkCommandPoolResetFlags                     flags);
     * </pre>
     * 
-    * @param device - 
-    * @param commandPool - 
-    * @param flags - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param commandPool - Vulkan handle of type VkCommandPool 
+    * @param flags int 
     * 
     * @return VkResult
     */
-   public VkResult vkResetCommandPool(
+   public static VkResult vkResetCommandPool(
 		VkDevice device,
 		VkCommandPool commandPool,
-		int flags){
-	int  _val = vkResetCommandPool0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(commandPool==null ? null : commandPool.getPointer()) /* ByteBuffer */ ,
+		int flags) {
+
+	 int  _val = vkResetCommandPool0(
+			device.getNativeHandle() /* VkHandle */ ,
+			commandPool.getNativeHandle() /* VkHandle */ ,
 			flags  );
 	 return VkResult.fromValue(_val);
    } 
@@ -4747,14 +5019,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkResetCommandPool0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   commandPool,
+		long   device,
+		long   commandPool,
 		int  flags);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkCommandPool* ptr_commandPool = (VkCommandPool*) commandPool;
 	VkResult res = vkResetCommandPool(
-			(VkDevice) (*ptr_device),
-			(VkCommandPool) (*ptr_commandPool),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkCommandPool) reinterpret_cast<VkCommandPool>(commandPool),
 			(VkCommandPoolResetFlags) flags);
 	 return (jint) res;
   */ 
@@ -4771,20 +5041,21 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkCommandBuffer*                            pCommandBuffers);
     * </pre>
     * 
-    * @param device - 
-    * @param pAllocateInfo - 
-    * @param pCommandBuffers - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pAllocateInfo - Vulkan Struct of type  final VkCommandBufferAllocateInfo 
+    * @param pCommandBuffers - Vulkan handle of type  VkCommandBuffer  
     * 
     * @return VkResult
     */
-   public VkResult vkAllocateCommandBuffers(
+   public static VkResult vkAllocateCommandBuffers(
 		VkDevice device,
-		 VkCommandBufferAllocateInfo  pAllocateInfo,
-		 VkCommandBuffer  pCommandBuffers){
-	int  _val = vkAllocateCommandBuffers0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pAllocateInfo==null ? null : pAllocateInfo.getPointer()) /* ByteBuffer */ ,
-			(pCommandBuffers==null ? null : pCommandBuffers.getPointer()) /* ByteBuffer */  );
+		final VkCommandBufferAllocateInfo pAllocateInfo,
+		VkCommandBuffer pCommandBuffers) {
+
+	 int  _val = vkAllocateCommandBuffers0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pAllocateInfo.getPointer() /* Struct */,
+			pCommandBuffers.getNativeHandle() /* VkHandle */  );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -4799,12 +5070,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkAllocateCommandBuffers0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pAllocateInfo,
-		java.nio.ByteBuffer   pCommandBuffers);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pAllocateInfo,
+		long   pCommandBuffers);/* 
 	VkResult res = vkAllocateCommandBuffers(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkCommandBufferAllocateInfo*) pAllocateInfo,
 			(VkCommandBuffer*) pCommandBuffers);
 	 return (jint) res;
@@ -4823,21 +5093,25 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkCommandBuffer*                      pCommandBuffers);
     * </pre>
     * 
-    * @param device - 
-    * @param commandPool - 
-    * @param commandBufferCount - 
-    * @param pCommandBuffers - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param commandPool - Vulkan handle of type VkCommandPool 
+    * @param commandBufferCount - The length of array pCommandBuffers. 
+    * @param pCommandBuffers - An array of  final VkCommandBuffer . 
     */
-   public void vkFreeCommandBuffers(
+   public static void vkFreeCommandBuffers(
 		VkDevice device,
 		VkCommandPool commandPool,
 		int commandBufferCount,
-		 VkCommandBuffer  pCommandBuffers){
-	vkFreeCommandBuffers0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(commandPool==null ? null : commandPool.getPointer()) /* ByteBuffer */ ,
+		final VkCommandBuffer[] pCommandBuffers) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkCommandBuffer> pCommandBuffersBuffer =
+			 new BigBuffer<VkCommandBuffer>(pCommandBuffers, true);
+	 vkFreeCommandBuffers0(
+		device.getNativeHandle() /* VkHandle */ ,
+		commandPool.getNativeHandle() /* VkHandle */ ,
 		commandBufferCount ,
-		(pCommandBuffers==null ? null : pCommandBuffers.getPointer()) /* ByteBuffer */  );
+		pCommandBuffersBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pCommandBuffersBuffer.update();
 
    } 
 
@@ -4851,15 +5125,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pCommandBuffers - 
     */
     private static native void vkFreeCommandBuffers0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   commandPool,
+		long   device,
+		long   commandPool,
 		int  commandBufferCount,
-		java.nio.ByteBuffer   pCommandBuffers);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkCommandPool* ptr_commandPool = (VkCommandPool*) commandPool;
+		ByteBuffer   pCommandBuffers);/* 
 	vkFreeCommandBuffers(
-			(VkDevice) (*ptr_device),
-			(VkCommandPool) (*ptr_commandPool),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkCommandPool) reinterpret_cast<VkCommandPool>(commandPool),
 			(uint32_t) commandBufferCount,
 			(const VkCommandBuffer*) pCommandBuffers);
 
@@ -4876,17 +5148,18 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkCommandBufferBeginInfo*             pBeginInfo);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param pBeginInfo - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param pBeginInfo - Vulkan Struct of type  final VkCommandBufferBeginInfo 
     * 
     * @return VkResult
     */
-   public VkResult vkBeginCommandBuffer(
+   public static VkResult vkBeginCommandBuffer(
 		VkCommandBuffer commandBuffer,
-		 VkCommandBufferBeginInfo  pBeginInfo){
-	int  _val = vkBeginCommandBuffer0(
-			(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-			(pBeginInfo==null ? null : pBeginInfo.getPointer()) /* ByteBuffer */  );
+		final VkCommandBufferBeginInfo pBeginInfo) {
+
+	 int  _val = vkBeginCommandBuffer0(
+			commandBuffer.getNativeHandle() /* VkHandle */ ,
+			pBeginInfo.getPointer() /* Struct */ );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -4900,11 +5173,10 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkBeginCommandBuffer0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   pBeginInfo);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+		long   commandBuffer,
+		ByteBuffer   pBeginInfo);/* 
 	VkResult res = vkBeginCommandBuffer(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(const VkCommandBufferBeginInfo*) pBeginInfo);
 	 return (jint) res;
   */ 
@@ -4919,14 +5191,15 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkCommandBuffer                             commandBuffer);
     * </pre>
     * 
-    * @param commandBuffer - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
     * 
     * @return VkResult
     */
-   public VkResult vkEndCommandBuffer(
-		VkCommandBuffer commandBuffer){
-	int  _val = vkEndCommandBuffer0(
-			(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */  );
+   public static VkResult vkEndCommandBuffer(
+		VkCommandBuffer commandBuffer) {
+
+	 int  _val = vkEndCommandBuffer0(
+			commandBuffer.getNativeHandle() /* VkHandle */  );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -4939,10 +5212,9 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkEndCommandBuffer0(
-		java.nio.ByteBuffer   commandBuffer);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+		long   commandBuffer);/* 
 	VkResult res = vkEndCommandBuffer(
-			(VkCommandBuffer) (*ptr_commandBuffer));
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer));
 	 return (jint) res;
   */ 
 
@@ -4957,16 +5229,17 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkCommandBufferResetFlags                   flags);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param flags - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param flags int 
     * 
     * @return VkResult
     */
-   public VkResult vkResetCommandBuffer(
+   public static VkResult vkResetCommandBuffer(
 		VkCommandBuffer commandBuffer,
-		int flags){
-	int  _val = vkResetCommandBuffer0(
-			(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
+		int flags) {
+
+	 int  _val = vkResetCommandBuffer0(
+			commandBuffer.getNativeHandle() /* VkHandle */ ,
 			flags  );
 	 return VkResult.fromValue(_val);
    } 
@@ -4981,11 +5254,10 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkResetCommandBuffer0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		int  flags);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
 	VkResult res = vkResetCommandBuffer(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(VkCommandBufferResetFlags) flags);
 	 return (jint) res;
   */ 
@@ -5002,18 +5274,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkPipeline                                  pipeline);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param pipelineBindPoint - 
-    * @param pipeline - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param pipelineBindPoint - Vulkan enumeration of type VkPipelineBindPoint 
+    * @param pipeline - Vulkan handle of type VkPipeline 
     */
-   public void vkCmdBindPipeline(
+   public static void vkCmdBindPipeline(
 		VkCommandBuffer commandBuffer,
 		VkPipelineBindPoint pipelineBindPoint,
-		VkPipeline pipeline){
-	vkCmdBindPipeline0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		pipelineBindPoint.getValue() /* enum */,
-		(pipeline==null ? null : pipeline.getPointer()) /* ByteBuffer */  );
+		VkPipeline pipeline) {
+
+	 vkCmdBindPipeline0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		pipelineBindPoint.getValue() /* VkEnum */,
+		pipeline.getNativeHandle() /* VkHandle */  );
 
    } 
 
@@ -5026,15 +5299,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pipeline - 
     */
     private static native void vkCmdBindPipeline0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		int   pipelineBindPoint,
-		java.nio.ByteBuffer   pipeline);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkPipeline* ptr_pipeline = (VkPipeline*) pipeline;
+		long   pipeline);/* 
 	vkCmdBindPipeline(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(VkPipelineBindPoint) pipelineBindPoint,
-			(VkPipeline) (*ptr_pipeline));
+			(VkPipeline) reinterpret_cast<VkPipeline>(pipeline));
 
   */ 
 
@@ -5051,21 +5322,25 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkViewport*                           pViewports);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param firstViewport - 
-    * @param viewportCount - 
-    * @param pViewports - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param firstViewport int 
+    * @param viewportCount - The length of array pViewports. 
+    * @param pViewports - An array of  final VkViewport . 
     */
-   public void vkCmdSetViewport(
+   public static void vkCmdSetViewport(
 		VkCommandBuffer commandBuffer,
 		int firstViewport,
 		int viewportCount,
-		 VkViewport  pViewports){
-	vkCmdSetViewport0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
+		final VkViewport[] pViewports) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkViewport> pViewportsBuff =
+			 new BigBuffer<VkViewport>(pViewports, VkViewport.getID());
+
+	 vkCmdSetViewport0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
 		firstViewport ,
 		viewportCount ,
-		(pViewports==null ? null : pViewports.getPointer()) /* ByteBuffer */  );
+		pViewportsBuff.getPointer() /*Buffer for Struct[]*/ );
 
    } 
 
@@ -5079,13 +5354,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pViewports - 
     */
     private static native void vkCmdSetViewport0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		int  firstViewport,
 		int  viewportCount,
-		java.nio.ByteBuffer   pViewports);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+		ByteBuffer   pViewports);/* 
 	vkCmdSetViewport(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(uint32_t) firstViewport,
 			(uint32_t) viewportCount,
 			(const VkViewport*) pViewports);
@@ -5105,21 +5379,25 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkRect2D*                             pScissors);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param firstScissor - 
-    * @param scissorCount - 
-    * @param pScissors - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param firstScissor int 
+    * @param scissorCount - The length of array pScissors. 
+    * @param pScissors - An array of  final VkRect2D . 
     */
-   public void vkCmdSetScissor(
+   public static void vkCmdSetScissor(
 		VkCommandBuffer commandBuffer,
 		int firstScissor,
 		int scissorCount,
-		 VkRect2D  pScissors){
-	vkCmdSetScissor0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
+		final VkRect2D[] pScissors) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkRect2D> pScissorsBuff =
+			 new BigBuffer<VkRect2D>(pScissors, VkRect2D.getID());
+
+	 vkCmdSetScissor0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
 		firstScissor ,
 		scissorCount ,
-		(pScissors==null ? null : pScissors.getPointer()) /* ByteBuffer */  );
+		pScissorsBuff.getPointer() /*Buffer for Struct[]*/ );
 
    } 
 
@@ -5133,13 +5411,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pScissors - 
     */
     private static native void vkCmdSetScissor0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		int  firstScissor,
 		int  scissorCount,
-		java.nio.ByteBuffer   pScissors);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+		ByteBuffer   pScissors);/* 
 	vkCmdSetScissor(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(uint32_t) firstScissor,
 			(uint32_t) scissorCount,
 			(const VkRect2D*) pScissors);
@@ -5157,14 +5434,15 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     float                                       lineWidth);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param lineWidth - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param lineWidth float 
     */
-   public void vkCmdSetLineWidth(
+   public static void vkCmdSetLineWidth(
 		VkCommandBuffer commandBuffer,
-		float lineWidth){
-	vkCmdSetLineWidth0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
+		float lineWidth) {
+
+	 vkCmdSetLineWidth0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
 		lineWidth  );
 
    } 
@@ -5177,11 +5455,10 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param lineWidth - 
     */
     private static native void vkCmdSetLineWidth0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		float  lineWidth);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
 	vkCmdSetLineWidth(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(float) lineWidth);
 
   */ 
@@ -5199,18 +5476,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     float                                       depthBiasSlopeFactor);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param depthBiasConstantFactor - 
-    * @param depthBiasClamp - 
-    * @param depthBiasSlopeFactor - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param depthBiasConstantFactor float 
+    * @param depthBiasClamp float 
+    * @param depthBiasSlopeFactor float 
     */
-   public void vkCmdSetDepthBias(
+   public static void vkCmdSetDepthBias(
 		VkCommandBuffer commandBuffer,
 		float depthBiasConstantFactor,
 		float depthBiasClamp,
-		float depthBiasSlopeFactor){
-	vkCmdSetDepthBias0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
+		float depthBiasSlopeFactor) {
+
+	 vkCmdSetDepthBias0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
 		depthBiasConstantFactor ,
 		depthBiasClamp ,
 		depthBiasSlopeFactor  );
@@ -5227,13 +5505,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param depthBiasSlopeFactor - 
     */
     private static native void vkCmdSetDepthBias0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		float  depthBiasConstantFactor,
 		float  depthBiasClamp,
 		float  depthBiasSlopeFactor);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
 	vkCmdSetDepthBias(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(float) depthBiasConstantFactor,
 			(float) depthBiasClamp,
 			(float) depthBiasSlopeFactor);
@@ -5251,14 +5528,15 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const float                                 blendConstants[4]);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param blendConstants - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param blendConstants - An array of float. 
     */
-   public void vkCmdSetBlendConstants(
+   public static void vkCmdSetBlendConstants(
 		VkCommandBuffer commandBuffer,
-		float[] blendConstants){
-	vkCmdSetBlendConstants0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
+		float[] blendConstants) {
+
+	 vkCmdSetBlendConstants0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
 		blendConstants  );
 
    } 
@@ -5271,11 +5549,10 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param blendConstants - 
     */
     private static native void vkCmdSetBlendConstants0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		float[]  blendConstants);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
 	vkCmdSetBlendConstants(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(const float[]) blendConstants);
 
   */ 
@@ -5292,16 +5569,17 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     float                                       maxDepthBounds);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param minDepthBounds - 
-    * @param maxDepthBounds - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param minDepthBounds float 
+    * @param maxDepthBounds float 
     */
-   public void vkCmdSetDepthBounds(
+   public static void vkCmdSetDepthBounds(
 		VkCommandBuffer commandBuffer,
 		float minDepthBounds,
-		float maxDepthBounds){
-	vkCmdSetDepthBounds0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
+		float maxDepthBounds) {
+
+	 vkCmdSetDepthBounds0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
 		minDepthBounds ,
 		maxDepthBounds  );
 
@@ -5316,12 +5594,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param maxDepthBounds - 
     */
     private static native void vkCmdSetDepthBounds0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		float  minDepthBounds,
 		float  maxDepthBounds);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
 	vkCmdSetDepthBounds(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(float) minDepthBounds,
 			(float) maxDepthBounds);
 
@@ -5339,16 +5616,17 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     uint32_t                                    compareMask);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param faceMask - 
-    * @param compareMask - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param faceMask int 
+    * @param compareMask int 
     */
-   public void vkCmdSetStencilCompareMask(
+   public static void vkCmdSetStencilCompareMask(
 		VkCommandBuffer commandBuffer,
 		int faceMask,
-		int compareMask){
-	vkCmdSetStencilCompareMask0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
+		int compareMask) {
+
+	 vkCmdSetStencilCompareMask0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
 		faceMask ,
 		compareMask  );
 
@@ -5363,12 +5641,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param compareMask - 
     */
     private static native void vkCmdSetStencilCompareMask0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		int  faceMask,
 		int  compareMask);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
 	vkCmdSetStencilCompareMask(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(VkStencilFaceFlags) faceMask,
 			(uint32_t) compareMask);
 
@@ -5386,16 +5663,17 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     uint32_t                                    writeMask);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param faceMask - 
-    * @param writeMask - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param faceMask int 
+    * @param writeMask int 
     */
-   public void vkCmdSetStencilWriteMask(
+   public static void vkCmdSetStencilWriteMask(
 		VkCommandBuffer commandBuffer,
 		int faceMask,
-		int writeMask){
-	vkCmdSetStencilWriteMask0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
+		int writeMask) {
+
+	 vkCmdSetStencilWriteMask0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
 		faceMask ,
 		writeMask  );
 
@@ -5410,12 +5688,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param writeMask - 
     */
     private static native void vkCmdSetStencilWriteMask0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		int  faceMask,
 		int  writeMask);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
 	vkCmdSetStencilWriteMask(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(VkStencilFaceFlags) faceMask,
 			(uint32_t) writeMask);
 
@@ -5433,16 +5710,17 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     uint32_t                                    reference);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param faceMask - 
-    * @param reference - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param faceMask int 
+    * @param reference int 
     */
-   public void vkCmdSetStencilReference(
+   public static void vkCmdSetStencilReference(
 		VkCommandBuffer commandBuffer,
 		int faceMask,
-		int reference){
-	vkCmdSetStencilReference0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
+		int reference) {
+
+	 vkCmdSetStencilReference0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
 		faceMask ,
 		reference  );
 
@@ -5457,12 +5735,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param reference - 
     */
     private static native void vkCmdSetStencilReference0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		int  faceMask,
 		int  reference);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
 	vkCmdSetStencilReference(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(VkStencilFaceFlags) faceMask,
 			(uint32_t) reference);
 
@@ -5485,33 +5762,37 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const uint32_t*                             pDynamicOffsets);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param pipelineBindPoint - 
-    * @param layout - 
-    * @param firstSet - 
-    * @param descriptorSetCount - 
-    * @param pDescriptorSets - 
-    * @param dynamicOffsetCount - 
-    * @param pDynamicOffsets - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param pipelineBindPoint - Vulkan enumeration of type VkPipelineBindPoint 
+    * @param layout - Vulkan handle of type VkPipelineLayout 
+    * @param firstSet int 
+    * @param descriptorSetCount - The length of array pDescriptorSets. 
+    * @param pDescriptorSets - An array of  final VkDescriptorSet . 
+    * @param dynamicOffsetCount - The length of array pDynamicOffsets. 
+    * @param pDynamicOffsets - An array of int. 
     */
-   public void vkCmdBindDescriptorSets(
+   public static void vkCmdBindDescriptorSets(
 		VkCommandBuffer commandBuffer,
 		VkPipelineBindPoint pipelineBindPoint,
 		VkPipelineLayout layout,
 		int firstSet,
 		int descriptorSetCount,
-		 VkDescriptorSet  pDescriptorSets,
+		final VkDescriptorSet[] pDescriptorSets,
 		int dynamicOffsetCount,
-		int[] pDynamicOffsets){
-	vkCmdBindDescriptorSets0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		pipelineBindPoint.getValue() /* enum */,
-		(layout==null ? null : layout.getPointer()) /* ByteBuffer */ ,
+		int[] pDynamicOffsets) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkDescriptorSet> pDescriptorSetsBuffer =
+			 new BigBuffer<VkDescriptorSet>(pDescriptorSets, false);
+	 vkCmdBindDescriptorSets0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		pipelineBindPoint.getValue() /* VkEnum */,
+		layout.getNativeHandle() /* VkHandle */ ,
 		firstSet ,
 		descriptorSetCount ,
-		(pDescriptorSets==null ? null : pDescriptorSets.getPointer()) /* ByteBuffer */ ,
+		pDescriptorSetsBuffer.getPointer() /*BigBuffer of VkHandle*/,
 		dynamicOffsetCount ,
 		pDynamicOffsets  );
+	 pDescriptorSetsBuffer.update();
 
    } 
 
@@ -5529,20 +5810,18 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pDynamicOffsets - 
     */
     private static native void vkCmdBindDescriptorSets0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		int   pipelineBindPoint,
-		java.nio.ByteBuffer   layout,
+		long   layout,
 		int  firstSet,
 		int  descriptorSetCount,
-		java.nio.ByteBuffer   pDescriptorSets,
+		ByteBuffer   pDescriptorSets,
 		int  dynamicOffsetCount,
 		int[]  pDynamicOffsets);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkPipelineLayout* ptr_layout = (VkPipelineLayout*) layout;
 	vkCmdBindDescriptorSets(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(VkPipelineBindPoint) pipelineBindPoint,
-			(VkPipelineLayout) (*ptr_layout),
+			(VkPipelineLayout) reinterpret_cast<VkPipelineLayout>(layout),
 			(uint32_t) firstSet,
 			(uint32_t) descriptorSetCount,
 			(const VkDescriptorSet*) pDescriptorSets,
@@ -5564,21 +5843,22 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkIndexType                                 indexType);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param buffer - 
-    * @param offset - 
-    * @param indexType - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param buffer - Vulkan handle of type VkBuffer 
+    * @param offset long 
+    * @param indexType - Vulkan enumeration of type VkIndexType 
     */
-   public void vkCmdBindIndexBuffer(
+   public static void vkCmdBindIndexBuffer(
 		VkCommandBuffer commandBuffer,
 		VkBuffer buffer,
 		long offset,
-		VkIndexType indexType){
-	vkCmdBindIndexBuffer0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(buffer==null ? null : buffer.getPointer()) /* ByteBuffer */ ,
+		VkIndexType indexType) {
+
+	 vkCmdBindIndexBuffer0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		buffer.getNativeHandle() /* VkHandle */ ,
 		offset ,
-		indexType.getValue() /* enum */ );
+		indexType.getValue() /* VkEnum */ );
 
    } 
 
@@ -5592,15 +5872,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param indexType - 
     */
     private static native void vkCmdBindIndexBuffer0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   buffer,
+		long   commandBuffer,
+		long   buffer,
 		long  offset,
 		int   indexType);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkBuffer* ptr_buffer = (VkBuffer*) buffer;
 	vkCmdBindIndexBuffer(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkBuffer) (*ptr_buffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkBuffer) reinterpret_cast<VkBuffer>(buffer),
 			(VkDeviceSize) offset,
 			(VkIndexType) indexType);
 
@@ -5620,24 +5898,28 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkDeviceSize*                         pOffsets);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param firstBinding - 
-    * @param bindingCount - 
-    * @param pBuffers - 
-    * @param pOffsets - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param firstBinding int 
+    * @param bindingCount - The length of array pBuffers. 
+    * @param pBuffers - An array of  final VkBuffer . 
+    * @param pOffsets - An array of long. 
     */
-   public void vkCmdBindVertexBuffers(
+   public static void vkCmdBindVertexBuffers(
 		VkCommandBuffer commandBuffer,
 		int firstBinding,
 		int bindingCount,
-		 VkBuffer  pBuffers,
-		long[] pOffsets){
-	vkCmdBindVertexBuffers0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
+		final VkBuffer[] pBuffers,
+		long[] pOffsets) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkBuffer> pBuffersBuffer =
+			 new BigBuffer<VkBuffer>(pBuffers, false);
+	 vkCmdBindVertexBuffers0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
 		firstBinding ,
 		bindingCount ,
-		(pBuffers==null ? null : pBuffers.getPointer()) /* ByteBuffer */ ,
+		pBuffersBuffer.getPointer() /*BigBuffer of VkHandle*/,
 		pOffsets  );
+	 pBuffersBuffer.update();
 
    } 
 
@@ -5652,14 +5934,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pOffsets - 
     */
     private static native void vkCmdBindVertexBuffers0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		int  firstBinding,
 		int  bindingCount,
-		java.nio.ByteBuffer   pBuffers,
+		ByteBuffer   pBuffers,
 		long[]  pOffsets);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
 	vkCmdBindVertexBuffers(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(uint32_t) firstBinding,
 			(uint32_t) bindingCount,
 			(const VkBuffer*) pBuffers,
@@ -5681,20 +5962,21 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     uint32_t                                    firstInstance);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param vertexCount - 
-    * @param instanceCount - 
-    * @param firstVertex - 
-    * @param firstInstance - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param vertexCount - The length of array instanceCount. 
+    * @param instanceCount - The length of array firstVertex. 
+    * @param firstVertex int 
+    * @param firstInstance int 
     */
-   public void vkCmdDraw(
+   public static void vkCmdDraw(
 		VkCommandBuffer commandBuffer,
 		int vertexCount,
 		int instanceCount,
 		int firstVertex,
-		int firstInstance){
-	vkCmdDraw0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
+		int firstInstance) {
+
+	 vkCmdDraw0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
 		vertexCount ,
 		instanceCount ,
 		firstVertex ,
@@ -5713,14 +5995,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param firstInstance - 
     */
     private static native void vkCmdDraw0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		int  vertexCount,
 		int  instanceCount,
 		int  firstVertex,
 		int  firstInstance);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
 	vkCmdDraw(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(uint32_t) vertexCount,
 			(uint32_t) instanceCount,
 			(uint32_t) firstVertex,
@@ -5743,22 +6024,23 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     uint32_t                                    firstInstance);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param indexCount - 
-    * @param instanceCount - 
-    * @param firstIndex - 
-    * @param vertexOffset - 
-    * @param firstInstance - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param indexCount - The length of array instanceCount. 
+    * @param instanceCount - The length of array firstIndex. 
+    * @param firstIndex int 
+    * @param vertexOffset int 
+    * @param firstInstance int 
     */
-   public void vkCmdDrawIndexed(
+   public static void vkCmdDrawIndexed(
 		VkCommandBuffer commandBuffer,
 		int indexCount,
 		int instanceCount,
 		int firstIndex,
 		int vertexOffset,
-		int firstInstance){
-	vkCmdDrawIndexed0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
+		int firstInstance) {
+
+	 vkCmdDrawIndexed0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
 		indexCount ,
 		instanceCount ,
 		firstIndex ,
@@ -5779,15 +6061,14 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param firstInstance - 
     */
     private static native void vkCmdDrawIndexed0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		int  indexCount,
 		int  instanceCount,
 		int  firstIndex,
 		int  vertexOffset,
 		int  firstInstance);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
 	vkCmdDrawIndexed(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(uint32_t) indexCount,
 			(uint32_t) instanceCount,
 			(uint32_t) firstIndex,
@@ -5810,21 +6091,22 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     uint32_t                                    stride);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param buffer - 
-    * @param offset - 
-    * @param drawCount - 
-    * @param stride - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param buffer - Vulkan handle of type VkBuffer 
+    * @param offset long 
+    * @param drawCount - The length of array stride. 
+    * @param stride int 
     */
-   public void vkCmdDrawIndirect(
+   public static void vkCmdDrawIndirect(
 		VkCommandBuffer commandBuffer,
 		VkBuffer buffer,
 		long offset,
 		int drawCount,
-		int stride){
-	vkCmdDrawIndirect0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(buffer==null ? null : buffer.getPointer()) /* ByteBuffer */ ,
+		int stride) {
+
+	 vkCmdDrawIndirect0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		buffer.getNativeHandle() /* VkHandle */ ,
 		offset ,
 		drawCount ,
 		stride  );
@@ -5842,16 +6124,14 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param stride - 
     */
     private static native void vkCmdDrawIndirect0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   buffer,
+		long   commandBuffer,
+		long   buffer,
 		long  offset,
 		int  drawCount,
 		int  stride);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkBuffer* ptr_buffer = (VkBuffer*) buffer;
 	vkCmdDrawIndirect(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkBuffer) (*ptr_buffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkBuffer) reinterpret_cast<VkBuffer>(buffer),
 			(VkDeviceSize) offset,
 			(uint32_t) drawCount,
 			(uint32_t) stride);
@@ -5872,21 +6152,22 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     uint32_t                                    stride);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param buffer - 
-    * @param offset - 
-    * @param drawCount - 
-    * @param stride - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param buffer - Vulkan handle of type VkBuffer 
+    * @param offset long 
+    * @param drawCount - The length of array stride. 
+    * @param stride int 
     */
-   public void vkCmdDrawIndexedIndirect(
+   public static void vkCmdDrawIndexedIndirect(
 		VkCommandBuffer commandBuffer,
 		VkBuffer buffer,
 		long offset,
 		int drawCount,
-		int stride){
-	vkCmdDrawIndexedIndirect0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(buffer==null ? null : buffer.getPointer()) /* ByteBuffer */ ,
+		int stride) {
+
+	 vkCmdDrawIndexedIndirect0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		buffer.getNativeHandle() /* VkHandle */ ,
 		offset ,
 		drawCount ,
 		stride  );
@@ -5904,16 +6185,14 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param stride - 
     */
     private static native void vkCmdDrawIndexedIndirect0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   buffer,
+		long   commandBuffer,
+		long   buffer,
 		long  offset,
 		int  drawCount,
 		int  stride);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkBuffer* ptr_buffer = (VkBuffer*) buffer;
 	vkCmdDrawIndexedIndirect(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkBuffer) (*ptr_buffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkBuffer) reinterpret_cast<VkBuffer>(buffer),
 			(VkDeviceSize) offset,
 			(uint32_t) drawCount,
 			(uint32_t) stride);
@@ -5933,18 +6212,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     uint32_t                                    z);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param x - 
-    * @param y - 
-    * @param z - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param x int 
+    * @param y int 
+    * @param z int 
     */
-   public void vkCmdDispatch(
+   public static void vkCmdDispatch(
 		VkCommandBuffer commandBuffer,
 		int x,
 		int y,
-		int z){
-	vkCmdDispatch0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
+		int z) {
+
+	 vkCmdDispatch0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
 		x ,
 		y ,
 		z  );
@@ -5961,13 +6241,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param z - 
     */
     private static native void vkCmdDispatch0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		int  x,
 		int  y,
 		int  z);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
 	vkCmdDispatch(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(uint32_t) x,
 			(uint32_t) y,
 			(uint32_t) z);
@@ -5986,17 +6265,18 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkDeviceSize                                offset);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param buffer - 
-    * @param offset - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param buffer - Vulkan handle of type VkBuffer 
+    * @param offset long 
     */
-   public void vkCmdDispatchIndirect(
+   public static void vkCmdDispatchIndirect(
 		VkCommandBuffer commandBuffer,
 		VkBuffer buffer,
-		long offset){
-	vkCmdDispatchIndirect0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(buffer==null ? null : buffer.getPointer()) /* ByteBuffer */ ,
+		long offset) {
+
+	 vkCmdDispatchIndirect0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		buffer.getNativeHandle() /* VkHandle */ ,
 		offset  );
 
    } 
@@ -6010,14 +6290,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param offset - 
     */
     private static native void vkCmdDispatchIndirect0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   buffer,
+		long   commandBuffer,
+		long   buffer,
 		long  offset);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkBuffer* ptr_buffer = (VkBuffer*) buffer;
 	vkCmdDispatchIndirect(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkBuffer) (*ptr_buffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkBuffer) reinterpret_cast<VkBuffer>(buffer),
 			(VkDeviceSize) offset);
 
   */ 
@@ -6036,24 +6314,28 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkBufferCopy*                         pRegions);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param srcBuffer - 
-    * @param dstBuffer - 
-    * @param regionCount - 
-    * @param pRegions - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param srcBuffer - Vulkan handle of type VkBuffer 
+    * @param dstBuffer - Vulkan handle of type VkBuffer 
+    * @param regionCount - The length of array pRegions. 
+    * @param pRegions - An array of  final VkBufferCopy . 
     */
-   public void vkCmdCopyBuffer(
+   public static void vkCmdCopyBuffer(
 		VkCommandBuffer commandBuffer,
 		VkBuffer srcBuffer,
 		VkBuffer dstBuffer,
 		int regionCount,
-		 VkBufferCopy  pRegions){
-	vkCmdCopyBuffer0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(srcBuffer==null ? null : srcBuffer.getPointer()) /* ByteBuffer */ ,
-		(dstBuffer==null ? null : dstBuffer.getPointer()) /* ByteBuffer */ ,
+		final VkBufferCopy[] pRegions) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkBufferCopy> pRegionsBuff =
+			 new BigBuffer<VkBufferCopy>(pRegions, VkBufferCopy.getID());
+
+	 vkCmdCopyBuffer0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		srcBuffer.getNativeHandle() /* VkHandle */ ,
+		dstBuffer.getNativeHandle() /* VkHandle */ ,
 		regionCount ,
-		(pRegions==null ? null : pRegions.getPointer()) /* ByteBuffer */  );
+		pRegionsBuff.getPointer() /*Buffer for Struct[]*/ );
 
    } 
 
@@ -6068,18 +6350,15 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pRegions - 
     */
     private static native void vkCmdCopyBuffer0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   srcBuffer,
-		java.nio.ByteBuffer   dstBuffer,
+		long   commandBuffer,
+		long   srcBuffer,
+		long   dstBuffer,
 		int  regionCount,
-		java.nio.ByteBuffer   pRegions);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkBuffer* ptr_srcBuffer = (VkBuffer*) srcBuffer;
-	VkBuffer* ptr_dstBuffer = (VkBuffer*) dstBuffer;
+		ByteBuffer   pRegions);/* 
 	vkCmdCopyBuffer(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkBuffer) (*ptr_srcBuffer),
-			(VkBuffer) (*ptr_dstBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkBuffer) reinterpret_cast<VkBuffer>(srcBuffer),
+			(VkBuffer) reinterpret_cast<VkBuffer>(dstBuffer),
 			(uint32_t) regionCount,
 			(const VkBufferCopy*) pRegions);
 
@@ -6101,30 +6380,34 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkImageCopy*                          pRegions);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param srcImage - 
-    * @param srcImageLayout - 
-    * @param dstImage - 
-    * @param dstImageLayout - 
-    * @param regionCount - 
-    * @param pRegions - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param srcImage - Vulkan handle of type VkImage 
+    * @param srcImageLayout - Vulkan enumeration of type VkImageLayout 
+    * @param dstImage - Vulkan handle of type VkImage 
+    * @param dstImageLayout - Vulkan enumeration of type VkImageLayout 
+    * @param regionCount - The length of array pRegions. 
+    * @param pRegions - An array of  final VkImageCopy . 
     */
-   public void vkCmdCopyImage(
+   public static void vkCmdCopyImage(
 		VkCommandBuffer commandBuffer,
 		VkImage srcImage,
 		VkImageLayout srcImageLayout,
 		VkImage dstImage,
 		VkImageLayout dstImageLayout,
 		int regionCount,
-		 VkImageCopy  pRegions){
-	vkCmdCopyImage0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(srcImage==null ? null : srcImage.getPointer()) /* ByteBuffer */ ,
-		srcImageLayout.getValue() /* enum */,
-		(dstImage==null ? null : dstImage.getPointer()) /* ByteBuffer */ ,
-		dstImageLayout.getValue() /* enum */,
+		final VkImageCopy[] pRegions) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkImageCopy> pRegionsBuff =
+			 new BigBuffer<VkImageCopy>(pRegions, VkImageCopy.getID());
+
+	 vkCmdCopyImage0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		srcImage.getNativeHandle() /* VkHandle */ ,
+		srcImageLayout.getValue() /* VkEnum */,
+		dstImage.getNativeHandle() /* VkHandle */ ,
+		dstImageLayout.getValue() /* VkEnum */,
 		regionCount ,
-		(pRegions==null ? null : pRegions.getPointer()) /* ByteBuffer */  );
+		pRegionsBuff.getPointer() /*Buffer for Struct[]*/ );
 
    } 
 
@@ -6141,21 +6424,18 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pRegions - 
     */
     private static native void vkCmdCopyImage0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   srcImage,
+		long   commandBuffer,
+		long   srcImage,
 		int   srcImageLayout,
-		java.nio.ByteBuffer   dstImage,
+		long   dstImage,
 		int   dstImageLayout,
 		int  regionCount,
-		java.nio.ByteBuffer   pRegions);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkImage* ptr_srcImage = (VkImage*) srcImage;
-	VkImage* ptr_dstImage = (VkImage*) dstImage;
+		ByteBuffer   pRegions);/* 
 	vkCmdCopyImage(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkImage) (*ptr_srcImage),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkImage) reinterpret_cast<VkImage>(srcImage),
 			(VkImageLayout) srcImageLayout,
-			(VkImage) (*ptr_dstImage),
+			(VkImage) reinterpret_cast<VkImage>(dstImage),
 			(VkImageLayout) dstImageLayout,
 			(uint32_t) regionCount,
 			(const VkImageCopy*) pRegions);
@@ -6179,33 +6459,38 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkFilter                                    filter);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param srcImage - 
-    * @param srcImageLayout - 
-    * @param dstImage - 
-    * @param dstImageLayout - 
-    * @param regionCount - 
-    * @param pRegions - 
-    * @param filter - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param srcImage - Vulkan handle of type VkImage 
+    * @param srcImageLayout - Vulkan enumeration of type VkImageLayout 
+    * @param dstImage - Vulkan handle of type VkImage 
+    * @param dstImageLayout - Vulkan enumeration of type VkImageLayout 
+    * @param regionCount - The length of array pRegions. 
+    * @param pRegions - An array of  final VkImageBlit . 
+    * @param filter - Vulkan enumeration of type VkFilter 
     */
-   public void vkCmdBlitImage(
+   public static void vkCmdBlitImage(
 		VkCommandBuffer commandBuffer,
 		VkImage srcImage,
 		VkImageLayout srcImageLayout,
 		VkImage dstImage,
 		VkImageLayout dstImageLayout,
 		int regionCount,
-		 VkImageBlit  pRegions,
-		VkFilter filter){
-	vkCmdBlitImage0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(srcImage==null ? null : srcImage.getPointer()) /* ByteBuffer */ ,
-		srcImageLayout.getValue() /* enum */,
-		(dstImage==null ? null : dstImage.getPointer()) /* ByteBuffer */ ,
-		dstImageLayout.getValue() /* enum */,
+		final VkImageBlit[] pRegions,
+		VkFilter filter) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkImageBlit> pRegionsBuff =
+			 new BigBuffer<VkImageBlit>(pRegions, VkImageBlit.getID());
+
+	 vkCmdBlitImage0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		srcImage.getNativeHandle() /* VkHandle */ ,
+		srcImageLayout.getValue() /* VkEnum */,
+		dstImage.getNativeHandle() /* VkHandle */ ,
+		dstImageLayout.getValue() /* VkEnum */,
 		regionCount ,
-		(pRegions==null ? null : pRegions.getPointer()) /* ByteBuffer */ ,
-		filter.getValue() /* enum */ );
+		pRegionsBuff.getPointer() /*Buffer for Struct[]*/,
+		filter.getValue() /* VkEnum */ );
+
 
    } 
 
@@ -6223,22 +6508,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param filter - 
     */
     private static native void vkCmdBlitImage0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   srcImage,
+		long   commandBuffer,
+		long   srcImage,
 		int   srcImageLayout,
-		java.nio.ByteBuffer   dstImage,
+		long   dstImage,
 		int   dstImageLayout,
 		int  regionCount,
-		java.nio.ByteBuffer   pRegions,
+		ByteBuffer   pRegions,
 		int   filter);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkImage* ptr_srcImage = (VkImage*) srcImage;
-	VkImage* ptr_dstImage = (VkImage*) dstImage;
 	vkCmdBlitImage(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkImage) (*ptr_srcImage),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkImage) reinterpret_cast<VkImage>(srcImage),
 			(VkImageLayout) srcImageLayout,
-			(VkImage) (*ptr_dstImage),
+			(VkImage) reinterpret_cast<VkImage>(dstImage),
 			(VkImageLayout) dstImageLayout,
 			(uint32_t) regionCount,
 			(const VkImageBlit*) pRegions,
@@ -6261,27 +6543,31 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkBufferImageCopy*                    pRegions);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param srcBuffer - 
-    * @param dstImage - 
-    * @param dstImageLayout - 
-    * @param regionCount - 
-    * @param pRegions - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param srcBuffer - Vulkan handle of type VkBuffer 
+    * @param dstImage - Vulkan handle of type VkImage 
+    * @param dstImageLayout - Vulkan enumeration of type VkImageLayout 
+    * @param regionCount - The length of array pRegions. 
+    * @param pRegions - An array of  final VkBufferImageCopy . 
     */
-   public void vkCmdCopyBufferToImage(
+   public static void vkCmdCopyBufferToImage(
 		VkCommandBuffer commandBuffer,
 		VkBuffer srcBuffer,
 		VkImage dstImage,
 		VkImageLayout dstImageLayout,
 		int regionCount,
-		 VkBufferImageCopy  pRegions){
-	vkCmdCopyBufferToImage0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(srcBuffer==null ? null : srcBuffer.getPointer()) /* ByteBuffer */ ,
-		(dstImage==null ? null : dstImage.getPointer()) /* ByteBuffer */ ,
-		dstImageLayout.getValue() /* enum */,
+		final VkBufferImageCopy[] pRegions) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkBufferImageCopy> pRegionsBuff =
+			 new BigBuffer<VkBufferImageCopy>(pRegions, VkBufferImageCopy.getID());
+
+	 vkCmdCopyBufferToImage0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		srcBuffer.getNativeHandle() /* VkHandle */ ,
+		dstImage.getNativeHandle() /* VkHandle */ ,
+		dstImageLayout.getValue() /* VkEnum */,
 		regionCount ,
-		(pRegions==null ? null : pRegions.getPointer()) /* ByteBuffer */  );
+		pRegionsBuff.getPointer() /*Buffer for Struct[]*/ );
 
    } 
 
@@ -6297,19 +6583,16 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pRegions - 
     */
     private static native void vkCmdCopyBufferToImage0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   srcBuffer,
-		java.nio.ByteBuffer   dstImage,
+		long   commandBuffer,
+		long   srcBuffer,
+		long   dstImage,
 		int   dstImageLayout,
 		int  regionCount,
-		java.nio.ByteBuffer   pRegions);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkBuffer* ptr_srcBuffer = (VkBuffer*) srcBuffer;
-	VkImage* ptr_dstImage = (VkImage*) dstImage;
+		ByteBuffer   pRegions);/* 
 	vkCmdCopyBufferToImage(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkBuffer) (*ptr_srcBuffer),
-			(VkImage) (*ptr_dstImage),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkBuffer) reinterpret_cast<VkBuffer>(srcBuffer),
+			(VkImage) reinterpret_cast<VkImage>(dstImage),
 			(VkImageLayout) dstImageLayout,
 			(uint32_t) regionCount,
 			(const VkBufferImageCopy*) pRegions);
@@ -6331,27 +6614,31 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkBufferImageCopy*                    pRegions);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param srcImage - 
-    * @param srcImageLayout - 
-    * @param dstBuffer - 
-    * @param regionCount - 
-    * @param pRegions - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param srcImage - Vulkan handle of type VkImage 
+    * @param srcImageLayout - Vulkan enumeration of type VkImageLayout 
+    * @param dstBuffer - Vulkan handle of type VkBuffer 
+    * @param regionCount - The length of array pRegions. 
+    * @param pRegions - An array of  final VkBufferImageCopy . 
     */
-   public void vkCmdCopyImageToBuffer(
+   public static void vkCmdCopyImageToBuffer(
 		VkCommandBuffer commandBuffer,
 		VkImage srcImage,
 		VkImageLayout srcImageLayout,
 		VkBuffer dstBuffer,
 		int regionCount,
-		 VkBufferImageCopy  pRegions){
-	vkCmdCopyImageToBuffer0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(srcImage==null ? null : srcImage.getPointer()) /* ByteBuffer */ ,
-		srcImageLayout.getValue() /* enum */,
-		(dstBuffer==null ? null : dstBuffer.getPointer()) /* ByteBuffer */ ,
+		final VkBufferImageCopy[] pRegions) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkBufferImageCopy> pRegionsBuff =
+			 new BigBuffer<VkBufferImageCopy>(pRegions, VkBufferImageCopy.getID());
+
+	 vkCmdCopyImageToBuffer0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		srcImage.getNativeHandle() /* VkHandle */ ,
+		srcImageLayout.getValue() /* VkEnum */,
+		dstBuffer.getNativeHandle() /* VkHandle */ ,
 		regionCount ,
-		(pRegions==null ? null : pRegions.getPointer()) /* ByteBuffer */  );
+		pRegionsBuff.getPointer() /*Buffer for Struct[]*/ );
 
    } 
 
@@ -6367,20 +6654,17 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pRegions - 
     */
     private static native void vkCmdCopyImageToBuffer0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   srcImage,
+		long   commandBuffer,
+		long   srcImage,
 		int   srcImageLayout,
-		java.nio.ByteBuffer   dstBuffer,
+		long   dstBuffer,
 		int  regionCount,
-		java.nio.ByteBuffer   pRegions);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkImage* ptr_srcImage = (VkImage*) srcImage;
-	VkBuffer* ptr_dstBuffer = (VkBuffer*) dstBuffer;
+		ByteBuffer   pRegions);/* 
 	vkCmdCopyImageToBuffer(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkImage) (*ptr_srcImage),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkImage) reinterpret_cast<VkImage>(srcImage),
 			(VkImageLayout) srcImageLayout,
-			(VkBuffer) (*ptr_dstBuffer),
+			(VkBuffer) reinterpret_cast<VkBuffer>(dstBuffer),
 			(uint32_t) regionCount,
 			(const VkBufferImageCopy*) pRegions);
 
@@ -6397,24 +6681,25 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkBuffer                                    dstBuffer,
     *     VkDeviceSize                                dstOffset,
     *     VkDeviceSize                                dataSize,
-    *     const uint32_t*                             pData);
+    *     const void*                                 pData);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param dstBuffer - 
-    * @param dstOffset - 
-    * @param dataSize - 
-    * @param pData - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param dstBuffer - Vulkan handle of type VkBuffer 
+    * @param dstOffset long 
+    * @param dataSize long 
+    * @param pData java.nio.Buffer 
     */
-   public void vkCmdUpdateBuffer(
+   public static void vkCmdUpdateBuffer(
 		VkCommandBuffer commandBuffer,
 		VkBuffer dstBuffer,
 		long dstOffset,
 		long dataSize,
-		int[] pData){
-	vkCmdUpdateBuffer0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(dstBuffer==null ? null : dstBuffer.getPointer()) /* ByteBuffer */ ,
+		java.nio.Buffer pData) {
+
+	 vkCmdUpdateBuffer0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		dstBuffer.getNativeHandle() /* VkHandle */ ,
 		dstOffset ,
 		dataSize ,
 		pData  );
@@ -6432,19 +6717,17 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pData - 
     */
     private static native void vkCmdUpdateBuffer0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   dstBuffer,
+		long   commandBuffer,
+		long   dstBuffer,
 		long  dstOffset,
 		long  dataSize,
-		int[]  pData);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkBuffer* ptr_dstBuffer = (VkBuffer*) dstBuffer;
+		java.nio.Buffer  pData);/* 
 	vkCmdUpdateBuffer(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkBuffer) (*ptr_dstBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkBuffer) reinterpret_cast<VkBuffer>(dstBuffer),
 			(VkDeviceSize) dstOffset,
 			(VkDeviceSize) dataSize,
-			(const uint32_t*) pData);
+			(const void*) pData);
 
   */ 
 
@@ -6462,21 +6745,22 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     uint32_t                                    data);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param dstBuffer - 
-    * @param dstOffset - 
-    * @param size - 
-    * @param data - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param dstBuffer - Vulkan handle of type VkBuffer 
+    * @param dstOffset long 
+    * @param size long 
+    * @param data int 
     */
-   public void vkCmdFillBuffer(
+   public static void vkCmdFillBuffer(
 		VkCommandBuffer commandBuffer,
 		VkBuffer dstBuffer,
 		long dstOffset,
 		long size,
-		int data){
-	vkCmdFillBuffer0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(dstBuffer==null ? null : dstBuffer.getPointer()) /* ByteBuffer */ ,
+		int data) {
+
+	 vkCmdFillBuffer0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		dstBuffer.getNativeHandle() /* VkHandle */ ,
 		dstOffset ,
 		size ,
 		data  );
@@ -6494,16 +6778,14 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param data - 
     */
     private static native void vkCmdFillBuffer0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   dstBuffer,
+		long   commandBuffer,
+		long   dstBuffer,
 		long  dstOffset,
 		long  size,
 		int  data);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkBuffer* ptr_dstBuffer = (VkBuffer*) dstBuffer;
 	vkCmdFillBuffer(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkBuffer) (*ptr_dstBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkBuffer) reinterpret_cast<VkBuffer>(dstBuffer),
 			(VkDeviceSize) dstOffset,
 			(VkDeviceSize) size,
 			(uint32_t) data);
@@ -6525,27 +6807,31 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkImageSubresourceRange*              pRanges);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param image - 
-    * @param imageLayout - 
-    * @param pColor - 
-    * @param rangeCount - 
-    * @param pRanges - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param image - Vulkan handle of type VkImage 
+    * @param imageLayout - Vulkan enumeration of type VkImageLayout 
+    * @param pColor - Vulkan Struct of type  final VkClearColorValue 
+    * @param rangeCount - The length of array pRanges. 
+    * @param pRanges - An array of  final VkImageSubresourceRange . 
     */
-   public void vkCmdClearColorImage(
+   public static void vkCmdClearColorImage(
 		VkCommandBuffer commandBuffer,
 		VkImage image,
 		VkImageLayout imageLayout,
-		 VkClearColorValue  pColor,
+		final VkClearColorValue pColor,
 		int rangeCount,
-		 VkImageSubresourceRange  pRanges){
-	vkCmdClearColorImage0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(image==null ? null : image.getPointer()) /* ByteBuffer */ ,
-		imageLayout.getValue() /* enum */,
-		(pColor==null ? null : pColor.getPointer()) /* ByteBuffer */ ,
+		final VkImageSubresourceRange[] pRanges) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkImageSubresourceRange> pRangesBuff =
+			 new BigBuffer<VkImageSubresourceRange>(pRanges, VkImageSubresourceRange.getID());
+
+	 vkCmdClearColorImage0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		image.getNativeHandle() /* VkHandle */ ,
+		imageLayout.getValue() /* VkEnum */,
+		pColor.getPointer() /* Struct */,
 		rangeCount ,
-		(pRanges==null ? null : pRanges.getPointer()) /* ByteBuffer */  );
+		pRangesBuff.getPointer() /*Buffer for Struct[]*/ );
 
    } 
 
@@ -6561,17 +6847,15 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pRanges - 
     */
     private static native void vkCmdClearColorImage0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   image,
+		long   commandBuffer,
+		long   image,
 		int   imageLayout,
-		java.nio.ByteBuffer   pColor,
+		ByteBuffer   pColor,
 		int  rangeCount,
-		java.nio.ByteBuffer   pRanges);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkImage* ptr_image = (VkImage*) image;
+		ByteBuffer   pRanges);/* 
 	vkCmdClearColorImage(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkImage) (*ptr_image),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkImage) reinterpret_cast<VkImage>(image),
 			(VkImageLayout) imageLayout,
 			(const VkClearColorValue*) pColor,
 			(uint32_t) rangeCount,
@@ -6594,27 +6878,31 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkImageSubresourceRange*              pRanges);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param image - 
-    * @param imageLayout - 
-    * @param pDepthStencil - 
-    * @param rangeCount - 
-    * @param pRanges - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param image - Vulkan handle of type VkImage 
+    * @param imageLayout - Vulkan enumeration of type VkImageLayout 
+    * @param pDepthStencil - Vulkan Struct of type  final VkClearDepthStencilValue 
+    * @param rangeCount - The length of array pRanges. 
+    * @param pRanges - An array of  final VkImageSubresourceRange . 
     */
-   public void vkCmdClearDepthStencilImage(
+   public static void vkCmdClearDepthStencilImage(
 		VkCommandBuffer commandBuffer,
 		VkImage image,
 		VkImageLayout imageLayout,
-		 VkClearDepthStencilValue  pDepthStencil,
+		final VkClearDepthStencilValue pDepthStencil,
 		int rangeCount,
-		 VkImageSubresourceRange  pRanges){
-	vkCmdClearDepthStencilImage0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(image==null ? null : image.getPointer()) /* ByteBuffer */ ,
-		imageLayout.getValue() /* enum */,
-		(pDepthStencil==null ? null : pDepthStencil.getPointer()) /* ByteBuffer */ ,
+		final VkImageSubresourceRange[] pRanges) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkImageSubresourceRange> pRangesBuff =
+			 new BigBuffer<VkImageSubresourceRange>(pRanges, VkImageSubresourceRange.getID());
+
+	 vkCmdClearDepthStencilImage0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		image.getNativeHandle() /* VkHandle */ ,
+		imageLayout.getValue() /* VkEnum */,
+		pDepthStencil.getPointer() /* Struct */,
 		rangeCount ,
-		(pRanges==null ? null : pRanges.getPointer()) /* ByteBuffer */  );
+		pRangesBuff.getPointer() /*Buffer for Struct[]*/ );
 
    } 
 
@@ -6630,17 +6918,15 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pRanges - 
     */
     private static native void vkCmdClearDepthStencilImage0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   image,
+		long   commandBuffer,
+		long   image,
 		int   imageLayout,
-		java.nio.ByteBuffer   pDepthStencil,
+		ByteBuffer   pDepthStencil,
 		int  rangeCount,
-		java.nio.ByteBuffer   pRanges);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkImage* ptr_image = (VkImage*) image;
+		ByteBuffer   pRanges);/* 
 	vkCmdClearDepthStencilImage(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkImage) (*ptr_image),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkImage) reinterpret_cast<VkImage>(image),
 			(VkImageLayout) imageLayout,
 			(const VkClearDepthStencilValue*) pDepthStencil,
 			(uint32_t) rangeCount,
@@ -6662,24 +6948,32 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkClearRect*                          pRects);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param attachmentCount - 
-    * @param pAttachments - 
-    * @param rectCount - 
-    * @param pRects - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param attachmentCount - The length of array pAttachments. 
+    * @param pAttachments - An array of  final VkClearAttachment . 
+    * @param rectCount - The length of array pRects. 
+    * @param pRects - An array of  final VkClearRect . 
     */
-   public void vkCmdClearAttachments(
+   public static void vkCmdClearAttachments(
 		VkCommandBuffer commandBuffer,
 		int attachmentCount,
-		 VkClearAttachment  pAttachments,
+		final VkClearAttachment[] pAttachments,
 		int rectCount,
-		 VkClearRect  pRects){
-	vkCmdClearAttachments0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
+		final VkClearRect[] pRects) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkClearAttachment> pAttachmentsBuff =
+			 new BigBuffer<VkClearAttachment>(pAttachments, VkClearAttachment.getID());
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkClearRect> pRectsBuff =
+			 new BigBuffer<VkClearRect>(pRects, VkClearRect.getID());
+
+	 vkCmdClearAttachments0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
 		attachmentCount ,
-		(pAttachments==null ? null : pAttachments.getPointer()) /* ByteBuffer */ ,
+		pAttachmentsBuff.getPointer() /*Buffer for Struct[]*/,
 		rectCount ,
-		(pRects==null ? null : pRects.getPointer()) /* ByteBuffer */  );
+		pRectsBuff.getPointer() /*Buffer for Struct[]*/ );
+
 
    } 
 
@@ -6694,14 +6988,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pRects - 
     */
     private static native void vkCmdClearAttachments0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		int  attachmentCount,
-		java.nio.ByteBuffer   pAttachments,
+		ByteBuffer   pAttachments,
 		int  rectCount,
-		java.nio.ByteBuffer   pRects);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+		ByteBuffer   pRects);/* 
 	vkCmdClearAttachments(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(uint32_t) attachmentCount,
 			(const VkClearAttachment*) pAttachments,
 			(uint32_t) rectCount,
@@ -6725,30 +7018,34 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkImageResolve*                       pRegions);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param srcImage - 
-    * @param srcImageLayout - 
-    * @param dstImage - 
-    * @param dstImageLayout - 
-    * @param regionCount - 
-    * @param pRegions - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param srcImage - Vulkan handle of type VkImage 
+    * @param srcImageLayout - Vulkan enumeration of type VkImageLayout 
+    * @param dstImage - Vulkan handle of type VkImage 
+    * @param dstImageLayout - Vulkan enumeration of type VkImageLayout 
+    * @param regionCount - The length of array pRegions. 
+    * @param pRegions - An array of  final VkImageResolve . 
     */
-   public void vkCmdResolveImage(
+   public static void vkCmdResolveImage(
 		VkCommandBuffer commandBuffer,
 		VkImage srcImage,
 		VkImageLayout srcImageLayout,
 		VkImage dstImage,
 		VkImageLayout dstImageLayout,
 		int regionCount,
-		 VkImageResolve  pRegions){
-	vkCmdResolveImage0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(srcImage==null ? null : srcImage.getPointer()) /* ByteBuffer */ ,
-		srcImageLayout.getValue() /* enum */,
-		(dstImage==null ? null : dstImage.getPointer()) /* ByteBuffer */ ,
-		dstImageLayout.getValue() /* enum */,
+		final VkImageResolve[] pRegions) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkImageResolve> pRegionsBuff =
+			 new BigBuffer<VkImageResolve>(pRegions, VkImageResolve.getID());
+
+	 vkCmdResolveImage0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		srcImage.getNativeHandle() /* VkHandle */ ,
+		srcImageLayout.getValue() /* VkEnum */,
+		dstImage.getNativeHandle() /* VkHandle */ ,
+		dstImageLayout.getValue() /* VkEnum */,
 		regionCount ,
-		(pRegions==null ? null : pRegions.getPointer()) /* ByteBuffer */  );
+		pRegionsBuff.getPointer() /*Buffer for Struct[]*/ );
 
    } 
 
@@ -6765,21 +7062,18 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pRegions - 
     */
     private static native void vkCmdResolveImage0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   srcImage,
+		long   commandBuffer,
+		long   srcImage,
 		int   srcImageLayout,
-		java.nio.ByteBuffer   dstImage,
+		long   dstImage,
 		int   dstImageLayout,
 		int  regionCount,
-		java.nio.ByteBuffer   pRegions);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkImage* ptr_srcImage = (VkImage*) srcImage;
-	VkImage* ptr_dstImage = (VkImage*) dstImage;
+		ByteBuffer   pRegions);/* 
 	vkCmdResolveImage(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkImage) (*ptr_srcImage),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkImage) reinterpret_cast<VkImage>(srcImage),
 			(VkImageLayout) srcImageLayout,
-			(VkImage) (*ptr_dstImage),
+			(VkImage) reinterpret_cast<VkImage>(dstImage),
 			(VkImageLayout) dstImageLayout,
 			(uint32_t) regionCount,
 			(const VkImageResolve*) pRegions);
@@ -6798,17 +7092,18 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkPipelineStageFlags                        stageMask);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param event - 
-    * @param stageMask - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param event - Vulkan handle of type VkEvent 
+    * @param stageMask int 
     */
-   public void vkCmdSetEvent(
+   public static void vkCmdSetEvent(
 		VkCommandBuffer commandBuffer,
 		VkEvent event,
-		int stageMask){
-	vkCmdSetEvent0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(event==null ? null : event.getPointer()) /* ByteBuffer */ ,
+		int stageMask) {
+
+	 vkCmdSetEvent0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		event.getNativeHandle() /* VkHandle */ ,
 		stageMask  );
 
    } 
@@ -6822,14 +7117,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param stageMask - 
     */
     private static native void vkCmdSetEvent0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   event,
+		long   commandBuffer,
+		long   event,
 		int  stageMask);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkEvent* ptr_event = (VkEvent*) event;
 	vkCmdSetEvent(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkEvent) (*ptr_event),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkEvent) reinterpret_cast<VkEvent>(event),
 			(VkPipelineStageFlags) stageMask);
 
   */ 
@@ -6846,17 +7139,18 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkPipelineStageFlags                        stageMask);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param event - 
-    * @param stageMask - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param event - Vulkan handle of type VkEvent 
+    * @param stageMask int 
     */
-   public void vkCmdResetEvent(
+   public static void vkCmdResetEvent(
 		VkCommandBuffer commandBuffer,
 		VkEvent event,
-		int stageMask){
-	vkCmdResetEvent0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(event==null ? null : event.getPointer()) /* ByteBuffer */ ,
+		int stageMask) {
+
+	 vkCmdResetEvent0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		event.getNativeHandle() /* VkHandle */ ,
 		stageMask  );
 
    } 
@@ -6870,14 +7164,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param stageMask - 
     */
     private static native void vkCmdResetEvent0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   event,
+		long   commandBuffer,
+		long   event,
 		int  stageMask);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkEvent* ptr_event = (VkEvent*) event;
 	vkCmdResetEvent(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkEvent) (*ptr_event),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkEvent) reinterpret_cast<VkEvent>(event),
 			(VkPipelineStageFlags) stageMask);
 
   */ 
@@ -6902,42 +7194,56 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkImageMemoryBarrier*                 pImageMemoryBarriers);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param eventCount - 
-    * @param pEvents - 
-    * @param srcStageMask - 
-    * @param dstStageMask - 
-    * @param memoryBarrierCount - 
-    * @param pMemoryBarriers - 
-    * @param bufferMemoryBarrierCount - 
-    * @param pBufferMemoryBarriers - 
-    * @param imageMemoryBarrierCount - 
-    * @param pImageMemoryBarriers - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param eventCount - The length of array pEvents. 
+    * @param pEvents - An array of  final VkEvent . 
+    * @param srcStageMask int 
+    * @param dstStageMask int 
+    * @param memoryBarrierCount - The length of array pMemoryBarriers. 
+    * @param pMemoryBarriers - An array of  final VkMemoryBarrier . 
+    * @param bufferMemoryBarrierCount - The length of array pBufferMemoryBarriers. 
+    * @param pBufferMemoryBarriers - An array of  final VkBufferMemoryBarrier . 
+    * @param imageMemoryBarrierCount - The length of array pImageMemoryBarriers. 
+    * @param pImageMemoryBarriers - An array of  final VkImageMemoryBarrier . 
     */
-   public void vkCmdWaitEvents(
+   public static void vkCmdWaitEvents(
 		VkCommandBuffer commandBuffer,
 		int eventCount,
-		 VkEvent  pEvents,
+		final VkEvent[] pEvents,
 		int srcStageMask,
 		int dstStageMask,
 		int memoryBarrierCount,
-		 VkMemoryBarrier  pMemoryBarriers,
+		final VkMemoryBarrier[] pMemoryBarriers,
 		int bufferMemoryBarrierCount,
-		 VkBufferMemoryBarrier  pBufferMemoryBarriers,
+		final VkBufferMemoryBarrier[] pBufferMemoryBarriers,
 		int imageMemoryBarrierCount,
-		 VkImageMemoryBarrier  pImageMemoryBarriers){
-	vkCmdWaitEvents0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
+		final VkImageMemoryBarrier[] pImageMemoryBarriers) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkEvent> pEventsBuffer =
+			 new BigBuffer<VkEvent>(pEvents, false);
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkMemoryBarrier> pMemoryBarriersBuff =
+			 new BigBuffer<VkMemoryBarrier>(pMemoryBarriers, VkMemoryBarrier.getID());
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkBufferMemoryBarrier> pBufferMemoryBarriersBuff =
+			 new BigBuffer<VkBufferMemoryBarrier>(pBufferMemoryBarriers, VkBufferMemoryBarrier.getID());
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkImageMemoryBarrier> pImageMemoryBarriersBuff =
+			 new BigBuffer<VkImageMemoryBarrier>(pImageMemoryBarriers, VkImageMemoryBarrier.getID());
+
+	 vkCmdWaitEvents0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
 		eventCount ,
-		(pEvents==null ? null : pEvents.getPointer()) /* ByteBuffer */ ,
+		pEventsBuffer.getPointer() /*BigBuffer of VkHandle*/,
 		srcStageMask ,
 		dstStageMask ,
 		memoryBarrierCount ,
-		(pMemoryBarriers==null ? null : pMemoryBarriers.getPointer()) /* ByteBuffer */ ,
+		pMemoryBarriersBuff.getPointer() /*Buffer for Struct[]*/,
 		bufferMemoryBarrierCount ,
-		(pBufferMemoryBarriers==null ? null : pBufferMemoryBarriers.getPointer()) /* ByteBuffer */ ,
+		pBufferMemoryBarriersBuff.getPointer() /*Buffer for Struct[]*/,
 		imageMemoryBarrierCount ,
-		(pImageMemoryBarriers==null ? null : pImageMemoryBarriers.getPointer()) /* ByteBuffer */  );
+		pImageMemoryBarriersBuff.getPointer() /*Buffer for Struct[]*/ );
+	 pEventsBuffer.update();
 
    } 
 
@@ -6958,20 +7264,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pImageMemoryBarriers - 
     */
     private static native void vkCmdWaitEvents0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		int  eventCount,
-		java.nio.ByteBuffer   pEvents,
+		ByteBuffer   pEvents,
 		int  srcStageMask,
 		int  dstStageMask,
 		int  memoryBarrierCount,
-		java.nio.ByteBuffer   pMemoryBarriers,
+		ByteBuffer   pMemoryBarriers,
 		int  bufferMemoryBarrierCount,
-		java.nio.ByteBuffer   pBufferMemoryBarriers,
+		ByteBuffer   pBufferMemoryBarriers,
 		int  imageMemoryBarrierCount,
-		java.nio.ByteBuffer   pImageMemoryBarriers);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+		ByteBuffer   pImageMemoryBarriers);/* 
 	vkCmdWaitEvents(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(uint32_t) eventCount,
 			(const VkEvent*) pEvents,
 			(VkPipelineStageFlags) srcStageMask,
@@ -7004,39 +7309,49 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkImageMemoryBarrier*                 pImageMemoryBarriers);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param srcStageMask - 
-    * @param dstStageMask - 
-    * @param dependencyFlags - 
-    * @param memoryBarrierCount - 
-    * @param pMemoryBarriers - 
-    * @param bufferMemoryBarrierCount - 
-    * @param pBufferMemoryBarriers - 
-    * @param imageMemoryBarrierCount - 
-    * @param pImageMemoryBarriers - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param srcStageMask int 
+    * @param dstStageMask int 
+    * @param dependencyFlags int 
+    * @param memoryBarrierCount - The length of array pMemoryBarriers. 
+    * @param pMemoryBarriers - An array of  final VkMemoryBarrier . 
+    * @param bufferMemoryBarrierCount - The length of array pBufferMemoryBarriers. 
+    * @param pBufferMemoryBarriers - An array of  final VkBufferMemoryBarrier . 
+    * @param imageMemoryBarrierCount - The length of array pImageMemoryBarriers. 
+    * @param pImageMemoryBarriers - An array of  final VkImageMemoryBarrier . 
     */
-   public void vkCmdPipelineBarrier(
+   public static void vkCmdPipelineBarrier(
 		VkCommandBuffer commandBuffer,
 		int srcStageMask,
 		int dstStageMask,
 		int dependencyFlags,
 		int memoryBarrierCount,
-		 VkMemoryBarrier  pMemoryBarriers,
+		final VkMemoryBarrier[] pMemoryBarriers,
 		int bufferMemoryBarrierCount,
-		 VkBufferMemoryBarrier  pBufferMemoryBarriers,
+		final VkBufferMemoryBarrier[] pBufferMemoryBarriers,
 		int imageMemoryBarrierCount,
-		 VkImageMemoryBarrier  pImageMemoryBarriers){
-	vkCmdPipelineBarrier0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
+		final VkImageMemoryBarrier[] pImageMemoryBarriers) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkMemoryBarrier> pMemoryBarriersBuff =
+			 new BigBuffer<VkMemoryBarrier>(pMemoryBarriers, VkMemoryBarrier.getID());
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkBufferMemoryBarrier> pBufferMemoryBarriersBuff =
+			 new BigBuffer<VkBufferMemoryBarrier>(pBufferMemoryBarriers, VkBufferMemoryBarrier.getID());
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkImageMemoryBarrier> pImageMemoryBarriersBuff =
+			 new BigBuffer<VkImageMemoryBarrier>(pImageMemoryBarriers, VkImageMemoryBarrier.getID());
+
+	 vkCmdPipelineBarrier0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
 		srcStageMask ,
 		dstStageMask ,
 		dependencyFlags ,
 		memoryBarrierCount ,
-		(pMemoryBarriers==null ? null : pMemoryBarriers.getPointer()) /* ByteBuffer */ ,
+		pMemoryBarriersBuff.getPointer() /*Buffer for Struct[]*/,
 		bufferMemoryBarrierCount ,
-		(pBufferMemoryBarriers==null ? null : pBufferMemoryBarriers.getPointer()) /* ByteBuffer */ ,
+		pBufferMemoryBarriersBuff.getPointer() /*Buffer for Struct[]*/,
 		imageMemoryBarrierCount ,
-		(pImageMemoryBarriers==null ? null : pImageMemoryBarriers.getPointer()) /* ByteBuffer */  );
+		pImageMemoryBarriersBuff.getPointer() /*Buffer for Struct[]*/ );
 
    } 
 
@@ -7056,19 +7371,18 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pImageMemoryBarriers - 
     */
     private static native void vkCmdPipelineBarrier0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		int  srcStageMask,
 		int  dstStageMask,
 		int  dependencyFlags,
 		int  memoryBarrierCount,
-		java.nio.ByteBuffer   pMemoryBarriers,
+		ByteBuffer   pMemoryBarriers,
 		int  bufferMemoryBarrierCount,
-		java.nio.ByteBuffer   pBufferMemoryBarriers,
+		ByteBuffer   pBufferMemoryBarriers,
 		int  imageMemoryBarrierCount,
-		java.nio.ByteBuffer   pImageMemoryBarriers);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+		ByteBuffer   pImageMemoryBarriers);/* 
 	vkCmdPipelineBarrier(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(VkPipelineStageFlags) srcStageMask,
 			(VkPipelineStageFlags) dstStageMask,
 			(VkDependencyFlags) dependencyFlags,
@@ -7094,19 +7408,20 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkQueryControlFlags                         flags);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param queryPool - 
-    * @param query - 
-    * @param flags - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param queryPool - Vulkan handle of type VkQueryPool 
+    * @param query int 
+    * @param flags int 
     */
-   public void vkCmdBeginQuery(
+   public static void vkCmdBeginQuery(
 		VkCommandBuffer commandBuffer,
 		VkQueryPool queryPool,
 		int query,
-		int flags){
-	vkCmdBeginQuery0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(queryPool==null ? null : queryPool.getPointer()) /* ByteBuffer */ ,
+		int flags) {
+
+	 vkCmdBeginQuery0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		queryPool.getNativeHandle() /* VkHandle */ ,
 		query ,
 		flags  );
 
@@ -7122,15 +7437,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param flags - 
     */
     private static native void vkCmdBeginQuery0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   queryPool,
+		long   commandBuffer,
+		long   queryPool,
 		int  query,
 		int  flags);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkQueryPool* ptr_queryPool = (VkQueryPool*) queryPool;
 	vkCmdBeginQuery(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkQueryPool) (*ptr_queryPool),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkQueryPool) reinterpret_cast<VkQueryPool>(queryPool),
 			(uint32_t) query,
 			(VkQueryControlFlags) flags);
 
@@ -7148,17 +7461,18 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     uint32_t                                    query);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param queryPool - 
-    * @param query - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param queryPool - Vulkan handle of type VkQueryPool 
+    * @param query int 
     */
-   public void vkCmdEndQuery(
+   public static void vkCmdEndQuery(
 		VkCommandBuffer commandBuffer,
 		VkQueryPool queryPool,
-		int query){
-	vkCmdEndQuery0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(queryPool==null ? null : queryPool.getPointer()) /* ByteBuffer */ ,
+		int query) {
+
+	 vkCmdEndQuery0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		queryPool.getNativeHandle() /* VkHandle */ ,
 		query  );
 
    } 
@@ -7172,14 +7486,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param query - 
     */
     private static native void vkCmdEndQuery0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   queryPool,
+		long   commandBuffer,
+		long   queryPool,
 		int  query);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkQueryPool* ptr_queryPool = (VkQueryPool*) queryPool;
 	vkCmdEndQuery(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkQueryPool) (*ptr_queryPool),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkQueryPool) reinterpret_cast<VkQueryPool>(queryPool),
 			(uint32_t) query);
 
   */ 
@@ -7197,19 +7509,20 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     uint32_t                                    queryCount);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param queryPool - 
-    * @param firstQuery - 
-    * @param queryCount - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param queryPool - Vulkan handle of type VkQueryPool 
+    * @param firstQuery int 
+    * @param queryCount - Length of query. 
     */
-   public void vkCmdResetQueryPool(
+   public static void vkCmdResetQueryPool(
 		VkCommandBuffer commandBuffer,
 		VkQueryPool queryPool,
 		int firstQuery,
-		int queryCount){
-	vkCmdResetQueryPool0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(queryPool==null ? null : queryPool.getPointer()) /* ByteBuffer */ ,
+		int queryCount) {
+
+	 vkCmdResetQueryPool0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		queryPool.getNativeHandle() /* VkHandle */ ,
 		firstQuery ,
 		queryCount  );
 
@@ -7225,15 +7538,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param queryCount - 
     */
     private static native void vkCmdResetQueryPool0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   queryPool,
+		long   commandBuffer,
+		long   queryPool,
 		int  firstQuery,
 		int  queryCount);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkQueryPool* ptr_queryPool = (VkQueryPool*) queryPool;
 	vkCmdResetQueryPool(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkQueryPool) (*ptr_queryPool),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkQueryPool) reinterpret_cast<VkQueryPool>(queryPool),
 			(uint32_t) firstQuery,
 			(uint32_t) queryCount);
 
@@ -7252,20 +7563,21 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     uint32_t                                    query);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param pipelineStage - 
-    * @param queryPool - 
-    * @param query - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param pipelineStage - Vulkan enumeration of type VkPipelineStageFlagBits 
+    * @param queryPool - Vulkan handle of type VkQueryPool 
+    * @param query int 
     */
-   public void vkCmdWriteTimestamp(
+   public static void vkCmdWriteTimestamp(
 		VkCommandBuffer commandBuffer,
 		VkPipelineStageFlagBits pipelineStage,
 		VkQueryPool queryPool,
-		int query){
-	vkCmdWriteTimestamp0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		pipelineStage.getValue() /* enum */,
-		(queryPool==null ? null : queryPool.getPointer()) /* ByteBuffer */ ,
+		int query) {
+
+	 vkCmdWriteTimestamp0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		pipelineStage.getValue() /* VkEnum */,
+		queryPool.getNativeHandle() /* VkHandle */ ,
 		query  );
 
    } 
@@ -7280,16 +7592,14 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param query - 
     */
     private static native void vkCmdWriteTimestamp0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		int   pipelineStage,
-		java.nio.ByteBuffer   queryPool,
+		long   queryPool,
 		int  query);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkQueryPool* ptr_queryPool = (VkQueryPool*) queryPool;
 	vkCmdWriteTimestamp(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(VkPipelineStageFlagBits) pipelineStage,
-			(VkQueryPool) (*ptr_queryPool),
+			(VkQueryPool) reinterpret_cast<VkQueryPool>(queryPool),
 			(uint32_t) query);
 
   */ 
@@ -7311,16 +7621,16 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkQueryResultFlags                          flags);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param queryPool - 
-    * @param firstQuery - 
-    * @param queryCount - 
-    * @param dstBuffer - 
-    * @param dstOffset - 
-    * @param stride - 
-    * @param flags - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param queryPool - Vulkan handle of type VkQueryPool 
+    * @param firstQuery int 
+    * @param queryCount - The length of array dstBuffer. 
+    * @param dstBuffer - Vulkan handle of type VkBuffer 
+    * @param dstOffset long 
+    * @param stride long 
+    * @param flags int 
     */
-   public void vkCmdCopyQueryPoolResults(
+   public static void vkCmdCopyQueryPoolResults(
 		VkCommandBuffer commandBuffer,
 		VkQueryPool queryPool,
 		int firstQuery,
@@ -7328,13 +7638,14 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
 		VkBuffer dstBuffer,
 		long dstOffset,
 		long stride,
-		int flags){
-	vkCmdCopyQueryPoolResults0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(queryPool==null ? null : queryPool.getPointer()) /* ByteBuffer */ ,
+		int flags) {
+
+	 vkCmdCopyQueryPoolResults0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		queryPool.getNativeHandle() /* VkHandle */ ,
 		firstQuery ,
 		queryCount ,
-		(dstBuffer==null ? null : dstBuffer.getPointer()) /* ByteBuffer */ ,
+		dstBuffer.getNativeHandle() /* VkHandle */ ,
 		dstOffset ,
 		stride ,
 		flags  );
@@ -7355,23 +7666,20 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param flags - 
     */
     private static native void vkCmdCopyQueryPoolResults0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   queryPool,
+		long   commandBuffer,
+		long   queryPool,
 		int  firstQuery,
 		int  queryCount,
-		java.nio.ByteBuffer   dstBuffer,
+		long   dstBuffer,
 		long  dstOffset,
 		long  stride,
 		int  flags);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkQueryPool* ptr_queryPool = (VkQueryPool*) queryPool;
-	VkBuffer* ptr_dstBuffer = (VkBuffer*) dstBuffer;
 	vkCmdCopyQueryPoolResults(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkQueryPool) (*ptr_queryPool),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkQueryPool) reinterpret_cast<VkQueryPool>(queryPool),
 			(uint32_t) firstQuery,
 			(uint32_t) queryCount,
-			(VkBuffer) (*ptr_dstBuffer),
+			(VkBuffer) reinterpret_cast<VkBuffer>(dstBuffer),
 			(VkDeviceSize) dstOffset,
 			(VkDeviceSize) stride,
 			(VkQueryResultFlags) flags);
@@ -7393,23 +7701,24 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const void*                                 pValues);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param layout - 
-    * @param stageFlags - 
-    * @param offset - 
-    * @param size - 
-    * @param pValues - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param layout - Vulkan handle of type VkPipelineLayout 
+    * @param stageFlags int 
+    * @param offset int 
+    * @param size int 
+    * @param pValues java.nio.Buffer 
     */
-   public void vkCmdPushConstants(
+   public static void vkCmdPushConstants(
 		VkCommandBuffer commandBuffer,
 		VkPipelineLayout layout,
 		int stageFlags,
 		int offset,
 		int size,
-		java.nio.Buffer pValues){
-	vkCmdPushConstants0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(layout==null ? null : layout.getPointer()) /* ByteBuffer */ ,
+		java.nio.Buffer pValues) {
+
+	 vkCmdPushConstants0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		layout.getNativeHandle() /* VkHandle */ ,
 		stageFlags ,
 		offset ,
 		size ,
@@ -7429,17 +7738,15 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pValues - 
     */
     private static native void vkCmdPushConstants0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   layout,
+		long   commandBuffer,
+		long   layout,
 		int  stageFlags,
 		int  offset,
 		int  size,
 		java.nio.Buffer  pValues);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
-	VkPipelineLayout* ptr_layout = (VkPipelineLayout*) layout;
 	vkCmdPushConstants(
-			(VkCommandBuffer) (*ptr_commandBuffer),
-			(VkPipelineLayout) (*ptr_layout),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkPipelineLayout) reinterpret_cast<VkPipelineLayout>(layout),
 			(VkShaderStageFlags) stageFlags,
 			(uint32_t) offset,
 			(uint32_t) size,
@@ -7459,18 +7766,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkSubpassContents                           contents);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param pRenderPassBegin - 
-    * @param contents - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param pRenderPassBegin - Vulkan Struct of type  final VkRenderPassBeginInfo 
+    * @param contents - Vulkan enumeration of type VkSubpassContents 
     */
-   public void vkCmdBeginRenderPass(
+   public static void vkCmdBeginRenderPass(
 		VkCommandBuffer commandBuffer,
-		 VkRenderPassBeginInfo  pRenderPassBegin,
-		VkSubpassContents contents){
-	vkCmdBeginRenderPass0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		(pRenderPassBegin==null ? null : pRenderPassBegin.getPointer()) /* ByteBuffer */ ,
-		contents.getValue() /* enum */ );
+		final VkRenderPassBeginInfo pRenderPassBegin,
+		VkSubpassContents contents) {
+
+	 vkCmdBeginRenderPass0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		pRenderPassBegin.getPointer() /* Struct */,
+		contents.getValue() /* VkEnum */ );
 
    } 
 
@@ -7483,12 +7791,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param contents - 
     */
     private static native void vkCmdBeginRenderPass0(
-		java.nio.ByteBuffer   commandBuffer,
-		java.nio.ByteBuffer   pRenderPassBegin,
+		long   commandBuffer,
+		ByteBuffer   pRenderPassBegin,
 		int   contents);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
 	vkCmdBeginRenderPass(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(const VkRenderPassBeginInfo*) pRenderPassBegin,
 			(VkSubpassContents) contents);
 
@@ -7505,15 +7812,16 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkSubpassContents                           contents);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param contents - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param contents - Vulkan enumeration of type VkSubpassContents 
     */
-   public void vkCmdNextSubpass(
+   public static void vkCmdNextSubpass(
 		VkCommandBuffer commandBuffer,
-		VkSubpassContents contents){
-	vkCmdNextSubpass0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
-		contents.getValue() /* enum */ );
+		VkSubpassContents contents) {
+
+	 vkCmdNextSubpass0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		contents.getValue() /* VkEnum */ );
 
    } 
 
@@ -7525,11 +7833,10 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param contents - 
     */
     private static native void vkCmdNextSubpass0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		int   contents);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
 	vkCmdNextSubpass(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(VkSubpassContents) contents);
 
   */ 
@@ -7544,12 +7851,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkCommandBuffer                             commandBuffer);
     * </pre>
     * 
-    * @param commandBuffer - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
     */
-   public void vkCmdEndRenderPass(
-		VkCommandBuffer commandBuffer){
-	vkCmdEndRenderPass0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */  );
+   public static void vkCmdEndRenderPass(
+		VkCommandBuffer commandBuffer) {
+
+	 vkCmdEndRenderPass0(
+		commandBuffer.getNativeHandle() /* VkHandle */  );
 
    } 
 
@@ -7560,10 +7868,9 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param commandBuffer - 
     */
     private static native void vkCmdEndRenderPass0(
-		java.nio.ByteBuffer   commandBuffer);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+		long   commandBuffer);/* 
 	vkCmdEndRenderPass(
-			(VkCommandBuffer) (*ptr_commandBuffer));
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer));
 
   */ 
 
@@ -7579,18 +7886,22 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkCommandBuffer*                      pCommandBuffers);
     * </pre>
     * 
-    * @param commandBuffer - 
-    * @param commandBufferCount - 
-    * @param pCommandBuffers - 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param commandBufferCount - The length of array pCommandBuffers. 
+    * @param pCommandBuffers - An array of  final VkCommandBuffer . 
     */
-   public void vkCmdExecuteCommands(
+   public static void vkCmdExecuteCommands(
 		VkCommandBuffer commandBuffer,
 		int commandBufferCount,
-		 VkCommandBuffer  pCommandBuffers){
-	vkCmdExecuteCommands0(
-		(commandBuffer==null ? null : commandBuffer.getPointer()) /* ByteBuffer */ ,
+		final VkCommandBuffer[] pCommandBuffers) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkCommandBuffer> pCommandBuffersBuffer =
+			 new BigBuffer<VkCommandBuffer>(pCommandBuffers, true);
+	 vkCmdExecuteCommands0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
 		commandBufferCount ,
-		(pCommandBuffers==null ? null : pCommandBuffers.getPointer()) /* ByteBuffer */  );
+		pCommandBuffersBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pCommandBuffersBuffer.update();
 
    } 
 
@@ -7603,12 +7914,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pCommandBuffers - 
     */
     private static native void vkCmdExecuteCommands0(
-		java.nio.ByteBuffer   commandBuffer,
+		long   commandBuffer,
 		int  commandBufferCount,
-		java.nio.ByteBuffer   pCommandBuffers);/* 
-	VkCommandBuffer* ptr_commandBuffer = (VkCommandBuffer*) commandBuffer;
+		ByteBuffer   pCommandBuffers);/* 
 	vkCmdExecuteCommands(
-			(VkCommandBuffer) (*ptr_commandBuffer),
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(uint32_t) commandBufferCount,
 			(const VkCommandBuffer*) pCommandBuffers);
 
@@ -7626,18 +7936,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param instance - 
-    * @param surface - 
-    * @param pAllocator - 
+    * @param instance - Vulkan handle of type VkInstance 
+    * @param surface - Vulkan handle of type VkSurfaceKHR 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroySurfaceKHR(
+   public static void vkDestroySurfaceKHR(
 		VkInstance instance,
 		VkSurfaceKHR surface,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroySurfaceKHR0(
-		(instance==null ? null : instance.getPointer()) /* ByteBuffer */ ,
-		(surface==null ? null : surface.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroySurfaceKHR0(
+		instance.getNativeHandle() /* VkHandle */ ,
+		surface.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -7650,14 +7961,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroySurfaceKHR0(
-		java.nio.ByteBuffer   instance,
-		java.nio.ByteBuffer   surface,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkInstance* ptr_instance = (VkInstance*) instance;
-	VkSurfaceKHR* ptr_surface = (VkSurfaceKHR*) surface;
+		long   instance,
+		long   surface,
+		ByteBuffer   pAllocator);/* 
 	vkDestroySurfaceKHR(
-			(VkInstance) (*ptr_instance),
-			(VkSurfaceKHR) (*ptr_surface),
+			(VkInstance) reinterpret_cast<VkInstance>(instance),
+			(VkSurfaceKHR) reinterpret_cast<VkSurfaceKHR>(surface),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -7675,22 +7984,23 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkBool32*                                   pSupported);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param queueFamilyIndex - 
-    * @param surface - 
-    * @param pSupported - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param queueFamilyIndex int 
+    * @param surface - Vulkan handle of type VkSurfaceKHR 
+    * @param pSupported - An array of boolean. 
     * 
     * @return VkResult
     */
-   public VkResult vkGetPhysicalDeviceSurfaceSupportKHR(
+   public static VkResult vkGetPhysicalDeviceSurfaceSupportKHR(
 		VkPhysicalDevice physicalDevice,
 		int queueFamilyIndex,
 		VkSurfaceKHR surface,
-		boolean[] pSupported){
-	int  _val = vkGetPhysicalDeviceSurfaceSupportKHR0(
-			(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
+		boolean[] pSupported) {
+
+	 int  _val = vkGetPhysicalDeviceSurfaceSupportKHR0(
+			physicalDevice.getNativeHandle() /* VkHandle */ ,
 			queueFamilyIndex ,
-			(surface==null ? null : surface.getPointer()) /* ByteBuffer */ ,
+			surface.getNativeHandle() /* VkHandle */ ,
 			pSupported  );
 	 return VkResult.fromValue(_val);
    } 
@@ -7707,16 +8017,14 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkGetPhysicalDeviceSurfaceSupportKHR0(
-		java.nio.ByteBuffer   physicalDevice,
+		long   physicalDevice,
 		int  queueFamilyIndex,
-		java.nio.ByteBuffer   surface,
-		boolean[]  pSupported);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
-	VkSurfaceKHR* ptr_surface = (VkSurfaceKHR*) surface;
+		long   surface,
+		boolean[]   pSupported);/* 
 	VkResult res = vkGetPhysicalDeviceSurfaceSupportKHR(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
 			(uint32_t) queueFamilyIndex,
-			(VkSurfaceKHR) (*ptr_surface),
+			(VkSurfaceKHR) reinterpret_cast<VkSurfaceKHR>(surface),
 			(VkBool32*) pSupported);
 	 return (jint) res;
   */ 
@@ -7733,20 +8041,21 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkSurfaceCapabilitiesKHR*                   pSurfaceCapabilities);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param surface - 
-    * @param pSurfaceCapabilities - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param surface - Vulkan handle of type VkSurfaceKHR 
+    * @param pSurfaceCapabilities - Vulkan Struct of type  VkSurfaceCapabilitiesKHR  
     * 
     * @return VkResult
     */
-   public VkResult vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
+   public static VkResult vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
 		VkPhysicalDevice physicalDevice,
 		VkSurfaceKHR surface,
-		 VkSurfaceCapabilitiesKHR  pSurfaceCapabilities){
-	int  _val = vkGetPhysicalDeviceSurfaceCapabilitiesKHR0(
-			(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
-			(surface==null ? null : surface.getPointer()) /* ByteBuffer */ ,
-			(pSurfaceCapabilities==null ? null : pSurfaceCapabilities.getPointer()) /* ByteBuffer */  );
+		VkSurfaceCapabilitiesKHR pSurfaceCapabilities) {
+
+	 int  _val = vkGetPhysicalDeviceSurfaceCapabilitiesKHR0(
+			physicalDevice.getNativeHandle() /* VkHandle */ ,
+			surface.getNativeHandle() /* VkHandle */ ,
+			pSurfaceCapabilities.getPointer() /* Struct */ );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -7761,14 +8070,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkGetPhysicalDeviceSurfaceCapabilitiesKHR0(
-		java.nio.ByteBuffer   physicalDevice,
-		java.nio.ByteBuffer   surface,
-		java.nio.ByteBuffer   pSurfaceCapabilities);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
-	VkSurfaceKHR* ptr_surface = (VkSurfaceKHR*) surface;
+		long   physicalDevice,
+		long   surface,
+		ByteBuffer   pSurfaceCapabilities);/* 
 	VkResult res = vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
-			(VkSurfaceKHR) (*ptr_surface),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
+			(VkSurfaceKHR) reinterpret_cast<VkSurfaceKHR>(surface),
 			(VkSurfaceCapabilitiesKHR*) pSurfaceCapabilities);
 	 return (jint) res;
   */ 
@@ -7786,23 +8093,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkSurfaceFormatKHR*                         pSurfaceFormats);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param surface - 
-    * @param pSurfaceFormatCount - 
-    * @param pSurfaceFormats - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param surface - Vulkan handle of type VkSurfaceKHR 
+    * @param pSurfaceFormatCount - The length of array pSurfaceFormats. 
+    * @param pSurfaceFormats - An array of  VkSurfaceFormatKHR . 
     * 
     * @return VkResult
     */
-   public VkResult vkGetPhysicalDeviceSurfaceFormatsKHR(
+   public static VkResult vkGetPhysicalDeviceSurfaceFormatsKHR(
 		VkPhysicalDevice physicalDevice,
 		VkSurfaceKHR surface,
 		int[] pSurfaceFormatCount,
-		 VkSurfaceFormatKHR  pSurfaceFormats){
-	int  _val = vkGetPhysicalDeviceSurfaceFormatsKHR0(
-			(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
-			(surface==null ? null : surface.getPointer()) /* ByteBuffer */ ,
+		VkSurfaceFormatKHR[] pSurfaceFormats) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkSurfaceFormatKHR> pSurfaceFormatsBuff =
+			 new BigBuffer<VkSurfaceFormatKHR>(pSurfaceFormats, VkSurfaceFormatKHR.getID());
+
+	 int  _val = vkGetPhysicalDeviceSurfaceFormatsKHR0(
+			physicalDevice.getNativeHandle() /* VkHandle */ ,
+			surface.getNativeHandle() /* VkHandle */ ,
 			pSurfaceFormatCount ,
-			(pSurfaceFormats==null ? null : pSurfaceFormats.getPointer()) /* ByteBuffer */  );
+			pSurfaceFormatsBuff.getPointer() /*Buffer for Struct[]*/ );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -7818,15 +8129,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkGetPhysicalDeviceSurfaceFormatsKHR0(
-		java.nio.ByteBuffer   physicalDevice,
-		java.nio.ByteBuffer   surface,
+		long   physicalDevice,
+		long   surface,
 		int[]  pSurfaceFormatCount,
-		java.nio.ByteBuffer   pSurfaceFormats);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
-	VkSurfaceKHR* ptr_surface = (VkSurfaceKHR*) surface;
+		ByteBuffer   pSurfaceFormats);/* 
 	VkResult res = vkGetPhysicalDeviceSurfaceFormatsKHR(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
-			(VkSurfaceKHR) (*ptr_surface),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
+			(VkSurfaceKHR) reinterpret_cast<VkSurfaceKHR>(surface),
 			(uint32_t*) pSurfaceFormatCount,
 			(VkSurfaceFormatKHR*) pSurfaceFormats);
 	 return (jint) res;
@@ -7845,23 +8154,30 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkPresentModeKHR*                           pPresentModes);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param surface - 
-    * @param pPresentModeCount - 
-    * @param pPresentModes - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param surface - Vulkan handle of type VkSurfaceKHR 
+    * @param pPresentModeCount - The length of array pPresentModes. 
+    * @param pPresentModes - An array of  VkPresentModeKHR . 
     * 
     * @return VkResult
     */
-   public VkResult vkGetPhysicalDeviceSurfacePresentModesKHR(
+   public static VkResult vkGetPhysicalDeviceSurfacePresentModesKHR(
 		VkPhysicalDevice physicalDevice,
 		VkSurfaceKHR surface,
 		int[] pPresentModeCount,
-		 VkPresentModeKHR  pPresentModes){
-	int  _val = vkGetPhysicalDeviceSurfacePresentModesKHR0(
-			(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
-			(surface==null ? null : surface.getPointer()) /* ByteBuffer */ ,
+		VkPresentModeKHR[] pPresentModes) {
+	 // Wrap VkEnum array in a int[] 
+	 int[] pPresentModesEnumArr =  prepare(pPresentModes);
+
+	 int  _val = vkGetPhysicalDeviceSurfacePresentModesKHR0(
+			physicalDevice.getNativeHandle() /* VkHandle */ ,
+			surface.getNativeHandle() /* VkHandle */ ,
 			pPresentModeCount ,
-			pPresentModes.getValue() /* enum */ );
+			pPresentModesEnumArr /* VkEnum[] as int[] */ );
+
+	 for(int i=0; i < pPresentModes.length; i++){
+	    pPresentModes[i] = VkPresentModeKHR.fromValue(pPresentModesEnumArr[i]);
+	  }
 	 return VkResult.fromValue(_val);
    } 
 
@@ -7877,15 +8193,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkGetPhysicalDeviceSurfacePresentModesKHR0(
-		java.nio.ByteBuffer   physicalDevice,
-		java.nio.ByteBuffer   surface,
+		long   physicalDevice,
+		long   surface,
 		int[]  pPresentModeCount,
-		int   pPresentModes);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
-	VkSurfaceKHR* ptr_surface = (VkSurfaceKHR*) surface;
+		int[]   pPresentModes);/* 
 	VkResult res = vkGetPhysicalDeviceSurfacePresentModesKHR(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
-			(VkSurfaceKHR) (*ptr_surface),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
+			(VkSurfaceKHR) reinterpret_cast<VkSurfaceKHR>(surface),
 			(uint32_t*) pPresentModeCount,
 			(VkPresentModeKHR*) pPresentModes);
 	 return (jint) res;
@@ -7904,23 +8218,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkSwapchainKHR*                             pSwapchain);
     * </pre>
     * 
-    * @param device - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pSwapchain - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pCreateInfo - Vulkan Struct of type  final VkSwapchainCreateInfoKHR 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pSwapchain - An array of  VkSwapchainKHR . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateSwapchainKHR(
+   public static VkResult vkCreateSwapchainKHR(
 		VkDevice device,
-		 VkSwapchainCreateInfoKHR  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkSwapchainKHR  pSwapchain){
-	int  _val = vkCreateSwapchainKHR0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pSwapchain==null ? null : pSwapchain.getPointer()) /* ByteBuffer */  );
+		final VkSwapchainCreateInfoKHR pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkSwapchainKHR[] pSwapchain) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkSwapchainKHR> pSwapchainBuffer =
+			 new BigBuffer<VkSwapchainKHR>(pSwapchain, false);
+	 int  _val = vkCreateSwapchainKHR0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pSwapchainBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pSwapchainBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -7936,13 +8254,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateSwapchainKHR0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pSwapchain);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		long   device,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pSwapchain);/* 
 	VkResult res = vkCreateSwapchainKHR(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(const VkSwapchainCreateInfoKHR*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkSwapchainKHR*) pSwapchain);
@@ -7961,18 +8278,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param device - 
-    * @param swapchain - 
-    * @param pAllocator - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param swapchain - Vulkan handle of type VkSwapchainKHR 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroySwapchainKHR(
+   public static void vkDestroySwapchainKHR(
 		VkDevice device,
 		VkSwapchainKHR swapchain,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroySwapchainKHR0(
-		(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-		(swapchain==null ? null : swapchain.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroySwapchainKHR0(
+		device.getNativeHandle() /* VkHandle */ ,
+		swapchain.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -7985,14 +8303,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroySwapchainKHR0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   swapchain,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkSwapchainKHR* ptr_swapchain = (VkSwapchainKHR*) swapchain;
+		long   device,
+		long   swapchain,
+		ByteBuffer   pAllocator);/* 
 	vkDestroySwapchainKHR(
-			(VkDevice) (*ptr_device),
-			(VkSwapchainKHR) (*ptr_swapchain),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkSwapchainKHR) reinterpret_cast<VkSwapchainKHR>(swapchain),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -8010,23 +8326,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkImage*                                    pSwapchainImages);
     * </pre>
     * 
-    * @param device - 
-    * @param swapchain - 
-    * @param pSwapchainImageCount - 
-    * @param pSwapchainImages - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param swapchain - Vulkan handle of type VkSwapchainKHR 
+    * @param pSwapchainImageCount - The length of array pSwapchainImages. 
+    * @param pSwapchainImages - An array of  VkImage . 
     * 
     * @return VkResult
     */
-   public VkResult vkGetSwapchainImagesKHR(
+   public static VkResult vkGetSwapchainImagesKHR(
 		VkDevice device,
 		VkSwapchainKHR swapchain,
 		int[] pSwapchainImageCount,
-		 VkImage  pSwapchainImages){
-	int  _val = vkGetSwapchainImagesKHR0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(swapchain==null ? null : swapchain.getPointer()) /* ByteBuffer */ ,
+		VkImage[] pSwapchainImages) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkImage> pSwapchainImagesBuffer =
+			 new BigBuffer<VkImage>(pSwapchainImages, false);
+	 int  _val = vkGetSwapchainImagesKHR0(
+			device.getNativeHandle() /* VkHandle */ ,
+			swapchain.getNativeHandle() /* VkHandle */ ,
 			pSwapchainImageCount ,
-			(pSwapchainImages==null ? null : pSwapchainImages.getPointer()) /* ByteBuffer */  );
+			pSwapchainImagesBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pSwapchainImagesBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -8042,15 +8362,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkGetSwapchainImagesKHR0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   swapchain,
+		long   device,
+		long   swapchain,
 		int[]  pSwapchainImageCount,
-		java.nio.ByteBuffer   pSwapchainImages);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkSwapchainKHR* ptr_swapchain = (VkSwapchainKHR*) swapchain;
+		ByteBuffer   pSwapchainImages);/* 
 	VkResult res = vkGetSwapchainImagesKHR(
-			(VkDevice) (*ptr_device),
-			(VkSwapchainKHR) (*ptr_swapchain),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkSwapchainKHR) reinterpret_cast<VkSwapchainKHR>(swapchain),
 			(uint32_t*) pSwapchainImageCount,
 			(VkImage*) pSwapchainImages);
 	 return (jint) res;
@@ -8071,28 +8389,29 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     uint32_t*                                   pImageIndex);
     * </pre>
     * 
-    * @param device - 
-    * @param swapchain - 
-    * @param timeout - 
-    * @param semaphore - 
-    * @param fence - 
-    * @param pImageIndex - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param swapchain - Vulkan handle of type VkSwapchainKHR 
+    * @param timeout long 
+    * @param semaphore - Vulkan handle of type VkSemaphore 
+    * @param fence - Vulkan handle of type VkFence 
+    * @param pImageIndex - An array of int. 
     * 
     * @return VkResult
     */
-   public VkResult vkAcquireNextImageKHR(
+   public static VkResult vkAcquireNextImageKHR(
 		VkDevice device,
 		VkSwapchainKHR swapchain,
 		long timeout,
 		VkSemaphore semaphore,
 		VkFence fence,
-		int[] pImageIndex){
-	int  _val = vkAcquireNextImageKHR0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
-			(swapchain==null ? null : swapchain.getPointer()) /* ByteBuffer */ ,
+		int[] pImageIndex) {
+
+	 int  _val = vkAcquireNextImageKHR0(
+			device.getNativeHandle() /* VkHandle */ ,
+			swapchain.getNativeHandle() /* VkHandle */ ,
 			timeout ,
-			(semaphore==null ? null : semaphore.getPointer()) /* ByteBuffer */ ,
-			(fence==null ? null : fence.getPointer()) /* ByteBuffer */ ,
+			semaphore.getNativeHandle() /* VkHandle */ ,
+			fence.getNativeHandle() /* VkHandle */ ,
 			pImageIndex  );
 	 return VkResult.fromValue(_val);
    } 
@@ -8111,22 +8430,18 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkAcquireNextImageKHR0(
-		java.nio.ByteBuffer   device,
-		java.nio.ByteBuffer   swapchain,
+		long   device,
+		long   swapchain,
 		long  timeout,
-		java.nio.ByteBuffer   semaphore,
-		java.nio.ByteBuffer   fence,
+		long   semaphore,
+		long   fence,
 		int[]  pImageIndex);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
-	VkSwapchainKHR* ptr_swapchain = (VkSwapchainKHR*) swapchain;
-	VkSemaphore* ptr_semaphore = (VkSemaphore*) semaphore;
-	VkFence* ptr_fence = (VkFence*) fence;
 	VkResult res = vkAcquireNextImageKHR(
-			(VkDevice) (*ptr_device),
-			(VkSwapchainKHR) (*ptr_swapchain),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkSwapchainKHR) reinterpret_cast<VkSwapchainKHR>(swapchain),
 			(uint64_t) timeout,
-			(VkSemaphore) (*ptr_semaphore),
-			(VkFence) (*ptr_fence),
+			(VkSemaphore) reinterpret_cast<VkSemaphore>(semaphore),
+			(VkFence) reinterpret_cast<VkFence>(fence),
 			(uint32_t*) pImageIndex);
 	 return (jint) res;
   */ 
@@ -8142,17 +8457,18 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkPresentInfoKHR*                     pPresentInfo);
     * </pre>
     * 
-    * @param queue - 
-    * @param pPresentInfo - 
+    * @param queue - Vulkan handle of type VkQueue 
+    * @param pPresentInfo - Vulkan Struct of type  final VkPresentInfoKHR 
     * 
     * @return VkResult
     */
-   public VkResult vkQueuePresentKHR(
+   public static VkResult vkQueuePresentKHR(
 		VkQueue queue,
-		 VkPresentInfoKHR  pPresentInfo){
-	int  _val = vkQueuePresentKHR0(
-			(queue==null ? null : queue.getPointer()) /* ByteBuffer */ ,
-			(pPresentInfo==null ? null : pPresentInfo.getPointer()) /* ByteBuffer */  );
+		final VkPresentInfoKHR pPresentInfo) {
+
+	 int  _val = vkQueuePresentKHR0(
+			queue.getNativeHandle() /* VkHandle */ ,
+			pPresentInfo.getPointer() /* Struct */ );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -8166,11 +8482,10 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkQueuePresentKHR0(
-		java.nio.ByteBuffer   queue,
-		java.nio.ByteBuffer   pPresentInfo);/* 
-	VkQueue* ptr_queue = (VkQueue*) queue;
+		long   queue,
+		ByteBuffer   pPresentInfo);/* 
 	VkResult res = vkQueuePresentKHR(
-			(VkQueue) (*ptr_queue),
+			(VkQueue) reinterpret_cast<VkQueue>(queue),
 			(const VkPresentInfoKHR*) pPresentInfo);
 	 return (jint) res;
   */ 
@@ -8187,20 +8502,24 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkDisplayPropertiesKHR*                     pProperties);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param pPropertyCount - 
-    * @param pProperties - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param pPropertyCount - The length of array pProperties. 
+    * @param pProperties - An array of  VkDisplayPropertiesKHR . 
     * 
     * @return VkResult
     */
-   public VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
+   public static VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
 		VkPhysicalDevice physicalDevice,
 		int[] pPropertyCount,
-		 VkDisplayPropertiesKHR  pProperties){
-	int  _val = vkGetPhysicalDeviceDisplayPropertiesKHR0(
-			(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
+		VkDisplayPropertiesKHR[] pProperties) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkDisplayPropertiesKHR> pPropertiesBuff =
+			 new BigBuffer<VkDisplayPropertiesKHR>(pProperties, VkDisplayPropertiesKHR.getID());
+
+	 int  _val = vkGetPhysicalDeviceDisplayPropertiesKHR0(
+			physicalDevice.getNativeHandle() /* VkHandle */ ,
 			pPropertyCount ,
-			(pProperties==null ? null : pProperties.getPointer()) /* ByteBuffer */  );
+			pPropertiesBuff.getPointer() /*Buffer for Struct[]*/ );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -8215,12 +8534,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkGetPhysicalDeviceDisplayPropertiesKHR0(
-		java.nio.ByteBuffer   physicalDevice,
+		long   physicalDevice,
 		int[]  pPropertyCount,
-		java.nio.ByteBuffer   pProperties);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
+		ByteBuffer   pProperties);/* 
 	VkResult res = vkGetPhysicalDeviceDisplayPropertiesKHR(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
 			(uint32_t*) pPropertyCount,
 			(VkDisplayPropertiesKHR*) pProperties);
 	 return (jint) res;
@@ -8238,20 +8556,24 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkDisplayPlanePropertiesKHR*                pProperties);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param pPropertyCount - 
-    * @param pProperties - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param pPropertyCount - The length of array pProperties. 
+    * @param pProperties - An array of  VkDisplayPlanePropertiesKHR . 
     * 
     * @return VkResult
     */
-   public VkResult vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
+   public static VkResult vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
 		VkPhysicalDevice physicalDevice,
 		int[] pPropertyCount,
-		 VkDisplayPlanePropertiesKHR  pProperties){
-	int  _val = vkGetPhysicalDeviceDisplayPlanePropertiesKHR0(
-			(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
+		VkDisplayPlanePropertiesKHR[] pProperties) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkDisplayPlanePropertiesKHR> pPropertiesBuff =
+			 new BigBuffer<VkDisplayPlanePropertiesKHR>(pProperties, VkDisplayPlanePropertiesKHR.getID());
+
+	 int  _val = vkGetPhysicalDeviceDisplayPlanePropertiesKHR0(
+			physicalDevice.getNativeHandle() /* VkHandle */ ,
 			pPropertyCount ,
-			(pProperties==null ? null : pProperties.getPointer()) /* ByteBuffer */  );
+			pPropertiesBuff.getPointer() /*Buffer for Struct[]*/ );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -8266,12 +8588,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkGetPhysicalDeviceDisplayPlanePropertiesKHR0(
-		java.nio.ByteBuffer   physicalDevice,
+		long   physicalDevice,
 		int[]  pPropertyCount,
-		java.nio.ByteBuffer   pProperties);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
+		ByteBuffer   pProperties);/* 
 	VkResult res = vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
 			(uint32_t*) pPropertyCount,
 			(VkDisplayPlanePropertiesKHR*) pProperties);
 	 return (jint) res;
@@ -8290,23 +8611,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkDisplayKHR*                               pDisplays);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param planeIndex - 
-    * @param pDisplayCount - 
-    * @param pDisplays - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param planeIndex int 
+    * @param pDisplayCount - The length of array pDisplays. 
+    * @param pDisplays - An array of  VkDisplayKHR . 
     * 
     * @return VkResult
     */
-   public VkResult vkGetDisplayPlaneSupportedDisplaysKHR(
+   public static VkResult vkGetDisplayPlaneSupportedDisplaysKHR(
 		VkPhysicalDevice physicalDevice,
 		int planeIndex,
 		int[] pDisplayCount,
-		 VkDisplayKHR  pDisplays){
-	int  _val = vkGetDisplayPlaneSupportedDisplaysKHR0(
-			(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
+		VkDisplayKHR[] pDisplays) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkDisplayKHR> pDisplaysBuffer =
+			 new BigBuffer<VkDisplayKHR>(pDisplays, false);
+	 int  _val = vkGetDisplayPlaneSupportedDisplaysKHR0(
+			physicalDevice.getNativeHandle() /* VkHandle */ ,
 			planeIndex ,
 			pDisplayCount ,
-			(pDisplays==null ? null : pDisplays.getPointer()) /* ByteBuffer */  );
+			pDisplaysBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pDisplaysBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -8322,13 +8647,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkGetDisplayPlaneSupportedDisplaysKHR0(
-		java.nio.ByteBuffer   physicalDevice,
+		long   physicalDevice,
 		int  planeIndex,
 		int[]  pDisplayCount,
-		java.nio.ByteBuffer   pDisplays);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
+		ByteBuffer   pDisplays);/* 
 	VkResult res = vkGetDisplayPlaneSupportedDisplaysKHR(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
 			(uint32_t) planeIndex,
 			(uint32_t*) pDisplayCount,
 			(VkDisplayKHR*) pDisplays);
@@ -8348,23 +8672,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkDisplayModePropertiesKHR*                 pProperties);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param display - 
-    * @param pPropertyCount - 
-    * @param pProperties - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param display - Vulkan handle of type VkDisplayKHR 
+    * @param pPropertyCount - The length of array pProperties. 
+    * @param pProperties - An array of  VkDisplayModePropertiesKHR . 
     * 
     * @return VkResult
     */
-   public VkResult vkGetDisplayModePropertiesKHR(
+   public static VkResult vkGetDisplayModePropertiesKHR(
 		VkPhysicalDevice physicalDevice,
 		VkDisplayKHR display,
 		int[] pPropertyCount,
-		 VkDisplayModePropertiesKHR  pProperties){
-	int  _val = vkGetDisplayModePropertiesKHR0(
-			(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
-			(display==null ? null : display.getPointer()) /* ByteBuffer */ ,
+		VkDisplayModePropertiesKHR[] pProperties) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkDisplayModePropertiesKHR> pPropertiesBuff =
+			 new BigBuffer<VkDisplayModePropertiesKHR>(pProperties, VkDisplayModePropertiesKHR.getID());
+
+	 int  _val = vkGetDisplayModePropertiesKHR0(
+			physicalDevice.getNativeHandle() /* VkHandle */ ,
+			display.getNativeHandle() /* VkHandle */ ,
 			pPropertyCount ,
-			(pProperties==null ? null : pProperties.getPointer()) /* ByteBuffer */  );
+			pPropertiesBuff.getPointer() /*Buffer for Struct[]*/ );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -8380,15 +8708,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkGetDisplayModePropertiesKHR0(
-		java.nio.ByteBuffer   physicalDevice,
-		java.nio.ByteBuffer   display,
+		long   physicalDevice,
+		long   display,
 		int[]  pPropertyCount,
-		java.nio.ByteBuffer   pProperties);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
-	VkDisplayKHR* ptr_display = (VkDisplayKHR*) display;
+		ByteBuffer   pProperties);/* 
 	VkResult res = vkGetDisplayModePropertiesKHR(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
-			(VkDisplayKHR) (*ptr_display),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
+			(VkDisplayKHR) reinterpret_cast<VkDisplayKHR>(display),
 			(uint32_t*) pPropertyCount,
 			(VkDisplayModePropertiesKHR*) pProperties);
 	 return (jint) res;
@@ -8408,26 +8734,30 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkDisplayModeKHR*                           pMode);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param display - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pMode - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param display - Vulkan handle of type VkDisplayKHR 
+    * @param pCreateInfo - Vulkan Struct of type  final VkDisplayModeCreateInfoKHR 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pMode - An array of  VkDisplayModeKHR . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateDisplayModeKHR(
+   public static VkResult vkCreateDisplayModeKHR(
 		VkPhysicalDevice physicalDevice,
 		VkDisplayKHR display,
-		 VkDisplayModeCreateInfoKHR  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkDisplayModeKHR  pMode){
-	int  _val = vkCreateDisplayModeKHR0(
-			(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
-			(display==null ? null : display.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pMode==null ? null : pMode.getPointer()) /* ByteBuffer */  );
+		final VkDisplayModeCreateInfoKHR pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkDisplayModeKHR[] pMode) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkDisplayModeKHR> pModeBuffer =
+			 new BigBuffer<VkDisplayModeKHR>(pMode, false);
+	 int  _val = vkCreateDisplayModeKHR0(
+			physicalDevice.getNativeHandle() /* VkHandle */ ,
+			display.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pModeBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pModeBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -8444,16 +8774,14 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateDisplayModeKHR0(
-		java.nio.ByteBuffer   physicalDevice,
-		java.nio.ByteBuffer   display,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pMode);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
-	VkDisplayKHR* ptr_display = (VkDisplayKHR*) display;
+		long   physicalDevice,
+		long   display,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pMode);/* 
 	VkResult res = vkCreateDisplayModeKHR(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
-			(VkDisplayKHR) (*ptr_display),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
+			(VkDisplayKHR) reinterpret_cast<VkDisplayKHR>(display),
 			(const VkDisplayModeCreateInfoKHR*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkDisplayModeKHR*) pMode);
@@ -8473,23 +8801,24 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkDisplayPlaneCapabilitiesKHR*              pCapabilities);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param mode - 
-    * @param planeIndex - 
-    * @param pCapabilities - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param mode - Vulkan handle of type VkDisplayModeKHR 
+    * @param planeIndex int 
+    * @param pCapabilities - Vulkan Struct of type  VkDisplayPlaneCapabilitiesKHR  
     * 
     * @return VkResult
     */
-   public VkResult vkGetDisplayPlaneCapabilitiesKHR(
+   public static VkResult vkGetDisplayPlaneCapabilitiesKHR(
 		VkPhysicalDevice physicalDevice,
 		VkDisplayModeKHR mode,
 		int planeIndex,
-		 VkDisplayPlaneCapabilitiesKHR  pCapabilities){
-	int  _val = vkGetDisplayPlaneCapabilitiesKHR0(
-			(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
-			(mode==null ? null : mode.getPointer()) /* ByteBuffer */ ,
+		VkDisplayPlaneCapabilitiesKHR pCapabilities) {
+
+	 int  _val = vkGetDisplayPlaneCapabilitiesKHR0(
+			physicalDevice.getNativeHandle() /* VkHandle */ ,
+			mode.getNativeHandle() /* VkHandle */ ,
 			planeIndex ,
-			(pCapabilities==null ? null : pCapabilities.getPointer()) /* ByteBuffer */  );
+			pCapabilities.getPointer() /* Struct */ );
 	 return VkResult.fromValue(_val);
    } 
 
@@ -8505,15 +8834,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkGetDisplayPlaneCapabilitiesKHR0(
-		java.nio.ByteBuffer   physicalDevice,
-		java.nio.ByteBuffer   mode,
+		long   physicalDevice,
+		long   mode,
 		int  planeIndex,
-		java.nio.ByteBuffer   pCapabilities);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
-	VkDisplayModeKHR* ptr_mode = (VkDisplayModeKHR*) mode;
+		ByteBuffer   pCapabilities);/* 
 	VkResult res = vkGetDisplayPlaneCapabilitiesKHR(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
-			(VkDisplayModeKHR) (*ptr_mode),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
+			(VkDisplayModeKHR) reinterpret_cast<VkDisplayModeKHR>(mode),
 			(uint32_t) planeIndex,
 			(VkDisplayPlaneCapabilitiesKHR*) pCapabilities);
 	 return (jint) res;
@@ -8532,23 +8859,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkSurfaceKHR*                               pSurface);
     * </pre>
     * 
-    * @param instance - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pSurface - 
+    * @param instance - Vulkan handle of type VkInstance 
+    * @param pCreateInfo - Vulkan Struct of type  final VkDisplaySurfaceCreateInfoKHR 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pSurface - An array of  VkSurfaceKHR . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateDisplayPlaneSurfaceKHR(
+   public static VkResult vkCreateDisplayPlaneSurfaceKHR(
 		VkInstance instance,
-		 VkDisplaySurfaceCreateInfoKHR  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkSurfaceKHR  pSurface){
-	int  _val = vkCreateDisplayPlaneSurfaceKHR0(
-			(instance==null ? null : instance.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pSurface==null ? null : pSurface.getPointer()) /* ByteBuffer */  );
+		final VkDisplaySurfaceCreateInfoKHR pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkSurfaceKHR[] pSurface) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkSurfaceKHR> pSurfaceBuffer =
+			 new BigBuffer<VkSurfaceKHR>(pSurface, false);
+	 int  _val = vkCreateDisplayPlaneSurfaceKHR0(
+			instance.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pSurfaceBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pSurfaceBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -8564,13 +8895,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateDisplayPlaneSurfaceKHR0(
-		java.nio.ByteBuffer   instance,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pSurface);/* 
-	VkInstance* ptr_instance = (VkInstance*) instance;
+		long   instance,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pSurface);/* 
 	VkResult res = vkCreateDisplayPlaneSurfaceKHR(
-			(VkInstance) (*ptr_instance),
+			(VkInstance) reinterpret_cast<VkInstance>(instance),
 			(const VkDisplaySurfaceCreateInfoKHR*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkSurfaceKHR*) pSurface);
@@ -8591,26 +8921,33 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkSwapchainKHR*                             pSwapchains);
     * </pre>
     * 
-    * @param device - 
-    * @param swapchainCount - 
-    * @param pCreateInfos - 
-    * @param pAllocator - 
-    * @param pSwapchains - 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param swapchainCount - The length of array pCreateInfos. 
+    * @param pCreateInfos - An array of  final VkSwapchainCreateInfoKHR . 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pSwapchains - An array of  VkSwapchainKHR . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateSharedSwapchainsKHR(
+   public static VkResult vkCreateSharedSwapchainsKHR(
 		VkDevice device,
 		int swapchainCount,
-		 VkSwapchainCreateInfoKHR  pCreateInfos,
-		 VkAllocationCallbacks  pAllocator,
-		 VkSwapchainKHR  pSwapchains){
-	int  _val = vkCreateSharedSwapchainsKHR0(
-			(device==null ? null : device.getPointer()) /* ByteBuffer */ ,
+		final VkSwapchainCreateInfoKHR[] pCreateInfos,
+		final VkAllocationCallbacks pAllocator,
+		VkSwapchainKHR[] pSwapchains) {
+	 // Wrap VkStruct array in a BigBuffer 
+	 BigBuffer<VkSwapchainCreateInfoKHR> pCreateInfosBuff =
+			 new BigBuffer<VkSwapchainCreateInfoKHR>(pCreateInfos, VkSwapchainCreateInfoKHR.getID());
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkSwapchainKHR> pSwapchainsBuffer =
+			 new BigBuffer<VkSwapchainKHR>(pSwapchains, false);
+	 int  _val = vkCreateSharedSwapchainsKHR0(
+			device.getNativeHandle() /* VkHandle */ ,
 			swapchainCount ,
-			(pCreateInfos==null ? null : pCreateInfos.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pSwapchains==null ? null : pSwapchains.getPointer()) /* ByteBuffer */  );
+			pCreateInfosBuff.getPointer() /*Buffer for Struct[]*/,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pSwapchainsBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pSwapchainsBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -8627,14 +8964,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateSharedSwapchainsKHR0(
-		java.nio.ByteBuffer   device,
+		long   device,
 		int  swapchainCount,
-		java.nio.ByteBuffer   pCreateInfos,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pSwapchains);/* 
-	VkDevice* ptr_device = (VkDevice*) device;
+		ByteBuffer   pCreateInfos,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pSwapchains);/* 
 	VkResult res = vkCreateSharedSwapchainsKHR(
-			(VkDevice) (*ptr_device),
+			(VkDevice) reinterpret_cast<VkDevice>(device),
 			(uint32_t) swapchainCount,
 			(const VkSwapchainCreateInfoKHR*) pCreateInfos,
 			(const VkAllocationCallbacks*) pAllocator,
@@ -8655,23 +8991,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkSurfaceKHR*                               pSurface);
     * </pre>
     * 
-    * @param instance - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pSurface - 
+    * @param instance - Vulkan handle of type VkInstance 
+    * @param pCreateInfo - Vulkan Struct of type  final VkXlibSurfaceCreateInfoKHR 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pSurface - An array of  VkSurfaceKHR . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateXlibSurfaceKHR(
+   public static VkResult vkCreateXlibSurfaceKHR(
 		VkInstance instance,
-		 VkXlibSurfaceCreateInfoKHR  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkSurfaceKHR  pSurface){
-	int  _val = vkCreateXlibSurfaceKHR0(
-			(instance==null ? null : instance.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pSurface==null ? null : pSurface.getPointer()) /* ByteBuffer */  );
+		final VkXlibSurfaceCreateInfoKHR pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkSurfaceKHR[] pSurface) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkSurfaceKHR> pSurfaceBuffer =
+			 new BigBuffer<VkSurfaceKHR>(pSurface, false);
+	 int  _val = vkCreateXlibSurfaceKHR0(
+			instance.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pSurfaceBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pSurfaceBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -8687,13 +9027,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateXlibSurfaceKHR0(
-		java.nio.ByteBuffer   instance,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pSurface);/* 
-	VkInstance* ptr_instance = (VkInstance*) instance;
+		long   instance,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pSurface);/* 
 	VkResult res = vkCreateXlibSurfaceKHR(
-			(VkInstance) (*ptr_instance),
+			(VkInstance) reinterpret_cast<VkInstance>(instance),
 			(const VkXlibSurfaceCreateInfoKHR*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkSurfaceKHR*) pSurface);
@@ -8713,23 +9052,24 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VisualID                                    visualID);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param queueFamilyIndex - 
-    * @param dpy - 
-    * @param visualID - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param queueFamilyIndex int 
+    * @param dpy - Vulkan handle of type XlibDisplay 
+    * @param visualID - Vulkan handle of type XlibVisualID 
     * 
     * @return boolean
     */
-   public boolean vkGetPhysicalDeviceXlibPresentationSupportKHR(
+   public static boolean vkGetPhysicalDeviceXlibPresentationSupportKHR(
 		VkPhysicalDevice physicalDevice,
 		int queueFamilyIndex,
 		XlibDisplay dpy,
-		XlibVisualID visualID){
-	boolean _val = vkGetPhysicalDeviceXlibPresentationSupportKHR0(
-			(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
+		XlibVisualID visualID) {
+
+	 boolean  _val = vkGetPhysicalDeviceXlibPresentationSupportKHR0(
+			physicalDevice.getNativeHandle() /* VkHandle */ ,
 			queueFamilyIndex ,
-			(dpy==null ? null : dpy.getPointer()) /* ByteBuffer */ ,
-			(visualID==null ? null : visualID.getPointer()) /* ByteBuffer */  );
+			dpy.getNativeHandle() /* VkHandle */ ,
+			visualID.getNativeHandle() /* VkHandle */  );
 	 return _val;
    } 
 
@@ -8742,20 +9082,18 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param dpy - 
     * @param visualID - 
     * 
-    * @return boolean as boolean 
+    * @return boolean as boolean  
     */
-    private static native boolean vkGetPhysicalDeviceXlibPresentationSupportKHR0(
-		java.nio.ByteBuffer   physicalDevice,
+    private static native boolean  vkGetPhysicalDeviceXlibPresentationSupportKHR0(
+		long   physicalDevice,
 		int  queueFamilyIndex,
-		java.nio.ByteBuffer   dpy,
-		java.nio.ByteBuffer   visualID);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
-	VisualID* ptr_visualID = (VisualID*) visualID;
+		long   dpy,
+		long   visualID);/* 
 	boolean res = vkGetPhysicalDeviceXlibPresentationSupportKHR(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
 			(uint32_t) queueFamilyIndex,
 			(Display*) dpy,
-			(VisualID) (*ptr_visualID));
+			(VisualID) reinterpret_cast<VisualID>(visualID));
 	 return (jboolean) res;
   */ 
 
@@ -8772,23 +9110,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkSurfaceKHR*                               pSurface);
     * </pre>
     * 
-    * @param instance - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pSurface - 
+    * @param instance - Vulkan handle of type VkInstance 
+    * @param pCreateInfo - Vulkan Struct of type  final VkXcbSurfaceCreateInfoKHR 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pSurface - An array of  VkSurfaceKHR . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateXcbSurfaceKHR(
+   public static VkResult vkCreateXcbSurfaceKHR(
 		VkInstance instance,
-		 VkXcbSurfaceCreateInfoKHR  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkSurfaceKHR  pSurface){
-	int  _val = vkCreateXcbSurfaceKHR0(
-			(instance==null ? null : instance.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pSurface==null ? null : pSurface.getPointer()) /* ByteBuffer */  );
+		final VkXcbSurfaceCreateInfoKHR pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkSurfaceKHR[] pSurface) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkSurfaceKHR> pSurfaceBuffer =
+			 new BigBuffer<VkSurfaceKHR>(pSurface, false);
+	 int  _val = vkCreateXcbSurfaceKHR0(
+			instance.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pSurfaceBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pSurfaceBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -8804,13 +9146,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateXcbSurfaceKHR0(
-		java.nio.ByteBuffer   instance,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pSurface);/* 
-	VkInstance* ptr_instance = (VkInstance*) instance;
+		long   instance,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pSurface);/* 
 	VkResult res = vkCreateXcbSurfaceKHR(
-			(VkInstance) (*ptr_instance),
+			(VkInstance) reinterpret_cast<VkInstance>(instance),
 			(const VkXcbSurfaceCreateInfoKHR*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkSurfaceKHR*) pSurface);
@@ -8830,23 +9171,24 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     xcb_visualid_t                              visual_id);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param queueFamilyIndex - 
-    * @param connection - 
-    * @param visual_id - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param queueFamilyIndex int 
+    * @param connection - Vulkan handle of type XCBconnection 
+    * @param visual_id - Vulkan handle of type XCBVisualID 
     * 
     * @return boolean
     */
-   public boolean vkGetPhysicalDeviceXcbPresentationSupportKHR(
+   public static boolean vkGetPhysicalDeviceXcbPresentationSupportKHR(
 		VkPhysicalDevice physicalDevice,
 		int queueFamilyIndex,
 		XCBconnection connection,
-		XCBVisualID visual_id){
-	boolean _val = vkGetPhysicalDeviceXcbPresentationSupportKHR0(
-			(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
+		XCBVisualID visual_id) {
+
+	 boolean  _val = vkGetPhysicalDeviceXcbPresentationSupportKHR0(
+			physicalDevice.getNativeHandle() /* VkHandle */ ,
 			queueFamilyIndex ,
-			(connection==null ? null : connection.getPointer()) /* ByteBuffer */ ,
-			visual_id  );
+			connection.getNativeHandle() /* VkHandle */ ,
+			visual_id.getNativeHandle() /* VkHandle */  );
 	 return _val;
    } 
 
@@ -8859,19 +9201,18 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param connection - 
     * @param visual_id - 
     * 
-    * @return boolean as boolean 
+    * @return boolean as boolean  
     */
-    private static native boolean vkGetPhysicalDeviceXcbPresentationSupportKHR0(
-		java.nio.ByteBuffer   physicalDevice,
+    private static native boolean  vkGetPhysicalDeviceXcbPresentationSupportKHR0(
+		long   physicalDevice,
 		int  queueFamilyIndex,
-		java.nio.ByteBuffer   connection,
-		XCBVisualID  visual_id);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
+		long   connection,
+		long   visual_id);/* 
 	boolean res = vkGetPhysicalDeviceXcbPresentationSupportKHR(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
 			(uint32_t) queueFamilyIndex,
 			(xcb_connection_t*) connection,
-			(xcb_visualid_t) visual_id);
+			(xcb_visualid_t) reinterpret_cast<xcb_visualid_t>(visual_id));
 	 return (jboolean) res;
   */ 
 
@@ -8888,23 +9229,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkSurfaceKHR*                               pSurface);
     * </pre>
     * 
-    * @param instance - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pSurface - 
+    * @param instance - Vulkan handle of type VkInstance 
+    * @param pCreateInfo - Vulkan Struct of type  final VkWaylandSurfaceCreateInfoKHR 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pSurface - An array of  VkSurfaceKHR . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateWaylandSurfaceKHR(
+   public static VkResult vkCreateWaylandSurfaceKHR(
 		VkInstance instance,
-		 VkWaylandSurfaceCreateInfoKHR  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkSurfaceKHR  pSurface){
-	int  _val = vkCreateWaylandSurfaceKHR0(
-			(instance==null ? null : instance.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pSurface==null ? null : pSurface.getPointer()) /* ByteBuffer */  );
+		final VkWaylandSurfaceCreateInfoKHR pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkSurfaceKHR[] pSurface) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkSurfaceKHR> pSurfaceBuffer =
+			 new BigBuffer<VkSurfaceKHR>(pSurface, false);
+	 int  _val = vkCreateWaylandSurfaceKHR0(
+			instance.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pSurfaceBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pSurfaceBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -8920,13 +9265,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateWaylandSurfaceKHR0(
-		java.nio.ByteBuffer   instance,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pSurface);/* 
-	VkInstance* ptr_instance = (VkInstance*) instance;
+		long   instance,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pSurface);/* 
 	VkResult res = vkCreateWaylandSurfaceKHR(
-			(VkInstance) (*ptr_instance),
+			(VkInstance) reinterpret_cast<VkInstance>(instance),
 			(const VkWaylandSurfaceCreateInfoKHR*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkSurfaceKHR*) pSurface);
@@ -8945,20 +9289,21 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     struct wl_display*                          display);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param queueFamilyIndex - 
-    * @param display - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param queueFamilyIndex int 
+    * @param display - Vulkan handle of type WlDisplay 
     * 
     * @return boolean
     */
-   public boolean vkGetPhysicalDeviceWaylandPresentationSupportKHR(
+   public static boolean vkGetPhysicalDeviceWaylandPresentationSupportKHR(
 		VkPhysicalDevice physicalDevice,
 		int queueFamilyIndex,
-		WlDisplay display){
-	boolean _val = vkGetPhysicalDeviceWaylandPresentationSupportKHR0(
-			(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
+		WlDisplay display) {
+
+	 boolean  _val = vkGetPhysicalDeviceWaylandPresentationSupportKHR0(
+			physicalDevice.getNativeHandle() /* VkHandle */ ,
 			queueFamilyIndex ,
-			(display==null ? null : display.getPointer()) /* ByteBuffer */  );
+			display.getNativeHandle() /* VkHandle */  );
 	 return _val;
    } 
 
@@ -8970,15 +9315,14 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param queueFamilyIndex - 
     * @param display - 
     * 
-    * @return boolean as boolean 
+    * @return boolean as boolean  
     */
-    private static native boolean vkGetPhysicalDeviceWaylandPresentationSupportKHR0(
-		java.nio.ByteBuffer   physicalDevice,
+    private static native boolean  vkGetPhysicalDeviceWaylandPresentationSupportKHR0(
+		long   physicalDevice,
 		int  queueFamilyIndex,
-		java.nio.ByteBuffer   display);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
+		long   display);/* 
 	boolean res = vkGetPhysicalDeviceWaylandPresentationSupportKHR(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
 			(uint32_t) queueFamilyIndex,
 			(struct wl_display*) display);
 	 return (jboolean) res;
@@ -8997,23 +9341,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkSurfaceKHR*                               pSurface);
     * </pre>
     * 
-    * @param instance - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pSurface - 
+    * @param instance - Vulkan handle of type VkInstance 
+    * @param pCreateInfo - Vulkan Struct of type  final VkMirSurfaceCreateInfoKHR 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pSurface - An array of  VkSurfaceKHR . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateMirSurfaceKHR(
+   public static VkResult vkCreateMirSurfaceKHR(
 		VkInstance instance,
-		 VkMirSurfaceCreateInfoKHR  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkSurfaceKHR  pSurface){
-	int  _val = vkCreateMirSurfaceKHR0(
-			(instance==null ? null : instance.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pSurface==null ? null : pSurface.getPointer()) /* ByteBuffer */  );
+		final VkMirSurfaceCreateInfoKHR pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkSurfaceKHR[] pSurface) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkSurfaceKHR> pSurfaceBuffer =
+			 new BigBuffer<VkSurfaceKHR>(pSurface, false);
+	 int  _val = vkCreateMirSurfaceKHR0(
+			instance.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pSurfaceBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pSurfaceBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -9029,13 +9377,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateMirSurfaceKHR0(
-		java.nio.ByteBuffer   instance,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pSurface);/* 
-	VkInstance* ptr_instance = (VkInstance*) instance;
+		long   instance,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pSurface);/* 
 	VkResult res = vkCreateMirSurfaceKHR(
-			(VkInstance) (*ptr_instance),
+			(VkInstance) reinterpret_cast<VkInstance>(instance),
 			(const VkMirSurfaceCreateInfoKHR*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkSurfaceKHR*) pSurface);
@@ -9054,20 +9401,21 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     MirConnection*                              connection);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param queueFamilyIndex - 
-    * @param connection - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param queueFamilyIndex int 
+    * @param connection - Vulkan handle of type MirConnection 
     * 
     * @return boolean
     */
-   public boolean vkGetPhysicalDeviceMirPresentationSupportKHR(
+   public static boolean vkGetPhysicalDeviceMirPresentationSupportKHR(
 		VkPhysicalDevice physicalDevice,
 		int queueFamilyIndex,
-		MirConnection connection){
-	boolean _val = vkGetPhysicalDeviceMirPresentationSupportKHR0(
-			(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
+		MirConnection connection) {
+
+	 boolean  _val = vkGetPhysicalDeviceMirPresentationSupportKHR0(
+			physicalDevice.getNativeHandle() /* VkHandle */ ,
 			queueFamilyIndex ,
-			(connection==null ? null : connection.getPointer()) /* ByteBuffer */  );
+			connection.getNativeHandle() /* VkHandle */  );
 	 return _val;
    } 
 
@@ -9079,15 +9427,14 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param queueFamilyIndex - 
     * @param connection - 
     * 
-    * @return boolean as boolean 
+    * @return boolean as boolean  
     */
-    private static native boolean vkGetPhysicalDeviceMirPresentationSupportKHR0(
-		java.nio.ByteBuffer   physicalDevice,
+    private static native boolean  vkGetPhysicalDeviceMirPresentationSupportKHR0(
+		long   physicalDevice,
 		int  queueFamilyIndex,
-		java.nio.ByteBuffer   connection);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
+		long   connection);/* 
 	boolean res = vkGetPhysicalDeviceMirPresentationSupportKHR(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
 			(uint32_t) queueFamilyIndex,
 			(MirConnection*) connection);
 	 return (jboolean) res;
@@ -9106,23 +9453,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkSurfaceKHR*                               pSurface);
     * </pre>
     * 
-    * @param instance - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pSurface - 
+    * @param instance - Vulkan handle of type VkInstance 
+    * @param pCreateInfo - Vulkan Struct of type  final VkAndroidSurfaceCreateInfoKHR 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pSurface - An array of  VkSurfaceKHR . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateAndroidSurfaceKHR(
+   public static VkResult vkCreateAndroidSurfaceKHR(
 		VkInstance instance,
-		 VkAndroidSurfaceCreateInfoKHR  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkSurfaceKHR  pSurface){
-	int  _val = vkCreateAndroidSurfaceKHR0(
-			(instance==null ? null : instance.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pSurface==null ? null : pSurface.getPointer()) /* ByteBuffer */  );
+		final VkAndroidSurfaceCreateInfoKHR pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkSurfaceKHR[] pSurface) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkSurfaceKHR> pSurfaceBuffer =
+			 new BigBuffer<VkSurfaceKHR>(pSurface, false);
+	 int  _val = vkCreateAndroidSurfaceKHR0(
+			instance.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pSurfaceBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pSurfaceBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -9138,13 +9489,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateAndroidSurfaceKHR0(
-		java.nio.ByteBuffer   instance,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pSurface);/* 
-	VkInstance* ptr_instance = (VkInstance*) instance;
+		long   instance,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pSurface);/* 
 	VkResult res = vkCreateAndroidSurfaceKHR(
-			(VkInstance) (*ptr_instance),
+			(VkInstance) reinterpret_cast<VkInstance>(instance),
 			(const VkAndroidSurfaceCreateInfoKHR*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkSurfaceKHR*) pSurface);
@@ -9164,23 +9514,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkSurfaceKHR*                               pSurface);
     * </pre>
     * 
-    * @param instance - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pSurface - 
+    * @param instance - Vulkan handle of type VkInstance 
+    * @param pCreateInfo - Vulkan Struct of type  final VkWin32SurfaceCreateInfoKHR 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pSurface - An array of  VkSurfaceKHR . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateWin32SurfaceKHR(
+   public static VkResult vkCreateWin32SurfaceKHR(
 		VkInstance instance,
-		 VkWin32SurfaceCreateInfoKHR  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkSurfaceKHR  pSurface){
-	int  _val = vkCreateWin32SurfaceKHR0(
-			(instance==null ? null : instance.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pSurface==null ? null : pSurface.getPointer()) /* ByteBuffer */  );
+		final VkWin32SurfaceCreateInfoKHR pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkSurfaceKHR[] pSurface) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkSurfaceKHR> pSurfaceBuffer =
+			 new BigBuffer<VkSurfaceKHR>(pSurface, false);
+	 int  _val = vkCreateWin32SurfaceKHR0(
+			instance.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pSurfaceBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pSurfaceBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -9196,13 +9550,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateWin32SurfaceKHR0(
-		java.nio.ByteBuffer   instance,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pSurface);/* 
-	VkInstance* ptr_instance = (VkInstance*) instance;
+		long   instance,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pSurface);/* 
 	VkResult res = vkCreateWin32SurfaceKHR(
-			(VkInstance) (*ptr_instance),
+			(VkInstance) reinterpret_cast<VkInstance>(instance),
 			(const VkWin32SurfaceCreateInfoKHR*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkSurfaceKHR*) pSurface);
@@ -9220,16 +9573,17 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     uint32_t                                    queueFamilyIndex);
     * </pre>
     * 
-    * @param physicalDevice - 
-    * @param queueFamilyIndex - 
+    * @param physicalDevice - Vulkan handle of type VkPhysicalDevice 
+    * @param queueFamilyIndex int 
     * 
     * @return boolean
     */
-   public boolean vkGetPhysicalDeviceWin32PresentationSupportKHR(
+   public static boolean vkGetPhysicalDeviceWin32PresentationSupportKHR(
 		VkPhysicalDevice physicalDevice,
-		int queueFamilyIndex){
-	boolean _val = vkGetPhysicalDeviceWin32PresentationSupportKHR0(
-			(physicalDevice==null ? null : physicalDevice.getPointer()) /* ByteBuffer */ ,
+		int queueFamilyIndex) {
+
+	 boolean  _val = vkGetPhysicalDeviceWin32PresentationSupportKHR0(
+			physicalDevice.getNativeHandle() /* VkHandle */ ,
 			queueFamilyIndex  );
 	 return _val;
    } 
@@ -9241,14 +9595,13 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param physicalDevice - 
     * @param queueFamilyIndex - 
     * 
-    * @return boolean as boolean 
+    * @return boolean as boolean  
     */
-    private static native boolean vkGetPhysicalDeviceWin32PresentationSupportKHR0(
-		java.nio.ByteBuffer   physicalDevice,
+    private static native boolean  vkGetPhysicalDeviceWin32PresentationSupportKHR0(
+		long   physicalDevice,
 		int  queueFamilyIndex);/* 
-	VkPhysicalDevice* ptr_physicalDevice = (VkPhysicalDevice*) physicalDevice;
 	boolean res = vkGetPhysicalDeviceWin32PresentationSupportKHR(
-			(VkPhysicalDevice) (*ptr_physicalDevice),
+			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
 			(uint32_t) queueFamilyIndex);
 	 return (jboolean) res;
   */ 
@@ -9266,23 +9619,27 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     VkDebugReportCallbackEXT*                   pCallback);
     * </pre>
     * 
-    * @param instance - 
-    * @param pCreateInfo - 
-    * @param pAllocator - 
-    * @param pCallback - 
+    * @param instance - Vulkan handle of type VkInstance 
+    * @param pCreateInfo - Vulkan Struct of type  final VkDebugReportCallbackCreateInfoEXT 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
+    * @param pCallback - An array of  VkDebugReportCallbackEXT . 
     * 
     * @return VkResult
     */
-   public VkResult vkCreateDebugReportCallbackEXT(
+   public static VkResult vkCreateDebugReportCallbackEXT(
 		VkInstance instance,
-		 VkDebugReportCallbackCreateInfoEXT  pCreateInfo,
-		 VkAllocationCallbacks  pAllocator,
-		 VkDebugReportCallbackEXT  pCallback){
-	int  _val = vkCreateDebugReportCallbackEXT0(
-			(instance==null ? null : instance.getPointer()) /* ByteBuffer */ ,
-			(pCreateInfo==null ? null : pCreateInfo.getPointer()) /* ByteBuffer */ ,
-			(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */ ,
-			(pCallback==null ? null : pCallback.getPointer()) /* ByteBuffer */  );
+		final VkDebugReportCallbackCreateInfoEXT pCreateInfo,
+		final VkAllocationCallbacks pAllocator,
+		VkDebugReportCallbackEXT[] pCallback) {
+	 // Wrap VkHandle array in a BigBuffer 
+	 BigBuffer<VkDebugReportCallbackEXT> pCallbackBuffer =
+			 new BigBuffer<VkDebugReportCallbackEXT>(pCallback, false);
+	 int  _val = vkCreateDebugReportCallbackEXT0(
+			instance.getNativeHandle() /* VkHandle */ ,
+			pCreateInfo.getPointer() /* Struct */,
+			(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */ ,
+			pCallbackBuffer.getPointer() /*BigBuffer of VkHandle*/ );
+	 pCallbackBuffer.update();
 	 return VkResult.fromValue(_val);
    } 
 
@@ -9298,13 +9655,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @return VkResult as int  
     */
     private static native int  vkCreateDebugReportCallbackEXT0(
-		java.nio.ByteBuffer   instance,
-		java.nio.ByteBuffer   pCreateInfo,
-		java.nio.ByteBuffer   pAllocator,
-		java.nio.ByteBuffer   pCallback);/* 
-	VkInstance* ptr_instance = (VkInstance*) instance;
+		long   instance,
+		ByteBuffer   pCreateInfo,
+		ByteBuffer   pAllocator,
+		ByteBuffer   pCallback);/* 
 	VkResult res = vkCreateDebugReportCallbackEXT(
-			(VkInstance) (*ptr_instance),
+			(VkInstance) reinterpret_cast<VkInstance>(instance),
 			(const VkDebugReportCallbackCreateInfoEXT*) pCreateInfo,
 			(const VkAllocationCallbacks*) pAllocator,
 			(VkDebugReportCallbackEXT*) pCallback);
@@ -9323,18 +9679,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const VkAllocationCallbacks*                pAllocator);
     * </pre>
     * 
-    * @param instance - 
-    * @param callback - 
-    * @param pAllocator - 
+    * @param instance - Vulkan handle of type VkInstance 
+    * @param callback - Vulkan handle of type VkDebugReportCallbackEXT 
+    * @param pAllocator - Vulkan Struct of type  final VkAllocationCallbacks 
     */
-   public void vkDestroyDebugReportCallbackEXT(
+   public static void vkDestroyDebugReportCallbackEXT(
 		VkInstance instance,
 		VkDebugReportCallbackEXT callback,
-		 VkAllocationCallbacks  pAllocator){
-	vkDestroyDebugReportCallbackEXT0(
-		(instance==null ? null : instance.getPointer()) /* ByteBuffer */ ,
-		(callback==null ? null : callback.getPointer()) /* ByteBuffer */ ,
-		(pAllocator==null ? null : pAllocator.getPointer()) /* ByteBuffer */  );
+		final VkAllocationCallbacks pAllocator) {
+
+	 vkDestroyDebugReportCallbackEXT0(
+		instance.getNativeHandle() /* VkHandle */ ,
+		callback.getNativeHandle() /* VkHandle */ ,
+		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
 
    } 
 
@@ -9347,14 +9704,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pAllocator - 
     */
     private static native void vkDestroyDebugReportCallbackEXT0(
-		java.nio.ByteBuffer   instance,
-		java.nio.ByteBuffer   callback,
-		java.nio.ByteBuffer   pAllocator);/* 
-	VkInstance* ptr_instance = (VkInstance*) instance;
-	VkDebugReportCallbackEXT* ptr_callback = (VkDebugReportCallbackEXT*) callback;
+		long   instance,
+		long   callback,
+		ByteBuffer   pAllocator);/* 
 	vkDestroyDebugReportCallbackEXT(
-			(VkInstance) (*ptr_instance),
-			(VkDebugReportCallbackEXT) (*ptr_callback),
+			(VkInstance) reinterpret_cast<VkInstance>(instance),
+			(VkDebugReportCallbackEXT) reinterpret_cast<VkDebugReportCallbackEXT>(callback),
 			(const VkAllocationCallbacks*) pAllocator);
 
   */ 
@@ -9376,16 +9731,16 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     *     const char*                                 pMessage);
     * </pre>
     * 
-    * @param instance - 
-    * @param flags - 
-    * @param objectType - 
-    * @param object - 
-    * @param location - 
-    * @param messageCode - 
-    * @param pLayerPrefix - 
-    * @param pMessage - 
+    * @param instance - Vulkan handle of type VkInstance 
+    * @param flags int 
+    * @param objectType - Vulkan enumeration of type VkDebugReportObjectTypeEXT 
+    * @param object long 
+    * @param location long 
+    * @param messageCode int 
+    * @param pLayerPrefix String 
+    * @param pMessage String 
     */
-   public void vkDebugReportMessageEXT(
+   public static void vkDebugReportMessageEXT(
 		VkInstance instance,
 		int flags,
 		VkDebugReportObjectTypeEXT objectType,
@@ -9393,11 +9748,12 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
 		long location,
 		int messageCode,
 		String pLayerPrefix,
-		String pMessage){
-	vkDebugReportMessageEXT0(
-		(instance==null ? null : instance.getPointer()) /* ByteBuffer */ ,
+		String pMessage) {
+
+	 vkDebugReportMessageEXT0(
+		instance.getNativeHandle() /* VkHandle */ ,
 		flags ,
-		objectType.getValue() /* enum */,
+		objectType.getValue() /* VkEnum */,
 		object ,
 		location ,
 		messageCode ,
@@ -9420,7 +9776,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pMessage - 
     */
     private static native void vkDebugReportMessageEXT0(
-		java.nio.ByteBuffer   instance,
+		long   instance,
 		int  flags,
 		int   objectType,
 		long  object,
@@ -9428,9 +9784,8 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
 		int  messageCode,
 		String  pLayerPrefix,
 		String  pMessage);/* 
-	VkInstance* ptr_instance = (VkInstance*) instance;
 	vkDebugReportMessageEXT(
-			(VkInstance) (*ptr_instance),
+			(VkInstance) reinterpret_cast<VkInstance>(instance),
 			(VkDebugReportFlagsEXT) flags,
 			(VkDebugReportObjectTypeEXT) objectType,
 			(uint64_t) object,
@@ -9444,6 +9799,207 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
 
 	/////////////////////////////////////
 
+   /**
+    *  Vulkan procedure ID: 170
+    * <h2>Prototype</h2><pre>
+    *  VkResult  vkDebugMarkerSetObjectTagEXT(
+    *     VkDevice                                    device,
+    *     VkDebugMarkerObjectTagInfoEXT*              pTagInfo);
+    * </pre>
+    * 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pTagInfo - Vulkan Struct of type  VkDebugMarkerObjectTagInfoEXT  
+    * 
+    * @return VkResult
+    */
+   public static VkResult vkDebugMarkerSetObjectTagEXT(
+		VkDevice device,
+		VkDebugMarkerObjectTagInfoEXT pTagInfo) {
+
+	 int  _val = vkDebugMarkerSetObjectTagEXT0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pTagInfo.getPointer() /* Struct */ );
+	 return VkResult.fromValue(_val);
+   } 
+
+   /**
+    *  Native interface for Vulkan method #170
+    *  vkDebugMarkerSetObjectTagEXT 
+    * 
+    * @param device - 
+    * @param pTagInfo - 
+    * 
+    * @return VkResult as int  
+    */
+    private static native int  vkDebugMarkerSetObjectTagEXT0(
+		long   device,
+		ByteBuffer   pTagInfo);/* 
+	VkResult res = vkDebugMarkerSetObjectTagEXT(
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkDebugMarkerObjectTagInfoEXT*) pTagInfo);
+	 return (jint) res;
+  */ 
 
 
- }//end of Vk
+	/////////////////////////////////////
+
+   /**
+    *  Vulkan procedure ID: 171
+    * <h2>Prototype</h2><pre>
+    *  VkResult  vkDebugMarkerSetObjectNameEXT(
+    *     VkDevice                                    device,
+    *     VkDebugMarkerObjectNameInfoEXT*             pNameInfo);
+    * </pre>
+    * 
+    * @param device - Vulkan handle of type VkDevice 
+    * @param pNameInfo - Vulkan Struct of type  VkDebugMarkerObjectNameInfoEXT  
+    * 
+    * @return VkResult
+    */
+   public static VkResult vkDebugMarkerSetObjectNameEXT(
+		VkDevice device,
+		VkDebugMarkerObjectNameInfoEXT pNameInfo) {
+
+	 int  _val = vkDebugMarkerSetObjectNameEXT0(
+			device.getNativeHandle() /* VkHandle */ ,
+			pNameInfo.getPointer() /* Struct */ );
+	 return VkResult.fromValue(_val);
+   } 
+
+   /**
+    *  Native interface for Vulkan method #171
+    *  vkDebugMarkerSetObjectNameEXT 
+    * 
+    * @param device - 
+    * @param pNameInfo - 
+    * 
+    * @return VkResult as int  
+    */
+    private static native int  vkDebugMarkerSetObjectNameEXT0(
+		long   device,
+		ByteBuffer   pNameInfo);/* 
+	VkResult res = vkDebugMarkerSetObjectNameEXT(
+			(VkDevice) reinterpret_cast<VkDevice>(device),
+			(VkDebugMarkerObjectNameInfoEXT*) pNameInfo);
+	 return (jint) res;
+  */ 
+
+
+	/////////////////////////////////////
+
+   /**
+    *  Vulkan procedure ID: 172
+    * <h2>Prototype</h2><pre>
+    *  void  vkCmdDebugMarkerBeginEXT(
+    *     VkCommandBuffer                             commandBuffer,
+    *     VkDebugMarkerMarkerInfoEXT*                 pMarkerInfo);
+    * </pre>
+    * 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param pMarkerInfo - Vulkan Struct of type  VkDebugMarkerMarkerInfoEXT  
+    */
+   public static void vkCmdDebugMarkerBeginEXT(
+		VkCommandBuffer commandBuffer,
+		VkDebugMarkerMarkerInfoEXT pMarkerInfo) {
+
+	 vkCmdDebugMarkerBeginEXT0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		pMarkerInfo.getPointer() /* Struct */ );
+
+   } 
+
+   /**
+    *  Native interface for Vulkan method #172
+    *  vkCmdDebugMarkerBeginEXT 
+    * 
+    * @param commandBuffer - 
+    * @param pMarkerInfo - 
+    */
+    private static native void vkCmdDebugMarkerBeginEXT0(
+		long   commandBuffer,
+		ByteBuffer   pMarkerInfo);/* 
+	vkCmdDebugMarkerBeginEXT(
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkDebugMarkerMarkerInfoEXT*) pMarkerInfo);
+
+  */ 
+
+
+	/////////////////////////////////////
+
+   /**
+    *  Vulkan procedure ID: 173
+    * <h2>Prototype</h2><pre>
+    *  void  vkCmdDebugMarkerEndEXT(
+    *     VkCommandBuffer                             commandBuffer);
+    * </pre>
+    * 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    */
+   public static void vkCmdDebugMarkerEndEXT(
+		VkCommandBuffer commandBuffer) {
+
+	 vkCmdDebugMarkerEndEXT0(
+		commandBuffer.getNativeHandle() /* VkHandle */  );
+
+   } 
+
+   /**
+    *  Native interface for Vulkan method #173
+    *  vkCmdDebugMarkerEndEXT 
+    * 
+    * @param commandBuffer - 
+    */
+    private static native void vkCmdDebugMarkerEndEXT0(
+		long   commandBuffer);/* 
+	vkCmdDebugMarkerEndEXT(
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer));
+
+  */ 
+
+
+	/////////////////////////////////////
+
+   /**
+    *  Vulkan procedure ID: 174
+    * <h2>Prototype</h2><pre>
+    *  void  vkCmdDebugMarkerInsertEXT(
+    *     VkCommandBuffer                             commandBuffer,
+    *     VkDebugMarkerMarkerInfoEXT*                 pMarkerInfo);
+    * </pre>
+    * 
+    * @param commandBuffer - Vulkan handle of type VkCommandBuffer 
+    * @param pMarkerInfo - Vulkan Struct of type  VkDebugMarkerMarkerInfoEXT  
+    */
+   public static void vkCmdDebugMarkerInsertEXT(
+		VkCommandBuffer commandBuffer,
+		VkDebugMarkerMarkerInfoEXT pMarkerInfo) {
+
+	 vkCmdDebugMarkerInsertEXT0(
+		commandBuffer.getNativeHandle() /* VkHandle */ ,
+		pMarkerInfo.getPointer() /* Struct */ );
+
+   } 
+
+   /**
+    *  Native interface for Vulkan method #174
+    *  vkCmdDebugMarkerInsertEXT 
+    * 
+    * @param commandBuffer - 
+    * @param pMarkerInfo - 
+    */
+    private static native void vkCmdDebugMarkerInsertEXT0(
+		long   commandBuffer,
+		ByteBuffer   pMarkerInfo);/* 
+	vkCmdDebugMarkerInsertEXT(
+			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
+			(VkDebugMarkerMarkerInfoEXT*) pMarkerInfo);
+
+  */ 
+
+
+	/////////////////////////////////////
+
+
+
+ }//end of Vk.java 

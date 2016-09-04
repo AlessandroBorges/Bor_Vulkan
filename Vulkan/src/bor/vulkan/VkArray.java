@@ -6,24 +6,59 @@ package bor.vulkan;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.RandomAccess;
+import java.nio.ByteBuffer;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Iterator;
 
 import bor.util.BigBuffer;
+import bor.vulkan.structs.VkAllocationCallbacks;
+import bor.vulkan.structs.VkAndroidSurfaceCreateInfoKHR;
+import bor.vulkan.structs.VkApplicationInfo;
+import bor.vulkan.structs.VkAttachmentDescription;
+import bor.vulkan.structs.VkAttachmentReference;
+import bor.vulkan.structs.VkBindSparseInfo;
+import bor.vulkan.structs.VkBufferCopy;
+import bor.vulkan.structs.VkBufferCreateInfo;
+import bor.vulkan.structs.VkBufferImageCopy;
+import bor.vulkan.structs.VkBufferMemoryBarrier;
+import bor.vulkan.structs.VkBufferViewCreateInfo;
+import bor.vulkan.structs.VkClearAttachment;
+import bor.vulkan.structs.VkClearDepthStencilValue;
+import bor.vulkan.structs.VkClearRect;
+import bor.vulkan.structs.VkCommandBufferAllocateInfo;
 import bor.vulkan.structs.VkStruct;
 
 /**
  * Immutable List to hold VkStructs and VkHandles.<br>
+ * To create a VkArray list, look for <b>createVkArray(int)</b> 
+ *  static methods of VkStructs subclasses.<br>
  * 
- * 
+ *  @see VkAllocationCallbacks#createVkArray(int) 
+ *  @see VkAndroidSurfaceCreateInfoKHR#createVkArray(int)
+ *  @see VkApplicationInfo#createVkArray(int)
+ *  @see VkAttachmentDescription#createVkArray(int)
+ *  @see VkAttachmentReference#createVkArray(int)
+ *  @see VkBindSparseInfo#createVkArray(int)
+ *  @see VkBufferCopy#createVkArray(int)
+ *  @see VkBufferCreateInfo#createVkArray(int)
+ *  @see VkBufferImageCopy#createVkArray(int)
+ *  @see VkBufferMemoryBarrier#createVkArray(int)
+ *  @see VkBufferViewCreateInfo#createVkArray(int)
+ *  @see VkClearAttachment#createVkArray(int)
+ *  @see VkClearDepthStencilValue#createVkArray(int)
+ *  @see VkClearRect#createVkArray(int)
+ *  @see VkCommandBufferAllocateInfo#createVkArray(int)
+ *  
+ *  @todo complete Javadoc list 
+ *  
  * @author Alessandro Borges
  *
  */
 public abstract class VkArray<E extends VkObject> implements List<E>, RandomAccess {
 
     /**
-     * Array to store Structs
+     * Array to store VkObject elements
      */
     protected E[] array;
     
@@ -33,15 +68,30 @@ public abstract class VkArray<E extends VkObject> implements List<E>, RandomAcce
     protected BigBuffer<E> bigBuffer;
     
     /**
-     * 
+     * Ctor
      */
     public VkArray() {
-        // TODO Auto-generated constructor stub
     }
 
     /**
+     * Updates java side with values read from native side.<br>
+     * Necessary with VkHandle.
+     */
+    public void update(){
+        bigBuffer.update();
+    }
+    
+    /**
+     * Get pointer to native data, wrapped with ByteBuffer.
+     * @return ByteBuffer wrapping native pointer
+     */
+    public ByteBuffer getPointer(){
+        return bigBuffer.getBuffer();
+    }
+    
+    /**
      * 
-     *  Unsupported Operation.<br>
+     * Unsupported Operation.<br>
      * @see java.util.List#add(java.lang.Object)
      * @exception UnsupportedOperationException - this operation is not 
      * supported in this immutable List.

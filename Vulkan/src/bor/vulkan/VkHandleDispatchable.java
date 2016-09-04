@@ -23,15 +23,20 @@ import bor.util.BigBuffer;
  * @author Alessandro Borges
  *
  */
-public class VkHandleDispatchable 
- //extends VkHandle
- implements  VkInstance, VkPhysicalDevice, VkDevice, VkCommandBuffer, VkQueue, VkHandleDispatchableInterface
+public class VkHandleDispatchable
+ implements VkHandleDispatchableInterface,
+            VkInstance, VkPhysicalDevice, 
+            VkDevice, VkCommandBuffer, VkQueue 
+             
  {
     /**
      * Dispatchable class names.
      */
-    public static final String[] DISPACHABLE_HANDLE_NAMES = { "VkInstance", "VkPhysicalDevice", 
-                                                              "VkDevice", "VkCommandBuffer", "VkQueue"} ;
+    public static final String[] DISPACHABLE_HANDLE_NAMES = { "VkInstance", 
+                                                              "VkPhysicalDevice", 
+                                                              "VkDevice", 
+                                                              "VkCommandBuffer", 
+                                                              "VkQueue"} ;
     /**
      * Native handle value.
      */
@@ -74,9 +79,9 @@ public class VkHandleDispatchable
     * @return
     */
     public VkArrayHandleDispatchable<VkHandleDispatchable> createVkArrayDispatchable(int size) {
-        VkHandleDispatchable[] array = new VkHandleDispatchable[size];
-        
-        VkArrayHandleDispatchable<VkHandleDispatchable> vkArray = new VkArrayHandleDispatchable(array);
+        VkHandleDispatchable[] array = new VkHandleDispatchable[size];        
+        VkArrayHandleDispatchable<VkHandleDispatchable> 
+              vkArray = new VkArrayHandleDispatchable<VkHandleDispatchable>(array);
         return vkArray;
     }
         
@@ -88,7 +93,8 @@ public class VkHandleDispatchable
      */
     public static VkArrayHandleDispatchable<VkInstance> createArrayVkInstance(int size) {
         VkInstance[] array = new VkInstance[size];        
-        VkArrayHandleDispatchable<VkInstance> vkArray = new VkArrayHandleDispatchable<VkInstance>(array);
+        VkArrayHandleDispatchable<VkInstance> 
+            vkArray = new VkArrayHandleDispatchable<VkInstance>(array);
         return vkArray;
     }
     
@@ -99,7 +105,8 @@ public class VkHandleDispatchable
      */
     public static VkArrayHandleDispatchable<VkPhysicalDevice> createArrayVkPhysicalDevice(int size) {
         VkPhysicalDevice[] array = new VkPhysicalDevice[size];        
-        VkArrayHandleDispatchable<VkPhysicalDevice> vkArray = new VkArrayHandleDispatchable<VkPhysicalDevice>(array);
+        VkArrayHandleDispatchable<VkPhysicalDevice> 
+            vkArray = new VkArrayHandleDispatchable<VkPhysicalDevice>(array);
         return vkArray;
     }
     
@@ -111,7 +118,8 @@ public class VkHandleDispatchable
      */
     public static VkArrayHandleDispatchable<VkDevice> createArrayVkDevice(int size) {
         VkDevice[] array = new VkDevice[size];        
-        VkArrayHandleDispatchable<VkDevice> vkArray = new VkArrayHandleDispatchable<VkDevice>(array);
+        VkArrayHandleDispatchable<VkDevice> 
+            vkArray = new VkArrayHandleDispatchable<VkDevice>(array);
         return vkArray;
     }
     
@@ -122,7 +130,8 @@ public class VkHandleDispatchable
      */
     public static VkArrayHandleDispatchable<VkQueue> createArrayVkQueue(int size) {
         VkQueue[] array = new VkQueue[size];        
-        VkArrayHandleDispatchable<VkQueue> vkArray = new VkArrayHandleDispatchable<VkQueue>(array);
+        VkArrayHandleDispatchable<VkQueue> 
+            vkArray = new VkArrayHandleDispatchable<VkQueue>(array);
         return vkArray;
     }
     
@@ -133,7 +142,8 @@ public class VkHandleDispatchable
      */
     public static VkArrayHandleDispatchable<VkCommandBuffer> createArrayVkCommandBuffer(int size) {
         VkCommandBuffer[] array = new VkCommandBuffer[size];        
-        VkArrayHandleDispatchable<VkCommandBuffer> vkArray = new VkArrayHandleDispatchable<VkCommandBuffer>(array);
+        VkArrayHandleDispatchable<VkCommandBuffer> 
+            vkArray = new VkArrayHandleDispatchable<VkCommandBuffer>(array);
         return vkArray;
     }
 
