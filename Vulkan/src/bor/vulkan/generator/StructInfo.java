@@ -1181,21 +1181,6 @@ public class StructInfo {
         boolean isMulti = field.endsWith("s");
         boolean isVk = cType.contains("Vk");
        
-       
-        /*
-        if(isFlag){
-            if(isPointer || isConst || isArray){
-                throw new IllegalArgumentException("Weird FLAG! Check it out !");
-            }
-            if(!isVk){
-                throw new IllegalArgumentException("Weird FLAG! Not a Vk type !!");
-            }
-            // ok
-            
-            System.err.println("getJavaType: " + cType + " -> int");
-            return "int";
-        }
-        */
         String base = cType.trim()
                 .replace("*","")
                 .replace("const","")               
@@ -1219,22 +1204,42 @@ public class StructInfo {
       
         if (cType.equals("const void*") && field.equals("pNext")) {
             value = "VkObject";
-        }else if (isVk && isPointer && isConst && isMulti) {
-            value = "  " + base + "[] ";
+        }else if (isVk && (isPointer && (isMulti || isArray))) {
+            String prefix = isConst ? " final ": " "; 
+            value = prefix + base + "[] ";
             
-        }else if (isVk && isPointer && isConst) {
-            value = " final " + base + " ";
-        } else if (isVk && isPointer) {
-            value = " " + base + " ";
-        } else {
+        }else if (isVk && isPointer) {
+            boolean isHandleD = isHandleDispatchable(cType);
+            boolean isCreate = source.contains("Create");
+            
+            String prefix = isConst ? " final ": " "; 
+            String sufix = isHandleD && isCreate ? "[] " : " ";
+            value = prefix + base + sufix;
+            
+        }  else {
             value = cType;
         }
         
         
-        if(value==null){
-           System.err.println("JTtype not found for cType : " + cType + ", field: " + field);
+//        if(value==null){
+//           System.err.println("JTtype not found for cType : " + cType + ", field: " + field);
+//        }
+        return (value==null)? cType : value;
+    }
+    
+    /**
+     * Checj if a type is a VkHandleDispatchable
+     * @param type
+     * @return
+     */
+    private static boolean isHandleDispatchable(String type){
+        String[] dnames = VkHandleDispatchable.DISPACHABLE_HANDLE_NAMES;
+        for (int i = 0; i < dnames.length; i++) {
+            String name = dnames[i];
+            if(type.contains(name)) 
+                return true;
         }
-        return value==null? cType : value;
+        return false;
     }
     
     /**
@@ -1242,7 +1247,7 @@ public class StructInfo {
      * Maps CType to Java types
      * @return
      */
-    private static Map<String, String> getC2JavaTypes(){
+    static Map<String, String> getC2JavaTypes(){
         if(c2JavaTypes==null){
             c2JavaTypes = new HashMap<String, String>();
             c2JavaTypes.put("int32_t", "int");
