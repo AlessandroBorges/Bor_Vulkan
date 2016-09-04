@@ -122,6 +122,14 @@ public class BigBuffer<T> {
         dirty = true;
         return nativeBufferArray;
     }
+    
+    /**
+     * @return the nativeBufferArray
+     */
+    public ByteBuffer getPointer() {
+        dirty = true;
+        return nativeBufferArray;
+    }
 
     /**
      * @return the elementCount
@@ -137,6 +145,7 @@ public class BigBuffer<T> {
      * 
      * @exception ArrayIndexOutOfBoundsException - if index is out of bounds
      */
+    @SuppressWarnings("unchecked")
     public T get(int index){
         if(dirty)
             update();
@@ -188,9 +197,15 @@ public class BigBuffer<T> {
                 int pos = i * sizeBytes;
                 nativeBufferArray.limit(pos + sizeBytes);
                 nativeBufferArray.position(pos);
+                // 
+                ByteBuffer dst = nativeBufferArray.slice();
+                dst.order(nativeBufferArray.order());
+                
                 ByteBuffer src = struct.getPointer();
-                // copy content of src to nativeBufferArray
-                copyBuffers(src, 0, nativeBufferArray, pos, sizeBytes);
+                // copy content of src to dst
+                copyBuffers(src, 0, dst, 0, sizeBytes);
+                // replace old buffer
+                struct.setPointer(dst);
             }else{
                 dirty = true;
             }
@@ -203,8 +218,11 @@ public class BigBuffer<T> {
      *  Call it after a update
      *   
      * @return the list of updated objects
+     * @throws UnsupportedOperationException - if StructId is unknow or invalid.  
      */
-    private VkObject[] splitBufferToArray() {
+    private VkObject[] splitBufferToArray() 
+    throws UnsupportedOperationException
+    {
         if (array == null) 
             return array;
         int sizeBytes = singleSize;
@@ -215,11 +233,11 @@ public class BigBuffer<T> {
             nativeBufferArray.position(pos);
             
             if (isHandle) { // As VkHandle ////////////////////////////////////////////
-                long addr = readCurrentAddress(nativeBufferArray, sizeBytes);
+                long addr = readCurrentPtrAddressAt(nativeBufferArray, sizeBytes);
                 if (array[i] == null) {
                     array[i] = isDispatchHandle ? new VkHandleDispatchable(addr) : new VkHandle(addr);
                 } else {
-                   ((VkHandle)array[i]).setPointer(addr);
+                   ((VkHandleInterface)array[i]).setPointer(addr);
                 }
             } else { // as VkStruct ////////////////////////////////////////////                
                 if (array[i] == null) {
@@ -248,7 +266,7 @@ public class BigBuffer<T> {
      * @param length - address lenght. It can be 4 or 8 bytes long.
      * @return current Address as 64 bits value.
      */
-    private static long readCurrentAddress(ByteBuffer buff, int length){
+    private static long readCurrentPtrAddressAt(ByteBuffer buff, int length){
         long addr = 0;
         if(length==4){            
             int i = buff.getInt(); 
