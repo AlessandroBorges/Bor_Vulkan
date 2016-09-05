@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:221
+//@line:232
 
 		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkClearAttachment_getAspectMask0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:231
+//@line:242
 
 		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
 		  return (jint) (vkObj->aspectMask);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkClearAttachment_setColorAttachm
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:240
+//@line:251
 
 		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkClearAttachment_setColorAttachm
 static inline jint wrapped_Java_bor_vulkan_structs_VkClearAttachment_getColorAttachment0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:250
+//@line:261
 
 		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
 		  return (jint) (vkObj->colorAttachment);
@@ -72,7 +72,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkClearAttachment_setClearValue0(
 	char* _clearValue = (char*)(obj__clearValue?env->GetDirectBufferAddress(obj__clearValue) : NULL);
 
 
-//@line:259
+//@line:270
 
 		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -85,7 +85,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkClearAttachment_setClearValue0(
 static inline jlong wrapped_Java_bor_vulkan_structs_VkClearAttachment_getClearValue0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:270
+//@line:281
 
 		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
 		  // generic get for Buffer 

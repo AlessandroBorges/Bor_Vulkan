@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:263
+//@line:274
 
 	 #ifdef VK_USE_PLATFORM_ANDROID_KHR 
 		  VkAndroidSurfaceCreateInfoKHR* vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
@@ -21,7 +21,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkAndroidSurfaceCreateInfoKHR_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:275
+//@line:286
 
 	 #ifdef VK_USE_PLATFORM_ANDROID_KHR 
 		  VkAndroidSurfaceCreateInfoKHR* vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
@@ -47,7 +47,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAndroidSurfaceCreateInfoKHR_set
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:289
+//@line:300
 
 	 #ifdef VK_USE_PLATFORM_ANDROID_KHR 
 		  VkAndroidSurfaceCreateInfoKHR* vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
@@ -62,7 +62,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAndroidSurfaceCreateInfoKHR_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkAndroidSurfaceCreateInfoKHR_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:302
+//@line:313
 
 	 #ifdef VK_USE_PLATFORM_ANDROID_KHR 
 		  VkAndroidSurfaceCreateInfoKHR* vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAndroidSurfaceCreateInfoKHR_set
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:316
+//@line:327
 
 	 #ifdef VK_USE_PLATFORM_ANDROID_KHR 
 		  VkAndroidSurfaceCreateInfoKHR* vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
@@ -101,7 +101,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAndroidSurfaceCreateInfoKHR_set
 static inline jint wrapped_Java_bor_vulkan_structs_VkAndroidSurfaceCreateInfoKHR_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:328
+//@line:339
 
 	 #ifdef VK_USE_PLATFORM_ANDROID_KHR 
 		  VkAndroidSurfaceCreateInfoKHR* vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
@@ -125,7 +125,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAndroidSurfaceCreateInfoKHR_set
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:341
+//@line:352
 
 	 #ifdef VK_USE_PLATFORM_ANDROID_KHR 
 		  VkAndroidSurfaceCreateInfoKHR* vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
@@ -139,7 +139,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAndroidSurfaceCreateInfoKHR_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkAndroidSurfaceCreateInfoKHR_getWindow0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:353
+//@line:364
 
 	 #ifdef VK_USE_PLATFORM_ANDROID_KHR 
 		  VkAndroidSurfaceCreateInfoKHR* vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);

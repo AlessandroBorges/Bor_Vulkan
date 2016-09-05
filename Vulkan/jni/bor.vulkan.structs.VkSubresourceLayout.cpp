@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:273
+//@line:284
 
 		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSubresourceLayout_getOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:283
+//@line:294
 
 		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
 		  return (jlong) (vkObj->offset);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubresourceLayout_setSize0(JNIE
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:292
+//@line:303
 
 		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubresourceLayout_setSize0(JNIE
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSubresourceLayout_getSize0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:302
+//@line:313
 
 		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
 		  return (jlong) (vkObj->size);
@@ -71,7 +71,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubresourceLayout_setRowPitch0(
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:311
+//@line:322
 
 		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
 		 // code for simple past value 
@@ -83,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubresourceLayout_setRowPitch0(
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSubresourceLayout_getRowPitch0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:321
+//@line:332
 
 		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
 		  return (jlong) (vkObj->rowPitch);
@@ -103,7 +103,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubresourceLayout_setArrayPitch
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:330
+//@line:341
 
 		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
 		 // code for simple past value 
@@ -115,7 +115,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubresourceLayout_setArrayPitch
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSubresourceLayout_getArrayPitch0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:340
+//@line:351
 
 		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
 		  return (jlong) (vkObj->arrayPitch);
@@ -135,7 +135,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubresourceLayout_setDepthPitch
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:349
+//@line:360
 
 		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
 		 // code for simple past value 
@@ -147,7 +147,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubresourceLayout_setDepthPitch
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSubresourceLayout_getDepthPitch0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:359
+//@line:370
 
 		  VkSubresourceLayout* vkObj = (VkSubresourceLayout*)(ptr);
 		  return (jlong) (vkObj->depthPitch);

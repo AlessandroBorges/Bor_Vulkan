@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:367
+//@line:378
 
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineShaderStageCreateInfo_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:377
+//@line:388
 
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineShaderStageCreateInfo_s
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:387
+//@line:398
 
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineShaderStageCreateInfo_s
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineShaderStageCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:398
+//@line:409
 
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineShaderStageCreateInfo_s
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:408
+//@line:419
 
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineShaderStageCreateInfo_s
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineShaderStageCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:418
+//@line:429
 
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -107,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineShaderStageCreateInfo_s
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:427
+//@line:438
 
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -119,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineShaderStageCreateInfo_s
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineShaderStageCreateInfo_getStage0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:437
+//@line:448
 
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		  // generic get for Vk enums
@@ -140,7 +140,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineShaderStageCreateInfo_s
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:447
+//@line:458
 
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -152,7 +152,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineShaderStageCreateInfo_s
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineShaderStageCreateInfo_getModule0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:457
+//@line:468
 
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -174,7 +174,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineShaderStageCreateInfo_s
 	char* _pName = (char*)(obj__pName ? env->GetStringUTFChars(obj__pName, 0) : NULL);
 
 
-//@line:467
+//@line:478
 
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		  vkObj->pName = cloneStr(_pName);
@@ -188,7 +188,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineShaderStageCreateInfo_s
 static inline jstring wrapped_Java_bor_vulkan_structs_VkPipelineShaderStageCreateInfo_getPName0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:476
+//@line:487
 
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		  return (jstring)(env->NewStringUTF(vkObj->pName));
@@ -209,7 +209,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineShaderStageCreateInfo_s
 	char* _pSpecializationInfo = (char*)(obj__pSpecializationInfo?env->GetDirectBufferAddress(obj__pSpecializationInfo) : NULL);
 
 
-//@line:485
+//@line:496
 
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -222,7 +222,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineShaderStageCreateInfo_s
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineShaderStageCreateInfo_getPSpecializationInfo0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:496
+//@line:507
 
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
 		  // generic get for Buffer 

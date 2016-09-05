@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:304
+//@line:315
 
 		  VkViewport* vkObj = (VkViewport*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jfloat wrapped_Java_bor_vulkan_structs_VkViewport_getX0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:314
+//@line:325
 
 		  VkViewport* vkObj = (VkViewport*)(ptr);
 		  return (jfloat) (vkObj->x);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkViewport_setY0(JNIEnv* env, jcl
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:323
+//@line:334
 
 		  VkViewport* vkObj = (VkViewport*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkViewport_setY0(JNIEnv* env, jcl
 static inline jfloat wrapped_Java_bor_vulkan_structs_VkViewport_getY0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:333
+//@line:344
 
 		  VkViewport* vkObj = (VkViewport*)(ptr);
 		  return (jfloat) (vkObj->y);
@@ -71,7 +71,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkViewport_setWidth0(JNIEnv* env,
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:342
+//@line:353
 
 		  VkViewport* vkObj = (VkViewport*)(ptr);
 		 // code for simple past value 
@@ -83,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkViewport_setWidth0(JNIEnv* env,
 static inline jfloat wrapped_Java_bor_vulkan_structs_VkViewport_getWidth0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:352
+//@line:363
 
 		  VkViewport* vkObj = (VkViewport*)(ptr);
 		  return (jfloat) (vkObj->width);
@@ -103,7 +103,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkViewport_setHeight0(JNIEnv* env
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:361
+//@line:372
 
 		  VkViewport* vkObj = (VkViewport*)(ptr);
 		 // code for simple past value 
@@ -115,7 +115,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkViewport_setHeight0(JNIEnv* env
 static inline jfloat wrapped_Java_bor_vulkan_structs_VkViewport_getHeight0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:371
+//@line:382
 
 		  VkViewport* vkObj = (VkViewport*)(ptr);
 		  return (jfloat) (vkObj->height);
@@ -135,7 +135,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkViewport_setMinDepth0(JNIEnv* e
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:380
+//@line:391
 
 		  VkViewport* vkObj = (VkViewport*)(ptr);
 		 // code for simple past value 
@@ -147,7 +147,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkViewport_setMinDepth0(JNIEnv* e
 static inline jfloat wrapped_Java_bor_vulkan_structs_VkViewport_getMinDepth0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:390
+//@line:401
 
 		  VkViewport* vkObj = (VkViewport*)(ptr);
 		  return (jfloat) (vkObj->minDepth);
@@ -167,7 +167,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkViewport_setMaxDepth0(JNIEnv* e
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:399
+//@line:410
 
 		  VkViewport* vkObj = (VkViewport*)(ptr);
 		 // code for simple past value 
@@ -179,7 +179,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkViewport_setMaxDepth0(JNIEnv* e
 static inline jfloat wrapped_Java_bor_vulkan_structs_VkViewport_getMaxDepth0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:409
+//@line:420
 
 		  VkViewport* vkObj = (VkViewport*)(ptr);
 		  return (jfloat) (vkObj->maxDepth);

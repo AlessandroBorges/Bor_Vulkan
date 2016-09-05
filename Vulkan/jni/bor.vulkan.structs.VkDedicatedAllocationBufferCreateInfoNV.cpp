@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:221
+//@line:232
 
 		  VkDedicatedAllocationBufferCreateInfoNV* vkObj = (VkDedicatedAllocationBufferCreateInfoNV*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkDedicatedAllocationBufferCreateInfoNV_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:231
+//@line:242
 
 		  VkDedicatedAllocationBufferCreateInfoNV* vkObj = (VkDedicatedAllocationBufferCreateInfoNV*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDedicatedAllocationBufferCreate
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:241
+//@line:252
 
 		  VkDedicatedAllocationBufferCreateInfoNV* vkObj = (VkDedicatedAllocationBufferCreateInfoNV*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDedicatedAllocationBufferCreate
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDedicatedAllocationBufferCreateInfoNV_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:252
+//@line:263
 
 		  VkDedicatedAllocationBufferCreateInfoNV* vkObj = (VkDedicatedAllocationBufferCreateInfoNV*)(ptr);
 		  // generic get for Buffer 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDedicatedAllocationBufferCreate
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:262
+//@line:273
 
 		  VkDedicatedAllocationBufferCreateInfoNV* vkObj = (VkDedicatedAllocationBufferCreateInfoNV*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDedicatedAllocationBufferCreate
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkDedicatedAllocationBufferCreateInfoNV_getDedicatedAllocation0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:272
+//@line:283
 
 		  VkDedicatedAllocationBufferCreateInfoNV* vkObj = (VkDedicatedAllocationBufferCreateInfoNV*)(ptr);
 		  return (jboolean) (vkObj->dedicatedAllocation);

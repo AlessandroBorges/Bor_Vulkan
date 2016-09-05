@@ -35,6 +35,7 @@
 // enable all extensions
 #if (VULKAN_WRAPPER_ENABLE_ALL_EXTENSIONS_DEFAULT != 0)
  #define VULKAN_WRAPPER_ENABLE_ALL_EXTENSIONS_DEFAULT 1
+ #define USE_DEBUG_EXTENSIONS 1
 #endif
 
 #ifdef __cplusplus
@@ -193,16 +194,6 @@ extern PFN_vkCmdBeginRenderPass vkCmdBeginRenderPass;
 extern PFN_vkCmdNextSubpass vkCmdNextSubpass;
 extern PFN_vkCmdEndRenderPass vkCmdEndRenderPass;
 extern PFN_vkCmdExecuteCommands vkCmdExecuteCommands;
-//Vulkan 1.0.21
-extern PFN_vkDebugReportCallbackEXT vkDebugReportCallbackEXT;
-extern PFN_vkCreateDebugReportCallbackEXT vkCreateDebugReportCallbackEXT;
-extern PFN_vkDestroyDebugReportCallbackEXT vkDestroyDebugReportCallbackEXT;
-extern PFN_vkDebugReportMessageEXT vkDebugReportMessageEXT;
-extern PFN_vkDebugMarkerSetObjectTagEXT vkDebugMarkerSetObjectTagEXT;
-extern PFN_vkDebugMarkerSetObjectNameEXT vkDebugMarkerSetObjectNameEXT;
-extern PFN_vkCmdDebugMarkerBeginEXT vkCmdDebugMarkerBeginEXT;
-extern PFN_vkCmdDebugMarkerEndEXT vkCmdDebugMarkerEndEXT;
-extern PFN_vkCmdDebugMarkerInsertEXT vkCmdDebugMarkerInsertEXT;
 
 // VK_KHR_surface
 extern PFN_vkDestroySurfaceKHR vkDestroySurfaceKHR;
@@ -229,6 +220,25 @@ extern PFN_vkCreateDisplayPlaneSurfaceKHR vkCreateDisplayPlaneSurfaceKHR;
 
 // VK_KHR_display_swapchain
 extern PFN_vkCreateSharedSwapchainsKHR vkCreateSharedSwapchainsKHR;
+
+
+//#ifdef USE_DEBUG_EXTENSIONS
+//#include <vulkan/vk_sdk_platform.h>
+// VK_EXT_debug_report
+extern PFN_vkCreateDebugReportCallbackEXT vkCreateDebugReportCallbackEXT;
+extern PFN_vkDestroyDebugReportCallbackEXT vkDestroyDebugReportCallbackEXT;
+extern PFN_vkDebugReportMessageEXT vkDebugReportMessageEXT;
+extern PFN_vkDebugReportCallbackEXT vkDebugReportCallbackEXT;
+
+// VK_EXT_DEBUG_MARKER 
+extern PFN_vkDebugMarkerSetObjectTagEXT vkDebugMarkerSetObjectTagEXT;
+extern PFN_vkDebugMarkerSetObjectNameEXT vkDebugMarkerSetObjectNameEXT;
+extern PFN_vkCmdDebugMarkerBeginEXT vkCmdDebugMarkerBeginEXT;
+extern PFN_vkCmdDebugMarkerEndEXT vkCmdDebugMarkerEndEXT;
+extern PFN_vkCmdDebugMarkerInsertEXT vkCmdDebugMarkerInsertEXT;
+//#endif
+
+
 
 #ifdef VK_USE_PLATFORM_XLIB_KHR
 // VK_KHR_xlib_surface
@@ -265,13 +275,6 @@ extern PFN_vkCreateWin32SurfaceKHR vkCreateWin32SurfaceKHR;
 extern PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR vkGetPhysicalDeviceWin32PresentationSupportKHR;
 #endif
 
-#ifdef USE_DEBUG_EXTENTIONS
-#include <vulkan/vk_sdk_platform.h>
-// VK_EXT_debug_report
-extern PFN_vkCreateDebugReportCallbackEXT vkCreateDebugReportCallbackEXT;
-extern PFN_vkDestroyDebugReportCallbackEXT vkDestroyDebugReportCallbackEXT;
-extern PFN_vkDebugReportMessageEXT vkDebugReportMessageEXT;
-#endif
 
 
 #ifdef __cplusplus

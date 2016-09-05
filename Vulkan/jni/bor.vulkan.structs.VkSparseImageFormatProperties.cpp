@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:221
+//@line:232
 
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkSparseImageFormatProperties_getAspectMask0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:231
+//@line:242
 
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
 		  return (jint) (vkObj->aspectMask);
@@ -40,7 +40,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageFormatProperties_set
 	char* _imageGranularity = (char*)(obj__imageGranularity?env->GetDirectBufferAddress(obj__imageGranularity) : NULL);
 
 
-//@line:240
+//@line:251
 
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -53,7 +53,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageFormatProperties_set
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseImageFormatProperties_getImageGranularity0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:251
+//@line:262
 
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
 		  // generic get for Buffer 
@@ -74,7 +74,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageFormatProperties_set
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:261
+//@line:272
 
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
 		 // code for simple past value 
@@ -86,7 +86,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageFormatProperties_set
 static inline jint wrapped_Java_bor_vulkan_structs_VkSparseImageFormatProperties_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:271
+//@line:282
 
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
 		  return (jint) (vkObj->flags);

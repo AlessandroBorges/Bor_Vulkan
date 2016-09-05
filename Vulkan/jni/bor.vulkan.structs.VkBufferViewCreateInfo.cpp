@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:357
+//@line:368
 
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkBufferViewCreateInfo_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:367
+//@line:378
 
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferViewCreateInfo_setPNext0(
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:377
+//@line:388
 
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferViewCreateInfo_setPNext0(
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferViewCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:388
+//@line:399
 
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferViewCreateInfo_setFlags0(
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:398
+//@line:409
 
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferViewCreateInfo_setFlags0(
 static inline jint wrapped_Java_bor_vulkan_structs_VkBufferViewCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:408
+//@line:419
 
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -107,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferViewCreateInfo_setBuffer0
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:417
+//@line:428
 
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -119,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferViewCreateInfo_setBuffer0
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferViewCreateInfo_getBuffer0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:427
+//@line:438
 
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -140,7 +140,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferViewCreateInfo_setFormat0
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:437
+//@line:448
 
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -152,7 +152,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferViewCreateInfo_setFormat0
 static inline jint wrapped_Java_bor_vulkan_structs_VkBufferViewCreateInfo_getFormat0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:447
+//@line:458
 
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		  // generic get for Vk enums
@@ -173,7 +173,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferViewCreateInfo_setOffset0
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:457
+//@line:468
 
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -185,7 +185,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferViewCreateInfo_setOffset0
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferViewCreateInfo_getOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:467
+//@line:478
 
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		  return (jlong) (vkObj->offset);
@@ -205,7 +205,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferViewCreateInfo_setRange0(
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:476
+//@line:487
 
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -217,7 +217,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferViewCreateInfo_setRange0(
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferViewCreateInfo_getRange0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:486
+//@line:497
 
 		  VkBufferViewCreateInfo* vkObj = (VkBufferViewCreateInfo*)(ptr);
 		  return (jlong) (vkObj->range);

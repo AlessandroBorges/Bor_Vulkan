@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:211
+//@line:222
 
 		  VkDispatchIndirectCommand* vkObj = (VkDispatchIndirectCommand*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkDispatchIndirectCommand_getX0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:221
+//@line:232
 
 		  VkDispatchIndirectCommand* vkObj = (VkDispatchIndirectCommand*)(ptr);
 		  return (jint) (vkObj->x);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDispatchIndirectCommand_setY0(J
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:230
+//@line:241
 
 		  VkDispatchIndirectCommand* vkObj = (VkDispatchIndirectCommand*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDispatchIndirectCommand_setY0(J
 static inline jint wrapped_Java_bor_vulkan_structs_VkDispatchIndirectCommand_getY0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:240
+//@line:251
 
 		  VkDispatchIndirectCommand* vkObj = (VkDispatchIndirectCommand*)(ptr);
 		  return (jint) (vkObj->y);
@@ -71,7 +71,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDispatchIndirectCommand_setZ0(J
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:249
+//@line:260
 
 		  VkDispatchIndirectCommand* vkObj = (VkDispatchIndirectCommand*)(ptr);
 		 // code for simple past value 
@@ -83,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDispatchIndirectCommand_setZ0(J
 static inline jint wrapped_Java_bor_vulkan_structs_VkDispatchIndirectCommand_getZ0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:259
+//@line:270
 
 		  VkDispatchIndirectCommand* vkObj = (VkDispatchIndirectCommand*)(ptr);
 		  return (jint) (vkObj->z);

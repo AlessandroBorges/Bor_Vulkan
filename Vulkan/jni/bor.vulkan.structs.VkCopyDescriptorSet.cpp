@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:429
+//@line:440
 
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkCopyDescriptorSet_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:439
+//@line:450
 
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCopyDescriptorSet_setPNext0(JNI
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:449
+//@line:460
 
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCopyDescriptorSet_setPNext0(JNI
 static inline jlong wrapped_Java_bor_vulkan_structs_VkCopyDescriptorSet_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:460
+//@line:471
 
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		  // generic get for Buffer 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCopyDescriptorSet_setSrcSet0(JN
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:470
+//@line:481
 
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCopyDescriptorSet_setSrcSet0(JN
 static inline jlong wrapped_Java_bor_vulkan_structs_VkCopyDescriptorSet_getSrcSet0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:480
+//@line:491
 
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -108,7 +108,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCopyDescriptorSet_setSrcBinding
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:490
+//@line:501
 
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		 // code for simple past value 
@@ -120,7 +120,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCopyDescriptorSet_setSrcBinding
 static inline jint wrapped_Java_bor_vulkan_structs_VkCopyDescriptorSet_getSrcBinding0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:500
+//@line:511
 
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		  return (jint) (vkObj->srcBinding);
@@ -140,7 +140,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCopyDescriptorSet_setSrcArrayEl
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:509
+//@line:520
 
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		 // code for simple past value 
@@ -152,7 +152,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCopyDescriptorSet_setSrcArrayEl
 static inline jint wrapped_Java_bor_vulkan_structs_VkCopyDescriptorSet_getSrcArrayElement0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:519
+//@line:530
 
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		  return (jint) (vkObj->srcArrayElement);
@@ -172,7 +172,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCopyDescriptorSet_setDstSet0(JN
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:528
+//@line:539
 
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		 // code for simple past value 
@@ -184,7 +184,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCopyDescriptorSet_setDstSet0(JN
 static inline jlong wrapped_Java_bor_vulkan_structs_VkCopyDescriptorSet_getDstSet0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:538
+//@line:549
 
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -205,7 +205,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCopyDescriptorSet_setDstBinding
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:548
+//@line:559
 
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		 // code for simple past value 
@@ -217,7 +217,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCopyDescriptorSet_setDstBinding
 static inline jint wrapped_Java_bor_vulkan_structs_VkCopyDescriptorSet_getDstBinding0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:558
+//@line:569
 
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		  return (jint) (vkObj->dstBinding);
@@ -237,7 +237,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCopyDescriptorSet_setDstArrayEl
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:567
+//@line:578
 
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		 // code for simple past value 
@@ -249,7 +249,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCopyDescriptorSet_setDstArrayEl
 static inline jint wrapped_Java_bor_vulkan_structs_VkCopyDescriptorSet_getDstArrayElement0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:577
+//@line:588
 
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		  return (jint) (vkObj->dstArrayElement);
@@ -269,7 +269,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCopyDescriptorSet_setDescriptor
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:586
+//@line:597
 
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		 // code for simple past value 
@@ -281,7 +281,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkCopyDescriptorSet_setDescriptor
 static inline jint wrapped_Java_bor_vulkan_structs_VkCopyDescriptorSet_getDescriptorCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:596
+//@line:607
 
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
 		  return (jint) (vkObj->descriptorCount);

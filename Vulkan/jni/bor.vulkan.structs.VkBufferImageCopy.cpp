@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:334
+//@line:345
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferImageCopy_getBufferOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:344
+//@line:355
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		  return (jlong) (vkObj->bufferOffset);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferImageCopy_setBufferRowLen
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:353
+//@line:364
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferImageCopy_setBufferRowLen
 static inline jint wrapped_Java_bor_vulkan_structs_VkBufferImageCopy_getBufferRowLength0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:363
+//@line:374
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		  return (jint) (vkObj->bufferRowLength);
@@ -71,7 +71,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferImageCopy_setBufferImageH
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:372
+//@line:383
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		 // code for simple past value 
@@ -83,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferImageCopy_setBufferImageH
 static inline jint wrapped_Java_bor_vulkan_structs_VkBufferImageCopy_getBufferImageHeight0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:382
+//@line:393
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		  return (jint) (vkObj->bufferImageHeight);
@@ -104,7 +104,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferImageCopy_setImageSubreso
 	char* _imageSubresource = (char*)(obj__imageSubresource?env->GetDirectBufferAddress(obj__imageSubresource) : NULL);
 
 
-//@line:391
+//@line:402
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -117,7 +117,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferImageCopy_setImageSubreso
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferImageCopy_getImageSubresource0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:402
+//@line:413
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		  // generic get for Buffer 
@@ -139,7 +139,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferImageCopy_setImageOffset0
 	char* _imageOffset = (char*)(obj__imageOffset?env->GetDirectBufferAddress(obj__imageOffset) : NULL);
 
 
-//@line:412
+//@line:423
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -152,7 +152,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferImageCopy_setImageOffset0
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferImageCopy_getImageOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:423
+//@line:434
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		  // generic get for Buffer 
@@ -174,7 +174,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferImageCopy_setImageExtent0
 	char* _imageExtent = (char*)(obj__imageExtent?env->GetDirectBufferAddress(obj__imageExtent) : NULL);
 
 
-//@line:433
+//@line:444
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -187,7 +187,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferImageCopy_setImageExtent0
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferImageCopy_getImageExtent0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:444
+//@line:455
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
 		  // generic get for Buffer 

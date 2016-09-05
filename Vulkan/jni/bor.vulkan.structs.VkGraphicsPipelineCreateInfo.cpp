@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:850
+//@line:861
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:860
+//@line:871
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:870
+//@line:881
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 static inline jlong wrapped_Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:881
+//@line:892
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setF
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:891
+//@line:902
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setF
 static inline jint wrapped_Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:901
+//@line:912
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -107,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setS
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:910
+//@line:921
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -119,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setS
 static inline jint wrapped_Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_getStageCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:920
+//@line:931
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jint) (vkObj->stageCount);
@@ -140,7 +140,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 	char* _pStages = (char*)(obj__pStages?env->GetDirectBufferAddress(obj__pStages) : NULL);
 
 
-//@line:929
+//@line:940
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -153,7 +153,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 static inline jlong wrapped_Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_getPStages0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:940
+//@line:951
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -175,7 +175,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 	char* _pVertexInputState = (char*)(obj__pVertexInputState?env->GetDirectBufferAddress(obj__pVertexInputState) : NULL);
 
 
-//@line:950
+//@line:961
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -188,7 +188,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 static inline jlong wrapped_Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_getPVertexInputState0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:961
+//@line:972
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -210,7 +210,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 	char* _pInputAssemblyState = (char*)(obj__pInputAssemblyState?env->GetDirectBufferAddress(obj__pInputAssemblyState) : NULL);
 
 
-//@line:971
+//@line:982
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -223,7 +223,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 static inline jlong wrapped_Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_getPInputAssemblyState0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:982
+//@line:993
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -245,7 +245,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 	char* _pTessellationState = (char*)(obj__pTessellationState?env->GetDirectBufferAddress(obj__pTessellationState) : NULL);
 
 
-//@line:992
+//@line:1003
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -258,7 +258,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 static inline jlong wrapped_Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_getPTessellationState0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1003
+//@line:1014
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -280,7 +280,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 	char* _pViewportState = (char*)(obj__pViewportState?env->GetDirectBufferAddress(obj__pViewportState) : NULL);
 
 
-//@line:1013
+//@line:1024
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -293,7 +293,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 static inline jlong wrapped_Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_getPViewportState0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1024
+//@line:1035
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -315,7 +315,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 	char* _pRasterizationState = (char*)(obj__pRasterizationState?env->GetDirectBufferAddress(obj__pRasterizationState) : NULL);
 
 
-//@line:1034
+//@line:1045
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -328,7 +328,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 static inline jlong wrapped_Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_getPRasterizationState0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1045
+//@line:1056
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -350,7 +350,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 	char* _pMultisampleState = (char*)(obj__pMultisampleState?env->GetDirectBufferAddress(obj__pMultisampleState) : NULL);
 
 
-//@line:1055
+//@line:1066
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -363,7 +363,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 static inline jlong wrapped_Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_getPMultisampleState0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1066
+//@line:1077
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -385,7 +385,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 	char* _pDepthStencilState = (char*)(obj__pDepthStencilState?env->GetDirectBufferAddress(obj__pDepthStencilState) : NULL);
 
 
-//@line:1076
+//@line:1087
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -398,7 +398,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 static inline jlong wrapped_Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_getPDepthStencilState0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1087
+//@line:1098
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -420,7 +420,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 	char* _pColorBlendState = (char*)(obj__pColorBlendState?env->GetDirectBufferAddress(obj__pColorBlendState) : NULL);
 
 
-//@line:1097
+//@line:1108
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -433,7 +433,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 static inline jlong wrapped_Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_getPColorBlendState0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1108
+//@line:1119
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -455,7 +455,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 	char* _pDynamicState = (char*)(obj__pDynamicState?env->GetDirectBufferAddress(obj__pDynamicState) : NULL);
 
 
-//@line:1118
+//@line:1129
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -468,7 +468,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setP
 static inline jlong wrapped_Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_getPDynamicState0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1129
+//@line:1140
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -489,7 +489,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setL
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:1139
+//@line:1150
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -501,7 +501,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setL
 static inline jlong wrapped_Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_getLayout0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1149
+//@line:1160
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -522,7 +522,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setR
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:1159
+//@line:1170
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -534,7 +534,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setR
 static inline jlong wrapped_Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_getRenderPass0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1169
+//@line:1180
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -555,7 +555,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setS
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:1179
+//@line:1190
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -567,7 +567,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setS
 static inline jint wrapped_Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_getSubpass0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1189
+//@line:1200
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jint) (vkObj->subpass);
@@ -587,7 +587,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setB
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:1198
+//@line:1209
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -599,7 +599,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setB
 static inline jlong wrapped_Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_getBasePipelineHandle0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1208
+//@line:1219
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -620,7 +620,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setB
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:1218
+//@line:1229
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -632,7 +632,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_setB
 static inline jint wrapped_Java_bor_vulkan_structs_VkGraphicsPipelineCreateInfo_getBasePipelineIndex0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1228
+//@line:1239
 
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  return (jint) (vkObj->basePipelineIndex);

@@ -8,7 +8,7 @@
 	char* _layerName = (char*)(obj__layerName ? env->GetStringUTFChars(obj__layerName, 0) : NULL);
 
 
-//@line:248
+//@line:259
 
 		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
 		  strncpy(vkObj->layerName, _layerName, strlen(_layerName)+1);
@@ -22,7 +22,7 @@
 static inline jstring wrapped_Java_bor_vulkan_structs_VkLayerProperties_getLayerName0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:257
+//@line:268
 
 		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
 		  return (jstring)(env->NewStringUTF(vkObj->layerName));
@@ -42,7 +42,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkLayerProperties_setSpecVersion0
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:266
+//@line:277
 
 		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
 		 // code for simple past value 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkLayerProperties_setSpecVersion0
 static inline jint wrapped_Java_bor_vulkan_structs_VkLayerProperties_getSpecVersion0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:276
+//@line:287
 
 		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
 		  return (jint) (vkObj->specVersion);
@@ -74,7 +74,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkLayerProperties_setImplementati
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:285
+//@line:296
 
 		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
 		 // code for simple past value 
@@ -86,7 +86,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkLayerProperties_setImplementati
 static inline jint wrapped_Java_bor_vulkan_structs_VkLayerProperties_getImplementationVersion0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:295
+//@line:306
 
 		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
 		  return (jint) (vkObj->implementationVersion);
@@ -107,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkLayerProperties_setDescription0
 	char* _description = (char*)(obj__description ? env->GetStringUTFChars(obj__description, 0) : NULL);
 
 
-//@line:304
+//@line:315
 
 		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
 		  strncpy(vkObj->description, _description, strlen(_description)+1);
@@ -121,7 +121,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkLayerProperties_setDescription0
 static inline jstring wrapped_Java_bor_vulkan_structs_VkLayerProperties_getDescription0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:313
+//@line:324
 
 		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
 		  return (jstring)(env->NewStringUTF(vkObj->description));

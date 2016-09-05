@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:339
+//@line:350
 
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkStencilOpState_getFailOp0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:349
+//@line:360
 
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		  // generic get for Vk enums
@@ -40,7 +40,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkStencilOpState_setPassOp0(JNIEn
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:359
+//@line:370
 
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		 // code for simple past value 
@@ -52,7 +52,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkStencilOpState_setPassOp0(JNIEn
 static inline jint wrapped_Java_bor_vulkan_structs_VkStencilOpState_getPassOp0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:369
+//@line:380
 
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		  // generic get for Vk enums
@@ -73,7 +73,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkStencilOpState_setDepthFailOp0(
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:379
+//@line:390
 
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		 // code for simple past value 
@@ -85,7 +85,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkStencilOpState_setDepthFailOp0(
 static inline jint wrapped_Java_bor_vulkan_structs_VkStencilOpState_getDepthFailOp0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:389
+//@line:400
 
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		  // generic get for Vk enums
@@ -106,7 +106,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkStencilOpState_setCompareOp0(JN
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:399
+//@line:410
 
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		 // code for simple past value 
@@ -118,7 +118,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkStencilOpState_setCompareOp0(JN
 static inline jint wrapped_Java_bor_vulkan_structs_VkStencilOpState_getCompareOp0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:409
+//@line:420
 
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		  // generic get for Vk enums
@@ -139,7 +139,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkStencilOpState_setCompareMask0(
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:419
+//@line:430
 
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		 // code for simple past value 
@@ -151,7 +151,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkStencilOpState_setCompareMask0(
 static inline jint wrapped_Java_bor_vulkan_structs_VkStencilOpState_getCompareMask0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:429
+//@line:440
 
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		  return (jint) (vkObj->compareMask);
@@ -171,7 +171,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkStencilOpState_setWriteMask0(JN
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:438
+//@line:449
 
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		 // code for simple past value 
@@ -183,7 +183,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkStencilOpState_setWriteMask0(JN
 static inline jint wrapped_Java_bor_vulkan_structs_VkStencilOpState_getWriteMask0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:448
+//@line:459
 
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		  return (jint) (vkObj->writeMask);
@@ -203,7 +203,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkStencilOpState_setReference0(JN
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:457
+//@line:468
 
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		 // code for simple past value 
@@ -215,7 +215,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkStencilOpState_setReference0(JN
 static inline jint wrapped_Java_bor_vulkan_structs_VkStencilOpState_getReference0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:467
+//@line:478
 
 		  VkStencilOpState* vkObj = (VkStencilOpState*)(ptr);
 		  return (jint) (vkObj->reference);

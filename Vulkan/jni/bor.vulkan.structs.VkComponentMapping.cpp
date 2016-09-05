@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:246
+//@line:257
 
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkComponentMapping_getR0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:256
+//@line:267
 
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
 		  // generic get for Vk enums
@@ -40,7 +40,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComponentMapping_setG0(JNIEnv* 
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:266
+//@line:277
 
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
 		 // code for simple past value 
@@ -52,7 +52,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComponentMapping_setG0(JNIEnv* 
 static inline jint wrapped_Java_bor_vulkan_structs_VkComponentMapping_getG0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:276
+//@line:287
 
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
 		  // generic get for Vk enums
@@ -73,7 +73,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComponentMapping_setB0(JNIEnv* 
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:286
+//@line:297
 
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
 		 // code for simple past value 
@@ -85,7 +85,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComponentMapping_setB0(JNIEnv* 
 static inline jint wrapped_Java_bor_vulkan_structs_VkComponentMapping_getB0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:296
+//@line:307
 
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
 		  // generic get for Vk enums
@@ -106,7 +106,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComponentMapping_setA0(JNIEnv* 
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:306
+//@line:317
 
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
 		 // code for simple past value 
@@ -118,7 +118,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComponentMapping_setA0(JNIEnv* 
 static inline jint wrapped_Java_bor_vulkan_structs_VkComponentMapping_getA0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:316
+//@line:327
 
 		  VkComponentMapping* vkObj = (VkComponentMapping*)(ptr);
 		  // generic get for Vk enums

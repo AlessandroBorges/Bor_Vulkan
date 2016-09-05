@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:181
+//@line:191
 
 		  VkAttachmentReference* vkObj = (VkAttachmentReference*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkAttachmentReference_getAttachment0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:191
+//@line:201
 
 		  VkAttachmentReference* vkObj = (VkAttachmentReference*)(ptr);
 		  return (jint) (vkObj->attachment);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAttachmentReference_setLayout0(
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:200
+//@line:210
 
 		  VkAttachmentReference* vkObj = (VkAttachmentReference*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAttachmentReference_setLayout0(
 static inline jint wrapped_Java_bor_vulkan_structs_VkAttachmentReference_getLayout0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:210
+//@line:220
 
 		  VkAttachmentReference* vkObj = (VkAttachmentReference*)(ptr);
 		  // generic get for Vk enums

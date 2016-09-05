@@ -41,10 +41,10 @@ JNIEXPORT jobject JNICALL Java_bor_util_Utils_wrapPointer
 
 /*
  * Class:     bor_util_Utils
- * Method:    createDirectBuffer
+ * Method:    createNativeDirectBuffer
  * Signature: (I)Ljava/nio/ByteBuffer;
  */
-JNIEXPORT jobject JNICALL Java_bor_util_Utils_createDirectBuffer
+JNIEXPORT jobject JNICALL Java_bor_util_Utils_createNativeDirectBuffer
   (JNIEnv *, jclass, jint);
 
 /*

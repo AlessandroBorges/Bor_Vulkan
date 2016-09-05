@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:1823
+//@line:1834
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getRobustBufferAccess0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1833
+//@line:1844
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->robustBufferAccess);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setFullD
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:1842
+//@line:1853
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setFullD
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getFullDrawIndexUint320
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1852
+//@line:1863
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->fullDrawIndexUint32);
@@ -71,7 +71,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setImage
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:1861
+//@line:1872
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -83,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setImage
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getImageCubeArray0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1871
+//@line:1882
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->imageCubeArray);
@@ -103,7 +103,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setIndep
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:1880
+//@line:1891
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -115,7 +115,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setIndep
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getIndependentBlend0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1890
+//@line:1901
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->independentBlend);
@@ -135,7 +135,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setGeome
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:1899
+//@line:1910
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -147,7 +147,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setGeome
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getGeometryShader0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1909
+//@line:1920
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->geometryShader);
@@ -167,7 +167,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setTesse
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:1918
+//@line:1929
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -179,7 +179,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setTesse
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getTessellationShader0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1928
+//@line:1939
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->tessellationShader);
@@ -199,7 +199,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSampl
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:1937
+//@line:1948
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -211,7 +211,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSampl
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getSampleRateShading0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1947
+//@line:1958
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sampleRateShading);
@@ -231,7 +231,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setDualS
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:1956
+//@line:1967
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -243,7 +243,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setDualS
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getDualSrcBlend0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1966
+//@line:1977
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->dualSrcBlend);
@@ -263,7 +263,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setLogic
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:1975
+//@line:1986
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -275,7 +275,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setLogic
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getLogicOp0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:1985
+//@line:1996
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->logicOp);
@@ -295,7 +295,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setMulti
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:1994
+//@line:2005
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -307,7 +307,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setMulti
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getMultiDrawIndirect0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2004
+//@line:2015
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->multiDrawIndirect);
@@ -327,7 +327,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setDrawI
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2013
+//@line:2024
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -339,7 +339,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setDrawI
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getDrawIndirectFirstInstance0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2023
+//@line:2034
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->drawIndirectFirstInstance);
@@ -359,7 +359,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setDepth
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2032
+//@line:2043
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -371,7 +371,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setDepth
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getDepthClamp0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2042
+//@line:2053
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->depthClamp);
@@ -391,7 +391,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setDepth
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2051
+//@line:2062
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -403,7 +403,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setDepth
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getDepthBiasClamp0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2061
+//@line:2072
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->depthBiasClamp);
@@ -423,7 +423,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setFillM
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2070
+//@line:2081
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -435,7 +435,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setFillM
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getFillModeNonSolid0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2080
+//@line:2091
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->fillModeNonSolid);
@@ -455,7 +455,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setDepth
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2089
+//@line:2100
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -467,7 +467,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setDepth
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getDepthBounds0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2099
+//@line:2110
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->depthBounds);
@@ -487,7 +487,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setWideL
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2108
+//@line:2119
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -499,7 +499,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setWideL
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getWideLines0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2118
+//@line:2129
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->wideLines);
@@ -519,7 +519,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setLarge
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2127
+//@line:2138
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -531,7 +531,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setLarge
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getLargePoints0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2137
+//@line:2148
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->largePoints);
@@ -551,7 +551,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setAlpha
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2146
+//@line:2157
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -563,7 +563,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setAlpha
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getAlphaToOne0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2156
+//@line:2167
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->alphaToOne);
@@ -583,7 +583,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setMulti
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2165
+//@line:2176
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -595,7 +595,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setMulti
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getMultiViewport0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2175
+//@line:2186
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->multiViewport);
@@ -615,7 +615,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSampl
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2184
+//@line:2195
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -627,7 +627,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSampl
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getSamplerAnisotropy0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2194
+//@line:2205
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->samplerAnisotropy);
@@ -647,7 +647,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setTextu
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2203
+//@line:2214
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -659,7 +659,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setTextu
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getTextureCompressionETC20
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2213
+//@line:2224
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->textureCompressionETC2);
@@ -679,7 +679,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setTextu
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2222
+//@line:2233
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -691,7 +691,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setTextu
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getTextureCompressionASTCJLDR0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2232
+//@line:2243
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->textureCompressionASTC_LDR);
@@ -711,7 +711,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setTextu
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2241
+//@line:2252
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -723,7 +723,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setTextu
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getTextureCompressionBC0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2251
+//@line:2262
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->textureCompressionBC);
@@ -743,7 +743,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setOcclu
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2260
+//@line:2271
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -755,7 +755,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setOcclu
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getOcclusionQueryPrecise0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2270
+//@line:2281
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->occlusionQueryPrecise);
@@ -775,7 +775,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setPipel
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2279
+//@line:2290
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -787,7 +787,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setPipel
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getPipelineStatisticsQuery0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2289
+//@line:2300
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->pipelineStatisticsQuery);
@@ -807,7 +807,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setVerte
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2298
+//@line:2309
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -819,7 +819,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setVerte
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getVertexPipelineStoresAndAtomics0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2308
+//@line:2319
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->vertexPipelineStoresAndAtomics);
@@ -839,7 +839,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setFragm
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2317
+//@line:2328
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -851,7 +851,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setFragm
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getFragmentStoresAndAtomics0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2327
+//@line:2338
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->fragmentStoresAndAtomics);
@@ -871,7 +871,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2336
+//@line:2347
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -883,7 +883,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getShaderTessellationAndGeometryPointSize0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2346
+//@line:2357
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderTessellationAndGeometryPointSize);
@@ -903,7 +903,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2355
+//@line:2366
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -915,7 +915,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getShaderImageGatherExtended0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2365
+//@line:2376
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderImageGatherExtended);
@@ -935,7 +935,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2374
+//@line:2385
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -947,7 +947,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getShaderStorageImageExtendedFormats0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2384
+//@line:2395
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderStorageImageExtendedFormats);
@@ -967,7 +967,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2393
+//@line:2404
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -979,7 +979,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getShaderStorageImageMultisample0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2403
+//@line:2414
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderStorageImageMultisample);
@@ -999,7 +999,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2412
+//@line:2423
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1011,7 +1011,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getShaderStorageImageReadWithoutFormat0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2422
+//@line:2433
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderStorageImageReadWithoutFormat);
@@ -1031,7 +1031,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2431
+//@line:2442
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1043,7 +1043,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getShaderStorageImageWriteWithoutFormat0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2441
+//@line:2452
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderStorageImageWriteWithoutFormat);
@@ -1063,7 +1063,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2450
+//@line:2461
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1075,7 +1075,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getShaderUniformBufferArrayDynamicIndexing0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2460
+//@line:2471
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderUniformBufferArrayDynamicIndexing);
@@ -1095,7 +1095,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2469
+//@line:2480
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1107,7 +1107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getShaderSampledImageArrayDynamicIndexing0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2479
+//@line:2490
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderSampledImageArrayDynamicIndexing);
@@ -1127,7 +1127,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2488
+//@line:2499
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1139,7 +1139,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getShaderStorageBufferArrayDynamicIndexing0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2498
+//@line:2509
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderStorageBufferArrayDynamicIndexing);
@@ -1159,7 +1159,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2507
+//@line:2518
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1171,7 +1171,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getShaderStorageImageArrayDynamicIndexing0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2517
+//@line:2528
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderStorageImageArrayDynamicIndexing);
@@ -1191,7 +1191,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2526
+//@line:2537
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1203,7 +1203,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getShaderClipDistance0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2536
+//@line:2547
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderClipDistance);
@@ -1223,7 +1223,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2545
+//@line:2556
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1235,7 +1235,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getShaderCullDistance0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2555
+//@line:2566
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderCullDistance);
@@ -1255,7 +1255,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2564
+//@line:2575
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1267,7 +1267,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getShaderFloat640
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2574
+//@line:2585
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderFloat64);
@@ -1287,7 +1287,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2583
+//@line:2594
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1299,7 +1299,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getShaderInt640
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2593
+//@line:2604
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderInt64);
@@ -1319,7 +1319,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2602
+//@line:2613
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1331,7 +1331,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getShaderInt160
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2612
+//@line:2623
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderInt16);
@@ -1351,7 +1351,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2621
+//@line:2632
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1363,7 +1363,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getShaderResourceResidency0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2631
+//@line:2642
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderResourceResidency);
@@ -1383,7 +1383,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2640
+//@line:2651
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1395,7 +1395,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setShade
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getShaderResourceMinLod0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2650
+//@line:2661
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->shaderResourceMinLod);
@@ -1415,7 +1415,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSpars
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2659
+//@line:2670
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1427,7 +1427,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSpars
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getSparseBinding0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2669
+//@line:2680
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sparseBinding);
@@ -1447,7 +1447,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSpars
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2678
+//@line:2689
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1459,7 +1459,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSpars
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getSparseResidencyBuffer0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2688
+//@line:2699
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sparseResidencyBuffer);
@@ -1479,7 +1479,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSpars
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2697
+//@line:2708
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1491,7 +1491,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSpars
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getSparseResidencyImage2D0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2707
+//@line:2718
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sparseResidencyImage2D);
@@ -1511,7 +1511,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSpars
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2716
+//@line:2727
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1523,7 +1523,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSpars
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getSparseResidencyImage3D0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2726
+//@line:2737
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sparseResidencyImage3D);
@@ -1543,7 +1543,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSpars
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2735
+//@line:2746
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1555,7 +1555,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSpars
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getSparseResidency2Samples0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2745
+//@line:2756
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sparseResidency2Samples);
@@ -1575,7 +1575,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSpars
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2754
+//@line:2765
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1587,7 +1587,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSpars
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getSparseResidency4Samples0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2764
+//@line:2775
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sparseResidency4Samples);
@@ -1607,7 +1607,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSpars
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2773
+//@line:2784
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1619,7 +1619,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSpars
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getSparseResidency8Samples0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2783
+//@line:2794
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sparseResidency8Samples);
@@ -1639,7 +1639,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSpars
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2792
+//@line:2803
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1651,7 +1651,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSpars
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getSparseResidency16Samples0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2802
+//@line:2813
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sparseResidency16Samples);
@@ -1671,7 +1671,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSpars
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2811
+//@line:2822
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1683,7 +1683,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setSpars
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getSparseResidencyAliased0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2821
+//@line:2832
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->sparseResidencyAliased);
@@ -1703,7 +1703,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setVaria
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2830
+//@line:2841
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1715,7 +1715,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setVaria
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getVariableMultisampleRate0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2840
+//@line:2851
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->variableMultisampleRate);
@@ -1735,7 +1735,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setInher
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:2849
+//@line:2860
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		 // code for simple past value 
@@ -1747,7 +1747,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_setInher
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceFeatures_getInheritedQueries0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:2859
+//@line:2870
 
 		  VkPhysicalDeviceFeatures* vkObj = (VkPhysicalDeviceFeatures*)(ptr);
 		  return (jboolean) (vkObj->inheritedQueries);

@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:201
+//@line:212
 
 		  VkDisplayModePropertiesKHR* vkObj = (VkDisplayModePropertiesKHR*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayModePropertiesKHR_getDisplayMode0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:211
+//@line:222
 
 		  VkDisplayModePropertiesKHR* vkObj = (VkDisplayModePropertiesKHR*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayModePropertiesKHR_setPar
 	char* _parameters = (char*)(obj__parameters?env->GetDirectBufferAddress(obj__parameters) : NULL);
 
 
-//@line:221
+//@line:232
 
 		  VkDisplayModePropertiesKHR* vkObj = (VkDisplayModePropertiesKHR*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayModePropertiesKHR_setPar
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayModePropertiesKHR_getParameters0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:232
+//@line:243
 
 		  VkDisplayModePropertiesKHR* vkObj = (VkDisplayModePropertiesKHR*)(ptr);
 		  // generic get for Buffer 

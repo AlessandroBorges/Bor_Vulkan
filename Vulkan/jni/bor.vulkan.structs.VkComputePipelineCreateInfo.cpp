@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:377
+//@line:388
 
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkComputePipelineCreateInfo_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:387
+//@line:398
 
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComputePipelineCreateInfo_setPN
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:397
+//@line:408
 
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComputePipelineCreateInfo_setPN
 static inline jlong wrapped_Java_bor_vulkan_structs_VkComputePipelineCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:408
+//@line:419
 
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComputePipelineCreateInfo_setFl
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:418
+//@line:429
 
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComputePipelineCreateInfo_setFl
 static inline jint wrapped_Java_bor_vulkan_structs_VkComputePipelineCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:428
+//@line:439
 
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -108,7 +108,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComputePipelineCreateInfo_setSt
 	char* _stage = (char*)(obj__stage?env->GetDirectBufferAddress(obj__stage) : NULL);
 
 
-//@line:437
+//@line:448
 
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -121,7 +121,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComputePipelineCreateInfo_setSt
 static inline jlong wrapped_Java_bor_vulkan_structs_VkComputePipelineCreateInfo_getStage0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:448
+//@line:459
 
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -142,7 +142,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComputePipelineCreateInfo_setLa
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:458
+//@line:469
 
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -154,7 +154,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComputePipelineCreateInfo_setLa
 static inline jlong wrapped_Java_bor_vulkan_structs_VkComputePipelineCreateInfo_getLayout0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:468
+//@line:479
 
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -175,7 +175,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComputePipelineCreateInfo_setBa
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:478
+//@line:489
 
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -187,7 +187,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComputePipelineCreateInfo_setBa
 static inline jlong wrapped_Java_bor_vulkan_structs_VkComputePipelineCreateInfo_getBasePipelineHandle0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:488
+//@line:499
 
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -208,7 +208,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComputePipelineCreateInfo_setBa
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:498
+//@line:509
 
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -220,7 +220,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkComputePipelineCreateInfo_setBa
 static inline jint wrapped_Java_bor_vulkan_structs_VkComputePipelineCreateInfo_getBasePipelineIndex0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:508
+//@line:519
 
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
 		  return (jint) (vkObj->basePipelineIndex);

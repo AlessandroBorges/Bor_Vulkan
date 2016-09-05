@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:405
+//@line:415
 
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkAttachmentDescription_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:415
+//@line:425
 
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAttachmentDescription_setFormat
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:424
+//@line:434
 
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAttachmentDescription_setFormat
 static inline jint wrapped_Java_bor_vulkan_structs_VkAttachmentDescription_getFormat0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:434
+//@line:444
 
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  // generic get for Vk enums
@@ -72,7 +72,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAttachmentDescription_setSample
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:444
+//@line:454
 
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		 // code for simple past value 
@@ -84,7 +84,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAttachmentDescription_setSample
 static inline jint wrapped_Java_bor_vulkan_structs_VkAttachmentDescription_getSamples0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:454
+//@line:464
 
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  // generic get for Vk enums
@@ -105,7 +105,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAttachmentDescription_setLoadOp
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:464
+//@line:474
 
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		 // code for simple past value 
@@ -117,7 +117,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAttachmentDescription_setLoadOp
 static inline jint wrapped_Java_bor_vulkan_structs_VkAttachmentDescription_getLoadOp0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:474
+//@line:484
 
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  // generic get for Vk enums
@@ -138,7 +138,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAttachmentDescription_setStoreO
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:484
+//@line:494
 
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		 // code for simple past value 
@@ -150,7 +150,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAttachmentDescription_setStoreO
 static inline jint wrapped_Java_bor_vulkan_structs_VkAttachmentDescription_getStoreOp0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:494
+//@line:504
 
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  // generic get for Vk enums
@@ -171,7 +171,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAttachmentDescription_setStenci
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:504
+//@line:514
 
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		 // code for simple past value 
@@ -183,7 +183,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAttachmentDescription_setStenci
 static inline jint wrapped_Java_bor_vulkan_structs_VkAttachmentDescription_getStencilLoadOp0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:514
+//@line:524
 
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  // generic get for Vk enums
@@ -204,7 +204,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAttachmentDescription_setStenci
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:524
+//@line:534
 
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		 // code for simple past value 
@@ -216,7 +216,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAttachmentDescription_setStenci
 static inline jint wrapped_Java_bor_vulkan_structs_VkAttachmentDescription_getStencilStoreOp0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:534
+//@line:544
 
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  // generic get for Vk enums
@@ -237,7 +237,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAttachmentDescription_setInitia
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:544
+//@line:554
 
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		 // code for simple past value 
@@ -249,7 +249,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAttachmentDescription_setInitia
 static inline jint wrapped_Java_bor_vulkan_structs_VkAttachmentDescription_getInitialLayout0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:554
+//@line:564
 
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  // generic get for Vk enums
@@ -270,7 +270,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAttachmentDescription_setFinalL
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:564
+//@line:574
 
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		 // code for simple past value 
@@ -282,7 +282,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkAttachmentDescription_setFinalL
 static inline jint wrapped_Java_bor_vulkan_structs_VkAttachmentDescription_getFinalLayout0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:574
+//@line:584
 
 		  VkAttachmentDescription* vkObj = (VkAttachmentDescription*)(ptr);
 		  // generic get for Vk enums

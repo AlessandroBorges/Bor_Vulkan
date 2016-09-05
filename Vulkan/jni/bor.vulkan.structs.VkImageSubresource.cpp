@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:211
+//@line:222
 
 		  VkImageSubresource* vkObj = (VkImageSubresource*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageSubresource_getAspectMask0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:221
+//@line:232
 
 		  VkImageSubresource* vkObj = (VkImageSubresource*)(ptr);
 		  return (jint) (vkObj->aspectMask);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageSubresource_setMipLevel0(J
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:230
+//@line:241
 
 		  VkImageSubresource* vkObj = (VkImageSubresource*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageSubresource_setMipLevel0(J
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageSubresource_getMipLevel0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:240
+//@line:251
 
 		  VkImageSubresource* vkObj = (VkImageSubresource*)(ptr);
 		  return (jint) (vkObj->mipLevel);
@@ -71,7 +71,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageSubresource_setArrayLayer0
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:249
+//@line:260
 
 		  VkImageSubresource* vkObj = (VkImageSubresource*)(ptr);
 		 // code for simple past value 
@@ -83,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageSubresource_setArrayLayer0
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageSubresource_getArrayLayer0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:259
+//@line:270
 
 		  VkImageSubresource* vkObj = (VkImageSubresource*)(ptr);
 		  return (jint) (vkObj->arrayLayer);

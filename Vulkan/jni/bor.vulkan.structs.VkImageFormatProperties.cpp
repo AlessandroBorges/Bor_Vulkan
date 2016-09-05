@@ -8,7 +8,7 @@
 	char* _maxExtent = (char*)(obj__maxExtent?env->GetDirectBufferAddress(obj__maxExtent) : NULL);
 
 
-//@line:283
+//@line:294
 
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -21,7 +21,7 @@
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageFormatProperties_getMaxExtent0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:294
+//@line:305
 
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
 		  // generic get for Buffer 
@@ -42,7 +42,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageFormatProperties_setMaxMip
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:304
+//@line:315
 
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
 		 // code for simple past value 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageFormatProperties_setMaxMip
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageFormatProperties_getMaxMipLevels0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:314
+//@line:325
 
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
 		  return (jint) (vkObj->maxMipLevels);
@@ -74,7 +74,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageFormatProperties_setMaxArr
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:323
+//@line:334
 
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
 		 // code for simple past value 
@@ -86,7 +86,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageFormatProperties_setMaxArr
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageFormatProperties_getMaxArrayLayers0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:333
+//@line:344
 
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
 		  return (jint) (vkObj->maxArrayLayers);
@@ -106,7 +106,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageFormatProperties_setSample
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:342
+//@line:353
 
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
 		 // code for simple past value 
@@ -118,7 +118,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageFormatProperties_setSample
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageFormatProperties_getSampleCounts0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:352
+//@line:363
 
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
 		  return (jint) (vkObj->sampleCounts);
@@ -138,7 +138,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageFormatProperties_setMaxRes
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:361
+//@line:372
 
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
 		 // code for simple past value 
@@ -150,7 +150,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageFormatProperties_setMaxRes
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageFormatProperties_getMaxResourceSize0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:371
+//@line:382
 
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
 		  return (jlong) (vkObj->maxResourceSize);

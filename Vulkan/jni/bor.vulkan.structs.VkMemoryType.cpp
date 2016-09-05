@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:180
+//@line:191
 
 		  VkMemoryType* vkObj = (VkMemoryType*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkMemoryType_getPropertyFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:190
+//@line:201
 
 		  VkMemoryType* vkObj = (VkMemoryType*)(ptr);
 		  return (jint) (vkObj->propertyFlags);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMemoryType_setHeapIndex0(JNIEnv
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:199
+//@line:210
 
 		  VkMemoryType* vkObj = (VkMemoryType*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMemoryType_setHeapIndex0(JNIEnv
 static inline jint wrapped_Java_bor_vulkan_structs_VkMemoryType_getHeapIndex0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:209
+//@line:220
 
 		  VkMemoryType* vkObj = (VkMemoryType*)(ptr);
 		  return (jint) (vkObj->heapIndex);

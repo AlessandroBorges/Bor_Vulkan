@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:212
+//@line:223
 
 		  VkVertexInputBindingDescription* vkObj = (VkVertexInputBindingDescription*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkVertexInputBindingDescription_getBinding0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:222
+//@line:233
 
 		  VkVertexInputBindingDescription* vkObj = (VkVertexInputBindingDescription*)(ptr);
 		  return (jint) (vkObj->binding);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkVertexInputBindingDescription_s
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:231
+//@line:242
 
 		  VkVertexInputBindingDescription* vkObj = (VkVertexInputBindingDescription*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkVertexInputBindingDescription_s
 static inline jint wrapped_Java_bor_vulkan_structs_VkVertexInputBindingDescription_getStride0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:241
+//@line:252
 
 		  VkVertexInputBindingDescription* vkObj = (VkVertexInputBindingDescription*)(ptr);
 		  return (jint) (vkObj->stride);
@@ -71,7 +71,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkVertexInputBindingDescription_s
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:250
+//@line:261
 
 		  VkVertexInputBindingDescription* vkObj = (VkVertexInputBindingDescription*)(ptr);
 		 // code for simple past value 
@@ -83,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkVertexInputBindingDescription_s
 static inline jint wrapped_Java_bor_vulkan_structs_VkVertexInputBindingDescription_getInputRate0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:260
+//@line:271
 
 		  VkVertexInputBindingDescription* vkObj = (VkVertexInputBindingDescription*)(ptr);
 		  // generic get for Vk enums

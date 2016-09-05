@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:335
+//@line:346
 
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkSubpassDependency_getSrcSubpass0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:345
+//@line:356
 
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		  return (jint) (vkObj->srcSubpass);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDependency_setDstSubpass
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:354
+//@line:365
 
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDependency_setDstSubpass
 static inline jint wrapped_Java_bor_vulkan_structs_VkSubpassDependency_getDstSubpass0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:364
+//@line:375
 
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		  return (jint) (vkObj->dstSubpass);
@@ -71,7 +71,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDependency_setSrcStageMa
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:373
+//@line:384
 
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		 // code for simple past value 
@@ -83,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDependency_setSrcStageMa
 static inline jint wrapped_Java_bor_vulkan_structs_VkSubpassDependency_getSrcStageMask0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:383
+//@line:394
 
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		  return (jint) (vkObj->srcStageMask);
@@ -103,7 +103,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDependency_setDstStageMa
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:392
+//@line:403
 
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		 // code for simple past value 
@@ -115,7 +115,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDependency_setDstStageMa
 static inline jint wrapped_Java_bor_vulkan_structs_VkSubpassDependency_getDstStageMask0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:402
+//@line:413
 
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		  return (jint) (vkObj->dstStageMask);
@@ -135,7 +135,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDependency_setSrcAccessM
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:411
+//@line:422
 
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		 // code for simple past value 
@@ -147,7 +147,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDependency_setSrcAccessM
 static inline jint wrapped_Java_bor_vulkan_structs_VkSubpassDependency_getSrcAccessMask0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:421
+//@line:432
 
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		  return (jint) (vkObj->srcAccessMask);
@@ -167,7 +167,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDependency_setDstAccessM
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:430
+//@line:441
 
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		 // code for simple past value 
@@ -179,7 +179,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDependency_setDstAccessM
 static inline jint wrapped_Java_bor_vulkan_structs_VkSubpassDependency_getDstAccessMask0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:440
+//@line:451
 
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		  return (jint) (vkObj->dstAccessMask);
@@ -199,7 +199,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDependency_setDependency
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:449
+//@line:460
 
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		 // code for simple past value 
@@ -211,7 +211,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDependency_setDependency
 static inline jint wrapped_Java_bor_vulkan_structs_VkSubpassDependency_getDependencyFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:459
+//@line:470
 
 		  VkSubpassDependency* vkObj = (VkSubpassDependency*)(ptr);
 		  return (jint) (vkObj->dependencyFlags);

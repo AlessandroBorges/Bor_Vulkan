@@ -1,6 +1,6 @@
 #include <bor.util.Utils.h>
 
-//@line:21
+//@line:23
 
      
          
@@ -11,7 +11,7 @@
      JNIEXPORT jint JNICALL Java_bor_util_Utils_sizeOfPtr(JNIEnv* env, jclass clazz) {
 
 
-//@line:41
+//@line:43
       
       return (jint) sizeof(void*);      
     
@@ -21,7 +21,7 @@
 static inline jboolean wrapped_Java_bor_util_Utils_equals
 (JNIEnv* env, jclass clazz, jobject obj_buffer, jlong address, unsigned char* buffer) {
 
-//@line:51
+//@line:53
 
       
       void* a = (void*) buffer;
@@ -42,7 +42,7 @@ JNIEXPORT jboolean JNICALL Java_bor_util_Utils_equals(JNIEnv* env, jclass clazz,
 static inline jlong wrapped_Java_bor_util_Utils_getNativeAddress
 (JNIEnv* env, jclass clazz, jobject obj_buffer, unsigned char* buffer) {
 
-//@line:63
+//@line:80
       
       return (jlong) reinterpret_cast<jlong>(buffer);
     
@@ -60,7 +60,7 @@ JNIEXPORT jlong JNICALL Java_bor_util_Utils_getNativeAddress(JNIEnv* env, jclass
 JNIEXPORT jobject JNICALL Java_bor_util_Utils_wrapPointer(JNIEnv* env, jclass clazz, jlong address, jint size) {
 
 
-//@line:74
+//@line:91
 
      void* buffer = (void *)(address);
      jobject directBuffer = env->NewDirectByteBuffer(buffer, size);
@@ -69,10 +69,10 @@ JNIEXPORT jobject JNICALL Java_bor_util_Utils_wrapPointer(JNIEnv* env, jclass cl
 
 }
 
-JNIEXPORT jobject JNICALL Java_bor_util_Utils_createDirectBuffer(JNIEnv* env, jclass clazz, jint size) {
+JNIEXPORT jobject JNICALL Java_bor_util_Utils_createNativeDirectBuffer(JNIEnv* env, jclass clazz, jint size) {
 
 
-//@line:86
+//@line:105
 
      void* pbuffer = calloc((size_t) 1, (size_t)size);
      jobject directBuffer = env->NewDirectByteBuffer(pbuffer, size);
@@ -84,7 +84,7 @@ JNIEXPORT jobject JNICALL Java_bor_util_Utils_createDirectBuffer(JNIEnv* env, jc
 static inline jboolean wrapped_Java_bor_util_Utils_deleteDirectBuffer
 (JNIEnv* env, jclass clazz, jobject obj_ptr, char* ptr) {
 
-//@line:97
+//@line:116
 
        void* pbuffer = (void*)ptr;
        if(pbuffer)

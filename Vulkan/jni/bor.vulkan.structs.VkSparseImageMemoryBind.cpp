@@ -8,7 +8,7 @@
 	char* _subresource = (char*)(obj__subresource?env->GetDirectBufferAddress(obj__subresource) : NULL);
 
 
-//@line:345
+//@line:356
 
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -21,7 +21,7 @@
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseImageMemoryBind_getSubresource0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:356
+//@line:367
 
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
 		  // generic get for Buffer 
@@ -43,7 +43,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageMemoryBind_setOffset
 	char* _offset = (char*)(obj__offset?env->GetDirectBufferAddress(obj__offset) : NULL);
 
 
-//@line:366
+//@line:377
 
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -56,7 +56,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageMemoryBind_setOffset
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseImageMemoryBind_getOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:377
+//@line:388
 
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
 		  // generic get for Buffer 
@@ -78,7 +78,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageMemoryBind_setExtent
 	char* _extent = (char*)(obj__extent?env->GetDirectBufferAddress(obj__extent) : NULL);
 
 
-//@line:387
+//@line:398
 
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -91,7 +91,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageMemoryBind_setExtent
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseImageMemoryBind_getExtent0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:398
+//@line:409
 
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
 		  // generic get for Buffer 
@@ -112,7 +112,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageMemoryBind_setMemory
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:408
+//@line:419
 
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
 		 // code for simple past value 
@@ -124,7 +124,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageMemoryBind_setMemory
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseImageMemoryBind_getMemory0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:418
+//@line:429
 
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -145,7 +145,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageMemoryBind_setMemory
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:428
+//@line:439
 
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
 		 // code for simple past value 
@@ -157,7 +157,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageMemoryBind_setMemory
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseImageMemoryBind_getMemoryOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:438
+//@line:449
 
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
 		  return (jlong) (vkObj->memoryOffset);
@@ -177,7 +177,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageMemoryBind_setFlags0
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:447
+//@line:458
 
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
 		 // code for simple past value 
@@ -189,7 +189,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseImageMemoryBind_setFlags0
 static inline jint wrapped_Java_bor_vulkan_structs_VkSparseImageMemoryBind_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:457
+//@line:468
 
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
 		  return (jint) (vkObj->flags);

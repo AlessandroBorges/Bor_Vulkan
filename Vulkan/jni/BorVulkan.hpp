@@ -25,9 +25,11 @@ extern "C" {
  #include <cstring>
 
  #define VK_NO_PROTOTYPES 1
+ #define USE_DEBUG_EXTENSIONS 1
+ #define VULKAN_WRAPPER_ENABLE_ALL_EXTENSIONS_DEFAULT 1
  #include <vulkan_wrapper.h>
  #include <jni.h>
-
+ 
  #define MIN(a,b) (((a)<(b))?(a):(b))
  #define MAX(a,b) (((a)>(b))?(a):(b))
  #define CALLOC(COUNT,TYPE) ((TYPE*)(calloc(COUNT,sizeof(TYPE))));

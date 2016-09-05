@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:211
+//@line:222
 
 		  VkSpecializationMapEntry* vkObj = (VkSpecializationMapEntry*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkSpecializationMapEntry_getConstantID0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:221
+//@line:232
 
 		  VkSpecializationMapEntry* vkObj = (VkSpecializationMapEntry*)(ptr);
 		  return (jint) (vkObj->constantID);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSpecializationMapEntry_setOffse
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:230
+//@line:241
 
 		  VkSpecializationMapEntry* vkObj = (VkSpecializationMapEntry*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSpecializationMapEntry_setOffse
 static inline jint wrapped_Java_bor_vulkan_structs_VkSpecializationMapEntry_getOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:240
+//@line:251
 
 		  VkSpecializationMapEntry* vkObj = (VkSpecializationMapEntry*)(ptr);
 		  return (jint) (vkObj->offset);
@@ -71,7 +71,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSpecializationMapEntry_setSize0
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:249
+//@line:260
 
 		  VkSpecializationMapEntry* vkObj = (VkSpecializationMapEntry*)(ptr);
 		 // code for simple past value 
@@ -83,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSpecializationMapEntry_setSize0
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSpecializationMapEntry_getSize0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:259
+//@line:270
 
 		  VkSpecializationMapEntry* vkObj = (VkSpecializationMapEntry*)(ptr);
 		  return (jlong) (vkObj->size);

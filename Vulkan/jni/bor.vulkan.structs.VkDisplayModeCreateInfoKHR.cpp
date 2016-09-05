@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:262
+//@line:273
 
 		  VkDisplayModeCreateInfoKHR* vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkDisplayModeCreateInfoKHR_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:272
+//@line:283
 
 		  VkDisplayModeCreateInfoKHR* vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayModeCreateInfoKHR_setPNe
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:282
+//@line:293
 
 		  VkDisplayModeCreateInfoKHR* vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayModeCreateInfoKHR_setPNe
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayModeCreateInfoKHR_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:293
+//@line:304
 
 		  VkDisplayModeCreateInfoKHR* vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
 		  // generic get for Buffer 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayModeCreateInfoKHR_setFla
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:303
+//@line:314
 
 		  VkDisplayModeCreateInfoKHR* vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayModeCreateInfoKHR_setFla
 static inline jint wrapped_Java_bor_vulkan_structs_VkDisplayModeCreateInfoKHR_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:313
+//@line:324
 
 		  VkDisplayModeCreateInfoKHR* vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -108,7 +108,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayModeCreateInfoKHR_setPar
 	char* _parameters = (char*)(obj__parameters?env->GetDirectBufferAddress(obj__parameters) : NULL);
 
 
-//@line:322
+//@line:333
 
 		  VkDisplayModeCreateInfoKHR* vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -121,7 +121,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayModeCreateInfoKHR_setPar
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayModeCreateInfoKHR_getParameters0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:333
+//@line:344
 
 		  VkDisplayModeCreateInfoKHR* vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
 		  // generic get for Buffer 

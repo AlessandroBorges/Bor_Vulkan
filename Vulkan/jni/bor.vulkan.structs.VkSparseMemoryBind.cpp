@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:284
+//@line:295
 
 		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseMemoryBind_getResourceOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:294
+//@line:305
 
 		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
 		  return (jlong) (vkObj->resourceOffset);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseMemoryBind_setSize0(JNIEn
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:303
+//@line:314
 
 		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseMemoryBind_setSize0(JNIEn
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseMemoryBind_getSize0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:313
+//@line:324
 
 		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
 		  return (jlong) (vkObj->size);
@@ -71,7 +71,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseMemoryBind_setMemory0(JNI
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:322
+//@line:333
 
 		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
 		 // code for simple past value 
@@ -83,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseMemoryBind_setMemory0(JNI
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseMemoryBind_getMemory0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:332
+//@line:343
 
 		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -104,7 +104,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseMemoryBind_setMemoryOffse
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:342
+//@line:353
 
 		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
 		 // code for simple past value 
@@ -116,7 +116,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseMemoryBind_setMemoryOffse
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseMemoryBind_getMemoryOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:352
+//@line:363
 
 		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
 		  return (jlong) (vkObj->memoryOffset);
@@ -136,7 +136,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseMemoryBind_setFlags0(JNIE
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:361
+//@line:372
 
 		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
 		 // code for simple past value 
@@ -148,7 +148,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseMemoryBind_setFlags0(JNIE
 static inline jint wrapped_Java_bor_vulkan_structs_VkSparseMemoryBind_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:371
+//@line:382
 
 		  VkSparseMemoryBind* vkObj = (VkSparseMemoryBind*)(ptr);
 		  return (jint) (vkObj->flags);

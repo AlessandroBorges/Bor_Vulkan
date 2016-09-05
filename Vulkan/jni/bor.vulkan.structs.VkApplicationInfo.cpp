@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:345
+//@line:356
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:355
+//@line:366
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setPNext0(JNIEn
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:365
+//@line:376
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setPNext0(JNIEn
 static inline jlong wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:376
+//@line:387
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  // generic get for Buffer 
@@ -76,7 +76,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setPApplication
 	char* _pApplicationName = (char*)(obj__pApplicationName ? env->GetStringUTFChars(obj__pApplicationName, 0) : NULL);
 
 
-//@line:386
+//@line:397
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  vkObj->pApplicationName = cloneStr(_pApplicationName);
@@ -90,7 +90,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setPApplication
 static inline jstring wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getPApplicationName0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:395
+//@line:406
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  return (jstring)(env->NewStringUTF(vkObj->pApplicationName));
@@ -110,7 +110,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setApplicationV
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:404
+//@line:415
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		 // code for simple past value 
@@ -122,7 +122,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setApplicationV
 static inline jint wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getApplicationVersion0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:414
+//@line:425
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  return (jint) (vkObj->applicationVersion);
@@ -143,7 +143,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setPEngineName0
 	char* _pEngineName = (char*)(obj__pEngineName ? env->GetStringUTFChars(obj__pEngineName, 0) : NULL);
 
 
-//@line:423
+//@line:434
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  vkObj->pEngineName = cloneStr(_pEngineName);
@@ -157,7 +157,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setPEngineName0
 static inline jstring wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getPEngineName0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:432
+//@line:443
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  return (jstring)(env->NewStringUTF(vkObj->pEngineName));
@@ -177,7 +177,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setEngineVersio
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:441
+//@line:452
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		 // code for simple past value 
@@ -189,7 +189,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setEngineVersio
 static inline jint wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getEngineVersion0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:451
+//@line:462
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  return (jint) (vkObj->engineVersion);
@@ -209,7 +209,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setApiVersion0(
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:460
+//@line:471
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		 // code for simple past value 
@@ -221,7 +221,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkApplicationInfo_setApiVersion0(
 static inline jint wrapped_Java_bor_vulkan_structs_VkApplicationInfo_getApiVersion0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:470
+//@line:481
 
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
 		  return (jint) (vkObj->apiVersion);

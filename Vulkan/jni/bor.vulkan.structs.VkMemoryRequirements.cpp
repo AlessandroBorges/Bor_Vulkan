@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:211
+//@line:222
 
 		  VkMemoryRequirements* vkObj = (VkMemoryRequirements*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jlong wrapped_Java_bor_vulkan_structs_VkMemoryRequirements_getSize0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:221
+//@line:232
 
 		  VkMemoryRequirements* vkObj = (VkMemoryRequirements*)(ptr);
 		  return (jlong) (vkObj->size);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMemoryRequirements_setAlignment
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:230
+//@line:241
 
 		  VkMemoryRequirements* vkObj = (VkMemoryRequirements*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMemoryRequirements_setAlignment
 static inline jlong wrapped_Java_bor_vulkan_structs_VkMemoryRequirements_getAlignment0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:240
+//@line:251
 
 		  VkMemoryRequirements* vkObj = (VkMemoryRequirements*)(ptr);
 		  return (jlong) (vkObj->alignment);
@@ -71,7 +71,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMemoryRequirements_setMemoryTyp
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:249
+//@line:260
 
 		  VkMemoryRequirements* vkObj = (VkMemoryRequirements*)(ptr);
 		 // code for simple past value 
@@ -83,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkMemoryRequirements_setMemoryTyp
 static inline jint wrapped_Java_bor_vulkan_structs_VkMemoryRequirements_getMemoryTypeBits0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:259
+//@line:270
 
 		  VkMemoryRequirements* vkObj = (VkMemoryRequirements*)(ptr);
 		  return (jint) (vkObj->memoryTypeBits);

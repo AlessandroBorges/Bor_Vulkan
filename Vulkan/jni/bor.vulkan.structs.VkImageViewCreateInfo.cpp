@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:409
+//@line:420
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageViewCreateInfo_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:419
+//@line:430
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setPNext0(J
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:429
+//@line:440
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setPNext0(J
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageViewCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:440
+//@line:451
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setFlags0(J
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:450
+//@line:461
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setFlags0(J
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageViewCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:460
+//@line:471
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -107,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setImage0(J
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:469
+//@line:480
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -119,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setImage0(J
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageViewCreateInfo_getImage0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:479
+//@line:490
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -140,7 +140,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setViewType
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:489
+//@line:500
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -152,7 +152,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setViewType
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageViewCreateInfo_getViewType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:499
+//@line:510
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  // generic get for Vk enums
@@ -173,7 +173,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setFormat0(
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:509
+//@line:520
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -185,7 +185,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setFormat0(
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageViewCreateInfo_getFormat0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:519
+//@line:530
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  // generic get for Vk enums
@@ -207,7 +207,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setComponen
 	char* _components = (char*)(obj__components?env->GetDirectBufferAddress(obj__components) : NULL);
 
 
-//@line:529
+//@line:540
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -220,7 +220,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setComponen
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageViewCreateInfo_getComponents0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:540
+//@line:551
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -242,7 +242,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setSubresou
 	char* _subresourceRange = (char*)(obj__subresourceRange?env->GetDirectBufferAddress(obj__subresourceRange) : NULL);
 
 
-//@line:550
+//@line:561
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -255,7 +255,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageViewCreateInfo_setSubresou
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageViewCreateInfo_getSubresourceRange0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:561
+//@line:572
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  // generic get for Buffer 

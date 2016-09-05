@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:211
+//@line:222
 
 		  VkFormatProperties* vkObj = (VkFormatProperties*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkFormatProperties_getLinearTilingFeatures0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:221
+//@line:232
 
 		  VkFormatProperties* vkObj = (VkFormatProperties*)(ptr);
 		  return (jint) (vkObj->linearTilingFeatures);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFormatProperties_setOptimalTili
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:230
+//@line:241
 
 		  VkFormatProperties* vkObj = (VkFormatProperties*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFormatProperties_setOptimalTili
 static inline jint wrapped_Java_bor_vulkan_structs_VkFormatProperties_getOptimalTilingFeatures0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:240
+//@line:251
 
 		  VkFormatProperties* vkObj = (VkFormatProperties*)(ptr);
 		  return (jint) (vkObj->optimalTilingFeatures);
@@ -71,7 +71,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFormatProperties_setBufferFeatu
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:249
+//@line:260
 
 		  VkFormatProperties* vkObj = (VkFormatProperties*)(ptr);
 		 // code for simple past value 
@@ -83,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFormatProperties_setBufferFeatu
 static inline jint wrapped_Java_bor_vulkan_structs_VkFormatProperties_getBufferFeatures0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:259
+//@line:270
 
 		  VkFormatProperties* vkObj = (VkFormatProperties*)(ptr);
 		  return (jint) (vkObj->bufferFeatures);

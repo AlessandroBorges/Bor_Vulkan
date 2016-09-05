@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:366
+//@line:377
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPropertiesKHR_getDisplay0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:376
+//@line:387
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setDisplay
 	char* _displayName = (char*)(obj__displayName ? env->GetStringUTFChars(obj__displayName, 0) : NULL);
 
 
-//@line:386
+//@line:397
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  vkObj->displayName = cloneStr(_displayName);
@@ -55,7 +55,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setDisplay
 static inline jstring wrapped_Java_bor_vulkan_structs_VkDisplayPropertiesKHR_getDisplayName0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:395
+//@line:406
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  return (jstring)(env->NewStringUTF(vkObj->displayName));
@@ -76,7 +76,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setPhysica
 	char* _physicalDimensions = (char*)(obj__physicalDimensions?env->GetDirectBufferAddress(obj__physicalDimensions) : NULL);
 
 
-//@line:404
+//@line:415
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -89,7 +89,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setPhysica
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPropertiesKHR_getPhysicalDimensions0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:415
+//@line:426
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  // generic get for Buffer 
@@ -111,7 +111,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setPhysica
 	char* _physicalResolution = (char*)(obj__physicalResolution?env->GetDirectBufferAddress(obj__physicalResolution) : NULL);
 
 
-//@line:425
+//@line:436
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -124,7 +124,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setPhysica
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPropertiesKHR_getPhysicalResolution0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:436
+//@line:447
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  // generic get for Buffer 
@@ -145,7 +145,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setSupport
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:446
+//@line:457
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		 // code for simple past value 
@@ -157,7 +157,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setSupport
 static inline jint wrapped_Java_bor_vulkan_structs_VkDisplayPropertiesKHR_getSupportedTransforms0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:456
+//@line:467
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  return (jint) (vkObj->supportedTransforms);
@@ -177,7 +177,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setPlaneRe
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:465
+//@line:476
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		 // code for simple past value 
@@ -189,7 +189,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setPlaneRe
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkDisplayPropertiesKHR_getPlaneReorderPossible0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:475
+//@line:486
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  return (jboolean) (vkObj->planeReorderPossible);
@@ -209,7 +209,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setPersist
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:484
+//@line:495
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		 // code for simple past value 
@@ -221,7 +221,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPropertiesKHR_setPersist
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkDisplayPropertiesKHR_getPersistentContent0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:494
+//@line:505
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  return (jboolean) (vkObj->persistentContent);

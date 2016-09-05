@@ -325,10 +325,8 @@ int InitInstanceProcs(VkInstance instance){
     vkGetDisplayPlaneCapabilitiesKHR = (PFN_vkGetDisplayPlaneCapabilitiesKHR)(vkGetInstanceProcAddr(instance, "vkGetDisplayPlaneCapabilitiesKHR"));
     vkCreateDisplayPlaneSurfaceKHR = (PFN_vkCreateDisplayPlaneSurfaceKHR)(vkGetInstanceProcAddr(instance, "vkCreateDisplayPlaneSurfaceKHR"));
     vkCreateSharedSwapchainsKHR = (PFN_vkCreateSharedSwapchainsKHR)(vkGetInstanceProcAddr(instance, "vkCreateSharedSwapchainsKHR"));
-    
-    
-
-#ifdef VK_USE_PLATFORM_XLIB_KHR
+   
+    #ifdef VK_USE_PLATFORM_XLIB_KHR
     vkCreateXlibSurfaceKHR = (PFN_vkCreateXlibSurfaceKHR)(vkGetInstanceProcAddr(instance, "vkCreateXlibSurfaceKHR"));
     vkGetPhysicalDeviceXlibPresentationSupportKHR = (PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR)(vkGetInstanceProcAddr(instance, "vkGetPhysicalDeviceXlibPresentationSupportKHR"));
 #endif
@@ -356,10 +354,22 @@ int InitInstanceProcs(VkInstance instance){
     vkCreateWin32SurfaceKHR = (PFN_vkCreateWin32SurfaceKHR)(vkGetInstanceProcAddr(instance, "vkCreateWin32SurfaceKHR"));
     vkGetPhysicalDeviceWin32PresentationSupportKHR = (PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR)(vkGetInstanceProcAddr(instance, "vkGetPhysicalDeviceWin32PresentationSupportKHR"));
 #endif
-#ifdef USE_DEBUG_EXTENTIONS
+
+#ifdef USE_DEBUG_EXTENSIONS
+
+    // VK_EXT_debug_report
     vkCreateDebugReportCallbackEXT = (PFN_vkCreateDebugReportCallbackEXT)(vkGetInstanceProcAddr(instance, "vkCreateDebugReportCallbackEXT"));
     vkDestroyDebugReportCallbackEXT = (PFN_vkDestroyDebugReportCallbackEXT)(vkGetInstanceProcAddr(instance, "vkDestroyDebugReportCallbackEXT"));
     vkDebugReportMessageEXT = (PFN_vkDebugReportMessageEXT)(vkGetInstanceProcAddr(instance, "vkDebugReportMessageEXT"));
+     
+    // VK_EXT_DEBUG_MARKER
+    vkDebugMarkerSetObjectTagEXT = (PFN_vkDebugMarkerSetObjectTagEXT)vkGetInstanceProcAddr(instance, "vkDebugMarkerSetObjectTagEXT");
+    vkDebugMarkerSetObjectNameEXT = (PFN_vkDebugMarkerSetObjectNameEXT)vkGetInstanceProcAddr(instance, "vkDebugMarkerSetObjectNameEXT");
+   
+    vkCmdDebugMarkerBeginEXT = (PFN_vkCmdDebugMarkerBeginEXT)vkGetInstanceProcAddr(instance, "vkCmdDebugMarkerBeginEXT");
+    vkCmdDebugMarkerEndEXT = (PFN_vkCmdDebugMarkerEndEXT)vkGetInstanceProcAddr(instance, "vkCmdDebugMarkerEndEXT");
+    vkCmdDebugMarkerInsertEXT = (PFN_vkCmdDebugMarkerInsertEXT)vkGetInstanceProcAddr(instance, "vkCmdDebugMarkerInsertEXT");
+      
 #endif
     return 1;
 }
@@ -522,6 +532,22 @@ PFN_vkGetDisplayPlaneCapabilitiesKHR vkGetDisplayPlaneCapabilitiesKHR;
 PFN_vkCreateDisplayPlaneSurfaceKHR vkCreateDisplayPlaneSurfaceKHR;
 PFN_vkCreateSharedSwapchainsKHR vkCreateSharedSwapchainsKHR;
 
+//#ifdef USE_DEBUG_EXTENSIONS
+
+ // VK_EXT_debug_report
+ PFN_vkDebugReportCallbackEXT vkDebugReportCallbackEXT;
+ PFN_vkCreateDebugReportCallbackEXT vkCreateDebugReportCallbackEXT;
+ PFN_vkDestroyDebugReportCallbackEXT vkDestroyDebugReportCallbackEXT;
+ PFN_vkDebugReportMessageEXT vkDebugReportMessageEXT;
+
+ // VK_EXT_DEBUG_MARKER
+ PFN_vkDebugMarkerSetObjectTagEXT vkDebugMarkerSetObjectTagEXT;
+ PFN_vkDebugMarkerSetObjectNameEXT vkDebugMarkerSetObjectNameEXT;
+ PFN_vkCmdDebugMarkerBeginEXT vkCmdDebugMarkerBeginEXT;
+ PFN_vkCmdDebugMarkerEndEXT vkCmdDebugMarkerEndEXT;
+ PFN_vkCmdDebugMarkerInsertEXT vkCmdDebugMarkerInsertEXT;
+//#endif
+
 #ifdef VK_USE_PLATFORM_XLIB_KHR
 PFN_vkCreateXlibSurfaceKHR vkCreateXlibSurfaceKHR;
 PFN_vkGetPhysicalDeviceXlibPresentationSupportKHR vkGetPhysicalDeviceXlibPresentationSupportKHR;
@@ -550,7 +576,4 @@ PFN_vkCreateAndroidSurfaceKHR vkCreateAndroidSurfaceKHR;
 PFN_vkCreateWin32SurfaceKHR vkCreateWin32SurfaceKHR;
 PFN_vkGetPhysicalDeviceWin32PresentationSupportKHR vkGetPhysicalDeviceWin32PresentationSupportKHR;
 #endif
-PFN_vkCreateDebugReportCallbackEXT vkCreateDebugReportCallbackEXT;
-PFN_vkDestroyDebugReportCallbackEXT vkDestroyDebugReportCallbackEXT;
-PFN_vkDebugReportMessageEXT vkDebugReportMessageEXT;
 

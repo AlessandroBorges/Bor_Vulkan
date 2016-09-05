@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:221
+//@line:232
 
 		  VkEventCreateInfo* vkObj = (VkEventCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkEventCreateInfo_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:231
+//@line:242
 
 		  VkEventCreateInfo* vkObj = (VkEventCreateInfo*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkEventCreateInfo_setPNext0(JNIEn
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:241
+//@line:252
 
 		  VkEventCreateInfo* vkObj = (VkEventCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkEventCreateInfo_setPNext0(JNIEn
 static inline jlong wrapped_Java_bor_vulkan_structs_VkEventCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:252
+//@line:263
 
 		  VkEventCreateInfo* vkObj = (VkEventCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkEventCreateInfo_setFlags0(JNIEn
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:262
+//@line:273
 
 		  VkEventCreateInfo* vkObj = (VkEventCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkEventCreateInfo_setFlags0(JNIEn
 static inline jint wrapped_Java_bor_vulkan_structs_VkEventCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:272
+//@line:283
 
 		  VkEventCreateInfo* vkObj = (VkEventCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);

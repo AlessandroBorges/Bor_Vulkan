@@ -8,7 +8,7 @@
 	char* _srcSubresource = (char*)(obj__srcSubresource?env->GetDirectBufferAddress(obj__srcSubresource) : NULL);
 
 
-//@line:323
+//@line:334
 
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -21,7 +21,7 @@
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageResolve_getSrcSubresource0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:334
+//@line:345
 
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
 		  // generic get for Buffer 
@@ -43,7 +43,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageResolve_setSrcOffset0(JNIE
 	char* _srcOffset = (char*)(obj__srcOffset?env->GetDirectBufferAddress(obj__srcOffset) : NULL);
 
 
-//@line:344
+//@line:355
 
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -56,7 +56,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageResolve_setSrcOffset0(JNIE
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageResolve_getSrcOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:355
+//@line:366
 
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
 		  // generic get for Buffer 
@@ -78,7 +78,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageResolve_setDstSubresource0
 	char* _dstSubresource = (char*)(obj__dstSubresource?env->GetDirectBufferAddress(obj__dstSubresource) : NULL);
 
 
-//@line:365
+//@line:376
 
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -91,7 +91,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageResolve_setDstSubresource0
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageResolve_getDstSubresource0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:376
+//@line:387
 
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
 		  // generic get for Buffer 
@@ -113,7 +113,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageResolve_setDstOffset0(JNIE
 	char* _dstOffset = (char*)(obj__dstOffset?env->GetDirectBufferAddress(obj__dstOffset) : NULL);
 
 
-//@line:386
+//@line:397
 
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -126,7 +126,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageResolve_setDstOffset0(JNIE
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageResolve_getDstOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:397
+//@line:408
 
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
 		  // generic get for Buffer 
@@ -148,7 +148,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageResolve_setExtent0(JNIEnv*
 	char* _extent = (char*)(obj__extent?env->GetDirectBufferAddress(obj__extent) : NULL);
 
 
-//@line:407
+//@line:418
 
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -161,7 +161,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageResolve_setExtent0(JNIEnv*
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageResolve_getExtent0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:418
+//@line:429
 
 		  VkImageResolve* vkObj = (VkImageResolve*)(ptr);
 		  // generic get for Buffer 

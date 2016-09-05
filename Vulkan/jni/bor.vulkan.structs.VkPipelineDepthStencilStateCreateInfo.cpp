@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:521
+//@line:532
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreateInfo_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:531
+//@line:542
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:541
+//@line:552
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:552
+//@line:563
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:562
+//@line:573
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:572
+//@line:583
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -107,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:581
+//@line:592
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -119,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreateInfo_getDepthTestEnable0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:591
+//@line:602
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->depthTestEnable);
@@ -139,7 +139,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:600
+//@line:611
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -151,7 +151,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreateInfo_getDepthWriteEnable0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:610
+//@line:621
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->depthWriteEnable);
@@ -171,7 +171,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:619
+//@line:630
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -183,7 +183,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreateInfo_getDepthCompareOp0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:629
+//@line:640
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  // generic get for Vk enums
@@ -204,7 +204,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:639
+//@line:650
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -216,7 +216,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreateInfo_getDepthBoundsTestEnable0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:649
+//@line:660
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->depthBoundsTestEnable);
@@ -236,7 +236,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:658
+//@line:669
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -248,7 +248,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreateInfo_getStencilTestEnable0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:668
+//@line:679
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->stencilTestEnable);
@@ -269,7 +269,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 	char* _front = (char*)(obj__front?env->GetDirectBufferAddress(obj__front) : NULL);
 
 
-//@line:677
+//@line:688
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -282,7 +282,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreateInfo_getFront0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:688
+//@line:699
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -304,7 +304,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 	char* _back = (char*)(obj__back?env->GetDirectBufferAddress(obj__back) : NULL);
 
 
-//@line:698
+//@line:709
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -317,7 +317,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreateInfo_getBack0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:709
+//@line:720
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -338,7 +338,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:719
+//@line:730
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -350,7 +350,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 static inline jfloat wrapped_Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreateInfo_getMinDepthBounds0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:729
+//@line:740
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->minDepthBounds);
@@ -370,7 +370,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:738
+//@line:749
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -382,7 +382,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreate
 static inline jfloat wrapped_Java_bor_vulkan_structs_VkPipelineDepthStencilStateCreateInfo_getMaxDepthBounds0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:748
+//@line:759
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  return (jfloat) (vkObj->maxDepthBounds);

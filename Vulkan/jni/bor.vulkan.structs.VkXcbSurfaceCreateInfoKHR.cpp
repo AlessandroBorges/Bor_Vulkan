@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:305
+//@line:316
 
 	 #ifdef VK_USE_PLATFORM_XCB_KHR 
 		  VkXcbSurfaceCreateInfoKHR* vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);
@@ -21,7 +21,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkXcbSurfaceCreateInfoKHR_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:317
+//@line:328
 
 	 #ifdef VK_USE_PLATFORM_XCB_KHR 
 		  VkXcbSurfaceCreateInfoKHR* vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);
@@ -47,7 +47,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkXcbSurfaceCreateInfoKHR_setPNex
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:331
+//@line:342
 
 	 #ifdef VK_USE_PLATFORM_XCB_KHR 
 		  VkXcbSurfaceCreateInfoKHR* vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);
@@ -62,7 +62,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkXcbSurfaceCreateInfoKHR_setPNex
 static inline jlong wrapped_Java_bor_vulkan_structs_VkXcbSurfaceCreateInfoKHR_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:344
+//@line:355
 
 	 #ifdef VK_USE_PLATFORM_XCB_KHR 
 		  VkXcbSurfaceCreateInfoKHR* vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkXcbSurfaceCreateInfoKHR_setFlag
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:358
+//@line:369
 
 	 #ifdef VK_USE_PLATFORM_XCB_KHR 
 		  VkXcbSurfaceCreateInfoKHR* vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);
@@ -101,7 +101,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkXcbSurfaceCreateInfoKHR_setFlag
 static inline jint wrapped_Java_bor_vulkan_structs_VkXcbSurfaceCreateInfoKHR_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:370
+//@line:381
 
 	 #ifdef VK_USE_PLATFORM_XCB_KHR 
 		  VkXcbSurfaceCreateInfoKHR* vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);
@@ -125,7 +125,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkXcbSurfaceCreateInfoKHR_setConn
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:383
+//@line:394
 
 	 #ifdef VK_USE_PLATFORM_XCB_KHR 
 		  VkXcbSurfaceCreateInfoKHR* vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);
@@ -139,7 +139,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkXcbSurfaceCreateInfoKHR_setConn
 static inline jlong wrapped_Java_bor_vulkan_structs_VkXcbSurfaceCreateInfoKHR_getConnection0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:395
+//@line:406
 
 	 #ifdef VK_USE_PLATFORM_XCB_KHR 
 		  VkXcbSurfaceCreateInfoKHR* vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);
@@ -164,7 +164,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkXcbSurfaceCreateInfoKHR_setWind
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:409
+//@line:420
 
 	 #ifdef VK_USE_PLATFORM_XCB_KHR 
 		  VkXcbSurfaceCreateInfoKHR* vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);
@@ -178,7 +178,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkXcbSurfaceCreateInfoKHR_setWind
 static inline jlong wrapped_Java_bor_vulkan_structs_VkXcbSurfaceCreateInfoKHR_getWindow0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:421
+//@line:432
 
 	 #ifdef VK_USE_PLATFORM_XCB_KHR 
 		  VkXcbSurfaceCreateInfoKHR* vkObj = (VkXcbSurfaceCreateInfoKHR*)(ptr);

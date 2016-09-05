@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:303
+//@line:314
 
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkDisplayPresentInfoKHR_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:313
+//@line:324
 
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPresentInfoKHR_setPNext0
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:323
+//@line:334
 
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPresentInfoKHR_setPNext0
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPresentInfoKHR_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:334
+//@line:345
 
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
 		  // generic get for Buffer 
@@ -76,7 +76,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPresentInfoKHR_setSrcRec
 	char* _srcRect = (char*)(obj__srcRect?env->GetDirectBufferAddress(obj__srcRect) : NULL);
 
 
-//@line:344
+//@line:355
 
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -89,7 +89,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPresentInfoKHR_setSrcRec
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPresentInfoKHR_getSrcRect0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:355
+//@line:366
 
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
 		  // generic get for Buffer 
@@ -111,7 +111,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPresentInfoKHR_setDstRec
 	char* _dstRect = (char*)(obj__dstRect?env->GetDirectBufferAddress(obj__dstRect) : NULL);
 
 
-//@line:365
+//@line:376
 
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -124,7 +124,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPresentInfoKHR_setDstRec
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPresentInfoKHR_getDstRect0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:376
+//@line:387
 
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
 		  // generic get for Buffer 
@@ -145,7 +145,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPresentInfoKHR_setPersis
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:386
+//@line:397
 
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
 		 // code for simple past value 
@@ -157,7 +157,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayPresentInfoKHR_setPersis
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkDisplayPresentInfoKHR_getPersistent0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:396
+//@line:407
 
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
 		  return (jboolean) (vkObj->persistent);

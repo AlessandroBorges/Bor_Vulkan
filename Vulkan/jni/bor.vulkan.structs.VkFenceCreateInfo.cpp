@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:221
+//@line:232
 
 		  VkFenceCreateInfo* vkObj = (VkFenceCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkFenceCreateInfo_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:231
+//@line:242
 
 		  VkFenceCreateInfo* vkObj = (VkFenceCreateInfo*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFenceCreateInfo_setPNext0(JNIEn
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:241
+//@line:252
 
 		  VkFenceCreateInfo* vkObj = (VkFenceCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFenceCreateInfo_setPNext0(JNIEn
 static inline jlong wrapped_Java_bor_vulkan_structs_VkFenceCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:252
+//@line:263
 
 		  VkFenceCreateInfo* vkObj = (VkFenceCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFenceCreateInfo_setFlags0(JNIEn
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:262
+//@line:273
 
 		  VkFenceCreateInfo* vkObj = (VkFenceCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkFenceCreateInfo_setFlags0(JNIEn
 static inline jint wrapped_Java_bor_vulkan_structs_VkFenceCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:272
+//@line:283
 
 		  VkFenceCreateInfo* vkObj = (VkFenceCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);

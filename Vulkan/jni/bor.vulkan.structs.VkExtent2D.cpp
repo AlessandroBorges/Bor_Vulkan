@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:180
+//@line:191
 
 		  VkExtent2D* vkObj = (VkExtent2D*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkExtent2D_getWidth0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:190
+//@line:201
 
 		  VkExtent2D* vkObj = (VkExtent2D*)(ptr);
 		  return (jint) (vkObj->width);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkExtent2D_setHeight0(JNIEnv* env
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:199
+//@line:210
 
 		  VkExtent2D* vkObj = (VkExtent2D*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkExtent2D_setHeight0(JNIEnv* env
 static inline jint wrapped_Java_bor_vulkan_structs_VkExtent2D_getHeight0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:209
+//@line:220
 
 		  VkExtent2D* vkObj = (VkExtent2D*)(ptr);
 		  return (jint) (vkObj->height);

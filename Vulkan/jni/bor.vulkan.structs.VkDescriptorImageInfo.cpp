@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:234
+//@line:245
 
 		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDescriptorImageInfo_getSampler0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:244
+//@line:255
 
 		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -40,7 +40,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDescriptorImageInfo_setImageVie
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:254
+//@line:265
 
 		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
 		 // code for simple past value 
@@ -52,7 +52,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDescriptorImageInfo_setImageVie
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDescriptorImageInfo_getImageView0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:264
+//@line:275
 
 		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -73,7 +73,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDescriptorImageInfo_setImageLay
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:274
+//@line:285
 
 		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
 		 // code for simple past value 
@@ -85,7 +85,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDescriptorImageInfo_setImageLay
 static inline jint wrapped_Java_bor_vulkan_structs_VkDescriptorImageInfo_getImageLayout0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:284
+//@line:295
 
 		  VkDescriptorImageInfo* vkObj = (VkDescriptorImageInfo*)(ptr);
 		  // generic get for Vk enums

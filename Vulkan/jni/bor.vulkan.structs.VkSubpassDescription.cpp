@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:469
+//@line:480
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkSubpassDescription_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:479
+//@line:490
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPipelineB
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:488
+//@line:499
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPipelineB
 static inline jint wrapped_Java_bor_vulkan_structs_VkSubpassDescription_getPipelineBindPoint0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:498
+//@line:509
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  // generic get for Vk enums
@@ -72,7 +72,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setInputAtta
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:508
+//@line:519
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		 // code for simple past value 
@@ -84,7 +84,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setInputAtta
 static inline jint wrapped_Java_bor_vulkan_structs_VkSubpassDescription_getInputAttachmentCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:518
+//@line:529
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  return (jint) (vkObj->inputAttachmentCount);
@@ -105,7 +105,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPInputAtt
 	char* _pInputAttachments = (char*)(obj__pInputAttachments?env->GetDirectBufferAddress(obj__pInputAttachments) : NULL);
 
 
-//@line:527
+//@line:538
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -118,7 +118,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPInputAtt
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSubpassDescription_getPInputAttachments0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:538
+//@line:549
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -139,7 +139,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setColorAtta
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:548
+//@line:559
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		 // code for simple past value 
@@ -151,7 +151,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setColorAtta
 static inline jint wrapped_Java_bor_vulkan_structs_VkSubpassDescription_getColorAttachmentCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:558
+//@line:569
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  return (jint) (vkObj->colorAttachmentCount);
@@ -172,7 +172,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPColorAtt
 	char* _pColorAttachments = (char*)(obj__pColorAttachments?env->GetDirectBufferAddress(obj__pColorAttachments) : NULL);
 
 
-//@line:567
+//@line:578
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -185,7 +185,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPColorAtt
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSubpassDescription_getPColorAttachments0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:578
+//@line:589
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -207,7 +207,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPResolveA
 	char* _pResolveAttachments = (char*)(obj__pResolveAttachments?env->GetDirectBufferAddress(obj__pResolveAttachments) : NULL);
 
 
-//@line:588
+//@line:599
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -220,7 +220,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPResolveA
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSubpassDescription_getPResolveAttachments0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:599
+//@line:610
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -242,7 +242,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPDepthSte
 	char* _pDepthStencilAttachment = (char*)(obj__pDepthStencilAttachment?env->GetDirectBufferAddress(obj__pDepthStencilAttachment) : NULL);
 
 
-//@line:609
+//@line:620
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -255,7 +255,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPDepthSte
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSubpassDescription_getPDepthStencilAttachment0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:620
+//@line:631
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  // generic get for Buffer 
@@ -276,7 +276,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPreserveA
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:630
+//@line:641
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		 // code for simple past value 
@@ -288,7 +288,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPreserveA
 static inline jint wrapped_Java_bor_vulkan_structs_VkSubpassDescription_getPreserveAttachmentCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:640
+//@line:651
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  return (jint) (vkObj->preserveAttachmentCount);
@@ -307,7 +307,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkSubpassDescription_getPreserveA
 static inline void wrapped_Java_bor_vulkan_structs_VkSubpassDescription_setPPreserveAttachments0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pPreserveAttachments, unsigned char* ptr, int* _pPreserveAttachments) {
 
-//@line:649
+//@line:660
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		 // code for generic array assignment 
@@ -342,7 +342,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSubpassDescription_setPPreserve
 static inline jintArray wrapped_Java_bor_vulkan_structs_VkSubpassDescription_getPPreserveAttachments0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pPreserveAttachments, unsigned char* ptr, int* _pPreserveAttachments) {
 
-//@line:670
+//@line:681
 
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  // generic get for C type array, with content copy 

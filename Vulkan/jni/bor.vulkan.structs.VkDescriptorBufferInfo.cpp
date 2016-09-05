@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:222
+//@line:233
 
 		  VkDescriptorBufferInfo* vkObj = (VkDescriptorBufferInfo*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDescriptorBufferInfo_getBuffer0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:232
+//@line:243
 
 		  VkDescriptorBufferInfo* vkObj = (VkDescriptorBufferInfo*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -40,7 +40,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDescriptorBufferInfo_setOffset0
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:242
+//@line:253
 
 		  VkDescriptorBufferInfo* vkObj = (VkDescriptorBufferInfo*)(ptr);
 		 // code for simple past value 
@@ -52,7 +52,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDescriptorBufferInfo_setOffset0
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDescriptorBufferInfo_getOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:252
+//@line:263
 
 		  VkDescriptorBufferInfo* vkObj = (VkDescriptorBufferInfo*)(ptr);
 		  return (jlong) (vkObj->offset);
@@ -72,7 +72,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDescriptorBufferInfo_setRange0(
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:261
+//@line:272
 
 		  VkDescriptorBufferInfo* vkObj = (VkDescriptorBufferInfo*)(ptr);
 		 // code for simple past value 
@@ -84,7 +84,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDescriptorBufferInfo_setRange0(
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDescriptorBufferInfo_getRange0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:271
+//@line:282
 
 		  VkDescriptorBufferInfo* vkObj = (VkDescriptorBufferInfo*)(ptr);
 		  return (jlong) (vkObj->range);

@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:550
+//@line:561
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkBindSparseInfo_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:560
+//@line:571
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setPNext0(JNIEnv
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:570
+//@line:581
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setPNext0(JNIEnv
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBindSparseInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:581
+//@line:592
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  // generic get for Buffer 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setWaitSemaphore
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:591
+//@line:602
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setWaitSemaphore
 static inline jint wrapped_Java_bor_vulkan_structs_VkBindSparseInfo_getWaitSemaphoreCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:601
+//@line:612
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  return (jint) (vkObj->waitSemaphoreCount);
@@ -108,7 +108,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setPWaitSemaphor
 	char* _pWaitSemaphores = (char*)(obj__pWaitSemaphores?env->GetDirectBufferAddress(obj__pWaitSemaphores) : NULL);
 
 
-//@line:610
+//@line:621
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -121,7 +121,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setPWaitSemaphor
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBindSparseInfo_getPWaitSemaphores0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:621
+//@line:632
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -142,7 +142,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setBufferBindCou
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:631
+//@line:642
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		 // code for simple past value 
@@ -154,7 +154,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setBufferBindCou
 static inline jint wrapped_Java_bor_vulkan_structs_VkBindSparseInfo_getBufferBindCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:641
+//@line:652
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  return (jint) (vkObj->bufferBindCount);
@@ -175,7 +175,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setPBufferBinds0
 	char* _pBufferBinds = (char*)(obj__pBufferBinds?env->GetDirectBufferAddress(obj__pBufferBinds) : NULL);
 
 
-//@line:650
+//@line:661
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -188,7 +188,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setPBufferBinds0
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBindSparseInfo_getPBufferBinds0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:661
+//@line:672
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -209,7 +209,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setImageOpaqueBi
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:671
+//@line:682
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		 // code for simple past value 
@@ -221,7 +221,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setImageOpaqueBi
 static inline jint wrapped_Java_bor_vulkan_structs_VkBindSparseInfo_getImageOpaqueBindCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:681
+//@line:692
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  return (jint) (vkObj->imageOpaqueBindCount);
@@ -242,7 +242,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setPImageOpaqueB
 	char* _pImageOpaqueBinds = (char*)(obj__pImageOpaqueBinds?env->GetDirectBufferAddress(obj__pImageOpaqueBinds) : NULL);
 
 
-//@line:690
+//@line:701
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -255,7 +255,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setPImageOpaqueB
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBindSparseInfo_getPImageOpaqueBinds0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:701
+//@line:712
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -276,7 +276,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setImageBindCoun
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:711
+//@line:722
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		 // code for simple past value 
@@ -288,7 +288,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setImageBindCoun
 static inline jint wrapped_Java_bor_vulkan_structs_VkBindSparseInfo_getImageBindCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:721
+//@line:732
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  return (jint) (vkObj->imageBindCount);
@@ -309,7 +309,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setPImageBinds0(
 	char* _pImageBinds = (char*)(obj__pImageBinds?env->GetDirectBufferAddress(obj__pImageBinds) : NULL);
 
 
-//@line:730
+//@line:741
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -322,7 +322,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setPImageBinds0(
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBindSparseInfo_getPImageBinds0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:741
+//@line:752
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -343,7 +343,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setSignalSemapho
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:751
+//@line:762
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		 // code for simple past value 
@@ -355,7 +355,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setSignalSemapho
 static inline jint wrapped_Java_bor_vulkan_structs_VkBindSparseInfo_getSignalSemaphoreCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:761
+//@line:772
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  return (jint) (vkObj->signalSemaphoreCount);
@@ -376,7 +376,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setPSignalSemaph
 	char* _pSignalSemaphores = (char*)(obj__pSignalSemaphores?env->GetDirectBufferAddress(obj__pSignalSemaphores) : NULL);
 
 
-//@line:770
+//@line:781
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -389,7 +389,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBindSparseInfo_setPSignalSemaph
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBindSparseInfo_getPSignalSemaphores0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:781
+//@line:792
 
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 

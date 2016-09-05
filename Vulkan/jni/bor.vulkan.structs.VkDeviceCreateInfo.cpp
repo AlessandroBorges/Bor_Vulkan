@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:472
+//@line:483
 
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkDeviceCreateInfo_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:482
+//@line:493
 
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setPNext0(JNIE
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:492
+//@line:503
 
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setPNext0(JNIE
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDeviceCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:503
+//@line:514
 
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setFlags0(JNIE
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:513
+//@line:524
 
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setFlags0(JNIE
 static inline jint wrapped_Java_bor_vulkan_structs_VkDeviceCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:523
+//@line:534
 
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -107,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setQueueCreate
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:532
+//@line:543
 
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -119,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setQueueCreate
 static inline jint wrapped_Java_bor_vulkan_structs_VkDeviceCreateInfo_getQueueCreateInfoCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:542
+//@line:553
 
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  return (jint) (vkObj->queueCreateInfoCount);
@@ -140,7 +140,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setPQueueCreat
 	char* _pQueueCreateInfos = (char*)(obj__pQueueCreateInfos?env->GetDirectBufferAddress(obj__pQueueCreateInfos) : NULL);
 
 
-//@line:551
+//@line:562
 
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -153,7 +153,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setPQueueCreat
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDeviceCreateInfo_getPQueueCreateInfos0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:562
+//@line:573
 
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
@@ -174,7 +174,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setEnabledLaye
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:572
+//@line:583
 
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -186,7 +186,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setEnabledLaye
 static inline jint wrapped_Java_bor_vulkan_structs_VkDeviceCreateInfo_getEnabledLayerCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:582
+//@line:593
 
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  return (jint) (vkObj->enabledLayerCount);
@@ -205,7 +205,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_getEnabledLaye
 static inline void wrapped_Java_bor_vulkan_structs_VkDeviceCreateInfo_setPpEnabledLayerNames0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jobjectArray ppEnabledLayerNames, unsigned char* ptr) {
 
-//@line:591
+//@line:602
 
           VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
           int stringCount = ppEnabledLayerNames ? env->GetArrayLength(ppEnabledLayerNames) : 0;
@@ -237,7 +237,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setPpEnabledLa
 static inline jobjectArray wrapped_Java_bor_vulkan_structs_VkDeviceCreateInfo_getPpEnabledLayerNames0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jobjectArray names, unsigned char* ptr) {
 
-//@line:614
+//@line:625
 
               if(names == NULL) return NULL;
           VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
@@ -266,7 +266,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setEnabledExte
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:632
+//@line:643
 
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -278,7 +278,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setEnabledExte
 static inline jint wrapped_Java_bor_vulkan_structs_VkDeviceCreateInfo_getEnabledExtensionCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:642
+//@line:653
 
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  return (jint) (vkObj->enabledExtensionCount);
@@ -298,7 +298,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setPpEnabledEx
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:651
+//@line:662
 
           VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);         
           int stringCount = _ppEnabledExtensionNames ? env->GetArrayLength(_ppEnabledExtensionNames) : 0;
@@ -321,7 +321,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setPpEnabledEx
 static inline jobjectArray wrapped_Java_bor_vulkan_structs_VkDeviceCreateInfo_getPpEnabledExtensionNames0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:673
+//@line:684
 
           VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
           int count = (int) vkObj->enabledExtensionCount;
@@ -358,7 +358,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setPEnabledFea
 	char* _pEnabledFeatures = (char*)(obj__pEnabledFeatures?env->GetDirectBufferAddress(obj__pEnabledFeatures) : NULL);
 
 
-//@line:698
+//@line:709
 
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -371,7 +371,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDeviceCreateInfo_setPEnabledFea
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDeviceCreateInfo_getPEnabledFeatures0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:709
+//@line:720
 
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 

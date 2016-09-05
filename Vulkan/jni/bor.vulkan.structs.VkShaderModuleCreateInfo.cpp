@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:283
+//@line:294
 
 		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkShaderModuleCreateInfo_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:293
+//@line:304
 
 		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkShaderModuleCreateInfo_setPNext
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:303
+//@line:314
 
 		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkShaderModuleCreateInfo_setPNext
 static inline jlong wrapped_Java_bor_vulkan_structs_VkShaderModuleCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:314
+//@line:325
 
 		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
 		  // generic get for Buffer 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkShaderModuleCreateInfo_setFlags
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:324
+//@line:335
 
 		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkShaderModuleCreateInfo_setFlags
 static inline jint wrapped_Java_bor_vulkan_structs_VkShaderModuleCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:334
+//@line:345
 
 		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -107,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkShaderModuleCreateInfo_setCodeS
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:343
+//@line:354
 
 		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -119,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkShaderModuleCreateInfo_setCodeS
 static inline jlong wrapped_Java_bor_vulkan_structs_VkShaderModuleCreateInfo_getCodeSize0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:353
+//@line:364
 
 		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
 		  return (jlong) (vkObj->codeSize);
@@ -138,7 +138,7 @@ JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkShaderModuleCreateInfo_getCode
 static inline void wrapped_Java_bor_vulkan_structs_VkShaderModuleCreateInfo_setPCode0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pCode, unsigned char* ptr, int* _pCode) {
 
-//@line:362
+//@line:373
 
 		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
 		 // code for generic array assignment 
@@ -173,7 +173,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkShaderModuleCreateInfo_setPCode
 static inline jintArray wrapped_Java_bor_vulkan_structs_VkShaderModuleCreateInfo_getPCode0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pCode, unsigned char* ptr, int* _pCode) {
 
-//@line:383
+//@line:394
 
 		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
 		  // generic get for C type array, with content copy 

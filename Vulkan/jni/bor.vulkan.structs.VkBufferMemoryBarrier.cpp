@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:418
+//@line:429
 
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkBufferMemoryBarrier_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:428
+//@line:439
 
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferMemoryBarrier_setPNext0(J
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:438
+//@line:449
 
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferMemoryBarrier_setPNext0(J
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferMemoryBarrier_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:449
+//@line:460
 
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
 		  // generic get for Buffer 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferMemoryBarrier_setSrcAcces
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:459
+//@line:470
 
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferMemoryBarrier_setSrcAcces
 static inline jint wrapped_Java_bor_vulkan_structs_VkBufferMemoryBarrier_getSrcAccessMask0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:469
+//@line:480
 
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
 		  return (jint) (vkObj->srcAccessMask);
@@ -107,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferMemoryBarrier_setDstAcces
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:478
+//@line:489
 
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
 		 // code for simple past value 
@@ -119,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferMemoryBarrier_setDstAcces
 static inline jint wrapped_Java_bor_vulkan_structs_VkBufferMemoryBarrier_getDstAccessMask0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:488
+//@line:499
 
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
 		  return (jint) (vkObj->dstAccessMask);
@@ -139,7 +139,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferMemoryBarrier_setSrcQueue
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:497
+//@line:508
 
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
 		 // code for simple past value 
@@ -151,7 +151,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferMemoryBarrier_setSrcQueue
 static inline jint wrapped_Java_bor_vulkan_structs_VkBufferMemoryBarrier_getSrcQueueFamilyIndex0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:507
+//@line:518
 
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
 		  return (jint) (vkObj->srcQueueFamilyIndex);
@@ -171,7 +171,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferMemoryBarrier_setDstQueue
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:516
+//@line:527
 
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
 		 // code for simple past value 
@@ -183,7 +183,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferMemoryBarrier_setDstQueue
 static inline jint wrapped_Java_bor_vulkan_structs_VkBufferMemoryBarrier_getDstQueueFamilyIndex0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:526
+//@line:537
 
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
 		  return (jint) (vkObj->dstQueueFamilyIndex);
@@ -203,7 +203,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferMemoryBarrier_setBuffer0(
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:535
+//@line:546
 
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
 		 // code for simple past value 
@@ -215,7 +215,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferMemoryBarrier_setBuffer0(
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferMemoryBarrier_getBuffer0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:545
+//@line:556
 
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -236,7 +236,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferMemoryBarrier_setOffset0(
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:555
+//@line:566
 
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
 		 // code for simple past value 
@@ -248,7 +248,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferMemoryBarrier_setOffset0(
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferMemoryBarrier_getOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:565
+//@line:576
 
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
 		  return (jlong) (vkObj->offset);
@@ -268,7 +268,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferMemoryBarrier_setSize0(JN
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:574
+//@line:585
 
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
 		 // code for simple past value 
@@ -280,7 +280,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferMemoryBarrier_setSize0(JN
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferMemoryBarrier_getSize0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:584
+//@line:595
 
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
 		  return (jlong) (vkObj->size);

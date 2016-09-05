@@ -8,7 +8,7 @@
 	char* _rect = (char*)(obj__rect?env->GetDirectBufferAddress(obj__rect) : NULL);
 
 
-//@line:221
+//@line:232
 
 		  VkClearRect* vkObj = (VkClearRect*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -21,7 +21,7 @@
 static inline jlong wrapped_Java_bor_vulkan_structs_VkClearRect_getRect0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:232
+//@line:243
 
 		  VkClearRect* vkObj = (VkClearRect*)(ptr);
 		  // generic get for Buffer 
@@ -42,7 +42,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkClearRect_setBaseArrayLayer0(JN
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:242
+//@line:253
 
 		  VkClearRect* vkObj = (VkClearRect*)(ptr);
 		 // code for simple past value 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkClearRect_setBaseArrayLayer0(JN
 static inline jint wrapped_Java_bor_vulkan_structs_VkClearRect_getBaseArrayLayer0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:252
+//@line:263
 
 		  VkClearRect* vkObj = (VkClearRect*)(ptr);
 		  return (jint) (vkObj->baseArrayLayer);
@@ -74,7 +74,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkClearRect_setLayerCount0(JNIEnv
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:261
+//@line:272
 
 		  VkClearRect* vkObj = (VkClearRect*)(ptr);
 		 // code for simple past value 
@@ -86,7 +86,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkClearRect_setLayerCount0(JNIEnv
 static inline jint wrapped_Java_bor_vulkan_structs_VkClearRect_getLayerCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:271
+//@line:282
 
 		  VkClearRect* vkObj = (VkClearRect*)(ptr);
 		  return (jint) (vkObj->layerCount);

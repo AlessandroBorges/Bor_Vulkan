@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:211
+//@line:222
 
 		  VkBufferCopy* vkObj = (VkBufferCopy*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferCopy_getSrcOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:221
+//@line:232
 
 		  VkBufferCopy* vkObj = (VkBufferCopy*)(ptr);
 		  return (jlong) (vkObj->srcOffset);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferCopy_setDstOffset0(JNIEnv
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:230
+//@line:241
 
 		  VkBufferCopy* vkObj = (VkBufferCopy*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferCopy_setDstOffset0(JNIEnv
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferCopy_getDstOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:240
+//@line:251
 
 		  VkBufferCopy* vkObj = (VkBufferCopy*)(ptr);
 		  return (jlong) (vkObj->dstOffset);
@@ -71,7 +71,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferCopy_setSize0(JNIEnv* env
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:249
+//@line:260
 
 		  VkBufferCopy* vkObj = (VkBufferCopy*)(ptr);
 		 // code for simple past value 
@@ -83,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkBufferCopy_setSize0(JNIEnv* env
 static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferCopy_getSize0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:259
+//@line:270
 
 		  VkBufferCopy* vkObj = (VkBufferCopy*)(ptr);
 		  return (jlong) (vkObj->size);

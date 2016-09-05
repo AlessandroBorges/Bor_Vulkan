@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:242
+//@line:253
 
 		  VkDrawIndirectCommand* vkObj = (VkDrawIndirectCommand*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkDrawIndirectCommand_getVertexCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:252
+//@line:263
 
 		  VkDrawIndirectCommand* vkObj = (VkDrawIndirectCommand*)(ptr);
 		  return (jint) (vkObj->vertexCount);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDrawIndirectCommand_setInstance
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:261
+//@line:272
 
 		  VkDrawIndirectCommand* vkObj = (VkDrawIndirectCommand*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDrawIndirectCommand_setInstance
 static inline jint wrapped_Java_bor_vulkan_structs_VkDrawIndirectCommand_getInstanceCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:271
+//@line:282
 
 		  VkDrawIndirectCommand* vkObj = (VkDrawIndirectCommand*)(ptr);
 		  return (jint) (vkObj->instanceCount);
@@ -71,7 +71,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDrawIndirectCommand_setFirstVer
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:280
+//@line:291
 
 		  VkDrawIndirectCommand* vkObj = (VkDrawIndirectCommand*)(ptr);
 		 // code for simple past value 
@@ -83,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDrawIndirectCommand_setFirstVer
 static inline jint wrapped_Java_bor_vulkan_structs_VkDrawIndirectCommand_getFirstVertex0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:290
+//@line:301
 
 		  VkDrawIndirectCommand* vkObj = (VkDrawIndirectCommand*)(ptr);
 		  return (jint) (vkObj->firstVertex);
@@ -103,7 +103,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDrawIndirectCommand_setFirstIns
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:299
+//@line:310
 
 		  VkDrawIndirectCommand* vkObj = (VkDrawIndirectCommand*)(ptr);
 		 // code for simple past value 
@@ -115,7 +115,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDrawIndirectCommand_setFirstIns
 static inline jint wrapped_Java_bor_vulkan_structs_VkDrawIndirectCommand_getFirstInstance0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:309
+//@line:320
 
 		  VkDrawIndirectCommand* vkObj = (VkDrawIndirectCommand*)(ptr);
 		  return (jint) (vkObj->firstInstance);

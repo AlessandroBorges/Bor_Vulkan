@@ -8,7 +8,7 @@
 	char* _visibleRegion = (char*)(obj__visibleRegion?env->GetDirectBufferAddress(obj__visibleRegion) : NULL);
 
 
-//@line:190
+//@line:201
 
 		  VkDisplayModeParametersKHR* vkObj = (VkDisplayModeParametersKHR*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -21,7 +21,7 @@
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayModeParametersKHR_getVisibleRegion0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:201
+//@line:212
 
 		  VkDisplayModeParametersKHR* vkObj = (VkDisplayModeParametersKHR*)(ptr);
 		  // generic get for Buffer 
@@ -42,7 +42,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayModeParametersKHR_setRef
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:211
+//@line:222
 
 		  VkDisplayModeParametersKHR* vkObj = (VkDisplayModeParametersKHR*)(ptr);
 		 // code for simple past value 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDisplayModeParametersKHR_setRef
 static inline jint wrapped_Java_bor_vulkan_structs_VkDisplayModeParametersKHR_getRefreshRate0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:221
+//@line:232
 
 		  VkDisplayModeParametersKHR* vkObj = (VkDisplayModeParametersKHR*)(ptr);
 		  return (jint) (vkObj->refreshRate);

@@ -334,9 +334,9 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageBlit_setDstOffsets0
 /*
  * Class:     bor_vulkan_structs_VkImageBlit
  * Method:    getDstOffsets0
- * Signature: (Ljava/nio/Buffer;[J)J
+ * Signature: (Ljava/nio/Buffer;[J)V
  */
-JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkImageBlit_getDstOffsets0
+JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageBlit_getDstOffsets0
   (JNIEnv *, jclass, jobject, jlongArray);
 
 #ifdef __cplusplus

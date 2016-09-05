@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:211
+//@line:222
 
 		  VkOffset3D* vkObj = (VkOffset3D*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkOffset3D_getX0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:221
+//@line:232
 
 		  VkOffset3D* vkObj = (VkOffset3D*)(ptr);
 		  return (jint) (vkObj->x);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkOffset3D_setY0(JNIEnv* env, jcl
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:230
+//@line:241
 
 		  VkOffset3D* vkObj = (VkOffset3D*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkOffset3D_setY0(JNIEnv* env, jcl
 static inline jint wrapped_Java_bor_vulkan_structs_VkOffset3D_getY0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:240
+//@line:251
 
 		  VkOffset3D* vkObj = (VkOffset3D*)(ptr);
 		  return (jint) (vkObj->y);
@@ -71,7 +71,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkOffset3D_setZ0(JNIEnv* env, jcl
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:249
+//@line:260
 
 		  VkOffset3D* vkObj = (VkOffset3D*)(ptr);
 		 // code for simple past value 
@@ -83,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkOffset3D_setZ0(JNIEnv* env, jcl
 static inline jint wrapped_Java_bor_vulkan_structs_VkOffset3D_getZ0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:259
+//@line:270
 
 		  VkOffset3D* vkObj = (VkOffset3D*)(ptr);
 		  return (jint) (vkObj->z);

@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:211
+//@line:222
 
 		  VkPushConstantRange* vkObj = (VkPushConstantRange*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkPushConstantRange_getStageFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:221
+//@line:232
 
 		  VkPushConstantRange* vkObj = (VkPushConstantRange*)(ptr);
 		  return (jint) (vkObj->stageFlags);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPushConstantRange_setOffset0(JN
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:230
+//@line:241
 
 		  VkPushConstantRange* vkObj = (VkPushConstantRange*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPushConstantRange_setOffset0(JN
 static inline jint wrapped_Java_bor_vulkan_structs_VkPushConstantRange_getOffset0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:240
+//@line:251
 
 		  VkPushConstantRange* vkObj = (VkPushConstantRange*)(ptr);
 		  return (jint) (vkObj->offset);
@@ -71,7 +71,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPushConstantRange_setSize0(JNIE
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:249
+//@line:260
 
 		  VkPushConstantRange* vkObj = (VkPushConstantRange*)(ptr);
 		 // code for simple past value 
@@ -83,7 +83,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPushConstantRange_setSize0(JNIE
 static inline jint wrapped_Java_bor_vulkan_structs_VkPushConstantRange_getSize0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:259
+//@line:270
 
 		  VkPushConstantRange* vkObj = (VkPushConstantRange*)(ptr);
 		  return (jint) (vkObj->size);

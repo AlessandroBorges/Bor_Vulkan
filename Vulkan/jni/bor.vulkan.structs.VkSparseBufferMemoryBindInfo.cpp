@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:232
+//@line:243
 
 		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseBufferMemoryBindInfo_getBuffer0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:242
+//@line:253
 
 		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -40,7 +40,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseBufferMemoryBindInfo_setB
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:252
+//@line:263
 
 		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
 		 // code for simple past value 
@@ -52,7 +52,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseBufferMemoryBindInfo_setB
 static inline jint wrapped_Java_bor_vulkan_structs_VkSparseBufferMemoryBindInfo_getBindCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:262
+//@line:273
 
 		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
 		  return (jint) (vkObj->bindCount);
@@ -73,7 +73,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseBufferMemoryBindInfo_setP
 	char* _pBinds = (char*)(obj__pBinds?env->GetDirectBufferAddress(obj__pBinds) : NULL);
 
 
-//@line:271
+//@line:282
 
 		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -86,7 +86,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSparseBufferMemoryBindInfo_setP
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseBufferMemoryBindInfo_getPBinds0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:282
+//@line:293
 
 		  VkSparseBufferMemoryBindInfo* vkObj = (VkSparseBufferMemoryBindInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 

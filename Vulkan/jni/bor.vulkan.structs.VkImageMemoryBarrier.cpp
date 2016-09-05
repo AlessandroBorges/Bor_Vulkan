@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:461
+//@line:472
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageMemoryBarrier_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:471
+//@line:482
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageMemoryBarrier_setPNext0(JN
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:481
+//@line:492
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageMemoryBarrier_setPNext0(JN
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageMemoryBarrier_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:492
+//@line:503
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  // generic get for Buffer 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageMemoryBarrier_setSrcAccess
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:502
+//@line:513
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageMemoryBarrier_setSrcAccess
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageMemoryBarrier_getSrcAccessMask0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:512
+//@line:523
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  return (jint) (vkObj->srcAccessMask);
@@ -107,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageMemoryBarrier_setDstAccess
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:521
+//@line:532
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		 // code for simple past value 
@@ -119,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageMemoryBarrier_setDstAccess
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageMemoryBarrier_getDstAccessMask0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:531
+//@line:542
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  return (jint) (vkObj->dstAccessMask);
@@ -139,7 +139,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageMemoryBarrier_setOldLayout
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:540
+//@line:551
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		 // code for simple past value 
@@ -151,7 +151,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageMemoryBarrier_setOldLayout
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageMemoryBarrier_getOldLayout0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:550
+//@line:561
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  // generic get for Vk enums
@@ -172,7 +172,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageMemoryBarrier_setNewLayout
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:560
+//@line:571
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		 // code for simple past value 
@@ -184,7 +184,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageMemoryBarrier_setNewLayout
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageMemoryBarrier_getNewLayout0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:570
+//@line:581
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  // generic get for Vk enums
@@ -205,7 +205,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageMemoryBarrier_setSrcQueueF
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:580
+//@line:591
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		 // code for simple past value 
@@ -217,7 +217,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageMemoryBarrier_setSrcQueueF
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageMemoryBarrier_getSrcQueueFamilyIndex0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:590
+//@line:601
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  return (jint) (vkObj->srcQueueFamilyIndex);
@@ -237,7 +237,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageMemoryBarrier_setDstQueueF
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:599
+//@line:610
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		 // code for simple past value 
@@ -249,7 +249,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageMemoryBarrier_setDstQueueF
 static inline jint wrapped_Java_bor_vulkan_structs_VkImageMemoryBarrier_getDstQueueFamilyIndex0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:609
+//@line:620
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  return (jint) (vkObj->dstQueueFamilyIndex);
@@ -269,7 +269,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageMemoryBarrier_setImage0(JN
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:618
+//@line:629
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		 // code for simple past value 
@@ -281,7 +281,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageMemoryBarrier_setImage0(JN
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageMemoryBarrier_getImage0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:628
+//@line:639
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -303,7 +303,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageMemoryBarrier_setSubresour
 	char* _subresourceRange = (char*)(obj__subresourceRange?env->GetDirectBufferAddress(obj__subresourceRange) : NULL);
 
 
-//@line:638
+//@line:649
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -316,7 +316,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageMemoryBarrier_setSubresour
 static inline jlong wrapped_Java_bor_vulkan_structs_VkImageMemoryBarrier_getSubresourceRange0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:649
+//@line:660
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  // generic get for Buffer 

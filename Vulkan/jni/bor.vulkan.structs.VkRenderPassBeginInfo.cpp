@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:387
+//@line:398
 
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkRenderPassBeginInfo_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:397
+//@line:408
 
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkRenderPassBeginInfo_setPNext0(J
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:407
+//@line:418
 
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkRenderPassBeginInfo_setPNext0(J
 static inline jlong wrapped_Java_bor_vulkan_structs_VkRenderPassBeginInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:418
+//@line:429
 
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		  // generic get for Buffer 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkRenderPassBeginInfo_setRenderPa
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:428
+//@line:439
 
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkRenderPassBeginInfo_setRenderPa
 static inline jlong wrapped_Java_bor_vulkan_structs_VkRenderPassBeginInfo_getRenderPass0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:438
+//@line:449
 
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -108,7 +108,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkRenderPassBeginInfo_setFramebuf
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:448
+//@line:459
 
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		 // code for simple past value 
@@ -120,7 +120,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkRenderPassBeginInfo_setFramebuf
 static inline jlong wrapped_Java_bor_vulkan_structs_VkRenderPassBeginInfo_getFramebuffer0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:458
+//@line:469
 
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
@@ -142,7 +142,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkRenderPassBeginInfo_setRenderAr
 	char* _renderArea = (char*)(obj__renderArea?env->GetDirectBufferAddress(obj__renderArea) : NULL);
 
 
-//@line:468
+//@line:479
 
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		 // code for Buffer - ptr to struct 
@@ -155,7 +155,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkRenderPassBeginInfo_setRenderAr
 static inline jlong wrapped_Java_bor_vulkan_structs_VkRenderPassBeginInfo_getRenderArea0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:479
+//@line:490
 
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		  // generic get for Buffer 
@@ -176,7 +176,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkRenderPassBeginInfo_setClearVal
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:489
+//@line:500
 
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		 // code for simple past value 
@@ -188,7 +188,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkRenderPassBeginInfo_setClearVal
 static inline jint wrapped_Java_bor_vulkan_structs_VkRenderPassBeginInfo_getClearValueCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:499
+//@line:510
 
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		  return (jint) (vkObj->clearValueCount);
@@ -209,7 +209,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkRenderPassBeginInfo_setPClearVa
 	char* _pClearValues = (char*)(obj__pClearValues?env->GetDirectBufferAddress(obj__pClearValues) : NULL);
 
 
-//@line:508
+//@line:519
 
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -222,7 +222,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkRenderPassBeginInfo_setPClearVa
 static inline jlong wrapped_Java_bor_vulkan_structs_VkRenderPassBeginInfo_getPClearValues0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:519
+//@line:530
 
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 

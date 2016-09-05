@@ -8,7 +8,7 @@
 	char* _extensionName = (char*)(obj__extensionName ? env->GetStringUTFChars(obj__extensionName, 0) : NULL);
 
 
-//@line:183
+//@line:194
 
 		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
 		  strncpy(vkObj->extensionName, _extensionName, strlen(_extensionName)+1);
@@ -22,7 +22,7 @@
 static inline jstring wrapped_Java_bor_vulkan_structs_VkExtensionProperties_getExtensionName0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:192
+//@line:203
 
 		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
 		  return (jstring)(env->NewStringUTF(vkObj->extensionName));
@@ -42,7 +42,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkExtensionProperties_setSpecVers
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:201
+//@line:212
 
 		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
 		 // code for simple past value 
@@ -54,7 +54,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkExtensionProperties_setSpecVers
 static inline jint wrapped_Java_bor_vulkan_structs_VkExtensionProperties_getSpecVersion0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:211
+//@line:222
 
 		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
 		  return (jint) (vkObj->specVersion);
