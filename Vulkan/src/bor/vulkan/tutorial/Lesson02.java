@@ -17,7 +17,7 @@ import bor.vulkan.VkPhysicalDevice;
 import bor.vulkan.Vulkan;
 import bor.vulkan.enumerations.VkResult;
 import bor.vulkan.enumerations.VkStructureType;
-import bor.vulkan.khr.WSI;
+
 import bor.vulkan.structs.VkAllocationCallbacks;
 import bor.vulkan.structs.VkApplicationInfo;
 import bor.vulkan.structs.VkDeviceCreateInfo;
@@ -27,6 +27,7 @@ import bor.vulkan.structs.VkLayerProperties;
 import bor.vulkan.structs.VkPhysicalDeviceFeatures;
 import bor.vulkan.structs.VkPhysicalDeviceMemoryProperties;
 import bor.vulkan.structs.VkPhysicalDeviceProperties;
+import bor.vulkan.structs.VkPhysicalDeviceSparseProperties;
 import bor.vulkan.structs.VkQueueFamilyProperties;
 import bor.vulkan.structs.VkStruct;
 
@@ -141,12 +142,16 @@ public class Lesson02 {
      */
     public static List<VkPhysicalDevice> enumeratePhysicalDevices(VkInstance instance){
         VkResult[] result = new VkResult[1];
-        List<VkPhysicalDevice> physicalDevicesList = Vk10.vkEnumeratePhysicalDevices(instance, result);
+        int[] count = {1};        
+        VkPhysicalDevice[] pPhysicalDevices = new VkPhysicalDevice[1];
+        
+        Vk10.vkEnumeratePhysicalDevices(instance, count, pPhysicalDevices );
+        //List<VkPhysicalDevice> physicalDevicesList = Vk10.vkEnumeratePhysicalDevices(instance, count , result);
         
         System.out.println("VkResult for Enumerate Physical Devices " + result[0]);       
-        System.out.println("PhysicalDevices count: " + physicalDevicesList.size());
+        System.out.println("PhysicalDevices count: " + count[0]);
         
-        return physicalDevicesList;
+        return Arrays.asList(pPhysicalDevices);
     }
    
     

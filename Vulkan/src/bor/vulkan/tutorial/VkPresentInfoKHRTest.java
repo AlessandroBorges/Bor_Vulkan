@@ -7,8 +7,7 @@ import bor.vulkan.*;
 import bor.vulkan.enumerations.VkResult;
 import bor.vulkan.enumerations.VkStructureType;
 import bor.vulkan.structs.*;
-import bor.vulkan.khr.*;
-import bor.vulkan.khr.structs.*;
+
 
 /**
  * @author Livia

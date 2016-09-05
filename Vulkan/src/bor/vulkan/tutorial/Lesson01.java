@@ -32,12 +32,16 @@ public class Lesson01 {
      */
     public static void main(String[] args) {
         
-        List<VkExtensionProperties> pProperties = new ArrayList<VkExtensionProperties>();
+        //List<VkExtensionProperties> pProperties = new ArrayList<VkExtensionProperties>();
         List<String> extensionsNames = new ArrayList<String>();
         
        
+        String pLayerName = "";
+        int[] pPropertyCount = {0};
+        VkExtensionProperties[] pProperties = new VkExtensionProperties[4];
         
-        Vk10.vkEnumerateInstanceExtensionProperties(null, pProperties);
+        Vk10.vkEnumerateInstanceExtensionProperties(pLayerName , pPropertyCount, pProperties);
+       // Vk10.vkEnumerateInstanceExtensionProperties(null, pProperties);
         System.out.println("Extension Properties: ");
         for (VkExtensionProperties vkExtensionProperties : pProperties) {
             System.out.println(vkExtensionProperties);
@@ -46,7 +50,7 @@ public class Lesson01 {
         
         VkInstanceCreateInfo pCreateInfo = new VkInstanceCreateInfo(); 
         
-        P<VkInstanceCreateInfo> pInfo = pCreateInfo.getP();
+        
         
         VkAllocationCallbacks pAllocator = null;
         VkInstance[] pInstance = new VkInstance[1];
