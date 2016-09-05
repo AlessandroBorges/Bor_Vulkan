@@ -281,12 +281,7 @@ public class VkHandle implements VkHandleInterface,
     @Override
     public String toString() {
         StringBuilder builder = new StringBuilder();
-        builder.append("VkHandle [")                
-                .append(", getNativeHandle: 0x")            
-                .append( Long.toHexString(getNativeHandle()))
-                .append(", isNull: ")
-                .append(isNull())
-                .append("]");
+        builder.append("VkHandle [nativeHandle=").append(nativeHandle).append("]");
         return builder.toString();
     }
 
@@ -352,5 +347,7 @@ public class VkHandle implements VkHandleInterface,
         VkArrayHandle<VkHandle> vkArray = new VkArrayHandle<VkHandle>(array);
         return vkArray;
     }
+    
+    
     
 }

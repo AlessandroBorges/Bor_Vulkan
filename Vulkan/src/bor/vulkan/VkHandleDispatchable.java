@@ -192,4 +192,15 @@ public class VkHandleDispatchable
         throw new UnsupportedOperationException("");
     }
 
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("VkHandleDispatchable [nativeHandle=").append(nativeHandle).append("]");
+        return builder.toString();
+    }
+
 }

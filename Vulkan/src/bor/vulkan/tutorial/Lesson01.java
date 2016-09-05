@@ -38,9 +38,13 @@ public class Lesson01 {
        
         String pLayerName = "";
         int[] pPropertyCount = {0};
-        VkExtensionProperties[] pProperties = new VkExtensionProperties[4];
+        VkExtensionProperties[] pProperties = null;
         
-        Vk10.vkEnumerateInstanceExtensionProperties(pLayerName , pPropertyCount, pProperties);
+        Vk10.vkEnumerateInstanceExtensionProperties(null , pPropertyCount, null);
+        
+        pProperties = new VkExtensionProperties[pPropertyCount[0]];
+        Vk10.vkEnumerateInstanceExtensionProperties(null , pPropertyCount, pProperties);
+        
        // Vk10.vkEnumerateInstanceExtensionProperties(null, pProperties);
         System.out.println("Extension Properties: ");
         for (VkExtensionProperties vkExtensionProperties : pProperties) {
@@ -61,7 +65,7 @@ public class Lesson01 {
         appInfo.pEngineName("BorVulkan");
         appInfo.applicationVersion(1);
         appInfo.apiVersion(Vulkan.VK_MAKE_VERSION(1, 0, 5));
-        
+        appInfo.dump();
         String[] names = extensionsNames.toArray(new String[extensionsNames.size()]);
         
         pCreateInfo.sType(VkStructureType.VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO);
@@ -70,6 +74,8 @@ public class Lesson01 {
         pCreateInfo.pApplicationInfo(appInfo);
         pCreateInfo.enabledExtensionCount(names.length);
         pCreateInfo.ppEnabledExtensionNames(names);
+        
+        pCreateInfo.dump();
         
         VkResult res =  Vk10.vkCreateInstance(pCreateInfo, pAllocator, pInstance); 
         

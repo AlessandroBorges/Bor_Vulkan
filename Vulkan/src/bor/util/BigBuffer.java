@@ -51,8 +51,9 @@ public class BigBuffer<T> {
         singleSize = VkStruct.sizeOf(structID);
         this.elementCount = array == null ? 0 : array.length;
         this.nativeBufferArray = (array == null) ? null : ByteBuffer.allocateDirect(singleSize * elementCount);        
-        nativeBufferArray.order(ByteOrder.nativeOrder());       
-        nativeBufferArray.rewind(); 
+        if(nativeBufferArray != null){
+          nativeBufferArray.order(ByteOrder.nativeOrder());
+        }
         initStruct();
     }
     
@@ -81,6 +82,7 @@ public class BigBuffer<T> {
     public BigBuffer(ByteBuffer nativeBuffer, VkHandleInterface[] handleArray, boolean isDispatchableHandle) {
         this.isHandle = true;
         this.array = handleArray;
+        this.isDispatchHandle = isDispatchableHandle;
         this.elementCount = (handleArray == null) ? 0 : handleArray.length;
         singleSize = isDispatchableHandle ?  Vk10.sizeOfDispatchableHandle() 
                                            : Vk10.sizeOfNonDispatchableHandle();                               
@@ -97,11 +99,14 @@ public class BigBuffer<T> {
     public BigBuffer(VkHandleInterface[] handleArray, boolean isDispatchableHandle) {
         this.isHandle = true;
         this.array = handleArray;
+        this.isDispatchHandle = isDispatchableHandle;
         this.elementCount = (handleArray == null) ? 0 : handleArray.length;
         singleSize = isDispatchableHandle ?  Vk10.sizeOfDispatchableHandle() 
                                            : Vk10.sizeOfNonDispatchableHandle();                               
         this.nativeBufferArray = (handleArray == null) ? null : ByteBuffer.allocateDirect(singleSize * elementCount);
-        nativeBufferArray.order(ByteOrder.nativeOrder());
+        if(nativeBufferArray != null){
+            nativeBufferArray.order(ByteOrder.nativeOrder());
+        }
         initHandlers();
     }
     
@@ -191,23 +196,24 @@ public class BigBuffer<T> {
         if (isHandle || array == null) return;       
         int sizeBytes = singleSize;
         nativeBufferArray.rewind();
-        for (int i = 0; i < elementCount; i++) {           
+        for (int i = 0; i < elementCount; i++) {  
+            //DO split buffer
+            int pos = i * sizeBytes;
+            nativeBufferArray.limit(pos + sizeBytes);
+            nativeBufferArray.position(pos);
+            // 
+            ByteBuffer structBuffer = nativeBufferArray.slice();
+            structBuffer.order(nativeBufferArray.order());            
             if (array[i] != null) {
                 VkStruct struct = (VkStruct) array[i];
-                int pos = i * sizeBytes;
-                nativeBufferArray.limit(pos + sizeBytes);
-                nativeBufferArray.position(pos);
-                // 
-                ByteBuffer dst = nativeBufferArray.slice();
-                dst.order(nativeBufferArray.order());
-                
                 ByteBuffer src = struct.getPointer();
                 // copy content of src to dst
-                copyBuffers(src, 0, dst, 0, sizeBytes);
+                copyBuffers(src, 0, structBuffer, 0, sizeBytes);
                 // replace old buffer
-                struct.setPointer(dst);
-            }else{
+                struct.setPointer(structBuffer);
                 dirty = true;
+            }else{
+                array[i] = VkStruct.createInstance(structID, structBuffer);
             }
         }// for
     }
@@ -317,5 +323,21 @@ public class BigBuffer<T> {
         }
         nativeBufferArray = null;
     }
+
+    /* (non-Javadoc)
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        final int maxLen = 20;
+        return "BigBuffer [structID=" + structID + ", "
+                + (nativeBufferArray != null ? "nativeBufferArray=" + nativeBufferArray + ", " : "") + "elementCount="
+                + elementCount + ", singleSize=" + singleSize + ", "
+                + (array != null ? "array=" + Arrays.asList(array).subList(0, Math.min(array.length, maxLen)) + ", "
+                        : "")
+                + "isHandle=" + isHandle + ", isDispatchHandle=" + isDispatchHandle + ", dirty=" + dirty + "]";
+    }
+    
+    
     
 }
