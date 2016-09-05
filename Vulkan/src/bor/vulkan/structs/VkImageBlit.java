@@ -410,10 +410,11 @@
 	 * Native GET method for field dstOffsets	[vkstruct_array]<br>
 	 * Prototype: VkOffset3D[]  dstOffsets
 	 */ 
-	 private static native long getDstOffsets0(Buffer ptr, long[] offs);/*
+	 private static native void getDstOffsets0(Buffer ptr, long[] offs);/*
              VkImageBlit* vkObj = (VkImageBlit*)(ptr);               
              offs[0] = reinterpret_cast<jlong>(&vkObj->dstOffsets[0]);
              offs[1] = reinterpret_cast<jlong>(&vkObj->dstOffsets[1]);
+             
          */  
 
 
