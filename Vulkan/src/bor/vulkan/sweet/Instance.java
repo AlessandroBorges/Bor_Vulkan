@@ -112,10 +112,17 @@ public class Instance {
      * @return list of VkExtensionProperties
      */
     public List<VkExtensionProperties> enumerateInstanceExtensionsProperties(String pLayerName){        
-         List<VkExtensionProperties> pProperties = new ArrayList<VkExtensionProperties>();
-        VkResult res =  Vk10.vkEnumerateInstanceExtensionProperties(pLayerName, pProperties);
+        VkExtensionProperties[] pProperties = null;
+         int[] count = {0};
+         VkResult res =  Vk10.vkEnumerateInstanceExtensionProperties(pLayerName,count, pProperties);
+         
+         if(res==VkResult.VK_SUCCESS){
+             pProperties = new VkExtensionProperties[count[0]];
+             res =  Vk10.vkEnumerateInstanceExtensionProperties(pLayerName,count, pProperties);
+         }
+         
         rh.check("enumerateInstanceExtensionsProperties", res);
-        return pProperties;
+        return Arrays.asList(pProperties);
     }
     
     /**
