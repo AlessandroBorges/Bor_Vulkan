@@ -46,7 +46,8 @@ extern "C" {
 inline char* cloneStr(const char* src){
 	 if(src==NULL) return NULL;
 	 int len = strlen(src)+1;
-	 char* dst = CALLOC(len, char);
+	 char* dst = (char*)malloc(len * sizeof(char));
+     memset(dst, 0, len * sizeof(char));
 	 strcpy(dst, src);
 	 return dst;
  }
