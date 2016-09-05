@@ -29,6 +29,17 @@ public class JNIgenBuilder {
     }
     
     /**
+     *  Append values in String array
+    **/
+   public static String[] append(String[] base, String[] newValues){
+       int size = base.length + newValues.length;
+       String[] res = new String[size];
+       System.arraycopy(base, 0, res, 0, base.length);     
+       System.arraycopy(newValues, 0, res, base.length, newValues.length);
+       return res;
+   }
+    
+    /**
      * 
      */
     private static String[] fixPrefixSufix(String[] names, String prefix, String sufix) {
@@ -66,8 +77,10 @@ public class JNIgenBuilder {
                 "**/bor/vulkan/structs/VkStruct.java",
         };
         
-        src = append(src, structNames);
-        src = fixPrefixSufix(src, PREFIX_STRUCT, SUFIX_JAVA);
+        String[]  structs = structNames.toArray(new String[structNames.size()]);
+        structs = fixPrefixSufix(structs, PREFIX_STRUCT, SUFIX_JAVA);
+        src = append(src, structs);  
+        System.out.println("Source files:");
         for (int i = 0; i < src.length; i++) {
             String string = src[i];
             System.out.println(string);
@@ -76,7 +89,7 @@ public class JNIgenBuilder {
         
         //System.exit(0);
         long t1 = System.currentTimeMillis();
-        
+        System.out.println("\n Code Generation:");
         NativeCodeGenerator jnigen = new NativeCodeGenerator();
         jnigen.setUsePrimitiveArrayCritical(false);
         jnigen.generate("src", "bin", "jni", 
@@ -86,31 +99,35 @@ public class JNIgenBuilder {
         
         BuildTarget win32 = BuildTarget.newDefaultTarget(TargetOs.Windows, false);
         win32.compilerPrefix = "mingw32-";
-        win32.cppFlags += " -std=gnu++11 -I/D/VulkanSDK/1.0.11.1/Include -L/D/VulkanSDK/1.0.11.1/Bin";
+        win32.cppFlags += " -std=gnu++11 -I/C/VulkanSDK/1.0.24.0/Include -L/D/VulkanSDK/1.0.24.0/Bin";
         
-        String[] includes = {"-I/D/VulkanSDK/1.0.11.1/Include"};
+        //String[] includes = {"-I/C/VulkanSDK/1.0.24.0/Include"};
         
         BuildTarget win64 = BuildTarget.newDefaultTarget(TargetOs.Windows, true);
         
-       // win64.cFlags += " -std=gnu++11";
-       // System.err.println("cppFlags : " + win64.cppFlags ); -c -Wall -O2 -mfpmath=sse -msse2 -fmessage-length=0 -m64
-        win64.cppFlags = " -c -Wall -mfpmath=sse -msse2 -fmessage-length=300 -m64 -std=gnu++11 -O0 -pipe ";
-       // win64.cppFlags += "-MMD -MP -MF \"jni/target\" ";
-        System.err.println(win64.cppIncludes);
+        win64.cFlags += " -std=gnu++11";
+        //win64.cppFlags += " -std=gnu++11 -Wunused-variable";       
+        win64.cppFlags = " -c -Wall -mfpmath=sse -msse2 -fmessage-length=300 -m64 -std=gnu++11 -O2 -pipe ";
+        System.err.println("cppFlags : " + win64.cppFlags );// -c -Wall -O2 -mfpmath=sse -msse2 -fmessage-length=0 -m64
+        System.err.println("cppIncludes: " + Arrays.toString( win64.cppIncludes));
        // win64.cppIncludes = includes;    
-        //win64.libraries += "-LD:/VulkanSDK/1.0.11.1/Bin -lvulkan-1 ";
+        win64.libraries += "-LC:/VulkanSDK/1.0.24.0/Bin -lvulkan-1 ";
         win64.linkerFlags +=" ";
         
         //BuildTarget linux32 = BuildTarget.newDefaultTarget(TargetOs.Linux, false);
         //BuildTarget linux64 = BuildTarget.newDefaultTarget(TargetOs.Linux, true);
         //BuildTarget mac = BuildTarget.newDefaultTarget(TargetOs.MacOsX, true);
-
+        System.out.println("\n AntScriptGenerator :");
         new AntScriptGenerator().generate(new BuildConfig("BorVulkan"), win64);
-       // BuildExecutor.executeAnt("jni/build-windows32.xml", "-v -Dhas-compiler=true clean postcompile");
+       
+        System.out.println("\n Build...");
+        // BuildExecutor.executeAnt("jni/build-windows32.xml", "-v -Dhas-compiler=true clean postcompile");
         BuildExecutor.executeAnt("jni/build-windows64.xml", "-v -Dhas-compiler=true clean postcompile");
         // BuildExecutor.executeAnt("jni/build-linux32.xml", "-v -Dhas-compiler=true clean postcompile");
         // BuildExecutor.executeAnt("jni/build-linux64.xml", "-v -Dhas-compiler=true clean postcompile");
         // BuildExecutor.executeAnt("jni/build-macosx32.xml", "-v -Dhas-compiler=true  clean postcompile");
+        
+        System.out.println("\n Pack Natives...");
         BuildExecutor.executeAnt("jni/build.xml", "-v pack-natives");
         long t3 = System.currentTimeMillis();
         
