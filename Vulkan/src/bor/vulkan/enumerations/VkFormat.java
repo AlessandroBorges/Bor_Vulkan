@@ -199,6 +199,14 @@ import bor.enumerable.*;
  *     VK_FORMAT_ASTC_12x10_SRGB_BLOCK = 182,
  *     VK_FORMAT_ASTC_12x12_UNORM_BLOCK = 183,
  *     VK_FORMAT_ASTC_12x12_SRGB_BLOCK = 184,
+ *     VK_FORMAT_PVRTC1_2BPP_UNORM_BLOCK_IMG = 1000054000,
+ *     VK_FORMAT_PVRTC1_4BPP_UNORM_BLOCK_IMG = 1000054001,
+ *     VK_FORMAT_PVRTC2_2BPP_UNORM_BLOCK_IMG = 1000054002,
+ *     VK_FORMAT_PVRTC2_4BPP_UNORM_BLOCK_IMG = 1000054003,
+ *     VK_FORMAT_PVRTC1_2BPP_SRGB_BLOCK_IMG = 1000054004,
+ *     VK_FORMAT_PVRTC1_4BPP_SRGB_BLOCK_IMG = 1000054005,
+ *     VK_FORMAT_PVRTC2_2BPP_SRGB_BLOCK_IMG = 1000054006,
+ *     VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG = 1000054007,
  *     VK_FORMAT_BEGIN_RANGE = VK_FORMAT_UNDEFINED,
  *     VK_FORMAT_END_RANGE = VK_FORMAT_ASTC_12x12_SRGB_BLOCK,
  *     VK_FORMAT_RANGE_SIZE = (VK_FORMAT_ASTC_12x12_SRGB_BLOCK - VK_FORMAT_UNDEFINED + 1),
@@ -214,7 +222,7 @@ public class VkFormat extends IntEnum<VkFormat> {
    private static final Class<VkFormat> myClass = VkFormat.class;
 
    /** values */
-   private static VkFormat[] values = new VkFormat[185];
+   private static VkFormat[] values = new VkFormat[193];
 
    public static final VkFormat VK_FORMAT_UNDEFINED = new VkFormat("VK_FORMAT_UNDEFINED", 0, 0);
    public static final VkFormat VK_FORMAT_R4G4_UNORM_PACK8 = new VkFormat("VK_FORMAT_R4G4_UNORM_PACK8", 1, 1);
@@ -401,6 +409,14 @@ public class VkFormat extends IntEnum<VkFormat> {
    public static final VkFormat VK_FORMAT_ASTC_12x10_SRGB_BLOCK = new VkFormat("VK_FORMAT_ASTC_12x10_SRGB_BLOCK", 182, 182);
    public static final VkFormat VK_FORMAT_ASTC_12x12_UNORM_BLOCK = new VkFormat("VK_FORMAT_ASTC_12x12_UNORM_BLOCK", 183, 183);
    public static final VkFormat VK_FORMAT_ASTC_12x12_SRGB_BLOCK = new VkFormat("VK_FORMAT_ASTC_12x12_SRGB_BLOCK", 184, 184);
+   public static final VkFormat VK_FORMAT_PVRTC1_2BPP_UNORM_BLOCK_IMG = new VkFormat("VK_FORMAT_PVRTC1_2BPP_UNORM_BLOCK_IMG", 185, 1000054000);
+   public static final VkFormat VK_FORMAT_PVRTC1_4BPP_UNORM_BLOCK_IMG = new VkFormat("VK_FORMAT_PVRTC1_4BPP_UNORM_BLOCK_IMG", 186, 1000054001);
+   public static final VkFormat VK_FORMAT_PVRTC2_2BPP_UNORM_BLOCK_IMG = new VkFormat("VK_FORMAT_PVRTC2_2BPP_UNORM_BLOCK_IMG", 187, 1000054002);
+   public static final VkFormat VK_FORMAT_PVRTC2_4BPP_UNORM_BLOCK_IMG = new VkFormat("VK_FORMAT_PVRTC2_4BPP_UNORM_BLOCK_IMG", 188, 1000054003);
+   public static final VkFormat VK_FORMAT_PVRTC1_2BPP_SRGB_BLOCK_IMG = new VkFormat("VK_FORMAT_PVRTC1_2BPP_SRGB_BLOCK_IMG", 189, 1000054004);
+   public static final VkFormat VK_FORMAT_PVRTC1_4BPP_SRGB_BLOCK_IMG = new VkFormat("VK_FORMAT_PVRTC1_4BPP_SRGB_BLOCK_IMG", 190, 1000054005);
+   public static final VkFormat VK_FORMAT_PVRTC2_2BPP_SRGB_BLOCK_IMG = new VkFormat("VK_FORMAT_PVRTC2_2BPP_SRGB_BLOCK_IMG", 191, 1000054006);
+   public static final VkFormat VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG = new VkFormat("VK_FORMAT_PVRTC2_4BPP_SRGB_BLOCK_IMG", 192, 1000054007);
    
    /**
     * Return all values available in this enumeration

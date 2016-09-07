@@ -31,6 +31,7 @@ import bor.enumerable.*;
  *     VK_ERROR_INCOMPATIBLE_DRIVER = -9,
  *     VK_ERROR_TOO_MANY_OBJECTS = -10,
  *     VK_ERROR_FORMAT_NOT_SUPPORTED = -11,
+ *     VK_ERROR_FRAGMENTED_POOL = -12,
  *     VK_ERROR_SURFACE_LOST_KHR = -1000000000,
  *     VK_ERROR_NATIVE_WINDOW_IN_USE_KHR = -1000000001,
  *     VK_SUBOPTIMAL_KHR = 1000001003,
@@ -38,9 +39,9 @@ import bor.enumerable.*;
  *     VK_ERROR_INCOMPATIBLE_DISPLAY_KHR = -1000003001,
  *     VK_ERROR_VALIDATION_FAILED_EXT = -1000011001,
  *     VK_ERROR_INVALID_SHADER_NV = -1000012000,
- *     VK_RESULT_BEGIN_RANGE = VK_ERROR_FORMAT_NOT_SUPPORTED,
+ *     VK_RESULT_BEGIN_RANGE = VK_ERROR_FRAGMENTED_POOL,
  *     VK_RESULT_END_RANGE = VK_INCOMPLETE,
- *     VK_RESULT_RANGE_SIZE = (VK_INCOMPLETE - VK_ERROR_FORMAT_NOT_SUPPORTED + 1),
+ *     VK_RESULT_RANGE_SIZE = (VK_INCOMPLETE - VK_ERROR_FRAGMENTED_POOL + 1),
  *     VK_RESULT_MAX_ENUM = 0x7FFFFFFF
  * } VkResult;
  * </pre>
@@ -53,7 +54,7 @@ public class VkResult extends IntEnum<VkResult> {
    private static final Class<VkResult> myClass = VkResult.class;
 
    /** values */
-   private static VkResult[] values = new VkResult[24];
+   private static VkResult[] values = new VkResult[25];
 
    public static final VkResult VK_SUCCESS = new VkResult("VK_SUCCESS", 0, 0);
    public static final VkResult VK_NOT_READY = new VkResult("VK_NOT_READY", 1, 1);
@@ -72,13 +73,14 @@ public class VkResult extends IntEnum<VkResult> {
    public static final VkResult VK_ERROR_INCOMPATIBLE_DRIVER = new VkResult("VK_ERROR_INCOMPATIBLE_DRIVER", 14, -9);
    public static final VkResult VK_ERROR_TOO_MANY_OBJECTS = new VkResult("VK_ERROR_TOO_MANY_OBJECTS", 15, -10);
    public static final VkResult VK_ERROR_FORMAT_NOT_SUPPORTED = new VkResult("VK_ERROR_FORMAT_NOT_SUPPORTED", 16, -11);
-   public static final VkResult VK_ERROR_SURFACE_LOST_KHR = new VkResult("VK_ERROR_SURFACE_LOST_KHR", 17, -1000000000);
-   public static final VkResult VK_ERROR_NATIVE_WINDOW_IN_USE_KHR = new VkResult("VK_ERROR_NATIVE_WINDOW_IN_USE_KHR", 18, -1000000001);
-   public static final VkResult VK_SUBOPTIMAL_KHR = new VkResult("VK_SUBOPTIMAL_KHR", 19, 1000001003);
-   public static final VkResult VK_ERROR_OUT_OF_DATE_KHR = new VkResult("VK_ERROR_OUT_OF_DATE_KHR", 20, -1000001004);
-   public static final VkResult VK_ERROR_INCOMPATIBLE_DISPLAY_KHR = new VkResult("VK_ERROR_INCOMPATIBLE_DISPLAY_KHR", 21, -1000003001);
-   public static final VkResult VK_ERROR_VALIDATION_FAILED_EXT = new VkResult("VK_ERROR_VALIDATION_FAILED_EXT", 22, -1000011001);
-   public static final VkResult VK_ERROR_INVALID_SHADER_NV = new VkResult("VK_ERROR_INVALID_SHADER_NV", 23, -1000012000);
+   public static final VkResult VK_ERROR_FRAGMENTED_POOL = new VkResult("VK_ERROR_FRAGMENTED_POOL", 17, -12);
+   public static final VkResult VK_ERROR_SURFACE_LOST_KHR = new VkResult("VK_ERROR_SURFACE_LOST_KHR", 18, -1000000000);
+   public static final VkResult VK_ERROR_NATIVE_WINDOW_IN_USE_KHR = new VkResult("VK_ERROR_NATIVE_WINDOW_IN_USE_KHR", 19, -1000000001);
+   public static final VkResult VK_SUBOPTIMAL_KHR = new VkResult("VK_SUBOPTIMAL_KHR", 20, 1000001003);
+   public static final VkResult VK_ERROR_OUT_OF_DATE_KHR = new VkResult("VK_ERROR_OUT_OF_DATE_KHR", 21, -1000001004);
+   public static final VkResult VK_ERROR_INCOMPATIBLE_DISPLAY_KHR = new VkResult("VK_ERROR_INCOMPATIBLE_DISPLAY_KHR", 22, -1000003001);
+   public static final VkResult VK_ERROR_VALIDATION_FAILED_EXT = new VkResult("VK_ERROR_VALIDATION_FAILED_EXT", 23, -1000011001);
+   public static final VkResult VK_ERROR_INVALID_SHADER_NV = new VkResult("VK_ERROR_INVALID_SHADER_NV", 24, -1000012000);
    
    /**
     * Return all values available in this enumeration
