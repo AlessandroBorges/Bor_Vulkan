@@ -107,8 +107,8 @@
 	/**
 	 *  const VkPhysicalDeviceFeatures* 	pEnabledFeatures	[vkstruct_array_array]
 	 */ 
-	VkPhysicalDeviceFeatures[]  	pEnabledFeatures;
-	 private BigBuffer 	 pEnabledFeaturesBUFFER;
+	VkPhysicalDeviceFeatures  	pEnabledFeatures;
+	// private BigBuffer 	 pEnabledFeaturesBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -413,41 +413,44 @@
 
 //#END get
 
+// #Included setPEnabledFeatures
+
 	/**
-	 * Set method for field pEnabledFeatures	[vkstruct_array]<br>
+	 * Set method for field pEnabledFeatures	[vkstruct]<br>
 	 * Prototype: const VkPhysicalDeviceFeatures*  pEnabledFeatures
 	 * 
 	 * @param pEnabledFeatures - a instance of VkPhysicalDeviceFeatures[].
 	 * @return this VkStruct instance.
 	 */ 
-	 public VkDeviceCreateInfo pEnabledFeatures(VkPhysicalDeviceFeatures[] pEnabledFeatures){
+	 public VkDeviceCreateInfo pEnabledFeatures(VkPhysicalDeviceFeatures pEnabledFeatures){
 		 this.pEnabledFeatures = pEnabledFeatures;
-		 this.pEnabledFeaturesBUFFER = new BigBuffer(pEnabledFeatures, VkPhysicalDeviceFeatures.getID());
-		 setPEnabledFeatures0(this.ptr, pEnabledFeaturesBUFFER.getBuffer());
+		 //this.pEnabledFeaturesBUFFER = new BigBuffer(pEnabledFeatures, VkPhysicalDeviceFeatures.getID());
+		 setPEnabledFeatures0(this.ptr, pEnabledFeatures.getPointer());
 		 return this;
 	 }
 
+//#END Set Included
+
+// #Included getPEnabledFeatures0
+
 	/**
-	 * Get method for field pEnabledFeatures	[vkstruct_array]<br>
+	 * Get method for field pEnabledFeatures	[vkstruct]<br>
 	 * Prototype: const VkPhysicalDeviceFeatures*  pEnabledFeatures
 	 */ 
-	 public VkPhysicalDeviceFeatures[] pEnabledFeatures(){
+	 public VkPhysicalDeviceFeatures pEnabledFeatures(){
 		 long ptr = getPEnabledFeatures0(this.ptr);
 		 if(ptr == 0L){
+		    pEnabledFeatures = null; 
 		    return null;
 		 }
-		 if(pEnabledFeaturesBUFFER != null && ptr == pEnabledFeaturesBUFFER.getBufferAddress()){ //same buffer 
-		    pEnabledFeaturesBUFFER.update();
-		  }else{
-		     // wrap native structs 
-		     int length = ppEnabledExtensionNames();
-		     if(length > 0){
-		        this.pEnabledFeatures = new VkPhysicalDeviceFeatures[length];
-		        pEnabledFeaturesBUFFER = new BigBuffer<VkPhysicalDeviceFeatures>(ptr, pEnabledFeatures, VkPhysicalDeviceFeatures.getID() );
-		     }
-		   }
+		 if(pEnabledFeatures == null && ptr != pEnabledFeatures.getNativeHandle()){
+		       this.pEnabledFeatures = new VkPhysicalDeviceFeatures(ptr);		       
+		 }		   
 		 return this.pEnabledFeatures;
 	 }
+
+
+//#END get
 
 
    /* (non-Javadoc)
@@ -475,7 +478,7 @@
 				.append(",\n ppEnabledExtensionNames: ")
 				.append(Arrays.toString(ppEnabledExtensionNames()) )
 				.append(",\n pEnabledFeatures: ")
-				.append(Arrays.toString(pEnabledFeatures()) )
+				.append(pEnabledFeatures() )
 				.append("]");
 		 return builder.toString();
     }
