@@ -176,7 +176,7 @@
 	 */
 	 public static VkArray<VkPipelineRasterizationStateCreateInfo> createVkArray(int size){ 
 		 VkPipelineRasterizationStateCreateInfo[] array = new VkPipelineRasterizationStateCreateInfo[size]; 
-		 VkArrayStruct<VkPipelineRasterizationStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineRasterizationStateCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkPipelineRasterizationStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineRasterizationStateCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -574,8 +574,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineRasterizationStateCreateInfo* vkObj = (VkPipelineRasterizationStateCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**

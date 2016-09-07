@@ -152,7 +152,7 @@
 	 */
 	 public static VkArray<VkBufferMemoryBarrier> createVkArray(int size){ 
 		 VkBufferMemoryBarrier[] array = new VkBufferMemoryBarrier[size]; 
-		 VkArrayStruct<VkBufferMemoryBarrier> vkArray = new VkArrayStruct<VkBufferMemoryBarrier> (array, TAG_ID);
+		 VkArrayStruct<VkBufferMemoryBarrier> vkArray = new VkArrayStruct<VkBufferMemoryBarrier>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -459,8 +459,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkBufferMemoryBarrier* vkObj = (VkBufferMemoryBarrier*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**

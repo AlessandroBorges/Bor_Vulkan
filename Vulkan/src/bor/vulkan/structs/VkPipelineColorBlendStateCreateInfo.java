@@ -89,7 +89,7 @@
 	/**
 	 *  const VkPipelineColorBlendAttachmentState* 	pAttachments	[vkstruct_array_array]
 	 */ 
-	  VkPipelineColorBlendAttachmentState[]  	pAttachments;
+	VkPipelineColorBlendAttachmentState[]  	pAttachments;
 	 private BigBuffer 	 pAttachmentsBUFFER;
 	
 	/**
@@ -147,7 +147,7 @@
 	 */
 	 public static VkArray<VkPipelineColorBlendStateCreateInfo> createVkArray(int size){ 
 		 VkPipelineColorBlendStateCreateInfo[] array = new VkPipelineColorBlendStateCreateInfo[size]; 
-		 VkArrayStruct<VkPipelineColorBlendStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineColorBlendStateCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkPipelineColorBlendStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineColorBlendStateCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -330,9 +330,13 @@
 		 }
 		 if(pAttachmentsBUFFER != null && ptr == pAttachmentsBUFFER.getBufferAddress()){ //same buffer 
 		    pAttachmentsBUFFER.update();
-		    return pAttachments;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = attachmentCount();
+		     if(length > 0){
+		        this.pAttachments = new VkPipelineColorBlendAttachmentState[length];
+		        pAttachmentsBUFFER = new BigBuffer<VkPipelineColorBlendAttachmentState>(ptr, pAttachments, const VkPipelineColorBlendAttachmentState*getID() );
+		     }
 		   }
 		 return this.pAttachments;
 	 }
@@ -432,8 +436,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -531,7 +535,7 @@
 	 private static native long getPAttachments0(Buffer ptr);/*
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pAttachments );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pAttachments );
 	 */
 
 	/**

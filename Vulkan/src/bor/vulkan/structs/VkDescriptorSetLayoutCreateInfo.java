@@ -76,7 +76,7 @@
 	/**
 	 *  const VkDescriptorSetLayoutBinding* 	pBindings	[vkstruct_array_array]
 	 */ 
-	  VkDescriptorSetLayoutBinding[]  	pBindings;
+	VkDescriptorSetLayoutBinding[]  	pBindings;
 	 private BigBuffer 	 pBindingsBUFFER;
 	/**
 	 * Ctor
@@ -129,7 +129,7 @@
 	 */
 	 public static VkArray<VkDescriptorSetLayoutCreateInfo> createVkArray(int size){ 
 		 VkDescriptorSetLayoutCreateInfo[] array = new VkDescriptorSetLayoutCreateInfo[size]; 
-		 VkArrayStruct<VkDescriptorSetLayoutCreateInfo> vkArray = new VkArrayStruct<VkDescriptorSetLayoutCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkDescriptorSetLayoutCreateInfo> vkArray = new VkArrayStruct<VkDescriptorSetLayoutCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -265,9 +265,13 @@
 		 }
 		 if(pBindingsBUFFER != null && ptr == pBindingsBUFFER.getBufferAddress()){ //same buffer 
 		    pBindingsBUFFER.update();
-		    return pBindings;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = bindingCount();
+		     if(length > 0){
+		        this.pBindings = new VkDescriptorSetLayoutBinding[length];
+		        pBindingsBUFFER = new BigBuffer<VkDescriptorSetLayoutBinding>(ptr, pBindings, const VkDescriptorSetLayoutBinding*getID() );
+		     }
 		   }
 		 return this.pBindings;
 	 }
@@ -334,8 +338,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDescriptorSetLayoutCreateInfo* vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -394,7 +398,7 @@
 	 private static native long getPBindings0(Buffer ptr);/*
 		  VkDescriptorSetLayoutCreateInfo* vkObj = (VkDescriptorSetLayoutCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pBindings );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pBindings );
 	 */
 
 

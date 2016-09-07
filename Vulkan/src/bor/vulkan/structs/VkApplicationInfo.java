@@ -140,7 +140,7 @@
 	 */
 	 public static VkArray<VkApplicationInfo> createVkArray(int size){ 
 		 VkApplicationInfo[] array = new VkApplicationInfo[size]; 
-		 VkArrayStruct<VkApplicationInfo> vkArray = new VkArrayStruct<VkApplicationInfo> (array, TAG_ID);
+		 VkArrayStruct<VkApplicationInfo> vkArray = new VkArrayStruct<VkApplicationInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -386,8 +386,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -405,7 +405,7 @@
 	 */ 
 	 private static native String getPApplicationName0(Buffer ptr);/*
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->pApplicationName));
+		  return (jstring)(env->NewStringUTF(cloneStr(vkObj->pApplicationName)));
 	 */
 
 	/**
@@ -442,7 +442,7 @@
 	 */ 
 	 private static native String getPEngineName0(Buffer ptr);/*
 		  VkApplicationInfo* vkObj = (VkApplicationInfo*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->pEngineName));
+		  return (jstring)(env->NewStringUTF(cloneStr(vkObj->pEngineName)));
 	 */
 
 	/**

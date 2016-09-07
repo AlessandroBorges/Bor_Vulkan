@@ -116,7 +116,7 @@
 	 */
 	 public static VkArray<VkSemaphoreCreateInfo> createVkArray(int size){ 
 		 VkSemaphoreCreateInfo[] array = new VkSemaphoreCreateInfo[size]; 
-		 VkArrayStruct<VkSemaphoreCreateInfo> vkArray = new VkArrayStruct<VkSemaphoreCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkSemaphoreCreateInfo> vkArray = new VkArrayStruct<VkSemaphoreCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -262,8 +262,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkSemaphoreCreateInfo* vkObj = (VkSemaphoreCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**

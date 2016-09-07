@@ -78,7 +78,7 @@
 	/**
 	 *  const VkVertexInputBindingDescription* 	pVertexBindingDescriptions	[vkstruct_array_array]
 	 */ 
-	  VkVertexInputBindingDescription[]  	pVertexBindingDescriptions;
+	VkVertexInputBindingDescription[]  	pVertexBindingDescriptions;
 	 private BigBuffer 	 pVertexBindingDescriptionsBUFFER;
 	
 	/**
@@ -89,7 +89,7 @@
 	/**
 	 *  const VkVertexInputAttributeDescription* 	pVertexAttributeDescriptions	[vkstruct_array_array]
 	 */ 
-	  VkVertexInputAttributeDescription[]  	pVertexAttributeDescriptions;
+	VkVertexInputAttributeDescription[]  	pVertexAttributeDescriptions;
 	 private BigBuffer 	 pVertexAttributeDescriptionsBUFFER;
 	/**
 	 * Ctor
@@ -142,7 +142,7 @@
 	 */
 	 public static VkArray<VkPipelineVertexInputStateCreateInfo> createVkArray(int size){ 
 		 VkPipelineVertexInputStateCreateInfo[] array = new VkPipelineVertexInputStateCreateInfo[size]; 
-		 VkArrayStruct<VkPipelineVertexInputStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineVertexInputStateCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkPipelineVertexInputStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineVertexInputStateCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -278,9 +278,13 @@
 		 }
 		 if(pVertexBindingDescriptionsBUFFER != null && ptr == pVertexBindingDescriptionsBUFFER.getBufferAddress()){ //same buffer 
 		    pVertexBindingDescriptionsBUFFER.update();
-		    return pVertexBindingDescriptions;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = vertexBindingDescriptionCount();
+		     if(length > 0){
+		        this.pVertexBindingDescriptions = new VkVertexInputBindingDescription[length];
+		        pVertexBindingDescriptionsBUFFER = new BigBuffer<VkVertexInputBindingDescription>(ptr, pVertexBindingDescriptions, const VkVertexInputBindingDescription*getID() );
+		     }
 		   }
 		 return this.pVertexBindingDescriptions;
 	 }
@@ -333,9 +337,13 @@
 		 }
 		 if(pVertexAttributeDescriptionsBUFFER != null && ptr == pVertexAttributeDescriptionsBUFFER.getBufferAddress()){ //same buffer 
 		    pVertexAttributeDescriptionsBUFFER.update();
-		    return pVertexAttributeDescriptions;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = vertexAttributeDescriptionCount();
+		     if(length > 0){
+		        this.pVertexAttributeDescriptions = new VkVertexInputAttributeDescription[length];
+		        pVertexAttributeDescriptionsBUFFER = new BigBuffer<VkVertexInputAttributeDescription>(ptr, pVertexAttributeDescriptions, const VkVertexInputAttributeDescription*getID() );
+		     }
 		   }
 		 return this.pVertexAttributeDescriptions;
 	 }
@@ -406,8 +414,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -466,7 +474,7 @@
 	 private static native long getPVertexBindingDescriptions0(Buffer ptr);/*
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pVertexBindingDescriptions );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pVertexBindingDescriptions );
 	 */
 
 	/**
@@ -506,7 +514,7 @@
 	 private static native long getPVertexAttributeDescriptions0(Buffer ptr);/*
 		  VkPipelineVertexInputStateCreateInfo* vkObj = (VkPipelineVertexInputStateCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pVertexAttributeDescriptions );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pVertexAttributeDescriptions );
 	 */
 
 

@@ -134,7 +134,7 @@
 	 */
 	 public static VkArray<VkDeviceQueueCreateInfo> createVkArray(int size){ 
 		 VkDeviceQueueCreateInfo[] array = new VkDeviceQueueCreateInfo[size]; 
-		 VkArrayStruct<VkDeviceQueueCreateInfo> vkArray = new VkArrayStruct<VkDeviceQueueCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkDeviceQueueCreateInfo> vkArray = new VkArrayStruct<VkDeviceQueueCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -355,8 +355,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDeviceQueueCreateInfo* vkObj = (VkDeviceQueueCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**

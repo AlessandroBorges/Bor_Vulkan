@@ -134,7 +134,7 @@
 	 */
 	 public static VkArray<VkSparseImageMemoryBind> createVkArray(int size){ 
 		 VkSparseImageMemoryBind[] array = new VkSparseImageMemoryBind[size]; 
-		 VkArrayStruct<VkSparseImageMemoryBind> vkArray = new VkArrayStruct<VkSparseImageMemoryBind> (array, TAG_ID);
+		 VkArrayStruct<VkSparseImageMemoryBind> vkArray = new VkArrayStruct<VkSparseImageMemoryBind>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -366,8 +366,8 @@
 	 */ 
 	 private static native long getSubresource0(Buffer ptr);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->subresource);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->subresource);
 	 */
 
 	/**
@@ -387,8 +387,8 @@
 	 */ 
 	 private static native long getOffset0(Buffer ptr);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->offset);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->offset);
 	 */
 
 	/**
@@ -408,8 +408,8 @@
 	 */ 
 	 private static native long getExtent0(Buffer ptr);/*
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->extent);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->extent);
 	 */
 
 	/**

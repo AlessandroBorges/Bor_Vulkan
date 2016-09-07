@@ -116,7 +116,7 @@
 	 */
 	 public static VkArray<VkClearAttachment> createVkArray(int size){ 
 		 VkClearAttachment[] array = new VkClearAttachment[size]; 
-		 VkArrayStruct<VkClearAttachment> vkArray = new VkArrayStruct<VkClearAttachment> (array, TAG_ID);
+		 VkArrayStruct<VkClearAttachment> vkArray = new VkArrayStruct<VkClearAttachment>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -280,8 +280,8 @@
 	 */ 
 	 private static native long getClearValue0(Buffer ptr);/*
 		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->clearValue);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->clearValue);
 	 */
 
 

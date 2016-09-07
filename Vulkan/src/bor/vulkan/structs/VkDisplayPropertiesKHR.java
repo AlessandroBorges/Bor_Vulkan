@@ -140,7 +140,7 @@
 	 */
 	 public static VkArray<VkDisplayPropertiesKHR> createVkArray(int size){ 
 		 VkDisplayPropertiesKHR[] array = new VkDisplayPropertiesKHR[size]; 
-		 VkArrayStruct<VkDisplayPropertiesKHR> vkArray = new VkArrayStruct<VkDisplayPropertiesKHR> (array, TAG_ID);
+		 VkArrayStruct<VkDisplayPropertiesKHR> vkArray = new VkArrayStruct<VkDisplayPropertiesKHR>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -405,7 +405,7 @@
 	 */ 
 	 private static native String getDisplayName0(Buffer ptr);/*
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->displayName));
+		  return (jstring)(env->NewStringUTF(cloneStr(vkObj->displayName)));
 	 */
 
 	/**
@@ -425,8 +425,8 @@
 	 */ 
 	 private static native long getPhysicalDimensions0(Buffer ptr);/*
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->physicalDimensions);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->physicalDimensions);
 	 */
 
 	/**
@@ -446,8 +446,8 @@
 	 */ 
 	 private static native long getPhysicalResolution0(Buffer ptr);/*
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->physicalResolution);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->physicalResolution);
 	 */
 
 	/**

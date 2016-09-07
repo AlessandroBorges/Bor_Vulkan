@@ -110,7 +110,7 @@
 	 */
 	 public static VkArray<VkExtensionProperties> createVkArray(int size){ 
 		 VkExtensionProperties[] array = new VkExtensionProperties[size]; 
-		 VkArrayStruct<VkExtensionProperties> vkArray = new VkArrayStruct<VkExtensionProperties> (array, TAG_ID);
+		 VkArrayStruct<VkExtensionProperties> vkArray = new VkArrayStruct<VkExtensionProperties>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -202,7 +202,7 @@
 	 */ 
 	 private static native String getExtensionName0(Buffer ptr);/*
 		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->extensionName));
+		  return (jstring)(env->NewStringUTF(cloneStr(vkObj->extensionName)));
 	 */
 
 	/**

@@ -90,7 +90,7 @@
 	/**
 	 *  const VkPipelineShaderStageCreateInfo* 	pStages	[vkstruct_array_array]
 	 */ 
-	  VkPipelineShaderStageCreateInfo[]  	pStages;
+	VkPipelineShaderStageCreateInfo[]  	pStages;
 	 private BigBuffer 	 pStagesBUFFER;
 	
 	/**
@@ -213,7 +213,7 @@
 	 */
 	 public static VkArray<VkGraphicsPipelineCreateInfo> createVkArray(int size){ 
 		 VkGraphicsPipelineCreateInfo[] array = new VkGraphicsPipelineCreateInfo[size]; 
-		 VkArrayStruct<VkGraphicsPipelineCreateInfo> vkArray = new VkArrayStruct<VkGraphicsPipelineCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkGraphicsPipelineCreateInfo> vkArray = new VkArrayStruct<VkGraphicsPipelineCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -349,9 +349,13 @@
 		 }
 		 if(pStagesBUFFER != null && ptr == pStagesBUFFER.getBufferAddress()){ //same buffer 
 		    pStagesBUFFER.update();
-		    return pStages;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = stageCount();
+		     if(length > 0){
+		        this.pStages = new VkPipelineShaderStageCreateInfo[length];
+		        pStagesBUFFER = new BigBuffer<VkPipelineShaderStageCreateInfo>(ptr, pStages, const VkPipelineShaderStageCreateInfo*getID() );
+		     }
 		   }
 		 return this.pStages;
 	 }
@@ -891,8 +895,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -951,7 +955,7 @@
 	 private static native long getPStages0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pStages );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pStages );
 	 */
 
 	/**
@@ -971,8 +975,8 @@
 	 */ 
 	 private static native long getPVertexInputState0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pVertexInputState);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pVertexInputState);
 	 */
 
 	/**
@@ -992,8 +996,8 @@
 	 */ 
 	 private static native long getPInputAssemblyState0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pInputAssemblyState);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pInputAssemblyState);
 	 */
 
 	/**
@@ -1013,8 +1017,8 @@
 	 */ 
 	 private static native long getPTessellationState0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pTessellationState);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pTessellationState);
 	 */
 
 	/**
@@ -1034,8 +1038,8 @@
 	 */ 
 	 private static native long getPViewportState0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pViewportState);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pViewportState);
 	 */
 
 	/**
@@ -1055,8 +1059,8 @@
 	 */ 
 	 private static native long getPRasterizationState0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pRasterizationState);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pRasterizationState);
 	 */
 
 	/**
@@ -1076,8 +1080,8 @@
 	 */ 
 	 private static native long getPMultisampleState0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pMultisampleState);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pMultisampleState);
 	 */
 
 	/**
@@ -1097,8 +1101,8 @@
 	 */ 
 	 private static native long getPDepthStencilState0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pDepthStencilState);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pDepthStencilState);
 	 */
 
 	/**
@@ -1118,8 +1122,8 @@
 	 */ 
 	 private static native long getPColorBlendState0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pColorBlendState);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pColorBlendState);
 	 */
 
 	/**
@@ -1139,8 +1143,8 @@
 	 */ 
 	 private static native long getPDynamicState0(Buffer ptr);/*
 		  VkGraphicsPipelineCreateInfo* vkObj = (VkGraphicsPipelineCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pDynamicState);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pDynamicState);
 	 */
 
 	/**

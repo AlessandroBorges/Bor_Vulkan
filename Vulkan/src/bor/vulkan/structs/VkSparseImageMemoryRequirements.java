@@ -128,7 +128,7 @@
 	 */
 	 public static VkArray<VkSparseImageMemoryRequirements> createVkArray(int size){ 
 		 VkSparseImageMemoryRequirements[] array = new VkSparseImageMemoryRequirements[size]; 
-		 VkArrayStruct<VkSparseImageMemoryRequirements> vkArray = new VkArrayStruct<VkSparseImageMemoryRequirements> (array, TAG_ID);
+		 VkArrayStruct<VkSparseImageMemoryRequirements> vkArray = new VkArrayStruct<VkSparseImageMemoryRequirements>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -304,8 +304,8 @@
 	 */ 
 	 private static native long getFormatProperties0(Buffer ptr);/*
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->formatProperties);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->formatProperties);
 	 */
 
 	/**

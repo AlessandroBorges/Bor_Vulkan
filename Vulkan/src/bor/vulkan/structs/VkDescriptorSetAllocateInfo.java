@@ -76,7 +76,7 @@
 	/**
 	 *  const VkDescriptorSetLayout* 	pSetLayouts	[vkhandle_array_array]
 	 */ 
-	  VkDescriptorSetLayout[]  	pSetLayouts;
+	VkDescriptorSetLayout[]  	pSetLayouts;
 	 private BigBuffer 	 pSetLayoutsBUFFER;
 	/**
 	 * Ctor
@@ -129,7 +129,7 @@
 	 */
 	 public static VkArray<VkDescriptorSetAllocateInfo> createVkArray(int size){ 
 		 VkDescriptorSetAllocateInfo[] array = new VkDescriptorSetAllocateInfo[size]; 
-		 VkArrayStruct<VkDescriptorSetAllocateInfo> vkArray = new VkArrayStruct<VkDescriptorSetAllocateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkDescriptorSetAllocateInfo> vkArray = new VkArrayStruct<VkDescriptorSetAllocateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -278,7 +278,12 @@
 		    pSetLayoutsBUFFER.update();
 		    return pSetLayouts;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKHandle[] for backup.")).printStackTrace();
+		     // wrap native handles 
+		     int length = descriptorSetCount();
+		     if(length > 0){
+		        this.pSetLayouts = new VkDescriptorSetLayout[length];
+		        pSetLayoutsBUFFER = new BigBuffer<VkDescriptorSetLayout>(ptr, pSetLayouts, false);
+		     }
 		   }
 		 return this.pSetLayouts;
 	 }
@@ -345,8 +350,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDescriptorSetAllocateInfo* vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -406,7 +411,7 @@
 	 private static native long getPSetLayouts0(Buffer ptr);/*
 		  VkDescriptorSetAllocateInfo* vkObj = (VkDescriptorSetAllocateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pSetLayouts );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pSetLayouts );
 	 */
 
 

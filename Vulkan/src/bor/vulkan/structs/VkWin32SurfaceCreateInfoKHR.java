@@ -128,7 +128,7 @@
 	 */
 	 public static VkArray<VkWin32SurfaceCreateInfoKHR> createVkArray(int size){ 
 		 VkWin32SurfaceCreateInfoKHR[] array = new VkWin32SurfaceCreateInfoKHR[size]; 
-		 VkArrayStruct<VkWin32SurfaceCreateInfoKHR> vkArray = new VkArrayStruct<VkWin32SurfaceCreateInfoKHR> (array, TAG_ID);
+		 VkArrayStruct<VkWin32SurfaceCreateInfoKHR> vkArray = new VkArrayStruct<VkWin32SurfaceCreateInfoKHR>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -355,8 +355,8 @@
 	 private static native long getPNext0(Buffer ptr);/*
 	 #ifdef VK_USE_PLATFORM_WIN32_KHR 
 		  VkWin32SurfaceCreateInfoKHR* vkObj = (VkWin32SurfaceCreateInfoKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 #else 
 	   return 0; 
 	 #endif 

@@ -80,7 +80,7 @@
 	/**
 	 *  const VkAttachmentDescription* 	pAttachments	[vkstruct_array_array]
 	 */ 
-	  VkAttachmentDescription[]  	pAttachments;
+	VkAttachmentDescription[]  	pAttachments;
 	 private BigBuffer 	 pAttachmentsBUFFER;
 	
 	/**
@@ -91,7 +91,7 @@
 	/**
 	 *  const VkSubpassDescription* 	pSubpasses	[vkstruct_array_array]
 	 */ 
-	  VkSubpassDescription[]  	pSubpasses;
+	VkSubpassDescription[]  	pSubpasses;
 	 private BigBuffer 	 pSubpassesBUFFER;
 	
 	/**
@@ -102,7 +102,7 @@
 	/**
 	 *  const VkSubpassDependency* 	pDependencies	[vkstruct_array_array]
 	 */ 
-	  VkSubpassDependency[]  	pDependencies;
+	VkSubpassDependency[]  	pDependencies;
 	 private BigBuffer 	 pDependenciesBUFFER;
 	/**
 	 * Ctor
@@ -155,7 +155,7 @@
 	 */
 	 public static VkArray<VkRenderPassCreateInfo> createVkArray(int size){ 
 		 VkRenderPassCreateInfo[] array = new VkRenderPassCreateInfo[size]; 
-		 VkArrayStruct<VkRenderPassCreateInfo> vkArray = new VkArrayStruct<VkRenderPassCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkRenderPassCreateInfo> vkArray = new VkArrayStruct<VkRenderPassCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -291,9 +291,13 @@
 		 }
 		 if(pAttachmentsBUFFER != null && ptr == pAttachmentsBUFFER.getBufferAddress()){ //same buffer 
 		    pAttachmentsBUFFER.update();
-		    return pAttachments;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = attachmentCount();
+		     if(length > 0){
+		        this.pAttachments = new VkAttachmentDescription[length];
+		        pAttachmentsBUFFER = new BigBuffer<VkAttachmentDescription>(ptr, pAttachments, const VkAttachmentDescription*getID() );
+		     }
 		   }
 		 return this.pAttachments;
 	 }
@@ -346,9 +350,13 @@
 		 }
 		 if(pSubpassesBUFFER != null && ptr == pSubpassesBUFFER.getBufferAddress()){ //same buffer 
 		    pSubpassesBUFFER.update();
-		    return pSubpasses;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = subpassCount();
+		     if(length > 0){
+		        this.pSubpasses = new VkSubpassDescription[length];
+		        pSubpassesBUFFER = new BigBuffer<VkSubpassDescription>(ptr, pSubpasses, const VkSubpassDescription*getID() );
+		     }
 		   }
 		 return this.pSubpasses;
 	 }
@@ -401,9 +409,13 @@
 		 }
 		 if(pDependenciesBUFFER != null && ptr == pDependenciesBUFFER.getBufferAddress()){ //same buffer 
 		    pDependenciesBUFFER.update();
-		    return pDependencies;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = dependencyCount();
+		     if(length > 0){
+		        this.pDependencies = new VkSubpassDependency[length];
+		        pDependenciesBUFFER = new BigBuffer<VkSubpassDependency>(ptr, pDependencies, const VkSubpassDependency*getID() );
+		     }
 		   }
 		 return this.pDependencies;
 	 }
@@ -478,8 +490,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -538,7 +550,7 @@
 	 private static native long getPAttachments0(Buffer ptr);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pAttachments );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pAttachments );
 	 */
 
 	/**
@@ -578,7 +590,7 @@
 	 private static native long getPSubpasses0(Buffer ptr);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pSubpasses );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pSubpasses );
 	 */
 
 	/**
@@ -618,7 +630,7 @@
 	 private static native long getPDependencies0(Buffer ptr);/*
 		  VkRenderPassCreateInfo* vkObj = (VkRenderPassCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pDependencies );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pDependencies );
 	 */
 
 

@@ -76,7 +76,7 @@
 	/**
 	 *  const VkAttachmentReference* 	pInputAttachments	[vkstruct_array_array]
 	 */ 
-	  VkAttachmentReference[]  	pInputAttachments;
+	VkAttachmentReference[]  	pInputAttachments;
 	 private BigBuffer 	 pInputAttachmentsBUFFER;
 	
 	/**
@@ -87,13 +87,13 @@
 	/**
 	 *  const VkAttachmentReference* 	pColorAttachments	[vkstruct_array_array]
 	 */ 
-	  VkAttachmentReference[]  	pColorAttachments;
+	VkAttachmentReference[]  	pColorAttachments;
 	 private BigBuffer 	 pColorAttachmentsBUFFER;
 	
 	/**
 	 *  const VkAttachmentReference* 	pResolveAttachments	[vkstruct_array_array]
 	 */ 
-	  VkAttachmentReference[]  	pResolveAttachments;
+	VkAttachmentReference[]  	pResolveAttachments;
 	 private BigBuffer 	 pResolveAttachmentsBUFFER;
 	
 	/**
@@ -161,7 +161,7 @@
 	 */
 	 public static VkArray<VkSubpassDescription> createVkArray(int size){ 
 		 VkSubpassDescription[] array = new VkSubpassDescription[size]; 
-		 VkArrayStruct<VkSubpassDescription> vkArray = new VkArrayStruct<VkSubpassDescription> (array, TAG_ID);
+		 VkArrayStruct<VkSubpassDescription> vkArray = new VkArrayStruct<VkSubpassDescription>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -265,9 +265,13 @@
 		 }
 		 if(pInputAttachmentsBUFFER != null && ptr == pInputAttachmentsBUFFER.getBufferAddress()){ //same buffer 
 		    pInputAttachmentsBUFFER.update();
-		    return pInputAttachments;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = inputAttachmentCount();
+		     if(length > 0){
+		        this.pInputAttachments = new VkAttachmentReference[length];
+		        pInputAttachmentsBUFFER = new BigBuffer<VkAttachmentReference>(ptr, pInputAttachments, const VkAttachmentReference*getID() );
+		     }
 		   }
 		 return this.pInputAttachments;
 	 }
@@ -320,9 +324,13 @@
 		 }
 		 if(pColorAttachmentsBUFFER != null && ptr == pColorAttachmentsBUFFER.getBufferAddress()){ //same buffer 
 		    pColorAttachmentsBUFFER.update();
-		    return pColorAttachments;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = colorAttachmentCount();
+		     if(length > 0){
+		        this.pColorAttachments = new VkAttachmentReference[length];
+		        pColorAttachmentsBUFFER = new BigBuffer<VkAttachmentReference>(ptr, pColorAttachments, const VkAttachmentReference*getID() );
+		     }
 		   }
 		 return this.pColorAttachments;
 	 }
@@ -352,9 +360,13 @@
 		 }
 		 if(pResolveAttachmentsBUFFER != null && ptr == pResolveAttachmentsBUFFER.getBufferAddress()){ //same buffer 
 		    pResolveAttachmentsBUFFER.update();
-		    return pResolveAttachments;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = pColorAttachments();
+		     if(length > 0){
+		        this.pResolveAttachments = new VkAttachmentReference[length];
+		        pResolveAttachmentsBUFFER = new BigBuffer<VkAttachmentReference>(ptr, pResolveAttachments, const VkAttachmentReference*getID() );
+		     }
 		   }
 		 return this.pResolveAttachments;
 	 }
@@ -549,7 +561,7 @@
 	 private static native long getPInputAttachments0(Buffer ptr);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pInputAttachments );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pInputAttachments );
 	 */
 
 	/**
@@ -589,7 +601,7 @@
 	 private static native long getPColorAttachments0(Buffer ptr);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pColorAttachments );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pColorAttachments );
 	 */
 
 	/**
@@ -610,7 +622,7 @@
 	 private static native long getPResolveAttachments0(Buffer ptr);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pResolveAttachments );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pResolveAttachments );
 	 */
 
 	/**
@@ -630,8 +642,8 @@
 	 */ 
 	 private static native long getPDepthStencilAttachment0(Buffer ptr);/*
 		  VkSubpassDescription* vkObj = (VkSubpassDescription*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pDepthStencilAttachment);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pDepthStencilAttachment);
 	 */
 
 	/**

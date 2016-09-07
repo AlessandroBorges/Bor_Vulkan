@@ -128,7 +128,7 @@
 	 */
 	 public static VkArray<VkMirSurfaceCreateInfoKHR> createVkArray(int size){ 
 		 VkMirSurfaceCreateInfoKHR[] array = new VkMirSurfaceCreateInfoKHR[size]; 
-		 VkArrayStruct<VkMirSurfaceCreateInfoKHR> vkArray = new VkArrayStruct<VkMirSurfaceCreateInfoKHR> (array, TAG_ID);
+		 VkArrayStruct<VkMirSurfaceCreateInfoKHR> vkArray = new VkArrayStruct<VkMirSurfaceCreateInfoKHR>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -355,8 +355,8 @@
 	 private static native long getPNext0(Buffer ptr);/*
 	 #ifdef VK_USE_PLATFORM_MIR_KHR 
 		  VkMirSurfaceCreateInfoKHR* vkObj = (VkMirSurfaceCreateInfoKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 #else 
 	   return 0; 
 	 #endif 

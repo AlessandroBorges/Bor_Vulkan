@@ -78,7 +78,7 @@
 	/**
 	 *  const VkDescriptorSetLayout* 	pSetLayouts	[vkhandle_array_array]
 	 */ 
-	  VkDescriptorSetLayout[]  	pSetLayouts;
+	VkDescriptorSetLayout[]  	pSetLayouts;
 	 private BigBuffer 	 pSetLayoutsBUFFER;
 	
 	/**
@@ -89,7 +89,7 @@
 	/**
 	 *  const VkPushConstantRange* 	pPushConstantRanges	[vkstruct_array_array]
 	 */ 
-	  VkPushConstantRange[]  	pPushConstantRanges;
+	VkPushConstantRange[]  	pPushConstantRanges;
 	 private BigBuffer 	 pPushConstantRangesBUFFER;
 	/**
 	 * Ctor
@@ -142,7 +142,7 @@
 	 */
 	 public static VkArray<VkPipelineLayoutCreateInfo> createVkArray(int size){ 
 		 VkPipelineLayoutCreateInfo[] array = new VkPipelineLayoutCreateInfo[size]; 
-		 VkArrayStruct<VkPipelineLayoutCreateInfo> vkArray = new VkArrayStruct<VkPipelineLayoutCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkPipelineLayoutCreateInfo> vkArray = new VkArrayStruct<VkPipelineLayoutCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -280,7 +280,12 @@
 		    pSetLayoutsBUFFER.update();
 		    return pSetLayouts;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKHandle[] for backup.")).printStackTrace();
+		     // wrap native handles 
+		     int length = setLayoutCount();
+		     if(length > 0){
+		        this.pSetLayouts = new VkDescriptorSetLayout[length];
+		        pSetLayoutsBUFFER = new BigBuffer<VkDescriptorSetLayout>(ptr, pSetLayouts, false);
+		     }
 		   }
 		 return this.pSetLayouts;
 	 }
@@ -333,9 +338,13 @@
 		 }
 		 if(pPushConstantRangesBUFFER != null && ptr == pPushConstantRangesBUFFER.getBufferAddress()){ //same buffer 
 		    pPushConstantRangesBUFFER.update();
-		    return pPushConstantRanges;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = pushConstantRangeCount();
+		     if(length > 0){
+		        this.pPushConstantRanges = new VkPushConstantRange[length];
+		        pPushConstantRangesBUFFER = new BigBuffer<VkPushConstantRange>(ptr, pPushConstantRanges, const VkPushConstantRange*getID() );
+		     }
 		   }
 		 return this.pPushConstantRanges;
 	 }
@@ -406,8 +415,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -466,7 +475,7 @@
 	 private static native long getPSetLayouts0(Buffer ptr);/*
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pSetLayouts );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pSetLayouts );
 	 */
 
 	/**
@@ -506,7 +515,7 @@
 	 private static native long getPPushConstantRanges0(Buffer ptr);/*
 		  VkPipelineLayoutCreateInfo* vkObj = (VkPipelineLayoutCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pPushConstantRanges );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pPushConstantRanges );
 	 */
 
 

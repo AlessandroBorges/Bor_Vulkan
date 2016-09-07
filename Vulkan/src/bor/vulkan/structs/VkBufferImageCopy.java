@@ -134,7 +134,7 @@
 	 */
 	 public static VkArray<VkBufferImageCopy> createVkArray(int size){ 
 		 VkBufferImageCopy[] array = new VkBufferImageCopy[size]; 
-		 VkArrayStruct<VkBufferImageCopy> vkArray = new VkArrayStruct<VkBufferImageCopy> (array, TAG_ID);
+		 VkArrayStruct<VkBufferImageCopy> vkArray = new VkArrayStruct<VkBufferImageCopy>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -412,8 +412,8 @@
 	 */ 
 	 private static native long getImageSubresource0(Buffer ptr);/*
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageSubresource);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->imageSubresource);
 	 */
 
 	/**
@@ -433,8 +433,8 @@
 	 */ 
 	 private static native long getImageOffset0(Buffer ptr);/*
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageOffset);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->imageOffset);
 	 */
 
 	/**
@@ -454,8 +454,8 @@
 	 */ 
 	 private static native long getImageExtent0(Buffer ptr);/*
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageExtent);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->imageExtent);
 	 */
 
 

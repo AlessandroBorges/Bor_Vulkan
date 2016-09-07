@@ -216,14 +216,16 @@ public abstract class VkStruct implements VkObject{
      * Define policy for this
      */
     protected int type;
-    
-    static{
-        try {
-            SIZEOF_PTR = Utils.sizeOfPtr();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+   /**
+    * @TODO - Remove it  
+    */
+//    static{
+//        try {
+//            SIZEOF_PTR = Utils.sizeOfPtr();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//    }
         
     /**
      * Used to recover VkStruct reference after a native call.
@@ -558,12 +560,14 @@ public abstract class VkStruct implements VkObject{
          }
         java.nio.IntBuffer intBB = bb.asIntBuffer();
         int size = intBB.capacity();
+        intBB.rewind();
         String name = this.getClass().getSimpleName();
-        System.out.println("Dump of " + name + ". Size in Byte " + bb.capacity());
+        System.out.println("Dump of " + name + ". Size in bytes: " + bb.capacity());
+        System.out.println("Base address: 0x" + Long.toHexString(nativeHandle));
         for(int i=0; i<size; i++){            
             int v = intBB.get(i);
             String hex = "0x" + Integer.toHexString(v);
-            System.out.println(hex);
+            System.out.println(hex + "\t ("+ v +")");
         }
         System.out.println("end of dump");
 

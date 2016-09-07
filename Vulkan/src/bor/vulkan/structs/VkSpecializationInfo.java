@@ -60,7 +60,7 @@
 	/**
 	 *  const VkSpecializationMapEntry* 	pMapEntries	[vkstruct_array_array]
 	 */ 
-	  VkSpecializationMapEntry[]  	pMapEntries;
+	VkSpecializationMapEntry[]  	pMapEntries;
 	 private BigBuffer 	 pMapEntriesBUFFER;
 	
 	/**
@@ -123,7 +123,7 @@
 	 */
 	 public static VkArray<VkSpecializationInfo> createVkArray(int size){ 
 		 VkSpecializationInfo[] array = new VkSpecializationInfo[size]; 
-		 VkArrayStruct<VkSpecializationInfo> vkArray = new VkArrayStruct<VkSpecializationInfo> (array, TAG_ID);
+		 VkArrayStruct<VkSpecializationInfo> vkArray = new VkArrayStruct<VkSpecializationInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -180,9 +180,13 @@
 		 }
 		 if(pMapEntriesBUFFER != null && ptr == pMapEntriesBUFFER.getBufferAddress()){ //same buffer 
 		    pMapEntriesBUFFER.update();
-		    return pMapEntries;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = mapEntryCount();
+		     if(length > 0){
+		        this.pMapEntries = new VkSpecializationMapEntry[length];
+		        pMapEntriesBUFFER = new BigBuffer<VkSpecializationMapEntry>(ptr, pMapEntries, const VkSpecializationMapEntry*getID() );
+		     }
 		   }
 		 return this.pMapEntries;
 	 }
@@ -296,7 +300,7 @@
 	 private static native long getPMapEntries0(Buffer ptr);/*
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pMapEntries );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pMapEntries );
 	 */
 
 	/**
@@ -335,8 +339,8 @@
 	 */ 
 	 private static native long getPData0(Buffer ptr);/*
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pData);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pData);
 	 */
 
 

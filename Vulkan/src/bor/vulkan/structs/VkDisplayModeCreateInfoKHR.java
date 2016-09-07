@@ -122,7 +122,7 @@
 	 */
 	 public static VkArray<VkDisplayModeCreateInfoKHR> createVkArray(int size){ 
 		 VkDisplayModeCreateInfoKHR[] array = new VkDisplayModeCreateInfoKHR[size]; 
-		 VkArrayStruct<VkDisplayModeCreateInfoKHR> vkArray = new VkArrayStruct<VkDisplayModeCreateInfoKHR> (array, TAG_ID);
+		 VkArrayStruct<VkDisplayModeCreateInfoKHR> vkArray = new VkArrayStruct<VkDisplayModeCreateInfoKHR>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -303,8 +303,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDisplayModeCreateInfoKHR* vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -343,8 +343,8 @@
 	 */ 
 	 private static native long getParameters0(Buffer ptr);/*
 		  VkDisplayModeCreateInfoKHR* vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->parameters);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->parameters);
 	 */
 
 

@@ -158,7 +158,7 @@
 	 */
 	 public static VkArray<VkDisplaySurfaceCreateInfoKHR> createVkArray(int size){ 
 		 VkDisplaySurfaceCreateInfoKHR[] array = new VkDisplaySurfaceCreateInfoKHR[size]; 
-		 VkArrayStruct<VkDisplaySurfaceCreateInfoKHR> vkArray = new VkArrayStruct<VkDisplaySurfaceCreateInfoKHR> (array, TAG_ID);
+		 VkArrayStruct<VkDisplaySurfaceCreateInfoKHR> vkArray = new VkArrayStruct<VkDisplaySurfaceCreateInfoKHR>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -502,8 +502,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -659,8 +659,8 @@
 	 */ 
 	 private static native long getImageExtent0(Buffer ptr);/*
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageExtent);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->imageExtent);
 	 */
 
 

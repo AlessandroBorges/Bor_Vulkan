@@ -124,7 +124,7 @@
 	 */
 	 public static VkArray<VkPhysicalDeviceMemoryProperties> createVkArray(int size){ 
 		 VkPhysicalDeviceMemoryProperties[] array = new VkPhysicalDeviceMemoryProperties[size]; 
-		 VkArrayStruct<VkPhysicalDeviceMemoryProperties> vkArray = new VkArrayStruct<VkPhysicalDeviceMemoryProperties> (array, TAG_ID);
+		 VkArrayStruct<VkPhysicalDeviceMemoryProperties> vkArray = new VkArrayStruct<VkPhysicalDeviceMemoryProperties>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -338,7 +338,7 @@
 	 private static native long getMemoryTypes0(Buffer ptr);/*
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->memoryTypes );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->memoryTypes );
 	 */
 
 	/**
@@ -380,7 +380,7 @@
 	 private static native long getMemoryHeaps0(Buffer ptr);/*
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->memoryHeaps );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->memoryHeaps );
 	 */
 
 

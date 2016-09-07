@@ -140,7 +140,7 @@
 	 */
 	 public static VkArray<VkComputePipelineCreateInfo> createVkArray(int size){ 
 		 VkComputePipelineCreateInfo[] array = new VkComputePipelineCreateInfo[size]; 
-		 VkArrayStruct<VkComputePipelineCreateInfo> vkArray = new VkArrayStruct<VkComputePipelineCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkComputePipelineCreateInfo> vkArray = new VkArrayStruct<VkComputePipelineCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -418,8 +418,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -458,8 +458,8 @@
 	 */ 
 	 private static native long getStage0(Buffer ptr);/*
 		  VkComputePipelineCreateInfo* vkObj = (VkComputePipelineCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->stage);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->stage);
 	 */
 
 	/**

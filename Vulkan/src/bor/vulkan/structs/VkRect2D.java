@@ -110,7 +110,7 @@
 	 */
 	 public static VkArray<VkRect2D> createVkArray(int size){ 
 		 VkRect2D[] array = new VkRect2D[size]; 
-		 VkArrayStruct<VkRect2D> vkArray = new VkArrayStruct<VkRect2D> (array, TAG_ID);
+		 VkArrayStruct<VkRect2D> vkArray = new VkArrayStruct<VkRect2D>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -221,8 +221,8 @@
 	 */ 
 	 private static native long getOffset0(Buffer ptr);/*
 		  VkRect2D* vkObj = (VkRect2D*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->offset);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->offset);
 	 */
 
 	/**
@@ -242,8 +242,8 @@
 	 */ 
 	 private static native long getExtent0(Buffer ptr);/*
 		  VkRect2D* vkObj = (VkRect2D*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->extent);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->extent);
 	 */
 
 

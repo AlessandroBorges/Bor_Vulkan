@@ -124,7 +124,7 @@
 	 */
 	 public static VkArray<VkImageBlit> createVkArray(int size){ 
 		 VkImageBlit[] array = new VkImageBlit[size]; 
-		 VkArrayStruct<VkImageBlit> vkArray = new VkArrayStruct<VkImageBlit> (array, TAG_ID);
+		 VkArrayStruct<VkImageBlit> vkArray = new VkArrayStruct<VkImageBlit>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -345,8 +345,8 @@
 	 */ 
 	 private static native long getSrcSubresource0(Buffer ptr);/*
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->srcSubresource);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->srcSubresource);
 	 */
 
    /**
@@ -389,8 +389,8 @@
 	 */ 
 	 private static native long getDstSubresource0(Buffer ptr);/*
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->dstSubresource);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->dstSubresource);
 	 */
 
     /**
@@ -410,11 +410,10 @@
 	 * Native GET method for field dstOffsets	[vkstruct_array]<br>
 	 * Prototype: VkOffset3D[]  dstOffsets
 	 */ 
-	 private static native void getDstOffsets0(Buffer ptr, long[] offs);/*
+	 private static native long getDstOffsets0(Buffer ptr, long[] offs);/*
              VkImageBlit* vkObj = (VkImageBlit*)(ptr);               
              offs[0] = reinterpret_cast<jlong>(&vkObj->dstOffsets[0]);
              offs[1] = reinterpret_cast<jlong>(&vkObj->dstOffsets[1]);
-             
          */  
 
 

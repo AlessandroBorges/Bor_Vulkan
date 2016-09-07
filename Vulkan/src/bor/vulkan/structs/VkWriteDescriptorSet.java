@@ -158,7 +158,7 @@
 	 */
 	 public static VkArray<VkWriteDescriptorSet> createVkArray(int size){ 
 		 VkWriteDescriptorSet[] array = new VkWriteDescriptorSet[size]; 
-		 VkArrayStruct<VkWriteDescriptorSet> vkArray = new VkArrayStruct<VkWriteDescriptorSet> (array, TAG_ID);
+		 VkArrayStruct<VkWriteDescriptorSet> vkArray = new VkArrayStruct<VkWriteDescriptorSet>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -522,8 +522,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -640,8 +640,8 @@
 	 */ 
 	 private static native long getPImageInfo0(Buffer ptr);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pImageInfo);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pImageInfo);
 	 */
 
 	/**
@@ -661,8 +661,8 @@
 	 */ 
 	 private static native long getPBufferInfo0(Buffer ptr);/*
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pBufferInfo);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pBufferInfo);
 	 */
 
 	/**

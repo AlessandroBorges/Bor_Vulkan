@@ -122,7 +122,7 @@
 	 */
 	 public static VkArray<VkLayerProperties> createVkArray(int size){ 
 		 VkLayerProperties[] array = new VkLayerProperties[size]; 
-		 VkArrayStruct<VkLayerProperties> vkArray = new VkArrayStruct<VkLayerProperties> (array, TAG_ID);
+		 VkArrayStruct<VkLayerProperties> vkArray = new VkArrayStruct<VkLayerProperties>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -267,7 +267,7 @@
 	 */ 
 	 private static native String getLayerName0(Buffer ptr);/*
 		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->layerName));
+		  return (jstring)(env->NewStringUTF(cloneStr(vkObj->layerName)));
 	 */
 
 	/**
@@ -323,7 +323,7 @@
 	 */ 
 	 private static native String getDescription0(Buffer ptr);/*
 		  VkLayerProperties* vkObj = (VkLayerProperties*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->description));
+		  return (jstring)(env->NewStringUTF(cloneStr(vkObj->description)));
 	 */
 
 

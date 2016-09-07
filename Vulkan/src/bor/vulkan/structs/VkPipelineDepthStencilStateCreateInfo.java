@@ -170,7 +170,7 @@
 	 */
 	 public static VkArray<VkPipelineDepthStencilStateCreateInfo> createVkArray(int size){ 
 		 VkPipelineDepthStencilStateCreateInfo[] array = new VkPipelineDepthStencilStateCreateInfo[size]; 
-		 VkArrayStruct<VkPipelineDepthStencilStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineDepthStencilStateCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkPipelineDepthStencilStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineDepthStencilStateCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -562,8 +562,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -698,8 +698,8 @@
 	 */ 
 	 private static native long getFront0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->front);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->front);
 	 */
 
 	/**
@@ -719,8 +719,8 @@
 	 */ 
 	 private static native long getBack0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->back);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->back);
 	 */
 
 	/**

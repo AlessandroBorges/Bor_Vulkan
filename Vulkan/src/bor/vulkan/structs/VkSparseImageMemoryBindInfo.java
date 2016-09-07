@@ -64,7 +64,7 @@
 	/**
 	 *  const VkSparseImageMemoryBind* 	pBinds	[vkstruct_array_array]
 	 */ 
-	  VkSparseImageMemoryBind[]  	pBinds;
+	VkSparseImageMemoryBind[]  	pBinds;
 	 private BigBuffer 	 pBindsBUFFER;
 	/**
 	 * Ctor
@@ -117,7 +117,7 @@
 	 */
 	 public static VkArray<VkSparseImageMemoryBindInfo> createVkArray(int size){ 
 		 VkSparseImageMemoryBindInfo[] array = new VkSparseImageMemoryBindInfo[size]; 
-		 VkArrayStruct<VkSparseImageMemoryBindInfo> vkArray = new VkArrayStruct<VkSparseImageMemoryBindInfo> (array, TAG_ID);
+		 VkArrayStruct<VkSparseImageMemoryBindInfo> vkArray = new VkArrayStruct<VkSparseImageMemoryBindInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -208,9 +208,13 @@
 		 }
 		 if(pBindsBUFFER != null && ptr == pBindsBUFFER.getBufferAddress()){ //same buffer 
 		    pBindsBUFFER.update();
-		    return pBinds;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = bindCount();
+		     if(length > 0){
+		        this.pBinds = new VkSparseImageMemoryBind[length];
+		        pBindsBUFFER = new BigBuffer<VkSparseImageMemoryBind>(ptr, pBinds, const VkSparseImageMemoryBind*getID() );
+		     }
 		   }
 		 return this.pBinds;
 	 }
@@ -293,7 +297,7 @@
 	 private static native long getPBinds0(Buffer ptr);/*
 		  VkSparseImageMemoryBindInfo* vkObj = (VkSparseImageMemoryBindInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pBinds );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pBinds );
 	 */
 
 

@@ -128,7 +128,7 @@
 	 */
 	 public static VkArray<VkMappedMemoryRange> createVkArray(int size){ 
 		 VkMappedMemoryRange[] array = new VkMappedMemoryRange[size]; 
-		 VkArrayStruct<VkMappedMemoryRange> vkArray = new VkArrayStruct<VkMappedMemoryRange> (array, TAG_ID);
+		 VkArrayStruct<VkMappedMemoryRange> vkArray = new VkArrayStruct<VkMappedMemoryRange>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -335,8 +335,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkMappedMemoryRange* vkObj = (VkMappedMemoryRange*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**

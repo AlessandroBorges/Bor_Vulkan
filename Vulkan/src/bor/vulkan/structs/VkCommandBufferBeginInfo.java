@@ -122,7 +122,7 @@
 	 */
 	 public static VkArray<VkCommandBufferBeginInfo> createVkArray(int size){ 
 		 VkCommandBufferBeginInfo[] array = new VkCommandBufferBeginInfo[size]; 
-		 VkArrayStruct<VkCommandBufferBeginInfo> vkArray = new VkArrayStruct<VkCommandBufferBeginInfo> (array, TAG_ID);
+		 VkArrayStruct<VkCommandBufferBeginInfo> vkArray = new VkArrayStruct<VkCommandBufferBeginInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -303,8 +303,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -343,8 +343,8 @@
 	 */ 
 	 private static native long getPInheritanceInfo0(Buffer ptr);/*
 		  VkCommandBufferBeginInfo* vkObj = (VkCommandBufferBeginInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pInheritanceInfo);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pInheritanceInfo);
 	 */
 
 

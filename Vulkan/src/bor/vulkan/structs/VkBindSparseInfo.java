@@ -78,7 +78,7 @@
 	/**
 	 *  const VkSemaphore* 	pWaitSemaphores	[vkhandle_array_array]
 	 */ 
-	  VkSemaphore[]  	pWaitSemaphores;
+	VkSemaphore[]  	pWaitSemaphores;
 	 private BigBuffer 	 pWaitSemaphoresBUFFER;
 	
 	/**
@@ -89,7 +89,7 @@
 	/**
 	 *  const VkSparseBufferMemoryBindInfo* 	pBufferBinds	[vkstruct_array_array]
 	 */ 
-	  VkSparseBufferMemoryBindInfo[]  	pBufferBinds;
+	VkSparseBufferMemoryBindInfo[]  	pBufferBinds;
 	 private BigBuffer 	 pBufferBindsBUFFER;
 	
 	/**
@@ -100,7 +100,7 @@
 	/**
 	 *  const VkSparseImageOpaqueMemoryBindInfo* 	pImageOpaqueBinds	[vkstruct_array_array]
 	 */ 
-	  VkSparseImageOpaqueMemoryBindInfo[]  	pImageOpaqueBinds;
+	VkSparseImageOpaqueMemoryBindInfo[]  	pImageOpaqueBinds;
 	 private BigBuffer 	 pImageOpaqueBindsBUFFER;
 	
 	/**
@@ -111,7 +111,7 @@
 	/**
 	 *  const VkSparseImageMemoryBindInfo* 	pImageBinds	[vkstruct_array_array]
 	 */ 
-	  VkSparseImageMemoryBindInfo[]  	pImageBinds;
+	VkSparseImageMemoryBindInfo[]  	pImageBinds;
 	 private BigBuffer 	 pImageBindsBUFFER;
 	
 	/**
@@ -122,7 +122,7 @@
 	/**
 	 *  const VkSemaphore* 	pSignalSemaphores	[vkhandle_array_array]
 	 */ 
-	  VkSemaphore[]  	pSignalSemaphores;
+	VkSemaphore[]  	pSignalSemaphores;
 	 private BigBuffer 	 pSignalSemaphoresBUFFER;
 	/**
 	 * Ctor
@@ -175,7 +175,7 @@
 	 */
 	 public static VkArray<VkBindSparseInfo> createVkArray(int size){ 
 		 VkBindSparseInfo[] array = new VkBindSparseInfo[size]; 
-		 VkArrayStruct<VkBindSparseInfo> vkArray = new VkArrayStruct<VkBindSparseInfo> (array, TAG_ID);
+		 VkArrayStruct<VkBindSparseInfo> vkArray = new VkArrayStruct<VkBindSparseInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -290,7 +290,12 @@
 		    pWaitSemaphoresBUFFER.update();
 		    return pWaitSemaphores;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKHandle[] for backup.")).printStackTrace();
+		     // wrap native handles 
+		     int length = waitSemaphoreCount();
+		     if(length > 0){
+		        this.pWaitSemaphores = new VkSemaphore[length];
+		        pWaitSemaphoresBUFFER = new BigBuffer<VkSemaphore>(ptr, pWaitSemaphores, false);
+		     }
 		   }
 		 return this.pWaitSemaphores;
 	 }
@@ -343,9 +348,13 @@
 		 }
 		 if(pBufferBindsBUFFER != null && ptr == pBufferBindsBUFFER.getBufferAddress()){ //same buffer 
 		    pBufferBindsBUFFER.update();
-		    return pBufferBinds;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = bufferBindCount();
+		     if(length > 0){
+		        this.pBufferBinds = new VkSparseBufferMemoryBindInfo[length];
+		        pBufferBindsBUFFER = new BigBuffer<VkSparseBufferMemoryBindInfo>(ptr, pBufferBinds, const VkSparseBufferMemoryBindInfo*getID() );
+		     }
 		   }
 		 return this.pBufferBinds;
 	 }
@@ -398,9 +407,13 @@
 		 }
 		 if(pImageOpaqueBindsBUFFER != null && ptr == pImageOpaqueBindsBUFFER.getBufferAddress()){ //same buffer 
 		    pImageOpaqueBindsBUFFER.update();
-		    return pImageOpaqueBinds;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = imageOpaqueBindCount();
+		     if(length > 0){
+		        this.pImageOpaqueBinds = new VkSparseImageOpaqueMemoryBindInfo[length];
+		        pImageOpaqueBindsBUFFER = new BigBuffer<VkSparseImageOpaqueMemoryBindInfo>(ptr, pImageOpaqueBinds, const VkSparseImageOpaqueMemoryBindInfo*getID() );
+		     }
 		   }
 		 return this.pImageOpaqueBinds;
 	 }
@@ -453,9 +466,13 @@
 		 }
 		 if(pImageBindsBUFFER != null && ptr == pImageBindsBUFFER.getBufferAddress()){ //same buffer 
 		    pImageBindsBUFFER.update();
-		    return pImageBinds;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = imageBindCount();
+		     if(length > 0){
+		        this.pImageBinds = new VkSparseImageMemoryBindInfo[length];
+		        pImageBindsBUFFER = new BigBuffer<VkSparseImageMemoryBindInfo>(ptr, pImageBinds, const VkSparseImageMemoryBindInfo*getID() );
+		     }
 		   }
 		 return this.pImageBinds;
 	 }
@@ -510,7 +527,12 @@
 		    pSignalSemaphoresBUFFER.update();
 		    return pSignalSemaphores;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKHandle[] for backup.")).printStackTrace();
+		     // wrap native handles 
+		     int length = signalSemaphoreCount();
+		     if(length > 0){
+		        this.pSignalSemaphores = new VkSemaphore[length];
+		        pSignalSemaphoresBUFFER = new BigBuffer<VkSemaphore>(ptr, pSignalSemaphores, false);
+		     }
 		   }
 		 return this.pSignalSemaphores;
 	 }
@@ -591,8 +613,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -632,7 +654,7 @@
 	 private static native long getPWaitSemaphores0(Buffer ptr);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pWaitSemaphores );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pWaitSemaphores );
 	 */
 
 	/**
@@ -672,7 +694,7 @@
 	 private static native long getPBufferBinds0(Buffer ptr);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pBufferBinds );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pBufferBinds );
 	 */
 
 	/**
@@ -712,7 +734,7 @@
 	 private static native long getPImageOpaqueBinds0(Buffer ptr);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pImageOpaqueBinds );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pImageOpaqueBinds );
 	 */
 
 	/**
@@ -752,7 +774,7 @@
 	 private static native long getPImageBinds0(Buffer ptr);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pImageBinds );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pImageBinds );
 	 */
 
 	/**
@@ -792,7 +814,7 @@
 	 private static native long getPSignalSemaphores0(Buffer ptr);/*
 		  VkBindSparseInfo* vkObj = (VkBindSparseInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pSignalSemaphores );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pSignalSemaphores );
 	 */
 
 

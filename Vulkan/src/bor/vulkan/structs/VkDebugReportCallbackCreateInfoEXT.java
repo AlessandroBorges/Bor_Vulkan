@@ -128,7 +128,7 @@
 	 */
 	 public static VkArray<VkDebugReportCallbackCreateInfoEXT> createVkArray(int size){ 
 		 VkDebugReportCallbackCreateInfoEXT[] array = new VkDebugReportCallbackCreateInfoEXT[size]; 
-		 VkArrayStruct<VkDebugReportCallbackCreateInfoEXT> vkArray = new VkArrayStruct<VkDebugReportCallbackCreateInfoEXT> (array, TAG_ID);
+		 VkArrayStruct<VkDebugReportCallbackCreateInfoEXT> vkArray = new VkArrayStruct<VkDebugReportCallbackCreateInfoEXT>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -338,8 +338,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -398,8 +398,8 @@
 	 */ 
 	 private static native long getPUserData0(Buffer ptr);/*
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pUserData);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pUserData);
 	 */
 
 

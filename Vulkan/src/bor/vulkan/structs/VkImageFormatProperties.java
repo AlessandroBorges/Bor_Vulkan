@@ -128,7 +128,7 @@
 	 */
 	 public static VkArray<VkImageFormatProperties> createVkArray(int size){ 
 		 VkImageFormatProperties[] array = new VkImageFormatProperties[size]; 
-		 VkArrayStruct<VkImageFormatProperties> vkArray = new VkArrayStruct<VkImageFormatProperties> (array, TAG_ID);
+		 VkArrayStruct<VkImageFormatProperties> vkArray = new VkArrayStruct<VkImageFormatProperties>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -304,8 +304,8 @@
 	 */ 
 	 private static native long getMaxExtent0(Buffer ptr);/*
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->maxExtent);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->maxExtent);
 	 */
 
 	/**

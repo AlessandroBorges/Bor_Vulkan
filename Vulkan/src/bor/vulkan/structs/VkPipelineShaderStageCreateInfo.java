@@ -140,7 +140,7 @@
 	 */
 	 public static VkArray<VkPipelineShaderStageCreateInfo> createVkArray(int size){ 
 		 VkPipelineShaderStageCreateInfo[] array = new VkPipelineShaderStageCreateInfo[size]; 
-		 VkArrayStruct<VkPipelineShaderStageCreateInfo> vkArray = new VkArrayStruct<VkPipelineShaderStageCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkPipelineShaderStageCreateInfo> vkArray = new VkArrayStruct<VkPipelineShaderStageCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -408,8 +408,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -486,7 +486,7 @@
 	 */ 
 	 private static native String getPName0(Buffer ptr);/*
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->pName));
+		  return (jstring)(env->NewStringUTF(cloneStr(vkObj->pName)));
 	 */
 
 	/**
@@ -506,8 +506,8 @@
 	 */ 
 	 private static native long getPSpecializationInfo0(Buffer ptr);/*
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pSpecializationInfo);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pSpecializationInfo);
 	 */
 
 

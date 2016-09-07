@@ -76,7 +76,7 @@
 	/**
 	 *  const VkSampler* 	pImmutableSamplers	[vkhandle_array_array]
 	 */ 
-	  VkSampler[]  	pImmutableSamplers;
+	VkSampler[]  	pImmutableSamplers;
 	 private BigBuffer 	 pImmutableSamplersBUFFER;
 	/**
 	 * Ctor
@@ -129,7 +129,7 @@
 	 */
 	 public static VkArray<VkDescriptorSetLayoutBinding> createVkArray(int size){ 
 		 VkDescriptorSetLayoutBinding[] array = new VkDescriptorSetLayoutBinding[size]; 
-		 VkArrayStruct<VkDescriptorSetLayoutBinding> vkArray = new VkArrayStruct<VkDescriptorSetLayoutBinding> (array, TAG_ID);
+		 VkArrayStruct<VkDescriptorSetLayoutBinding> vkArray = new VkArrayStruct<VkDescriptorSetLayoutBinding>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -258,7 +258,12 @@
 		    pImmutableSamplersBUFFER.update();
 		    return pImmutableSamplers;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKHandle[] for backup.")).printStackTrace();
+		     // wrap native handles 
+		     int length = stageFlags();
+		     if(length > 0){
+		        this.pImmutableSamplers = new VkSampler[length];
+		        pImmutableSamplersBUFFER = new BigBuffer<VkSampler>(ptr, pImmutableSamplers, false);
+		     }
 		   }
 		 return this.pImmutableSamplers;
 	 }
@@ -383,7 +388,7 @@
 	 private static native long getPImmutableSamplers0(Buffer ptr);/*
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pImmutableSamplers );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pImmutableSamplers );
 	 */
 
 

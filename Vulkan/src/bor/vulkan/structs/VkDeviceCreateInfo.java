@@ -81,7 +81,7 @@
 	/**
 	 *  const VkDeviceQueueCreateInfo* 	pQueueCreateInfos	[vkstruct_array_array]
 	 */ 
-	  VkDeviceQueueCreateInfo[]  	pQueueCreateInfos;
+	VkDeviceQueueCreateInfo[]  	pQueueCreateInfos;
 	 private BigBuffer 	 pQueueCreateInfosBUFFER;
 	
 	/**
@@ -107,7 +107,7 @@
 	/**
 	 *  const VkPhysicalDeviceFeatures* 	pEnabledFeatures	[vkstruct_array_array]
 	 */ 
-	  VkPhysicalDeviceFeatures[]  	pEnabledFeatures;
+	VkPhysicalDeviceFeatures[]  	pEnabledFeatures;
 	 private BigBuffer 	 pEnabledFeaturesBUFFER;
 	/**
 	 * Ctor
@@ -160,7 +160,7 @@
 	 */
 	 public static VkArray<VkDeviceCreateInfo> createVkArray(int size){ 
 		 VkDeviceCreateInfo[] array = new VkDeviceCreateInfo[size]; 
-		 VkArrayStruct<VkDeviceCreateInfo> vkArray = new VkArrayStruct<VkDeviceCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkDeviceCreateInfo> vkArray = new VkArrayStruct<VkDeviceCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -296,9 +296,13 @@
 		 }
 		 if(pQueueCreateInfosBUFFER != null && ptr == pQueueCreateInfosBUFFER.getBufferAddress()){ //same buffer 
 		    pQueueCreateInfosBUFFER.update();
-		    return pQueueCreateInfos;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = queueCreateInfoCount();
+		     if(length > 0){
+		        this.pQueueCreateInfos = new VkDeviceQueueCreateInfo[length];
+		        pQueueCreateInfosBUFFER = new BigBuffer<VkDeviceQueueCreateInfo>(ptr, pQueueCreateInfos, const VkDeviceQueueCreateInfo*getID() );
+		     }
 		   }
 		 return this.pQueueCreateInfos;
 	 }
@@ -434,9 +438,13 @@
 		 }
 		 if(pEnabledFeaturesBUFFER != null && ptr == pEnabledFeaturesBUFFER.getBufferAddress()){ //same buffer 
 		    pEnabledFeaturesBUFFER.update();
-		    return pEnabledFeatures;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = ppEnabledExtensionNames();
+		     if(length > 0){
+		        this.pEnabledFeatures = new VkPhysicalDeviceFeatures[length];
+		        pEnabledFeaturesBUFFER = new BigBuffer<VkPhysicalDeviceFeatures>(ptr, pEnabledFeatures, const VkPhysicalDeviceFeatures*getID() );
+		     }
 		   }
 		 return this.pEnabledFeatures;
 	 }
@@ -513,8 +521,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -573,7 +581,7 @@
 	 private static native long getPQueueCreateInfos0(Buffer ptr);/*
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pQueueCreateInfos );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pQueueCreateInfos );
 	 */
 
 	/**
@@ -720,7 +728,7 @@
 	 private static native long getPEnabledFeatures0(Buffer ptr);/*
 		  VkDeviceCreateInfo* vkObj = (VkDeviceCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pEnabledFeatures );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pEnabledFeatures );
 	 */
 
 

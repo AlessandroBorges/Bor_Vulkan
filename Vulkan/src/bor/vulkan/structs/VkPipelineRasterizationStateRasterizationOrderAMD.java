@@ -116,7 +116,7 @@
 	 */
 	 public static VkArray<VkPipelineRasterizationStateRasterizationOrderAMD> createVkArray(int size){ 
 		 VkPipelineRasterizationStateRasterizationOrderAMD[] array = new VkPipelineRasterizationStateRasterizationOrderAMD[size]; 
-		 VkArrayStruct<VkPipelineRasterizationStateRasterizationOrderAMD> vkArray = new VkArrayStruct<VkPipelineRasterizationStateRasterizationOrderAMD> (array, TAG_ID);
+		 VkArrayStruct<VkPipelineRasterizationStateRasterizationOrderAMD> vkArray = new VkArrayStruct<VkPipelineRasterizationStateRasterizationOrderAMD>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -263,8 +263,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineRasterizationStateRasterizationOrderAMD* vkObj = (VkPipelineRasterizationStateRasterizationOrderAMD*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**

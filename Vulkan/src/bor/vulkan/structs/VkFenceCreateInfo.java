@@ -116,7 +116,7 @@
 	 */
 	 public static VkArray<VkFenceCreateInfo> createVkArray(int size){ 
 		 VkFenceCreateInfo[] array = new VkFenceCreateInfo[size]; 
-		 VkArrayStruct<VkFenceCreateInfo> vkArray = new VkArrayStruct<VkFenceCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkFenceCreateInfo> vkArray = new VkArrayStruct<VkFenceCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -262,8 +262,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkFenceCreateInfo* vkObj = (VkFenceCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**

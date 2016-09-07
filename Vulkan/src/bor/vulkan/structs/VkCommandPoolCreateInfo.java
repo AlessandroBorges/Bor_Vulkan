@@ -122,7 +122,7 @@
 	 */
 	 public static VkArray<VkCommandPoolCreateInfo> createVkArray(int size){ 
 		 VkCommandPoolCreateInfo[] array = new VkCommandPoolCreateInfo[size]; 
-		 VkArrayStruct<VkCommandPoolCreateInfo> vkArray = new VkArrayStruct<VkCommandPoolCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkCommandPoolCreateInfo> vkArray = new VkArrayStruct<VkCommandPoolCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -293,8 +293,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkCommandPoolCreateInfo* vkObj = (VkCommandPoolCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**

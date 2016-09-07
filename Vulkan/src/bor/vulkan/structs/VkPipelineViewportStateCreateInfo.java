@@ -78,7 +78,7 @@
 	/**
 	 *  const VkViewport* 	pViewports	[vkstruct_array_array]
 	 */ 
-	  VkViewport[]  	pViewports;
+	VkViewport[]  	pViewports;
 	 private BigBuffer 	 pViewportsBUFFER;
 	
 	/**
@@ -89,7 +89,7 @@
 	/**
 	 *  const VkRect2D* 	pScissors	[vkstruct_array_array]
 	 */ 
-	  VkRect2D[]  	pScissors;
+	VkRect2D[]  	pScissors;
 	 private BigBuffer 	 pScissorsBUFFER;
 	/**
 	 * Ctor
@@ -142,7 +142,7 @@
 	 */
 	 public static VkArray<VkPipelineViewportStateCreateInfo> createVkArray(int size){ 
 		 VkPipelineViewportStateCreateInfo[] array = new VkPipelineViewportStateCreateInfo[size]; 
-		 VkArrayStruct<VkPipelineViewportStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineViewportStateCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkPipelineViewportStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineViewportStateCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -278,9 +278,13 @@
 		 }
 		 if(pViewportsBUFFER != null && ptr == pViewportsBUFFER.getBufferAddress()){ //same buffer 
 		    pViewportsBUFFER.update();
-		    return pViewports;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = viewportCount();
+		     if(length > 0){
+		        this.pViewports = new VkViewport[length];
+		        pViewportsBUFFER = new BigBuffer<VkViewport>(ptr, pViewports, const VkViewport*getID() );
+		     }
 		   }
 		 return this.pViewports;
 	 }
@@ -333,9 +337,13 @@
 		 }
 		 if(pScissorsBUFFER != null && ptr == pScissorsBUFFER.getBufferAddress()){ //same buffer 
 		    pScissorsBUFFER.update();
-		    return pScissors;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = scissorCount();
+		     if(length > 0){
+		        this.pScissors = new VkRect2D[length];
+		        pScissorsBUFFER = new BigBuffer<VkRect2D>(ptr, pScissors, const VkRect2D*getID() );
+		     }
 		   }
 		 return this.pScissors;
 	 }
@@ -406,8 +414,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -466,7 +474,7 @@
 	 private static native long getPViewports0(Buffer ptr);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pViewports );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pViewports );
 	 */
 
 	/**
@@ -506,7 +514,7 @@
 	 private static native long getPScissors0(Buffer ptr);/*
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pScissors );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pScissors );
 	 */
 
 

@@ -75,7 +75,7 @@
 	/**
 	 *  const VkSemaphore* 	pWaitSemaphores	[vkhandle_array_array]
 	 */ 
-	  VkSemaphore[]  	pWaitSemaphores;
+	VkSemaphore[]  	pWaitSemaphores;
 	 private BigBuffer 	 pWaitSemaphoresBUFFER;
 	
 	/**
@@ -91,7 +91,7 @@
 	/**
 	 *  const VkCommandBuffer* 	pCommandBuffers	[vkhandle_array_array]
 	 */ 
-	  VkCommandBuffer[]  	pCommandBuffers;
+	VkCommandBuffer[]  	pCommandBuffers;
 	 private BigBuffer 	 pCommandBuffersBUFFER;
 	
 	/**
@@ -102,7 +102,7 @@
 	/**
 	 *  const VkSemaphore* 	pSignalSemaphores	[vkhandle_array_array]
 	 */ 
-	  VkSemaphore[]  	pSignalSemaphores;
+	VkSemaphore[]  	pSignalSemaphores;
 	 private BigBuffer 	 pSignalSemaphoresBUFFER;
 	/**
 	 * Ctor
@@ -155,7 +155,7 @@
 	 */
 	 public static VkArray<VkSubmitInfo> createVkArray(int size){ 
 		 VkSubmitInfo[] array = new VkSubmitInfo[size]; 
-		 VkArrayStruct<VkSubmitInfo> vkArray = new VkArrayStruct<VkSubmitInfo> (array, TAG_ID);
+		 VkArrayStruct<VkSubmitInfo> vkArray = new VkArrayStruct<VkSubmitInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -270,7 +270,12 @@
 		    pWaitSemaphoresBUFFER.update();
 		    return pWaitSemaphores;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKHandle[] for backup.")).printStackTrace();
+		     // wrap native handles 
+		     int length = waitSemaphoreCount();
+		     if(length > 0){
+		        this.pWaitSemaphores = new VkSemaphore[length];
+		        pWaitSemaphoresBUFFER = new BigBuffer<VkSemaphore>(ptr, pWaitSemaphores, false);
+		     }
 		   }
 		 return this.pWaitSemaphores;
 	 }
@@ -348,7 +353,12 @@
 		    pCommandBuffersBUFFER.update();
 		    return pCommandBuffers;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKHandle[] for backup.")).printStackTrace();
+		     // wrap native handles 
+		     int length = commandBufferCount();
+		     if(length > 0){
+		        this.pCommandBuffers = new VkCommandBuffer[length];
+		        pCommandBuffersBUFFER = new BigBuffer<VkCommandBuffer>(ptr, pCommandBuffers, true);
+		     }
 		   }
 		 return this.pCommandBuffers;
 	 }
@@ -403,7 +413,12 @@
 		    pSignalSemaphoresBUFFER.update();
 		    return pSignalSemaphores;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKHandle[] for backup.")).printStackTrace();
+		     // wrap native handles 
+		     int length = signalSemaphoreCount();
+		     if(length > 0){
+		        this.pSignalSemaphores = new VkSemaphore[length];
+		        pSignalSemaphoresBUFFER = new BigBuffer<VkSemaphore>(ptr, pSignalSemaphores, false);
+		     }
 		   }
 		 return this.pSignalSemaphores;
 	 }
@@ -478,8 +493,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -519,7 +534,7 @@
 	 private static native long getPWaitSemaphores0(Buffer ptr);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pWaitSemaphores );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pWaitSemaphores );
 	 */
 
 	/**
@@ -598,7 +613,7 @@
 	 private static native long getPCommandBuffers0(Buffer ptr);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pCommandBuffers );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pCommandBuffers );
 	 */
 
 	/**
@@ -638,7 +653,7 @@
 	 private static native long getPSignalSemaphores0(Buffer ptr);/*
 		  VkSubmitInfo* vkObj = (VkSubmitInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pSignalSemaphores );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pSignalSemaphores );
 	 */
 
 

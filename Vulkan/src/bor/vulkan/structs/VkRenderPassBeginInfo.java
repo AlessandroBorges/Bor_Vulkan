@@ -88,7 +88,7 @@
 	/**
 	 *  const VkClearValue* 	pClearValues	[vkstruct_array_array]
 	 */ 
-	  VkClearValue[]  	pClearValues;
+	VkClearValue[]  	pClearValues;
 	 private BigBuffer 	 pClearValuesBUFFER;
 	/**
 	 * Ctor
@@ -141,7 +141,7 @@
 	 */
 	 public static VkArray<VkRenderPassBeginInfo> createVkArray(int size){ 
 		 VkRenderPassBeginInfo[] array = new VkRenderPassBeginInfo[size]; 
-		 VkArrayStruct<VkRenderPassBeginInfo> vkArray = new VkArrayStruct<VkRenderPassBeginInfo> (array, TAG_ID);
+		 VkArrayStruct<VkRenderPassBeginInfo> vkArray = new VkArrayStruct<VkRenderPassBeginInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -355,9 +355,13 @@
 		 }
 		 if(pClearValuesBUFFER != null && ptr == pClearValuesBUFFER.getBufferAddress()){ //same buffer 
 		    pClearValuesBUFFER.update();
-		    return pClearValues;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = clearValueCount();
+		     if(length > 0){
+		        this.pClearValues = new VkClearValue[length];
+		        pClearValuesBUFFER = new BigBuffer<VkClearValue>(ptr, pClearValues, const VkClearValue*getID() );
+		     }
 		   }
 		 return this.pClearValues;
 	 }
@@ -428,8 +432,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -489,8 +493,8 @@
 	 */ 
 	 private static native long getRenderArea0(Buffer ptr);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->renderArea);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->renderArea);
 	 */
 
 	/**
@@ -530,7 +534,7 @@
 	 private static native long getPClearValues0(Buffer ptr);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pClearValues );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pClearValues );
 	 */
 
 

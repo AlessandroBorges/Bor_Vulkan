@@ -116,7 +116,7 @@
 	 */
 	 public static VkArray<VkClearRect> createVkArray(int size){ 
 		 VkClearRect[] array = new VkClearRect[size]; 
-		 VkArrayStruct<VkClearRect> vkArray = new VkArrayStruct<VkClearRect> (array, TAG_ID);
+		 VkArrayStruct<VkClearRect> vkArray = new VkArrayStruct<VkClearRect>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -242,8 +242,8 @@
 	 */ 
 	 private static native long getRect0(Buffer ptr);/*
 		  VkClearRect* vkObj = (VkClearRect*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->rect);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->rect);
 	 */
 
 	/**

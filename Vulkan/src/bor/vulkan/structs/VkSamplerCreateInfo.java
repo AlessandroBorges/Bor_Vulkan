@@ -206,7 +206,7 @@
 	 */
 	 public static VkArray<VkSamplerCreateInfo> createVkArray(int size){ 
 		 VkSamplerCreateInfo[] array = new VkSamplerCreateInfo[size]; 
-		 VkArrayStruct<VkSamplerCreateInfo> vkArray = new VkArrayStruct<VkSamplerCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkSamplerCreateInfo> vkArray = new VkArrayStruct<VkSamplerCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -735,8 +735,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkSamplerCreateInfo* vkObj = (VkSamplerCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**

@@ -128,7 +128,7 @@
 	 */
 	 public static VkArray<VkXlibSurfaceCreateInfoKHR> createVkArray(int size){ 
 		 VkXlibSurfaceCreateInfoKHR[] array = new VkXlibSurfaceCreateInfoKHR[size]; 
-		 VkArrayStruct<VkXlibSurfaceCreateInfoKHR> vkArray = new VkArrayStruct<VkXlibSurfaceCreateInfoKHR> (array, TAG_ID);
+		 VkArrayStruct<VkXlibSurfaceCreateInfoKHR> vkArray = new VkArrayStruct<VkXlibSurfaceCreateInfoKHR>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -355,8 +355,8 @@
 	 private static native long getPNext0(Buffer ptr);/*
 	 #ifdef VK_USE_PLATFORM_XLIB_KHR 
 		  VkXlibSurfaceCreateInfoKHR* vkObj = (VkXlibSurfaceCreateInfoKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 #else 
 	   return 0; 
 	 #endif 

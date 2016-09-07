@@ -146,7 +146,7 @@
 	 */
 	 public static VkArray<VkInstanceCreateInfo> createVkArray(int size){ 
 		 VkInstanceCreateInfo[] array = new VkInstanceCreateInfo[size]; 
-		 VkArrayStruct<VkInstanceCreateInfo> vkArray = new VkArrayStruct<VkInstanceCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkInstanceCreateInfo> vkArray = new VkArrayStruct<VkInstanceCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -452,8 +452,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -492,8 +492,8 @@
 	 */ 
 	 private static native long getPApplicationInfo0(Buffer ptr);/*
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pApplicationInfo);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pApplicationInfo);
 	 */
 
 	/**

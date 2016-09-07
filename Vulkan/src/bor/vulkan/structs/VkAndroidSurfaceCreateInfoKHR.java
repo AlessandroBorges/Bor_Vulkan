@@ -122,7 +122,7 @@
 	 */
 	 public static VkArray<VkAndroidSurfaceCreateInfoKHR> createVkArray(int size){ 
 		 VkAndroidSurfaceCreateInfoKHR[] array = new VkAndroidSurfaceCreateInfoKHR[size]; 
-		 VkArrayStruct<VkAndroidSurfaceCreateInfoKHR> vkArray = new VkArrayStruct<VkAndroidSurfaceCreateInfoKHR> (array, TAG_ID);
+		 VkArrayStruct<VkAndroidSurfaceCreateInfoKHR> vkArray = new VkArrayStruct<VkAndroidSurfaceCreateInfoKHR>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -313,8 +313,8 @@
 	 private static native long getPNext0(Buffer ptr);/*
 	 #ifdef VK_USE_PLATFORM_ANDROID_KHR 
 		  VkAndroidSurfaceCreateInfoKHR* vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 #else 
 	   return 0; 
 	 #endif 

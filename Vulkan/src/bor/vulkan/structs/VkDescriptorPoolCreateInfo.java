@@ -82,7 +82,7 @@
 	/**
 	 *  const VkDescriptorPoolSize* 	pPoolSizes	[vkstruct_array_array]
 	 */ 
-	  VkDescriptorPoolSize[]  	pPoolSizes;
+	VkDescriptorPoolSize[]  	pPoolSizes;
 	 private BigBuffer 	 pPoolSizesBUFFER;
 	/**
 	 * Ctor
@@ -135,7 +135,7 @@
 	 */
 	 public static VkArray<VkDescriptorPoolCreateInfo> createVkArray(int size){ 
 		 VkDescriptorPoolCreateInfo[] array = new VkDescriptorPoolCreateInfo[size]; 
-		 VkArrayStruct<VkDescriptorPoolCreateInfo> vkArray = new VkArrayStruct<VkDescriptorPoolCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkDescriptorPoolCreateInfo> vkArray = new VkArrayStruct<VkDescriptorPoolCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -294,9 +294,13 @@
 		 }
 		 if(pPoolSizesBUFFER != null && ptr == pPoolSizesBUFFER.getBufferAddress()){ //same buffer 
 		    pPoolSizesBUFFER.update();
-		    return pPoolSizes;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKStruct[] for backup.")).printStackTrace();
+		     // wrap native structs 
+		     int length = poolSizeCount();
+		     if(length > 0){
+		        this.pPoolSizes = new VkDescriptorPoolSize[length];
+		        pPoolSizesBUFFER = new BigBuffer<VkDescriptorPoolSize>(ptr, pPoolSizes, const VkDescriptorPoolSize*getID() );
+		     }
 		   }
 		 return this.pPoolSizes;
 	 }
@@ -365,8 +369,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -444,7 +448,7 @@
 	 private static native long getPPoolSizes0(Buffer ptr);/*
 		  VkDescriptorPoolCreateInfo* vkObj = (VkDescriptorPoolCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pPoolSizes );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pPoolSizes );
 	 */
 
 

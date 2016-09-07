@@ -128,7 +128,7 @@
 	 */
 	 public static VkArray<VkShaderModuleCreateInfo> createVkArray(int size){ 
 		 VkShaderModuleCreateInfo[] array = new VkShaderModuleCreateInfo[size]; 
-		 VkArrayStruct<VkShaderModuleCreateInfo> vkArray = new VkArrayStruct<VkShaderModuleCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkShaderModuleCreateInfo> vkArray = new VkArrayStruct<VkShaderModuleCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -324,8 +324,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkShaderModuleCreateInfo* vkObj = (VkShaderModuleCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**

@@ -122,7 +122,7 @@
 	 */
 	 public static VkArray<VkDedicatedAllocationMemoryAllocateInfoNV> createVkArray(int size){ 
 		 VkDedicatedAllocationMemoryAllocateInfoNV[] array = new VkDedicatedAllocationMemoryAllocateInfoNV[size]; 
-		 VkArrayStruct<VkDedicatedAllocationMemoryAllocateInfoNV> vkArray = new VkArrayStruct<VkDedicatedAllocationMemoryAllocateInfoNV> (array, TAG_ID);
+		 VkArrayStruct<VkDedicatedAllocationMemoryAllocateInfoNV> vkArray = new VkArrayStruct<VkDedicatedAllocationMemoryAllocateInfoNV>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -315,8 +315,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDedicatedAllocationMemoryAllocateInfoNV* vkObj = (VkDedicatedAllocationMemoryAllocateInfoNV*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**

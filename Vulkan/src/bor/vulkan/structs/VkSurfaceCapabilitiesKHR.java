@@ -158,7 +158,7 @@
 	 */
 	 public static VkArray<VkSurfaceCapabilitiesKHR> createVkArray(int size){ 
 		 VkSurfaceCapabilitiesKHR[] array = new VkSurfaceCapabilitiesKHR[size]; 
-		 VkArrayStruct<VkSurfaceCapabilitiesKHR> vkArray = new VkArrayStruct<VkSurfaceCapabilitiesKHR> (array, TAG_ID);
+		 VkArrayStruct<VkSurfaceCapabilitiesKHR> vkArray = new VkArrayStruct<VkSurfaceCapabilitiesKHR>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -518,8 +518,8 @@
 	 */ 
 	 private static native long getCurrentExtent0(Buffer ptr);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->currentExtent);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->currentExtent);
 	 */
 
 	/**
@@ -539,8 +539,8 @@
 	 */ 
 	 private static native long getMinImageExtent0(Buffer ptr);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->minImageExtent);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->minImageExtent);
 	 */
 
 	/**
@@ -560,8 +560,8 @@
 	 */ 
 	 private static native long getMaxImageExtent0(Buffer ptr);/*
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->maxImageExtent);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->maxImageExtent);
 	 */
 
 	/**

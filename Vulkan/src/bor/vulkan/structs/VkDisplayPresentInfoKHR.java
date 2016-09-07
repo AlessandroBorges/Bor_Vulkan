@@ -128,7 +128,7 @@
 	 */
 	 public static VkArray<VkDisplayPresentInfoKHR> createVkArray(int size){ 
 		 VkDisplayPresentInfoKHR[] array = new VkDisplayPresentInfoKHR[size]; 
-		 VkArrayStruct<VkDisplayPresentInfoKHR> vkArray = new VkArrayStruct<VkDisplayPresentInfoKHR> (array, TAG_ID);
+		 VkArrayStruct<VkDisplayPresentInfoKHR> vkArray = new VkArrayStruct<VkDisplayPresentInfoKHR>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -344,8 +344,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -365,8 +365,8 @@
 	 */ 
 	 private static native long getSrcRect0(Buffer ptr);/*
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->srcRect);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->srcRect);
 	 */
 
 	/**
@@ -386,8 +386,8 @@
 	 */ 
 	 private static native long getDstRect0(Buffer ptr);/*
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->dstRect);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->dstRect);
 	 */
 
 	/**

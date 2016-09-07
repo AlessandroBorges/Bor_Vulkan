@@ -152,7 +152,7 @@
 	 */
 	 public static VkArray<VkPipelineMultisampleStateCreateInfo> createVkArray(int size){ 
 		 VkPipelineMultisampleStateCreateInfo[] array = new VkPipelineMultisampleStateCreateInfo[size]; 
-		 VkArrayStruct<VkPipelineMultisampleStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineMultisampleStateCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkPipelineMultisampleStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineMultisampleStateCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -462,8 +462,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineMultisampleStateCreateInfo* vkObj = (VkPipelineMultisampleStateCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**

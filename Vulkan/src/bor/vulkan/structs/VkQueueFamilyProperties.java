@@ -122,7 +122,7 @@
 	 */
 	 public static VkArray<VkQueueFamilyProperties> createVkArray(int size){ 
 		 VkQueueFamilyProperties[] array = new VkQueueFamilyProperties[size]; 
-		 VkArrayStruct<VkQueueFamilyProperties> vkArray = new VkArrayStruct<VkQueueFamilyProperties> (array, TAG_ID);
+		 VkArrayStruct<VkQueueFamilyProperties> vkArray = new VkArrayStruct<VkQueueFamilyProperties>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -330,8 +330,8 @@
 	 */ 
 	 private static native long getMinImageTransferGranularity0(Buffer ptr);/*
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->minImageTransferGranularity);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->minImageTransferGranularity);
 	 */
 
 

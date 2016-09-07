@@ -85,7 +85,7 @@
 	/**
 	 *  const VkImageView* 	pAttachments	[vkhandle_array_array]
 	 */ 
-	  VkImageView[]  	pAttachments;
+	VkImageView[]  	pAttachments;
 	 private BigBuffer 	 pAttachmentsBUFFER;
 	
 	/**
@@ -153,7 +153,7 @@
 	 */
 	 public static VkArray<VkFramebufferCreateInfo> createVkArray(int size){ 
 		 VkFramebufferCreateInfo[] array = new VkFramebufferCreateInfo[size]; 
-		 VkArrayStruct<VkFramebufferCreateInfo> vkArray = new VkArrayStruct<VkFramebufferCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkFramebufferCreateInfo> vkArray = new VkArrayStruct<VkFramebufferCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -325,7 +325,12 @@
 		    pAttachmentsBUFFER.update();
 		    return pAttachments;
 		  }else{
-		     (new UnsupportedOperationException("There is no VKHandle[] for backup.")).printStackTrace();
+		     // wrap native handles 
+		     int length = attachmentCount();
+		     if(length > 0){
+		        this.pAttachments = new VkImageView[length];
+		        pAttachmentsBUFFER = new BigBuffer<VkImageView>(ptr, pAttachments, false);
+		     }
 		   }
 		 return this.pAttachments;
 	 }
@@ -469,8 +474,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -549,7 +554,7 @@
 	 private static native long getPAttachments0(Buffer ptr);/*
 		  VkFramebufferCreateInfo* vkObj = (VkFramebufferCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pAttachments );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pAttachments );
 	 */
 
 	/**

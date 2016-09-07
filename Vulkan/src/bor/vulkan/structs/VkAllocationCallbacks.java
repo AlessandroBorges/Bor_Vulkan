@@ -134,9 +134,10 @@
 	 */
 	 public static VkArray<VkAllocationCallbacks> createVkArray(int size){ 
 		 VkAllocationCallbacks[] array = new VkAllocationCallbacks[size]; 
-		 VkArrayStruct<VkAllocationCallbacks> vkArray = new VkArrayStruct<VkAllocationCallbacks> (array, TAG_ID);
+		 VkArrayStruct<VkAllocationCallbacks> vkArray = new VkArrayStruct<VkAllocationCallbacks>(array, TAG_ID);
 		 return vkArray; 
 	 } 
+
 
 	 ////////////////////////
 	 //  SETTERS & GETTERS //
@@ -382,8 +383,8 @@
 	 */ 
 	 private static native long getPUserData0(Buffer ptr);/*
 		  VkAllocationCallbacks* vkObj = (VkAllocationCallbacks*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pUserData);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pUserData);
 	 */
 
 	/**

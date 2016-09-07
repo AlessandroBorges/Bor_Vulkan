@@ -152,7 +152,7 @@
 	 */
 	 public static VkArray<VkCopyDescriptorSet> createVkArray(int size){ 
 		 VkCopyDescriptorSet[] array = new VkCopyDescriptorSet[size]; 
-		 VkArrayStruct<VkCopyDescriptorSet> vkArray = new VkArrayStruct<VkCopyDescriptorSet> (array, TAG_ID);
+		 VkArrayStruct<VkCopyDescriptorSet> vkArray = new VkArrayStruct<VkCopyDescriptorSet>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -470,8 +470,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkCopyDescriptorSet* vkObj = (VkCopyDescriptorSet*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**

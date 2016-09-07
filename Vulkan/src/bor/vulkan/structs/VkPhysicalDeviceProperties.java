@@ -152,7 +152,7 @@
 	 */
 	 public static VkArray<VkPhysicalDeviceProperties> createVkArray(int size){ 
 		 VkPhysicalDeviceProperties[] array = new VkPhysicalDeviceProperties[size]; 
-		 VkArrayStruct<VkPhysicalDeviceProperties> vkArray = new VkArrayStruct<VkPhysicalDeviceProperties> (array, TAG_ID);
+		 VkArrayStruct<VkPhysicalDeviceProperties> vkArray = new VkArrayStruct<VkPhysicalDeviceProperties>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -540,7 +540,7 @@
 	 */ 
 	 private static native String getDeviceName0(Buffer ptr);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->deviceName));
+		  return (jstring)(env->NewStringUTF(cloneStr(vkObj->deviceName)));
 	 */
 
 	/**
@@ -581,8 +581,8 @@
 	 */ 
 	 private static native long getLimits0(Buffer ptr);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->limits);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->limits);
 	 */
 
 	/**
@@ -602,8 +602,8 @@
 	 */ 
 	 private static native long getSparseProperties0(Buffer ptr);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->sparseProperties);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->sparseProperties);
 	 */
 
 

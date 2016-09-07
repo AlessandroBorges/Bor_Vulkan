@@ -110,7 +110,7 @@
 	 */
 	 public static VkArray<VkDisplayModeParametersKHR> createVkArray(int size){ 
 		 VkDisplayModeParametersKHR[] array = new VkDisplayModeParametersKHR[size]; 
-		 VkArrayStruct<VkDisplayModeParametersKHR> vkArray = new VkArrayStruct<VkDisplayModeParametersKHR> (array, TAG_ID);
+		 VkArrayStruct<VkDisplayModeParametersKHR> vkArray = new VkArrayStruct<VkDisplayModeParametersKHR>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -211,8 +211,8 @@
 	 */ 
 	 private static native long getVisibleRegion0(Buffer ptr);/*
 		  VkDisplayModeParametersKHR* vkObj = (VkDisplayModeParametersKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->visibleRegion);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->visibleRegion);
 	 */
 
 	/**

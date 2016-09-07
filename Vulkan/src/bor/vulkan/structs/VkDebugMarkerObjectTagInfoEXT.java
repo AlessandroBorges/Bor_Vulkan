@@ -140,7 +140,7 @@
 	 */
 	 public static VkArray<VkDebugMarkerObjectTagInfoEXT> createVkArray(int size){ 
 		 VkDebugMarkerObjectTagInfoEXT[] array = new VkDebugMarkerObjectTagInfoEXT[size]; 
-		 VkArrayStruct<VkDebugMarkerObjectTagInfoEXT> vkArray = new VkArrayStruct<VkDebugMarkerObjectTagInfoEXT> (array, TAG_ID);
+		 VkArrayStruct<VkDebugMarkerObjectTagInfoEXT> vkArray = new VkArrayStruct<VkDebugMarkerObjectTagInfoEXT>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -390,8 +390,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
@@ -488,8 +488,8 @@
 	 */ 
 	 private static native long getPTag0(Buffer ptr);/*
 		  VkDebugMarkerObjectTagInfoEXT* vkObj = (VkDebugMarkerObjectTagInfoEXT*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pTag);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pTag);
 	 */
 
 

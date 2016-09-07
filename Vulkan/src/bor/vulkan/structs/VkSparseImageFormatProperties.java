@@ -116,7 +116,7 @@
 	 */
 	 public static VkArray<VkSparseImageFormatProperties> createVkArray(int size){ 
 		 VkSparseImageFormatProperties[] array = new VkSparseImageFormatProperties[size]; 
-		 VkArrayStruct<VkSparseImageFormatProperties> vkArray = new VkArrayStruct<VkSparseImageFormatProperties> (array, TAG_ID);
+		 VkArrayStruct<VkSparseImageFormatProperties> vkArray = new VkArrayStruct<VkSparseImageFormatProperties>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -261,8 +261,8 @@
 	 */ 
 	 private static native long getImageGranularity0(Buffer ptr);/*
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageGranularity);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->imageGranularity);
 	 */
 
 	/**

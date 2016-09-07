@@ -128,7 +128,7 @@
 	 */
 	 public static VkArray<VkPipelineDynamicStateCreateInfo> createVkArray(int size){ 
 		 VkPipelineDynamicStateCreateInfo[] array = new VkPipelineDynamicStateCreateInfo[size]; 
-		 VkArrayStruct<VkPipelineDynamicStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineDynamicStateCreateInfo> (array, TAG_ID);
+		 VkArrayStruct<VkPipelineDynamicStateCreateInfo> vkArray = new VkArrayStruct<VkPipelineDynamicStateCreateInfo>(array, TAG_ID);
 		 return vkArray; 
 	 } 
 
@@ -328,8 +328,8 @@
 	 */ 
 	 private static native long getPNext0(Buffer ptr);/*
 		  VkPipelineDynamicStateCreateInfo* vkObj = (VkPipelineDynamicStateCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 */
 
 	/**
