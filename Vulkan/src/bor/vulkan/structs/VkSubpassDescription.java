@@ -362,7 +362,7 @@
 		    pResolveAttachmentsBUFFER.update();
 		  }else{
 		     // wrap native structs 
-		     int length = pColorAttachments();
+		     int length = this.colorAttachmentCount();
 		     if(length > 0){
 		        this.pResolveAttachments = new VkAttachmentReference[length];
 		        pResolveAttachmentsBUFFER = new BigBuffer<VkAttachmentReference>(ptr, pResolveAttachments, VkAttachmentReference.getID() );
