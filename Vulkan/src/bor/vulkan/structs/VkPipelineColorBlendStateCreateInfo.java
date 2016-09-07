@@ -335,7 +335,7 @@
 		     int length = attachmentCount();
 		     if(length > 0){
 		        this.pAttachments = new VkPipelineColorBlendAttachmentState[length];
-		        pAttachmentsBUFFER = new BigBuffer<VkPipelineColorBlendAttachmentState>(ptr, pAttachments, const VkPipelineColorBlendAttachmentState*getID() );
+		        pAttachmentsBUFFER = new BigBuffer<VkPipelineColorBlendAttachmentState>(ptr, pAttachments, VkPipelineColorBlendAttachmentState.getID() );
 		     }
 		   }
 		 return this.pAttachments;

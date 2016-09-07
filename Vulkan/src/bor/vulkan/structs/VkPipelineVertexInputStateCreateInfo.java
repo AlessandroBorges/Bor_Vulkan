@@ -283,7 +283,7 @@
 		     int length = vertexBindingDescriptionCount();
 		     if(length > 0){
 		        this.pVertexBindingDescriptions = new VkVertexInputBindingDescription[length];
-		        pVertexBindingDescriptionsBUFFER = new BigBuffer<VkVertexInputBindingDescription>(ptr, pVertexBindingDescriptions, const VkVertexInputBindingDescription*getID() );
+		        pVertexBindingDescriptionsBUFFER = new BigBuffer<VkVertexInputBindingDescription>(ptr, pVertexBindingDescriptions, VkVertexInputBindingDescription.getID() );
 		     }
 		   }
 		 return this.pVertexBindingDescriptions;
@@ -342,7 +342,7 @@
 		     int length = vertexAttributeDescriptionCount();
 		     if(length > 0){
 		        this.pVertexAttributeDescriptions = new VkVertexInputAttributeDescription[length];
-		        pVertexAttributeDescriptionsBUFFER = new BigBuffer<VkVertexInputAttributeDescription>(ptr, pVertexAttributeDescriptions, const VkVertexInputAttributeDescription*getID() );
+		        pVertexAttributeDescriptionsBUFFER = new BigBuffer<VkVertexInputAttributeDescription>(ptr, pVertexAttributeDescriptions, VkVertexInputAttributeDescription.getID() );
 		     }
 		   }
 		 return this.pVertexAttributeDescriptions;

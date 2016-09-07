@@ -270,7 +270,7 @@
 		     int length = inputAttachmentCount();
 		     if(length > 0){
 		        this.pInputAttachments = new VkAttachmentReference[length];
-		        pInputAttachmentsBUFFER = new BigBuffer<VkAttachmentReference>(ptr, pInputAttachments, const VkAttachmentReference*getID() );
+		        pInputAttachmentsBUFFER = new BigBuffer<VkAttachmentReference>(ptr, pInputAttachments, VkAttachmentReference.getID() );
 		     }
 		   }
 		 return this.pInputAttachments;
@@ -329,7 +329,7 @@
 		     int length = colorAttachmentCount();
 		     if(length > 0){
 		        this.pColorAttachments = new VkAttachmentReference[length];
-		        pColorAttachmentsBUFFER = new BigBuffer<VkAttachmentReference>(ptr, pColorAttachments, const VkAttachmentReference*getID() );
+		        pColorAttachmentsBUFFER = new BigBuffer<VkAttachmentReference>(ptr, pColorAttachments, VkAttachmentReference.getID() );
 		     }
 		   }
 		 return this.pColorAttachments;
@@ -365,7 +365,7 @@
 		     int length = pColorAttachments();
 		     if(length > 0){
 		        this.pResolveAttachments = new VkAttachmentReference[length];
-		        pResolveAttachmentsBUFFER = new BigBuffer<VkAttachmentReference>(ptr, pResolveAttachments, const VkAttachmentReference*getID() );
+		        pResolveAttachmentsBUFFER = new BigBuffer<VkAttachmentReference>(ptr, pResolveAttachments, VkAttachmentReference.getID() );
 		     }
 		   }
 		 return this.pResolveAttachments;

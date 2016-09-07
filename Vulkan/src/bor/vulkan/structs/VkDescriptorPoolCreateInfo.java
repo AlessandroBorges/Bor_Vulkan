@@ -299,7 +299,7 @@
 		     int length = poolSizeCount();
 		     if(length > 0){
 		        this.pPoolSizes = new VkDescriptorPoolSize[length];
-		        pPoolSizesBUFFER = new BigBuffer<VkDescriptorPoolSize>(ptr, pPoolSizes, const VkDescriptorPoolSize*getID() );
+		        pPoolSizesBUFFER = new BigBuffer<VkDescriptorPoolSize>(ptr, pPoolSizes, VkDescriptorPoolSize.getID() );
 		     }
 		   }
 		 return this.pPoolSizes;

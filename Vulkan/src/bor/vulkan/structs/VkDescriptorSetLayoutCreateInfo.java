@@ -270,7 +270,7 @@
 		     int length = bindingCount();
 		     if(length > 0){
 		        this.pBindings = new VkDescriptorSetLayoutBinding[length];
-		        pBindingsBUFFER = new BigBuffer<VkDescriptorSetLayoutBinding>(ptr, pBindings, const VkDescriptorSetLayoutBinding*getID() );
+		        pBindingsBUFFER = new BigBuffer<VkDescriptorSetLayoutBinding>(ptr, pBindings, VkDescriptorSetLayoutBinding.getID() );
 		     }
 		   }
 		 return this.pBindings;

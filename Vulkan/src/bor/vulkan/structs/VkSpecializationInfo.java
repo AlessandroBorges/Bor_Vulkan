@@ -185,7 +185,7 @@
 		     int length = mapEntryCount();
 		     if(length > 0){
 		        this.pMapEntries = new VkSpecializationMapEntry[length];
-		        pMapEntriesBUFFER = new BigBuffer<VkSpecializationMapEntry>(ptr, pMapEntries, const VkSpecializationMapEntry*getID() );
+		        pMapEntriesBUFFER = new BigBuffer<VkSpecializationMapEntry>(ptr, pMapEntries, VkSpecializationMapEntry.getID() );
 		     }
 		   }
 		 return this.pMapEntries;

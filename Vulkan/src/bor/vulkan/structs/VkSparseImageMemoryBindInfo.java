@@ -213,7 +213,7 @@
 		     int length = bindCount();
 		     if(length > 0){
 		        this.pBinds = new VkSparseImageMemoryBind[length];
-		        pBindsBUFFER = new BigBuffer<VkSparseImageMemoryBind>(ptr, pBinds, const VkSparseImageMemoryBind*getID() );
+		        pBindsBUFFER = new BigBuffer<VkSparseImageMemoryBind>(ptr, pBinds, VkSparseImageMemoryBind.getID() );
 		     }
 		   }
 		 return this.pBinds;

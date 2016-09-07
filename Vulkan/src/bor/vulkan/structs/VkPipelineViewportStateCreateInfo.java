@@ -283,7 +283,7 @@
 		     int length = viewportCount();
 		     if(length > 0){
 		        this.pViewports = new VkViewport[length];
-		        pViewportsBUFFER = new BigBuffer<VkViewport>(ptr, pViewports, const VkViewport*getID() );
+		        pViewportsBUFFER = new BigBuffer<VkViewport>(ptr, pViewports, VkViewport.getID() );
 		     }
 		   }
 		 return this.pViewports;
@@ -342,7 +342,7 @@
 		     int length = scissorCount();
 		     if(length > 0){
 		        this.pScissors = new VkRect2D[length];
-		        pScissorsBUFFER = new BigBuffer<VkRect2D>(ptr, pScissors, const VkRect2D*getID() );
+		        pScissorsBUFFER = new BigBuffer<VkRect2D>(ptr, pScissors, VkRect2D.getID() );
 		     }
 		   }
 		 return this.pScissors;

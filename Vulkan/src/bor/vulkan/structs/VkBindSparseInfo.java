@@ -353,7 +353,7 @@
 		     int length = bufferBindCount();
 		     if(length > 0){
 		        this.pBufferBinds = new VkSparseBufferMemoryBindInfo[length];
-		        pBufferBindsBUFFER = new BigBuffer<VkSparseBufferMemoryBindInfo>(ptr, pBufferBinds, const VkSparseBufferMemoryBindInfo*getID() );
+		        pBufferBindsBUFFER = new BigBuffer<VkSparseBufferMemoryBindInfo>(ptr, pBufferBinds, VkSparseBufferMemoryBindInfo.getID() );
 		     }
 		   }
 		 return this.pBufferBinds;
@@ -412,7 +412,7 @@
 		     int length = imageOpaqueBindCount();
 		     if(length > 0){
 		        this.pImageOpaqueBinds = new VkSparseImageOpaqueMemoryBindInfo[length];
-		        pImageOpaqueBindsBUFFER = new BigBuffer<VkSparseImageOpaqueMemoryBindInfo>(ptr, pImageOpaqueBinds, const VkSparseImageOpaqueMemoryBindInfo*getID() );
+		        pImageOpaqueBindsBUFFER = new BigBuffer<VkSparseImageOpaqueMemoryBindInfo>(ptr, pImageOpaqueBinds, VkSparseImageOpaqueMemoryBindInfo.getID() );
 		     }
 		   }
 		 return this.pImageOpaqueBinds;
@@ -471,7 +471,7 @@
 		     int length = imageBindCount();
 		     if(length > 0){
 		        this.pImageBinds = new VkSparseImageMemoryBindInfo[length];
-		        pImageBindsBUFFER = new BigBuffer<VkSparseImageMemoryBindInfo>(ptr, pImageBinds, const VkSparseImageMemoryBindInfo*getID() );
+		        pImageBindsBUFFER = new BigBuffer<VkSparseImageMemoryBindInfo>(ptr, pImageBinds, VkSparseImageMemoryBindInfo.getID() );
 		     }
 		   }
 		 return this.pImageBinds;

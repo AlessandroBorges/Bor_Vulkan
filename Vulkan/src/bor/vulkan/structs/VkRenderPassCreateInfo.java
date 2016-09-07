@@ -296,7 +296,7 @@
 		     int length = attachmentCount();
 		     if(length > 0){
 		        this.pAttachments = new VkAttachmentDescription[length];
-		        pAttachmentsBUFFER = new BigBuffer<VkAttachmentDescription>(ptr, pAttachments, const VkAttachmentDescription*getID() );
+		        pAttachmentsBUFFER = new BigBuffer<VkAttachmentDescription>(ptr, pAttachments, VkAttachmentDescription.getID() );
 		     }
 		   }
 		 return this.pAttachments;
@@ -355,7 +355,7 @@
 		     int length = subpassCount();
 		     if(length > 0){
 		        this.pSubpasses = new VkSubpassDescription[length];
-		        pSubpassesBUFFER = new BigBuffer<VkSubpassDescription>(ptr, pSubpasses, const VkSubpassDescription*getID() );
+		        pSubpassesBUFFER = new BigBuffer<VkSubpassDescription>(ptr, pSubpasses, VkSubpassDescription.getID() );
 		     }
 		   }
 		 return this.pSubpasses;
@@ -414,7 +414,7 @@
 		     int length = dependencyCount();
 		     if(length > 0){
 		        this.pDependencies = new VkSubpassDependency[length];
-		        pDependenciesBUFFER = new BigBuffer<VkSubpassDependency>(ptr, pDependencies, const VkSubpassDependency*getID() );
+		        pDependenciesBUFFER = new BigBuffer<VkSubpassDependency>(ptr, pDependencies, VkSubpassDependency.getID() );
 		     }
 		   }
 		 return this.pDependencies;

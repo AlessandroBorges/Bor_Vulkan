@@ -301,7 +301,7 @@
 		     int length = queueCreateInfoCount();
 		     if(length > 0){
 		        this.pQueueCreateInfos = new VkDeviceQueueCreateInfo[length];
-		        pQueueCreateInfosBUFFER = new BigBuffer<VkDeviceQueueCreateInfo>(ptr, pQueueCreateInfos, const VkDeviceQueueCreateInfo*getID() );
+		        pQueueCreateInfosBUFFER = new BigBuffer<VkDeviceQueueCreateInfo>(ptr, pQueueCreateInfos, VkDeviceQueueCreateInfo.getID() );
 		     }
 		   }
 		 return this.pQueueCreateInfos;
@@ -443,7 +443,7 @@
 		     int length = ppEnabledExtensionNames();
 		     if(length > 0){
 		        this.pEnabledFeatures = new VkPhysicalDeviceFeatures[length];
-		        pEnabledFeaturesBUFFER = new BigBuffer<VkPhysicalDeviceFeatures>(ptr, pEnabledFeatures, const VkPhysicalDeviceFeatures*getID() );
+		        pEnabledFeaturesBUFFER = new BigBuffer<VkPhysicalDeviceFeatures>(ptr, pEnabledFeatures, VkPhysicalDeviceFeatures.getID() );
 		     }
 		   }
 		 return this.pEnabledFeatures;

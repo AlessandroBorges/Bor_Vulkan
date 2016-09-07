@@ -343,7 +343,7 @@
 		     int length = pushConstantRangeCount();
 		     if(length > 0){
 		        this.pPushConstantRanges = new VkPushConstantRange[length];
-		        pPushConstantRangesBUFFER = new BigBuffer<VkPushConstantRange>(ptr, pPushConstantRanges, const VkPushConstantRange*getID() );
+		        pPushConstantRangesBUFFER = new BigBuffer<VkPushConstantRange>(ptr, pPushConstantRanges, VkPushConstantRange.getID() );
 		     }
 		   }
 		 return this.pPushConstantRanges;

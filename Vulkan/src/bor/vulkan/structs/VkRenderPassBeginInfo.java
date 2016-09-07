@@ -360,7 +360,7 @@
 		     int length = clearValueCount();
 		     if(length > 0){
 		        this.pClearValues = new VkClearValue[length];
-		        pClearValuesBUFFER = new BigBuffer<VkClearValue>(ptr, pClearValues, const VkClearValue*getID() );
+		        pClearValuesBUFFER = new BigBuffer<VkClearValue>(ptr, pClearValues, VkClearValue.getID() );
 		     }
 		   }
 		 return this.pClearValues;

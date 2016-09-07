@@ -354,7 +354,7 @@
 		     int length = stageCount();
 		     if(length > 0){
 		        this.pStages = new VkPipelineShaderStageCreateInfo[length];
-		        pStagesBUFFER = new BigBuffer<VkPipelineShaderStageCreateInfo>(ptr, pStages, const VkPipelineShaderStageCreateInfo*getID() );
+		        pStagesBUFFER = new BigBuffer<VkPipelineShaderStageCreateInfo>(ptr, pStages, VkPipelineShaderStageCreateInfo.getID() );
 		     }
 		   }
 		 return this.pStages;
