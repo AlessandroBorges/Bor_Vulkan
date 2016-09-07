@@ -27,7 +27,8 @@ public class BigBuffer<T> {
 
     private int structID;
     
-    private ByteBuffer nativeBufferArray;    
+    private ByteBuffer nativeBufferArray;  
+    private long nativeBufferHandle = 0L;
     private int elementCount;
     private int singleSize;    
     private VkObject[] array;
@@ -53,9 +54,31 @@ public class BigBuffer<T> {
         this.nativeBufferArray = (array == null) ? null : ByteBuffer.allocateDirect(singleSize * elementCount);        
         if(nativeBufferArray != null){
           nativeBufferArray.order(ByteOrder.nativeOrder());
+          nativeBufferHandle = Utils.getNativeAddress(nativeBufferArray);
         }
         initStruct();
     }
+    
+    
+    /**
+     * Ctor for a native allocated buffer
+     * @param nativeHandle - Pointer in native side native side
+     * @param array - Java array to hold on VkStruct
+     * @param structID - ID of Structs
+     */
+    public BigBuffer(long nativeHandle, VkStruct[] array, int structID) {
+        this.array = array;            
+        this.structID = structID;        
+        this.nativeBufferHandle = nativeHandle;
+        this.singleSize = VkStruct.sizeOf(structID);
+        this.elementCount = array == null ? 0 : array.length;
+        int size = singleSize * elementCount;
+        this.nativeBufferArray = size == 0 ? null : Utils.wrapPointer(nativeHandle, size);        
+        nativeBufferArray.order(ByteOrder.nativeOrder());       
+        nativeBufferArray.rewind();
+        initStruct();
+    }
+    
     
     /**
      * Ctor for a native allocated buffer
@@ -66,11 +89,12 @@ public class BigBuffer<T> {
     public BigBuffer(ByteBuffer nativeBuffer, VkStruct[] array, int structID) {
         this.array = array;            
         this.structID = structID;        
-        singleSize = VkStruct.sizeOf(structID) ;
+        this.singleSize = VkStruct.sizeOf(structID) ;
         this.elementCount = array == null ? 0 : array.length;
         this.nativeBufferArray = nativeBuffer;        
         nativeBufferArray.order(ByteOrder.nativeOrder());       
         nativeBufferArray.rewind(); 
+        nativeBufferHandle = Utils.getNativeAddress(nativeBufferArray);
         initStruct();
     }
     
@@ -88,6 +112,27 @@ public class BigBuffer<T> {
                                            : Vk10.sizeOfNonDispatchableHandle();                               
         this.nativeBufferArray = nativeBuffer;
         nativeBufferArray.order(ByteOrder.nativeOrder());
+        nativeBufferHandle = Utils.getNativeAddress(nativeBufferArray);
+        initHandlers();
+    }
+    
+    /**
+     * Ctor of BigBuffer for native allocated VkHandles
+     * @param handleArray - array of VkHandles 
+     * @param isDispatchableHandle - true if handleArray is a array of dispatchable handles.     
+     */
+    public BigBuffer(long nativeHandle, VkHandleInterface[] handleArray, boolean isDispatchableHandle) {
+        this.isHandle = true;
+        this.nativeBufferHandle = nativeHandle;
+        this.array = handleArray;
+        this.isDispatchHandle = isDispatchableHandle;
+        this.elementCount = (handleArray == null) ? 0 : handleArray.length;
+        singleSize = isDispatchableHandle ?  Vk10.sizeOfDispatchableHandle() 
+                                           : Vk10.sizeOfNonDispatchableHandle();                               
+        int size = singleSize * elementCount;
+        this.nativeBufferArray = size == 0 ? null : Utils.wrapPointer(nativeHandle, size);  
+        nativeBufferArray.order(ByteOrder.nativeOrder());
+        
         initHandlers();
     }
     
@@ -106,6 +151,7 @@ public class BigBuffer<T> {
         this.nativeBufferArray = (handleArray == null) ? null : ByteBuffer.allocateDirect(singleSize * elementCount);
         if(nativeBufferArray != null){
             nativeBufferArray.order(ByteOrder.nativeOrder());
+            nativeBufferHandle = Utils.getNativeAddress(nativeBufferArray);
         }
         initHandlers();
     }
@@ -196,15 +242,18 @@ public class BigBuffer<T> {
         if (isHandle || array == null) return;       
         int sizeBytes = singleSize;
         nativeBufferArray.rewind();
-        for (int i = 0; i < elementCount; i++) {  
-            //DO split buffer
+        for (int i = 0; i < elementCount; i++) {
+            // DO split buffer
             int pos = i * sizeBytes;
             nativeBufferArray.limit(pos + sizeBytes);
-            nativeBufferArray.position(pos);
-            // 
+            nativeBufferArray.position(pos);            
+          
             ByteBuffer structBuffer = nativeBufferArray.slice();
-            structBuffer.order(nativeBufferArray.order());            
-            if (array[i] != null) {
+            structBuffer.order(nativeBufferArray.order());
+            
+            if (array[i] == null) {
+                array[i] = VkStruct.createInstance(structID, structBuffer);
+            } else {
                 VkStruct struct = (VkStruct) array[i];
                 ByteBuffer src = struct.getPointer();
                 // copy content of src to dst
@@ -212,8 +261,6 @@ public class BigBuffer<T> {
                 // replace old buffer
                 struct.setPointer(structBuffer);
                 dirty = true;
-            }else{
-                array[i] = VkStruct.createInstance(structID, structBuffer);
             }
         }// for
     }
@@ -251,18 +298,28 @@ public class BigBuffer<T> {
                     bb.order(ByteOrder.nativeOrder());
                     array[i] = wrapStruct(bb);
                 } else {
-                    // copy iff it is != buffers
-                    ByteBuffer dst = array[i].getPointer();
+                    // copy IFF it is != buffers                    
                     // use flags[] to map remote buffer.
-                    long dstAddr = bor.util.Utils.getNativeAddressAndOffset(dst);
-                    long srcAddr = bor.util.Utils.getNativeAddressAndOffset(nativeBufferArray);
-                    if(dstAddr != srcAddr){
+                    long dstAddr = array[i].getNativeHandle();
+                    long srcAddr = getNativeAddressPlusOffset();
+                    if(dstAddr != srcAddr && dstAddr != 0L){
+                        ByteBuffer dst = array[i].getPointer();
                         copyBuffers(nativeBufferArray,pos, dst, 0, sizeBytes);    
                     }
                 }
             }
         }
         return array;
+    }
+    
+    /**
+     * Get native Address of nativeBufferArray and its offset, using buffer.position().
+     * 
+     * @return long value with native address + offset.
+     */
+    public  long getNativeAddressPlusOffset(){
+           int pos = nativeBufferArray.position();
+           return nativeBufferHandle + pos;
     }
     
     /**
