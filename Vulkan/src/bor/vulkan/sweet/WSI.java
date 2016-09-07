@@ -521,6 +521,7 @@ public VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
           for(int i = 0; i < fullSize; i += singleSize){
               bigBuffer.position(i);
               ByteBuffer struct = bigBuffer.slice();
+              struct.order(bigBuffer.order());
               struct.limit(singleSize);
               VkDisplayPlanePropertiesKHR obj = new VkDisplayPlanePropertiesKHR(struct);
               pProperties.add(obj);
@@ -654,6 +655,7 @@ public VkResult vkGetPhysicalDeviceDisplayPropertiesKHR(
             for(int i = 0; i < fullSize; i += singleSize){
                 bigBuffer.position(i);
                 ByteBuffer struct = bigBuffer.slice();
+                struct.order(bigBuffer.order());
                 struct.limit(singleSize);
                 VkDisplayModePropertiesKHR obj = new VkDisplayModePropertiesKHR(struct);
                 pProperties.add(obj);
@@ -1918,6 +1920,7 @@ public VkResult vkGetPhysicalDeviceSurfaceFormatsKHR(
      for(int i=0; i<len; i++){
          master.position(i*size);
          ByteBuffer slice = master.slice();
+         slice.order(master.order());
          slice.limit(size);
          VkSurfaceFormatKHR obj = new VkSurfaceFormatKHR(slice);
          pSurfaceFormats.add(obj);
@@ -2230,6 +2233,7 @@ public VkResult vkGetSwapchainImagesKHR(
         int size = master.capacity() / count;
         for(int i= 0; i<count; i++){
             ByteBuffer slice = master.slice();
+            slice.order(master.order());
             slice.limit(size);
             VkImage obj = wrap(slice);
             pSwapchainImages.add(obj);
