@@ -585,22 +585,31 @@ public class StructInfo {
                                  + "\t\t  }\n"
                                 ;
                      }else if (type == CLASS_TYPE.VKSTRUCT_ARRAY){
-                         String fieldBBuffer = field+BIG_BUFFER_SUFIX;                 
+                         String fieldBBuffer = field+BIG_BUFFER_SUFIX; 
+                         String countName = fields[i-1];
+                         String jTytpeBare = jType.replace("[]", "").trim();
                          stmt =  "\t\t long ptr = " + getName0 + "(this.ptr);\n" +                         
                                  "\t\t if(ptr == 0L){\n"+
                                  "\t\t    return null;\n"+
                                  "\t\t }\n"+
                                  "\t\t if("+fieldBBuffer+" != null && ptr == "+ fieldBBuffer +".getBufferAddress()){ //same buffer \n"
-                               + "\t\t    "+fieldBBuffer+".update();\n"+
-                                 "\t\t    return "+ field +";\n"
+                               + "\t\t    "+fieldBBuffer+".update();\n"                                
                                + "\t\t  }else{\n"
-                               + "\t\t     (new UnsupportedOperationException(\"There is no VKStruct[] for backup.\")).printStackTrace();\n"                       
+                               + "\t\t     // wrap native structs \n"
+                               + "\t\t     int length = " + countName +"();\n"
+                               + "\t\t     if(length > 0){\n"
+                               + "\t\t        this." + field +" = new "+jTytpeBare+"[length];\n"
+                               + "\t\t        "+fieldBBuffer +" = new BigBuffer<"+jTytpeBare+">(ptr, "+field+", "+ cType+"getID() );\n"
+                               + "\t\t     }\n"                    
                                + "\t\t   }\n"
+                              
                                 ;
                          
                      }else if (type == CLASS_TYPE.VKHANDLE_ARRAY){
                          String fieldBBuffer = field+BIG_BUFFER_SUFIX;
                          boolean isDispachable = isDispatchable(vkType);
+                         String countName = fields[i-1];
+                         String jTytpeBare = jType.replace("[]", "").trim();
                          stmt =  "\t\t long ptr = " + getName0 + "(this.ptr);\n" +                         
                                  "\t\t if(ptr == 0L){\n"+
                                  "\t\t    return null;\n"+
@@ -609,7 +618,14 @@ public class StructInfo {
                                + "\t\t    "+fieldBBuffer+".update();\n"+
                                  "\t\t    return "+ field +";\n"
                                + "\t\t  }else{\n"
-                               + "\t\t     (new UnsupportedOperationException(\"There is no VKHandle[] for backup.\")).printStackTrace();\n"                       
+                               + "\t\t     // wrap native handles \n"
+                               + "\t\t     int length = " + countName +"();\n"
+                               + "\t\t     if(length > 0){\n"
+                               + "\t\t        this." + field +" = new "+jTytpeBare+"[length];\n"
+                               + "\t\t        "+fieldBBuffer +" = new BigBuffer<"+jTytpeBare+">(ptr, "
+                                                                                        +field+", "
+                                                                                        + isDispachable+");\n"
+                               + "\t\t     }\n"                                                 
                                + "\t\t   }\n"
                                 ;
                      }else{ // primitive types & buffer
@@ -803,7 +819,7 @@ public class StructInfo {
                if (type == CLASS_TYPE.VKHANDLE_ARRAY || type == CLASS_TYPE.VKSTRUCT_ARRAY){
                    typeMod = "long";
                    nativeRes = "\t\t  // generic get for array of VkHandle and VkStruct \n" +
-                               "\t\t  return (jlong) reinterpret_cast<jlong>( &vkObj->"+field +" );\n";                   
+                               "\t\t  return (jlong) reinterpret_cast<jlong>( vkObj->"+field +" );\n";                   
            }else ////////////
              if(isTypeArray[i] & !isFixedArray[i]){
                xtraParams += ", " + typeMod + " _" + field;
@@ -826,14 +842,14 @@ public class StructInfo {
                             "\t\t  return obj__"+field+";\n";
            } else if(typeMod.contains("Buffer")){
                typeMod = "long";
-               nativeRes = "\t\t  // generic get for Buffer \n"
-                         + "\t\t  return (jlong) reinterpret_cast<jlong>(&vkObj->"+field +");\n";
+               nativeRes = "\t\t  // generic get for Buffer - field must be pointer! \n"
+                         + "\t\t  return (jlong) reinterpret_cast<jlong>(vkObj->"+field +");\n";
            }
          
            if(jType.equalsIgnoreCase("string")){
                // Strings must be converted
                xtraParams = ""; // no need of extra params on String getBlahBlah()
-               nativeRes = "\t\t  return (jstring)(env->NewStringUTF(vkObj->"+field +"));\n";
+               nativeRes = "\t\t  return (jstring)(env->NewStringUTF(cloneStr(vkObj->"+field +")));\n";
            } 
            
            // assemble the Native GET
