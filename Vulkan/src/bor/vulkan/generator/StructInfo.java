@@ -599,7 +599,7 @@ public class StructInfo {
                                + "\t\t     int length = " + countName +"();\n"
                                + "\t\t     if(length > 0){\n"
                                + "\t\t        this." + field +" = new "+jTytpeBare+"[length];\n"
-                               + "\t\t        "+fieldBBuffer +" = new BigBuffer<"+jTytpeBare+">(ptr, "+field+", "+ cType+"getID() );\n"
+                               + "\t\t        "+fieldBBuffer +" = new BigBuffer<"+jTytpeBare+">(ptr, "+field+", "+ jTytpeBare+".getID() );\n"
                                + "\t\t     }\n"                    
                                + "\t\t   }\n"
                               
