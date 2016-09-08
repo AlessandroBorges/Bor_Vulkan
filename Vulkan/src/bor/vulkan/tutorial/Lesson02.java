@@ -37,12 +37,7 @@ import bor.vulkan.structs.VkStruct;
  *
  */
 public class Lesson02 {
-    /**
-     * Loading native libraries
-     */
-    static{
-        new JniGenSharedLibraryLoader("libs/BorVulkan-natives.jar").load("BorVulkan");
-    }
+   
    
     private static String[] ppEnabledLayerNames = {"VK_LAYER_LUNARG_core_validation"}; 
     private static String[] otherLayerNames = {
@@ -81,12 +76,11 @@ public class Lesson02 {
         
         VkApplicationInfo appInfo = new VkApplicationInfo();
             appInfo.sType(VkStructureType.VK_STRUCTURE_TYPE_APPLICATION_INFO);
-            appInfo.pApplicationName("BorVulkan - Lesson 01");
+            appInfo.pApplicationName("BorVulkan - Lesson 02");
             appInfo.pEngineName("BorVulkan");
+            appInfo.apiVersion(Vulkan.VK_MAKE_VERSION(1, 0, 5));
+            appInfo.engineVersion(Vulkan.VK_MAKE_VERSION(1, 0, 5));
             appInfo.applicationVersion(1);
-            appInfo.apiVersion(0);
-            
-            
             
         VkInstanceCreateInfo pCreateInfo = new VkInstanceCreateInfo();
             pCreateInfo.sType(VkStructureType.VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO);
@@ -97,7 +91,7 @@ public class Lesson02 {
             pCreateInfo.ppEnabledLayerNames(null);
            // pCreateInfo.ppEnabledExtensionNames(extensions);
         
-        System.out.println("VkInstanceCreateInfo : " + pCreateInfo.toString()); 
+        System.out.println("\n VkInstanceCreateInfo : " + pCreateInfo.toString()); 
         
         VkResult res =  Vk10.vkCreateInstance(pCreateInfo, pAllocator, pInstance);
         VkInstance instance = pInstance[0];
@@ -115,22 +109,16 @@ public class Lesson02 {
      * @param Vk10
      * @return list of Instance Layers
      */
-    public static List<VkLayerProperties> enumerateInstaceLayers(){
+    public static List<VkLayerProperties> enumerateInstanceLayers(){
        
         int[] count = {0};
-        VkLayerProperties[] array = null;
-        
+        VkLayerProperties[] array = null;        
         
         VkResult res =  Vk10.vkEnumerateInstanceLayerProperties(count, array);
         array = new VkLayerProperties[count[0]];
         res =  Vk10.vkEnumerateInstanceLayerProperties(count, array);
-        System.out.println("VkResult for Enumerate Instance Layer Properties " + res);
+        System.out.println("VkResult for Enumerate Instance Layer Properties: " + res);
         System.out.println("VkLayerProperties count: " + array.length);
-        int ii=0;
-        for (VkLayerProperties prop : array) {
-            System.out.println("VkLayerProperties #" + ii++);
-            System.out.println(prop);
-        }
         List<VkLayerProperties> pProperties = Arrays.asList(array);
         return pProperties;
     }
@@ -141,39 +129,43 @@ public class Lesson02 {
      * @return
      */
     public static List<VkPhysicalDevice> enumeratePhysicalDevices(VkInstance instance){
-        VkResult[] result = new VkResult[1];
-        int[] count = {1};        
-        VkPhysicalDevice[] pPhysicalDevices = new VkPhysicalDevice[1];
-        
-        Vk10.vkEnumeratePhysicalDevices(instance, count, pPhysicalDevices );
-        //List<VkPhysicalDevice> physicalDevicesList = Vk10.vkEnumeratePhysicalDevices(instance, count , result);
-        
-        System.out.println("VkResult for Enumerate Physical Devices " + result[0]);       
-        System.out.println("PhysicalDevices count: " + count[0]);
-        
+        VkResult result;
+        int[] count = {0};
+        result = Vk10.vkEnumeratePhysicalDevices(instance, count, null); 
+        int qtd = count[0];
+        VkPhysicalDevice[] pPhysicalDevices = new VkPhysicalDevice[qtd];        
+        result = Vk10.vkEnumeratePhysicalDevices(instance, count, pPhysicalDevices );        
+        System.out.println("VkResult for Enumerate Physical Devices " + result);       
+        System.out.println("PhysicalDevices count: " + qtd);        
         return Arrays.asList(pPhysicalDevices);
     }
    
     
     private static void printStructsSize(){
-        
-        for(int i= 1; i<124; i++){
-            System.out.println("Struct # "+i+"  " + VkStruct.sizeOf(i));
-            
+        for(int i= 1; i<150; i++){
+            System.out.println("Struct #"+i+" \t" + VkStruct.getStructureName(i)
+            +":\t" + VkStruct.sizeOf(i));            
         }
-        
     }
     /**
      * @param args
      */
     public static void main(String[] args) {
-        printStructsSize();
+      if(Vk10.isVulkanAvailable()){
+          System.out.println("Vulkan is Available.");
+      }else{
+          System.err.println("Vulkan is not available.\nExit...");
+          System.exit(-1);
+      }
        
        VkInstance instance = createVkInstance(); 
        
   // enumerate instance layers
-       List<VkLayerProperties> instanceLayrPropss = enumerateInstaceLayers();
-        
+       List<VkLayerProperties> instanceLayerProps = enumerateInstanceLayers();
+        System.out.println("Available Instance Layers: " + instanceLayerProps.size());
+        for (VkLayerProperties vkLayerProperties : instanceLayerProps) {
+            System.out.println(vkLayerProperties);
+        }
   //Step 2 - Enumerate Phisical Devices       
        List<VkPhysicalDevice> physicalDevicesList = enumeratePhysicalDevices( instance);
        
@@ -209,11 +201,9 @@ public class Lesson02 {
         Vk10.vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties);
         
         int i = 0;
-        for (VkQueueFamilyProperties queueFamily : pQueueFamilyProperties) {
-            
+        for (VkQueueFamilyProperties queueFamily : pQueueFamilyProperties) {            
             System.out.println("VkQueueFamilyProperties #" + i);
-            System.out.println(queueFamily);
-            
+            System.out.println(queueFamily);            
         }
         
        // DEVICE 
