@@ -1,0 +1,37 @@
+// inlcudes for VkBufferImageCopy
+
+//#getImageSubresource0
+/**
+	 * Native GET method for field imageSubresource	[vkstruct]<br>
+	 * Prototype: VkImageSubresourceLayers  imageSubresource
+	 */ 
+	 private static native long getImageSubresource0(Buffer ptr);/*
+		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageSubresource);
+	 */
+//#END
+
+//getImageOffset0     
+/**
+	 * Native GET method for field imageOffset	[vkstruct]<br>
+	 * Prototype: VkOffset3D  imageOffset
+	 */ 
+	 private static native long getImageOffset0(Buffer ptr);/*
+		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageOffset);
+	 */
+//#END
+
+//#getImageExtent0
+/**
+	 * Native GET method for field imageExtent	[vkstruct]<br>
+	 * Prototype: VkExtent3D  imageExtent
+	 */ 
+	 private static native long getImageExtent0(Buffer ptr);/*
+		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageExtent);
+	 */
+//#END

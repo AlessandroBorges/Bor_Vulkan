@@ -32,16 +32,16 @@
 	 * Get method for field memoryTypes	[vkstruct_array]<br>
 	 * Prototype: VkMemoryType[]  memoryTypes
 	 */ 
-	 public VkMemoryType[] memoryTypes(){
+	public VkMemoryType[] memoryTypes(){
 		 long ptr = getMemoryTypes0(this.ptr);
 		 if(ptr == 0L){
 		    return null;
 		 }
                  if(memoryTypesBUFFER == null){
                      ByteBuffer bb = Utils.wrapPointer(ptr, VK_MAX_MEMORY_TYPES * VkMemoryType.sizeOf());
-                     memoryTypesBUFFER = new BigBuffer(bb, memoryHeaps, VkMemoryType.getID());
+                     memoryTypesBUFFER = new BigBuffer<VkMemoryType>(bb, memoryTypes, VkMemoryType.getID());
                  }
-                 memoryHeapsBUFFER.update();  
+                 memoryTypesBUFFER.update();  
 		 return this.memoryTypes;
 	 }
 //#END
@@ -84,7 +84,7 @@
 		 }
 		 if(memoryHeapsBUFFER == null){
 		     ByteBuffer bb = Utils.wrapPointer(ptr, VK_MAX_MEMORY_HEAPS * VkMemoryHeap.sizeOf());
-		     memoryHeapsBUFFER = new BigBuffer(bb, memoryHeaps, VkMemoryHeap.getID());
+		     memoryHeapsBUFFER = new BigBuffer<VkMemoryHeap>(bb, memoryHeaps, VkMemoryHeap.getID());
 		 }
 		 memoryHeapsBUFFER.update();		
 		 return this.memoryHeaps;

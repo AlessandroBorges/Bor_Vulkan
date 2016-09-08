@@ -1,0 +1,12 @@
+// include for VkClearAttachment
+//#getClearValue0
+    /**
+	 * Native GET method for field clearValue	[vkstruct]<br>
+	 * Prototype: VkClearValue  clearValue
+	 */ 
+	 private static native long getClearValue0(Buffer ptr);/*
+		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->clearValue);
+	 */
+//#END

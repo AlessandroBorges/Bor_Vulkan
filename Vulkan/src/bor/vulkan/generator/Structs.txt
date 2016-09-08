@@ -94,6 +94,8 @@ VkImageBlit
 VkBufferImageCopy
 VkClearDepthStencilValue
 VkClearAttachment
+VkClearValue
+VkClearColorValue
 VkClearRect
 VkImageResolve
 VkMemoryBarrier
@@ -129,5 +131,3 @@ VkDebugMarkerMarkerInfoEXT
 VkDedicatedAllocationImageCreateInfoNV
 VkDedicatedAllocationBufferCreateInfoNV
 VkDedicatedAllocationMemoryAllocateInfoNV
-VkClearValue
-VkClearColorValue

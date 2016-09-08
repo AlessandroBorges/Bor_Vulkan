@@ -312,7 +312,8 @@ public class StructInfo {
             String field = fields[i];
             String cType = types[i];
             String arraySize = this.fixedArraySize[i];
-            String jType = getJavaType(cType, field, name);           
+            String jType = getJavaType(cType, field, name); 
+            String jTypeBare = jType.replace("final","").replace("[]", "").trim();
             isTypeArray[i] = jType.contains("[]") && !cType.contains("char"); 
             
             if(arraySize.length()>0){
@@ -345,10 +346,10 @@ public class StructInfo {
            if(type == CLASS_TYPE.VKSTRUCT_ARRAY || type == CLASS_TYPE.VKHANDLE_ARRAY ){
                //System.err.println("\n VK Struct Class: " + name + " has VkStruct[] : " + jType + " \t" + field + ";");
                hasBigBuffer[i] = true;
-               output += tab +" private BigBuffer \t "  + field + BIG_BUFFER_SUFIX +";\n";                
+               output += tab +" private BigBuffer<"+jTypeBare+"> \t "  + field + BIG_BUFFER_SUFIX +";\n";                
            }
            
-           }
+      }// fields loop
          //////////////////////////////////////////////
         //// Ctor
         /////////////////////////////////////////////
@@ -466,12 +467,12 @@ public class StructInfo {
                    }else                     
                        if (type == CLASS_TYPE.VKSTRUCT_ARRAY){
                        String fieldBBuffer = field+BIG_BUFFER_SUFIX;
-                       bridge =  "\t\t this."+ fieldBBuffer +" = new BigBuffer("+field +", "+ vkType +".getID());\n"                               
+                       bridge =  "\t\t this."+ fieldBBuffer +" = new BigBuffer<"+vkType+">("+field +", "+ vkType +".getID());\n"                               
                                + "\t\t " + setName0 + "0(this.ptr, "+fieldBBuffer+ ".getBuffer());\n";
                    }else if (type == CLASS_TYPE.VKHANDLE_ARRAY){
                        String fieldBBuffer = field+BIG_BUFFER_SUFIX;
                        boolean isDispachable = isDispatchable(vkType);
-                       bridge =  "\t\t this."+ fieldBBuffer +" = new BigBuffer("+field +", "+ isDispachable +");\n"                    
+                       bridge =  "\t\t this."+ fieldBBuffer +" = new BigBuffer<"+vkType+">("+field +", "+ isDispachable +");\n"                    
                                + "\t\t " + setName0 + "0(this.ptr, "+fieldBBuffer+ ".getBuffer());\n";
                    }
                    else  { // primitive types
@@ -838,12 +839,13 @@ public class StructInfo {
                if (isFixedArray[i]){
                xtraParams += ", " + typeMod + " _" + field;
                nativeRes =  "\t\t  // fixed length array  \n" +
-                            "\t\t  memcpy(&_" + field + ", &(vkObj->" + field +"), "+ size +" * sizeof("+cTypePure+"));\n"+
+                            "\t\t  memcpy(_" + field + ", vkObj->" + field +", "+ size +" * sizeof("+cTypePure+"));\n"+
                             "\t\t  return obj__"+field+";\n";
            } else if(typeMod.contains("Buffer")){
                typeMod = "long";
+               String addressTag = isCpointer?"":"&";
                nativeRes = "\t\t  // generic get for Buffer - field must be pointer! \n"
-                         + "\t\t  return (jlong) reinterpret_cast<jlong>(vkObj->"+field +");\n";
+                         + "\t\t  return (jlong) reinterpret_cast<jlong>("+addressTag+"vkObj->"+field +");\n";
            }
          
            if(jType.equalsIgnoreCase("string")){
