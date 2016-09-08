@@ -127,8 +127,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
       
       typedef void* PointerToAnything;
       typedef PointerToAnything* PointerToAnythingArray;
-      
-      static  jclass byteBufferClass;      
+            
       static  bool isWin32;
       static  bool isAndroid;
       static  bool isMIR;
@@ -172,44 +171,26 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
       
  }//
  
-  
-#define BUFFERARRAY_SET(TYPE, BUFFERS, COUNT, P_VK)\
-     TYPE* P_VK = (TYPE*) calloc(COUNT,sizeof(TYPE));\
-     for(int i = 0; i < (int) COUNT; i++){\
-       jobject obj = (BUFFERS) ? (jobject) env->GetObjectArrayElement(BUFFERS, i) : NULL;\
-       if(obj != NULL){\
-          TYPE* elem = (TYPE*)(env->GetDirectBufferAddress(obj));\
-          P_VK[i] = (*elem);\
-       }\
-     }\
- 
- #define BUFFERARRAY_COMMIT(TYPE, BUFFERS, COUNT, P_VK) \
-  for(int i = 0; i < (int) COUNT; i++){\
-           TYPE* obj = (TYPE*)calloc(1, sizeof(TYPE));\
-           *obj = P_VK[i];\
-           jobject bb_ = (jobject)(env->NewDirectByteBuffer(obj, sizeof(TYPE)));\
-           env->SetObjectArrayElement(BUFFERS, i, bb_);\
-      }\
-  if (P_VK != NULL) free(P_VK);\
- 
  // Vk10 header end
   */
     /**
-     * <pre>
+     * <p>
      * Default size in bytes of Dispatchable VkHandle.
      * It can be 4bytes in 32bits OS or 8bytes in 64bits OS. 
-     * Current Dispatchable VkHandles are the following: 
-     *   VK_DEFINE_HANDLE(VkInstance)
-     *   VK_DEFINE_HANDLE(VkPhysicalDevice)
-     *   VK_DEFINE_HANDLE(VkDevice)
-     *   VK_DEFINE_HANDLE(VkQueue)
-     *   VK_DEFINE_HANDLE(VkCommandBuffer)
+     * Current Dispatchable VkHandles are the following:</p><pre><b>
+     *   VkInstance
+     *   VkPhysicalDevice
+     *   VkDevice
+     *   VkQueue
+     *   VkCommandBuffer</b>
      * </pre>
      */
     protected static int SIZE_OF_DISPATCHABLE_HANDLE = 8;
     /**
      * Default size in bytes of Non Dispatchable VkHandle.
      * Expected to be always 8 bytes in both 32/64bits environments.
+     * The NON_DISPATCHABLE_HANDLE are all VkHandle interfaces,
+     * Excluded the 
      */
     protected static int SIZE_OF_NON__DISPATCHABLE_HANDLE = 8;
     
@@ -243,13 +224,9 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     /**
      * initilize native codes
      */
-    private static native void init();/*
-       jclass bufferClassLocal = env->FindClass("java/nio/ByteBuffer");
-       byteBufferClass = reinterpret_cast<jclass>(env->NewGlobalRef(bufferClassLocal));
-       
+    protected static  native void init();/*
        init();
        isVulkanAvailable =  (InitVulkan() != 0);
-       
     */
     
     /**
@@ -329,7 +306,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateInstance0(
+    protected static  native int  vkCreateInstance0(
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
 		ByteBuffer   pInstance);/* 
@@ -371,7 +348,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param instance - 
     * @param pAllocator - 
     */
-    private static native void vkDestroyInstance0(
+    protected static  native void vkDestroyInstance0(
 		long   instance,
 		ByteBuffer   pAllocator);/* 
 	vkDestroyInstance(
@@ -423,7 +400,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkEnumeratePhysicalDevices0(
+    protected static  native int  vkEnumeratePhysicalDevices0(
 		long   instance,
 		int[]  pPhysicalDeviceCount,
 		ByteBuffer   pPhysicalDevices);/* 
@@ -465,7 +442,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param physicalDevice - 
     * @param pFeatures - 
     */
-    private static native void vkGetPhysicalDeviceFeatures0(
+    protected static  native void vkGetPhysicalDeviceFeatures0(
 		long   physicalDevice,
 		ByteBuffer   pFeatures);/* 
 	vkGetPhysicalDeviceFeatures(
@@ -510,7 +487,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param format - 
     * @param pFormatProperties - 
     */
-    private static native void vkGetPhysicalDeviceFormatProperties0(
+    protected static  native void vkGetPhysicalDeviceFormatProperties0(
 		long   physicalDevice,
 		int   format,
 		ByteBuffer   pFormatProperties);/* 
@@ -581,7 +558,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkGetPhysicalDeviceImageFormatProperties0(
+    protected static  native int  vkGetPhysicalDeviceImageFormatProperties0(
 		long   physicalDevice,
 		int   format,
 		int   type,
@@ -631,7 +608,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param physicalDevice - 
     * @param pProperties - 
     */
-    private static native void vkGetPhysicalDeviceProperties0(
+    protected static  native void vkGetPhysicalDeviceProperties0(
 		long   physicalDevice,
 		ByteBuffer   pProperties);/* 
 	vkGetPhysicalDeviceProperties(
@@ -679,7 +656,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pQueueFamilyPropertyCount - 
     * @param pQueueFamilyProperties - 
     */
-    private static native void vkGetPhysicalDeviceQueueFamilyProperties0(
+    protected static  native void vkGetPhysicalDeviceQueueFamilyProperties0(
 		long   physicalDevice,
 		int[]  pQueueFamilyPropertyCount,
 		ByteBuffer   pQueueFamilyProperties);/* 
@@ -721,7 +698,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param physicalDevice - 
     * @param pMemoryProperties - 
     */
-    private static native void vkGetPhysicalDeviceMemoryProperties0(
+    protected static  native void vkGetPhysicalDeviceMemoryProperties0(
 		long   physicalDevice,
 		ByteBuffer   pMemoryProperties);/* 
 	vkGetPhysicalDeviceMemoryProperties(
@@ -765,7 +742,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return PFNvkVoidFunction as long  
     */
-    private static native long  vkGetInstanceProcAddr0(
+    protected static  native long  vkGetInstanceProcAddr0(
 		long   instance,
 		String  pName);/* 
 	PFN_vkVoidFunction res = vkGetInstanceProcAddr(
@@ -809,7 +786,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return PFNvkVoidFunction as long  
     */
-    private static native long  vkGetDeviceProcAddr0(
+    protected static  native long  vkGetDeviceProcAddr0(
 		long   device,
 		String  pName);/* 
 	PFN_vkVoidFunction res = vkGetDeviceProcAddr(
@@ -866,7 +843,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateDevice0(
+    protected static  native int  vkCreateDevice0(
 		long   physicalDevice,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -910,7 +887,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param device - 
     * @param pAllocator - 
     */
-    private static native void vkDestroyDevice0(
+    protected static  native void vkDestroyDevice0(
 		long   device,
 		ByteBuffer   pAllocator);/* 
 	vkDestroyDevice(
@@ -962,7 +939,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkEnumerateInstanceExtensionProperties0(
+    protected static  native int  vkEnumerateInstanceExtensionProperties0(
 		String  pLayerName,
 		int[]  pPropertyCount,
 		ByteBuffer   pProperties);/* 
@@ -1021,7 +998,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkEnumerateDeviceExtensionProperties0(
+    protected static  native int  vkEnumerateDeviceExtensionProperties0(
 		long   physicalDevice,
 		String  pLayerName,
 		int[]  pPropertyCount,
@@ -1072,7 +1049,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkEnumerateInstanceLayerProperties0(
+    protected static  native int  vkEnumerateInstanceLayerProperties0(
 		int[]  pPropertyCount,
 		ByteBuffer   pProperties);/* 
 	VkResult res = vkEnumerateInstanceLayerProperties(
@@ -1124,7 +1101,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkEnumerateDeviceLayerProperties0(
+    protected static  native int  vkEnumerateDeviceLayerProperties0(
 		long   physicalDevice,
 		int[]  pPropertyCount,
 		ByteBuffer   pProperties);/* 
@@ -1176,7 +1153,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param queueIndex - 
     * @param pQueue - 
     */
-    private static native void vkGetDeviceQueue0(
+    protected static  native void vkGetDeviceQueue0(
 		long   device,
 		int  queueFamilyIndex,
 		int  queueIndex,
@@ -1238,7 +1215,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkQueueSubmit0(
+    protected static  native int  vkQueueSubmit0(
 		long   queue,
 		int  submitCount,
 		ByteBuffer   pSubmits,
@@ -1281,7 +1258,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkQueueWaitIdle0(
+    protected static  native int  vkQueueWaitIdle0(
 		long   queue);/* 
 	VkResult res = vkQueueWaitIdle(
 			(VkQueue) reinterpret_cast<VkQueue>(queue));
@@ -1318,7 +1295,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkDeviceWaitIdle0(
+    protected static  native int  vkDeviceWaitIdle0(
 		long   device);/* 
 	VkResult res = vkDeviceWaitIdle(
 			(VkDevice) reinterpret_cast<VkDevice>(device));
@@ -1370,7 +1347,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkAllocateMemory0(
+    protected static  native int  vkAllocateMemory0(
 		long   device,
 		ByteBuffer   pAllocateInfo,
 		ByteBuffer   pAllocator,
@@ -1419,7 +1396,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param memory - 
     * @param pAllocator - 
     */
-    private static native void vkFreeMemory0(
+    protected static  native void vkFreeMemory0(
 		long   device,
 		long   memory,
 		ByteBuffer   pAllocator);/* 
@@ -1485,7 +1462,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkMapMemory0(
+    protected static  native int  vkMapMemory0(
 		long   device,
 		long   memory,
 		long  offset,
@@ -1533,7 +1510,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param device - 
     * @param memory - 
     */
-    private static native void vkUnmapMemory0(
+    protected static  native void vkUnmapMemory0(
 		long   device,
 		long   memory);/* 
 	vkUnmapMemory(
@@ -1585,7 +1562,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkFlushMappedMemoryRanges0(
+    protected static  native int  vkFlushMappedMemoryRanges0(
 		long   device,
 		int  memoryRangeCount,
 		ByteBuffer   pMemoryRanges);/* 
@@ -1639,7 +1616,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkInvalidateMappedMemoryRanges0(
+    protected static  native int  vkInvalidateMappedMemoryRanges0(
 		long   device,
 		int  memoryRangeCount,
 		ByteBuffer   pMemoryRanges);/* 
@@ -1686,7 +1663,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param memory - 
     * @param pCommittedMemoryInBytes - 
     */
-    private static native void vkGetDeviceMemoryCommitment0(
+    protected static  native void vkGetDeviceMemoryCommitment0(
 		long   device,
 		long   memory,
 		long[]  pCommittedMemoryInBytes);/* 
@@ -1742,7 +1719,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkBindBufferMemory0(
+    protected static  native int  vkBindBufferMemory0(
 		long   device,
 		long   buffer,
 		long   memory,
@@ -1800,7 +1777,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkBindImageMemory0(
+    protected static  native int  vkBindImageMemory0(
 		long   device,
 		long   image,
 		long   memory,
@@ -1849,7 +1826,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param buffer - 
     * @param pMemoryRequirements - 
     */
-    private static native void vkGetBufferMemoryRequirements0(
+    protected static  native void vkGetBufferMemoryRequirements0(
 		long   device,
 		long   buffer,
 		ByteBuffer   pMemoryRequirements);/* 
@@ -1896,7 +1873,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param image - 
     * @param pMemoryRequirements - 
     */
-    private static native void vkGetImageMemoryRequirements0(
+    protected static  native void vkGetImageMemoryRequirements0(
 		long   device,
 		long   image,
 		ByteBuffer   pMemoryRequirements);/* 
@@ -1951,7 +1928,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pSparseMemoryRequirementCount - 
     * @param pSparseMemoryRequirements - 
     */
-    private static native void vkGetImageSparseMemoryRequirements0(
+    protected static  native void vkGetImageSparseMemoryRequirements0(
 		long   device,
 		long   image,
 		int[]  pSparseMemoryRequirementCount,
@@ -2028,7 +2005,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pPropertyCount - 
     * @param pProperties - 
     */
-    private static native void vkGetPhysicalDeviceSparseImageFormatProperties0(
+    protected static  native void vkGetPhysicalDeviceSparseImageFormatProperties0(
 		long   physicalDevice,
 		int   format,
 		int   type,
@@ -2098,7 +2075,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkQueueBindSparse0(
+    protected static  native int  vkQueueBindSparse0(
 		long   queue,
 		int  bindInfoCount,
 		ByteBuffer   pBindInfo,
@@ -2159,7 +2136,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateFence0(
+    protected static  native int  vkCreateFence0(
 		long   device,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -2208,7 +2185,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param fence - 
     * @param pAllocator - 
     */
-    private static native void vkDestroyFence0(
+    protected static  native void vkDestroyFence0(
 		long   device,
 		long   fence,
 		ByteBuffer   pAllocator);/* 
@@ -2262,7 +2239,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkResetFences0(
+    protected static  native int  vkResetFences0(
 		long   device,
 		int  fenceCount,
 		ByteBuffer   pFences);/* 
@@ -2308,7 +2285,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkGetFenceStatus0(
+    protected static  native int  vkGetFenceStatus0(
 		long   device,
 		long   fence);/* 
 	VkResult res = vkGetFenceStatus(
@@ -2370,7 +2347,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkWaitForFences0(
+    protected static  native int  vkWaitForFences0(
 		long   device,
 		int  fenceCount,
 		ByteBuffer   pFences,
@@ -2433,7 +2410,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateSemaphore0(
+    protected static  native int  vkCreateSemaphore0(
 		long   device,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -2482,7 +2459,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param semaphore - 
     * @param pAllocator - 
     */
-    private static native void vkDestroySemaphore0(
+    protected static  native void vkDestroySemaphore0(
 		long   device,
 		long   semaphore,
 		ByteBuffer   pAllocator);/* 
@@ -2541,7 +2518,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateEvent0(
+    protected static  native int  vkCreateEvent0(
 		long   device,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -2590,7 +2567,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param event - 
     * @param pAllocator - 
     */
-    private static native void vkDestroyEvent0(
+    protected static  native void vkDestroyEvent0(
 		long   device,
 		long   event,
 		ByteBuffer   pAllocator);/* 
@@ -2636,7 +2613,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkGetEventStatus0(
+    protected static  native int  vkGetEventStatus0(
 		long   device,
 		long   event);/* 
 	VkResult res = vkGetEventStatus(
@@ -2680,7 +2657,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkSetEvent0(
+    protected static  native int  vkSetEvent0(
 		long   device,
 		long   event);/* 
 	VkResult res = vkSetEvent(
@@ -2724,7 +2701,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkResetEvent0(
+    protected static  native int  vkResetEvent0(
 		long   device,
 		long   event);/* 
 	VkResult res = vkResetEvent(
@@ -2781,7 +2758,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateQueryPool0(
+    protected static  native int  vkCreateQueryPool0(
 		long   device,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -2830,7 +2807,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param queryPool - 
     * @param pAllocator - 
     */
-    private static native void vkDestroyQueryPool0(
+    protected static  native void vkDestroyQueryPool0(
 		long   device,
 		long   queryPool,
 		ByteBuffer   pAllocator);/* 
@@ -2906,7 +2883,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkGetQueryPoolResults0(
+    protected static  native int  vkGetQueryPoolResults0(
 		long   device,
 		long   queryPool,
 		int  firstQuery,
@@ -2975,7 +2952,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateBuffer0(
+    protected static  native int  vkCreateBuffer0(
 		long   device,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -3024,7 +3001,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param buffer - 
     * @param pAllocator - 
     */
-    private static native void vkDestroyBuffer0(
+    protected static  native void vkDestroyBuffer0(
 		long   device,
 		long   buffer,
 		ByteBuffer   pAllocator);/* 
@@ -3083,7 +3060,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateBufferView0(
+    protected static  native int  vkCreateBufferView0(
 		long   device,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -3132,7 +3109,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param bufferView - 
     * @param pAllocator - 
     */
-    private static native void vkDestroyBufferView0(
+    protected static  native void vkDestroyBufferView0(
 		long   device,
 		long   bufferView,
 		ByteBuffer   pAllocator);/* 
@@ -3191,7 +3168,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateImage0(
+    protected static  native int  vkCreateImage0(
 		long   device,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -3240,7 +3217,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param image - 
     * @param pAllocator - 
     */
-    private static native void vkDestroyImage0(
+    protected static  native void vkDestroyImage0(
 		long   device,
 		long   image,
 		ByteBuffer   pAllocator);/* 
@@ -3292,7 +3269,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pSubresource - 
     * @param pLayout - 
     */
-    private static native void vkGetImageSubresourceLayout0(
+    protected static  native void vkGetImageSubresourceLayout0(
 		long   device,
 		long   image,
 		ByteBuffer   pSubresource,
@@ -3353,7 +3330,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateImageView0(
+    protected static  native int  vkCreateImageView0(
 		long   device,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -3402,7 +3379,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param imageView - 
     * @param pAllocator - 
     */
-    private static native void vkDestroyImageView0(
+    protected static  native void vkDestroyImageView0(
 		long   device,
 		long   imageView,
 		ByteBuffer   pAllocator);/* 
@@ -3461,7 +3438,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateShaderModule0(
+    protected static  native int  vkCreateShaderModule0(
 		long   device,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -3510,7 +3487,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param shaderModule - 
     * @param pAllocator - 
     */
-    private static native void vkDestroyShaderModule0(
+    protected static  native void vkDestroyShaderModule0(
 		long   device,
 		long   shaderModule,
 		ByteBuffer   pAllocator);/* 
@@ -3569,7 +3546,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreatePipelineCache0(
+    protected static  native int  vkCreatePipelineCache0(
 		long   device,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -3618,7 +3595,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pipelineCache - 
     * @param pAllocator - 
     */
-    private static native void vkDestroyPipelineCache0(
+    protected static  native void vkDestroyPipelineCache0(
 		long   device,
 		long   pipelineCache,
 		ByteBuffer   pAllocator);/* 
@@ -3674,7 +3651,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkGetPipelineCacheData0(
+    protected static  native int  vkGetPipelineCacheData0(
 		long   device,
 		long   pipelineCache,
 		long[]  pDataSize,
@@ -3735,7 +3712,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkMergePipelineCaches0(
+    protected static  native int  vkMergePipelineCaches0(
 		long   device,
 		long   dstCache,
 		int  srcCacheCount,
@@ -3809,7 +3786,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateGraphicsPipelines0(
+    protected static  native int  vkCreateGraphicsPipelines0(
 		long   device,
 		long   pipelineCache,
 		int  createInfoCount,
@@ -3887,7 +3864,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateComputePipelines0(
+    protected static  native int  vkCreateComputePipelines0(
 		long   device,
 		long   pipelineCache,
 		int  createInfoCount,
@@ -3940,7 +3917,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pipeline - 
     * @param pAllocator - 
     */
-    private static native void vkDestroyPipeline0(
+    protected static  native void vkDestroyPipeline0(
 		long   device,
 		long   pipeline,
 		ByteBuffer   pAllocator);/* 
@@ -3999,7 +3976,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreatePipelineLayout0(
+    protected static  native int  vkCreatePipelineLayout0(
 		long   device,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -4048,7 +4025,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pipelineLayout - 
     * @param pAllocator - 
     */
-    private static native void vkDestroyPipelineLayout0(
+    protected static  native void vkDestroyPipelineLayout0(
 		long   device,
 		long   pipelineLayout,
 		ByteBuffer   pAllocator);/* 
@@ -4107,7 +4084,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateSampler0(
+    protected static  native int  vkCreateSampler0(
 		long   device,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -4156,7 +4133,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param sampler - 
     * @param pAllocator - 
     */
-    private static native void vkDestroySampler0(
+    protected static  native void vkDestroySampler0(
 		long   device,
 		long   sampler,
 		ByteBuffer   pAllocator);/* 
@@ -4215,7 +4192,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateDescriptorSetLayout0(
+    protected static  native int  vkCreateDescriptorSetLayout0(
 		long   device,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -4264,7 +4241,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param descriptorSetLayout - 
     * @param pAllocator - 
     */
-    private static native void vkDestroyDescriptorSetLayout0(
+    protected static  native void vkDestroyDescriptorSetLayout0(
 		long   device,
 		long   descriptorSetLayout,
 		ByteBuffer   pAllocator);/* 
@@ -4323,7 +4300,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateDescriptorPool0(
+    protected static  native int  vkCreateDescriptorPool0(
 		long   device,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -4372,7 +4349,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param descriptorPool - 
     * @param pAllocator - 
     */
-    private static native void vkDestroyDescriptorPool0(
+    protected static  native void vkDestroyDescriptorPool0(
 		long   device,
 		long   descriptorPool,
 		ByteBuffer   pAllocator);/* 
@@ -4423,7 +4400,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkResetDescriptorPool0(
+    protected static  native int  vkResetDescriptorPool0(
 		long   device,
 		long   descriptorPool,
 		int  flags);/* 
@@ -4474,7 +4451,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkAllocateDescriptorSets0(
+    protected static  native int  vkAllocateDescriptorSets0(
 		long   device,
 		ByteBuffer   pAllocateInfo,
 		long   pDescriptorSets);/* 
@@ -4533,7 +4510,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkFreeDescriptorSets0(
+    protected static  native int  vkFreeDescriptorSets0(
 		long   device,
 		long   descriptorPool,
 		int  descriptorSetCount,
@@ -4598,7 +4575,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param descriptorCopyCount - 
     * @param pDescriptorCopies - 
     */
-    private static native void vkUpdateDescriptorSets0(
+    protected static  native void vkUpdateDescriptorSets0(
 		long   device,
 		int  descriptorWriteCount,
 		ByteBuffer   pDescriptorWrites,
@@ -4661,7 +4638,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateFramebuffer0(
+    protected static  native int  vkCreateFramebuffer0(
 		long   device,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -4710,7 +4687,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param framebuffer - 
     * @param pAllocator - 
     */
-    private static native void vkDestroyFramebuffer0(
+    protected static  native void vkDestroyFramebuffer0(
 		long   device,
 		long   framebuffer,
 		ByteBuffer   pAllocator);/* 
@@ -4769,7 +4746,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateRenderPass0(
+    protected static  native int  vkCreateRenderPass0(
 		long   device,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -4818,7 +4795,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param renderPass - 
     * @param pAllocator - 
     */
-    private static native void vkDestroyRenderPass0(
+    protected static  native void vkDestroyRenderPass0(
 		long   device,
 		long   renderPass,
 		ByteBuffer   pAllocator);/* 
@@ -4865,7 +4842,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param renderPass - 
     * @param pGranularity - 
     */
-    private static native void vkGetRenderAreaGranularity0(
+    protected static  native void vkGetRenderAreaGranularity0(
 		long   device,
 		long   renderPass,
 		ByteBuffer   pGranularity);/* 
@@ -4924,7 +4901,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateCommandPool0(
+    protected static  native int  vkCreateCommandPool0(
 		long   device,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -4973,7 +4950,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param commandPool - 
     * @param pAllocator - 
     */
-    private static native void vkDestroyCommandPool0(
+    protected static  native void vkDestroyCommandPool0(
 		long   device,
 		long   commandPool,
 		ByteBuffer   pAllocator);/* 
@@ -5024,7 +5001,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkResetCommandPool0(
+    protected static  native int  vkResetCommandPool0(
 		long   device,
 		long   commandPool,
 		int  flags);/* 
@@ -5075,7 +5052,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkAllocateCommandBuffers0(
+    protected static  native int  vkAllocateCommandBuffers0(
 		long   device,
 		ByteBuffer   pAllocateInfo,
 		long   pCommandBuffers);/* 
@@ -5130,7 +5107,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param commandBufferCount - 
     * @param pCommandBuffers - 
     */
-    private static native void vkFreeCommandBuffers0(
+    protected static  native void vkFreeCommandBuffers0(
 		long   device,
 		long   commandPool,
 		int  commandBufferCount,
@@ -5178,7 +5155,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkBeginCommandBuffer0(
+    protected static  native int  vkBeginCommandBuffer0(
 		long   commandBuffer,
 		ByteBuffer   pBeginInfo);/* 
 	VkResult res = vkBeginCommandBuffer(
@@ -5217,7 +5194,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkEndCommandBuffer0(
+    protected static  native int  vkEndCommandBuffer0(
 		long   commandBuffer);/* 
 	VkResult res = vkEndCommandBuffer(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer));
@@ -5259,7 +5236,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkResetCommandBuffer0(
+    protected static  native int  vkResetCommandBuffer0(
 		long   commandBuffer,
 		int  flags);/* 
 	VkResult res = vkResetCommandBuffer(
@@ -5304,7 +5281,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pipelineBindPoint - 
     * @param pipeline - 
     */
-    private static native void vkCmdBindPipeline0(
+    protected static  native void vkCmdBindPipeline0(
 		long   commandBuffer,
 		int   pipelineBindPoint,
 		long   pipeline);/* 
@@ -5359,7 +5336,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param viewportCount - 
     * @param pViewports - 
     */
-    private static native void vkCmdSetViewport0(
+    protected static  native void vkCmdSetViewport0(
 		long   commandBuffer,
 		int  firstViewport,
 		int  viewportCount,
@@ -5416,7 +5393,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param scissorCount - 
     * @param pScissors - 
     */
-    private static native void vkCmdSetScissor0(
+    protected static  native void vkCmdSetScissor0(
 		long   commandBuffer,
 		int  firstScissor,
 		int  scissorCount,
@@ -5460,7 +5437,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param commandBuffer - 
     * @param lineWidth - 
     */
-    private static native void vkCmdSetLineWidth0(
+    protected static  native void vkCmdSetLineWidth0(
 		long   commandBuffer,
 		float  lineWidth);/* 
 	vkCmdSetLineWidth(
@@ -5510,7 +5487,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param depthBiasClamp - 
     * @param depthBiasSlopeFactor - 
     */
-    private static native void vkCmdSetDepthBias0(
+    protected static  native void vkCmdSetDepthBias0(
 		long   commandBuffer,
 		float  depthBiasConstantFactor,
 		float  depthBiasClamp,
@@ -5554,7 +5531,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param commandBuffer - 
     * @param blendConstants - 
     */
-    private static native void vkCmdSetBlendConstants0(
+    protected static  native void vkCmdSetBlendConstants0(
 		long   commandBuffer,
 		float[]  blendConstants);/* 
 	float  blendConstantsParam[4] = {0,0,0,0};
@@ -5601,7 +5578,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param minDepthBounds - 
     * @param maxDepthBounds - 
     */
-    private static native void vkCmdSetDepthBounds0(
+    protected static  native void vkCmdSetDepthBounds0(
 		long   commandBuffer,
 		float  minDepthBounds,
 		float  maxDepthBounds);/* 
@@ -5648,7 +5625,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param faceMask - 
     * @param compareMask - 
     */
-    private static native void vkCmdSetStencilCompareMask0(
+    protected static  native void vkCmdSetStencilCompareMask0(
 		long   commandBuffer,
 		int  faceMask,
 		int  compareMask);/* 
@@ -5695,7 +5672,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param faceMask - 
     * @param writeMask - 
     */
-    private static native void vkCmdSetStencilWriteMask0(
+    protected static  native void vkCmdSetStencilWriteMask0(
 		long   commandBuffer,
 		int  faceMask,
 		int  writeMask);/* 
@@ -5742,7 +5719,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param faceMask - 
     * @param reference - 
     */
-    private static native void vkCmdSetStencilReference0(
+    protected static  native void vkCmdSetStencilReference0(
 		long   commandBuffer,
 		int  faceMask,
 		int  reference);/* 
@@ -5817,7 +5794,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param dynamicOffsetCount - 
     * @param pDynamicOffsets - 
     */
-    private static native void vkCmdBindDescriptorSets0(
+    protected static  native void vkCmdBindDescriptorSets0(
 		long   commandBuffer,
 		int   pipelineBindPoint,
 		long   layout,
@@ -5879,7 +5856,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param offset - 
     * @param indexType - 
     */
-    private static native void vkCmdBindIndexBuffer0(
+    protected static  native void vkCmdBindIndexBuffer0(
 		long   commandBuffer,
 		long   buffer,
 		long  offset,
@@ -5941,7 +5918,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pBuffers - 
     * @param pOffsets - 
     */
-    private static native void vkCmdBindVertexBuffers0(
+    protected static  native void vkCmdBindVertexBuffers0(
 		long   commandBuffer,
 		int  firstBinding,
 		int  bindingCount,
@@ -6002,7 +5979,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param firstVertex - 
     * @param firstInstance - 
     */
-    private static native void vkCmdDraw0(
+    protected static  native void vkCmdDraw0(
 		long   commandBuffer,
 		int  vertexCount,
 		int  instanceCount,
@@ -6068,7 +6045,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param vertexOffset - 
     * @param firstInstance - 
     */
-    private static native void vkCmdDrawIndexed0(
+    protected static  native void vkCmdDrawIndexed0(
 		long   commandBuffer,
 		int  indexCount,
 		int  instanceCount,
@@ -6131,7 +6108,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param drawCount - 
     * @param stride - 
     */
-    private static native void vkCmdDrawIndirect0(
+    protected static  native void vkCmdDrawIndirect0(
 		long   commandBuffer,
 		long   buffer,
 		long  offset,
@@ -6192,7 +6169,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param drawCount - 
     * @param stride - 
     */
-    private static native void vkCmdDrawIndexedIndirect0(
+    protected static  native void vkCmdDrawIndexedIndirect0(
 		long   commandBuffer,
 		long   buffer,
 		long  offset,
@@ -6248,7 +6225,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param y - 
     * @param z - 
     */
-    private static native void vkCmdDispatch0(
+    protected static  native void vkCmdDispatch0(
 		long   commandBuffer,
 		int  x,
 		int  y,
@@ -6297,7 +6274,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param buffer - 
     * @param offset - 
     */
-    private static native void vkCmdDispatchIndirect0(
+    protected static  native void vkCmdDispatchIndirect0(
 		long   commandBuffer,
 		long   buffer,
 		long  offset);/* 
@@ -6357,7 +6334,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param regionCount - 
     * @param pRegions - 
     */
-    private static native void vkCmdCopyBuffer0(
+    protected static  native void vkCmdCopyBuffer0(
 		long   commandBuffer,
 		long   srcBuffer,
 		long   dstBuffer,
@@ -6431,7 +6408,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param regionCount - 
     * @param pRegions - 
     */
-    private static native void vkCmdCopyImage0(
+    protected static  native void vkCmdCopyImage0(
 		long   commandBuffer,
 		long   srcImage,
 		int   srcImageLayout,
@@ -6515,7 +6492,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pRegions - 
     * @param filter - 
     */
-    private static native void vkCmdBlitImage0(
+    protected static  native void vkCmdBlitImage0(
 		long   commandBuffer,
 		long   srcImage,
 		int   srcImageLayout,
@@ -6590,7 +6567,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param regionCount - 
     * @param pRegions - 
     */
-    private static native void vkCmdCopyBufferToImage0(
+    protected static  native void vkCmdCopyBufferToImage0(
 		long   commandBuffer,
 		long   srcBuffer,
 		long   dstImage,
@@ -6661,7 +6638,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param regionCount - 
     * @param pRegions - 
     */
-    private static native void vkCmdCopyImageToBuffer0(
+    protected static  native void vkCmdCopyImageToBuffer0(
 		long   commandBuffer,
 		long   srcImage,
 		int   srcImageLayout,
@@ -6724,7 +6701,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param dataSize - 
     * @param pData - 
     */
-    private static native void vkCmdUpdateBuffer0(
+    protected static  native void vkCmdUpdateBuffer0(
 		long   commandBuffer,
 		long   dstBuffer,
 		long  dstOffset,
@@ -6785,7 +6762,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param size - 
     * @param data - 
     */
-    private static native void vkCmdFillBuffer0(
+    protected static  native void vkCmdFillBuffer0(
 		long   commandBuffer,
 		long   dstBuffer,
 		long  dstOffset,
@@ -6854,7 +6831,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param rangeCount - 
     * @param pRanges - 
     */
-    private static native void vkCmdClearColorImage0(
+    protected static  native void vkCmdClearColorImage0(
 		long   commandBuffer,
 		long   image,
 		int   imageLayout,
@@ -6925,7 +6902,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param rangeCount - 
     * @param pRanges - 
     */
-    private static native void vkCmdClearDepthStencilImage0(
+    protected static  native void vkCmdClearDepthStencilImage0(
 		long   commandBuffer,
 		long   image,
 		int   imageLayout,
@@ -6995,7 +6972,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param rectCount - 
     * @param pRects - 
     */
-    private static native void vkCmdClearAttachments0(
+    protected static  native void vkCmdClearAttachments0(
 		long   commandBuffer,
 		int  attachmentCount,
 		ByteBuffer   pAttachments,
@@ -7069,7 +7046,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param regionCount - 
     * @param pRegions - 
     */
-    private static native void vkCmdResolveImage0(
+    protected static  native void vkCmdResolveImage0(
 		long   commandBuffer,
 		long   srcImage,
 		int   srcImageLayout,
@@ -7124,7 +7101,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param event - 
     * @param stageMask - 
     */
-    private static native void vkCmdSetEvent0(
+    protected static  native void vkCmdSetEvent0(
 		long   commandBuffer,
 		long   event,
 		int  stageMask);/* 
@@ -7171,7 +7148,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param event - 
     * @param stageMask - 
     */
-    private static native void vkCmdResetEvent0(
+    protected static  native void vkCmdResetEvent0(
 		long   commandBuffer,
 		long   event,
 		int  stageMask);/* 
@@ -7271,7 +7248,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param imageMemoryBarrierCount - 
     * @param pImageMemoryBarriers - 
     */
-    private static native void vkCmdWaitEvents0(
+    protected static  native void vkCmdWaitEvents0(
 		long   commandBuffer,
 		int  eventCount,
 		ByteBuffer   pEvents,
@@ -7378,7 +7355,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param imageMemoryBarrierCount - 
     * @param pImageMemoryBarriers - 
     */
-    private static native void vkCmdPipelineBarrier0(
+    protected static  native void vkCmdPipelineBarrier0(
 		long   commandBuffer,
 		int  srcStageMask,
 		int  dstStageMask,
@@ -7444,7 +7421,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param query - 
     * @param flags - 
     */
-    private static native void vkCmdBeginQuery0(
+    protected static  native void vkCmdBeginQuery0(
 		long   commandBuffer,
 		long   queryPool,
 		int  query,
@@ -7493,7 +7470,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param queryPool - 
     * @param query - 
     */
-    private static native void vkCmdEndQuery0(
+    protected static  native void vkCmdEndQuery0(
 		long   commandBuffer,
 		long   queryPool,
 		int  query);/* 
@@ -7545,7 +7522,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param firstQuery - 
     * @param queryCount - 
     */
-    private static native void vkCmdResetQueryPool0(
+    protected static  native void vkCmdResetQueryPool0(
 		long   commandBuffer,
 		long   queryPool,
 		int  firstQuery,
@@ -7599,7 +7576,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param queryPool - 
     * @param query - 
     */
-    private static native void vkCmdWriteTimestamp0(
+    protected static  native void vkCmdWriteTimestamp0(
 		long   commandBuffer,
 		int   pipelineStage,
 		long   queryPool,
@@ -7673,7 +7650,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param stride - 
     * @param flags - 
     */
-    private static native void vkCmdCopyQueryPoolResults0(
+    protected static  native void vkCmdCopyQueryPoolResults0(
 		long   commandBuffer,
 		long   queryPool,
 		int  firstQuery,
@@ -7745,7 +7722,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param size - 
     * @param pValues - 
     */
-    private static native void vkCmdPushConstants0(
+    protected static  native void vkCmdPushConstants0(
 		long   commandBuffer,
 		long   layout,
 		int  stageFlags,
@@ -7798,7 +7775,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pRenderPassBegin - 
     * @param contents - 
     */
-    private static native void vkCmdBeginRenderPass0(
+    protected static  native void vkCmdBeginRenderPass0(
 		long   commandBuffer,
 		ByteBuffer   pRenderPassBegin,
 		int   contents);/* 
@@ -7840,7 +7817,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param commandBuffer - 
     * @param contents - 
     */
-    private static native void vkCmdNextSubpass0(
+    protected static  native void vkCmdNextSubpass0(
 		long   commandBuffer,
 		int   contents);/* 
 	vkCmdNextSubpass(
@@ -7875,7 +7852,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @param commandBuffer - 
     */
-    private static native void vkCmdEndRenderPass0(
+    protected static  native void vkCmdEndRenderPass0(
 		long   commandBuffer);/* 
 	vkCmdEndRenderPass(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer));
@@ -7921,7 +7898,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param commandBufferCount - 
     * @param pCommandBuffers - 
     */
-    private static native void vkCmdExecuteCommands0(
+    protected static  native void vkCmdExecuteCommands0(
 		long   commandBuffer,
 		int  commandBufferCount,
 		ByteBuffer   pCommandBuffers);/* 
@@ -7968,7 +7945,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param surface - 
     * @param pAllocator - 
     */
-    private static native void vkDestroySurfaceKHR0(
+    protected static  native void vkDestroySurfaceKHR0(
 		long   instance,
 		long   surface,
 		ByteBuffer   pAllocator);/* 
@@ -8024,7 +8001,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkGetPhysicalDeviceSurfaceSupportKHR0(
+    protected static  native int  vkGetPhysicalDeviceSurfaceSupportKHR0(
 		long   physicalDevice,
 		int  queueFamilyIndex,
 		long   surface,
@@ -8077,7 +8054,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkGetPhysicalDeviceSurfaceCapabilitiesKHR0(
+    protected static  native int  vkGetPhysicalDeviceSurfaceCapabilitiesKHR0(
 		long   physicalDevice,
 		long   surface,
 		ByteBuffer   pSurfaceCapabilities);/* 
@@ -8136,7 +8113,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkGetPhysicalDeviceSurfaceFormatsKHR0(
+    protected static  native int  vkGetPhysicalDeviceSurfaceFormatsKHR0(
 		long   physicalDevice,
 		long   surface,
 		int[]  pSurfaceFormatCount,
@@ -8200,7 +8177,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkGetPhysicalDeviceSurfacePresentModesKHR0(
+    protected static  native int  vkGetPhysicalDeviceSurfacePresentModesKHR0(
 		long   physicalDevice,
 		long   surface,
 		int[]  pPresentModeCount,
@@ -8261,7 +8238,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateSwapchainKHR0(
+    protected static  native int  vkCreateSwapchainKHR0(
 		long   device,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -8310,7 +8287,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param swapchain - 
     * @param pAllocator - 
     */
-    private static native void vkDestroySwapchainKHR0(
+    protected static  native void vkDestroySwapchainKHR0(
 		long   device,
 		long   swapchain,
 		ByteBuffer   pAllocator);/* 
@@ -8369,7 +8346,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkGetSwapchainImagesKHR0(
+    protected static  native int  vkGetSwapchainImagesKHR0(
 		long   device,
 		long   swapchain,
 		int[]  pSwapchainImageCount,
@@ -8437,7 +8414,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkAcquireNextImageKHR0(
+    protected static  native int  vkAcquireNextImageKHR0(
 		long   device,
 		long   swapchain,
 		long  timeout,
@@ -8489,7 +8466,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkQueuePresentKHR0(
+    protected static  native int  vkQueuePresentKHR0(
 		long   queue,
 		ByteBuffer   pPresentInfo);/* 
 	VkResult res = vkQueuePresentKHR(
@@ -8541,7 +8518,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkGetPhysicalDeviceDisplayPropertiesKHR0(
+    protected static  native int  vkGetPhysicalDeviceDisplayPropertiesKHR0(
 		long   physicalDevice,
 		int[]  pPropertyCount,
 		ByteBuffer   pProperties);/* 
@@ -8595,7 +8572,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkGetPhysicalDeviceDisplayPlanePropertiesKHR0(
+    protected static  native int  vkGetPhysicalDeviceDisplayPlanePropertiesKHR0(
 		long   physicalDevice,
 		int[]  pPropertyCount,
 		ByteBuffer   pProperties);/* 
@@ -8654,7 +8631,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkGetDisplayPlaneSupportedDisplaysKHR0(
+    protected static  native int  vkGetDisplayPlaneSupportedDisplaysKHR0(
 		long   physicalDevice,
 		int  planeIndex,
 		int[]  pDisplayCount,
@@ -8715,7 +8692,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkGetDisplayModePropertiesKHR0(
+    protected static  native int  vkGetDisplayModePropertiesKHR0(
 		long   physicalDevice,
 		long   display,
 		int[]  pPropertyCount,
@@ -8781,7 +8758,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateDisplayModeKHR0(
+    protected static  native int  vkCreateDisplayModeKHR0(
 		long   physicalDevice,
 		long   display,
 		ByteBuffer   pCreateInfo,
@@ -8841,7 +8818,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkGetDisplayPlaneCapabilitiesKHR0(
+    protected static  native int  vkGetDisplayPlaneCapabilitiesKHR0(
 		long   physicalDevice,
 		long   mode,
 		int  planeIndex,
@@ -8902,7 +8879,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateDisplayPlaneSurfaceKHR0(
+    protected static  native int  vkCreateDisplayPlaneSurfaceKHR0(
 		long   instance,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -8971,7 +8948,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateSharedSwapchainsKHR0(
+    protected static  native int  vkCreateSharedSwapchainsKHR0(
 		long   device,
 		int  swapchainCount,
 		ByteBuffer   pCreateInfos,
@@ -9036,7 +9013,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateXlibSurfaceKHR0(
+    protected static  native int  vkCreateXlibSurfaceKHR0(
 		long   instance,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -9098,7 +9075,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return boolean as boolean  
     */
-    private static native boolean  vkGetPhysicalDeviceXlibPresentationSupportKHR0(
+    protected static  native boolean  vkGetPhysicalDeviceXlibPresentationSupportKHR0(
 		long   physicalDevice,
 		int  queueFamilyIndex,
 		long   dpy,
@@ -9163,7 +9140,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateXcbSurfaceKHR0(
+    protected static  native int  vkCreateXcbSurfaceKHR0(
 		long   instance,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -9225,7 +9202,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return boolean as boolean  
     */
-    private static native boolean  vkGetPhysicalDeviceXcbPresentationSupportKHR0(
+    protected static  native boolean  vkGetPhysicalDeviceXcbPresentationSupportKHR0(
 		long   physicalDevice,
 		int  queueFamilyIndex,
 		long   connection,
@@ -9290,7 +9267,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateWaylandSurfaceKHR0(
+    protected static  native int  vkCreateWaylandSurfaceKHR0(
 		long   instance,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -9347,7 +9324,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return boolean as boolean  
     */
-    private static native boolean  vkGetPhysicalDeviceWaylandPresentationSupportKHR0(
+    protected static  native boolean  vkGetPhysicalDeviceWaylandPresentationSupportKHR0(
 		long   physicalDevice,
 		int  queueFamilyIndex,
 		long   display);/* 
@@ -9410,7 +9387,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateMirSurfaceKHR0(
+    protected static  native int  vkCreateMirSurfaceKHR0(
 		long   instance,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -9467,7 +9444,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return boolean as boolean  
     */
-    private static native boolean  vkGetPhysicalDeviceMirPresentationSupportKHR0(
+    protected static  native boolean  vkGetPhysicalDeviceMirPresentationSupportKHR0(
 		long   physicalDevice,
 		int  queueFamilyIndex,
 		long   connection);/* 
@@ -9530,7 +9507,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateAndroidSurfaceKHR0(
+    protected static  native int  vkCreateAndroidSurfaceKHR0(
 		long   instance,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -9595,7 +9572,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateWin32SurfaceKHR0(
+    protected static  native int  vkCreateWin32SurfaceKHR0(
 		long   instance,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -9648,7 +9625,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return boolean as boolean  
     */
-    private static native boolean  vkGetPhysicalDeviceWin32PresentationSupportKHR0(
+    protected static  native boolean  vkGetPhysicalDeviceWin32PresentationSupportKHR0(
 		long   physicalDevice,
 		int  queueFamilyIndex);/* 
      // used in Windows OS only                                                      
@@ -9710,7 +9687,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkCreateDebugReportCallbackEXT0(
+    protected static  native int  vkCreateDebugReportCallbackEXT0(
 		long   instance,
 		ByteBuffer   pCreateInfo,
 		ByteBuffer   pAllocator,
@@ -9759,7 +9736,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param callback - 
     * @param pAllocator - 
     */
-    private static native void vkDestroyDebugReportCallbackEXT0(
+    protected static  native void vkDestroyDebugReportCallbackEXT0(
 		long   instance,
 		long   callback,
 		ByteBuffer   pAllocator);/* 
@@ -9831,7 +9808,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param pLayerPrefix - 
     * @param pMessage - 
     */
-    private static native void vkDebugReportMessageEXT0(
+    protected static  native void vkDebugReportMessageEXT0(
 		long   instance,
 		int  flags,
 		int   objectType,
@@ -9887,7 +9864,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkDebugMarkerSetObjectTagEXT0(
+    protected static  native int  vkDebugMarkerSetObjectTagEXT0(
 		long   device,
 		ByteBuffer   pTagInfo);/* 
 	VkResult res = vkDebugMarkerSetObjectTagEXT(
@@ -9931,7 +9908,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @return VkResult as int  
     */
-    private static native int  vkDebugMarkerSetObjectNameEXT0(
+    protected static  native int  vkDebugMarkerSetObjectNameEXT0(
 		long   device,
 		ByteBuffer   pNameInfo);/* 
 	VkResult res = vkDebugMarkerSetObjectNameEXT(
@@ -9971,7 +9948,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param commandBuffer - 
     * @param pMarkerInfo - 
     */
-    private static native void vkCmdDebugMarkerBeginEXT0(
+    protected static  native void vkCmdDebugMarkerBeginEXT0(
 		long   commandBuffer,
 		ByteBuffer   pMarkerInfo);/* 
 	vkCmdDebugMarkerBeginEXT(
@@ -10006,7 +9983,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * 
     * @param commandBuffer - 
     */
-    private static native void vkCmdDebugMarkerEndEXT0(
+    protected static  native void vkCmdDebugMarkerEndEXT0(
 		long   commandBuffer);/* 
 	vkCmdDebugMarkerEndEXT(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer));
@@ -10044,7 +10021,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     * @param commandBuffer - 
     * @param pMarkerInfo - 
     */
-    private static native void vkCmdDebugMarkerInsertEXT0(
+    protected static  native void vkCmdDebugMarkerInsertEXT0(
 		long   commandBuffer,
 		ByteBuffer   pMarkerInfo);/* 
 	vkCmdDebugMarkerInsertEXT(

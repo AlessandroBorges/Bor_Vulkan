@@ -89,7 +89,7 @@ public class Utils {
      * @return Direct ByteBuffer wrapping "address" with capacity "size".
      */
     public static final native ByteBuffer wrapPointer(long address, int size);/*
-     void* buffer = (void *)(address);
+     void* buffer =  reinterpret_cast<void*>(address);
      jobject directBuffer = env->NewDirectByteBuffer(buffer, size);
      return directBuffer;
     */

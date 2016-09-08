@@ -1,5 +1,7 @@
 package bor.vulkan;
 
+import com.badlogic.gdx.jnigen.JniGenSharedLibraryLoader;
+
 import bor.enumerable.IntEnum;
 
 /**
@@ -10,8 +12,20 @@ import bor.enumerable.IntEnum;
  */
 public class Vulkan {
 
-    public static final int     VK_API_VERSION                          = VK_MAKE_VERSION(1, 0, 0);
-    public static final int     VK_HEADER_VERSION = 21;
+    /**
+     * int value with packed value of Vulkan API Versions.
+     * @see #VK_API_VERSION_STRING
+     * @see #VK_MAKE_VERSION(int, int, int)
+     * @see #VK_VERSION_MAJOR(int)
+     * @see #VK_VERSION_MINOR(int)
+     * @see #VK_VERSION_PATCH(int)
+     */
+    public static final int     VK_API_VERSION                          = VK_MAKE_VERSION(1, 0, 24);
+    /**
+     * String with value of supported Vulkan SDK 
+     */
+    public static final String  VK_API_VERSION_STRING                   = getAPIVersionString(VK_API_VERSION);
+    public static final int     VK_HEADER_VERSION = 24;
     
     public static final float   VK_LOD_CLAMP_NONE                       = 1000.0f;
     public static final int     VK_REMAINING_MIP_LEVELS                 = Integer.MAX_VALUE;         // (~0);
@@ -90,7 +104,14 @@ public class Vulkan {
     public static final int VK_NV_DEDICATED_ALLOCATION_SPEC_VERSION = 1;
     public static final String VK_NV_DEDICATED_ALLOCATION_EXTENSION_NAME = "VK_NV_dedicated_allocation";    
     
-    public static VkHandle  VK_NULL_HANDLE = new VkHandle(0);    
+    public static VkHandle  VK_NULL_HANDLE = new VkHandle(0); 
+    
+    /**
+     * Loading native libraries
+     */
+    static{
+        new JniGenSharedLibraryLoader("libs/BorVulkan-natives.jar").load("BorVulkan");
+    }
     
     /**
      * Calculates a packed integer value for major-minor-patch Vulkan version.

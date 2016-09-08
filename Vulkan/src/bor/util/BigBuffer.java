@@ -252,7 +252,8 @@ public class BigBuffer<T> {
             structBuffer.order(nativeBufferArray.order());
             
             if (array[i] == null) {
-                array[i] = VkStruct.createInstance(structID, structBuffer);
+                VkStruct s = VkStruct.createInstance(structID, structBuffer); 
+                array[i] = s;
             } else {
                 VkStruct struct = (VkStruct) array[i];
                 ByteBuffer src = struct.getPointer();
