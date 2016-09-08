@@ -66,8 +66,8 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkAndroidSurfaceCreateInfoKH
 
 	 #ifdef VK_USE_PLATFORM_ANDROID_KHR 
 		  VkAndroidSurfaceCreateInfoKHR* vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 #else 
 	   return 0; 
 	 #endif 

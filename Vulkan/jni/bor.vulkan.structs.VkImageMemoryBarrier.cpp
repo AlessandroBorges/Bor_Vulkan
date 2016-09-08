@@ -57,8 +57,8 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkImageMemoryBarrier_getPNex
 //@line:503
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 
 }
 
@@ -319,7 +319,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkImageMemoryBarrier_getSubr
 //@line:660
 
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->subresourceRange);
 	 
 }

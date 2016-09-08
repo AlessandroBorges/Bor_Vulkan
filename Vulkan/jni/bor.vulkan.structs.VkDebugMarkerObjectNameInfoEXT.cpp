@@ -57,8 +57,8 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkDebugMarkerObjectNameInfoE
 //@line:326
 
 		  VkDebugMarkerObjectNameInfoEXT* vkObj = (VkDebugMarkerObjectNameInfoEXT*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 
 }
 
@@ -158,7 +158,7 @@ static inline jstring wrapped_Java_bor_vulkan_structs_VkDebugMarkerObjectNameInf
 //@line:384
 
 		  VkDebugMarkerObjectNameInfoEXT* vkObj = (VkDebugMarkerObjectNameInfoEXT*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->pObjectName));
+		  return (jstring)(env->NewStringUTF(cloneStr(vkObj->pObjectName)));
 	 
 }
 

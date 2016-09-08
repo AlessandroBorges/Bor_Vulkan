@@ -24,7 +24,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseImageMemoryRequireme
 //@line:305
 
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->formatProperties);
 	 
 }

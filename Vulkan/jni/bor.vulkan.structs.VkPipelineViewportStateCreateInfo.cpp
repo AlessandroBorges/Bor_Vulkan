@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:376
+//@line:384
 
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineViewportStateCreateInfo_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:386
+//@line:394
 
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineViewportStateCreateInfo
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:396
+//@line:404
 
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,11 +54,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineViewportStateCreateInfo
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineViewportStateCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:407
+//@line:415
 
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 
 }
 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineViewportStateCreateInfo
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:417
+//@line:425
 
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineViewportStateCreateInfo
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineViewportStateCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:427
+//@line:435
 
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -107,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineViewportStateCreateInfo
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:436
+//@line:444
 
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -119,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineViewportStateCreateInfo
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineViewportStateCreateInfo_getViewportCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:446
+//@line:454
 
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->viewportCount);
@@ -140,7 +140,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineViewportStateCreateInfo
 	char* _pViewports = (char*)(obj__pViewports?env->GetDirectBufferAddress(obj__pViewports) : NULL);
 
 
-//@line:455
+//@line:463
 
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -153,11 +153,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineViewportStateCreateInfo
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineViewportStateCreateInfo_getPViewports0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:466
+//@line:474
 
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pViewports );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pViewports );
 	 
 }
 
@@ -174,7 +174,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineViewportStateCreateInfo
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:476
+//@line:484
 
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -186,7 +186,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineViewportStateCreateInfo
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineViewportStateCreateInfo_getScissorCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:486
+//@line:494
 
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->scissorCount);
@@ -207,7 +207,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineViewportStateCreateInfo
 	char* _pScissors = (char*)(obj__pScissors?env->GetDirectBufferAddress(obj__pScissors) : NULL);
 
 
-//@line:495
+//@line:503
 
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -220,11 +220,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineViewportStateCreateInfo
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineViewportStateCreateInfo_getPScissors0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:506
+//@line:514
 
 		  VkPipelineViewportStateCreateInfo* vkObj = (VkPipelineViewportStateCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pScissors );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pScissors );
 	 
 }
 

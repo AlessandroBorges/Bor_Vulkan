@@ -57,8 +57,8 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineDepthStencilStateC
 //@line:563
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 
 }
 
@@ -285,7 +285,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineDepthStencilStateC
 //@line:699
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->front);
 	 
 }
@@ -320,7 +320,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineDepthStencilStateC
 //@line:720
 
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->back);
 	 
 }

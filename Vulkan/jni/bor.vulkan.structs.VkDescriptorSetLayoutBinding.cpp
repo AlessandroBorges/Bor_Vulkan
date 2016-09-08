@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:295
+//@line:300
 
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkDescriptorSetLayoutBinding_getBinding0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:305
+//@line:310
 
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
 		  return (jint) (vkObj->binding);
@@ -39,7 +39,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDescriptorSetLayoutBinding_setD
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:314
+//@line:319
 
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
 		 // code for simple past value 
@@ -51,7 +51,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDescriptorSetLayoutBinding_setD
 static inline jint wrapped_Java_bor_vulkan_structs_VkDescriptorSetLayoutBinding_getDescriptorType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:324
+//@line:329
 
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
 		  // generic get for Vk enums
@@ -72,7 +72,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDescriptorSetLayoutBinding_setD
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:334
+//@line:339
 
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
 		 // code for simple past value 
@@ -84,7 +84,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDescriptorSetLayoutBinding_setD
 static inline jint wrapped_Java_bor_vulkan_structs_VkDescriptorSetLayoutBinding_getDescriptorCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:344
+//@line:349
 
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
 		  return (jint) (vkObj->descriptorCount);
@@ -104,7 +104,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDescriptorSetLayoutBinding_setS
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:353
+//@line:358
 
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
 		 // code for simple past value 
@@ -116,7 +116,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDescriptorSetLayoutBinding_setS
 static inline jint wrapped_Java_bor_vulkan_structs_VkDescriptorSetLayoutBinding_getStageFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:363
+//@line:368
 
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
 		  return (jint) (vkObj->stageFlags);
@@ -137,7 +137,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDescriptorSetLayoutBinding_setP
 	char* _pImmutableSamplers = (char*)(obj__pImmutableSamplers?env->GetDirectBufferAddress(obj__pImmutableSamplers) : NULL);
 
 
-//@line:372
+//@line:377
 
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -150,11 +150,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkDescriptorSetLayoutBinding_setP
 static inline jlong wrapped_Java_bor_vulkan_structs_VkDescriptorSetLayoutBinding_getPImmutableSamplers0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:383
+//@line:388
 
 		  VkDescriptorSetLayoutBinding* vkObj = (VkDescriptorSetLayoutBinding*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pImmutableSamplers );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pImmutableSamplers );
 	 
 }
 

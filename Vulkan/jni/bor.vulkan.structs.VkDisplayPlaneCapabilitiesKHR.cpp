@@ -56,7 +56,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKH
 //@line:518
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->minSrcPosition);
 	 
 }
@@ -91,7 +91,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKH
 //@line:539
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->maxSrcPosition);
 	 
 }
@@ -126,7 +126,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKH
 //@line:560
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->minSrcExtent);
 	 
 }
@@ -161,7 +161,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKH
 //@line:581
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->maxSrcExtent);
 	 
 }
@@ -196,7 +196,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKH
 //@line:602
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->minDstPosition);
 	 
 }
@@ -231,7 +231,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKH
 //@line:623
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->maxDstPosition);
 	 
 }
@@ -266,7 +266,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKH
 //@line:644
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->minDstExtent);
 	 
 }
@@ -301,7 +301,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPlaneCapabilitiesKH
 //@line:665
 
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->maxDstExtent);
 	 
 }

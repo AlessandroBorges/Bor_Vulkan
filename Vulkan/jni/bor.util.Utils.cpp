@@ -62,7 +62,7 @@ JNIEXPORT jobject JNICALL Java_bor_util_Utils_wrapPointer(JNIEnv* env, jclass cl
 
 //@line:91
 
-     void* buffer = (void *)(address);
+     void* buffer =  reinterpret_cast<void*>(address);
      jobject directBuffer = env->NewDirectByteBuffer(buffer, size);
      return directBuffer;
     

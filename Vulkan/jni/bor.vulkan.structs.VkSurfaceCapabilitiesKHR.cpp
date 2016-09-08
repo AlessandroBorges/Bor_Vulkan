@@ -88,7 +88,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_get
 //@line:519
 
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->currentExtent);
 	 
 }
@@ -123,7 +123,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_get
 //@line:540
 
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->minImageExtent);
 	 
 }
@@ -158,7 +158,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkSurfaceCapabilitiesKHR_get
 //@line:561
 
 		  VkSurfaceCapabilitiesKHR* vkObj = (VkSurfaceCapabilitiesKHR*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->maxImageExtent);
 	 
 }

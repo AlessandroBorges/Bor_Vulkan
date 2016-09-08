@@ -57,8 +57,8 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkDedicatedAllocationMemoryA
 //@line:316
 
 		  VkDedicatedAllocationMemoryAllocateInfoNV* vkObj = (VkDedicatedAllocationMemoryAllocateInfoNV*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 
 }
 

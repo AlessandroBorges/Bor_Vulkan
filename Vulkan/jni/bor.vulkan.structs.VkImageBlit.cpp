@@ -24,7 +24,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkImageBlit_getSrcSubresourc
 //@line:346
 
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->srcSubresource);
 	 
 }
@@ -93,7 +93,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkImageBlit_getDstSubresourc
 //@line:390
 
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->dstSubresource);
 	 
 }
@@ -124,7 +124,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageBlit_setDstOffsets0(JNIEnv
 
 }
 
-JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageBlit_getDstOffsets0(JNIEnv* env, jclass clazz, jobject obj_ptr, jlongArray obj_offs) {
+JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkImageBlit_getDstOffsets0(JNIEnv* env, jclass clazz, jobject obj_ptr, jlongArray obj_offs) {
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 	long long* offs = (long long*)(obj_offs ? env->GetLongArrayElements(obj_offs, 0) : NULL);
 
@@ -134,7 +134,6 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkImageBlit_getDstOffsets0(JNIEnv
              VkImageBlit* vkObj = (VkImageBlit*)(ptr);               
              offs[0] = reinterpret_cast<jlong>(&vkObj->dstOffsets[0]);
              offs[1] = reinterpret_cast<jlong>(&vkObj->dstOffsets[1]);
-             
          
 	if(obj_offs != NULL){
 		 env->ReleaseLongArrayElements(obj_offs, (jlong*)offs, 0);

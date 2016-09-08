@@ -57,8 +57,8 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkImageViewCreateInfo_getPNe
 //@line:451
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 
 }
 
@@ -223,7 +223,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkImageViewCreateInfo_getCom
 //@line:551
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->components);
 	 
 }
@@ -258,7 +258,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkImageViewCreateInfo_getSub
 //@line:572
 
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->subresourceRange);
 	 
 }

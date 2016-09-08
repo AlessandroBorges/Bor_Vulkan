@@ -56,7 +56,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseImageFormatPropertie
 //@line:262
 
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageGranularity);
 	 
 }

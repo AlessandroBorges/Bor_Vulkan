@@ -24,7 +24,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseImageMemoryBind_getS
 //@line:367
 
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->subresource);
 	 
 }
@@ -59,7 +59,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseImageMemoryBind_getO
 //@line:388
 
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->offset);
 	 
 }
@@ -94,7 +94,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkSparseImageMemoryBind_getE
 //@line:409
 
 		  VkSparseImageMemoryBind* vkObj = (VkSparseImageMemoryBind*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->extent);
 	 
 }

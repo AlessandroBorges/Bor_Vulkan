@@ -24,7 +24,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkRect2D_getOffset0
 //@line:222
 
 		  VkRect2D* vkObj = (VkRect2D*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->offset);
 	 
 }
@@ -59,7 +59,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkRect2D_getExtent0
 //@line:243
 
 		  VkRect2D* vkObj = (VkRect2D*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->extent);
 	 
 }

@@ -24,7 +24,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkImageFormatProperties_getM
 //@line:305
 
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->maxExtent);
 	 
 }

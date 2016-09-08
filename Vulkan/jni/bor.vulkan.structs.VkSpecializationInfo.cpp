@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:266
+//@line:270
 
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkSpecializationInfo_getMapEntryCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:276
+//@line:280
 
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
 		  return (jint) (vkObj->mapEntryCount);
@@ -40,7 +40,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSpecializationInfo_setPMapEntri
 	char* _pMapEntries = (char*)(obj__pMapEntries?env->GetDirectBufferAddress(obj__pMapEntries) : NULL);
 
 
-//@line:285
+//@line:289
 
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -53,11 +53,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSpecializationInfo_setPMapEntri
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSpecializationInfo_getPMapEntries0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:296
+//@line:300
 
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pMapEntries );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pMapEntries );
 	 
 }
 
@@ -74,7 +74,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSpecializationInfo_setDataSize0
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:306
+//@line:310
 
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
 		 // code for simple past value 
@@ -86,7 +86,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSpecializationInfo_setDataSize0
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSpecializationInfo_getDataSize0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:316
+//@line:320
 
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
 		  return (jlong) (vkObj->dataSize);
@@ -107,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSpecializationInfo_setPData0(JN
 	unsigned char* _pData = (unsigned char*)(obj__pData?env->GetDirectBufferAddress(obj__pData) : NULL);
 
 
-//@line:325
+//@line:329
 
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -120,11 +120,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkSpecializationInfo_setPData0(JN
 static inline jlong wrapped_Java_bor_vulkan_structs_VkSpecializationInfo_getPData0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:336
+//@line:340
 
 		  VkSpecializationInfo* vkObj = (VkSpecializationInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pData);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pData);
 	 
 }
 

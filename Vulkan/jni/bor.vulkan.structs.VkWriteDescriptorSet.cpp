@@ -57,8 +57,8 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkWriteDescriptorSet_getPNex
 //@line:523
 
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 
 }
 
@@ -254,8 +254,8 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkWriteDescriptorSet_getPIma
 //@line:641
 
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pImageInfo);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pImageInfo);
 	 
 }
 
@@ -289,8 +289,8 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkWriteDescriptorSet_getPBuf
 //@line:662
 
 		  VkWriteDescriptorSet* vkObj = (VkWriteDescriptorSet*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pBufferInfo);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pBufferInfo);
 	 
 }
 

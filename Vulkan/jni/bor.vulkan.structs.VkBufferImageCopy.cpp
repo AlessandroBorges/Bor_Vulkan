@@ -120,7 +120,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferImageCopy_getImageSu
 //@line:413
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageSubresource);
 	 
 }
@@ -155,7 +155,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferImageCopy_getImageOf
 //@line:434
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageOffset);
 	 
 }
@@ -190,7 +190,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkBufferImageCopy_getImageEx
 //@line:455
 
 		  VkBufferImageCopy* vkObj = (VkBufferImageCopy*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageExtent);
 	 
 }

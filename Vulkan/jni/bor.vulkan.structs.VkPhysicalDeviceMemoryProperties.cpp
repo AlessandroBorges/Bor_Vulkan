@@ -59,7 +59,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProper
 
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->memoryTypes );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->memoryTypes );
 	 
 }
 
@@ -128,7 +128,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkPhysicalDeviceMemoryProper
 
 		  VkPhysicalDeviceMemoryProperties* vkObj = (VkPhysicalDeviceMemoryProperties*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->memoryHeaps );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->memoryHeaps );
 	 
 }
 

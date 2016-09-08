@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:402
+//@line:406
 
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateInfo_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:412
+//@line:416
 
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateIn
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:422
+//@line:426
 
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,11 +54,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateIn
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateInfo_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:433
+//@line:437
 
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 
 }
 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateIn
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:443
+//@line:447
 
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateIn
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateInfo_getFlags0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:453
+//@line:457
 
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->flags);
@@ -107,7 +107,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateIn
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:462
+//@line:466
 
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -119,7 +119,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateIn
 static inline jboolean wrapped_Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateInfo_getLogicOpEnable0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:472
+//@line:476
 
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		  return (jboolean) (vkObj->logicOpEnable);
@@ -139,7 +139,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateIn
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:481
+//@line:485
 
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -151,7 +151,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateIn
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateInfo_getLogicOp0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:491
+//@line:495
 
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		  // generic get for Vk enums
@@ -172,7 +172,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateIn
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:501
+//@line:505
 
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		 // code for simple past value 
@@ -184,7 +184,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateIn
 static inline jint wrapped_Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateInfo_getAttachmentCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:511
+//@line:515
 
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		  return (jint) (vkObj->attachmentCount);
@@ -205,7 +205,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateIn
 	char* _pAttachments = (char*)(obj__pAttachments?env->GetDirectBufferAddress(obj__pAttachments) : NULL);
 
 
-//@line:520
+//@line:524
 
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -218,11 +218,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateIn
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateInfo_getPAttachments0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:531
+//@line:535
 
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pAttachments );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pAttachments );
 	 
 }
 
@@ -240,7 +240,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateIn
 	float* _blendConstants = (float*)(obj__blendConstants ? env->GetFloatArrayElements(obj__blendConstants, 0) : NULL);
 
 
-//@line:541
+//@line:545
 
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		 // code for fixed size array 
@@ -255,11 +255,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateIn
 static inline jfloatArray wrapped_Java_bor_vulkan_structs_VkPipelineColorBlendStateCreateInfo_getBlendConstants0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jfloatArray obj__blendConstants, unsigned char* ptr, float* _blendConstants) {
 
-//@line:551
+//@line:555
 
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		  // fixed length array  
-		  memcpy(&_blendConstants, &(vkObj->blendConstants), 4 * sizeof(float));
+		  memcpy(_blendConstants, vkObj->blendConstants, 4 * sizeof(float));
 		  return obj__blendConstants;
 	 
 }

@@ -57,8 +57,8 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkInstanceCreateInfo_getPNex
 //@line:453
 
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 
 }
 
@@ -124,8 +124,8 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkInstanceCreateInfo_getPApp
 //@line:493
 
 		  VkInstanceCreateInfo* vkObj = (VkInstanceCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pApplicationInfo);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pApplicationInfo);
 	 
 }
 

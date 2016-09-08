@@ -57,8 +57,8 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkDebugMarkerMarkerInfoEXT_g
 //@line:298
 
 		  VkDebugMarkerMarkerInfoEXT* vkObj = (VkDebugMarkerMarkerInfoEXT*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 
 }
 
@@ -93,7 +93,7 @@ static inline jstring wrapped_Java_bor_vulkan_structs_VkDebugMarkerMarkerInfoEXT
 //@line:317
 
 		  VkDebugMarkerMarkerInfoEXT* vkObj = (VkDebugMarkerMarkerInfoEXT*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->pMarkerName));
+		  return (jstring)(env->NewStringUTF(cloneStr(vkObj->pMarkerName)));
 	 
 }
 
@@ -130,7 +130,7 @@ static inline jfloatArray wrapped_Java_bor_vulkan_structs_VkDebugMarkerMarkerInf
 
 		  VkDebugMarkerMarkerInfoEXT* vkObj = (VkDebugMarkerMarkerInfoEXT*)(ptr);
 		  // fixed length array  
-		  memcpy(&_color, &(vkObj->color), 4 * sizeof(float));
+		  memcpy(_color, vkObj->color, 4 * sizeof(float));
 		  return obj__color;
 	 
 }

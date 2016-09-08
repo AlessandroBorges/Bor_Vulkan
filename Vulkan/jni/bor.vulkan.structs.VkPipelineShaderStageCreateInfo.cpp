@@ -57,8 +57,8 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineShaderStageCreateI
 //@line:409
 
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 
 }
 
@@ -191,7 +191,7 @@ static inline jstring wrapped_Java_bor_vulkan_structs_VkPipelineShaderStageCreat
 //@line:487
 
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->pName));
+		  return (jstring)(env->NewStringUTF(cloneStr(vkObj->pName)));
 	 
 }
 
@@ -225,8 +225,8 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkPipelineShaderStageCreateI
 //@line:507
 
 		  VkPipelineShaderStageCreateInfo* vkObj = (VkPipelineShaderStageCreateInfo*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pSpecializationInfo);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pSpecializationInfo);
 	 
 }
 

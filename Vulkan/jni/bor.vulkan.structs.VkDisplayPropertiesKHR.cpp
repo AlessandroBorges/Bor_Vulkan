@@ -58,7 +58,7 @@ static inline jstring wrapped_Java_bor_vulkan_structs_VkDisplayPropertiesKHR_get
 //@line:406
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->displayName));
+		  return (jstring)(env->NewStringUTF(cloneStr(vkObj->displayName)));
 	 
 }
 
@@ -92,7 +92,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPropertiesKHR_getPh
 //@line:426
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->physicalDimensions);
 	 
 }
@@ -127,7 +127,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayPropertiesKHR_getPh
 //@line:447
 
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->physicalResolution);
 	 
 }

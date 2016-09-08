@@ -57,8 +57,8 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkDebugReportCallbackCreateI
 //@line:339
 
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 
 }
 
@@ -157,8 +157,8 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkDebugReportCallbackCreateI
 //@line:399
 
 		  VkDebugReportCallbackCreateInfoEXT* vkObj = (VkDebugReportCallbackCreateInfoEXT*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pUserData);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pUserData);
 	 
 }
 

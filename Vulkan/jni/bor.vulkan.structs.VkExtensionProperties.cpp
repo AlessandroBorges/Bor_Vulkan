@@ -25,7 +25,7 @@ static inline jstring wrapped_Java_bor_vulkan_structs_VkExtensionProperties_getE
 //@line:203
 
 		  VkExtensionProperties* vkObj = (VkExtensionProperties*)(ptr);
-		  return (jstring)(env->NewStringUTF(vkObj->extensionName));
+		  return (jstring)(env->NewStringUTF(cloneStr(vkObj->extensionName)));
 	 
 }
 

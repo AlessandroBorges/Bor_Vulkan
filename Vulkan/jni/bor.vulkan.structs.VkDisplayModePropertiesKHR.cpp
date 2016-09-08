@@ -57,7 +57,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplayModePropertiesKHR_g
 //@line:243
 
 		  VkDisplayModePropertiesKHR* vkObj = (VkDisplayModePropertiesKHR*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->parameters);
 	 
 }

@@ -7,7 +7,7 @@
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:411
+//@line:421
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		 // code for simple past value 
@@ -19,7 +19,7 @@
 static inline jint wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_getSType0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:421
+//@line:431
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  // generic get for Vk enums
@@ -41,7 +41,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setPNext0(JNIEnv
 	char* _pNext = (char*)(obj__pNext?env->GetDirectBufferAddress(obj__pNext) : NULL);
 
 
-//@line:431
+//@line:441
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -54,11 +54,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setPNext0(JNIEnv
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_getPNext0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:442
+//@line:452
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 
 }
 
@@ -75,7 +75,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setWaitSemaphore
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:452
+//@line:462
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		 // code for simple past value 
@@ -87,7 +87,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setWaitSemaphore
 static inline jint wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_getWaitSemaphoreCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:462
+//@line:472
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  return (jint) (vkObj->waitSemaphoreCount);
@@ -108,7 +108,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setPWaitSemaphor
 	char* _pWaitSemaphores = (char*)(obj__pWaitSemaphores?env->GetDirectBufferAddress(obj__pWaitSemaphores) : NULL);
 
 
-//@line:471
+//@line:481
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -121,11 +121,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setPWaitSemaphor
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_getPWaitSemaphores0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:482
+//@line:492
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pWaitSemaphores );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pWaitSemaphores );
 	 
 }
 
@@ -142,7 +142,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setSwapchainCoun
 	unsigned char* ptr = (unsigned char*)(obj_ptr?env->GetDirectBufferAddress(obj_ptr) : NULL);
 
 
-//@line:492
+//@line:502
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		 // code for simple past value 
@@ -154,7 +154,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setSwapchainCoun
 static inline jint wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_getSwapchainCount0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:502
+//@line:512
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  return (jint) (vkObj->swapchainCount);
@@ -175,7 +175,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setPSwapchains0(
 	char* _pSwapchains = (char*)(obj__pSwapchains?env->GetDirectBufferAddress(obj__pSwapchains) : NULL);
 
 
-//@line:511
+//@line:521
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		 // code for Buffer - ptr to ptr 
@@ -188,11 +188,11 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setPSwapchains0(
 static inline jlong wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_getPSwapchains0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, unsigned char* ptr) {
 
-//@line:522
+//@line:532
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  // generic get for array of VkHandle and VkStruct 
-		  return (jlong) reinterpret_cast<jlong>( &vkObj->pSwapchains );
+		  return (jlong) reinterpret_cast<jlong>( vkObj->pSwapchains );
 	 
 }
 
@@ -208,7 +208,7 @@ JNIEXPORT jlong JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_getPSwapchains0
 static inline void wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_setPImageIndices0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pImageIndices, unsigned char* ptr, int* _pImageIndices) {
 
-//@line:532
+//@line:542
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		 // code for generic array assignment 
@@ -243,7 +243,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setPImageIndices
 static inline jintArray wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_getPImageIndices0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pImageIndices, unsigned char* ptr, int* _pImageIndices) {
 
-//@line:553
+//@line:563
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  // generic get for C type array, with content copy 
@@ -275,7 +275,7 @@ JNIEXPORT jintArray JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_getPImageIn
 static inline void wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_setPResults0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pResults, unsigned char* ptr, int* _pResults) {
 
-//@line:571
+//@line:581
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		 // code for generic array assignment 
@@ -310,7 +310,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_structs_VkPresentInfoKHR_setPResults0(JNI
 static inline jintArray wrapped_Java_bor_vulkan_structs_VkPresentInfoKHR_getPResults0
 (JNIEnv* env, jclass clazz, jobject obj_ptr, jintArray obj__pResults, unsigned char* ptr, int* _pResults) {
 
-//@line:592
+//@line:602
 
 		  VkPresentInfoKHR* vkObj = (VkPresentInfoKHR*)(ptr);
 		  // generic get for C type array, with content copy 

@@ -66,8 +66,8 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkXlibSurfaceCreateInfoKHR_g
 
 	 #ifdef VK_USE_PLATFORM_XLIB_KHR 
 		  VkXlibSurfaceCreateInfoKHR* vkObj = (VkXlibSurfaceCreateInfoKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 #else 
 	   return 0; 
 	 #endif 

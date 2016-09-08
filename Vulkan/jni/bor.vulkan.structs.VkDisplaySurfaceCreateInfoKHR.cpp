@@ -57,8 +57,8 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKH
 //@line:503
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		  // generic get for Buffer 
-		  return (jlong) reinterpret_cast<jlong>(&vkObj->pNext);
+		  // generic get for Buffer - field must be pointer! 
+		  return (jlong) reinterpret_cast<jlong>(vkObj->pNext);
 	 
 }
 
@@ -319,7 +319,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkDisplaySurfaceCreateInfoKH
 //@line:660
 
 		  VkDisplaySurfaceCreateInfoKHR* vkObj = (VkDisplaySurfaceCreateInfoKHR*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageExtent);
 	 
 }

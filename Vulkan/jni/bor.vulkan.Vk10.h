@@ -8,7 +8,7 @@
 extern "C" {
 #endif
 #undef bor_vulkan_Vk10_VK_HEADER_VERSION
-#define bor_vulkan_Vk10_VK_HEADER_VERSION 21L
+#define bor_vulkan_Vk10_VK_HEADER_VERSION 24L
 #undef bor_vulkan_Vk10_VK_LOD_CLAMP_NONE
 #define bor_vulkan_Vk10_VK_LOD_CLAMP_NONE 1000.0f
 #undef bor_vulkan_Vk10_VK_REMAINING_MIP_LEVELS

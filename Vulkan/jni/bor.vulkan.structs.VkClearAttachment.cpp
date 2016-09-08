@@ -88,7 +88,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkClearAttachment_getClearVa
 //@line:281
 
 		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
-		  // generic get for Buffer 
+		  // generic get for Buffer - field must be pointer! 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->clearValue);
 	 
 }
