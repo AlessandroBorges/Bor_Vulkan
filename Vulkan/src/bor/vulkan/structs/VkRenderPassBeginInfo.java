@@ -89,7 +89,7 @@
 	 *  const VkClearValue* 	pClearValues	[vkstruct_array_array]
 	 */ 
 	VkClearValue[]  	pClearValues;
-	 private BigBuffer 	 pClearValuesBUFFER;
+	 private BigBuffer<VkClearValue> 	 pClearValuesBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -339,7 +339,7 @@
 	 */ 
 	 public VkRenderPassBeginInfo pClearValues(VkClearValue[] pClearValues){
 		 this.pClearValues = pClearValues;
-		 this.pClearValuesBUFFER = new BigBuffer(pClearValues, VkClearValue.getID());
+		 this.pClearValuesBUFFER = new BigBuffer<VkClearValue>(pClearValues, VkClearValue.getID());
 		 setPClearValues0(this.ptr, pClearValuesBUFFER.getBuffer());
 		 return this;
 	 }
@@ -494,7 +494,7 @@
 	 private static native long getRenderArea0(Buffer ptr);/*
 		  VkRenderPassBeginInfo* vkObj = (VkRenderPassBeginInfo*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->renderArea);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->renderArea);
 	 */
 
 	/**

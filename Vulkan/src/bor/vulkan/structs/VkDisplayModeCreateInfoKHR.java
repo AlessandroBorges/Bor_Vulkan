@@ -344,7 +344,7 @@
 	 private static native long getParameters0(Buffer ptr);/*
 		  VkDisplayModeCreateInfoKHR* vkObj = (VkDisplayModeCreateInfoKHR*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->parameters);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->parameters);
 	 */
 
 

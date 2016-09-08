@@ -426,7 +426,7 @@
 	 private static native long getPhysicalDimensions0(Buffer ptr);/*
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->physicalDimensions);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->physicalDimensions);
 	 */
 
 	/**
@@ -447,7 +447,7 @@
 	 private static native long getPhysicalResolution0(Buffer ptr);/*
 		  VkDisplayPropertiesKHR* vkObj = (VkDisplayPropertiesKHR*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->physicalResolution);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->physicalResolution);
 	 */
 
 	/**

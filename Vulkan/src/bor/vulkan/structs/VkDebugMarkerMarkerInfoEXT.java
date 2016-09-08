@@ -336,7 +336,7 @@
 	 private static native float[] getColor0(Buffer ptr, float[] _color);/*
 		  VkDebugMarkerMarkerInfoEXT* vkObj = (VkDebugMarkerMarkerInfoEXT*)(ptr);
 		  // fixed length array  
-		  memcpy(&_color, &(vkObj->color), 4 * sizeof(float));
+		  memcpy(_color, vkObj->color, 4 * sizeof(float));
 		  return obj__color;
 	 */
 

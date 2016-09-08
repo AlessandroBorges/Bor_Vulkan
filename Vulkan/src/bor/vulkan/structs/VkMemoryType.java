@@ -174,7 +174,7 @@
          StringBuilder builder = new StringBuilder();
          builder.append("VkMemoryType [ ")
 				.append("propertyFlags: ").append(propertyFlags() )
-				.append(",\n heapIndex: ")
+				.append(", heapIndex: ")
 				.append(heapIndex() )
 				.append("]");
 		 return builder.toString();

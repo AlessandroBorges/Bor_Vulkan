@@ -222,7 +222,7 @@
 	 private static native long getOffset0(Buffer ptr);/*
 		  VkRect2D* vkObj = (VkRect2D*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->offset);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->offset);
 	 */
 
 	/**
@@ -243,7 +243,7 @@
 	 private static native long getExtent0(Buffer ptr);/*
 		  VkRect2D* vkObj = (VkRect2D*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->extent);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->extent);
 	 */
 
 

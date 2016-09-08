@@ -45,6 +45,8 @@
     //@formatter:off
     /*JNI
     #include <BorVulkan.hpp>
+    #include <iostream>
+    using namespace std;
     */  
 
 	/** TAG of this structure [10]  */
@@ -403,10 +405,13 @@
     @Override
     public String toString() {
          StringBuilder builder = new StringBuilder();
+         int apiV = apiVersion();
          builder.append("VkPhysicalDeviceProperties [ ")
-				.append("apiVersion: ").append(apiVersion() )
+				.append("apiVersion: ")
+				.append(Vulkan.getAPIVersionString(apiV))
 				.append(",\n driverVersion: ")
-				.append(driverVersion() )
+				.append(Vulkan.getAPIVersionString(driverVersion()))
+				//.append(driverVersion() )
 				.append(",\n vendorID: ")
 				.append(vendorID() )
 				.append(",\n deviceID: ")
@@ -416,7 +421,7 @@
 				.append(",\n deviceName: ")
 				.append(deviceName() )
 				.append(",\n pipelineCacheUUID: ")
-				.append(Arrays.toString(pipelineCacheUUID()) )
+				.append(toString(pipelineCacheUUID()) )
 				.append(",\n limits: ")
 				.append(limits() )
 				.append(",\n sparseProperties: ")
@@ -425,7 +430,23 @@
 		 return builder.toString();
     }
 
-
+    /**
+     * Get value of pipelineCacheUUID
+     * @param data - pipelineCacheUUID
+     * @return string value
+     */
+    private static String toString(byte[] data){
+        String s = "[";
+        for (int i = 0; i < data.length; i++) {
+            byte b = data[i];
+            int hex = b & 0xFF;
+            if(i>0) s += ", ";
+            s += hex;
+        }
+        s+="]";
+        return s;
+    }
+     
 	 //////////////////////////////////
 	 // Native SETTERS & GETTERS    //
 	 /////////////////////////////////
@@ -559,8 +580,9 @@
 	 */ 
 	 private static native byte[] getPipelineCacheUUID0(Buffer ptr, byte[] _pipelineCacheUUID);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
-		  // fixed length array  
-		  memcpy(&_pipelineCacheUUID, &(vkObj->pipelineCacheUUID), VK_UUID_SIZE * sizeof(uint8_t));
+		  // fixed length array
+		 
+		  memcpy(_pipelineCacheUUID, vkObj->pipelineCacheUUID, VK_UUID_SIZE * sizeof(uint8_t));
 		  return obj__pipelineCacheUUID;
 	 */
 
@@ -582,7 +604,7 @@
 	 private static native long getLimits0(Buffer ptr);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->limits);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->limits);
 	 */
 
 	/**
@@ -603,7 +625,7 @@
 	 private static native long getSparseProperties0(Buffer ptr);/*
 		  VkPhysicalDeviceProperties* vkObj = (VkPhysicalDeviceProperties*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->sparseProperties);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->sparseProperties);
 	 */
 
 

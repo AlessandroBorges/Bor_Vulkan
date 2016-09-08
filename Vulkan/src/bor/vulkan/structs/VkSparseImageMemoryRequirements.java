@@ -305,7 +305,7 @@
 	 private static native long getFormatProperties0(Buffer ptr);/*
 		  VkSparseImageMemoryRequirements* vkObj = (VkSparseImageMemoryRequirements*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->formatProperties);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->formatProperties);
 	 */
 
 	/**

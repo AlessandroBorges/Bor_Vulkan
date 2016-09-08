@@ -91,7 +91,7 @@
 	 *  const VkPipelineShaderStageCreateInfo* 	pStages	[vkstruct_array_array]
 	 */ 
 	VkPipelineShaderStageCreateInfo[]  	pStages;
-	 private BigBuffer 	 pStagesBUFFER;
+	 private BigBuffer<VkPipelineShaderStageCreateInfo> 	 pStagesBUFFER;
 	
 	/**
 	 *  const VkPipelineVertexInputStateCreateInfo* 	pVertexInputState	[vkstruct]
@@ -333,7 +333,7 @@
 	 */ 
 	 public VkGraphicsPipelineCreateInfo pStages(VkPipelineShaderStageCreateInfo[] pStages){
 		 this.pStages = pStages;
-		 this.pStagesBUFFER = new BigBuffer(pStages, VkPipelineShaderStageCreateInfo.getID());
+		 this.pStagesBUFFER = new BigBuffer<VkPipelineShaderStageCreateInfo>(pStages, VkPipelineShaderStageCreateInfo.getID());
 		 setPStages0(this.ptr, pStagesBUFFER.getBuffer());
 		 return this;
 	 }

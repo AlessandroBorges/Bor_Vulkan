@@ -212,7 +212,7 @@
 	 private static native long getVisibleRegion0(Buffer ptr);/*
 		  VkDisplayModeParametersKHR* vkObj = (VkDisplayModeParametersKHR*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->visibleRegion);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->visibleRegion);
 	 */
 
 	/**

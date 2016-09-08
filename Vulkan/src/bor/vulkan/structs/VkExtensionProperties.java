@@ -177,7 +177,7 @@
          StringBuilder builder = new StringBuilder();
          builder.append("VkExtensionProperties [ ")
 				.append("extensionName: ").append(extensionName() )
-				.append(",\n specVersion: ")
+				.append(", specVersion: ")
 				.append(specVersion() )
 				.append("]");
 		 return builder.toString();

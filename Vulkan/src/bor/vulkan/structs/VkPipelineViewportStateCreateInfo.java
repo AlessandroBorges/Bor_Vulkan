@@ -79,7 +79,7 @@
 	 *  const VkViewport* 	pViewports	[vkstruct_array_array]
 	 */ 
 	VkViewport[]  	pViewports;
-	 private BigBuffer 	 pViewportsBUFFER;
+	 private BigBuffer<VkViewport> 	 pViewportsBUFFER;
 	
 	/**
 	 *  uint32_t 	scissorCount	[int]
@@ -90,7 +90,7 @@
 	 *  const VkRect2D* 	pScissors	[vkstruct_array_array]
 	 */ 
 	VkRect2D[]  	pScissors;
-	 private BigBuffer 	 pScissorsBUFFER;
+	 private BigBuffer<VkRect2D> 	 pScissorsBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -262,7 +262,7 @@
 	 */ 
 	 public VkPipelineViewportStateCreateInfo pViewports(VkViewport[] pViewports){
 		 this.pViewports = pViewports;
-		 this.pViewportsBUFFER = new BigBuffer(pViewports, VkViewport.getID());
+		 this.pViewportsBUFFER = new BigBuffer<VkViewport>(pViewports, VkViewport.getID());
 		 setPViewports0(this.ptr, pViewportsBUFFER.getBuffer());
 		 return this;
 	 }
@@ -321,7 +321,7 @@
 	 */ 
 	 public VkPipelineViewportStateCreateInfo pScissors(VkRect2D[] pScissors){
 		 this.pScissors = pScissors;
-		 this.pScissorsBUFFER = new BigBuffer(pScissors, VkRect2D.getID());
+		 this.pScissorsBUFFER = new BigBuffer<VkRect2D>(pScissors, VkRect2D.getID());
 		 setPScissors0(this.ptr, pScissorsBUFFER.getBuffer());
 		 return this;
 	 }

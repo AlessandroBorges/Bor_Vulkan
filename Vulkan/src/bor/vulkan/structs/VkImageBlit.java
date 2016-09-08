@@ -61,7 +61,7 @@
 	 *  VkOffset3D[] 	srcOffsets	[vkstruct_array_array [2] ]
 	 */ 
 	VkOffset3D[] 	srcOffsets = new VkOffset3D[2];
-	 private BigBuffer 	 srcOffsetsBUFFER;
+	// private BigBuffer<VkOffset3D> 	 srcOffsetsBUFFER;
 	
 	/**
 	 *  VkImageSubresourceLayers 	dstSubresource	[vkstruct]
@@ -72,7 +72,7 @@
 	 *  VkOffset3D[] 	dstOffsets	[vkstruct_array_array [2] ]
 	 */ 
 	VkOffset3D[] 	dstOffsets = new VkOffset3D[2];
-	 private BigBuffer 	 dstOffsetsBUFFER;
+	// private BigBuffer 	 dstOffsetsBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -346,7 +346,7 @@
 	 private static native long getSrcSubresource0(Buffer ptr);/*
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->srcSubresource);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->srcSubresource);
 	 */
 
    /**
@@ -390,7 +390,7 @@
 	 private static native long getDstSubresource0(Buffer ptr);/*
 		  VkImageBlit* vkObj = (VkImageBlit*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->dstSubresource);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->dstSubresource);
 	 */
 
     /**

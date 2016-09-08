@@ -660,7 +660,7 @@
 	 private static native long getSubresourceRange0(Buffer ptr);/*
 		  VkImageMemoryBarrier* vkObj = (VkImageMemoryBarrier*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->subresourceRange);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->subresourceRange);
 	 */
 
 

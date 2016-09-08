@@ -83,7 +83,7 @@
 	 *  const VkDescriptorPoolSize* 	pPoolSizes	[vkstruct_array_array]
 	 */ 
 	VkDescriptorPoolSize[]  	pPoolSizes;
-	 private BigBuffer 	 pPoolSizesBUFFER;
+	 private BigBuffer<VkDescriptorPoolSize> 	 pPoolSizesBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -278,7 +278,7 @@
 	 */ 
 	 public VkDescriptorPoolCreateInfo pPoolSizes(VkDescriptorPoolSize[] pPoolSizes){
 		 this.pPoolSizes = pPoolSizes;
-		 this.pPoolSizesBUFFER = new BigBuffer(pPoolSizes, VkDescriptorPoolSize.getID());
+		 this.pPoolSizesBUFFER = new BigBuffer<VkDescriptorPoolSize>(pPoolSizes, VkDescriptorPoolSize.getID());
 		 setPPoolSizes0(this.ptr, pPoolSizesBUFFER.getBuffer());
 		 return this;
 	 }

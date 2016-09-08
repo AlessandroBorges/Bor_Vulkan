@@ -86,7 +86,7 @@
 	 *  const VkImageView* 	pAttachments	[vkhandle_array_array]
 	 */ 
 	VkImageView[]  	pAttachments;
-	 private BigBuffer 	 pAttachmentsBUFFER;
+	 private BigBuffer<VkImageView> 	 pAttachmentsBUFFER;
 	
 	/**
 	 *  uint32_t 	width	[int]
@@ -307,7 +307,7 @@
 	 */ 
 	 public VkFramebufferCreateInfo pAttachments(VkImageView[] pAttachments){
 		 this.pAttachments = pAttachments;
-		 this.pAttachmentsBUFFER = new BigBuffer(pAttachments, false);
+		 this.pAttachmentsBUFFER = new BigBuffer<VkImageView>(pAttachments, false);
 		 setPAttachments0(this.ptr, pAttachmentsBUFFER.getBuffer());
 		 return this;
 	 }

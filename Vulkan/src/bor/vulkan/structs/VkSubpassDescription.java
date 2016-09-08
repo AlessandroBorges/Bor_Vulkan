@@ -77,7 +77,7 @@
 	 *  const VkAttachmentReference* 	pInputAttachments	[vkstruct_array_array]
 	 */ 
 	VkAttachmentReference[]  	pInputAttachments;
-	 private BigBuffer 	 pInputAttachmentsBUFFER;
+	 private BigBuffer<VkAttachmentReference> 	 pInputAttachmentsBUFFER;
 	
 	/**
 	 *  uint32_t 	colorAttachmentCount	[int]
@@ -88,13 +88,13 @@
 	 *  const VkAttachmentReference* 	pColorAttachments	[vkstruct_array_array]
 	 */ 
 	VkAttachmentReference[]  	pColorAttachments;
-	 private BigBuffer 	 pColorAttachmentsBUFFER;
+	 private BigBuffer<VkAttachmentReference> 	 pColorAttachmentsBUFFER;
 	
 	/**
 	 *  const VkAttachmentReference* 	pResolveAttachments	[vkstruct_array_array]
 	 */ 
 	VkAttachmentReference[]  	pResolveAttachments;
-	 private BigBuffer 	 pResolveAttachmentsBUFFER;
+	 private BigBuffer<VkAttachmentReference> 	 pResolveAttachmentsBUFFER;
 	
 	/**
 	 *  const VkAttachmentReference* 	pDepthStencilAttachment	[vkstruct]
@@ -249,7 +249,7 @@
 	 */ 
 	 public VkSubpassDescription pInputAttachments(VkAttachmentReference[] pInputAttachments){
 		 this.pInputAttachments = pInputAttachments;
-		 this.pInputAttachmentsBUFFER = new BigBuffer(pInputAttachments, VkAttachmentReference.getID());
+		 this.pInputAttachmentsBUFFER = new BigBuffer<VkAttachmentReference>(pInputAttachments, VkAttachmentReference.getID());
 		 setPInputAttachments0(this.ptr, pInputAttachmentsBUFFER.getBuffer());
 		 return this;
 	 }
@@ -308,7 +308,7 @@
 	 */ 
 	 public VkSubpassDescription pColorAttachments(VkAttachmentReference[] pColorAttachments){
 		 this.pColorAttachments = pColorAttachments;
-		 this.pColorAttachmentsBUFFER = new BigBuffer(pColorAttachments, VkAttachmentReference.getID());
+		 this.pColorAttachmentsBUFFER = new BigBuffer<VkAttachmentReference>(pColorAttachments, VkAttachmentReference.getID());
 		 setPColorAttachments0(this.ptr, pColorAttachmentsBUFFER.getBuffer());
 		 return this;
 	 }
@@ -344,10 +344,12 @@
 	 */ 
 	 public VkSubpassDescription pResolveAttachments(VkAttachmentReference[] pResolveAttachments){
 		 this.pResolveAttachments = pResolveAttachments;
-		 this.pResolveAttachmentsBUFFER = new BigBuffer(pResolveAttachments, VkAttachmentReference.getID());
+		 this.pResolveAttachmentsBUFFER = new BigBuffer<VkAttachmentReference>(pResolveAttachments, VkAttachmentReference.getID());
 		 setPResolveAttachments0(this.ptr, pResolveAttachmentsBUFFER.getBuffer());
 		 return this;
 	 }
+
+// #Included getPResolveAttachments0
 
 	/**
 	 * Get method for field pResolveAttachments	[vkstruct_array]<br>
@@ -370,6 +372,8 @@
 		   }
 		 return this.pResolveAttachments;
 	 }
+
+//#END get
 
 	/**
 	 * Set method for field pDepthStencilAttachment	[vkstruct]<br>
@@ -703,6 +707,8 @@
  		  memcpy(_pPreserveAttachments, vkObj->pPreserveAttachments, count * sizeof(uint32_t));
 		  return obj__pPreserveAttachments;
 	 */
+
+
 
 
 

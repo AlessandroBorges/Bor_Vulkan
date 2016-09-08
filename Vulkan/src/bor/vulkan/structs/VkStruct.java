@@ -146,44 +146,45 @@ public abstract class VkStruct implements VkObject{
     public static final int VKBUFFERIMAGECOPY_ID = 94;
     public static final int VKCLEARDEPTHSTENCILVALUE_ID = 95;
     public static final int VKCLEARATTACHMENT_ID = 96;
-    public static final int VKCLEARRECT_ID = 97;
-    public static final int VKIMAGERESOLVE_ID = 98;
-    public static final int VKMEMORYBARRIER_ID = 99;
-    public static final int VKBUFFERMEMORYBARRIER_ID = 100;
-    public static final int VKIMAGEMEMORYBARRIER_ID = 101;
-    public static final int VKRENDERPASSBEGININFO_ID = 102;
-    public static final int VKDISPATCHINDIRECTCOMMAND_ID = 103;
-    public static final int VKDRAWINDEXEDINDIRECTCOMMAND_ID = 104;
-    public static final int VKDRAWINDIRECTCOMMAND_ID = 105;
-    public static final int VKSURFACECAPABILITIESKHR_ID = 106;
-    public static final int VKSURFACEFORMATKHR_ID = 107;
-    public static final int VKSWAPCHAINCREATEINFOKHR_ID = 108;
-    public static final int VKPRESENTINFOKHR_ID = 109;
-    public static final int VKDISPLAYPROPERTIESKHR_ID = 110;
-    public static final int VKDISPLAYMODEPARAMETERSKHR_ID = 111;
-    public static final int VKDISPLAYMODEPROPERTIESKHR_ID = 112;
-    public static final int VKDISPLAYMODECREATEINFOKHR_ID = 113;
-    public static final int VKDISPLAYPLANECAPABILITIESKHR_ID = 114;
-    public static final int VKDISPLAYPLANEPROPERTIESKHR_ID = 115;
-    public static final int VKDISPLAYSURFACECREATEINFOKHR_ID = 116;
-    public static final int VKDISPLAYPRESENTINFOKHR_ID = 117;
-    public static final int VKXLIBSURFACECREATEINFOKHR_ID = 118;
-    public static final int VKXCBSURFACECREATEINFOKHR_ID = 119;
-    public static final int VKWAYLANDSURFACECREATEINFOKHR_ID = 120;
-    public static final int VKMIRSURFACECREATEINFOKHR_ID = 121;
-    public static final int VKANDROIDSURFACECREATEINFOKHR_ID = 122;
-    public static final int VKWIN32SURFACECREATEINFOKHR_ID = 123;
-    public static final int VKDEBUGREPORTCALLBACKCREATEINFOEXT_ID = 124;
-    public static final int VKPIPELINERASTERIZATIONSTATERASTERIZATIONORDERAMD_ID = 125;
-    public static final int VKDEBUGMARKEROBJECTNAMEINFOEXT_ID = 126;
-    public static final int VKDEBUGMARKEROBJECTTAGINFOEXT_ID = 127;
-    public static final int VKDEBUGMARKERMARKERINFOEXT_ID = 128;
-    public static final int VKDEDICATEDALLOCATIONIMAGECREATEINFONV_ID = 129;
-    public static final int VKDEDICATEDALLOCATIONBUFFERCREATEINFONV_ID = 130;
-    public static final int VKDEDICATEDALLOCATIONMEMORYALLOCATEINFONV_ID = 131;
-    public static final int VKCLEARVALUE_ID = 200;
-    public static final int VKCLEARCOLORVALUE_ID = 201;
+    public static final int VKCLEARVALUE_ID = 97;
+    public static final int VKCLEARCOLORVALUE_ID = 98;
+    public static final int VKCLEARRECT_ID = 99;
+    public static final int VKIMAGERESOLVE_ID = 100;
+    public static final int VKMEMORYBARRIER_ID = 101;
+    public static final int VKBUFFERMEMORYBARRIER_ID = 102;
+    public static final int VKIMAGEMEMORYBARRIER_ID = 103;
+    public static final int VKRENDERPASSBEGININFO_ID = 104;
+    public static final int VKDISPATCHINDIRECTCOMMAND_ID = 105;
+    public static final int VKDRAWINDEXEDINDIRECTCOMMAND_ID = 106;
+    public static final int VKDRAWINDIRECTCOMMAND_ID = 107;
+    public static final int VKSURFACECAPABILITIESKHR_ID = 108;
+    public static final int VKSURFACEFORMATKHR_ID = 109;
+    public static final int VKSWAPCHAINCREATEINFOKHR_ID = 110;
+    public static final int VKPRESENTINFOKHR_ID = 111;
+    public static final int VKDISPLAYPROPERTIESKHR_ID = 112;
+    public static final int VKDISPLAYMODEPARAMETERSKHR_ID = 113;
+    public static final int VKDISPLAYMODEPROPERTIESKHR_ID = 114;
+    public static final int VKDISPLAYMODECREATEINFOKHR_ID = 115;
+    public static final int VKDISPLAYPLANECAPABILITIESKHR_ID = 116;
+    public static final int VKDISPLAYPLANEPROPERTIESKHR_ID = 117;
+    public static final int VKDISPLAYSURFACECREATEINFOKHR_ID = 118;
+    public static final int VKDISPLAYPRESENTINFOKHR_ID = 119;
+    public static final int VKXLIBSURFACECREATEINFOKHR_ID = 120;
+    public static final int VKXCBSURFACECREATEINFOKHR_ID = 121;
+    public static final int VKWAYLANDSURFACECREATEINFOKHR_ID = 122;
+    public static final int VKMIRSURFACECREATEINFOKHR_ID = 123;
+    public static final int VKANDROIDSURFACECREATEINFOKHR_ID = 124;
+    public static final int VKWIN32SURFACECREATEINFOKHR_ID = 125;
+    public static final int VKDEBUGREPORTCALLBACKCREATEINFOEXT_ID = 126;
+    public static final int VKPIPELINERASTERIZATIONSTATERASTERIZATIONORDERAMD_ID = 127;
+    public static final int VKDEBUGMARKEROBJECTNAMEINFOEXT_ID = 128;
+    public static final int VKDEBUGMARKEROBJECTTAGINFOEXT_ID = 129;
+    public static final int VKDEBUGMARKERMARKERINFOEXT_ID = 130;
+    public static final int VKDEDICATEDALLOCATIONIMAGECREATEINFONV_ID = 131;
+    public static final int VKDEDICATEDALLOCATIONBUFFERCREATEINFONV_ID = 132;
+    public static final int VKDEDICATEDALLOCATIONMEMORYALLOCATEINFONV_ID = 133;
 
+    
     
     /**
      * A Direct Buffer to native
@@ -197,11 +198,7 @@ public abstract class VkStruct implements VkObject{
      * Native address
      */
     protected long nativeHandle = 0;
-    /**
-     * number of objects hold
-     */
-    protected int count = 1;
-    
+        
     /**
      * 
      */
@@ -212,26 +209,12 @@ public abstract class VkStruct implements VkObject{
      */
     protected BigBuffer<VkStruct> bigBuffer;
     
-    /**
-     * Define policy for this
-     */
-    protected int type;
-   /**
-    * @TODO - Remove it  
-    */
-//    static{
-//        try {
-//            SIZEOF_PTR = Utils.sizeOfPtr();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
         
     /**
      * Used to recover VkStruct reference after a native call.
      * It maps the (this.ptr) -> (this), to avoid GC
      * as well double instances of VkStruct sharing the same object. 
-     * 
+     * @TODO - define a free method for this
      * 
      *   
      */
@@ -800,6 +783,156 @@ public abstract class VkStruct implements VkObject{
         ByteBuffer bb = ByteBuffer.allocateDirect(sizeBytes);
         bb.order(ByteOrder.nativeOrder());
         return bb;
+    }
+    
+    /**
+     * Get name of VkStruct by ID.
+     * @see static getID() method in VkStructs.
+     *  
+     * @param struct_ID - VkStruct ID. Use static <b>getID()</b> method 
+     * to discover the ID of that VkStruct subclass.
+     *  
+     * @return Name of VkStruct subclass.
+     */
+    public static String getStructureName(int struct_ID){
+        switch (struct_ID) {
+            case   VKAPPLICATIONINFO_ID    :   return "VkApplicationInfo";
+            case   VKINSTANCECREATEINFO_ID    :   return "VkInstanceCreateInfo";
+            case   VKALLOCATIONCALLBACKS_ID    :   return "VkAllocationCallbacks";
+            case   VKPHYSICALDEVICEFEATURES_ID    :   return "VkPhysicalDeviceFeatures";
+            case   VKFORMATPROPERTIES_ID    :   return "VkFormatProperties";
+            case   VKEXTENT3D_ID    :   return "VkExtent3D";
+            case   VKIMAGEFORMATPROPERTIES_ID    :   return "VkImageFormatProperties";
+            case   VKPHYSICALDEVICELIMITS_ID    :   return "VkPhysicalDeviceLimits";
+            case   VKPHYSICALDEVICESPARSEPROPERTIES_ID    :   return "VkPhysicalDeviceSparseProperties";
+            case   VKPHYSICALDEVICEPROPERTIES_ID    :   return "VkPhysicalDeviceProperties";
+            case   VKQUEUEFAMILYPROPERTIES_ID    :   return "VkQueueFamilyProperties";
+            case   VKMEMORYTYPE_ID    :   return "VkMemoryType";
+            case   VKMEMORYHEAP_ID    :   return "VkMemoryHeap";
+            case   VKPHYSICALDEVICEMEMORYPROPERTIES_ID    :   return "VkPhysicalDeviceMemoryProperties";
+            case   VKDEVICEQUEUECREATEINFO_ID    :   return "VkDeviceQueueCreateInfo";
+            case   VKDEVICECREATEINFO_ID    :   return "VkDeviceCreateInfo";
+            case   VKEXTENSIONPROPERTIES_ID    :   return "VkExtensionProperties";
+            case   VKLAYERPROPERTIES_ID    :   return "VkLayerProperties";
+            case   VKSUBMITINFO_ID    :   return "VkSubmitInfo";
+            case   VKMEMORYALLOCATEINFO_ID    :   return "VkMemoryAllocateInfo";
+            case   VKMAPPEDMEMORYRANGE_ID    :   return "VkMappedMemoryRange";
+            case   VKMEMORYREQUIREMENTS_ID    :   return "VkMemoryRequirements";
+            case   VKSPARSEIMAGEFORMATPROPERTIES_ID    :   return "VkSparseImageFormatProperties";
+            case   VKSPARSEIMAGEMEMORYREQUIREMENTS_ID    :   return "VkSparseImageMemoryRequirements";
+            case   VKSPARSEMEMORYBIND_ID    :   return "VkSparseMemoryBind";
+            case   VKSPARSEBUFFERMEMORYBINDINFO_ID    :   return "VkSparseBufferMemoryBindInfo";
+            case   VKSPARSEIMAGEOPAQUEMEMORYBINDINFO_ID    :   return "VkSparseImageOpaqueMemoryBindInfo";
+            case   VKIMAGESUBRESOURCE_ID    :   return "VkImageSubresource";
+            case   VKOFFSET3D_ID    :   return "VkOffset3D";
+            case   VKSPARSEIMAGEMEMORYBIND_ID    :   return "VkSparseImageMemoryBind";
+            case   VKSPARSEIMAGEMEMORYBINDINFO_ID    :   return "VkSparseImageMemoryBindInfo";
+            case   VKBINDSPARSEINFO_ID    :   return "VkBindSparseInfo";
+            case   VKFENCECREATEINFO_ID    :   return "VkFenceCreateInfo";
+            case   VKSEMAPHORECREATEINFO_ID    :   return "VkSemaphoreCreateInfo";
+            case   VKEVENTCREATEINFO_ID    :   return "VkEventCreateInfo";
+            case   VKQUERYPOOLCREATEINFO_ID    :   return "VkQueryPoolCreateInfo";
+            case   VKBUFFERCREATEINFO_ID    :   return "VkBufferCreateInfo";
+            case   VKBUFFERVIEWCREATEINFO_ID    :   return "VkBufferViewCreateInfo";
+            case   VKIMAGECREATEINFO_ID    :   return "VkImageCreateInfo";
+            case   VKSUBRESOURCELAYOUT_ID    :   return "VkSubresourceLayout";
+            case   VKCOMPONENTMAPPING_ID    :   return "VkComponentMapping";
+            case   VKIMAGESUBRESOURCERANGE_ID    :   return "VkImageSubresourceRange";
+            case   VKIMAGEVIEWCREATEINFO_ID    :   return "VkImageViewCreateInfo";
+            case   VKSHADERMODULECREATEINFO_ID    :   return "VkShaderModuleCreateInfo";
+            case   VKPIPELINECACHECREATEINFO_ID    :   return "VkPipelineCacheCreateInfo";
+            case   VKSPECIALIZATIONMAPENTRY_ID    :   return "VkSpecializationMapEntry";
+            case   VKSPECIALIZATIONINFO_ID    :   return "VkSpecializationInfo";
+            case   VKPIPELINESHADERSTAGECREATEINFO_ID    :   return "VkPipelineShaderStageCreateInfo";
+            case   VKVERTEXINPUTBINDINGDESCRIPTION_ID    :   return "VkVertexInputBindingDescription";
+            case   VKVERTEXINPUTATTRIBUTEDESCRIPTION_ID    :   return "VkVertexInputAttributeDescription";
+            case   VKPIPELINEVERTEXINPUTSTATECREATEINFO_ID    :   return "VkPipelineVertexInputStateCreateInfo";
+            case   VKPIPELINEINPUTASSEMBLYSTATECREATEINFO_ID    :   return "VkPipelineInputAssemblyStateCreateInfo";
+            case   VKPIPELINETESSELLATIONSTATECREATEINFO_ID    :   return "VkPipelineTessellationStateCreateInfo";
+            case   VKVIEWPORT_ID    :   return "VkViewport";
+            case   VKOFFSET2D_ID    :   return "VkOffset2D";
+            case   VKEXTENT2D_ID    :   return "VkExtent2D";
+            case   VKRECT2D_ID    :   return "VkRect2D";
+            case   VKPIPELINEVIEWPORTSTATECREATEINFO_ID    :   return "VkPipelineViewportStateCreateInfo";
+            case   VKPIPELINERASTERIZATIONSTATECREATEINFO_ID    :   return "VkPipelineRasterizationStateCreateInfo";
+            case   VKPIPELINEMULTISAMPLESTATECREATEINFO_ID    :   return "VkPipelineMultisampleStateCreateInfo";
+            case   VKSTENCILOPSTATE_ID    :   return "VkStencilOpState";
+            case   VKPIPELINEDEPTHSTENCILSTATECREATEINFO_ID    :   return "VkPipelineDepthStencilStateCreateInfo";
+            case   VKPIPELINECOLORBLENDATTACHMENTSTATE_ID    :   return "VkPipelineColorBlendAttachmentState";
+            case   VKPIPELINECOLORBLENDSTATECREATEINFO_ID    :   return "VkPipelineColorBlendStateCreateInfo";
+            case   VKPIPELINEDYNAMICSTATECREATEINFO_ID    :   return "VkPipelineDynamicStateCreateInfo";
+            case   VKGRAPHICSPIPELINECREATEINFO_ID    :   return "VkGraphicsPipelineCreateInfo";
+            case   VKCOMPUTEPIPELINECREATEINFO_ID    :   return "VkComputePipelineCreateInfo";
+            case   VKPUSHCONSTANTRANGE_ID    :   return "VkPushConstantRange";
+            case   VKPIPELINELAYOUTCREATEINFO_ID    :   return "VkPipelineLayoutCreateInfo";
+            case   VKSAMPLERCREATEINFO_ID    :   return "VkSamplerCreateInfo";
+            case   VKDESCRIPTORSETLAYOUTBINDING_ID    :   return "VkDescriptorSetLayoutBinding";
+            case   VKDESCRIPTORSETLAYOUTCREATEINFO_ID    :   return "VkDescriptorSetLayoutCreateInfo";
+            case   VKDESCRIPTORPOOLSIZE_ID    :   return "VkDescriptorPoolSize";
+            case   VKDESCRIPTORPOOLCREATEINFO_ID    :   return "VkDescriptorPoolCreateInfo";
+            case   VKDESCRIPTORSETALLOCATEINFO_ID    :   return "VkDescriptorSetAllocateInfo";
+            case   VKDESCRIPTORIMAGEINFO_ID    :   return "VkDescriptorImageInfo";
+            case   VKDESCRIPTORBUFFERINFO_ID    :   return "VkDescriptorBufferInfo";
+            case   VKWRITEDESCRIPTORSET_ID    :   return "VkWriteDescriptorSet";
+            case   VKCOPYDESCRIPTORSET_ID    :   return "VkCopyDescriptorSet";
+            case   VKFRAMEBUFFERCREATEINFO_ID    :   return "VkFramebufferCreateInfo";
+            case   VKATTACHMENTDESCRIPTION_ID    :   return "VkAttachmentDescription";
+            case   VKATTACHMENTREFERENCE_ID    :   return "VkAttachmentReference";
+            case   VKSUBPASSDESCRIPTION_ID    :   return "VkSubpassDescription";
+            case   VKSUBPASSDEPENDENCY_ID    :   return "VkSubpassDependency";
+            case   VKRENDERPASSCREATEINFO_ID    :   return "VkRenderPassCreateInfo";
+            case   VKCOMMANDPOOLCREATEINFO_ID    :   return "VkCommandPoolCreateInfo";
+            case   VKCOMMANDBUFFERALLOCATEINFO_ID    :   return "VkCommandBufferAllocateInfo";
+            case   VKCOMMANDBUFFERINHERITANCEINFO_ID    :   return "VkCommandBufferInheritanceInfo";
+            case   VKCOMMANDBUFFERBEGININFO_ID    :   return "VkCommandBufferBeginInfo";
+            case   VKBUFFERCOPY_ID    :   return "VkBufferCopy";
+            case   VKIMAGESUBRESOURCELAYERS_ID    :   return "VkImageSubresourceLayers";
+            case   VKIMAGECOPY_ID    :   return "VkImageCopy";
+            case   VKIMAGEBLIT_ID    :   return "VkImageBlit";
+            case   VKBUFFERIMAGECOPY_ID    :   return "VkBufferImageCopy";
+            case   VKCLEARDEPTHSTENCILVALUE_ID    :   return "VkClearDepthStencilValue";
+            case   VKCLEARATTACHMENT_ID    :   return "VkClearAttachment";
+            case   VKCLEARVALUE_ID    :   return "VkClearValue";
+            case   VKCLEARCOLORVALUE_ID    :   return "VkClearColorValue";
+            case   VKCLEARRECT_ID    :   return "VkClearRect";
+            case   VKIMAGERESOLVE_ID    :   return "VkImageResolve";
+            case   VKMEMORYBARRIER_ID    :   return "VkMemoryBarrier";
+            case   VKBUFFERMEMORYBARRIER_ID    :   return "VkBufferMemoryBarrier";
+            case   VKIMAGEMEMORYBARRIER_ID    :   return "VkImageMemoryBarrier";
+            case   VKRENDERPASSBEGININFO_ID    :   return "VkRenderPassBeginInfo";
+            case   VKDISPATCHINDIRECTCOMMAND_ID    :   return "VkDispatchIndirectCommand";
+            case   VKDRAWINDEXEDINDIRECTCOMMAND_ID    :   return "VkDrawIndexedIndirectCommand";
+            case   VKDRAWINDIRECTCOMMAND_ID    :   return "VkDrawIndirectCommand";
+            case   VKSURFACECAPABILITIESKHR_ID    :   return "VkSurfaceCapabilitiesKHR";
+            case   VKSURFACEFORMATKHR_ID    :   return "VkSurfaceFormatKHR";
+            case   VKSWAPCHAINCREATEINFOKHR_ID    :   return "VkSwapchainCreateInfoKHR";
+            case   VKPRESENTINFOKHR_ID    :   return "VkPresentInfoKHR";
+            case   VKDISPLAYPROPERTIESKHR_ID    :   return "VkDisplayPropertiesKHR";
+            case   VKDISPLAYMODEPARAMETERSKHR_ID    :   return "VkDisplayModeParametersKHR";
+            case   VKDISPLAYMODEPROPERTIESKHR_ID    :   return "VkDisplayModePropertiesKHR";
+            case   VKDISPLAYMODECREATEINFOKHR_ID    :   return "VkDisplayModeCreateInfoKHR";
+            case   VKDISPLAYPLANECAPABILITIESKHR_ID    :   return "VkDisplayPlaneCapabilitiesKHR";
+            case   VKDISPLAYPLANEPROPERTIESKHR_ID    :   return "VkDisplayPlanePropertiesKHR";
+            case   VKDISPLAYSURFACECREATEINFOKHR_ID    :   return "VkDisplaySurfaceCreateInfoKHR";
+            case   VKDISPLAYPRESENTINFOKHR_ID    :   return "VkDisplayPresentInfoKHR";
+            case   VKXLIBSURFACECREATEINFOKHR_ID    :   return "VkXlibSurfaceCreateInfoKHR";
+            case   VKXCBSURFACECREATEINFOKHR_ID    :   return "VkXcbSurfaceCreateInfoKHR";
+            case   VKWAYLANDSURFACECREATEINFOKHR_ID    :   return "VkWaylandSurfaceCreateInfoKHR";
+            case   VKMIRSURFACECREATEINFOKHR_ID    :   return "VkMirSurfaceCreateInfoKHR";
+            case   VKANDROIDSURFACECREATEINFOKHR_ID    :   return "VkAndroidSurfaceCreateInfoKHR";
+            case   VKWIN32SURFACECREATEINFOKHR_ID    :   return "VkWin32SurfaceCreateInfoKHR";
+            case   VKDEBUGREPORTCALLBACKCREATEINFOEXT_ID    :   return "VkDebugReportCallbackCreateInfoEXT";
+            case   VKPIPELINERASTERIZATIONSTATERASTERIZATIONORDERAMD_ID    :   return "VkPipelineRasterizationStateRasterizationOrderAMD";
+            case   VKDEBUGMARKEROBJECTNAMEINFOEXT_ID    :   return "VkDebugMarkerObjectNameInfoEXT";
+            case   VKDEBUGMARKEROBJECTTAGINFOEXT_ID    :   return "VkDebugMarkerObjectTagInfoEXT";
+            case   VKDEBUGMARKERMARKERINFOEXT_ID    :   return "VkDebugMarkerMarkerInfoEXT";
+            case   VKDEDICATEDALLOCATIONIMAGECREATEINFONV_ID    :   return "VkDedicatedAllocationImageCreateInfoNV";
+            case   VKDEDICATEDALLOCATIONBUFFERCREATEINFONV_ID    :   return "VkDedicatedAllocationBufferCreateInfoNV";
+            case   VKDEDICATEDALLOCATIONMEMORYALLOCATEINFONV_ID    :   return "VkDedicatedAllocationMemoryAllocateInfoNV";
+
+            default:
+                return "unknown struct.";
+        }
     }
     
     /**

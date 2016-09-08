@@ -305,7 +305,7 @@
 	 private static native long getMaxExtent0(Buffer ptr);/*
 		  VkImageFormatProperties* vkObj = (VkImageFormatProperties*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->maxExtent);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->maxExtent);
 	 */
 
 	/**

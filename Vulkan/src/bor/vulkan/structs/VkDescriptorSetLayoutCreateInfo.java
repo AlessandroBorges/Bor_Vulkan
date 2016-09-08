@@ -77,7 +77,7 @@
 	 *  const VkDescriptorSetLayoutBinding* 	pBindings	[vkstruct_array_array]
 	 */ 
 	VkDescriptorSetLayoutBinding[]  	pBindings;
-	 private BigBuffer 	 pBindingsBUFFER;
+	 private BigBuffer<VkDescriptorSetLayoutBinding> 	 pBindingsBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -249,7 +249,7 @@
 	 */ 
 	 public VkDescriptorSetLayoutCreateInfo pBindings(VkDescriptorSetLayoutBinding[] pBindings){
 		 this.pBindings = pBindings;
-		 this.pBindingsBUFFER = new BigBuffer(pBindings, VkDescriptorSetLayoutBinding.getID());
+		 this.pBindingsBUFFER = new BigBuffer<VkDescriptorSetLayoutBinding>(pBindings, VkDescriptorSetLayoutBinding.getID());
 		 setPBindings0(this.ptr, pBindingsBUFFER.getBuffer());
 		 return this;
 	 }

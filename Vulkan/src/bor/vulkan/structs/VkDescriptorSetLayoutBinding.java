@@ -77,7 +77,7 @@
 	 *  const VkSampler* 	pImmutableSamplers	[vkhandle_array_array]
 	 */ 
 	VkSampler[]  	pImmutableSamplers;
-	 private BigBuffer 	 pImmutableSamplersBUFFER;
+	 private BigBuffer<VkSampler> 	 pImmutableSamplersBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -240,7 +240,7 @@
 	 */ 
 	 public VkDescriptorSetLayoutBinding pImmutableSamplers(VkSampler[] pImmutableSamplers){
 		 this.pImmutableSamplers = pImmutableSamplers;
-		 this.pImmutableSamplersBUFFER = new BigBuffer(pImmutableSamplers, false);
+		 this.pImmutableSamplersBUFFER = new BigBuffer<VkSampler>(pImmutableSamplers, false);
 		 setPImmutableSamplers0(this.ptr, pImmutableSamplersBUFFER.getBuffer());
 		 return this;
 	 }

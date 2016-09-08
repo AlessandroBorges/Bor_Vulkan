@@ -327,6 +327,7 @@
     @Override
     public String toString() {
          StringBuilder builder = new StringBuilder();
+         int apiV = apiVersion();
          builder.append("VkApplicationInfo [ ")
 				.append("sType: ").append(sType() )
 				.append(",\n pNext: ")
@@ -340,7 +341,8 @@
 				.append(",\n engineVersion: ")
 				.append(engineVersion() )
 				.append(",\n apiVersion: ")
-				.append(apiVersion() )
+				.append(Vk10.getAPIVersionString(apiV))
+				.append(" (").append(apiV).append(")")
 				.append("]");
 		 return builder.toString();
     }

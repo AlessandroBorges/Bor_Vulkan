@@ -82,7 +82,7 @@
 	 *  const VkDeviceQueueCreateInfo* 	pQueueCreateInfos	[vkstruct_array_array]
 	 */ 
 	VkDeviceQueueCreateInfo[]  	pQueueCreateInfos;
-	 private BigBuffer 	 pQueueCreateInfosBUFFER;
+	 private BigBuffer<VkDeviceQueueCreateInfo> 	 pQueueCreateInfosBUFFER;
 	
 	/**
 	 *  uint32_t 	enabledLayerCount	[int]
@@ -108,7 +108,7 @@
 	 *  const VkPhysicalDeviceFeatures* 	pEnabledFeatures	[vkstruct_array_array]
 	 */ 
 	VkPhysicalDeviceFeatures  	pEnabledFeatures;
-	// private BigBuffer 	 pEnabledFeaturesBUFFER;
+	 private BigBuffer<VkPhysicalDeviceFeatures> 	 pEnabledFeaturesBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -280,7 +280,7 @@
 	 */ 
 	 public VkDeviceCreateInfo pQueueCreateInfos(VkDeviceQueueCreateInfo[] pQueueCreateInfos){
 		 this.pQueueCreateInfos = pQueueCreateInfos;
-		 this.pQueueCreateInfosBUFFER = new BigBuffer(pQueueCreateInfos, VkDeviceQueueCreateInfo.getID());
+		 this.pQueueCreateInfosBUFFER = new BigBuffer<VkDeviceQueueCreateInfo>(pQueueCreateInfos, VkDeviceQueueCreateInfo.getID());
 		 setPQueueCreateInfos0(this.ptr, pQueueCreateInfosBUFFER.getBuffer());
 		 return this;
 	 }
@@ -415,6 +415,7 @@
 
 // #Included setPEnabledFeatures
 
+	
 	/**
 	 * Set method for field pEnabledFeatures	[vkstruct]<br>
 	 * Prototype: const VkPhysicalDeviceFeatures*  pEnabledFeatures
@@ -432,7 +433,7 @@
 //#END Set Included
 
 // #Included getPEnabledFeatures0
-
+     
 	/**
 	 * Get method for field pEnabledFeatures	[vkstruct]<br>
 	 * Prototype: const VkPhysicalDeviceFeatures*  pEnabledFeatures
@@ -478,7 +479,7 @@
 				.append(",\n ppEnabledExtensionNames: ")
 				.append(Arrays.toString(ppEnabledExtensionNames()) )
 				.append(",\n pEnabledFeatures: ")
-				.append(pEnabledFeatures() )
+				.append(pEnabledFeatures())
 				.append("]");
 		 return builder.toString();
     }

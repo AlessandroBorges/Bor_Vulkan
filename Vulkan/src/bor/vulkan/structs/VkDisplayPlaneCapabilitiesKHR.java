@@ -518,7 +518,7 @@
 	 private static native long getMinSrcPosition0(Buffer ptr);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->minSrcPosition);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->minSrcPosition);
 	 */
 
 	/**
@@ -539,7 +539,7 @@
 	 private static native long getMaxSrcPosition0(Buffer ptr);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->maxSrcPosition);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->maxSrcPosition);
 	 */
 
 	/**
@@ -560,7 +560,7 @@
 	 private static native long getMinSrcExtent0(Buffer ptr);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->minSrcExtent);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->minSrcExtent);
 	 */
 
 	/**
@@ -581,7 +581,7 @@
 	 private static native long getMaxSrcExtent0(Buffer ptr);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->maxSrcExtent);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->maxSrcExtent);
 	 */
 
 	/**
@@ -602,7 +602,7 @@
 	 private static native long getMinDstPosition0(Buffer ptr);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->minDstPosition);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->minDstPosition);
 	 */
 
 	/**
@@ -623,7 +623,7 @@
 	 private static native long getMaxDstPosition0(Buffer ptr);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->maxDstPosition);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->maxDstPosition);
 	 */
 
 	/**
@@ -644,7 +644,7 @@
 	 private static native long getMinDstExtent0(Buffer ptr);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->minDstExtent);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->minDstExtent);
 	 */
 
 	/**
@@ -665,7 +665,7 @@
 	 private static native long getMaxDstExtent0(Buffer ptr);/*
 		  VkDisplayPlaneCapabilitiesKHR* vkObj = (VkDisplayPlaneCapabilitiesKHR*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->maxDstExtent);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->maxDstExtent);
 	 */
 
 

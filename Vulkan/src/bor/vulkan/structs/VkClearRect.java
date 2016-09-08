@@ -243,7 +243,7 @@
 	 private static native long getRect0(Buffer ptr);/*
 		  VkClearRect* vkObj = (VkClearRect*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->rect);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->rect);
 	 */
 
 	/**

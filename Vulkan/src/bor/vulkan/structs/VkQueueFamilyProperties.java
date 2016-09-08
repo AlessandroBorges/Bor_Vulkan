@@ -331,7 +331,7 @@
 	 private static native long getMinImageTransferGranularity0(Buffer ptr);/*
 		  VkQueueFamilyProperties* vkObj = (VkQueueFamilyProperties*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->minImageTransferGranularity);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->minImageTransferGranularity);
 	 */
 
 

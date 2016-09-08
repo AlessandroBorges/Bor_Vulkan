@@ -90,7 +90,7 @@
 	 *  const VkPipelineColorBlendAttachmentState* 	pAttachments	[vkstruct_array_array]
 	 */ 
 	VkPipelineColorBlendAttachmentState[]  	pAttachments;
-	 private BigBuffer 	 pAttachmentsBUFFER;
+	 private BigBuffer<VkPipelineColorBlendAttachmentState> 	 pAttachmentsBUFFER;
 	
 	/**
 	 *  float[] 	blendConstants	[float_array [4] ]
@@ -314,7 +314,7 @@
 	 */ 
 	 public VkPipelineColorBlendStateCreateInfo pAttachments(VkPipelineColorBlendAttachmentState[] pAttachments){
 		 this.pAttachments = pAttachments;
-		 this.pAttachmentsBUFFER = new BigBuffer(pAttachments, VkPipelineColorBlendAttachmentState.getID());
+		 this.pAttachmentsBUFFER = new BigBuffer<VkPipelineColorBlendAttachmentState>(pAttachments, VkPipelineColorBlendAttachmentState.getID());
 		 setPAttachments0(this.ptr, pAttachmentsBUFFER.getBuffer());
 		 return this;
 	 }
@@ -555,7 +555,7 @@
 	 private static native float[] getBlendConstants0(Buffer ptr, float[] _blendConstants);/*
 		  VkPipelineColorBlendStateCreateInfo* vkObj = (VkPipelineColorBlendStateCreateInfo*)(ptr);
 		  // fixed length array  
-		  memcpy(&_blendConstants, &(vkObj->blendConstants), 4 * sizeof(float));
+		  memcpy(_blendConstants, vkObj->blendConstants, 4 * sizeof(float));
 		  return obj__blendConstants;
 	 */
 

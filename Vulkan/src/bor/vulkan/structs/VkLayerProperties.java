@@ -236,13 +236,14 @@
     @Override
     public String toString() {
          StringBuilder builder = new StringBuilder();
+         int ver = specVersion();
          builder.append("VkLayerProperties [ ")
 				.append("layerName: ").append(layerName() )
-				.append(",\n specVersion: ")
-				.append(specVersion() )
-				.append(",\n implementationVersion: ")
+				.append(", specVersion: ")
+				.append(Vulkan.getAPIVersionString(ver))
+				.append(", implementationVersion: ")
 				.append(implementationVersion() )
-				.append(",\n description: ")
+				.append(", description: ")
 				.append(description() )
 				.append("]");
 		 return builder.toString();

@@ -77,7 +77,7 @@
 	 *  const VkDescriptorSetLayout* 	pSetLayouts	[vkhandle_array_array]
 	 */ 
 	VkDescriptorSetLayout[]  	pSetLayouts;
-	 private BigBuffer 	 pSetLayoutsBUFFER;
+	 private BigBuffer<VkDescriptorSetLayout> 	 pSetLayoutsBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -260,7 +260,7 @@
 	 */ 
 	 public VkDescriptorSetAllocateInfo pSetLayouts(VkDescriptorSetLayout[] pSetLayouts){
 		 this.pSetLayouts = pSetLayouts;
-		 this.pSetLayoutsBUFFER = new BigBuffer(pSetLayouts, false);
+		 this.pSetLayoutsBUFFER = new BigBuffer<VkDescriptorSetLayout>(pSetLayouts, false);
 		 setPSetLayouts0(this.ptr, pSetLayoutsBUFFER.getBuffer());
 		 return this;
 	 }

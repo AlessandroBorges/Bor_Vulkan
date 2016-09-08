@@ -281,7 +281,7 @@
 	 private static native long getClearValue0(Buffer ptr);/*
 		  VkClearAttachment* vkObj = (VkClearAttachment*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->clearValue);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->clearValue);
 	 */
 
 

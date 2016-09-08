@@ -699,7 +699,7 @@
 	 private static native long getFront0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->front);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->front);
 	 */
 
 	/**
@@ -720,7 +720,7 @@
 	 private static native long getBack0(Buffer ptr);/*
 		  VkPipelineDepthStencilStateCreateInfo* vkObj = (VkPipelineDepthStencilStateCreateInfo*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->back);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->back);
 	 */
 
 	/**

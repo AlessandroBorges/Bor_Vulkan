@@ -79,7 +79,7 @@
 	 *  const VkVertexInputBindingDescription* 	pVertexBindingDescriptions	[vkstruct_array_array]
 	 */ 
 	VkVertexInputBindingDescription[]  	pVertexBindingDescriptions;
-	 private BigBuffer 	 pVertexBindingDescriptionsBUFFER;
+	 private BigBuffer<VkVertexInputBindingDescription> 	 pVertexBindingDescriptionsBUFFER;
 	
 	/**
 	 *  uint32_t 	vertexAttributeDescriptionCount	[int]
@@ -90,7 +90,7 @@
 	 *  const VkVertexInputAttributeDescription* 	pVertexAttributeDescriptions	[vkstruct_array_array]
 	 */ 
 	VkVertexInputAttributeDescription[]  	pVertexAttributeDescriptions;
-	 private BigBuffer 	 pVertexAttributeDescriptionsBUFFER;
+	 private BigBuffer<VkVertexInputAttributeDescription> 	 pVertexAttributeDescriptionsBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -262,7 +262,7 @@
 	 */ 
 	 public VkPipelineVertexInputStateCreateInfo pVertexBindingDescriptions(VkVertexInputBindingDescription[] pVertexBindingDescriptions){
 		 this.pVertexBindingDescriptions = pVertexBindingDescriptions;
-		 this.pVertexBindingDescriptionsBUFFER = new BigBuffer(pVertexBindingDescriptions, VkVertexInputBindingDescription.getID());
+		 this.pVertexBindingDescriptionsBUFFER = new BigBuffer<VkVertexInputBindingDescription>(pVertexBindingDescriptions, VkVertexInputBindingDescription.getID());
 		 setPVertexBindingDescriptions0(this.ptr, pVertexBindingDescriptionsBUFFER.getBuffer());
 		 return this;
 	 }
@@ -321,7 +321,7 @@
 	 */ 
 	 public VkPipelineVertexInputStateCreateInfo pVertexAttributeDescriptions(VkVertexInputAttributeDescription[] pVertexAttributeDescriptions){
 		 this.pVertexAttributeDescriptions = pVertexAttributeDescriptions;
-		 this.pVertexAttributeDescriptionsBUFFER = new BigBuffer(pVertexAttributeDescriptions, VkVertexInputAttributeDescription.getID());
+		 this.pVertexAttributeDescriptionsBUFFER = new BigBuffer<VkVertexInputAttributeDescription>(pVertexAttributeDescriptions, VkVertexInputAttributeDescription.getID());
 		 setPVertexAttributeDescriptions0(this.ptr, pVertexAttributeDescriptionsBUFFER.getBuffer());
 		 return this;
 	 }

@@ -731,7 +731,7 @@
 	 private static native long getExtent0(Buffer ptr);/*
 		  VkImageCreateInfo* vkObj = (VkImageCreateInfo*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->extent);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->extent);
 	 */
 
 	/**

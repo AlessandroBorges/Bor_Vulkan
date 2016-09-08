@@ -174,7 +174,7 @@
          StringBuilder builder = new StringBuilder();
          builder.append("VkMemoryHeap [ ")
 				.append("size: ").append(size() )
-				.append(",\n flags: ")
+				.append(", flags: ")
 				.append(flags() )
 				.append("]");
 		 return builder.toString();

@@ -551,7 +551,7 @@
 	 private static native long getComponents0(Buffer ptr);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->components);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->components);
 	 */
 
 	/**
@@ -572,7 +572,7 @@
 	 private static native long getSubresourceRange0(Buffer ptr);/*
 		  VkImageViewCreateInfo* vkObj = (VkImageViewCreateInfo*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->subresourceRange);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->subresourceRange);
 	 */
 
 

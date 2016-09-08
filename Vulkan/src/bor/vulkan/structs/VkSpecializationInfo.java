@@ -61,7 +61,7 @@
 	 *  const VkSpecializationMapEntry* 	pMapEntries	[vkstruct_array_array]
 	 */ 
 	VkSpecializationMapEntry[]  	pMapEntries;
-	 private BigBuffer 	 pMapEntriesBUFFER;
+	 private BigBuffer<VkSpecializationMapEntry> 	 pMapEntriesBUFFER;
 	
 	/**
 	 *  size_t 	dataSize	[long]
@@ -164,7 +164,7 @@
 	 */ 
 	 public VkSpecializationInfo pMapEntries(VkSpecializationMapEntry[] pMapEntries){
 		 this.pMapEntries = pMapEntries;
-		 this.pMapEntriesBUFFER = new BigBuffer(pMapEntries, VkSpecializationMapEntry.getID());
+		 this.pMapEntriesBUFFER = new BigBuffer<VkSpecializationMapEntry>(pMapEntries, VkSpecializationMapEntry.getID());
 		 setPMapEntries0(this.ptr, pMapEntriesBUFFER.getBuffer());
 		 return this;
 	 }

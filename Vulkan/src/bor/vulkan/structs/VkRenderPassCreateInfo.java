@@ -81,7 +81,7 @@
 	 *  const VkAttachmentDescription* 	pAttachments	[vkstruct_array_array]
 	 */ 
 	VkAttachmentDescription[]  	pAttachments;
-	 private BigBuffer 	 pAttachmentsBUFFER;
+	 private BigBuffer<VkAttachmentDescription> 	 pAttachmentsBUFFER;
 	
 	/**
 	 *  uint32_t 	subpassCount	[int]
@@ -92,7 +92,7 @@
 	 *  const VkSubpassDescription* 	pSubpasses	[vkstruct_array_array]
 	 */ 
 	VkSubpassDescription[]  	pSubpasses;
-	 private BigBuffer 	 pSubpassesBUFFER;
+	 private BigBuffer<VkSubpassDescription> 	 pSubpassesBUFFER;
 	
 	/**
 	 *  uint32_t 	dependencyCount	[int]
@@ -103,7 +103,7 @@
 	 *  const VkSubpassDependency* 	pDependencies	[vkstruct_array_array]
 	 */ 
 	VkSubpassDependency[]  	pDependencies;
-	 private BigBuffer 	 pDependenciesBUFFER;
+	 private BigBuffer<VkSubpassDependency> 	 pDependenciesBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -275,7 +275,7 @@
 	 */ 
 	 public VkRenderPassCreateInfo pAttachments(VkAttachmentDescription[] pAttachments){
 		 this.pAttachments = pAttachments;
-		 this.pAttachmentsBUFFER = new BigBuffer(pAttachments, VkAttachmentDescription.getID());
+		 this.pAttachmentsBUFFER = new BigBuffer<VkAttachmentDescription>(pAttachments, VkAttachmentDescription.getID());
 		 setPAttachments0(this.ptr, pAttachmentsBUFFER.getBuffer());
 		 return this;
 	 }
@@ -334,7 +334,7 @@
 	 */ 
 	 public VkRenderPassCreateInfo pSubpasses(VkSubpassDescription[] pSubpasses){
 		 this.pSubpasses = pSubpasses;
-		 this.pSubpassesBUFFER = new BigBuffer(pSubpasses, VkSubpassDescription.getID());
+		 this.pSubpassesBUFFER = new BigBuffer<VkSubpassDescription>(pSubpasses, VkSubpassDescription.getID());
 		 setPSubpasses0(this.ptr, pSubpassesBUFFER.getBuffer());
 		 return this;
 	 }
@@ -393,7 +393,7 @@
 	 */ 
 	 public VkRenderPassCreateInfo pDependencies(VkSubpassDependency[] pDependencies){
 		 this.pDependencies = pDependencies;
-		 this.pDependenciesBUFFER = new BigBuffer(pDependencies, VkSubpassDependency.getID());
+		 this.pDependenciesBUFFER = new BigBuffer<VkSubpassDependency>(pDependencies, VkSubpassDependency.getID());
 		 setPDependencies0(this.ptr, pDependenciesBUFFER.getBuffer());
 		 return this;
 	 }

@@ -345,7 +345,7 @@
 	 private static native long getSrcSubresource0(Buffer ptr);/*
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->srcSubresource);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->srcSubresource);
 	 */
 
 	/**
@@ -366,7 +366,7 @@
 	 private static native long getSrcOffset0(Buffer ptr);/*
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->srcOffset);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->srcOffset);
 	 */
 
 	/**
@@ -387,7 +387,7 @@
 	 private static native long getDstSubresource0(Buffer ptr);/*
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->dstSubresource);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->dstSubresource);
 	 */
 
 	/**
@@ -408,7 +408,7 @@
 	 private static native long getDstOffset0(Buffer ptr);/*
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->dstOffset);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->dstOffset);
 	 */
 
 	/**
@@ -429,7 +429,7 @@
 	 private static native long getExtent0(Buffer ptr);/*
 		  VkImageCopy* vkObj = (VkImageCopy*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->extent);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->extent);
 	 */
 
 

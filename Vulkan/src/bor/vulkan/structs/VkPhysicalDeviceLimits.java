@@ -4437,7 +4437,7 @@
 	 private static native int[] getMaxComputeWorkGroupCount0(Buffer ptr, int[] _maxComputeWorkGroupCount);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  // fixed length array  
-		  memcpy(&_maxComputeWorkGroupCount, &(vkObj->maxComputeWorkGroupCount), 3 * sizeof(uint32_t));
+		  memcpy(_maxComputeWorkGroupCount, vkObj->maxComputeWorkGroupCount, 3 * sizeof(uint32_t));
 		  return obj__maxComputeWorkGroupCount;
 	 */
 
@@ -4477,7 +4477,7 @@
 	 private static native int[] getMaxComputeWorkGroupSize0(Buffer ptr, int[] _maxComputeWorkGroupSize);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  // fixed length array  
-		  memcpy(&_maxComputeWorkGroupSize, &(vkObj->maxComputeWorkGroupSize), 3 * sizeof(uint32_t));
+		  memcpy(_maxComputeWorkGroupSize, vkObj->maxComputeWorkGroupSize, 3 * sizeof(uint32_t));
 		  return obj__maxComputeWorkGroupSize;
 	 */
 
@@ -4650,7 +4650,7 @@
 	 private static native int[] getMaxViewportDimensions0(Buffer ptr, int[] _maxViewportDimensions);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  // fixed length array  
-		  memcpy(&_maxViewportDimensions, &(vkObj->maxViewportDimensions), 2 * sizeof(uint32_t));
+		  memcpy(_maxViewportDimensions, vkObj->maxViewportDimensions, 2 * sizeof(uint32_t));
 		  return obj__maxViewportDimensions;
 	 */
 
@@ -4671,7 +4671,7 @@
 	 private static native float[] getViewportBoundsRange0(Buffer ptr, float[] _viewportBoundsRange);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  // fixed length array  
-		  memcpy(&_viewportBoundsRange, &(vkObj->viewportBoundsRange), 2 * sizeof(float));
+		  memcpy(_viewportBoundsRange, vkObj->viewportBoundsRange, 2 * sizeof(float));
 		  return obj__viewportBoundsRange;
 	 */
 
@@ -5300,7 +5300,7 @@
 	 private static native float[] getPointSizeRange0(Buffer ptr, float[] _pointSizeRange);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  // fixed length array  
-		  memcpy(&_pointSizeRange, &(vkObj->pointSizeRange), 2 * sizeof(float));
+		  memcpy(_pointSizeRange, vkObj->pointSizeRange, 2 * sizeof(float));
 		  return obj__pointSizeRange;
 	 */
 
@@ -5321,7 +5321,7 @@
 	 private static native float[] getLineWidthRange0(Buffer ptr, float[] _lineWidthRange);/*
 		  VkPhysicalDeviceLimits* vkObj = (VkPhysicalDeviceLimits*)(ptr);
 		  // fixed length array  
-		  memcpy(&_lineWidthRange, &(vkObj->lineWidthRange), 2 * sizeof(float));
+		  memcpy(_lineWidthRange, vkObj->lineWidthRange, 2 * sizeof(float));
 		  return obj__lineWidthRange;
 	 */
 

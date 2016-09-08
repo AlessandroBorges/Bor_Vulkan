@@ -76,7 +76,7 @@
 	 *  const VkSemaphore* 	pWaitSemaphores	[vkhandle_array_array]
 	 */ 
 	VkSemaphore[]  	pWaitSemaphores;
-	 private BigBuffer 	 pWaitSemaphoresBUFFER;
+	 private BigBuffer<VkSemaphore> 	 pWaitSemaphoresBUFFER;
 	
 	/**
 	 *  const VkPipelineStageFlags* 	pWaitDstStageMask	[int_array]
@@ -92,7 +92,7 @@
 	 *  const VkCommandBuffer* 	pCommandBuffers	[vkhandle_array_array]
 	 */ 
 	VkCommandBuffer[]  	pCommandBuffers;
-	 private BigBuffer 	 pCommandBuffersBUFFER;
+	 private BigBuffer<VkCommandBuffer> 	 pCommandBuffersBUFFER;
 	
 	/**
 	 *  uint32_t 	signalSemaphoreCount	[int]
@@ -103,7 +103,7 @@
 	 *  const VkSemaphore* 	pSignalSemaphores	[vkhandle_array_array]
 	 */ 
 	VkSemaphore[]  	pSignalSemaphores;
-	 private BigBuffer 	 pSignalSemaphoresBUFFER;
+	 private BigBuffer<VkSemaphore> 	 pSignalSemaphoresBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -252,7 +252,7 @@
 	 */ 
 	 public VkSubmitInfo pWaitSemaphores(VkSemaphore[] pWaitSemaphores){
 		 this.pWaitSemaphores = pWaitSemaphores;
-		 this.pWaitSemaphoresBUFFER = new BigBuffer(pWaitSemaphores, false);
+		 this.pWaitSemaphoresBUFFER = new BigBuffer<VkSemaphore>(pWaitSemaphores, false);
 		 setPWaitSemaphores0(this.ptr, pWaitSemaphoresBUFFER.getBuffer());
 		 return this;
 	 }
@@ -335,7 +335,7 @@
 	 */ 
 	 public VkSubmitInfo pCommandBuffers(VkCommandBuffer[] pCommandBuffers){
 		 this.pCommandBuffers = pCommandBuffers;
-		 this.pCommandBuffersBUFFER = new BigBuffer(pCommandBuffers, true);
+		 this.pCommandBuffersBUFFER = new BigBuffer<VkCommandBuffer>(pCommandBuffers, true);
 		 setPCommandBuffers0(this.ptr, pCommandBuffersBUFFER.getBuffer());
 		 return this;
 	 }
@@ -395,7 +395,7 @@
 	 */ 
 	 public VkSubmitInfo pSignalSemaphores(VkSemaphore[] pSignalSemaphores){
 		 this.pSignalSemaphores = pSignalSemaphores;
-		 this.pSignalSemaphoresBUFFER = new BigBuffer(pSignalSemaphores, false);
+		 this.pSignalSemaphoresBUFFER = new BigBuffer<VkSemaphore>(pSignalSemaphores, false);
 		 setPSignalSemaphores0(this.ptr, pSignalSemaphoresBUFFER.getBuffer());
 		 return this;
 	 }

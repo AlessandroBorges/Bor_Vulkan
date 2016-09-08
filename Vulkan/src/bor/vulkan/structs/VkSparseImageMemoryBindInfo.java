@@ -65,7 +65,7 @@
 	 *  const VkSparseImageMemoryBind* 	pBinds	[vkstruct_array_array]
 	 */ 
 	VkSparseImageMemoryBind[]  	pBinds;
-	 private BigBuffer 	 pBindsBUFFER;
+	 private BigBuffer<VkSparseImageMemoryBind> 	 pBindsBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -192,7 +192,7 @@
 	 */ 
 	 public VkSparseImageMemoryBindInfo pBinds(VkSparseImageMemoryBind[] pBinds){
 		 this.pBinds = pBinds;
-		 this.pBindsBUFFER = new BigBuffer(pBinds, VkSparseImageMemoryBind.getID());
+		 this.pBindsBUFFER = new BigBuffer<VkSparseImageMemoryBind>(pBinds, VkSparseImageMemoryBind.getID());
 		 setPBinds0(this.ptr, pBindsBUFFER.getBuffer());
 		 return this;
 	 }

@@ -75,7 +75,7 @@
 	 *  const VkSemaphore* 	pWaitSemaphores	[vkhandle_array_array]
 	 */ 
 	VkSemaphore[]  	pWaitSemaphores;
-	 private BigBuffer 	 pWaitSemaphoresBUFFER;
+	 private BigBuffer<VkSemaphore> 	 pWaitSemaphoresBUFFER;
 	
 	/**
 	 *  uint32_t 	swapchainCount	[int]
@@ -86,7 +86,7 @@
 	 *  const VkSwapchainKHR* 	pSwapchains	[vkhandle_array_array]
 	 */ 
 	VkSwapchainKHR[]  	pSwapchains;
-	 private BigBuffer 	 pSwapchainsBUFFER;
+	 private BigBuffer<VkSwapchainKHR> 	 pSwapchainsBUFFER;
 	
 	/**
 	 *  const uint32_t* 	pImageIndices	[int_array]
@@ -245,7 +245,7 @@
 	 */ 
 	 public VkPresentInfoKHR pWaitSemaphores(VkSemaphore[] pWaitSemaphores){
 		 this.pWaitSemaphores = pWaitSemaphores;
-		 this.pWaitSemaphoresBUFFER = new BigBuffer(pWaitSemaphores, false);
+		 this.pWaitSemaphoresBUFFER = new BigBuffer<VkSemaphore>(pWaitSemaphores, false);
 		 setPWaitSemaphores0(this.ptr, pWaitSemaphoresBUFFER.getBuffer());
 		 return this;
 	 }
@@ -305,7 +305,7 @@
 	 */ 
 	 public VkPresentInfoKHR pSwapchains(VkSwapchainKHR[] pSwapchains){
 		 this.pSwapchains = pSwapchains;
-		 this.pSwapchainsBUFFER = new BigBuffer(pSwapchains, false);
+		 this.pSwapchainsBUFFER = new BigBuffer<VkSwapchainKHR>(pSwapchains, false);
 		 setPSwapchains0(this.ptr, pSwapchainsBUFFER.getBuffer());
 		 return this;
 	 }

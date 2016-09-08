@@ -262,7 +262,7 @@
 	 private static native long getImageGranularity0(Buffer ptr);/*
 		  VkSparseImageFormatProperties* vkObj = (VkSparseImageFormatProperties*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->imageGranularity);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->imageGranularity);
 	 */
 
 	/**

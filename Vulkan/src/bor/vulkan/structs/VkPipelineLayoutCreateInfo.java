@@ -79,7 +79,7 @@
 	 *  const VkDescriptorSetLayout* 	pSetLayouts	[vkhandle_array_array]
 	 */ 
 	VkDescriptorSetLayout[]  	pSetLayouts;
-	 private BigBuffer 	 pSetLayoutsBUFFER;
+	 private BigBuffer<VkDescriptorSetLayout> 	 pSetLayoutsBUFFER;
 	
 	/**
 	 *  uint32_t 	pushConstantRangeCount	[int]
@@ -90,7 +90,7 @@
 	 *  const VkPushConstantRange* 	pPushConstantRanges	[vkstruct_array_array]
 	 */ 
 	VkPushConstantRange[]  	pPushConstantRanges;
-	 private BigBuffer 	 pPushConstantRangesBUFFER;
+	 private BigBuffer<VkPushConstantRange> 	 pPushConstantRangesBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -262,7 +262,7 @@
 	 */ 
 	 public VkPipelineLayoutCreateInfo pSetLayouts(VkDescriptorSetLayout[] pSetLayouts){
 		 this.pSetLayouts = pSetLayouts;
-		 this.pSetLayoutsBUFFER = new BigBuffer(pSetLayouts, false);
+		 this.pSetLayoutsBUFFER = new BigBuffer<VkDescriptorSetLayout>(pSetLayouts, false);
 		 setPSetLayouts0(this.ptr, pSetLayoutsBUFFER.getBuffer());
 		 return this;
 	 }
@@ -322,7 +322,7 @@
 	 */ 
 	 public VkPipelineLayoutCreateInfo pPushConstantRanges(VkPushConstantRange[] pPushConstantRanges){
 		 this.pPushConstantRanges = pPushConstantRanges;
-		 this.pPushConstantRangesBUFFER = new BigBuffer(pPushConstantRanges, VkPushConstantRange.getID());
+		 this.pPushConstantRangesBUFFER = new BigBuffer<VkPushConstantRange>(pPushConstantRanges, VkPushConstantRange.getID());
 		 setPPushConstantRanges0(this.ptr, pPushConstantRangesBUFFER.getBuffer());
 		 return this;
 	 }

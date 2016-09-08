@@ -79,7 +79,7 @@
 	 *  const VkSemaphore* 	pWaitSemaphores	[vkhandle_array_array]
 	 */ 
 	VkSemaphore[]  	pWaitSemaphores;
-	 private BigBuffer 	 pWaitSemaphoresBUFFER;
+	 private BigBuffer<VkSemaphore> 	 pWaitSemaphoresBUFFER;
 	
 	/**
 	 *  uint32_t 	bufferBindCount	[int]
@@ -90,7 +90,7 @@
 	 *  const VkSparseBufferMemoryBindInfo* 	pBufferBinds	[vkstruct_array_array]
 	 */ 
 	VkSparseBufferMemoryBindInfo[]  	pBufferBinds;
-	 private BigBuffer 	 pBufferBindsBUFFER;
+	 private BigBuffer<VkSparseBufferMemoryBindInfo> 	 pBufferBindsBUFFER;
 	
 	/**
 	 *  uint32_t 	imageOpaqueBindCount	[int]
@@ -101,7 +101,7 @@
 	 *  const VkSparseImageOpaqueMemoryBindInfo* 	pImageOpaqueBinds	[vkstruct_array_array]
 	 */ 
 	VkSparseImageOpaqueMemoryBindInfo[]  	pImageOpaqueBinds;
-	 private BigBuffer 	 pImageOpaqueBindsBUFFER;
+	 private BigBuffer<VkSparseImageOpaqueMemoryBindInfo> 	 pImageOpaqueBindsBUFFER;
 	
 	/**
 	 *  uint32_t 	imageBindCount	[int]
@@ -112,7 +112,7 @@
 	 *  const VkSparseImageMemoryBindInfo* 	pImageBinds	[vkstruct_array_array]
 	 */ 
 	VkSparseImageMemoryBindInfo[]  	pImageBinds;
-	 private BigBuffer 	 pImageBindsBUFFER;
+	 private BigBuffer<VkSparseImageMemoryBindInfo> 	 pImageBindsBUFFER;
 	
 	/**
 	 *  uint32_t 	signalSemaphoreCount	[int]
@@ -123,7 +123,7 @@
 	 *  const VkSemaphore* 	pSignalSemaphores	[vkhandle_array_array]
 	 */ 
 	VkSemaphore[]  	pSignalSemaphores;
-	 private BigBuffer 	 pSignalSemaphoresBUFFER;
+	 private BigBuffer<VkSemaphore> 	 pSignalSemaphoresBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -272,7 +272,7 @@
 	 */ 
 	 public VkBindSparseInfo pWaitSemaphores(VkSemaphore[] pWaitSemaphores){
 		 this.pWaitSemaphores = pWaitSemaphores;
-		 this.pWaitSemaphoresBUFFER = new BigBuffer(pWaitSemaphores, false);
+		 this.pWaitSemaphoresBUFFER = new BigBuffer<VkSemaphore>(pWaitSemaphores, false);
 		 setPWaitSemaphores0(this.ptr, pWaitSemaphoresBUFFER.getBuffer());
 		 return this;
 	 }
@@ -332,7 +332,7 @@
 	 */ 
 	 public VkBindSparseInfo pBufferBinds(VkSparseBufferMemoryBindInfo[] pBufferBinds){
 		 this.pBufferBinds = pBufferBinds;
-		 this.pBufferBindsBUFFER = new BigBuffer(pBufferBinds, VkSparseBufferMemoryBindInfo.getID());
+		 this.pBufferBindsBUFFER = new BigBuffer<VkSparseBufferMemoryBindInfo>(pBufferBinds, VkSparseBufferMemoryBindInfo.getID());
 		 setPBufferBinds0(this.ptr, pBufferBindsBUFFER.getBuffer());
 		 return this;
 	 }
@@ -391,7 +391,7 @@
 	 */ 
 	 public VkBindSparseInfo pImageOpaqueBinds(VkSparseImageOpaqueMemoryBindInfo[] pImageOpaqueBinds){
 		 this.pImageOpaqueBinds = pImageOpaqueBinds;
-		 this.pImageOpaqueBindsBUFFER = new BigBuffer(pImageOpaqueBinds, VkSparseImageOpaqueMemoryBindInfo.getID());
+		 this.pImageOpaqueBindsBUFFER = new BigBuffer<VkSparseImageOpaqueMemoryBindInfo>(pImageOpaqueBinds, VkSparseImageOpaqueMemoryBindInfo.getID());
 		 setPImageOpaqueBinds0(this.ptr, pImageOpaqueBindsBUFFER.getBuffer());
 		 return this;
 	 }
@@ -450,7 +450,7 @@
 	 */ 
 	 public VkBindSparseInfo pImageBinds(VkSparseImageMemoryBindInfo[] pImageBinds){
 		 this.pImageBinds = pImageBinds;
-		 this.pImageBindsBUFFER = new BigBuffer(pImageBinds, VkSparseImageMemoryBindInfo.getID());
+		 this.pImageBindsBUFFER = new BigBuffer<VkSparseImageMemoryBindInfo>(pImageBinds, VkSparseImageMemoryBindInfo.getID());
 		 setPImageBinds0(this.ptr, pImageBindsBUFFER.getBuffer());
 		 return this;
 	 }
@@ -509,7 +509,7 @@
 	 */ 
 	 public VkBindSparseInfo pSignalSemaphores(VkSemaphore[] pSignalSemaphores){
 		 this.pSignalSemaphores = pSignalSemaphores;
-		 this.pSignalSemaphoresBUFFER = new BigBuffer(pSignalSemaphores, false);
+		 this.pSignalSemaphoresBUFFER = new BigBuffer<VkSemaphore>(pSignalSemaphores, false);
 		 setPSignalSemaphores0(this.ptr, pSignalSemaphoresBUFFER.getBuffer());
 		 return this;
 	 }

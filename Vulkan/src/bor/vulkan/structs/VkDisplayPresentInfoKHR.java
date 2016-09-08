@@ -366,7 +366,7 @@
 	 private static native long getSrcRect0(Buffer ptr);/*
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->srcRect);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->srcRect);
 	 */
 
 	/**
@@ -387,7 +387,7 @@
 	 private static native long getDstRect0(Buffer ptr);/*
 		  VkDisplayPresentInfoKHR* vkObj = (VkDisplayPresentInfoKHR*)(ptr);
 		  // generic get for Buffer - field must be pointer! 
-		  return (jlong) reinterpret_cast<jlong>(vkObj->dstRect);
+		  return (jlong) reinterpret_cast<jlong>(&vkObj->dstRect);
 	 */
 
 	/**

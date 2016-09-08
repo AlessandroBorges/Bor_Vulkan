@@ -61,7 +61,7 @@
 	 *  VkMemoryType[] 	memoryTypes	[vkstruct_array_array [VK_MAX_MEMORY_TYPES] ]
 	 */ 
 	VkMemoryType[] 	memoryTypes = new VkMemoryType[VK_MAX_MEMORY_TYPES];
-	 private BigBuffer 	 memoryTypesBUFFER;
+	 private BigBuffer<VkMemoryType> memoryTypesBUFFER;
 	
 	/**
 	 *  uint32_t 	memoryHeapCount	[int]
@@ -72,7 +72,7 @@
 	 *  VkMemoryHeap[] 	memoryHeaps	[vkstruct_array_array [VK_MAX_MEMORY_HEAPS] ]
 	 */ 
 	VkMemoryHeap[] 	memoryHeaps = new VkMemoryHeap[VK_MAX_MEMORY_HEAPS];
-	 private BigBuffer 	 memoryHeapsBUFFER;
+	 private BigBuffer<VkMemoryHeap> memoryHeapsBUFFER;
 	/**
 	 * Ctor
 	 */
@@ -197,9 +197,9 @@
 		 }
                  if(memoryTypesBUFFER == null){
                      ByteBuffer bb = Utils.wrapPointer(ptr, VK_MAX_MEMORY_TYPES * VkMemoryType.sizeOf());
-                     memoryTypesBUFFER = new BigBuffer(bb, memoryHeaps, VkMemoryType.getID());
+                     memoryTypesBUFFER = new BigBuffer<VkMemoryType>(bb, memoryTypes, VkMemoryType.getID());
                  }
-                 memoryHeapsBUFFER.update();  
+                 memoryTypesBUFFER.update();  
 		 return this.memoryTypes;
 	 }
 
@@ -268,7 +268,7 @@
 		 }
 		 if(memoryHeapsBUFFER == null){
 		     ByteBuffer bb = Utils.wrapPointer(ptr, VK_MAX_MEMORY_HEAPS * VkMemoryHeap.sizeOf());
-		     memoryHeapsBUFFER = new BigBuffer(bb, memoryHeaps, VkMemoryHeap.getID());
+		     memoryHeapsBUFFER = new BigBuffer<VkMemoryHeap>(bb, memoryHeaps, VkMemoryHeap.getID());
 		 }
 		 memoryHeapsBUFFER.update();		
 		 return this.memoryHeaps;
