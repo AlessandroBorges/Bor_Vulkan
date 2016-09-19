@@ -9,7 +9,7 @@ import java.nio.file.Paths;
 import java.util.*;
 
 import bor.vulkan.generator.Util.CLASS_TYPE;
-import sun.security.x509.IssuingDistributionPointExtension;
+
 /**
  * <pre>
  * Class to help mapping JNI Types.

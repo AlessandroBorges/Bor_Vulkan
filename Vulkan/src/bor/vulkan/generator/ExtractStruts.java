@@ -9,7 +9,7 @@ import java.io.StringWriter;
 import java.util.*;
 
 
-import com.google.gson.Gson;
+//import com.google.gson.Gson;
 
 import bor.vulkan.structs.CStructInfo;
 import jdk.nashorn.internal.ir.debug.JSONWriter;
@@ -109,12 +109,12 @@ public class ExtractStruts {
             
                         
             StringWriter out = new StringWriter(10*1024);
-            
-            Gson gson = new Gson();
-            String json =  gson.toJson(list);
-            
-            System.out.println("XML");
-            System.out.println(json);
+//            
+//          Gson gson = new Gson();
+//          String json =  gson.toJson(list);
+//            
+//            System.out.println("XML");
+//            System.out.println(json);
             
         }
         ////////////////////////////////////////////////////////////

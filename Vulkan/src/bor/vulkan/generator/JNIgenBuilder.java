@@ -62,6 +62,9 @@ public class JNIgenBuilder {
     
     private JNIgenBuilder() {}
 
+    /**
+     *  {@link #toString()}
+     */
     public static void main(String[] args) throws Exception {
         //java.net.URL url = JNIgenBuilder.class.getResource("Struct.txt");
         //System.out.println("URL " +url);
@@ -92,6 +95,7 @@ public class JNIgenBuilder {
         System.out.println("\n Code Generation:");
         NativeCodeGenerator jnigen = new NativeCodeGenerator();
         jnigen.setUsePrimitiveArrayCritical(false);
+        jnigen.setSupportNullString(true);
         jnigen.generate("src", "bin", "jni", 
                         src, 
                         null);

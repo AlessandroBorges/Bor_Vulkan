@@ -36,7 +36,7 @@
  * @author Alessandro Borges 
  * @version Ver. 0.8.65 (beta) 
  */
- public class VkWaylandSurfaceCreateInfoKHR extends VkStruct {
+ public class VkWaylandSurfaceCreateInfoKHR extends VkStruct implements VkSurfaceCreateInfoKHR{
 
     //@formatter:off
     /*JNI

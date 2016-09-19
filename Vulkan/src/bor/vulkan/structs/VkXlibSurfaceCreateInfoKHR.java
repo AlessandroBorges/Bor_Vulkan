@@ -36,7 +36,7 @@
  * @author Alessandro Borges 
  * @version Ver. 0.8.65 (beta) 
  */
- public class VkXlibSurfaceCreateInfoKHR extends VkStruct {
+ public class VkXlibSurfaceCreateInfoKHR extends VkStruct implements VkSurfaceCreateInfoKHR {
 
     //@formatter:off
     /*JNI

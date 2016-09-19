@@ -35,7 +35,7 @@
  * @author Alessandro Borges 
  * @version Ver. 0.8.65 (beta) 
  */
- public class VkAndroidSurfaceCreateInfoKHR extends VkStruct {
+ public class VkAndroidSurfaceCreateInfoKHR extends VkStruct implements VkSurfaceCreateInfoKHR {
 
     //@formatter:off
     /*JNI
