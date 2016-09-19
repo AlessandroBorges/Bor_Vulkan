@@ -4,15 +4,16 @@
 package bor.vulkan;
 
 import java.io.Writer;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
-
 import bor.vulkan.*;
 import bor.vulkan.enumerations.VkResult;
 import bor.vulkan.enumerations.VkStructureType;
@@ -23,6 +24,14 @@ import bor.vulkan.structs.*;
  *
  */
 public class VulkanSurfaceView extends SurfaceView implements Callback {
+	private final static String TAG = "VulkanSurfaceView";
+    private final static boolean LOG_ATTACH_DETACH = false;
+    private final static boolean LOG_THREADS = false;
+    private final static boolean LOG_PAUSE_RESUME = false;
+    private final static boolean LOG_SURFACE = false;
+    private final static boolean LOG_RENDERER = false;
+    private final static boolean LOG_RENDERER_DRAW_FRAME = false;
+    private final static boolean LOG_EGL = false;
 	
 	 /**
      * The renderer only renders
@@ -65,10 +74,12 @@ public class VulkanSurfaceView extends SurfaceView implements Callback {
 	private static final Semaphore sEglSemaphore = new Semaphore(1);
 	private boolean mSizeChanged = true;
 
-	
+	private final WeakReference<VulkanSurfaceView> mThisWeakRef = new WeakReference<VulkanSurfaceView>(this);
 	private VulkanConfigChooser mEGLConfigChooser;
 //	private EGLContextFactory mEGLContextFactory;
 	private WindowSurfaceFactory mEGLWindowSurfaceFactory;
+	private Renderer mRenderer;
+	private boolean mDetached;
 
 	
 	/**
@@ -211,17 +222,28 @@ public class VulkanSurfaceView extends SurfaceView implements Callback {
 		init();
 	}
 	
+	/**
+     * Standard View constructor. In order to render something, you
+     * must call {@link #setRenderer} to register a renderer.
+     */
 	public VulkanSurfaceView(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		init();
 	}
 	
-	public VulkanSurfaceView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-		super(context, attrs, defStyleAttr, defStyleRes);	
-		init();
-	}
-	
-	
+		
+	  @Override
+	    protected void finalize() throws Throwable {
+	        try {
+	            if (mVkThread != null) {
+	                // GLThread may still be running if this view was never
+	                // attached to a window.
+	            	mVkThread.requestExitAndWait();
+	            }
+	        } finally {
+	            super.finalize();
+	        }
+	    }
 	
 	/**
 	 * Install a SurfaceHolder.Calback in this Vulkan SurfaceView. So we get notified 
@@ -290,8 +312,51 @@ public class VulkanSurfaceView extends SurfaceView implements Callback {
         if (mEGLWindowSurfaceFactory == null) {
             mEGLWindowSurfaceFactory = new DefaultWindowSurfaceFactory();
         }
-        mVkThread = new VkThread(renderer);
+        mRenderer = renderer;
+        mVkThread = new VkThread(mThisWeakRef);
         mVkThread.start();
+    }
+    
+    /**
+     * Set the rendering mode. When renderMode is
+     * RENDERMODE_CONTINUOUSLY, the renderer is called
+     * repeatedly to re-render the scene. When renderMode
+     * is RENDERMODE_WHEN_DIRTY, the renderer only rendered when the surface
+     * is created, or when {@link #requestRender} is called. Defaults to RENDERMODE_CONTINUOUSLY.
+     * <p>
+     * Using RENDERMODE_WHEN_DIRTY can improve battery life and overall system performance
+     * by allowing the GPU and CPU to idle when the view does not need to be updated.
+     * <p>
+     * This method can only be called after {@link #setRenderer(Renderer)}
+     *
+     * @param renderMode one of the RENDERMODE_X constants
+     * @see #RENDERMODE_CONTINUOUSLY
+     * @see #RENDERMODE_WHEN_DIRTY
+     */
+    public void setRenderMode(int renderMode) {
+    	mVkThread.setRenderMode(renderMode);
+    }
+
+    /**
+     * Get the current rendering mode. May be called
+     * from any thread. Must not be called before a renderer has been set.
+     * @return the current rendering mode.
+     * @see #RENDERMODE_CONTINUOUSLY
+     * @see #RENDERMODE_WHEN_DIRTY
+     */
+    public int getRenderMode() {
+        return mVkThread.getRenderMode();
+    }
+
+    /**
+     * Request that the renderer render a frame.
+     * This method is typically used when the render mode has been set to
+     * {@link #RENDERMODE_WHEN_DIRTY}, so that frames are only rendered on demand.
+     * May be called
+     * from any thread. Must not be called before a renderer has been set.
+     */
+    public void requestRender() {
+    	mVkThread.requestRender();
     }
     
     /**
@@ -334,6 +399,82 @@ public class VulkanSurfaceView extends SurfaceView implements Callback {
     }
     
     /**
+     * Queue a runnable to be run on the GL rendering thread. This can be used
+     * to communicate with the Renderer on the rendering thread.
+     * Must not be called before a renderer has been set.
+     * @param r the runnable to be run on the GL rendering thread.
+     */
+    public void queueEvent(Runnable r) {
+        mVkThread.queueEvent(r);
+    }
+    
+    /**
+     * This method is used as part of the View class and is not normally
+     * called or subclassed by clients of GLSurfaceView.
+     */
+    @Override
+    protected void onAttachedToWindow() {
+        super.onAttachedToWindow();
+        if (LOG_ATTACH_DETACH) {
+            Log.d(TAG, "onAttachedToWindow reattach =" + mDetached);
+        }
+        if (mDetached && (mRenderer != null)) {
+            int renderMode = RENDERMODE_CONTINUOUSLY;
+            if (mVkThread != null) {
+                renderMode = mVkThread.getRenderMode();
+            }
+            // re-start VkThread
+            mVkThread = new VkThread(mThisWeakRef);
+            if (renderMode != RENDERMODE_CONTINUOUSLY) {
+            	mVkThread.setRenderMode(renderMode);
+            }
+            mVkThread.start();
+        }
+        mDetached = false;
+    }
+
+    @Override
+    protected void onDetachedFromWindow() {
+        if (LOG_ATTACH_DETACH) {
+            Log.d(TAG, "onDetachedFromWindow");
+        }
+        if (mVkThread != null) {
+        	mVkThread.requestExitAndWait();
+        }
+        mDetached = true;
+        super.onDetachedFromWindow();
+    }
+    
+    /**
+     * This method is part of the SurfaceHolder.Callback interface, and is
+     * not normally called or subclassed by clients of GLSurfaceView.
+     */
+	@Override
+	public void surfaceChanged(SurfaceHolder holder_unused, int format, int w, int h) {
+		 mVkThread.onWindowResize(w, h);
+	}
+
+	/**
+     * This method is part of the SurfaceHolder.Callback interface, and is
+     * not normally called or subclassed by clients of GLSurfaceView.
+     */
+	@Override
+	public void surfaceCreated(SurfaceHolder arg0) {
+		 mVkThread.surfaceCreated();
+	}
+
+	/**
+     * This method is part of the SurfaceHolder.Callback interface, and is
+     * not normally called or subclassed by clients of GLSurfaceView.
+     */
+	@Override
+	public void surfaceDestroyed(SurfaceHolder arg0) {
+		// Surface will be destroyed when we return
+        mVkThread.surfaceDestroyed();
+	}
+	
+    
+    /**
      * A generic GL Thread. Takes care of initializing EGL and GL. Delegates
      * to a Renderer instance to do the actual drawing. Can be configured to
      * render continuously or on request.
@@ -341,15 +482,19 @@ public class VulkanSurfaceView extends SurfaceView implements Callback {
      */
     class VkThread extends Thread {
     	
-    	
-        VkThread(Renderer renderer) {
+    /**
+     * Constructor 	
+     * @param mThisWeakRef - Weak reference to VulkanSurfaceViewer
+     */
+     public  VkThread(WeakReference<VulkanSurfaceView> mThisWeakRef) {
             super();
             mDone = false;
             mWidth = 0;
             mHeight = 0;
             mRequestRender = true;
             mRenderMode = RENDERMODE_CONTINUOUSLY;
-            mRenderer = renderer;
+            VulkanSurfaceView view = mThisWeakRef.get();
+            mRenderer = view.mRenderer;
             setName("VkThread");
         }
 
@@ -597,7 +742,7 @@ public class VulkanSurfaceView extends SurfaceView implements Callback {
         private Renderer mRenderer;
         private ArrayList<Runnable> mEventQueue = new ArrayList<Runnable>();
         private VulkanHelper mEglHelper;
-    }
+    }// class VkThread
     
     static class LogWriter extends Writer {
 
@@ -637,30 +782,42 @@ public class VulkanSurfaceView extends SurfaceView implements Callback {
      * An interface for customizing the eglCreateWindowSurface and eglDestroySurface calls.
      * <p>
      * This interface must be implemented by clients wishing to call
-     * {@link GLSurfaceView#setEGLWindowSurfaceFactory(EGLWindowSurfaceFactory)}
+     * {@link VulkanSurfaceView#setWindowSurfaceFactory(WindowSurfaceFactory)}
      */
     public interface WindowSurfaceFactory {
-        
-    	public VkSurfaceKHR createWindowSurface(VkInstance instance, VkSurfaceCreateInfoKHR createInfo, Object nativeWindow);
-        
+    	/**
+         *  @return null if the surface cannot be constructed.
+         */
+    	public VkSurfaceKHR createWindowSurface(VkInstance instance, VkSurfaceCreateInfoKHR createInfo, Object nativeWindow);        
         public void destroySurface(VkInstance instance, VkSurfaceKHR surface);
-    }
+        
+    }// interface WindowSurfaceFactory
     
+    /**
+     * Default implementation of WindowSurfaceFactory.     
+     */
     private static class  DefaultWindowSurfaceFactory implements  WindowSurfaceFactory{
-
+         
 		@Override
 		public VkSurfaceKHR createWindowSurface(VkInstance instance, VkSurfaceCreateInfoKHR createInfo, Object nativeWindow) {
-			// TODO Auto-generated method stub
-			return null;
+			VkSurfaceKHR surface = null;
+			try {	
+				// TODO - implement generic  Vk10.vkCreateWindowSurface
+                result = Vk10.vkCreateWindowSurface(instance, createInfo, nativeWindow, null);
+            } catch (IllegalArgumentException e) {                
+                Log.e(TAG, "DefaultWindowSurfaceFactory.createWindowSurface", e);
+            }
+			
+			return surface;
 		}
 
 		@Override
 		public void destroySurface(VkInstance instance, VkSurfaceKHR surface) {
-			// TODO Auto-generated method stub
+			Vk10.vkDestroySurfaceKHR(instance, surface, null);
 			
 		}
     	
-    } // class DefaultWindowSurfaceFactory
+    }// class DefaultWindowSurfaceFactory
     
     
 
@@ -763,33 +920,7 @@ public class VulkanSurfaceView extends SurfaceView implements Callback {
         void onDrawFrame();
     }
     
-	/* (non-Javadoc)
-	 * @see android.view.SurfaceHolder.Callback#surfaceChanged(android.view.SurfaceHolder, int, int, int)
-	 */
-	@Override
-	public void surfaceChanged(SurfaceHolder arg0, int arg1, int arg2, int arg3) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see android.view.SurfaceHolder.Callback#surfaceCreated(android.view.SurfaceHolder)
-	 */
-	@Override
-	public void surfaceCreated(SurfaceHolder arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-	/* (non-Javadoc)
-	 * @see android.view.SurfaceHolder.Callback#surfaceDestroyed(android.view.SurfaceHolder)
-	 */
-	@Override
-	public void surfaceDestroyed(SurfaceHolder arg0) {
-		// TODO Auto-generated method stub
-
-	}
-	
+   
 	
  /**
   * This interface defines basic operations to initialize 
