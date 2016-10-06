@@ -110,7 +110,9 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
         #define WIN32_LEAN_AND_MEAN 1
         #define VC_EXTRALEAN 1
  #elif defined(__ANDROID__) 
-       #define VK_USE_PLATFORM_ANDROID_KHR 1
+        #define VK_USE_PLATFORM_ANDROID_KHR 1
+        #include <android_runtime/android_view_Surface.h>
+        #include <android_runtime/AndroidRuntime.h>
  #else      
        #define VK_USE_PLATFORM_XCB_KHR 1
        #define VK_USE_PLATFORM_XLIB_KHR 1
@@ -8968,6 +8970,28 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     // WSI SURFACES
     ///////////////////////////////////////////////////////////
 
+    public static boolean getDisplayHandles(Object win, VkHandle[] displayHandles){
+        
+        
+        xxx
+        return true;
+    }
+    
+    protected static native void getDisplayHandles(Object win, long[] displayHandles);/*
+    
+     #ifdef VK_USE_PLATFORM_ANDROID_KHR 
+       android::sp<ANativeWindow> window;
+       window = android::android_view_Surface_getNativeWindow(env, win);
+       displayHandles[0] = reinterpret_cast<jlong>(window);
+     #endif
+     
+     #ifdef  VK_USE_PLATFORM_WIN32_KHR    
+     
+     #endif
+    
+    */
+    
+    
    /**
     *  Vulkan procedure ID: 156
     * <h2>Prototype</h2><pre>
@@ -10028,8 +10052,92 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(VkDebugMarkerMarkerInfoEXT*) pMarkerInfo);
 
-  */ 
+  */
 
+    /**
+     * 
+     * @param instance
+     * @param nativeWindow
+     * @param pSurface
+     * @return
+     */
+    public static VkResult vkCreateWindowSurface(VkInstance instance, Object nativeWindow, VkSurfaceKHR[] pSurface) {
+	   long pInstance = instance.getNativeHandle();
+	   long[] pSurfaceArr = {0L};
+	   
+	   int res = vkCreateWindowSurface0(pInstance, nativeWindow, pSurfaceArr);
+	   if(res >= 0){
+		   long sur = pSurfaceArr[0];
+		   pSurface[0] = new VkHandle(sur);
+	   }
+	   
+	   return VkResult.fromValue(res);
+    } 
+    
+    /**
+     * 
+     * @param instance
+     * @param nativeWindow - instance of android.view.Surface or java.awt.Canvas
+     * @param pSurface
+     * @return
+     */
+    protected static native int vkCreateWindowSurface0(long instance, Object nativeWindow, long[] pSurface);/*
+     #ifdef VK_USE_PLATFORM_ANDROID_KHR
+       
+       android::sp<ANativeWindow> window;  
+       window = android::android_view_Surface_getNativeWindow(env, win);
+       if (window == NULL) 
+             return VkResult::VK_ERROR_NATIVE_WINDOW_IN_USE_KHR;
+         
+         VkAndroidSurfaceCreateInfoKHR info;
+         info.sType = VkStructure::VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR;
+         info.pNext = NULL;
+         info.flags = 0;
+         info.window = window;
+         
+         VkInstance vkInstance = reintepret_cast<VkInstance>(instance); 
+         VkSurfaceKHR* _pSurface = new VkSurfaceKHR[1];            
+            
+         VkResult res =  vkCreateAndroidSurfaceKHR(vkInstance, &info, NULL, _pSurface);
+         if(res >=0){
+           pSurface[0] = reinterpret_cast<jlong>(_pSurface[0]);           
+         }else{
+            pSurface[0] = (jlong) 0;
+         }
+         delete[] _pSurface;
+         
+         return res;                                                    
+     #else
+     
+     JAWT awt;
+     JAWT_DrawingSurface* ds;
+     JAWT_DrawingSurfaceInfo* dsi;
+     JAWT_X11DrawingSurfaceInfo* dsi_x11;
+     jboolean result;
+     jint lock;
+     
+     // Get the drawing surface 
+     ds = awt.GetDrawingSurface(env, canvas);
+     if (ds == NULL) {
+         printf("NULL drawing surface\n");
+        return VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;
+      }
+            
+     	#if  VK_USE_PLATFORM_WIN32_KHR
+     
+     
+             vkCreateWin32SurfaceKHR
+             
+     	#elif  VK_USE_PLATFORM_XLIB_KHR
+     
+     	#elif  VK_USE_PLATFORM_XCB_KHR
+     
+     	#elif  VK_USE_PLATFORM_WAYLAND_KHR
+     
+      #endif
+     #endif
+     
+    */
 
 	/////////////////////////////////////
 

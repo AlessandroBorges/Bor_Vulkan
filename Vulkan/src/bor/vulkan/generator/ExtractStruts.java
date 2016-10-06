@@ -12,7 +12,7 @@ import java.util.*;
 //import com.google.gson.Gson;
 
 import bor.vulkan.structs.CStructInfo;
-import jdk.nashorn.internal.ir.debug.JSONWriter;
+//import jdk.nashorn.internal.ir.debug.JSONWriter;
 
 import static bor.vulkan.generator.Util.*;
 

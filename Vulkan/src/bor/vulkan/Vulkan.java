@@ -3,6 +3,8 @@ package bor.vulkan;
 import com.badlogic.gdx.jnigen.JniGenSharedLibraryLoader;
 
 import bor.enumerable.IntEnum;
+import bor.vulkan.enumerations.VkResult;
+import sun.rmi.runtime.Log;
 
 /**
  * Wrapper for Vulkan api
@@ -11,7 +13,9 @@ import bor.enumerable.IntEnum;
  *
  */
 public class Vulkan {
-
+    
+    private static final String TAG = "bor.vulkan.Vulkan";
+    
     /**
      * int value with packed value of Vulkan API Versions.
      * @see #VK_API_VERSION_STRING
@@ -166,6 +170,91 @@ public class Vulkan {
         int patch = VK_VERSION_PATCH(packedAPIversion);
         return "" + major+"."+minor+"."+patch;
     }
+    
+    /**
+     * Constant value for checkError.<br>
+     * This value tells to ignore errors by not throwing VulkanExceptions
+     */
+    public static final int IGNORE_VULKAN_ERRORS = 1;
+    /**
+     * Constant value for checkError.<br>
+     * This value tells to throw a VulkanException in any VkResult error.
+     */
+    public static final int THROW_EXCEPTION_ON_ALL_ERRORS = 2;
+    /**
+     * Constant value for checkError.<br>
+     * This value tells to throw a VulkanException on VkDevice lost.
+     */
+    public static final int THROW_EXCEPTION_ON_DEVICE_LOST = 4;
+    /**
+     * Constant value for checkError.<br>
+     * This value tells to throw a VulkanException on Surface lost.
+     */
+    public static final int THROW_EXCEPTION_ON_SURFACE_LOST = 8;
+    /**
+     * Constant value for checkError.<br>
+     * This value tells to Log all errors.
+     */
+    public static final int LOG_ERRORS = 16;
+    
+    
+    private static int sCheckError = THROW_EXCEPTION_ON_DEVICE_LOST | THROW_EXCEPTION_ON_SURFACE_LOST | LOG_ERRORS;
+    private static boolean logErrors = ored(sCheckError, LOG_ERRORS);
+    private static boolean allErrors = ored(sCheckError, THROW_EXCEPTION_ON_ALL_ERRORS);
+    private static boolean deviceLostyErrors = ored(sCheckError, THROW_EXCEPTION_ON_ALL_ERRORS);
+    private static boolean surfaceErrors = ored(sCheckError, THROW_EXCEPTION_ON_SURFACE_LOST);
+    
+    /**
+     * Set bitmaked ORed value for error checking.
+     * 
+     * @see Vulkan#IGNORE_VULKAN_ERRORS
+     * @see Vulkan#THROW_EXCEPTION_ON_ALL_ERRORS
+     * @see Vulkan#THROW_EXCEPTION_ON_DEVICE_LOST
+     * @see Vulkan#THROW_EXCEPTION_ON_SURFACE_LOST
+     * @param mask
+     */
+    public static void setErrorCheckingMode(int mask){
+        sCheckError = mask;
+        logErrors = ored(mask, LOG_ERRORS);    
+        allErrors = ored(mask, LOG_ERRORS);
+        deviceLostyErrors = ored(mask, THROW_EXCEPTION_ON_ALL_ERRORS);
+        surfaceErrors = ored(mask, THROW_EXCEPTION_ON_SURFACE_LOST);
+    }
+    
+    /**
+     * Get the ORed value for error checking 
+     * @return
+     */
+    public static int getErrorCheckingMode(){
+        return sCheckError;
+    }
+    
+    /**
+     * Check Errors on VkResult
+     * @param result
+     * @return - true is there is a error, false otherwise.
+     */
+    public static boolean checkError(VkResult result) throws VulkanException{
+        if(result.getValue()>=0) 
+            return false;
+                
+        if(!ored(sCheckError, IGNORE_VULKAN_ERRORS)){
+            VulkanException vkExc = new VulkanException(result.toString());            
+            if(logErrors) bor.util.Log.e(TAG, "VkResult error.", vkExc);
+            throw vkExc;
+        }            
+         return true;
+    }
+    
+    /**
+     * Check if thow values are ored
+     * @param oredValue - ORed value
+     * @param mask - constant mask value.
+     * @Return true - if oredValue has mask bit on. 
+     */
+    private static final boolean ored(int oredValue, int mask){
+        return (oredValue & mask) == mask;   
+     }
     
     /**
      * Prepare enumeration for Native side

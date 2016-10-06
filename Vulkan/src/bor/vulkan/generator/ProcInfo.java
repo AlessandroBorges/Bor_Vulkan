@@ -7,7 +7,7 @@ import java.util.*;
 
 import bor.vulkan.VkHandleDispatchable;
 import bor.vulkan.generator.Util.CLASS_TYPE;
-import jdk.nashorn.internal.ir.CallNode.EvalArgs;
+
 
 import static bor.vulkan.generator.JNITypeMap.getType;
 import static bor.vulkan.generator.Util.*;
