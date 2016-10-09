@@ -75,7 +75,7 @@ public class JNIgenBuilder {
         structNames.remove("VkClearDepthStencilValue");
         String[] src = {
                 "**/bor/util/Utils.java",
-              //  "**/bor/vulkan/khr/WSI.java",
+                "**/bor/util/JAWT.java",
                 "**/bor/vulkan/Vk10.java",
                 "**/bor/vulkan/structs/VkStruct.java",
         };
