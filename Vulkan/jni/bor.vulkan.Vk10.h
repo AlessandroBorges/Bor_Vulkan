@@ -111,6 +111,16 @@ extern "C" {
 #define bor_vulkan_Vk10_VK_NV_dedicated_allocation 1L
 #undef bor_vulkan_Vk10_VK_NV_DEDICATED_ALLOCATION_SPEC_VERSION
 #define bor_vulkan_Vk10_VK_NV_DEDICATED_ALLOCATION_SPEC_VERSION 1L
+#undef bor_vulkan_Vk10_IGNORE_VULKAN_ERRORS
+#define bor_vulkan_Vk10_IGNORE_VULKAN_ERRORS 1L
+#undef bor_vulkan_Vk10_THROW_EXCEPTION_ON_ALL_ERRORS
+#define bor_vulkan_Vk10_THROW_EXCEPTION_ON_ALL_ERRORS 2L
+#undef bor_vulkan_Vk10_THROW_EXCEPTION_ON_DEVICE_LOST
+#define bor_vulkan_Vk10_THROW_EXCEPTION_ON_DEVICE_LOST 4L
+#undef bor_vulkan_Vk10_THROW_EXCEPTION_ON_SURFACE_LOST
+#define bor_vulkan_Vk10_THROW_EXCEPTION_ON_SURFACE_LOST 8L
+#undef bor_vulkan_Vk10_LOG_ERRORS
+#define bor_vulkan_Vk10_LOG_ERRORS 16L
 /*
  * Class:     bor_vulkan_Vk10
  * Method:    init
@@ -1385,6 +1395,14 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateSharedSwapchainsKHR0
 
 /*
  * Class:     bor_vulkan_Vk10
+ * Method:    getDisplayHandles0
+ * Signature: (Ljava/lang/Object;[J)Z
+ */
+JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_getDisplayHandles0
+  (JNIEnv *, jclass, jobject, jlongArray);
+
+/*
+ * Class:     bor_vulkan_Vk10
  * Method:    vkCreateXlibSurfaceKHR0
  * Signature: (JLjava/nio/ByteBuffer;Ljava/nio/ByteBuffer;Ljava/nio/ByteBuffer;)I
  */
@@ -1534,6 +1552,14 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDebugMarkerEndEXT0
  */
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDebugMarkerInsertEXT0
   (JNIEnv *, jclass, jlong, jobject);
+
+/*
+ * Class:     bor_vulkan_Vk10
+ * Method:    vkCreateWindowSurface0
+ * Signature: (JLjava/lang/Object;[J)I
+ */
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateWindowSurface0
+  (JNIEnv *, jclass, jlong, jobject, jlongArray);
 
 #ifdef __cplusplus
 }
