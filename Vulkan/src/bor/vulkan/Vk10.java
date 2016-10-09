@@ -121,6 +121,16 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
       #define VULKAN_WRAPPER_ENABLE_ALL_EXTENSIONS_DEFAULT 1
       #include "BorVulkan.hpp"
       #include "vulkan_wrapper.h" 
+      #include <iostream>
+      
+      #ifndef VK_USE_PLATFORM_ANDROID_KHR
+        #include "jawt.h"
+        #ifdef VK_USE_PLATFORM_WIN32_KHR
+           #include "win32/jawt_md.h"
+        #else
+           #include "linux/md.h"
+        #endif
+      #endif // ifndef VK_USE_PLATFORM_ANDROID_KHR
            
       #include <stdio.h>
       #include <stdlib.h>
@@ -8973,21 +8983,68 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     public static boolean getDisplayHandles(Object win, VkHandle[] displayHandles){
         
         
-        xxx
+        
         return true;
     }
     
-    protected static native void getDisplayHandles(Object win, long[] displayHandles);/*
+    /**
+     * Get display handles for Android and AWT Canvas
+     * @param win - a java.awt.Canvas instance or a android.view.Surface
+     * @param displayHandles - return native surface handle
+     * 
+     * @return true if all goes Ok.
+     */
+    protected static native boolean getDisplayHandles0(Object win, long[] displayHandles);/*
     
      #ifdef VK_USE_PLATFORM_ANDROID_KHR 
        android::sp<ANativeWindow> window;
        window = android::android_view_Surface_getNativeWindow(env, win);
        displayHandles[0] = reinterpret_cast<jlong>(window);
-     #endif
+       return JNI_TRUE;
+     #else  
      
-     #ifdef  VK_USE_PLATFORM_WIN32_KHR    
-     
-     #endif
+      JAWT awt;
+      JAWT_DrawingSurface* ds;
+      JAWT_DrawingSurfaceInfo* dsi;      
+      jboolean result;
+      jint lock;
+       
+      // Get the AWT
+      awt.version = JAWT_VERSION_1_4;
+      result = JAWT_GetAWT(env, &awt);
+      if(result == JNI_FALSE){
+       cout << "Error: AWT not found." <<endl;
+       return JNI_FALSE;
+      }
+ 
+      // Get the drawing surface
+      ds = awt.GetDrawingSurface(env, win); // win is Canvas
+      if(ds == NULL){
+        cout << "Error: DrawingSurface is null." <<endl;
+        return JNI_FALSE;
+      }
+ 
+      // Lock the drawing surface
+      lock = ds->Lock(ds);
+      if((lock & JAWT_LOCK_ERROR) != 0){
+        cout << "Error: failed to lock surface." <<endl;
+        awt.FreeDrawingSurface(ds);
+        return JNI_FALSE;
+      }
+ 
+      // Get the drawing surface info
+      dsi = ds->GetDrawingSurfaceInfo(ds);
+      
+      #ifdef VK_USE_PLATFORM_WIN32_KHR   
+          JAWT_Win32DrawingSurfaceInfo *dsi_win = (JAWT_Win32DrawingSurfaceInfo*) dsi->platformInfo;
+          displayHandles[0] = reinterpret_cast<jlong>(dsi_win->hwnd);          
+      #else
+            jawt_X11DrawingSurfaceInfo *dsi_x11 = (jawt_X11DrawingSurfaceInfo*) dsi->platformInfo;
+            displayHandles[0] = reinterpret_cast<jlong>(dsi_x11->drawable);
+      #endif
+      ds->Unlock(ds);
+      return JNI_TRUE;
+  #endif
     
     */
     
@@ -10069,8 +10126,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
 	   if(res >= 0){
 		   long sur = pSurfaceArr[0];
 		   pSurface[0] = new VkHandle(sur);
-	   }
-	   
+	   }	   
 	   return VkResult.fromValue(res);
     } 
     
@@ -10082,54 +10138,69 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
      * @return
      */
     protected static native int vkCreateWindowSurface0(long instance, Object nativeWindow, long[] pSurface);/*
-     #ifdef VK_USE_PLATFORM_ANDROID_KHR
-       
-       android::sp<ANativeWindow> window;  
-       window = android::android_view_Surface_getNativeWindow(env, win);
-       if (window == NULL) 
+    #ifdef VK_USE_PLATFORM_ANDROID_KHR       
+        android::sp<ANativeWindow> window;  
+        window = android::android_view_Surface_getNativeWindow(env, win);
+        if (window == NULL) 
              return VkResult::VK_ERROR_NATIVE_WINDOW_IN_USE_KHR;
          
-         VkAndroidSurfaceCreateInfoKHR info;
+        VkAndroidSurfaceCreateInfoKHR info;
          info.sType = VkStructure::VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR;
          info.pNext = NULL;
          info.flags = 0;
-         info.window = window;
-         
-         VkInstance vkInstance = reintepret_cast<VkInstance>(instance); 
-         VkSurfaceKHR* _pSurface = new VkSurfaceKHR[1];            
+         info.window = window;         
+        VkInstance vkInstance = reintepret_cast<VkInstance>(instance); 
+        VkSurfaceKHR* _pSurface = new VkSurfaceKHR[1];            
             
-         VkResult res =  vkCreateAndroidSurfaceKHR(vkInstance, &info, NULL, _pSurface);
-         if(res >=0){
+        VkResult res =  vkCreateAndroidSurfaceKHR(vkInstance, &info, NULL, _pSurface);
+        if(res >=0){
            pSurface[0] = reinterpret_cast<jlong>(_pSurface[0]);           
          }else{
-            pSurface[0] = (jlong) 0;
+            pSurface[0] = (jlong)0;
          }
-         delete[] _pSurface;
-         
+         delete[] _pSurface;         
          return res;                                                    
      #else
      
      JAWT awt;
      JAWT_DrawingSurface* ds;
      JAWT_DrawingSurfaceInfo* dsi;
-     JAWT_X11DrawingSurfaceInfo* dsi_x11;
      jboolean result;
      jint lock;
      
+     awt.version = JAWT_VERSION_1_4;
+     if (JAWT_GetAWT(env, awt) == JNI_FALSE) {
+          fprintf(stderr, "AWT not found\n");
+          return VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;;
+     }
      // Get the drawing surface 
      ds = awt.GetDrawingSurface(env, canvas);
      if (ds == NULL) {
-         printf("NULL drawing surface\n");
-        return VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;
+         fprintf(stderr,"NULL drawing surface\n");
+         return VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;
       }
-            
-     	#if  VK_USE_PLATFORM_WIN32_KHR
-     
+      ds->env = env;
+      lock = ds->Lock(ds);
+      dsi = ds->GetDrawingSurfaceInfo(ds);
+             
+      #if VK_USE_PLATFORM_WIN32_KHR      
+             dsi_win = (JAWT_Win32DrawingSurfaceInfo *)dsi->platformInfo;
+                if(dsi_win == NULL) 
+                    return JNI_FALSE;                
+                val[0] = (jlong) dsi_win->hwnd;    // EGLNativeWindowType
+                val[1] = (jlong) dsi_win->hdc;     // EGLNativeDisplayType  
+             JAWT_Win32DrawingSurfaceInfo* dsi_win; 
+      
+             VkWin32SurfaceCreateInfoKHR* info;
+             info.sType = VkStructure::VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
+             info.pNext = NULL;
+             info.flags = 0;
      
              vkCreateWin32SurfaceKHR
              
      	#elif  VK_USE_PLATFORM_XLIB_KHR
-     
+               JAWT_X11DrawingSurfaceInfo* dsi_x11;
+                 
      	#elif  VK_USE_PLATFORM_XCB_KHR
      
      	#elif  VK_USE_PLATFORM_WAYLAND_KHR
