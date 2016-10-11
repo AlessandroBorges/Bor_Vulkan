@@ -134,6 +134,8 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
            
       #include <stdio.h>
       #include <stdlib.h>
+      #include <cstring>
+      #include <iostream>
       
       using namespace std;
       
@@ -10108,7 +10110,6 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
 	vkCmdDebugMarkerInsertEXT(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(VkDebugMarkerMarkerInfoEXT*) pMarkerInfo);
-
   */
 
     /**
@@ -10134,10 +10135,21 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
      * 
      * @param instance
      * @param nativeWindow - instance of android.view.Surface or java.awt.Canvas
+     * @param pAllocatorHandle - native handle to a VkAllocationCallbacks
      * @param pSurface
      * @return
      */
-    protected static native int vkCreateWindowSurface0(long instance, Object nativeWindow, long[] pSurface);/*
+    protected static native int vkCreateWindowSurface0(long instance, 
+                                                       Object nativeWindow, 
+                                                       long pAllocatorHandle, 
+                                                       long[] pSurface,
+                                                       long[] awtDrawingSurface);/*
+    
+    VkAllocationCallbacks* pAllocator = reinterpret_cast<VkAllocationCallbacks*)(pAllocatorHamdle);
+    VkInstance vkInstance = reintepret_cast<VkInstance>(instance);
+    VkSurfaceKHR* _pSurface = new VkSurfaceKHR[1];
+    VkResult res = VkResult::VK_ERROR_NATIVE_WINDOW_IN_USE_KHR;
+    
     #ifdef VK_USE_PLATFORM_ANDROID_KHR       
         android::sp<ANativeWindow> window;  
         window = android::android_view_Surface_getNativeWindow(env, win);
@@ -10148,20 +10160,10 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
          info.sType = VkStructure::VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR;
          info.pNext = NULL;
          info.flags = 0;
-         info.window = window;         
-        VkInstance vkInstance = reintepret_cast<VkInstance>(instance); 
-        VkSurfaceKHR* _pSurface = new VkSurfaceKHR[1];            
-            
-        VkResult res =  vkCreateAndroidSurfaceKHR(vkInstance, &info, NULL, _pSurface);
-        if(res >=0){
-           pSurface[0] = reinterpret_cast<jlong>(_pSurface[0]);           
-         }else{
-            pSurface[0] = (jlong)0;
-         }
-         delete[] _pSurface;         
-         return res;                                                    
+         info.window = window; 
+         res =  vkCreateAndroidSurfaceKHR(vkInstance, &info, pAllocator, _pSurface);
      #else
-     
+     // Other platfforms supported by AWT
      JAWT awt;
      JAWT_DrawingSurface* ds;
      JAWT_DrawingSurfaceInfo* dsi;
@@ -10175,38 +10177,58 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
      }
      // Get the drawing surface 
      ds = awt.GetDrawingSurface(env, canvas);
+      //cache AwT's DrawingSurface
+      awtDrawingSurface[0] = reinterpert_cast<jlong>(ds);
+      
      if (ds == NULL) {
          fprintf(stderr,"NULL drawing surface\n");
          return VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;
       }
       ds->env = env;
-      lock = ds->Lock(ds);
+      lock = ds->Lock(ds); 
       dsi = ds->GetDrawingSurfaceInfo(ds);
-             
-      #if VK_USE_PLATFORM_WIN32_KHR      
+      VkResult res;       
+      #if VK_USE_PLATFORM_WIN32_KHR 
+             JAWT_Win32DrawingSurfaceInfo* dsi_win;     
              dsi_win = (JAWT_Win32DrawingSurfaceInfo *)dsi->platformInfo;
-                if(dsi_win == NULL) 
+             if(dsi_win == NULL) 
                     return JNI_FALSE;                
-                val[0] = (jlong) dsi_win->hwnd;    // EGLNativeWindowType
-                val[1] = (jlong) dsi_win->hdc;     // EGLNativeDisplayType  
-             JAWT_Win32DrawingSurfaceInfo* dsi_win; 
+             HWND hwnd = (jlong) dsi_win->hwnd;    // EGLNativeWindowType
+             HDC  hdc  = (jlong) dsi_win->hdc;     // EGLNativeDisplayType  
+             HINSTANCE hinstance = GetModuleHandle(NULL);          
       
              VkWin32SurfaceCreateInfoKHR* info;
+             memset(&info, 0, sizeof(VkWin32SurfaceCreateInfoKHR));
              info.sType = VkStructure::VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
              info.pNext = NULL;
              info.flags = 0;
-     
-             vkCreateWin32SurfaceKHR
-             
+             info.hinstance = hinstance;
+             info.hwnd = hwnd;
+                          
+             res = vkCreateWin32SurfaceKHR(vkInstance, &info, pAllocator, _pSurface);
+                         
      	#elif  VK_USE_PLATFORM_XLIB_KHR
                JAWT_X11DrawingSurfaceInfo* dsi_x11;
+               
                  
      	#elif  VK_USE_PLATFORM_XCB_KHR
      
      	#elif  VK_USE_PLATFORM_WAYLAND_KHR
      
+       
+     
+     
       #endif
      #endif
+       
+    if(res >=0){
+       pSurface[0] = reinterpret_cast<jlong>(_pSurface[0]);           
+    }else{
+       pSurface[0] = (jlong)0;
+    }
+     
+     delete[] _pSurface;         
+     return res;
      
     */
 
