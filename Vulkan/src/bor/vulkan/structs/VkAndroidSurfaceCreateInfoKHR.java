@@ -366,7 +366,7 @@
 		  VkAndroidSurfaceCreateInfoKHR* vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->window);
-	 #else 
+         #else 
 	   return 0; 
 	 #endif 
 	 */

@@ -276,7 +276,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     
     */
     
-
+    
      
      
      
@@ -10113,17 +10113,29 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
   */
 
     /**
+     * @TODO - deal with AWT's DrawingSurface 
      * 
      * @param instance
      * @param nativeWindow
+     * @param allocCallback
      * @param pSurface
      * @return
      */
-    public static VkResult vkCreateWindowSurface(VkInstance instance, Object nativeWindow, VkSurfaceKHR[] pSurface) {
+    public static VkResult vkCreateWindowSurface(VkInstance instance, 
+                                                 Object nativeWindow, 
+                                                 VkAllocationCallbacks allocCallback,
+                                                 VkSurfaceKHR[] pSurface) {
 	   long pInstance = instance.getNativeHandle();
 	   long[] pSurfaceArr = {0L};
 	   
-	   int res = vkCreateWindowSurface0(pInstance, nativeWindow, pSurfaceArr);
+	   long allocCallbackHandle = allocCallback == null ? 0L : allocCallback.getNativeHandle();
+	   long[] awtDrawingSurface = {0L, 0L};
+	   //
+	   int res = vkCreateWindowSurface0(pInstance, 
+	                                    nativeWindow, 
+	                                    allocCallbackHandle, 
+	                                    pSurfaceArr,
+	                                    awtDrawingSurface);
 	   if(res >= 0){
 		   long sur = pSurfaceArr[0];
 		   pSurface[0] = new VkHandle(sur);
@@ -10133,7 +10145,44 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     
     /**
      * 
-     * @param instance
+     * @param surface
+     * @return
+     */
+    public boolean lockSurface(VkSurfaceKHR surface){
+        
+    }
+    
+    /**
+     * 
+     * @param surface
+     * @return
+     */
+   public boolean unLockSurface(VkSurfaceKHR surface){
+        
+    }
+   
+    public boolean isAWT(){
+        
+    }
+    
+    public boolean isAndroid(){
+        
+    }
+    
+    public boolean isWin32(){
+        
+    }
+    
+    public boolean isXLib(){
+        
+    }
+    
+    
+    /**
+     * 
+     * @see http://www.javaworld.com/article/2075263/core-java/embed-java-code-into-your-native-apps.html
+     * 
+     * @param instance - Vulkan instance 
      * @param nativeWindow - instance of android.view.Surface or java.awt.Canvas
      * @param pAllocatorHandle - native handle to a VkAllocationCallbacks
      * @param pSurface
@@ -10145,19 +10194,19 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
                                                        long[] pSurface,
                                                        long[] awtDrawingSurface);/*
     
-    VkAllocationCallbacks* pAllocator = reinterpret_cast<VkAllocationCallbacks*)(pAllocatorHamdle);
-    VkInstance vkInstance = reintepret_cast<VkInstance>(instance);
+    VkAllocationCallbacks* pAllocator = reinterpret_cast<VkAllocationCallbacks*>(pAllocatorHandle);
+    VkInstance vkInstance = reinterpret_cast<VkInstance>(instance);
     VkSurfaceKHR* _pSurface = new VkSurfaceKHR[1];
     VkResult res = VkResult::VK_ERROR_NATIVE_WINDOW_IN_USE_KHR;
     
     #ifdef VK_USE_PLATFORM_ANDROID_KHR       
         android::sp<ANativeWindow> window;  
-        window = android::android_view_Surface_getNativeWindow(env, win);
+        window = android::android_view_Surface_getNativeWindow(env, nativeWindow);
         if (window == NULL) 
              return VkResult::VK_ERROR_NATIVE_WINDOW_IN_USE_KHR;
          
         VkAndroidSurfaceCreateInfoKHR info;
-         info.sType = VkStructure::VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR;
+         info.sType = VkStructureType::VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR;
          info.pNext = NULL;
          info.flags = 0;
          info.window = window; 
@@ -10166,19 +10215,17 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
      // Other platfforms supported by AWT
      JAWT awt;
      JAWT_DrawingSurface* ds;
-     JAWT_DrawingSurfaceInfo* dsi;
-     jboolean result;
-     jint lock;
-     
+     JAWT_DrawingSurfaceInfo* dsi = NULL;  
+     jint lock ;
      awt.version = JAWT_VERSION_1_4;
-     if (JAWT_GetAWT(env, awt) == JNI_FALSE) {
+     if (JAWT_GetAWT(env, &awt) == JNI_FALSE) {
           fprintf(stderr, "AWT not found\n");
           return VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;;
      }
      // Get the drawing surface 
-     ds = awt.GetDrawingSurface(env, canvas);
+     ds = awt.GetDrawingSurface(env, nativeWindow); 
       //cache AwT's DrawingSurface
-      awtDrawingSurface[0] = reinterpert_cast<jlong>(ds);
+      awtDrawingSurface[0] = reinterpret_cast<jlong>(ds);
       
      if (ds == NULL) {
          fprintf(stderr,"NULL drawing surface\n");
@@ -10186,45 +10233,72 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
       }
       ds->env = env;
       lock = ds->Lock(ds); 
+      if((lock & JAWT_LOCK_ERROR) != 0){
+          fprintf(stderr,"Failed to lock AWT drawing surface.\n");
+          res = VkResult::VK_ERROR_SURFACE_LOST_KHR;
+      }
       dsi = ds->GetDrawingSurfaceInfo(ds);
-      VkResult res;       
-      #if VK_USE_PLATFORM_WIN32_KHR 
+      if(dsi == NULL){
+         fprintf(stderr,"Failed to get AWT drawing surface info.\n");
+          res = VkResult::VK_ERROR_SURFACE_LOST_KHR;
+       }else{
+         #if VK_USE_PLATFORM_WIN32_KHR 
+             //  Win32
              JAWT_Win32DrawingSurfaceInfo* dsi_win;     
              dsi_win = (JAWT_Win32DrawingSurfaceInfo *)dsi->platformInfo;
-             if(dsi_win == NULL) 
-                    return JNI_FALSE;                
-             HWND hwnd = (jlong) dsi_win->hwnd;    // EGLNativeWindowType
-             HDC  hdc  = (jlong) dsi_win->hdc;     // EGLNativeDisplayType  
-             HINSTANCE hinstance = GetModuleHandle(NULL);          
-      
-             VkWin32SurfaceCreateInfoKHR* info;
-             memset(&info, 0, sizeof(VkWin32SurfaceCreateInfoKHR));
-             info.sType = VkStructure::VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
-             info.pNext = NULL;
-             info.flags = 0;
-             info.hinstance = hinstance;
-             info.hwnd = hwnd;
-                          
-             res = vkCreateWin32SurfaceKHR(vkInstance, &info, pAllocator, _pSurface);
-                         
-     	#elif  VK_USE_PLATFORM_XLIB_KHR
-               JAWT_X11DrawingSurfaceInfo* dsi_x11;
-               
-                 
-     	#elif  VK_USE_PLATFORM_XCB_KHR
+             if(dsi_win == NULL){ 
+                    fprintf(stderr,"NULL Win32 Drawing Surface Info\n");
+                    res =  VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR; 
+             } else {
+                VkWin32SurfaceCreateInfoKHR info;
+                memset(&info, 0, sizeof(VkWin32SurfaceCreateInfoKHR));
+                info.sType = VkStructureType::VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
+                info.pNext = NULL;
+                info.flags = 0;
+                info.hinstance = GetModuleHandle(NULL);;
+                info.hwnd = dsi_win->hwnd;
+                res = vkCreateWin32SurfaceKHR(vkInstance, &info, pAllocator, _pSurface);                         
+              }                         
+     	  #elif  VK_USE_PLATFORM_XLIB_KHR || VK_USE_PLATFORM_XCB_KHR 
+     	  // All Linux
+                 JAWT_X11DrawingSurfaceInfo dsi_x11;  
+                 dsi_x11 = (JAWT_X11DrawingSurfaceInfo*)dsi->platformInfo;
+                 if(dsi_x11 == NULL){ 
+                    fprintf(stderr,"NULL X11 Drawing Surface Info\n");
+                    res =  VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR; 
+                  }  else {                
+                     VkXlibSurfaceCreateInfoKHR* info;
+                     memset(&info, 0, sizeof(VkXlibSurfaceCreateInfoKHR));
+                     info.sType = VkStructureType::VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR;
+                     info.pNext = NULL;
+                     info.flags = 0;
+                     info.dpy    = dsi_x11->display;
+                     info.window = dsi_X11->drawable;
+                     res = vkCreateXlibSurfaceKHR(vkInstance, &info, pAllocator, _pSurface);  
+                 }
      
-     	#elif  VK_USE_PLATFORM_WAYLAND_KHR
+     	  #elif  VK_USE_PLATFORM_WAYLAND_KHR ||  VK_USE_PLATFORM_MIR_KHR
+     	    // Currently not supported by Java SE     
+            res =  VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;          
+          #endif
+        
+        }//else
+        
+     #endif // Android
      
-       
-     
-     
-      #endif
-     #endif
+     // Must check if those FreeDrawingXXX() operations are OK
+     if(dsi != NULL){
+          ds->FreeDrawingSurfaceInfo(dsi);
+      }
+     ds->Unlock(ds);  
+     // not confident to release the DS here. Better cache it 
+     //awt.FreeDrawingSurface(ds);
        
     if(res >=0){
        pSurface[0] = reinterpret_cast<jlong>(_pSurface[0]);           
     }else{
        pSurface[0] = (jlong)0;
+       fprintf(stderr,"Failed to create Vulkan SurfaceKHR.");
     }
      
      delete[] _pSurface;         
