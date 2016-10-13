@@ -10161,6 +10161,10 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
         
     }
    
+   /**
+    * 
+    * @return
+    */
     public boolean isAWT(){
         
     }
@@ -10173,6 +10177,10 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
         
     }
     
+    /**
+     * 
+     * @return
+     */
     public boolean isXLib(){
         
     }
