@@ -1,8 +1,12 @@
 #include <bor.vulkan.Vk10.h>
 
-//@line:105
+//@line:109
 
-     
+    #if defined(__LP64__) || defined(_WIN64) || (defined(__x86_64__) &&     !defined(__ILP32__) ) || defined(_M_X64) || defined(__ia64) || defined (_M_IA64) || defined(__aarch64__) || defined(__powerpc64__)
+        #define IS64BIT 1
+    #else
+        #define IS32BIT 1
+    #endif   
       
  #if defined(_WIN32)
         #define VK_USE_PLATFORM_WIN32_KHR 1
@@ -27,69 +31,102 @@
         #ifdef VK_USE_PLATFORM_WIN32_KHR
            #include "win32/jawt_md.h"
         #else
-           #include "linux/md.h"
+           #include "linux/jawt_md.h"
         #endif
       #endif // ifndef VK_USE_PLATFORM_ANDROID_KHR
            
       #include <stdio.h>
       #include <stdlib.h>
+      #include <cstring>
+      #include <iostream>
       
       using namespace std;
+     
+      static  jboolean isWin32;
+      static  jboolean isAndroid;
+      static  jboolean isLinux;
+      static  jboolean isMIR;
+      static  jboolean isWayland;
+      static  jboolean isXCB;
+      static  jboolean isXLIB;
+      static  jboolean isVulkanAvailable;
       
-      typedef void* PointerToAnything;
-      typedef PointerToAnything* PointerToAnythingArray;
-            
-      static  bool isWin32;
-      static  bool isAndroid;
-      static  bool isMIR;
-      static  bool isWayland;
-      static  bool isXCB;
-      static  bool isXLIB;
-      static  bool isVulkanAvailable;
-  
-    static void init(){
+static void initVk10(){
          // platforms support 
-        isWin32 = false;
-        isAndroid = false;
-        isMIR = false;
-        isWayland = false;
-        isXCB = false;
-        isXLIB = false;
+        isWin32 = JNI_FALSE;
+        isAndroid = JNI_FALSE;
+        isMIR = JNI_FALSE;
+        isWayland = JNI_FALSE;
+        isXCB = JNI_FALSE;
+        isXLIB = JNI_FALSE;
+        isVulkanAvailable = JNI_FALSE;
    
    #ifdef VK_USE_PLATFORM_ANDROID_KHR
-         isAndroid = true;
+         isAndroid = JNI_TRUE;
    #endif
    
     #ifdef VK_USE_PLATFORM_WIN32_KHR    
-        isWin32 = true;
+        isWin32 = JNI_TRUE;
+        cout << "isWin32!\n" << endl;
    #endif 
 
    #ifdef VK_USE_PLATFORM_MIR_KHR        
-        isMIR = true;
+        isMIR = JNI_TRUE;
+        isLinux = JNI_TRUE;
    #endif
    
    #ifdef VK_USE_PLATFORM_WAYLAND_KHR       
-       isWayland = true;
+       isWayland = JNI_TRUE;
+       isLinux = JNI_TRUE;
    #endif
         
    #ifdef VK_USE_PLATFORM_XCB_KHR        
-        isXCB = true;
+        isXCB = JNI_TRUE;
+        isLinux = JNI_TRUE;
    #endif   
         
    #ifdef VK_USE_PLATFORM_XLIB_KHR          
-    isXLIB = true;
-   #endif    
+    isXLIB = JNI_TRUE;
+    isLinux = JNI_TRUE;
+    cout << "isXLIB\n" << endl;
+   #endif  
       
- }//
+ }// initVk10()
+ 
+ // set boolean value to static field 
+ static void setStaticBooleanField(JNIEnv* env, jclass clazz, const char *name, jboolean val){
+   jfieldID fid; // store the field ID 
+   fid = env->GetStaticFieldID(clazz, name, "Z");
+   if (fid == NULL) {
+     cerr <<"field " << name << " not found." << endl;
+    return; 
+   }
+   env->SetStaticBooleanField(clazz, fid, val);
+    cerr <<"setField " << name <<" as " << val << endl;
+ }
  
  // Vk10 header end
-  JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_init(JNIEnv* env, jclass clazz) {
+  JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_init0(JNIEnv* env, jclass clazz) {
 
 
-//@line:239
+//@line:310
 
-       init();
-       isVulkanAvailable =  (InitVulkan() != 0);
+      initVk10();
+      isVulkanAvailable =  (InitVulkan() == 0) ? JNI_FALSE : JNI_TRUE;
+      setStaticBooleanField(env, clazz, "isVulkanAvailable", isVulkanAvailable);
+      setStaticBooleanField(env, clazz, "isWin32", isWin32);
+      setStaticBooleanField(env, clazz, "isAndroid", isAndroid);
+      setStaticBooleanField(env, clazz, "isMIR", isMIR);
+      setStaticBooleanField(env, clazz, "isWayland", isWayland);
+      setStaticBooleanField(env, clazz, "isXCB", isXCB);
+      setStaticBooleanField(env, clazz, "isXLIB", isXLIB);
+      setStaticBooleanField(env, clazz, "isLinux", isLinux);
+      
+      jboolean is64 = JNI_FALSE;
+      #ifdef IS64BIT
+        is64 = JNI_TRUE;
+      #endif
+      setStaticBooleanField(env, clazz, "is64", is64);
     
 
 }
@@ -97,7 +134,7 @@
 JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_sizeOfDispatchableHandle(JNIEnv* env, jclass clazz) {
 
 
-//@line:256
+//@line:341
 
         return(jint) sizeof(VkInstance);
     
@@ -107,7 +144,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_sizeOfDispatchableHandle(JNIEnv* env
 JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_sizeOfNonDispatchableHandle(JNIEnv* env, jclass clazz) {
 
 
-//@line:264
+//@line:349
 
         return(jint) sizeof(VkSemaphore);
     
@@ -117,7 +154,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_sizeOfNonDispatchableHandle(JNIEnv* 
 JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_isVulkanAvailable(JNIEnv* env, jclass clazz) {
 
 
-//@line:272
+//@line:357
 
        return (jboolean) isVulkanAvailable;
     
@@ -128,7 +165,7 @@ JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_isVulkanAvailable(JNIEnv* env, j
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateInstance0
 (JNIEnv* env, jclass clazz, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pInstance, char* pCreateInfo, char* pAllocator, char* pInstance) {
 
-//@line:324
+//@line:409
  
 	VkResult res = vkCreateInstance(
 			(const VkInstanceCreateInfo*) pCreateInfo,
@@ -153,7 +190,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyInstance0(JNIEnv* env, jcla
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:365
+//@line:450
  
 	vkDestroyInstance(
 			(VkInstance) reinterpret_cast<VkInstance>(instance),
@@ -166,7 +203,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyInstance0(JNIEnv* env, jcla
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkEnumeratePhysicalDevices0
 (JNIEnv* env, jclass clazz, jlong instance, jintArray obj_pPhysicalDeviceCount, jobject obj_pPhysicalDevices, char* pPhysicalDevices, int* pPhysicalDeviceCount) {
 
-//@line:418
+//@line:503
  
 	VkResult res = vkEnumeratePhysicalDevices(
 			(VkInstance) reinterpret_cast<VkInstance>(instance),
@@ -193,7 +230,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceFeatures0(JNIEnv*
 	char* pFeatures = (char*)(obj_pFeatures?env->GetDirectBufferAddress(obj_pFeatures) : NULL);
 
 
-//@line:459
+//@line:544
  
 	vkGetPhysicalDeviceFeatures(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -207,7 +244,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceFormatProperties0
 	char* pFormatProperties = (char*)(obj_pFormatProperties?env->GetDirectBufferAddress(obj_pFormatProperties) : NULL);
 
 
-//@line:505
+//@line:590
  
 	vkGetPhysicalDeviceFormatProperties(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -221,7 +258,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceFormatProperties0
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkGetPhysicalDeviceImageFormatProperties0
 (JNIEnv* env, jclass clazz, jlong physicalDevice, jint format, jint type, jint tiling, jint usage, jint flags, jobject obj_pImageFormatProperties, char* pImageFormatProperties) {
 
-//@line:580
+//@line:665
  
 	VkResult res = vkGetPhysicalDeviceImageFormatProperties(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -248,7 +285,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceProperties0(JNIEn
 	char* pProperties = (char*)(obj_pProperties?env->GetDirectBufferAddress(obj_pProperties) : NULL);
 
 
-//@line:625
+//@line:710
  
 	vkGetPhysicalDeviceProperties(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -263,7 +300,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceQueueFamilyProper
 	int* pQueueFamilyPropertyCount = (int*)(obj_pQueueFamilyPropertyCount ? env->GetIntArrayElements(obj_pQueueFamilyPropertyCount, 0) : NULL);
 
 
-//@line:674
+//@line:759
  
 	vkGetPhysicalDeviceQueueFamilyProperties(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -281,7 +318,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceMemoryProperties0
 	char* pMemoryProperties = (char*)(obj_pMemoryProperties?env->GetDirectBufferAddress(obj_pMemoryProperties) : NULL);
 
 
-//@line:715
+//@line:800
  
 	vkGetPhysicalDeviceMemoryProperties(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -294,7 +331,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceMemoryProperties0
 static inline jlong wrapped_Java_bor_vulkan_Vk10_vkGetInstanceProcAddr0
 (JNIEnv* env, jclass clazz, jlong instance, jstring obj_pName, char* pName) {
 
-//@line:759
+//@line:844
  
 	PFN_vkVoidFunction res = vkGetInstanceProcAddr(
 			(VkInstance) reinterpret_cast<VkInstance>(instance),
@@ -318,7 +355,7 @@ JNIEXPORT jlong JNICALL Java_bor_vulkan_Vk10_vkGetInstanceProcAddr0(JNIEnv* env,
 static inline jlong wrapped_Java_bor_vulkan_Vk10_vkGetDeviceProcAddr0
 (JNIEnv* env, jclass clazz, jlong device, jstring obj_pName, char* pName) {
 
-//@line:803
+//@line:888
  
 	PFN_vkVoidFunction res = vkGetDeviceProcAddr(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -342,7 +379,7 @@ JNIEXPORT jlong JNICALL Java_bor_vulkan_Vk10_vkGetDeviceProcAddr0(JNIEnv* env, j
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateDevice0
 (JNIEnv* env, jclass clazz, jlong physicalDevice, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pDevice, char* pCreateInfo, char* pAllocator, char* pDevice) {
 
-//@line:862
+//@line:947
  
 	VkResult res = vkCreateDevice(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -368,7 +405,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyDevice0(JNIEnv* env, jclass
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:904
+//@line:989
  
 	vkDestroyDevice(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -381,7 +418,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyDevice0(JNIEnv* env, jclass
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkEnumerateInstanceExtensionProperties0
 (JNIEnv* env, jclass clazz, jstring obj_pLayerName, jintArray obj_pPropertyCount, jobject obj_pProperties, char* pProperties, char* pLayerName, int* pPropertyCount) {
 
-//@line:957
+//@line:1042
  
 	VkResult res = vkEnumerateInstanceExtensionProperties(
 			(const char*) pLayerName,
@@ -411,7 +448,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkEnumerateInstanceExtensionProperti
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkEnumerateDeviceExtensionProperties0
 (JNIEnv* env, jclass clazz, jlong physicalDevice, jstring obj_pLayerName, jintArray obj_pPropertyCount, jobject obj_pProperties, char* pProperties, char* pLayerName, int* pPropertyCount) {
 
-//@line:1017
+//@line:1102
  
 	VkResult res = vkEnumerateDeviceExtensionProperties(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -442,7 +479,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkEnumerateDeviceExtensionProperties
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkEnumerateInstanceLayerProperties0
 (JNIEnv* env, jclass clazz, jintArray obj_pPropertyCount, jobject obj_pProperties, char* pProperties, int* pPropertyCount) {
 
-//@line:1066
+//@line:1151
  
 	VkResult res = vkEnumerateInstanceLayerProperties(
 			(uint32_t*) pPropertyCount,
@@ -467,7 +504,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkEnumerateInstanceLayerProperties0(
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkEnumerateDeviceLayerProperties0
 (JNIEnv* env, jclass clazz, jlong physicalDevice, jintArray obj_pPropertyCount, jobject obj_pProperties, char* pProperties, int* pPropertyCount) {
 
-//@line:1119
+//@line:1204
  
 	VkResult res = vkEnumerateDeviceLayerProperties(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -493,7 +530,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkEnumerateDeviceLayerProperties0(JN
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetDeviceQueue0(JNIEnv* env, jclass clazz, jlong device, jint queueFamilyIndex, jint queueIndex, jlong pQueue) {
 
 
-//@line:1172
+//@line:1257
  
 	vkGetDeviceQueue(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -508,7 +545,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetDeviceQueue0(JNIEnv* env, jclas
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkQueueSubmit0
 (JNIEnv* env, jclass clazz, jlong queue, jint submitCount, jobject obj_pSubmits, jlong fence, char* pSubmits) {
 
-//@line:1234
+//@line:1319
  
 	VkResult res = vkQueueSubmit(
 			(VkQueue) reinterpret_cast<VkQueue>(queue),
@@ -531,7 +568,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkQueueSubmit0(JNIEnv* env, jclass c
 JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkQueueWaitIdle0(JNIEnv* env, jclass clazz, jlong queue) {
 
 
-//@line:1274
+//@line:1359
  
 	VkResult res = vkQueueWaitIdle(
 			(VkQueue) reinterpret_cast<VkQueue>(queue));
@@ -543,7 +580,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkQueueWaitIdle0(JNIEnv* env, jclass
 JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkDeviceWaitIdle0(JNIEnv* env, jclass clazz, jlong device) {
 
 
-//@line:1311
+//@line:1396
  
 	VkResult res = vkDeviceWaitIdle(
 			(VkDevice) reinterpret_cast<VkDevice>(device));
@@ -555,7 +592,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkDeviceWaitIdle0(JNIEnv* env, jclas
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkAllocateMemory0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pAllocateInfo, jobject obj_pAllocator, jlong pMemory, char* pAllocateInfo, char* pAllocator) {
 
-//@line:1366
+//@line:1451
  
 	VkResult res = vkAllocateMemory(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -580,7 +617,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkFreeMemory0(JNIEnv* env, jclass cl
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:1414
+//@line:1499
  
 	vkFreeMemory(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -594,7 +631,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkFreeMemory0(JNIEnv* env, jclass cl
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkMapMemory0
 (JNIEnv* env, jclass clazz, jlong device, jlong memory, jlong offset, jlong size, jint flags, jobject obj_ppData, char* ppData) {
 
-//@line:1483
+//@line:1568
  
 	VkResult res = vkMapMemory(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -619,7 +656,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkMapMemory0(JNIEnv* env, jclass cla
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkUnmapMemory0(JNIEnv* env, jclass clazz, jlong device, jlong memory) {
 
 
-//@line:1527
+//@line:1612
  
 	vkUnmapMemory(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -632,7 +669,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkUnmapMemory0(JNIEnv* env, jclass c
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkFlushMappedMemoryRanges0
 (JNIEnv* env, jclass clazz, jlong device, jint memoryRangeCount, jobject obj_pMemoryRanges, char* pMemoryRanges) {
 
-//@line:1580
+//@line:1665
  
 	VkResult res = vkFlushMappedMemoryRanges(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -654,7 +691,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkFlushMappedMemoryRanges0(JNIEnv* e
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkInvalidateMappedMemoryRanges0
 (JNIEnv* env, jclass clazz, jlong device, jint memoryRangeCount, jobject obj_pMemoryRanges, char* pMemoryRanges) {
 
-//@line:1634
+//@line:1719
  
 	VkResult res = vkInvalidateMappedMemoryRanges(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -677,7 +714,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetDeviceMemoryCommitment0(JNIEnv*
 	long long* pCommittedMemoryInBytes = (long long*)(obj_pCommittedMemoryInBytes ? env->GetLongArrayElements(obj_pCommittedMemoryInBytes, 0) : NULL);
 
 
-//@line:1681
+//@line:1766
  
 	vkGetDeviceMemoryCommitment(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -694,7 +731,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetDeviceMemoryCommitment0(JNIEnv*
 JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkBindBufferMemory0(JNIEnv* env, jclass clazz, jlong device, jlong buffer, jlong memory, jlong memoryOffset) {
 
 
-//@line:1738
+//@line:1823
  
 	VkResult res = vkBindBufferMemory(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -709,7 +746,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkBindBufferMemory0(JNIEnv* env, jcl
 JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkBindImageMemory0(JNIEnv* env, jclass clazz, jlong device, jlong image, jlong memory, jlong memoryOffset) {
 
 
-//@line:1796
+//@line:1881
  
 	VkResult res = vkBindImageMemory(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -725,7 +762,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetBufferMemoryRequirements0(JNIEn
 	char* pMemoryRequirements = (char*)(obj_pMemoryRequirements?env->GetDirectBufferAddress(obj_pMemoryRequirements) : NULL);
 
 
-//@line:1844
+//@line:1929
  
 	vkGetBufferMemoryRequirements(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -740,7 +777,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetImageMemoryRequirements0(JNIEnv
 	char* pMemoryRequirements = (char*)(obj_pMemoryRequirements?env->GetDirectBufferAddress(obj_pMemoryRequirements) : NULL);
 
 
-//@line:1891
+//@line:1976
  
 	vkGetImageMemoryRequirements(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -756,7 +793,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetImageSparseMemoryRequirements0(
 	int* pSparseMemoryRequirementCount = (int*)(obj_pSparseMemoryRequirementCount ? env->GetIntArrayElements(obj_pSparseMemoryRequirementCount, 0) : NULL);
 
 
-//@line:1947
+//@line:2032
  
 	vkGetImageSparseMemoryRequirements(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -776,7 +813,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceSparseImageFormat
 	int* pPropertyCount = (int*)(obj_pPropertyCount ? env->GetIntArrayElements(obj_pPropertyCount, 0) : NULL);
 
 
-//@line:2028
+//@line:2113
  
 	vkGetPhysicalDeviceSparseImageFormatProperties(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -798,7 +835,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceSparseImageFormat
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkQueueBindSparse0
 (JNIEnv* env, jclass clazz, jlong queue, jint bindInfoCount, jobject obj_pBindInfo, jlong fence, char* pBindInfo) {
 
-//@line:2094
+//@line:2179
  
 	VkResult res = vkQueueBindSparse(
 			(VkQueue) reinterpret_cast<VkQueue>(queue),
@@ -821,7 +858,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkQueueBindSparse0(JNIEnv* env, jcla
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateFence0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pFence, char* pCreateInfo, char* pAllocator, char* pFence) {
 
-//@line:2155
+//@line:2240
  
 	VkResult res = vkCreateFence(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -847,7 +884,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyFence0(JNIEnv* env, jclass 
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:2203
+//@line:2288
  
 	vkDestroyFence(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -861,7 +898,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyFence0(JNIEnv* env, jclass 
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkResetFences0
 (JNIEnv* env, jclass clazz, jlong device, jint fenceCount, jobject obj_pFences, char* pFences) {
 
-//@line:2257
+//@line:2342
  
 	VkResult res = vkResetFences(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -883,7 +920,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkResetFences0(JNIEnv* env, jclass c
 JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetFenceStatus0(JNIEnv* env, jclass clazz, jlong device, jlong fence) {
 
 
-//@line:2302
+//@line:2387
  
 	VkResult res = vkGetFenceStatus(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -896,7 +933,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetFenceStatus0(JNIEnv* env, jclas
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkWaitForFences0
 (JNIEnv* env, jclass clazz, jlong device, jint fenceCount, jobject obj_pFences, jboolean waitAll, jlong timeout, char* pFences) {
 
-//@line:2367
+//@line:2452
  
 	VkResult res = vkWaitForFences(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -920,7 +957,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkWaitForFences0(JNIEnv* env, jclass
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateSemaphore0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pSemaphore, char* pCreateInfo, char* pAllocator, char* pSemaphore) {
 
-//@line:2429
+//@line:2514
  
 	VkResult res = vkCreateSemaphore(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -946,7 +983,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroySemaphore0(JNIEnv* env, jcl
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:2477
+//@line:2562
  
 	vkDestroySemaphore(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -960,7 +997,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroySemaphore0(JNIEnv* env, jcl
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateEvent0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pEvent, char* pCreateInfo, char* pAllocator, char* pEvent) {
 
-//@line:2537
+//@line:2622
  
 	VkResult res = vkCreateEvent(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -986,7 +1023,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyEvent0(JNIEnv* env, jclass 
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:2585
+//@line:2670
  
 	vkDestroyEvent(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1000,7 +1037,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyEvent0(JNIEnv* env, jclass 
 JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetEventStatus0(JNIEnv* env, jclass clazz, jlong device, jlong event) {
 
 
-//@line:2630
+//@line:2715
  
 	VkResult res = vkGetEventStatus(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1013,7 +1050,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetEventStatus0(JNIEnv* env, jclas
 JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkSetEvent0(JNIEnv* env, jclass clazz, jlong device, jlong event) {
 
 
-//@line:2674
+//@line:2759
  
 	VkResult res = vkSetEvent(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1026,7 +1063,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkSetEvent0(JNIEnv* env, jclass claz
 JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkResetEvent0(JNIEnv* env, jclass clazz, jlong device, jlong event) {
 
 
-//@line:2718
+//@line:2803
  
 	VkResult res = vkResetEvent(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1039,7 +1076,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkResetEvent0(JNIEnv* env, jclass cl
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateQueryPool0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pQueryPool, char* pCreateInfo, char* pAllocator, char* pQueryPool) {
 
-//@line:2777
+//@line:2862
  
 	VkResult res = vkCreateQueryPool(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1065,7 +1102,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyQueryPool0(JNIEnv* env, jcl
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:2825
+//@line:2910
  
 	vkDestroyQueryPool(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1079,7 +1116,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyQueryPool0(JNIEnv* env, jcl
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkGetQueryPoolResults0
 (JNIEnv* env, jclass clazz, jlong device, jlong queryPool, jint firstQuery, jint queryCount, jlong dataSize, jobject obj_pData, jlong stride, jint flags, unsigned char* pData) {
 
-//@line:2906
+//@line:2991
  
 	VkResult res = vkGetQueryPoolResults(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1106,7 +1143,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetQueryPoolResults0(JNIEnv* env, 
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateBuffer0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pBuffer, char* pCreateInfo, char* pAllocator, char* pBuffer) {
 
-//@line:2971
+//@line:3056
  
 	VkResult res = vkCreateBuffer(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1132,7 +1169,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyBuffer0(JNIEnv* env, jclass
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:3019
+//@line:3104
  
 	vkDestroyBuffer(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1146,7 +1183,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyBuffer0(JNIEnv* env, jclass
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateBufferView0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pView, char* pCreateInfo, char* pAllocator, char* pView) {
 
-//@line:3079
+//@line:3164
  
 	VkResult res = vkCreateBufferView(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1172,7 +1209,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyBufferView0(JNIEnv* env, jc
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:3127
+//@line:3212
  
 	vkDestroyBufferView(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1186,7 +1223,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyBufferView0(JNIEnv* env, jc
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateImage0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pImage, char* pCreateInfo, char* pAllocator, char* pImage) {
 
-//@line:3187
+//@line:3272
  
 	VkResult res = vkCreateImage(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1212,7 +1249,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyImage0(JNIEnv* env, jclass 
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:3235
+//@line:3320
  
 	vkDestroyImage(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1228,7 +1265,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetImageSubresourceLayout0(JNIEnv*
 	char* pLayout = (char*)(obj_pLayout?env->GetDirectBufferAddress(obj_pLayout) : NULL);
 
 
-//@line:3288
+//@line:3373
  
 	vkGetImageSubresourceLayout(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1243,7 +1280,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetImageSubresourceLayout0(JNIEnv*
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateImageView0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pView, char* pCreateInfo, char* pAllocator, char* pView) {
 
-//@line:3349
+//@line:3434
  
 	VkResult res = vkCreateImageView(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1269,7 +1306,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyImageView0(JNIEnv* env, jcl
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:3397
+//@line:3482
  
 	vkDestroyImageView(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1283,7 +1320,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyImageView0(JNIEnv* env, jcl
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateShaderModule0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pShaderModule, char* pCreateInfo, char* pAllocator, char* pShaderModule) {
 
-//@line:3457
+//@line:3542
  
 	VkResult res = vkCreateShaderModule(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1309,7 +1346,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyShaderModule0(JNIEnv* env, 
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:3505
+//@line:3590
  
 	vkDestroyShaderModule(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1323,7 +1360,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyShaderModule0(JNIEnv* env, 
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreatePipelineCache0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pPipelineCache, char* pCreateInfo, char* pAllocator, char* pPipelineCache) {
 
-//@line:3565
+//@line:3650
  
 	VkResult res = vkCreatePipelineCache(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1349,7 +1386,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyPipelineCache0(JNIEnv* env,
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:3613
+//@line:3698
  
 	vkDestroyPipelineCache(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1363,7 +1400,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyPipelineCache0(JNIEnv* env,
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkGetPipelineCacheData0
 (JNIEnv* env, jclass clazz, jlong device, jlong pipelineCache, jlongArray obj_pDataSize, jobject obj_pData, unsigned char* pData, long long* pDataSize) {
 
-//@line:3670
+//@line:3755
  
 	VkResult res = vkGetPipelineCacheData(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1390,7 +1427,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetPipelineCacheData0(JNIEnv* env,
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkMergePipelineCaches0
 (JNIEnv* env, jclass clazz, jlong device, jlong dstCache, jint srcCacheCount, jobject obj_pSrcCaches, char* pSrcCaches) {
 
-//@line:3731
+//@line:3816
  
 	VkResult res = vkMergePipelineCaches(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1413,7 +1450,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkMergePipelineCaches0(JNIEnv* env, 
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateGraphicsPipelines0
 (JNIEnv* env, jclass clazz, jlong device, jlong pipelineCache, jint createInfoCount, jobject obj_pCreateInfos, jobject obj_pAllocator, jobject obj_pPipelines, char* pCreateInfos, char* pAllocator, char* pPipelines) {
 
-//@line:3807
+//@line:3892
  
 	VkResult res = vkCreateGraphicsPipelines(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1440,7 +1477,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateGraphicsPipelines0(JNIEnv* e
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateComputePipelines0
 (JNIEnv* env, jclass clazz, jlong device, jlong pipelineCache, jint createInfoCount, jobject obj_pCreateInfos, jobject obj_pAllocator, jobject obj_pPipelines, char* pCreateInfos, char* pAllocator, char* pPipelines) {
 
-//@line:3885
+//@line:3970
  
 	VkResult res = vkCreateComputePipelines(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1468,7 +1505,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyPipeline0(JNIEnv* env, jcla
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:3935
+//@line:4020
  
 	vkDestroyPipeline(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1482,7 +1519,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyPipeline0(JNIEnv* env, jcla
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreatePipelineLayout0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pPipelineLayout, char* pCreateInfo, char* pAllocator, char* pPipelineLayout) {
 
-//@line:3995
+//@line:4080
  
 	VkResult res = vkCreatePipelineLayout(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1508,7 +1545,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyPipelineLayout0(JNIEnv* env
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:4043
+//@line:4128
  
 	vkDestroyPipelineLayout(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1522,7 +1559,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyPipelineLayout0(JNIEnv* env
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateSampler0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pSampler, char* pCreateInfo, char* pAllocator, char* pSampler) {
 
-//@line:4103
+//@line:4188
  
 	VkResult res = vkCreateSampler(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1548,7 +1585,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroySampler0(JNIEnv* env, jclas
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:4151
+//@line:4236
  
 	vkDestroySampler(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1562,7 +1599,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroySampler0(JNIEnv* env, jclas
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateDescriptorSetLayout0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pSetLayout, char* pCreateInfo, char* pAllocator, char* pSetLayout) {
 
-//@line:4211
+//@line:4296
  
 	VkResult res = vkCreateDescriptorSetLayout(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1588,7 +1625,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyDescriptorSetLayout0(JNIEnv
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:4259
+//@line:4344
  
 	vkDestroyDescriptorSetLayout(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1602,7 +1639,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyDescriptorSetLayout0(JNIEnv
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateDescriptorPool0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pDescriptorPool, char* pCreateInfo, char* pAllocator, char* pDescriptorPool) {
 
-//@line:4319
+//@line:4404
  
 	VkResult res = vkCreateDescriptorPool(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1628,7 +1665,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyDescriptorPool0(JNIEnv* env
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:4367
+//@line:4452
  
 	vkDestroyDescriptorPool(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1642,7 +1679,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyDescriptorPool0(JNIEnv* env
 JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkResetDescriptorPool0(JNIEnv* env, jclass clazz, jlong device, jlong descriptorPool, jint flags) {
 
 
-//@line:4418
+//@line:4503
  
 	VkResult res = vkResetDescriptorPool(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1656,7 +1693,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkResetDescriptorPool0(JNIEnv* env, 
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkAllocateDescriptorSets0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pAllocateInfo, jlong pDescriptorSets, char* pAllocateInfo) {
 
-//@line:4469
+//@line:4554
  
 	VkResult res = vkAllocateDescriptorSets(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1678,7 +1715,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkAllocateDescriptorSets0(JNIEnv* en
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkFreeDescriptorSets0
 (JNIEnv* env, jclass clazz, jlong device, jlong descriptorPool, jint descriptorSetCount, jobject obj_pDescriptorSets, char* pDescriptorSets) {
 
-//@line:4529
+//@line:4614
  
 	VkResult res = vkFreeDescriptorSets(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1703,7 +1740,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkUpdateDescriptorSets0(JNIEnv* env,
 	char* pDescriptorCopies = (char*)(obj_pDescriptorCopies?env->GetDirectBufferAddress(obj_pDescriptorCopies) : NULL);
 
 
-//@line:4595
+//@line:4680
  
 	vkUpdateDescriptorSets(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1719,7 +1756,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkUpdateDescriptorSets0(JNIEnv* env,
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateFramebuffer0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pFramebuffer, char* pCreateInfo, char* pAllocator, char* pFramebuffer) {
 
-//@line:4657
+//@line:4742
  
 	VkResult res = vkCreateFramebuffer(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1745,7 +1782,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyFramebuffer0(JNIEnv* env, j
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:4705
+//@line:4790
  
 	vkDestroyFramebuffer(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1759,7 +1796,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyFramebuffer0(JNIEnv* env, j
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateRenderPass0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pRenderPass, char* pCreateInfo, char* pAllocator, char* pRenderPass) {
 
-//@line:4765
+//@line:4850
  
 	VkResult res = vkCreateRenderPass(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1785,7 +1822,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyRenderPass0(JNIEnv* env, jc
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:4813
+//@line:4898
  
 	vkDestroyRenderPass(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1800,7 +1837,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetRenderAreaGranularity0(JNIEnv* 
 	char* pGranularity = (char*)(obj_pGranularity?env->GetDirectBufferAddress(obj_pGranularity) : NULL);
 
 
-//@line:4860
+//@line:4945
  
 	vkGetRenderAreaGranularity(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1814,7 +1851,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkGetRenderAreaGranularity0(JNIEnv* 
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateCommandPool0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pCommandPool, char* pCreateInfo, char* pAllocator, char* pCommandPool) {
 
-//@line:4920
+//@line:5005
  
 	VkResult res = vkCreateCommandPool(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1840,7 +1877,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyCommandPool0(JNIEnv* env, j
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:4968
+//@line:5053
  
 	vkDestroyCommandPool(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1854,7 +1891,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyCommandPool0(JNIEnv* env, j
 JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkResetCommandPool0(JNIEnv* env, jclass clazz, jlong device, jlong commandPool, jint flags) {
 
 
-//@line:5019
+//@line:5104
  
 	VkResult res = vkResetCommandPool(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1868,7 +1905,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkResetCommandPool0(JNIEnv* env, jcl
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkAllocateCommandBuffers0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pAllocateInfo, jlong pCommandBuffers, char* pAllocateInfo) {
 
-//@line:5070
+//@line:5155
  
 	VkResult res = vkAllocateCommandBuffers(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1891,7 +1928,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkFreeCommandBuffers0(JNIEnv* env, j
 	char* pCommandBuffers = (char*)(obj_pCommandBuffers?env->GetDirectBufferAddress(obj_pCommandBuffers) : NULL);
 
 
-//@line:5126
+//@line:5211
  
 	vkFreeCommandBuffers(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -1906,7 +1943,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkFreeCommandBuffers0(JNIEnv* env, j
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkBeginCommandBuffer0
 (JNIEnv* env, jclass clazz, jlong commandBuffer, jobject obj_pBeginInfo, char* pBeginInfo) {
 
-//@line:5172
+//@line:5257
  
 	VkResult res = vkBeginCommandBuffer(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -1927,7 +1964,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkBeginCommandBuffer0(JNIEnv* env, j
 JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkEndCommandBuffer0(JNIEnv* env, jclass clazz, jlong commandBuffer) {
 
 
-//@line:5210
+//@line:5295
  
 	VkResult res = vkEndCommandBuffer(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer));
@@ -1939,7 +1976,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkEndCommandBuffer0(JNIEnv* env, jcl
 JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkResetCommandBuffer0(JNIEnv* env, jclass clazz, jlong commandBuffer, jint flags) {
 
 
-//@line:5253
+//@line:5338
  
 	VkResult res = vkResetCommandBuffer(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -1952,7 +1989,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkResetCommandBuffer0(JNIEnv* env, j
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdBindPipeline0(JNIEnv* env, jclass clazz, jlong commandBuffer, jint pipelineBindPoint, jlong pipeline) {
 
 
-//@line:5299
+//@line:5384
  
 	vkCmdBindPipeline(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -1967,7 +2004,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetViewport0(JNIEnv* env, jclas
 	char* pViewports = (char*)(obj_pViewports?env->GetDirectBufferAddress(obj_pViewports) : NULL);
 
 
-//@line:5355
+//@line:5440
  
 	vkCmdSetViewport(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -1983,7 +2020,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetScissor0(JNIEnv* env, jclass
 	char* pScissors = (char*)(obj_pScissors?env->GetDirectBufferAddress(obj_pScissors) : NULL);
 
 
-//@line:5412
+//@line:5497
  
 	vkCmdSetScissor(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -1998,7 +2035,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetScissor0(JNIEnv* env, jclass
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetLineWidth0(JNIEnv* env, jclass clazz, jlong commandBuffer, jfloat lineWidth) {
 
 
-//@line:5454
+//@line:5539
  
 	vkCmdSetLineWidth(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2011,7 +2048,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetLineWidth0(JNIEnv* env, jcla
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetDepthBias0(JNIEnv* env, jclass clazz, jlong commandBuffer, jfloat depthBiasConstantFactor, jfloat depthBiasClamp, jfloat depthBiasSlopeFactor) {
 
 
-//@line:5506
+//@line:5591
  
 	vkCmdSetDepthBias(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2027,7 +2064,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetBlendConstants0(JNIEnv* env,
 	float* blendConstants = (float*)(obj_blendConstants ? env->GetFloatArrayElements(obj_blendConstants, 0) : NULL);
 
 
-//@line:5548
+//@line:5633
  
 	float  blendConstantsParam[4] = {0,0,0,0};
 	memcpy(blendConstantsParam, blendConstants, sizeof(blendConstantsParam));
@@ -2045,7 +2082,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetBlendConstants0(JNIEnv* env,
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetDepthBounds0(JNIEnv* env, jclass clazz, jlong commandBuffer, jfloat minDepthBounds, jfloat maxDepthBounds) {
 
 
-//@line:5596
+//@line:5681
  
 	vkCmdSetDepthBounds(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2059,7 +2096,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetDepthBounds0(JNIEnv* env, jc
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetStencilCompareMask0(JNIEnv* env, jclass clazz, jlong commandBuffer, jint faceMask, jint compareMask) {
 
 
-//@line:5643
+//@line:5728
  
 	vkCmdSetStencilCompareMask(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2073,7 +2110,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetStencilCompareMask0(JNIEnv* 
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetStencilWriteMask0(JNIEnv* env, jclass clazz, jlong commandBuffer, jint faceMask, jint writeMask) {
 
 
-//@line:5690
+//@line:5775
  
 	vkCmdSetStencilWriteMask(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2087,7 +2124,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetStencilWriteMask0(JNIEnv* en
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetStencilReference0(JNIEnv* env, jclass clazz, jlong commandBuffer, jint faceMask, jint reference) {
 
 
-//@line:5737
+//@line:5822
  
 	vkCmdSetStencilReference(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2103,7 +2140,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdBindDescriptorSets0(JNIEnv* env
 	int* pDynamicOffsets = (int*)(obj_pDynamicOffsets ? env->GetIntArrayElements(obj_pDynamicOffsets, 0) : NULL);
 
 
-//@line:5817
+//@line:5902
  
 	vkCmdBindDescriptorSets(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2125,7 +2162,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdBindDescriptorSets0(JNIEnv* env
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdBindIndexBuffer0(JNIEnv* env, jclass clazz, jlong commandBuffer, jlong buffer, jlong offset, jint indexType) {
 
 
-//@line:5875
+//@line:5960
  
 	vkCmdBindIndexBuffer(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2142,7 +2179,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdBindVertexBuffers0(JNIEnv* env,
 	long long* pOffsets = (long long*)(obj_pOffsets ? env->GetLongArrayElements(obj_pOffsets, 0) : NULL);
 
 
-//@line:5938
+//@line:6023
  
 	vkCmdBindVertexBuffers(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2161,7 +2198,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdBindVertexBuffers0(JNIEnv* env,
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDraw0(JNIEnv* env, jclass clazz, jlong commandBuffer, jint vertexCount, jint instanceCount, jint firstVertex, jint firstInstance) {
 
 
-//@line:5999
+//@line:6084
  
 	vkCmdDraw(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2177,7 +2214,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDraw0(JNIEnv* env, jclass clazz
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDrawIndexed0(JNIEnv* env, jclass clazz, jlong commandBuffer, jint indexCount, jint instanceCount, jint firstIndex, jint vertexOffset, jint firstInstance) {
 
 
-//@line:6066
+//@line:6151
  
 	vkCmdDrawIndexed(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2194,7 +2231,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDrawIndexed0(JNIEnv* env, jclas
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDrawIndirect0(JNIEnv* env, jclass clazz, jlong commandBuffer, jlong buffer, jlong offset, jint drawCount, jint stride) {
 
 
-//@line:6128
+//@line:6213
  
 	vkCmdDrawIndirect(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2210,7 +2247,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDrawIndirect0(JNIEnv* env, jcla
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDrawIndexedIndirect0(JNIEnv* env, jclass clazz, jlong commandBuffer, jlong buffer, jlong offset, jint drawCount, jint stride) {
 
 
-//@line:6189
+//@line:6274
  
 	vkCmdDrawIndexedIndirect(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2226,7 +2263,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDrawIndexedIndirect0(JNIEnv* en
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDispatch0(JNIEnv* env, jclass clazz, jlong commandBuffer, jint x, jint y, jint z) {
 
 
-//@line:6244
+//@line:6329
  
 	vkCmdDispatch(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2241,7 +2278,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDispatch0(JNIEnv* env, jclass c
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDispatchIndirect0(JNIEnv* env, jclass clazz, jlong commandBuffer, jlong buffer, jlong offset) {
 
 
-//@line:6292
+//@line:6377
  
 	vkCmdDispatchIndirect(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2256,7 +2293,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdCopyBuffer0(JNIEnv* env, jclass
 	char* pRegions = (char*)(obj_pRegions?env->GetDirectBufferAddress(obj_pRegions) : NULL);
 
 
-//@line:6354
+//@line:6439
  
 	vkCmdCopyBuffer(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2273,7 +2310,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdCopyImage0(JNIEnv* env, jclass 
 	char* pRegions = (char*)(obj_pRegions?env->GetDirectBufferAddress(obj_pRegions) : NULL);
 
 
-//@line:6430
+//@line:6515
  
 	vkCmdCopyImage(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2292,7 +2329,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdBlitImage0(JNIEnv* env, jclass 
 	char* pRegions = (char*)(obj_pRegions?env->GetDirectBufferAddress(obj_pRegions) : NULL);
 
 
-//@line:6515
+//@line:6600
  
 	vkCmdBlitImage(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2312,7 +2349,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdCopyBufferToImage0(JNIEnv* env,
 	char* pRegions = (char*)(obj_pRegions?env->GetDirectBufferAddress(obj_pRegions) : NULL);
 
 
-//@line:6588
+//@line:6673
  
 	vkCmdCopyBufferToImage(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2330,7 +2367,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdCopyImageToBuffer0(JNIEnv* env,
 	char* pRegions = (char*)(obj_pRegions?env->GetDirectBufferAddress(obj_pRegions) : NULL);
 
 
-//@line:6659
+//@line:6744
  
 	vkCmdCopyImageToBuffer(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2348,7 +2385,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdUpdateBuffer0(JNIEnv* env, jcla
 	unsigned char* pData = (unsigned char*)(obj_pData?env->GetDirectBufferAddress(obj_pData) : NULL);
 
 
-//@line:6721
+//@line:6806
  
 	vkCmdUpdateBuffer(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2364,7 +2401,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdUpdateBuffer0(JNIEnv* env, jcla
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdFillBuffer0(JNIEnv* env, jclass clazz, jlong commandBuffer, jlong dstBuffer, jlong dstOffset, jlong size, jint data) {
 
 
-//@line:6782
+//@line:6867
  
 	vkCmdFillBuffer(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2382,7 +2419,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdClearColorImage0(JNIEnv* env, j
 	char* pRanges = (char*)(obj_pRanges?env->GetDirectBufferAddress(obj_pRanges) : NULL);
 
 
-//@line:6852
+//@line:6937
  
 	vkCmdClearColorImage(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2401,7 +2438,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdClearDepthStencilImage0(JNIEnv*
 	char* pRanges = (char*)(obj_pRanges?env->GetDirectBufferAddress(obj_pRanges) : NULL);
 
 
-//@line:6923
+//@line:7008
  
 	vkCmdClearDepthStencilImage(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2420,7 +2457,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdClearAttachments0(JNIEnv* env, 
 	char* pRects = (char*)(obj_pRects?env->GetDirectBufferAddress(obj_pRects) : NULL);
 
 
-//@line:6992
+//@line:7077
  
 	vkCmdClearAttachments(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2437,7 +2474,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdResolveImage0(JNIEnv* env, jcla
 	char* pRegions = (char*)(obj_pRegions?env->GetDirectBufferAddress(obj_pRegions) : NULL);
 
 
-//@line:7068
+//@line:7153
  
 	vkCmdResolveImage(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2455,7 +2492,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdResolveImage0(JNIEnv* env, jcla
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetEvent0(JNIEnv* env, jclass clazz, jlong commandBuffer, jlong event, jint stageMask) {
 
 
-//@line:7119
+//@line:7204
  
 	vkCmdSetEvent(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2469,7 +2506,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdSetEvent0(JNIEnv* env, jclass c
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdResetEvent0(JNIEnv* env, jclass clazz, jlong commandBuffer, jlong event, jint stageMask) {
 
 
-//@line:7166
+//@line:7251
  
 	vkCmdResetEvent(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2487,7 +2524,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdWaitEvents0(JNIEnv* env, jclass
 	char* pImageMemoryBarriers = (char*)(obj_pImageMemoryBarriers?env->GetDirectBufferAddress(obj_pImageMemoryBarriers) : NULL);
 
 
-//@line:7274
+//@line:7359
  
 	vkCmdWaitEvents(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2512,7 +2549,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdPipelineBarrier0(JNIEnv* env, j
 	char* pImageMemoryBarriers = (char*)(obj_pImageMemoryBarriers?env->GetDirectBufferAddress(obj_pImageMemoryBarriers) : NULL);
 
 
-//@line:7380
+//@line:7465
  
 	vkCmdPipelineBarrier(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2533,7 +2570,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdPipelineBarrier0(JNIEnv* env, j
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdBeginQuery0(JNIEnv* env, jclass clazz, jlong commandBuffer, jlong queryPool, jint query, jint flags) {
 
 
-//@line:7440
+//@line:7525
  
 	vkCmdBeginQuery(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2548,7 +2585,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdBeginQuery0(JNIEnv* env, jclass
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdEndQuery0(JNIEnv* env, jclass clazz, jlong commandBuffer, jlong queryPool, jint query) {
 
 
-//@line:7488
+//@line:7573
  
 	vkCmdEndQuery(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2562,7 +2599,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdEndQuery0(JNIEnv* env, jclass c
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdResetQueryPool0(JNIEnv* env, jclass clazz, jlong commandBuffer, jlong queryPool, jint firstQuery, jint queryCount) {
 
 
-//@line:7541
+//@line:7626
  
 	vkCmdResetQueryPool(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2577,7 +2614,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdResetQueryPool0(JNIEnv* env, jc
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdWriteTimestamp0(JNIEnv* env, jclass clazz, jlong commandBuffer, jint pipelineStage, jlong queryPool, jint query) {
 
 
-//@line:7595
+//@line:7680
  
 	vkCmdWriteTimestamp(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2592,7 +2629,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdWriteTimestamp0(JNIEnv* env, jc
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdCopyQueryPoolResults0(JNIEnv* env, jclass clazz, jlong commandBuffer, jlong queryPool, jint firstQuery, jint queryCount, jlong dstBuffer, jlong dstOffset, jlong stride, jint flags) {
 
 
-//@line:7673
+//@line:7758
  
 	vkCmdCopyQueryPoolResults(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2612,7 +2649,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdPushConstants0(JNIEnv* env, jcl
 	unsigned char* pValues = (unsigned char*)(obj_pValues?env->GetDirectBufferAddress(obj_pValues) : NULL);
 
 
-//@line:7743
+//@line:7828
  
 	vkCmdPushConstants(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2630,7 +2667,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdBeginRenderPass0(JNIEnv* env, j
 	char* pRenderPassBegin = (char*)(obj_pRenderPassBegin?env->GetDirectBufferAddress(obj_pRenderPassBegin) : NULL);
 
 
-//@line:7793
+//@line:7878
  
 	vkCmdBeginRenderPass(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2644,7 +2681,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdBeginRenderPass0(JNIEnv* env, j
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdNextSubpass0(JNIEnv* env, jclass clazz, jlong commandBuffer, jint contents) {
 
 
-//@line:7834
+//@line:7919
  
 	vkCmdNextSubpass(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2657,7 +2694,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdNextSubpass0(JNIEnv* env, jclas
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdEndRenderPass0(JNIEnv* env, jclass clazz, jlong commandBuffer) {
 
 
-//@line:7868
+//@line:7953
  
 	vkCmdEndRenderPass(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer));
@@ -2670,7 +2707,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdExecuteCommands0(JNIEnv* env, j
 	char* pCommandBuffers = (char*)(obj_pCommandBuffers?env->GetDirectBufferAddress(obj_pCommandBuffers) : NULL);
 
 
-//@line:7916
+//@line:8001
  
 	vkCmdExecuteCommands(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -2685,7 +2722,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroySurfaceKHR0(JNIEnv* env, jc
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:7963
+//@line:8048
  
 	vkDestroySurfaceKHR(
 			(VkInstance) reinterpret_cast<VkInstance>(instance),
@@ -2699,7 +2736,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroySurfaceKHR0(JNIEnv* env, jc
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkGetPhysicalDeviceSurfaceSupportKHR0
 (JNIEnv* env, jclass clazz, jlong physicalDevice, jint queueFamilyIndex, jlong surface, jbooleanArray obj_pSupported, bool* pSupported) {
 
-//@line:8020
+//@line:8105
  
 	VkResult res = vkGetPhysicalDeviceSurfaceSupportKHR(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -2725,7 +2762,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceSurfaceSupportKHR
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkGetPhysicalDeviceSurfaceCapabilitiesKHR0
 (JNIEnv* env, jclass clazz, jlong physicalDevice, jlong surface, jobject obj_pSurfaceCapabilities, char* pSurfaceCapabilities) {
 
-//@line:8072
+//@line:8157
  
 	VkResult res = vkGetPhysicalDeviceSurfaceCapabilitiesKHR(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -2747,7 +2784,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceSurfaceCapabiliti
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkGetPhysicalDeviceSurfaceFormatsKHR0
 (JNIEnv* env, jclass clazz, jlong physicalDevice, jlong surface, jintArray obj_pSurfaceFormatCount, jobject obj_pSurfaceFormats, char* pSurfaceFormats, int* pSurfaceFormatCount) {
 
-//@line:8132
+//@line:8217
  
 	VkResult res = vkGetPhysicalDeviceSurfaceFormatsKHR(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -2774,7 +2811,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceSurfaceFormatsKHR
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkGetPhysicalDeviceSurfacePresentModesKHR0
 (JNIEnv* env, jclass clazz, jlong physicalDevice, jlong surface, jintArray obj_pPresentModeCount, jintArray obj_pPresentModes, int* pPresentModeCount, int* pPresentModes) {
 
-//@line:8196
+//@line:8281
  
 	VkResult res = vkGetPhysicalDeviceSurfacePresentModesKHR(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -2804,7 +2841,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceSurfacePresentMod
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateSwapchainKHR0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pSwapchain, char* pCreateInfo, char* pAllocator, char* pSwapchain) {
 
-//@line:8257
+//@line:8342
  
 	VkResult res = vkCreateSwapchainKHR(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -2830,7 +2867,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroySwapchainKHR0(JNIEnv* env, 
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:8305
+//@line:8390
  
 	vkDestroySwapchainKHR(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -2844,7 +2881,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroySwapchainKHR0(JNIEnv* env, 
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkGetSwapchainImagesKHR0
 (JNIEnv* env, jclass clazz, jlong device, jlong swapchain, jintArray obj_pSwapchainImageCount, jobject obj_pSwapchainImages, char* pSwapchainImages, int* pSwapchainImageCount) {
 
-//@line:8365
+//@line:8450
  
 	VkResult res = vkGetSwapchainImagesKHR(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -2871,7 +2908,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetSwapchainImagesKHR0(JNIEnv* env
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkAcquireNextImageKHR0
 (JNIEnv* env, jclass clazz, jlong device, jlong swapchain, jlong timeout, jlong semaphore, jlong fence, jintArray obj_pImageIndex, int* pImageIndex) {
 
-//@line:8435
+//@line:8520
  
 	VkResult res = vkAcquireNextImageKHR(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -2899,7 +2936,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkAcquireNextImageKHR0(JNIEnv* env, 
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkQueuePresentKHR0
 (JNIEnv* env, jclass clazz, jlong queue, jobject obj_pPresentInfo, char* pPresentInfo) {
 
-//@line:8483
+//@line:8568
  
 	VkResult res = vkQueuePresentKHR(
 			(VkQueue) reinterpret_cast<VkQueue>(queue),
@@ -2920,7 +2957,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkQueuePresentKHR0(JNIEnv* env, jcla
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkGetPhysicalDeviceDisplayPropertiesKHR0
 (JNIEnv* env, jclass clazz, jlong physicalDevice, jintArray obj_pPropertyCount, jobject obj_pProperties, char* pProperties, int* pPropertyCount) {
 
-//@line:8536
+//@line:8621
  
 	VkResult res = vkGetPhysicalDeviceDisplayPropertiesKHR(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -2946,7 +2983,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceDisplayProperties
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkGetPhysicalDeviceDisplayPlanePropertiesKHR0
 (JNIEnv* env, jclass clazz, jlong physicalDevice, jintArray obj_pPropertyCount, jobject obj_pProperties, char* pProperties, int* pPropertyCount) {
 
-//@line:8590
+//@line:8675
  
 	VkResult res = vkGetPhysicalDeviceDisplayPlanePropertiesKHR(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -2972,7 +3009,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceDisplayPlanePrope
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkGetDisplayPlaneSupportedDisplaysKHR0
 (JNIEnv* env, jclass clazz, jlong physicalDevice, jint planeIndex, jintArray obj_pDisplayCount, jobject obj_pDisplays, char* pDisplays, int* pDisplayCount) {
 
-//@line:8650
+//@line:8735
  
 	VkResult res = vkGetDisplayPlaneSupportedDisplaysKHR(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -2999,7 +3036,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetDisplayPlaneSupportedDisplaysKH
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkGetDisplayModePropertiesKHR0
 (JNIEnv* env, jclass clazz, jlong physicalDevice, jlong display, jintArray obj_pPropertyCount, jobject obj_pProperties, char* pProperties, int* pPropertyCount) {
 
-//@line:8711
+//@line:8796
  
 	VkResult res = vkGetDisplayModePropertiesKHR(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -3026,7 +3063,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetDisplayModePropertiesKHR0(JNIEn
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateDisplayModeKHR0
 (JNIEnv* env, jclass clazz, jlong physicalDevice, jlong display, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pMode, char* pCreateInfo, char* pAllocator, char* pMode) {
 
-//@line:8778
+//@line:8863
  
 	VkResult res = vkCreateDisplayModeKHR(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -3052,7 +3089,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateDisplayModeKHR0(JNIEnv* env,
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkGetDisplayPlaneCapabilitiesKHR0
 (JNIEnv* env, jclass clazz, jlong physicalDevice, jlong mode, jint planeIndex, jobject obj_pCapabilities, char* pCapabilities) {
 
-//@line:8837
+//@line:8922
  
 	VkResult res = vkGetDisplayPlaneCapabilitiesKHR(
 			(VkPhysicalDevice) reinterpret_cast<VkPhysicalDevice>(physicalDevice),
@@ -3075,7 +3112,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkGetDisplayPlaneCapabilitiesKHR0(JN
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateDisplayPlaneSurfaceKHR0
 (JNIEnv* env, jclass clazz, jlong instance, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pSurface, char* pCreateInfo, char* pAllocator, char* pSurface) {
 
-//@line:8898
+//@line:8983
  
 	VkResult res = vkCreateDisplayPlaneSurfaceKHR(
 			(VkInstance) reinterpret_cast<VkInstance>(instance),
@@ -3100,7 +3137,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateDisplayPlaneSurfaceKHR0(JNIE
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateSharedSwapchainsKHR0
 (JNIEnv* env, jclass clazz, jlong device, jint swapchainCount, jobject obj_pCreateInfos, jobject obj_pAllocator, jobject obj_pSwapchains, char* pCreateInfos, char* pAllocator, char* pSwapchains) {
 
-//@line:8968
+//@line:9053
  
 	VkResult res = vkCreateSharedSwapchainsKHR(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -3126,7 +3163,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateSharedSwapchainsKHR0(JNIEnv*
 static inline jboolean wrapped_Java_bor_vulkan_Vk10_getDisplayHandles0
 (JNIEnv* env, jclass clazz, jobject win, jlongArray obj_displayHandles, long long* displayHandles) {
 
-//@line:8997
+//@line:9082
 
     
      #ifdef VK_USE_PLATFORM_ANDROID_KHR 
@@ -3197,7 +3234,7 @@ JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_getDisplayHandles0(JNIEnv* env, 
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateXlibSurfaceKHR0
 (JNIEnv* env, jclass clazz, jlong instance, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pSurface, char* pCreateInfo, char* pAllocator, char* pSurface) {
 
-//@line:9101
+//@line:9186
  
      #ifdef VK_USE_PLATFORM_XLIB_KHR	
 	VkResult res = vkCreateXlibSurfaceKHR(
@@ -3226,7 +3263,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateXlibSurfaceKHR0(JNIEnv* env,
 JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceXlibPresentationSupportKHR0(JNIEnv* env, jclass clazz, jlong physicalDevice, jint queueFamilyIndex, jlong dpy, jlong visualID) {
 
 
-//@line:9163
+//@line:9248
 
     #ifdef VK_USE_PLATFORM_XLIB_KHR		 
 	boolean res = vkGetPhysicalDeviceXlibPresentationSupportKHR(
@@ -3245,7 +3282,7 @@ JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceXlibPresentat
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateXcbSurfaceKHR0
 (JNIEnv* env, jclass clazz, jlong instance, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pSurface, char* pCreateInfo, char* pAllocator, char* pSurface) {
 
-//@line:9228
+//@line:9313
  
     #ifdef VK_USE_PLATFORM_XCB_KHR  
 	VkResult res = vkCreateXcbSurfaceKHR(
@@ -3274,7 +3311,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateXcbSurfaceKHR0(JNIEnv* env, 
 JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceXcbPresentationSupportKHR0(JNIEnv* env, jclass clazz, jlong physicalDevice, jint queueFamilyIndex, jlong connection, jlong visual_id) {
 
 
-//@line:9290
+//@line:9375
  
         #ifdef VK_USE_PLATFORM_XCB_KHR  
 	boolean res = vkGetPhysicalDeviceXcbPresentationSupportKHR(
@@ -3293,7 +3330,7 @@ JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceXcbPresentati
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateWaylandSurfaceKHR0
 (JNIEnv* env, jclass clazz, jlong instance, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pSurface, char* pCreateInfo, char* pAllocator, char* pSurface) {
 
-//@line:9355
+//@line:9440
  
     #ifdef VK_USE_PLATFORM_WAYLAND_KHR
 	VkResult res = vkCreateWaylandSurfaceKHR(
@@ -3322,7 +3359,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateWaylandSurfaceKHR0(JNIEnv* e
 JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceWaylandPresentationSupportKHR0(JNIEnv* env, jclass clazz, jlong physicalDevice, jint queueFamilyIndex, jlong display) {
 
 
-//@line:9411
+//@line:9496
  
      #ifdef VK_USE_PLATFORM_WAYLAND_KHR
 	boolean res = vkGetPhysicalDeviceWaylandPresentationSupportKHR(
@@ -3340,7 +3377,7 @@ JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceWaylandPresen
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateMirSurfaceKHR0
 (JNIEnv* env, jclass clazz, jlong instance, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pSurface, char* pCreateInfo, char* pAllocator, char* pSurface) {
 
-//@line:9475
+//@line:9560
  
      #ifdef VK_USE_PLATFORM_MIR_KHR 		
 	VkResult res = vkCreateMirSurfaceKHR(
@@ -3369,7 +3406,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateMirSurfaceKHR0(JNIEnv* env, 
 JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceMirPresentationSupportKHR0(JNIEnv* env, jclass clazz, jlong physicalDevice, jint queueFamilyIndex, jlong connection) {
 
 
-//@line:9531
+//@line:9616
  
      #ifdef VK_USE_PLATFORM_MIR_KHR 
 	boolean res = vkGetPhysicalDeviceMirPresentationSupportKHR(
@@ -3387,7 +3424,7 @@ JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceMirPresentati
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateAndroidSurfaceKHR0
 (JNIEnv* env, jclass clazz, jlong instance, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pSurface, char* pCreateInfo, char* pAllocator, char* pSurface) {
 
-//@line:9595
+//@line:9680
  
         #ifdef VK_USE_PLATFORM_ANDROID_KHR 
 	VkResult res = vkCreateAndroidSurfaceKHR(
@@ -3416,7 +3453,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateAndroidSurfaceKHR0(JNIEnv* e
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateWin32SurfaceKHR0
 (JNIEnv* env, jclass clazz, jlong instance, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pSurface, char* pCreateInfo, char* pAllocator, char* pSurface) {
 
-//@line:9660
+//@line:9745
 
      // used in Windows OS only                                                      
      #ifdef VK_USE_PLATFORM_WIN32_KHR
@@ -3446,7 +3483,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateWin32SurfaceKHR0(JNIEnv* env
 JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceWin32PresentationSupportKHR0(JNIEnv* env, jclass clazz, jlong physicalDevice, jint queueFamilyIndex) {
 
 
-//@line:9711
+//@line:9796
  
      // used in Windows OS only                                                      
      #ifdef VK_USE_PLATFORM_WIN32_KHR
@@ -3464,7 +3501,7 @@ JNIEXPORT jboolean JNICALL Java_bor_vulkan_Vk10_vkGetPhysicalDeviceWin32Presenta
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateDebugReportCallbackEXT0
 (JNIEnv* env, jclass clazz, jlong instance, jobject obj_pCreateInfo, jobject obj_pAllocator, jobject obj_pCallback, char* pCreateInfo, char* pAllocator, char* pCallback) {
 
-//@line:9775
+//@line:9860
  
 	VkResult res = vkCreateDebugReportCallbackEXT(
 			(VkInstance) reinterpret_cast<VkInstance>(instance),
@@ -3490,7 +3527,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDestroyDebugReportCallbackEXT0(JNI
 	char* pAllocator = (char*)(obj_pAllocator?env->GetDirectBufferAddress(obj_pAllocator) : NULL);
 
 
-//@line:9823
+//@line:9908
  
 	vkDestroyDebugReportCallbackEXT(
 			(VkInstance) reinterpret_cast<VkInstance>(instance),
@@ -3506,7 +3543,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDebugReportMessageEXT0(JNIEnv* env
 	char* pMessage = (char*)(obj_pMessage ? env->GetStringUTFChars(obj_pMessage, 0) : NULL);
 
 
-//@line:9900
+//@line:9985
  
 	vkDebugReportMessageEXT(
 			(VkInstance) reinterpret_cast<VkInstance>(instance),
@@ -3531,7 +3568,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkDebugReportMessageEXT0(JNIEnv* env
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkDebugMarkerSetObjectTagEXT0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pTagInfo, char* pTagInfo) {
 
-//@line:9950
+//@line:10035
  
 	VkResult res = vkDebugMarkerSetObjectTagEXT(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -3552,7 +3589,7 @@ JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkDebugMarkerSetObjectTagEXT0(JNIEnv
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkDebugMarkerSetObjectNameEXT0
 (JNIEnv* env, jclass clazz, jlong device, jobject obj_pNameInfo, char* pNameInfo) {
 
-//@line:9994
+//@line:10079
  
 	VkResult res = vkDebugMarkerSetObjectNameEXT(
 			(VkDevice) reinterpret_cast<VkDevice>(device),
@@ -3574,7 +3611,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDebugMarkerBeginEXT0(JNIEnv* en
 	char* pMarkerInfo = (char*)(obj_pMarkerInfo?env->GetDirectBufferAddress(obj_pMarkerInfo) : NULL);
 
 
-//@line:10034
+//@line:10119
  
 	vkCmdDebugMarkerBeginEXT(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
@@ -3587,7 +3624,7 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDebugMarkerBeginEXT0(JNIEnv* en
 JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDebugMarkerEndEXT0(JNIEnv* env, jclass clazz, jlong commandBuffer) {
 
 
-//@line:10068
+//@line:10153
  
 	vkCmdDebugMarkerEndEXT(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer));
@@ -3600,101 +3637,145 @@ JNIEXPORT void JNICALL Java_bor_vulkan_Vk10_vkCmdDebugMarkerInsertEXT0(JNIEnv* e
 	char* pMarkerInfo = (char*)(obj_pMarkerInfo?env->GetDirectBufferAddress(obj_pMarkerInfo) : NULL);
 
 
-//@line:10107
+//@line:10192
  
 	vkCmdDebugMarkerInsertEXT(
 			(VkCommandBuffer) reinterpret_cast<VkCommandBuffer>(commandBuffer),
 			(VkDebugMarkerMarkerInfoEXT*) pMarkerInfo);
-
   
 
 }
 
 static inline jint wrapped_Java_bor_vulkan_Vk10_vkCreateWindowSurface0
-(JNIEnv* env, jclass clazz, jlong instance, jobject nativeWindow, jlongArray obj_pSurface, long long* pSurface) {
+(JNIEnv* env, jclass clazz, jlong instance, jobject nativeWindow, jlong pAllocatorHandle, jlongArray obj_pSurface, jlongArray obj_awtDrawingSurface, long long* pSurface, long long* awtDrawingSurface) {
 
-//@line:10140
+//@line:10337
 
+    
+    VkAllocationCallbacks* pAllocator = reinterpret_cast<VkAllocationCallbacks*>(pAllocatorHandle);
+    VkInstance vkInstance = reinterpret_cast<VkInstance>(instance);
+    VkSurfaceKHR* _pSurface = new VkSurfaceKHR[1];
+    VkResult res = VkResult::VK_ERROR_NATIVE_WINDOW_IN_USE_KHR;
+    
     #ifdef VK_USE_PLATFORM_ANDROID_KHR       
         android::sp<ANativeWindow> window;  
-        window = android::android_view_Surface_getNativeWindow(env, win);
+        window = android::android_view_Surface_getNativeWindow(env, nativeWindow);
         if (window == NULL) 
              return VkResult::VK_ERROR_NATIVE_WINDOW_IN_USE_KHR;
          
         VkAndroidSurfaceCreateInfoKHR info;
-         info.sType = VkStructure::VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR;
+         info.sType = VkStructureType::VK_STRUCTURE_TYPE_ANDROID_SURFACE_CREATE_INFO_KHR;
          info.pNext = NULL;
          info.flags = 0;
-         info.window = window;         
-        VkInstance vkInstance = reintepret_cast<VkInstance>(instance); 
-        VkSurfaceKHR* _pSurface = new VkSurfaceKHR[1];            
-            
-        VkResult res =  vkCreateAndroidSurfaceKHR(vkInstance, &info, NULL, _pSurface);
-        if(res >=0){
-           pSurface[0] = reinterpret_cast<jlong>(_pSurface[0]);           
-         }else{
-            pSurface[0] = (jlong)0;
-         }
-         delete[] _pSurface;         
-         return res;                                                    
+         info.window = window; 
+         res =  vkCreateAndroidSurfaceKHR(vkInstance, &info, pAllocator, _pSurface);
      #else
-     
+     // Other platfforms supported by AWT
      JAWT awt;
      JAWT_DrawingSurface* ds;
-     JAWT_DrawingSurfaceInfo* dsi;
-     jboolean result;
-     jint lock;
-     
-     awt->version = JAWT_VERSION_1_4;
-     if (JAWT_GetAWT(env, awt) == JNI_FALSE) {
+     JAWT_DrawingSurfaceInfo* dsi = NULL;  
+     jint lock ;
+     awt.version = JAWT_VERSION_1_4;
+     if (JAWT_GetAWT(env, &awt) == JNI_FALSE) {
           fprintf(stderr, "AWT not found\n");
           return VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;;
      }
      // Get the drawing surface 
-     ds = awt.GetDrawingSurface(env, canvas);
+     ds = awt.GetDrawingSurface(env, nativeWindow); 
+      //cache AwT's DrawingSurface
+      awtDrawingSurface[0] = reinterpret_cast<jlong>(ds);
+      
      if (ds == NULL) {
          fprintf(stderr,"NULL drawing surface\n");
          return VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;
       }
       ds->env = env;
-      lock = ds->Lock(ds);
+      lock = ds->Lock(ds); 
+      if((lock & JAWT_LOCK_ERROR) != 0){
+          fprintf(stderr,"Failed to lock AWT drawing surface.\n");
+          res = VkResult::VK_ERROR_SURFACE_LOST_KHR;
+      }
       dsi = ds->GetDrawingSurfaceInfo(ds);
-             
-      #if VK_USE_PLATFORM_WIN32_KHR
-      
+      if(dsi == NULL){
+         fprintf(stderr,"Failed to get AWT drawing surface info.\n");
+          res = VkResult::VK_ERROR_SURFACE_LOST_KHR;
+       }else{
+         #if VK_USE_PLATFORM_WIN32_KHR 
+             //  Win32
+             JAWT_Win32DrawingSurfaceInfo* dsi_win;     
              dsi_win = (JAWT_Win32DrawingSurfaceInfo *)dsi->platformInfo;
-                if(dsi_win == NULL) return JNI_FALSE;                
-                val[0] = (jlong) dsi_win->hwnd;    // EGLNativeWindowType
-                val[1] = (jlong) dsi_win->hdc;     // EGLNativeDisplayType  
-             JAWT_Win32DrawingSurfaceInfo* dsi_win; 
-      
-             VkWin32SurfaceCreateInfoKHR* info;
-             info.sType = VkStructure::VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
-             info.pNext = NULL;
-              info.flags = 0;
+             if(dsi_win == NULL){ 
+                    fprintf(stderr,"NULL Win32 Drawing Surface Info\n");
+                    res =  VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR; 
+             } else {
+                VkWin32SurfaceCreateInfoKHR info;
+                memset(&info, 0, sizeof(VkWin32SurfaceCreateInfoKHR));
+                info.sType = VkStructureType::VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
+                info.pNext = NULL;
+                info.flags = 0;
+                info.hinstance = GetModuleHandle(NULL);;
+                info.hwnd = dsi_win->hwnd;
+                res = vkCreateWin32SurfaceKHR(vkInstance, &info, pAllocator, _pSurface);                         
+              }                         
+     	  #elif  VK_USE_PLATFORM_XLIB_KHR || VK_USE_PLATFORM_XCB_KHR 
+     	  // All Linux
+                 JAWT_X11DrawingSurfaceInfo dsi_x11;  
+                 dsi_x11 = (JAWT_X11DrawingSurfaceInfo*)dsi->platformInfo;
+                 if(dsi_x11 == NULL){ 
+                    fprintf(stderr,"NULL X11 Drawing Surface Info\n");
+                    res =  VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR; 
+                  }  else {                
+                     VkXlibSurfaceCreateInfoKHR* info;
+                     memset(&info, 0, sizeof(VkXlibSurfaceCreateInfoKHR));
+                     info.sType = VkStructureType::VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR;
+                     info.pNext = NULL;
+                     info.flags = 0;
+                     info.dpy    = dsi_x11->display;
+                     info.window = dsi_X11->drawable;
+                     res = vkCreateXlibSurfaceKHR(vkInstance, &info, pAllocator, _pSurface);  
+                 }
      
-             vkCreateWin32SurfaceKHR
-             
-     	#elif  VK_USE_PLATFORM_XLIB_KHR
-               JAWT_X11DrawingSurfaceInfo* dsi_x11;
-                 
-     	#elif  VK_USE_PLATFORM_XCB_KHR
+     	  #elif  VK_USE_PLATFORM_WAYLAND_KHR ||  VK_USE_PLATFORM_MIR_KHR
+     	    // Currently not supported by Java SE     
+            res =  VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;          
+          #endif
+        
+        }//else
+        
+     #endif // Android
      
-     	#elif  VK_USE_PLATFORM_WAYLAND_KHR
+     // Must check if those FreeDrawingXXX() operations are OK
+     if(dsi != NULL){
+          ds->FreeDrawingSurfaceInfo(dsi);
+      }
+     ds->Unlock(ds);  
+     // not confident to release the DS here. Better cache it 
+     //awt.FreeDrawingSurface(ds);
+       
+    if(res >=0){
+       pSurface[0] = reinterpret_cast<jlong>(_pSurface[0]);           
+    }else{
+       pSurface[0] = (jlong)0;
+       fprintf(stderr,"Failed to create Vulkan SurfaceKHR.");
+    }
      
-      #endif
-     #endif
+     delete[] _pSurface;         
+     return res;
      
     
 }
 
-JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateWindowSurface0(JNIEnv* env, jclass clazz, jlong instance, jobject nativeWindow, jlongArray obj_pSurface) {
+JNIEXPORT jint JNICALL Java_bor_vulkan_Vk10_vkCreateWindowSurface0(JNIEnv* env, jclass clazz, jlong instance, jobject nativeWindow, jlong pAllocatorHandle, jlongArray obj_pSurface, jlongArray obj_awtDrawingSurface) {
 	long long* pSurface = (long long*)(obj_pSurface ? env->GetLongArrayElements(obj_pSurface, 0) : NULL);
+	long long* awtDrawingSurface = (long long*)(obj_awtDrawingSurface ? env->GetLongArrayElements(obj_awtDrawingSurface, 0) : NULL);
 
-	jint JNI_returnValue = wrapped_Java_bor_vulkan_Vk10_vkCreateWindowSurface0(env, clazz, instance, nativeWindow, obj_pSurface, pSurface);
+	jint JNI_returnValue = wrapped_Java_bor_vulkan_Vk10_vkCreateWindowSurface0(env, clazz, instance, nativeWindow, pAllocatorHandle, obj_pSurface, obj_awtDrawingSurface, pSurface, awtDrawingSurface);
 
 	if(obj_pSurface != NULL){
 		 env->ReleaseLongArrayElements(obj_pSurface, (jlong*)pSurface, 0);
+	}
+	if(obj_awtDrawingSurface != NULL){
+		 env->ReleaseLongArrayElements(obj_awtDrawingSurface, (jlong*)awtDrawingSurface, 0);
 	}
 
 	return JNI_returnValue;

@@ -148,7 +148,7 @@ JNIEXPORT jboolean JNICALL Java_bor_util_JAWT_lockGlobal0(JNIEnv* env, jclass cl
 //@line:280
 
     #ifndef VK_USE_PLATFORM_ANDROID_KHR
-	  if(awt != NULL){
+	  if(awt != 0L){
 	     JAWT* p_awt = reinterpret_cast<JAWT*>(awt); 
 	     p_awt->Lock(env);
 	     return JNI_TRUE;
@@ -448,8 +448,7 @@ JNIEXPORT jboolean JNICALL Java_bor_util_JAWT_freeDrawingSurfaceInfo0(JNIEnv* en
 
 //@line:616
 
-    #ifndef VK_USE_PLATFORM_ANDROID_KHR    
-      jint lock;
+    #ifndef VK_USE_PLATFORM_ANDROID_KHR       
       JAWT_DrawingSurface* ds;
       JAWT_DrawingSurfaceInfo* dsi;
          

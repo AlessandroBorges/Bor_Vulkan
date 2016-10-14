@@ -145,7 +145,7 @@ static inline jlong wrapped_Java_bor_vulkan_structs_VkAndroidSurfaceCreateInfoKH
 		  VkAndroidSurfaceCreateInfoKHR* vkObj = (VkAndroidSurfaceCreateInfoKHR*)(ptr);
 		  // generic get for struct field of type  VkHandle or VkStruct 
 		  return (jlong) reinterpret_cast<jlong>(&vkObj->window);
-	 #else 
+         #else 
 	   return 0; 
 	 #endif 
 	 

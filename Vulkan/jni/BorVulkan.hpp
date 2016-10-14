@@ -24,6 +24,9 @@ extern "C" {
  #include <stdlib.h>
  #include <cstring>
 
+ typedef void* PointerToAnything;
+ typedef PointerToAnything* PointerToAnythingArray;
+ 
  #define VK_NO_PROTOTYPES 1
  #define USE_DEBUG_EXTENSIONS 1
  #define VULKAN_WRAPPER_ENABLE_ALL_EXTENSIONS_DEFAULT 1
