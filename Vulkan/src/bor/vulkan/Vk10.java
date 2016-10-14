@@ -1,8 +1,12 @@
  package bor.vulkan;
 
+ import java.lang.ref.WeakReference;
+ 
  import java.nio.ByteBuffer;
 
 import bor.util.BigBuffer;
+import java.util.*;
+
 import bor.vulkan.enumerations.VkDebugReportObjectTypeEXT;
 import bor.vulkan.enumerations.VkFilter;
 import bor.vulkan.enumerations.VkFormat;
@@ -103,7 +107,11 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
      /** Includes **/
     //@off
     /*JNI
-     
+    #if defined(__LP64__) || defined(_WIN64) || (defined(__x86_64__) &&     !defined(__ILP32__) ) || defined(_M_X64) || defined(__ia64) || defined (_M_IA64) || defined(__aarch64__) || defined(__powerpc64__)
+        #define IS64BIT 1
+    #else
+        #define IS32BIT 1
+    #endif   
       
  #if defined(_WIN32)
         #define VK_USE_PLATFORM_WIN32_KHR 1
@@ -128,7 +136,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
         #ifdef VK_USE_PLATFORM_WIN32_KHR
            #include "win32/jawt_md.h"
         #else
-           #include "linux/md.h"
+           #include "linux/jawt_md.h"
         #endif
       #endif // ifndef VK_USE_PLATFORM_ANDROID_KHR
            
@@ -138,55 +146,115 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
       #include <iostream>
       
       using namespace std;
+     
+      static  jboolean isWin32;
+      static  jboolean isAndroid;
+      static  jboolean isLinux;
+      static  jboolean isMIR;
+      static  jboolean isWayland;
+      static  jboolean isXCB;
+      static  jboolean isXLIB;
+      static  jboolean isVulkanAvailable;
       
-      typedef void* PointerToAnything;
-      typedef PointerToAnything* PointerToAnythingArray;
-            
-      static  bool isWin32;
-      static  bool isAndroid;
-      static  bool isMIR;
-      static  bool isWayland;
-      static  bool isXCB;
-      static  bool isXLIB;
-      static  bool isVulkanAvailable;
-  
-    static void init(){
+static void initVk10(){
          // platforms support 
-        isWin32 = false;
-        isAndroid = false;
-        isMIR = false;
-        isWayland = false;
-        isXCB = false;
-        isXLIB = false;
+        isWin32 = JNI_FALSE;
+        isAndroid = JNI_FALSE;
+        isMIR = JNI_FALSE;
+        isWayland = JNI_FALSE;
+        isXCB = JNI_FALSE;
+        isXLIB = JNI_FALSE;
+        isVulkanAvailable = JNI_FALSE;
    
    #ifdef VK_USE_PLATFORM_ANDROID_KHR
-         isAndroid = true;
+         isAndroid = JNI_TRUE;
    #endif
    
     #ifdef VK_USE_PLATFORM_WIN32_KHR    
-        isWin32 = true;
+        isWin32 = JNI_TRUE;
+        cout << "isWin32!\n" << endl;
    #endif 
 
    #ifdef VK_USE_PLATFORM_MIR_KHR        
-        isMIR = true;
+        isMIR = JNI_TRUE;
+        isLinux = JNI_TRUE;
    #endif
    
    #ifdef VK_USE_PLATFORM_WAYLAND_KHR       
-       isWayland = true;
+       isWayland = JNI_TRUE;
+       isLinux = JNI_TRUE;
    #endif
         
    #ifdef VK_USE_PLATFORM_XCB_KHR        
-        isXCB = true;
+        isXCB = JNI_TRUE;
+        isLinux = JNI_TRUE;
    #endif   
         
    #ifdef VK_USE_PLATFORM_XLIB_KHR          
-    isXLIB = true;
-   #endif    
+    isXLIB = JNI_TRUE;
+    isLinux = JNI_TRUE;
+    cout << "isXLIB\n" << endl;
+   #endif  
       
- }//
+ }// initVk10()
+ 
+ // set boolean value to static field 
+ static void setStaticBooleanField(JNIEnv* env, jclass clazz, const char *name, jboolean val){
+   jfieldID fid; // store the field ID 
+   fid = env->GetStaticFieldID(clazz, name, "Z");
+   if (fid == NULL) {
+     cerr <<"field " << name << " not found." << endl;
+    return; 
+   }
+   env->SetStaticBooleanField(clazz, fid, val);
+   
+   cerr <<"setField " << name <<" as " << val   << endl;
+ }
  
  // Vk10 header end
   */
+    
+     /**
+      * This static field is set at native side
+      */
+    private static final boolean isVulkanAvailable = false; 
+    /**
+     * This static field is set at native side
+     */
+    private static final boolean isWin32 = false;
+    /**
+     * This static field is set at native side
+     */
+    private static final boolean isAndroid = false;
+    
+    private static final boolean isLinux = false;
+    /**
+     * This static field is set at native side
+     */
+    private static final boolean isMIR = false;
+    /**
+     * This static field is set at native side
+     */
+    private static final boolean isWayland = false;
+    /**
+     * This static field is set at native side
+     */
+    private static final boolean isXCB = false;
+    /**
+     * This static field is set at native side
+     */
+    private static final boolean isXLIB = false;
+    
+    /**
+     * This static field is set when using AWT Canvas
+     */
+    private static  boolean isAWT = false;
+    
+    /**
+     * This static field is set at native side.
+     */
+    private static boolean is64 = true;
+     
     /**
      * <p>
      * Default size in bytes of Dispatchable VkHandle.
@@ -224,7 +292,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     }
     
     static{
-        init();        
+        init0();        
         SIZE_OF_DISPATCHABLE_HANDLE = sizeOfDispatchableHandle();
         SIZE_OF_NON__DISPATCHABLE_HANDLE = sizeOfNonDispatchableHandle();
     }
@@ -233,14 +301,30 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     /**
      * Private Constructor
      */
-    private Vk10(){}
+    public Vk10(){}
+    
+     
     
     /**
      * initilize native codes
      */
-    protected static  native void init();/*
-       init();
-       isVulkanAvailable =  (InitVulkan() != 0);
+    protected static  native void init0();/*
+      initVk10();
+      isVulkanAvailable =  (InitVulkan() == 0) ? JNI_FALSE : JNI_TRUE;
+      setStaticBooleanField(env, clazz, "isVulkanAvailable", isVulkanAvailable);
+      setStaticBooleanField(env, clazz, "isWin32", isWin32);
+      setStaticBooleanField(env, clazz, "isAndroid", isAndroid);
+      setStaticBooleanField(env, clazz, "isMIR", isMIR);
+      setStaticBooleanField(env, clazz, "isWayland", isWayland);
+      setStaticBooleanField(env, clazz, "isXCB", isXCB);
+      setStaticBooleanField(env, clazz, "isXLIB", isXLIB);
+      setStaticBooleanField(env, clazz, "isLinux", isLinux);
+      
+      jboolean is64 = JNI_FALSE;
+      #ifdef IS64BIT
+        is64 = JNI_TRUE;
+      #endif
+      setStaticBooleanField(env, clazz, "is64", is64);
     */
     
     /**
@@ -10144,12 +10228,30 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
     } 
     
     /**
+     * Maps VkSurface to Lockable Canvas 
+     */
+    private static Map<VkSurfaceKHR, WeakReference<LockableCanvas>> mapAWTsurface = 
+            new WeakHashMap<VkSurfaceKHR, WeakReference<LockableCanvas>>() ;
+    
+    
+    /**
      * 
-     * @param surface
+     * @param key
+     * @param value
+     */
+    private static void store(VkSurfaceKHR key, LockableCanvas value){ 
+        WeakReference<LockableCanvas> wValue = new WeakReference<LockableCanvas>(value);
+        mapAWTsurface.put(key, wValue);
+    }
+    
+    /**
+     * 
+     * @param key
      * @return
      */
-    public boolean lockSurface(VkSurfaceKHR surface){
-        
+    private static LockableCanvas getLockableCanvas(VkSurfaceKHR key){
+        WeakReference<LockableCanvas> wValue = mapAWTsurface.get(key);
+        return  wValue == null ? null : wValue.get();
     }
     
     /**
@@ -10157,34 +10259,67 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
      * @param surface
      * @return
      */
-   public boolean unLockSurface(VkSurfaceKHR surface){
-        
+    public boolean lockSurface(VkSurfaceKHR surface){        
+        if(isAWT){
+            LockableCanvas canvas = getLockableCanvas(surface);
+            if(canvas!=null)
+               return  canvas.lock();
+        }
+        return false;
+    }
+    
+    /**
+     * 
+     * @param surface
+     * @return
+     */
+   public void unLockSurface(VkSurfaceKHR surface){
+       if(isAWT){
+           LockableCanvas canvas = getLockableCanvas(surface);
+           if(canvas!=null)
+               canvas.unLock();
+       }
     }
    
    /**
     * 
     * @return
     */
-    public boolean isAWT(){
-        
+    public static boolean isAWT(){
+        return isAWT;
     }
     
-    public boolean isAndroid(){
-        
+    public static boolean isAndroid(){
+        return isAndroid;
     }
     
-    public boolean isWin32(){
-        
+    public static  boolean isWin32(){
+        return isWin32;
+    }
+    
+    public static  boolean isLinux(){
+        return isLinux;
     }
     
     /**
      * 
      * @return
      */
-    public boolean isXLib(){
-        
+    public static boolean isXLib(){
+        return isXLIB;
     }
     
+    /**
+     * 
+     * @return
+     */
+    public static boolean isXCB(){
+        return isXCB;
+    }
+    
+    public static boolean is64Bits(){
+        return is64;
+    }
     
     /**
      * 
@@ -10319,3 +10454,5 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
 
 
  }//end of Vk.java 
+ 
+ 

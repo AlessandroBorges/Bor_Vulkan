@@ -32,15 +32,18 @@ public class Lesson01 {
      */
     public static void main(String[] args) {
         
-        
-        if(Vk10.isVulkanAvailable()){
+        boolean useIt = Vk10.isVulkanAvailable();
+        if(useIt){
             System.out.println("This platform supports Vulkan !");
         }else{
             System.err.println("Sorry ! Platform doesn't supports Vulkan ! \n"
                               +"Update your Video Card Drivers and try again.");
             System.exit(-1);
         }
-        
+       
+        System.out.println("Win32: " + Vk10.isWin32());
+        System.out.println("isAndroid: " + Vk10.isAndroid());
+        System.out.println("64Bits: " + Vk10.is64Bits());
         int[] pPropertyCount = {0};
         VkExtensionProperties[] pProperties = null;
         //get 

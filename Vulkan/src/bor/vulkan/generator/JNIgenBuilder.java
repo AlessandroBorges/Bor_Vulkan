@@ -66,6 +66,8 @@ public class JNIgenBuilder {
      *  {@link #toString()}
      */
     public static void main(String[] args) throws Exception {
+        
+        boolean genCode = true;
         //java.net.URL url = JNIgenBuilder.class.getResource("Struct.txt");
         //System.out.println("URL " +url);
         List<String> structNames = Util.readFile("D:/Users/Livia/workspace/Vulkan/src/bor/vulkan/generator/", "Structs.txt");
@@ -93,29 +95,34 @@ public class JNIgenBuilder {
         //System.exit(0);
         long t1 = System.currentTimeMillis();
         System.out.println("\n Code Generation:");
-        NativeCodeGenerator jnigen = new NativeCodeGenerator();
-        jnigen.setUsePrimitiveArrayCritical(false);
-        jnigen.setSupportNullString(true);
-        jnigen.generate("src", "bin", "jni", 
+        if(genCode){
+            NativeCodeGenerator jnigen = new NativeCodeGenerator();
+            jnigen.setUsePrimitiveArrayCritical(false);
+            jnigen.setSupportNullString(true);
+            jnigen.generate("src", "bin", "jni", 
                         src, 
                         null);
+        
+        }
         long t2 = System.currentTimeMillis();
         
         BuildTarget win32 = BuildTarget.newDefaultTarget(TargetOs.Windows, false);
         win32.compilerPrefix = "mingw32-";
-        win32.cppFlags += " -std=gnu++11 -I/C/VulkanSDK/1.0.24.0/Include -L/D/VulkanSDK/1.0.24.0/Bin";
+        win32.cppFlags += " -std=gnu++11 -I/C/VulkanSDK/1.0.30.0/Include -L/D/VulkanSDK/1.0.30.0/Bin";
         
         //String[] includes = {"-I/C/VulkanSDK/1.0.24.0/Include"};
         
         BuildTarget win64 = BuildTarget.newDefaultTarget(TargetOs.Windows, true);
         
         win64.cFlags += " -std=gnu++11";
-        //win64.cppFlags += " -std=gnu++11 -Wunused-variable";       
-        win64.cppFlags = " -c -Wall -mfpmath=sse -msse2 -fmessage-length=300 -m64 -std=gnu++11 -O2 -pipe ";
+      //win64.cppFlags += " -std=gnu++11 -Wunused-variable";       
+     // win64.cppFlags = " -c -Wall -mfpmath=sse -msse2 -fmessage-length=300 -m64 -std=gnu++11 -O2 -pipe ";
+        win64.cppFlags = " -c -Wall -mfpmath=sse -msse2 -m64 -std=gnu++11 -O2 ";
         System.err.println("cppFlags : " + win64.cppFlags );// -c -Wall -O2 -mfpmath=sse -msse2 -fmessage-length=0 -m64
         System.err.println("cppIncludes: " + Arrays.toString( win64.cppIncludes));
        // win64.cppIncludes = includes;    
-        win64.libraries += "-LC:/VulkanSDK/1.0.24.0/Bin -lvulkan-1 ";
+        win64.libraries += "-LC:/VulkanSDK/1.0.30.0/Bin -lvulkan-1  "
+                         + "-LD:/Users/Livia/Documents/GitHub/Bor_Vulkan/Vulkan/lib/windows64 -ljawt";
         win64.linkerFlags +=" ";
         
         //BuildTarget linux32 = BuildTarget.newDefaultTarget(TargetOs.Linux, false);
