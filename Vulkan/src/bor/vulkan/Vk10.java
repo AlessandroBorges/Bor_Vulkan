@@ -217,33 +217,33 @@ static void initVk10(){
      /**
       * This static field is set at native side
       */
-    private static final boolean isVulkanAvailable = false; 
+    private static boolean isVulkanAvailable = false; 
     /**
      * This static field is set at native side
      */
-    private static final boolean isWin32 = false;
+    private static boolean isWin32 = false;
     /**
      * This static field is set at native side
      */
-    private static final boolean isAndroid = false;
+    private static boolean isAndroid = false;
     
-    private static final boolean isLinux = false;
+    private static boolean isLinux = false;
     /**
      * This static field is set at native side
      */
-    private static final boolean isMIR = false;
+    private static  boolean isMIR = false;
     /**
      * This static field is set at native side
      */
-    private static final boolean isWayland = false;
+    private static  boolean isWayland = false;
     /**
      * This static field is set at native side
      */
-    private static final boolean isXCB = false;
+    private static  boolean isXCB = false;
     /**
      * This static field is set at native side
      */
-    private static final boolean isXLIB = false;
+    private static  boolean isXLIB = false;
     
     /**
      * This static field is set when using AWT Canvas
