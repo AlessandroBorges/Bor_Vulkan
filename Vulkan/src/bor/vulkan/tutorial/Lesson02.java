@@ -22,6 +22,7 @@ import bor.vulkan.structs.VkAllocationCallbacks;
 import bor.vulkan.structs.VkApplicationInfo;
 import bor.vulkan.structs.VkDeviceCreateInfo;
 import bor.vulkan.structs.VkDeviceQueueCreateInfo;
+import bor.vulkan.structs.VkExtensionProperties;
 import bor.vulkan.structs.VkInstanceCreateInfo;
 import bor.vulkan.structs.VkLayerProperties;
 import bor.vulkan.structs.VkPhysicalDeviceFeatures;
@@ -117,8 +118,8 @@ public class Lesson02 {
         VkResult res =  Vk10.vkEnumerateInstanceLayerProperties(count, array);
         array = new VkLayerProperties[count[0]];
         res =  Vk10.vkEnumerateInstanceLayerProperties(count, array);
-        System.out.println("VkResult for Enumerate Instance Layer Properties: " + res);
-        System.out.println("VkLayerProperties count: " + array.length);
+        System.out.println("\n\t VkResult for Enumerate Instance Layer Properties: " + res);
+        System.out.println("\t VkLayerProperties count: " + array.length);
         List<VkLayerProperties> pProperties = Arrays.asList(array);
         return pProperties;
     }
@@ -174,19 +175,30 @@ public class Lesson02 {
         for (VkPhysicalDevice physicalDevice : physicalDevicesList) {
             VkPhysicalDeviceProperties prop = new VkPhysicalDeviceProperties();
             Vk10.vkGetPhysicalDeviceProperties(physicalDevice, prop);
-            System.out.println("Properties for PhysicalDevice #" + count);
+            System.out.println("\n\t Properties for PhysicalDevice #" + count);
             System.out.println(prop);
             System.out.println("==============================================");
             
-            System.out.println("Features for PhysicalDevice #" + count);
+            System.out.println("\n\t Features for PhysicalDevice #" + count);
             VkPhysicalDeviceFeatures features = new VkPhysicalDeviceFeatures();
             Vk10.vkGetPhysicalDeviceFeatures(physicalDevice, features);
             System.out.println(features);
             
-            System.out.println("Memory for PhysicalDevice #" + count);
+            System.out.println("\n\t Memory for PhysicalDevice #" + count);
             VkPhysicalDeviceMemoryProperties pMemoryProperties = new VkPhysicalDeviceMemoryProperties();
             Vk10.vkGetPhysicalDeviceMemoryProperties(physicalDevice, pMemoryProperties); 
             System.out.println(pMemoryProperties);
+            
+            System.out.println("\n\t Extensions for PhysicalDevice #" + count);
+            VkExtensionProperties[] extensions = null;
+            int[] extCount = {0};
+            Vk10.vkEnumerateDeviceExtensionProperties(physicalDevice, null, extCount, extensions); 
+            extensions = new VkExtensionProperties[extCount[0]];
+            Vk10.vkEnumerateDeviceExtensionProperties(physicalDevice, null, extCount, extensions);
+            for(int ii=0; ii<extCount[0]; ii++){
+                System.out.println("Extensions #"+ii+":\n"+extensions[ii]);
+            }
+            
             count++;
         }
         System.out.println("#############################################\n\n");
