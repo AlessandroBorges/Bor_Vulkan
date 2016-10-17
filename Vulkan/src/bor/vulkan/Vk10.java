@@ -330,6 +330,7 @@ static void initVk10(){
     /**
      * <pre>
      * Get size of Dispatchable VkHandle;
+     * The <b>Dispatchable handles</b> are the following:
      *   VK_DEFINE_HANDLE(VkInstance)
      *   VK_DEFINE_HANDLE(VkPhysicalDevice)
      *   VK_DEFINE_HANDLE(VkDevice)
@@ -356,8 +357,7 @@ static void initVk10(){
      * @return
      */
     public static native boolean  isVulkanAvailable();/*
-       return (jboolean) isVulkanAvailable;
-    
+       return (jboolean) isVulkanAvailable;    
     */
     
     
@@ -432,11 +432,10 @@ static void initVk10(){
    public static void vkDestroyInstance(
 		VkInstance instance,
 		final VkAllocationCallbacks pAllocator) {
-
 	 vkDestroyInstance0(
 		instance.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
-
+	 instance.setPointer(0L);
    } 
 
    /**
@@ -975,6 +974,7 @@ static void initVk10(){
 	 vkDestroyDevice0(
 		device.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
+	 device.setPointer(0L);
 
    } 
 
@@ -2272,7 +2272,7 @@ static void initVk10(){
 		device.getNativeHandle() /* VkHandle */ ,
 		fence.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
-
+         fence.setPointer(0L);
    } 
 
    /**
@@ -2546,7 +2546,7 @@ static void initVk10(){
 		device.getNativeHandle() /* VkHandle */ ,
 		semaphore.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
-
+         semaphore.setPointer(0L);   
    } 
 
    /**
@@ -2654,7 +2654,7 @@ static void initVk10(){
 		device.getNativeHandle() /* VkHandle */ ,
 		event.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
-
+	 event.setPointer(0L);
    } 
 
    /**
@@ -2894,7 +2894,7 @@ static void initVk10(){
 		device.getNativeHandle() /* VkHandle */ ,
 		queryPool.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
-
+	 queryPool.setPointer(0L);
    } 
 
    /**
@@ -3088,6 +3088,8 @@ static void initVk10(){
 		device.getNativeHandle() /* VkHandle */ ,
 		buffer.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
+	 
+	 buffer.setPointer(0);
 
    } 
 
@@ -3196,6 +3198,7 @@ static void initVk10(){
 		device.getNativeHandle() /* VkHandle */ ,
 		bufferView.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
+	 bufferView.setPointer(0L);
 
    } 
 
@@ -3304,7 +3307,7 @@ static void initVk10(){
 		device.getNativeHandle() /* VkHandle */ ,
 		image.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
-
+	 image.setPointer(0L);
    } 
 
    /**
@@ -3466,7 +3469,7 @@ static void initVk10(){
 		device.getNativeHandle() /* VkHandle */ ,
 		imageView.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
-
+        imageView.setPointer(0L);
    } 
 
    /**
@@ -3574,7 +3577,7 @@ static void initVk10(){
 		device.getNativeHandle() /* VkHandle */ ,
 		shaderModule.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
-
+         shaderModule.setPointer(0L);
    } 
 
    /**
@@ -3682,7 +3685,7 @@ static void initVk10(){
 		device.getNativeHandle() /* VkHandle */ ,
 		pipelineCache.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
-
+	 pipelineCache.setPointer(0L);
    } 
 
    /**
@@ -4004,7 +4007,7 @@ static void initVk10(){
 		device.getNativeHandle() /* VkHandle */ ,
 		pipeline.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
-
+         pipeline.setPointer(0L);
    } 
 
    /**
@@ -4112,6 +4115,7 @@ static void initVk10(){
 		device.getNativeHandle() /* VkHandle */ ,
 		pipelineLayout.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
+	 pipelineLayout.setPointer(0L);
 
    } 
 
@@ -4220,7 +4224,7 @@ static void initVk10(){
 		device.getNativeHandle() /* VkHandle */ ,
 		sampler.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
-
+	 sampler.setPointer(0L);
    } 
 
    /**
@@ -4328,7 +4332,7 @@ static void initVk10(){
 		device.getNativeHandle() /* VkHandle */ ,
 		descriptorSetLayout.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
-
+        descriptorSetLayout.setPointer(0L);
    } 
 
    /**
@@ -4436,7 +4440,7 @@ static void initVk10(){
 		device.getNativeHandle() /* VkHandle */ ,
 		descriptorPool.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
-
+         descriptorPool.setPointer(0L);
    } 
 
    /**
@@ -4774,7 +4778,7 @@ static void initVk10(){
 		device.getNativeHandle() /* VkHandle */ ,
 		framebuffer.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
-
+        framebuffer.setPointer(0L);
    } 
 
    /**
@@ -4882,7 +4886,7 @@ static void initVk10(){
 		device.getNativeHandle() /* VkHandle */ ,
 		renderPass.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
-
+         renderPass.setPointer(0L);
    } 
 
    /**
@@ -5037,7 +5041,7 @@ static void initVk10(){
 		device.getNativeHandle() /* VkHandle */ ,
 		commandPool.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
-
+         commandPool.setPointer(0L); 
    } 
 
    /**
@@ -8032,7 +8036,7 @@ static void initVk10(){
 		instance.getNativeHandle() /* VkHandle */ ,
 		surface.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
-
+         surface.setPointer(0L); 
    } 
 
    /**
@@ -8374,7 +8378,7 @@ static void initVk10(){
 		device.getNativeHandle() /* VkHandle */ ,
 		swapchain.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
-
+         swapchain.setPointer(0L); 
    } 
 
    /**
@@ -9892,7 +9896,7 @@ static void initVk10(){
 		instance.getNativeHandle() /* VkHandle */ ,
 		callback.getNativeHandle() /* VkHandle */ ,
 		(pAllocator==null ? null : pAllocator.getPointer()) /* Optional Struct */  );
-
+	 callback.setPointer(0L);  
    } 
 
    /**
@@ -10228,16 +10232,17 @@ static void initVk10(){
     } 
     
     /**
-     * Maps VkSurface to Lockable Canvas 
+     * Maps VkSurface to Lockable Canvas.
+     * It uses WeakReferences, to enable GC of both key and value 
      */
     private static Map<VkSurfaceKHR, WeakReference<LockableCanvas>> mapAWTsurface = 
             new WeakHashMap<VkSurfaceKHR, WeakReference<LockableCanvas>>() ;
     
     
     /**
-     * 
-     * @param key
-     * @param value
+     * Store a pair [SurfaceKHR/LockableCanvas]
+     * @param key - VkSurfaceKHR of LockableCanvas 
+     * @param value - LockableCanvas
      */
     private static void store(VkSurfaceKHR key, LockableCanvas value){ 
         WeakReference<LockableCanvas> wValue = new WeakReference<LockableCanvas>(value);
@@ -10245,9 +10250,10 @@ static void initVk10(){
     }
     
     /**
-     * 
-     * @param key
-     * @return
+     *  Given a Surface, get its LockableCanvas instance.<br>
+     *  It doesn't prevent GC, then it may return null.
+     * @param key - VkSurface instance
+     * @return  LockableCanvas, if available. Null otherwise.
      */
     private static LockableCanvas getLockableCanvas(VkSurfaceKHR key){
         WeakReference<LockableCanvas> wValue = mapAWTsurface.get(key);
@@ -10255,9 +10261,10 @@ static void initVk10(){
     }
     
     /**
-     * 
-     * @param surface
-     * @return
+     * Lock Surface for drawing.
+     * Used only on AWT windowing.
+     * @param surface - Surface to lock.
+     * @return true, if lock was success.
      */
     public boolean lockSurface(VkSurfaceKHR surface){        
         if(isAWT){
@@ -10269,9 +10276,10 @@ static void initVk10(){
     }
     
     /**
+     * Lock Surface for drawing.
+     * Used only on AWT windowing.
+     * @param surface Surface to unlock.
      * 
-     * @param surface
-     * @return
      */
    public void unLockSurface(VkSurfaceKHR surface){
        if(isAWT){
@@ -10282,41 +10290,58 @@ static void initVk10(){
     }
    
    /**
+    * Check if renderer in use is AWT.
     * 
-    * @return
+    * @return true i
     */
     public static boolean isAWT(){
         return isAWT;
     }
     
+    /**
+     * 
+     * @return
+     */
     public static boolean isAndroid(){
         return isAndroid;
     }
     
+    /**
+     * Check if current OS is MS-Windows.
+     * @return true if running under MS-Windows
+     */
     public static  boolean isWin32(){
         return isWin32;
     }
     
+    /**
+     * Check if current OS is Linux.
+     * @return true if running under linuz
+     */
     public static  boolean isLinux(){
         return isLinux;
     }
     
     /**
-     * 
-     * @return
+     * Check if current native renderer is X11 / XLib.
+     * @return true if using X11/XLib
      */
     public static boolean isXLib(){
         return isXLIB;
     }
     
     /**
-     * 
-     * @return
+     * Check if current native renderer is XCB.
+     * @return true, if using XCB
      */
     public static boolean isXCB(){
         return isXCB;
     }
     
+    /**
+     * Return true if current application bitness is 64Bit
+     * @return true is it is running at 64bits.
+     */
     public static boolean is64Bits(){
         return is64;
     }
@@ -10354,78 +10379,77 @@ static void initVk10(){
          info.flags = 0;
          info.window = window; 
          res =  vkCreateAndroidSurfaceKHR(vkInstance, &info, pAllocator, _pSurface);
-     #else
-     // Other platfforms supported by AWT
-     JAWT awt;
-     JAWT_DrawingSurface* ds;
-     JAWT_DrawingSurfaceInfo* dsi = NULL;  
-     jint lock ;
-     awt.version = JAWT_VERSION_1_4;
-     if (JAWT_GetAWT(env, &awt) == JNI_FALSE) {
-          fprintf(stderr, "AWT not found\n");
-          return VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;;
-     }
-     // Get the drawing surface 
-     ds = awt.GetDrawingSurface(env, nativeWindow); 
-      //cache AwT's DrawingSurface
-      awtDrawingSurface[0] = reinterpret_cast<jlong>(ds);
+     #else 
+         // Other platfforms supported by AWT
+         JAWT awt;
+         JAWT_DrawingSurface* ds;
+         JAWT_DrawingSurfaceInfo* dsi = NULL;  
+         jint lock ;
+         awt.version = JAWT_VERSION_1_4;
+         if (JAWT_GetAWT(env, &awt) == JNI_FALSE) {
+              fprintf(stderr, "AWT not found\n");
+              return VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;;
+         }
+         // Get the drawing surface
+         ds = awt.GetDrawingSurface(env, nativeWindow); 
+          //cache AWT's DrawingSurface
+         awtDrawingSurface[0] = reinterpret_cast<jlong>(ds);
       
-     if (ds == NULL) {
-         fprintf(stderr,"NULL drawing surface\n");
-         return VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;
-      }
-      ds->env = env;
-      lock = ds->Lock(ds); 
-      if((lock & JAWT_LOCK_ERROR) != 0){
-          fprintf(stderr,"Failed to lock AWT drawing surface.\n");
-          res = VkResult::VK_ERROR_SURFACE_LOST_KHR;
-      }
-      dsi = ds->GetDrawingSurfaceInfo(ds);
-      if(dsi == NULL){
-         fprintf(stderr,"Failed to get AWT drawing surface info.\n");
-          res = VkResult::VK_ERROR_SURFACE_LOST_KHR;
-       }else{
-         #if VK_USE_PLATFORM_WIN32_KHR 
-             //  Win32
-             JAWT_Win32DrawingSurfaceInfo* dsi_win;     
-             dsi_win = (JAWT_Win32DrawingSurfaceInfo *)dsi->platformInfo;
-             if(dsi_win == NULL){ 
+         if (ds == NULL) {
+             fprintf(stderr,"NULL drawing surface\n");
+             return VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;
+         }
+         ds->env = env;
+         lock = ds->Lock(ds); 
+         if((lock & JAWT_LOCK_ERROR) != 0){
+           fprintf(stderr,"Failed to lock AWT drawing surface.\n");
+           res = VkResult::VK_ERROR_SURFACE_LOST_KHR;
+         }
+         dsi = ds->GetDrawingSurfaceInfo(ds);
+         if(dsi == NULL){
+             fprintf(stderr,"Failed to get AWT drawing surface info.\n");
+             res = VkResult::VK_ERROR_SURFACE_LOST_KHR;
+         }else{
+             #if VK_USE_PLATFORM_WIN32_KHR 
+                 //  Win32
+                 JAWT_Win32DrawingSurfaceInfo* dsi_win;     
+                 dsi_win = (JAWT_Win32DrawingSurfaceInfo *)dsi->platformInfo;
+                 if(dsi_win == NULL){ 
                     fprintf(stderr,"NULL Win32 Drawing Surface Info\n");
                     res =  VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR; 
-             } else {
-                VkWin32SurfaceCreateInfoKHR info;
-                memset(&info, 0, sizeof(VkWin32SurfaceCreateInfoKHR));
-                info.sType = VkStructureType::VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
-                info.pNext = NULL;
-                info.flags = 0;
-                info.hinstance = GetModuleHandle(NULL);;
-                info.hwnd = dsi_win->hwnd;
-                res = vkCreateWin32SurfaceKHR(vkInstance, &info, pAllocator, _pSurface);                         
-              }                         
+                 } else {
+                     VkWin32SurfaceCreateInfoKHR info;
+                     memset(&info, 0, sizeof(VkWin32SurfaceCreateInfoKHR));
+                     info.sType = VkStructureType::VK_STRUCTURE_TYPE_WIN32_SURFACE_CREATE_INFO_KHR;
+                     info.pNext = NULL;
+                     info.flags = 0;
+                     info.hinstance = GetModuleHandle(NULL);;
+                     info.hwnd = dsi_win->hwnd;
+                     res = vkCreateWin32SurfaceKHR(vkInstance, &info, pAllocator, _pSurface);                         
+                }                         
      	  #elif  VK_USE_PLATFORM_XLIB_KHR || VK_USE_PLATFORM_XCB_KHR 
-     	  // All Linux
+     	         // X11
                  JAWT_X11DrawingSurfaceInfo dsi_x11;  
                  dsi_x11 = (JAWT_X11DrawingSurfaceInfo*)dsi->platformInfo;
                  if(dsi_x11 == NULL){ 
-                    fprintf(stderr,"NULL X11 Drawing Surface Info\n");
-                    res =  VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR; 
+                     fprintf(stderr,"NULL X11 Drawing Surface Info\n");
+                     res =  VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR; 
                   }  else {                
-                     VkXlibSurfaceCreateInfoKHR* info;
-                     memset(&info, 0, sizeof(VkXlibSurfaceCreateInfoKHR));
-                     info.sType = VkStructureType::VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR;
-                     info.pNext = NULL;
-                     info.flags = 0;
-                     info.dpy    = dsi_x11->display;
-                     info.window = dsi_X11->drawable;
-                     res = vkCreateXlibSurfaceKHR(vkInstance, &info, pAllocator, _pSurface);  
-                 }
-     
+                      VkXlibSurfaceCreateInfoKHR* info;
+                      memset(&info, 0, sizeof(VkXlibSurfaceCreateInfoKHR));
+                      info.sType = VkStructureType::VK_STRUCTURE_TYPE_XLIB_SURFACE_CREATE_INFO_KHR;
+                      info.pNext = NULL;
+                      info.flags = 0;
+                      info.dpy    = dsi_x11->display;
+                      info.window = dsi_X11->drawable;
+                      res = vkCreateXlibSurfaceKHR(vkInstance, &info, pAllocator, _pSurface);  
+                 }     
      	  #elif  VK_USE_PLATFORM_WAYLAND_KHR ||  VK_USE_PLATFORM_MIR_KHR
-     	    // Currently not supported by Java SE     
-            res =  VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;          
-          #endif
-        
-        }//else
+     	        // Currently not supported by Java SE / AWT     
+     	        fprintf(stderr,"AWT is not supported by Wayland or Mir.\n"); 
+                res =  VkResult::VK_ERROR_INCOMPATIBLE_DISPLAY_KHR;          
+          #endif // platforms        
+        }//else DSI
         
      #endif // Android
      
@@ -10437,7 +10461,7 @@ static void initVk10(){
      // not confident to release the DS here. Better cache it 
      //awt.FreeDrawingSurface(ds);
        
-    if(res >=0){
+    if(res >= 0){
        pSurface[0] = reinterpret_cast<jlong>(_pSurface[0]);           
     }else{
        pSurface[0] = (jlong)0;

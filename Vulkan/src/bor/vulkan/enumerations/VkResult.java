@@ -171,7 +171,14 @@ public class VkResult extends IntEnum<VkResult> {
         return (valA & valB) == valB;
     }
 
-
+    /**
+     * Return true if this VkResult is a error.
+     * @return true is this is error.
+     */
+    public boolean isError(){
+       return this.getValue() < 0;
+    }
+    
     /** private ctor */
     private VkResult(String name, int ordinal, int v) {
        super(name, ordinal, v);

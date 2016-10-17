@@ -21,6 +21,7 @@ package bor.vulkan.structs;
  *  
  * @author Alessandro Borges
  */
+@Deprecated
 public interface VkSurfaceCreateInfoKHR {
     
 }

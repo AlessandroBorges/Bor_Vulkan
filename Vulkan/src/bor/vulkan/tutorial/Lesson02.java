@@ -168,44 +168,47 @@ public class Lesson02 {
         }
   //Step 2 - Enumerate Phisical Devices       
        List<VkPhysicalDevice> physicalDevicesList = enumeratePhysicalDevices( instance);
-       
-        System.out.println("PhysicalDevices Properties: ");
+        System.out.println("\n\n############################################# ");
+        System.out.println("PhysicalDevices Properties of " + physicalDevicesList.size()+" Physical Devices ");
         int count = 0;
         for (VkPhysicalDevice physicalDevice : physicalDevicesList) {
             VkPhysicalDeviceProperties prop = new VkPhysicalDeviceProperties();
             Vk10.vkGetPhysicalDeviceProperties(physicalDevice, prop);
-            System.out.println("Properties for PhysicalDevice #" + count++);
+            System.out.println("Properties for PhysicalDevice #" + count);
             System.out.println(prop);
             System.out.println("==============================================");
             
-            System.out.println("Features for PhysicalDevice #" + count++);
+            System.out.println("Features for PhysicalDevice #" + count);
             VkPhysicalDeviceFeatures features = new VkPhysicalDeviceFeatures();
             Vk10.vkGetPhysicalDeviceFeatures(physicalDevice, features);
             System.out.println(features);
             
-            System.out.println("Memory for PhysicalDevice #" + count++);
+            System.out.println("Memory for PhysicalDevice #" + count);
             VkPhysicalDeviceMemoryProperties pMemoryProperties = new VkPhysicalDeviceMemoryProperties();
             Vk10.vkGetPhysicalDeviceMemoryProperties(physicalDevice, pMemoryProperties); 
             System.out.println(pMemoryProperties);
-            
+            count++;
         }
-        
+        System.out.println("#############################################\n\n");
        
         
       //Step 3 - Create a Device
         VkPhysicalDevice physicalDevice = physicalDevicesList.get(0);
+        int[] pQueueFamilyPropertyCount = {0};
+        Vk10.vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, pQueueFamilyPropertyCount, null);
         
-        
-        int[] pQueueFamilyPropertyCount = {1};
-        VkQueueFamilyProperties[] pQueueFamilyProperties = new VkQueueFamilyProperties[1];
+        int countQ = pQueueFamilyPropertyCount[0];
+        VkQueueFamilyProperties[] pQueueFamilyProperties = new VkQueueFamilyProperties[countQ];
         Vk10.vkGetPhysicalDeviceQueueFamilyProperties(physicalDevice, pQueueFamilyPropertyCount, pQueueFamilyProperties);
         
         int i = 0;
         for (VkQueueFamilyProperties queueFamily : pQueueFamilyProperties) {            
             System.out.println("VkQueueFamilyProperties #" + i);
-            System.out.println(queueFamily);            
+            System.out.println(queueFamily);    
+            System.out.println("======\n");
+            i++;
         }
-        
+        System.out.println("#############################################\n\n");
        // DEVICE 
         VkDevice[] pDevice = new VkDevice[1];
         
