@@ -45,7 +45,10 @@ extern "C" {
 
 #define FREE_IT(OBJ) \
     { if(OBJ != NULL) {free(OBJ); OBJ = NULL;}}\
-
+    
+#define CLEAN(OBJ) \
+    { memset(&OBJ, 0, sizeof(OBJ));  }\
+    
 inline char* cloneStr(const char* src){
 	 if(src==NULL) return NULL;
 	 int len = strlen(src)+1;
