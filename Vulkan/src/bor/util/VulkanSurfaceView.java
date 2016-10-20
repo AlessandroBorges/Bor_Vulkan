@@ -101,8 +101,26 @@ public class VulkanSurfaceView
 	protected VkAllocationCallbacks allocationCallbacks = null;
 	
 	/**
-	 * User defined method to create VkInstance, PhysicalDevice and Device.
+	 * Class to help spare data about Vulkan Context
+	 * @author Alessandro Borges
 	 *
+	 */
+	public static class VulkanContext{
+	    public int width;
+	    public int height;
+	    public VkInstance instance;
+	    public VkPhysicalDevice physicalDevice;
+	    public VkPhysicalDeviceProperties physicalDeviceProperties; 
+	    public VkSurfaceKHR surfaceKHR;
+	    public VkDevice device;
+	    public int presentQueueIdx;
+	    
+	    
+	}
+	/**
+	 * User defined method to create VkInstance, PhysicalDevice and Device.
+	 * This is a stateless class. All objects created should be available at VulkanSurfaceView#SimpleVulkanHelper
+	 * TODO use abstract class.
 	 *
 	 */
 	public interface VulkanConfigChooser{
@@ -118,15 +136,24 @@ public class VulkanSurfaceView
 		
 		/**
 		 * Return the current VkInstance.
+		 * Allow layers
 		 * @return VkInstance
 		 */
-		public VkInstance getVkInstance();
+		public VkInstance createVkInstance(String[] enabledLayers, VkExtensionProperties[] enabledExtensions);
 		
+		public VkLayerProperties [] queryInstanceLayers();
+		
+		public VkExtensionProperties[] queryInstanceExtension();
+		
+		public VkPhysicalDevice[] queryPhysicalDevices();
+		
+		public VkSurfaceKHR createSurfaceKHR();
+				
 		/**
 		 * Return the chosen PhysicalDevice
 		 * @return
 		 */
-		public VkPhysicalDevice getVkPhysicalDevice();
+		public VkPhysicalDevice chooseVkPhysicalDevice(VkPhysicalDevice[] devices, VkSurfaceKHR surface);
 		
 		/**
 		 * Return the VkAllocationCallbacks used in this instance.
