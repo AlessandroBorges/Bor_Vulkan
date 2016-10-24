@@ -19,6 +19,8 @@ import android.view.SurfaceHolder.Callback;
 import android.view.SurfaceView;
 
 import bor.vulkan.*;
+import bor.vulkan.enumerations.VkColorSpaceKHR;
+import bor.vulkan.enumerations.VkFormat;
 import bor.vulkan.enumerations.VkQueueFlagBits;
 import bor.vulkan.enumerations.VkResult;
 import bor.vulkan.enumerations.VkStructureType;
@@ -100,79 +102,10 @@ public class VulkanSurfaceView
 	 */
 	protected VkAllocationCallbacks allocationCallbacks = null;
 	
-	/**
-	 * Class to help spare data about Vulkan Context
-	 * @author Alessandro Borges
-	 *
-	 */
-	public static class VulkanContext{
-	    public int width;
-	    public int height;
-	    public VkInstance instance;
-	    public VkPhysicalDevice physicalDevice;
-	    public VkPhysicalDeviceProperties physicalDeviceProperties; 
-	    public VkSurfaceKHR surfaceKHR;
-	    public VkDevice device;
-	    public int presentQueueIdx;
-	    
-	    
-	}
-	/**
-	 * User defined method to create VkInstance, PhysicalDevice and Device.
-	 * This is a stateless class. All objects created should be available at VulkanSurfaceView#SimpleVulkanHelper
-	 * TODO use abstract class.
-	 *
-	 */
-	public interface VulkanConfigChooser{
-		/**
-		 * This method must create the following Vulkan objects:<br>
-		 * VkInstance - create the VkInstance to be used here. <br> 
-		 * VkPhysicalDevice - chosen PhysicalDevice, among the enumerated ones. <br>
-		 * VkDevice - device 
-		 * 
-		 * @return
-		 */
-		public VkDevice chooseDevice();
-		
-		/**
-		 * Return the current VkInstance.
-		 * Allow layers
-		 * @return VkInstance
-		 */
-		public VkInstance createVkInstance(String[] enabledLayers, VkExtensionProperties[] enabledExtensions);
-		
-		public VkLayerProperties [] queryInstanceLayers();
-		
-		public VkExtensionProperties[] queryInstanceExtension();
-		
-		public VkPhysicalDevice[] queryPhysicalDevices();
-		
-		public VkSurfaceKHR createSurfaceKHR();
-				
-		/**
-		 * Return the chosen PhysicalDevice
-		 * @return
-		 */
-		public VkPhysicalDevice chooseVkPhysicalDevice(VkPhysicalDevice[] devices, VkSurfaceKHR surface);
-		
-		/**
-		 * Return the VkAllocationCallbacks used in this instance.
-		 * @return
-		 */
-		public VkAllocationCallbacks getVkAllocationCallbacks();
-		
-		/**
-		 * destroy current VkDevice.
-		 */
-		public void destroyDevice();
-					
-		/**
-		 * Destroy current Instance.
-		 */
-		public void destroyVkInstance();
-		
-	}
 	
+	
+	
+    
     /**
      * Simple implementation of  VulkanConfigChooser.
      * It also creates a generic VkInstanceCreateInfo
@@ -180,7 +113,10 @@ public class VulkanSurfaceView
      * 
      *
      */
-   public static class SimpleVulkanConfigChooser implements VulkanConfigChooser{
+   public static class SimpleVulkanConfigChooser extends VulkanConfigChooser{
+       
+       public VulkanAppContext ctx;
+       
        protected VkInstance instance;
        protected VkPhysicalDevice physicalDevice;
        protected VkDevice device;
@@ -427,8 +363,7 @@ public class VulkanSurfaceView
         /*
          * (non-Javadoc)
          * @see bor.util.VulkanSurfaceView.VulkanConfigChooser#getVkInstance()
-         */
-        @Override
+         */        
         public VkInstance getVkInstance() {
             return this.instance;
         }
@@ -436,8 +371,7 @@ public class VulkanSurfaceView
         /*
          * (non-Javadoc)
          * @see bor.util.VulkanSurfaceView.VulkanConfigChooser#getVkPhysicalDevice()
-         */
-        @Override
+         */       
         public VkPhysicalDevice getVkPhysicalDevice() {
             return this.physicalDevice;
         }
