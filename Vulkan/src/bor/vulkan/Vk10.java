@@ -9069,12 +9069,22 @@ static void initVk10(){
     ////////////////////////////////////////////////////////////
     // WSI SURFACES
     ///////////////////////////////////////////////////////////
-
+    /**
+     * Get Native display Handles.<br>
+     * Support java.awt.Canvas and android.view.View 
+     * @param win - <b>live and visible</b> instance of java.awt.Canvas and android.view.View.
+     * @param displayHandles - Handles of 
+     */
     public static boolean getDisplayHandles(Object win, VkHandle[] displayHandles){
         
+        if(win != null && displayHandles != null && displayHandles.length > 1){
+	  BigBuffer<VkHandle> handles = new BigBuffer<VkHandle>(displayHandles, false);
+	  boolean result = getDisplayHandles0(win, handles.getPointer());
+	  handles.update(); 	  
+	  return result;
+	}
         
-        
-        return true;
+        return false;
     }
     
     /**
