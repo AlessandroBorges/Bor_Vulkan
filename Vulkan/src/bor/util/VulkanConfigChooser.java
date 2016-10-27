@@ -13,6 +13,7 @@ import bor.vulkan.enumerations.VkColorSpaceKHR;
 import bor.vulkan.enumerations.VkFormat;
 import bor.vulkan.enumerations.VkResult;
 import bor.vulkan.structs.VkAllocationCallbacks;
+import bor.vulkan.structs.VkApplicationInfo;
 import bor.vulkan.structs.VkExtensionProperties;
 import bor.vulkan.structs.VkInstanceCreateInfo;
 import bor.vulkan.structs.VkLayerProperties;
@@ -20,21 +21,48 @@ import bor.vulkan.structs.VkSurfaceFormatKHR;
 
 import static bor.vulkan.Vk10.*;
 
+import android.view.SurfaceHolder;
+
 /**
  * @author Alessandro Borges
  *
  */
 /**
- * Class to set User defined methods to create VkInstance, PhysicalDevice and Device.
- * This is not a stateless class. All objects created should be set
- * {@link VulkanConfigChooser#hashCode()}
- * TODO use abstract class.
- *
+ * Class to set <b><i>user defined</i></b> methods to create Vulkan's VkInstance, PhysicalDevice and Device.<br>
+ * All info will stored in {@link VulkanConfigChooser#ctx}, a instance of {@link VulkanAppContext}.<br> 
  */
 public abstract class VulkanConfigChooser {
 
+    /**
+     * Stateful object with all relevant Vulkan info.
+     */
     public VulkanAppContext ctx;
+    
+    /**
+     * Plain Ctor. Uses default, clean instance of VulkanAppContext and DefaultWindowSurfaceFactory
+     */
+    public VulkanConfigChooser(){
+        this(new VulkanAppContext(), new DefaultWindowSurfaceFactory());
+    }
 
+    /**
+     * Ctor. <br>
+     * Creates a VulkanConfigChooser with a user defined VulkanAppContext instance.
+     * @param vulkanAppContext - user defined VulkanAppContext.
+     */
+    public VulkanConfigChooser(VulkanAppContext vulkanAppContext) {
+        this(vulkanAppContext, new DefaultWindowSurfaceFactory());
+    }
+
+    /**
+     * Ctor.
+     * @param vulkanAppContext - User defined VulkanAppContext instance
+     * @param windowSurfaceFactory - user defined WindowSurfaceFactory
+     */
+    public VulkanConfigChooser(VulkanAppContext vulkanAppContext, WindowSurfaceFactory windowSurfaceFactory) {
+        this.ctx = vulkanAppContext;
+        this.ctx.windowSurfaceFactory = windowSurfaceFactory;
+    }
     /**
      * This method must create the following Vulkan objects:<br>
      * VkInstance - create the VkInstance to be used here. <br>
@@ -51,7 +79,7 @@ public abstract class VulkanConfigChooser {
      * 
      * @return result of operation
      */
-    public abstract VkResult createVkInstance(String[] enabledLayers, String[] enabledExtensions);
+    public abstract VkResult createVkInstance();
 
     /**
      * Query available VkLayerProperties.<br>
@@ -71,6 +99,19 @@ public abstract class VulkanConfigChooser {
         return pProperties;
     }
     
+    /**
+     * User defined {@link VkInstanceCreateInfo} and {@link VkApplicationInfo}
+     * @return instance of VkInstanceCreateInfo
+     */
+    public abstract VkInstanceCreateInfo createDefaultInstanceCreateInfo(); 
+    
+    /**
+     * User defined {@link VkInstanceCreateInfo} and {@link VkApplicationInfo}
+     * @param enabledLayers - VkInstance layers to enable
+     * @param enabledExtensions - VkInstance extensions to enable 
+     * @return
+     */
+    public abstract VkInstanceCreateInfo createInstanceCreateInfo(String[] enabledLayers, String[] enabledExtensions);
     
     /**
      * Query <b><i>Instance</i></b> extensions properties.<br>
@@ -194,6 +235,36 @@ public abstract class VulkanConfigChooser {
 
     public abstract void destroySurfaceKHR();
 
+
+    /**
+     * This method uses 
+     * @param surfaceHolder
+     * @return
+     */
+     public boolean createSurface(SurfaceHolder surfaceHolder) {        
+             destroySurface();            
+             ctx.surfaceKHR = ctx.windowSurfaceFactory.createWindowSurface(ctx.instance,
+                                                                            ctx.pCallbackAllocator, 
+                                                                            surfaceHolder);               
+             return (ctx.surfaceKHR != null);
+     }
+
+     /**
+      * 
+      */
+     public void destroySurface() {
+         System.err.println("Destroy Surface requested");
+         if(ctx.surfaceKHR==null || ctx.instance==null)
+             return;            
+            
+         if(ctx != null){           
+            ctx.windowSurfaceFactory.destroySurface(ctx.instance,
+                                                    ctx.surfaceKHR);
+         }
+         ctx.surfaceKHR.setPointer(0L);
+         ctx.surfaceKHR = null;
+     }
+    
     /**
      * Return the chosen PhysicalDevice
      * 
@@ -201,13 +272,9 @@ public abstract class VulkanConfigChooser {
      */
     public abstract VkPhysicalDevice chooseVkPhysicalDevice(VkPhysicalDevice[] devices, VkSurfaceKHR surface);
 
-    /**
-     * Return the VkAllocationCallbacks used in this instance.
-     * 
-     * @return
-     */
-    public abstract VkAllocationCallbacks getVkAllocationCallbacks();
-
+    
+    
+    
     /**
      * destroy current VkDevice.
      */

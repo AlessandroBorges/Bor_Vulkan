@@ -105,305 +105,7 @@ public class VulkanSurfaceView
 	
 	
 	
-    
-    /**
-     * Simple implementation of  VulkanConfigChooser.
-     * It also creates a generic VkInstanceCreateInfo
-     * 
-     * 
-     *
-     */
-   public static class SimpleVulkanConfigChooser extends VulkanConfigChooser{
-       
-       public VulkanAppContext ctx;
-       
-       protected VkInstance instance;
-       protected VkPhysicalDevice physicalDevice;
-       protected VkDevice device;
-       protected VkAllocationCallbacks pAllocator = null;
-       protected VkSwapchainKHR swapchain = null;
-       
-       protected boolean supportSwapChain = false;
-       
-       private int queue_families_count = 0;       
-       private int selected_graphics_queue_family_index = -1;
-       private int selected_present_queue_family_index = -1;
-       
-       /**
-        * Create VulkanConfigChooser implementation with default VkInstanceCreateInfo
-        */
-       public SimpleVulkanConfigChooser(){    	  	
-		this(createSampleInstanceCreateInfo());
-       }
-       
-       /**
-        * Create VulkanConfigChooser implementation with user defined
-        *  VkInstanceCreateInfo
-        * @param pCreateInstanceInfo - VkInstanceCreateInfo with info about application
-        */
-       public SimpleVulkanConfigChooser(VkInstanceCreateInfo pCreateInstanceInfo){    	        		
-   		this(pCreateInstanceInfo, null);
-       }
-       
-       /**
-        * Create VulkanConfigChooser implementation with user defined VkInstanceCreateInfo and VkAllocationCallbacks
-        * @param pCreateInstanceInfo - user defined VkInstanceCreateInfo
-        * @param pCallbackAllocator - user defined VkAllocationCallbacks
-        */
-       public SimpleVulkanConfigChooser(VkInstanceCreateInfo pCreateInstanceInfo, VkAllocationCallbacks pCallbackAllocator){ 
-           this.pAllocator = pCallbackAllocator;
-           VkInstance[] pInstance = new VkInstance[1];
-           VkResult res = Vk10.vkCreateInstance(pCreateInstanceInfo, pAllocator , pInstance);
-           Vulkan.checkError(res);
-           this.instance = pInstance[0];
-       }
-       
-       
-       
-       /**
-        * Creates a very basic VkInstanceCreateInfo instance with VkApplicationInfo.
-        * @return a instance of VkInstanceCreateInfo
-        */
-       public static VkInstanceCreateInfo createSampleInstanceCreateInfo(){    	   
-    	   VkApplicationInfo appInfo = new VkApplicationInfo();
-    	   appInfo.sType(VkStructureType.VK_STRUCTURE_TYPE_APPLICATION_INFO);
-    	   appInfo.pApplicationName("Sample Vulkan application.");    	  
-    	   appInfo.applicationVersion(Vulkan.VK_MAKE_VERSION(1, 0, 0));
-    	   appInfo.pEngineName("BorVulkan engine.");
-    	   appInfo.engineVersion(Vulkan.VK_MAKE_VERSION(0, 8, 9));
-    	   appInfo.apiVersion(Vulkan.VK_MAKE_VERSION(1, 0, 0));
-    	   
-    	   String[] extensions = getInstanceExtensions();	   
-    	   VkInstanceCreateInfo pCreateInstanceInfo = new VkInstanceCreateInfo();  
-    	   pCreateInstanceInfo.sType(VkStructureType.VK_STRUCTURE_TYPE_INSTANCE_CREATE_INFO);
-    	   if(extensions != null){
-    		   pCreateInstanceInfo.enabledExtensionCount(extensions.length);
-    		   pCreateInstanceInfo.ppEnabledExtensionNames(extensions);
-    	   }    	   
-    	   return pCreateInstanceInfo;
-       }
-
-        /**
-         * Get available VkInstance extensions names
-         * 
-         * @return String[] with extensions names
-         */
-        public static String[] getInstanceExtensions() {
-            String[] extensions = null;
-            int[] pPropertyCount = { 0 };
-            VkExtensionProperties[] pProperties = null;
-            Vk10.vkEnumerateInstanceExtensionProperties(null, pPropertyCount, pProperties);
-            int size = pPropertyCount[0];
-            if (size > 0) {
-                pProperties = new VkExtensionProperties[size];
-                extensions = new String[size];
-                VkResult res = Vk10.vkEnumerateInstanceExtensionProperties(null, pPropertyCount, pProperties);
-                Vulkan.checkError(res);
-                for (int i = 0; i < size; i++) {
-                    VkExtensionProperties p = pProperties[i];
-                    extensions[i] = p.extensionName().trim();
-                }
-            }
-            return extensions;
-        }
-        
-        /**
-         * Creates a Swapchain.<br>
-         * Requires following extensions:
-         *  <li> {@link Vulkan#VK_KHR_swapchain}</li>
-         *  <li> {@link Vulkan#VK_KHR_SURFACE_EXTENSION_NAME}</li>
-         *  <p>
-         *  And one of: 
-         *  <li> {@link Vulkan#VK_KHR_ANDROID_SURFACE_EXTENSION_NAME}
-         *  <li> {@link Vulkan#VK_KHR_WIN32_SURFACE_EXTENSION_NAME}
-         *  <li> {@link Vulkan#VK_KHR_XLIB_SURFACE_EXTENSION_NAME}
-         *  <li> {@link Vulkan#VK_KHR_XCB_SURFACE_EXTENSION_NAME}
-         *  </p>
-         *  
-         *  
-         * @return
-         */
-        public boolean createSwapChain(){
-            if(!checkExtensions())
-                return false;
-            
-           
-        
-            
-            return false;
-        }
-        
-        
-        
-       
-        /**
-         * Look up for available extension extensions.
-         * @param extensionCheck - extension to look for.
-         * @param list - list of available extensions.
-         * @return true if list contains extensionCheck.
-         */
-        public boolean checkExtensions(String extensionCheck, String[] list) {
-            for (String test : list) {
-                if(test != null && test.trim().equals(extensionCheck))
-                    return true;
-            }
-            return false;
-        }
-
-        
-        public void start() {          
-          choosePhysicalDevice(instance, surfaceKHR);  
-          createDevice();   
-        }
-        
-        
-        
-        public void createDevice() {            
-            Vk10.vkCreateDevice(physicalDevice, pCreateInfo, pAllocator, pDevice);            
-        }
-
-        public VkPhysicalDevice choosePhysicalDevice(VkInstance instance, VkSurfaceKHR surfaceKHR) { 
-            List<VkPhysicalDevice> list = enumeratePhysicalDevices(instance);
-            if(list.size()==1)
-                return list.get(0);
-                                  
-            int graphics_queue_family_index = -1;
-            
-            for (VkPhysicalDevice physical_device : list) {
-                int[] pPropertyCount = { 1 };
-                VkExtensionProperties[] pProperties = { null };
-                String pLayerName = Vulkan.VK_KHR_SWAPCHAIN_EXTENSION_NAME;
-                // check support to swapchain
-                VkResult res = Vk10.vkEnumerateDeviceExtensionProperties(physical_device, pLayerName, pPropertyCount, pProperties);
-                if(res.isError()){
-                    continue;
-                }
-                int[] queue_families_count = {0};
-                Vk10.vkGetPhysicalDeviceQueueFamilyProperties( physical_device, queue_families_count, null);
-                if( queue_families_count[0] == 0 ) {
-                    continue;
-                }
-                int count = queue_families_count[0];
-                VkQueueFamilyProperties[] queue_family_properties = new VkQueueFamilyProperties[count] ;
-                Vk10.vkGetPhysicalDeviceQueueFamilyProperties( physical_device, queue_families_count, queue_family_properties);
-                
-                boolean[][]  queue_present_support = new boolean[count][1];
-                for( int i = 0; i < count; ++i ) {
-                    Vk10.vkGetPhysicalDeviceSurfaceSupportKHR( physical_device, i, surfaceKHR, queue_present_support[i] );
-                    
-                    VkQueueFlagBits flag = VkQueueFlagBits.fromValue(queue_family_properties[i].queueFlags());
-                    if( (queue_family_properties[i].queueCount() > 0) && VkQueueFlagBits.isORed(flag, VkQueueFlagBits.VK_QUEUE_GRAPHICS_BIT)) 
-                    {
-                          // Select first queue that supports graphics
-                          if( graphics_queue_family_index == -1 ) {
-                            graphics_queue_family_index = i;
-                          }
-                          // If there is queue that supports both graphics and present - prefer it
-                          if( queue_present_support[i][0] ) {
-                            selected_graphics_queue_family_index = i;
-                            selected_present_queue_family_index = i;
-                            return physical_device;
-                          }
-                        }
-                } // for i
-                
-                int present_queue_family_index = -1;
-             // We don't have queue that supports both graphics and present so we have to use separate queues
-                for( int i = 0; i < count; ++i ) {
-                  if( queue_present_support[i][0] ) {
-                    present_queue_family_index = i;
-                    break;
-                  }
-                }
-
-                // If this device doesn't support queues with graphics and present capabilities don't use it
-                if( (graphics_queue_family_index == -1) ||
-                    (present_queue_family_index == -1) ) {
-                  System.out.println("Could not find queue family with required properties on physical device " + physical_device + "!" );
-                  continue;
-                }
-
-                selected_graphics_queue_family_index = graphics_queue_family_index;
-                selected_present_queue_family_index = present_queue_family_index;
-                return physical_device;             
-             }//foreach VkPhysicalDevice
-            return null;
-        }
-        
-        /**
-         * Get a list of VkPhysicalDevices available.
-         * @param instance - VkInstance to query
-         * @return list of VkPhysicalDevices
-         */
-        public static List<VkPhysicalDevice> enumeratePhysicalDevices(VkInstance instance){
-            VkResult result;
-            int[] count = {0};
-            result = Vk10.vkEnumeratePhysicalDevices(instance, count, null); 
-            int qtd = count[0];
-            VkPhysicalDevice[] pPhysicalDevices = new VkPhysicalDevice[qtd];        
-            result = Vk10.vkEnumeratePhysicalDevices(instance, count, pPhysicalDevices );        
-            System.out.println("VkResult for Enumerate Physical Devices " + result);       
-            System.out.println("PhysicalDevices count: " + qtd);        
-            return Arrays.asList(pPhysicalDevices);
-        }
-        
-        /*
-         * @todo rename to start
-         * (non-Javadoc)
-         * @see bor.util.VulkanSurfaceView.VulkanConfigChooser#chooseDevice()
-         */
-        @Override        
-        public VkDevice chooseDevice() {
-            if(device==null){
-               start();
-            }
-            return device;
-        }
-
-        /*
-         * (non-Javadoc)
-         * @see bor.util.VulkanSurfaceView.VulkanConfigChooser#getVkInstance()
-         */        
-        public VkInstance getVkInstance() {
-            return this.instance;
-        }
-
-        /*
-         * (non-Javadoc)
-         * @see bor.util.VulkanSurfaceView.VulkanConfigChooser#getVkPhysicalDevice()
-         */       
-        public VkPhysicalDevice getVkPhysicalDevice() {
-            return this.physicalDevice;
-        }
-        
-        
-       
-        /*
-         * (non-Javadoc)
-         * @see bor.util.VulkanSurfaceView.VulkanConfigChooser#getVkAllocationCallbacks()
-         */
-        @Override
-        public VkAllocationCallbacks getVkAllocationCallbacks() {
-            return this.pAllocator;
-        }
-
-        @Override
-        public void destroyDevice() {
-            Vk10.vkDestroyDevice(device, pAllocator); 
-            device = null;
-        }
-
-       
-        @Override
-        public void destroyVkInstance() {
-            Vk10.vkDestroyInstance(instance, pAllocator);
-            instance = null;
-            pAllocator = null;
-        }
-
-    } // class SimpleVulkanConfigChooser
-   
-   //////////////////////////////////////////////////////////////////////////////////////	
+   	
 	    
     /**
      * Standard View constructor. In order to render something, you
@@ -500,7 +202,7 @@ public class VulkanSurfaceView
     public void setRenderer(Renderer renderer) {
         checkRenderThreadState();
         if (mVulkanConfigChooser == null) {
-            mVulkanConfigChooser = new SimpleVulkanConfigChooser();
+            mVulkanConfigChooser = new DefaultVulkanConfigChooser();
         }
 
         if (mWindowSurfaceFactory == null) {
@@ -719,12 +421,12 @@ public class VulkanSurfaceView
         }
 
         /**
-         * @TODO improve  SimpleVulkanHelper
+         * @TODO improve  DefaultVulkanHelper
          * @throws InterruptedException
          */
         private void guardedRun() throws InterruptedException {
             // @TODO - improve this 
-            mVulkanHelperOnThread = new SimpleVulkanHelper(this.mWeakView);
+            mVulkanHelperOnThread = new DefaultVulkanHelper(this.mWeakView);
             try {
                 mVulkanHelperOnThread.start();
 
@@ -783,7 +485,7 @@ public class VulkanSurfaceView
                         changed = true;
                     }
                     if (changed) {
-                        mVulkanHelperOnThread.createSurface(getHolder());
+                        mVulkanHelperOnThread.createSurface();
                         tellRendererSurfaceChanged = true;
                     }
                     if (tellRendererSurfaceCreated) {
@@ -942,7 +644,7 @@ public class VulkanSurfaceView
         private boolean mRequestRender;
         private Renderer mRenderer;
         private ArrayList<Runnable> mEventQueue = new ArrayList<Runnable>();
-        private SimpleVulkanHelper mVulkanHelperOnThread;
+        private DefaultVulkanHelper mVulkanHelperOnThread;
     }// class VkThread
     
     static class LogWriter extends Writer {
@@ -979,65 +681,9 @@ public class VulkanSurfaceView
     }
 
     
-    /**
-     * An interface for customizing the eglCreateWindowSurface and eglDestroySurface calls.
-     * <p>
-     * This interface must be implemented by clients wishing to call
-     * {@link VulkanSurfaceView#setWindowSurfaceFactory(WindowSurfaceFactory)}
-     */
-    public interface WindowSurfaceFactory {
-    	
-        /**
-         * 
-         * @param instance
-         * @param allocCallback
-         * @param createInfo
-         * @param nativeWindow
-         *  @return null if the surface cannot be constructed.
-         */
-    	public VkSurfaceKHR createWindowSurface( VkInstance instance, 
-    	                                         VkAllocationCallbacks allocCallback,    	                                         
-    	                                         Object nativeWindow);
-    	/**
-    	 * 
-    	 * @param instance
-    	 * @param surface
-    	 */
-        public void destroySurface(VkInstance instance, VkSurfaceKHR surface);
-        
-    }// interface WindowSurfaceFactory
     
-    /**
-     * Default implementation of WindowSurfaceFactory.     
-     */
-    protected static class DefaultWindowSurfaceFactory implements WindowSurfaceFactory {
-
-        
-        @Override
-        public VkSurfaceKHR createWindowSurface(VkInstance instance,
-                                                VkAllocationCallbacks allocCallback,                                              
-                                                Object nativeWindow) {
-            VkSurfaceKHR surface = null;
-            VkResult res = null;
-            try {                
-                VkSurfaceKHR[] pSurface = {null};
-                res = Vk10.vkCreateWindowSurface(instance, nativeWindow, allocCallback, pSurface );
-                if(res.getValue() >=0){
-                    surface = pSurface[0];
-                }
-            } catch (IllegalArgumentException e) {
-                Log.e(TAG, "DefaultWindowSurfaceFactory.createWindowSurface", e);
-            }
-
-            return surface;
-        }
-
-        @Override
-        public void destroySurface(VkInstance instance, VkSurfaceKHR surface) {
-            Vk10.vkDestroySurfaceKHR(instance, surface, null);
-        }
-
-    }// class DefaultWindowSurfaceFactory
+    
+   
     
     
 
@@ -1139,164 +785,13 @@ public class VulkanSurfaceView
          */
         void onDrawFrame();
     }
-    
-   
-    /**
-     * This interface defines basic operations to initialize
-     * Vulkan, using Vulkan WSI features
-     * 
-     * @author Alessandro Borges
-     *
-     */
-    interface VulkanHelper {
-
-        /**
-         * Create an drawing surface for the current SurfaceHolder surface. If a surface
-         * already exists, destroy it before creating the new surface.
-         *
-         * @return true if the surface was created successfully.
-         */
-        public boolean createSurface(SurfaceHolder surfaceHolder);
-
-        /**
-         * Destroy current Surface
-         * 
-         * @param surfaceHolder
-         */
-        public void destroySurface();
-
-        /**
-         * Release resources, including release SurfaceKHR
-         */
-        public void finish();
-
-        /**
-         * Prepare surface for drawing
-         */
-        public void start();
-
-        /**
-         * perform swapchain, if available
-         */
-        public void swap();
-        
-        /**
-         * Get current VkSurfaceKHR 
-         * @return
-         */
-        public VkSurfaceKHR getSurface();
-
-        /**
-         * Release and recreate device depends of
-         * some complex and high level child object tracking,
-         * possibly with a List<WeakReference<VkObject>>
-         */
-        /*
-         * public VkDevice recreateDevice();
-         * public void releaseDevice();
-         * public void releaseDeviceResources();
-         * public void releasePhysicalDevice();
-         * public void releaseInstance();
-         */
-    }
 
     /**
-     * Implementation of VulkanHelper.
-     * Must be called before 
-     * @author Alessandro Borges
-     *
+     * Get VulkanConfigChooser
+     * @return current instance of VulkanConfigChooser
      */
-    protected static class SimpleVulkanHelper // implements VulkanHelper 
-    {
-        
-        private WeakReference<VulkanSurfaceView> weakRef;
-        public VkSurfaceKHR mVkSurfaceKHR = null;
-        
-        public SimpleVulkanHelper(WeakReference<VulkanSurfaceView> weakRef){
-            this.weakRef = weakRef;
-        }
-    
-        /**
-         * Get current SurfaceKHR
-         * @return
-         */
-        public VkSurfaceKHR getSurfaceKHR(){
-            return this.mVkSurfaceKHR;
-        }
-        
-       
-
-       /**
-        * 
-        * @param surfaceHolder
-        * @return
-        */
-        public boolean createSurface(SurfaceHolder surfaceHolder) {            
-            VulkanSurfaceView view = weakRef.get();   
-            if(view != null){
-                destroySurface();
-                VulkanConfigChooser chooser = view.mVulkanConfigChooser;
-                mVkSurfaceKHR = view.mWindowSurfaceFactory.createWindowSurface(chooser.getVkInstance(), 
-                                                               chooser.getVkAllocationCallbacks(), 
-                                                               view.getHolder());               
-                return (mVkSurfaceKHR != null);
-            }else
-                return false;
-        }
-
-        /**
-         * 
-         */
-        public void destroySurface() {
-            System.err.println("Destroy Surface requested");
-            if(mVkSurfaceKHR==null)
-                return;            
-            VulkanSurfaceView view = weakRef.get();   
-            if(view != null){
-               VulkanConfigChooser chooser = view.mVulkanConfigChooser; 
-               view.mWindowSurfaceFactory.destroySurface(chooser.getVkInstance(),
-                                                         this.mVkSurfaceKHR);
-            }
-            mVkSurfaceKHR.setPointer(0L);
-            mVkSurfaceKHR = null;
-        }
-
-        
-      /**
-       * 
-       */
-        public void finish() {
-            destroySurface();
-            VulkanSurfaceView view = weakRef.get();   
-            if(view != null){
-                VulkanConfigChooser chooser = view.mVulkanConfigChooser;
-                chooser.destroyDevice();              
-                chooser.destroyVkInstance();
-            }
-        }
-
-        
-
-       /**
-        * Do swapchain
-        */
-        public void swap() {
-        }
-
-        /**
-         * 
-         * @return
-         */
-        public VkSurfaceKHR getSurface() {
-           return mVkSurfaceKHR;
-        }
-
-        /**
-         * 
-         */
-        public void start() {
-         
-        }
+    public VulkanConfigChooser getConfigChooser() {
+        return this.mVulkanConfigChooser;
     }
-
+      
 }// class VulkanSurfaceView
