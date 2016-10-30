@@ -119,8 +119,7 @@ import bor.vulkan.structs.VkXlibSurfaceCreateInfoKHR;
         #define VC_EXTRALEAN 1
  #elif defined(__ANDROID__) 
         #define VK_USE_PLATFORM_ANDROID_KHR 1
-        #include <android_runtime/android_view_Surface.h>
-        #include <android_runtime/AndroidRuntime.h>
+        #include <android/native_window_jni.h>
  #else      
        #define VK_USE_PLATFORM_XCB_KHR 1
        #define VK_USE_PLATFORM_XLIB_KHR 1
@@ -9075,15 +9074,22 @@ static void initVk10(){
      * @param win - <b>live and visible</b> instance of java.awt.Canvas and android.view.View.
      * @param displayHandles - Handles of 
      */
-    public static boolean getDisplayHandles(Object win, VkHandle[] displayHandles){
-        
-        if(win != null && displayHandles != null && displayHandles.length > 1){
-	  BigBuffer<VkHandle> handles = new BigBuffer<VkHandle>(displayHandles, false);
-	  boolean result = getDisplayHandles0(win, handles.getPointer());
-	  handles.update(); 	  
-	  return result;
-	}
-        
+    public static boolean getDisplayHandles(Object win, VkHandle[] displayHandles) {
+        if (win != null && displayHandles != null && displayHandles.length > 1) {
+            int size = displayHandles.length;
+            long[] handles = new long[size];
+            boolean result = getDisplayHandles0(win, handles);
+            for (int i = 0; i < handles.length; i++) {
+                long ptr = handles[i];
+                VkHandle hnd = displayHandles[i];
+                if (hnd == null) {
+                    displayHandles[i] = new VkHandle(ptr);
+                } else {
+                    hnd.setNativeHandle(ptr);
+                }
+            }
+            return result;
+        }
         return false;
     }
     
@@ -9097,8 +9103,12 @@ static void initVk10(){
     protected static native boolean getDisplayHandles0(Object win, long[] displayHandles);/*
     
      #ifdef VK_USE_PLATFORM_ANDROID_KHR 
-       android::sp<ANativeWindow> window;
-       window = android::android_view_Surface_getNativeWindow(env, win);
+       ANativeWindow* window;       
+       // Return the ANativeWindow associated with a Java Surface object,
+       // for interacting with it through native code.  This acquires a reference
+       // on the ANativeWindow that is returned; be sure to use ANativeWindow_release()
+       // when done with it so that it doesn't leak.
+       window = ANativeWindow_fromSurface(env, win);
        displayHandles[0] = reinterpret_cast<jlong>(window);
        return JNI_TRUE;
      #else  
@@ -10378,8 +10388,8 @@ static void initVk10(){
     VkResult res = VkResult::VK_ERROR_NATIVE_WINDOW_IN_USE_KHR;
     
     #ifdef VK_USE_PLATFORM_ANDROID_KHR       
-        android::sp<ANativeWindow> window;  
-        window = android::android_view_Surface_getNativeWindow(env, nativeWindow);
+        ANativeWindow* window = NULL;  
+        window = ANativeWindow_fromSurface(env, nativeWindow);
         if (window == NULL) 
              return VkResult::VK_ERROR_NATIVE_WINDOW_IN_USE_KHR;
          
