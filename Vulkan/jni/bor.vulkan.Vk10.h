@@ -121,22 +121,6 @@ extern "C" {
 #define bor_vulkan_Vk10_THROW_EXCEPTION_ON_SURFACE_LOST 8L
 #undef bor_vulkan_Vk10_LOG_ERRORS
 #define bor_vulkan_Vk10_LOG_ERRORS 16L
-#undef bor_vulkan_Vk10_isVulkanAvailable
-#define bor_vulkan_Vk10_isVulkanAvailable 0L
-#undef bor_vulkan_Vk10_isWin32
-#define bor_vulkan_Vk10_isWin32 0L
-#undef bor_vulkan_Vk10_isAndroid
-#define bor_vulkan_Vk10_isAndroid 0L
-#undef bor_vulkan_Vk10_isLinux
-#define bor_vulkan_Vk10_isLinux 0L
-#undef bor_vulkan_Vk10_isMIR
-#define bor_vulkan_Vk10_isMIR 0L
-#undef bor_vulkan_Vk10_isWayland
-#define bor_vulkan_Vk10_isWayland 0L
-#undef bor_vulkan_Vk10_isXCB
-#define bor_vulkan_Vk10_isXCB 0L
-#undef bor_vulkan_Vk10_isXLIB
-#define bor_vulkan_Vk10_isXLIB 0L
 /*
  * Class:     bor_vulkan_Vk10
  * Method:    init0
